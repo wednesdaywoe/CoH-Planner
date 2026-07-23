@@ -1,0 +1,1126 @@
+{
+ "nodes": [
+  {
+   "id": "file:src/utils/calculations/stacking-flaw-fix.verify.test.ts",
+   "type": "file",
+   "name": "stacking-flaw-fix.verify.test.ts",
+   "filePath": "src/utils/calculations/stacking-flaw-fix.verify.test.ts",
+   "summary": "Verification test for the perma/stacking flaw fix: linear vs per-target stacking must produce distinct expected values in perma calculations.",
+   "tags": [
+    "test",
+    "stacking",
+    "perma",
+    "regression-guard"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:src/utils/calculations/stats.ts",
+   "type": "file",
+   "name": "stats.ts",
+   "filePath": "src/utils/calculations/stats.ts",
+   "summary": "Provides the empty character-stats factory (all defense/resistance/movement/misc totals zeroed) and baseline health lookup per archetype and level.",
+   "tags": [
+    "character-stats",
+    "factory",
+    "baseline",
+    "utility"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:src/utils/calculations/stats.ts:createEmptyStats",
+   "type": "function",
+   "name": "createEmptyStats",
+   "filePath": "src/utils/calculations/stats.ts",
+   "lineRange": [
+    67,
+    104
+   ],
+   "summary": "Creates a fully zeroed character stats object covering defense, resistance, movement, endurance, and misc total categories.",
+   "tags": [
+    "factory",
+    "character-stats",
+    "initialization"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/calculations/stats.ts:getBaselineHealth",
+   "type": "function",
+   "name": "getBaselineHealth",
+   "filePath": "src/utils/calculations/stats.ts",
+   "lineRange": [
+    115,
+    147
+   ],
+   "summary": "Returns the unbuffed base hit points for an archetype at a given level, interpolating from AT base HP tables.",
+   "tags": [
+    "health",
+    "archetype",
+    "baseline"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:src/utils/calculations/stealth-procs.test.ts",
+   "type": "file",
+   "name": "stealth-procs.test.ts",
+   "filePath": "src/utils/calculations/stealth-procs.test.ts",
+   "summary": "Tests stealth-granting IO procs (Celerity/Unbounded Leap +Stealth): slotting them must add stealth radius values to character totals with correct PvE/PvP handling.",
+   "tags": [
+    "test",
+    "proc",
+    "stealth",
+    "io-set"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:src/utils/calculations/strength-buffs.test.ts",
+   "type": "file",
+   "name": "strength-buffs.test.ts",
+   "filePath": "src/utils/calculations/strength-buffs.test.ts",
+   "summary": "Tests strength-buff collection (Power Boost / Power Build Up style effects): secondary-effect strength buffs must amplify defense, to-hit, and other buff magnitudes in totals and per-power displays.",
+   "tags": [
+    "test",
+    "strength-buffs",
+    "power-boost",
+    "character-totals"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:src/utils/calculations/strength-buffs.test.ts:buildWith",
+   "type": "function",
+   "name": "buildWith",
+   "filePath": "src/utils/calculations/strength-buffs.test.ts",
+   "lineRange": [
+    161,
+    175
+   ],
+   "summary": "Test fixture: constructs a build containing the given powers for strength-buff scenarios.",
+   "tags": [
+    "test-fixture",
+    "build",
+    "helper"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:src/utils/calculations/travel-speed-fixes.test.ts",
+   "type": "file",
+   "name": "travel-speed-fixes.test.ts",
+   "filePath": "src/utils/calculations/travel-speed-fixes.test.ts",
+   "summary": "Regression suite for the travel-speed fixes: TravelBuff stack-group exclusivity (strongest per group), movement cap bumps, combat suppression, and pool travel power speeds against movement constants.",
+   "tags": [
+    "test",
+    "movement",
+    "travel-speed",
+    "regression-guard"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:src/utils/conditional-effects.ts",
+   "type": "file",
+   "name": "conditional-effects.ts",
+   "filePath": "src/utils/conditional-effects.ts",
+   "summary": "Selects which conditional effect variants of a power are active given build state (stances, AT inherent conditionals like Domination), so displays and totals merge the correct conditional branch.",
+   "tags": [
+    "conditional-effects",
+    "stances",
+    "game-mechanics",
+    "utility"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:src/utils/conditional-effects.ts:selectActiveConditionals",
+   "type": "function",
+   "name": "selectActiveConditionals",
+   "filePath": "src/utils/conditional-effects.ts",
+   "lineRange": [
+    73,
+    107
+   ],
+   "summary": "Filters a power's conditional effects down to the active set based on stance selections and AT inherent conditional toggles.",
+   "tags": [
+    "conditional-effects",
+    "selection",
+    "stances"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:src/utils/enhancement-eligibility.ts",
+   "type": "file",
+   "name": "enhancement-eligibility.ts",
+   "filePath": "src/utils/enhancement-eligibility.ts",
+   "summary": "Decides whether a given enhancement (IO set piece, generic IO, or special) may legally be slotted into a power, based on the power's allowed categories and set types.",
+   "tags": [
+    "enhancement",
+    "eligibility",
+    "validation",
+    "utility"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/enhancement-eligibility.ts:enhancementAllowedInPower",
+   "type": "function",
+   "name": "enhancementAllowedInPower",
+   "filePath": "src/utils/enhancement-eligibility.ts",
+   "lineRange": [
+    25,
+    46
+   ],
+   "summary": "Checks an enhancement against a power's allowed enhancement categories and IO set types to determine slotting legality.",
+   "tags": [
+    "enhancement",
+    "validation",
+    "predicate"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:src/utils/export-popmenu.ts",
+   "type": "file",
+   "name": "export-popmenu.ts",
+   "filePath": "src/utils/export-popmenu.ts",
+   "summary": "Generates a City of Heroes in-game popmenu (.mnu) file from a build, emitting /boostset and enhancement slotting commands so players can apply the planned build in-game.",
+   "tags": [
+    "export",
+    "popmenu",
+    "serialization",
+    "game-integration"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:src/utils/export-popmenu.ts:toPascalUnderscore",
+   "type": "function",
+   "name": "toPascalUnderscore",
+   "filePath": "src/utils/export-popmenu.ts",
+   "lineRange": [
+    50,
+    60
+   ],
+   "summary": "Normalizes a display name to the PascalCase/underscore identifier form used by in-game slash commands.",
+   "tags": [
+    "formatting",
+    "normalization",
+    "helper"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/export-popmenu.ts:enhancementToBoostCmd",
+   "type": "function",
+   "name": "enhancementToBoostCmd",
+   "filePath": "src/utils/export-popmenu.ts",
+   "lineRange": [
+    155,
+    213
+   ],
+   "summary": "Translates a slotted enhancement into the in-game /boostset or enhancement command string, handling IO sets, generics, and special enhancement naming.",
+   "tags": [
+    "export",
+    "command-generation",
+    "enhancement"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:src/utils/export-popmenu.ts:collectEnhancements",
+   "type": "function",
+   "name": "collectEnhancements",
+   "filePath": "src/utils/export-popmenu.ts",
+   "lineRange": [
+    222,
+    242
+   ],
+   "summary": "Walks the build's powers and slots collecting the enhancement command entries to emit.",
+   "tags": [
+    "export",
+    "traversal",
+    "enhancement"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/export-popmenu.ts:generatePopmenu",
+   "type": "function",
+   "name": "generatePopmenu",
+   "filePath": "src/utils/export-popmenu.ts",
+   "lineRange": [
+    251,
+    311
+   ],
+   "summary": "Builds the full popmenu file text: menu structure, power sections, and enhancement application commands for the whole build.",
+   "tags": [
+    "export",
+    "popmenu",
+    "serialization"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:src/utils/export-print.ts",
+   "type": "file",
+   "name": "export-print.ts",
+   "filePath": "src/utils/export-print.ts",
+   "summary": "Renders a build as a self-contained printable HTML document (powers, slotting, set bonuses, incarnates, and character stat totals) and opens it in a print view window.",
+   "tags": [
+    "export",
+    "print",
+    "html-generation",
+    "report"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:src/utils/export-print.ts:abbrProcText",
+   "type": "function",
+   "name": "abbrProcText",
+   "filePath": "src/utils/export-print.ts",
+   "lineRange": [
+    79,
+    102
+   ],
+   "summary": "Abbreviates proc effect descriptions to compact labels suitable for the print layout.",
+   "tags": [
+    "formatting",
+    "abbreviation",
+    "helper"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/export-print.ts:formatEnhancementName",
+   "type": "function",
+   "name": "formatEnhancementName",
+   "filePath": "src/utils/export-print.ts",
+   "lineRange": [
+    104,
+    129
+   ],
+   "summary": "Formats a slotted enhancement into its short display name (set abbreviation + piece, level, boosters).",
+   "tags": [
+    "formatting",
+    "enhancement",
+    "helper"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/export-print.ts:buildStatsHTML",
+   "type": "function",
+   "name": "buildStatsHTML",
+   "filePath": "src/utils/export-print.ts",
+   "lineRange": [
+    158,
+    236
+   ],
+   "summary": "Generates the character totals section HTML: defense, resistance, movement, and misc stat tables from calculated totals.",
+   "tags": [
+    "html-generation",
+    "character-stats",
+    "report"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:src/utils/export-print.ts:powerRow",
+   "type": "function",
+   "name": "powerRow",
+   "filePath": "src/utils/export-print.ts",
+   "lineRange": [
+    242,
+    268
+   ],
+   "summary": "Renders a single power row with level, name, and slotted enhancements.",
+   "tags": [
+    "html-generation",
+    "power",
+    "helper"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/export-print.ts:buildIncarnateHTML",
+   "type": "function",
+   "name": "buildIncarnateHTML",
+   "filePath": "src/utils/export-print.ts",
+   "lineRange": [
+    284,
+    309
+   ],
+   "summary": "Generates the incarnate abilities section of the printable build.",
+   "tags": [
+    "html-generation",
+    "incarnate",
+    "report"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/export-print.ts:generatePrintHTML",
+   "type": "function",
+   "name": "generatePrintHTML",
+   "filePath": "src/utils/export-print.ts",
+   "lineRange": [
+    315,
+    536
+   ],
+   "summary": "Assembles the complete printable build document: header, powerset sections, pool/epic powers, incarnates, set bonus summary, and stats, as inline-styled HTML.",
+   "tags": [
+    "export",
+    "html-generation",
+    "report"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:src/utils/export-print.ts:openPrintView",
+   "type": "function",
+   "name": "openPrintView",
+   "filePath": "src/utils/export-print.ts",
+   "lineRange": [
+    541,
+    548
+   ],
+   "summary": "Opens the generated print HTML in a new browser window and triggers the print dialog.",
+   "tags": [
+    "export",
+    "print",
+    "browser"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:src/utils/external-import/converter.ts",
+   "type": "file",
+   "name": "converter.ts",
+   "filePath": "src/utils/external-import/converter.ts",
+   "summary": "Converts externally sourced build text (in-game export format) into the planner's build model: splits multi-build dumps, scores the best segment, converts powers/boosts, and augments incarnates and accolades.",
+   "tags": [
+    "import",
+    "converter",
+    "external-build",
+    "game-integration"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:src/utils/external-import/converter.ts:resolveHybridPowerName",
+   "type": "function",
+   "name": "resolveHybridPowerName",
+   "filePath": "src/utils/external-import/converter.ts",
+   "lineRange": [
+    129,
+    137
+   ],
+   "summary": "Resolves Hybrid incarnate power names that differ between game export and planner naming.",
+   "tags": [
+    "incarnate",
+    "name-resolution",
+    "helper"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/external-import/converter.ts:splitBuilds",
+   "type": "function",
+   "name": "splitBuilds",
+   "filePath": "src/utils/external-import/converter.ts",
+   "lineRange": [
+    152,
+    165
+   ],
+   "summary": "Splits a raw export dump containing multiple builds into separate build segments.",
+   "tags": [
+    "parsing",
+    "segmentation",
+    "helper"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/external-import/converter.ts:scoreBuildSegment",
+   "type": "function",
+   "name": "scoreBuildSegment",
+   "filePath": "src/utils/external-import/converter.ts",
+   "lineRange": [
+    170,
+    189
+   ],
+   "summary": "Scores a build segment by resolvable powers so the most complete segment can be chosen for import.",
+   "tags": [
+    "scoring",
+    "heuristic",
+    "import"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/external-import/converter.ts:getSegmentSetNames",
+   "type": "function",
+   "name": "getSegmentSetNames",
+   "filePath": "src/utils/external-import/converter.ts",
+   "lineRange": [
+    194,
+    214
+   ],
+   "summary": "Extracts the powerset names referenced by a build segment for archetype/powerset resolution.",
+   "tags": [
+    "parsing",
+    "powerset",
+    "helper"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/external-import/converter.ts:convertBoost",
+   "type": "function",
+   "name": "convertBoost",
+   "filePath": "src/utils/external-import/converter.ts",
+   "lineRange": [
+    223,
+    233
+   ],
+   "summary": "Converts a single exported enhancement (boost) entry into the game-export data model.",
+   "tags": [
+    "converter",
+    "enhancement",
+    "helper"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/external-import/converter.ts:convertPower",
+   "type": "function",
+   "name": "convertPower",
+   "filePath": "src/utils/external-import/converter.ts",
+   "lineRange": [
+    238,
+    273
+   ],
+   "summary": "Converts one exported power entry with its slotted boosts into game-export power data.",
+   "tags": [
+    "converter",
+    "power",
+    "import"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/external-import/converter.ts:convertToGameExportData",
+   "type": "function",
+   "name": "convertToGameExportData",
+   "filePath": "src/utils/external-import/converter.ts",
+   "lineRange": [
+    278,
+    302
+   ],
+   "summary": "Wraps parsed external build content into the GameExportData structure consumed by the shared game importer.",
+   "tags": [
+    "converter",
+    "adapter",
+    "import"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/external-import/converter.ts:augmentIncarnates",
+   "type": "function",
+   "name": "augmentIncarnates",
+   "filePath": "src/utils/external-import/converter.ts",
+   "lineRange": [
+    308,
+    362
+   ],
+   "summary": "Maps incarnate powers from the external export onto the build's incarnate slots, resolving tiers and branches by name.",
+   "tags": [
+    "incarnate",
+    "import",
+    "mapping"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:src/utils/external-import/converter.ts:augmentAccolades",
+   "type": "function",
+   "name": "augmentAccolades",
+   "filePath": "src/utils/external-import/converter.ts",
+   "lineRange": [
+    368,
+    383
+   ],
+   "summary": "Enables accolade bonuses on the imported build for accolade powers present in the export.",
+   "tags": [
+    "accolades",
+    "import",
+    "mapping"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/external-import/converter.ts:importExternalBuild",
+   "type": "function",
+   "name": "importExternalBuild",
+   "filePath": "src/utils/external-import/converter.ts",
+   "lineRange": [
+    394,
+    509
+   ],
+   "summary": "Top-level external import: parses the pasted export, selects the best build segment, runs the shared game importer, then augments incarnates and accolades, returning result plus warnings.",
+   "tags": [
+    "import",
+    "orchestration",
+    "external-build"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:src/utils/external-import/index.ts",
+   "type": "file",
+   "name": "index.ts",
+   "filePath": "src/utils/external-import/index.ts",
+   "summary": "Barrel module re-exporting the external build importer entry point and its result types.",
+   "tags": [
+    "barrel",
+    "entry-point",
+    "import"
+   ],
+   "complexity": "simple"
+  }
+ ],
+ "edges": [
+  {
+   "source": "file:src/utils/calculations/stats.ts",
+   "target": "function:src/utils/calculations/stats.ts:createEmptyStats",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/stats.ts",
+   "target": "function:src/utils/calculations/stats.ts:createEmptyStats",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/stats.ts",
+   "target": "function:src/utils/calculations/stats.ts:getBaselineHealth",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/stats.ts",
+   "target": "function:src/utils/calculations/stats.ts:getBaselineHealth",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/strength-buffs.test.ts",
+   "target": "function:src/utils/calculations/strength-buffs.test.ts:buildWith",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/conditional-effects.ts",
+   "target": "function:src/utils/conditional-effects.ts:selectActiveConditionals",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/conditional-effects.ts",
+   "target": "function:src/utils/conditional-effects.ts:selectActiveConditionals",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/enhancement-eligibility.ts",
+   "target": "function:src/utils/enhancement-eligibility.ts:enhancementAllowedInPower",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/enhancement-eligibility.ts",
+   "target": "function:src/utils/enhancement-eligibility.ts:enhancementAllowedInPower",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/export-popmenu.ts",
+   "target": "function:src/utils/export-popmenu.ts:toPascalUnderscore",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/export-popmenu.ts",
+   "target": "function:src/utils/export-popmenu.ts:enhancementToBoostCmd",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/export-popmenu.ts",
+   "target": "function:src/utils/export-popmenu.ts:collectEnhancements",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/export-popmenu.ts",
+   "target": "function:src/utils/export-popmenu.ts:generatePopmenu",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/export-popmenu.ts",
+   "target": "function:src/utils/export-popmenu.ts:generatePopmenu",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/export-print.ts",
+   "target": "function:src/utils/export-print.ts:abbrProcText",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/export-print.ts",
+   "target": "function:src/utils/export-print.ts:formatEnhancementName",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/export-print.ts",
+   "target": "function:src/utils/export-print.ts:buildStatsHTML",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/export-print.ts",
+   "target": "function:src/utils/export-print.ts:powerRow",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/export-print.ts",
+   "target": "function:src/utils/export-print.ts:buildIncarnateHTML",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/export-print.ts",
+   "target": "function:src/utils/export-print.ts:generatePrintHTML",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/export-print.ts",
+   "target": "function:src/utils/export-print.ts:generatePrintHTML",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/export-print.ts",
+   "target": "function:src/utils/export-print.ts:openPrintView",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/export-print.ts",
+   "target": "function:src/utils/export-print.ts:openPrintView",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/external-import/converter.ts",
+   "target": "function:src/utils/external-import/converter.ts:resolveHybridPowerName",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/external-import/converter.ts",
+   "target": "function:src/utils/external-import/converter.ts:splitBuilds",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/external-import/converter.ts",
+   "target": "function:src/utils/external-import/converter.ts:scoreBuildSegment",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/external-import/converter.ts",
+   "target": "function:src/utils/external-import/converter.ts:getSegmentSetNames",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/external-import/converter.ts",
+   "target": "function:src/utils/external-import/converter.ts:convertBoost",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/external-import/converter.ts",
+   "target": "function:src/utils/external-import/converter.ts:convertPower",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/external-import/converter.ts",
+   "target": "function:src/utils/external-import/converter.ts:convertToGameExportData",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/external-import/converter.ts",
+   "target": "function:src/utils/external-import/converter.ts:augmentIncarnates",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/external-import/converter.ts",
+   "target": "function:src/utils/external-import/converter.ts:augmentAccolades",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/external-import/converter.ts",
+   "target": "function:src/utils/external-import/converter.ts:importExternalBuild",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/external-import/converter.ts",
+   "target": "function:src/utils/external-import/converter.ts:importExternalBuild",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/stacking-flaw-fix.verify.test.ts",
+   "target": "file:src/utils/calculations/perma.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/stats.ts",
+   "target": "file:src/data/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/stats.ts",
+   "target": "file:src/types/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/stealth-procs.test.ts",
+   "target": "file:src/data/dataset.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/stealth-procs.test.ts",
+   "target": "file:src/types/build.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/stealth-procs.test.ts",
+   "target": "file:src/utils/calculations/character-totals.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/strength-buffs.test.ts",
+   "target": "file:src/components/info/powerDisplayUtils.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/strength-buffs.test.ts",
+   "target": "file:src/components/powers/power-row-utils.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/strength-buffs.test.ts",
+   "target": "file:src/data/at-tables.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/strength-buffs.test.ts",
+   "target": "file:src/data/dataset.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/strength-buffs.test.ts",
+   "target": "file:src/data/epic-pools.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/strength-buffs.test.ts",
+   "target": "file:src/data/powersets.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/strength-buffs.test.ts",
+   "target": "file:src/types/build.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/strength-buffs.test.ts",
+   "target": "file:src/utils/calculations/character-totals.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/travel-speed-fixes.test.ts",
+   "target": "file:src/data/core/movement-constants.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/travel-speed-fixes.test.ts",
+   "target": "file:src/data/dataset.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/travel-speed-fixes.test.ts",
+   "target": "file:src/data/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/travel-speed-fixes.test.ts",
+   "target": "file:src/data/power-pools.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/travel-speed-fixes.test.ts",
+   "target": "file:src/types/build.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/travel-speed-fixes.test.ts",
+   "target": "file:src/types/power.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/travel-speed-fixes.test.ts",
+   "target": "file:src/utils/calculations/character-totals.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/conditional-effects.ts",
+   "target": "file:src/types/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/enhancement-eligibility.ts",
+   "target": "file:src/data/io-sets.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/enhancement-eligibility.ts",
+   "target": "file:src/types/common.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/enhancement-eligibility.ts",
+   "target": "file:src/types/enhancement.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/export-popmenu.ts",
+   "target": "file:src/data/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/export-popmenu.ts",
+   "target": "file:src/types/enhancement.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/export-popmenu.ts",
+   "target": "file:src/types/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/export-print.ts",
+   "target": "file:src/data/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/export-print.ts",
+   "target": "file:src/types/enhancement.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/export-print.ts",
+   "target": "file:src/types/incarnate.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/export-print.ts",
+   "target": "file:src/types/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/export-print.ts",
+   "target": "file:src/utils/calculations/character-totals.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/export-print.ts",
+   "target": "file:src/utils/slot-levels.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/external-import/converter.ts",
+   "target": "file:src/data/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/external-import/converter.ts",
+   "target": "file:src/types/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/external-import/converter.ts",
+   "target": "file:src/utils/game-importer/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/character-totals.ts",
+   "target": "file:src/utils/calculations/stealth-procs.test.ts",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:src/utils/calculations/character-totals.ts",
+   "target": "file:src/utils/calculations/strength-buffs.test.ts",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:src/utils/calculations/character-totals.ts",
+   "target": "file:src/utils/calculations/travel-speed-fixes.test.ts",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:src/utils/external-import/index.ts",
+   "target": "file:src/utils/kheldian-import.test.ts",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  }
+ ]
+}

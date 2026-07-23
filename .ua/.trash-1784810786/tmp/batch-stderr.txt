@@ -1,0 +1,12 @@
+Loaded 609 files (539 code).
+Warning: compute-batches: community size 45 > max 35 — splitting via alphabetical chunking — modularity may decrease
+Warning: compute-batches: community size 98 > max 35 — splitting via alphabetical chunking — modularity may decrease
+Warning: compute-batches: community size 85 > max 35 — splitting via alphabetical chunking — modularity may decrease
+Warning: compute-batches: community size 58 > max 35 — splitting via alphabetical chunking — modularity may decrease
+Warning: compute-batches: community size 53 > max 35 — splitting via alphabetical chunking — modularity may decrease
+Info: compute-batches: merged 96 small batches (100 files) into 4 misc batches — singletons and orphans consolidated
+Warning: compute-batches: neighborMap for src/data/dataset.ts has high 1-hop degree 83 — exceeds soft cap of 50 — keeping top 50 cross-batch entries (11 dropped by degree sort)
+Warning: compute-batches: neighborMap for src/data/index.ts has high 1-hop degree 87 — exceeds soft cap of 50 — keeping top 50 cross-batch entries (22 dropped by degree sort)
+Warning: compute-batches: neighborMap for src/types/index.ts has high 1-hop degree 132 — exceeds soft cap of 50 — keeping top 50 cross-batch entries (66 dropped by degree sort)
+Warning: compute-batches: neighborMap for src/stores/index.ts has high 1-hop degree 72 — exceeds soft cap of 50 — keeping top 50 cross-batch entries (18 dropped by degree sort)
+Wrote 32 batches (sizes: max=33, min=3) to /home/jiiwii/Github/CoH-Sidekick/.ua/intermediate/batches.json

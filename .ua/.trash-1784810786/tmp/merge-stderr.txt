@@ -1,0 +1,61 @@
+Found 32 batch files (19 logical batches, 10 multi-part):
+  batch-1-part-1.json: 40 nodes, 112 edges
+  batch-1-part-2.json: 31 nodes, 76 edges
+  batch-2-part-1.json: 46 nodes, 99 edges
+  batch-2-part-2.json: 54 nodes, 113 edges
+  batch-3-part-1.json: 26 nodes, 51 edges
+  batch-3-part-2.json: 58 nodes, 108 edges
+  batch-4-part-1.json: 61 nodes, 146 edges
+  batch-4-part-2.json: 37 nodes, 75 edges
+  batch-4-part-3.json: 33 nodes, 64 edges
+  batch-5-part-1.json: 49 nodes, 104 edges
+  batch-5-part-2.json: 30 nodes, 89 edges
+  batch-5-part-3.json: 28 nodes, 76 edges
+  batch-6-part-1.json: 42 nodes, 87 edges
+  batch-6-part-2.json: 39 nodes, 68 edges
+  batch-7-part-1.json: 50 nodes, 122 edges
+  batch-7-part-2.json: 45 nodes, 122 edges
+  batch-8-part-1.json: 59 nodes, 104 edges
+  batch-8-part-2.json: 48 nodes, 79 edges
+  batch-9-part-1.json: 56 nodes, 147 edges
+  batch-9-part-2.json: 31 nodes, 83 edges
+  batch-9-part-3.json: 15 nodes, 30 edges
+  batch-10.json: 58 nodes, 104 edges
+  batch-12-part-1.json: 52 nodes, 112 edges
+  batch-12-part-2.json: 23 nodes, 34 edges
+  batch-14.json: 60 nodes, 115 edges
+  batch-15.json: 43 nodes, 78 edges
+  batch-16.json: 33 nodes, 68 edges
+  batch-18.json: 10 nodes, 13 edges
+  batch-25.json: 7 nodes, 7 edges
+  batch-29.json: 14 nodes, 15 edges
+  batch-30.json: 13 nodes, 12 edges
+  batch-31.json: 5 nodes, 0 edges
+
+Input: 1196 nodes, 2513 edges
+
+Fixed (2 corrections):
+     2 × tested_by edges dropped (orphan endpoint or test↔test / prod↔prod pair)
+
+Tested-by linker:
+     0 × tested_by edges produced (path-convention supplement, production → test)
+    14 × production nodes tagged "tested"
+
+Could not fix (8 issues — needs agent review):
+  - Edge file:src/data/incarnates.ts → file:src/data/incarnate-indices/alpha.json (imports): dropped, missing target 'file:src/data/incarnate-indices/alpha.json'
+  - Edge file:src/data/incarnates.ts → file:src/data/incarnate-indices/destiny.json (imports): dropped, missing target 'file:src/data/incarnate-indices/destiny.json'
+  - Edge file:src/data/incarnates.ts → file:src/data/incarnate-indices/genesis.json (imports): dropped, missing target 'file:src/data/incarnate-indices/genesis.json'
+  - Edge file:src/data/incarnates.ts → file:src/data/incarnate-indices/hybrid.json (imports): dropped, missing target 'file:src/data/incarnate-indices/hybrid.json'
+  - Edge file:src/data/incarnates.ts → file:src/data/incarnate-indices/interface.json (imports): dropped, missing target 'file:src/data/incarnate-indices/interface.json'
+  - Edge file:src/data/incarnates.ts → file:src/data/incarnate-indices/judgement.json (imports): dropped, missing target 'file:src/data/incarnate-indices/judgement.json'
+  - Edge file:src/data/incarnates.ts → file:src/data/incarnate-indices/lore.json (imports): dropped, missing target 'file:src/data/incarnate-indices/lore.json'
+  - Edge file:src/data/incarnate-procs.ts → function:src/data/at-tables.ts:getTableValue (calls): dropped, missing target 'function:src/data/at-tables.ts:getTableValue'
+
+Output: 1196 nodes, 2503 edges
+
+Imports edge recovery:
+  Recovered 0 `imports` edges from importMap (609 entries scanned)
+  Skipped 149 importMap source files with no `file:` node in graph
+  Skipped 7 importMap target paths with no `file:` node in graph
+
+Written to /home/jiiwii/Github/CoH-Sidekick/.ua/intermediate/assembled-graph.json (1123 KB)

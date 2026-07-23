@@ -1,0 +1,76 @@
+{
+  "nodes": [
+    {
+      "id": "config:src/data/incarnate-indices/alpha.json",
+      "type": "config",
+      "name": "alpha.json",
+      "filePath": "src/data/incarnate-indices/alpha.json",
+      "summary": "Alpha incarnate slot index: slot key, display name, help text, icon, the full power list per tree/tier with unlock levels, and per-power display names and short helps consumed by the incarnates data loader.",
+      "tags": ["static-data", "incarnate", "game-data", "index"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:src/data/incarnate-indices/destiny.json",
+      "type": "config",
+      "name": "destiny.json",
+      "filePath": "src/data/incarnate-indices/destiny.json",
+      "summary": "Destiny incarnate slot index: slot metadata, icon, power list with unlock levels, and per-power display names and short helps for the Destiny trees (Ageless, Barrier, Clarion, Rebirth, etc.).",
+      "tags": ["static-data", "incarnate", "game-data", "index"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:src/data/incarnate-indices/genesis.json",
+      "type": "config",
+      "name": "genesis.json",
+      "filePath": "src/data/incarnate-indices/genesis.json",
+      "summary": "Genesis incarnate slot index: slot metadata, icon, power list with unlock levels, and per-power display names and short helps for the Genesis trees.",
+      "tags": ["static-data", "incarnate", "game-data", "index"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:src/data/incarnate-indices/hybrid.json",
+      "type": "config",
+      "name": "hybrid.json",
+      "filePath": "src/data/incarnate-indices/hybrid.json",
+      "summary": "Hybrid incarnate slot index: slot metadata, icon, power list with unlock levels, and per-power display names and short helps for the Hybrid trees (Assault, Control, Melee, Support).",
+      "tags": ["static-data", "incarnate", "game-data", "index"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:src/data/incarnate-indices/interface.json",
+      "type": "config",
+      "name": "interface.json",
+      "filePath": "src/data/incarnate-indices/interface.json",
+      "summary": "Interface incarnate slot index: slot metadata, icon, power list with unlock levels, and per-power display names and short helps for the Interface trees (Reactive, Degenerative, Diamagnetic, etc.).",
+      "tags": ["static-data", "incarnate", "game-data", "index"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:src/data/incarnate-indices/judgement.json",
+      "type": "config",
+      "name": "judgement.json",
+      "filePath": "src/data/incarnate-indices/judgement.json",
+      "summary": "Judgement incarnate slot index: slot metadata, icon, power list with unlock levels, and per-power display names and short helps for the Judgement nuke trees (Ion, Pyronic, Void, etc.).",
+      "tags": ["static-data", "incarnate", "game-data", "index"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:src/data/incarnate-indices/lore.json",
+      "type": "config",
+      "name": "lore.json",
+      "filePath": "src/data/incarnate-indices/lore.json",
+      "summary": "Lore incarnate slot index — the largest of the seven — listing every Lore pet-summon tree with power keys, unlock levels, display names, and short helps consumed by the incarnates data loader.",
+      "tags": ["static-data", "incarnate", "game-data", "index"],
+      "complexity": "complex"
+    }
+  ],
+  "edges": [
+    {"source": "config:src/data/incarnate-indices/alpha.json", "target": "file:src/data/incarnates.ts", "type": "configures", "direction": "forward", "weight": 0.6},
+    {"source": "config:src/data/incarnate-indices/destiny.json", "target": "file:src/data/incarnates.ts", "type": "configures", "direction": "forward", "weight": 0.6},
+    {"source": "config:src/data/incarnate-indices/genesis.json", "target": "file:src/data/incarnates.ts", "type": "configures", "direction": "forward", "weight": 0.6},
+    {"source": "config:src/data/incarnate-indices/hybrid.json", "target": "file:src/data/incarnates.ts", "type": "configures", "direction": "forward", "weight": 0.6},
+    {"source": "config:src/data/incarnate-indices/interface.json", "target": "file:src/data/incarnates.ts", "type": "configures", "direction": "forward", "weight": 0.6},
+    {"source": "config:src/data/incarnate-indices/judgement.json", "target": "file:src/data/incarnates.ts", "type": "configures", "direction": "forward", "weight": 0.6},
+    {"source": "config:src/data/incarnate-indices/lore.json", "target": "file:src/data/incarnates.ts", "type": "configures", "direction": "forward", "weight": 0.6}
+  ]
+}

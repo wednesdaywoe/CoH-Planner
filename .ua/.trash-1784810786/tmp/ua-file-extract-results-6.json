@@ -1,0 +1,4928 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 22,
+  "filesSkipped": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 22,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 22,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "src/components/incarnate/CraftNodeRow.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 169,
+      "nonEmptyLines": 158,
+      "functions": [
+        {
+          "name": "CraftNodeRow",
+          "startLine": 42,
+          "endLine": 169,
+          "params": [
+            "{\n  node,\n  depth,\n  slotId,\n  treeId,\n  obtained,\n  ancestorObtained,\n  onToggleObtained,\n  checklist,\n  onToggleCheck,\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CraftNodeRow",
+          "line": 42,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CraftNodeRow",
+          "callee": "getTierColor",
+          "lineNumber": 58
+        },
+        {
+          "caller": "CraftNodeRow",
+          "callee": "useState",
+          "lineNumber": 61
+        },
+        {
+          "caller": "CraftNodeRow",
+          "callee": "[...node.salvage].sort",
+          "lineNumber": 64
+        },
+        {
+          "caller": "CraftNodeRow",
+          "callee": "getSalvageRarity",
+          "lineNumber": 65
+        },
+        {
+          "caller": "CraftNodeRow",
+          "callee": "getSalvageRarity",
+          "lineNumber": 66
+        },
+        {
+          "caller": "CraftNodeRow",
+          "callee": "getSalvageDisplayName(a.salvageId).localeCompare",
+          "lineNumber": 68
+        },
+        {
+          "caller": "CraftNodeRow",
+          "callee": "getSalvageDisplayName",
+          "lineNumber": 68
+        },
+        {
+          "caller": "CraftNodeRow",
+          "callee": "getSalvageDisplayName",
+          "lineNumber": 68
+        },
+        {
+          "caller": "CraftNodeRow",
+          "callee": "onToggleObtained",
+          "lineNumber": 85
+        },
+        {
+          "caller": "CraftNodeRow",
+          "callee": "setCollapsed",
+          "lineNumber": 99
+        },
+        {
+          "caller": "CraftNodeRow",
+          "callee": "sortedSalvage.map",
+          "lineNumber": 132
+        },
+        {
+          "caller": "CraftNodeRow",
+          "callee": "node.children.map",
+          "lineNumber": 150
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/incarnate/CraftingCostSummary.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 215,
+      "nonEmptyLines": 197,
+      "functions": [
+        {
+          "name": "sortedSalvageEntries",
+          "startLine": 32,
+          "endLine": 39,
+          "params": [
+            "salvage"
+          ]
+        },
+        {
+          "name": "salvageCurrencyCost",
+          "startLine": 42,
+          "endLine": 50,
+          "params": [
+            "salvage"
+          ]
+        },
+        {
+          "name": "buildCountMap",
+          "startLine": 53,
+          "endLine": 59,
+          "params": [
+            "sorted",
+            "prefix"
+          ]
+        },
+        {
+          "name": "CraftingCostSummary",
+          "startLine": 61,
+          "endLine": 163,
+          "params": [
+            "{\n  nodeOnlySalvage,\n  fullPathSalvage,\n  fullPathLabel = 'Full Path',\n}"
+          ]
+        },
+        {
+          "name": "CurrencyLine",
+          "startLine": 165,
+          "endLine": 172,
+          "params": [
+            "{ label, value }"
+          ]
+        },
+        {
+          "name": "MeritsLine",
+          "startLine": 174,
+          "endLine": 185,
+          "params": [
+            "{ base, totalThreads }"
+          ]
+        },
+        {
+          "name": "ClickableSalvageItem",
+          "startLine": 187,
+          "endLine": 215,
+          "params": [
+            "{\n  salvageId,\n  initialQty,\n  remaining,\n  onClick,\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CraftingCostSummary",
+          "line": 61,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "sortedSalvageEntries",
+          "callee": "[...salvage.entries()].sort",
+          "lineNumber": 33
+        },
+        {
+          "caller": "sortedSalvageEntries",
+          "callee": "salvage.entries",
+          "lineNumber": 33
+        },
+        {
+          "caller": "sortedSalvageEntries",
+          "callee": "getSalvageCost",
+          "lineNumber": 34
+        },
+        {
+          "caller": "sortedSalvageEntries",
+          "callee": "getSalvageCost",
+          "lineNumber": 34
+        },
+        {
+          "caller": "sortedSalvageEntries",
+          "callee": "getSalvageCost",
+          "lineNumber": 34
+        },
+        {
+          "caller": "sortedSalvageEntries",
+          "callee": "getSalvageCost",
+          "lineNumber": 35
+        },
+        {
+          "caller": "sortedSalvageEntries",
+          "callee": "getSalvageCost",
+          "lineNumber": 35
+        },
+        {
+          "caller": "sortedSalvageEntries",
+          "callee": "getSalvageCost",
+          "lineNumber": 35
+        },
+        {
+          "caller": "sortedSalvageEntries",
+          "callee": "getSalvageDisplayName(a).localeCompare",
+          "lineNumber": 37
+        },
+        {
+          "caller": "sortedSalvageEntries",
+          "callee": "getSalvageDisplayName",
+          "lineNumber": 37
+        },
+        {
+          "caller": "sortedSalvageEntries",
+          "callee": "getSalvageDisplayName",
+          "lineNumber": 37
+        },
+        {
+          "caller": "salvageCurrencyCost",
+          "callee": "getSalvageCost",
+          "lineNumber": 45
+        },
+        {
+          "caller": "CraftingCostSummary",
+          "callee": "salvageCurrencyCost",
+          "lineNumber": 66
+        },
+        {
+          "caller": "CraftingCostSummary",
+          "callee": "salvageCurrencyCost",
+          "lineNumber": 67
+        },
+        {
+          "caller": "CraftingCostSummary",
+          "callee": "sortedSalvageEntries",
+          "lineNumber": 69
+        },
+        {
+          "caller": "CraftingCostSummary",
+          "callee": "sortedSalvageEntries",
+          "lineNumber": 70
+        },
+        {
+          "caller": "CraftingCostSummary",
+          "callee": "buildCountMap",
+          "lineNumber": 74
+        },
+        {
+          "caller": "CraftingCostSummary",
+          "callee": "buildCountMap",
+          "lineNumber": 75
+        },
+        {
+          "caller": "CraftingCostSummary",
+          "callee": "useState",
+          "lineNumber": 79
+        },
+        {
+          "caller": "CraftingCostSummary",
+          "callee": "useEffect",
+          "lineNumber": 82
+        },
+        {
+          "caller": "CraftingCostSummary",
+          "callee": "setRemaining",
+          "lineNumber": 83
+        },
+        {
+          "caller": "CraftingCostSummary",
+          "callee": "buildCountMap",
+          "lineNumber": 84
+        },
+        {
+          "caller": "CraftingCostSummary",
+          "callee": "buildCountMap",
+          "lineNumber": 85
+        },
+        {
+          "caller": "CraftingCostSummary",
+          "callee": "useCallback",
+          "lineNumber": 90
+        },
+        {
+          "caller": "CraftingCostSummary",
+          "callee": "setRemaining",
+          "lineNumber": 91
+        },
+        {
+          "caller": "CraftingCostSummary",
+          "callee": "nodeSorted.map",
+          "lineNumber": 137
+        },
+        {
+          "caller": "CraftingCostSummary",
+          "callee": "handleClick",
+          "lineNumber": 143
+        },
+        {
+          "caller": "CraftingCostSummary",
+          "callee": "fullSorted.map",
+          "lineNumber": 148
+        },
+        {
+          "caller": "CraftingCostSummary",
+          "callee": "handleClick",
+          "lineNumber": 154
+        },
+        {
+          "caller": "CurrencyLine",
+          "callee": "value.toLocaleString",
+          "lineNumber": 168
+        },
+        {
+          "caller": "MeritsLine",
+          "callee": "Math.ceil",
+          "lineNumber": 175
+        },
+        {
+          "caller": "ClickableSalvageItem",
+          "callee": "getSalvageDisplayName",
+          "lineNumber": 198
+        },
+        {
+          "caller": "ClickableSalvageItem",
+          "callee": "getSalvageRarityColor",
+          "lineNumber": 199
+        },
+        {
+          "caller": "ClickableSalvageItem",
+          "callee": "e.preventDefault",
+          "lineNumber": 210
+        },
+        {
+          "caller": "ClickableSalvageItem",
+          "callee": "onClick",
+          "lineNumber": 210
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 7,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/incarnate/CraftingSalvageRow.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 48,
+      "nonEmptyLines": 44,
+      "functions": [
+        {
+          "name": "CraftingSalvageRow",
+          "startLine": 16,
+          "endLine": 48,
+          "params": [
+            "{\n  salvage,\n  checkKey,\n  isChecked,\n  onToggle,\n  disabled = false,\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CraftingSalvageRow",
+          "line": 16,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CraftingSalvageRow",
+          "callee": "getSalvageDisplayName",
+          "lineNumber": 23
+        },
+        {
+          "caller": "CraftingSalvageRow",
+          "callee": "getSalvageRarityColor",
+          "lineNumber": 24
+        },
+        {
+          "caller": "CraftingSalvageRow",
+          "callee": "onToggle",
+          "lineNumber": 36
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/incarnate/IncarnateCraftingModal.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 262,
+      "nonEmptyLines": 240,
+      "functions": [
+        {
+          "name": "IncarnateCraftingModal",
+          "startLine": 36,
+          "endLine": 262,
+          "params": [
+            "{ isOpen, onClose }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "IncarnateCraftingModal",
+          "line": 36,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "IncarnateCraftingModal",
+          "callee": "useUIStore",
+          "lineNumber": 37
+        },
+        {
+          "caller": "IncarnateCraftingModal",
+          "callee": "useUIStore",
+          "lineNumber": 38
+        },
+        {
+          "caller": "IncarnateCraftingModal",
+          "callee": "useUIStore",
+          "lineNumber": 39
+        },
+        {
+          "caller": "IncarnateCraftingModal",
+          "callee": "useBuildStore",
+          "lineNumber": 40
+        },
+        {
+          "caller": "IncarnateCraftingModal",
+          "callee": "useBuildStore",
+          "lineNumber": 41
+        },
+        {
+          "caller": "IncarnateCraftingModal",
+          "callee": "useBuildStore",
+          "lineNumber": 42
+        },
+        {
+          "caller": "IncarnateCraftingModal",
+          "callee": "useBuildStore",
+          "lineNumber": 43
+        },
+        {
+          "caller": "IncarnateCraftingModal",
+          "callee": "useBuildStore",
+          "lineNumber": 44
+        },
+        {
+          "caller": "IncarnateCraftingModal",
+          "callee": "useBuildStore",
+          "lineNumber": 45
+        },
+        {
+          "caller": "IncarnateCraftingModal",
+          "callee": "useBuildStore",
+          "lineNumber": 46
+        },
+        {
+          "caller": "IncarnateCraftingModal",
+          "callee": "useState",
+          "lineNumber": 48
+        },
+        {
+          "caller": "IncarnateCraftingModal",
+          "callee": "getAllIncarnateSlots",
+          "lineNumber": 50
+        },
+        {
+          "caller": "IncarnateCraftingModal",
+          "callee": "useEffect",
+          "lineNumber": 56
+        },
+        {
+          "caller": "handleEscape",
+          "callee": "onClose",
+          "lineNumber": 58
+        },
+        {
+          "caller": "IncarnateCraftingModal",
+          "callee": "document.addEventListener",
+          "lineNumber": 59
+        },
+        {
+          "caller": "IncarnateCraftingModal",
+          "callee": "document.removeEventListener",
+          "lineNumber": 62
+        },
+        {
+          "caller": "IncarnateCraftingModal",
+          "callee": "inferBranchFromPowerName",
+          "lineNumber": 73
+        },
+        {
+          "caller": "IncarnateCraftingModal",
+          "callee": "inferT3VariantKey",
+          "lineNumber": 75
+        },
+        {
+          "caller": "IncarnateCraftingModal",
+          "callee": "getTreeComponents",
+          "lineNumber": 76
+        },
+        {
+          "caller": "IncarnateCraftingModal",
+          "callee": "buildCraftTree",
+          "lineNumber": 82
+        },
+        {
+          "caller": "IncarnateCraftingModal",
+          "callee": "resolveGoalVariant",
+          "lineNumber": 85
+        },
+        {
+          "caller": "IncarnateCraftingModal",
+          "callee": "goalNodeSalvage",
+          "lineNumber": 93
+        },
+        {
+          "caller": "IncarnateCraftingModal",
+          "callee": "remainingSalvage",
+          "lineNumber": 94
+        },
+        {
+          "caller": "handleBackdropClick",
+          "callee": "onClose",
+          "lineNumber": 97
+        },
+        {
+          "caller": "IncarnateCraftingModal",
+          "callee": "createPortal",
+          "lineNumber": 102
+        },
+        {
+          "caller": "IncarnateCraftingModal",
+          "callee": "CRAFTING_SLOT_IDS.map",
+          "lineNumber": 114
+        },
+        {
+          "caller": "IncarnateCraftingModal",
+          "callee": "slots.find",
+          "lineNumber": 115
+        },
+        {
+          "caller": "IncarnateCraftingModal",
+          "callee": "getSlotColor",
+          "lineNumber": 119
+        },
+        {
+          "caller": "IncarnateCraftingModal",
+          "callee": "setCurrentIncarnateSlot",
+          "lineNumber": 125
+        },
+        {
+          "caller": "IncarnateCraftingModal",
+          "callee": "setActiveView",
+          "lineNumber": 126
+        },
+        {
+          "caller": "IncarnateCraftingModal",
+          "callee": "setActiveView",
+          "lineNumber": 148
+        },
+        {
+          "caller": "IncarnateCraftingModal",
+          "callee": "onClose",
+          "lineNumber": 179
+        },
+        {
+          "caller": "IncarnateCraftingModal",
+          "callee": "openIncarnateModal",
+          "lineNumber": 179
+        },
+        {
+          "caller": "IncarnateCraftingModal",
+          "callee": "getSlotColor",
+          "lineNumber": 191
+        },
+        {
+          "caller": "IncarnateCraftingModal",
+          "callee": "getSlotColor",
+          "lineNumber": 191
+        },
+        {
+          "caller": "IncarnateCraftingModal",
+          "callee": "clearCraftingChecklistForSlot",
+          "lineNumber": 244
+        }
+      ],
+      "metrics": {
+        "importCount": 8,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/incarnate/IncarnateEffectsTooltip.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 501,
+      "nonEmptyLines": 471,
+      "functions": [
+        {
+          "name": "formatDestinyValue",
+          "startLine": 56,
+          "endLine": 58,
+          "params": [
+            "key",
+            "val"
+          ]
+        },
+        {
+          "name": "destinyHealEntry",
+          "startLine": 61,
+          "endLine": 67,
+          "params": [
+            "fx",
+            "archetypeId",
+            "level"
+          ]
+        },
+        {
+          "name": "genesisEffectEntries",
+          "startLine": 104,
+          "endLine": 125,
+          "params": [
+            "fx"
+          ]
+        },
+        {
+          "name": "genesisHeader",
+          "startLine": 127,
+          "endLine": 130,
+          "params": [
+            "fx"
+          ]
+        },
+        {
+          "name": "genesisExemplarEntries",
+          "startLine": 133,
+          "endLine": 165,
+          "params": [
+            "ex"
+          ]
+        },
+        {
+          "name": "getIncarnateEffectData",
+          "startLine": 168,
+          "endLine": 263,
+          "params": [
+            "slotId",
+            "powerId",
+            "archetypeId",
+            "level"
+          ]
+        },
+        {
+          "name": "IncarnateEffectsTooltip",
+          "startLine": 269,
+          "endLine": 313,
+          "params": [
+            "{ slotId, powerId }"
+          ]
+        },
+        {
+          "name": "EffectRow",
+          "startLine": 315,
+          "endLine": 322,
+          "params": [
+            "{ label, value }"
+          ]
+        },
+        {
+          "name": "AlphaTooltip",
+          "startLine": 324,
+          "endLine": 341,
+          "params": [
+            "{ fx }"
+          ]
+        },
+        {
+          "name": "DestinyTooltip",
+          "startLine": 343,
+          "endLine": 370,
+          "params": [
+            "{ fx, archetypeId, level }"
+          ]
+        },
+        {
+          "name": "HybridTooltip",
+          "startLine": 379,
+          "endLine": 417,
+          "params": [
+            "{ fx, powerId }"
+          ]
+        },
+        {
+          "name": "InterfaceTooltip",
+          "startLine": 419,
+          "endLine": 440,
+          "params": [
+            "{ fx, archetypeId, level }"
+          ]
+        },
+        {
+          "name": "JudgementTooltip",
+          "startLine": 442,
+          "endLine": 466,
+          "params": [
+            "{ fx, archetypeId, level }"
+          ]
+        },
+        {
+          "name": "LoreTooltip",
+          "startLine": 468,
+          "endLine": 482,
+          "params": [
+            "{ fx }"
+          ]
+        },
+        {
+          "name": "GenesisTooltip",
+          "startLine": 484,
+          "endLine": 501,
+          "params": [
+            "{ fx }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "getIncarnateEffectData",
+          "line": 168,
+          "isDefault": false
+        },
+        {
+          "name": "IncarnateEffectsTooltip",
+          "line": 269,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "formatDestinyValue",
+          "callee": "formatEffectValue",
+          "lineNumber": 57
+        },
+        {
+          "caller": "destinyHealEntry",
+          "callee": "calculateIncarnateDamage",
+          "lineNumber": 64
+        },
+        {
+          "caller": "destinyHealEntry",
+          "callee": "Math.round",
+          "lineNumber": 66
+        },
+        {
+          "caller": "genesisEffectEntries",
+          "callee": "(fx.tierPercent * 100).toFixed",
+          "lineNumber": 105
+        },
+        {
+          "caller": "genesisHeader",
+          "callee": "fx.enhancesSlot.charAt(0).toUpperCase",
+          "lineNumber": 128
+        },
+        {
+          "caller": "genesisHeader",
+          "callee": "fx.enhancesSlot.charAt",
+          "lineNumber": 128
+        },
+        {
+          "caller": "genesisHeader",
+          "callee": "fx.enhancesSlot.slice",
+          "lineNumber": 128
+        },
+        {
+          "caller": "genesisExemplarEntries",
+          "callee": "entries.push",
+          "lineNumber": 143
+        },
+        {
+          "caller": "genesisExemplarEntries",
+          "callee": "entries.push",
+          "lineNumber": 144
+        },
+        {
+          "caller": "genesisExemplarEntries",
+          "callee": "entries.push",
+          "lineNumber": 145
+        },
+        {
+          "caller": "genesisExemplarEntries",
+          "callee": "entries.push",
+          "lineNumber": 146
+        },
+        {
+          "caller": "genesisExemplarEntries",
+          "callee": "ex.pets.join",
+          "lineNumber": 152
+        },
+        {
+          "caller": "genesisExemplarEntries",
+          "callee": "Math.round",
+          "lineNumber": 153
+        },
+        {
+          "caller": "genesisExemplarEntries",
+          "callee": "entries.push",
+          "lineNumber": 157
+        },
+        {
+          "caller": "genesisExemplarEntries",
+          "callee": "formatEffectValue",
+          "lineNumber": 157
+        },
+        {
+          "caller": "genesisExemplarEntries",
+          "callee": "entries.push",
+          "lineNumber": 158
+        },
+        {
+          "caller": "genesisExemplarEntries",
+          "callee": "formatEffectValue",
+          "lineNumber": 158
+        },
+        {
+          "caller": "genesisExemplarEntries",
+          "callee": "entries.push",
+          "lineNumber": 159
+        },
+        {
+          "caller": "genesisExemplarEntries",
+          "callee": "formatEffectValue",
+          "lineNumber": 159
+        },
+        {
+          "caller": "genesisExemplarEntries",
+          "callee": "entries.push",
+          "lineNumber": 160
+        },
+        {
+          "caller": "genesisExemplarEntries",
+          "callee": "entries.push",
+          "lineNumber": 161
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "getAlphaEffects",
+          "lineNumber": 171
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "(Object.entries(fx) as [string, number][])\n        .filter(([k]) => k !== 'levelShift' && k !== 'edBypass')\n        .map",
+          "lineNumber": 173
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "(Object.entries(fx) as [string, number][])\n        .filter",
+          "lineNumber": 173
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "Object.entries",
+          "lineNumber": 173
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "formatEffectValue",
+          "lineNumber": 175
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "entries.push",
+          "lineNumber": 177
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "getDestinyEffects",
+          "lineNumber": 181
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "(Object.entries(fx) as [string, number][])\n        .filter(([k]) => !DESTINY_SKIP_KEYS.has(k))\n        .map",
+          "lineNumber": 183
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "(Object.entries(fx) as [string, number][])\n        .filter",
+          "lineNumber": 183
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "Object.entries",
+          "lineNumber": 183
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "DESTINY_SKIP_KEYS.has",
+          "lineNumber": 184
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "formatDestinyValue",
+          "lineNumber": 185
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "destinyHealEntry",
+          "lineNumber": 186
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "entries.push",
+          "lineNumber": 187
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "entries.push",
+          "lineNumber": 189
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "getHybridEffects",
+          "lineNumber": 194
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "Object.entries",
+          "lineNumber": 198
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "entries.push",
+          "lineNumber": 199
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "formatEffectValue",
+          "lineNumber": 199
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "Object.entries",
+          "lineNumber": 202
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "entries.push",
+          "lineNumber": 204
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "stat.startsWith",
+          "lineNumber": 204
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "formatEffectValue",
+          "lineNumber": 204
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "Object.keys",
+          "lineNumber": 207
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "Object.entries",
+          "lineNumber": 208
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "entries.push",
+          "lineNumber": 209
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "formatEffectValue",
+          "lineNumber": 209
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "fx.tree.charAt(0).toUpperCase",
+          "lineNumber": 213
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "fx.tree.charAt",
+          "lineNumber": 213
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "fx.tree.slice",
+          "lineNumber": 213
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "getInterfaceEffects",
+          "lineNumber": 216
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "entries.push",
+          "lineNumber": 219
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "formatEffectValue",
+          "lineNumber": 219
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "calculateIncarnateDamage",
+          "lineNumber": 222
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "entries.push",
+          "lineNumber": 224
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "dotDmg.toFixed",
+          "lineNumber": 224
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "((fx.dotDamage || 0) * 100).toFixed",
+          "lineNumber": 224
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "entries.push",
+          "lineNumber": 226
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "(fx.procChance * 100).toFixed",
+          "lineNumber": 226
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "getJudgementEffects",
+          "lineNumber": 230
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "calculateIncarnateDamage",
+          "lineNumber": 232
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "dmg.toFixed",
+          "lineNumber": 234
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "entries.push",
+          "lineNumber": 237
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "entries.push",
+          "lineNumber": 238
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "entries.push",
+          "lineNumber": 239
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "entries.push",
+          "lineNumber": 240
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "entries.push",
+          "lineNumber": 241
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "getLoreEffects",
+          "lineNumber": 246
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "Math.round",
+          "lineNumber": 250
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "Math.round",
+          "lineNumber": 251
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "getGenesisEffects",
+          "lineNumber": 256
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "genesisHeader",
+          "lineNumber": 258
+        },
+        {
+          "caller": "getIncarnateEffectData",
+          "callee": "genesisEffectEntries",
+          "lineNumber": 258
+        },
+        {
+          "caller": "IncarnateEffectsTooltip",
+          "callee": "useBuildStore",
+          "lineNumber": 270
+        },
+        {
+          "caller": "IncarnateEffectsTooltip",
+          "callee": "getAlphaEffects",
+          "lineNumber": 276
+        },
+        {
+          "caller": "IncarnateEffectsTooltip",
+          "callee": "getDestinyEffects",
+          "lineNumber": 281
+        },
+        {
+          "caller": "IncarnateEffectsTooltip",
+          "callee": "getHybridEffects",
+          "lineNumber": 286
+        },
+        {
+          "caller": "IncarnateEffectsTooltip",
+          "callee": "getInterfaceEffects",
+          "lineNumber": 291
+        },
+        {
+          "caller": "IncarnateEffectsTooltip",
+          "callee": "getJudgementEffects",
+          "lineNumber": 296
+        },
+        {
+          "caller": "IncarnateEffectsTooltip",
+          "callee": "getLoreEffects",
+          "lineNumber": 301
+        },
+        {
+          "caller": "IncarnateEffectsTooltip",
+          "callee": "getGenesisEffects",
+          "lineNumber": 306
+        },
+        {
+          "caller": "AlphaTooltip",
+          "callee": "Object.entries(fx).filter",
+          "lineNumber": 325
+        },
+        {
+          "caller": "AlphaTooltip",
+          "callee": "Object.entries",
+          "lineNumber": 325
+        },
+        {
+          "caller": "AlphaTooltip",
+          "callee": "entries.map",
+          "lineNumber": 333
+        },
+        {
+          "caller": "AlphaTooltip",
+          "callee": "formatEffectValue",
+          "lineNumber": 334
+        },
+        {
+          "caller": "DestinyTooltip",
+          "callee": "Object.entries(fx).filter",
+          "lineNumber": 344
+        },
+        {
+          "caller": "DestinyTooltip",
+          "callee": "Object.entries",
+          "lineNumber": 344
+        },
+        {
+          "caller": "DestinyTooltip",
+          "callee": "DESTINY_SKIP_KEYS.has",
+          "lineNumber": 345
+        },
+        {
+          "caller": "DestinyTooltip",
+          "callee": "destinyHealEntry",
+          "lineNumber": 347
+        },
+        {
+          "caller": "DestinyTooltip",
+          "callee": "statEntries.map",
+          "lineNumber": 352
+        },
+        {
+          "caller": "DestinyTooltip",
+          "callee": "formatDestinyValue",
+          "lineNumber": 356
+        },
+        {
+          "caller": "HybridTooltip",
+          "callee": "powerId.split",
+          "lineNumber": 380
+        },
+        {
+          "caller": "HybridTooltip",
+          "callee": "fx.tree.charAt(0).toUpperCase",
+          "lineNumber": 384
+        },
+        {
+          "caller": "HybridTooltip",
+          "callee": "fx.tree.charAt",
+          "lineNumber": 384
+        },
+        {
+          "caller": "HybridTooltip",
+          "callee": "fx.tree.slice",
+          "lineNumber": 384
+        },
+        {
+          "caller": "HybridTooltip",
+          "callee": "Object.keys",
+          "lineNumber": 388
+        },
+        {
+          "caller": "HybridTooltip",
+          "callee": "Object.entries(fx.passive).map",
+          "lineNumber": 391
+        },
+        {
+          "caller": "HybridTooltip",
+          "callee": "Object.entries",
+          "lineNumber": 391
+        },
+        {
+          "caller": "HybridTooltip",
+          "callee": "formatEffectValue",
+          "lineNumber": 392
+        },
+        {
+          "caller": "HybridTooltip",
+          "callee": "Object.keys",
+          "lineNumber": 396
+        },
+        {
+          "caller": "HybridTooltip",
+          "callee": "Object.entries(fx.frontLoaded).map",
+          "lineNumber": 399
+        },
+        {
+          "caller": "HybridTooltip",
+          "callee": "Object.entries",
+          "lineNumber": 399
+        },
+        {
+          "caller": "HybridTooltip",
+          "callee": "stat.startsWith",
+          "lineNumber": 400
+        },
+        {
+          "caller": "HybridTooltip",
+          "callee": "formatEffectValue",
+          "lineNumber": 400
+        },
+        {
+          "caller": "HybridTooltip",
+          "callee": "Object.keys",
+          "lineNumber": 404
+        },
+        {
+          "caller": "HybridTooltip",
+          "callee": "Object.entries(fx.perTarget).map",
+          "lineNumber": 407
+        },
+        {
+          "caller": "HybridTooltip",
+          "callee": "Object.entries",
+          "lineNumber": 407
+        },
+        {
+          "caller": "HybridTooltip",
+          "callee": "formatEffectValue",
+          "lineNumber": 408
+        },
+        {
+          "caller": "InterfaceTooltip",
+          "callee": "calculateIncarnateDamage",
+          "lineNumber": 421
+        },
+        {
+          "caller": "InterfaceTooltip",
+          "callee": "formatEffectValue",
+          "lineNumber": 427
+        },
+        {
+          "caller": "InterfaceTooltip",
+          "callee": "dotDmg.toFixed",
+          "lineNumber": 432
+        },
+        {
+          "caller": "InterfaceTooltip",
+          "callee": "((fx.dotDamage || 0) * 100).toFixed",
+          "lineNumber": 432
+        },
+        {
+          "caller": "InterfaceTooltip",
+          "callee": "(fx.procChance * 100).toFixed",
+          "lineNumber": 436
+        },
+        {
+          "caller": "JudgementTooltip",
+          "callee": "calculateIncarnateDamage",
+          "lineNumber": 443
+        },
+        {
+          "caller": "JudgementTooltip",
+          "callee": "damage.toFixed",
+          "lineNumber": 449
+        },
+        {
+          "caller": "JudgementTooltip",
+          "callee": "fx.secondaryEffects.map",
+          "lineNumber": 459
+        },
+        {
+          "caller": "LoreTooltip",
+          "callee": "fx.pets.map",
+          "lineNumber": 474
+        },
+        {
+          "caller": "LoreTooltip",
+          "callee": "Math.round",
+          "lineNumber": 478
+        },
+        {
+          "caller": "LoreTooltip",
+          "callee": "Math.round",
+          "lineNumber": 479
+        },
+        {
+          "caller": "GenesisTooltip",
+          "callee": "genesisHeader",
+          "lineNumber": 487
+        },
+        {
+          "caller": "GenesisTooltip",
+          "callee": "genesisEffectEntries(fx).map",
+          "lineNumber": 488
+        },
+        {
+          "caller": "GenesisTooltip",
+          "callee": "genesisEffectEntries",
+          "lineNumber": 488
+        },
+        {
+          "caller": "GenesisTooltip",
+          "callee": "genesisExemplarEntries(fx.exemplarEffect).map",
+          "lineNumber": 494
+        },
+        {
+          "caller": "GenesisTooltip",
+          "callee": "genesisExemplarEntries",
+          "lineNumber": 494
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 2,
+        "functionCount": 15,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/incarnate/IncarnateModal.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 258,
+      "nonEmptyLines": 234,
+      "functions": [
+        {
+          "name": "IncarnateModal",
+          "startLine": 19,
+          "endLine": 258,
+          "params": [
+            "{ isOpen, onClose }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "IncarnateModal",
+          "line": 19,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "IncarnateModal",
+          "callee": "useUIStore",
+          "lineNumber": 20
+        },
+        {
+          "caller": "IncarnateModal",
+          "callee": "useUIStore",
+          "lineNumber": 21
+        },
+        {
+          "caller": "IncarnateModal",
+          "callee": "useBuildStore",
+          "lineNumber": 22
+        },
+        {
+          "caller": "IncarnateModal",
+          "callee": "useBuildStore",
+          "lineNumber": 23
+        },
+        {
+          "caller": "IncarnateModal",
+          "callee": "useBuildStore",
+          "lineNumber": 24
+        },
+        {
+          "caller": "IncarnateModal",
+          "callee": "useUIStore",
+          "lineNumber": 25
+        },
+        {
+          "caller": "IncarnateModal",
+          "callee": "useState",
+          "lineNumber": 27
+        },
+        {
+          "caller": "IncarnateModal",
+          "callee": "getAllIncarnateSlots",
+          "lineNumber": 29
+        },
+        {
+          "caller": "IncarnateModal",
+          "callee": "getSelectableIncarnateSlotIds",
+          "lineNumber": 30
+        },
+        {
+          "caller": "IncarnateModal",
+          "callee": "slots.find",
+          "lineNumber": 32
+        },
+        {
+          "caller": "IncarnateModal",
+          "callee": "getIncarnateTrees",
+          "lineNumber": 33
+        },
+        {
+          "caller": "IncarnateModal",
+          "callee": "useEffect",
+          "lineNumber": 39
+        },
+        {
+          "caller": "IncarnateModal",
+          "callee": "setSelectedTreeId",
+          "lineNumber": 43
+        },
+        {
+          "caller": "IncarnateModal",
+          "callee": "setSelectedTreeId",
+          "lineNumber": 46
+        },
+        {
+          "caller": "IncarnateModal",
+          "callee": "useEffect",
+          "lineNumber": 52
+        },
+        {
+          "caller": "handleEscape",
+          "callee": "onClose",
+          "lineNumber": 57
+        },
+        {
+          "caller": "IncarnateModal",
+          "callee": "document.addEventListener",
+          "lineNumber": 61
+        },
+        {
+          "caller": "IncarnateModal",
+          "callee": "document.removeEventListener",
+          "lineNumber": 65
+        },
+        {
+          "caller": "IncarnateModal",
+          "callee": "trees.find",
+          "lineNumber": 72
+        },
+        {
+          "caller": "handleSelectPower",
+          "callee": "clearIncarnatePower",
+          "lineNumber": 77
+        },
+        {
+          "caller": "handleSelectPower",
+          "callee": "setIncarnatePower",
+          "lineNumber": 89
+        },
+        {
+          "caller": "handleClearPower",
+          "callee": "clearIncarnatePower",
+          "lineNumber": 94
+        },
+        {
+          "caller": "handleBackdropClick",
+          "callee": "onClose",
+          "lineNumber": 99
+        },
+        {
+          "caller": "IncarnateModal",
+          "callee": "createPortal",
+          "lineNumber": 103
+        },
+        {
+          "caller": "IncarnateModal",
+          "callee": "selectableSlotIds.map",
+          "lineNumber": 115
+        },
+        {
+          "caller": "IncarnateModal",
+          "callee": "slots.find",
+          "lineNumber": 116
+        },
+        {
+          "caller": "IncarnateModal",
+          "callee": "getSlotColor",
+          "lineNumber": 121
+        },
+        {
+          "caller": "IncarnateModal",
+          "callee": "setCurrentIncarnateSlot",
+          "lineNumber": 126
+        },
+        {
+          "caller": "IncarnateModal",
+          "callee": "trees.map",
+          "lineNumber": 167
+        },
+        {
+          "caller": "IncarnateModal",
+          "callee": "setSelectedTreeId",
+          "lineNumber": 174
+        },
+        {
+          "caller": "IncarnateModal",
+          "callee": "getSlotColor",
+          "lineNumber": 190
+        },
+        {
+          "caller": "IncarnateModal",
+          "callee": "onClose",
+          "lineNumber": 240
+        },
+        {
+          "caller": "IncarnateModal",
+          "callee": "openIncarnateCraftingModal",
+          "lineNumber": 240
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/incarnate/IncarnatePowerTree.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 490,
+      "nonEmptyLines": 445,
+      "functions": [
+        {
+          "name": "computePathPowerIds",
+          "startLine": 61,
+          "endLine": 102,
+          "params": [
+            "selectedPower",
+            "grouped",
+            "t4T3Pair"
+          ]
+        },
+        {
+          "name": "InfoPanel",
+          "startLine": 113,
+          "endLine": 166,
+          "params": [
+            "{ power, slotId }"
+          ]
+        },
+        {
+          "name": "IncarnatePowerTree",
+          "startLine": 181,
+          "endLine": 307,
+          "params": [
+            "{\n  slotId,\n  treeId: _treeId,\n  treeName,\n  powers,\n  selectedPowerId,\n  onSelectPower,\n}"
+          ]
+        },
+        {
+          "name": "TreeRow",
+          "startLine": 327,
+          "endLine": 403,
+          "params": [
+            "{\n  tier,\n  slots,\n  treeName,\n  selectedPowerId,\n  pathPowerIds,\n  onPowerClick,\n  onPowerContextMenu,\n  onPowerHover,\n  t4PairLabel,\n  t4ComboIndex,\n  onCyclePair,\n}"
+          ]
+        },
+        {
+          "name": "PowerButton",
+          "startLine": 419,
+          "endLine": 490,
+          "params": [
+            "{\n  power,\n  treeName,\n  isSelected,\n  isOnPath,\n  onClick,\n  onContextMenu,\n  onHover,\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "IncarnatePowerTree",
+          "line": 181,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "addPower",
+          "callee": "sortRarePowers",
+          "lineNumber": 72
+        },
+        {
+          "caller": "addPower",
+          "callee": "pathIds.add",
+          "lineNumber": 73
+        },
+        {
+          "caller": "addPower",
+          "callee": "pathIds.add",
+          "lineNumber": 75
+        },
+        {
+          "caller": "computePathPowerIds",
+          "callee": "addPower",
+          "lineNumber": 82
+        },
+        {
+          "caller": "computePathPowerIds",
+          "callee": "addPower",
+          "lineNumber": 84
+        },
+        {
+          "caller": "computePathPowerIds",
+          "callee": "addPower",
+          "lineNumber": 85
+        },
+        {
+          "caller": "computePathPowerIds",
+          "callee": "addPower",
+          "lineNumber": 87
+        },
+        {
+          "caller": "computePathPowerIds",
+          "callee": "pathIds.add",
+          "lineNumber": 90
+        },
+        {
+          "caller": "computePathPowerIds",
+          "callee": "addPower",
+          "lineNumber": 91
+        },
+        {
+          "caller": "computePathPowerIds",
+          "callee": "addPower",
+          "lineNumber": 95
+        },
+        {
+          "caller": "computePathPowerIds",
+          "callee": "addPower",
+          "lineNumber": 96
+        },
+        {
+          "caller": "computePathPowerIds",
+          "callee": "addPower",
+          "lineNumber": 97
+        },
+        {
+          "caller": "InfoPanel",
+          "callee": "useBuildStore",
+          "lineNumber": 114
+        },
+        {
+          "caller": "InfoPanel",
+          "callee": "getTierColor",
+          "lineNumber": 115
+        },
+        {
+          "caller": "InfoPanel",
+          "callee": "getIncarnateEffectData",
+          "lineNumber": 116
+        },
+        {
+          "caller": "InfoPanel",
+          "callee": "getTierDisplayName",
+          "lineNumber": 132
+        },
+        {
+          "caller": "InfoPanel",
+          "callee": "effectData.tags.map",
+          "lineNumber": 144
+        },
+        {
+          "caller": "InfoPanel",
+          "callee": "effectData.entries.map",
+          "lineNumber": 154
+        },
+        {
+          "caller": "IncarnatePowerTree",
+          "callee": "useUIStore",
+          "lineNumber": 191
+        },
+        {
+          "caller": "IncarnatePowerTree",
+          "callee": "useUIStore",
+          "lineNumber": 192
+        },
+        {
+          "caller": "IncarnatePowerTree",
+          "callee": "useState",
+          "lineNumber": 193
+        },
+        {
+          "caller": "IncarnatePowerTree",
+          "callee": "useMemo",
+          "lineNumber": 196
+        },
+        {
+          "caller": "IncarnatePowerTree",
+          "callee": "powers.reduce",
+          "lineNumber": 198
+        },
+        {
+          "caller": "IncarnatePowerTree",
+          "callee": "acc[power.tier][power.branch].push",
+          "lineNumber": 202
+        },
+        {
+          "caller": "IncarnatePowerTree",
+          "callee": "useMemo",
+          "lineNumber": 211
+        },
+        {
+          "caller": "IncarnatePowerTree",
+          "callee": "powers.find",
+          "lineNumber": 214
+        },
+        {
+          "caller": "IncarnatePowerTree",
+          "callee": "useMemo",
+          "lineNumber": 220
+        },
+        {
+          "caller": "resolve",
+          "callee": "sortRarePowers",
+          "lineNumber": 225
+        },
+        {
+          "caller": "IncarnatePowerTree",
+          "callee": "resolve",
+          "lineNumber": 228
+        },
+        {
+          "caller": "IncarnatePowerTree",
+          "callee": "resolve",
+          "lineNumber": 229
+        },
+        {
+          "caller": "IncarnatePowerTree",
+          "callee": "useMemo",
+          "lineNumber": 235
+        },
+        {
+          "caller": "IncarnatePowerTree",
+          "callee": "computePathPowerIds",
+          "lineNumber": 236
+        },
+        {
+          "caller": "handlePowerClick",
+          "callee": "onSelectPower",
+          "lineNumber": 242
+        },
+        {
+          "caller": "handlePowerClick",
+          "callee": "onSelectPower",
+          "lineNumber": 244
+        },
+        {
+          "caller": "IncarnatePowerTree",
+          "callee": "useCallback",
+          "lineNumber": 248
+        },
+        {
+          "caller": "IncarnatePowerTree",
+          "callee": "e.preventDefault",
+          "lineNumber": 251
+        },
+        {
+          "caller": "IncarnatePowerTree",
+          "callee": "setIncarnateT4ComboIndex",
+          "lineNumber": 252
+        },
+        {
+          "caller": "IncarnatePowerTree",
+          "callee": "useCallback",
+          "lineNumber": 258
+        },
+        {
+          "caller": "IncarnatePowerTree",
+          "callee": "setIncarnateT4ComboIndex",
+          "lineNumber": 260
+        },
+        {
+          "caller": "IncarnatePowerTree",
+          "callee": "useCallback",
+          "lineNumber": 264
+        },
+        {
+          "caller": "IncarnatePowerTree",
+          "callee": "setHoveredPower",
+          "lineNumber": 265
+        },
+        {
+          "caller": "IncarnatePowerTree",
+          "callee": "STANDARD_TREE_LAYOUT.rows.map",
+          "lineNumber": 282
+        },
+        {
+          "caller": "IncarnatePowerTree",
+          "callee": "resolveTreeRow",
+          "lineNumber": 283
+        },
+        {
+          "caller": "IncarnatePowerTree",
+          "callee": "resolvedPowers.some",
+          "lineNumber": 284
+        },
+        {
+          "caller": "TreeRow",
+          "callee": "getTierColor",
+          "lineNumber": 340
+        },
+        {
+          "caller": "TreeRow",
+          "callee": "getTierDisplayName",
+          "lineNumber": 341
+        },
+        {
+          "caller": "TreeRow",
+          "callee": "slots.map",
+          "lineNumber": 356
+        },
+        {
+          "caller": "TreeRow",
+          "callee": "onCyclePair",
+          "lineNumber": 364
+        },
+        {
+          "caller": "TreeRow",
+          "callee": "onCyclePair",
+          "lineNumber": 372
+        },
+        {
+          "caller": "TreeRow",
+          "callee": "pathPowerIds.has",
+          "lineNumber": 389
+        },
+        {
+          "caller": "TreeRow",
+          "callee": "onPowerClick",
+          "lineNumber": 390
+        },
+        {
+          "caller": "TreeRow",
+          "callee": "onPowerContextMenu",
+          "lineNumber": 391
+        },
+        {
+          "caller": "PowerButton",
+          "callee": "getTierColor",
+          "lineNumber": 428
+        },
+        {
+          "caller": "PowerButton",
+          "callee": "getPowerIconPath",
+          "lineNumber": 429
+        },
+        {
+          "caller": "PowerButton",
+          "callee": "abbreviatePowerName",
+          "lineNumber": 430
+        },
+        {
+          "caller": "PowerButton",
+          "callee": "onHover",
+          "lineNumber": 436
+        },
+        {
+          "caller": "PowerButton",
+          "callee": "onHover",
+          "lineNumber": 437
+        },
+        {
+          "caller": "PowerButton",
+          "callee": "onHover",
+          "lineNumber": 438
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 1,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/incarnate/ShoppingListView.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 161,
+      "nonEmptyLines": 145,
+      "functions": [
+        {
+          "name": "ShoppingListView",
+          "startLine": 27,
+          "endLine": 161,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "ShoppingListView",
+          "line": 27,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "ShoppingListView",
+          "callee": "useBuildStore",
+          "lineNumber": 28
+        },
+        {
+          "caller": "ShoppingListView",
+          "callee": "useBuildStore",
+          "lineNumber": 29
+        },
+        {
+          "caller": "ShoppingListView",
+          "callee": "useBuildStore",
+          "lineNumber": 30
+        },
+        {
+          "caller": "ShoppingListView",
+          "callee": "useBuildStore",
+          "lineNumber": 31
+        },
+        {
+          "caller": "ShoppingListView",
+          "callee": "useBuildStore",
+          "lineNumber": 32
+        },
+        {
+          "caller": "ShoppingListView",
+          "callee": "useMemo",
+          "lineNumber": 35
+        },
+        {
+          "caller": "ShoppingListView",
+          "callee": "inferBranchFromPowerName",
+          "lineNumber": 43
+        },
+        {
+          "caller": "ShoppingListView",
+          "callee": "getTreeComponents",
+          "lineNumber": 44
+        },
+        {
+          "caller": "ShoppingListView",
+          "callee": "inferT3VariantKey",
+          "lineNumber": 47
+        },
+        {
+          "caller": "ShoppingListView",
+          "callee": "buildCraftTree",
+          "lineNumber": 48
+        },
+        {
+          "caller": "ShoppingListView",
+          "callee": "resolveGoalVariant",
+          "lineNumber": 48
+        },
+        {
+          "caller": "ShoppingListView",
+          "callee": "remainingSalvage",
+          "lineNumber": 49
+        },
+        {
+          "caller": "ShoppingListView",
+          "callee": "totals.set",
+          "lineNumber": 54
+        },
+        {
+          "caller": "ShoppingListView",
+          "callee": "totals.get",
+          "lineNumber": 54
+        },
+        {
+          "caller": "ShoppingListView",
+          "callee": "useMemo",
+          "lineNumber": 62
+        },
+        {
+          "caller": "ShoppingListView",
+          "callee": "[...totalSalvage.entries()].sort",
+          "lineNumber": 63
+        },
+        {
+          "caller": "ShoppingListView",
+          "callee": "totalSalvage.entries",
+          "lineNumber": 63
+        },
+        {
+          "caller": "ShoppingListView",
+          "callee": "getSalvageRarity",
+          "lineNumber": 64
+        },
+        {
+          "caller": "ShoppingListView",
+          "callee": "getSalvageRarity",
+          "lineNumber": 65
+        },
+        {
+          "caller": "ShoppingListView",
+          "callee": "getSalvageDisplayName(a).localeCompare",
+          "lineNumber": 67
+        },
+        {
+          "caller": "ShoppingListView",
+          "callee": "getSalvageDisplayName",
+          "lineNumber": 67
+        },
+        {
+          "caller": "ShoppingListView",
+          "callee": "getSalvageDisplayName",
+          "lineNumber": 67
+        },
+        {
+          "caller": "ShoppingListView",
+          "callee": "useMemo",
+          "lineNumber": 72
+        },
+        {
+          "caller": "ShoppingListView",
+          "callee": "Math.min",
+          "lineNumber": 75
+        },
+        {
+          "caller": "ShoppingListView",
+          "callee": "getSalvageCost",
+          "lineNumber": 77
+        },
+        {
+          "caller": "ShoppingListView",
+          "callee": "Math.ceil",
+          "lineNumber": 93
+        },
+        {
+          "caller": "ShoppingListView",
+          "callee": "currencyTotals.threads.toLocaleString",
+          "lineNumber": 105
+        },
+        {
+          "caller": "ShoppingListView",
+          "callee": "sortedEntries.map",
+          "lineNumber": 121
+        },
+        {
+          "caller": "ShoppingListView",
+          "callee": "Math.min",
+          "lineNumber": 122
+        },
+        {
+          "caller": "ShoppingListView",
+          "callee": "getSalvageDisplayName",
+          "lineNumber": 125
+        },
+        {
+          "caller": "ShoppingListView",
+          "callee": "getSalvageRarityColor",
+          "lineNumber": 126
+        },
+        {
+          "caller": "ShoppingListView",
+          "callee": "acquireItem",
+          "lineNumber": 131
+        },
+        {
+          "caller": "ShoppingListView",
+          "callee": "e.preventDefault",
+          "lineNumber": 133
+        },
+        {
+          "caller": "ShoppingListView",
+          "callee": "unacquireItem",
+          "lineNumber": 134
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/incarnate/craft-tree.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 150,
+      "nonEmptyLines": 140,
+      "functions": [
+        {
+          "name": "prereqChildren",
+          "startLine": 47,
+          "endLine": 67,
+          "params": [
+            "tier",
+            "variantKey"
+          ]
+        },
+        {
+          "name": "nodeLabel",
+          "startLine": 77,
+          "endLine": 84,
+          "params": [
+            "tier",
+            "variantKey"
+          ]
+        },
+        {
+          "name": "resolveGoalVariant",
+          "startLine": 87,
+          "endLine": 94,
+          "params": [
+            "tier",
+            "branch",
+            "t3VariantKey"
+          ]
+        },
+        {
+          "name": "buildCraftTree",
+          "startLine": 97,
+          "endLine": 121,
+          "params": [
+            "treeComponents",
+            "goalTier",
+            "goalVariantKey",
+            "goalLabel"
+          ]
+        },
+        {
+          "name": "remainingSalvage",
+          "startLine": 127,
+          "endLine": 143,
+          "params": [
+            "root",
+            "isObtained"
+          ]
+        },
+        {
+          "name": "goalNodeSalvage",
+          "startLine": 146,
+          "endLine": 150,
+          "params": [
+            "root"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "nodeLabel",
+          "line": 77,
+          "isDefault": false
+        },
+        {
+          "name": "resolveGoalVariant",
+          "line": 87,
+          "isDefault": false
+        },
+        {
+          "name": "buildCraftTree",
+          "line": 97,
+          "isDefault": false
+        },
+        {
+          "name": "remainingSalvage",
+          "line": 127,
+          "isDefault": false
+        },
+        {
+          "name": "goalNodeSalvage",
+          "line": 146,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "build",
+          "callee": "prereqChildren(tier, variantKey).map",
+          "lineNumber": 112
+        },
+        {
+          "caller": "build",
+          "callee": "prereqChildren",
+          "lineNumber": 112
+        },
+        {
+          "caller": "build",
+          "callee": "build",
+          "lineNumber": 115
+        },
+        {
+          "caller": "build",
+          "callee": "nodeLabel",
+          "lineNumber": 117
+        },
+        {
+          "caller": "buildCraftTree",
+          "callee": "build",
+          "lineNumber": 120
+        },
+        {
+          "caller": "walk",
+          "callee": "isObtained",
+          "lineNumber": 133
+        },
+        {
+          "caller": "walk",
+          "callee": "totals.set",
+          "lineNumber": 136
+        },
+        {
+          "caller": "walk",
+          "callee": "totals.get",
+          "lineNumber": 136
+        },
+        {
+          "caller": "walk",
+          "callee": "walk",
+          "lineNumber": 139
+        },
+        {
+          "caller": "remainingSalvage",
+          "callee": "walk",
+          "lineNumber": 141
+        },
+        {
+          "caller": "goalNodeSalvage",
+          "callee": "m.set",
+          "lineNumber": 148
+        },
+        {
+          "caller": "goalNodeSalvage",
+          "callee": "m.get",
+          "lineNumber": 148
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 5,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/incarnate/crafting-utils.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 81,
+      "nonEmptyLines": 71,
+      "functions": [
+        {
+          "name": "inferT3VariantKey",
+          "startLine": 18,
+          "endLine": 29,
+          "params": [
+            "displayName",
+            "branch"
+          ]
+        },
+        {
+          "name": "branchVariants",
+          "startLine": 32,
+          "endLine": 56,
+          "params": [
+            "variants",
+            "branch",
+            "tier",
+            "t3VariantKey"
+          ]
+        },
+        {
+          "name": "aggregateSalvage",
+          "startLine": 59,
+          "endLine": 81,
+          "params": [
+            "treeComponents",
+            "branch",
+            "fromTier",
+            "toTier",
+            "t3VariantKey"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "TIER_NUMBER",
+          "line": 7,
+          "isDefault": false
+        },
+        {
+          "name": "inferT3VariantKey",
+          "line": 18,
+          "isDefault": false
+        },
+        {
+          "name": "branchVariants",
+          "line": 32,
+          "isDefault": false
+        },
+        {
+          "name": "aggregateSalvage",
+          "line": 59,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "inferT3VariantKey",
+          "callee": "displayName.toLowerCase",
+          "lineNumber": 23
+        },
+        {
+          "caller": "inferT3VariantKey",
+          "callee": "lower.includes",
+          "lineNumber": 24
+        },
+        {
+          "caller": "inferT3VariantKey",
+          "callee": "lower.includes",
+          "lineNumber": 25
+        },
+        {
+          "caller": "aggregateSalvage",
+          "callee": "branchVariants",
+          "lineNumber": 71
+        },
+        {
+          "caller": "aggregateSalvage",
+          "callee": "Object.values",
+          "lineNumber": 72
+        },
+        {
+          "caller": "aggregateSalvage",
+          "callee": "totals.set",
+          "lineNumber": 75
+        },
+        {
+          "caller": "aggregateSalvage",
+          "callee": "totals.get",
+          "lineNumber": 75
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 4,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/layout/PlannerLayoutMenu.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 165,
+      "nonEmptyLines": 151,
+      "functions": [
+        {
+          "name": "PlannerLayoutMenu",
+          "startLine": 30,
+          "endLine": 165,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "PlannerLayoutMenu",
+          "line": 30,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "PlannerLayoutMenu",
+          "callee": "useState",
+          "lineNumber": 31
+        },
+        {
+          "caller": "PlannerLayoutMenu",
+          "callee": "useRef",
+          "lineNumber": 32
+        },
+        {
+          "caller": "PlannerLayoutMenu",
+          "callee": "usePowerViewMode",
+          "lineNumber": 34
+        },
+        {
+          "caller": "PlannerLayoutMenu",
+          "callee": "useUIStore",
+          "lineNumber": 36
+        },
+        {
+          "caller": "PlannerLayoutMenu",
+          "callee": "useUIStore",
+          "lineNumber": 37
+        },
+        {
+          "caller": "PlannerLayoutMenu",
+          "callee": "useUIStore",
+          "lineNumber": 38
+        },
+        {
+          "caller": "PlannerLayoutMenu",
+          "callee": "useUIStore",
+          "lineNumber": 39
+        },
+        {
+          "caller": "PlannerLayoutMenu",
+          "callee": "useUIStore",
+          "lineNumber": 40
+        },
+        {
+          "caller": "PlannerLayoutMenu",
+          "callee": "useEffect",
+          "lineNumber": 42
+        },
+        {
+          "caller": "handleClick",
+          "callee": "ref.current.contains",
+          "lineNumber": 45
+        },
+        {
+          "caller": "handleClick",
+          "callee": "setOpen",
+          "lineNumber": 45
+        },
+        {
+          "caller": "handleKey",
+          "callee": "setOpen",
+          "lineNumber": 48
+        },
+        {
+          "caller": "PlannerLayoutMenu",
+          "callee": "document.addEventListener",
+          "lineNumber": 50
+        },
+        {
+          "caller": "PlannerLayoutMenu",
+          "callee": "document.addEventListener",
+          "lineNumber": 51
+        },
+        {
+          "caller": "PlannerLayoutMenu",
+          "callee": "document.removeEventListener",
+          "lineNumber": 53
+        },
+        {
+          "caller": "PlannerLayoutMenu",
+          "callee": "document.removeEventListener",
+          "lineNumber": 54
+        },
+        {
+          "caller": "move",
+          "callee": "reorder",
+          "lineNumber": 62
+        },
+        {
+          "caller": "move",
+          "callee": "shiftColumn",
+          "lineNumber": 62
+        },
+        {
+          "caller": "PlannerLayoutMenu",
+          "callee": "sections.filter",
+          "lineNumber": 65
+        },
+        {
+          "caller": "PlannerLayoutMenu",
+          "callee": "sections.filter((s) => s.visible).map",
+          "lineNumber": 67
+        },
+        {
+          "caller": "PlannerLayoutMenu",
+          "callee": "sections.filter",
+          "lineNumber": 67
+        },
+        {
+          "caller": "PlannerLayoutMenu",
+          "callee": "setOpen",
+          "lineNumber": 73
+        },
+        {
+          "caller": "PlannerLayoutMenu",
+          "callee": "resetLayout",
+          "lineNumber": 92
+        },
+        {
+          "caller": "PlannerLayoutMenu",
+          "callee": "sections.map",
+          "lineNumber": 106
+        },
+        {
+          "caller": "PlannerLayoutMenu",
+          "callee": "move",
+          "lineNumber": 116
+        },
+        {
+          "caller": "PlannerLayoutMenu",
+          "callee": "move",
+          "lineNumber": 126
+        },
+        {
+          "caller": "PlannerLayoutMenu",
+          "callee": "setVisible",
+          "lineNumber": 152
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/modals/SetBonusLookupModal.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 369,
+      "nonEmptyLines": 328,
+      "functions": [
+        {
+          "name": "FilterSelect",
+          "startLine": 43,
+          "endLine": 60,
+          "params": [
+            "{ label, value, onChange, options, disabled, placeholder }"
+          ]
+        },
+        {
+          "name": "SortArrow",
+          "startLine": 62,
+          "endLine": 67,
+          "params": [
+            "{ column, sortColumn, sortDir }"
+          ]
+        },
+        {
+          "name": "useSlottableSetCategories",
+          "startLine": 74,
+          "endLine": 98,
+          "params": []
+        },
+        {
+          "name": "parseLevelMin",
+          "startLine": 105,
+          "endLine": 108,
+          "params": [
+            "range"
+          ]
+        },
+        {
+          "name": "compareLookupEntries",
+          "startLine": 110,
+          "endLine": 131,
+          "params": [
+            "a",
+            "b",
+            "column",
+            "dir"
+          ]
+        },
+        {
+          "name": "SetBonusLookupModal",
+          "startLine": 142,
+          "endLine": 326,
+          "params": [
+            "{ isOpen, onClose }"
+          ]
+        },
+        {
+          "name": "canSlot",
+          "startLine": 332,
+          "endLine": 336,
+          "params": [
+            "entry",
+            "slottableCategories"
+          ]
+        },
+        {
+          "name": "ResultRow",
+          "startLine": 345,
+          "endLine": 369,
+          "params": [
+            "{ entry, dimmed }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "SetBonusLookupModal",
+          "line": 142,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "FilterSelect",
+          "callee": "onChange",
+          "lineNumber": 49
+        },
+        {
+          "caller": "FilterSelect",
+          "callee": "options.map",
+          "lineNumber": 54
+        },
+        {
+          "caller": "useSlottableSetCategories",
+          "callee": "useBuild",
+          "lineNumber": 75
+        },
+        {
+          "caller": "useSlottableSetCategories",
+          "callee": "useMemo",
+          "lineNumber": 77
+        },
+        {
+          "caller": "collectFrom",
+          "callee": "categories.add",
+          "lineNumber": 84
+        },
+        {
+          "caller": "useSlottableSetCategories",
+          "callee": "collectFrom",
+          "lineNumber": 90
+        },
+        {
+          "caller": "useSlottableSetCategories",
+          "callee": "collectFrom",
+          "lineNumber": 91
+        },
+        {
+          "caller": "useSlottableSetCategories",
+          "callee": "collectFrom",
+          "lineNumber": 92
+        },
+        {
+          "caller": "useSlottableSetCategories",
+          "callee": "collectFrom",
+          "lineNumber": 93
+        },
+        {
+          "caller": "useSlottableSetCategories",
+          "callee": "collectFrom",
+          "lineNumber": 94
+        },
+        {
+          "caller": "parseLevelMin",
+          "callee": "range.match",
+          "lineNumber": 106
+        },
+        {
+          "caller": "parseLevelMin",
+          "callee": "parseInt",
+          "lineNumber": 107
+        },
+        {
+          "caller": "compareLookupEntries",
+          "callee": "a.setName.localeCompare",
+          "lineNumber": 114
+        },
+        {
+          "caller": "compareLookupEntries",
+          "callee": "parseLevelMin",
+          "lineNumber": 117
+        },
+        {
+          "caller": "compareLookupEntries",
+          "callee": "parseLevelMin",
+          "lineNumber": 117
+        },
+        {
+          "caller": "compareLookupEntries",
+          "callee": "a.setType.localeCompare",
+          "lineNumber": 120
+        },
+        {
+          "caller": "SetBonusLookupModal",
+          "callee": "useState",
+          "lineNumber": 143
+        },
+        {
+          "caller": "SetBonusLookupModal",
+          "callee": "useState",
+          "lineNumber": 144
+        },
+        {
+          "caller": "SetBonusLookupModal",
+          "callee": "useState",
+          "lineNumber": 145
+        },
+        {
+          "caller": "SetBonusLookupModal",
+          "callee": "useState",
+          "lineNumber": 146
+        },
+        {
+          "caller": "SetBonusLookupModal",
+          "callee": "useState",
+          "lineNumber": 147
+        },
+        {
+          "caller": "SetBonusLookupModal",
+          "callee": "useState",
+          "lineNumber": 148
+        },
+        {
+          "caller": "SetBonusLookupModal",
+          "callee": "useSlottableSetCategories",
+          "lineNumber": 150
+        },
+        {
+          "caller": "SetBonusLookupModal",
+          "callee": "useMemo",
+          "lineNumber": 153
+        },
+        {
+          "caller": "SetBonusLookupModal",
+          "callee": "getEffects",
+          "lineNumber": 153
+        },
+        {
+          "caller": "SetBonusLookupModal",
+          "callee": "useMemo",
+          "lineNumber": 156
+        },
+        {
+          "caller": "SetBonusLookupModal",
+          "callee": "getTypesForEffect",
+          "lineNumber": 158
+        },
+        {
+          "caller": "SetBonusLookupModal",
+          "callee": "useMemo",
+          "lineNumber": 162
+        },
+        {
+          "caller": "SetBonusLookupModal",
+          "callee": "getStrengthsForFilter",
+          "lineNumber": 164
+        },
+        {
+          "caller": "SetBonusLookupModal",
+          "callee": "useMemo",
+          "lineNumber": 168
+        },
+        {
+          "caller": "SetBonusLookupModal",
+          "callee": "searchBonusLookup",
+          "lineNumber": 170
+        },
+        {
+          "caller": "SetBonusLookupModal",
+          "callee": "parseFloat",
+          "lineNumber": 173
+        },
+        {
+          "caller": "SetBonusLookupModal",
+          "callee": "entries.filter",
+          "lineNumber": 177
+        },
+        {
+          "caller": "SetBonusLookupModal",
+          "callee": "slottableCategories.has",
+          "lineNumber": 179
+        },
+        {
+          "caller": "SetBonusLookupModal",
+          "callee": "useMemo",
+          "lineNumber": 187
+        },
+        {
+          "caller": "SetBonusLookupModal",
+          "callee": "[...results].sort",
+          "lineNumber": 189
+        },
+        {
+          "caller": "SetBonusLookupModal",
+          "callee": "compareLookupEntries",
+          "lineNumber": 189
+        },
+        {
+          "caller": "handleEffectChange",
+          "callee": "setSelectedEffect",
+          "lineNumber": 194
+        },
+        {
+          "caller": "handleEffectChange",
+          "callee": "setSelectedType",
+          "lineNumber": 195
+        },
+        {
+          "caller": "handleEffectChange",
+          "callee": "setSelectedStrength",
+          "lineNumber": 196
+        },
+        {
+          "caller": "handleTypeChange",
+          "callee": "setSelectedType",
+          "lineNumber": 200
+        },
+        {
+          "caller": "handleTypeChange",
+          "callee": "setSelectedStrength",
+          "lineNumber": 201
+        },
+        {
+          "caller": "handleStrengthChange",
+          "callee": "setSelectedStrength",
+          "lineNumber": 205
+        },
+        {
+          "caller": "SetBonusLookupModal",
+          "callee": "useCallback",
+          "lineNumber": 208
+        },
+        {
+          "caller": "SetBonusLookupModal",
+          "callee": "setSortColumn",
+          "lineNumber": 212
+        },
+        {
+          "caller": "SetBonusLookupModal",
+          "callee": "setSortDir",
+          "lineNumber": 215
+        },
+        {
+          "caller": "SetBonusLookupModal",
+          "callee": "setSortDir",
+          "lineNumber": 219
+        },
+        {
+          "caller": "SetBonusLookupModal",
+          "callee": "useMemo",
+          "lineNumber": 225
+        },
+        {
+          "caller": "SetBonusLookupModal",
+          "callee": "strengths.map",
+          "lineNumber": 226
+        },
+        {
+          "caller": "SetBonusLookupModal",
+          "callee": "String",
+          "lineNumber": 227
+        },
+        {
+          "caller": "SetBonusLookupModal",
+          "callee": "parseFloat",
+          "lineNumber": 228
+        },
+        {
+          "caller": "SetBonusLookupModal",
+          "callee": "v.toFixed",
+          "lineNumber": 228
+        },
+        {
+          "caller": "SetBonusLookupModal",
+          "callee": "effects.map",
+          "lineNumber": 242
+        },
+        {
+          "caller": "SetBonusLookupModal",
+          "callee": "types.map",
+          "lineNumber": 249
+        },
+        {
+          "caller": "SetBonusLookupModal",
+          "callee": "setMyPowersOnly",
+          "lineNumber": 265
+        },
+        {
+          "caller": "SetBonusLookupModal",
+          "callee": "handleSort",
+          "lineNumber": 275
+        },
+        {
+          "caller": "SetBonusLookupModal",
+          "callee": "handleSort",
+          "lineNumber": 278
+        },
+        {
+          "caller": "SetBonusLookupModal",
+          "callee": "handleSort",
+          "lineNumber": 281
+        },
+        {
+          "caller": "SetBonusLookupModal",
+          "callee": "handleSort",
+          "lineNumber": 284
+        },
+        {
+          "caller": "SetBonusLookupModal",
+          "callee": "handleSort",
+          "lineNumber": 287
+        },
+        {
+          "caller": "SetBonusLookupModal",
+          "callee": "sortedResults.map",
+          "lineNumber": 305
+        },
+        {
+          "caller": "SetBonusLookupModal",
+          "callee": "canSlot",
+          "lineNumber": 309
+        },
+        {
+          "caller": "canSlot",
+          "callee": "slottableCategories.has",
+          "lineNumber": 335
+        },
+        {
+          "caller": "ResultRow",
+          "callee": "parseFloat",
+          "lineNumber": 364
+        },
+        {
+          "caller": "ResultRow",
+          "callee": "entry.value.toFixed",
+          "lineNumber": 364
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 1,
+        "functionCount": 8,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/data/_layer.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 74,
+      "nonEmptyLines": 71,
+      "functions": [
+        {
+          "name": "withOverrides",
+          "startLine": 22,
+          "endLine": 34,
+          "params": [
+            "base",
+            "overrides"
+          ]
+        },
+        {
+          "name": "applyAggregateOverrides",
+          "startLine": 54,
+          "endLine": 74,
+          "params": [
+            "data",
+            "overrides"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "withOverrides",
+          "line": 22,
+          "isDefault": false
+        },
+        {
+          "name": "applyAggregateOverrides",
+          "line": 54,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "withOverrides",
+          "callee": "Array.isArray",
+          "lineNumber": 29
+        },
+        {
+          "caller": "withOverrides",
+          "callee": "Array.isArray",
+          "lineNumber": 29
+        },
+        {
+          "caller": "applyAggregateOverrides",
+          "callee": "Object.keys",
+          "lineNumber": 58
+        },
+        {
+          "caller": "applyAggregateOverrides",
+          "callee": "Object.entries",
+          "lineNumber": 61
+        },
+        {
+          "caller": "applyAggregateOverrides",
+          "callee": "pool.powers.filter",
+          "lineNumber": 62
+        },
+        {
+          "caller": "applyAggregateOverrides",
+          "callee": "pool.powers.map",
+          "lineNumber": 67
+        },
+        {
+          "caller": "applyAggregateOverrides",
+          "callee": "withOverrides",
+          "lineNumber": 69
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/data/accolades.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 104,
+      "nonEmptyLines": 98,
+      "functions": [
+        {
+          "name": "getAccolades",
+          "startLine": 95,
+          "endLine": 97,
+          "params": []
+        },
+        {
+          "name": "getAccolade",
+          "startLine": 102,
+          "endLine": 104,
+          "params": [
+            "id"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "ACCOLADES",
+          "line": 14,
+          "isDefault": false
+        },
+        {
+          "name": "getAccolades",
+          "line": 95,
+          "isDefault": false
+        },
+        {
+          "name": "getAccolade",
+          "line": 102,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "getAccolade",
+          "callee": "ACCOLADES.find",
+          "lineNumber": 103
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 3,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/data/enhancement-registry.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 524,
+      "nonEmptyLines": 487,
+      "functions": [
+        {
+          "name": "getStatIconFilename",
+          "startLine": 68,
+          "endLine": 70,
+          "params": [
+            "stat"
+          ]
+        },
+        {
+          "name": "getGenericIOIconPath",
+          "startLine": 73,
+          "endLine": 77,
+          "params": [
+            "stat"
+          ]
+        },
+        {
+          "name": "getOriginIconPath",
+          "startLine": 80,
+          "endLine": 85,
+          "params": [
+            "stat",
+            "_tier"
+          ]
+        },
+        {
+          "name": "getEnhancementTypesForCategory",
+          "startLine": 163,
+          "endLine": 165,
+          "params": [
+            "category"
+          ]
+        },
+        {
+          "name": "sortCategoriesByPriority",
+          "startLine": 253,
+          "endLine": 261,
+          "params": [
+            "categories"
+          ]
+        },
+        {
+          "name": "getRarityColor",
+          "startLine": 278,
+          "endLine": 280,
+          "params": [
+            "category"
+          ]
+        },
+        {
+          "name": "getTierTextColor",
+          "startLine": 290,
+          "endLine": 292,
+          "params": [
+            "tier"
+          ]
+        },
+        {
+          "name": "getTierBorderColor",
+          "startLine": 295,
+          "endLine": 297,
+          "params": [
+            "tier"
+          ]
+        },
+        {
+          "name": "isInherentlyAttuned",
+          "startLine": 330,
+          "endLine": 332,
+          "params": [
+            "set"
+          ]
+        },
+        {
+          "name": "createIOSetEnhancement",
+          "startLine": 335,
+          "endLine": 369,
+          "params": [
+            "set",
+            "piece",
+            "pieceIndex",
+            "options"
+          ]
+        },
+        {
+          "name": "createGenericIOEnhancement",
+          "startLine": 372,
+          "endLine": 387,
+          "params": [
+            "stat",
+            "level",
+            "boost"
+          ]
+        },
+        {
+          "name": "createSpecialEnhancement",
+          "startLine": 410,
+          "endLine": 431,
+          "params": [
+            "id",
+            "def",
+            "category",
+            "boost"
+          ]
+        },
+        {
+          "name": "createOriginEnhancement",
+          "startLine": 434,
+          "endLine": 454,
+          "params": [
+            "stat",
+            "tier",
+            "origin",
+            "boost"
+          ]
+        },
+        {
+          "name": "getAvailableGenericIOs",
+          "startLine": 465,
+          "endLine": 472,
+          "params": [
+            "power"
+          ]
+        },
+        {
+          "name": "filterSpecialEnhancements",
+          "startLine": 478,
+          "endLine": 489,
+          "params": [
+            "registry",
+            "power"
+          ]
+        },
+        {
+          "name": "getAvailableHamidons",
+          "startLine": 492,
+          "endLine": 496,
+          "params": [
+            "power"
+          ]
+        },
+        {
+          "name": "getAvailableTitans",
+          "startLine": 499,
+          "endLine": 503,
+          "params": [
+            "power"
+          ]
+        },
+        {
+          "name": "getAvailableHydras",
+          "startLine": 506,
+          "endLine": 510,
+          "params": [
+            "power"
+          ]
+        },
+        {
+          "name": "getAvailableDSyncs",
+          "startLine": 513,
+          "endLine": 517,
+          "params": [
+            "power"
+          ]
+        },
+        {
+          "name": "getAvailablePrestige",
+          "startLine": 520,
+          "endLine": 524,
+          "params": [
+            "power"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "STAT_ICON_MAP",
+          "line": 37,
+          "isDefault": false
+        },
+        {
+          "name": "getStatIconFilename",
+          "line": 68,
+          "isDefault": false
+        },
+        {
+          "name": "getGenericIOIconPath",
+          "line": 73,
+          "isDefault": false
+        },
+        {
+          "name": "getOriginIconPath",
+          "line": 80,
+          "isDefault": false
+        },
+        {
+          "name": "SET_CATEGORY_TO_ENHANCEMENT",
+          "line": 97,
+          "isDefault": false
+        },
+        {
+          "name": "getEnhancementTypesForCategory",
+          "line": 163,
+          "isDefault": false
+        },
+        {
+          "name": "CATEGORY_PRIORITY",
+          "line": 176,
+          "isDefault": false
+        },
+        {
+          "name": "sortCategoriesByPriority",
+          "line": 253,
+          "isDefault": false
+        },
+        {
+          "name": "RARITY_DISPLAY",
+          "line": 268,
+          "isDefault": false
+        },
+        {
+          "name": "getRarityColor",
+          "line": 278,
+          "isDefault": false
+        },
+        {
+          "name": "TIER_DISPLAY",
+          "line": 283,
+          "isDefault": false
+        },
+        {
+          "name": "getTierTextColor",
+          "line": 290,
+          "isDefault": false
+        },
+        {
+          "name": "getTierBorderColor",
+          "line": 295,
+          "isDefault": false
+        },
+        {
+          "name": "isInherentlyAttuned",
+          "line": 330,
+          "isDefault": false
+        },
+        {
+          "name": "createIOSetEnhancement",
+          "line": 335,
+          "isDefault": false
+        },
+        {
+          "name": "createGenericIOEnhancement",
+          "line": 372,
+          "isDefault": false
+        },
+        {
+          "name": "createSpecialEnhancement",
+          "line": 410,
+          "isDefault": false
+        },
+        {
+          "name": "createOriginEnhancement",
+          "line": 434,
+          "isDefault": false
+        },
+        {
+          "name": "getAvailableGenericIOs",
+          "line": 465,
+          "isDefault": false
+        },
+        {
+          "name": "getAvailableHamidons",
+          "line": 492,
+          "isDefault": false
+        },
+        {
+          "name": "getAvailableTitans",
+          "line": 499,
+          "isDefault": false
+        },
+        {
+          "name": "getAvailableHydras",
+          "line": 506,
+          "isDefault": false
+        },
+        {
+          "name": "getAvailableDSyncs",
+          "line": 513,
+          "isDefault": false
+        },
+        {
+          "name": "getAvailablePrestige",
+          "line": 520,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "getGenericIOIconPath",
+          "callee": "resolvePath",
+          "lineNumber": 75
+        },
+        {
+          "caller": "getGenericIOIconPath",
+          "callee": "resolvePath",
+          "lineNumber": 76
+        },
+        {
+          "caller": "getOriginIconPath",
+          "callee": "resolvePath",
+          "lineNumber": 83
+        },
+        {
+          "caller": "getOriginIconPath",
+          "callee": "resolvePath",
+          "lineNumber": 84
+        },
+        {
+          "caller": "sortCategoriesByPriority",
+          "callee": "categories.sort",
+          "lineNumber": 254
+        },
+        {
+          "caller": "sortCategoriesByPriority",
+          "callee": "CATEGORY_PRIORITY.indexOf",
+          "lineNumber": 255
+        },
+        {
+          "caller": "sortCategoriesByPriority",
+          "callee": "CATEGORY_PRIORITY.indexOf",
+          "lineNumber": 256
+        },
+        {
+          "caller": "isInherentlyAttuned",
+          "callee": "ATTUNED_ONLY_SET_NAMES.has",
+          "lineNumber": 331
+        },
+        {
+          "caller": "createIOSetEnhancement",
+          "callee": "isInherentlyAttuned",
+          "lineNumber": 344
+        },
+        {
+          "caller": "createGenericIOEnhancement",
+          "callee": "getGenericIOIconPath",
+          "lineNumber": 381
+        },
+        {
+          "caller": "createGenericIOEnhancement",
+          "callee": "getCommonIOValueAtLevel",
+          "lineNumber": 385
+        },
+        {
+          "caller": "createSpecialEnhancement",
+          "callee": "id.charAt(0).toUpperCase",
+          "lineNumber": 416
+        },
+        {
+          "caller": "createSpecialEnhancement",
+          "callee": "id.charAt",
+          "lineNumber": 416
+        },
+        {
+          "caller": "createSpecialEnhancement",
+          "callee": "id.slice",
+          "lineNumber": 416
+        },
+        {
+          "caller": "createSpecialEnhancement",
+          "callee": "Math.min",
+          "lineNumber": 421
+        },
+        {
+          "caller": "createSpecialEnhancement",
+          "callee": "def.aspects.map",
+          "lineNumber": 429
+        },
+        {
+          "caller": "createOriginEnhancement",
+          "callee": "ORIGIN_TIERS.find",
+          "lineNumber": 440
+        },
+        {
+          "caller": "createOriginEnhancement",
+          "callee": "Math.min",
+          "lineNumber": 442
+        },
+        {
+          "caller": "createOriginEnhancement",
+          "callee": "getOriginIconPath",
+          "lineNumber": 447
+        },
+        {
+          "caller": "getAvailableGenericIOs",
+          "callee": "COMMON_IO_TYPES.filter",
+          "lineNumber": 471
+        },
+        {
+          "caller": "getAvailableGenericIOs",
+          "callee": "allowed.has",
+          "lineNumber": 471
+        },
+        {
+          "caller": "filterSpecialEnhancements",
+          "callee": "Object.entries",
+          "lineNumber": 482
+        },
+        {
+          "caller": "filterSpecialEnhancements",
+          "callee": "entries.filter",
+          "lineNumber": 486
+        },
+        {
+          "caller": "filterSpecialEnhancements",
+          "callee": "def.aspects.some",
+          "lineNumber": 487
+        },
+        {
+          "caller": "filterSpecialEnhancements",
+          "callee": "allowed.has",
+          "lineNumber": 487
+        },
+        {
+          "caller": "getAvailableHamidons",
+          "callee": "filterSpecialEnhancements",
+          "lineNumber": 495
+        },
+        {
+          "caller": "getAvailableTitans",
+          "callee": "filterSpecialEnhancements",
+          "lineNumber": 502
+        },
+        {
+          "caller": "getAvailableHydras",
+          "callee": "filterSpecialEnhancements",
+          "lineNumber": 509
+        },
+        {
+          "caller": "getAvailableDSyncs",
+          "callee": "filterSpecialEnhancements",
+          "lineNumber": 516
+        },
+        {
+          "caller": "getAvailablePrestige",
+          "callee": "filterSpecialEnhancements",
+          "lineNumber": 523
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 24,
+        "functionCount": 20,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/data/enhancements.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 837,
+      "nonEmptyLines": 803,
+      "functions": [
+        {
+          "name": "calculateCommonIOValue",
+          "startLine": 625,
+          "endLine": 648,
+          "params": [
+            "level"
+          ]
+        },
+        {
+          "name": "getCommonIOValueAtLevel",
+          "startLine": 654,
+          "endLine": 656,
+          "params": [
+            "level"
+          ]
+        },
+        {
+          "name": "getOriginTier",
+          "startLine": 718,
+          "endLine": 720,
+          "params": [
+            "tier"
+          ]
+        },
+        {
+          "name": "getOriginTierValue",
+          "startLine": 725,
+          "endLine": 728,
+          "params": [
+            "tier"
+          ]
+        },
+        {
+          "name": "isDualOriginValidForOrigin",
+          "startLine": 767,
+          "endLine": 769,
+          "params": [
+            "combo",
+            "origin"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "HAMIDON_ENHANCEMENTS",
+          "line": 19,
+          "isDefault": false
+        },
+        {
+          "name": "TITAN_ENHANCEMENTS",
+          "line": 187,
+          "isDefault": false
+        },
+        {
+          "name": "HYDRA_ENHANCEMENTS",
+          "line": 287,
+          "isDefault": false
+        },
+        {
+          "name": "DSYNC_ENHANCEMENTS",
+          "line": 387,
+          "isDefault": false
+        },
+        {
+          "name": "PRESTIGE_ENHANCEMENTS",
+          "line": 560,
+          "isDefault": false
+        },
+        {
+          "name": "calculateCommonIOValue",
+          "line": 625,
+          "isDefault": false
+        },
+        {
+          "name": "getCommonIOValueAtLevel",
+          "line": 654,
+          "isDefault": false
+        },
+        {
+          "name": "COMMON_IO_TYPES",
+          "line": 662,
+          "isDefault": false
+        },
+        {
+          "name": "ORIGIN_TIERS",
+          "line": 694,
+          "isDefault": false
+        },
+        {
+          "name": "getOriginTier",
+          "line": 718,
+          "isDefault": false
+        },
+        {
+          "name": "getOriginTierValue",
+          "line": 725,
+          "isDefault": false
+        },
+        {
+          "name": "ORIGINS",
+          "line": 734,
+          "isDefault": false
+        },
+        {
+          "name": "DUAL_ORIGIN_COMBOS",
+          "line": 751,
+          "isDefault": false
+        },
+        {
+          "name": "isDualOriginValidForOrigin",
+          "line": 767,
+          "isDefault": false
+        },
+        {
+          "name": "ENHANCEMENT_CATEGORIES",
+          "line": 781,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "calculateCommonIOValue",
+          "callee": "Math.max",
+          "lineNumber": 626
+        },
+        {
+          "caller": "calculateCommonIOValue",
+          "callee": "Math.min",
+          "lineNumber": 626
+        },
+        {
+          "caller": "getCommonIOValueAtLevel",
+          "callee": "calculateCommonIOValue",
+          "lineNumber": 655
+        },
+        {
+          "caller": "getOriginTier",
+          "callee": "ORIGIN_TIERS.find",
+          "lineNumber": 719
+        },
+        {
+          "caller": "getOriginTierValue",
+          "callee": "getOriginTier",
+          "lineNumber": 726
+        },
+        {
+          "caller": "isDualOriginValidForOrigin",
+          "callee": "combo.origins.includes",
+          "lineNumber": 768
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 15,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/data/granted-powers.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 59,
+      "nonEmptyLines": 52,
+      "functions": [
+        {
+          "name": "objectProxy",
+          "startLine": 20,
+          "endLine": 26,
+          "params": [
+            "getter"
+          ]
+        },
+        {
+          "name": "hasGrantedPowers",
+          "startLine": 32,
+          "endLine": 35,
+          "params": [
+            "powerName"
+          ]
+        },
+        {
+          "name": "getGrantedPowerGroup",
+          "startLine": 37,
+          "endLine": 39,
+          "params": [
+            "powerName"
+          ]
+        },
+        {
+          "name": "getActiveDamageConversion",
+          "startLine": 47,
+          "endLine": 59,
+          "params": [
+            "powers"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "GrantedPowerGroup",
+          "line": 18,
+          "isDefault": false
+        },
+        {
+          "name": "GRANTED_POWER_GROUPS",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "hasGrantedPowers",
+          "line": 32,
+          "isDefault": false
+        },
+        {
+          "name": "getGrantedPowerGroup",
+          "line": 37,
+          "isDefault": false
+        },
+        {
+          "name": "getActiveDamageConversion",
+          "line": 47,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "objectProxy",
+          "callee": "Reflect.get",
+          "lineNumber": 22
+        },
+        {
+          "caller": "objectProxy",
+          "callee": "getter",
+          "lineNumber": 22
+        },
+        {
+          "caller": "objectProxy",
+          "callee": "Reflect.has",
+          "lineNumber": 23
+        },
+        {
+          "caller": "objectProxy",
+          "callee": "getter",
+          "lineNumber": 23
+        },
+        {
+          "caller": "objectProxy",
+          "callee": "Reflect.ownKeys",
+          "lineNumber": 24
+        },
+        {
+          "caller": "objectProxy",
+          "callee": "getter",
+          "lineNumber": 24
+        },
+        {
+          "caller": "objectProxy",
+          "callee": "Reflect.getOwnPropertyDescriptor",
+          "lineNumber": 25
+        },
+        {
+          "caller": "objectProxy",
+          "callee": "getter",
+          "lineNumber": 25
+        },
+        {
+          "caller": "hasGrantedPowers",
+          "callee": "getActiveDataset",
+          "lineNumber": 33
+        },
+        {
+          "caller": "getGrantedPowerGroup",
+          "callee": "getActiveDataset",
+          "lineNumber": 38
+        },
+        {
+          "caller": "getActiveDamageConversion",
+          "callee": "getActiveDataset",
+          "lineNumber": 50
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 5,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/data/incarnate-components.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 1068,
+      "nonEmptyLines": 1036,
+      "functions": [
+        {
+          "name": "processRawData",
+          "startLine": 968,
+          "endLine": 999,
+          "params": []
+        },
+        {
+          "name": "ensureProcessed",
+          "startLine": 1001,
+          "endLine": 1006,
+          "params": []
+        },
+        {
+          "name": "getComponentTreeKey",
+          "startLine": 1012,
+          "endLine": 1017,
+          "params": [
+            "slotId",
+            "treeName"
+          ]
+        },
+        {
+          "name": "getTreeComponents",
+          "startLine": 1019,
+          "endLine": 1026,
+          "params": [
+            "slotId",
+            "treeName"
+          ]
+        },
+        {
+          "name": "getVariantComponents",
+          "startLine": 1028,
+          "endLine": 1036,
+          "params": [
+            "slotId",
+            "treeName",
+            "tier",
+            "variant"
+          ]
+        },
+        {
+          "name": "getCumulativeSalvage",
+          "startLine": 1038,
+          "endLine": 1068,
+          "params": [
+            "slotId",
+            "treeName",
+            "tier",
+            "variant"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "LORE_TREE_NAME_MAP",
+          "line": 929,
+          "isDefault": false
+        },
+        {
+          "name": "getComponentTreeKey",
+          "line": 1012,
+          "isDefault": false
+        },
+        {
+          "name": "getTreeComponents",
+          "line": 1019,
+          "isDefault": false
+        },
+        {
+          "name": "getVariantComponents",
+          "line": 1028,
+          "isDefault": false
+        },
+        {
+          "name": "getCumulativeSalvage",
+          "line": 1038,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "processRawData",
+          "callee": "Object.entries",
+          "lineNumber": 971
+        },
+        {
+          "caller": "processRawData",
+          "callee": "Object.entries",
+          "lineNumber": 974
+        },
+        {
+          "caller": "processRawData",
+          "callee": "Object.entries",
+          "lineNumber": 977
+        },
+        {
+          "caller": "processRawData",
+          "callee": "parseInt",
+          "lineNumber": 978
+        },
+        {
+          "caller": "processRawData",
+          "callee": "tierKey.replace",
+          "lineNumber": 978
+        },
+        {
+          "caller": "processRawData",
+          "callee": "Object.entries",
+          "lineNumber": 981
+        },
+        {
+          "caller": "processRawData",
+          "callee": "variantData.salvage.map",
+          "lineNumber": 984
+        },
+        {
+          "caller": "ensureProcessed",
+          "callee": "processRawData",
+          "lineNumber": 1003
+        },
+        {
+          "caller": "getTreeComponents",
+          "callee": "ensureProcessed",
+          "lineNumber": 1023
+        },
+        {
+          "caller": "getTreeComponents",
+          "callee": "getComponentTreeKey",
+          "lineNumber": 1024
+        },
+        {
+          "caller": "getVariantComponents",
+          "callee": "getTreeComponents",
+          "lineNumber": 1034
+        },
+        {
+          "caller": "getCumulativeSalvage",
+          "callee": "getTreeComponents",
+          "lineNumber": 1044
+        },
+        {
+          "caller": "getCumulativeSalvage",
+          "callee": "variant.startsWith",
+          "lineNumber": 1053
+        },
+        {
+          "caller": "getCumulativeSalvage",
+          "callee": "salvage.push",
+          "lineNumber": 1064
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 5,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/data/incarnate-recipes.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 110,
+      "nonEmptyLines": 99,
+      "functions": [
+        {
+          "name": "getTierRecipe",
+          "startLine": 76,
+          "endLine": 78,
+          "params": [
+            "slotId",
+            "tier"
+          ]
+        },
+        {
+          "name": "calculateCumulativeCost",
+          "startLine": 84,
+          "endLine": 110,
+          "params": [
+            "slotId",
+            "tier"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "INCARNATE_RECIPES",
+          "line": 14,
+          "isDefault": false
+        },
+        {
+          "name": "CRAFTING_CONVERSIONS",
+          "line": 67,
+          "isDefault": false
+        },
+        {
+          "name": "getTierRecipe",
+          "line": 76,
+          "isDefault": false
+        },
+        {
+          "name": "calculateCumulativeCost",
+          "line": 84,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "calculateCumulativeCost",
+          "callee": "Math.min",
+          "lineNumber": 91
+        },
+        {
+          "caller": "calculateCumulativeCost",
+          "callee": "incarnateComponents.push",
+          "lineNumber": 96
+        },
+        {
+          "caller": "calculateCumulativeCost",
+          "callee": "incarnateComponents.push",
+          "lineNumber": 105
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 4,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/data/incarnate-salvage.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 95,
+      "nonEmptyLines": 82,
+      "functions": [
+        {
+          "name": "getSalvageDefinition",
+          "startLine": 66,
+          "endLine": 68,
+          "params": [
+            "id"
+          ]
+        },
+        {
+          "name": "getSalvageDisplayName",
+          "startLine": 70,
+          "endLine": 72,
+          "params": [
+            "id"
+          ]
+        },
+        {
+          "name": "getSalvageRarity",
+          "startLine": 74,
+          "endLine": 76,
+          "params": [
+            "id"
+          ]
+        },
+        {
+          "name": "getSalvageRarityColor",
+          "startLine": 78,
+          "endLine": 80,
+          "params": [
+            "id"
+          ]
+        },
+        {
+          "name": "getSalvageCost",
+          "startLine": 82,
+          "endLine": 84,
+          "params": [
+            "id"
+          ]
+        },
+        {
+          "name": "parseSalvageString",
+          "startLine": 89,
+          "endLine": 95,
+          "params": [
+            "raw"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "SALVAGE_REGISTRY",
+          "line": 22,
+          "isDefault": false
+        },
+        {
+          "name": "SALVAGE_RARITY_COLORS",
+          "line": 55,
+          "isDefault": false
+        },
+        {
+          "name": "getSalvageDefinition",
+          "line": 66,
+          "isDefault": false
+        },
+        {
+          "name": "getSalvageDisplayName",
+          "line": 70,
+          "isDefault": false
+        },
+        {
+          "name": "getSalvageRarity",
+          "line": 74,
+          "isDefault": false
+        },
+        {
+          "name": "getSalvageRarityColor",
+          "line": 78,
+          "isDefault": false
+        },
+        {
+          "name": "getSalvageCost",
+          "line": 82,
+          "isDefault": false
+        },
+        {
+          "name": "parseSalvageString",
+          "line": 89,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "parseSalvageString",
+          "callee": "raw.match",
+          "lineNumber": 90
+        },
+        {
+          "caller": "parseSalvageString",
+          "callee": "parseInt",
+          "lineNumber": 92
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 8,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/data/io-sets.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 385,
+      "nonEmptyLines": 347,
+      "functions": [
+        {
+          "name": "transformIOSet",
+          "startLine": 193,
+          "endLine": 220,
+          "params": [
+            "id",
+            "legacy"
+          ]
+        },
+        {
+          "name": "transformRegistry",
+          "startLine": 225,
+          "endLine": 231,
+          "params": [
+            "legacy"
+          ]
+        },
+        {
+          "name": "_activeRegistry",
+          "startLine": 243,
+          "endLine": 251,
+          "params": []
+        },
+        {
+          "name": "getAllIOSets",
+          "startLine": 256,
+          "endLine": 258,
+          "params": []
+        },
+        {
+          "name": "getIOSet",
+          "startLine": 269,
+          "endLine": 271,
+          "params": [
+            "id"
+          ]
+        },
+        {
+          "name": "getIOSetsByRarity",
+          "startLine": 276,
+          "endLine": 278,
+          "params": [
+            "rarity"
+          ]
+        },
+        {
+          "name": "getIOSetsForCategory",
+          "startLine": 283,
+          "endLine": 288,
+          "params": [
+            "category"
+          ]
+        },
+        {
+          "name": "getIOSetsForPower",
+          "startLine": 293,
+          "endLine": 299,
+          "params": [
+            "allowedCategories"
+          ]
+        },
+        {
+          "name": "getIOSetPiece",
+          "startLine": 304,
+          "endLine": 307,
+          "params": [
+            "setId",
+            "pieceNum"
+          ]
+        },
+        {
+          "name": "getSetBonusesAtCount",
+          "startLine": 312,
+          "endLine": 317,
+          "params": [
+            "setId",
+            "pieceCount"
+          ]
+        },
+        {
+          "name": "getAllIOSetTypes",
+          "startLine": 322,
+          "endLine": 328,
+          "params": []
+        },
+        {
+          "name": "getIOSetRarityInfo",
+          "startLine": 383,
+          "endLine": 385,
+          "params": [
+            "rarity"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "IO_SET_TYPE_TO_CATEGORY",
+          "line": 39,
+          "isDefault": false
+        },
+        {
+          "name": "ARCHETYPE_ATO_CATEGORY",
+          "line": 115,
+          "isDefault": false
+        },
+        {
+          "name": "getAllIOSets",
+          "line": 256,
+          "isDefault": false
+        },
+        {
+          "name": "getIOSet",
+          "line": 269,
+          "isDefault": false
+        },
+        {
+          "name": "getIOSetsByRarity",
+          "line": 276,
+          "isDefault": false
+        },
+        {
+          "name": "getIOSetsForCategory",
+          "line": 283,
+          "isDefault": false
+        },
+        {
+          "name": "getIOSetsForPower",
+          "line": 293,
+          "isDefault": false
+        },
+        {
+          "name": "getIOSetPiece",
+          "line": 304,
+          "isDefault": false
+        },
+        {
+          "name": "getSetBonusesAtCount",
+          "line": 312,
+          "isDefault": false
+        },
+        {
+          "name": "getAllIOSetTypes",
+          "line": 322,
+          "isDefault": false
+        },
+        {
+          "name": "IO_SET_RARITIES",
+          "line": 341,
+          "isDefault": false
+        },
+        {
+          "name": "getIOSetRarityInfo",
+          "line": 383,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "transformIOSet",
+          "callee": "legacy.bonuses.map",
+          "lineNumber": 201
+        },
+        {
+          "caller": "transformIOSet",
+          "callee": "b.effects.map",
+          "lineNumber": 203
+        },
+        {
+          "caller": "transformIOSet",
+          "callee": "legacy.pieces.map",
+          "lineNumber": 210
+        },
+        {
+          "caller": "transformRegistry",
+          "callee": "Object.entries",
+          "lineNumber": 227
+        },
+        {
+          "caller": "transformRegistry",
+          "callee": "transformIOSet",
+          "lineNumber": 228
+        },
+        {
+          "caller": "_activeRegistry",
+          "callee": "getActiveDataset",
+          "lineNumber": 244
+        },
+        {
+          "caller": "_activeRegistry",
+          "callee": "_registryCache.get",
+          "lineNumber": 245
+        },
+        {
+          "caller": "_activeRegistry",
+          "callee": "transformRegistry",
+          "lineNumber": 247
+        },
+        {
+          "caller": "_activeRegistry",
+          "callee": "_registryCache.set",
+          "lineNumber": 248
+        },
+        {
+          "caller": "getAllIOSets",
+          "callee": "_activeRegistry",
+          "lineNumber": 257
+        },
+        {
+          "caller": "getIOSet",
+          "callee": "_activeRegistry",
+          "lineNumber": 270
+        },
+        {
+          "caller": "getIOSet",
+          "callee": "_activeRegistry",
+          "lineNumber": 270
+        },
+        {
+          "caller": "getIOSet",
+          "callee": "id.replace",
+          "lineNumber": 270
+        },
+        {
+          "caller": "getIOSetsByRarity",
+          "callee": "Object.values(_activeRegistry()).filter",
+          "lineNumber": 277
+        },
+        {
+          "caller": "getIOSetsByRarity",
+          "callee": "Object.values",
+          "lineNumber": 277
+        },
+        {
+          "caller": "getIOSetsByRarity",
+          "callee": "_activeRegistry",
+          "lineNumber": 277
+        },
+        {
+          "caller": "getIOSetsForCategory",
+          "callee": "Object.values(_activeRegistry()).filter",
+          "lineNumber": 284
+        },
+        {
+          "caller": "getIOSetsForCategory",
+          "callee": "Object.values",
+          "lineNumber": 284
+        },
+        {
+          "caller": "getIOSetsForCategory",
+          "callee": "_activeRegistry",
+          "lineNumber": 284
+        },
+        {
+          "caller": "getIOSetsForPower",
+          "callee": "Object.values(_activeRegistry()).filter",
+          "lineNumber": 295
+        },
+        {
+          "caller": "getIOSetsForPower",
+          "callee": "Object.values",
+          "lineNumber": 295
+        },
+        {
+          "caller": "getIOSetsForPower",
+          "callee": "_activeRegistry",
+          "lineNumber": 295
+        },
+        {
+          "caller": "getIOSetsForPower",
+          "callee": "allowedCategories.includes",
+          "lineNumber": 297
+        },
+        {
+          "caller": "getIOSetPiece",
+          "callee": "getIOSet",
+          "lineNumber": 305
+        },
+        {
+          "caller": "getIOSetPiece",
+          "callee": "set?.pieces.find",
+          "lineNumber": 306
+        },
+        {
+          "caller": "getSetBonusesAtCount",
+          "callee": "getIOSet",
+          "lineNumber": 313
+        },
+        {
+          "caller": "getSetBonusesAtCount",
+          "callee": "set.bonuses.filter",
+          "lineNumber": 316
+        },
+        {
+          "caller": "getAllIOSetTypes",
+          "callee": "Object.values",
+          "lineNumber": 324
+        },
+        {
+          "caller": "getAllIOSetTypes",
+          "callee": "_activeRegistry",
+          "lineNumber": 324
+        },
+        {
+          "caller": "getAllIOSetTypes",
+          "callee": "types.add",
+          "lineNumber": 325
+        },
+        {
+          "caller": "getAllIOSetTypes",
+          "callee": "Array.from(types).sort",
+          "lineNumber": 327
+        },
+        {
+          "caller": "getAllIOSetTypes",
+          "callee": "Array.from",
+          "lineNumber": 327
+        },
+        {
+          "caller": "getIOSetRarityInfo",
+          "callee": "IO_SET_RARITIES.find",
+          "lineNumber": 384
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 12,
+        "functionCount": 12,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/data/set-bonus-index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 308,
+      "nonEmptyLines": 272,
+      "functions": [
+        {
+          "name": "resolveEffectType",
+          "startLine": 113,
+          "endLine": 140,
+          "params": [
+            "rawStat"
+          ]
+        },
+        {
+          "name": "buildLookupIndex",
+          "startLine": 148,
+          "endLine": 186,
+          "params": []
+        },
+        {
+          "name": "getLookupIndex",
+          "startLine": 192,
+          "endLine": 197,
+          "params": []
+        },
+        {
+          "name": "getEffects",
+          "startLine": 202,
+          "endLine": 212,
+          "params": []
+        },
+        {
+          "name": "getTypesForEffect",
+          "startLine": 218,
+          "endLine": 227,
+          "params": [
+            "effect"
+          ]
+        },
+        {
+          "name": "getStrengthsForFilter",
+          "startLine": 233,
+          "endLine": 242,
+          "params": [
+            "effect",
+            "effectType"
+          ]
+        },
+        {
+          "name": "searchBonusLookup",
+          "startLine": 247,
+          "endLine": 273,
+          "params": [
+            "filters"
+          ]
+        },
+        {
+          "name": "getSetTrackedMatches",
+          "startLine": 282,
+          "endLine": 308,
+          "params": [
+            "ioSet",
+            "trackedBreakdownKeys"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "getLookupIndex",
+          "line": 192,
+          "isDefault": false
+        },
+        {
+          "name": "getEffects",
+          "line": 202,
+          "isDefault": false
+        },
+        {
+          "name": "getTypesForEffect",
+          "line": 218,
+          "isDefault": false
+        },
+        {
+          "name": "getStrengthsForFilter",
+          "line": 233,
+          "isDefault": false
+        },
+        {
+          "name": "searchBonusLookup",
+          "line": 247,
+          "isDefault": false
+        },
+        {
+          "name": "getSetTrackedMatches",
+          "line": 282,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "resolveEffectType",
+          "callee": "normalizeStatName",
+          "lineNumber": 115
+        },
+        {
+          "caller": "resolveEffectType",
+          "callee": "rawStat.toLowerCase",
+          "lineNumber": 122
+        },
+        {
+          "caller": "resolveEffectType",
+          "callee": "lower.startsWith",
+          "lineNumber": 128
+        },
+        {
+          "caller": "resolveEffectType",
+          "callee": "lower.startsWith",
+          "lineNumber": 129
+        },
+        {
+          "caller": "resolveEffectType",
+          "callee": "lower.includes",
+          "lineNumber": 130
+        },
+        {
+          "caller": "resolveEffectType",
+          "callee": "lower.includes",
+          "lineNumber": 131
+        },
+        {
+          "caller": "resolveEffectType",
+          "callee": "lower.includes",
+          "lineNumber": 131
+        },
+        {
+          "caller": "resolveEffectType",
+          "callee": "lower.includes",
+          "lineNumber": 134
+        },
+        {
+          "caller": "resolveEffectType",
+          "callee": "lower.includes",
+          "lineNumber": 134
+        },
+        {
+          "caller": "resolveEffectType",
+          "callee": "lower.includes",
+          "lineNumber": 135
+        },
+        {
+          "caller": "buildLookupIndex",
+          "callee": "getAllIOSets",
+          "lineNumber": 149
+        },
+        {
+          "caller": "buildLookupIndex",
+          "callee": "Object.entries",
+          "lineNumber": 153
+        },
+        {
+          "caller": "buildLookupIndex",
+          "callee": "resolveEffectType",
+          "lineNumber": 158
+        },
+        {
+          "caller": "buildLookupIndex",
+          "callee": "seen.has",
+          "lineNumber": 164
+        },
+        {
+          "caller": "buildLookupIndex",
+          "callee": "seen.add",
+          "lineNumber": 165
+        },
+        {
+          "caller": "buildLookupIndex",
+          "callee": "entries.push",
+          "lineNumber": 167
+        },
+        {
+          "caller": "getLookupIndex",
+          "callee": "buildLookupIndex",
+          "lineNumber": 194
+        },
+        {
+          "caller": "getEffects",
+          "callee": "getLookupIndex",
+          "lineNumber": 203
+        },
+        {
+          "caller": "getEffects",
+          "callee": "present.add",
+          "lineNumber": 206
+        },
+        {
+          "caller": "getEffects",
+          "callee": "EFFECT_ORDER.filter",
+          "lineNumber": 209
+        },
+        {
+          "caller": "getEffects",
+          "callee": "present.has",
+          "lineNumber": 209
+        },
+        {
+          "caller": "getEffects",
+          "callee": "Array.from(present).filter(e => !EFFECT_ORDER.includes(e)).sort",
+          "lineNumber": 210
+        },
+        {
+          "caller": "getEffects",
+          "callee": "Array.from(present).filter",
+          "lineNumber": 210
+        },
+        {
+          "caller": "getEffects",
+          "callee": "Array.from",
+          "lineNumber": 210
+        },
+        {
+          "caller": "getEffects",
+          "callee": "EFFECT_ORDER.includes",
+          "lineNumber": 210
+        },
+        {
+          "caller": "getTypesForEffect",
+          "callee": "getLookupIndex",
+          "lineNumber": 219
+        },
+        {
+          "caller": "getTypesForEffect",
+          "callee": "types.add",
+          "lineNumber": 223
+        },
+        {
+          "caller": "getTypesForEffect",
+          "callee": "Array.from(types).sort",
+          "lineNumber": 226
+        },
+        {
+          "caller": "getTypesForEffect",
+          "callee": "Array.from",
+          "lineNumber": 226
+        },
+        {
+          "caller": "getStrengthsForFilter",
+          "callee": "getLookupIndex",
+          "lineNumber": 234
+        },
+        {
+          "caller": "getStrengthsForFilter",
+          "callee": "values.add",
+          "lineNumber": 239
+        },
+        {
+          "caller": "getStrengthsForFilter",
+          "callee": "Array.from(values).sort",
+          "lineNumber": 241
+        },
+        {
+          "caller": "getStrengthsForFilter",
+          "callee": "Array.from",
+          "lineNumber": 241
+        },
+        {
+          "caller": "searchBonusLookup",
+          "callee": "getLookupIndex",
+          "lineNumber": 252
+        },
+        {
+          "caller": "searchBonusLookup",
+          "callee": "results.filter",
+          "lineNumber": 255
+        },
+        {
+          "caller": "searchBonusLookup",
+          "callee": "results.filter",
+          "lineNumber": 259
+        },
+        {
+          "caller": "searchBonusLookup",
+          "callee": "results.filter",
+          "lineNumber": 264
+        },
+        {
+          "caller": "searchBonusLookup",
+          "callee": "[...results].sort",
+          "lineNumber": 268
+        },
+        {
+          "caller": "searchBonusLookup",
+          "callee": "a.setName.localeCompare",
+          "lineNumber": 269
+        },
+        {
+          "caller": "getSetTrackedMatches",
+          "callee": "targetMap.set",
+          "lineNumber": 291
+        },
+        {
+          "caller": "getSetTrackedMatches",
+          "callee": "getPairedStat",
+          "lineNumber": 292
+        },
+        {
+          "caller": "getSetTrackedMatches",
+          "callee": "targetMap.set",
+          "lineNumber": 293
+        },
+        {
+          "caller": "getSetTrackedMatches",
+          "callee": "normalizeStatName",
+          "lineNumber": 300
+        },
+        {
+          "caller": "getSetTrackedMatches",
+          "callee": "targetMap.has",
+          "lineNumber": 301
+        },
+        {
+          "caller": "getSetTrackedMatches",
+          "callee": "matched.add",
+          "lineNumber": 302
+        },
+        {
+          "caller": "getSetTrackedMatches",
+          "callee": "targetMap.get",
+          "lineNumber": 302
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 6,
+        "functionCount": 8,
+        "classCount": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,393 @@
+{
+  "projectRoot": "/home/jiiwii/Github/CoH-Sidekick",
+  "batchFiles": [
+    {
+      "path": "src/components/enhancements/EnhancementIcon.tsx",
+      "language": "typescript",
+      "sizeLines": 368,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/enhancements/EnhancementPicker.tsx",
+      "language": "typescript",
+      "sizeLines": 2158,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/enhancements/SetBonusDisplay.tsx",
+      "language": "typescript",
+      "sizeLines": 200,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/enhancements/SetBonusList.tsx",
+      "language": "typescript",
+      "sizeLines": 169,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/export-image/BuildImageCard.tsx",
+      "language": "typescript",
+      "sizeLines": 341,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/export-image/exportOptions.ts",
+      "language": "typescript",
+      "sizeLines": 128,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/incarnate/IncarnateSlotGrid.tsx",
+      "language": "typescript",
+      "sizeLines": 218,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/incarnate/index.ts",
+      "language": "typescript",
+      "sizeLines": 10,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/info/PopOutInfoPanel.tsx",
+      "language": "typescript",
+      "sizeLines": 42,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/info/SetBonusPopup.tsx",
+      "language": "typescript",
+      "sizeLines": 327,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/info/index.ts",
+      "language": "typescript",
+      "sizeLines": 2,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/layout/ExemplarModeBanner.tsx",
+      "language": "typescript",
+      "sizeLines": 42,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/layout/MainLayout.tsx",
+      "language": "typescript",
+      "sizeLines": 180,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/layout/MobileBottomNav.tsx",
+      "language": "typescript",
+      "sizeLines": 642,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/layout/MobileBuildBar.tsx",
+      "language": "typescript",
+      "sizeLines": 64,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/layout/PinnedPowersBar.tsx",
+      "language": "typescript",
+      "sizeLines": 88,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/layout/StatsDashboard.tsx",
+      "language": "typescript",
+      "sizeLines": 1079,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/layout/StatusBanner.tsx",
+      "language": "typescript",
+      "sizeLines": 53,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/layout/UpdateBanner.tsx",
+      "language": "typescript",
+      "sizeLines": 55,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/modals/AboutModal.tsx",
+      "language": "typescript",
+      "sizeLines": 119,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/modals/AccoladesModal.tsx",
+      "language": "typescript",
+      "sizeLines": 128,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/modals/AnnouncementModal.tsx",
+      "language": "typescript",
+      "sizeLines": 181,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/modals/BuildImageModal.tsx",
+      "language": "typescript",
+      "sizeLines": 318,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/modals/ConfirmModal.tsx",
+      "language": "typescript",
+      "sizeLines": 46,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/modals/ControlsModal.tsx",
+      "language": "typescript",
+      "sizeLines": 168,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/modals/DetailedTotalsModal.tsx",
+      "language": "typescript",
+      "sizeLines": 612,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/modals/DonateModal.tsx",
+      "language": "typescript",
+      "sizeLines": 71,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/modals/EnhancementToolsModal.tsx",
+      "language": "typescript",
+      "sizeLines": 168,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/modals/ForumExportModal.tsx",
+      "language": "typescript",
+      "sizeLines": 193,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "src/components/enhancements/EnhancementIcon.tsx": [
+      "src/data/index.ts",
+      "src/types/index.ts",
+      "src/utils/paths.ts"
+    ],
+    "src/components/enhancements/EnhancementPicker.tsx": [
+      "src/components/enhancements/EnhancementIcon.tsx",
+      "src/components/enhancements/SetBonusList.tsx",
+      "src/components/modals/index.ts",
+      "src/components/ui/index.ts",
+      "src/data/index.ts",
+      "src/data/set-bonus-index.ts",
+      "src/stores/index.ts",
+      "src/types/index.ts",
+      "src/utils/calculations/index.ts",
+      "src/utils/enhancement-outline.ts"
+    ],
+    "src/components/enhancements/SetBonusDisplay.tsx": [
+      "src/components/ui/index.ts",
+      "src/hooks/index.ts",
+      "src/types/index.ts",
+      "src/utils/calculations/index.ts",
+      "src/utils/set-bonus-format.ts"
+    ],
+    "src/components/enhancements/SetBonusList.tsx": [
+      "src/hooks/index.ts",
+      "src/stores/index.ts",
+      "src/types/index.ts",
+      "src/utils/calculations/index.ts",
+      "src/utils/calculations/set-bonuses.ts",
+      "src/utils/set-bonus-format.ts"
+    ],
+    "src/components/export-image/BuildImageCard.tsx": [
+      "src/components/export-image/exportOptions.ts",
+      "src/components/powers/SlottedEnhancementIcon.tsx",
+      "src/data/index.ts",
+      "src/types/build.ts",
+      "src/types/enhancement.ts",
+      "src/types/incarnate.ts",
+      "src/types/index.ts",
+      "src/utils/build-powers.ts",
+      "src/utils/detailed-totals.ts",
+      "src/utils/paths.ts"
+    ],
+    "src/components/export-image/exportOptions.ts": [],
+    "src/components/incarnate/IncarnateSlotGrid.tsx": [
+      "src/components/incarnate/IncarnateEffectsTooltip.tsx",
+      "src/components/ui/index.ts",
+      "src/data/index.ts",
+      "src/hooks/index.ts",
+      "src/types/index.ts"
+    ],
+    "src/components/incarnate/index.ts": [],
+    "src/components/info/PopOutInfoPanel.tsx": [
+      "src/components/info/InfoPanel.tsx",
+      "src/components/ui/index.ts",
+      "src/stores/index.ts"
+    ],
+    "src/components/info/SetBonusPopup.tsx": [
+      "src/components/modals/Modal.tsx",
+      "src/components/ui/index.ts",
+      "src/data/set-bonus-groups.ts",
+      "src/hooks/index.ts",
+      "src/stores/index.ts",
+      "src/utils/calculations/set-bonuses.ts",
+      "src/utils/set-bonus-format.ts"
+    ],
+    "src/components/info/index.ts": [],
+    "src/components/layout/ExemplarModeBanner.tsx": [
+      "src/stores/uiStore.ts"
+    ],
+    "src/components/layout/MainLayout.tsx": [
+      "src/components/enhancements/EnhancementPicker.tsx",
+      "src/components/info/index.ts",
+      "src/components/layout/ExemplarModeBanner.tsx",
+      "src/components/layout/Header.tsx",
+      "src/components/layout/MobileBottomNav.tsx",
+      "src/components/layout/MobileBuildBar.tsx",
+      "src/components/layout/RuleOf5Banner.tsx",
+      "src/components/layout/StatsDashboard.tsx",
+      "src/components/layout/StatusBanner.tsx",
+      "src/components/layout/UpdateBanner.tsx",
+      "src/components/modals/index.ts",
+      "src/components/ui/Toast.tsx",
+      "src/hooks/useDashboardCollapseHotkey.ts",
+      "src/hooks/useInfoPanelLockHotkey.ts",
+      "src/hooks/useStatusCheck.ts",
+      "src/hooks/useTooltipHotkey.ts",
+      "src/hooks/useUndoRedoKeyboard.ts",
+      "src/lib/links.ts",
+      "src/stores/index.ts"
+    ],
+    "src/components/layout/MobileBottomNav.tsx": [
+      "src/components/layout/StatsDashboard.tsx",
+      "src/components/modals/index.ts",
+      "src/components/ui/index.ts",
+      "src/data/index.ts",
+      "src/lib/links.ts",
+      "src/lib/supabase.ts",
+      "src/stores/index.ts",
+      "src/stores/onboardingStore.ts",
+      "src/types/index.ts"
+    ],
+    "src/components/layout/MobileBuildBar.tsx": [
+      "src/components/layout/Header.tsx",
+      "src/components/ui/index.ts",
+      "src/hooks/index.ts",
+      "src/stores/index.ts"
+    ],
+    "src/components/layout/PinnedPowersBar.tsx": [
+      "src/components/powers/PermaRing.tsx",
+      "src/stores/index.ts",
+      "src/types/index.ts",
+      "src/utils/paths.ts",
+      "src/utils/power-icons.ts"
+    ],
+    "src/components/layout/StatsDashboard.tsx": [
+      "src/components/incarnate/index.ts",
+      "src/components/layout/PinnedPowersBar.tsx",
+      "src/components/modals/index.ts",
+      "src/components/powers/index.ts",
+      "src/components/ui/index.ts",
+      "src/data/core/movement-constants.ts",
+      "src/data/index.ts",
+      "src/data/purple-patch.ts",
+      "src/data/set-bonus-groups.ts",
+      "src/data/stat-definitions.ts",
+      "src/hooks/index.ts",
+      "src/hooks/useCalculatedStats.ts",
+      "src/stores/index.ts",
+      "src/types/index.ts",
+      "src/utils/calculations/character-totals.ts",
+      "src/utils/calculations/index.ts",
+      "src/utils/calculations/stats.ts",
+      "src/utils/set-bonus-format.ts"
+    ],
+    "src/components/layout/StatusBanner.tsx": [
+      "src/hooks/index.ts"
+    ],
+    "src/components/layout/UpdateBanner.tsx": [
+      "src/stores/index.ts"
+    ],
+    "src/components/modals/AboutModal.tsx": [
+      "src/components/modals/Modal.tsx",
+      "src/utils/paths.ts"
+    ],
+    "src/components/modals/AccoladesModal.tsx": [
+      "src/components/modals/Modal.tsx",
+      "src/components/ui/index.ts",
+      "src/data/index.ts",
+      "src/stores/index.ts",
+      "src/types/index.ts"
+    ],
+    "src/components/modals/AnnouncementModal.tsx": [
+      "src/components/modals/Modal.tsx",
+      "src/components/modals/RoadmapPanel.tsx",
+      "src/components/ui/index.ts",
+      "src/data/core/announcements.tsx",
+      "src/data/core/roadmap.tsx",
+      "src/stores/index.ts",
+      "src/utils/paths.ts"
+    ],
+    "src/components/modals/BuildImageModal.tsx": [
+      "src/components/export-image/BuildImageCard.tsx",
+      "src/components/export-image/exportOptions.ts",
+      "src/components/modals/Modal.tsx",
+      "src/components/ui/index.ts",
+      "src/hooks/index.ts",
+      "src/stores/index.ts",
+      "src/utils/calculations/stats.ts",
+      "src/utils/detailed-totals.ts",
+      "src/utils/export-image.ts"
+    ],
+    "src/components/modals/ConfirmModal.tsx": [
+      "src/components/modals/Modal.tsx",
+      "src/components/ui/index.ts"
+    ],
+    "src/components/modals/ControlsModal.tsx": [
+      "src/components/modals/Modal.tsx",
+      "src/hooks/index.ts"
+    ],
+    "src/components/modals/DetailedTotalsModal.tsx": [
+      "src/components/modals/Modal.tsx",
+      "src/data/stat-definitions.ts",
+      "src/hooks/index.ts",
+      "src/hooks/useCalculatedStats.ts",
+      "src/services/sharedBuilds.ts",
+      "src/stores/index.ts",
+      "src/types/build.ts",
+      "src/types/shared.ts",
+      "src/utils/build-serialization.ts",
+      "src/utils/calculations/character-totals.ts",
+      "src/utils/calculations/stats.ts",
+      "src/utils/detailed-totals.ts",
+      "src/utils/set-bonus-format.ts"
+    ],
+    "src/components/modals/DonateModal.tsx": [
+      "src/components/modals/Modal.tsx"
+    ],
+    "src/components/modals/EnhancementToolsModal.tsx": [
+      "src/components/modals/Modal.tsx",
+      "src/components/ui/index.ts",
+      "src/stores/index.ts"
+    ],
+    "src/components/modals/ForumExportModal.tsx": [
+      "src/components/modals/Modal.tsx",
+      "src/components/ui/index.ts",
+      "src/services/sharedBuilds.ts",
+      "src/stores/index.ts",
+      "src/types/build.ts",
+      "src/utils/forum-export.ts"
+    ]
+  }
+}

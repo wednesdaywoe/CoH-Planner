@@ -1,0 +1,5189 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 15,
+  "filesSkipped": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 15,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 15,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "src/data/powersets.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 105,
+      "nonEmptyLines": 90,
+      "functions": [
+        {
+          "name": "withoutDormant",
+          "startLine": 32,
+          "endLine": 38,
+          "params": [
+            "registry"
+          ]
+        },
+        {
+          "name": "getRegistry",
+          "startLine": 46,
+          "endLine": 54,
+          "params": []
+        },
+        {
+          "name": "getAllPowersets",
+          "startLine": 59,
+          "endLine": 61,
+          "params": []
+        },
+        {
+          "name": "getPowerset",
+          "startLine": 70,
+          "endLine": 72,
+          "params": [
+            "id"
+          ]
+        },
+        {
+          "name": "getPowersetsForArchetype",
+          "startLine": 77,
+          "endLine": 82,
+          "params": [
+            "archetypeId"
+          ]
+        },
+        {
+          "name": "getPower",
+          "startLine": 87,
+          "endLine": 90,
+          "params": [
+            "powersetId",
+            "powerName"
+          ]
+        },
+        {
+          "name": "getPowersAvailableAtLevel",
+          "startLine": 96,
+          "endLine": 100,
+          "params": [
+            "powersetId",
+            "level"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "getAllPowersets",
+          "line": 59,
+          "isDefault": false
+        },
+        {
+          "name": "getPowerset",
+          "line": 70,
+          "isDefault": false
+        },
+        {
+          "name": "getPowersetsForArchetype",
+          "line": 77,
+          "isDefault": false
+        },
+        {
+          "name": "getPower",
+          "line": 87,
+          "isDefault": false
+        },
+        {
+          "name": "getPowersAvailableAtLevel",
+          "line": 96,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "withoutDormant",
+          "callee": "Object.entries",
+          "lineNumber": 34
+        },
+        {
+          "caller": "getRegistry",
+          "callee": "getActiveDataset",
+          "lineNumber": 47
+        },
+        {
+          "caller": "getRegistry",
+          "callee": "_liveRegistryCache.get",
+          "lineNumber": 48
+        },
+        {
+          "caller": "getRegistry",
+          "callee": "withoutDormant",
+          "lineNumber": 50
+        },
+        {
+          "caller": "getRegistry",
+          "callee": "_liveRegistryCache.set",
+          "lineNumber": 51
+        },
+        {
+          "caller": "getAllPowersets",
+          "callee": "getRegistry",
+          "lineNumber": 60
+        },
+        {
+          "caller": "getPowerset",
+          "callee": "getRegistry",
+          "lineNumber": 71
+        },
+        {
+          "caller": "getPowersetsForArchetype",
+          "callee": "Object.entries(getRegistry())\n    .filter(([id]) => id.startsWith(prefix))\n    .map",
+          "lineNumber": 79
+        },
+        {
+          "caller": "getPowersetsForArchetype",
+          "callee": "Object.entries(getRegistry())\n    .filter",
+          "lineNumber": 79
+        },
+        {
+          "caller": "getPowersetsForArchetype",
+          "callee": "Object.entries",
+          "lineNumber": 79
+        },
+        {
+          "caller": "getPowersetsForArchetype",
+          "callee": "getRegistry",
+          "lineNumber": 79
+        },
+        {
+          "caller": "getPowersetsForArchetype",
+          "callee": "id.startsWith",
+          "lineNumber": 80
+        },
+        {
+          "caller": "getPower",
+          "callee": "getPowerset",
+          "lineNumber": 88
+        },
+        {
+          "caller": "getPower",
+          "callee": "powerset?.powers.find",
+          "lineNumber": 89
+        },
+        {
+          "caller": "getPowersAvailableAtLevel",
+          "callee": "getPowerset",
+          "lineNumber": 97
+        },
+        {
+          "caller": "getPowersAvailableAtLevel",
+          "callee": "powerset.powers.filter",
+          "lineNumber": 99
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 5,
+        "functionCount": 7,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/pages/ImportPage.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 221,
+      "nonEmptyLines": 206,
+      "functions": [
+        {
+          "name": "ImportPage",
+          "startLine": 24,
+          "endLine": 221,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "ImportPage",
+          "line": 24,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "ImportPage",
+          "callee": "useState",
+          "lineNumber": 25
+        },
+        {
+          "caller": "ImportPage",
+          "callee": "useState",
+          "lineNumber": 26
+        },
+        {
+          "caller": "ImportPage",
+          "callee": "useNavigate",
+          "lineNumber": 27
+        },
+        {
+          "caller": "ImportPage",
+          "callee": "useBuildStore",
+          "lineNumber": 28
+        },
+        {
+          "caller": "ImportPage",
+          "callee": "useEffect",
+          "lineNumber": 30
+        },
+        {
+          "caller": "ImportPage",
+          "callee": "setState",
+          "lineNumber": 33
+        },
+        {
+          "caller": "ImportPage",
+          "callee": "decodeImportFragment",
+          "lineNumber": 38
+        },
+        {
+          "caller": "ImportPage",
+          "callee": "importExternalBuild",
+          "lineNumber": 39
+        },
+        {
+          "caller": "ImportPage",
+          "callee": "setState",
+          "lineNumber": 41
+        },
+        {
+          "caller": "ImportPage",
+          "callee": "setState",
+          "lineNumber": 51
+        },
+        {
+          "caller": "ImportPage",
+          "callee": "setState",
+          "lineNumber": 54
+        },
+        {
+          "caller": "ImportPage",
+          "callee": "useCallback",
+          "lineNumber": 61
+        },
+        {
+          "caller": "ImportPage",
+          "callee": "importExternalBuild",
+          "lineNumber": 63
+        },
+        {
+          "caller": "ImportPage",
+          "callee": "setState",
+          "lineNumber": 65
+        },
+        {
+          "caller": "ImportPage",
+          "callee": "useCallback",
+          "lineNumber": 69
+        },
+        {
+          "caller": "ImportPage",
+          "callee": "importMidsBuild",
+          "lineNumber": 71
+        },
+        {
+          "caller": "ImportPage",
+          "callee": "navigate",
+          "lineNumber": 72
+        },
+        {
+          "caller": "ImportPage",
+          "callee": "navigate",
+          "lineNumber": 92
+        },
+        {
+          "caller": "ImportPage",
+          "callee": "navigate",
+          "lineNumber": 102
+        },
+        {
+          "caller": "ImportPage",
+          "callee": "state.result.availableBuilds.map",
+          "lineNumber": 119
+        },
+        {
+          "caller": "ImportPage",
+          "callee": "handleBuildSelect",
+          "lineNumber": 122
+        },
+        {
+          "caller": "ImportPage",
+          "callee": "state.result.build.pools.map((p) => p.name).join",
+          "lineNumber": 172
+        },
+        {
+          "caller": "ImportPage",
+          "callee": "state.result.build.pools.map",
+          "lineNumber": 172
+        },
+        {
+          "caller": "ImportPage",
+          "callee": "setShowWarnings",
+          "lineNumber": 188
+        },
+        {
+          "caller": "ImportPage",
+          "callee": "state.result.warnings.map",
+          "lineNumber": 196
+        },
+        {
+          "caller": "ImportPage",
+          "callee": "navigate",
+          "lineNumber": 212
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/types/archetype.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 153,
+      "nonEmptyLines": 137,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/types/build.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 349,
+      "nonEmptyLines": 300,
+      "functions": [
+        {
+          "name": "createEmptyBuild",
+          "startLine": 257,
+          "endLine": 294,
+          "params": [
+            "serverId"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "createEmptyBuild",
+          "line": 257,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "createEmptyBuild",
+          "callee": "createEmptyIncarnateBuildState",
+          "lineNumber": 287
+        },
+        {
+          "caller": "createEmptyBuild",
+          "callee": "createEmptyCraftingChecklistState",
+          "lineNumber": 288
+        },
+        {
+          "caller": "createEmptyBuild",
+          "callee": "createEmptyIncarnateObtainedState",
+          "lineNumber": 289
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/types/common.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 225,
+      "nonEmptyLines": 202,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/types/enhancement.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 196,
+      "nonEmptyLines": 170,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/types/incarnate.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 384,
+      "nonEmptyLines": 341,
+      "functions": [
+        {
+          "name": "createEmptyCraftingChecklistState",
+          "startLine": 230,
+          "endLine": 232,
+          "params": []
+        },
+        {
+          "name": "createEmptyIncarnateObtainedState",
+          "startLine": 237,
+          "endLine": 239,
+          "params": []
+        },
+        {
+          "name": "craftingKey",
+          "startLine": 244,
+          "endLine": 248,
+          "params": [
+            "slotId",
+            "treeId",
+            "tier",
+            "variant",
+            "item"
+          ]
+        },
+        {
+          "name": "createEmptyIncarnateBuildState",
+          "startLine": 289,
+          "endLine": 299,
+          "params": []
+        },
+        {
+          "name": "createDefaultIncarnateActiveState",
+          "startLine": 304,
+          "endLine": 314,
+          "params": []
+        },
+        {
+          "name": "inferTierFromPowerName",
+          "startLine": 327,
+          "endLine": 354,
+          "params": [
+            "powerName"
+          ]
+        },
+        {
+          "name": "inferGenesisTier",
+          "startLine": 367,
+          "endLine": 373,
+          "params": [
+            "powerName"
+          ]
+        },
+        {
+          "name": "inferBranchFromPowerName",
+          "startLine": 378,
+          "endLine": 384,
+          "params": [
+            "powerName"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "createEmptyCraftingChecklistState",
+          "line": 230,
+          "isDefault": false
+        },
+        {
+          "name": "createEmptyIncarnateObtainedState",
+          "line": 237,
+          "isDefault": false
+        },
+        {
+          "name": "craftingKey",
+          "line": 244,
+          "isDefault": false
+        },
+        {
+          "name": "INCARNATE_SLOT_ORDER",
+          "line": 257,
+          "isDefault": false
+        },
+        {
+          "name": "INCARNATE_TIER_ORDER",
+          "line": 270,
+          "isDefault": false
+        },
+        {
+          "name": "INCARNATE_REQUIRED_LEVEL",
+          "line": 280,
+          "isDefault": false
+        },
+        {
+          "name": "createEmptyIncarnateBuildState",
+          "line": 289,
+          "isDefault": false
+        },
+        {
+          "name": "createDefaultIncarnateActiveState",
+          "line": 304,
+          "isDefault": false
+        },
+        {
+          "name": "inferTierFromPowerName",
+          "line": 327,
+          "isDefault": false
+        },
+        {
+          "name": "inferGenesisTier",
+          "line": 367,
+          "isDefault": false
+        },
+        {
+          "name": "inferBranchFromPowerName",
+          "line": 378,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "inferTierFromPowerName",
+          "callee": "powerName.toLowerCase",
+          "lineNumber": 328
+        },
+        {
+          "caller": "inferTierFromPowerName",
+          "callee": "lowerName.includes",
+          "lineNumber": 332
+        },
+        {
+          "caller": "inferTierFromPowerName",
+          "callee": "lowerName.includes",
+          "lineNumber": 333
+        },
+        {
+          "caller": "inferTierFromPowerName",
+          "callee": "lowerName.includes",
+          "lineNumber": 334
+        },
+        {
+          "caller": "inferTierFromPowerName",
+          "callee": "lowerName.includes",
+          "lineNumber": 335
+        },
+        {
+          "caller": "inferTierFromPowerName",
+          "callee": "lowerName.includes",
+          "lineNumber": 336
+        },
+        {
+          "caller": "inferTierFromPowerName",
+          "callee": "lowerName.includes",
+          "lineNumber": 337
+        },
+        {
+          "caller": "inferTierFromPowerName",
+          "callee": "lowerName.includes",
+          "lineNumber": 338
+        },
+        {
+          "caller": "inferTierFromPowerName",
+          "callee": "lowerName.includes",
+          "lineNumber": 343
+        },
+        {
+          "caller": "inferTierFromPowerName",
+          "callee": "lowerName.includes",
+          "lineNumber": 343
+        },
+        {
+          "caller": "inferTierFromPowerName",
+          "callee": "lowerName.includes",
+          "lineNumber": 348
+        },
+        {
+          "caller": "inferTierFromPowerName",
+          "callee": "lowerName.includes",
+          "lineNumber": 348
+        },
+        {
+          "caller": "inferGenesisTier",
+          "callee": "powerName.toLowerCase",
+          "lineNumber": 368
+        },
+        {
+          "caller": "inferGenesisTier",
+          "callee": "l.includes",
+          "lineNumber": 369
+        },
+        {
+          "caller": "inferGenesisTier",
+          "callee": "l.includes",
+          "lineNumber": 370
+        },
+        {
+          "caller": "inferGenesisTier",
+          "callee": "l.includes",
+          "lineNumber": 370
+        },
+        {
+          "caller": "inferGenesisTier",
+          "callee": "l.includes",
+          "lineNumber": 371
+        },
+        {
+          "caller": "inferGenesisTier",
+          "callee": "l.includes",
+          "lineNumber": 371
+        },
+        {
+          "caller": "inferBranchFromPowerName",
+          "callee": "powerName.toLowerCase",
+          "lineNumber": 379
+        },
+        {
+          "caller": "inferBranchFromPowerName",
+          "callee": "lowerName.includes",
+          "lineNumber": 381
+        },
+        {
+          "caller": "inferBranchFromPowerName",
+          "callee": "lowerName.includes",
+          "lineNumber": 382
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 11,
+        "functionCount": 8,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/types/power.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 1106,
+      "nonEmptyLines": 1040,
+      "functions": [
+        {
+          "name": "getScaleValue",
+          "startLine": 88,
+          "endLine": 92,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "isScaledEffect",
+          "startLine": 97,
+          "endLine": 104,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "isSelfDirectedEffect",
+          "startLine": 112,
+          "endLine": 114,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "hasSelfDirectedPenalty",
+          "startLine": 123,
+          "endLine": 140,
+          "params": [
+            "effects"
+          ]
+        },
+        {
+          "name": "isMezEffect",
+          "startLine": 203,
+          "endLine": 211,
+          "params": [
+            "value"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "getScaleValue",
+          "line": 88,
+          "isDefault": false
+        },
+        {
+          "name": "isScaledEffect",
+          "line": 97,
+          "isDefault": false
+        },
+        {
+          "name": "isSelfDirectedEffect",
+          "line": 112,
+          "isDefault": false
+        },
+        {
+          "name": "hasSelfDirectedPenalty",
+          "line": 123,
+          "isDefault": false
+        },
+        {
+          "name": "isMezEffect",
+          "line": 203,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "isSelfDirectedEffect",
+          "callee": "isScaledEffect",
+          "lineNumber": 113
+        },
+        {
+          "caller": "hasSelfDirectedPenalty",
+          "callee": "isSelfDirectedEffect",
+          "lineNumber": 126
+        },
+        {
+          "caller": "hasSelfDirectedPenalty",
+          "callee": "isSelfDirectedEffect",
+          "lineNumber": 127
+        },
+        {
+          "caller": "hasSelfDirectedPenalty",
+          "callee": "isSelfDirectedEffect",
+          "lineNumber": 128
+        },
+        {
+          "caller": "hasSelfDirectedPenalty",
+          "callee": "isSelfDirectedEffect",
+          "lineNumber": 129
+        },
+        {
+          "caller": "hasSelfDirectedPenalty",
+          "callee": "Object.values",
+          "lineNumber": 135
+        },
+        {
+          "caller": "hasSelfDirectedPenalty",
+          "callee": "isSelfDirectedEffect",
+          "lineNumber": 136
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 5,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/types/ui.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 280,
+      "nonEmptyLines": 248,
+      "functions": [
+        {
+          "name": "createDefaultUIState",
+          "startLine": 240,
+          "endLine": 280,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "createDefaultUIState",
+          "line": 240,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/utils/build-enhancement-validation.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 113,
+      "nonEmptyLines": 104,
+      "functions": [
+        {
+          "name": "powerIllegalSlotIndices",
+          "startLine": 39,
+          "endLine": 51,
+          "params": [
+            "power"
+          ]
+        },
+        {
+          "name": "forEachPower",
+          "startLine": 54,
+          "endLine": 63,
+          "params": [
+            "build",
+            "fn"
+          ]
+        },
+        {
+          "name": "findIllegalSlots",
+          "startLine": 66,
+          "endLine": 80,
+          "params": [
+            "build"
+          ]
+        },
+        {
+          "name": "withoutIllegalSlots",
+          "startLine": 89,
+          "endLine": 113,
+          "params": [
+            "build"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "powerIllegalSlotIndices",
+          "line": 39,
+          "isDefault": false
+        },
+        {
+          "name": "findIllegalSlots",
+          "line": 66,
+          "isDefault": false
+        },
+        {
+          "name": "withoutIllegalSlots",
+          "line": 89,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "powerIllegalSlotIndices",
+          "callee": "Array.isArray",
+          "lineNumber": 45
+        },
+        {
+          "caller": "powerIllegalSlotIndices",
+          "callee": "(power.slots ?? []).forEach",
+          "lineNumber": 47
+        },
+        {
+          "caller": "powerIllegalSlotIndices",
+          "callee": "enhancementAllowedInPower",
+          "lineNumber": 48
+        },
+        {
+          "caller": "powerIllegalSlotIndices",
+          "callee": "out.push",
+          "lineNumber": 48
+        },
+        {
+          "caller": "forEachPower",
+          "callee": "build.primary?.powers?.forEach",
+          "lineNumber": 58
+        },
+        {
+          "caller": "forEachPower",
+          "callee": "fn",
+          "lineNumber": 58
+        },
+        {
+          "caller": "forEachPower",
+          "callee": "build.secondary?.powers?.forEach",
+          "lineNumber": 59
+        },
+        {
+          "caller": "forEachPower",
+          "callee": "fn",
+          "lineNumber": 59
+        },
+        {
+          "caller": "forEachPower",
+          "callee": "build.pools?.forEach",
+          "lineNumber": 60
+        },
+        {
+          "caller": "forEachPower",
+          "callee": "pool.powers?.forEach",
+          "lineNumber": 60
+        },
+        {
+          "caller": "forEachPower",
+          "callee": "fn",
+          "lineNumber": 60
+        },
+        {
+          "caller": "forEachPower",
+          "callee": "build.epicPool?.powers?.forEach",
+          "lineNumber": 61
+        },
+        {
+          "caller": "forEachPower",
+          "callee": "fn",
+          "lineNumber": 61
+        },
+        {
+          "caller": "forEachPower",
+          "callee": "build.inherents?.forEach",
+          "lineNumber": 62
+        },
+        {
+          "caller": "forEachPower",
+          "callee": "fn",
+          "lineNumber": 62
+        },
+        {
+          "caller": "findIllegalSlots",
+          "callee": "forEachPower",
+          "lineNumber": 68
+        },
+        {
+          "caller": "findIllegalSlots",
+          "callee": "powerIllegalSlotIndices",
+          "lineNumber": 69
+        },
+        {
+          "caller": "findIllegalSlots",
+          "callee": "illegal.push",
+          "lineNumber": 70
+        },
+        {
+          "caller": "sanitizePower",
+          "callee": "powerIllegalSlotIndices",
+          "lineNumber": 93
+        },
+        {
+          "caller": "sanitizePower",
+          "callee": "power.slots.map",
+          "lineNumber": 99
+        },
+        {
+          "caller": "sanitizePower",
+          "callee": "badSet.has",
+          "lineNumber": 99
+        },
+        {
+          "caller": "withoutIllegalSlots",
+          "callee": "build.primary.powers.map",
+          "lineNumber": 103
+        },
+        {
+          "caller": "withoutIllegalSlots",
+          "callee": "build.secondary.powers.map",
+          "lineNumber": 104
+        },
+        {
+          "caller": "withoutIllegalSlots",
+          "callee": "build.pools.map",
+          "lineNumber": 105
+        },
+        {
+          "caller": "withoutIllegalSlots",
+          "callee": "pool.powers.map",
+          "lineNumber": 105
+        },
+        {
+          "caller": "withoutIllegalSlots",
+          "callee": "build.epicPool.powers.map",
+          "lineNumber": 107
+        },
+        {
+          "caller": "withoutIllegalSlots",
+          "callee": "build.inherents.map",
+          "lineNumber": 109
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 3,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/utils/build-powers.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 122,
+      "nonEmptyLines": 112,
+      "functions": [
+        {
+          "name": "getBuildPowers",
+          "startLine": 29,
+          "endLine": 40,
+          "params": [
+            "build"
+          ]
+        },
+        {
+          "name": "getSelectedPowersByLevel",
+          "startLine": 46,
+          "endLine": 56,
+          "params": [
+            "build"
+          ]
+        },
+        {
+          "name": "isPowerSlotted",
+          "startLine": 59,
+          "endLine": 61,
+          "params": [
+            "power"
+          ]
+        },
+        {
+          "name": "getInherentPowers",
+          "startLine": 64,
+          "endLine": 66,
+          "params": [
+            "build"
+          ]
+        },
+        {
+          "name": "getSlottedInherents",
+          "startLine": 72,
+          "endLine": 74,
+          "params": [
+            "build"
+          ]
+        },
+        {
+          "name": "dedupePools",
+          "startLine": 98,
+          "endLine": 113,
+          "params": [
+            "pools",
+            "maxPools"
+          ]
+        },
+        {
+          "name": "getSelectedIncarnates",
+          "startLine": 116,
+          "endLine": 122,
+          "params": [
+            "build"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "getBuildPowers",
+          "line": 29,
+          "isDefault": false
+        },
+        {
+          "name": "getSelectedPowersByLevel",
+          "line": 46,
+          "isDefault": false
+        },
+        {
+          "name": "isPowerSlotted",
+          "line": 59,
+          "isDefault": false
+        },
+        {
+          "name": "getInherentPowers",
+          "line": 64,
+          "isDefault": false
+        },
+        {
+          "name": "getSlottedInherents",
+          "line": 72,
+          "isDefault": false
+        },
+        {
+          "name": "dedupePools",
+          "line": 98,
+          "isDefault": false
+        },
+        {
+          "name": "getSelectedIncarnates",
+          "line": 116,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "getBuildPowers",
+          "callee": "[\n    ...build.primary.powers,\n    ...build.secondary.powers,\n    ...build.pools.flatMap((p) => p.powers),\n    ...(build.epicPool?.powers ?? []),\n  ].filter",
+          "lineNumber": 30
+        },
+        {
+          "caller": "getBuildPowers",
+          "callee": "build.pools.flatMap",
+          "lineNumber": 33
+        },
+        {
+          "caller": "getBuildPowers",
+          "callee": "all.sort",
+          "lineNumber": 39
+        },
+        {
+          "caller": "getSelectedPowersByLevel",
+          "callee": "getBuildPowers",
+          "lineNumber": 48
+        },
+        {
+          "caller": "getSelectedPowersByLevel",
+          "callee": "byLevel.get",
+          "lineNumber": 49
+        },
+        {
+          "caller": "getSelectedPowersByLevel",
+          "callee": "group.push",
+          "lineNumber": 50
+        },
+        {
+          "caller": "getSelectedPowersByLevel",
+          "callee": "byLevel.set",
+          "lineNumber": 51
+        },
+        {
+          "caller": "getSelectedPowersByLevel",
+          "callee": "[...byLevel.entries()]\n    .sort((a, b) => a[0] - b[0])\n    .map",
+          "lineNumber": 53
+        },
+        {
+          "caller": "getSelectedPowersByLevel",
+          "callee": "[...byLevel.entries()]\n    .sort",
+          "lineNumber": 53
+        },
+        {
+          "caller": "getSelectedPowersByLevel",
+          "callee": "byLevel.entries",
+          "lineNumber": 53
+        },
+        {
+          "caller": "isPowerSlotted",
+          "callee": "power.slots.some",
+          "lineNumber": 60
+        },
+        {
+          "caller": "getInherentPowers",
+          "callee": "(build.inherents ?? []).filter",
+          "lineNumber": 65
+        },
+        {
+          "caller": "getSlottedInherents",
+          "callee": "getInherentPowers(build).filter",
+          "lineNumber": 73
+        },
+        {
+          "caller": "getSlottedInherents",
+          "callee": "getInherentPowers",
+          "lineNumber": 73
+        },
+        {
+          "caller": "dedupePools",
+          "callee": "byId.get",
+          "lineNumber": 101
+        },
+        {
+          "caller": "dedupePools",
+          "callee": "existing.powers.some",
+          "lineNumber": 104
+        },
+        {
+          "caller": "dedupePools",
+          "callee": "existing.powers.push",
+          "lineNumber": 105
+        },
+        {
+          "caller": "dedupePools",
+          "callee": "byId.set",
+          "lineNumber": 109
+        },
+        {
+          "caller": "dedupePools",
+          "callee": "[...byId.values()].slice",
+          "lineNumber": 112
+        },
+        {
+          "caller": "dedupePools",
+          "callee": "byId.values",
+          "lineNumber": 112
+        },
+        {
+          "caller": "dedupePools",
+          "callee": "Math.max",
+          "lineNumber": 112
+        },
+        {
+          "caller": "getSelectedIncarnates",
+          "callee": "INCARNATE_SLOT_ORDER.map((slotId) => inc[slotId]).filter",
+          "lineNumber": 119
+        },
+        {
+          "caller": "getSelectedIncarnates",
+          "callee": "INCARNATE_SLOT_ORDER.map",
+          "lineNumber": 119
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 7,
+        "functionCount": 7,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/utils/build-serialization.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 544,
+      "nonEmptyLines": 508,
+      "functions": [
+        {
+          "name": "slimBuild",
+          "startLine": 87,
+          "endLine": 117,
+          "params": [
+            "build"
+          ]
+        },
+        {
+          "name": "encodeBuildToHash",
+          "startLine": 129,
+          "endLine": 134,
+          "params": [
+            "build"
+          ]
+        },
+        {
+          "name": "slimPowersetSelection",
+          "startLine": 136,
+          "endLine": 142,
+          "params": [
+            "ps"
+          ]
+        },
+        {
+          "name": "slimPoolSelection",
+          "startLine": 144,
+          "endLine": 150,
+          "params": [
+            "pool"
+          ]
+        },
+        {
+          "name": "slimPower",
+          "startLine": 152,
+          "endLine": 165,
+          "params": [
+            "power"
+          ]
+        },
+        {
+          "name": "slimEnhancement",
+          "startLine": 167,
+          "endLine": 200,
+          "params": [
+            "enh"
+          ]
+        },
+        {
+          "name": "slimInherents",
+          "startLine": 207,
+          "endLine": 211,
+          "params": [
+            "inherents"
+          ]
+        },
+        {
+          "name": "getBranchPowerDefs",
+          "startLine": 228,
+          "endLine": 244,
+          "params": [
+            "archetype",
+            "role"
+          ]
+        },
+        {
+          "name": "hydrateBuild",
+          "startLine": 249,
+          "endLine": 378,
+          "params": [
+            "slim"
+          ]
+        },
+        {
+          "name": "hydratePowers",
+          "startLine": 383,
+          "endLine": 462,
+          "params": [
+            "slimPowers",
+            "powerDefs",
+            "powerSetId"
+          ]
+        },
+        {
+          "name": "hydrateEnhancement",
+          "startLine": 467,
+          "endLine": 506,
+          "params": [
+            "slim"
+          ]
+        },
+        {
+          "name": "createInherentSelectedPower",
+          "startLine": 512,
+          "endLine": 531,
+          "params": [
+            "def",
+            "characterLevel"
+          ]
+        },
+        {
+          "name": "getInherentSelectedPowers",
+          "startLine": 533,
+          "endLine": 544,
+          "params": [
+            "archetypeName",
+            "archetypeInherent",
+            "characterLevel"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "slimBuild",
+          "line": 87,
+          "isDefault": false
+        },
+        {
+          "name": "encodeBuildToHash",
+          "line": 129,
+          "isDefault": false
+        },
+        {
+          "name": "hydrateBuild",
+          "line": 249,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "slimBuild",
+          "callee": "slimPowersetSelection",
+          "lineNumber": 94
+        },
+        {
+          "caller": "slimBuild",
+          "callee": "slimPowersetSelection",
+          "lineNumber": 95
+        },
+        {
+          "caller": "slimBuild",
+          "callee": "build.pools.map",
+          "lineNumber": 96
+        },
+        {
+          "caller": "slimBuild",
+          "callee": "slimPoolSelection",
+          "lineNumber": 97
+        },
+        {
+          "caller": "slimBuild",
+          "callee": "slimInherents",
+          "lineNumber": 98
+        },
+        {
+          "caller": "slimBuild",
+          "callee": "Object.fromEntries",
+          "lineNumber": 101
+        },
+        {
+          "caller": "slimBuild",
+          "callee": "Object.entries(build.sets).map",
+          "lineNumber": 102
+        },
+        {
+          "caller": "slimBuild",
+          "callee": "Object.entries",
+          "lineNumber": 102
+        },
+        {
+          "caller": "slimBuild",
+          "callee": "Array.from",
+          "lineNumber": 104
+        },
+        {
+          "caller": "encodeBuildToHash",
+          "callee": "slimBuild",
+          "lineNumber": 130
+        },
+        {
+          "caller": "encodeBuildToHash",
+          "callee": "encodeImportFragment",
+          "lineNumber": 133
+        },
+        {
+          "caller": "encodeBuildToHash",
+          "callee": "JSON.stringify",
+          "lineNumber": 133
+        },
+        {
+          "caller": "slimPowersetSelection",
+          "callee": "ps.powers.map",
+          "lineNumber": 140
+        },
+        {
+          "caller": "slimPoolSelection",
+          "callee": "pool.powers.map",
+          "lineNumber": 148
+        },
+        {
+          "caller": "slimPower",
+          "callee": "power.slots.map",
+          "lineNumber": 157
+        },
+        {
+          "caller": "slimPower",
+          "callee": "slimEnhancement",
+          "lineNumber": 157
+        },
+        {
+          "caller": "slimEnhancement",
+          "callee": "e.id.startsWith",
+          "lineNumber": 186
+        },
+        {
+          "caller": "slimEnhancement",
+          "callee": "e.id.slice",
+          "lineNumber": 187
+        },
+        {
+          "caller": "slimInherents",
+          "callee": "inherents\n    .filter((p) => p.slots.some((s) => s !== null) || p.slots.length > 1)\n    .map",
+          "lineNumber": 208
+        },
+        {
+          "caller": "slimInherents",
+          "callee": "inherents\n    .filter",
+          "lineNumber": 208
+        },
+        {
+          "caller": "slimInherents",
+          "callee": "p.slots.some",
+          "lineNumber": 209
+        },
+        {
+          "caller": "getBranchPowerDefs",
+          "callee": "Object.values",
+          "lineNumber": 234
+        },
+        {
+          "caller": "getBranchPowerDefs",
+          "callee": "getPowerset",
+          "lineNumber": 238
+        },
+        {
+          "caller": "getBranchPowerDefs",
+          "callee": "branchPowers.push",
+          "lineNumber": 240
+        },
+        {
+          "caller": "hydrateBuild",
+          "callee": "getArchetype",
+          "lineNumber": 252
+        },
+        {
+          "caller": "hydrateBuild",
+          "callee": "getPowerset",
+          "lineNumber": 263
+        },
+        {
+          "caller": "hydrateBuild",
+          "callee": "getBranchPowerDefs",
+          "lineNumber": 264
+        },
+        {
+          "caller": "hydrateBuild",
+          "callee": "hydratePowers",
+          "lineNumber": 265
+        },
+        {
+          "caller": "hydrateBuild",
+          "callee": "getPowerset",
+          "lineNumber": 269
+        },
+        {
+          "caller": "hydrateBuild",
+          "callee": "getBranchPowerDefs",
+          "lineNumber": 270
+        },
+        {
+          "caller": "hydrateBuild",
+          "callee": "hydratePowers",
+          "lineNumber": 271
+        },
+        {
+          "caller": "hydrateBuild",
+          "callee": "(slim.pools ?? []).map",
+          "lineNumber": 274
+        },
+        {
+          "caller": "hydrateBuild",
+          "callee": "getPowerPool",
+          "lineNumber": 275
+        },
+        {
+          "caller": "hydrateBuild",
+          "callee": "hydratePowers",
+          "lineNumber": 279
+        },
+        {
+          "caller": "hydrateBuild",
+          "callee": "getEpicPool",
+          "lineNumber": 286
+        },
+        {
+          "caller": "hydrateBuild",
+          "callee": "hydratePowers",
+          "lineNumber": 290
+        },
+        {
+          "caller": "hydrateBuild",
+          "callee": "getInherentSelectedPowers",
+          "lineNumber": 298
+        },
+        {
+          "caller": "hydrateBuild",
+          "callee": "inherents.find",
+          "lineNumber": 306
+        },
+        {
+          "caller": "hydrateBuild",
+          "callee": "inherents.find",
+          "lineNumber": 309
+        },
+        {
+          "caller": "hydrateBuild",
+          "callee": "inh.name.toLowerCase",
+          "lineNumber": 310
+        },
+        {
+          "caller": "hydrateBuild",
+          "callee": "slimInh.name.toLowerCase",
+          "lineNumber": 310
+        },
+        {
+          "caller": "hydrateBuild",
+          "callee": "slimInh.slots.map",
+          "lineNumber": 318
+        },
+        {
+          "caller": "hydrateBuild",
+          "callee": "hydrateEnhancement",
+          "lineNumber": 319
+        },
+        {
+          "caller": "hydrateBuild",
+          "callee": "Object.entries",
+          "lineNumber": 328
+        },
+        {
+          "caller": "hydrateBuild",
+          "callee": "Object.fromEntries",
+          "lineNumber": 332
+        },
+        {
+          "caller": "hydrateBuild",
+          "callee": "setsEntries.map",
+          "lineNumber": 333
+        },
+        {
+          "caller": "hydrateBuild",
+          "callee": "createEmptyIncarnateBuildState",
+          "lineNumber": 366
+        },
+        {
+          "caller": "hydrateBuild",
+          "callee": "Array.isArray",
+          "lineNumber": 372
+        },
+        {
+          "caller": "hydrateBuild",
+          "callee": "Array.isArray",
+          "lineNumber": 376
+        },
+        {
+          "caller": "hydratePowers",
+          "callee": "slimPowers.map",
+          "lineNumber": 384
+        },
+        {
+          "caller": "hydratePowers",
+          "callee": "powerDefs.find",
+          "lineNumber": 393
+        },
+        {
+          "caller": "hydratePowers",
+          "callee": "slim.internalName.toLowerCase",
+          "lineNumber": 396
+        },
+        {
+          "caller": "hydratePowers",
+          "callee": "powerDefs.find",
+          "lineNumber": 397
+        },
+        {
+          "caller": "hydratePowers",
+          "callee": "p.internalName.toLowerCase",
+          "lineNumber": 397
+        },
+        {
+          "caller": "hydratePowers",
+          "callee": "powerDefs.find",
+          "lineNumber": 400
+        },
+        {
+          "caller": "hydratePowers",
+          "callee": "p.name.toLowerCase",
+          "lineNumber": 401
+        },
+        {
+          "caller": "hydratePowers",
+          "callee": "slim.name.toLowerCase",
+          "lineNumber": 401
+        },
+        {
+          "caller": "hydratePowers",
+          "callee": "slim.slots.map",
+          "lineNumber": 406
+        },
+        {
+          "caller": "hydratePowers",
+          "callee": "hydrateEnhancement",
+          "lineNumber": 407
+        },
+        {
+          "caller": "hydratePowers",
+          "callee": "slots.push",
+          "lineNumber": 411
+        },
+        {
+          "caller": "hydratePowers",
+          "callee": "slim.name.replace",
+          "lineNumber": 431
+        },
+        {
+          "caller": "hydratePowers",
+          "callee": "hydrated.filter",
+          "lineNumber": 457
+        },
+        {
+          "caller": "hydratePowers",
+          "callee": "seen.has",
+          "lineNumber": 458
+        },
+        {
+          "caller": "hydratePowers",
+          "callee": "seen.add",
+          "lineNumber": 459
+        },
+        {
+          "caller": "hydrateEnhancement",
+          "callee": "getIOSet",
+          "lineNumber": 470
+        },
+        {
+          "caller": "hydrateEnhancement",
+          "callee": "ioSet.pieces.find",
+          "lineNumber": 472
+        },
+        {
+          "caller": "hydrateEnhancement",
+          "callee": "createIOSetEnhancement",
+          "lineNumber": 474
+        },
+        {
+          "caller": "hydrateEnhancement",
+          "callee": "createGenericIOEnhancement",
+          "lineNumber": 481
+        },
+        {
+          "caller": "hydrateEnhancement",
+          "callee": "createSpecialEnhancement",
+          "lineNumber": 493
+        },
+        {
+          "caller": "hydrateEnhancement",
+          "callee": "createOriginEnhancement",
+          "lineNumber": 496
+        },
+        {
+          "caller": "createInherentSelectedPower",
+          "callee": "getInherentAutoGrantedSlotCount",
+          "lineNumber": 520
+        },
+        {
+          "caller": "createInherentSelectedPower",
+          "callee": "slots.push",
+          "lineNumber": 521
+        },
+        {
+          "caller": "getInherentSelectedPowers",
+          "callee": "getInherentPowers().map",
+          "lineNumber": 538
+        },
+        {
+          "caller": "getInherentSelectedPowers",
+          "callee": "getInherentPowers",
+          "lineNumber": 538
+        },
+        {
+          "caller": "getInherentSelectedPowers",
+          "callee": "createInherentSelectedPower",
+          "lineNumber": 538
+        },
+        {
+          "caller": "getInherentSelectedPowers",
+          "callee": "createArchetypeInherentPower",
+          "lineNumber": 540
+        },
+        {
+          "caller": "getInherentSelectedPowers",
+          "callee": "powers.unshift",
+          "lineNumber": 541
+        },
+        {
+          "caller": "getInherentSelectedPowers",
+          "callee": "createInherentSelectedPower",
+          "lineNumber": 541
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 3,
+        "functionCount": 13,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/utils/calculations/buff-pet-auras.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 105,
+      "nonEmptyLines": 94,
+      "functions": [
+        {
+          "name": "isBuffPetAuraEffect",
+          "startLine": 42,
+          "endLine": 44,
+          "params": [
+            "effect"
+          ]
+        },
+        {
+          "name": "auraKey",
+          "startLine": 56,
+          "endLine": 59,
+          "params": [
+            "e"
+          ]
+        },
+        {
+          "name": "getBuffPetSources",
+          "startLine": 67,
+          "endLine": 100,
+          "params": [
+            "summon"
+          ]
+        },
+        {
+          "name": "summonIsBuffPet",
+          "startLine": 103,
+          "endLine": 105,
+          "params": [
+            "summon"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "BUFF_PET_TOGGLE_ID",
+          "line": 29,
+          "isDefault": false
+        },
+        {
+          "name": "BUFF_PET_AURA_TYPES",
+          "line": 32,
+          "isDefault": false
+        },
+        {
+          "name": "isBuffPetAuraEffect",
+          "line": 42,
+          "isDefault": false
+        },
+        {
+          "name": "getBuffPetSources",
+          "line": 67,
+          "isDefault": false
+        },
+        {
+          "name": "summonIsBuffPet",
+          "line": 103,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "isBuffPetAuraEffect",
+          "callee": "BUFF_PET_AURA_TYPES.has",
+          "lineNumber": 43
+        },
+        {
+          "caller": "auraKey",
+          "callee": "(e.defenseTypes ?? e.resistanceTypes ?? []).join",
+          "lineNumber": 57
+        },
+        {
+          "caller": "getBuffPetSources",
+          "callee": "names.add",
+          "lineNumber": 71
+        },
+        {
+          "caller": "getBuffPetSources",
+          "callee": "names.add",
+          "lineNumber": 73
+        },
+        {
+          "caller": "getBuffPetSources",
+          "callee": "getPetEntity",
+          "lineNumber": 78
+        },
+        {
+          "caller": "getBuffPetSources",
+          "callee": "isBuffPetAuraEffect",
+          "lineNumber": 88
+        },
+        {
+          "caller": "getBuffPetSources",
+          "callee": "auraKey",
+          "lineNumber": 89
+        },
+        {
+          "caller": "getBuffPetSources",
+          "callee": "seen.has",
+          "lineNumber": 90
+        },
+        {
+          "caller": "getBuffPetSources",
+          "callee": "seen.add",
+          "lineNumber": 91
+        },
+        {
+          "caller": "getBuffPetSources",
+          "callee": "auras.push",
+          "lineNumber": 92
+        },
+        {
+          "caller": "getBuffPetSources",
+          "callee": "sources.push",
+          "lineNumber": 96
+        },
+        {
+          "caller": "summonIsBuffPet",
+          "callee": "getBuffPetSources",
+          "lineNumber": 104
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 5,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/utils/calculations/character-totals.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 4547,
+      "nonEmptyLines": 4226,
+      "functions": [
+        {
+          "name": "createEmptyGlobalBonuses",
+          "startLine": 250,
+          "endLine": 340,
+          "params": []
+        },
+        {
+          "name": "applySetBonusesToGlobal",
+          "startLine": 453,
+          "endLine": 479,
+          "params": [
+            "aggregated",
+            "global"
+          ]
+        },
+        {
+          "name": "buildStatBreakdown",
+          "startLine": 484,
+          "endLine": 524,
+          "params": [
+            "breakdownItems"
+          ]
+        },
+        {
+          "name": "adjustForPerTarget",
+          "startLine": 547,
+          "endLine": 560,
+          "params": [
+            "value",
+            "targetsHit"
+          ]
+        },
+        {
+          "name": "adjustForStacking",
+          "startLine": 572,
+          "endLine": 610,
+          "params": [
+            "value",
+            "targetsHit",
+            "stacksLinear",
+            "effectKey",
+            "maxStacks",
+            "stackCaps"
+          ]
+        },
+        {
+          "name": "applyToggleEndCosts",
+          "startLine": 768,
+          "endLine": 815,
+          "params": [
+            "powers",
+            "global",
+            "breakdown",
+            "buildLevel",
+            "alphaBonuses",
+            "alphaEdBypassRatio",
+            "exemplarLevel"
+          ]
+        },
+        {
+          "name": "emptyStrengthBuffs",
+          "startLine": 837,
+          "endLine": 839,
+          "params": []
+        },
+        {
+          "name": "collectStrengthBuffs",
+          "startLine": 864,
+          "endLine": 905,
+          "params": [
+            "powers",
+            "archetypeId",
+            "buildLevel",
+            "targetsHitValues"
+          ]
+        },
+        {
+          "name": "resolveStealthRadius",
+          "startLine": 936,
+          "endLine": 978,
+          "params": [
+            "contribs",
+            "global",
+            "breakdown"
+          ]
+        },
+        {
+          "name": "resolveMovementTotals",
+          "startLine": 1016,
+          "endLine": 1055,
+          "params": [
+            "contribs",
+            "global",
+            "breakdown",
+            "combatMode"
+          ]
+        },
+        {
+          "name": "movementMeta",
+          "startLine": 1058,
+          "endLine": 1062,
+          "params": [
+            "effect"
+          ]
+        },
+        {
+          "name": "applyActivePowerBonuses",
+          "startLine": 1064,
+          "endLine": 2092,
+          "params": [
+            "powers",
+            "global",
+            "breakdown",
+            "buildLevel",
+            "archetypeId",
+            "alphaBonuses",
+            "alphaEdBypassRatio",
+            "targetsHitValues",
+            "exemplarLevel",
+            "combatMode",
+            "strengthBuffs",
+            "stealthContribs",
+            "absorbFractionContribs",
+            "movementContribs",
+            "resSelfDebuffContribs"
+          ]
+        },
+        {
+          "name": "formatDebugNum",
+          "startLine": 2094,
+          "endLine": 2096,
+          "params": [
+            "n"
+          ]
+        },
+        {
+          "name": "extractScaleValue",
+          "startLine": 2098,
+          "endLine": 2102,
+          "params": [
+            "effect"
+          ]
+        },
+        {
+          "name": "resolveScaledEffect",
+          "startLine": 2110,
+          "endLine": 2136,
+          "params": [
+            "effect",
+            "archetypeId",
+            "level",
+            "_debugContext"
+          ]
+        },
+        {
+          "name": "resolveMovementPercent",
+          "startLine": 2158,
+          "endLine": 2165,
+          "params": [
+            "effect",
+            "_movementKey",
+            "archetypeId",
+            "level"
+          ]
+        },
+        {
+          "name": "capitalizeFirst",
+          "startLine": 2167,
+          "endLine": 2170,
+          "params": [
+            "str"
+          ]
+        },
+        {
+          "name": "addToBreakdown",
+          "startLine": 2172,
+          "endLine": 2189,
+          "params": [
+            "breakdown",
+            "stat",
+            "source"
+          ]
+        },
+        {
+          "name": "applyFitnessPowerBonuses",
+          "startLine": 2243,
+          "endLine": 2310,
+          "params": [
+            "build",
+            "global",
+            "breakdown",
+            "globalIOLevel",
+            "alphaBonuses",
+            "alphaEdBypassRatio",
+            "exemplarLevel"
+          ]
+        },
+        {
+          "name": "collectAlwaysOnProcs",
+          "startLine": 2351,
+          "endLine": 2428,
+          "params": [
+            "build"
+          ]
+        },
+        {
+          "name": "applySingleProcEffect",
+          "startLine": 2433,
+          "endLine": 2701,
+          "params": [
+            "category",
+            "value",
+            "valueMax",
+            "effectType",
+            "sourceName",
+            "global",
+            "breakdown",
+            "powerName",
+            "stealthContribs"
+          ]
+        },
+        {
+          "name": "isProcCategoryEnabled",
+          "startLine": 2737,
+          "endLine": 2742,
+          "params": [
+            "category",
+            "procSettings"
+          ]
+        },
+        {
+          "name": "applyProcBonuses",
+          "startLine": 2748,
+          "endLine": 2812,
+          "params": [
+            "build",
+            "global",
+            "breakdown",
+            "procSettings",
+            "stealthContribs"
+          ]
+        },
+        {
+          "name": "applyPPMProcBonuses",
+          "startLine": 2818,
+          "endLine": 2937,
+          "params": [
+            "build",
+            "global",
+            "breakdown",
+            "procSettings"
+          ]
+        },
+        {
+          "name": "applyBuildUpProcBonuses",
+          "startLine": 2948,
+          "endLine": 3059,
+          "params": [
+            "build",
+            "global",
+            "breakdown"
+          ]
+        },
+        {
+          "name": "applyVariableProcBonuses",
+          "startLine": 3075,
+          "endLine": 3173,
+          "params": [
+            "build",
+            "global",
+            "breakdown",
+            "procSettings",
+            "stealthContribs"
+          ]
+        },
+        {
+          "name": "applyAccoladeBonuses",
+          "startLine": 3179,
+          "endLine": 3210,
+          "params": [
+            "accolades",
+            "global",
+            "breakdown"
+          ]
+        },
+        {
+          "name": "getAlphaEnhancementBonuses",
+          "startLine": 3221,
+          "endLine": 3271,
+          "params": [
+            "incarnates",
+            "incarnateActive",
+            "incarnatesSuppressed"
+          ]
+        },
+        {
+          "name": "applyHybridStatBlock",
+          "startLine": 3278,
+          "endLine": 3354,
+          "params": [
+            "stats",
+            "sourceName",
+            "global",
+            "breakdown"
+          ]
+        },
+        {
+          "name": "getActiveGenesis",
+          "startLine": 3360,
+          "endLine": 3366,
+          "params": [
+            "incarnates",
+            "active"
+          ]
+        },
+        {
+          "name": "scaleDestinyEffects",
+          "startLine": 3373,
+          "endLine": 3381,
+          "params": [
+            "fx",
+            "factor"
+          ]
+        },
+        {
+          "name": "applyGenesisExemplarBuff",
+          "startLine": 3392,
+          "endLine": 3414,
+          "params": [
+            "incarnates",
+            "active",
+            "global",
+            "breakdown"
+          ]
+        },
+        {
+          "name": "applyIncarnateBonuses",
+          "startLine": 3426,
+          "endLine": 3739,
+          "params": [
+            "incarnates",
+            "incarnateActive",
+            "global",
+            "breakdown",
+            "levelShiftActive",
+            "incarnatesSuppressed",
+            "destinyTime"
+          ]
+        },
+        {
+          "name": "convertToCharacterStats",
+          "startLine": 3748,
+          "endLine": 3800,
+          "params": [
+            "global"
+          ]
+        },
+        {
+          "name": "collectAllPowers",
+          "startLine": 3809,
+          "endLine": 3917,
+          "params": [
+            "build"
+          ]
+        },
+        {
+          "name": "expandActiveConditionals",
+          "startLine": 3947,
+          "endLine": 3996,
+          "params": [
+            "powers",
+            "globalAdjusters",
+            "mechanicAdjusters"
+          ]
+        },
+        {
+          "name": "buffPetAuraEffects",
+          "startLine": 4010,
+          "endLine": 4051,
+          "params": [
+            "sources"
+          ]
+        },
+        {
+          "name": "expandBuffPetAuras",
+          "startLine": 4067,
+          "endLine": 4101,
+          "params": [
+            "powers",
+            "mechanicAdjusters"
+          ]
+        },
+        {
+          "name": "buildToBuildPowers",
+          "startLine": 4106,
+          "endLine": 4114,
+          "params": [
+            "build"
+          ]
+        },
+        {
+          "name": "calculateCharacterTotals",
+          "startLine": 4157,
+          "endLine": 4526,
+          "params": [
+            "build",
+            "exemplarMode",
+            "incarnateActive",
+            "options"
+          ]
+        },
+        {
+          "name": "getBreakdownForStat",
+          "startLine": 4531,
+          "endLine": 4536,
+          "params": [
+            "result",
+            "stat"
+          ]
+        },
+        {
+          "name": "hasStatBonuses",
+          "startLine": 4541,
+          "endLine": 4547,
+          "params": [
+            "result",
+            "stat"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "collectStrengthBuffs",
+          "line": 864,
+          "isDefault": false
+        },
+        {
+          "name": "getAlphaEnhancementBonuses",
+          "line": 3221,
+          "isDefault": false
+        },
+        {
+          "name": "calculateCharacterTotals",
+          "line": 4157,
+          "isDefault": false
+        },
+        {
+          "name": "getBreakdownForStat",
+          "line": 4531,
+          "isDefault": false
+        },
+        {
+          "name": "hasStatBonuses",
+          "line": 4541,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "applySetBonusesToGlobal",
+          "callee": "Object.entries",
+          "lineNumber": 457
+        },
+        {
+          "caller": "applySetBonusesToGlobal",
+          "callee": "stat.toLowerCase().replace",
+          "lineNumber": 458
+        },
+        {
+          "caller": "applySetBonusesToGlobal",
+          "callee": "stat.toLowerCase",
+          "lineNumber": 458
+        },
+        {
+          "caller": "buildStatBreakdown",
+          "callee": "sources.push",
+          "lineNumber": 494
+        },
+        {
+          "caller": "buildStatBreakdown",
+          "callee": "sources.push",
+          "lineNumber": 505
+        },
+        {
+          "caller": "adjustForStacking",
+          "callee": "adjustForPerTarget",
+          "lineNumber": 583
+        },
+        {
+          "caller": "adjustForStacking",
+          "callee": "stacksLinear?.includes",
+          "lineNumber": 593
+        },
+        {
+          "caller": "adjustForStacking",
+          "callee": "stacksLinear.includes",
+          "lineNumber": 600
+        },
+        {
+          "caller": "adjustForStacking",
+          "callee": "Math.min",
+          "lineNumber": 607
+        },
+        {
+          "caller": "applyToggleEndCosts",
+          "callee": "power.powerType?.toLowerCase",
+          "lineNumber": 779
+        },
+        {
+          "caller": "applyToggleEndCosts",
+          "callee": "ALLY_ONLY_TARGET_TYPES.has",
+          "lineNumber": 780
+        },
+        {
+          "caller": "applyToggleEndCosts",
+          "callee": "power.targetType.toLowerCase",
+          "lineNumber": 780
+        },
+        {
+          "caller": "applyToggleEndCosts",
+          "callee": "combineWithAlphaED",
+          "lineNumber": 793
+        },
+        {
+          "caller": "applyToggleEndCosts",
+          "callee": "filterAlphaByAllowedEnhancements",
+          "lineNumber": 802
+        },
+        {
+          "caller": "applyToggleEndCosts",
+          "callee": "addToBreakdown",
+          "lineNumber": 809
+        },
+        {
+          "caller": "collectStrengthBuffs",
+          "callee": "emptyStrengthBuffs",
+          "lineNumber": 870
+        },
+        {
+          "caller": "collectStrengthBuffs",
+          "callee": "power.powerType?.toLowerCase",
+          "lineNumber": 872
+        },
+        {
+          "caller": "collectStrengthBuffs",
+          "callee": "power.targetType.toLowerCase",
+          "lineNumber": 879
+        },
+        {
+          "caller": "collectStrengthBuffs",
+          "callee": "Object.entries",
+          "lineNumber": 889
+        },
+        {
+          "caller": "collectStrengthBuffs",
+          "callee": "adjustForStacking",
+          "lineNumber": 890
+        },
+        {
+          "caller": "collectStrengthBuffs",
+          "callee": "resolveScaledEffect",
+          "lineNumber": 891
+        },
+        {
+          "caller": "collectStrengthBuffs",
+          "callee": "STRENGTH_DEFENSE_KEYS.has",
+          "lineNumber": 893
+        },
+        {
+          "caller": "collectStrengthBuffs",
+          "callee": "Math.max",
+          "lineNumber": 893
+        },
+        {
+          "caller": "collectStrengthBuffs",
+          "callee": "STRENGTH_MEZ_KEYS.has",
+          "lineNumber": 894
+        },
+        {
+          "caller": "collectStrengthBuffs",
+          "callee": "Math.max",
+          "lineNumber": 894
+        },
+        {
+          "caller": "resolveStealthRadius",
+          "callee": "groupMax.get",
+          "lineNumber": 951
+        },
+        {
+          "caller": "resolveStealthRadius",
+          "callee": "groupMax.set",
+          "lineNumber": 952
+        },
+        {
+          "caller": "resolveStealthRadius",
+          "callee": "groupMax.values",
+          "lineNumber": 955
+        },
+        {
+          "caller": "resolveStealthRadius",
+          "callee": "groupMax.get",
+          "lineNumber": 968
+        },
+        {
+          "caller": "resolveStealthRadius",
+          "callee": "addToBreakdown",
+          "lineNumber": 969
+        },
+        {
+          "caller": "resolveMovementTotals",
+          "callee": "contribs.filter",
+          "lineNumber": 1024
+        },
+        {
+          "caller": "resolveMovementTotals",
+          "callee": "all.filter",
+          "lineNumber": 1026
+        },
+        {
+          "caller": "resolveMovementTotals",
+          "callee": "groupMax.get",
+          "lineNumber": 1031
+        },
+        {
+          "caller": "resolveMovementTotals",
+          "callee": "groupMax.set",
+          "lineNumber": 1032
+        },
+        {
+          "caller": "resolveMovementTotals",
+          "callee": "groupMax.values",
+          "lineNumber": 1035
+        },
+        {
+          "caller": "resolveMovementTotals",
+          "callee": "groupMax.get",
+          "lineNumber": 1043
+        },
+        {
+          "caller": "resolveMovementTotals",
+          "callee": "addToBreakdown",
+          "lineNumber": 1044
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "emptyStrengthBuffs",
+          "lineNumber": 1075
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "power.powerType?.toLowerCase",
+          "lineNumber": 1094
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "ALLY_ONLY_TARGET_TYPES.has",
+          "lineNumber": 1099
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "power.targetType.toLowerCase",
+          "lineNumber": 1099
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "combineWithAlphaED",
+          "lineNumber": 1111
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "filterAlphaByAllowedEnhancements",
+          "lineNumber": 1126
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "isCalcDebugEnabled",
+          "lineNumber": 1137
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "toHitBuffValue",
+          "lineNumber": 1148
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "adjustForStacking",
+          "lineNumber": 1151
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "resolveScaledEffect",
+          "lineNumber": 1152
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 1154
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "toHitBuffValue",
+          "lineNumber": 1163
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "adjustForStacking",
+          "lineNumber": 1165
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "resolveScaledEffect",
+          "lineNumber": 1166
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 1168
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "adjustForStacking",
+          "lineNumber": 1180
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "resolveScaledEffect",
+          "lineNumber": 1181
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 1183
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "damageBuffValue",
+          "lineNumber": 1200
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "adjustForStacking",
+          "lineNumber": 1202
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "resolveScaledEffect",
+          "lineNumber": 1203
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 1205
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "isSelfDirectedEffect",
+          "lineNumber": 1218
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "resolveScaledEffect",
+          "lineNumber": 1219
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 1221
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "defenseBuffValue",
+          "lineNumber": 1240
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "Object.entries",
+          "lineNumber": 1243
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "adjustForStacking",
+          "lineNumber": 1244
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "resolveScaledEffect",
+          "lineNumber": 1245
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "capitalizeFirst",
+          "lineNumber": 1246
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 1249
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "defenseBuffSuppressibleValue",
+          "lineNumber": 1263
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "Object.entries",
+          "lineNumber": 1266
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "adjustForStacking",
+          "lineNumber": 1267
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "resolveScaledEffect",
+          "lineNumber": 1268
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "capitalizeFirst",
+          "lineNumber": 1269
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 1272
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "resistanceBuffValue",
+          "lineNumber": 1288
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "Object.entries",
+          "lineNumber": 1291
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "adjustForStacking",
+          "lineNumber": 1292
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "resolveScaledEffect",
+          "lineNumber": 1293
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "capitalizeFirst",
+          "lineNumber": 1294
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 1297
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "resistanceSelfDebuffValue",
+          "lineNumber": 1325
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "Object.entries",
+          "lineNumber": 1327
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "isSelfDirectedEffect",
+          "lineNumber": 1328
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "capitalizeFirst",
+          "lineNumber": 1329
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "resolveScaledEffect",
+          "lineNumber": 1331
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "resSelfDebuffContribs.push",
+          "lineNumber": 1338
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "type.toLowerCase",
+          "lineNumber": 1338
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "Object.entries",
+          "lineNumber": 1362
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "type.toLowerCase",
+          "lineNumber": 1363
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "adjustForStacking",
+          "lineNumber": 1366
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "resolveScaledEffect",
+          "lineNumber": 1374
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 1378
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "Object.entries",
+          "lineNumber": 1400
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "type.toLowerCase",
+          "lineNumber": 1401
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "resolveScaledEffect",
+          "lineNumber": 1404
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 1408
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "Object.entries",
+          "lineNumber": 1423
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "resolveScaledEffect",
+          "lineNumber": 1425
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 1428
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "adjustForStacking",
+          "lineNumber": 1445
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "resolveMovementPercent",
+          "lineNumber": 1446
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "movementContribs.push",
+          "lineNumber": 1447
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "movementMeta",
+          "lineNumber": 1447
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "adjustForStacking",
+          "lineNumber": 1453
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "resolveMovementPercent",
+          "lineNumber": 1454
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "movementContribs.push",
+          "lineNumber": 1455
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "movementMeta",
+          "lineNumber": 1455
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "adjustForStacking",
+          "lineNumber": 1460
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "resolveMovementPercent",
+          "lineNumber": 1461
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "movementContribs.push",
+          "lineNumber": 1462
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "movementMeta",
+          "lineNumber": 1462
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "adjustForStacking",
+          "lineNumber": 1467
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "resolveMovementPercent",
+          "lineNumber": 1468
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "movementContribs.push",
+          "lineNumber": 1469
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "movementMeta",
+          "lineNumber": 1469
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "adjustForStacking",
+          "lineNumber": 1474
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "resolveMovementPercent",
+          "lineNumber": 1475
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "movementContribs.push",
+          "lineNumber": 1476
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "movementMeta",
+          "lineNumber": 1476
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "movementBuffValue",
+          "lineNumber": 1491
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "Object.entries",
+          "lineNumber": 1513
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "adjustForStacking",
+          "lineNumber": 1519
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "resolveMovementPercent",
+          "lineNumber": 1520
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "movementContribs.push",
+          "lineNumber": 1521
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "movementMeta",
+          "lineNumber": 1521
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "Object.entries",
+          "lineNumber": 1539
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "isSelfDirectedEffect",
+          "lineNumber": 1540
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "resolveScaledEffect",
+          "lineNumber": 1543
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 1545
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "adjustForStacking",
+          "lineNumber": 1558
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "extractScaleValue",
+          "lineNumber": 1559
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 1561
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "isSelfDirectedEffect",
+          "lineNumber": 1571
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "resolveScaledEffect",
+          "lineNumber": 1572
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 1574
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "regenBuffValue",
+          "lineNumber": 1596
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "regenBuffValue",
+          "lineNumber": 1597
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "regenTable.toLowerCase().includes",
+          "lineNumber": 1603
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "regenTable.toLowerCase",
+          "lineNumber": 1603
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "adjustForStacking",
+          "lineNumber": 1605
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "resolveScaledEffect",
+          "lineNumber": 1606
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "adjustForStacking",
+          "lineNumber": 1609
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "resolveScaledEffect",
+          "lineNumber": 1612
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 1616
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "adjustForStacking",
+          "lineNumber": 1624
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "resolveScaledEffect",
+          "lineNumber": 1625
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 1627
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "recoveryBuffValue",
+          "lineNumber": 1638
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "table.toLowerCase().includes",
+          "lineNumber": 1644
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "table.toLowerCase",
+          "lineNumber": 1644
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "adjustForStacking",
+          "lineNumber": 1646
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "resolveScaledEffect",
+          "lineNumber": 1647
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 1649
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "recoveryBuffValue",
+          "lineNumber": 1659
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "adjustForStacking",
+          "lineNumber": 1661
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "resolveScaledEffect",
+          "lineNumber": 1662
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 1664
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "maxHPBuffValue",
+          "lineNumber": 1690
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 1698
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "maxHPBuffValue",
+          "lineNumber": 1711
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 1718
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "resolveScaledEffect",
+          "lineNumber": 1730
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 1732
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "adjustForStacking",
+          "lineNumber": 1754
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "(ab.table || '').toLowerCase().endsWith",
+          "lineNumber": 1768
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "(ab.table || '').toLowerCase",
+          "lineNumber": 1768
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "resolveScaledEffect",
+          "lineNumber": 1772
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "absorbFractionContribs.push",
+          "lineNumber": 1774
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "resolveScaledEffect",
+          "lineNumber": 1776
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 1779
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "resolveScaledEffect",
+          "lineNumber": 1793
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 1796
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "Object.entries",
+          "lineNumber": 1819
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "type.toLowerCase",
+          "lineNumber": 1820
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "Math.max",
+          "lineNumber": 1823
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 1826
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 1835
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "kbProtectionValue",
+          "lineNumber": 1880
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "mez.table.toLowerCase",
+          "lineNumber": 1893
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "tableLower.includes",
+          "lineNumber": 1894
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "getTableValue",
+          "lineNumber": 1898
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "Math.abs",
+          "lineNumber": 1900
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "Math.max",
+          "lineNumber": 1907
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 1910
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 1919
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "Math.abs",
+          "lineNumber": 1928
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "resolveScaledEffect",
+          "lineNumber": 1928
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 1931
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "resolveScaledEffect",
+          "lineNumber": 1941
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 1944
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "mez.table.toLowerCase().includes",
+          "lineNumber": 1957
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "mez.table.toLowerCase",
+          "lineNumber": 1957
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "getTableValue",
+          "lineNumber": 1958
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "mez.table.toLowerCase",
+          "lineNumber": 1958
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "Math.abs",
+          "lineNumber": 1960
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 1962
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "mez.table.toLowerCase().includes",
+          "lineNumber": 1977
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "mez.table.toLowerCase",
+          "lineNumber": 1977
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "getTableValue",
+          "lineNumber": 1978
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "mez.table.toLowerCase",
+          "lineNumber": 1978
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "Math.abs",
+          "lineNumber": 1980
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 1982
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "resolveScaledEffect",
+          "lineNumber": 2001
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "resolveScaledEffect",
+          "lineNumber": 2003
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "stealthContribs.push",
+          "lineNumber": 2005
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "resolveScaledEffect",
+          "lineNumber": 2017
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 2020
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "power.targetType?.toLowerCase",
+          "lineNumber": 2034
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "adjustForStacking",
+          "lineNumber": 2035
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "resolveScaledEffect",
+          "lineNumber": 2036
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 2039
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "Object.keys",
+          "lineNumber": 2050
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "Math.abs",
+          "lineNumber": 2052
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "diffs.push",
+          "lineNumber": 2053
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "Object.values(enhBonuses).some",
+          "lineNumber": 2057
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "Object.values",
+          "lineNumber": 2057
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "Math.abs",
+          "lineNumber": 2057
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "debugGroup",
+          "lineNumber": 2059
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "debugGroup",
+          "lineNumber": 2063
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "Object.entries",
+          "lineNumber": 2064
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "Math.abs",
+          "lineNumber": 2065
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "formatDebugNum",
+          "lineNumber": 2068
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "formatDebugNum",
+          "lineNumber": 2070
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "formatDebugNum",
+          "lineNumber": 2070
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "debugFormula",
+          "lineNumber": 2074
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "debugGroupEnd",
+          "lineNumber": 2076
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "debugGroup",
+          "lineNumber": 2081
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "debugFormula",
+          "lineNumber": 2083
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "formatDebugNum",
+          "lineNumber": 2083
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "debugGroupEnd",
+          "lineNumber": 2085
+        },
+        {
+          "caller": "applyActivePowerBonuses",
+          "callee": "debugGroupEnd",
+          "lineNumber": 2088
+        },
+        {
+          "caller": "formatDebugNum",
+          "callee": "Number.isInteger",
+          "lineNumber": 2095
+        },
+        {
+          "caller": "formatDebugNum",
+          "callee": "n.toString",
+          "lineNumber": 2095
+        },
+        {
+          "caller": "formatDebugNum",
+          "callee": "n.toFixed(4).replace(/0+$/, '').replace",
+          "lineNumber": 2095
+        },
+        {
+          "caller": "formatDebugNum",
+          "callee": "n.toFixed(4).replace",
+          "lineNumber": 2095
+        },
+        {
+          "caller": "formatDebugNum",
+          "callee": "n.toFixed",
+          "lineNumber": 2095
+        },
+        {
+          "caller": "resolveScaledEffect",
+          "callee": "effect.table.toLowerCase().endsWith",
+          "lineNumber": 2120
+        },
+        {
+          "caller": "resolveScaledEffect",
+          "callee": "effect.table.toLowerCase",
+          "lineNumber": 2120
+        },
+        {
+          "caller": "resolveScaledEffect",
+          "callee": "getTableValue",
+          "lineNumber": 2123
+        },
+        {
+          "caller": "resolveScaledEffect",
+          "callee": "effect.table.toLowerCase",
+          "lineNumber": 2123
+        },
+        {
+          "caller": "resolveScaledEffect",
+          "callee": "warnFallback",
+          "lineNumber": 2133
+        },
+        {
+          "caller": "resolveMovementPercent",
+          "callee": "resolveScaledEffect",
+          "lineNumber": 2164
+        },
+        {
+          "caller": "capitalizeFirst",
+          "callee": "str.toLowerCase",
+          "lineNumber": 2168
+        },
+        {
+          "caller": "capitalizeFirst",
+          "callee": "str.charAt(0).toUpperCase",
+          "lineNumber": 2169
+        },
+        {
+          "caller": "capitalizeFirst",
+          "callee": "str.charAt",
+          "lineNumber": 2169
+        },
+        {
+          "caller": "capitalizeFirst",
+          "callee": "str.slice(1).toLowerCase",
+          "lineNumber": 2169
+        },
+        {
+          "caller": "capitalizeFirst",
+          "callee": "str.slice",
+          "lineNumber": 2169
+        },
+        {
+          "caller": "addToBreakdown",
+          "callee": "breakdown.has",
+          "lineNumber": 2177
+        },
+        {
+          "caller": "addToBreakdown",
+          "callee": "breakdown.set",
+          "lineNumber": 2178
+        },
+        {
+          "caller": "addToBreakdown",
+          "callee": "breakdown.get",
+          "lineNumber": 2185
+        },
+        {
+          "caller": "addToBreakdown",
+          "callee": "entry.sources.push",
+          "lineNumber": 2186
+        },
+        {
+          "caller": "applyFitnessPowerBonuses",
+          "callee": "(build.inherents || []).filter",
+          "lineNumber": 2252
+        },
+        {
+          "caller": "applyFitnessPowerBonuses",
+          "callee": "combineWithAlphaED",
+          "lineNumber": 2262
+        },
+        {
+          "caller": "applyFitnessPowerBonuses",
+          "callee": "FITNESS_MOVEMENT_STATS.has",
+          "lineNumber": 2282
+        },
+        {
+          "caller": "applyFitnessPowerBonuses",
+          "callee": "resolveMovementPercent",
+          "lineNumber": 2285
+        },
+        {
+          "caller": "applyFitnessPowerBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 2296
+        },
+        {
+          "caller": "applyFitnessPowerBonuses",
+          "callee": "isCalcDebugEnabled",
+          "lineNumber": 2302
+        },
+        {
+          "caller": "applyFitnessPowerBonuses",
+          "callee": "_fitnessDebugEffects.push",
+          "lineNumber": 2303
+        },
+        {
+          "caller": "applyFitnessPowerBonuses",
+          "callee": "isCalcDebugEnabled",
+          "lineNumber": 2306
+        },
+        {
+          "caller": "applyFitnessPowerBonuses",
+          "callee": "debugFitnessPower",
+          "lineNumber": 2307
+        },
+        {
+          "caller": "looksLikeLegacyProcSlot",
+          "callee": "(slotName || '').toLowerCase",
+          "lineNumber": 2355
+        },
+        {
+          "caller": "looksLikeLegacyProcSlot",
+          "callee": "(procData.ioName || '').toLowerCase",
+          "lineNumber": 2356
+        },
+        {
+          "caller": "looksLikeLegacyProcSlot",
+          "callee": "slot.includes",
+          "lineNumber": 2361
+        },
+        {
+          "caller": "processPower",
+          "callee": "power.powerType?.toLowerCase",
+          "lineNumber": 2370
+        },
+        {
+          "caller": "processPower",
+          "callee": "findProcData",
+          "lineNumber": 2379
+        },
+        {
+          "caller": "processPower",
+          "callee": "looksLikeLegacyProcSlot",
+          "lineNumber": 2386
+        },
+        {
+          "caller": "processPower",
+          "callee": "isProcAlwaysOn",
+          "lineNumber": 2389
+        },
+        {
+          "caller": "processPower",
+          "callee": "procs.push",
+          "lineNumber": 2394
+        },
+        {
+          "caller": "collectAlwaysOnProcs",
+          "callee": "processPower",
+          "lineNumber": 2408
+        },
+        {
+          "caller": "collectAlwaysOnProcs",
+          "callee": "processPower",
+          "lineNumber": 2411
+        },
+        {
+          "caller": "collectAlwaysOnProcs",
+          "callee": "processPower",
+          "lineNumber": 2415
+        },
+        {
+          "caller": "collectAlwaysOnProcs",
+          "callee": "processPower",
+          "lineNumber": 2420
+        },
+        {
+          "caller": "collectAlwaysOnProcs",
+          "callee": "processPower",
+          "lineNumber": 2424
+        },
+        {
+          "caller": "applySingleProcEffect",
+          "callee": "isCalcDebugEnabled",
+          "lineNumber": 2445
+        },
+        {
+          "caller": "applySingleProcEffect",
+          "callee": "debugFormula",
+          "lineNumber": 2446
+        },
+        {
+          "caller": "applySingleProcEffect",
+          "callee": "formatDebugNum",
+          "lineNumber": 2446
+        },
+        {
+          "caller": "applySingleProcEffect",
+          "callee": "addToBreakdown",
+          "lineNumber": 2452
+        },
+        {
+          "caller": "applySingleProcEffect",
+          "callee": "addToBreakdown",
+          "lineNumber": 2462
+        },
+        {
+          "caller": "applySingleProcEffect",
+          "callee": "addToBreakdown",
+          "lineNumber": 2476
+        },
+        {
+          "caller": "applySingleProcEffect",
+          "callee": "addToBreakdown",
+          "lineNumber": 2488
+        },
+        {
+          "caller": "applySingleProcEffect",
+          "callee": "addToBreakdown",
+          "lineNumber": 2498
+        },
+        {
+          "caller": "applySingleProcEffect",
+          "callee": "effectType?.toLowerCase",
+          "lineNumber": 2508
+        },
+        {
+          "caller": "applySingleProcEffect",
+          "callee": "addToBreakdown",
+          "lineNumber": 2516
+        },
+        {
+          "caller": "applySingleProcEffect",
+          "callee": "effectType?.toLowerCase",
+          "lineNumber": 2529
+        },
+        {
+          "caller": "applySingleProcEffect",
+          "callee": "addToBreakdown",
+          "lineNumber": 2532
+        },
+        {
+          "caller": "applySingleProcEffect",
+          "callee": "addToBreakdown",
+          "lineNumber": 2544
+        },
+        {
+          "caller": "applySingleProcEffect",
+          "callee": "effectType?.toLowerCase",
+          "lineNumber": 2553
+        },
+        {
+          "caller": "applySingleProcEffect",
+          "callee": "addToBreakdown",
+          "lineNumber": 2561
+        },
+        {
+          "caller": "applySingleProcEffect",
+          "callee": "addToBreakdown",
+          "lineNumber": 2579
+        },
+        {
+          "caller": "applySingleProcEffect",
+          "callee": "addToBreakdown",
+          "lineNumber": 2592
+        },
+        {
+          "caller": "applySingleProcEffect",
+          "callee": "addToBreakdown",
+          "lineNumber": 2602
+        },
+        {
+          "caller": "applySingleProcEffect",
+          "callee": "addToBreakdown",
+          "lineNumber": 2615
+        },
+        {
+          "caller": "applySingleProcEffect",
+          "callee": "addToBreakdown",
+          "lineNumber": 2625
+        },
+        {
+          "caller": "applySingleProcEffect",
+          "callee": "addToBreakdown",
+          "lineNumber": 2635
+        },
+        {
+          "caller": "applySingleProcEffect",
+          "callee": "addToBreakdown",
+          "lineNumber": 2645
+        },
+        {
+          "caller": "applySingleProcEffect",
+          "callee": "addToBreakdown",
+          "lineNumber": 2655
+        },
+        {
+          "caller": "applySingleProcEffect",
+          "callee": "addToBreakdown",
+          "lineNumber": 2665
+        },
+        {
+          "caller": "applySingleProcEffect",
+          "callee": "stealthContribs.push",
+          "lineNumber": 2686
+        },
+        {
+          "caller": "applyProcBonuses",
+          "callee": "createBonusTracking",
+          "lineNumber": 2757
+        },
+        {
+          "caller": "applyProcBonuses",
+          "callee": "collectAlwaysOnProcs",
+          "lineNumber": 2758
+        },
+        {
+          "caller": "applyProcBonuses",
+          "callee": "findProcData",
+          "lineNumber": 2761
+        },
+        {
+          "caller": "applyProcBonuses",
+          "callee": "isCalcDebugEnabled",
+          "lineNumber": 2763
+        },
+        {
+          "caller": "applyProcBonuses",
+          "callee": "console.warn",
+          "lineNumber": 2764
+        },
+        {
+          "caller": "applyProcBonuses",
+          "callee": "procOverrideKey",
+          "lineNumber": 2773
+        },
+        {
+          "caller": "applyProcBonuses",
+          "callee": "getProcEffects",
+          "lineNumber": 2776
+        },
+        {
+          "caller": "applyProcBonuses",
+          "callee": "getProcControlType",
+          "lineNumber": 2779
+        },
+        {
+          "caller": "applyProcBonuses",
+          "callee": "isProcCategoryEnabled",
+          "lineNumber": 2782
+        },
+        {
+          "caller": "applyProcBonuses",
+          "callee": "trackBonus",
+          "lineNumber": 2793
+        },
+        {
+          "caller": "applyProcBonuses",
+          "callee": "applySingleProcEffect",
+          "lineNumber": 2796
+        },
+        {
+          "caller": "applyProcBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 2799
+        },
+        {
+          "caller": "applyProcBonuses",
+          "callee": "applyPPMProcBonuses",
+          "lineNumber": 2811
+        },
+        {
+          "caller": "processPower",
+          "callee": "power.powerType?.toLowerCase",
+          "lineNumber": 2829
+        },
+        {
+          "caller": "processPower",
+          "callee": "findProcData",
+          "lineNumber": 2841
+        },
+        {
+          "caller": "processPower",
+          "callee": "getProcEffects",
+          "lineNumber": 2847
+        },
+        {
+          "caller": "processPower",
+          "callee": "calculateAutoToggleProcsPerMinute",
+          "lineNumber": 2848
+        },
+        {
+          "caller": "applyPPMEffect",
+          "callee": "isProcCategoryEnabled",
+          "lineNumber": 2854
+        },
+        {
+          "caller": "applyPPMEffect",
+          "callee": "addToBreakdown",
+          "lineNumber": 2864
+        },
+        {
+          "caller": "applyPPMEffect",
+          "callee": "addToBreakdown",
+          "lineNumber": 2878
+        },
+        {
+          "caller": "applyPPMEffect",
+          "callee": "addToBreakdown",
+          "lineNumber": 2895
+        },
+        {
+          "caller": "applyPPMEffect",
+          "callee": "addToBreakdown",
+          "lineNumber": 2902
+        },
+        {
+          "caller": "processPower",
+          "callee": "applyPPMEffect",
+          "lineNumber": 2912
+        },
+        {
+          "caller": "applyPPMProcBonuses",
+          "callee": "processPower",
+          "lineNumber": 2919
+        },
+        {
+          "caller": "applyPPMProcBonuses",
+          "callee": "processPower",
+          "lineNumber": 2922
+        },
+        {
+          "caller": "applyPPMProcBonuses",
+          "callee": "processPower",
+          "lineNumber": 2926
+        },
+        {
+          "caller": "applyPPMProcBonuses",
+          "callee": "processPower",
+          "lineNumber": 2931
+        },
+        {
+          "caller": "applyPPMProcBonuses",
+          "callee": "processPower",
+          "lineNumber": 2935
+        },
+        {
+          "caller": "processPower",
+          "callee": "power.powerType?.toLowerCase",
+          "lineNumber": 2958
+        },
+        {
+          "caller": "processPower",
+          "callee": "arcToDegrees",
+          "lineNumber": 2971
+        },
+        {
+          "caller": "processPower",
+          "callee": "findProcData",
+          "lineNumber": 2978
+        },
+        {
+          "caller": "processPower",
+          "callee": "getProcEffects",
+          "lineNumber": 2983
+        },
+        {
+          "caller": "processPower",
+          "callee": "effects.find",
+          "lineNumber": 2984
+        },
+        {
+          "caller": "processPower",
+          "callee": "effects.find",
+          "lineNumber": 2986
+        },
+        {
+          "caller": "processPower",
+          "callee": "buildUpProcs.push",
+          "lineNumber": 2988
+        },
+        {
+          "caller": "applyBuildUpProcBonuses",
+          "callee": "processPower",
+          "lineNumber": 3005
+        },
+        {
+          "caller": "applyBuildUpProcBonuses",
+          "callee": "processPower",
+          "lineNumber": 3006
+        },
+        {
+          "caller": "applyBuildUpProcBonuses",
+          "callee": "processPower",
+          "lineNumber": 3008
+        },
+        {
+          "caller": "applyBuildUpProcBonuses",
+          "callee": "processPower",
+          "lineNumber": 3011
+        },
+        {
+          "caller": "applyBuildUpProcBonuses",
+          "callee": "processPower",
+          "lineNumber": 3013
+        },
+        {
+          "caller": "applyBuildUpProcBonuses",
+          "callee": "calculateProcChance",
+          "lineNumber": 3026
+        },
+        {
+          "caller": "applyBuildUpProcBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 3045
+        },
+        {
+          "caller": "applyBuildUpProcBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 3053
+        },
+        {
+          "caller": "resolveMagnitude",
+          "callee": "getTableValue",
+          "lineNumber": 3088
+        },
+        {
+          "caller": "processPower",
+          "callee": "findProcData",
+          "lineNumber": 3108
+        },
+        {
+          "caller": "processPower",
+          "callee": "procOverrideKey",
+          "lineNumber": 3111
+        },
+        {
+          "caller": "processPower",
+          "callee": "getProcEffects",
+          "lineNumber": 3114
+        },
+        {
+          "caller": "processPower",
+          "callee": "getProcControlType",
+          "lineNumber": 3115
+        },
+        {
+          "caller": "processPower",
+          "callee": "isProcCategoryEnabled",
+          "lineNumber": 3121
+        },
+        {
+          "caller": "processPower",
+          "callee": "resolveMagnitude",
+          "lineNumber": 3124
+        },
+        {
+          "caller": "processPower",
+          "callee": "resolveMagnitude",
+          "lineNumber": 3125
+        },
+        {
+          "caller": "processPower",
+          "callee": "resolveProcContribution",
+          "lineNumber": 3127
+        },
+        {
+          "caller": "processPower",
+          "callee": "Math.max",
+          "lineNumber": 3142
+        },
+        {
+          "caller": "processPower",
+          "callee": "Math.min",
+          "lineNumber": 3142
+        },
+        {
+          "caller": "processPower",
+          "callee": "Math.min",
+          "lineNumber": 3143
+        },
+        {
+          "caller": "processPower",
+          "callee": "applySingleProcEffect",
+          "lineNumber": 3149
+        },
+        {
+          "caller": "applyVariableProcBonuses",
+          "callee": "processPower",
+          "lineNumber": 3164
+        },
+        {
+          "caller": "applyVariableProcBonuses",
+          "callee": "processPower",
+          "lineNumber": 3165
+        },
+        {
+          "caller": "applyVariableProcBonuses",
+          "callee": "processPower",
+          "lineNumber": 3167
+        },
+        {
+          "caller": "applyVariableProcBonuses",
+          "callee": "processPower",
+          "lineNumber": 3170
+        },
+        {
+          "caller": "applyVariableProcBonuses",
+          "callee": "processPower",
+          "lineNumber": 3172
+        },
+        {
+          "caller": "applyAccoladeBonuses",
+          "callee": "bonus.stat.toLowerCase",
+          "lineNumber": 3187
+        },
+        {
+          "caller": "applyAccoladeBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 3192
+        },
+        {
+          "caller": "applyAccoladeBonuses",
+          "callee": "isCalcDebugEnabled",
+          "lineNumber": 3197
+        },
+        {
+          "caller": "applyAccoladeBonuses",
+          "callee": "debugAccolade",
+          "lineNumber": 3197
+        },
+        {
+          "caller": "applyAccoladeBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 3201
+        },
+        {
+          "caller": "applyAccoladeBonuses",
+          "callee": "isCalcDebugEnabled",
+          "lineNumber": 3206
+        },
+        {
+          "caller": "applyAccoladeBonuses",
+          "callee": "debugAccolade",
+          "lineNumber": 3206
+        },
+        {
+          "caller": "getAlphaEnhancementBonuses",
+          "callee": "getAlphaEffects",
+          "lineNumber": 3234
+        },
+        {
+          "caller": "applyHybridStatBlock",
+          "callee": "Object.entries",
+          "lineNumber": 3284
+        },
+        {
+          "caller": "applyHybridStatBlock",
+          "callee": "addToBreakdown",
+          "lineNumber": 3294
+        },
+        {
+          "caller": "applyHybridStatBlock",
+          "callee": "addToBreakdown",
+          "lineNumber": 3306
+        },
+        {
+          "caller": "applyHybridStatBlock",
+          "callee": "stat.startsWith",
+          "lineNumber": 3311
+        },
+        {
+          "caller": "applyHybridStatBlock",
+          "callee": "addToBreakdown",
+          "lineNumber": 3315
+        },
+        {
+          "caller": "applyHybridStatBlock",
+          "callee": "addToBreakdown",
+          "lineNumber": 3332
+        },
+        {
+          "caller": "applyHybridStatBlock",
+          "callee": "addToBreakdown",
+          "lineNumber": 3343
+        },
+        {
+          "caller": "applyHybridStatBlock",
+          "callee": "addToBreakdown",
+          "lineNumber": 3351
+        },
+        {
+          "caller": "getActiveGenesis",
+          "callee": "getGenesisEffects",
+          "lineNumber": 3365
+        },
+        {
+          "caller": "scaleDestinyEffects",
+          "callee": "Object.entries",
+          "lineNumber": 3376
+        },
+        {
+          "caller": "scaleDestinyEffects",
+          "callee": "skip.has",
+          "lineNumber": 3377
+        },
+        {
+          "caller": "applyGenesisExemplarBuff",
+          "callee": "getActiveGenesis",
+          "lineNumber": 3398
+        },
+        {
+          "caller": "applyGenesisExemplarBuff",
+          "callee": "addToBreakdown",
+          "lineNumber": 3407
+        },
+        {
+          "caller": "applyGenesisExemplarBuff",
+          "callee": "addToBreakdown",
+          "lineNumber": 3412
+        },
+        {
+          "caller": "applyIncarnateBonuses",
+          "callee": "isCalcDebugEnabled",
+          "lineNumber": 3436
+        },
+        {
+          "caller": "applyIncarnateBonuses",
+          "callee": "applyGenesisExemplarBuff",
+          "lineNumber": 3454
+        },
+        {
+          "caller": "applyIncarnateBonuses",
+          "callee": "getActiveGenesis",
+          "lineNumber": 3459
+        },
+        {
+          "caller": "applyIncarnateBonuses",
+          "callee": "getDestinySustainedFloorTime",
+          "lineNumber": 3472
+        },
+        {
+          "caller": "applyIncarnateBonuses",
+          "callee": "getDestinyEffectsAtTime",
+          "lineNumber": 3474
+        },
+        {
+          "caller": "applyIncarnateBonuses",
+          "callee": "applyAlphaToDestiny",
+          "lineNumber": 3482
+        },
+        {
+          "caller": "applyIncarnateBonuses",
+          "callee": "getDestinyBoostsAllowed",
+          "lineNumber": 3484
+        },
+        {
+          "caller": "applyIncarnateBonuses",
+          "callee": "getAlphaEffects",
+          "lineNumber": 3485
+        },
+        {
+          "caller": "applyIncarnateBonuses",
+          "callee": "scaleDestinyEffects",
+          "lineNumber": 3492
+        },
+        {
+          "caller": "applyIncarnateBonuses",
+          "callee": "(fateMultiplier * 100).toFixed",
+          "lineNumber": 3496
+        },
+        {
+          "caller": "applyIncarnateBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 3509
+        },
+        {
+          "caller": "applyIncarnateBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 3522
+        },
+        {
+          "caller": "applyIncarnateBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 3530
+        },
+        {
+          "caller": "applyIncarnateBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 3541
+        },
+        {
+          "caller": "applyIncarnateBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 3552
+        },
+        {
+          "caller": "applyIncarnateBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 3563
+        },
+        {
+          "caller": "applyIncarnateBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 3574
+        },
+        {
+          "caller": "applyIncarnateBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 3585
+        },
+        {
+          "caller": "applyIncarnateBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 3596
+        },
+        {
+          "caller": "applyIncarnateBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 3610
+        },
+        {
+          "caller": "applyIncarnateBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 3629
+        },
+        {
+          "caller": "applyIncarnateBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 3636
+        },
+        {
+          "caller": "applyIncarnateBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 3650
+        },
+        {
+          "caller": "applyIncarnateBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 3651
+        },
+        {
+          "caller": "applyIncarnateBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 3652
+        },
+        {
+          "caller": "applyIncarnateBonuses",
+          "callee": "getHybridEffects",
+          "lineNumber": 3659
+        },
+        {
+          "caller": "applyIncarnateBonuses",
+          "callee": "applyHybridStatBlock",
+          "lineNumber": 3664
+        },
+        {
+          "caller": "applyIncarnateBonuses",
+          "callee": "applyHybridStatBlock",
+          "lineNumber": 3668
+        },
+        {
+          "caller": "applyIncarnateBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 3683
+        },
+        {
+          "caller": "applyIncarnateBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 3685
+        },
+        {
+          "caller": "applyIncarnateBonuses",
+          "callee": "getAlphaEffects",
+          "lineNumber": 3696
+        },
+        {
+          "caller": "applyIncarnateBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 3699
+        },
+        {
+          "caller": "applyIncarnateBonuses",
+          "callee": "getDestinyEffects",
+          "lineNumber": 3707
+        },
+        {
+          "caller": "applyIncarnateBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 3710
+        },
+        {
+          "caller": "applyIncarnateBonuses",
+          "callee": "getLoreEffects",
+          "lineNumber": 3718
+        },
+        {
+          "caller": "applyIncarnateBonuses",
+          "callee": "addToBreakdown",
+          "lineNumber": 3721
+        },
+        {
+          "caller": "applyIncarnateBonuses",
+          "callee": "isCalcDebugEnabled",
+          "lineNumber": 3731
+        },
+        {
+          "caller": "applyIncarnateBonuses",
+          "callee": "Object.keys",
+          "lineNumber": 3732
+        },
+        {
+          "caller": "applyIncarnateBonuses",
+          "callee": "Math.abs",
+          "lineNumber": 3734
+        },
+        {
+          "caller": "applyIncarnateBonuses",
+          "callee": "debugFormula",
+          "lineNumber": 3735
+        },
+        {
+          "caller": "applyIncarnateBonuses",
+          "callee": "formatDebugNum",
+          "lineNumber": 3735
+        },
+        {
+          "caller": "convertToCharacterStats",
+          "callee": "createEmptyStats",
+          "lineNumber": 3749
+        },
+        {
+          "caller": "convertToCharacterStats",
+          "callee": "Math.max",
+          "lineNumber": 3764
+        },
+        {
+          "caller": "convertToCharacterStats",
+          "callee": "Math.max",
+          "lineNumber": 3765
+        },
+        {
+          "caller": "convertToCharacterStats",
+          "callee": "Math.max",
+          "lineNumber": 3766
+        },
+        {
+          "caller": "convertToCharacterStats",
+          "callee": "Math.max",
+          "lineNumber": 3771
+        },
+        {
+          "caller": "convertToCharacterStats",
+          "callee": "Math.max",
+          "lineNumber": 3772
+        },
+        {
+          "caller": "convertToCharacterStats",
+          "callee": "Math.max",
+          "lineNumber": 3773
+        },
+        {
+          "caller": "collectAllPowers",
+          "callee": "getPowerset",
+          "lineNumber": 3844
+        },
+        {
+          "caller": "collectAllPowers",
+          "callee": "powers.push",
+          "lineNumber": 3846
+        },
+        {
+          "caller": "collectAllPowers",
+          "callee": "enrich",
+          "lineNumber": 3846
+        },
+        {
+          "caller": "collectAllPowers",
+          "callee": "primaryDef?.powers.find",
+          "lineNumber": 3846
+        },
+        {
+          "caller": "collectAllPowers",
+          "callee": "getPowerset",
+          "lineNumber": 3849
+        },
+        {
+          "caller": "collectAllPowers",
+          "callee": "powers.push",
+          "lineNumber": 3851
+        },
+        {
+          "caller": "collectAllPowers",
+          "callee": "enrich",
+          "lineNumber": 3851
+        },
+        {
+          "caller": "collectAllPowers",
+          "callee": "secondaryDef?.powers.find",
+          "lineNumber": 3851
+        },
+        {
+          "caller": "collectAllPowers",
+          "callee": "getPowerPool",
+          "lineNumber": 3855
+        },
+        {
+          "caller": "collectAllPowers",
+          "callee": "powers.push",
+          "lineNumber": 3857
+        },
+        {
+          "caller": "collectAllPowers",
+          "callee": "enrich",
+          "lineNumber": 3857
+        },
+        {
+          "caller": "collectAllPowers",
+          "callee": "poolDef?.powers.find",
+          "lineNumber": 3857
+        },
+        {
+          "caller": "collectAllPowers",
+          "callee": "getEpicPool",
+          "lineNumber": 3862
+        },
+        {
+          "caller": "collectAllPowers",
+          "callee": "powers.push",
+          "lineNumber": 3864
+        },
+        {
+          "caller": "collectAllPowers",
+          "callee": "enrich",
+          "lineNumber": 3864
+        },
+        {
+          "caller": "collectAllPowers",
+          "callee": "epicDef?.powers.find",
+          "lineNumber": 3864
+        },
+        {
+          "caller": "collectAllPowers",
+          "callee": "powers.push",
+          "lineNumber": 3879
+        },
+        {
+          "caller": "collectAllPowers",
+          "callee": "activeStanceOptionId",
+          "lineNumber": 3893
+        },
+        {
+          "caller": "collectAllPowers",
+          "callee": "group.options.find",
+          "lineNumber": 3894
+        },
+        {
+          "caller": "collectAllPowers",
+          "callee": "powers.some",
+          "lineNumber": 3898
+        },
+        {
+          "caller": "collectAllPowers",
+          "callee": "def?.powers.find",
+          "lineNumber": 3901
+        },
+        {
+          "caller": "collectAllPowers",
+          "callee": "Object.keys",
+          "lineNumber": 3904
+        },
+        {
+          "caller": "collectAllPowers",
+          "callee": "powers.push",
+          "lineNumber": 3905
+        },
+        {
+          "caller": "expandActiveConditionals",
+          "callee": "power.powerType?.toLowerCase",
+          "lineNumber": 3960
+        },
+        {
+          "caller": "expandActiveConditionals",
+          "callee": "AT_INHERENT_CONDITIONAL_IDS.has",
+          "lineNumber": 3968
+        },
+        {
+          "caller": "expandActiveConditionals",
+          "callee": "Object.keys",
+          "lineNumber": 3970
+        },
+        {
+          "caller": "expandActiveConditionals",
+          "callee": "synthetics.push",
+          "lineNumber": 3983
+        },
+        {
+          "caller": "buffPetAuraEffects",
+          "callee": "(a.defenseTypes ?? a.resistanceTypes ?? []).join",
+          "lineNumber": 4015
+        },
+        {
+          "caller": "buffPetAuraEffects",
+          "callee": "seen.has",
+          "lineNumber": 4017
+        },
+        {
+          "caller": "buffPetAuraEffects",
+          "callee": "seen.add",
+          "lineNumber": 4018
+        },
+        {
+          "caller": "expandBuffPetAuras",
+          "callee": "getBuffPetSources",
+          "lineNumber": 4075
+        },
+        {
+          "caller": "expandBuffPetAuras",
+          "callee": "buffPetAuraEffects",
+          "lineNumber": 4081
+        },
+        {
+          "caller": "expandBuffPetAuras",
+          "callee": "Object.keys",
+          "lineNumber": 4082
+        },
+        {
+          "caller": "expandBuffPetAuras",
+          "callee": "synthetics.push",
+          "lineNumber": 4084
+        },
+        {
+          "caller": "buildToBuildPowers",
+          "callee": "build.pools.map",
+          "lineNumber": 4110
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "withoutIllegalSlots",
+          "lineNumber": 4168
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "createEmptyGlobalBonuses",
+          "lineNumber": 4171
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "isCalcDebugEnabled",
+          "lineNumber": 4172
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "getEffectiveLevel",
+          "lineNumber": 4178
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "areIncarnatesSuppressed",
+          "lineNumber": 4181
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "debugBuildContext",
+          "lineNumber": 4185
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "buildToBuildPowers",
+          "lineNumber": 4201
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "calculateSetBonuses",
+          "lineNumber": 4202
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "applySetBonusesToGlobal",
+          "lineNumber": 4211
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "Object.keys",
+          "lineNumber": 4216
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "getStatBreakdown",
+          "lineNumber": 4217
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "trackingStats.push",
+          "lineNumber": 4224
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "debugSetBonuses",
+          "lineNumber": 4226
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "Object.keys",
+          "lineNumber": 4230
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "getStatBreakdown",
+          "lineNumber": 4231
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "buildStatBreakdown",
+          "lineNumber": 4233
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "stat.toLowerCase().replace",
+          "lineNumber": 4235
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "stat.toLowerCase",
+          "lineNumber": 4235
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "breakdown.get",
+          "lineNumber": 4242
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "existing.sources.push",
+          "lineNumber": 4244
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "breakdown.set",
+          "lineNumber": 4249
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "collectAllPowers",
+          "lineNumber": 4259
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "computeModeSuppression",
+          "lineNumber": 4268
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "collectedPowers.filter",
+          "lineNumber": 4273
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "suppressedPowers.has",
+          "lineNumber": 4273
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "getAlphaEnhancementBonuses",
+          "lineNumber": 4276
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "debugAlphaBonuses",
+          "lineNumber": 4282
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "debugGroup",
+          "lineNumber": 4285
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "applyFitnessPowerBonuses",
+          "lineNumber": 4286
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "debugGroupEnd",
+          "lineNumber": 4287
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "debugGroup",
+          "lineNumber": 4290
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "collectStrengthBuffs",
+          "lineNumber": 4295
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "applyActivePowerBonuses",
+          "lineNumber": 4316
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "stanceAdjusterOverrides",
+          "lineNumber": 4331
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "expandActiveConditionals",
+          "lineNumber": 4333
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "applyActivePowerBonuses",
+          "lineNumber": 4339
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "emptyStrengthBuffs",
+          "lineNumber": 4339
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "expandBuffPetAuras",
+          "lineNumber": 4348
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "applyActivePowerBonuses",
+          "lineNumber": 4350
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "emptyStrengthBuffs",
+          "lineNumber": 4350
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "debugGroupEnd",
+          "lineNumber": 4352
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "resolveMovementTotals",
+          "lineNumber": 4359
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "Object.values(procSettings).some",
+          "lineNumber": 4364
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "Object.values",
+          "lineNumber": 4364
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "debugGroup",
+          "lineNumber": 4365
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "applyProcBonuses",
+          "lineNumber": 4367
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "applyVariableProcBonuses",
+          "lineNumber": 4373
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "resolveStealthRadius",
+          "lineNumber": 4377
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "applyBuildUpProcBonuses",
+          "lineNumber": 4381
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "debugGroupEnd",
+          "lineNumber": 4383
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "debugGroup",
+          "lineNumber": 4386
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "applyAccoladeBonuses",
+          "lineNumber": 4388
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "debugGroupEnd",
+          "lineNumber": 4390
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "debugGroup",
+          "lineNumber": 4394
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "applyIncarnateBonuses",
+          "lineNumber": 4395
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "debugGroupEnd",
+          "lineNumber": 4396
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "calculateVigilanceDamageBonus",
+          "lineNumber": 4401
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "addToBreakdown",
+          "lineNumber": 4405
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "calculateFuryDamageBonus",
+          "lineNumber": 4413
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "addToBreakdown",
+          "lineNumber": 4417
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "getBaselineHealth",
+          "lineNumber": 4431
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "Math.min",
+          "lineNumber": 4433
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "addToBreakdown",
+          "lineNumber": 4438
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "capitalizeFirst",
+          "lineNumber": 4453
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "capitalizeFirst",
+          "lineNumber": 4459
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "Math.max",
+          "lineNumber": 4464
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "addToBreakdown",
+          "lineNumber": 4466
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "getBaseToHit",
+          "lineNumber": 4473
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "Math.min",
+          "lineNumber": 4474
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "Math.max",
+          "lineNumber": 4474
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "Math.min",
+          "lineNumber": 4477
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "Math.max",
+          "lineNumber": 4477
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "getCombatModifier",
+          "lineNumber": 4478
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "debugHitChance",
+          "lineNumber": 4481
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "debugGroup",
+          "lineNumber": 4493
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "applyToggleEndCosts",
+          "lineNumber": 4494
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "debugGroupEnd",
+          "lineNumber": 4495
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "convertToCharacterStats",
+          "lineNumber": 4498
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "debugNetEndurance",
+          "lineNumber": 4507
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "debugFinalStats",
+          "lineNumber": 4508
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "debugEnd",
+          "lineNumber": 4509
+        },
+        {
+          "caller": "calculateCharacterTotals",
+          "callee": "bd.sources.reduce",
+          "lineNumber": 4516
+        },
+        {
+          "caller": "getBreakdownForStat",
+          "callee": "result.breakdown.get",
+          "lineNumber": 4535
+        },
+        {
+          "caller": "hasStatBonuses",
+          "callee": "result.breakdown.get",
+          "lineNumber": 4545
+        }
+      ],
+      "metrics": {
+        "importCount": 23,
+        "exportCount": 5,
+        "functionCount": 42,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/utils/calculations/effective-level.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 33,
+      "nonEmptyLines": 30,
+      "functions": [
+        {
+          "name": "getEffectiveLevel",
+          "startLine": 19,
+          "endLine": 25,
+          "params": [
+            "buildLevel",
+            "exemplarMode",
+            "exemplarLevel"
+          ]
+        },
+        {
+          "name": "areIncarnatesSuppressed",
+          "startLine": 31,
+          "endLine": 33,
+          "params": [
+            "effectiveLevel"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "INCARNATE_MIN_LEVEL",
+          "line": 13,
+          "isDefault": false
+        },
+        {
+          "name": "getEffectiveLevel",
+          "line": 19,
+          "isDefault": false
+        },
+        {
+          "name": "areIncarnatesSuppressed",
+          "line": 31,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 3,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    }
+  ]
+}

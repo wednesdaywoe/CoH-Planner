@@ -1,0 +1,2035 @@
+{
+ "nodes": [
+  {
+   "id": "file:src/utils/calculations/incandescence-heal-received.test.ts",
+   "type": "file",
+   "name": "incandescence-heal-received.test.ts",
+   "filePath": "src/utils/calculations/incandescence-heal-received.test.ts",
+   "summary": "Regression test guarding the Incandescence Destiny fix: its Heal_Dmg/aspect=Resistance effect must surface as a 'Healing Received' character total instead of being flattened into damage resistance.",
+   "tags": [
+    "test",
+    "incarnate",
+    "healing",
+    "regression-guard"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:src/utils/calculations/incarnate-effects-completeness.test.ts",
+   "type": "file",
+   "name": "incarnate-effects-completeness.test.ts",
+   "filePath": "src/utils/calculations/incarnate-effects-completeness.test.ts",
+   "summary": "Completeness guard for the incarnate effects pipeline: verifies Destiny/Hybrid/Clarion effect categories (mez protection, heal, endurance) all reach character totals instead of being silently dropped by converter allowlists.",
+   "tags": [
+    "test",
+    "incarnate",
+    "completeness-guard",
+    "character-totals"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:src/utils/calculations/incarnate-exemplar.test.ts",
+   "type": "file",
+   "name": "incarnate-exemplar.test.ts",
+   "filePath": "src/utils/calculations/incarnate-exemplar.test.ts",
+   "summary": "Tests that incarnate power effects are suppressed from character totals when the effective (exemplar) level drops below the incarnate minimum level.",
+   "tags": [
+    "test",
+    "incarnate",
+    "exemplar",
+    "level-scaling"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:src/utils/calculations/inherents.ts",
+   "type": "file",
+   "name": "inherents.ts",
+   "filePath": "src/utils/calculations/inherents.ts",
+   "summary": "Implements archetype inherent mechanics for every AT: Defiance, Domination, Scourge, Fury, Supremacy/Bodyguard, Vigilance, Opportunity, Critical Hit, Assassination, Gauntlet, and Containment, each with info descriptors, damage/chance calculators, and power-eligibility predicates.",
+   "tags": [
+    "game-mechanics",
+    "inherent",
+    "archetype",
+    "damage-calculation",
+    "utility"
+   ],
+   "complexity": "complex",
+   "languageNotes": "Organized as one section per archetype, each exposing an info getter, numeric calculators, and an is*Power eligibility predicate."
+  },
+  {
+   "id": "function:src/utils/calculations/inherents.ts:calculateAreaModifier",
+   "type": "function",
+   "name": "calculateAreaModifier",
+   "filePath": "src/utils/calculations/inherents.ts",
+   "lineRange": [
+    40,
+    61
+   ],
+   "summary": "Computes the AoE area factor modifier (radius/arc based) used to scale inherent damage contributions for area attacks.",
+   "tags": [
+    "aoe",
+    "modifier",
+    "utility"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/calculations/inherents.ts:calculateDefiance",
+   "type": "function",
+   "name": "calculateDefiance",
+   "filePath": "src/utils/calculations/inherents.ts",
+   "lineRange": [
+    70,
+    102
+   ],
+   "summary": "Calculates the Blaster Defiance damage bonus from recently used attacks, weighting each power's contribution by cast time and area modifier.",
+   "tags": [
+    "blaster",
+    "inherent",
+    "damage"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:src/utils/calculations/inherents.ts:isBlasterAttackPower",
+   "type": "function",
+   "name": "isBlasterAttackPower",
+   "filePath": "src/utils/calculations/inherents.ts",
+   "lineRange": [
+    108,
+    110
+   ],
+   "summary": "Predicate: whether a power qualifies as a Blaster attack for Defiance accumulation.",
+   "tags": [
+    "blaster",
+    "predicate",
+    "inherent"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/calculations/inherents.ts:getDominationInfo",
+   "type": "function",
+   "name": "getDominationInfo",
+   "filePath": "src/utils/calculations/inherents.ts",
+   "lineRange": [
+    196,
+    202
+   ],
+   "summary": "Returns descriptor info for the Dominator Domination inherent (fury-style bar, mez magnitude doubling).",
+   "tags": [
+    "dominator",
+    "inherent",
+    "info"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/calculations/inherents.ts:getPowerDominationSummary",
+   "type": "function",
+   "name": "getPowerDominationSummary",
+   "filePath": "src/utils/calculations/inherents.ts",
+   "lineRange": [
+    217,
+    236
+   ],
+   "summary": "Summarizes how Domination modifies a specific power (doubled mez magnitude/duration when active).",
+   "tags": [
+    "dominator",
+    "mez",
+    "inherent"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/calculations/inherents.ts:getScourgeInfo",
+   "type": "function",
+   "name": "getScourgeInfo",
+   "filePath": "src/utils/calculations/inherents.ts",
+   "lineRange": [
+    272,
+    279
+   ],
+   "summary": "Returns descriptor info for the Corruptor Scourge inherent (chance for double damage scaling with target health loss).",
+   "tags": [
+    "corruptor",
+    "inherent",
+    "info"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/calculations/inherents.ts:calculateScourgeChance",
+   "type": "function",
+   "name": "calculateScourgeChance",
+   "filePath": "src/utils/calculations/inherents.ts",
+   "lineRange": [
+    286,
+    293
+   ],
+   "summary": "Calculates Scourge trigger chance from the target's remaining health percentage.",
+   "tags": [
+    "corruptor",
+    "inherent",
+    "probability"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/calculations/inherents.ts:calculateScourgeDamage",
+   "type": "function",
+   "name": "calculateScourgeDamage",
+   "filePath": "src/utils/calculations/inherents.ts",
+   "lineRange": [
+    301,
+    304
+   ],
+   "summary": "Calculates expected bonus damage from Scourge given base damage and trigger chance.",
+   "tags": [
+    "corruptor",
+    "inherent",
+    "damage"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/calculations/inherents.ts:isCorruptorAttackPower",
+   "type": "function",
+   "name": "isCorruptorAttackPower",
+   "filePath": "src/utils/calculations/inherents.ts",
+   "lineRange": [
+    310,
+    312
+   ],
+   "summary": "Predicate: whether a power qualifies for Corruptor Scourge.",
+   "tags": [
+    "corruptor",
+    "predicate",
+    "inherent"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/calculations/inherents.ts:getFuryInfo",
+   "type": "function",
+   "name": "getFuryInfo",
+   "filePath": "src/utils/calculations/inherents.ts",
+   "lineRange": [
+    343,
+    349
+   ],
+   "summary": "Returns descriptor info for the Brute Fury inherent (damage bonus building with combat activity).",
+   "tags": [
+    "brute",
+    "inherent",
+    "info"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/calculations/inherents.ts:calculateFuryDamageBonus",
+   "type": "function",
+   "name": "calculateFuryDamageBonus",
+   "filePath": "src/utils/calculations/inherents.ts",
+   "lineRange": [
+    356,
+    360
+   ],
+   "summary": "Converts a Fury bar level into its percentage damage bonus.",
+   "tags": [
+    "brute",
+    "inherent",
+    "damage"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/calculations/inherents.ts:calculateFuryDamage",
+   "type": "function",
+   "name": "calculateFuryDamage",
+   "filePath": "src/utils/calculations/inherents.ts",
+   "lineRange": [
+    369,
+    372
+   ],
+   "summary": "Applies the Fury damage bonus to a base damage value.",
+   "tags": [
+    "brute",
+    "inherent",
+    "damage"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/calculations/inherents.ts:isBruteAttackPower",
+   "type": "function",
+   "name": "isBruteAttackPower",
+   "filePath": "src/utils/calculations/inherents.ts",
+   "lineRange": [
+    378,
+    380
+   ],
+   "summary": "Predicate: whether a power qualifies as a Brute attack for Fury.",
+   "tags": [
+    "brute",
+    "predicate",
+    "inherent"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/calculations/inherents.ts:getSupremacyInfo",
+   "type": "function",
+   "name": "getSupremacyInfo",
+   "filePath": "src/utils/calculations/inherents.ts",
+   "lineRange": [
+    421,
+    427
+   ],
+   "summary": "Returns descriptor info for the Mastermind Supremacy inherent (pet damage/to-hit buffs in supremacy range).",
+   "tags": [
+    "mastermind",
+    "inherent",
+    "info"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/calculations/inherents.ts:getBodyguardInfo",
+   "type": "function",
+   "name": "getBodyguardInfo",
+   "filePath": "src/utils/calculations/inherents.ts",
+   "lineRange": [
+    432,
+    438
+   ],
+   "summary": "Returns descriptor info for Mastermind Bodyguard mode (damage sharing across pets).",
+   "tags": [
+    "mastermind",
+    "inherent",
+    "info"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/calculations/inherents.ts:calculateSupremacyDamage",
+   "type": "function",
+   "name": "calculateSupremacyDamage",
+   "filePath": "src/utils/calculations/inherents.ts",
+   "lineRange": [
+    445,
+    448
+   ],
+   "summary": "Applies the Supremacy damage buff to pet base damage.",
+   "tags": [
+    "mastermind",
+    "pets",
+    "damage"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/calculations/inherents.ts:calculateSupremacyToHit",
+   "type": "function",
+   "name": "calculateSupremacyToHit",
+   "filePath": "src/utils/calculations/inherents.ts",
+   "lineRange": [
+    455,
+    458
+   ],
+   "summary": "Applies the Supremacy to-hit buff for pets.",
+   "tags": [
+    "mastermind",
+    "pets",
+    "to-hit"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/calculations/inherents.ts:calculateBodyguardDamage",
+   "type": "function",
+   "name": "calculateBodyguardDamage",
+   "filePath": "src/utils/calculations/inherents.ts",
+   "lineRange": [
+    466,
+    481
+   ],
+   "summary": "Calculates damage taken by the Mastermind in Bodyguard mode, splitting incoming damage across bodyguard-mode pets.",
+   "tags": [
+    "mastermind",
+    "inherent",
+    "mitigation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/calculations/inherents.ts:isMastermindPower",
+   "type": "function",
+   "name": "isMastermindPower",
+   "filePath": "src/utils/calculations/inherents.ts",
+   "lineRange": [
+    486,
+    488
+   ],
+   "summary": "Predicate: whether a power belongs to Mastermind inherent handling.",
+   "tags": [
+    "mastermind",
+    "predicate",
+    "inherent"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/calculations/inherents.ts:getVigilanceInfo",
+   "type": "function",
+   "name": "getVigilanceInfo",
+   "filePath": "src/utils/calculations/inherents.ts",
+   "lineRange": [
+    549,
+    556
+   ],
+   "summary": "Returns descriptor info for the Defender Vigilance inherent (endurance discount from ally health, solo damage bonus).",
+   "tags": [
+    "defender",
+    "inherent",
+    "info"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/calculations/inherents.ts:calculateVigilanceDamageBonus",
+   "type": "function",
+   "name": "calculateVigilanceDamageBonus",
+   "filePath": "src/utils/calculations/inherents.ts",
+   "lineRange": [
+    564,
+    578
+   ],
+   "summary": "Calculates the Vigilance solo/small-team damage bonus based on team size.",
+   "tags": [
+    "defender",
+    "inherent",
+    "damage"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/calculations/inherents.ts:calculateVigilanceDamage",
+   "type": "function",
+   "name": "calculateVigilanceDamage",
+   "filePath": "src/utils/calculations/inherents.ts",
+   "lineRange": [
+    588,
+    591
+   ],
+   "summary": "Applies the Vigilance damage bonus to base damage.",
+   "tags": [
+    "defender",
+    "inherent",
+    "damage"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/calculations/inherents.ts:isDefenderPower",
+   "type": "function",
+   "name": "isDefenderPower",
+   "filePath": "src/utils/calculations/inherents.ts",
+   "lineRange": [
+    596,
+    598
+   ],
+   "summary": "Predicate: whether a power qualifies for Defender Vigilance handling.",
+   "tags": [
+    "defender",
+    "predicate",
+    "inherent"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/calculations/inherents.ts:getOpportunityInfo",
+   "type": "function",
+   "name": "getOpportunityInfo",
+   "filePath": "src/utils/calculations/inherents.ts",
+   "lineRange": [
+    641,
+    651
+   ],
+   "summary": "Returns descriptor info for the Sentinel Opportunity inherent (vulnerability debuff and heal/endurance returns).",
+   "tags": [
+    "sentinel",
+    "inherent",
+    "info"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/calculations/inherents.ts:isSentinelPower",
+   "type": "function",
+   "name": "isSentinelPower",
+   "filePath": "src/utils/calculations/inherents.ts",
+   "lineRange": [
+    656,
+    658
+   ],
+   "summary": "Predicate: whether a power belongs to Sentinel inherent handling.",
+   "tags": [
+    "sentinel",
+    "predicate",
+    "inherent"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/calculations/inherents.ts:getCriticalHitInfo",
+   "type": "function",
+   "name": "getCriticalHitInfo",
+   "filePath": "src/utils/calculations/inherents.ts",
+   "lineRange": [
+    698,
+    706
+   ],
+   "summary": "Returns descriptor info for the Scrapper Critical Hit inherent (crit chance vs minions/lieutenants and bosses).",
+   "tags": [
+    "scrapper",
+    "inherent",
+    "info"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/calculations/inherents.ts:calculateCriticalHitChance",
+   "type": "function",
+   "name": "calculateCriticalHitChance",
+   "filePath": "src/utils/calculations/inherents.ts",
+   "lineRange": [
+    713,
+    716
+   ],
+   "summary": "Returns the Scrapper crit chance for a given target rank.",
+   "tags": [
+    "scrapper",
+    "inherent",
+    "probability"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/calculations/inherents.ts:calculateCriticalHitDamage",
+   "type": "function",
+   "name": "calculateCriticalHitDamage",
+   "filePath": "src/utils/calculations/inherents.ts",
+   "lineRange": [
+    725,
+    729
+   ],
+   "summary": "Calculates expected bonus damage from Scrapper critical hits.",
+   "tags": [
+    "scrapper",
+    "inherent",
+    "damage"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/calculations/inherents.ts:isScrapperAttackPower",
+   "type": "function",
+   "name": "isScrapperAttackPower",
+   "filePath": "src/utils/calculations/inherents.ts",
+   "lineRange": [
+    735,
+    737
+   ],
+   "summary": "Predicate: whether a power qualifies for Scrapper critical hits.",
+   "tags": [
+    "scrapper",
+    "predicate",
+    "inherent"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/calculations/inherents.ts:getOpportunityCritBonus",
+   "type": "function",
+   "name": "getOpportunityCritBonus",
+   "filePath": "src/utils/calculations/inherents.ts",
+   "lineRange": [
+    760,
+    762
+   ],
+   "summary": "Returns the Sentinel Opportunity crit damage multiplier constant.",
+   "tags": [
+    "sentinel",
+    "inherent",
+    "damage"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/calculations/inherents.ts:calculateOpportunityCritDamage",
+   "type": "function",
+   "name": "calculateOpportunityCritDamage",
+   "filePath": "src/utils/calculations/inherents.ts",
+   "lineRange": [
+    769,
+    771
+   ],
+   "summary": "Calculates bonus damage from Sentinel Opportunity crits.",
+   "tags": [
+    "sentinel",
+    "inherent",
+    "damage"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/calculations/inherents.ts:isSentinelAttackPower",
+   "type": "function",
+   "name": "isSentinelAttackPower",
+   "filePath": "src/utils/calculations/inherents.ts",
+   "lineRange": [
+    777,
+    779
+   ],
+   "summary": "Predicate: whether a power qualifies as a Sentinel attack.",
+   "tags": [
+    "sentinel",
+    "predicate",
+    "inherent"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/calculations/inherents.ts:getAssassinationInfo",
+   "type": "function",
+   "name": "getAssassinationInfo",
+   "filePath": "src/utils/calculations/inherents.ts",
+   "lineRange": [
+    823,
+    834
+   ],
+   "summary": "Returns descriptor info for the Stalker Assassination inherent (hidden crits, Assassin Focus stacks).",
+   "tags": [
+    "stalker",
+    "inherent",
+    "info"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/calculations/inherents.ts:calculateAssassinationCritChance",
+   "type": "function",
+   "name": "calculateAssassinationCritChance",
+   "filePath": "src/utils/calculations/inherents.ts",
+   "lineRange": [
+    842,
+    852
+   ],
+   "summary": "Calculates Stalker crit chance from hidden status, team size, and Assassin Focus stacks.",
+   "tags": [
+    "stalker",
+    "inherent",
+    "probability"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/calculations/inherents.ts:calculateAssassinationDamageBonus",
+   "type": "function",
+   "name": "calculateAssassinationDamageBonus",
+   "filePath": "src/utils/calculations/inherents.ts",
+   "lineRange": [
+    865,
+    876
+   ],
+   "summary": "Calculates the expected damage bonus multiplier from Assassination crit mechanics.",
+   "tags": [
+    "stalker",
+    "inherent",
+    "damage"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/calculations/inherents.ts:calculateAssassinationDamage",
+   "type": "function",
+   "name": "calculateAssassinationDamage",
+   "filePath": "src/utils/calculations/inherents.ts",
+   "lineRange": [
+    886,
+    894
+   ],
+   "summary": "Applies Assassination crit expectations to base damage.",
+   "tags": [
+    "stalker",
+    "inherent",
+    "damage"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/calculations/inherents.ts:isStalkerAttackPower",
+   "type": "function",
+   "name": "isStalkerAttackPower",
+   "filePath": "src/utils/calculations/inherents.ts",
+   "lineRange": [
+    900,
+    902
+   ],
+   "summary": "Predicate: whether a power qualifies for Stalker Assassination mechanics.",
+   "tags": [
+    "stalker",
+    "predicate",
+    "inherent"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/calculations/inherents.ts:getGauntletInfo",
+   "type": "function",
+   "name": "getGauntletInfo",
+   "filePath": "src/utils/calculations/inherents.ts",
+   "lineRange": [
+    937,
+    944
+   ],
+   "summary": "Returns descriptor info for the Tanker Gauntlet inherent (taunt on attack, widened AoEs).",
+   "tags": [
+    "tanker",
+    "inherent",
+    "info"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/calculations/inherents.ts:calculateGauntletRadius",
+   "type": "function",
+   "name": "calculateGauntletRadius",
+   "filePath": "src/utils/calculations/inherents.ts",
+   "lineRange": [
+    951,
+    954
+   ],
+   "summary": "Calculates the Gauntlet-boosted AoE radius for Tanker attacks.",
+   "tags": [
+    "tanker",
+    "inherent",
+    "aoe"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/calculations/inherents.ts:calculateGauntletArc",
+   "type": "function",
+   "name": "calculateGauntletArc",
+   "filePath": "src/utils/calculations/inherents.ts",
+   "lineRange": [
+    961,
+    964
+   ],
+   "summary": "Calculates the Gauntlet-boosted cone arc for Tanker attacks.",
+   "tags": [
+    "tanker",
+    "inherent",
+    "aoe"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/calculations/inherents.ts:isTankerPower",
+   "type": "function",
+   "name": "isTankerPower",
+   "filePath": "src/utils/calculations/inherents.ts",
+   "lineRange": [
+    969,
+    971
+   ],
+   "summary": "Predicate: whether a power qualifies for Tanker Gauntlet handling.",
+   "tags": [
+    "tanker",
+    "predicate",
+    "inherent"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/calculations/inherents.ts:getContainmentInfo",
+   "type": "function",
+   "name": "getContainmentInfo",
+   "filePath": "src/utils/calculations/inherents.ts",
+   "lineRange": [
+    1008,
+    1014
+   ],
+   "summary": "Returns descriptor info for the Controller Containment inherent (double damage vs mezzed targets).",
+   "tags": [
+    "controller",
+    "inherent",
+    "info"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/calculations/inherents.ts:calculateContainmentDamageBonus",
+   "type": "function",
+   "name": "calculateContainmentDamageBonus",
+   "filePath": "src/utils/calculations/inherents.ts",
+   "lineRange": [
+    1021,
+    1026
+   ],
+   "summary": "Returns the Containment damage bonus multiplier when the target is mezzed.",
+   "tags": [
+    "controller",
+    "inherent",
+    "damage"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/calculations/inherents.ts:calculateContainmentDamage",
+   "type": "function",
+   "name": "calculateContainmentDamage",
+   "filePath": "src/utils/calculations/inherents.ts",
+   "lineRange": [
+    1035,
+    1039
+   ],
+   "summary": "Applies the Containment bonus to base damage against contained targets.",
+   "tags": [
+    "controller",
+    "inherent",
+    "damage"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/calculations/inherents.ts:isControllerPower",
+   "type": "function",
+   "name": "isControllerPower",
+   "filePath": "src/utils/calculations/inherents.ts",
+   "lineRange": [
+    1044,
+    1046
+   ],
+   "summary": "Predicate: whether a power qualifies for Controller Containment.",
+   "tags": [
+    "controller",
+    "predicate",
+    "inherent"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:src/utils/calculations/jump-height.test.ts",
+   "type": "file",
+   "name": "jump-height.test.ts",
+   "filePath": "src/utils/calculations/jump-height.test.ts",
+   "summary": "Tests jump-height character totals against movement-constant bases and caps, guarding the jump buff support added with the travel-speed fixes.",
+   "tags": [
+    "test",
+    "movement",
+    "jump-height",
+    "character-totals"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:src/utils/calculations/perma.ts",
+   "type": "file",
+   "name": "perma.ts",
+   "filePath": "src/utils/calculations/perma.ts",
+   "summary": "Determines whether a click power can be made \"perma\" (buff duration >= enhanced recharge + cast time) and computes uptime/gap info, including detection of self-state buffs worth keeping up.",
+   "tags": [
+    "perma",
+    "recharge",
+    "uptime",
+    "game-mechanics",
+    "utility"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:src/utils/calculations/perma.ts:isPermaEligible",
+   "type": "function",
+   "name": "isPermaEligible",
+   "filePath": "src/utils/calculations/perma.ts",
+   "lineRange": [
+    70,
+    87
+   ],
+   "summary": "Decides whether a power is a candidate for perma analysis (click power with a lasting self-state buff and meaningful recharge).",
+   "tags": [
+    "perma",
+    "eligibility",
+    "predicate"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/utils/calculations/perma.ts:hasSelfStateToKeepUp",
+   "type": "function",
+   "name": "hasSelfStateToKeepUp",
+   "filePath": "src/utils/calculations/perma.ts",
+   "lineRange": [
+    97,
+    144
+   ],
+   "summary": "Scans a power's effects for self-directed lasting buffs (defense, resistance, mez protection, etc.) that justify keeping the power permanently active.",
+   "tags": [
+    "perma",
+    "effects",
+    "detection"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:src/utils/calculations/perma.ts:calculatePermaInfo",
+   "type": "function",
+   "name": "calculatePermaInfo",
+   "filePath": "src/utils/calculations/perma.ts",
+   "lineRange": [
+    153,
+    193
+   ],
+   "summary": "Computes perma status for a power: enhanced recharge vs buff duration, uptime percentage, and the recharge still needed to reach perma.",
+   "tags": [
+    "perma",
+    "recharge",
+    "uptime"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:src/utils/calculations/proc-global-damage.test.ts",
+   "type": "file",
+   "name": "proc-global-damage.test.ts",
+   "filePath": "src/utils/calculations/proc-global-damage.test.ts",
+   "summary": "Tests the Liberty's Belt fused +7.5% global Damage proc: slotting the piece must raise the character damage total via the always-on global proc path.",
+   "tags": [
+    "test",
+    "proc",
+    "global-damage",
+    "io-set"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:src/utils/calculations/proc-global-recharge.test.ts",
+   "type": "file",
+   "name": "proc-global-recharge.test.ts",
+   "filePath": "src/utils/calculations/proc-global-recharge.test.ts",
+   "summary": "Tests Luck of the Gambler style global +recharge procs: slotting the piece must contribute its recharge bonus to character totals with Rule-of-5 handling.",
+   "tags": [
+    "test",
+    "proc",
+    "global-recharge",
+    "io-set"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:src/utils/calculations/proc-runtime-allowlist.test.ts",
+   "type": "file",
+   "name": "proc-runtime-allowlist.test.ts",
+   "filePath": "src/utils/calculations/proc-runtime-allowlist.test.ts",
+   "summary": "Guards the runtime allowlist of proc effect categories: only recognized always-on global proc categories may flow into character totals, preventing unhandled categories from silently applying.",
+   "tags": [
+    "test",
+    "proc",
+    "allowlist",
+    "character-totals"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:src/utils/calculations/proc-runtime-allowlist.test.ts:buildWithSlots",
+   "type": "function",
+   "name": "buildWithSlots",
+   "filePath": "src/utils/calculations/proc-runtime-allowlist.test.ts",
+   "lineRange": [
+    19,
+    36
+   ],
+   "summary": "Test fixture: constructs a build with a slotted power containing the supplied enhancement slots.",
+   "tags": [
+    "test-fixture",
+    "build",
+    "helper"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:src/utils/calculations/proc-variable-calc.test.ts",
+   "type": "file",
+   "name": "proc-variable-calc.test.ts",
+   "filePath": "src/utils/calculations/proc-variable-calc.test.ts",
+   "summary": "Tests variable/stacking proc contributions (e.g. Might of the Tanker absorb stacks, Interface-style scaling) so per-stack overrides and interpolated values reach character totals correctly.",
+   "tags": [
+    "test",
+    "proc",
+    "stacking",
+    "variable-proc"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:src/utils/calculations/proc-variable-calc.test.ts:tankerBuild",
+   "type": "function",
+   "name": "tankerBuild",
+   "filePath": "src/utils/calculations/proc-variable-calc.test.ts",
+   "lineRange": [
+    24,
+    47
+   ],
+   "summary": "Test fixture: constructs a Tanker build with proc-slotted powers used across the variable-proc test cases.",
+   "tags": [
+    "test-fixture",
+    "build",
+    "helper"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:src/utils/calculations/self-penalty-towho.test.ts",
+   "type": "file",
+   "name": "self-penalty-towho.test.ts",
+   "filePath": "src/utils/calculations/self-penalty-towho.test.ts",
+   "summary": "Verifies converter output for self-directed penalties: effects like Bio Armor Offensive Adaptation's -resistance must carry toWho:Self so they are charged to the caster rather than treated as foe debuffs.",
+   "tags": [
+    "test",
+    "converter-guard",
+    "self-penalty",
+    "dataset"
+   ],
+   "complexity": "moderate"
+  }
+ ],
+ "edges": [
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:calculateAreaModifier",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:calculateDefiance",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:isBlasterAttackPower",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:isBlasterAttackPower",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:getDominationInfo",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:getDominationInfo",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:getPowerDominationSummary",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:getPowerDominationSummary",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:getScourgeInfo",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:getScourgeInfo",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:calculateScourgeChance",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:calculateScourgeChance",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:calculateScourgeDamage",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:calculateScourgeDamage",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:isCorruptorAttackPower",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:isCorruptorAttackPower",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:getFuryInfo",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:getFuryInfo",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:calculateFuryDamageBonus",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:calculateFuryDamageBonus",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:calculateFuryDamage",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:calculateFuryDamage",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:isBruteAttackPower",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:isBruteAttackPower",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:getSupremacyInfo",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:getSupremacyInfo",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:getBodyguardInfo",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:getBodyguardInfo",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:calculateSupremacyDamage",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:calculateSupremacyDamage",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:calculateSupremacyToHit",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:calculateSupremacyToHit",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:calculateBodyguardDamage",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:calculateBodyguardDamage",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:isMastermindPower",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:isMastermindPower",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:getVigilanceInfo",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:getVigilanceInfo",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:calculateVigilanceDamageBonus",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:calculateVigilanceDamageBonus",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:calculateVigilanceDamage",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:calculateVigilanceDamage",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:isDefenderPower",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:isDefenderPower",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:getOpportunityInfo",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:getOpportunityInfo",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:isSentinelPower",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:isSentinelPower",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:getCriticalHitInfo",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:getCriticalHitInfo",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:calculateCriticalHitChance",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:calculateCriticalHitChance",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:calculateCriticalHitDamage",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:calculateCriticalHitDamage",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:isScrapperAttackPower",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:isScrapperAttackPower",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:getOpportunityCritBonus",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:getOpportunityCritBonus",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:calculateOpportunityCritDamage",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:calculateOpportunityCritDamage",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:isSentinelAttackPower",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:isSentinelAttackPower",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:getAssassinationInfo",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:getAssassinationInfo",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:calculateAssassinationCritChance",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:calculateAssassinationCritChance",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:calculateAssassinationDamageBonus",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:calculateAssassinationDamageBonus",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:calculateAssassinationDamage",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:calculateAssassinationDamage",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:isStalkerAttackPower",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:isStalkerAttackPower",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:getGauntletInfo",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:getGauntletInfo",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:calculateGauntletRadius",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:calculateGauntletRadius",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:calculateGauntletArc",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:calculateGauntletArc",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:isTankerPower",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:isTankerPower",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:getContainmentInfo",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:getContainmentInfo",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:calculateContainmentDamageBonus",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:calculateContainmentDamageBonus",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:calculateContainmentDamage",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:calculateContainmentDamage",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:isControllerPower",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "function:src/utils/calculations/inherents.ts:isControllerPower",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/perma.ts",
+   "target": "function:src/utils/calculations/perma.ts:isPermaEligible",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/perma.ts",
+   "target": "function:src/utils/calculations/perma.ts:isPermaEligible",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/perma.ts",
+   "target": "function:src/utils/calculations/perma.ts:hasSelfStateToKeepUp",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/perma.ts",
+   "target": "function:src/utils/calculations/perma.ts:calculatePermaInfo",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/perma.ts",
+   "target": "function:src/utils/calculations/perma.ts:calculatePermaInfo",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/utils/calculations/proc-runtime-allowlist.test.ts",
+   "target": "function:src/utils/calculations/proc-runtime-allowlist.test.ts:buildWithSlots",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/proc-variable-calc.test.ts",
+   "target": "function:src/utils/calculations/proc-variable-calc.test.ts:tankerBuild",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/utils/calculations/incandescence-heal-received.test.ts",
+   "target": "file:src/data/dataset.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/incandescence-heal-received.test.ts",
+   "target": "file:src/data/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/incandescence-heal-received.test.ts",
+   "target": "file:src/types/build.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/incandescence-heal-received.test.ts",
+   "target": "file:src/types/incarnate.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/incandescence-heal-received.test.ts",
+   "target": "file:src/utils/calculations/character-totals.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/incarnate-effects-completeness.test.ts",
+   "target": "file:src/data/dataset.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/incarnate-effects-completeness.test.ts",
+   "target": "file:src/data/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/incarnate-effects-completeness.test.ts",
+   "target": "file:src/types/build.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/incarnate-effects-completeness.test.ts",
+   "target": "file:src/types/incarnate.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/incarnate-effects-completeness.test.ts",
+   "target": "file:src/utils/calculations/character-totals.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/incarnate-exemplar.test.ts",
+   "target": "file:src/data/dataset.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/incarnate-exemplar.test.ts",
+   "target": "file:src/types/build.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/incarnate-exemplar.test.ts",
+   "target": "file:src/utils/calculations/character-totals.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/incarnate-exemplar.test.ts",
+   "target": "file:src/utils/calculations/effective-level.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "file:src/data/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "file:src/types/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/inherents.ts",
+   "target": "file:src/types/power.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/jump-height.test.ts",
+   "target": "file:src/data/core/movement-constants.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/jump-height.test.ts",
+   "target": "file:src/data/dataset.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/jump-height.test.ts",
+   "target": "file:src/data/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/jump-height.test.ts",
+   "target": "file:src/types/build.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/jump-height.test.ts",
+   "target": "file:src/utils/calculations/character-totals.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/perma.ts",
+   "target": "file:src/types/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/perma.ts",
+   "target": "file:src/utils/calculations/enhancement-values.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/proc-global-damage.test.ts",
+   "target": "file:src/data/dataset.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/proc-global-damage.test.ts",
+   "target": "file:src/types/build.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/proc-global-damage.test.ts",
+   "target": "file:src/utils/calculations/character-totals.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/proc-global-recharge.test.ts",
+   "target": "file:src/data/dataset.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/proc-global-recharge.test.ts",
+   "target": "file:src/types/build.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/proc-global-recharge.test.ts",
+   "target": "file:src/utils/calculations/character-totals.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/proc-runtime-allowlist.test.ts",
+   "target": "file:src/data/dataset.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/proc-runtime-allowlist.test.ts",
+   "target": "file:src/types/build.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/proc-runtime-allowlist.test.ts",
+   "target": "file:src/utils/calculations/character-totals.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/proc-variable-calc.test.ts",
+   "target": "file:src/data/dataset.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/proc-variable-calc.test.ts",
+   "target": "file:src/types/build.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/proc-variable-calc.test.ts",
+   "target": "file:src/types/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/proc-variable-calc.test.ts",
+   "target": "file:src/utils/calculations/character-totals.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/self-penalty-towho.test.ts",
+   "target": "file:src/data/dataset.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/self-penalty-towho.test.ts",
+   "target": "file:src/data/powersets.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/self-penalty-towho.test.ts",
+   "target": "file:src/types/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/utils/calculations/character-totals.ts",
+   "target": "file:src/utils/calculations/incandescence-heal-received.test.ts",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:src/utils/calculations/character-totals.ts",
+   "target": "file:src/utils/calculations/incarnate-effects-completeness.test.ts",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:src/utils/calculations/character-totals.ts",
+   "target": "file:src/utils/calculations/incarnate-exemplar.test.ts",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:src/utils/calculations/effective-level.ts",
+   "target": "file:src/utils/calculations/incarnate-exemplar.test.ts",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:src/utils/calculations/character-totals.ts",
+   "target": "file:src/utils/calculations/jump-height.test.ts",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:src/utils/calculations/character-totals.ts",
+   "target": "file:src/utils/calculations/proc-global-damage.test.ts",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:src/utils/calculations/character-totals.ts",
+   "target": "file:src/utils/calculations/proc-global-recharge.test.ts",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:src/utils/calculations/character-totals.ts",
+   "target": "file:src/utils/calculations/proc-runtime-allowlist.test.ts",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:src/utils/calculations/character-totals.ts",
+   "target": "file:src/utils/calculations/proc-variable-calc.test.ts",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:src/data/powersets.ts",
+   "target": "file:src/utils/calculations/self-penalty-towho.test.ts",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:src/utils/calculations/perma.ts",
+   "target": "file:src/utils/calculations/stacking-flaw-fix.verify.test.ts",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  }
+ ]
+}

@@ -1,0 +1,1538 @@
+{
+ "nodes": [
+  {
+   "id": "file:src/components/enhancements/EnhancementIcon.tsx",
+   "type": "file",
+   "name": "EnhancementIcon.tsx",
+   "filePath": "src/components/enhancements/EnhancementIcon.tsx",
+   "summary": "Renders enhancement icons for every enhancement family (IO sets, generic IOs, origin, Hamidon/special), resolving layered base + overlay image paths from enhancement type and origin data.",
+   "tags": [
+    "component",
+    "enhancement",
+    "icon-rendering",
+    "utility"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:src/components/enhancements/EnhancementIcon.tsx:getOverlayPath",
+   "type": "function",
+   "name": "getOverlayPath",
+   "filePath": "src/components/enhancements/EnhancementIcon.tsx",
+   "lineRange": [
+    66,
+    134
+   ],
+   "summary": "Resolves the overlay image path (set frame, rarity ring, attuned marker) for an enhancement based on its type and tier.",
+   "tags": [
+    "utility",
+    "icon-path",
+    "enhancement"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:src/components/enhancements/EnhancementIcon.tsx:getIOSetFolder",
+   "type": "function",
+   "name": "getIOSetFolder",
+   "filePath": "src/components/enhancements/EnhancementIcon.tsx",
+   "lineRange": [
+    145,
+    156
+   ],
+   "summary": "Maps an IO set category to the asset folder its icons live in.",
+   "tags": [
+    "utility",
+    "icon-path",
+    "io-set"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/components/enhancements/EnhancementIcon.tsx:getBaseIconPath",
+   "type": "function",
+   "name": "getBaseIconPath",
+   "filePath": "src/components/enhancements/EnhancementIcon.tsx",
+   "lineRange": [
+    161,
+    190
+   ],
+   "summary": "Computes the base icon image path for any enhancement variant (set piece, generic IO, origin, special).",
+   "tags": [
+    "utility",
+    "icon-path",
+    "enhancement"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/components/enhancements/EnhancementIcon.tsx:EnhancementIcon",
+   "type": "function",
+   "name": "EnhancementIcon",
+   "filePath": "src/components/enhancements/EnhancementIcon.tsx",
+   "lineRange": [
+    192,
+    243
+   ],
+   "summary": "Main icon component that layers base and overlay images to render any enhancement type at a given size.",
+   "tags": [
+    "component",
+    "icon-rendering",
+    "enhancement"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:src/components/enhancements/EnhancementIcon.tsx:IOSetIcon",
+   "type": "function",
+   "name": "IOSetIcon",
+   "filePath": "src/components/enhancements/EnhancementIcon.tsx",
+   "lineRange": [
+    263,
+    275
+   ],
+   "summary": "Convenience icon component for an IO set piece.",
+   "tags": [
+    "component",
+    "icon-rendering",
+    "io-set"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/components/enhancements/EnhancementIcon.tsx:GenericIOIcon",
+   "type": "function",
+   "name": "GenericIOIcon",
+   "filePath": "src/components/enhancements/EnhancementIcon.tsx",
+   "lineRange": [
+    291,
+    302
+   ],
+   "summary": "Convenience icon component for a generic (common) IO enhancement.",
+   "tags": [
+    "component",
+    "icon-rendering",
+    "generic-io"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/components/enhancements/EnhancementIcon.tsx:OriginEnhancementIcon",
+   "type": "function",
+   "name": "OriginEnhancementIcon",
+   "filePath": "src/components/enhancements/EnhancementIcon.tsx",
+   "lineRange": [
+    322,
+    342
+   ],
+   "summary": "Icon component for origin enhancements (TO/DO/SO), combining origin art with the stat glyph.",
+   "tags": [
+    "component",
+    "icon-rendering",
+    "origin-enhancement"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/components/enhancements/EnhancementIcon.tsx:SpecialEnhancementIcon",
+   "type": "function",
+   "name": "SpecialEnhancementIcon",
+   "filePath": "src/components/enhancements/EnhancementIcon.tsx",
+   "lineRange": [
+    358,
+    368
+   ],
+   "summary": "Icon component for special enhancements (Hamidon, Titan, Hydra, D-Sync, Prestige).",
+   "tags": [
+    "component",
+    "icon-rendering",
+    "special-enhancement"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:src/components/enhancements/EnhancementPicker.tsx",
+   "type": "file",
+   "name": "EnhancementPicker.tsx",
+   "filePath": "src/components/enhancements/EnhancementPicker.tsx",
+   "summary": "The main enhancement-slotting UI: a large picker panel with sidebar categories for IO sets, procs, generic IOs, special and origin enhancements, including set-piece tooltips, stacked-count badges, and set bonus previews.",
+   "tags": [
+    "component",
+    "enhancement",
+    "picker",
+    "entry-point",
+    "complex-ui"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:src/components/enhancements/EnhancementPicker.tsx:EnhancementPicker",
+   "type": "function",
+   "name": "EnhancementPicker",
+   "filePath": "src/components/enhancements/EnhancementPicker.tsx",
+   "lineRange": [
+    46,
+    1091
+   ],
+   "summary": "Root picker component managing category selection, search, level/attunement controls, and slotting actions for the active power slot; over 1000 lines of orchestration.",
+   "tags": [
+    "component",
+    "picker",
+    "enhancement",
+    "stateful"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:src/components/enhancements/EnhancementPicker.tsx:SidebarButton",
+   "type": "function",
+   "name": "SidebarButton",
+   "filePath": "src/components/enhancements/EnhancementPicker.tsx",
+   "lineRange": [
+    1106,
+    1120
+   ],
+   "summary": "Sidebar category button for the desktop picker layout.",
+   "tags": [
+    "component",
+    "navigation",
+    "picker"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/components/enhancements/EnhancementPicker.tsx:MobileCategoryButton",
+   "type": "function",
+   "name": "MobileCategoryButton",
+   "filePath": "src/components/enhancements/EnhancementPicker.tsx",
+   "lineRange": [
+    1135,
+    1149
+   ],
+   "summary": "Category button variant for the mobile picker layout.",
+   "tags": [
+    "component",
+    "navigation",
+    "mobile"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/components/enhancements/EnhancementPicker.tsx:IOSetsContent",
+   "type": "function",
+   "name": "IOSetsContent",
+   "filePath": "src/components/enhancements/EnhancementPicker.tsx",
+   "lineRange": [
+    1175,
+    1217
+   ],
+   "summary": "Renders the list of IO sets available for the current power category.",
+   "tags": [
+    "component",
+    "io-set",
+    "list"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/components/enhancements/EnhancementPicker.tsx:ProcsContent",
+   "type": "function",
+   "name": "ProcsContent",
+   "filePath": "src/components/enhancements/EnhancementPicker.tsx",
+   "lineRange": [
+    1235,
+    1403
+   ],
+   "summary": "Renders the proc-focused view listing sets by their proc pieces with effect labels and colors.",
+   "tags": [
+    "component",
+    "proc",
+    "list"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:src/components/enhancements/EnhancementPicker.tsx:IOSetRow",
+   "type": "function",
+   "name": "IOSetRow",
+   "filePath": "src/components/enhancements/EnhancementPicker.tsx",
+   "lineRange": [
+    1422,
+    1701
+   ],
+   "summary": "Expandable row for one IO set: pieces, slotting buttons, set bonuses, and stacked-count indicators.",
+   "tags": [
+    "component",
+    "io-set",
+    "row",
+    "stateful"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:src/components/enhancements/EnhancementPicker.tsx:StackedCountBadge",
+   "type": "function",
+   "name": "StackedCountBadge",
+   "filePath": "src/components/enhancements/EnhancementPicker.tsx",
+   "lineRange": [
+    1713,
+    1727
+   ],
+   "summary": "Badge showing how many copies of a set/piece are already slotted across the build.",
+   "tags": [
+    "component",
+    "badge",
+    "display"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/components/enhancements/EnhancementPicker.tsx:GenericIOContent",
+   "type": "function",
+   "name": "GenericIOContent",
+   "filePath": "src/components/enhancements/EnhancementPicker.tsx",
+   "lineRange": [
+    1742,
+    1776
+   ],
+   "summary": "Renders the generic (common) IO slotting options for the current power.",
+   "tags": [
+    "component",
+    "generic-io",
+    "list"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/components/enhancements/EnhancementPicker.tsx:SpecialContent",
+   "type": "function",
+   "name": "SpecialContent",
+   "filePath": "src/components/enhancements/EnhancementPicker.tsx",
+   "lineRange": [
+    1818,
+    1863
+   ],
+   "summary": "Renders special enhancement options (Hamidon, Titan, Hydra, D-Sync, Prestige) for the current power.",
+   "tags": [
+    "component",
+    "special-enhancement",
+    "list"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/components/enhancements/EnhancementPicker.tsx:OriginContent",
+   "type": "function",
+   "name": "OriginContent",
+   "filePath": "src/components/enhancements/EnhancementPicker.tsx",
+   "lineRange": [
+    1876,
+    1923
+   ],
+   "summary": "Renders origin enhancement (TO/DO/SO) slotting options with tier selection.",
+   "tags": [
+    "component",
+    "origin-enhancement",
+    "list"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/components/enhancements/EnhancementPicker.tsx:SetPieceTooltip",
+   "type": "function",
+   "name": "SetPieceTooltip",
+   "filePath": "src/components/enhancements/EnhancementPicker.tsx",
+   "lineRange": [
+    1934,
+    2150
+   ],
+   "summary": "Rich tooltip for a set piece showing enhancement values at level, proc details, and set bonus contributions.",
+   "tags": [
+    "component",
+    "tooltip",
+    "io-set"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:src/components/enhancements/SetBonusDisplay.tsx",
+   "type": "file",
+   "name": "SetBonusDisplay.tsx",
+   "filePath": "src/components/enhancements/SetBonusDisplay.tsx",
+   "summary": "Displays IO set bonuses for a slotted set, with per-bonus rows showing activation state and a summary view aggregating active bonuses across the build.",
+   "tags": [
+    "component",
+    "enhancement",
+    "set-bonus",
+    "display"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:src/components/enhancements/SetBonusDisplay.tsx:SetBonusDisplay",
+   "type": "function",
+   "name": "SetBonusDisplay",
+   "filePath": "src/components/enhancements/SetBonusDisplay.tsx",
+   "lineRange": [
+    12,
+    37
+   ],
+   "summary": "Displays the bonus list for one slotted IO set with active/inactive states.",
+   "tags": [
+    "component",
+    "set-bonus",
+    "display"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/components/enhancements/SetBonusDisplay.tsx:SetBonusItem",
+   "type": "function",
+   "name": "SetBonusItem",
+   "filePath": "src/components/enhancements/SetBonusDisplay.tsx",
+   "lineRange": [
+    46,
+    60
+   ],
+   "summary": "Renders a single set bonus entry with formatted value.",
+   "tags": [
+    "component",
+    "set-bonus",
+    "display"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/components/enhancements/SetBonusDisplay.tsx:BonusRow",
+   "type": "function",
+   "name": "BonusRow",
+   "filePath": "src/components/enhancements/SetBonusDisplay.tsx",
+   "lineRange": [
+    68,
+    133
+   ],
+   "summary": "Row rendering one bonus with piece-count requirement, active state, and Rule-of-5 cap indication.",
+   "tags": [
+    "component",
+    "set-bonus",
+    "row"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:src/components/enhancements/SetBonusDisplay.tsx:SetBonusSummary",
+   "type": "function",
+   "name": "SetBonusSummary",
+   "filePath": "src/components/enhancements/SetBonusDisplay.tsx",
+   "lineRange": [
+    147,
+    200
+   ],
+   "summary": "Aggregated summary of all active set bonuses across the build, grouped for compact display.",
+   "tags": [
+    "component",
+    "set-bonus",
+    "summary"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:src/components/enhancements/SetBonusList.tsx",
+   "type": "file",
+   "name": "SetBonusList.tsx",
+   "filePath": "src/components/enhancements/SetBonusList.tsx",
+   "summary": "Lists the set bonuses granted at each piece count for an IO set inside the picker, marking which bonuses are active given current slotting and Rule-of-5 caps.",
+   "tags": [
+    "component",
+    "enhancement",
+    "set-bonus",
+    "display"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:src/components/enhancements/SetBonusList.tsx:SetBonusList",
+   "type": "function",
+   "name": "SetBonusList",
+   "filePath": "src/components/enhancements/SetBonusList.tsx",
+   "lineRange": [
+    43,
+    169
+   ],
+   "summary": "Lists a set’s bonuses per piece count, computing active state from the build’s slotting and Rule-of-5 tracking.",
+   "tags": [
+    "component",
+    "set-bonus",
+    "list"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:src/components/export-image/BuildImageCard.tsx",
+   "type": "file",
+   "name": "BuildImageCard.tsx",
+   "filePath": "src/components/export-image/BuildImageCard.tsx",
+   "summary": "Off-screen \"poster\" component rendered for the Export-as-Image feature: lays out powers, slots, incarnates, character totals, and set bonuses into a fixed-width card that gets rasterized to an image.",
+   "tags": [
+    "component",
+    "export",
+    "image-generation",
+    "build-summary"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:src/components/export-image/BuildImageCard.tsx:SlotDots",
+   "type": "function",
+   "name": "SlotDots",
+   "filePath": "src/components/export-image/BuildImageCard.tsx",
+   "lineRange": [
+    60,
+    73
+   ],
+   "summary": "Renders slot-count dots for a power tile in the export card.",
+   "tags": [
+    "component",
+    "export",
+    "display"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/components/export-image/BuildImageCard.tsx:SlotIcons",
+   "type": "function",
+   "name": "SlotIcons",
+   "filePath": "src/components/export-image/BuildImageCard.tsx",
+   "lineRange": [
+    75,
+    93
+   ],
+   "summary": "Renders the slotted enhancement icons for a power in the export card.",
+   "tags": [
+    "component",
+    "export",
+    "icon-rendering"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/components/export-image/BuildImageCard.tsx:PowerTile",
+   "type": "function",
+   "name": "PowerTile",
+   "filePath": "src/components/export-image/BuildImageCard.tsx",
+   "lineRange": [
+    95,
+    121
+   ],
+   "summary": "Tile showing one power with its level, icon, and slotted enhancements in the export layout.",
+   "tags": [
+    "component",
+    "export",
+    "power-display"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/components/export-image/BuildImageCard.tsx:IncarnateTile",
+   "type": "function",
+   "name": "IncarnateTile",
+   "filePath": "src/components/export-image/BuildImageCard.tsx",
+   "lineRange": [
+    123,
+    141
+   ],
+   "summary": "Tile showing a selected incarnate power in the export layout.",
+   "tags": [
+    "component",
+    "export",
+    "incarnate"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/components/export-image/BuildImageCard.tsx:MiniCapBar",
+   "type": "function",
+   "name": "MiniCapBar",
+   "filePath": "src/components/export-image/BuildImageCard.tsx",
+   "lineRange": [
+    147,
+    160
+   ],
+   "summary": "Miniature bar visualizing a stat value against its cap.",
+   "tags": [
+    "component",
+    "export",
+    "stats"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/components/export-image/BuildImageCard.tsx:StatSectionCard",
+   "type": "function",
+   "name": "StatSectionCard",
+   "filePath": "src/components/export-image/BuildImageCard.tsx",
+   "lineRange": [
+    162,
+    187
+   ],
+   "summary": "Card rendering one stat section (defense, resistance, etc.) of the character totals.",
+   "tags": [
+    "component",
+    "export",
+    "stats"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/components/export-image/BuildImageCard.tsx:SetBonusesBlock",
+   "type": "function",
+   "name": "SetBonusesBlock",
+   "filePath": "src/components/export-image/BuildImageCard.tsx",
+   "lineRange": [
+    204,
+    226
+   ],
+   "summary": "Block listing active set bonuses on the exported build image.",
+   "tags": [
+    "component",
+    "export",
+    "set-bonus"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/components/export-image/BuildImageCard.tsx:Header",
+   "type": "function",
+   "name": "Header",
+   "filePath": "src/components/export-image/BuildImageCard.tsx",
+   "lineRange": [
+    232,
+    258
+   ],
+   "summary": "Header of the export card with character name, archetype, and powerset info.",
+   "tags": [
+    "component",
+    "export",
+    "header"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/components/export-image/BuildImageCard.tsx:BuildImageCard",
+   "type": "function",
+   "name": "BuildImageCard",
+   "filePath": "src/components/export-image/BuildImageCard.tsx",
+   "lineRange": [
+    264,
+    341
+   ],
+   "summary": "ForwardRef root component assembling header, power tiles, incarnates, stat sections, and set bonuses into the fixed-width export poster.",
+   "tags": [
+    "component",
+    "export",
+    "image-generation"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:src/components/export-image/exportOptions.ts",
+   "type": "file",
+   "name": "exportOptions.ts",
+   "filePath": "src/components/export-image/exportOptions.ts",
+   "summary": "Defines the configurable options for build-image export (stat section selections, presets) with helpers to apply a preset and create default options.",
+   "tags": [
+    "config",
+    "export",
+    "options",
+    "utility"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:src/components/export-image/exportOptions.ts:applyPreset",
+   "type": "function",
+   "name": "applyPreset",
+   "filePath": "src/components/export-image/exportOptions.ts",
+   "lineRange": [
+    107,
+    109
+   ],
+   "summary": "Applies a named preset to the export options object.",
+   "tags": [
+    "utility",
+    "export",
+    "options"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/components/export-image/exportOptions.ts:createDefaultOptions",
+   "type": "function",
+   "name": "createDefaultOptions",
+   "filePath": "src/components/export-image/exportOptions.ts",
+   "lineRange": [
+    112,
+    128
+   ],
+   "summary": "Creates the default export options with the standard stat-section selection.",
+   "tags": [
+    "factory",
+    "export",
+    "options"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:src/components/incarnate/IncarnateSlotGrid.tsx",
+   "type": "file",
+   "name": "IncarnateSlotGrid.tsx",
+   "filePath": "src/components/incarnate/IncarnateSlotGrid.tsx",
+   "summary": "Compact grid of incarnate slots for the dashboard, rendering a mini tile per slot with selection state, tier coloring, and effect tooltips.",
+   "tags": [
+    "component",
+    "incarnate",
+    "grid",
+    "display"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:src/components/incarnate/IncarnateSlotGrid.tsx:IncarnateSlotGrid",
+   "type": "function",
+   "name": "IncarnateSlotGrid",
+   "filePath": "src/components/incarnate/IncarnateSlotGrid.tsx",
+   "lineRange": [
+    32,
+    60
+   ],
+   "summary": "Grid component laying out mini tiles for each incarnate slot.",
+   "tags": [
+    "component",
+    "incarnate",
+    "grid"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/components/incarnate/IncarnateSlotGrid.tsx:IncarnateSlotMini",
+   "type": "function",
+   "name": "IncarnateSlotMini",
+   "filePath": "src/components/incarnate/IncarnateSlotGrid.tsx",
+   "lineRange": [
+    73,
+    218
+   ],
+   "summary": "Mini tile for one incarnate slot with selection display, tier color, toggle state, and effects tooltip.",
+   "tags": [
+    "component",
+    "incarnate",
+    "tile"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:src/components/incarnate/index.ts",
+   "type": "file",
+   "name": "index.ts",
+   "filePath": "src/components/incarnate/index.ts",
+   "summary": "Barrel file re-exporting the incarnate UI components (slot button, slot grid, modals, power tree, Destiny time slider).",
+   "tags": [
+    "barrel",
+    "entry-point",
+    "incarnate"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:src/components/info/PopOutInfoPanel.tsx",
+   "type": "file",
+   "name": "PopOutInfoPanel.tsx",
+   "filePath": "src/components/info/PopOutInfoPanel.tsx",
+   "summary": "Floating-window wrapper that hosts the InfoPanel in a detachable pop-out window driven by UI store state.",
+   "tags": [
+    "component",
+    "info-panel",
+    "floating-window"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/components/info/PopOutInfoPanel.tsx:PopOutInfoPanel",
+   "type": "function",
+   "name": "PopOutInfoPanel",
+   "filePath": "src/components/info/PopOutInfoPanel.tsx",
+   "lineRange": [
+    13,
+    42
+   ],
+   "summary": "Wraps InfoPanel in a FloatingWindow when the pop-out info panel mode is enabled.",
+   "tags": [
+    "component",
+    "info-panel",
+    "floating-window"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:src/components/info/SetBonusPopup.tsx",
+   "type": "file",
+   "name": "SetBonusPopup.tsx",
+   "filePath": "src/components/info/SetBonusPopup.tsx",
+   "summary": "Popup showing the aggregated set bonuses of the current build grouped by stat, with Rule-of-5 tracking and per-source breakdowns.",
+   "tags": [
+    "component",
+    "set-bonus",
+    "popup",
+    "display"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:src/components/info/SetBonusPopup.tsx:SetBonusPopup",
+   "type": "function",
+   "name": "SetBonusPopup",
+   "filePath": "src/components/info/SetBonusPopup.tsx",
+   "lineRange": [
+    55,
+    325
+   ],
+   "summary": "Modal popup aggregating all set bonuses by stat group with Rule-of-5 status and per-set sources.",
+   "tags": [
+    "component",
+    "set-bonus",
+    "popup"
+   ],
+   "complexity": "complex"
+  }
+ ],
+ "edges": [
+  {
+   "source": "file:src/components/enhancements/EnhancementIcon.tsx",
+   "target": "function:src/components/enhancements/EnhancementIcon.tsx:getOverlayPath",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/enhancements/EnhancementIcon.tsx",
+   "target": "function:src/components/enhancements/EnhancementIcon.tsx:getIOSetFolder",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/enhancements/EnhancementIcon.tsx",
+   "target": "function:src/components/enhancements/EnhancementIcon.tsx:getIOSetFolder",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/components/enhancements/EnhancementIcon.tsx",
+   "target": "function:src/components/enhancements/EnhancementIcon.tsx:getBaseIconPath",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/enhancements/EnhancementIcon.tsx",
+   "target": "function:src/components/enhancements/EnhancementIcon.tsx:EnhancementIcon",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/enhancements/EnhancementIcon.tsx",
+   "target": "function:src/components/enhancements/EnhancementIcon.tsx:EnhancementIcon",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/components/enhancements/EnhancementIcon.tsx",
+   "target": "function:src/components/enhancements/EnhancementIcon.tsx:IOSetIcon",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/enhancements/EnhancementIcon.tsx",
+   "target": "function:src/components/enhancements/EnhancementIcon.tsx:IOSetIcon",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/components/enhancements/EnhancementIcon.tsx",
+   "target": "function:src/components/enhancements/EnhancementIcon.tsx:GenericIOIcon",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/enhancements/EnhancementIcon.tsx",
+   "target": "function:src/components/enhancements/EnhancementIcon.tsx:GenericIOIcon",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/components/enhancements/EnhancementIcon.tsx",
+   "target": "function:src/components/enhancements/EnhancementIcon.tsx:OriginEnhancementIcon",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/enhancements/EnhancementIcon.tsx",
+   "target": "function:src/components/enhancements/EnhancementIcon.tsx:OriginEnhancementIcon",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/components/enhancements/EnhancementIcon.tsx",
+   "target": "function:src/components/enhancements/EnhancementIcon.tsx:SpecialEnhancementIcon",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/enhancements/EnhancementIcon.tsx",
+   "target": "function:src/components/enhancements/EnhancementIcon.tsx:SpecialEnhancementIcon",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/components/enhancements/EnhancementPicker.tsx",
+   "target": "function:src/components/enhancements/EnhancementPicker.tsx:EnhancementPicker",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/enhancements/EnhancementPicker.tsx",
+   "target": "function:src/components/enhancements/EnhancementPicker.tsx:EnhancementPicker",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/components/enhancements/EnhancementPicker.tsx",
+   "target": "function:src/components/enhancements/EnhancementPicker.tsx:SidebarButton",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/enhancements/EnhancementPicker.tsx",
+   "target": "function:src/components/enhancements/EnhancementPicker.tsx:MobileCategoryButton",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/enhancements/EnhancementPicker.tsx",
+   "target": "function:src/components/enhancements/EnhancementPicker.tsx:IOSetsContent",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/enhancements/EnhancementPicker.tsx",
+   "target": "function:src/components/enhancements/EnhancementPicker.tsx:ProcsContent",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/enhancements/EnhancementPicker.tsx",
+   "target": "function:src/components/enhancements/EnhancementPicker.tsx:IOSetRow",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/enhancements/EnhancementPicker.tsx",
+   "target": "function:src/components/enhancements/EnhancementPicker.tsx:StackedCountBadge",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/enhancements/EnhancementPicker.tsx",
+   "target": "function:src/components/enhancements/EnhancementPicker.tsx:GenericIOContent",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/enhancements/EnhancementPicker.tsx",
+   "target": "function:src/components/enhancements/EnhancementPicker.tsx:SpecialContent",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/enhancements/EnhancementPicker.tsx",
+   "target": "function:src/components/enhancements/EnhancementPicker.tsx:OriginContent",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/enhancements/EnhancementPicker.tsx",
+   "target": "function:src/components/enhancements/EnhancementPicker.tsx:SetPieceTooltip",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/enhancements/SetBonusDisplay.tsx",
+   "target": "function:src/components/enhancements/SetBonusDisplay.tsx:SetBonusDisplay",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/enhancements/SetBonusDisplay.tsx",
+   "target": "function:src/components/enhancements/SetBonusDisplay.tsx:SetBonusDisplay",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/components/enhancements/SetBonusDisplay.tsx",
+   "target": "function:src/components/enhancements/SetBonusDisplay.tsx:SetBonusItem",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/enhancements/SetBonusDisplay.tsx",
+   "target": "function:src/components/enhancements/SetBonusDisplay.tsx:BonusRow",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/enhancements/SetBonusDisplay.tsx",
+   "target": "function:src/components/enhancements/SetBonusDisplay.tsx:SetBonusSummary",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/enhancements/SetBonusDisplay.tsx",
+   "target": "function:src/components/enhancements/SetBonusDisplay.tsx:SetBonusSummary",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/components/enhancements/SetBonusList.tsx",
+   "target": "function:src/components/enhancements/SetBonusList.tsx:SetBonusList",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/enhancements/SetBonusList.tsx",
+   "target": "function:src/components/enhancements/SetBonusList.tsx:SetBonusList",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/components/export-image/BuildImageCard.tsx",
+   "target": "function:src/components/export-image/BuildImageCard.tsx:SlotDots",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/export-image/BuildImageCard.tsx",
+   "target": "function:src/components/export-image/BuildImageCard.tsx:SlotIcons",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/export-image/BuildImageCard.tsx",
+   "target": "function:src/components/export-image/BuildImageCard.tsx:PowerTile",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/export-image/BuildImageCard.tsx",
+   "target": "function:src/components/export-image/BuildImageCard.tsx:IncarnateTile",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/export-image/BuildImageCard.tsx",
+   "target": "function:src/components/export-image/BuildImageCard.tsx:MiniCapBar",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/export-image/BuildImageCard.tsx",
+   "target": "function:src/components/export-image/BuildImageCard.tsx:StatSectionCard",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/export-image/BuildImageCard.tsx",
+   "target": "function:src/components/export-image/BuildImageCard.tsx:SetBonusesBlock",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/export-image/BuildImageCard.tsx",
+   "target": "function:src/components/export-image/BuildImageCard.tsx:Header",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/export-image/BuildImageCard.tsx",
+   "target": "function:src/components/export-image/BuildImageCard.tsx:BuildImageCard",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/export-image/BuildImageCard.tsx",
+   "target": "function:src/components/export-image/BuildImageCard.tsx:BuildImageCard",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/components/export-image/exportOptions.ts",
+   "target": "function:src/components/export-image/exportOptions.ts:applyPreset",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/export-image/exportOptions.ts",
+   "target": "function:src/components/export-image/exportOptions.ts:applyPreset",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/components/export-image/exportOptions.ts",
+   "target": "function:src/components/export-image/exportOptions.ts:createDefaultOptions",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/export-image/exportOptions.ts",
+   "target": "function:src/components/export-image/exportOptions.ts:createDefaultOptions",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/components/incarnate/IncarnateSlotGrid.tsx",
+   "target": "function:src/components/incarnate/IncarnateSlotGrid.tsx:IncarnateSlotGrid",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/incarnate/IncarnateSlotGrid.tsx",
+   "target": "function:src/components/incarnate/IncarnateSlotGrid.tsx:IncarnateSlotGrid",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/components/incarnate/IncarnateSlotGrid.tsx",
+   "target": "function:src/components/incarnate/IncarnateSlotGrid.tsx:IncarnateSlotMini",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/info/PopOutInfoPanel.tsx",
+   "target": "function:src/components/info/PopOutInfoPanel.tsx:PopOutInfoPanel",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/info/PopOutInfoPanel.tsx",
+   "target": "function:src/components/info/PopOutInfoPanel.tsx:PopOutInfoPanel",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/components/info/SetBonusPopup.tsx",
+   "target": "function:src/components/info/SetBonusPopup.tsx:SetBonusPopup",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/info/SetBonusPopup.tsx",
+   "target": "function:src/components/info/SetBonusPopup.tsx:SetBonusPopup",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/components/enhancements/EnhancementIcon.tsx",
+   "target": "file:src/data/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/enhancements/EnhancementIcon.tsx",
+   "target": "file:src/types/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/enhancements/EnhancementIcon.tsx",
+   "target": "file:src/utils/paths.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/enhancements/EnhancementPicker.tsx",
+   "target": "file:src/components/enhancements/EnhancementIcon.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/enhancements/EnhancementPicker.tsx",
+   "target": "file:src/components/enhancements/SetBonusList.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/enhancements/EnhancementPicker.tsx",
+   "target": "file:src/components/modals/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/enhancements/EnhancementPicker.tsx",
+   "target": "file:src/components/ui/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/enhancements/EnhancementPicker.tsx",
+   "target": "file:src/data/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/enhancements/EnhancementPicker.tsx",
+   "target": "file:src/data/set-bonus-index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/enhancements/EnhancementPicker.tsx",
+   "target": "file:src/stores/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/enhancements/EnhancementPicker.tsx",
+   "target": "file:src/types/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/enhancements/EnhancementPicker.tsx",
+   "target": "file:src/utils/calculations/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/enhancements/EnhancementPicker.tsx",
+   "target": "file:src/utils/enhancement-outline.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/enhancements/SetBonusDisplay.tsx",
+   "target": "file:src/components/ui/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/enhancements/SetBonusDisplay.tsx",
+   "target": "file:src/hooks/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/enhancements/SetBonusDisplay.tsx",
+   "target": "file:src/types/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/enhancements/SetBonusDisplay.tsx",
+   "target": "file:src/utils/calculations/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/enhancements/SetBonusDisplay.tsx",
+   "target": "file:src/utils/set-bonus-format.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/enhancements/SetBonusList.tsx",
+   "target": "file:src/hooks/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/enhancements/SetBonusList.tsx",
+   "target": "file:src/stores/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/enhancements/SetBonusList.tsx",
+   "target": "file:src/types/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/enhancements/SetBonusList.tsx",
+   "target": "file:src/utils/calculations/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/enhancements/SetBonusList.tsx",
+   "target": "file:src/utils/calculations/set-bonuses.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/enhancements/SetBonusList.tsx",
+   "target": "file:src/utils/set-bonus-format.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/export-image/BuildImageCard.tsx",
+   "target": "file:src/components/export-image/exportOptions.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/export-image/BuildImageCard.tsx",
+   "target": "file:src/components/powers/SlottedEnhancementIcon.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/export-image/BuildImageCard.tsx",
+   "target": "file:src/data/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/export-image/BuildImageCard.tsx",
+   "target": "file:src/types/build.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/export-image/BuildImageCard.tsx",
+   "target": "file:src/types/enhancement.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/export-image/BuildImageCard.tsx",
+   "target": "file:src/types/incarnate.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/export-image/BuildImageCard.tsx",
+   "target": "file:src/types/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/export-image/BuildImageCard.tsx",
+   "target": "file:src/utils/build-powers.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/export-image/BuildImageCard.tsx",
+   "target": "file:src/utils/detailed-totals.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/export-image/BuildImageCard.tsx",
+   "target": "file:src/utils/paths.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/incarnate/IncarnateSlotGrid.tsx",
+   "target": "file:src/components/incarnate/IncarnateEffectsTooltip.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/incarnate/IncarnateSlotGrid.tsx",
+   "target": "file:src/components/ui/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/incarnate/IncarnateSlotGrid.tsx",
+   "target": "file:src/data/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/incarnate/IncarnateSlotGrid.tsx",
+   "target": "file:src/hooks/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/incarnate/IncarnateSlotGrid.tsx",
+   "target": "file:src/types/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/info/PopOutInfoPanel.tsx",
+   "target": "file:src/components/info/InfoPanel.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/info/PopOutInfoPanel.tsx",
+   "target": "file:src/components/ui/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/info/PopOutInfoPanel.tsx",
+   "target": "file:src/stores/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/info/SetBonusPopup.tsx",
+   "target": "file:src/components/modals/Modal.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/info/SetBonusPopup.tsx",
+   "target": "file:src/components/ui/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/info/SetBonusPopup.tsx",
+   "target": "file:src/data/set-bonus-groups.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/info/SetBonusPopup.tsx",
+   "target": "file:src/hooks/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/info/SetBonusPopup.tsx",
+   "target": "file:src/stores/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/info/SetBonusPopup.tsx",
+   "target": "file:src/utils/calculations/set-bonuses.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/info/SetBonusPopup.tsx",
+   "target": "file:src/utils/set-bonus-format.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  }
+ ]
+}

@@ -1,0 +1,755 @@
+{
+ "src/utils/calculations/incandescence-heal-received.test.ts": [
+  {
+   "path": "src/data/dataset.ts",
+   "batch": 1,
+   "symCount": 3
+  },
+  {
+   "path": "src/data/index.ts",
+   "batch": 1,
+   "symCount": 289
+  },
+  {
+   "path": "src/types/build.ts",
+   "batch": 3,
+   "symCount": 1
+  },
+  {
+   "path": "src/types/incarnate.ts",
+   "batch": 3,
+   "symCount": 11
+  },
+  {
+   "path": "src/utils/calculations/character-totals.ts",
+   "batch": 3,
+   "symCount": 5
+  }
+ ],
+ "src/utils/calculations/incarnate-effects-completeness.test.ts": [
+  {
+   "path": "src/data/dataset.ts",
+   "batch": 1,
+   "symCount": 3
+  },
+  {
+   "path": "src/data/index.ts",
+   "batch": 1,
+   "symCount": 289
+  },
+  {
+   "path": "src/types/build.ts",
+   "batch": 3,
+   "symCount": 1
+  },
+  {
+   "path": "src/types/incarnate.ts",
+   "batch": 3,
+   "symCount": 11
+  },
+  {
+   "path": "src/utils/calculations/character-totals.ts",
+   "batch": 3,
+   "symCount": 5
+  }
+ ],
+ "src/utils/calculations/incarnate-exemplar.test.ts": [
+  {
+   "path": "src/data/dataset.ts",
+   "batch": 1,
+   "symCount": 3
+  },
+  {
+   "path": "src/types/build.ts",
+   "batch": 3,
+   "symCount": 1
+  },
+  {
+   "path": "src/utils/calculations/character-totals.ts",
+   "batch": 3,
+   "symCount": 5
+  },
+  {
+   "path": "src/utils/calculations/effective-level.ts",
+   "batch": 3,
+   "symCount": 3
+  }
+ ],
+ "src/utils/calculations/inherents.ts": [
+  {
+   "path": "src/data/index.ts",
+   "batch": 1,
+   "symCount": 289
+  },
+  {
+   "path": "src/types/index.ts",
+   "batch": 8,
+   "symCount": 142
+  },
+  {
+   "path": "src/types/power.ts",
+   "batch": 3,
+   "symCount": 5
+  },
+  {
+   "path": "src/data/domination-perma-classification.test.ts",
+   "batch": 1,
+   "symCount": 0
+  },
+  {
+   "path": "src/utils/calculations/character-totals.ts",
+   "batch": 3,
+   "symCount": 5
+  },
+  {
+   "path": "src/utils/calculations/power-at-mechanics.ts",
+   "batch": 12,
+   "symCount": 2
+  }
+ ],
+ "src/utils/calculations/jump-height.test.ts": [
+  {
+   "path": "src/data/core/movement-constants.ts",
+   "batch": 1,
+   "symCount": 5
+  },
+  {
+   "path": "src/data/dataset.ts",
+   "batch": 1,
+   "symCount": 3
+  },
+  {
+   "path": "src/data/index.ts",
+   "batch": 1,
+   "symCount": 289
+  },
+  {
+   "path": "src/types/build.ts",
+   "batch": 3,
+   "symCount": 1
+  },
+  {
+   "path": "src/utils/calculations/character-totals.ts",
+   "batch": 3,
+   "symCount": 5
+  }
+ ],
+ "src/utils/calculations/perma.ts": [
+  {
+   "path": "src/types/index.ts",
+   "batch": 8,
+   "symCount": 142
+  },
+  {
+   "path": "src/utils/calculations/enhancement-values.ts",
+   "batch": 2,
+   "symCount": 17
+  },
+  {
+   "path": "src/components/info/InfoPanel.tsx",
+   "batch": 9,
+   "symCount": 2
+  },
+  {
+   "path": "src/components/powers/PermaRing.tsx",
+   "batch": 9,
+   "symCount": 1
+  },
+  {
+   "path": "src/data/domination-perma-classification.test.ts",
+   "batch": 1,
+   "symCount": 0
+  },
+  {
+   "path": "src/data/strengths-disallowed.test.ts",
+   "batch": 3,
+   "symCount": 0
+  },
+  {
+   "path": "src/data/thunderspy-ones-recharge-buff.test.ts",
+   "batch": 3,
+   "symCount": 0
+  }
+ ],
+ "src/utils/calculations/proc-global-damage.test.ts": [
+  {
+   "path": "src/data/dataset.ts",
+   "batch": 1,
+   "symCount": 3
+  },
+  {
+   "path": "src/types/build.ts",
+   "batch": 3,
+   "symCount": 1
+  },
+  {
+   "path": "src/utils/calculations/character-totals.ts",
+   "batch": 3,
+   "symCount": 5
+  }
+ ],
+ "src/utils/calculations/proc-global-recharge.test.ts": [
+  {
+   "path": "src/data/dataset.ts",
+   "batch": 1,
+   "symCount": 3
+  },
+  {
+   "path": "src/types/build.ts",
+   "batch": 3,
+   "symCount": 1
+  },
+  {
+   "path": "src/utils/calculations/character-totals.ts",
+   "batch": 3,
+   "symCount": 5
+  }
+ ],
+ "src/utils/calculations/proc-runtime-allowlist.test.ts": [
+  {
+   "path": "src/data/dataset.ts",
+   "batch": 1,
+   "symCount": 3
+  },
+  {
+   "path": "src/types/build.ts",
+   "batch": 3,
+   "symCount": 1
+  },
+  {
+   "path": "src/utils/calculations/character-totals.ts",
+   "batch": 3,
+   "symCount": 5
+  }
+ ],
+ "src/utils/calculations/proc-variable-calc.test.ts": [
+  {
+   "path": "src/data/dataset.ts",
+   "batch": 1,
+   "symCount": 3
+  },
+  {
+   "path": "src/types/build.ts",
+   "batch": 3,
+   "symCount": 1
+  },
+  {
+   "path": "src/types/index.ts",
+   "batch": 8,
+   "symCount": 142
+  },
+  {
+   "path": "src/utils/calculations/character-totals.ts",
+   "batch": 3,
+   "symCount": 5
+  }
+ ],
+ "src/utils/calculations/self-penalty-towho.test.ts": [
+  {
+   "path": "src/data/dataset.ts",
+   "batch": 1,
+   "symCount": 3
+  },
+  {
+   "path": "src/data/powersets.ts",
+   "batch": 3,
+   "symCount": 5
+  },
+  {
+   "path": "src/types/index.ts",
+   "batch": 8,
+   "symCount": 142
+  }
+ ],
+ "src/utils/calculations/stats.ts": [
+  {
+   "path": "src/data/index.ts",
+   "batch": 1,
+   "symCount": 289
+  },
+  {
+   "path": "src/types/index.ts",
+   "batch": 8,
+   "symCount": 142
+  },
+  {
+   "path": "src/components/info/InfoPanel.tsx",
+   "batch": 9,
+   "symCount": 2
+  },
+  {
+   "path": "src/components/layout/StatsDashboard.tsx",
+   "batch": 5,
+   "symCount": 6
+  },
+  {
+   "path": "src/components/modals/BuildImageModal.tsx",
+   "batch": 5,
+   "symCount": 1
+  },
+  {
+   "path": "src/components/modals/CompareSlottingModal.tsx",
+   "batch": 9,
+   "symCount": 1
+  },
+  {
+   "path": "src/components/modals/DetailedTotalsModal.tsx",
+   "batch": 5,
+   "symCount": 1
+  },
+  {
+   "path": "src/utils/calculations/absorb-stat.test.ts",
+   "batch": 3,
+   "symCount": 0
+  },
+  {
+   "path": "src/utils/calculations/bio-armor-absorb-targets.test.ts",
+   "batch": 3,
+   "symCount": 0
+  },
+  {
+   "path": "src/utils/calculations/character-totals.ts",
+   "batch": 3,
+   "symCount": 5
+  }
+ ],
+ "src/utils/calculations/stealth-procs.test.ts": [
+  {
+   "path": "src/data/dataset.ts",
+   "batch": 1,
+   "symCount": 3
+  },
+  {
+   "path": "src/types/build.ts",
+   "batch": 3,
+   "symCount": 1
+  },
+  {
+   "path": "src/utils/calculations/character-totals.ts",
+   "batch": 3,
+   "symCount": 5
+  }
+ ],
+ "src/utils/calculations/strength-buffs.test.ts": [
+  {
+   "path": "src/components/info/powerDisplayUtils.ts",
+   "batch": 9,
+   "symCount": 25
+  },
+  {
+   "path": "src/components/powers/power-row-utils.ts",
+   "batch": 7,
+   "symCount": 2
+  },
+  {
+   "path": "src/data/at-tables.ts",
+   "batch": 9,
+   "symCount": 8
+  },
+  {
+   "path": "src/data/dataset.ts",
+   "batch": 1,
+   "symCount": 3
+  },
+  {
+   "path": "src/data/epic-pools.ts",
+   "batch": 1,
+   "symCount": 5
+  },
+  {
+   "path": "src/data/powersets.ts",
+   "batch": 3,
+   "symCount": 5
+  },
+  {
+   "path": "src/types/build.ts",
+   "batch": 3,
+   "symCount": 1
+  },
+  {
+   "path": "src/utils/calculations/character-totals.ts",
+   "batch": 3,
+   "symCount": 5
+  }
+ ],
+ "src/utils/calculations/travel-speed-fixes.test.ts": [
+  {
+   "path": "src/data/core/movement-constants.ts",
+   "batch": 1,
+   "symCount": 5
+  },
+  {
+   "path": "src/data/dataset.ts",
+   "batch": 1,
+   "symCount": 3
+  },
+  {
+   "path": "src/data/index.ts",
+   "batch": 1,
+   "symCount": 289
+  },
+  {
+   "path": "src/data/power-pools.ts",
+   "batch": 1,
+   "symCount": 14
+  },
+  {
+   "path": "src/types/build.ts",
+   "batch": 3,
+   "symCount": 1
+  },
+  {
+   "path": "src/types/power.ts",
+   "batch": 3,
+   "symCount": 5
+  },
+  {
+   "path": "src/utils/calculations/character-totals.ts",
+   "batch": 3,
+   "symCount": 5
+  }
+ ],
+ "src/utils/conditional-effects.ts": [
+  {
+   "path": "src/types/index.ts",
+   "batch": 8,
+   "symCount": 142
+  },
+  {
+   "path": "src/components/info/PowerInfoTooltip.tsx",
+   "batch": 9,
+   "symCount": 1
+  },
+  {
+   "path": "src/utils/calculations/character-totals.ts",
+   "batch": 3,
+   "symCount": 5
+  }
+ ],
+ "src/utils/enhancement-eligibility.ts": [
+  {
+   "path": "src/data/io-sets.ts",
+   "batch": 6,
+   "symCount": 12
+  },
+  {
+   "path": "src/types/common.ts",
+   "batch": 3,
+   "symCount": 0
+  },
+  {
+   "path": "src/types/enhancement.ts",
+   "batch": 3,
+   "symCount": 0
+  },
+  {
+   "path": "src/stores/buildStore.ts",
+   "batch": 14,
+   "symCount": 9
+  },
+  {
+   "path": "src/utils/build-enhancement-validation.ts",
+   "batch": 3,
+   "symCount": 3
+  },
+  {
+   "path": "src/utils/slot-move.test.ts",
+   "batch": 14,
+   "symCount": 0
+  }
+ ],
+ "src/utils/export-popmenu.ts": [
+  {
+   "path": "src/data/index.ts",
+   "batch": 1,
+   "symCount": 289
+  },
+  {
+   "path": "src/types/enhancement.ts",
+   "batch": 3,
+   "symCount": 0
+  },
+  {
+   "path": "src/types/index.ts",
+   "batch": 8,
+   "symCount": 142
+  },
+  {
+   "path": "src/components/modals/ExportImportModal.tsx",
+   "batch": 1,
+   "symCount": 1
+  }
+ ],
+ "src/utils/export-print.ts": [
+  {
+   "path": "src/data/index.ts",
+   "batch": 1,
+   "symCount": 289
+  },
+  {
+   "path": "src/types/enhancement.ts",
+   "batch": 3,
+   "symCount": 0
+  },
+  {
+   "path": "src/types/incarnate.ts",
+   "batch": 3,
+   "symCount": 11
+  },
+  {
+   "path": "src/types/index.ts",
+   "batch": 8,
+   "symCount": 142
+  },
+  {
+   "path": "src/utils/calculations/character-totals.ts",
+   "batch": 3,
+   "symCount": 5
+  },
+  {
+   "path": "src/utils/slot-levels.ts",
+   "batch": 14,
+   "symCount": 9
+  },
+  {
+   "path": "src/components/modals/ExportImportModal.tsx",
+   "batch": 1,
+   "symCount": 1
+  }
+ ],
+ "src/utils/external-import/converter.ts": [
+  {
+   "path": "src/data/index.ts",
+   "batch": 1,
+   "symCount": 289
+  },
+  {
+   "path": "src/types/index.ts",
+   "batch": 8,
+   "symCount": 142
+  },
+  {
+   "path": "src/pages/ImportPage.tsx",
+   "batch": 3,
+   "symCount": 1
+  }
+ ],
+ "src/utils/game-importer/index.ts": [
+  {
+   "path": "src/components/modals/ExportImportModal.tsx",
+   "batch": 1,
+   "symCount": 1
+  }
+ ],
+ "src/utils/import-url.ts": [
+  {
+   "path": "src/data/proc-variable-overrides.test.ts",
+   "batch": 3,
+   "symCount": 0
+  },
+  {
+   "path": "src/pages/ImportPage.tsx",
+   "batch": 3,
+   "symCount": 1
+  },
+  {
+   "path": "src/stores/buildStore.ts",
+   "batch": 14,
+   "symCount": 9
+  },
+  {
+   "path": "src/stores/cross-dataset-import.test.ts",
+   "batch": 3,
+   "symCount": 0
+  },
+  {
+   "path": "src/utils/build-serialization.test.ts",
+   "batch": 3,
+   "symCount": 0
+  },
+  {
+   "path": "src/utils/build-serialization.ts",
+   "batch": 3,
+   "symCount": 3
+  }
+ ],
+ "src/utils/kheldian-import.test.ts": [
+  {
+   "path": "src/data/dataset.ts",
+   "batch": 1,
+   "symCount": 3
+  },
+  {
+   "path": "src/types/index.ts",
+   "batch": 8,
+   "symCount": 142
+  }
+ ],
+ "src/utils/mids-export.ts": [
+  {
+   "path": "src/data/at-tables.ts",
+   "batch": 9,
+   "symCount": 8
+  },
+  {
+   "path": "src/data/epic-pools.ts",
+   "batch": 1,
+   "symCount": 5
+  },
+  {
+   "path": "src/data/io-sets.ts",
+   "batch": 6,
+   "symCount": 12
+  },
+  {
+   "path": "src/data/power-pools.ts",
+   "batch": 1,
+   "symCount": 14
+  },
+  {
+   "path": "src/data/powersets.ts",
+   "batch": 3,
+   "symCount": 5
+  },
+  {
+   "path": "src/types/index.ts",
+   "batch": 8,
+   "symCount": 142
+  },
+  {
+   "path": "src/utils/mids-import/types.ts",
+   "batch": 8,
+   "symCount": 0
+  },
+  {
+   "path": "src/components/modals/ExportImportModal.tsx",
+   "batch": 1,
+   "symCount": 1
+  }
+ ],
+ "src/utils/mids-import/importer.test.ts": [
+  {
+   "path": "src/data/dataset.ts",
+   "batch": 1,
+   "symCount": 3
+  }
+ ],
+ "src/utils/mids-import/index.ts": [
+  {
+   "path": "scripts/bulk-import-mids.ts",
+   "batch": 1,
+   "symCount": 0
+  },
+  {
+   "path": "src/components/modals/ExportImportModal.tsx",
+   "batch": 1,
+   "symCount": 1
+  },
+  {
+   "path": "src/data/adaptation-stance-collision.test.ts",
+   "batch": 1,
+   "symCount": 0
+  }
+ ],
+ "src/utils/mxd-import/importer.ts": [
+  {
+   "path": "src/data/archetypes.ts",
+   "batch": 1,
+   "symCount": 9
+  },
+  {
+   "path": "src/data/dataset.ts",
+   "batch": 1,
+   "symCount": 3
+  },
+  {
+   "path": "src/data/incarnates.ts",
+   "batch": 10,
+   "symCount": 9
+  },
+  {
+   "path": "src/data/io-sets.ts",
+   "batch": 6,
+   "symCount": 12
+  },
+  {
+   "path": "src/data/powersets.ts",
+   "batch": 3,
+   "symCount": 5
+  },
+  {
+   "path": "src/types/archetype.ts",
+   "batch": 3,
+   "symCount": 0
+  },
+  {
+   "path": "src/types/build.ts",
+   "batch": 3,
+   "symCount": 1
+  },
+  {
+   "path": "src/types/enhancement.ts",
+   "batch": 3,
+   "symCount": 0
+  },
+  {
+   "path": "src/types/index.ts",
+   "batch": 8,
+   "symCount": 142
+  },
+  {
+   "path": "src/types/power.ts",
+   "batch": 3,
+   "symCount": 5
+  },
+  {
+   "path": "src/utils/mids-import/types.ts",
+   "batch": 8,
+   "symCount": 0
+  },
+  {
+   "path": "src/utils/mxd-import/abbreviations.ts",
+   "batch": 8,
+   "symCount": 5
+  }
+ ],
+ "src/utils/mxd-import/index.ts": [
+  {
+   "path": "src/components/modals/ExportImportModal.tsx",
+   "batch": 1,
+   "symCount": 1
+  }
+ ],
+ "src/utils/url-build-sync.ts": [
+  {
+   "path": "src/stores/index.ts",
+   "batch": 10,
+   "symCount": 37
+  },
+  {
+   "path": "src/types/index.ts",
+   "batch": 8,
+   "symCount": 142
+  },
+  {
+   "path": "src/utils/build-serialization.ts",
+   "batch": 3,
+   "symCount": 3
+  },
+  {
+   "path": "src/components/layout/Header.tsx",
+   "batch": 2,
+   "symCount": 2
+  },
+  {
+   "path": "src/data/proc-variable-overrides.test.ts",
+   "batch": 3,
+   "symCount": 0
+  },
+  {
+   "path": "src/pages/PlannerPage.tsx",
+   "batch": 10,
+   "symCount": 1
+  }
+ ]
+}

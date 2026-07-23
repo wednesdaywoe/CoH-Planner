@@ -1,0 +1,3026 @@
+{
+  "scriptCompleted": true,
+  "entryPointCandidates": [
+    {
+      "id": "file:src/App.tsx",
+      "score": 5,
+      "name": "App.tsx",
+      "type": "file",
+      "summary": "Root application component that simply mounts the TanStack Router via RouterProvider, delegating all page layout to the route tree."
+    },
+    {
+      "id": "file:src/main.tsx",
+      "score": 5,
+      "name": "main.tsx",
+      "type": "file",
+      "summary": "Application bootstrap: applies the persisted color theme before first paint, resolves the active dataset/server, installs chunk-error auto-reload, wraps rendering in an error fallback, and mounts App "
+    },
+    {
+      "id": "file:src/data/index.ts",
+      "score": 4,
+      "name": "index.ts",
+      "type": "file",
+      "summary": "Barrel entry point for the data layer, re-exporting archetypes, enhancements, IO sets, powersets, pools, epic pools, levels, incarnates, salvage, proc database, and effect-registry APIs."
+    },
+    {
+      "id": "file:src/pages/index.ts",
+      "score": 4,
+      "name": "index.ts",
+      "type": "file",
+      "summary": "Barrel file re-exporting all page components (Planner, Builds, BuildDetail, Author, settings pages, Import) for the router."
+    },
+    {
+      "id": "file:src/utils/external-import/index.ts",
+      "score": 4,
+      "name": "index.ts",
+      "type": "file",
+      "summary": "Barrel module re-exporting the external build importer entry point and its result types."
+    },
+    {
+      "id": "file:src/utils/mxd-import/index.ts",
+      "score": 4,
+      "name": "index.ts",
+      "type": "file",
+      "summary": "Barrel module re-exporting the MxD text parser, importer, parsed-build types, and abbreviation tables."
+    },
+    {
+      "id": "file:src/components/incarnate/index.ts",
+      "score": 4,
+      "name": "index.ts",
+      "type": "file",
+      "summary": "Barrel file re-exporting the incarnate UI components (slot button, slot grid, modals, power tree, Destiny time slider)."
+    },
+    {
+      "id": "file:src/components/info/index.ts",
+      "score": 4,
+      "name": "index.ts",
+      "type": "file",
+      "summary": "Barrel file re-exporting the info components InfoPanel and PowerInfoTooltip."
+    }
+  ],
+  "fanInRanking": [
+    {
+      "id": "file:src/types/index.ts",
+      "fanIn": 121,
+      "name": "index.ts"
+    },
+    {
+      "id": "file:src/data/index.ts",
+      "fanIn": 80,
+      "name": "index.ts"
+    },
+    {
+      "id": "file:src/stores/index.ts",
+      "fanIn": 72,
+      "name": "index.ts"
+    },
+    {
+      "id": "file:src/data/dataset.ts",
+      "fanIn": 49,
+      "name": "dataset.ts"
+    },
+    {
+      "id": "file:src/components/modals/Modal.tsx",
+      "fanIn": 26,
+      "name": "Modal.tsx"
+    },
+    {
+      "id": "file:src/components/ui/index.ts",
+      "fanIn": 26,
+      "name": "index.ts"
+    },
+    {
+      "id": "file:src/types/build.ts",
+      "fanIn": 21,
+      "name": "build.ts"
+    },
+    {
+      "id": "file:src/utils/calculations/index.ts",
+      "fanIn": 21,
+      "name": "index.ts"
+    },
+    {
+      "id": "file:src/hooks/index.ts",
+      "fanIn": 20,
+      "name": "index.ts"
+    },
+    {
+      "id": "file:src/utils/calculations/character-totals.ts",
+      "fanIn": 17,
+      "name": "character-totals.ts"
+    },
+    {
+      "id": "file:src/stores/uiStore.ts",
+      "fanIn": 16,
+      "name": "uiStore.ts"
+    },
+    {
+      "id": "file:src/utils/paths.ts",
+      "fanIn": 14,
+      "name": "paths.ts"
+    },
+    {
+      "id": "file:src/data/at-tables.ts",
+      "fanIn": 13,
+      "name": "at-tables.ts"
+    },
+    {
+      "id": "file:src/types/power.ts",
+      "fanIn": 12,
+      "name": "power.ts"
+    },
+    {
+      "id": "file:src/services/sharedBuilds.ts",
+      "fanIn": 10,
+      "name": "sharedBuilds.ts"
+    },
+    {
+      "id": "file:src/components/info/powerDisplayUtils.ts",
+      "fanIn": 10,
+      "name": "powerDisplayUtils.ts"
+    },
+    {
+      "id": "file:src/utils/set-bonus-format.ts",
+      "fanIn": 9,
+      "name": "set-bonus-format.ts"
+    },
+    {
+      "id": "file:src/hooks/useCalculatedStats.ts",
+      "fanIn": 9,
+      "name": "useCalculatedStats.ts"
+    },
+    {
+      "id": "file:src/utils/slot-levels.ts",
+      "fanIn": 9,
+      "name": "slot-levels.ts"
+    },
+    {
+      "id": "file:src/lib/supabase.ts",
+      "fanIn": 8,
+      "name": "supabase.ts"
+    }
+  ],
+  "fanOutRanking": [
+    {
+      "id": "file:src/utils/calculations/character-totals.ts",
+      "fanOut": 34,
+      "name": "character-totals.ts"
+    },
+    {
+      "id": "file:src/components/info/InfoPanel.tsx",
+      "fanOut": 29,
+      "name": "InfoPanel.tsx"
+    },
+    {
+      "id": "file:src/components/layout/Header.tsx",
+      "fanOut": 20,
+      "name": "Header.tsx"
+    },
+    {
+      "id": "file:src/data/dataset.ts",
+      "fanOut": 19,
+      "name": "dataset.ts"
+    },
+    {
+      "id": "file:src/components/layout/MainLayout.tsx",
+      "fanOut": 19,
+      "name": "MainLayout.tsx"
+    },
+    {
+      "id": "file:src/components/modals/CompareSlottingModal.tsx",
+      "fanOut": 19,
+      "name": "CompareSlottingModal.tsx"
+    },
+    {
+      "id": "file:src/components/layout/StatsDashboard.tsx",
+      "fanOut": 18,
+      "name": "StatsDashboard.tsx"
+    },
+    {
+      "id": "file:src/components/modals/ExportImportModal.tsx",
+      "fanOut": 16,
+      "name": "ExportImportModal.tsx"
+    },
+    {
+      "id": "file:src/pages/PlannerPage.tsx",
+      "fanOut": 16,
+      "name": "PlannerPage.tsx"
+    },
+    {
+      "id": "file:src/components/info/PowerInfoTooltip.tsx",
+      "fanOut": 15,
+      "name": "PowerInfoTooltip.tsx"
+    },
+    {
+      "id": "file:src/stores/buildStore.ts",
+      "fanOut": 15,
+      "name": "buildStore.ts"
+    },
+    {
+      "id": "file:src/data/index.ts",
+      "fanOut": 13,
+      "name": "index.ts"
+    },
+    {
+      "id": "file:src/utils/mxd-import/importer.ts",
+      "fanOut": 13,
+      "name": "importer.ts"
+    },
+    {
+      "id": "file:src/components/modals/DetailedTotalsModal.tsx",
+      "fanOut": 13,
+      "name": "DetailedTotalsModal.tsx"
+    },
+    {
+      "id": "file:src/components/powers/PowerRow.tsx",
+      "fanOut": 12,
+      "name": "PowerRow.tsx"
+    },
+    {
+      "id": "file:src/data/incarnates.ts",
+      "fanOut": 11,
+      "name": "incarnates.ts"
+    },
+    {
+      "id": "file:src/components/enhancements/EnhancementPicker.tsx",
+      "fanOut": 10,
+      "name": "EnhancementPicker.tsx"
+    },
+    {
+      "id": "file:src/components/export-image/BuildImageCard.tsx",
+      "fanOut": 10,
+      "name": "BuildImageCard.tsx"
+    },
+    {
+      "id": "file:src/components/powers/PoolPowers.tsx",
+      "fanOut": 10,
+      "name": "PoolPowers.tsx"
+    },
+    {
+      "id": "file:src/components/powers/SelectedPowers.tsx",
+      "fanOut": 10,
+      "name": "SelectedPowers.tsx"
+    }
+  ],
+  "bfsTraversal": {
+    "startNode": "file:src/App.tsx",
+    "order": [
+      "file:src/App.tsx",
+      "file:src/router.tsx",
+      "file:src/components/layout/MainLayout.tsx",
+      "file:src/components/layout/SettingsLayout.tsx",
+      "file:src/pages/index.ts",
+      "file:src/components/enhancements/EnhancementPicker.tsx",
+      "file:src/components/info/index.ts",
+      "file:src/components/layout/ExemplarModeBanner.tsx",
+      "file:src/components/layout/Header.tsx",
+      "file:src/components/layout/MobileBottomNav.tsx",
+      "file:src/components/layout/MobileBuildBar.tsx",
+      "file:src/components/layout/RuleOf5Banner.tsx",
+      "file:src/components/layout/StatsDashboard.tsx",
+      "file:src/components/layout/StatusBanner.tsx",
+      "file:src/components/layout/UpdateBanner.tsx",
+      "file:src/components/modals/index.ts",
+      "file:src/components/ui/Toast.tsx",
+      "file:src/hooks/useDashboardCollapseHotkey.ts",
+      "file:src/hooks/useInfoPanelLockHotkey.ts",
+      "file:src/hooks/useStatusCheck.ts",
+      "file:src/hooks/useTooltipHotkey.ts",
+      "file:src/hooks/useUndoRedoKeyboard.ts",
+      "file:src/lib/links.ts",
+      "file:src/stores/index.ts",
+      "file:src/components/enhancements/EnhancementIcon.tsx",
+      "file:src/components/enhancements/SetBonusList.tsx",
+      "file:src/components/ui/index.ts",
+      "file:src/data/index.ts",
+      "file:src/data/set-bonus-index.ts",
+      "file:src/types/index.ts",
+      "file:src/utils/calculations/index.ts",
+      "file:src/utils/enhancement-outline.ts",
+      "file:src/stores/uiStore.ts",
+      "file:src/buildTime.ts",
+      "file:src/components/layout/PlannerLayoutMenu.tsx",
+      "file:src/components/modals/ConfirmModal.tsx",
+      "file:src/data/dataset.ts",
+      "file:src/hooks/usePwaInstall.ts",
+      "file:src/lib/supabase.ts",
+      "file:src/services/profile.ts",
+      "file:src/services/sharedBuilds.ts",
+      "file:src/stores/historyStore.ts",
+      "file:src/stores/onboardingStore.ts",
+      "file:src/types/build.ts",
+      "file:src/utils/calc-debug.ts",
+      "file:src/utils/dataset-switch-overlay.ts",
+      "file:src/utils/slot-levels.ts",
+      "file:src/utils/url-build-sync.ts",
+      "file:src/hooks/index.ts",
+      "file:src/hooks/useCalculatedStats.ts",
+      "file:src/stores/buildStore.ts",
+      "file:src/utils/over-cap-mute.ts",
+      "file:src/components/incarnate/index.ts",
+      "file:src/components/layout/PinnedPowersBar.tsx",
+      "file:src/components/powers/index.ts",
+      "file:src/data/core/movement-constants.ts",
+      "file:src/data/purple-patch.ts",
+      "file:src/data/set-bonus-groups.ts",
+      "file:src/data/stat-definitions.ts",
+      "file:src/utils/calculations/character-totals.ts",
+      "file:src/utils/calculations/stats.ts",
+      "file:src/utils/set-bonus-format.ts",
+      "file:src/utils/paths.ts",
+      "file:src/utils/calculations/set-bonuses.ts",
+      "file:src/data/io-sets.ts",
+      "file:src/data/proc-data.ts",
+      "file:src/data/core/themes.ts",
+      "file:src/utils/calculations/attack-chain.ts",
+      "file:src/utils/planner-layout.ts",
+      "file:src/components/modals/Modal.tsx",
+      "file:src/data/epic-pools.ts",
+      "file:src/data/incarnate-effects.ts",
+      "file:src/data/power-pools.ts",
+      "file:src/stores/authStore.ts",
+      "file:src/types/shared.ts",
+      "file:src/types/archetype.ts",
+      "file:src/types/common.ts",
+      "file:src/types/incarnate.ts",
+      "file:src/types/power.ts",
+      "file:src/utils/power-key.ts",
+      "file:src/utils/build-serialization.ts",
+      "file:src/utils/import-url.ts",
+      "file:src/utils/build-powers.ts",
+      "file:src/utils/calculations/set-tracking.ts",
+      "file:src/utils/enhancement-eligibility.ts",
+      "file:src/utils/per-server-builds.ts",
+      "file:src/components/powers/PermaRing.tsx",
+      "file:src/utils/power-icons.ts",
+      "file:src/data/at-tables.ts",
+      "file:src/data/core/atom-query.ts",
+      "file:src/data/core/atomic-effect.ts",
+      "file:src/data/core/incarnate-registry.ts",
+      "file:src/data/powersets.ts",
+      "file:src/utils/build-enhancement-validation.ts",
+      "file:src/utils/calculations/buff-pet-auras.ts",
+      "file:src/utils/calculations/effective-level.ts",
+      "file:src/utils/calculations/enhancement-values.ts",
+      "file:src/utils/calculations/inherents.ts",
+      "file:src/utils/conditional-effects.ts",
+      "file:src/utils/fallback-warnings.ts",
+      "file:src/utils/mode-suppression.ts",
+      "file:src/utils/format-precision.ts",
+      "file:src/data/proc-residual-effects.ts",
+      "file:src/data/proc-variable-controls.ts",
+      "file:src/data/levels.ts",
+      "file:src/services/auth.ts",
+      "file:src/types/enhancement.ts",
+      "file:src/components/ui/Tooltip.tsx",
+      "file:src/data/incarnate-registry.ts",
+      "file:src/utils/calculations/perma.ts",
+      "file:src/data/pet-entities.ts"
+    ],
+    "depthMap": {
+      "file:src/App.tsx": 0,
+      "file:src/router.tsx": 1,
+      "file:src/components/layout/MainLayout.tsx": 2,
+      "file:src/components/layout/SettingsLayout.tsx": 2,
+      "file:src/pages/index.ts": 2,
+      "file:src/components/enhancements/EnhancementPicker.tsx": 3,
+      "file:src/components/info/index.ts": 3,
+      "file:src/components/layout/ExemplarModeBanner.tsx": 3,
+      "file:src/components/layout/Header.tsx": 3,
+      "file:src/components/layout/MobileBottomNav.tsx": 3,
+      "file:src/components/layout/MobileBuildBar.tsx": 3,
+      "file:src/components/layout/RuleOf5Banner.tsx": 3,
+      "file:src/components/layout/StatsDashboard.tsx": 3,
+      "file:src/components/layout/StatusBanner.tsx": 3,
+      "file:src/components/layout/UpdateBanner.tsx": 3,
+      "file:src/components/modals/index.ts": 3,
+      "file:src/components/ui/Toast.tsx": 3,
+      "file:src/hooks/useDashboardCollapseHotkey.ts": 3,
+      "file:src/hooks/useInfoPanelLockHotkey.ts": 3,
+      "file:src/hooks/useStatusCheck.ts": 3,
+      "file:src/hooks/useTooltipHotkey.ts": 3,
+      "file:src/hooks/useUndoRedoKeyboard.ts": 3,
+      "file:src/lib/links.ts": 3,
+      "file:src/stores/index.ts": 3,
+      "file:src/components/enhancements/EnhancementIcon.tsx": 4,
+      "file:src/components/enhancements/SetBonusList.tsx": 4,
+      "file:src/components/ui/index.ts": 4,
+      "file:src/data/index.ts": 4,
+      "file:src/data/set-bonus-index.ts": 4,
+      "file:src/types/index.ts": 4,
+      "file:src/utils/calculations/index.ts": 4,
+      "file:src/utils/enhancement-outline.ts": 4,
+      "file:src/stores/uiStore.ts": 4,
+      "file:src/buildTime.ts": 4,
+      "file:src/components/layout/PlannerLayoutMenu.tsx": 4,
+      "file:src/components/modals/ConfirmModal.tsx": 4,
+      "file:src/data/dataset.ts": 4,
+      "file:src/hooks/usePwaInstall.ts": 4,
+      "file:src/lib/supabase.ts": 4,
+      "file:src/services/profile.ts": 4,
+      "file:src/services/sharedBuilds.ts": 4,
+      "file:src/stores/historyStore.ts": 4,
+      "file:src/stores/onboardingStore.ts": 4,
+      "file:src/types/build.ts": 4,
+      "file:src/utils/calc-debug.ts": 4,
+      "file:src/utils/dataset-switch-overlay.ts": 4,
+      "file:src/utils/slot-levels.ts": 4,
+      "file:src/utils/url-build-sync.ts": 4,
+      "file:src/hooks/index.ts": 4,
+      "file:src/hooks/useCalculatedStats.ts": 4,
+      "file:src/stores/buildStore.ts": 4,
+      "file:src/utils/over-cap-mute.ts": 4,
+      "file:src/components/incarnate/index.ts": 4,
+      "file:src/components/layout/PinnedPowersBar.tsx": 4,
+      "file:src/components/powers/index.ts": 4,
+      "file:src/data/core/movement-constants.ts": 4,
+      "file:src/data/purple-patch.ts": 4,
+      "file:src/data/set-bonus-groups.ts": 4,
+      "file:src/data/stat-definitions.ts": 4,
+      "file:src/utils/calculations/character-totals.ts": 4,
+      "file:src/utils/calculations/stats.ts": 4,
+      "file:src/utils/set-bonus-format.ts": 4,
+      "file:src/utils/paths.ts": 5,
+      "file:src/utils/calculations/set-bonuses.ts": 5,
+      "file:src/data/io-sets.ts": 5,
+      "file:src/data/proc-data.ts": 5,
+      "file:src/data/core/themes.ts": 5,
+      "file:src/utils/calculations/attack-chain.ts": 5,
+      "file:src/utils/planner-layout.ts": 5,
+      "file:src/components/modals/Modal.tsx": 5,
+      "file:src/data/epic-pools.ts": 5,
+      "file:src/data/incarnate-effects.ts": 5,
+      "file:src/data/power-pools.ts": 5,
+      "file:src/stores/authStore.ts": 5,
+      "file:src/types/shared.ts": 5,
+      "file:src/types/archetype.ts": 5,
+      "file:src/types/common.ts": 5,
+      "file:src/types/incarnate.ts": 5,
+      "file:src/types/power.ts": 5,
+      "file:src/utils/power-key.ts": 5,
+      "file:src/utils/build-serialization.ts": 5,
+      "file:src/utils/import-url.ts": 5,
+      "file:src/utils/build-powers.ts": 5,
+      "file:src/utils/calculations/set-tracking.ts": 5,
+      "file:src/utils/enhancement-eligibility.ts": 5,
+      "file:src/utils/per-server-builds.ts": 5,
+      "file:src/components/powers/PermaRing.tsx": 5,
+      "file:src/utils/power-icons.ts": 5,
+      "file:src/data/at-tables.ts": 5,
+      "file:src/data/core/atom-query.ts": 5,
+      "file:src/data/core/atomic-effect.ts": 5,
+      "file:src/data/core/incarnate-registry.ts": 5,
+      "file:src/data/powersets.ts": 5,
+      "file:src/utils/build-enhancement-validation.ts": 5,
+      "file:src/utils/calculations/buff-pet-auras.ts": 5,
+      "file:src/utils/calculations/effective-level.ts": 5,
+      "file:src/utils/calculations/enhancement-values.ts": 5,
+      "file:src/utils/calculations/inherents.ts": 5,
+      "file:src/utils/conditional-effects.ts": 5,
+      "file:src/utils/fallback-warnings.ts": 5,
+      "file:src/utils/mode-suppression.ts": 5,
+      "file:src/utils/format-precision.ts": 5,
+      "file:src/data/proc-residual-effects.ts": 6,
+      "file:src/data/proc-variable-controls.ts": 6,
+      "file:src/data/levels.ts": 6,
+      "file:src/services/auth.ts": 6,
+      "file:src/types/enhancement.ts": 6,
+      "file:src/components/ui/Tooltip.tsx": 6,
+      "file:src/data/incarnate-registry.ts": 6,
+      "file:src/utils/calculations/perma.ts": 6,
+      "file:src/data/pet-entities.ts": 6
+    },
+    "byDepth": {
+      "0": [
+        "file:src/App.tsx"
+      ],
+      "1": [
+        "file:src/router.tsx"
+      ],
+      "2": [
+        "file:src/components/layout/MainLayout.tsx",
+        "file:src/components/layout/SettingsLayout.tsx",
+        "file:src/pages/index.ts"
+      ],
+      "3": [
+        "file:src/components/enhancements/EnhancementPicker.tsx",
+        "file:src/components/info/index.ts",
+        "file:src/components/layout/ExemplarModeBanner.tsx",
+        "file:src/components/layout/Header.tsx",
+        "file:src/components/layout/MobileBottomNav.tsx",
+        "file:src/components/layout/MobileBuildBar.tsx",
+        "file:src/components/layout/RuleOf5Banner.tsx",
+        "file:src/components/layout/StatsDashboard.tsx",
+        "file:src/components/layout/StatusBanner.tsx",
+        "file:src/components/layout/UpdateBanner.tsx",
+        "file:src/components/modals/index.ts",
+        "file:src/components/ui/Toast.tsx",
+        "file:src/hooks/useDashboardCollapseHotkey.ts",
+        "file:src/hooks/useInfoPanelLockHotkey.ts",
+        "file:src/hooks/useStatusCheck.ts",
+        "file:src/hooks/useTooltipHotkey.ts",
+        "file:src/hooks/useUndoRedoKeyboard.ts",
+        "file:src/lib/links.ts",
+        "file:src/stores/index.ts"
+      ],
+      "4": [
+        "file:src/components/enhancements/EnhancementIcon.tsx",
+        "file:src/components/enhancements/SetBonusList.tsx",
+        "file:src/components/ui/index.ts",
+        "file:src/data/index.ts",
+        "file:src/data/set-bonus-index.ts",
+        "file:src/types/index.ts",
+        "file:src/utils/calculations/index.ts",
+        "file:src/utils/enhancement-outline.ts",
+        "file:src/stores/uiStore.ts",
+        "file:src/buildTime.ts",
+        "file:src/components/layout/PlannerLayoutMenu.tsx",
+        "file:src/components/modals/ConfirmModal.tsx",
+        "file:src/data/dataset.ts",
+        "file:src/hooks/usePwaInstall.ts",
+        "file:src/lib/supabase.ts",
+        "file:src/services/profile.ts",
+        "file:src/services/sharedBuilds.ts",
+        "file:src/stores/historyStore.ts",
+        "file:src/stores/onboardingStore.ts",
+        "file:src/types/build.ts",
+        "file:src/utils/calc-debug.ts",
+        "file:src/utils/dataset-switch-overlay.ts",
+        "file:src/utils/slot-levels.ts",
+        "file:src/utils/url-build-sync.ts",
+        "file:src/hooks/index.ts",
+        "file:src/hooks/useCalculatedStats.ts",
+        "file:src/stores/buildStore.ts",
+        "file:src/utils/over-cap-mute.ts",
+        "file:src/components/incarnate/index.ts",
+        "file:src/components/layout/PinnedPowersBar.tsx",
+        "file:src/components/powers/index.ts",
+        "file:src/data/core/movement-constants.ts",
+        "file:src/data/purple-patch.ts",
+        "file:src/data/set-bonus-groups.ts",
+        "file:src/data/stat-definitions.ts",
+        "file:src/utils/calculations/character-totals.ts",
+        "file:src/utils/calculations/stats.ts",
+        "file:src/utils/set-bonus-format.ts"
+      ],
+      "5": [
+        "file:src/utils/paths.ts",
+        "file:src/utils/calculations/set-bonuses.ts",
+        "file:src/data/io-sets.ts",
+        "file:src/data/proc-data.ts",
+        "file:src/data/core/themes.ts",
+        "file:src/utils/calculations/attack-chain.ts",
+        "file:src/utils/planner-layout.ts",
+        "file:src/components/modals/Modal.tsx",
+        "file:src/data/epic-pools.ts",
+        "file:src/data/incarnate-effects.ts",
+        "file:src/data/power-pools.ts",
+        "file:src/stores/authStore.ts",
+        "file:src/types/shared.ts",
+        "file:src/types/archetype.ts",
+        "file:src/types/common.ts",
+        "file:src/types/incarnate.ts",
+        "file:src/types/power.ts",
+        "file:src/utils/power-key.ts",
+        "file:src/utils/build-serialization.ts",
+        "file:src/utils/import-url.ts",
+        "file:src/utils/build-powers.ts",
+        "file:src/utils/calculations/set-tracking.ts",
+        "file:src/utils/enhancement-eligibility.ts",
+        "file:src/utils/per-server-builds.ts",
+        "file:src/components/powers/PermaRing.tsx",
+        "file:src/utils/power-icons.ts",
+        "file:src/data/at-tables.ts",
+        "file:src/data/core/atom-query.ts",
+        "file:src/data/core/atomic-effect.ts",
+        "file:src/data/core/incarnate-registry.ts",
+        "file:src/data/powersets.ts",
+        "file:src/utils/build-enhancement-validation.ts",
+        "file:src/utils/calculations/buff-pet-auras.ts",
+        "file:src/utils/calculations/effective-level.ts",
+        "file:src/utils/calculations/enhancement-values.ts",
+        "file:src/utils/calculations/inherents.ts",
+        "file:src/utils/conditional-effects.ts",
+        "file:src/utils/fallback-warnings.ts",
+        "file:src/utils/mode-suppression.ts",
+        "file:src/utils/format-precision.ts"
+      ],
+      "6": [
+        "file:src/data/proc-residual-effects.ts",
+        "file:src/data/proc-variable-controls.ts",
+        "file:src/data/levels.ts",
+        "file:src/services/auth.ts",
+        "file:src/types/enhancement.ts",
+        "file:src/components/ui/Tooltip.tsx",
+        "file:src/data/incarnate-registry.ts",
+        "file:src/utils/calculations/perma.ts",
+        "file:src/data/pet-entities.ts"
+      ]
+    }
+  },
+  "nonCodeFiles": {
+    "documentation": [
+      {
+        "id": "document:src/data/README.md",
+        "name": "README.md",
+        "type": "document",
+        "summary": "Documentation of the src/data power-data layering scheme: why generated/ output is authoritative, when override files are allowed, the override and composed file shapes, and how to migrate single-file powers to the layered format."
+      }
+    ],
+    "infrastructure": [],
+    "data": [],
+    "config": [
+      {
+        "id": "config:src/data/incarnate-indices/alpha.json",
+        "name": "alpha.json",
+        "type": "config",
+        "summary": "Alpha incarnate slot index: slot key, display name, help text, icon, the full power list per tree/tier with unlock levels, and per-power display names and short helps consumed by the incarnates data loader."
+      },
+      {
+        "id": "config:src/data/incarnate-indices/destiny.json",
+        "name": "destiny.json",
+        "type": "config",
+        "summary": "Destiny incarnate slot index: slot metadata, icon, power list with unlock levels, and per-power display names and short helps for the Destiny trees (Ageless, Barrier, Clarion, Rebirth, etc.)."
+      },
+      {
+        "id": "config:src/data/incarnate-indices/genesis.json",
+        "name": "genesis.json",
+        "type": "config",
+        "summary": "Genesis incarnate slot index: slot metadata, icon, power list with unlock levels, and per-power display names and short helps for the Genesis trees."
+      },
+      {
+        "id": "config:src/data/incarnate-indices/hybrid.json",
+        "name": "hybrid.json",
+        "type": "config",
+        "summary": "Hybrid incarnate slot index: slot metadata, icon, power list with unlock levels, and per-power display names and short helps for the Hybrid trees (Assault, Control, Melee, Support)."
+      },
+      {
+        "id": "config:src/data/incarnate-indices/interface.json",
+        "name": "interface.json",
+        "type": "config",
+        "summary": "Interface incarnate slot index: slot metadata, icon, power list with unlock levels, and per-power display names and short helps for the Interface trees (Reactive, Degenerative, Diamagnetic, etc.)."
+      },
+      {
+        "id": "config:src/data/incarnate-indices/judgement.json",
+        "name": "judgement.json",
+        "type": "config",
+        "summary": "Judgement incarnate slot index: slot metadata, icon, power list with unlock levels, and per-power display names and short helps for the Judgement nuke trees (Ion, Pyronic, Void, etc.)."
+      },
+      {
+        "id": "config:src/data/incarnate-indices/lore.json",
+        "name": "lore.json",
+        "type": "config",
+        "summary": "Lore incarnate slot index — the largest of the seven — listing every Lore pet-summon tree with power keys, unlock levels, display names, and short helps consumed by the incarnates data loader."
+      }
+    ]
+  },
+  "clusters": [
+    {
+      "nodes": [
+        "file:src/data/dataset.ts",
+        "file:src/data/epic-pools.ts",
+        "file:src/data/epic-pools-availability.test.ts",
+        "file:src/data/levels.ts",
+        "file:src/data/power-pools.ts"
+      ],
+      "edgeCount": 9
+    },
+    {
+      "nodes": [
+        "file:src/services/sharedBuilds.ts",
+        "file:src/stores/authStore.ts",
+        "file:src/pages/BuildDetailPage.tsx",
+        "file:src/types/shared.ts",
+        "file:src/types/build.ts"
+      ],
+      "edgeCount": 8
+    },
+    {
+      "nodes": [
+        "file:src/components/powers/ChronologicalPowerSlot.tsx",
+        "file:src/components/powers/ChronologicalPowerView.tsx",
+        "file:src/data/index.ts",
+        "file:src/components/powers/ChronologicalInherentsSection.tsx",
+        "file:src/components/powers/PowerRow.tsx"
+      ],
+      "edgeCount": 8
+    },
+    {
+      "nodes": [
+        "file:src/data/proc-data.ts",
+        "file:src/data/proc-residual-effects.ts"
+      ],
+      "edgeCount": 2
+    }
+  ],
+  "layers": {
+    "count": 8,
+    "list": [
+      {
+        "id": "layer:app-shell",
+        "name": "Application Shell & Pages",
+        "description": "App bootstrap, TanStack Router configuration, global styles, and route-level page components (planner, shared-build browsing, settings, import)."
+      },
+      {
+        "id": "layer:ui",
+        "name": "UI Components",
+        "description": "React component library for the build planner UI — power/enhancement/incarnate pickers, info panels, modals, layout chrome, onboarding, and shared UI primitives."
+      },
+      {
+        "id": "layer:state",
+        "name": "State & Services",
+        "description": "Zustand stores (build, UI, auth, history), custom React hooks bridging stores to components, and Supabase-backed services for auth, profiles, shared builds, and auction prices."
+      },
+      {
+        "id": "layer:calculation",
+        "name": "Calculation Engine",
+        "description": "Character-totals calculation engine — enhancement math, proc mechanics, set bonuses, stacking, exemplar/incarnate effects, and attack-chain damage computation."
+      },
+      {
+        "id": "layer:utility",
+        "name": "Utilities & Build Import/Export",
+        "description": "Shared helpers plus build serialization and importers for external formats (Mids Reborn, MxD, in-game exports) and the bulk-import CLI script."
+      },
+      {
+        "id": "layer:data",
+        "name": "Game Data Layer",
+        "description": "Multi-server game-data facades (Homecoming/Rebirth/Thunderspy), the core atomic-effect schema, AT tables, powerset/enhancement datasets, and incarnate index JSON data."
+      },
+      {
+        "id": "layer:types",
+        "name": "Types Layer",
+        "description": "Shared TypeScript type definitions for builds, powers, enhancements, and cross-layer contracts."
+      },
+      {
+        "id": "layer:test",
+        "name": "Tests",
+        "description": "Vitest regression suites guarding dataset correctness and calculation-engine behavior, plus test infrastructure."
+      }
+    ]
+  },
+  "nodeSummaryIndex": {
+    "file:scripts/bulk-import-mids.ts": {
+      "name": "bulk-import-mids.ts",
+      "type": "file",
+      "filePath": "scripts/bulk-import-mids.ts",
+      "fanIn": 0,
+      "summary": "CLI script that bulk-imports Mids Reborn .mbd build files into the Supabase shared_builds table, with Discord-username lookup, dry-run mapping reports, resume state, and aggregated warning reporting."
+    },
+    "file:src/components/incarnate/IncarnateSlotButton.tsx": {
+      "name": "IncarnateSlotButton.tsx",
+      "type": "file",
+      "filePath": "src/components/incarnate/IncarnateSlotButton.tsx",
+      "fanIn": 0,
+      "summary": "React button component for a single incarnate slot in the incarnate panel, showing the slotted power icon, tier-colored ring, and active-toggle state."
+    },
+    "file:src/components/modals/ExportImportModal.tsx": {
+      "name": "ExportImportModal.tsx",
+      "type": "file",
+      "filePath": "src/components/modals/ExportImportModal.tsx",
+      "fanIn": 0,
+      "summary": "Large modal handling every build export/import path: shareable build-hash links, Mids .mbd and .mxd imports, in-game export parsing, forum/popmenu/print exports, and shared-build cloud publishing via Supabase."
+    },
+    "file:src/components/modals/PowersetCompareModal.tsx": {
+      "name": "PowersetCompareModal.tsx",
+      "type": "file",
+      "filePath": "src/components/modals/PowersetCompareModal.tsx",
+      "fanIn": 0,
+      "summary": "Modal that compares two powersets side by side, auto-pairing analogous powers and charting per-power metrics such as damage per activation and DPS."
+    },
+    "file:src/components/powers/SlottedSetBonuses.tsx": {
+      "name": "SlottedSetBonuses.tsx",
+      "type": "file",
+      "filePath": "src/components/powers/SlottedSetBonuses.tsx",
+      "fanIn": 1,
+      "summary": "Small wrapper component that renders the active IO set bonuses for a single slotted power via SetBonusList."
+    },
+    "file:src/components/ui/Select.tsx": {
+      "name": "Select.tsx",
+      "type": "file",
+      "filePath": "src/components/ui/Select.tsx",
+      "fanIn": 1,
+      "summary": "Reusable styled select-dropdown UI component with a simple options-array API, used across modals and settings panels."
+    },
+    "file:src/data/adaptation-stance-collision.test.ts": {
+      "name": "adaptation-stance-collision.test.ts",
+      "type": "file",
+      "filePath": "src/data/adaptation-stance-collision.test.ts",
+      "fanIn": 3,
+      "summary": "Regression test ensuring Bio Armor adaptation stance sub-powers no longer collide by internalName during Mids import (stance desync fix)."
+    },
+    "file:src/data/adaptation-stance-gating.test.ts": {
+      "name": "adaptation-stance-gating.test.ts",
+      "type": "file",
+      "filePath": "src/data/adaptation-stance-gating.test.ts",
+      "fanIn": 2,
+      "summary": "Tests that Bio Armor adaptation stance effects are gated per stance and do not leak into the base always-on effect set."
+    },
+    "file:src/data/ally-range-buff.test.ts": {
+      "name": "ally-range-buff.test.ts",
+      "type": "file",
+      "filePath": "src/data/ally-range-buff.test.ts",
+      "fanIn": 2,
+      "summary": "Dataset test verifying ally-targeted range buff powers are represented correctly in the converted data."
+    },
+    "file:src/data/alpha-enhances-destiny.test.ts": {
+      "name": "alpha-enhances-destiny.test.ts",
+      "type": "file",
+      "filePath": "src/data/alpha-enhances-destiny.test.ts",
+      "fanIn": 2,
+      "summary": "Tests that Alpha incarnate enhancement bonuses apply to Destiny powers only for allowed boost categories (e.g. Ageless is recovery-only)."
+    },
+    "file:src/data/archetype-stats.test.ts": {
+      "name": "archetype-stats.test.ts",
+      "type": "file",
+      "filePath": "src/data/archetype-stats.test.ts",
+      "fanIn": 2,
+      "summary": "Validates archetype base stats and modifier tables in the active dataset against exported attribute data."
+    },
+    "file:src/data/archetypes.ts": {
+      "name": "archetypes.ts",
+      "type": "file",
+      "filePath": "src/data/archetypes.ts",
+      "fanIn": 4,
+      "summary": "Archetype data facade exposing the active dataset’s archetype registry plus lookup helpers by id, faction, and epic/standard grouping."
+    },
+    "file:src/data/bio-armor-naming.test.ts": {
+      "name": "bio-armor-naming.test.ts",
+      "type": "file",
+      "filePath": "src/data/bio-armor-naming.test.ts",
+      "fanIn": 2,
+      "summary": "Regression test for Bio Armor power naming and display-name mapping in the dataset."
+    },
+    "file:src/data/core/atom-query.test.ts": {
+      "name": "atom-query.test.ts",
+      "type": "file",
+      "filePath": "src/data/core/atom-query.test.ts",
+      "fanIn": 2,
+      "summary": "Unit tests for the atomic-effect query helpers (atomsOf, byType, resistible twins, per-target values) over synthetic encoded atoms."
+    },
+    "file:src/data/core/incarnate-registry.ts": {
+      "name": "incarnate-registry.ts",
+      "type": "file",
+      "filePath": "src/data/core/incarnate-registry.ts",
+      "fanIn": 2,
+      "summary": "Centralized data-driven incarnate registry: slot and tier configuration (colors, icon folders, toggleability, level shifts), tree descriptions, the 5-column tree layout, and display helpers."
+    },
+    "file:src/data/core/movement-constants.ts": {
+      "name": "movement-constants.ts",
+      "type": "file",
+      "filePath": "src/data/core/movement-constants.ts",
+      "fanIn": 4,
+      "summary": "Movement speed bases, caps, and mph-per-scale conversions per the HC wiki, with helpers to compute effective caps (including cap-raising bumps) and apply movement buffs."
+    },
+    "file:src/data/dataset.ts": {
+      "name": "dataset.ts",
+      "type": "file",
+      "filePath": "src/data/dataset.ts",
+      "fanIn": 49,
+      "summary": "Multi-server dataset plumbing: defines the Dataset contract and the single active-dataset indirection (loadDataset/getActiveDataset) that lets Homecoming, Rebirth, and Thunderspy data swap transparently at runtime."
+    },
+    "file:src/data/destiny-decay.test.ts": {
+      "name": "destiny-decay.test.ts",
+      "type": "file",
+      "filePath": "src/data/destiny-decay.test.ts",
+      "fanIn": 2,
+      "summary": "Tests the Destiny incarnate decay timeline: tiered effect values over time, total duration, and sustained-floor behavior."
+    },
+    "file:src/data/domination-per-effect.test.ts": {
+      "name": "domination-per-effect.test.ts",
+      "type": "file",
+      "filePath": "src/data/domination-per-effect.test.ts",
+      "fanIn": 0,
+      "summary": "Unit tests verifying Domination applies its mez bonus per effect with correct magnitude scaling."
+    },
+    "file:src/data/domination-perma-classification.test.ts": {
+      "name": "domination-perma-classification.test.ts",
+      "type": "file",
+      "filePath": "src/data/domination-perma-classification.test.ts",
+      "fanIn": 4,
+      "summary": "Tests perma-Domination classification in the inherent and perma calculation utilities."
+    },
+    "file:src/data/dormant-pools.test.ts": {
+      "name": "dormant-pools.test.ts",
+      "type": "file",
+      "filePath": "src/data/dormant-pools.test.ts",
+      "fanIn": 2,
+      "summary": "Ensures dormant (hidden/unreleased) power pools are excluded from the active pool registry."
+    },
+    "file:src/data/dormant-powersets.test.ts": {
+      "name": "dormant-powersets.test.ts",
+      "type": "file",
+      "filePath": "src/data/dormant-powersets.test.ts",
+      "fanIn": 2,
+      "summary": "Ensures dormant powersets are excluded from the active powerset registry."
+    },
+    "file:src/data/epic-pools-availability.test.ts": {
+      "name": "epic-pools-availability.test.ts",
+      "type": "file",
+      "filePath": "src/data/epic-pools-availability.test.ts",
+      "fanIn": 2,
+      "summary": "Tests epic/patron pool availability rules per archetype against the active dataset."
+    },
+    "file:src/data/epic-pools.ts": {
+      "name": "epic-pools.ts",
+      "type": "file",
+      "filePath": "src/data/epic-pools.ts",
+      "fanIn": 5,
+      "summary": "Epic/Patron pool facade: transforms the active dataset’s raw epic-pool registry into Power/PowerPool shapes and implements archetype gating, level-35 unlock, and per-power tier-prerequisite availability rules."
+    },
+    "file:src/data/genesis-incarnate.test.ts": {
+      "name": "genesis-incarnate.test.ts",
+      "type": "file",
+      "filePath": "src/data/genesis-incarnate.test.ts",
+      "fanIn": 2,
+      "summary": "Tests the Genesis incarnate slot data: tier inference, branches, and exemplar effects."
+    },
+    "file:src/data/globalboost-not-selectable.test.ts": {
+      "name": "globalboost-not-selectable.test.ts",
+      "type": "file",
+      "filePath": "src/data/globalboost-not-selectable.test.ts",
+      "fanIn": 3,
+      "summary": "Ensures global-boost pseudo-powers are not selectable as power picks and survive build serialization round-trips."
+    },
+    "file:src/data/granted-damage-procs.test.ts": {
+      "name": "granted-damage-procs.test.ts",
+      "type": "file",
+      "filePath": "src/data/granted-damage-procs.test.ts",
+      "fanIn": 2,
+      "summary": "Tests granted-power damage proc handling in the calculation pipeline."
+    },
+    "file:src/data/incarnate-effects.ts": {
+      "name": "incarnate-effects.ts",
+      "type": "file",
+      "filePath": "src/data/incarnate-effects.ts",
+      "fanIn": 1,
+      "summary": "Curated incarnate power effect lookup (Alpha, Destiny, Hybrid, Interface, Judgement, Lore, Genesis) read from the active dataset, including Destiny decay timelines and Alpha-boost application to Destiny powers."
+    },
+    "file:src/data/index.ts": {
+      "name": "index.ts",
+      "type": "file",
+      "filePath": "src/data/index.ts",
+      "fanIn": 80,
+      "summary": "Barrel entry point for the data layer, re-exporting archetypes, enhancements, IO sets, powersets, pools, epic pools, levels, incarnates, salvage, proc database, and effect-registry APIs."
+    },
+    "file:src/data/inherent-rules.ts": {
+      "name": "inherent-rules.ts",
+      "type": "file",
+      "filePath": "src/data/inherent-rules.ts",
+      "fanIn": 0,
+      "summary": "Facade forwarding per-server inherent power quirks (availability overrides, auto-granted slot levels and counts) from the active dataset."
+    },
+    "file:src/data/inherent-slots.test.ts": {
+      "name": "inherent-slots.test.ts",
+      "type": "file",
+      "filePath": "src/data/inherent-slots.test.ts",
+      "fanIn": 1,
+      "summary": "Tests auto-granted inherent power slot counts (e.g. Rebirth’s auto-slotted Health/Stamina)."
+    },
+    "file:src/data/levels.ts": {
+      "name": "levels.ts",
+      "type": "file",
+      "filePath": "src/data/levels.ts",
+      "fanIn": 2,
+      "summary": "Level/progression facade re-exporting the active dataset’s level rules and inherent power definitions, filtering per-server excluded inherents."
+    },
+    "file:src/data/power-pools.ts": {
+      "name": "power-pools.ts",
+      "type": "file",
+      "filePath": "src/data/power-pools.ts",
+      "fanIn": 4,
+      "summary": "Power pool facade: transforms the active dataset’s raw pool registry into PowerPool shapes and implements data-driven pool prerequisites, exclusion groups, unlock rules, and per-power availability."
+    },
+    "file:src/App.tsx": {
+      "name": "App.tsx",
+      "type": "file",
+      "filePath": "src/App.tsx",
+      "fanIn": 1,
+      "summary": "Root application component that simply mounts the TanStack Router via RouterProvider, delegating all page layout to the route tree."
+    },
+    "file:src/buildTime.ts": {
+      "name": "buildTime.ts",
+      "type": "file",
+      "filePath": "src/buildTime.ts",
+      "fanIn": 3,
+      "summary": "Exposes BUILD_TIME and APP_VERSION constants injected at build time, used for version display and diagnostics reporting."
+    },
+    "file:src/components/layout/Header.tsx": {
+      "name": "Header.tsx",
+      "type": "file",
+      "filePath": "src/components/layout/Header.tsx",
+      "fanIn": 2,
+      "summary": "The planner's main header: build identity popover, action menu (export/import/clear), settings popover, level-up mode and level slider, dataset badge, and archetype-specific mechanic controls (stances, Kheldian/Primalist forms, AT mechanics). Largest UI file in the batch, wiring together stores, dat"
+    },
+    "file:src/components/layout/SettingsLayout.tsx": {
+      "name": "SettingsLayout.tsx",
+      "type": "file",
+      "filePath": "src/components/layout/SettingsLayout.tsx",
+      "fanIn": 1,
+      "summary": "Layout wrapper for the settings pages, providing shared navigation chrome around an Outlet for settings routes."
+    },
+    "file:src/components/modals/EnhancementListModal.tsx": {
+      "name": "EnhancementListModal.tsx",
+      "type": "file",
+      "filePath": "src/components/modals/EnhancementListModal.tsx",
+      "fanIn": 0,
+      "summary": "Shopping-list modal that collects every enhancement slotted in the build, groups them by IO set, fetches live auction-house prices, and formats the list for clipboard export."
+    },
+    "file:src/components/modals/FeedbackModal.tsx": {
+      "name": "FeedbackModal.tsx",
+      "type": "file",
+      "filePath": "src/components/modals/FeedbackModal.tsx",
+      "fanIn": 0,
+      "summary": "Feedback submission modal that captures user messages, optionally attaches a diagnostics snapshot and current build, and routes reports to the maintainer via Discord links or backend submission."
+    },
+    "file:src/components/shared/BuildCard.tsx": {
+      "name": "BuildCard.tsx",
+      "type": "file",
+      "filePath": "src/components/shared/BuildCard.tsx",
+      "fanIn": 2,
+      "summary": "Card component displaying a shared build's summary (archetype, powersets, author, views, tags) with favorite, delete, and visibility-toggle actions."
+    },
+    "file:src/components/shared/BuildFilters.tsx": {
+      "name": "BuildFilters.tsx",
+      "type": "file",
+      "filePath": "src/components/shared/BuildFilters.tsx",
+      "fanIn": 1,
+      "summary": "Filter bar for the shared-builds browser: archetype/powerset dropdowns, text search, and an author autocomplete backed by the profile service."
+    },
+    "file:src/components/ui/Button.tsx": {
+      "name": "Button.tsx",
+      "type": "file",
+      "filePath": "src/components/ui/Button.tsx",
+      "fanIn": 5,
+      "summary": "Reusable Button primitive with variant (primary/secondary/danger/ghost) and size props, implemented with forwardRef over a native button element."
+    },
+    "file:src/components/ui/Input.tsx": {
+      "name": "Input.tsx",
+      "type": "file",
+      "filePath": "src/components/ui/Input.tsx",
+      "fanIn": 1,
+      "summary": "Reusable text Input primitive wrapping a native input with consistent theming and forwardRef support."
+    },
+    "file:src/data/core/themes.ts": {
+      "name": "themes.ts",
+      "type": "file",
+      "filePath": "src/data/core/themes.ts",
+      "fanIn": 3,
+      "summary": "Color theme registry defining the available color themes and light/dark modes, plus DOM-applying helpers (applyColorTheme/applyColorMode) and type guards used at boot and in settings."
+    },
+    "file:src/hooks/usePwaInstall.ts": {
+      "name": "usePwaInstall.ts",
+      "type": "file",
+      "filePath": "src/hooks/usePwaInstall.ts",
+      "fanIn": 1,
+      "summary": "React hook capturing the browser's beforeinstallprompt event to offer a PWA install action, detecting when the app already runs standalone."
+    },
+    "file:src/lib/supabase.ts": {
+      "name": "supabase.ts",
+      "type": "file",
+      "filePath": "src/lib/supabase.ts",
+      "fanIn": 8,
+      "summary": "Creates and exports the singleton Supabase client from environment variables, used by all auth, profile, and shared-build services."
+    },
+    "file:src/main.tsx": {
+      "name": "main.tsx",
+      "type": "file",
+      "filePath": "src/main.tsx",
+      "fanIn": 0,
+      "summary": "Application bootstrap: applies the persisted color theme before first paint, resolves the active dataset/server, installs chunk-error auto-reload, wraps rendering in an error fallback, and mounts App into the DOM."
+    },
+    "file:src/pages/AuthorPage.tsx": {
+      "name": "AuthorPage.tsx",
+      "type": "file",
+      "filePath": "src/pages/AuthorPage.tsx",
+      "fanIn": 0,
+      "summary": "Public author profile page showing an author's handle, bio, and their shared builds rendered as BuildCards, resolved via the profile service."
+    },
+    "file:src/pages/BuildDetailPage.tsx": {
+      "name": "BuildDetailPage.tsx",
+      "type": "file",
+      "filePath": "src/pages/BuildDetailPage.tsx",
+      "fanIn": 0,
+      "summary": "Detail page for a single shared build: shows metadata, powerset summaries, view counter, and actions to open the build in the planner, favorite it, or manage it as the owner."
+    },
+    "file:src/pages/BuildsPage.tsx": {
+      "name": "BuildsPage.tsx",
+      "type": "file",
+      "filePath": "src/pages/BuildsPage.tsx",
+      "fanIn": 0,
+      "summary": "Shared-builds browser page combining BuildFilters with a searchable, paginated grid of BuildCards, including favorites and my-builds tabs backed by the sharedBuilds service."
+    },
+    "file:src/pages/GeneralSettings.tsx": {
+      "name": "GeneralSettings.tsx",
+      "type": "file",
+      "filePath": "src/pages/GeneralSettings.tsx",
+      "fanIn": 0,
+      "summary": "General settings page for theme/color-mode selection, calc-debug toggle, local data management, and account-related actions."
+    },
+    "file:src/pages/ProfileSettingsPage.tsx": {
+      "name": "ProfileSettingsPage.tsx",
+      "type": "file",
+      "filePath": "src/pages/ProfileSettingsPage.tsx",
+      "fanIn": 0,
+      "summary": "Profile settings page where an authenticated user edits their handle, display name, and bio, enforcing handle cooldown rules via the profile service."
+    },
+    "file:src/pages/index.ts": {
+      "name": "index.ts",
+      "type": "file",
+      "filePath": "src/pages/index.ts",
+      "fanIn": 1,
+      "summary": "Barrel file re-exporting all page components (Planner, Builds, BuildDetail, Author, settings pages, Import) for the router."
+    },
+    "file:src/router.tsx": {
+      "name": "router.tsx",
+      "type": "file",
+      "filePath": "src/router.tsx",
+      "fanIn": 1,
+      "summary": "Defines the TanStack Router route tree: root with MainLayout, planner and shared-build routes, and a SettingsLayout subtree, exporting the configured router instance."
+    },
+    "file:src/services/auctionPrices.ts": {
+      "name": "auctionPrices.ts",
+      "type": "file",
+      "filePath": "src/services/auctionPrices.ts",
+      "fanIn": 1,
+      "summary": "Service mapping planner enhancements to raw auction-house identifiers and fetching current market prices from Supabase, with influence-value formatting helpers."
+    },
+    "file:src/services/auth.ts": {
+      "name": "auth.ts",
+      "type": "file",
+      "filePath": "src/services/auth.ts",
+      "fanIn": 1,
+      "summary": "Thin auth service over the Supabase client: OAuth sign-in (Discord and others), sign-out, session/user getters, and an auth-state-change subscription."
+    },
+    "file:src/services/profile.ts": {
+      "name": "profile.ts",
+      "type": "file",
+      "filePath": "src/services/profile.ts",
+      "fanIn": 4,
+      "summary": "User profile service: fetch/update profiles with handle validation and change cooldown, plus author search and handle resolution for public author pages."
+    },
+    "file:src/services/sharedBuilds.ts": {
+      "name": "sharedBuilds.ts",
+      "type": "file",
+      "filePath": "src/services/sharedBuilds.ts",
+      "fanIn": 10,
+      "summary": "Core service for the Supabase-backed shared-builds repository: share/quick-share with fingerprint caching, search, delete, visibility toggling, view counting, favorites with local/remote sync, anonymous owner tokens with claim-on-login, and rate-limit handling via a RateLimitError class."
+    },
+    "file:src/stores/authStore.ts": {
+      "name": "authStore.ts",
+      "type": "file",
+      "filePath": "src/stores/authStore.ts",
+      "fanIn": 3,
+      "summary": "Zustand store for Discord OAuth auth state (user, loading, initialized) that wires Supabase auth-state changes to favorite syncing and quick-share cache clearing; session persistence is delegated to Supabase itself."
+    },
+    "file:src/types/shared.ts": {
+      "name": "shared.ts",
+      "type": "file",
+      "filePath": "src/types/shared.ts",
+      "fanIn": 8,
+      "summary": "Type definitions for the shared-builds feature: SharedBuild rows (with author-join fields), ShareBuildInput, and SearchFilters/SearchResult shapes used across services and pages."
+    },
+    "file:src/utils/calc-debug.ts": {
+      "name": "calc-debug.ts",
+      "type": "file",
+      "filePath": "src/utils/calc-debug.ts",
+      "fanIn": 5,
+      "summary": "Console-based calculation debug tracer: a localStorage-gated toggle plus a family of debug* helpers (grouped logging, formulas, set bonuses, scaled effects, hit chance, endurance math) sprinkled through the stat calculation pipeline."
+    },
+    "file:src/utils/calculations/enhancement-values.ts": {
+      "name": "enhancement-values.ts",
+      "type": "file",
+      "filePath": "src/utils/calculations/enhancement-values.ts",
+      "fanIn": 3,
+      "summary": "Core enhancement math for the planner: IO value schedules by level, Enhancement Diversification (ED) curves, exemplar scaling, multi-aspect and set-rarity modifiers, IO-set piece parsing, and the per-power bonus aggregation including Alpha incarnate combination with ED bypass."
+    },
+    "file:src/utils/chunk-error-reload.ts": {
+      "name": "chunk-error-reload.ts",
+      "type": "file",
+      "filePath": "src/utils/chunk-error-reload.ts",
+      "fanIn": 1,
+      "summary": "Global handler that detects failed lazy-chunk loads after a deployment and auto-reloads the page (with a toast and loop guard) so users pick up the new bundle."
+    },
+    "file:src/utils/diagnostics.ts": {
+      "name": "diagnostics.ts",
+      "type": "file",
+      "filePath": "src/utils/diagnostics.ts",
+      "fanIn": 1,
+      "summary": "Builds a diagnostics snapshot (app version/build time, environment, build-store and UI-store state summaries) attached to user feedback reports."
+    },
+    "file:src/data/powersets.ts": {
+      "name": "powersets.ts",
+      "type": "file",
+      "filePath": "src/data/powersets.ts",
+      "fanIn": 7,
+      "summary": "Powerset data accessor layer that routes all powerset/power lookups through the active dataset's generated registry, filtering out dormant (unreleased) sets."
+    },
+    "file:src/pages/ImportPage.tsx": {
+      "name": "ImportPage.tsx",
+      "type": "file",
+      "filePath": "src/pages/ImportPage.tsx",
+      "fanIn": 0,
+      "summary": "Route page that receives a build from the Homecoming game client via a deflate+base64 URL fragment, decodes it, previews the result, and loads it into the planner store."
+    },
+    "file:src/types/archetype.ts": {
+      "name": "archetype.ts",
+      "type": "file",
+      "filePath": "src/types/archetype.ts",
+      "fanIn": 3,
+      "summary": "Type definitions for archetypes: damage modifiers, base/max stat blocks (HP, caps), inherent powers, branches, and the archetype registry shape."
+    },
+    "file:src/types/build.ts": {
+      "name": "build.ts",
+      "type": "file",
+      "filePath": "src/types/build.ts",
+      "fanIn": 21,
+      "summary": "Core Build data model: powerset/pool selections, settings, set tracking, attack chains, proc overrides, and versioned export formats, plus the createEmptyBuild factory."
+    },
+    "file:src/types/common.ts": {
+      "name": "common.ts",
+      "type": "file",
+      "filePath": "src/types/common.ts",
+      "fanIn": 6,
+      "summary": "Foundational shared enums and union types used app-wide: damage/defense types, power types, targets, origins, factions, IO set categories/rarities, and enhancement tiers."
+    },
+    "file:src/types/enhancement.ts": {
+      "name": "enhancement.ts",
+      "type": "file",
+      "filePath": "src/types/enhancement.ts",
+      "fanIn": 8,
+      "summary": "Enhancement type definitions with a discriminated union over four enhancement kinds (IO set, generic IO, special, origin), plus IO set, set bonus, and registry shapes."
+    },
+    "file:src/types/incarnate.ts": {
+      "name": "incarnate.ts",
+      "type": "file",
+      "filePath": "src/types/incarnate.ts",
+      "fanIn": 6,
+      "summary": "Incarnate system types (slots, tiers, branches, trees, crafting salvage) with state factories and name-based tier/branch inference helpers."
+    },
+    "file:src/types/power.ts": {
+      "name": "power.ts",
+      "type": "file",
+      "filePath": "src/types/power.ts",
+      "fanIn": 12,
+      "summary": "The largest type module: Power, Powerset, PowerEffects and every effect shape (scaled, mez, damage, DoT, defense/resistance by-type, summons, movement), plus type-guard helpers and the Plan B atom-list reference."
+    },
+    "file:src/types/ui.ts": {
+      "name": "ui.ts",
+      "type": "file",
+      "filePath": "src/types/ui.ts",
+      "fanIn": 0,
+      "summary": "UI state type definitions: enhancement picker modal views and state, planner layout sections, tooltip/info-panel state, and the createDefaultUIState factory."
+    },
+    "file:src/utils/build-enhancement-validation.ts": {
+      "name": "build-enhancement-validation.ts",
+      "type": "file",
+      "filePath": "src/utils/build-enhancement-validation.ts",
+      "fanIn": 3,
+      "summary": "Validates slotted enhancements across a build against eligibility rules, finding illegal slots and producing a cleaned copy of the build with them removed."
+    },
+    "file:src/utils/build-powers.ts": {
+      "name": "build-powers.ts",
+      "type": "file",
+      "filePath": "src/utils/build-powers.ts",
+      "fanIn": 2,
+      "summary": "Build power enumeration helpers that flatten selected powers across primary/secondary/pools/epic into level-ordered lists and group them for Powers-by-Level views, excluding auto-granted sub-powers."
+    },
+    "file:src/utils/build-serialization.ts": {
+      "name": "build-serialization.ts",
+      "type": "file",
+      "filePath": "src/utils/build-serialization.ts",
+      "fanIn": 5,
+      "summary": "Build share/persistence codec: slims a Build to a compact SlimBuildData for URL hashes, and hydrates it back into a full Build by re-resolving powers and enhancements against the active dataset."
+    },
+    "file:src/utils/calculations/buff-pet-auras.ts": {
+      "name": "buff-pet-auras.ts",
+      "type": "file",
+      "filePath": "src/utils/calculations/buff-pet-auras.ts",
+      "fanIn": 2,
+      "summary": "Shared detection seam for buff-pets (FFG, Barrier Reef, Triage Beacon): identifies player-summoned non-commandable pets carrying ally-buff auras so the calc can fold them into totals behind an opt-in per-pet toggle."
+    },
+    "file:src/utils/calculations/character-totals.ts": {
+      "name": "character-totals.ts",
+      "type": "file",
+      "filePath": "src/utils/calculations/character-totals.ts",
+      "fanIn": 17,
+      "summary": "The heavyweight character-totals calculation engine: aggregates set bonuses, active power effects, procs (always-on, PPM, build-up, variable), accolades, incarnates, and buff-pet auras into final character stats with per-stat breakdowns."
+    },
+    "file:src/utils/calculations/effective-level.ts": {
+      "name": "effective-level.ts",
+      "type": "file",
+      "filePath": "src/utils/calculations/effective-level.ts",
+      "fanIn": 2,
+      "summary": "Tiny standalone module computing the effective combat level under exemplaring and whether incarnate abilities are suppressed (below level 45), kept separate so UI components avoid importing the heavyweight calc."
+    },
+    "file:src/utils/calculations/incandescence-heal-received.test.ts": {
+      "name": "incandescence-heal-received.test.ts",
+      "type": "file",
+      "filePath": "src/utils/calculations/incandescence-heal-received.test.ts",
+      "fanIn": 1,
+      "summary": "Regression test guarding the Incandescence Destiny fix: its Heal_Dmg/aspect=Resistance effect must surface as a 'Healing Received' character total instead of being flattened into damage resistance."
+    },
+    "file:src/utils/calculations/incarnate-effects-completeness.test.ts": {
+      "name": "incarnate-effects-completeness.test.ts",
+      "type": "file",
+      "filePath": "src/utils/calculations/incarnate-effects-completeness.test.ts",
+      "fanIn": 1,
+      "summary": "Completeness guard for the incarnate effects pipeline: verifies Destiny/Hybrid/Clarion effect categories (mez protection, heal, endurance) all reach character totals instead of being silently dropped by converter allowlists."
+    },
+    "file:src/utils/calculations/incarnate-exemplar.test.ts": {
+      "name": "incarnate-exemplar.test.ts",
+      "type": "file",
+      "filePath": "src/utils/calculations/incarnate-exemplar.test.ts",
+      "fanIn": 2,
+      "summary": "Tests that incarnate power effects are suppressed from character totals when the effective (exemplar) level drops below the incarnate minimum level."
+    },
+    "file:src/utils/calculations/inherents.ts": {
+      "name": "inherents.ts",
+      "type": "file",
+      "filePath": "src/utils/calculations/inherents.ts",
+      "fanIn": 3,
+      "summary": "Implements archetype inherent mechanics for every AT: Defiance, Domination, Scourge, Fury, Supremacy/Bodyguard, Vigilance, Opportunity, Critical Hit, Assassination, Gauntlet, and Containment, each with info descriptors, damage/chance calculators, and power-eligibility predicates."
+    },
+    "file:src/utils/calculations/jump-height.test.ts": {
+      "name": "jump-height.test.ts",
+      "type": "file",
+      "filePath": "src/utils/calculations/jump-height.test.ts",
+      "fanIn": 1,
+      "summary": "Tests jump-height character totals against movement-constant bases and caps, guarding the jump buff support added with the travel-speed fixes."
+    },
+    "file:src/utils/calculations/perma.ts": {
+      "name": "perma.ts",
+      "type": "file",
+      "filePath": "src/utils/calculations/perma.ts",
+      "fanIn": 4,
+      "summary": "Determines whether a click power can be made \"perma\" (buff duration >= enhanced recharge + cast time) and computes uptime/gap info, including detection of self-state buffs worth keeping up."
+    },
+    "file:src/utils/calculations/proc-global-damage.test.ts": {
+      "name": "proc-global-damage.test.ts",
+      "type": "file",
+      "filePath": "src/utils/calculations/proc-global-damage.test.ts",
+      "fanIn": 1,
+      "summary": "Tests the Liberty's Belt fused +7.5% global Damage proc: slotting the piece must raise the character damage total via the always-on global proc path."
+    },
+    "file:src/utils/calculations/proc-global-recharge.test.ts": {
+      "name": "proc-global-recharge.test.ts",
+      "type": "file",
+      "filePath": "src/utils/calculations/proc-global-recharge.test.ts",
+      "fanIn": 1,
+      "summary": "Tests Luck of the Gambler style global +recharge procs: slotting the piece must contribute its recharge bonus to character totals with Rule-of-5 handling."
+    },
+    "file:src/utils/calculations/proc-runtime-allowlist.test.ts": {
+      "name": "proc-runtime-allowlist.test.ts",
+      "type": "file",
+      "filePath": "src/utils/calculations/proc-runtime-allowlist.test.ts",
+      "fanIn": 1,
+      "summary": "Guards the runtime allowlist of proc effect categories: only recognized always-on global proc categories may flow into character totals, preventing unhandled categories from silently applying."
+    },
+    "file:src/utils/calculations/proc-variable-calc.test.ts": {
+      "name": "proc-variable-calc.test.ts",
+      "type": "file",
+      "filePath": "src/utils/calculations/proc-variable-calc.test.ts",
+      "fanIn": 1,
+      "summary": "Tests variable/stacking proc contributions (e.g. Might of the Tanker absorb stacks, Interface-style scaling) so per-stack overrides and interpolated values reach character totals correctly."
+    },
+    "file:src/utils/calculations/self-penalty-towho.test.ts": {
+      "name": "self-penalty-towho.test.ts",
+      "type": "file",
+      "filePath": "src/utils/calculations/self-penalty-towho.test.ts",
+      "fanIn": 1,
+      "summary": "Verifies converter output for self-directed penalties: effects like Bio Armor Offensive Adaptation's -resistance must carry toWho:Self so they are charged to the caster rather than treated as foe debuffs."
+    },
+    "file:src/utils/calculations/stacking-flaw-fix.verify.test.ts": {
+      "name": "stacking-flaw-fix.verify.test.ts",
+      "type": "file",
+      "filePath": "src/utils/calculations/stacking-flaw-fix.verify.test.ts",
+      "fanIn": 1,
+      "summary": "Verification test for the perma/stacking flaw fix: linear vs per-target stacking must produce distinct expected values in perma calculations."
+    },
+    "file:src/utils/calculations/stats.ts": {
+      "name": "stats.ts",
+      "type": "file",
+      "filePath": "src/utils/calculations/stats.ts",
+      "fanIn": 6,
+      "summary": "Provides the empty character-stats factory (all defense/resistance/movement/misc totals zeroed) and baseline health lookup per archetype and level."
+    },
+    "file:src/utils/calculations/stealth-procs.test.ts": {
+      "name": "stealth-procs.test.ts",
+      "type": "file",
+      "filePath": "src/utils/calculations/stealth-procs.test.ts",
+      "fanIn": 1,
+      "summary": "Tests stealth-granting IO procs (Celerity/Unbounded Leap +Stealth): slotting them must add stealth radius values to character totals with correct PvE/PvP handling."
+    },
+    "file:src/utils/calculations/strength-buffs.test.ts": {
+      "name": "strength-buffs.test.ts",
+      "type": "file",
+      "filePath": "src/utils/calculations/strength-buffs.test.ts",
+      "fanIn": 1,
+      "summary": "Tests strength-buff collection (Power Boost / Power Build Up style effects): secondary-effect strength buffs must amplify defense, to-hit, and other buff magnitudes in totals and per-power displays."
+    },
+    "file:src/utils/calculations/travel-speed-fixes.test.ts": {
+      "name": "travel-speed-fixes.test.ts",
+      "type": "file",
+      "filePath": "src/utils/calculations/travel-speed-fixes.test.ts",
+      "fanIn": 1,
+      "summary": "Regression suite for the travel-speed fixes: TravelBuff stack-group exclusivity (strongest per group), movement cap bumps, combat suppression, and pool travel power speeds against movement constants."
+    },
+    "file:src/utils/conditional-effects.ts": {
+      "name": "conditional-effects.ts",
+      "type": "file",
+      "filePath": "src/utils/conditional-effects.ts",
+      "fanIn": 2,
+      "summary": "Selects which conditional effect variants of a power are active given build state (stances, AT inherent conditionals like Domination), so displays and totals merge the correct conditional branch."
+    },
+    "file:src/utils/enhancement-eligibility.ts": {
+      "name": "enhancement-eligibility.ts",
+      "type": "file",
+      "filePath": "src/utils/enhancement-eligibility.ts",
+      "fanIn": 2,
+      "summary": "Decides whether a given enhancement (IO set piece, generic IO, or special) may legally be slotted into a power, based on the power's allowed categories and set types."
+    },
+    "file:src/utils/export-popmenu.ts": {
+      "name": "export-popmenu.ts",
+      "type": "file",
+      "filePath": "src/utils/export-popmenu.ts",
+      "fanIn": 1,
+      "summary": "Generates a City of Heroes in-game popmenu (.mnu) file from a build, emitting /boostset and enhancement slotting commands so players can apply the planned build in-game."
+    },
+    "file:src/utils/export-print.ts": {
+      "name": "export-print.ts",
+      "type": "file",
+      "filePath": "src/utils/export-print.ts",
+      "fanIn": 1,
+      "summary": "Renders a build as a self-contained printable HTML document (powers, slotting, set bonuses, incarnates, and character stat totals) and opens it in a print view window."
+    },
+    "file:src/utils/external-import/converter.ts": {
+      "name": "converter.ts",
+      "type": "file",
+      "filePath": "src/utils/external-import/converter.ts",
+      "fanIn": 1,
+      "summary": "Converts externally sourced build text (in-game export format) into the planner's build model: splits multi-build dumps, scores the best segment, converts powers/boosts, and augments incarnates and accolades."
+    },
+    "file:src/utils/external-import/index.ts": {
+      "name": "index.ts",
+      "type": "file",
+      "filePath": "src/utils/external-import/index.ts",
+      "fanIn": 1,
+      "summary": "Barrel module re-exporting the external build importer entry point and its result types."
+    },
+    "file:src/utils/game-importer/index.ts": {
+      "name": "index.ts",
+      "type": "file",
+      "filePath": "src/utils/game-importer/index.ts",
+      "fanIn": 2,
+      "summary": "Barrel module exposing the shared in-game export importer (importGameExport/importFromParsedData) and its data/result types to other import pipelines."
+    },
+    "file:src/utils/import-url.ts": {
+      "name": "import-url.ts",
+      "type": "file",
+      "filePath": "src/utils/import-url.ts",
+      "fanIn": 4,
+      "summary": "Encodes and decodes the URL hash fragment used to hand off pasted build imports between pages, compressing the payload for shareable import links."
+    },
+    "file:src/utils/kheldian-import.test.ts": {
+      "name": "kheldian-import.test.ts",
+      "type": "file",
+      "filePath": "src/utils/kheldian-import.test.ts",
+      "fanIn": 2,
+      "summary": "Tests importing Kheldian (Peacebringer/Warshade) builds through both the external and Mids import pipelines, covering form powers and Kheldian-specific powerset resolution."
+    },
+    "file:src/utils/mids-export.ts": {
+      "name": "mids-export.ts",
+      "type": "file",
+      "filePath": "src/utils/mids-export.ts",
+      "fanIn": 1,
+      "summary": "Exports a planner build to the Mids Reborn .mbd JSON format: maps archetype/powerset paths to Mids UIDs, converts slotted enhancements (IO sets, generics, origins, specials), and emits the full build document."
+    },
+    "file:src/utils/mids-import/importer.test.ts": {
+      "name": "importer.test.ts",
+      "type": "file",
+      "filePath": "src/utils/mids-import/importer.test.ts",
+      "fanIn": 1,
+      "summary": "Tests the Mids Reborn .mbd import path: parsed Mids files must resolve to the correct archetype, powersets, powers, and slotted enhancements."
+    },
+    "file:src/utils/mids-import/index.ts": {
+      "name": "index.ts",
+      "type": "file",
+      "filePath": "src/utils/mids-import/index.ts",
+      "fanIn": 5,
+      "summary": "Barrel module re-exporting the Mids Reborn build importer and its file/result types."
+    },
+    "file:src/utils/mxd-import/importer.ts": {
+      "name": "importer.ts",
+      "type": "file",
+      "filePath": "src/utils/mxd-import/importer.ts",
+      "fanIn": 0,
+      "summary": "Imports legacy Mids .mxd plain-text build exports: resolves archetypes, powersets, pools, epics, and incarnates by display name, and matches slotted enhancements via set-abbreviation lookup."
+    },
+    "file:src/utils/mxd-import/index.ts": {
+      "name": "index.ts",
+      "type": "file",
+      "filePath": "src/utils/mxd-import/index.ts",
+      "fanIn": 1,
+      "summary": "Barrel module re-exporting the MxD text parser, importer, parsed-build types, and abbreviation tables."
+    },
+    "file:src/utils/mxd-import/parser.ts": {
+      "name": "parser.ts",
+      "type": "file",
+      "filePath": "src/utils/mxd-import/parser.ts",
+      "fanIn": 1,
+      "summary": "Parses legacy Mids .mxd plain-text exports into a structured parsed-build model: header (archetype/origin), power lines with levels, and enhancement strings with set abbreviations and boosters."
+    },
+    "file:src/utils/url-build-sync.ts": {
+      "name": "url-build-sync.ts",
+      "type": "file",
+      "filePath": "src/utils/url-build-sync.ts",
+      "fanIn": 2,
+      "summary": "React hook that keeps the current build synchronized with the URL hash: serializes the build into a shareable link, restores builds from incoming URLs, and handles import fragments."
+    },
+    "file:src/components/enhancements/EnhancementIcon.tsx": {
+      "name": "EnhancementIcon.tsx",
+      "type": "file",
+      "filePath": "src/components/enhancements/EnhancementIcon.tsx",
+      "fanIn": 3,
+      "summary": "Renders enhancement icons for every enhancement family (IO sets, generic IOs, origin, Hamidon/special), resolving layered base + overlay image paths from enhancement type and origin data."
+    },
+    "file:src/components/enhancements/EnhancementPicker.tsx": {
+      "name": "EnhancementPicker.tsx",
+      "type": "file",
+      "filePath": "src/components/enhancements/EnhancementPicker.tsx",
+      "fanIn": 1,
+      "summary": "The main enhancement-slotting UI: a large picker panel with sidebar categories for IO sets, procs, generic IOs, special and origin enhancements, including set-piece tooltips, stacked-count badges, and set bonus previews."
+    },
+    "file:src/components/enhancements/SetBonusDisplay.tsx": {
+      "name": "SetBonusDisplay.tsx",
+      "type": "file",
+      "filePath": "src/components/enhancements/SetBonusDisplay.tsx",
+      "fanIn": 1,
+      "summary": "Displays IO set bonuses for a slotted set, with per-bonus rows showing activation state and a summary view aggregating active bonuses across the build."
+    },
+    "file:src/components/enhancements/SetBonusList.tsx": {
+      "name": "SetBonusList.tsx",
+      "type": "file",
+      "filePath": "src/components/enhancements/SetBonusList.tsx",
+      "fanIn": 2,
+      "summary": "Lists the set bonuses granted at each piece count for an IO set inside the picker, marking which bonuses are active given current slotting and Rule-of-5 caps."
+    },
+    "file:src/components/export-image/BuildImageCard.tsx": {
+      "name": "BuildImageCard.tsx",
+      "type": "file",
+      "filePath": "src/components/export-image/BuildImageCard.tsx",
+      "fanIn": 1,
+      "summary": "Off-screen \"poster\" component rendered for the Export-as-Image feature: lays out powers, slots, incarnates, character totals, and set bonuses into a fixed-width card that gets rasterized to an image."
+    },
+    "file:src/components/export-image/exportOptions.ts": {
+      "name": "exportOptions.ts",
+      "type": "file",
+      "filePath": "src/components/export-image/exportOptions.ts",
+      "fanIn": 2,
+      "summary": "Defines the configurable options for build-image export (stat section selections, presets) with helpers to apply a preset and create default options."
+    },
+    "file:src/components/incarnate/IncarnateSlotGrid.tsx": {
+      "name": "IncarnateSlotGrid.tsx",
+      "type": "file",
+      "filePath": "src/components/incarnate/IncarnateSlotGrid.tsx",
+      "fanIn": 0,
+      "summary": "Compact grid of incarnate slots for the dashboard, rendering a mini tile per slot with selection state, tier coloring, and effect tooltips."
+    },
+    "file:src/components/incarnate/index.ts": {
+      "name": "index.ts",
+      "type": "file",
+      "filePath": "src/components/incarnate/index.ts",
+      "fanIn": 1,
+      "summary": "Barrel file re-exporting the incarnate UI components (slot button, slot grid, modals, power tree, Destiny time slider)."
+    },
+    "file:src/components/info/PopOutInfoPanel.tsx": {
+      "name": "PopOutInfoPanel.tsx",
+      "type": "file",
+      "filePath": "src/components/info/PopOutInfoPanel.tsx",
+      "fanIn": 1,
+      "summary": "Floating-window wrapper that hosts the InfoPanel in a detachable pop-out window driven by UI store state."
+    },
+    "file:src/components/info/SetBonusPopup.tsx": {
+      "name": "SetBonusPopup.tsx",
+      "type": "file",
+      "filePath": "src/components/info/SetBonusPopup.tsx",
+      "fanIn": 1,
+      "summary": "Popup showing the aggregated set bonuses of the current build grouped by stat, with Rule-of-5 tracking and per-source breakdowns."
+    },
+    "file:src/components/info/index.ts": {
+      "name": "index.ts",
+      "type": "file",
+      "filePath": "src/components/info/index.ts",
+      "fanIn": 1,
+      "summary": "Barrel file re-exporting the info components InfoPanel and PowerInfoTooltip."
+    },
+    "file:src/components/layout/ExemplarModeBanner.tsx": {
+      "name": "ExemplarModeBanner.tsx",
+      "type": "file",
+      "filePath": "src/components/layout/ExemplarModeBanner.tsx",
+      "fanIn": 1,
+      "summary": "Banner shown when exemplar mode is active, reading the exemplar level from the UI store and offering a way to exit the mode."
+    },
+    "file:src/components/layout/MainLayout.tsx": {
+      "name": "MainLayout.tsx",
+      "type": "file",
+      "filePath": "src/components/layout/MainLayout.tsx",
+      "fanIn": 1,
+      "summary": "Top-level application layout composing the header, stats dashboard, info panels, banners, modals, enhancement picker, and mobile navigation, and wiring global hotkeys and status checks."
+    },
+    "file:src/components/layout/MobileBottomNav.tsx": {
+      "name": "MobileBottomNav.tsx",
+      "type": "file",
+      "filePath": "src/components/layout/MobileBottomNav.tsx",
+      "fanIn": 1,
+      "summary": "Mobile bottom navigation bar with sheet-based menu and settings panels, inline SVG icons, and access to dashboard, incarnates, and app settings on small screens."
+    },
+    "file:src/components/layout/MobileBuildBar.tsx": {
+      "name": "MobileBuildBar.tsx",
+      "type": "file",
+      "filePath": "src/components/layout/MobileBuildBar.tsx",
+      "fanIn": 1,
+      "summary": "Slim mobile top bar exposing the character/build summary and quick actions, delegating to the shared Header component."
+    },
+    "file:src/components/layout/PinnedPowersBar.tsx": {
+      "name": "PinnedPowersBar.tsx",
+      "type": "file",
+      "filePath": "src/components/layout/PinnedPowersBar.tsx",
+      "fanIn": 1,
+      "summary": "Bar rendering powers the user pinned for quick reference, each with its icon and perma-status ring, collected from all power categories in the build."
+    },
+    "file:src/components/layout/StatsDashboard.tsx": {
+      "name": "StatsDashboard.tsx",
+      "type": "file",
+      "filePath": "src/components/layout/StatsDashboard.tsx",
+      "fanIn": 2,
+      "summary": "The character stats dashboard: renders defense/resistance/misc stat groups with breakdown tooltips, cap indicators, collapsed row mode, incarnate grid, pinned powers, and action buttons. Central read-out of the whole calculation pipeline."
+    },
+    "file:src/components/layout/StatusBanner.tsx": {
+      "name": "StatusBanner.tsx",
+      "type": "file",
+      "filePath": "src/components/layout/StatusBanner.tsx",
+      "fanIn": 1,
+      "summary": "Banner surfacing backend/service status fetched via the status-check hook (e.g. degraded share service notices)."
+    },
+    "file:src/components/layout/UpdateBanner.tsx": {
+      "name": "UpdateBanner.tsx",
+      "type": "file",
+      "filePath": "src/components/layout/UpdateBanner.tsx",
+      "fanIn": 1,
+      "summary": "Banner prompting the user to reload when a new app version is available, driven by update state in the store."
+    },
+    "file:src/components/modals/AboutModal.tsx": {
+      "name": "AboutModal.tsx",
+      "type": "file",
+      "filePath": "src/components/modals/AboutModal.tsx",
+      "fanIn": 0,
+      "summary": "About dialog with app credits, version information, and acknowledgements."
+    },
+    "file:src/components/modals/AccoladesModal.tsx": {
+      "name": "AccoladesModal.tsx",
+      "type": "file",
+      "filePath": "src/components/modals/AccoladesModal.tsx",
+      "fanIn": 0,
+      "summary": "Modal for toggling accolade powers on the build, listing each accolade with its passive bonuses from the accolade registry."
+    },
+    "file:src/components/modals/AnnouncementModal.tsx": {
+      "name": "AnnouncementModal.tsx",
+      "type": "file",
+      "filePath": "src/components/modals/AnnouncementModal.tsx",
+      "fanIn": 0,
+      "summary": "Modal presenting release announcements and the roadmap panel, reading announcement content from the data layer and tracking seen state in the store."
+    },
+    "file:src/components/modals/BuildImageModal.tsx": {
+      "name": "BuildImageModal.tsx",
+      "type": "file",
+      "filePath": "src/components/modals/BuildImageModal.tsx",
+      "fanIn": 0,
+      "summary": "Modal orchestrating the Export-as-Image flow: renders the off-screen BuildImageCard with selected options and drives rasterization/download via the export-image utility."
+    },
+    "file:src/components/modals/ConfirmModal.tsx": {
+      "name": "ConfirmModal.tsx",
+      "type": "file",
+      "filePath": "src/components/modals/ConfirmModal.tsx",
+      "fanIn": 1,
+      "summary": "Generic confirmation dialog with configurable message and confirm/cancel actions."
+    },
+    "file:src/components/modals/ControlsModal.tsx": {
+      "name": "ControlsModal.tsx",
+      "type": "file",
+      "filePath": "src/components/modals/ControlsModal.tsx",
+      "fanIn": 0,
+      "summary": "Modal documenting keyboard shortcuts and mouse controls, organized into sections of control items."
+    },
+    "file:src/components/modals/DetailedTotalsModal.tsx": {
+      "name": "DetailedTotalsModal.tsx",
+      "type": "file",
+      "filePath": "src/components/modals/DetailedTotalsModal.tsx",
+      "fanIn": 0,
+      "summary": "Modal showing detailed character totals with per-stat breakdown panels and cap meters; can also load and compare a second build parsed from JSON or a shared-build link."
+    },
+    "file:src/components/modals/DonateModal.tsx": {
+      "name": "DonateModal.tsx",
+      "type": "file",
+      "filePath": "src/components/modals/DonateModal.tsx",
+      "fanIn": 0,
+      "summary": "Modal with donation links and supporter information."
+    },
+    "file:src/components/modals/EnhancementToolsModal.tsx": {
+      "name": "EnhancementToolsModal.tsx",
+      "type": "file",
+      "filePath": "src/components/modals/EnhancementToolsModal.tsx",
+      "fanIn": 0,
+      "summary": "Modal exposing bulk enhancement tools (global IO level, attunement, clearing) that operate across the whole build via the stores."
+    },
+    "file:src/components/modals/ForumExportModal.tsx": {
+      "name": "ForumExportModal.tsx",
+      "type": "file",
+      "filePath": "src/components/modals/ForumExportModal.tsx",
+      "fanIn": 1,
+      "summary": "Modal generating a forum-formatted (BBCode/text) export of the current build, with share-link creation via the shared-builds service and copy-to-clipboard."
+    },
+    "file:src/components/incarnate/CraftNodeRow.tsx": {
+      "name": "CraftNodeRow.tsx",
+      "type": "file",
+      "filePath": "src/components/incarnate/CraftNodeRow.tsx",
+      "fanIn": 1,
+      "summary": "Renders a single node row in the Incarnate crafting tree, showing a component's tier, checklist state, and its salvage children via CraftingSalvageRow."
+    },
+    "file:src/components/incarnate/CraftingCostSummary.tsx": {
+      "name": "CraftingCostSummary.tsx",
+      "type": "file",
+      "filePath": "src/components/incarnate/CraftingCostSummary.tsx",
+      "fanIn": 1,
+      "summary": "Aggregates and displays the total crafting cost for an Incarnate goal: salvage counts, influence/currency cost, and merit conversion lines with clickable salvage items."
+    },
+    "file:src/components/incarnate/CraftingSalvageRow.tsx": {
+      "name": "CraftingSalvageRow.tsx",
+      "type": "file",
+      "filePath": "src/components/incarnate/CraftingSalvageRow.tsx",
+      "fanIn": 1,
+      "summary": "Small presentational component rendering one salvage requirement row (name, rarity color, count) inside a craft-tree node."
+    },
+    "file:src/components/incarnate/IncarnateCraftingModal.tsx": {
+      "name": "IncarnateCraftingModal.tsx",
+      "type": "file",
+      "filePath": "src/components/incarnate/IncarnateCraftingModal.tsx",
+      "fanIn": 0,
+      "summary": "Modal orchestrating the Incarnate crafting planner: builds the craft tree for a goal power, tracks the crafting checklist in the build store, and switches between tree view and shopping-list view."
+    },
+    "file:src/components/incarnate/IncarnateEffectsTooltip.tsx": {
+      "name": "IncarnateEffectsTooltip.tsx",
+      "type": "file",
+      "filePath": "src/components/incarnate/IncarnateEffectsTooltip.tsx",
+      "fanIn": 2,
+      "summary": "Tooltip system for Incarnate powers: per-slot tooltip components (Alpha, Destiny, Hybrid, Interface, Judgement, Lore, Genesis) that format each slot's effect data, plus an exported data resolver used elsewhere."
+    },
+    "file:src/components/incarnate/IncarnateModal.tsx": {
+      "name": "IncarnateModal.tsx",
+      "type": "file",
+      "filePath": "src/components/incarnate/IncarnateModal.tsx",
+      "fanIn": 0,
+      "summary": "Top-level Incarnate system modal: presents the slot selector and hosts the IncarnatePowerTree for the currently selected Incarnate slot, reading selections from the build store."
+    },
+    "file:src/components/incarnate/IncarnatePowerTree.tsx": {
+      "name": "IncarnatePowerTree.tsx",
+      "type": "file",
+      "filePath": "src/components/incarnate/IncarnatePowerTree.tsx",
+      "fanIn": 1,
+      "summary": "Renders the tiered power tree for one Incarnate slot: computes prerequisite crafting paths, lays out tier rows, and shows per-power buttons with an info panel and effects tooltip."
+    },
+    "file:src/components/incarnate/ShoppingListView.tsx": {
+      "name": "ShoppingListView.tsx",
+      "type": "file",
+      "filePath": "src/components/incarnate/ShoppingListView.tsx",
+      "fanIn": 1,
+      "summary": "Alternate flat view of the Incarnate crafting modal: aggregates all remaining salvage across the craft tree into a single checkable shopping list."
+    },
+    "file:src/components/incarnate/craft-tree.ts": {
+      "name": "craft-tree.ts",
+      "type": "file",
+      "filePath": "src/components/incarnate/craft-tree.ts",
+      "fanIn": 3,
+      "summary": "Pure logic for building the Incarnate crafting dependency tree: expands a goal power into prerequisite component nodes and computes remaining salvage given checklist state."
+    },
+    "file:src/components/incarnate/crafting-utils.ts": {
+      "name": "crafting-utils.ts",
+      "type": "file",
+      "filePath": "src/components/incarnate/crafting-utils.ts",
+      "fanIn": 2,
+      "summary": "Helper utilities for the Incarnate crafting UI: tier-number mapping, T3 variant inference, branch variant enumeration, and salvage aggregation across tree nodes."
+    },
+    "file:src/components/layout/PlannerLayoutMenu.tsx": {
+      "name": "PlannerLayoutMenu.tsx",
+      "type": "file",
+      "filePath": "src/components/layout/PlannerLayoutMenu.tsx",
+      "fanIn": 1,
+      "summary": "Dropdown menu for customizing the planner page layout: toggling section visibility and reordering planner sections, persisted via the UI store and planner-layout utils."
+    },
+    "file:src/components/modals/SetBonusLookupModal.tsx": {
+      "name": "SetBonusLookupModal.tsx",
+      "type": "file",
+      "filePath": "src/components/modals/SetBonusLookupModal.tsx",
+      "fanIn": 0,
+      "summary": "Modal for searching IO set bonuses by effect type and strength: filters and sorts sets via the set-bonus index, highlights sets already tracked in the build, and shows slottability per category."
+    },
+    "file:src/data/_layer.ts": {
+      "name": "_layer.ts",
+      "type": "file",
+      "filePath": "src/data/_layer.ts",
+      "fanIn": 0,
+      "summary": "Composition helpers for the generated/overrides power-data layering: withOverrides merges hand-written override deltas onto pristine generated Power objects (deep-merging effects/stats), and applyAggregateOverrides walks pool/epic aggregate trees keyed by fullName."
+    },
+    "file:src/data/accolades.ts": {
+      "name": "accolades.ts",
+      "type": "file",
+      "filePath": "src/data/accolades.ts",
+      "fanIn": 0,
+      "summary": "Static registry of accolade powers (passive bonuses like +MaxHP/+Endurance badges) with lookup helpers getAccolades and getAccolade."
+    },
+    "file:src/data/enhancement-registry.ts": {
+      "name": "enhancement-registry.ts",
+      "type": "file",
+      "filePath": "src/data/enhancement-registry.ts",
+      "fanIn": 0,
+      "summary": "Enhancement display and factory registry: icon path resolution, set-category-to-enhancement-type mapping, rarity/tier display metadata, and factory functions that construct IO set, generic IO, special (Hamidon/Titan/Hydra/D-Sync/Prestige), and origin enhancement instances."
+    },
+    "file:src/data/enhancements.ts": {
+      "name": "enhancements.ts",
+      "type": "file",
+      "filePath": "src/data/enhancements.ts",
+      "fanIn": 1,
+      "summary": "Static enhancement data tables: Hamidon/Titan/Hydra/D-Sync/Prestige special enhancement definitions, common IO value scaling by level, origin tiers (TO/DO/SO), origins, dual-origin combos, and enhancement categories."
+    },
+    "file:src/data/granted-powers.ts": {
+      "name": "granted-powers.ts",
+      "type": "file",
+      "filePath": "src/data/granted-powers.ts",
+      "fanIn": 1,
+      "summary": "Facade over the active dataset's granted-powers map (parent powers that auto-grant children, e.g. Adaptation stances, ammo swaps): forwards GRANTED_POWER_GROUPS reads via a Proxy and exposes lookup helpers including active damage-type conversion."
+    },
+    "file:src/data/incarnate-components.ts": {
+      "name": "incarnate-components.ts",
+      "type": "file",
+      "filePath": "src/data/incarnate-components.ts",
+      "fanIn": 0,
+      "summary": "Large raw data table of Incarnate crafting components per tree and tier, lazily processed into lookup maps, with helpers to resolve a tree's component key, tier/variant components, and cumulative salvage costs."
+    },
+    "file:src/data/incarnate-recipes.ts": {
+      "name": "incarnate-recipes.ts",
+      "type": "file",
+      "filePath": "src/data/incarnate-recipes.ts",
+      "fanIn": 0,
+      "summary": "Incarnate tier recipe definitions (which lower-tier components and salvage each tier requires) plus crafting currency conversions and cumulative cost calculation."
+    },
+    "file:src/data/incarnate-salvage.ts": {
+      "name": "incarnate-salvage.ts",
+      "type": "file",
+      "filePath": "src/data/incarnate-salvage.ts",
+      "fanIn": 1,
+      "summary": "Registry of Incarnate salvage items with rarity metadata, display names, rarity colors, currency costs, and a parser for salvage requirement strings."
+    },
+    "file:src/data/io-sets.ts": {
+      "name": "io-sets.ts",
+      "type": "file",
+      "filePath": "src/data/io-sets.ts",
+      "fanIn": 6,
+      "summary": "IO set registry facade over the active dataset: transforms raw dataset set data into typed IOSet objects (cached per dataset) and exposes lookups by id, rarity, category, and power, plus set-bonus and rarity-info accessors."
+    },
+    "file:src/data/set-bonus-index.ts": {
+      "name": "set-bonus-index.ts",
+      "type": "file",
+      "filePath": "src/data/set-bonus-index.ts",
+      "fanIn": 2,
+      "summary": "Search index over all IO set bonuses: lazily builds a lookup of effect type → damage/defense subtype → strength entries across every set, powering the Set Bonus Lookup modal's filters and the build's tracked-set matching."
+    },
+    "file:src/components/modals/HelpModal.tsx": {
+      "name": "HelpModal.tsx",
+      "type": "file",
+      "filePath": "src/components/modals/HelpModal.tsx",
+      "fanIn": 1,
+      "summary": "Searchable in-app help modal that renders categorized help topics from the help-topics data file, with category tabs, expandable topic items, and embedded media previews."
+    },
+    "file:src/components/modals/Modal.tsx": {
+      "name": "Modal.tsx",
+      "type": "file",
+      "filePath": "src/components/modals/Modal.tsx",
+      "fanIn": 26,
+      "summary": "Base modal primitive used by every modal in the app, providing overlay, escape/backdrop dismissal, and composable ModalHeader/ModalBody/ModalFooter sub-components."
+    },
+    "file:src/components/modals/PoolPickerModal.tsx": {
+      "name": "PoolPickerModal.tsx",
+      "type": "file",
+      "filePath": "src/components/modals/PoolPickerModal.tsx",
+      "fanIn": 2,
+      "summary": "Modal for browsing and selecting one of the character's power pools, with expandable pool bodies that preview each pool's powers before committing a choice."
+    },
+    "file:src/components/modals/PowerInfoModal.tsx": {
+      "name": "PowerInfoModal.tsx",
+      "type": "file",
+      "filePath": "src/components/modals/PowerInfoModal.tsx",
+      "fanIn": 1,
+      "summary": "Thin modal wrapper that displays the shared InfoPanel for the power currently selected in the UI store's info-panel state."
+    },
+    "file:src/components/modals/ProcSettingsModal.tsx": {
+      "name": "ProcSettingsModal.tsx",
+      "type": "file",
+      "filePath": "src/components/modals/ProcSettingsModal.tsx",
+      "fanIn": 1,
+      "summary": "Modal exposing global proc-calculation settings (e.g. proc damage inclusion in DPS and related toggles) backed by the UI store."
+    },
+    "file:src/components/modals/RoadmapPanel.tsx": {
+      "name": "RoadmapPanel.tsx",
+      "type": "file",
+      "filePath": "src/components/modals/RoadmapPanel.tsx",
+      "fanIn": 1,
+      "summary": "The 'Road to 1.0' panel rendered inside AnnouncementModal: a git-graph visualization of roadmap groups on a vertical trunk with expandable branch nodes, purely presentational over the roadmap data model."
+    },
+    "file:src/components/modals/StatsConfigModal.tsx": {
+      "name": "StatsConfigModal.tsx",
+      "type": "file",
+      "filePath": "src/components/modals/StatsConfigModal.tsx",
+      "fanIn": 1,
+      "summary": "Modal for configuring which character stats appear on the dashboard, with per-category color schemes and visibility toggles persisted to the UI store's stats config."
+    },
+    "file:src/components/modals/WelcomeModal.tsx": {
+      "name": "WelcomeModal.tsx",
+      "type": "file",
+      "filePath": "src/components/modals/WelcomeModal.tsx",
+      "fanIn": 1,
+      "summary": "First-run welcome modal showing app version/build time, recent changelog highlights with status badges, and Discord community links."
+    },
+    "file:src/components/modals/index.ts": {
+      "name": "index.ts",
+      "type": "file",
+      "filePath": "src/components/modals/index.ts",
+      "fanIn": 4,
+      "summary": "Barrel file re-exporting all 28 modal components (Modal primitives plus every feature modal) as the modals package public surface."
+    },
+    "file:src/components/onboarding/OnboardingBeacon.tsx": {
+      "name": "OnboardingBeacon.tsx",
+      "type": "file",
+      "filePath": "src/components/onboarding/OnboardingBeacon.tsx",
+      "fanIn": 0,
+      "summary": "Pulsing-ring portal overlay that guides new users through onboarding steps, positioning itself over the current target element and detecting step completion via click listeners and build-store subscriptions."
+    },
+    "file:src/components/powers/AvailablePoolPowers.tsx": {
+      "name": "AvailablePoolPowers.tsx",
+      "type": "file",
+      "filePath": "src/components/powers/AvailablePoolPowers.tsx",
+      "fanIn": 1,
+      "summary": "Renders the available power-pool and epic-pool sections of the power picker column, including pool selection entry points via PoolPickerModal and per-pool power listings."
+    },
+    "file:src/components/powers/AvailablePowers.tsx": {
+      "name": "AvailablePowers.tsx",
+      "type": "file",
+      "filePath": "src/components/powers/AvailablePowers.tsx",
+      "fanIn": 4,
+      "summary": "Available-powers picker section listing primary/secondary powerset powers selectable at the current level, including an RPN 'requires' expression evaluator to gate powers with data-driven availability conditions and filtering of auto-granted form sub-powers."
+    },
+    "file:src/components/powers/ChronologicalInherentsSection.tsx": {
+      "name": "ChronologicalInherentsSection.tsx",
+      "type": "file",
+      "filePath": "src/components/powers/ChronologicalInherentsSection.tsx",
+      "fanIn": 1,
+      "summary": "Inherent-powers section of the chronological (Mids-style) power view, grouping inherent and fitness powers with their auto-granted slots."
+    },
+    "file:src/components/powers/ChronologicalPowerSlot.tsx": {
+      "name": "ChronologicalPowerSlot.tsx",
+      "type": "file",
+      "filePath": "src/components/powers/ChronologicalPowerSlot.tsx",
+      "fanIn": 1,
+      "summary": "A single level-slot cell in the chronological power grid: renders the power taken at that level (or an empty pick), supports drag-and-swap reordering, and maps view categories back to store categories."
+    },
+    "file:src/components/powers/ChronologicalPowerView.tsx": {
+      "name": "ChronologicalPowerView.tsx",
+      "type": "file",
+      "filePath": "src/components/powers/ChronologicalPowerView.tsx",
+      "fanIn": 2,
+      "summary": "Mids Reborn-style power display organizing taken powers into a 3-column grid by level taken instead of by powerset, with drag-and-swap reordering and valid-target computation."
+    },
+    "file:src/components/powers/DraggableSlotGhost.tsx": {
+      "name": "DraggableSlotGhost.tsx",
+      "type": "file",
+      "filePath": "src/components/powers/DraggableSlotGhost.tsx",
+      "fanIn": 1,
+      "summary": "Ghost slot control for adding/removing enhancement slots on a power: left-click/drag adds one or multiple slots, right-click/drag removes them, with ghost circle previews showing pending additions."
+    },
+    "file:src/components/powers/PlannerHintBar.tsx": {
+      "name": "PlannerHintBar.tsx",
+      "type": "file",
+      "filePath": "src/components/powers/PlannerHintBar.tsx",
+      "fanIn": 4,
+      "summary": "Thin contextual-help strip between the dashboard and power columns; displays the hoverHint string components emit to the UI store, with all hint copy centralized in the exported HINTS map."
+    },
+    "file:src/components/powers/PoolPowers.tsx": {
+      "name": "PoolPowers.tsx",
+      "type": "file",
+      "filePath": "src/components/powers/PoolPowers.tsx",
+      "fanIn": 2,
+      "summary": "Selected-powers column sections for pool, epic-pool, and inherent powers: renders taken pool powers grouped by pool, epic pool picks, inherent/fitness powers, and granted sub-powers, each as slottable PowerRow entries."
+    },
+    "file:src/components/powers/PowerCard.tsx": {
+      "name": "PowerCard.tsx",
+      "type": "file",
+      "filePath": "src/components/powers/PowerCard.tsx",
+      "fanIn": 1,
+      "summary": "Card presentation of a selected power showing its icon, name, perma-ring status indicator, and enhancement slots via PowerSlot."
+    },
+    "file:src/components/powers/PowerRow.tsx": {
+      "name": "PowerRow.tsx",
+      "type": "file",
+      "filePath": "src/components/powers/PowerRow.tsx",
+      "fanIn": 4,
+      "summary": "The workhorse row component for a taken power: name, level, toggle state, perma-ring, enhancement slots (TouchableSlot), the DraggableSlotGhost for slot management, slotted set bonuses, and enhancement validation display."
+    },
+    "file:src/components/powers/PowerSlot.tsx": {
+      "name": "PowerSlot.tsx",
+      "type": "file",
+      "filePath": "src/components/powers/PowerSlot.tsx",
+      "fanIn": 2,
+      "summary": "Enhancement slot display used by PowerCard, rendering the slotted enhancement icon with a rich tooltip showing enhancement values and set-bonus formatting."
+    },
+    "file:src/components/powers/SelectedPowers.tsx": {
+      "name": "SelectedPowers.tsx",
+      "type": "file",
+      "filePath": "src/components/powers/SelectedPowers.tsx",
+      "fanIn": 4,
+      "summary": "Selected primary/secondary powerset column section rendering taken powers as PowerRow entries, including granted stance sub-powers (e.g. Bio Armor adaptations) beneath their parent power."
+    },
+    "file:src/components/powers/SlotContextMenu.tsx": {
+      "name": "SlotContextMenu.tsx",
+      "type": "file",
+      "filePath": "src/components/powers/SlotContextMenu.tsx",
+      "fanIn": 1,
+      "summary": "Touch-friendly context menu for enhancement slots offering state-dependent actions (change, remove, boost) for filled or empty slots; self-contained with no project imports."
+    },
+    "file:src/components/powers/SlottedEnhancementIcon.tsx": {
+      "name": "SlottedEnhancementIcon.tsx",
+      "type": "file",
+      "filePath": "src/components/powers/SlottedEnhancementIcon.tsx",
+      "fanIn": 6,
+      "summary": "Renders the icon for a slotted enhancement with rarity/tier outline styling and a boost (+N) badge overlay for boosted IOs."
+    },
+    "file:src/components/powers/SlottedEnhancementList.tsx": {
+      "name": "SlottedEnhancementList.tsx",
+      "type": "file",
+      "filePath": "src/components/powers/SlottedEnhancementList.tsx",
+      "fanIn": 1,
+      "summary": "Compact textual list of a power's slotted enhancements with icons, labels, and metadata (set name, level, boost) used in expanded power row views."
+    },
+    "file:src/components/powers/TouchableSlot.tsx": {
+      "name": "TouchableSlot.tsx",
+      "type": "file",
+      "filePath": "src/components/powers/TouchableSlot.tsx",
+      "fanIn": 1,
+      "summary": "Unified enhancement slot component with desktop and mobile interaction: click opens the picker, right-click/drag removes slots, shift-click and touch-hold open the SlotContextMenu; supports three sizes."
+    },
+    "file:src/components/powers/index.ts": {
+      "name": "index.ts",
+      "type": "file",
+      "filePath": "src/components/powers/index.ts",
+      "fanIn": 1,
+      "summary": "Barrel file re-exporting the powers package's public components (PowerSlot, PowerCard, AvailablePowers, SelectedPowers, PoolPowers, hint-bar utilities, and more)."
+    },
+    "file:src/components/powers/power-row-utils.ts": {
+      "name": "power-row-utils.ts",
+      "type": "file",
+      "filePath": "src/components/powers/power-row-utils.ts",
+      "fanIn": 6,
+      "summary": "Shared predicates for power row rendering — hasHealingDamage and shouldShowToggle plus supporting checks — consolidating logic previously duplicated across power display components."
+    },
+    "file:src/components/ui/FloatingWindow.tsx": {
+      "name": "FloatingWindow.tsx",
+      "type": "file",
+      "filePath": "src/components/ui/FloatingWindow.tsx",
+      "fanIn": 0,
+      "summary": "The single reusable draggable/resizable floating panel, portal-rendered to document.body with header-bar dragging, corner resizing, and optional position persistence via persistKey."
+    },
+    "file:src/types/index.ts": {
+      "name": "index.ts",
+      "type": "file",
+      "filePath": "src/types/index.ts",
+      "fanIn": 121,
+      "summary": "Central type barrel re-exporting the planner's entire domain vocabulary — Power/Powerset/Build/Enhancement/IOSet/Incarnate/UI-state types plus small constructor and type-guard helpers — from the types submodules."
+    },
+    "file:src/utils/calculations/at-table-normalize.ts": {
+      "name": "at-table-normalize.ts",
+      "type": "file",
+      "filePath": "src/utils/calculations/at-table-normalize.ts",
+      "fanIn": 1,
+      "summary": "Pure string helpers that normalize AT-table names and archetype ids for AT_TABLES lookups in damage.ts; the two surviving live exports of the retired at-effects scaled-effect engine."
+    },
+    "file:src/utils/calculations/buff-debuff.ts": {
+      "name": "buff-debuff.ts",
+      "type": "file",
+      "filePath": "src/utils/calculations/buff-debuff.ts",
+      "fanIn": 1,
+      "summary": "Single source of truth for the canonical CoH 10%-per-scale buff / 5%-per-scale debuff base-rate rule on the table-less fallback path, with unit-named wrappers to prevent the earlier fraction-vs-percent 100x drift."
+    },
+    "file:src/utils/calculations/damage.ts": {
+      "name": "damage.ts",
+      "type": "file",
+      "filePath": "src/utils/calculations/damage.ts",
+      "fanIn": 2,
+      "summary": "Core damage-calculation engine: computes power damage from AT scale tables, enhancement bonuses and damage buffs, models DoT tick expectations (including geometric cancel-on-miss ticks), Arcana cast time, and damage-type inference for display."
+    },
+    "file:src/utils/calculations/power-proc-damage.ts": {
+      "name": "power-proc-damage.ts",
+      "type": "file",
+      "filePath": "src/utils/calculations/power-proc-damage.ts",
+      "fanIn": 2,
+      "summary": "Computes the flat per-cast damage contribution of slotted damage procs — unaffected by damage IOs or strength buffs — shared by the DamageBlock display and the Attack Chain builder's DPS so the two cannot diverge."
+    },
+    "file:src/utils/calculations/set-bonuses.ts": {
+      "name": "set-bonuses.ts",
+      "type": "file",
+      "filePath": "src/utils/calculations/set-bonuses.ts",
+      "fanIn": 4,
+      "summary": "Aggregates IO set bonuses across a build with Rule-of-5 cap tracking, stat-name normalization and paired-stat handling, exemplar-level gating, and per-stat breakdown reporting for the dashboard."
+    },
+    "file:src/utils/calculations/set-tracking.ts": {
+      "name": "set-tracking.ts",
+      "type": "file",
+      "filePath": "src/utils/calculations/set-tracking.ts",
+      "fanIn": 3,
+      "summary": "Computes which IO set pieces are slotted across a build (setId to count/pieces map); extracted from buildStore so hypothetical-build calculations can reuse it."
+    },
+    "file:src/utils/enhancement-uid.ts": {
+      "name": "enhancement-uid.ts",
+      "type": "file",
+      "filePath": "src/utils/enhancement-uid.ts",
+      "fanIn": 2,
+      "summary": "Shared enhancement-UID and archetype-class parsing for all build importers — the single source of .mxd-format UID knowledge that had previously drifted across mids-import, game-importer, and mxd-import."
+    },
+    "file:src/utils/fallback-warnings.ts": {
+      "name": "fallback-warnings.ts",
+      "type": "file",
+      "filePath": "src/utils/fallback-warnings.ts",
+      "fanIn": 7,
+      "summary": "Deduplicated console-warning helper that surfaces silent default/guessed-value substitutions for missing game data — the 'wrong but plausible' failure mode — toggleable at runtime via window.cohDebug.warnings."
+    },
+    "file:src/utils/game-importer/importer.ts": {
+      "name": "importer.ts",
+      "type": "file",
+      "filePath": "src/utils/game-importer/importer.ts",
+      "fanIn": 0,
+      "summary": "Converts parsed in-game /buildexport data into a planner Build — resolving powersets, powers by internal name, epic pools, SO/IO/special enhancement UIDs, and synthesizing archetype inherent powers, with warnings for anything unresolved."
+    },
+    "file:src/utils/game-importer/parser.ts": {
+      "name": "parser.ts",
+      "type": "file",
+      "filePath": "src/utils/game-importer/parser.ts",
+      "fanIn": 1,
+      "summary": "Text parser for the in-game /buildexport command output (Homecoming and compatible servers) — parses the header line, per-level power lines, and tab-indented enhancement slot entries into structured data."
+    },
+    "file:src/utils/game-importer/types.ts": {
+      "name": "types.ts",
+      "type": "file",
+      "filePath": "src/utils/game-importer/types.ts",
+      "fanIn": 2,
+      "summary": "Type definitions for the parsed in-game build export format — header, power entries, enhancement entries, and the import result structure."
+    },
+    "file:src/utils/mids-import/importer.ts": {
+      "name": "importer.ts",
+      "type": "file",
+      "filePath": "src/utils/mids-import/importer.ts",
+      "fanIn": 0,
+      "summary": "Imports Mids Reborn .mbd JSON builds into planner Builds — detects the source server database, maps archetype/powersets/pools/epic pools and per-slot enhancements via the mappers module, processes incarnate entries, and reports warnings and an import summary."
+    },
+    "file:src/utils/mids-import/legacy-piece-aliases.ts": {
+      "name": "legacy-piece-aliases.ts",
+      "type": "file",
+      "filePath": "src/utils/mids-import/legacy-piece-aliases.ts",
+      "fanIn": 1,
+      "summary": "Auto-generated plus hand-curated alias table mapping (setId, Mids piece name) pairs to piece numbers in the planner's data, covering names the normalization and aspect-match paths cannot disambiguate."
+    },
+    "file:src/utils/mids-import/mappers.ts": {
+      "name": "mappers.ts",
+      "type": "file",
+      "filePath": "src/utils/mids-import/mappers.ts",
+      "fanIn": 1,
+      "summary": "The Mids-to-planner mapping layer: translates Mids Reborn identifiers for archetypes, origins, powersets, pools, epic pools, and power names, and resolves enhancement UIDs and display names through normalization, alias, aspect-parsing, and keyword-match fallbacks."
+    },
+    "file:src/utils/mids-import/types.ts": {
+      "name": "types.ts",
+      "type": "file",
+      "filePath": "src/utils/mids-import/types.ts",
+      "fanIn": 5,
+      "summary": "Type definitions for the Mids Reborn .mbd file structure (build metadata, power entries, slot entries) and the mids-import result types."
+    },
+    "file:src/utils/mxd-import/abbreviations.ts": {
+      "name": "abbreviations.ts",
+      "type": "file",
+      "filePath": "src/utils/mxd-import/abbreviations.ts",
+      "fanIn": 1,
+      "summary": "Abbreviation dictionaries for .mxd import: Mids short codes to planner IO set ids, generic IO stat names, enhancement aspect abbreviations, proc indicators, and class-to-archetype mapping."
+    },
+    "file:src/utils/planner-layout.ts": {
+      "name": "planner-layout.ts",
+      "type": "file",
+      "filePath": "src/utils/planner-layout.ts",
+      "fanIn": 3,
+      "summary": "Pure helpers for the 2D planner dock grid: converts between the flat persisted PlannerSectionConfig list and a columns-of-rows view, and applies drag-drop and column-shift mutations while renormalizing to a canonical column-major order."
+    },
+    "file:src/utils/quick-snipe.ts": {
+      "name": "quick-snipe.ts",
+      "type": "file",
+      "filePath": "src/utils/quick-snipe.ts",
+      "fanIn": 3,
+      "summary": "Applies a snipe power's quick-cast variant (fast cast, higher damage) when the build is in combat mode; single-sourced so the InfoPanel damage display and the damage-bar normalization reference apply the same adjustment."
+    },
+    "file:src/components/info/BuffPetAuraToggle.tsx": {
+      "name": "BuffPetAuraToggle.tsx",
+      "type": "file",
+      "filePath": "src/components/info/BuffPetAuraToggle.tsx",
+      "fanIn": 1,
+      "summary": "Opt-in per-pet toggle that folds a buff-pet's persistent aura (Force Field Generator, Barrier Reef, Triage Beacon) into character totals; detection and the toggle id are shared with the buff-pet-auras calculation seam."
+    },
+    "file:src/components/info/DamageBlock.tsx": {
+      "name": "DamageBlock.tsx",
+      "type": "file",
+      "filePath": "src/components/info/DamageBlock.tsx",
+      "fanIn": 1,
+      "summary": "Damage display block for the info panel: renders per-tier damage bars, base/enhanced damage modes, contextual AT-mechanic damage, and slotted-proc damage contributions for the selected power."
+    },
+    "file:src/components/info/EnhancementInfoContent.tsx": {
+      "name": "EnhancementInfoContent.tsx",
+      "type": "file",
+      "filePath": "src/components/info/EnhancementInfoContent.tsx",
+      "fanIn": 2,
+      "summary": "Info-panel content for a slotted enhancement: IO set details, per-piece values at the current level, set bonuses with active counts, and schedule-aware enhancement value display."
+    },
+    "file:src/components/info/InfoPanel.tsx": {
+      "name": "InfoPanel.tsx",
+      "type": "file",
+      "filePath": "src/components/info/InfoPanel.tsx",
+      "fanIn": 4,
+      "summary": "The planner's main info panel and largest display component: full power detail (stats, effects, stacking, per-target adjustment, conditionals), incarnate power detail, and pet/pseudo-pet damage displays."
+    },
+    "file:src/components/info/MechanicAdjusters.tsx": {
+      "name": "MechanicAdjusters.tsx",
+      "type": "file",
+      "filePath": "src/components/info/MechanicAdjusters.tsx",
+      "fanIn": 1,
+      "summary": "Mechanic adjuster controls for the info panel: stance/mode radio groups, Domination and single-condition toggles, global vs per-power override radio groups, and contribution hints explaining what each adjuster changes."
+    },
+    "file:src/components/info/PowerInfoBlocks.tsx": {
+      "name": "PowerInfoBlocks.tsx",
+      "type": "file",
+      "filePath": "src/components/info/PowerInfoBlocks.tsx",
+      "fanIn": 1,
+      "summary": "Reusable info-panel building blocks: power meta tag row, allowed-enhancements block, general stats table, and proc-chance rows with PPM math and area-factor detail lines."
+    },
+    "file:src/components/info/PowerInfoTooltip.tsx": {
+      "name": "PowerInfoTooltip.tsx",
+      "type": "file",
+      "filePath": "src/components/info/PowerInfoTooltip.tsx",
+      "fanIn": 0,
+      "summary": "Hover tooltip variant of the power info display; shares the effect-rendering pipeline with InfoPanel including active-conditional merging and purple-patch scaling."
+    },
+    "file:src/components/info/SharedPowerComponents.tsx": {
+      "name": "SharedPowerComponents.tsx",
+      "type": "file",
+      "filePath": "src/components/info/SharedPowerComponents.tsx",
+      "fanIn": 4,
+      "summary": "Shared power-effect rendering components used by InfoPanel, tooltips, and compare views: three-tier (base/enhanced/capped) stat rows, damage rows, collapsible effect groups, and the registry-driven RegistryEffectsDisplay engine."
+    },
+    "file:src/components/info/SlottedProcControls.tsx": {
+      "name": "SlottedProcControls.tsx",
+      "type": "file",
+      "filePath": "src/components/info/SlottedProcControls.tsx",
+      "fanIn": 1,
+      "summary": "Controls for per-power slotted proc overrides: toggles and stack settings for each slotted proc, feeding the proc contribution calculation and stored as proc overrides in the build."
+    },
+    "file:src/components/info/TagsRow.tsx": {
+      "name": "TagsRow.tsx",
+      "type": "file",
+      "filePath": "src/components/info/TagsRow.tsx",
+      "fanIn": 2,
+      "summary": "Renders a power's short-help tags as classified chips: tag splitting, category classification, and chip display components with no project-internal dependencies."
+    },
+    "file:src/components/info/powerDisplayUtils.ts": {
+      "name": "powerDisplayUtils.ts",
+      "type": "file",
+      "filePath": "src/components/info/powerDisplayUtils.ts",
+      "fanIn": 10,
+      "summary": "Display-math utilities shared by the power info components: three-tier value calculation, AT-table base values, damage/defense/resistance caps, by-type effect expansion, active-conditional selection and application, and adjuster contribution descriptions."
+    },
+    "file:src/components/modals/AttackChainModal.tsx": {
+      "name": "AttackChainModal.tsx",
+      "type": "file",
+      "filePath": "src/components/modals/AttackChainModal.tsx",
+      "fanIn": 0,
+      "summary": "Attack Chain Builder modal: sequence attack powers on a timeline, compute chain DPS and endurance consumption, with a recharge-debuff what-if slider, cooldown visualization, and an endurance track."
+    },
+    "file:src/components/modals/CompareSlottingModal.tsx": {
+      "name": "CompareSlottingModal.tsx",
+      "type": "file",
+      "filePath": "src/components/modals/CompareSlottingModal.tsx",
+      "fanIn": 0,
+      "summary": "Side-by-side comparison modal for two slotting configurations of a power: diffs enhancement values, power stats, set bonuses, and resulting character totals."
+    },
+    "file:src/components/powers/PermaRing.tsx": {
+      "name": "PermaRing.tsx",
+      "type": "file",
+      "filePath": "src/components/powers/PermaRing.tsx",
+      "fanIn": 3,
+      "summary": "Circular progress ring on power icons showing perma/uptime status (recharge vs duration) for perma-eligible powers, with a tooltip breaking down the numbers."
+    },
+    "file:src/components/ui/Toggle.tsx": {
+      "name": "Toggle.tsx",
+      "type": "file",
+      "filePath": "src/components/ui/Toggle.tsx",
+      "fanIn": 2,
+      "summary": "Theme-aware toggle switch UI primitive with primary (theme accent) and warning (amber) variants, spelled-out Tailwind classes for JIT, and forwardRef support."
+    },
+    "file:src/components/ui/Tooltip.tsx": {
+      "name": "Tooltip.tsx",
+      "type": "file",
+      "filePath": "src/components/ui/Tooltip.tsx",
+      "fanIn": 2,
+      "summary": "Tooltip UI primitives: a hover-triggered Tooltip with viewport-aware positioning and a PositionedTooltip variant for externally controlled placement."
+    },
+    "file:src/data/at-tables.ts": {
+      "name": "at-tables.ts",
+      "type": "file",
+      "filePath": "src/data/at-tables.ts",
+      "fanIn": 13,
+      "summary": "Facade over the active dataset's archetype modifier tables: AT_TABLES/PET_TABLES are Proxies routing indexed reads to whichever dataset (HC/Rebirth/Thunderspy) is active at call time, preserving the pre-migration import path."
+    },
+    "file:src/data/core/effect-registry.ts": {
+      "name": "effect-registry.ts",
+      "type": "file",
+      "filePath": "src/data/core/effect-registry.ts",
+      "fanIn": 1,
+      "summary": "Server-agnostic effect display registry: EFFECT_REGISTRY maps every renderable effect key to its label, color, format, and category config, plus grouping and value-formatting helpers used by all power displays."
+    },
+    "file:src/data/core/stat-colors.ts": {
+      "name": "stat-colors.ts",
+      "type": "file",
+      "filePath": "src/data/core/stat-colors.ts",
+      "fanIn": 2,
+      "summary": "Unified STAT_COLORS palette for stats and effects display, single source of truth for EFFECT_REGISTRY and the stats dashboard; debuffs use the buff hue at 60% opacity."
+    },
+    "file:src/data/core/stat-definitions.ts": {
+      "name": "stat-definitions.ts",
+      "type": "file",
+      "filePath": "src/data/core/stat-definitions.ts",
+      "fanIn": 0,
+      "summary": "Registry of dashboard stat definitions (STAT_DEFINITIONS): labels, sections, formatting, paired-value and mez-resist formatters, global-bonus overrides, and value resolvers for every character total shown in the stats dashboard."
+    },
+    "file:src/data/effect-registry.ts": {
+      "name": "effect-registry.ts",
+      "type": "file",
+      "filePath": "src/data/effect-registry.ts",
+      "fanIn": 1,
+      "summary": "Facade re-exporting the server-agnostic core effect-registry module, preserving the original @/data/effect-registry import path after the core/ move."
+    },
+    "file:src/data/incarnate-registry.ts": {
+      "name": "incarnate-registry.ts",
+      "type": "file",
+      "filePath": "src/data/incarnate-registry.ts",
+      "fanIn": 5,
+      "summary": "Facade re-exporting the server-agnostic core incarnate-registry module (slot/tier UI config and abbreviation rules), preserving the original import path."
+    },
+    "file:src/data/pet-entities.ts": {
+      "name": "pet-entities.ts",
+      "type": "file",
+      "filePath": "src/data/pet-entities.ts",
+      "fanIn": 3,
+      "summary": "Facade forwarding pet-entity reads (the large PET_ENTITIES record of pet abilities and upgrade tiers used for pet damage calculation) to the active dataset via a Proxy, and re-exporting the pet type definitions."
+    },
+    "file:src/components/ui/Toast.tsx": {
+      "name": "Toast.tsx",
+      "type": "file",
+      "filePath": "src/components/ui/Toast.tsx",
+      "fanIn": 1,
+      "summary": "Toast notification UI rendering transient messages from the uiStore's toast queue via a React portal, with auto-dismiss timers and optional action buttons."
+    },
+    "file:src/components/ui/ViewModeToggle.tsx": {
+      "name": "ViewModeToggle.tsx",
+      "type": "file",
+      "filePath": "src/components/ui/ViewModeToggle.tsx",
+      "fanIn": 1,
+      "summary": "Toggle control that switches the planner's power display between view modes (e.g. column vs chronological), wired to the uiStore's powerViewMode state."
+    },
+    "file:src/components/ui/index.ts": {
+      "name": "index.ts",
+      "type": "file",
+      "filePath": "src/components/ui/index.ts",
+      "fanIn": 26,
+      "summary": "Barrel re-exporting the shared UI primitives (Button, Select, Toggle, Slider, Tooltip, Badge, Input, CollapsibleSection, LevelSpinner, FloatingWindow) consumed across the app."
+    },
+    "file:src/data/core/announcements.tsx": {
+      "name": "announcements.tsx",
+      "type": "file",
+      "filePath": "src/data/core/announcements.tsx",
+      "fanIn": 1,
+      "summary": "Static ANNOUNCEMENTS content list (JSX bodies) displayed by the AnnouncementModal to surface release notes and news to users."
+    },
+    "file:src/data/core/roadmap.tsx": {
+      "name": "roadmap.tsx",
+      "type": "file",
+      "filePath": "src/data/core/roadmap.tsx",
+      "fanIn": 2,
+      "summary": "Static roadmap content (ROADMAP_GROUPS, intro, version) plus helpers that derive per-group completion state and overall progress percentages for the RoadmapPanel."
+    },
+    "file:src/data/help-topics.ts": {
+      "name": "help-topics.ts",
+      "type": "file",
+      "filePath": "src/data/help-topics.ts",
+      "fanIn": 1,
+      "summary": "Facade re-exporting the engine-level help-topics module from src/data/core/, preserving the original import path after the content moved."
+    },
+    "file:src/data/incarnates.ts": {
+      "name": "incarnates.ts",
+      "type": "file",
+      "filePath": "src/data/incarnates.ts",
+      "fanIn": 8,
+      "summary": "Incarnate system data layer: lazily builds slot/tree/power definitions from per-slot JSON indices and the incarnate registry, exposing lookup accessors (slots, trees, powers by tier, icon paths) that respect the active dataset."
+    },
+    "file:src/data/stat-definitions.ts": {
+      "name": "stat-definitions.ts",
+      "type": "file",
+      "filePath": "src/data/stat-definitions.ts",
+      "fanIn": 5,
+      "summary": "Facade re-exporting the engine-level stat-definitions module from src/data/core/, preserving the original import path for dashboard and modal consumers."
+    },
+    "file:src/hooks/index.ts": {
+      "name": "index.ts",
+      "type": "file",
+      "filePath": "src/hooks/index.ts",
+      "fanIn": 20,
+      "summary": "Barrel for the hooks layer, re-exporting calculated-stats hooks, touch/long-press helpers, slot-level hooks, status check, and build-budget hooks."
+    },
+    "file:src/hooks/useDashboardCollapseHotkey.ts": {
+      "name": "useDashboardCollapseHotkey.ts",
+      "type": "file",
+      "filePath": "src/hooks/useDashboardCollapseHotkey.ts",
+      "fanIn": 1,
+      "summary": "Keyboard-shortcut hook that toggles the stats dashboard's collapsed state via the uiStore when the bound key is pressed."
+    },
+    "file:src/hooks/useInfoPanelLockHotkey.ts": {
+      "name": "useInfoPanelLockHotkey.ts",
+      "type": "file",
+      "filePath": "src/hooks/useInfoPanelLockHotkey.ts",
+      "fanIn": 1,
+      "summary": "Keyboard-shortcut hook that toggles the info panel's lock state via the uiStore."
+    },
+    "file:src/hooks/useStatusCheck.ts": {
+      "name": "useStatusCheck.ts",
+      "type": "file",
+      "filePath": "src/hooks/useStatusCheck.ts",
+      "fanIn": 1,
+      "summary": "Hook that fetches a public status.json from a separate GitHub Pages repo on mount and returns any degraded/down service message for banner display."
+    },
+    "file:src/hooks/useTooltipHotkey.ts": {
+      "name": "useTooltipHotkey.ts",
+      "type": "file",
+      "filePath": "src/hooks/useTooltipHotkey.ts",
+      "fanIn": 1,
+      "summary": "Keyboard-shortcut hook that toggles the info-panel tooltip mode via the uiStore."
+    },
+    "file:src/lib/links.ts": {
+      "name": "links.ts",
+      "type": "file",
+      "filePath": "src/lib/links.ts",
+      "fanIn": 4,
+      "summary": "Single source of truth for external URLs (Discord invite and feedback DM links) referenced by the footer, mobile nav, and welcome/feedback modals."
+    },
+    "file:src/pages/PlannerPage.tsx": {
+      "name": "PlannerPage.tsx",
+      "type": "file",
+      "filePath": "src/pages/PlannerPage.tsx",
+      "fanIn": 0,
+      "summary": "Main build-planner page: composes available/selected/pool power sections, the info panel (docked and popped-out), and set-bonus popup into a user-customizable multi-column grid with drag-to-reorder sections, pointer-driven column resizing, and URL build sync."
+    },
+    "file:src/stores/index.ts": {
+      "name": "index.ts",
+      "type": "file",
+      "filePath": "src/stores/index.ts",
+      "fanIn": 72,
+      "summary": "Barrel for the state-management layer re-exporting the build store, uiStore and its many selector hooks, Toast types, and the auth store."
+    },
+    "file:src/stores/onboardingStore.ts": {
+      "name": "onboardingStore.ts",
+      "type": "file",
+      "filePath": "src/stores/onboardingStore.ts",
+      "fanIn": 3,
+      "summary": "Zustand store driving the guided onboarding flow: ordered ONBOARDING_STEPS, step completion tracking with next-incomplete-step resolution, and selector hooks for enablement, current step, hint visibility, and completion."
+    },
+    "file:src/stores/uiStore.ts": {
+      "name": "uiStore.ts",
+      "type": "file",
+      "filePath": "src/stores/uiStore.ts",
+      "fanIn": 16,
+      "summary": "Central Zustand UI store (2,100+ lines): modal/picker state, theme and color-mode application, planner section layout and column weights, info panel and tooltip state, toasts, exemplar/attunement settings, incarnate active-state, per-power mechanic adjusters and targets-hit, plus ~35 exported select"
+    },
+    "file:src/utils/detailed-totals.ts": {
+      "name": "detailed-totals.ts",
+      "type": "file",
+      "filePath": "src/utils/detailed-totals.ts",
+      "fanIn": 3,
+      "summary": "Builds the Detailed Totals modal's data: DETAILED_SECTIONS/DETAILED_STATS layout plus computeAllStats, which resolves every stat's value, breakdown, and archetype-specific defense/resistance caps, honoring the Mids-style recharge display toggle."
+    },
+    "file:src/utils/enhancement-outline.ts": {
+      "name": "enhancement-outline.ts",
+      "type": "file",
+      "filePath": "src/utils/enhancement-outline.ts",
+      "fanIn": 2,
+      "summary": "Maps an IO-set piece to its visual outline color: proc pieces get category-specific colors resolved from the proc database, distinguishing procs from standard enhancements in slot UI."
+    },
+    "file:src/utils/export-image.ts": {
+      "name": "export-image.ts",
+      "type": "file",
+      "filePath": "src/utils/export-image.ts",
+      "fanIn": 1,
+      "summary": "Build-image export helpers: renders a DOM node to a PNG blob, triggers browser downloads, slugifies filenames, and copies PNGs to the clipboard."
+    },
+    "file:src/utils/forum-export.ts": {
+      "name": "forum-export.ts",
+      "type": "file",
+      "filePath": "src/utils/forum-export.ts",
+      "fanIn": 1,
+      "summary": "Generates a shareable text export of a build (BBCode/Markdown/plain formats): powers with level-annotated slots and enhancement names, pool/epic picks, incarnate selections, and a set-bonus summary."
+    },
+    "file:src/utils/paths.ts": {
+      "name": "paths.ts",
+      "type": "file",
+      "filePath": "src/utils/paths.ts",
+      "fanIn": 14,
+      "summary": "Base-URL-aware path resolution for static assets: exposes BASE_URL, resolvePath for deploy-prefix handling, and getImagePath for image assets."
+    },
+    "file:src/utils/power-icons.ts": {
+      "name": "power-icons.ts",
+      "type": "file",
+      "filePath": "src/utils/power-icons.ts",
+      "fanIn": 2,
+      "summary": "Resolves a power's icon filename to its full lowercase asset path, delegating to the base-URL path resolver with a placeholder fallback."
+    },
+    "file:src/utils/power-key.ts": {
+      "name": "power-key.ts",
+      "type": "file",
+      "filePath": "src/utils/power-key.ts",
+      "fanIn": 5,
+      "summary": "Builds and parses category-qualified power keys ('category:internalName') because internalName alone is not unique across power categories (e.g. Conserve_Power exists in both secondary and epic)."
+    },
+    "file:src/utils/set-bonus-format.ts": {
+      "name": "set-bonus-format.ts",
+      "type": "file",
+      "filePath": "src/utils/set-bonus-format.ts",
+      "fanIn": 9,
+      "summary": "Formats set-bonus values and descriptions for display: precision-aware percentage formatting and substitution of computed values into bonus description strings."
+    },
+    "file:src/data/purple-patch.ts": {
+      "name": "purple-patch.ts",
+      "type": "file",
+      "filePath": "src/data/purple-patch.ts",
+      "fanIn": 5,
+      "summary": "Purple Patch facade that forwards level-difference lookups (base ToHit, combat modifier, defense softcap) to whichever dataset is currently active, so servers like Rebirth can ship their own scaling tables without consumer changes."
+    },
+    "file:src/data/stance-groups.ts": {
+      "name": "stance-groups.ts",
+      "type": "file",
+      "filePath": "src/data/stance-groups.ts",
+      "fanIn": 1,
+      "summary": "Registry of mutually-exclusive caster stance groups (Bio Armor Adaptation, Staff Fighting's Staff Mastery, etc.) plus helpers that derive the active stance from the parent power's activeSubPower field and map it to conditional-effect adjuster overrides for the dashboard calc."
+    },
+    "file:src/hooks/useBuildMaxAttackDamage.ts": {
+      "name": "useBuildMaxAttackDamage.ts",
+      "type": "file",
+      "filePath": "src/hooks/useBuildMaxAttackDamage.ts",
+      "fanIn": 2,
+      "summary": "React hook that computes the highest total final damage (direct + DoT, with each power's own slotting and global buffs) among the build's attack powers, used as the shared reference that normalizes damage bars across powers."
+    },
+    "file:src/hooks/useCalculatedStats.ts": {
+      "name": "useCalculatedStats.ts",
+      "type": "file",
+      "filePath": "src/hooks/useCalculatedStats.ts",
+      "fanIn": 9,
+      "summary": "Suite of React hooks exposing the unified character-totals calculation: legacy stat conversion, global bonuses, per-stat breakdowns, active set bonuses, Rule-of-5 tracking, slot usage, and over-cap offending-power reasons — all backed by a module-level single-entry shared cache so ~150 component ins"
+    },
+    "file:src/hooks/useModeSuppression.ts": {
+      "name": "useModeSuppression.ts",
+      "type": "file",
+      "filePath": "src/hooks/useModeSuppression.ts",
+      "fanIn": 1,
+      "summary": "React hook deriving the build's currently-suppressed powers (e.g. Granite Armor suspending other Stone toggles, Kheldian forms suspending human toggles) by feeding def-enriched build powers into the pure computeModeSuppression model, mirroring the totals calc so UI markers and numbers agree."
+    },
+    "file:src/utils/calculations/attack-chain-powers.ts": {
+      "name": "attack-chain-powers.ts",
+      "type": "file",
+      "filePath": "src/utils/calculations/attack-chain-powers.ts",
+      "fanIn": 1,
+      "summary": "Attack Chain Builder data-wiring layer: derives ChainPower[] and character endurance parameters from the live build, reusing the same calc functions the power tooltips use (enhancement bonuses, damage, ArcanaTime, procs, AT mechanics) so chain numbers match the rest of the app; pure scheduling math "
+    },
+    "file:src/utils/calculations/attack-chain.ts": {
+      "name": "attack-chain.ts",
+      "type": "file",
+      "filePath": "src/utils/calculations/attack-chain.ts",
+      "fanIn": 3,
+      "summary": "Attack Chain Builder pure timing/damage/endurance model with no app or data dependencies: a single-animation greedy scheduler (recharge starts at cast-end, matching in-game constraints), cycle DPS with post-cast DoT ticks, dead-gap analysis, and a spike-aware endurance simulation."
+    },
+    "file:src/utils/calculations/healing.ts": {
+      "name": "healing.ts",
+      "type": "file",
+      "filePath": "src/utils/calculations/healing.ts",
+      "fanIn": 3,
+      "summary": "Single source of truth for extracting heals that powers store in their damage field as Heal-type entries (Life Drain, Reconstruction, DNA Siphon, ...), splitting the enhanceable portion from the IgnoreStrength-flagged unenhanceable portion; replaces logic previously duplicated in InfoPanel, PowerInf"
+    },
+    "file:src/utils/calculations/index.ts": {
+      "name": "index.ts",
+      "type": "file",
+      "filePath": "src/utils/calculations/index.ts",
+      "fanIn": 21,
+      "summary": "Barrel re-exporting the entire calculations module surface (~140 symbols): damage and ArcanaTime, enhancement bonuses with ED, set bonuses and Rule-of-5 tracking, character totals, AT inherent mechanics (Fury, Scourge, Containment, crits, Domination), perma calculations, buff/debuff modifiers, and e"
+    },
+    "file:src/utils/calculations/pet-damage.ts": {
+      "name": "pet-damage.ts",
+      "type": "file",
+      "filePath": "src/utils/calculations/pet-damage.ts",
+      "fanIn": 4,
+      "summary": "Calculates DPS for summoned pets and pseudo-pets using pet class tables with the three-tier Base/Enhanced/Final display, including Mastermind upgrade tiers, resolved pseudo-pet damage with PvP/inherent-table filtering, non-damage effect synthesis, and AoE geometry resolution for proc calculations."
+    },
+    "file:src/utils/calculations/power-at-mechanics.ts": {
+      "name": "power-at-mechanics.ts",
+      "type": "file",
+      "filePath": "src/utils/calculations/power-at-mechanics.ts",
+      "fanIn": 2,
+      "summary": "Single source for archetype hit-time damage mechanics — Scrapper/Stalker/Sentinel crits, Corruptor Scourge, Controller Containment — the multiplicative bonuses applied outside the damage cap; deliberately excludes additive strength buffs like Fury and Vigilance, which are already folded into global "
+    },
+    "file:src/utils/chain-expressions.ts": {
+      "name": "chain-expressions.ts",
+      "type": "file",
+      "filePath": "src/utils/chain-expressions.ts",
+      "fanIn": 1,
+      "summary": "Humanizers for the two chain-power RPN expressions recovered from powers.bin (chainTargetExpression and maxTargetsExpression), turning raw token lists into short player-readable descriptions for the Info panel."
+    },
+    "file:src/utils/format-precision.ts": {
+      "name": "format-precision.ts",
+      "type": "file",
+      "filePath": "src/utils/format-precision.ts",
+      "fanIn": 3,
+      "summary": "The single rounding primitive for every displayed number in the planner: rounds to a declared max number of decimals then strips trailing zeros, so float noise from scale-times-table arithmetic never leaks into the display."
+    },
+    "file:src/utils/mode-suppression.ts": {
+      "name": "mode-suppression.ts",
+      "type": "file",
+      "filePath": "src/utils/mode-suppression.ts",
+      "fanIn": 3,
+      "summary": "Pure, dependency-free model of CoH combat-mode suppression: active powers that set modes (Granite_Mode, Kheldian form modes) suspend powers carrying those modes in modesSuspended, dropping their effect contribution while keeping endurance cost and set bonuses; shared by the totals calc and the UI su"
+    },
+    "file:src/components/incarnate/DestinyTimeSlider.tsx": {
+      "name": "DestinyTimeSlider.tsx",
+      "type": "file",
+      "filePath": "src/components/incarnate/DestinyTimeSlider.tsx",
+      "fanIn": 0,
+      "summary": "React component rendering the Destiny incarnate decay time-slider, letting users pick a point on the buff's additive-tier decay timeline to see time-scaled effect values."
+    },
+    "file:src/components/layout/RuleOf5Banner.tsx": {
+      "name": "RuleOf5Banner.tsx",
+      "type": "file",
+      "filePath": "src/components/layout/RuleOf5Banner.tsx",
+      "fanIn": 1,
+      "summary": "Banner component warning when set bonuses exceed the Rule of 5 cap, listing offending powers while honoring per-stat over-cap mute preferences."
+    },
+    "file:src/data/set-bonus-groups.ts": {
+      "name": "set-bonus-groups.ts",
+      "type": "file",
+      "filePath": "src/data/set-bonus-groups.ts",
+      "fanIn": 4,
+      "summary": "Categorization table mapping normalized set-bonus stat keys to display groups and row labels for the Set Bonus Totals popup, with helpers for canonical stat keys and over-cap mute lookups."
+    },
+    "file:src/hooks/useBuildBudget.ts": {
+      "name": "useBuildBudget.ts",
+      "type": "file",
+      "filePath": "src/hooks/useBuildBudget.ts",
+      "fanIn": 0,
+      "summary": "Hook computing the level-scoped power-pick and enhancement-slot budget for the current build; single source of truth for dashboard counters and the mobile build bar."
+    },
+    "file:src/hooks/useSlotLevels.ts": {
+      "name": "useSlotLevels.ts",
+      "type": "file",
+      "filePath": "src/hooks/useSlotLevels.ts",
+      "fanIn": 0,
+      "summary": "Thin hook exposing computed enhancement-slot assignment levels for the current build by delegating to the slot-levels utility."
+    },
+    "file:src/hooks/useUndoRedoKeyboard.ts": {
+      "name": "useUndoRedoKeyboard.ts",
+      "type": "file",
+      "filePath": "src/hooks/useUndoRedoKeyboard.ts",
+      "fanIn": 1,
+      "summary": "Hook wiring global Ctrl+Z / Ctrl+Shift+Z keyboard shortcuts to the build undo/redo history store."
+    },
+    "file:src/stores/buildStore.ts": {
+      "name": "buildStore.ts",
+      "type": "file",
+      "filePath": "src/stores/buildStore.ts",
+      "fanIn": 7,
+      "summary": "Central Zustand store holding the character build: archetype/powerset selection, power picks, enhancement slotting, incarnates, and per-server persisted builds, with dataset sync, undo checkpoints, and import/export wiring."
+    },
+    "file:src/stores/historyStore.ts": {
+      "name": "historyStore.ts",
+      "type": "file",
+      "filePath": "src/stores/historyStore.ts",
+      "fanIn": 3,
+      "summary": "In-memory undo/redo Zustand store keeping up to 50 Build snapshots; not persisted, so history resets on page reload."
+    },
+    "file:src/test/localstorage-polyfill.ts": {
+      "name": "localstorage-polyfill.ts",
+      "type": "file",
+      "filePath": "src/test/localstorage-polyfill.ts",
+      "fanIn": 0,
+      "summary": "In-memory localStorage shim for node-environment vitest runs; must be imported before any store module so zustand's cached JSON storage picks up the working shim instead of Node 22's throwing experimental global."
+    },
+    "file:src/utils/dataset-switch-overlay.ts": {
+      "name": "dataset-switch-overlay.ts",
+      "type": "file",
+      "filePath": "src/utils/dataset-switch-overlay.ts",
+      "fanIn": 2,
+      "summary": "Renders a full-screen 'switching dataset' overlay for immediate feedback during the page reload required to swap the boot-time dataset singleton to another game server."
+    },
+    "file:src/utils/over-cap-mute.ts": {
+      "name": "over-cap-mute.ts",
+      "type": "file",
+      "filePath": "src/utils/over-cap-mute.ts",
+      "fanIn": 2,
+      "summary": "Helpers for the per-stat Rule-of-5 over-cap mute feature: computes which powers contribute capped bonuses and counts capped sources whose warnings are not muted."
+    },
+    "file:src/utils/per-server-builds.ts": {
+      "name": "per-server-builds.ts",
+      "type": "file",
+      "filePath": "src/utils/per-server-builds.ts",
+      "fanIn": 2,
+      "summary": "Pure helpers implementing per-server build storage: one preserved working build per dataset, serialized for JSON persistence, with migration from the old single-slot state and active-build selection."
+    },
+    "file:src/utils/server-deeplink.ts": {
+      "name": "server-deeplink.ts",
+      "type": "file",
+      "filePath": "src/utils/server-deeplink.ts",
+      "fanIn": 0,
+      "summary": "Builds absolute ?serverId= deeplink URLs so any server's launcher or site can land visitors on the planner with that server's dataset loaded, without clobbering builds on other servers."
+    },
+    "file:src/utils/slot-levels.ts": {
+      "name": "slot-levels.ts",
+      "type": "file",
+      "filePath": "src/utils/slot-levels.ts",
+      "fanIn": 9,
+      "summary": "Core engine assigning character levels to enhancement slots: computes slot placement under respec and leveling progression modes, tracks the slot-grant budget, and validates/applies user slot-level moves."
+    },
+    "file:src/data/core/atom-query.ts": {
+      "name": "atom-query.ts",
+      "type": "file",
+      "filePath": "src/data/core/atom-query.ts",
+      "fanIn": 2,
+      "summary": "Plan B Phase 1 atom-native read primitives: read-only helpers that let the calc query a power's decoded atom list by effect type, handle the discriminator axes (enhanceable/resistible/duration/toWho) explicitly, and compute per-stat applier values (ToHit, damage, resistance, defense, MaxHP, regen/re"
+    },
+    "file:src/data/core/atomic-effect.ts": {
+      "name": "atomic-effect.ts",
+      "type": "file",
+      "filePath": "src/data/core/atomic-effect.ts",
+      "fanIn": 4,
+      "summary": "DSH4 closed AtomicEffect schema: defines the atomic effect record with compact wire encode/decode, identity and structural keys for differential comparison, and the attrib-to-(effectType, subType) bridge that ingests exported power templates into flat atom lists."
+    },
+    "file:src/data/incarnate-procs.ts": {
+      "name": "incarnate-procs.ts",
+      "type": "file",
+      "filePath": "src/data/incarnate-procs.ts",
+      "fanIn": 1,
+      "summary": "Defines INCARNATE_DAMAGE_PROCS — the Hybrid Assault Radial (PPM) and Interface (fixed-chance) damage procs that fire on every attack — and computes their average per-attack damage contributions using AT modifier tables so the planner's damage breakdown matches in-game and Mids values."
+    },
+    "file:src/data/proc-data.ts": {
+      "name": "proc-data.ts",
+      "type": "file",
+      "filePath": "src/data/proc-data.ts",
+      "fanIn": 5,
+      "summary": "The central proc database and math library: PROC_DATABASE entries for every IO-set proc, plus the full PPM chance formula, area-factor geometry, DPS/interpolation math, stacking resolution, and proc-override bookkeeping used across the planner. Merges the residual-effect and variable-control overlay"
+    },
+    "file:src/data/proc-residual-effects.ts": {
+      "name": "proc-residual-effects.ts",
+      "type": "file",
+      "filePath": "src/data/proc-residual-effects.ts",
+      "fanIn": 1,
+      "summary": "Hand-curated PROC_RESIDUAL_EFFECTS overlay: faithful transcriptions of binary mechanics strings for procs the binary generator cannot derive (Rebirth-only sets, Create_Entity pet summons, PBAoE ally buffs, self-meter mechanics), so getProcEffects never falls back to string parsing."
+    },
+    "file:src/data/proc-variable-controls.ts": {
+      "name": "proc-variable-controls.ts",
+      "type": "file",
+      "filePath": "src/data/proc-variable-controls.ts",
+      "fanIn": 1,
+      "summary": "Additive PROC_VARIABLE_CONTROLS overlay patching control metadata onto generated proc effects: stack caps (maxStacks), HP-scaling caps (valueMax), and 'By the Slotted Power' AT-table markers (scaleTable) that the binary generator cannot derive."
+    },
+    "file:src/components/modals/ChangelogModal.tsx": {
+      "name": "ChangelogModal.tsx",
+      "type": "file",
+      "filePath": "src/components/modals/ChangelogModal.tsx",
+      "fanIn": 0,
+      "summary": "Modal dialog rendering the app changelog grouped by date, with color-coded type badges (feat/fix/update) on each entry."
+    },
+    "file:src/data/changelog-manual.ts": {
+      "name": "changelog-manual.ts",
+      "type": "file",
+      "filePath": "src/data/changelog-manual.ts",
+      "fanIn": 1,
+      "summary": "Hand-written changelog entries (MANUAL_CHANGELOG_GROUPS) covering releases not derivable from commit history, flattened into the MANUAL_CHANGELOG entry list."
+    },
+    "file:src/data/changelog-overrides.ts": {
+      "name": "changelog-overrides.ts",
+      "type": "file",
+      "filePath": "src/data/changelog-overrides.ts",
+      "fanIn": 1,
+      "summary": "Per-commit CHANGELOG_OVERRIDES map keyed by 7-char short hash, allowing auto-generated changelog messages to be rewritten, retyped, or hidden."
+    },
+    "file:src/data/changelog.ts": {
+      "name": "changelog.ts",
+      "type": "file",
+      "filePath": "src/data/changelog.ts",
+      "fanIn": 2,
+      "summary": "Assembles the unified CHANGELOG_ENTRIES list by merging auto-generated commit entries with manual entries and applying per-commit overrides; exposes getRecentChanges and getChangelogByDate accessors for the UI."
+    },
+    "config:src/data/incarnate-indices/alpha.json": {
+      "name": "alpha.json",
+      "type": "config",
+      "filePath": "src/data/incarnate-indices/alpha.json",
+      "fanIn": 1,
+      "summary": "Alpha incarnate slot index: slot key, display name, help text, icon, the full power list per tree/tier with unlock levels, and per-power display names and short helps consumed by the incarnates data loader."
+    },
+    "config:src/data/incarnate-indices/destiny.json": {
+      "name": "destiny.json",
+      "type": "config",
+      "filePath": "src/data/incarnate-indices/destiny.json",
+      "fanIn": 1,
+      "summary": "Destiny incarnate slot index: slot metadata, icon, power list with unlock levels, and per-power display names and short helps for the Destiny trees (Ageless, Barrier, Clarion, Rebirth, etc.)."
+    },
+    "config:src/data/incarnate-indices/genesis.json": {
+      "name": "genesis.json",
+      "type": "config",
+      "filePath": "src/data/incarnate-indices/genesis.json",
+      "fanIn": 1,
+      "summary": "Genesis incarnate slot index: slot metadata, icon, power list with unlock levels, and per-power display names and short helps for the Genesis trees."
+    },
+    "config:src/data/incarnate-indices/hybrid.json": {
+      "name": "hybrid.json",
+      "type": "config",
+      "filePath": "src/data/incarnate-indices/hybrid.json",
+      "fanIn": 1,
+      "summary": "Hybrid incarnate slot index: slot metadata, icon, power list with unlock levels, and per-power display names and short helps for the Hybrid trees (Assault, Control, Melee, Support)."
+    },
+    "config:src/data/incarnate-indices/interface.json": {
+      "name": "interface.json",
+      "type": "config",
+      "filePath": "src/data/incarnate-indices/interface.json",
+      "fanIn": 1,
+      "summary": "Interface incarnate slot index: slot metadata, icon, power list with unlock levels, and per-power display names and short helps for the Interface trees (Reactive, Degenerative, Diamagnetic, etc.)."
+    },
+    "config:src/data/incarnate-indices/judgement.json": {
+      "name": "judgement.json",
+      "type": "config",
+      "filePath": "src/data/incarnate-indices/judgement.json",
+      "fanIn": 1,
+      "summary": "Judgement incarnate slot index: slot metadata, icon, power list with unlock levels, and per-power display names and short helps for the Judgement nuke trees (Ion, Pyronic, Void, etc.)."
+    },
+    "config:src/data/incarnate-indices/lore.json": {
+      "name": "lore.json",
+      "type": "config",
+      "filePath": "src/data/incarnate-indices/lore.json",
+      "fanIn": 1,
+      "summary": "Lore incarnate slot index — the largest of the seven — listing every Lore pet-summon tree with power keys, unlock levels, display names, and short helps consumed by the incarnates data loader."
+    },
+    "file:src/components/layout/index.ts": {
+      "name": "index.ts",
+      "type": "file",
+      "filePath": "src/components/layout/index.ts",
+      "fanIn": 0,
+      "summary": "Barrel export for the layout component family, re-exporting Header, MainLayout, SettingsLayout, StatsDashboard, and the Rule-of-5 and Exemplar mode banners."
+    },
+    "file:src/components/powers/PowerColumn.tsx": {
+      "name": "PowerColumn.tsx",
+      "type": "file",
+      "filePath": "src/components/powers/PowerColumn.tsx",
+      "fanIn": 0,
+      "summary": "Presentational column container for power lists, providing a titled header with optional subtitle/action slot plus an empty-state variant with a message and call-to-action."
+    },
+    "file:src/components/ui/Badge.tsx": {
+      "name": "Badge.tsx",
+      "type": "file",
+      "filePath": "src/components/ui/Badge.tsx",
+      "fanIn": 0,
+      "summary": "Reusable badge UI primitives: a generic variant/size-styled Badge and a RarityBadge specialization that maps enhancement rarity to color styling."
+    },
+    "file:src/components/ui/CollapsibleSection.tsx": {
+      "name": "CollapsibleSection.tsx",
+      "type": "file",
+      "filePath": "src/components/ui/CollapsibleSection.tsx",
+      "fanIn": 0,
+      "summary": "Small stateful UI wrapper that renders a titled section whose body can be toggled open or closed, defaulting to open."
+    },
+    "file:src/components/ui/LevelSpinner.tsx": {
+      "name": "LevelSpinner.tsx",
+      "type": "file",
+      "filePath": "src/components/ui/LevelSpinner.tsx",
+      "fanIn": 0,
+      "summary": "Numeric spinner control for level-style values with clamped min/max bounds, step configuration, drag-based adjustment (pxPerStep), and extensive display customization props."
+    },
+    "file:src/components/ui/Slider.tsx": {
+      "name": "Slider.tsx",
+      "type": "file",
+      "filePath": "src/components/ui/Slider.tsx",
+      "fanIn": 0,
+      "summary": "Styled range-input slider component (forwardRef) with optional label, formatted current-value display, and min/max range captions."
+    },
+    "document:src/data/README.md": {
+      "name": "README.md",
+      "type": "document",
+      "filePath": "src/data/README.md",
+      "fanIn": 0,
+      "summary": "Documentation of the src/data power-data layering scheme: why generated/ output is authoritative, when override files are allowed, the override and composed file shapes, and how to migrate single-file powers to the layered format."
+    },
+    "file:src/data/core/help-topics.ts": {
+      "name": "help-topics.ts",
+      "type": "file",
+      "filePath": "src/data/core/help-topics.ts",
+      "fanIn": 0,
+      "summary": "In-app help system content database defining nine help categories (getting started, power management, enhancement slotting, incarnates, etc.) and all searchable HelpTopic entries with keywords, steps, tips, and optional demo media, plus keyword-scored search and category filtering helpers."
+    },
+    "file:src/data/power-lookup.ts": {
+      "name": "power-lookup.ts",
+      "type": "file",
+      "filePath": "src/data/power-lookup.ts",
+      "fanIn": 1,
+      "summary": "Facade re-exporting the active dataset's power lookup implementation (datasets/homecoming/power-lookup), which composes the powerset, pool, epic-pool, and inherent accessors so lookups resolve against the currently active dataset."
+    },
+    "file:src/data/stat-colors.ts": {
+      "name": "stat-colors.ts",
+      "type": "file",
+      "filePath": "src/data/stat-colors.ts",
+      "fanIn": 0,
+      "summary": "Facade preserving the historical import path by re-exporting the server-agnostic stat-colors palette from src/data/core."
+    },
+    "file:src/empty.js": {
+      "name": "empty.js",
+      "type": "file",
+      "filePath": "src/empty.js",
+      "fanIn": 0,
+      "summary": "Intentionally empty module exporting an empty object, used to stub out server-only imports when bundling for the browser."
+    },
+    "file:src/hooks/useIsTouchDevice.ts": {
+      "name": "useIsTouchDevice.ts",
+      "type": "file",
+      "filePath": "src/hooks/useIsTouchDevice.ts",
+      "fanIn": 0,
+      "summary": "Touch-capability detection: an isTouchDevice predicate plus a useIsTouchDevice React hook that exposes whether the current device supports touch input."
+    },
+    "file:src/hooks/useLongPress.ts": {
+      "name": "useLongPress.ts",
+      "type": "file",
+      "filePath": "src/hooks/useLongPress.ts",
+      "fanIn": 0,
+      "summary": "React hook implementing long-press gesture detection with configurable hold duration and movement threshold, distinguishing long-press from tap callbacks for touch interactions."
+    },
+    "file:src/hooks/useSwipeToRemove.ts": {
+      "name": "useSwipeToRemove.ts",
+      "type": "file",
+      "filePath": "src/hooks/useSwipeToRemove.ts",
+      "fanIn": 0,
+      "summary": "React hook detecting horizontal swipe gestures (with a max-vertical-drift guard) to trigger a removal callback, used for swipe-to-remove interactions on touch devices."
+    },
+    "file:src/index.css": {
+      "name": "index.css",
+      "type": "file",
+      "filePath": "src/index.css",
+      "fanIn": 1,
+      "summary": "Global stylesheet and Tailwind v4 @theme configuration: defines the SN Pro font stack, brand accent, semantic action/status color tokens with paired on-* foreground tokens, and per-theme [data-theme] overrides powering the app's light/dark and multi-theme system."
+    },
+    "file:src/pages/PlasmicHost.tsx": {
+      "name": "PlasmicHost.tsx",
+      "type": "file",
+      "filePath": "src/pages/PlasmicHost.tsx",
+      "fanIn": 0,
+      "summary": "Empty placeholder file remaining from a removed Plasmic visual-builder integration; contains no code."
+    },
+    "file:src/plasmic-init.ts": {
+      "name": "plasmic-init.ts",
+      "type": "file",
+      "filePath": "src/plasmic-init.ts",
+      "fanIn": 0,
+      "summary": "Empty placeholder file remaining from a removed Plasmic integration; contains no code."
+    },
+    "file:src/utils/index.ts": {
+      "name": "index.ts",
+      "type": "file",
+      "filePath": "src/utils/index.ts",
+      "fanIn": 0,
+      "summary": "Utilities barrel re-exporting everything from the calculations and paths modules under a single import path."
+    },
+    "file:src/vite-env.d.ts": {
+      "name": "vite-env.d.ts",
+      "type": "file",
+      "filePath": "src/vite-env.d.ts",
+      "fanIn": 0,
+      "summary": "Ambient TypeScript declarations for Vite and the PWA plugin, typing the import.meta.env variables (Supabase URL and anon key, optional Sentry DSN)."
+    }
+  },
+  "totalNodes": 323,
+  "totalEdges": 1073
+}

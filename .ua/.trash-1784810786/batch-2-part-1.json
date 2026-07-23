@@ -1,0 +1,570 @@
+{
+  "nodes": [
+    {
+      "id": "file:src/App.tsx",
+      "type": "file",
+      "name": "App.tsx",
+      "filePath": "src/App.tsx",
+      "summary": "Root application component that simply mounts the TanStack Router via RouterProvider, delegating all page layout to the route tree.",
+      "tags": ["entry-point", "component", "routing"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/buildTime.ts",
+      "type": "file",
+      "name": "buildTime.ts",
+      "filePath": "src/buildTime.ts",
+      "summary": "Exposes BUILD_TIME and APP_VERSION constants injected at build time, used for version display and diagnostics reporting.",
+      "tags": ["utility", "constants", "versioning"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/layout/Header.tsx",
+      "type": "file",
+      "name": "Header.tsx",
+      "filePath": "src/components/layout/Header.tsx",
+      "summary": "The planner's main header: build identity popover, action menu (export/import/clear), settings popover, level-up mode and level slider, dataset badge, and archetype-specific mechanic controls (stances, Kheldian/Primalist forms, AT mechanics). Largest UI file in the batch, wiring together stores, dataset switching, and share services.",
+      "tags": ["component", "layout", "toolbar", "settings", "at-mechanics"],
+      "complexity": "complex",
+      "languageNotes": "Single file hosting ~12 co-located React subcomponents rather than one component per file."
+    },
+    {
+      "id": "function:src/components/layout/Header.tsx:Header",
+      "type": "function",
+      "name": "Header",
+      "filePath": "src/components/layout/Header.tsx",
+      "lineRange": [121, 335],
+      "summary": "Top-level header component orchestrating modals, popovers, undo/redo history, and export/import actions for the planner.",
+      "tags": ["component", "layout", "orchestration"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/layout/Header.tsx:countManualPowerPicks",
+      "type": "function",
+      "name": "countManualPowerPicks",
+      "filePath": "src/components/layout/Header.tsx",
+      "lineRange": [339, 348],
+      "summary": "Counts non-inherent, manually chosen powers in a build, used to warn before destructive clear actions.",
+      "tags": ["utility", "build-state", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/components/layout/Header.tsx:LevelUpModeButton",
+      "type": "function",
+      "name": "LevelUpModeButton",
+      "filePath": "src/components/layout/Header.tsx",
+      "lineRange": [369, 476],
+      "summary": "Button and flow control for the level-up progression mode, guiding the user through pick/slot grants by level.",
+      "tags": ["component", "progression", "ui-control"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/layout/Header.tsx:HeaderLevelSlider",
+      "type": "function",
+      "name": "HeaderLevelSlider",
+      "filePath": "src/components/layout/Header.tsx",
+      "lineRange": [480, 535],
+      "summary": "Exported slider control for the character's current level, shared between the header and other layouts.",
+      "tags": ["component", "slider", "level"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/layout/Header.tsx:BuildIdentityPopover",
+      "type": "function",
+      "name": "BuildIdentityPopover",
+      "filePath": "src/components/layout/Header.tsx",
+      "lineRange": [539, 766],
+      "summary": "Popover for editing build name/identity and handling share/quick-share of the current build via the sharedBuilds service.",
+      "tags": ["component", "popover", "sharing"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/layout/Header.tsx:ActionMenu",
+      "type": "function",
+      "name": "ActionMenu",
+      "filePath": "src/components/layout/Header.tsx",
+      "lineRange": [770, 1088],
+      "summary": "Dropdown action menu exposing new/clear/export-image/enhancement-tools/about/changelog actions through callback props.",
+      "tags": ["component", "menu", "actions"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/layout/Header.tsx:SettingsPopover",
+      "type": "function",
+      "name": "SettingsPopover",
+      "filePath": "src/components/layout/Header.tsx",
+      "lineRange": [1092, 1421],
+      "summary": "Settings popover with dataset switching, display toggles, PWA install prompt, calc-debug toggle, and account/auth controls.",
+      "tags": ["component", "settings", "popover", "dataset-switch"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/layout/Header.tsx:KheldianFormSelector",
+      "type": "function",
+      "name": "KheldianFormSelector",
+      "filePath": "src/components/layout/Header.tsx",
+      "lineRange": [1425, 1465],
+      "summary": "Form selector for Kheldian archetypes (Nova/Dwarf/Human) that drives form-dependent stat calculation.",
+      "tags": ["component", "at-mechanics", "forms"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/layout/Header.tsx:PrimalistFormSelector",
+      "type": "function",
+      "name": "PrimalistFormSelector",
+      "filePath": "src/components/layout/Header.tsx",
+      "lineRange": [1467, 1504],
+      "summary": "Form selector for the Thunderspy Primalist form-shifter archetype, mirroring the Kheldian selector.",
+      "tags": ["component", "at-mechanics", "forms", "thunderspy"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/layout/Header.tsx:StanceSelector",
+      "type": "function",
+      "name": "StanceSelector",
+      "filePath": "src/components/layout/Header.tsx",
+      "lineRange": [1515, 1558],
+      "summary": "Radio-style selector for stance groups (e.g. Bio Armor adaptations) that toggles the active stance option in the build.",
+      "tags": ["component", "stances", "conditional-effects"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/layout/Header.tsx:ATMechanics",
+      "type": "function",
+      "name": "ATMechanics",
+      "filePath": "src/components/layout/Header.tsx",
+      "lineRange": [1560, 1873],
+      "summary": "Archetype-specific mechanic controls (Domination, Fury, Scourge, Supremacy, crit toggles, team-size sliders) bound to UI-store mechanic state.",
+      "tags": ["component", "at-mechanics", "inherents", "ui-control"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/layout/SettingsLayout.tsx",
+      "type": "file",
+      "name": "SettingsLayout.tsx",
+      "filePath": "src/components/layout/SettingsLayout.tsx",
+      "summary": "Layout wrapper for the settings pages, providing shared navigation chrome around an Outlet for settings routes.",
+      "tags": ["component", "layout", "settings"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/components/layout/SettingsLayout.tsx:SettingsLayout",
+      "type": "function",
+      "name": "SettingsLayout",
+      "filePath": "src/components/layout/SettingsLayout.tsx",
+      "lineRange": [16, 51],
+      "summary": "Renders the settings section shell with sub-navigation and the routed settings page content.",
+      "tags": ["component", "layout", "navigation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/modals/EnhancementListModal.tsx",
+      "type": "file",
+      "name": "EnhancementListModal.tsx",
+      "filePath": "src/components/modals/EnhancementListModal.tsx",
+      "summary": "Shopping-list modal that collects every enhancement slotted in the build, groups them by IO set, fetches live auction-house prices, and formats the list for clipboard export.",
+      "tags": ["component", "modal", "enhancements", "auction-prices"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/modals/EnhancementListModal.tsx:collectEnhancements",
+      "type": "function",
+      "name": "collectEnhancements",
+      "filePath": "src/components/modals/EnhancementListModal.tsx",
+      "lineRange": [41, 55],
+      "summary": "Walks every power slot in the build and flattens all slotted enhancements into a single list.",
+      "tags": ["utility", "build-state", "enhancements"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/components/modals/EnhancementListModal.tsx:buildGroups",
+      "type": "function",
+      "name": "buildGroups",
+      "filePath": "src/components/modals/EnhancementListModal.tsx",
+      "lineRange": [57, 112],
+      "summary": "Aggregates the flat enhancement list into deduplicated groups with counts, catalyst and booster tallies.",
+      "tags": ["utility", "aggregation", "enhancements"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/modals/EnhancementListModal.tsx:formatForClipboard",
+      "type": "function",
+      "name": "formatForClipboard",
+      "filePath": "src/components/modals/EnhancementListModal.tsx",
+      "lineRange": [124, 141],
+      "summary": "Serializes the grouped enhancement list into a plain-text shopping list for clipboard copy.",
+      "tags": ["utility", "formatting", "clipboard"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/components/modals/EnhancementListModal.tsx:EnhancementListModal",
+      "type": "function",
+      "name": "EnhancementListModal",
+      "filePath": "src/components/modals/EnhancementListModal.tsx",
+      "lineRange": [148, 438],
+      "summary": "Modal component rendering the grouped enhancement list with per-item auction prices fetched from the auctionPrices service.",
+      "tags": ["component", "modal", "enhancements"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/modals/FeedbackModal.tsx",
+      "type": "file",
+      "name": "FeedbackModal.tsx",
+      "filePath": "src/components/modals/FeedbackModal.tsx",
+      "summary": "Feedback submission modal that captures user messages, optionally attaches a diagnostics snapshot and current build, and routes reports to the maintainer via Discord links or backend submission.",
+      "tags": ["component", "modal", "feedback", "diagnostics"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/modals/FeedbackModal.tsx:FeedbackModal",
+      "type": "function",
+      "name": "FeedbackModal",
+      "filePath": "src/components/modals/FeedbackModal.tsx",
+      "lineRange": [49, 401],
+      "summary": "Full feedback form flow: category selection, message entry, diagnostics/build attachment consent, and submission handling.",
+      "tags": ["component", "modal", "form"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/shared/BuildCard.tsx",
+      "type": "file",
+      "name": "BuildCard.tsx",
+      "filePath": "src/components/shared/BuildCard.tsx",
+      "summary": "Card component displaying a shared build's summary (archetype, powersets, author, views, tags) with favorite, delete, and visibility-toggle actions.",
+      "tags": ["component", "shared-builds", "card"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/shared/BuildCard.tsx:BuildCard",
+      "type": "function",
+      "name": "BuildCard",
+      "filePath": "src/components/shared/BuildCard.tsx",
+      "lineRange": [22, 244],
+      "summary": "Renders one shared build as a clickable card with owner actions (delete, visibility toggle) and favorite handling via the sharedBuilds service.",
+      "tags": ["component", "card", "shared-builds"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/shared/BuildCard.tsx:getTimeAgo",
+      "type": "function",
+      "name": "getTimeAgo",
+      "filePath": "src/components/shared/BuildCard.tsx",
+      "lineRange": [246, 259],
+      "summary": "Formats a date string as a human-readable relative time (e.g. '3 days ago') for card timestamps.",
+      "tags": ["utility", "date", "formatting"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/shared/BuildFilters.tsx",
+      "type": "file",
+      "name": "BuildFilters.tsx",
+      "filePath": "src/components/shared/BuildFilters.tsx",
+      "summary": "Filter bar for the shared-builds browser: archetype/powerset dropdowns, text search, and an author autocomplete backed by the profile service.",
+      "tags": ["component", "filters", "search", "shared-builds"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/shared/BuildFilters.tsx:BuildFilters",
+      "type": "function",
+      "name": "BuildFilters",
+      "filePath": "src/components/shared/BuildFilters.tsx",
+      "lineRange": [16, 163],
+      "summary": "Controlled filter panel emitting SearchFilters changes for archetype, powersets, sort order, and text query.",
+      "tags": ["component", "filters", "controlled-input"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/shared/BuildFilters.tsx:AuthorAutocomplete",
+      "type": "function",
+      "name": "AuthorAutocomplete",
+      "filePath": "src/components/shared/BuildFilters.tsx",
+      "lineRange": [171, 271],
+      "summary": "Debounced author search input that queries profile handles and lets the user pick an author to filter by.",
+      "tags": ["component", "autocomplete", "search"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/ui/Button.tsx",
+      "type": "file",
+      "name": "Button.tsx",
+      "filePath": "src/components/ui/Button.tsx",
+      "summary": "Reusable Button primitive with variant (primary/secondary/danger/ghost) and size props, implemented with forwardRef over a native button element.",
+      "tags": ["component", "ui-primitive", "design-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/ui/Input.tsx",
+      "type": "file",
+      "name": "Input.tsx",
+      "filePath": "src/components/ui/Input.tsx",
+      "summary": "Reusable text Input primitive wrapping a native input with consistent theming and forwardRef support.",
+      "tags": ["component", "ui-primitive", "form"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/data/core/themes.ts",
+      "type": "file",
+      "name": "themes.ts",
+      "filePath": "src/data/core/themes.ts",
+      "summary": "Color theme registry defining the available color themes and light/dark modes, plus DOM-applying helpers (applyColorTheme/applyColorMode) and type guards used at boot and in settings.",
+      "tags": ["theming", "design-system", "utility", "constants"],
+      "complexity": "moderate",
+      "languageNotes": "Themes are applied by stamping data attributes on the document root, matching the project's data-mode CSS token axis."
+    },
+    {
+      "id": "function:src/data/core/themes.ts:applyColorMode",
+      "type": "function",
+      "name": "applyColorMode",
+      "filePath": "src/data/core/themes.ts",
+      "lineRange": [225, 233],
+      "summary": "Applies the light/dark color mode to the document root so CSS token ramps switch accordingly.",
+      "tags": ["theming", "dom", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/data/core/themes.ts:applyColorTheme",
+      "type": "function",
+      "name": "applyColorTheme",
+      "filePath": "src/data/core/themes.ts",
+      "lineRange": [243, 251],
+      "summary": "Applies a named color theme to the document root, validating the id against the theme registry.",
+      "tags": ["theming", "dom", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/hooks/usePwaInstall.ts",
+      "type": "file",
+      "name": "usePwaInstall.ts",
+      "filePath": "src/hooks/usePwaInstall.ts",
+      "summary": "React hook capturing the browser's beforeinstallprompt event to offer a PWA install action, detecting when the app already runs standalone.",
+      "tags": ["hook", "pwa", "browser-api"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/hooks/usePwaInstall.ts:usePwaInstall",
+      "type": "function",
+      "name": "usePwaInstall",
+      "filePath": "src/hooks/usePwaInstall.ts",
+      "lineRange": [32, 75],
+      "summary": "Hook returning install availability and a prompt trigger, wired to the deferred beforeinstallprompt event.",
+      "tags": ["hook", "pwa", "event-handler"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/lib/supabase.ts",
+      "type": "file",
+      "name": "supabase.ts",
+      "filePath": "src/lib/supabase.ts",
+      "summary": "Creates and exports the singleton Supabase client from environment variables, used by all auth, profile, and shared-build services.",
+      "tags": ["singleton", "supabase", "backend-client"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/main.tsx",
+      "type": "file",
+      "name": "main.tsx",
+      "filePath": "src/main.tsx",
+      "summary": "Application bootstrap: applies the persisted color theme before first paint, resolves the active dataset/server, installs chunk-error auto-reload, wraps rendering in an error fallback, and mounts App into the DOM.",
+      "tags": ["entry-point", "bootstrap", "error-handling", "theming"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/main.tsx:bootColorTheme",
+      "type": "function",
+      "name": "bootColorTheme",
+      "filePath": "src/main.tsx",
+      "lineRange": [17, 33],
+      "summary": "Reads the persisted theme/mode preference and applies it to the document before React renders, avoiding a flash of wrong theme.",
+      "tags": ["bootstrap", "theming", "local-storage"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/main.tsx:ErrorFallback",
+      "type": "function",
+      "name": "ErrorFallback",
+      "filePath": "src/main.tsx",
+      "lineRange": [58, 102],
+      "summary": "Top-level error boundary fallback UI offering reload and reset options when the app crashes.",
+      "tags": ["component", "error-handling", "fallback"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/main.tsx:bootServerId",
+      "type": "function",
+      "name": "bootServerId",
+      "filePath": "src/main.tsx",
+      "lineRange": [137, 155],
+      "summary": "Determines which game-server dataset (HC/Rebirth/Thunderspy) to load at startup from URL or persisted preference.",
+      "tags": ["bootstrap", "dataset", "multi-server"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/pages/AuthorPage.tsx",
+      "type": "file",
+      "name": "AuthorPage.tsx",
+      "filePath": "src/pages/AuthorPage.tsx",
+      "summary": "Public author profile page showing an author's handle, bio, and their shared builds rendered as BuildCards, resolved via the profile service.",
+      "tags": ["page", "profile", "shared-builds"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/pages/AuthorPage.tsx:AuthorPage",
+      "type": "function",
+      "name": "AuthorPage",
+      "filePath": "src/pages/AuthorPage.tsx",
+      "lineRange": [20, 291],
+      "summary": "Loads an author by handle from the route, fetches their public builds, and renders profile header plus build grid.",
+      "tags": ["page", "data-fetching", "profile"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/pages/BuildDetailPage.tsx",
+      "type": "file",
+      "name": "BuildDetailPage.tsx",
+      "filePath": "src/pages/BuildDetailPage.tsx",
+      "summary": "Detail page for a single shared build: shows metadata, powerset summaries, view counter, and actions to open the build in the planner, favorite it, or manage it as the owner.",
+      "tags": ["page", "shared-builds", "detail-view"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/pages/BuildDetailPage.tsx:BuildDetailPage",
+      "type": "function",
+      "name": "BuildDetailPage",
+      "filePath": "src/pages/BuildDetailPage.tsx",
+      "lineRange": [14, 542],
+      "summary": "Fetches the shared build by route id, increments views, and renders full metadata with load-into-planner and owner management actions.",
+      "tags": ["page", "data-fetching", "shared-builds"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/pages/BuildDetailPage.tsx:PowersetSummary",
+      "type": "function",
+      "name": "PowersetSummary",
+      "filePath": "src/pages/BuildDetailPage.tsx",
+      "lineRange": [545, 574],
+      "summary": "Small presentational component listing the powers taken in one powerset of the shared build.",
+      "tags": ["component", "presentational", "powersets"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {"source": "file:src/App.tsx", "target": "file:src/router.tsx", "type": "imports", "direction": "forward", "weight": 0.7},
+
+    {"source": "file:src/components/layout/Header.tsx", "target": "file:src/buildTime.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/components/layout/Header.tsx", "target": "file:src/components/layout/PlannerLayoutMenu.tsx", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/components/layout/Header.tsx", "target": "file:src/components/modals/ConfirmModal.tsx", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/components/layout/Header.tsx", "target": "file:src/components/ui/index.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/components/layout/Header.tsx", "target": "file:src/data/dataset.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/components/layout/Header.tsx", "target": "file:src/data/index.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/components/layout/Header.tsx", "target": "file:src/hooks/usePwaInstall.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/components/layout/Header.tsx", "target": "file:src/lib/supabase.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/components/layout/Header.tsx", "target": "file:src/services/profile.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/components/layout/Header.tsx", "target": "file:src/services/sharedBuilds.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/components/layout/Header.tsx", "target": "file:src/stores/historyStore.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/components/layout/Header.tsx", "target": "file:src/stores/index.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/components/layout/Header.tsx", "target": "file:src/stores/onboardingStore.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/components/layout/Header.tsx", "target": "file:src/types/build.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/components/layout/Header.tsx", "target": "file:src/types/index.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/components/layout/Header.tsx", "target": "file:src/utils/calc-debug.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/components/layout/Header.tsx", "target": "file:src/utils/calculations/index.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/components/layout/Header.tsx", "target": "file:src/utils/dataset-switch-overlay.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/components/layout/Header.tsx", "target": "file:src/utils/slot-levels.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/components/layout/Header.tsx", "target": "file:src/utils/url-build-sync.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+
+    {"source": "file:src/components/modals/EnhancementListModal.tsx", "target": "file:src/components/modals/Modal.tsx", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/components/modals/EnhancementListModal.tsx", "target": "file:src/data/index.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/components/modals/EnhancementListModal.tsx", "target": "file:src/lib/supabase.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/components/modals/EnhancementListModal.tsx", "target": "file:src/services/auctionPrices.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/components/modals/EnhancementListModal.tsx", "target": "file:src/stores/index.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/components/modals/EnhancementListModal.tsx", "target": "file:src/types/index.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+
+    {"source": "file:src/components/modals/FeedbackModal.tsx", "target": "file:src/components/modals/Modal.tsx", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/components/modals/FeedbackModal.tsx", "target": "file:src/components/ui/Button.tsx", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/components/modals/FeedbackModal.tsx", "target": "file:src/lib/links.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/components/modals/FeedbackModal.tsx", "target": "file:src/stores/authStore.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/components/modals/FeedbackModal.tsx", "target": "file:src/stores/buildStore.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/components/modals/FeedbackModal.tsx", "target": "file:src/utils/diagnostics.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+
+    {"source": "file:src/components/shared/BuildCard.tsx", "target": "file:src/services/sharedBuilds.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/components/shared/BuildCard.tsx", "target": "file:src/types/shared.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+
+    {"source": "file:src/components/shared/BuildFilters.tsx", "target": "file:src/data/index.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/components/shared/BuildFilters.tsx", "target": "file:src/data/powersets.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/components/shared/BuildFilters.tsx", "target": "file:src/services/profile.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/components/shared/BuildFilters.tsx", "target": "file:src/types/shared.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+
+    {"source": "file:src/main.tsx", "target": "file:src/App.tsx", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/main.tsx", "target": "file:src/data/core/themes.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/main.tsx", "target": "file:src/data/dataset.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/main.tsx", "target": "file:src/index.css", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/main.tsx", "target": "file:src/utils/calc-debug.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/main.tsx", "target": "file:src/utils/chunk-error-reload.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/main.tsx", "target": "file:src/utils/fallback-warnings.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+
+    {"source": "file:src/pages/AuthorPage.tsx", "target": "file:src/components/shared/BuildCard.tsx", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/pages/AuthorPage.tsx", "target": "file:src/services/profile.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/pages/AuthorPage.tsx", "target": "file:src/services/sharedBuilds.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/pages/AuthorPage.tsx", "target": "file:src/stores/index.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/pages/AuthorPage.tsx", "target": "file:src/types/shared.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+
+    {"source": "file:src/pages/BuildDetailPage.tsx", "target": "file:src/components/ui/Button.tsx", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/pages/BuildDetailPage.tsx", "target": "file:src/data/dataset.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/pages/BuildDetailPage.tsx", "target": "file:src/services/sharedBuilds.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/pages/BuildDetailPage.tsx", "target": "file:src/stores/authStore.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/pages/BuildDetailPage.tsx", "target": "file:src/stores/buildStore.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:src/pages/BuildDetailPage.tsx", "target": "file:src/types/shared.ts", "type": "imports", "direction": "forward", "weight": 0.7},
+
+    {"source": "file:src/components/layout/Header.tsx", "target": "function:src/components/layout/Header.tsx:Header", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/components/layout/Header.tsx", "target": "function:src/components/layout/Header.tsx:countManualPowerPicks", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/components/layout/Header.tsx", "target": "function:src/components/layout/Header.tsx:LevelUpModeButton", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/components/layout/Header.tsx", "target": "function:src/components/layout/Header.tsx:HeaderLevelSlider", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/components/layout/Header.tsx", "target": "function:src/components/layout/Header.tsx:BuildIdentityPopover", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/components/layout/Header.tsx", "target": "function:src/components/layout/Header.tsx:ActionMenu", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/components/layout/Header.tsx", "target": "function:src/components/layout/Header.tsx:SettingsPopover", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/components/layout/Header.tsx", "target": "function:src/components/layout/Header.tsx:KheldianFormSelector", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/components/layout/Header.tsx", "target": "function:src/components/layout/Header.tsx:PrimalistFormSelector", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/components/layout/Header.tsx", "target": "function:src/components/layout/Header.tsx:StanceSelector", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/components/layout/Header.tsx", "target": "function:src/components/layout/Header.tsx:ATMechanics", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/components/layout/Header.tsx", "target": "function:src/components/layout/Header.tsx:Header", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:src/components/layout/Header.tsx", "target": "function:src/components/layout/Header.tsx:HeaderLevelSlider", "type": "exports", "direction": "forward", "weight": 0.8},
+
+    {"source": "file:src/components/layout/SettingsLayout.tsx", "target": "function:src/components/layout/SettingsLayout.tsx:SettingsLayout", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/components/layout/SettingsLayout.tsx", "target": "function:src/components/layout/SettingsLayout.tsx:SettingsLayout", "type": "exports", "direction": "forward", "weight": 0.8},
+
+    {"source": "file:src/components/modals/EnhancementListModal.tsx", "target": "function:src/components/modals/EnhancementListModal.tsx:collectEnhancements", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/components/modals/EnhancementListModal.tsx", "target": "function:src/components/modals/EnhancementListModal.tsx:buildGroups", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/components/modals/EnhancementListModal.tsx", "target": "function:src/components/modals/EnhancementListModal.tsx:formatForClipboard", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/components/modals/EnhancementListModal.tsx", "target": "function:src/components/modals/EnhancementListModal.tsx:EnhancementListModal", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/components/modals/EnhancementListModal.tsx", "target": "function:src/components/modals/EnhancementListModal.tsx:EnhancementListModal", "type": "exports", "direction": "forward", "weight": 0.8},
+
+    {"source": "file:src/components/modals/FeedbackModal.tsx", "target": "function:src/components/modals/FeedbackModal.tsx:FeedbackModal", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/components/modals/FeedbackModal.tsx", "target": "function:src/components/modals/FeedbackModal.tsx:FeedbackModal", "type": "exports", "direction": "forward", "weight": 0.8},
+
+    {"source": "file:src/components/shared/BuildCard.tsx", "target": "function:src/components/shared/BuildCard.tsx:BuildCard", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/components/shared/BuildCard.tsx", "target": "function:src/components/shared/BuildCard.tsx:getTimeAgo", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/components/shared/BuildCard.tsx", "target": "function:src/components/shared/BuildCard.tsx:BuildCard", "type": "exports", "direction": "forward", "weight": 0.8},
+
+    {"source": "file:src/components/shared/BuildFilters.tsx", "target": "function:src/components/shared/BuildFilters.tsx:BuildFilters", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/components/shared/BuildFilters.tsx", "target": "function:src/components/shared/BuildFilters.tsx:AuthorAutocomplete", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/components/shared/BuildFilters.tsx", "target": "function:src/components/shared/BuildFilters.tsx:BuildFilters", "type": "exports", "direction": "forward", "weight": 0.8},
+
+    {"source": "file:src/data/core/themes.ts", "target": "function:src/data/core/themes.ts:applyColorMode", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/data/core/themes.ts", "target": "function:src/data/core/themes.ts:applyColorTheme", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/data/core/themes.ts", "target": "function:src/data/core/themes.ts:applyColorMode", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:src/data/core/themes.ts", "target": "function:src/data/core/themes.ts:applyColorTheme", "type": "exports", "direction": "forward", "weight": 0.8},
+
+    {"source": "file:src/hooks/usePwaInstall.ts", "target": "function:src/hooks/usePwaInstall.ts:usePwaInstall", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/hooks/usePwaInstall.ts", "target": "function:src/hooks/usePwaInstall.ts:usePwaInstall", "type": "exports", "direction": "forward", "weight": 0.8},
+
+    {"source": "file:src/main.tsx", "target": "function:src/main.tsx:bootColorTheme", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/main.tsx", "target": "function:src/main.tsx:ErrorFallback", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/main.tsx", "target": "function:src/main.tsx:bootServerId", "type": "contains", "direction": "forward", "weight": 1.0},
+
+    {"source": "file:src/pages/AuthorPage.tsx", "target": "function:src/pages/AuthorPage.tsx:AuthorPage", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/pages/AuthorPage.tsx", "target": "function:src/pages/AuthorPage.tsx:AuthorPage", "type": "exports", "direction": "forward", "weight": 0.8},
+
+    {"source": "file:src/pages/BuildDetailPage.tsx", "target": "function:src/pages/BuildDetailPage.tsx:BuildDetailPage", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/pages/BuildDetailPage.tsx", "target": "function:src/pages/BuildDetailPage.tsx:PowersetSummary", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:src/pages/BuildDetailPage.tsx", "target": "function:src/pages/BuildDetailPage.tsx:BuildDetailPage", "type": "exports", "direction": "forward", "weight": 0.8}
+  ]
+}

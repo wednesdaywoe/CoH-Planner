@@ -1,0 +1,36 @@
+{
+  "issues": [],
+  "warnings": [
+    "Node 'file:src/test/localstorage-polyfill.ts' has no edges (orphan)",
+    "Node 'file:src/components/layout/index.ts' has no edges (orphan)",
+    "Node 'file:src/data/stat-colors.ts' has no edges (orphan)",
+    "Node 'file:src/empty.js' has no edges (orphan)",
+    "Node 'file:src/pages/PlasmicHost.tsx' has no edges (orphan)",
+    "Node 'file:src/plasmic-init.ts' has no edges (orphan)",
+    "Node 'file:src/utils/index.ts' has no edges (orphan)",
+    "Node 'file:src/vite-env.d.ts' has no edges (orphan)"
+  ],
+  "stats": {
+    "totalNodes": 1196,
+    "totalEdges": 2510,
+    "totalLayers": 8,
+    "tourSteps": 12,
+    "nodeTypes": {
+      "file": 315,
+      "function": 871,
+      "class": 2,
+      "config": 7,
+      "document": 1
+    },
+    "edgeTypes": {
+      "imports": 994,
+      "contains": 873,
+      "exports": 556,
+      "calls": 11,
+      "tested_by": 52,
+      "depends_on": 16,
+      "configures": 7,
+      "documents": 1
+    }
+  }
+}

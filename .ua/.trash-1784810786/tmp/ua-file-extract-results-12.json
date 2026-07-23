@@ -1,0 +1,3575 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 14,
+  "filesSkipped": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 14,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 14,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "src/data/purple-patch.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 30,
+      "nonEmptyLines": 26,
+      "functions": [
+        {
+          "name": "getBaseToHit",
+          "startLine": 17,
+          "endLine": 19,
+          "params": [
+            "levelDiff"
+          ]
+        },
+        {
+          "name": "getCombatModifier",
+          "startLine": 21,
+          "endLine": 23,
+          "params": [
+            "levelDiff"
+          ]
+        },
+        {
+          "name": "getDefenseSoftcap",
+          "startLine": 25,
+          "endLine": 30,
+          "params": [
+            "levelDiff",
+            "contentMode"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "getBaseToHit",
+          "line": 17,
+          "isDefault": false
+        },
+        {
+          "name": "getCombatModifier",
+          "line": 21,
+          "isDefault": false
+        },
+        {
+          "name": "getDefenseSoftcap",
+          "line": 25,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "getBaseToHit",
+          "callee": "getActiveDataset().purplePatch.getBaseToHit",
+          "lineNumber": 18
+        },
+        {
+          "caller": "getBaseToHit",
+          "callee": "getActiveDataset",
+          "lineNumber": 18
+        },
+        {
+          "caller": "getCombatModifier",
+          "callee": "getActiveDataset().purplePatch.getCombatModifier",
+          "lineNumber": 22
+        },
+        {
+          "caller": "getCombatModifier",
+          "callee": "getActiveDataset",
+          "lineNumber": 22
+        },
+        {
+          "caller": "getDefenseSoftcap",
+          "callee": "getActiveDataset().purplePatch.getDefenseSoftcap",
+          "lineNumber": 29
+        },
+        {
+          "caller": "getDefenseSoftcap",
+          "callee": "getActiveDataset",
+          "lineNumber": 29
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/data/stance-groups.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 181,
+      "nonEmptyLines": 173,
+      "functions": [
+        {
+          "name": "stanceGroupForConditionalId",
+          "startLine": 124,
+          "endLine": 126,
+          "params": [
+            "id"
+          ]
+        },
+        {
+          "name": "findStanceParent",
+          "startLine": 140,
+          "endLine": 147,
+          "params": [
+            "powers",
+            "group"
+          ]
+        },
+        {
+          "name": "activeStanceOptionId",
+          "startLine": 154,
+          "endLine": 163,
+          "params": [
+            "powers",
+            "group"
+          ]
+        },
+        {
+          "name": "stanceAdjusterOverrides",
+          "startLine": 172,
+          "endLine": 181,
+          "params": [
+            "powers"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "STANCE_GROUPS",
+          "line": 66,
+          "isDefault": false
+        },
+        {
+          "name": "stanceGroupForConditionalId",
+          "line": 124,
+          "isDefault": false
+        },
+        {
+          "name": "findStanceParent",
+          "line": 140,
+          "isDefault": false
+        },
+        {
+          "name": "activeStanceOptionId",
+          "line": 154,
+          "isDefault": false
+        },
+        {
+          "name": "stanceAdjusterOverrides",
+          "line": 172,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "stanceGroupForConditionalId",
+          "callee": "STANCE_GROUPS.find",
+          "lineNumber": 125
+        },
+        {
+          "caller": "stanceGroupForConditionalId",
+          "callee": "g.options.some",
+          "lineNumber": 125
+        },
+        {
+          "caller": "findStanceParent",
+          "callee": "powers.filter",
+          "lineNumber": 144
+        },
+        {
+          "caller": "findStanceParent",
+          "callee": "group.parents.includes",
+          "lineNumber": 144
+        },
+        {
+          "caller": "findStanceParent",
+          "callee": "candidates.find",
+          "lineNumber": 146
+        },
+        {
+          "caller": "activeStanceOptionId",
+          "callee": "findStanceParent",
+          "lineNumber": 158
+        },
+        {
+          "caller": "activeStanceOptionId",
+          "callee": "group.options.find",
+          "lineNumber": 160
+        },
+        {
+          "caller": "stanceAdjusterOverrides",
+          "callee": "activeStanceOptionId",
+          "lineNumber": 177
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 5,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/hooks/useBuildMaxAttackDamage.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 114,
+      "nonEmptyLines": 105,
+      "functions": [
+        {
+          "name": "useBuildMaxAttackDamage",
+          "startLine": 31,
+          "endLine": 114,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "useBuildMaxAttackDamage",
+          "line": 31,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "useBuildMaxAttackDamage",
+          "callee": "useBuildStore",
+          "lineNumber": 32
+        },
+        {
+          "caller": "useBuildMaxAttackDamage",
+          "callee": "useGlobalBonuses",
+          "lineNumber": 33
+        },
+        {
+          "caller": "useBuildMaxAttackDamage",
+          "callee": "useUIStore",
+          "lineNumber": 34
+        },
+        {
+          "caller": "useBuildMaxAttackDamage",
+          "callee": "useUIStore",
+          "lineNumber": 35
+        },
+        {
+          "caller": "useBuildMaxAttackDamage",
+          "callee": "useUIStore",
+          "lineNumber": 36
+        },
+        {
+          "caller": "useBuildMaxAttackDamage",
+          "callee": "useUIStore",
+          "lineNumber": 40
+        },
+        {
+          "caller": "useBuildMaxAttackDamage",
+          "callee": "useMemo",
+          "lineNumber": 48
+        },
+        {
+          "caller": "useBuildMaxAttackDamage",
+          "callee": "getAlphaEnhancementBonuses",
+          "lineNumber": 49
+        },
+        {
+          "caller": "useBuildMaxAttackDamage",
+          "callee": "Object.values(alphaBonuses).some",
+          "lineNumber": 50
+        },
+        {
+          "caller": "useBuildMaxAttackDamage",
+          "callee": "Object.values",
+          "lineNumber": 50
+        },
+        {
+          "caller": "useBuildMaxAttackDamage",
+          "callee": "build.pools.flatMap",
+          "lineNumber": 60
+        },
+        {
+          "caller": "useBuildMaxAttackDamage",
+          "callee": "applyQuickSnipe",
+          "lineNumber": 73
+        },
+        {
+          "caller": "useBuildMaxAttackDamage",
+          "callee": "combineWithAlphaED",
+          "lineNumber": 82
+        },
+        {
+          "caller": "useBuildMaxAttackDamage",
+          "callee": "calculatePowerEnhancementBonuses",
+          "lineNumber": 83
+        },
+        {
+          "caller": "useBuildMaxAttackDamage",
+          "callee": "calculatePowerDamage",
+          "lineNumber": 87
+        },
+        {
+          "caller": "useBuildMaxAttackDamage",
+          "callee": "skipped.push",
+          "lineNumber": 89
+        },
+        {
+          "caller": "useBuildMaxAttackDamage",
+          "callee": "Math.abs",
+          "lineNumber": 94
+        },
+        {
+          "caller": "useBuildMaxAttackDamage",
+          "callee": "warnFallback",
+          "lineNumber": 106
+        }
+      ],
+      "metrics": {
+        "importCount": 8,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/hooks/useCalculatedStats.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 487,
+      "nonEmptyLines": 434,
+      "functions": [
+        {
+          "name": "convertToLegacyStats",
+          "startLine": 144,
+          "endLine": 240,
+          "params": [
+            "charStats",
+            "result"
+          ]
+        },
+        {
+          "name": "_resetSharedCalcCache",
+          "startLine": 271,
+          "endLine": 274,
+          "params": []
+        },
+        {
+          "name": "getSharedCharacterCalculation",
+          "startLine": 276,
+          "endLine": 292,
+          "params": [
+            "deps",
+            "compute"
+          ]
+        },
+        {
+          "name": "useCharacterCalculation",
+          "startLine": 301,
+          "endLine": 342,
+          "params": []
+        },
+        {
+          "name": "useCalculatedStats",
+          "startLine": 354,
+          "endLine": 357,
+          "params": []
+        },
+        {
+          "name": "useGlobalBonuses",
+          "startLine": 362,
+          "endLine": 365,
+          "params": []
+        },
+        {
+          "name": "useStatBreakdown",
+          "startLine": 370,
+          "endLine": 373,
+          "params": [
+            "stat"
+          ]
+        },
+        {
+          "name": "useStatBreakdowns",
+          "startLine": 380,
+          "endLine": 383,
+          "params": []
+        },
+        {
+          "name": "useTotalSlotsUsed",
+          "startLine": 392,
+          "endLine": 394,
+          "params": []
+        },
+        {
+          "name": "useSlotsRemaining",
+          "startLine": 399,
+          "endLine": 401,
+          "params": []
+        },
+        {
+          "name": "useActiveSetBonuses",
+          "startLine": 406,
+          "endLine": 440,
+          "params": []
+        },
+        {
+          "name": "useBonusTracking",
+          "startLine": 445,
+          "endLine": 448,
+          "params": []
+        },
+        {
+          "name": "useOffendingPowerReasons",
+          "startLine": 469,
+          "endLine": 477,
+          "params": []
+        },
+        {
+          "name": "useOffendingPowerNames",
+          "startLine": 484,
+          "endLine": 487,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CharacterStats",
+          "line": 37,
+          "isDefault": false
+        },
+        {
+          "name": "DashboardStatBreakdown",
+          "line": 37,
+          "isDefault": false
+        },
+        {
+          "name": "StatSource",
+          "line": 37,
+          "isDefault": false
+        },
+        {
+          "name": "convertToLegacyStats",
+          "line": 144,
+          "isDefault": false
+        },
+        {
+          "name": "_resetSharedCalcCache",
+          "line": 271,
+          "isDefault": false
+        },
+        {
+          "name": "getSharedCharacterCalculation",
+          "line": 276,
+          "isDefault": false
+        },
+        {
+          "name": "useCharacterCalculation",
+          "line": 301,
+          "isDefault": false
+        },
+        {
+          "name": "useCalculatedStats",
+          "line": 354,
+          "isDefault": false
+        },
+        {
+          "name": "useGlobalBonuses",
+          "line": 362,
+          "isDefault": false
+        },
+        {
+          "name": "useStatBreakdown",
+          "line": 370,
+          "isDefault": false
+        },
+        {
+          "name": "useStatBreakdowns",
+          "line": 380,
+          "isDefault": false
+        },
+        {
+          "name": "useTotalSlotsUsed",
+          "line": 392,
+          "isDefault": false
+        },
+        {
+          "name": "useSlotsRemaining",
+          "line": 399,
+          "isDefault": false
+        },
+        {
+          "name": "useActiveSetBonuses",
+          "line": 406,
+          "isDefault": false
+        },
+        {
+          "name": "useBonusTracking",
+          "line": 445,
+          "isDefault": false
+        },
+        {
+          "name": "CappedBonusReason",
+          "line": 455,
+          "isDefault": false
+        },
+        {
+          "name": "useOffendingPowerReasons",
+          "line": 469,
+          "isDefault": false
+        },
+        {
+          "name": "useOffendingPowerNames",
+          "line": 484,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "getSharedCharacterCalculation",
+          "callee": "sharedCalcDeps.every",
+          "lineNumber": 284
+        },
+        {
+          "caller": "getSharedCharacterCalculation",
+          "callee": "Object.is",
+          "lineNumber": 284
+        },
+        {
+          "caller": "getSharedCharacterCalculation",
+          "callee": "compute",
+          "lineNumber": 288
+        },
+        {
+          "caller": "useCharacterCalculation",
+          "callee": "useBuildStore",
+          "lineNumber": 302
+        },
+        {
+          "caller": "useCharacterCalculation",
+          "callee": "useUIStore",
+          "lineNumber": 303
+        },
+        {
+          "caller": "useCharacterCalculation",
+          "callee": "useUIStore",
+          "lineNumber": 304
+        },
+        {
+          "caller": "useCharacterCalculation",
+          "callee": "useUIStore",
+          "lineNumber": 305
+        },
+        {
+          "caller": "useCharacterCalculation",
+          "callee": "useUIStore",
+          "lineNumber": 306
+        },
+        {
+          "caller": "useCharacterCalculation",
+          "callee": "useUIStore",
+          "lineNumber": 307
+        },
+        {
+          "caller": "useCharacterCalculation",
+          "callee": "useUIStore",
+          "lineNumber": 308
+        },
+        {
+          "caller": "useCharacterCalculation",
+          "callee": "useUIStore",
+          "lineNumber": 309
+        },
+        {
+          "caller": "useCharacterCalculation",
+          "callee": "useUIStore",
+          "lineNumber": 310
+        },
+        {
+          "caller": "useCharacterCalculation",
+          "callee": "useUIStore",
+          "lineNumber": 311
+        },
+        {
+          "caller": "useCharacterCalculation",
+          "callee": "useUIStore",
+          "lineNumber": 312
+        },
+        {
+          "caller": "useCharacterCalculation",
+          "callee": "useUIStore",
+          "lineNumber": 313
+        },
+        {
+          "caller": "useCharacterCalculation",
+          "callee": "useUIStore",
+          "lineNumber": 314
+        },
+        {
+          "caller": "useCharacterCalculation",
+          "callee": "useUIStore",
+          "lineNumber": 315
+        },
+        {
+          "caller": "useCharacterCalculation",
+          "callee": "useUIStore",
+          "lineNumber": 316
+        },
+        {
+          "caller": "useCharacterCalculation",
+          "callee": "useMemo",
+          "lineNumber": 324
+        },
+        {
+          "caller": "useCharacterCalculation",
+          "callee": "getSharedCharacterCalculation",
+          "lineNumber": 326
+        },
+        {
+          "caller": "useCharacterCalculation",
+          "callee": "calculateCharacterTotals",
+          "lineNumber": 327
+        },
+        {
+          "caller": "useCalculatedStats",
+          "callee": "useCharacterCalculation",
+          "lineNumber": 355
+        },
+        {
+          "caller": "useCalculatedStats",
+          "callee": "useMemo",
+          "lineNumber": 356
+        },
+        {
+          "caller": "useCalculatedStats",
+          "callee": "convertToLegacyStats",
+          "lineNumber": 356
+        },
+        {
+          "caller": "useGlobalBonuses",
+          "callee": "useCharacterCalculation",
+          "lineNumber": 363
+        },
+        {
+          "caller": "useStatBreakdown",
+          "callee": "useCharacterCalculation",
+          "lineNumber": 371
+        },
+        {
+          "caller": "useStatBreakdown",
+          "callee": "result.breakdown.get",
+          "lineNumber": 372
+        },
+        {
+          "caller": "useStatBreakdowns",
+          "callee": "useCharacterCalculation",
+          "lineNumber": 381
+        },
+        {
+          "caller": "useTotalSlotsUsed",
+          "callee": "useBuildStore",
+          "lineNumber": 393
+        },
+        {
+          "caller": "useTotalSlotsUsed",
+          "callee": "state.getTotalSlotsUsed",
+          "lineNumber": 393
+        },
+        {
+          "caller": "useSlotsRemaining",
+          "callee": "useBuildStore",
+          "lineNumber": 400
+        },
+        {
+          "caller": "useSlotsRemaining",
+          "callee": "state.getSlotsRemaining",
+          "lineNumber": 400
+        },
+        {
+          "caller": "useActiveSetBonuses",
+          "callee": "useBuildStore",
+          "lineNumber": 412
+        },
+        {
+          "caller": "useActiveSetBonuses",
+          "callee": "useMemo",
+          "lineNumber": 414
+        },
+        {
+          "caller": "useActiveSetBonuses",
+          "callee": "Object.entries",
+          "lineNumber": 422
+        },
+        {
+          "caller": "useActiveSetBonuses",
+          "callee": "getIOSet",
+          "lineNumber": 423
+        },
+        {
+          "caller": "useActiveSetBonuses",
+          "callee": "ioSet.bonuses.filter",
+          "lineNumber": 426
+        },
+        {
+          "caller": "useActiveSetBonuses",
+          "callee": "results.push",
+          "lineNumber": 429
+        },
+        {
+          "caller": "useBonusTracking",
+          "callee": "useCharacterCalculation",
+          "lineNumber": 446
+        },
+        {
+          "caller": "useOffendingPowerReasons",
+          "callee": "useUIStore",
+          "lineNumber": 470
+        },
+        {
+          "caller": "useOffendingPowerReasons",
+          "callee": "useBuildStore",
+          "lineNumber": 471
+        },
+        {
+          "caller": "useOffendingPowerReasons",
+          "callee": "useCharacterCalculation",
+          "lineNumber": 472
+        },
+        {
+          "caller": "useOffendingPowerReasons",
+          "callee": "useMemo",
+          "lineNumber": 473
+        },
+        {
+          "caller": "useOffendingPowerReasons",
+          "callee": "computeOffendingPowerReasons",
+          "lineNumber": 474
+        },
+        {
+          "caller": "useOffendingPowerNames",
+          "callee": "useOffendingPowerReasons",
+          "lineNumber": 485
+        },
+        {
+          "caller": "useOffendingPowerNames",
+          "callee": "useMemo",
+          "lineNumber": 486
+        },
+        {
+          "caller": "useOffendingPowerNames",
+          "callee": "reasons.keys",
+          "lineNumber": 486
+        }
+      ],
+      "metrics": {
+        "importCount": 6,
+        "exportCount": 18,
+        "functionCount": 14,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/hooks/useModeSuppression.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 63,
+      "nonEmptyLines": 55,
+      "functions": [
+        {
+          "name": "useModeSuppression",
+          "startLine": 19,
+          "endLine": 22,
+          "params": []
+        },
+        {
+          "name": "collectCarriers",
+          "startLine": 24,
+          "endLine": 63,
+          "params": [
+            "build"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "useModeSuppression",
+          "line": 19,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "useModeSuppression",
+          "callee": "useBuildStore",
+          "lineNumber": 20
+        },
+        {
+          "caller": "useModeSuppression",
+          "callee": "useMemo",
+          "lineNumber": 21
+        },
+        {
+          "caller": "useModeSuppression",
+          "callee": "computeModeSuppression",
+          "lineNumber": 21
+        },
+        {
+          "caller": "useModeSuppression",
+          "callee": "collectCarriers",
+          "lineNumber": 21
+        },
+        {
+          "caller": "push",
+          "callee": "carriers.push",
+          "lineNumber": 34
+        },
+        {
+          "caller": "collectCarriers",
+          "callee": "getPowerset",
+          "lineNumber": 44
+        },
+        {
+          "caller": "collectCarriers",
+          "callee": "push",
+          "lineNumber": 45
+        },
+        {
+          "caller": "collectCarriers",
+          "callee": "primaryDef?.powers.find",
+          "lineNumber": 45
+        },
+        {
+          "caller": "collectCarriers",
+          "callee": "getPowerset",
+          "lineNumber": 47
+        },
+        {
+          "caller": "collectCarriers",
+          "callee": "push",
+          "lineNumber": 48
+        },
+        {
+          "caller": "collectCarriers",
+          "callee": "secondaryDef?.powers.find",
+          "lineNumber": 48
+        },
+        {
+          "caller": "collectCarriers",
+          "callee": "getPowerPool",
+          "lineNumber": 51
+        },
+        {
+          "caller": "collectCarriers",
+          "callee": "push",
+          "lineNumber": 52
+        },
+        {
+          "caller": "collectCarriers",
+          "callee": "poolDef?.powers.find",
+          "lineNumber": 52
+        },
+        {
+          "caller": "collectCarriers",
+          "callee": "getEpicPool",
+          "lineNumber": 56
+        },
+        {
+          "caller": "collectCarriers",
+          "callee": "push",
+          "lineNumber": 57
+        },
+        {
+          "caller": "collectCarriers",
+          "callee": "epicDef?.powers.find",
+          "lineNumber": 57
+        },
+        {
+          "caller": "collectCarriers",
+          "callee": "push",
+          "lineNumber": 60
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 1,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/utils/calculations/attack-chain-powers.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 503,
+      "nonEmptyLines": 471,
+      "functions": [
+        {
+          "name": "powerCastTime",
+          "startLine": 43,
+          "endLine": 43,
+          "params": [
+            "p"
+          ]
+        },
+        {
+          "name": "powerBaseRecharge",
+          "startLine": 44,
+          "endLine": 44,
+          "params": [
+            "p"
+          ]
+        },
+        {
+          "name": "powerEndCost",
+          "startLine": 45,
+          "endLine": 45,
+          "params": [
+            "p"
+          ]
+        },
+        {
+          "name": "powerRadius",
+          "startLine": 46,
+          "endLine": 46,
+          "params": [
+            "p"
+          ]
+        },
+        {
+          "name": "powerArc",
+          "startLine": 47,
+          "endLine": 47,
+          "params": [
+            "p"
+          ]
+        },
+        {
+          "name": "collectCandidates",
+          "startLine": 82,
+          "endLine": 104,
+          "params": [
+            "build"
+          ]
+        },
+        {
+          "name": "resolveEffectDuration",
+          "startLine": 111,
+          "endLine": 131,
+          "params": [
+            "e",
+            "keys",
+            "fallbacks"
+          ]
+        },
+        {
+          "name": "selfBuffWindow",
+          "startLine": 139,
+          "endLine": 145,
+          "params": [
+            "power"
+          ]
+        },
+        {
+          "name": "toHitBuffWindow",
+          "startLine": 151,
+          "endLine": 155,
+          "params": [
+            "power"
+          ]
+        },
+        {
+          "name": "foeDebuffWindow",
+          "startLine": 184,
+          "endLine": 190,
+          "params": [
+            "power"
+          ]
+        },
+        {
+          "name": "selfEnduranceGain",
+          "startLine": 197,
+          "endLine": 215,
+          "params": [
+            "power",
+            "targetsHit",
+            "endMod",
+            "archetypeId",
+            "level"
+          ]
+        },
+        {
+          "name": "buildJudgementChainPower",
+          "startLine": 226,
+          "endLine": 244,
+          "params": [
+            "build",
+            "archetypeId"
+          ]
+        },
+        {
+          "name": "buildChainPowers",
+          "startLine": 249,
+          "endLine": 451,
+          "params": [
+            "build",
+            "globalBonuses",
+            "mechCtx",
+            "targetsHit"
+          ]
+        },
+        {
+          "name": "getEnduranceParams",
+          "startLine": 454,
+          "endLine": 461,
+          "params": [
+            "globalBonuses"
+          ]
+        },
+        {
+          "name": "getBuildGlobalRecharge",
+          "startLine": 464,
+          "endLine": 466,
+          "params": [
+            "globalBonuses"
+          ]
+        },
+        {
+          "name": "chainIdInternalName",
+          "startLine": 479,
+          "endLine": 482,
+          "params": [
+            "id"
+          ]
+        },
+        {
+          "name": "sequenceToIds",
+          "startLine": 485,
+          "endLine": 487,
+          "params": [
+            "powers",
+            "sequence"
+          ]
+        },
+        {
+          "name": "idsToSequence",
+          "startLine": 492,
+          "endLine": 503,
+          "params": [
+            "powers",
+            "ids"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "buildChainPowers",
+          "line": 249,
+          "isDefault": false
+        },
+        {
+          "name": "getEnduranceParams",
+          "line": 454,
+          "isDefault": false
+        },
+        {
+          "name": "getBuildGlobalRecharge",
+          "line": 464,
+          "isDefault": false
+        },
+        {
+          "name": "sequenceToIds",
+          "line": 485,
+          "isDefault": false
+        },
+        {
+          "name": "idsToSequence",
+          "line": 492,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "add",
+          "callee": "powers?.forEach",
+          "lineNumber": 91
+        },
+        {
+          "caller": "add",
+          "callee": "out.push",
+          "lineNumber": 96
+        },
+        {
+          "caller": "collectCandidates",
+          "callee": "add",
+          "lineNumber": 99
+        },
+        {
+          "caller": "collectCandidates",
+          "callee": "add",
+          "lineNumber": 100
+        },
+        {
+          "caller": "collectCandidates",
+          "callee": "build.pools?.forEach",
+          "lineNumber": 101
+        },
+        {
+          "caller": "collectCandidates",
+          "callee": "add",
+          "lineNumber": 101
+        },
+        {
+          "caller": "collectCandidates",
+          "callee": "add",
+          "lineNumber": 102
+        },
+        {
+          "caller": "resolveEffectDuration",
+          "callee": "Object.keys",
+          "lineNumber": 121
+        },
+        {
+          "caller": "resolveEffectDuration",
+          "callee": "dk.split",
+          "lineNumber": 122
+        },
+        {
+          "caller": "selfBuffWindow",
+          "callee": "SELF_BUFF_KEYS.filter",
+          "lineNumber": 142
+        },
+        {
+          "caller": "selfBuffWindow",
+          "callee": "resolveEffectDuration",
+          "lineNumber": 144
+        },
+        {
+          "caller": "toHitBuffWindow",
+          "callee": "selfBuffWindow",
+          "lineNumber": 154
+        },
+        {
+          "caller": "foeDebuffWindow",
+          "callee": "hasSelfDirectedPenalty",
+          "lineNumber": 186
+        },
+        {
+          "caller": "foeDebuffWindow",
+          "callee": "FOE_DEBUFF_KEYS.filter",
+          "lineNumber": 187
+        },
+        {
+          "caller": "foeDebuffWindow",
+          "callee": "resolveEffectDuration",
+          "lineNumber": 189
+        },
+        {
+          "caller": "selfEnduranceGain",
+          "callee": "getTableValue",
+          "lineNumber": 211
+        },
+        {
+          "caller": "buildJudgementChainPower",
+          "callee": "getJudgementEffects",
+          "lineNumber": 229
+        },
+        {
+          "caller": "buildJudgementChainPower",
+          "callee": "calculateIncarnateDamage",
+          "lineNumber": 231
+        },
+        {
+          "caller": "buildJudgementChainPower",
+          "callee": "calculateArcanaTime",
+          "lineNumber": 236
+        },
+        {
+          "caller": "buildChainPowers",
+          "callee": "convertGlobalBonusesToAspects",
+          "lineNumber": 255
+        },
+        {
+          "caller": "buildChainPowers",
+          "callee": "buildJudgementChainPower",
+          "lineNumber": 258
+        },
+        {
+          "caller": "buildChainPowers",
+          "callee": "collectCandidates(build).map",
+          "lineNumber": 260
+        },
+        {
+          "caller": "buildChainPowers",
+          "callee": "collectCandidates",
+          "lineNumber": 260
+        },
+        {
+          "caller": "buildChainPowers",
+          "callee": "calculatePowerEnhancementBonuses",
+          "lineNumber": 261
+        },
+        {
+          "caller": "buildChainPowers",
+          "callee": "powerBaseRecharge",
+          "lineNumber": 267
+        },
+        {
+          "caller": "buildChainPowers",
+          "callee": "powerEndCost",
+          "lineNumber": 268
+        },
+        {
+          "caller": "buildChainPowers",
+          "callee": "calcThreeTier",
+          "lineNumber": 269
+        },
+        {
+          "caller": "buildChainPowers",
+          "callee": "atMechanicMultiplier",
+          "lineNumber": 274
+        },
+        {
+          "caller": "buildChainPowers",
+          "callee": "atMechanicMultiplier",
+          "lineNumber": 288
+        },
+        {
+          "caller": "buildChainPowers",
+          "callee": "calculateArcanaTime",
+          "lineNumber": 290
+        },
+        {
+          "caller": "buildChainPowers",
+          "callee": "powerCastTime",
+          "lineNumber": 290
+        },
+        {
+          "caller": "deriveDamage",
+          "callee": "calculatePowerDamage",
+          "lineNumber": 301
+        },
+        {
+          "caller": "deriveDamage",
+          "callee": "Math.abs",
+          "lineNumber": 312
+        },
+        {
+          "caller": "deriveDamage",
+          "callee": "powerCastTime",
+          "lineNumber": 319
+        },
+        {
+          "caller": "deriveDamage",
+          "callee": "powerRadius",
+          "lineNumber": 323
+        },
+        {
+          "caller": "deriveDamage",
+          "callee": "calculateSlottedProcDamagePerCast",
+          "lineNumber": 324
+        },
+        {
+          "caller": "deriveDamage",
+          "callee": "arcToDegrees",
+          "lineNumber": 329
+        },
+        {
+          "caller": "deriveDamage",
+          "callee": "powerArc",
+          "lineNumber": 329
+        },
+        {
+          "caller": "deriveDamage",
+          "callee": "isDamageMainTargetOnlyPower",
+          "lineNumber": 332
+        },
+        {
+          "caller": "buildChainPowers",
+          "callee": "deriveDamage",
+          "lineNumber": 347
+        },
+        {
+          "caller": "buildChainPowers",
+          "callee": "applyQuickSnipe",
+          "lineNumber": 351
+        },
+        {
+          "caller": "buildChainPowers",
+          "callee": "deriveDamage",
+          "lineNumber": 352
+        },
+        {
+          "caller": "buildChainPowers",
+          "callee": "selfBuffWindow",
+          "lineNumber": 357
+        },
+        {
+          "caller": "buildChainPowers",
+          "callee": "foeDebuffWindow",
+          "lineNumber": 358
+        },
+        {
+          "caller": "buildChainPowers",
+          "callee": "selfEnduranceGain",
+          "lineNumber": 368
+        },
+        {
+          "caller": "buildChainPowers",
+          "callee": "(POWER_FORMS[power.internalName] ?? []).map",
+          "lineNumber": 382
+        },
+        {
+          "caller": "buildChainPowers",
+          "callee": "calculateArcanaTime",
+          "lineNumber": 386
+        },
+        {
+          "caller": "buildChainPowers",
+          "callee": "forms.push",
+          "lineNumber": 393
+        },
+        {
+          "caller": "buildChainPowers",
+          "callee": "calculateArcanaTime",
+          "lineNumber": 397
+        },
+        {
+          "caller": "buildChainPowers",
+          "callee": "powerCastTime",
+          "lineNumber": 397
+        },
+        {
+          "caller": "buildChainPowers",
+          "callee": "deriveDamage",
+          "lineNumber": 409
+        },
+        {
+          "caller": "buildChainPowers",
+          "callee": "forms.push",
+          "lineNumber": 410
+        },
+        {
+          "caller": "buildChainPowers",
+          "callee": "calculateArcanaTime",
+          "lineNumber": 414
+        },
+        {
+          "caller": "buildChainPowers",
+          "callee": "powerCastTime",
+          "lineNumber": 414
+        },
+        {
+          "caller": "buildChainPowers",
+          "callee": "toHitBuffWindow",
+          "lineNumber": 424
+        },
+        {
+          "caller": "buildChainPowers",
+          "callee": "power.strengthsDisallowed?.includes",
+          "lineNumber": 437
+        },
+        {
+          "caller": "buildChainPowers",
+          "callee": "power.strengthsDisallowed?.includes",
+          "lineNumber": 438
+        },
+        {
+          "caller": "chainIdInternalName",
+          "callee": "id.indexOf",
+          "lineNumber": 480
+        },
+        {
+          "caller": "chainIdInternalName",
+          "callee": "id.slice",
+          "lineNumber": 481
+        },
+        {
+          "caller": "sequenceToIds",
+          "callee": "sequence.map((pi) => powers[pi]?.id).filter",
+          "lineNumber": 486
+        },
+        {
+          "caller": "sequenceToIds",
+          "callee": "sequence.map",
+          "lineNumber": 486
+        },
+        {
+          "caller": "idsToSequence",
+          "callee": "powers.findIndex",
+          "lineNumber": 495
+        },
+        {
+          "caller": "idsToSequence",
+          "callee": "chainIdInternalName",
+          "lineNumber": 497
+        },
+        {
+          "caller": "idsToSequence",
+          "callee": "powers.findIndex",
+          "lineNumber": 498
+        },
+        {
+          "caller": "idsToSequence",
+          "callee": "chainIdInternalName",
+          "lineNumber": 498
+        },
+        {
+          "caller": "idsToSequence",
+          "callee": "out.push",
+          "lineNumber": 500
+        }
+      ],
+      "metrics": {
+        "importCount": 9,
+        "exportCount": 5,
+        "functionCount": 18,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/utils/calculations/attack-chain.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 611,
+      "nonEmptyLines": 571,
+      "functions": [
+        {
+          "name": "chainDotTickProbability",
+          "startLine": 35,
+          "endLine": 38,
+          "params": [
+            "dot",
+            "t"
+          ]
+        },
+        {
+          "name": "effectiveRecharge",
+          "startLine": 221,
+          "endLine": 225,
+          "params": [
+            "p",
+            "globalRechargePct"
+          ]
+        },
+        {
+          "name": "effectiveStats",
+          "startLine": 231,
+          "endLine": 241,
+          "params": [
+            "powers",
+            "act"
+          ]
+        },
+        {
+          "name": "nominalDamage",
+          "startLine": 246,
+          "endLine": 251,
+          "params": [
+            "p"
+          ]
+        },
+        {
+          "name": "powerMetricValue",
+          "startLine": 255,
+          "endLine": 267,
+          "params": [
+            "p",
+            "metric",
+            "globalRechargePct"
+          ]
+        },
+        {
+          "name": "overlapsAny",
+          "startLine": 269,
+          "endLine": 274,
+          "params": [
+            "activations",
+            "start",
+            "end"
+          ]
+        },
+        {
+          "name": "findSlot",
+          "startLine": 285,
+          "endLine": 307,
+          "params": [
+            "powers",
+            "activations",
+            "pi",
+            "globalRechargePct"
+          ]
+        },
+        {
+          "name": "addActivation",
+          "startLine": 310,
+          "endLine": 320,
+          "params": [
+            "powers",
+            "activations",
+            "pi",
+            "globalRechargePct"
+          ]
+        },
+        {
+          "name": "removeLastActivation",
+          "startLine": 323,
+          "endLine": 328,
+          "params": [
+            "activations",
+            "pi"
+          ]
+        },
+        {
+          "name": "replayChain",
+          "startLine": 348,
+          "endLine": 415,
+          "params": [
+            "powers",
+            "sequence",
+            "globalRechargePct",
+            "formCtx"
+          ]
+        },
+        {
+          "name": "calcDeadGaps",
+          "startLine": 417,
+          "endLine": 427,
+          "params": [
+            "activations",
+            "cycleSec"
+          ]
+        },
+        {
+          "name": "activationDamage",
+          "startLine": 434,
+          "endLine": 444,
+          "params": [
+            "powers",
+            "act",
+            "cycleSec"
+          ]
+        },
+        {
+          "name": "simulateEndurance",
+          "startLine": 451,
+          "endLine": 533,
+          "params": [
+            "powers",
+            "activations",
+            "cycleSec",
+            "end"
+          ]
+        },
+        {
+          "name": "computeChain",
+          "startLine": 536,
+          "endLine": 611,
+          "params": [
+            "powers",
+            "activations",
+            "globalRechargePct",
+            "end",
+            "metric"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "chainDotTickProbability",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "MIN_RECHARGE_DENOM",
+          "line": 216,
+          "isDefault": false
+        },
+        {
+          "name": "effectiveRecharge",
+          "line": 221,
+          "isDefault": false
+        },
+        {
+          "name": "effectiveStats",
+          "line": 231,
+          "isDefault": false
+        },
+        {
+          "name": "powerMetricValue",
+          "line": 255,
+          "isDefault": false
+        },
+        {
+          "name": "findSlot",
+          "line": 285,
+          "isDefault": false
+        },
+        {
+          "name": "addActivation",
+          "line": 310,
+          "isDefault": false
+        },
+        {
+          "name": "removeLastActivation",
+          "line": 323,
+          "isDefault": false
+        },
+        {
+          "name": "replayChain",
+          "line": 348,
+          "isDefault": false
+        },
+        {
+          "name": "computeChain",
+          "line": 536,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "chainDotTickProbability",
+          "callee": "Math.pow",
+          "lineNumber": 37
+        },
+        {
+          "caller": "effectiveRecharge",
+          "callee": "Math.max",
+          "lineNumber": 223
+        },
+        {
+          "caller": "effectiveStats",
+          "callee": "p.forms?.find",
+          "lineNumber": 237
+        },
+        {
+          "caller": "nominalDamage",
+          "callee": "chainDotTickProbability",
+          "lineNumber": 249
+        },
+        {
+          "caller": "powerMetricValue",
+          "callee": "nominalDamage",
+          "lineNumber": 260
+        },
+        {
+          "caller": "powerMetricValue",
+          "callee": "effectiveRecharge",
+          "lineNumber": 263
+        },
+        {
+          "caller": "findSlot",
+          "callee": "effectiveRecharge",
+          "lineNumber": 292
+        },
+        {
+          "caller": "findSlot",
+          "callee": "activations.filter",
+          "lineNumber": 293
+        },
+        {
+          "caller": "findSlot",
+          "callee": "Math.max",
+          "lineNumber": 294
+        },
+        {
+          "caller": "findSlot",
+          "callee": "mine.map",
+          "lineNumber": 294
+        },
+        {
+          "caller": "findSlot",
+          "callee": "overlapsAny",
+          "lineNumber": 299
+        },
+        {
+          "caller": "findSlot",
+          "callee": "activations\n      .filter((a) => a.start < candidateEnd && a.end > candidateStart)\n      .sort",
+          "lineNumber": 300
+        },
+        {
+          "caller": "findSlot",
+          "callee": "activations\n      .filter",
+          "lineNumber": 300
+        },
+        {
+          "caller": "findSlot",
+          "callee": "Math.max",
+          "lineNumber": 304
+        },
+        {
+          "caller": "addActivation",
+          "callee": "findSlot",
+          "lineNumber": 316
+        },
+        {
+          "caller": "addActivation",
+          "callee": "next.sort",
+          "lineNumber": 318
+        },
+        {
+          "caller": "removeLastActivation",
+          "callee": "activations.filter((a) => a.pi === pi).sort",
+          "lineNumber": 324
+        },
+        {
+          "caller": "removeLastActivation",
+          "callee": "activations.filter",
+          "lineNumber": 324
+        },
+        {
+          "caller": "removeLastActivation",
+          "callee": "activations.filter",
+          "lineNumber": 327
+        },
+        {
+          "caller": "replayChain",
+          "callee": "sequence.forEach",
+          "lineNumber": 363
+        },
+        {
+          "caller": "replayChain",
+          "callee": "findSlot",
+          "lineNumber": 366
+        },
+        {
+          "caller": "replayChain",
+          "callee": "acts.some",
+          "lineNumber": 386
+        },
+        {
+          "caller": "replayChain",
+          "callee": "acts.push",
+          "lineNumber": 409
+        },
+        {
+          "caller": "replayChain",
+          "callee": "acts.sort",
+          "lineNumber": 411
+        },
+        {
+          "caller": "calcDeadGaps",
+          "callee": "[...activations].sort",
+          "lineNumber": 418
+        },
+        {
+          "caller": "calcDeadGaps",
+          "callee": "gaps.push",
+          "lineNumber": 422
+        },
+        {
+          "caller": "calcDeadGaps",
+          "callee": "Math.max",
+          "lineNumber": 423
+        },
+        {
+          "caller": "calcDeadGaps",
+          "callee": "gaps.push",
+          "lineNumber": 425
+        },
+        {
+          "caller": "activationDamage",
+          "callee": "effectiveStats",
+          "lineNumber": 435
+        },
+        {
+          "caller": "activationDamage",
+          "callee": "chainDotTickProbability",
+          "lineNumber": 440
+        },
+        {
+          "caller": "simulateEndurance",
+          "callee": "activations.reduce",
+          "lineNumber": 458
+        },
+        {
+          "caller": "simulateEndurance",
+          "callee": "effectiveStats",
+          "lineNumber": 458
+        },
+        {
+          "caller": "simulateEndurance",
+          "callee": "activations.reduce",
+          "lineNumber": 459
+        },
+        {
+          "caller": "simulateEndurance",
+          "callee": "[...activations]\n    .sort((a, b) => a.start - b.start)\n    .map",
+          "lineNumber": 466
+        },
+        {
+          "caller": "simulateEndurance",
+          "callee": "[...activations]\n    .sort",
+          "lineNumber": 466
+        },
+        {
+          "caller": "simulateEndurance",
+          "callee": "effectiveStats",
+          "lineNumber": 468
+        },
+        {
+          "caller": "push",
+          "callee": "track.push",
+          "lineNumber": 483
+        },
+        {
+          "caller": "push",
+          "callee": "Math.max",
+          "lineNumber": 483
+        },
+        {
+          "caller": "push",
+          "callee": "Math.min",
+          "lineNumber": 483
+        },
+        {
+          "caller": "simulateEndurance",
+          "callee": "push",
+          "lineNumber": 485
+        },
+        {
+          "caller": "simulateEndurance",
+          "callee": "Math.min",
+          "lineNumber": 492
+        },
+        {
+          "caller": "simulateEndurance",
+          "callee": "push",
+          "lineNumber": 493
+        },
+        {
+          "caller": "simulateEndurance",
+          "callee": "push",
+          "lineNumber": 498
+        },
+        {
+          "caller": "simulateEndurance",
+          "callee": "Math.min",
+          "lineNumber": 502
+        },
+        {
+          "caller": "simulateEndurance",
+          "callee": "Math.max",
+          "lineNumber": 502
+        },
+        {
+          "caller": "simulateEndurance",
+          "callee": "push",
+          "lineNumber": 503
+        },
+        {
+          "caller": "simulateEndurance",
+          "callee": "Math.min",
+          "lineNumber": 507
+        },
+        {
+          "caller": "simulateEndurance",
+          "callee": "push",
+          "lineNumber": 508
+        },
+        {
+          "caller": "simulateEndurance",
+          "callee": "Math.abs",
+          "lineNumber": 513
+        },
+        {
+          "caller": "computeChain",
+          "callee": "Math.max",
+          "lineNumber": 545
+        },
+        {
+          "caller": "computeChain",
+          "callee": "activations.map",
+          "lineNumber": 545
+        },
+        {
+          "caller": "computeChain",
+          "callee": "activations.map",
+          "lineNumber": 554
+        },
+        {
+          "caller": "computeChain",
+          "callee": "activations.filter",
+          "lineNumber": 555
+        },
+        {
+          "caller": "computeChain",
+          "callee": "Math.min",
+          "lineNumber": 556
+        },
+        {
+          "caller": "computeChain",
+          "callee": "mine.map",
+          "lineNumber": 556
+        },
+        {
+          "caller": "computeChain",
+          "callee": "Math.max",
+          "lineNumber": 557
+        },
+        {
+          "caller": "computeChain",
+          "callee": "mine.map",
+          "lineNumber": 557
+        },
+        {
+          "caller": "computeChain",
+          "callee": "effectiveRecharge",
+          "lineNumber": 558
+        },
+        {
+          "caller": "computeChain",
+          "callee": "calcDeadGaps",
+          "lineNumber": 562
+        },
+        {
+          "caller": "computeChain",
+          "callee": "deadGaps.reduce",
+          "lineNumber": 563
+        },
+        {
+          "caller": "computeChain",
+          "callee": "Math.round",
+          "lineNumber": 564
+        },
+        {
+          "caller": "computeChain",
+          "callee": "activationDamage",
+          "lineNumber": 572
+        },
+        {
+          "caller": "computeChain",
+          "callee": "effectiveStats",
+          "lineNumber": 575
+        },
+        {
+          "caller": "computeChain",
+          "callee": "castCount.set",
+          "lineNumber": 576
+        },
+        {
+          "caller": "computeChain",
+          "callee": "castCount.get",
+          "lineNumber": 576
+        },
+        {
+          "caller": "computeChain",
+          "callee": "powerMetricValue",
+          "lineNumber": 590
+        },
+        {
+          "caller": "computeChain",
+          "callee": "effectiveRecharge",
+          "lineNumber": 592
+        },
+        {
+          "caller": "computeChain",
+          "callee": "Math.min",
+          "lineNumber": 593
+        },
+        {
+          "caller": "computeChain",
+          "callee": "Math.round",
+          "lineNumber": 597
+        },
+        {
+          "caller": "computeChain",
+          "callee": "simulateEndurance",
+          "lineNumber": 608
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 10,
+        "functionCount": 14,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/utils/calculations/healing.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 58,
+      "nonEmptyLines": 52,
+      "functions": [
+        {
+          "name": "extractHealingFromDamage",
+          "startLine": 31,
+          "endLine": 58,
+          "params": [
+            "damage"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "extractHealingFromDamage",
+          "line": 31,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "extractHealingFromDamage",
+          "callee": "Array.isArray",
+          "lineNumber": 34
+        },
+        {
+          "caller": "extractHealingFromDamage",
+          "callee": "(damage as DamageEntry[]).filter",
+          "lineNumber": 35
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/utils/calculations/index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 185,
+      "nonEmptyLines": 174,
+      "exports": [
+        {
+          "name": "getBaseDamage",
+          "line": 6,
+          "isDefault": false
+        },
+        {
+          "name": "calculateActualDamage",
+          "line": 6,
+          "isDefault": false
+        },
+        {
+          "name": "calculatePowerDamage",
+          "line": 6,
+          "isDefault": false
+        },
+        {
+          "name": "formatDamage",
+          "line": 6,
+          "isDefault": false
+        },
+        {
+          "name": "calculateBuffDebuffPercent",
+          "line": 6,
+          "isDefault": false
+        },
+        {
+          "name": "abbreviateDamageType",
+          "line": 6,
+          "isDefault": false
+        },
+        {
+          "name": "calculateArcanaTime",
+          "line": 6,
+          "isDefault": false
+        },
+        {
+          "name": "dotTickCount",
+          "line": 6,
+          "isDefault": false
+        },
+        {
+          "name": "calculateDamageWithATTable",
+          "line": 6,
+          "isDefault": false
+        },
+        {
+          "name": "DamageTableType",
+          "line": 6,
+          "isDefault": false
+        },
+        {
+          "name": "DamageCalculationOptions",
+          "line": 6,
+          "isDefault": false
+        },
+        {
+          "name": "PowerDamageResult",
+          "line": 6,
+          "isDefault": false
+        },
+        {
+          "name": "DamageEffect",
+          "line": 6,
+          "isDefault": false
+        },
+        {
+          "name": "PowerWithDamage",
+          "line": 6,
+          "isDefault": false
+        },
+        {
+          "name": "BuildContext",
+          "line": 6,
+          "isDefault": false
+        },
+        {
+          "name": "getAspectSchedule",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "getIOValueAtLevel",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "normalizeAspectName",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "applyED",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "parseIOSetPieceValues",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "BOOST_MULTIPLIER_PER_LEVEL",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "BASE_RECOVERY_RATE",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "BASE_REGEN_RATE",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "getMultiAspectModifier",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "getEffectiveAspectCount",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "getSetRarityMultiplier",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "calculatePowerEnhancementBonuses",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "combineWithAlphaED",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "formatEnhancementValue",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "EnhancementSchedule",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "ParsedBonuses",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "SlotWithEnhancement",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "PowerWithSlots",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "EnhancementBonuses",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "normalizeStatName",
+          "line": 48,
+          "isDefault": false
+        },
+        {
+          "name": "createBonusTracking",
+          "line": 48,
+          "isDefault": false
+        },
+        {
+          "name": "trackBonus",
+          "line": 48,
+          "isDefault": false
+        },
+        {
+          "name": "getAggregatedFromTracking",
+          "line": 48,
+          "isDefault": false
+        },
+        {
+          "name": "collectAllSetBonuses",
+          "line": 48,
+          "isDefault": false
+        },
+        {
+          "name": "calculateSetBonuses",
+          "line": 48,
+          "isDefault": false
+        },
+        {
+          "name": "getStatBreakdown",
+          "line": 48,
+          "isDefault": false
+        },
+        {
+          "name": "isBonusCapped",
+          "line": 48,
+          "isDefault": false
+        },
+        {
+          "name": "getBonusCount",
+          "line": 48,
+          "isDefault": false
+        },
+        {
+          "name": "getTotalBonusCount",
+          "line": 48,
+          "isDefault": false
+        },
+        {
+          "name": "getActiveSetBonusesList",
+          "line": 48,
+          "isDefault": false
+        },
+        {
+          "name": "BonusSource",
+          "line": 48,
+          "isDefault": false
+        },
+        {
+          "name": "ValueTracking",
+          "line": 48,
+          "isDefault": false
+        },
+        {
+          "name": "BonusTracking",
+          "line": 48,
+          "isDefault": false
+        },
+        {
+          "name": "AggregatedBonuses",
+          "line": 48,
+          "isDefault": false
+        },
+        {
+          "name": "StatBreakdownItem",
+          "line": 48,
+          "isDefault": false
+        },
+        {
+          "name": "IOSet",
+          "line": 48,
+          "isDefault": false
+        },
+        {
+          "name": "BuildPowers",
+          "line": 48,
+          "isDefault": false
+        },
+        {
+          "name": "computeSetTracking",
+          "line": 70,
+          "isDefault": false
+        },
+        {
+          "name": "createEmptyStats",
+          "line": 73,
+          "isDefault": false
+        },
+        {
+          "name": "getBaselineHealth",
+          "line": 73,
+          "isDefault": false
+        },
+        {
+          "name": "CharacterStats",
+          "line": 73,
+          "isDefault": false
+        },
+        {
+          "name": "BaselineHealth",
+          "line": 73,
+          "isDefault": false
+        },
+        {
+          "name": "calculateCharacterTotals",
+          "line": 81,
+          "isDefault": false
+        },
+        {
+          "name": "getBreakdownForStat",
+          "line": 81,
+          "isDefault": false
+        },
+        {
+          "name": "hasStatBonuses",
+          "line": 81,
+          "isDefault": false
+        },
+        {
+          "name": "getAlphaEnhancementBonuses",
+          "line": 81,
+          "isDefault": false
+        },
+        {
+          "name": "CharacterGlobalBonuses",
+          "line": 81,
+          "isDefault": false
+        },
+        {
+          "name": "StatSource",
+          "line": 81,
+          "isDefault": false
+        },
+        {
+          "name": "DashboardStatBreakdown",
+          "line": 81,
+          "isDefault": false
+        },
+        {
+          "name": "CharacterCalculationResult",
+          "line": 81,
+          "isDefault": false
+        },
+        {
+          "name": "INCARNATE_MIN_LEVEL",
+          "line": 93,
+          "isDefault": false
+        },
+        {
+          "name": "getEffectiveLevel",
+          "line": 93,
+          "isDefault": false
+        },
+        {
+          "name": "areIncarnatesSuppressed",
+          "line": 93,
+          "isDefault": false
+        },
+        {
+          "name": "normalizeTableName",
+          "line": 100,
+          "isDefault": false
+        },
+        {
+          "name": "normalizeArchetypeId",
+          "line": 100,
+          "isDefault": false
+        },
+        {
+          "name": "calculateDefiance",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "isBlasterAttackPower",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "getDominationInfo",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "getPowerDominationSummary",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "DOMINATION_MEZ_PROTECTION",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "getScourgeInfo",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "calculateScourgeChance",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "calculateScourgeDamage",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "isCorruptorAttackPower",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "getFuryInfo",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "calculateFuryDamageBonus",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "calculateFuryDamage",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "isBruteAttackPower",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "getSupremacyInfo",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "getBodyguardInfo",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "calculateSupremacyDamage",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "calculateSupremacyToHit",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "calculateBodyguardDamage",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "isMastermindPower",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "getVigilanceInfo",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "calculateVigilanceDamageBonus",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "calculateVigilanceDamage",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "isDefenderPower",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "getOpportunityInfo",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "isSentinelPower",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "getCriticalHitInfo",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "calculateCriticalHitChance",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "calculateCriticalHitDamage",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "isScrapperAttackPower",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "getAssassinationInfo",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "calculateAssassinationCritChance",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "calculateAssassinationDamageBonus",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "calculateAssassinationDamage",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "isStalkerAttackPower",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "getGauntletInfo",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "calculateGauntletRadius",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "calculateGauntletArc",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "isTankerPower",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "getContainmentInfo",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "calculateContainmentDamageBonus",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "calculateContainmentDamage",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "isControllerPower",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "DefianceInfo",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "DominationInfo",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "PowerDominationSummary",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "DominationMezType",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "ScourgeInfo",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "FuryInfo",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "SupremacyInfo",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "BodyguardInfo",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "VigilanceInfo",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "OpportunityInfo",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "CriticalHitInfo",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "CriticalHitTarget",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "AssassinationInfo",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "GauntletInfo",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "ContainmentInfo",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "ContainmentMezType",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "OPPORTUNITY_CRIT_MULTIPLIER",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "getOpportunityCritBonus",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "calculateOpportunityCritDamage",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "isSentinelAttackPower",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "isPermaEligible",
+          "line": 172,
+          "isDefault": false
+        },
+        {
+          "name": "calculatePermaInfo",
+          "line": 172,
+          "isDefault": false
+        },
+        {
+          "name": "PermaInfo",
+          "line": 172,
+          "isDefault": false
+        },
+        {
+          "name": "calculateBuffDebuffFraction",
+          "line": 179,
+          "isDefault": false
+        },
+        {
+          "name": "getEffectiveBuffDebuffModifier",
+          "line": 179,
+          "isDefault": false
+        },
+        {
+          "name": "BASE_BUFF",
+          "line": 179,
+          "isDefault": false
+        },
+        {
+          "name": "BASE_DEBUFF",
+          "line": 179,
+          "isDefault": false
+        },
+        {
+          "name": "BuffDebuffCategory",
+          "line": 179,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 140,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/utils/calculations/pet-damage.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 605,
+      "nonEmptyLines": 548,
+      "functions": [
+        {
+          "name": "calculateAbilityBaseDamage",
+          "startLine": 86,
+          "endLine": 102,
+          "params": [
+            "ability",
+            "characterClass",
+            "level"
+          ]
+        },
+        {
+          "name": "calculateCycleTime",
+          "startLine": 109,
+          "endLine": 118,
+          "params": [
+            "ability"
+          ]
+        },
+        {
+          "name": "calculatePetDamage",
+          "startLine": 132,
+          "endLine": 253,
+          "params": [
+            "entityName",
+            "level",
+            "entityCount",
+            "duration",
+            "enhancementBonus",
+            "applyEnhancements",
+            "globalDamageBonus",
+            "upgradeTier"
+          ]
+        },
+        {
+          "name": "calculateResolvedPseudoPetDamage",
+          "startLine": 267,
+          "endLine": 412,
+          "params": [
+            "entity",
+            "archetype",
+            "level",
+            "enhancementBonus",
+            "applyEnhancements",
+            "globalDamageBonus",
+            "poweredUp"
+          ]
+        },
+        {
+          "name": "shouldApplyEnhancements",
+          "startLine": 418,
+          "endLine": 425,
+          "params": [
+            "entityName",
+            "copyBoosts"
+          ]
+        },
+        {
+          "name": "synthesizePseudoPetEffects",
+          "startLine": 468,
+          "endLine": 538,
+          "params": [
+            "summon"
+          ]
+        },
+        {
+          "name": "getPseudoPetAoEGeometry",
+          "startLine": 558,
+          "endLine": 582,
+          "params": [
+            "summon"
+          ]
+        },
+        {
+          "name": "resolveProcAreaGeometry",
+          "startLine": 593,
+          "endLine": 605,
+          "params": [
+            "directRadius",
+            "directArcDegrees",
+            "summon"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "calculatePetDamage",
+          "line": 132,
+          "isDefault": false
+        },
+        {
+          "name": "calculateResolvedPseudoPetDamage",
+          "line": 267,
+          "isDefault": false
+        },
+        {
+          "name": "shouldApplyEnhancements",
+          "line": 418,
+          "isDefault": false
+        },
+        {
+          "name": "synthesizePseudoPetEffects",
+          "line": 468,
+          "isDefault": false
+        },
+        {
+          "name": "getPseudoPetAoEGeometry",
+          "line": 558,
+          "isDefault": false
+        },
+        {
+          "name": "resolveProcAreaGeometry",
+          "line": 593,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "calculateAbilityBaseDamage",
+          "callee": "getPetTableValue",
+          "lineNumber": 94
+        },
+        {
+          "caller": "calculateAbilityBaseDamage",
+          "callee": "Math.abs",
+          "lineNumber": 97
+        },
+        {
+          "caller": "calculateAbilityBaseDamage",
+          "callee": "Math.abs",
+          "lineNumber": 97
+        },
+        {
+          "caller": "calculateAbilityBaseDamage",
+          "callee": "results.push",
+          "lineNumber": 98
+        },
+        {
+          "caller": "calculateCycleTime",
+          "callee": "Math.max",
+          "lineNumber": 115
+        },
+        {
+          "caller": "calculatePetDamage",
+          "callee": "getPetEntity",
+          "lineNumber": 142
+        },
+        {
+          "caller": "calculatePetDamage",
+          "callee": "entity.upgradeTiers.find",
+          "lineNumber": 148
+        },
+        {
+          "caller": "calculatePetDamage",
+          "callee": "entity.upgradeTiers.find",
+          "lineNumber": 152
+        },
+        {
+          "caller": "calculatePetDamage",
+          "callee": "allEffectsMap.has",
+          "lineNumber": 167
+        },
+        {
+          "caller": "calculatePetDamage",
+          "callee": "getPetTableValue",
+          "lineNumber": 170
+        },
+        {
+          "caller": "calculatePetDamage",
+          "callee": "Math.abs",
+          "lineNumber": 172
+        },
+        {
+          "caller": "calculatePetDamage",
+          "callee": "Math.abs",
+          "lineNumber": 172
+        },
+        {
+          "caller": "calculatePetDamage",
+          "callee": "allEffectsMap.set",
+          "lineNumber": 177
+        },
+        {
+          "caller": "calculatePetDamage",
+          "callee": "effectOnlyAbilities.push",
+          "lineNumber": 184
+        },
+        {
+          "caller": "calculatePetDamage",
+          "callee": "calculateAbilityBaseDamage",
+          "lineNumber": 188
+        },
+        {
+          "caller": "calculatePetDamage",
+          "callee": "calculateCycleTime",
+          "lineNumber": 191
+        },
+        {
+          "caller": "calculatePetDamage",
+          "callee": "baseDamages.reduce",
+          "lineNumber": 195
+        },
+        {
+          "caller": "calculatePetDamage",
+          "callee": "baseDamages.map",
+          "lineNumber": 211
+        },
+        {
+          "caller": "calculatePetDamage",
+          "callee": "abilities.push",
+          "lineNumber": 218
+        },
+        {
+          "caller": "calculatePetDamage",
+          "callee": "Array.from",
+          "lineNumber": 245
+        },
+        {
+          "caller": "calculatePetDamage",
+          "callee": "allEffectsMap.values",
+          "lineNumber": 245
+        },
+        {
+          "caller": "isPvPTable",
+          "callee": "table?.toLowerCase().includes",
+          "lineNumber": 280
+        },
+        {
+          "caller": "isPvPTable",
+          "callee": "table?.toLowerCase",
+          "lineNumber": 280
+        },
+        {
+          "caller": "isInherentDamageTable",
+          "callee": "table?.toLowerCase().includes",
+          "lineNumber": 281
+        },
+        {
+          "caller": "isInherentDamageTable",
+          "callee": "table?.toLowerCase",
+          "lineNumber": 281
+        },
+        {
+          "caller": "calculateResolvedPseudoPetDamage",
+          "callee": "allEffectsMap.has",
+          "lineNumber": 297
+        },
+        {
+          "caller": "calculateResolvedPseudoPetDamage",
+          "callee": "getTableValue",
+          "lineNumber": 300
+        },
+        {
+          "caller": "calculateResolvedPseudoPetDamage",
+          "callee": "Math.abs",
+          "lineNumber": 301
+        },
+        {
+          "caller": "calculateResolvedPseudoPetDamage",
+          "callee": "Math.abs",
+          "lineNumber": 301
+        },
+        {
+          "caller": "calculateResolvedPseudoPetDamage",
+          "callee": "allEffectsMap.set",
+          "lineNumber": 305
+        },
+        {
+          "caller": "calculateResolvedPseudoPetDamage",
+          "callee": "allEffectsMap.has",
+          "lineNumber": 319
+        },
+        {
+          "caller": "calculateResolvedPseudoPetDamage",
+          "callee": "getTableValue",
+          "lineNumber": 320
+        },
+        {
+          "caller": "calculateResolvedPseudoPetDamage",
+          "callee": "allEffectsMap.set",
+          "lineNumber": 321
+        },
+        {
+          "caller": "calculateResolvedPseudoPetDamage",
+          "callee": "Math.abs",
+          "lineNumber": 323
+        },
+        {
+          "caller": "calculateResolvedPseudoPetDamage",
+          "callee": "Math.abs",
+          "lineNumber": 323
+        },
+        {
+          "caller": "calculateResolvedPseudoPetDamage",
+          "callee": "effectOnlyAbilities.push",
+          "lineNumber": 336
+        },
+        {
+          "caller": "calculateResolvedPseudoPetDamage",
+          "callee": "damageSource.filter",
+          "lineNumber": 354
+        },
+        {
+          "caller": "calculateResolvedPseudoPetDamage",
+          "callee": "isPvPTable",
+          "lineNumber": 354
+        },
+        {
+          "caller": "calculateResolvedPseudoPetDamage",
+          "callee": "isInherentDamageTable",
+          "lineNumber": 354
+        },
+        {
+          "caller": "calculateResolvedPseudoPetDamage",
+          "callee": "damageSource.filter",
+          "lineNumber": 356
+        },
+        {
+          "caller": "calculateResolvedPseudoPetDamage",
+          "callee": "isPvPTable",
+          "lineNumber": 356
+        },
+        {
+          "caller": "calculateResolvedPseudoPetDamage",
+          "callee": "getTableValue",
+          "lineNumber": 361
+        },
+        {
+          "caller": "calculateResolvedPseudoPetDamage",
+          "callee": "baseDamages.push",
+          "lineNumber": 363
+        },
+        {
+          "caller": "calculateResolvedPseudoPetDamage",
+          "callee": "Math.abs",
+          "lineNumber": 363
+        },
+        {
+          "caller": "calculateResolvedPseudoPetDamage",
+          "callee": "Math.abs",
+          "lineNumber": 363
+        },
+        {
+          "caller": "calculateResolvedPseudoPetDamage",
+          "callee": "Math.max",
+          "lineNumber": 369
+        },
+        {
+          "caller": "calculateResolvedPseudoPetDamage",
+          "callee": "baseDamages.reduce",
+          "lineNumber": 372
+        },
+        {
+          "caller": "calculateResolvedPseudoPetDamage",
+          "callee": "abilities.push",
+          "lineNumber": 376
+        },
+        {
+          "caller": "calculateResolvedPseudoPetDamage",
+          "callee": "baseDamages.map",
+          "lineNumber": 385
+        },
+        {
+          "caller": "calculateResolvedPseudoPetDamage",
+          "callee": "Array.from",
+          "lineNumber": 404
+        },
+        {
+          "caller": "calculateResolvedPseudoPetDamage",
+          "callee": "allEffectsMap.values",
+          "lineNumber": 404
+        },
+        {
+          "caller": "shouldApplyEnhancements",
+          "callee": "getPetEntity",
+          "lineNumber": 422
+        },
+        {
+          "caller": "synthesizePseudoPetEffects",
+          "callee": "import",
+          "lineNumber": 469
+        },
+        {
+          "caller": "synthesizePseudoPetEffects",
+          "callee": "import",
+          "lineNumber": 470
+        },
+        {
+          "caller": "synthesizePseudoPetEffects",
+          "callee": "summon.entities.map",
+          "lineNumber": 507
+        },
+        {
+          "caller": "synthesizePseudoPetEffects",
+          "callee": "getPetEntity",
+          "lineNumber": 510
+        },
+        {
+          "caller": "synthesizePseudoPetEffects",
+          "callee": "addEnhanceable",
+          "lineNumber": 514
+        },
+        {
+          "caller": "synthesizePseudoPetEffects",
+          "callee": "addMez",
+          "lineNumber": 515
+        },
+        {
+          "caller": "synthesizePseudoPetEffects",
+          "callee": "addEnhanceable",
+          "lineNumber": 528
+        },
+        {
+          "caller": "synthesizePseudoPetEffects",
+          "callee": "addMez",
+          "lineNumber": 529
+        },
+        {
+          "caller": "synthesizePseudoPetEffects",
+          "callee": "Object.keys",
+          "lineNumber": 535
+        },
+        {
+          "caller": "synthesizePseudoPetEffects",
+          "callee": "import",
+          "lineNumber": 536
+        },
+        {
+          "caller": "getPseudoPetAoEGeometry",
+          "callee": "import",
+          "lineNumber": 559
+        },
+        {
+          "caller": "getPseudoPetAoEGeometry",
+          "callee": "summon.entities.map",
+          "lineNumber": 570
+        },
+        {
+          "caller": "getPseudoPetAoEGeometry",
+          "callee": "getPetEntity",
+          "lineNumber": 573
+        },
+        {
+          "caller": "getPseudoPetAoEGeometry",
+          "callee": "consider",
+          "lineNumber": 575
+        },
+        {
+          "caller": "getPseudoPetAoEGeometry",
+          "callee": "consider",
+          "lineNumber": 578
+        },
+        {
+          "caller": "resolveProcAreaGeometry",
+          "callee": "import",
+          "lineNumber": 596
+        },
+        {
+          "caller": "resolveProcAreaGeometry",
+          "callee": "getPseudoPetAoEGeometry",
+          "lineNumber": 604
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 6,
+        "functionCount": 8,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/utils/calculations/power-at-mechanics.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 78,
+      "nonEmptyLines": 72,
+      "functions": [
+        {
+          "name": "resolveAtMechanic",
+          "startLine": 54,
+          "endLine": 73,
+          "params": [
+            "powersetId",
+            "ctx",
+            "fromHideBonus"
+          ]
+        },
+        {
+          "name": "atMechanicMultiplier",
+          "startLine": 76,
+          "endLine": 78,
+          "params": [
+            "powersetId",
+            "ctx",
+            "fromHideBonus"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "resolveAtMechanic",
+          "line": 54,
+          "isDefault": false
+        },
+        {
+          "name": "atMechanicMultiplier",
+          "line": 76,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "resolveAtMechanic",
+          "callee": "isCorruptorAttackPower",
+          "lineNumber": 60
+        },
+        {
+          "caller": "resolveAtMechanic",
+          "callee": "calculateScourgeDamage",
+          "lineNumber": 61
+        },
+        {
+          "caller": "resolveAtMechanic",
+          "callee": "isScrapperAttackPower",
+          "lineNumber": 62
+        },
+        {
+          "caller": "resolveAtMechanic",
+          "callee": "calculateCriticalHitDamage",
+          "lineNumber": 63
+        },
+        {
+          "caller": "resolveAtMechanic",
+          "callee": "isStalkerAttackPower",
+          "lineNumber": 64
+        },
+        {
+          "caller": "resolveAtMechanic",
+          "callee": "calculateAssassinationDamage",
+          "lineNumber": 67
+        },
+        {
+          "caller": "resolveAtMechanic",
+          "callee": "isControllerPower",
+          "lineNumber": 68
+        },
+        {
+          "caller": "resolveAtMechanic",
+          "callee": "calculateContainmentDamage",
+          "lineNumber": 69
+        },
+        {
+          "caller": "resolveAtMechanic",
+          "callee": "isSentinelAttackPower",
+          "lineNumber": 70
+        },
+        {
+          "caller": "resolveAtMechanic",
+          "callee": "calculateOpportunityCritDamage",
+          "lineNumber": 71
+        },
+        {
+          "caller": "atMechanicMultiplier",
+          "callee": "resolveAtMechanic",
+          "lineNumber": 77
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/utils/chain-expressions.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 36,
+      "nonEmptyLines": 34,
+      "functions": [
+        {
+          "name": "describeChainTarget",
+          "startLine": 20,
+          "endLine": 26,
+          "params": [
+            "expr"
+          ]
+        },
+        {
+          "name": "describeTargetCap",
+          "startLine": 32,
+          "endLine": 36,
+          "params": [
+            "expr"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "describeChainTarget",
+          "line": 20,
+          "isDefault": false
+        },
+        {
+          "name": "describeTargetCap",
+          "line": 32,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "describeChainTarget",
+          "callee": "/kHitPoints%/.test",
+          "lineNumber": 21
+        },
+        {
+          "caller": "describeChainTarget",
+          "callee": "/kEndurance%/.test",
+          "lineNumber": 22
+        },
+        {
+          "caller": "describeChainTarget",
+          "callee": "/kAbsorb%/.test",
+          "lineNumber": 23
+        },
+        {
+          "caller": "describeChainTarget",
+          "callee": "/\\bprevdistance\\b/.test",
+          "lineNumber": 24
+        },
+        {
+          "caller": "describeTargetCap",
+          "callee": "/ownPowerNum/.test",
+          "lineNumber": 33
+        },
+        {
+          "caller": "describeTargetCap",
+          "callee": "/Shock_Therapy/.test",
+          "lineNumber": 33
+        },
+        {
+          "caller": "describeTargetCap",
+          "callee": "/GauntletTargetCap/.test",
+          "lineNumber": 34
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/utils/format-precision.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 27,
+      "nonEmptyLines": 27,
+      "functions": [
+        {
+          "name": "formatPrecision",
+          "startLine": 24,
+          "endLine": 27,
+          "params": [
+            "value",
+            "maxDecimals"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "formatPrecision",
+          "line": 24,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "formatPrecision",
+          "callee": "parseFloat(value.toFixed(maxDecimals)).toString",
+          "lineNumber": 26
+        },
+        {
+          "caller": "formatPrecision",
+          "callee": "parseFloat",
+          "lineNumber": 26
+        },
+        {
+          "caller": "formatPrecision",
+          "callee": "value.toFixed",
+          "lineNumber": 26
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/utils/mode-suppression.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 107,
+      "nonEmptyLines": 99,
+      "functions": [
+        {
+          "name": "isActivePower",
+          "startLine": 41,
+          "endLine": 43,
+          "params": [
+            "p"
+          ]
+        },
+        {
+          "name": "computeModeSuppression",
+          "startLine": 53,
+          "endLine": 78,
+          "params": [
+            "powers"
+          ]
+        },
+        {
+          "name": "modeLabel",
+          "startLine": 98,
+          "endLine": 107,
+          "params": [
+            "id"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "computeModeSuppression",
+          "line": 53,
+          "isDefault": false
+        },
+        {
+          "name": "modeLabel",
+          "line": 98,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "isActivePower",
+          "callee": "p.powerType?.toLowerCase",
+          "lineNumber": 42
+        },
+        {
+          "caller": "computeModeSuppression",
+          "callee": "isActivePower",
+          "lineNumber": 57
+        },
+        {
+          "caller": "computeModeSuppression",
+          "callee": "liveModes.has",
+          "lineNumber": 59
+        },
+        {
+          "caller": "computeModeSuppression",
+          "callee": "liveModes.set",
+          "lineNumber": 59
+        },
+        {
+          "caller": "computeModeSuppression",
+          "callee": "isActivePower",
+          "lineNumber": 67
+        },
+        {
+          "caller": "computeModeSuppression",
+          "callee": "liveModes.get",
+          "lineNumber": 69
+        },
+        {
+          "caller": "computeModeSuppression",
+          "callee": "suppressed.set",
+          "lineNumber": 72
+        },
+        {
+          "caller": "modeLabel",
+          "callee": "id.endsWith",
+          "lineNumber": 100
+        },
+        {
+          "caller": "modeLabel",
+          "callee": "id.slice",
+          "lineNumber": 101
+        },
+        {
+          "caller": "modeLabel",
+          "callee": "base\n    .replace(/_/g, ' ')\n    .replace(/([a-z0-9])([A-Z])/g, '$1 $2')\n    .trim",
+          "lineNumber": 102
+        },
+        {
+          "caller": "modeLabel",
+          "callee": "base\n    .replace(/_/g, ' ')\n    .replace",
+          "lineNumber": 102
+        },
+        {
+          "caller": "modeLabel",
+          "callee": "base\n    .replace",
+          "lineNumber": 102
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    }
+  ]
+}

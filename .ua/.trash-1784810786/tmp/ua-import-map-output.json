@@ -1,0 +1,2336 @@
+{
+  "scriptCompleted": true,
+  "stats": {
+    "filesScanned": 609,
+    "filesWithImports": 381,
+    "totalEdges": 1336
+  },
+  "importMap": {
+    ".changelog-posted.json": [],
+    ".github/workflows/ci.yml": [],
+    ".github/workflows/deploy.yml": [],
+    ".github/workflows/regen-diff.yml": [],
+    "ARCHITECTURE.md": [],
+    "CLAUDE.md": [],
+    "COH-DATA-MODEL.md": [],
+    "CONVERTER-ATOM-ARRAY-PLAN.md": [],
+    "GAME-DATA-PRINCIPLES.md": [],
+    "README.md": [],
+    "REBUILD-PLAN.md": [],
+    "SidekickLauncher.bat": [],
+    "SidekickLauncher.sh": [],
+    "TRADEMARKS.md": [],
+    "docs/DATA-GAP-REGISTER.md": [],
+    "feedback-worker/package.json": [],
+    "feedback-worker/src/index.ts": [],
+    "feedback-worker/tsconfig.json": [],
+    "feedback-worker/wrangler.toml": [],
+    "index.html": [],
+    "package.json": [],
+    "public/404.html": [],
+    "public/CNAME": [],
+    "public/manifest.json": [],
+    "public/og-image.html": [],
+    "public/rearrange.webp": [],
+    "public/robots.txt": [],
+    "public/sitemap.xml": [],
+    "public/system-atlas.html": [],
+    "scripts/README-bulk-import-mids.md": [],
+    "scripts/_dataset-paths.cjs": [],
+    "scripts/audit-allowed-set-categories.cjs": [
+      "scripts/_dataset-paths.cjs",
+      "scripts/convert-powerset.cjs"
+    ],
+    "scripts/audit-converter-twins.cjs": [
+      "scripts/planb-shadow-sweep.cjs",
+      "src/data/core/atomic-effect.ts"
+    ],
+    "scripts/audit-coverage-census.cjs": [
+      "scripts/planb-shadow-sweep.cjs",
+      "src/data/core/atomic-effect.ts"
+    ],
+    "scripts/bridge-attrib-one.cjs": [
+      "src/data/core/atomic-effect.ts"
+    ],
+    "scripts/bulk-import-mids.ts": [
+      "src/data/dataset.ts",
+      "src/types/index.ts",
+      "src/utils/build-serialization.ts",
+      "src/utils/mids-import/index.ts",
+      "src/utils/mids-import/types.ts"
+    ],
+    "scripts/ci-local.sh": [],
+    "scripts/convert-all-powersets.cjs": [
+      "scripts/_dataset-paths.cjs",
+      "scripts/convert-powerset.cjs"
+    ],
+    "scripts/convert-archetypes.cjs": [
+      "scripts/_dataset-paths.cjs"
+    ],
+    "scripts/convert-epic-pools.cjs": [
+      "scripts/_dataset-paths.cjs",
+      "scripts/convert-powerset.cjs"
+    ],
+    "scripts/convert-incarnate-effects.cjs": [
+      "scripts/_dataset-paths.cjs"
+    ],
+    "scripts/convert-pet-entities.cjs": [
+      "scripts/_dataset-paths.cjs"
+    ],
+    "scripts/convert-pool-powers.cjs": [
+      "scripts/_dataset-paths.cjs",
+      "scripts/convert-powerset.cjs"
+    ],
+    "scripts/convert-powerset.cjs": [
+      "scripts/_dataset-paths.cjs",
+      "src/data/core/atomic-effect.ts"
+    ],
+    "scripts/convert-salvage.cjs": [],
+    "scripts/delete-user-shared-builds.ts": [],
+    "scripts/dsh6-collapse-detector.cjs": [
+      "src/data/core/atomic-effect.ts"
+    ],
+    "scripts/dsh6-collapse-worklist.json": [],
+    "scripts/dsh6-gate-allowlist.json": [],
+    "scripts/dsh6-shadow-atoms.cjs": [
+      "scripts/convert-powerset.cjs",
+      "src/data/core/atomic-effect.ts"
+    ],
+    "scripts/dsh8-incarnate-collapse-detector.cjs": [
+      "src/data/core/atomic-effect.ts"
+    ],
+    "scripts/dsh8-incarnate-collapse-worklist.json": [],
+    "scripts/env-loader.ts": [],
+    "scripts/env-shim.ts": [],
+    "scripts/extract-at-tables.cjs": [
+      "scripts/_dataset-paths.cjs"
+    ],
+    "scripts/extract-genesis-icons.py": [],
+    "scripts/extract-proc-data.py": [],
+    "scripts/extract-rebirth-io-sets-v2.py": [],
+    "scripts/extract-thunderspy-icons.py": [],
+    "scripts/generate-archetypes.cjs": [
+      "scripts/_dataset-paths.cjs"
+    ],
+    "scripts/generate-kheldian-variants.cjs": [
+      "scripts/_dataset-paths.cjs",
+      "scripts/convert-powerset.cjs"
+    ],
+    "scripts/generate-powerset-index.cjs": [
+      "scripts/_dataset-paths.cjs"
+    ],
+    "scripts/generate-primalist-variants.cjs": [
+      "scripts/_dataset-paths.cjs",
+      "scripts/convert-powerset.cjs"
+    ],
+    "scripts/git-hooks/post-commit": [],
+    "scripts/migrate-to-layered.cjs": [
+      "scripts/convert-powerset.cjs"
+    ],
+    "scripts/planb-shadow-bag.cjs": [
+      "scripts/planb-shadow-sweep.cjs",
+      "src/data/core/atom-query.ts",
+      "src/data/core/atomic-effect.ts"
+    ],
+    "scripts/planb-shadow-defense.cjs": [
+      "scripts/planb-shadow-sweep.cjs",
+      "src/data/core/atom-query.ts"
+    ],
+    "scripts/planb-shadow-maxhp.cjs": [
+      "scripts/planb-shadow-sweep.cjs",
+      "src/data/core/atom-query.ts"
+    ],
+    "scripts/planb-shadow-movement.cjs": [
+      "scripts/planb-shadow-sweep.cjs",
+      "src/data/core/atom-query.ts"
+    ],
+    "scripts/planb-shadow-pertarget.cjs": [
+      "scripts/planb-shadow-sweep.cjs",
+      "src/data/core/atom-query.ts"
+    ],
+    "scripts/planb-shadow-resistance.cjs": [
+      "scripts/planb-shadow-sweep.cjs",
+      "src/data/core/atom-query.ts"
+    ],
+    "scripts/planb-shadow-resources.cjs": [
+      "scripts/planb-shadow-sweep.cjs",
+      "src/data/core/atom-query.ts"
+    ],
+    "scripts/planb-shadow-sweep.cjs": [],
+    "scripts/planb-shadow-tohit.cjs": [
+      "scripts/planb-shadow-sweep.cjs",
+      "src/data/core/atom-query.ts"
+    ],
+    "scripts/push-changelog-discord.ts": [
+      "src/data/changelog-manual.ts"
+    ],
+    "scripts/reconvert-redirect-powersets.cjs": [
+      "scripts/_dataset-paths.cjs",
+      "scripts/convert-powerset.cjs"
+    ],
+    "scripts/regen-all.cjs": [],
+    "scripts/register-env-loader.mjs": [],
+    "scripts/validate-converter-output.cjs": [
+      "scripts/_dataset-paths.cjs",
+      "src/data/core/atomic-effect.ts"
+    ],
+    "skif-format.csv": [],
+    "skif-format.txt": [],
+    "snap-after-setup.yml": [],
+    "src/App.tsx": [
+      "src/router.tsx"
+    ],
+    "src/buildTime.ts": [],
+    "src/components/enhancements/EnhancementIcon.tsx": [
+      "src/data/index.ts",
+      "src/types/index.ts",
+      "src/utils/paths.ts"
+    ],
+    "src/components/enhancements/EnhancementPicker.tsx": [
+      "src/components/enhancements/EnhancementIcon.tsx",
+      "src/components/enhancements/SetBonusList.tsx",
+      "src/components/modals/index.ts",
+      "src/components/ui/index.ts",
+      "src/data/index.ts",
+      "src/data/set-bonus-index.ts",
+      "src/stores/index.ts",
+      "src/types/index.ts",
+      "src/utils/calculations/index.ts",
+      "src/utils/enhancement-outline.ts"
+    ],
+    "src/components/enhancements/SetBonusDisplay.tsx": [
+      "src/components/ui/index.ts",
+      "src/hooks/index.ts",
+      "src/types/index.ts",
+      "src/utils/calculations/index.ts",
+      "src/utils/set-bonus-format.ts"
+    ],
+    "src/components/enhancements/SetBonusList.tsx": [
+      "src/hooks/index.ts",
+      "src/stores/index.ts",
+      "src/types/index.ts",
+      "src/utils/calculations/index.ts",
+      "src/utils/calculations/set-bonuses.ts",
+      "src/utils/set-bonus-format.ts"
+    ],
+    "src/components/export-image/BuildImageCard.tsx": [
+      "src/components/export-image/exportOptions.ts",
+      "src/components/powers/SlottedEnhancementIcon.tsx",
+      "src/data/index.ts",
+      "src/types/build.ts",
+      "src/types/enhancement.ts",
+      "src/types/incarnate.ts",
+      "src/types/index.ts",
+      "src/utils/build-powers.ts",
+      "src/utils/detailed-totals.ts",
+      "src/utils/paths.ts"
+    ],
+    "src/components/export-image/exportOptions.ts": [],
+    "src/components/incarnate/CraftNodeRow.tsx": [
+      "src/components/incarnate/CraftingSalvageRow.tsx",
+      "src/components/incarnate/craft-tree.ts",
+      "src/data/index.ts",
+      "src/types/index.ts"
+    ],
+    "src/components/incarnate/CraftingCostSummary.tsx": [
+      "src/data/index.ts",
+      "src/types/index.ts"
+    ],
+    "src/components/incarnate/CraftingSalvageRow.tsx": [
+      "src/data/index.ts",
+      "src/types/index.ts"
+    ],
+    "src/components/incarnate/DestinyTimeSlider.tsx": [
+      "src/data/index.ts",
+      "src/stores/buildStore.ts",
+      "src/stores/uiStore.ts"
+    ],
+    "src/components/incarnate/IncarnateCraftingModal.tsx": [
+      "src/components/incarnate/CraftNodeRow.tsx",
+      "src/components/incarnate/CraftingCostSummary.tsx",
+      "src/components/incarnate/ShoppingListView.tsx",
+      "src/components/incarnate/craft-tree.ts",
+      "src/components/incarnate/crafting-utils.ts",
+      "src/data/index.ts",
+      "src/stores/index.ts",
+      "src/types/index.ts"
+    ],
+    "src/components/incarnate/IncarnateEffectsTooltip.tsx": [
+      "src/data/at-tables.ts",
+      "src/data/index.ts",
+      "src/stores/index.ts",
+      "src/types/index.ts"
+    ],
+    "src/components/incarnate/IncarnateModal.tsx": [
+      "src/components/incarnate/IncarnatePowerTree.tsx",
+      "src/data/index.ts",
+      "src/stores/index.ts",
+      "src/types/index.ts"
+    ],
+    "src/components/incarnate/IncarnatePowerTree.tsx": [
+      "src/components/incarnate/IncarnateEffectsTooltip.tsx",
+      "src/data/index.ts",
+      "src/stores/index.ts",
+      "src/types/index.ts"
+    ],
+    "src/components/incarnate/IncarnateSlotButton.tsx": [
+      "src/data/index.ts",
+      "src/hooks/index.ts",
+      "src/types/index.ts"
+    ],
+    "src/components/incarnate/IncarnateSlotGrid.tsx": [
+      "src/components/incarnate/IncarnateEffectsTooltip.tsx",
+      "src/components/ui/index.ts",
+      "src/data/index.ts",
+      "src/hooks/index.ts",
+      "src/types/index.ts"
+    ],
+    "src/components/incarnate/ShoppingListView.tsx": [
+      "src/components/incarnate/craft-tree.ts",
+      "src/components/incarnate/crafting-utils.ts",
+      "src/data/index.ts",
+      "src/stores/index.ts",
+      "src/types/index.ts"
+    ],
+    "src/components/incarnate/craft-tree.test.ts": [
+      "src/components/incarnate/craft-tree.ts",
+      "src/types/index.ts"
+    ],
+    "src/components/incarnate/craft-tree.ts": [
+      "src/types/index.ts"
+    ],
+    "src/components/incarnate/crafting-utils.ts": [
+      "src/types/index.ts"
+    ],
+    "src/components/incarnate/index.ts": [],
+    "src/components/info/BuffPetAuraToggle.tsx": [
+      "src/components/ui/Toggle.tsx",
+      "src/stores/index.ts",
+      "src/types/index.ts",
+      "src/utils/calculations/buff-pet-auras.ts"
+    ],
+    "src/components/info/DamageBlock.tsx": [
+      "src/components/info/SharedPowerComponents.tsx",
+      "src/components/info/powerDisplayUtils.ts",
+      "src/data/index.ts",
+      "src/stores/index.ts",
+      "src/types/index.ts",
+      "src/utils/calculations/index.ts",
+      "src/utils/calculations/pet-damage.ts",
+      "src/utils/calculations/power-proc-damage.ts"
+    ],
+    "src/components/info/EnhancementInfoContent.tsx": [
+      "src/components/enhancements/EnhancementIcon.tsx",
+      "src/components/info/powerDisplayUtils.ts",
+      "src/data/index.ts",
+      "src/hooks/index.ts",
+      "src/stores/index.ts",
+      "src/types/index.ts",
+      "src/utils/calculations/index.ts",
+      "src/utils/set-bonus-format.ts"
+    ],
+    "src/components/info/InfoPanel.tsx": [
+      "src/components/info/BuffPetAuraToggle.tsx",
+      "src/components/info/DamageBlock.tsx",
+      "src/components/info/EnhancementInfoContent.tsx",
+      "src/components/info/MechanicAdjusters.tsx",
+      "src/components/info/PowerInfoBlocks.tsx",
+      "src/components/info/SharedPowerComponents.tsx",
+      "src/components/info/SlottedProcControls.tsx",
+      "src/components/info/TagsRow.tsx",
+      "src/components/info/powerDisplayUtils.ts",
+      "src/data/at-tables.ts",
+      "src/data/incarnate-procs.ts",
+      "src/data/incarnate-registry.ts",
+      "src/data/index.ts",
+      "src/data/pet-entities.ts",
+      "src/data/purple-patch.ts",
+      "src/hooks/useBuildMaxAttackDamage.ts",
+      "src/hooks/useCalculatedStats.ts",
+      "src/hooks/useModeSuppression.ts",
+      "src/stores/index.ts",
+      "src/types/index.ts",
+      "src/utils/calculations/healing.ts",
+      "src/utils/calculations/index.ts",
+      "src/utils/calculations/perma.ts",
+      "src/utils/calculations/pet-damage.ts",
+      "src/utils/calculations/power-at-mechanics.ts",
+      "src/utils/calculations/stats.ts",
+      "src/utils/mode-suppression.ts",
+      "src/utils/paths.ts",
+      "src/utils/quick-snipe.ts"
+    ],
+    "src/components/info/MechanicAdjusters.tsx": [
+      "src/components/info/powerDisplayUtils.ts",
+      "src/components/ui/Toggle.tsx",
+      "src/data/index.ts",
+      "src/stores/index.ts",
+      "src/types/index.ts"
+    ],
+    "src/components/info/PopOutInfoPanel.tsx": [
+      "src/components/info/InfoPanel.tsx",
+      "src/components/ui/index.ts",
+      "src/stores/index.ts"
+    ],
+    "src/components/info/PowerInfoBlocks.tsx": [
+      "src/components/info/TagsRow.tsx",
+      "src/components/info/powerDisplayUtils.ts",
+      "src/data/index.ts",
+      "src/stores/index.ts",
+      "src/types/index.ts",
+      "src/utils/calculations/index.ts",
+      "src/utils/calculations/pet-damage.ts",
+      "src/utils/chain-expressions.ts"
+    ],
+    "src/components/info/PowerInfoTooltip.tsx": [
+      "src/components/info/EnhancementInfoContent.tsx",
+      "src/components/info/SharedPowerComponents.tsx",
+      "src/components/info/powerDisplayUtils.ts",
+      "src/data/incarnate-registry.ts",
+      "src/data/index.ts",
+      "src/data/purple-patch.ts",
+      "src/data/stance-groups.ts",
+      "src/hooks/useBuildMaxAttackDamage.ts",
+      "src/hooks/useCalculatedStats.ts",
+      "src/stores/index.ts",
+      "src/types/index.ts",
+      "src/utils/calculations/healing.ts",
+      "src/utils/calculations/index.ts",
+      "src/utils/calculations/pet-damage.ts",
+      "src/utils/conditional-effects.ts"
+    ],
+    "src/components/info/SetBonusPopup.tsx": [
+      "src/components/modals/Modal.tsx",
+      "src/components/ui/index.ts",
+      "src/data/set-bonus-groups.ts",
+      "src/hooks/index.ts",
+      "src/stores/index.ts",
+      "src/utils/calculations/set-bonuses.ts",
+      "src/utils/set-bonus-format.ts"
+    ],
+    "src/components/info/SharedPowerComponents.tsx": [
+      "src/components/info/powerDisplayUtils.ts",
+      "src/components/ui/Tooltip.tsx",
+      "src/data/at-tables.ts",
+      "src/data/effect-registry.ts",
+      "src/types/index.ts",
+      "src/utils/calculations/index.ts"
+    ],
+    "src/components/info/SlottedProcControls.tsx": [
+      "src/data/at-tables.ts",
+      "src/data/index.ts",
+      "src/stores/index.ts",
+      "src/types/index.ts"
+    ],
+    "src/components/info/TagsRow.tsx": [],
+    "src/components/info/index.ts": [],
+    "src/components/info/powerDisplayUtils.collisions.test.ts": [
+      "src/components/info/powerDisplayUtils.ts",
+      "src/types/index.ts"
+    ],
+    "src/components/info/powerDisplayUtils.ts": [
+      "src/data/archetypes.ts",
+      "src/data/at-tables.ts",
+      "src/types/index.ts",
+      "src/utils/calculations/index.ts"
+    ],
+    "src/components/layout/ExemplarModeBanner.tsx": [
+      "src/stores/uiStore.ts"
+    ],
+    "src/components/layout/Header.tsx": [
+      "src/buildTime.ts",
+      "src/components/layout/PlannerLayoutMenu.tsx",
+      "src/components/modals/ConfirmModal.tsx",
+      "src/components/ui/index.ts",
+      "src/data/dataset.ts",
+      "src/data/index.ts",
+      "src/hooks/usePwaInstall.ts",
+      "src/lib/supabase.ts",
+      "src/services/profile.ts",
+      "src/services/sharedBuilds.ts",
+      "src/stores/historyStore.ts",
+      "src/stores/index.ts",
+      "src/stores/onboardingStore.ts",
+      "src/types/build.ts",
+      "src/types/index.ts",
+      "src/utils/calc-debug.ts",
+      "src/utils/calculations/index.ts",
+      "src/utils/dataset-switch-overlay.ts",
+      "src/utils/slot-levels.ts",
+      "src/utils/url-build-sync.ts"
+    ],
+    "src/components/layout/MainLayout.tsx": [
+      "src/components/enhancements/EnhancementPicker.tsx",
+      "src/components/info/index.ts",
+      "src/components/layout/ExemplarModeBanner.tsx",
+      "src/components/layout/Header.tsx",
+      "src/components/layout/MobileBottomNav.tsx",
+      "src/components/layout/MobileBuildBar.tsx",
+      "src/components/layout/RuleOf5Banner.tsx",
+      "src/components/layout/StatsDashboard.tsx",
+      "src/components/layout/StatusBanner.tsx",
+      "src/components/layout/UpdateBanner.tsx",
+      "src/components/modals/index.ts",
+      "src/components/ui/Toast.tsx",
+      "src/hooks/useDashboardCollapseHotkey.ts",
+      "src/hooks/useInfoPanelLockHotkey.ts",
+      "src/hooks/useStatusCheck.ts",
+      "src/hooks/useTooltipHotkey.ts",
+      "src/hooks/useUndoRedoKeyboard.ts",
+      "src/lib/links.ts",
+      "src/stores/index.ts"
+    ],
+    "src/components/layout/MobileBottomNav.tsx": [
+      "src/components/layout/StatsDashboard.tsx",
+      "src/components/modals/index.ts",
+      "src/components/ui/index.ts",
+      "src/data/index.ts",
+      "src/lib/links.ts",
+      "src/lib/supabase.ts",
+      "src/stores/index.ts",
+      "src/stores/onboardingStore.ts",
+      "src/types/index.ts"
+    ],
+    "src/components/layout/MobileBuildBar.tsx": [
+      "src/components/layout/Header.tsx",
+      "src/components/ui/index.ts",
+      "src/hooks/index.ts",
+      "src/stores/index.ts"
+    ],
+    "src/components/layout/PinnedPowersBar.tsx": [
+      "src/components/powers/PermaRing.tsx",
+      "src/stores/index.ts",
+      "src/types/index.ts",
+      "src/utils/paths.ts",
+      "src/utils/power-icons.ts"
+    ],
+    "src/components/layout/PlannerLayoutMenu.tsx": [
+      "src/stores/index.ts",
+      "src/types/index.ts",
+      "src/utils/planner-layout.ts"
+    ],
+    "src/components/layout/RuleOf5Banner.tsx": [
+      "src/hooks/useCalculatedStats.ts",
+      "src/stores/buildStore.ts",
+      "src/stores/uiStore.ts",
+      "src/utils/over-cap-mute.ts"
+    ],
+    "src/components/layout/SettingsLayout.tsx": [],
+    "src/components/layout/StatsDashboard.tsx": [
+      "src/components/incarnate/index.ts",
+      "src/components/layout/PinnedPowersBar.tsx",
+      "src/components/modals/index.ts",
+      "src/components/powers/index.ts",
+      "src/components/ui/index.ts",
+      "src/data/core/movement-constants.ts",
+      "src/data/index.ts",
+      "src/data/purple-patch.ts",
+      "src/data/set-bonus-groups.ts",
+      "src/data/stat-definitions.ts",
+      "src/hooks/index.ts",
+      "src/hooks/useCalculatedStats.ts",
+      "src/stores/index.ts",
+      "src/types/index.ts",
+      "src/utils/calculations/character-totals.ts",
+      "src/utils/calculations/index.ts",
+      "src/utils/calculations/stats.ts",
+      "src/utils/set-bonus-format.ts"
+    ],
+    "src/components/layout/StatusBanner.tsx": [
+      "src/hooks/index.ts"
+    ],
+    "src/components/layout/UpdateBanner.tsx": [
+      "src/stores/index.ts"
+    ],
+    "src/components/layout/index.ts": [],
+    "src/components/modals/AboutModal.tsx": [
+      "src/components/modals/Modal.tsx",
+      "src/utils/paths.ts"
+    ],
+    "src/components/modals/AccoladesModal.tsx": [
+      "src/components/modals/Modal.tsx",
+      "src/components/ui/index.ts",
+      "src/data/index.ts",
+      "src/stores/index.ts",
+      "src/types/index.ts"
+    ],
+    "src/components/modals/AnnouncementModal.tsx": [
+      "src/components/modals/Modal.tsx",
+      "src/components/modals/RoadmapPanel.tsx",
+      "src/components/ui/index.ts",
+      "src/data/core/announcements.tsx",
+      "src/data/core/roadmap.tsx",
+      "src/stores/index.ts",
+      "src/utils/paths.ts"
+    ],
+    "src/components/modals/AttackChainModal.tsx": [
+      "src/components/modals/Modal.tsx",
+      "src/stores/index.ts",
+      "src/types/index.ts",
+      "src/utils/calculations/attack-chain-powers.ts",
+      "src/utils/calculations/attack-chain.ts",
+      "src/utils/calculations/index.ts"
+    ],
+    "src/components/modals/BuildImageModal.tsx": [
+      "src/components/export-image/BuildImageCard.tsx",
+      "src/components/export-image/exportOptions.ts",
+      "src/components/modals/Modal.tsx",
+      "src/components/ui/index.ts",
+      "src/hooks/index.ts",
+      "src/stores/index.ts",
+      "src/utils/calculations/stats.ts",
+      "src/utils/detailed-totals.ts",
+      "src/utils/export-image.ts"
+    ],
+    "src/components/modals/ChangelogModal.tsx": [
+      "src/components/modals/Modal.tsx",
+      "src/data/changelog.ts"
+    ],
+    "src/components/modals/CompareSlottingModal.tsx": [
+      "src/components/enhancements/SetBonusDisplay.tsx",
+      "src/components/info/InfoPanel.tsx",
+      "src/components/info/SharedPowerComponents.tsx",
+      "src/components/info/powerDisplayUtils.ts",
+      "src/components/modals/Modal.tsx",
+      "src/components/powers/SlottedEnhancementIcon.tsx",
+      "src/data/index.ts",
+      "src/data/purple-patch.ts",
+      "src/data/stat-definitions.ts",
+      "src/hooks/index.ts",
+      "src/stores/index.ts",
+      "src/types/index.ts",
+      "src/utils/calculations/character-totals.ts",
+      "src/utils/calculations/damage.ts",
+      "src/utils/calculations/enhancement-values.ts",
+      "src/utils/calculations/healing.ts",
+      "src/utils/calculations/set-tracking.ts",
+      "src/utils/calculations/stats.ts",
+      "src/utils/paths.ts"
+    ],
+    "src/components/modals/ConfirmModal.tsx": [
+      "src/components/modals/Modal.tsx",
+      "src/components/ui/index.ts"
+    ],
+    "src/components/modals/ControlsModal.tsx": [
+      "src/components/modals/Modal.tsx",
+      "src/hooks/index.ts"
+    ],
+    "src/components/modals/DetailedTotalsModal.tsx": [
+      "src/components/modals/Modal.tsx",
+      "src/data/stat-definitions.ts",
+      "src/hooks/index.ts",
+      "src/hooks/useCalculatedStats.ts",
+      "src/services/sharedBuilds.ts",
+      "src/stores/index.ts",
+      "src/types/build.ts",
+      "src/types/shared.ts",
+      "src/utils/build-serialization.ts",
+      "src/utils/calculations/character-totals.ts",
+      "src/utils/calculations/stats.ts",
+      "src/utils/detailed-totals.ts",
+      "src/utils/set-bonus-format.ts"
+    ],
+    "src/components/modals/DonateModal.tsx": [
+      "src/components/modals/Modal.tsx"
+    ],
+    "src/components/modals/EnhancementListModal.tsx": [
+      "src/components/modals/Modal.tsx",
+      "src/data/index.ts",
+      "src/lib/supabase.ts",
+      "src/services/auctionPrices.ts",
+      "src/stores/index.ts",
+      "src/types/index.ts"
+    ],
+    "src/components/modals/EnhancementToolsModal.tsx": [
+      "src/components/modals/Modal.tsx",
+      "src/components/ui/index.ts",
+      "src/stores/index.ts"
+    ],
+    "src/components/modals/ExportImportModal.tsx": [
+      "src/components/modals/ForumExportModal.tsx",
+      "src/components/modals/Modal.tsx",
+      "src/components/ui/Button.tsx",
+      "src/data/dataset.ts",
+      "src/services/sharedBuilds.ts",
+      "src/stores/index.ts",
+      "src/types/build.ts",
+      "src/types/index.ts",
+      "src/types/shared.ts",
+      "src/utils/build-enhancement-validation.ts",
+      "src/utils/export-popmenu.ts",
+      "src/utils/export-print.ts",
+      "src/utils/game-importer/index.ts",
+      "src/utils/mids-export.ts",
+      "src/utils/mids-import/index.ts",
+      "src/utils/mxd-import/index.ts"
+    ],
+    "src/components/modals/FeedbackModal.tsx": [
+      "src/components/modals/Modal.tsx",
+      "src/components/ui/Button.tsx",
+      "src/lib/links.ts",
+      "src/stores/authStore.ts",
+      "src/stores/buildStore.ts",
+      "src/utils/diagnostics.ts"
+    ],
+    "src/components/modals/ForumExportModal.tsx": [
+      "src/components/modals/Modal.tsx",
+      "src/components/ui/index.ts",
+      "src/services/sharedBuilds.ts",
+      "src/stores/index.ts",
+      "src/types/build.ts",
+      "src/utils/forum-export.ts"
+    ],
+    "src/components/modals/HelpModal.tsx": [
+      "src/components/modals/Modal.tsx",
+      "src/data/help-topics.ts"
+    ],
+    "src/components/modals/Modal.tsx": [],
+    "src/components/modals/PoolPickerModal.tsx": [
+      "src/components/modals/Modal.tsx",
+      "src/components/powers/AvailablePowers.tsx",
+      "src/data/index.ts",
+      "src/stores/index.ts",
+      "src/types/index.ts"
+    ],
+    "src/components/modals/PowerInfoModal.tsx": [
+      "src/components/info/InfoPanel.tsx",
+      "src/components/modals/Modal.tsx",
+      "src/stores/index.ts"
+    ],
+    "src/components/modals/PowersetCompareModal.tsx": [
+      "src/components/modals/Modal.tsx",
+      "src/components/ui/Select.tsx",
+      "src/components/ui/index.ts",
+      "src/data/archetypes.ts",
+      "src/data/powersets.ts",
+      "src/stores/index.ts",
+      "src/types/archetype.ts",
+      "src/types/power.ts",
+      "src/utils/calculations/damage.ts"
+    ],
+    "src/components/modals/ProcSettingsModal.tsx": [
+      "src/components/modals/Modal.tsx",
+      "src/components/ui/index.ts",
+      "src/stores/index.ts",
+      "src/stores/uiStore.ts"
+    ],
+    "src/components/modals/RoadmapPanel.tsx": [
+      "src/data/core/roadmap.tsx"
+    ],
+    "src/components/modals/SetBonusLookupModal.tsx": [
+      "src/components/modals/Modal.tsx",
+      "src/data/io-sets.ts",
+      "src/data/set-bonus-index.ts",
+      "src/stores/buildStore.ts",
+      "src/types/index.ts"
+    ],
+    "src/components/modals/StatsConfigModal.tsx": [
+      "src/components/modals/Modal.tsx",
+      "src/components/ui/index.ts",
+      "src/data/stat-definitions.ts",
+      "src/stores/index.ts",
+      "src/types/index.ts"
+    ],
+    "src/components/modals/WelcomeModal.tsx": [
+      "src/buildTime.ts",
+      "src/components/modals/Modal.tsx",
+      "src/components/ui/index.ts",
+      "src/data/changelog.ts",
+      "src/lib/links.ts",
+      "src/stores/index.ts"
+    ],
+    "src/components/modals/index.ts": [],
+    "src/components/onboarding/OnboardingBeacon.tsx": [
+      "src/stores/index.ts",
+      "src/stores/onboardingStore.ts",
+      "src/stores/uiStore.ts"
+    ],
+    "src/components/powers/AvailablePoolPowers.tsx": [
+      "src/components/modals/PoolPickerModal.tsx",
+      "src/components/powers/AvailablePowers.tsx",
+      "src/data/index.ts",
+      "src/stores/index.ts",
+      "src/types/index.ts"
+    ],
+    "src/components/powers/AvailablePowers.tsx": [
+      "src/data/index.ts",
+      "src/hooks/index.ts",
+      "src/stores/index.ts",
+      "src/types/index.ts",
+      "src/utils/paths.ts"
+    ],
+    "src/components/powers/ChronologicalInherentsSection.tsx": [
+      "src/components/powers/PowerRow.tsx",
+      "src/components/powers/power-row-utils.ts",
+      "src/data/index.ts",
+      "src/hooks/index.ts",
+      "src/stores/index.ts",
+      "src/stores/uiStore.ts",
+      "src/types/index.ts",
+      "src/utils/power-key.ts"
+    ],
+    "src/components/powers/ChronologicalPowerSlot.tsx": [
+      "src/components/powers/ChronologicalPowerView.tsx",
+      "src/components/powers/PowerRow.tsx",
+      "src/components/powers/SelectedPowers.tsx",
+      "src/components/powers/power-row-utils.ts",
+      "src/data/index.ts",
+      "src/hooks/index.ts",
+      "src/stores/index.ts",
+      "src/stores/uiStore.ts",
+      "src/utils/power-key.ts"
+    ],
+    "src/components/powers/ChronologicalPowerView.tsx": [
+      "src/components/powers/ChronologicalInherentsSection.tsx",
+      "src/components/powers/ChronologicalPowerSlot.tsx",
+      "src/components/powers/SelectedPowers.tsx",
+      "src/data/index.ts",
+      "src/stores/index.ts",
+      "src/types/index.ts"
+    ],
+    "src/components/powers/DraggableSlotGhost.tsx": [
+      "src/components/powers/PlannerHintBar.tsx",
+      "src/stores/index.ts"
+    ],
+    "src/components/powers/PermaRing.tsx": [
+      "src/components/ui/Tooltip.tsx",
+      "src/data/incarnate-registry.ts",
+      "src/data/index.ts",
+      "src/hooks/useCalculatedStats.ts",
+      "src/stores/index.ts",
+      "src/types/index.ts",
+      "src/utils/calculations/index.ts",
+      "src/utils/calculations/perma.ts"
+    ],
+    "src/components/powers/PlannerHintBar.tsx": [
+      "src/stores/index.ts"
+    ],
+    "src/components/powers/PoolPowers.tsx": [
+      "src/components/powers/PowerRow.tsx",
+      "src/components/powers/power-row-utils.ts",
+      "src/components/ui/index.ts",
+      "src/data/index.ts",
+      "src/hooks/index.ts",
+      "src/stores/index.ts",
+      "src/stores/uiStore.ts",
+      "src/types/index.ts",
+      "src/utils/paths.ts",
+      "src/utils/power-key.ts"
+    ],
+    "src/components/powers/PowerCard.tsx": [
+      "src/components/powers/PermaRing.tsx",
+      "src/components/powers/PowerSlot.tsx",
+      "src/components/powers/power-row-utils.ts",
+      "src/components/ui/index.ts",
+      "src/data/index.ts",
+      "src/stores/index.ts",
+      "src/types/index.ts",
+      "src/utils/paths.ts"
+    ],
+    "src/components/powers/PowerColumn.tsx": [],
+    "src/components/powers/PowerRow.tsx": [
+      "src/components/powers/DraggableSlotGhost.tsx",
+      "src/components/powers/PermaRing.tsx",
+      "src/components/powers/SlottedEnhancementList.tsx",
+      "src/components/powers/SlottedSetBonuses.tsx",
+      "src/components/powers/TouchableSlot.tsx",
+      "src/components/ui/index.ts",
+      "src/hooks/index.ts",
+      "src/stores/index.ts",
+      "src/types/index.ts",
+      "src/utils/build-enhancement-validation.ts",
+      "src/utils/paths.ts",
+      "src/utils/slot-levels.ts"
+    ],
+    "src/components/powers/PowerSlot.tsx": [
+      "src/components/powers/SlottedEnhancementIcon.tsx",
+      "src/components/ui/index.ts",
+      "src/data/index.ts",
+      "src/hooks/index.ts",
+      "src/types/index.ts",
+      "src/utils/calculations/index.ts",
+      "src/utils/set-bonus-format.ts"
+    ],
+    "src/components/powers/SelectedPowers.tsx": [
+      "src/components/powers/PowerRow.tsx",
+      "src/components/powers/power-row-utils.ts",
+      "src/components/ui/index.ts",
+      "src/data/index.ts",
+      "src/hooks/index.ts",
+      "src/stores/index.ts",
+      "src/stores/uiStore.ts",
+      "src/types/index.ts",
+      "src/utils/paths.ts",
+      "src/utils/power-key.ts"
+    ],
+    "src/components/powers/SlotContextMenu.tsx": [],
+    "src/components/powers/SlottedEnhancementIcon.tsx": [
+      "src/components/enhancements/EnhancementIcon.tsx",
+      "src/data/index.ts",
+      "src/types/index.ts",
+      "src/utils/enhancement-outline.ts"
+    ],
+    "src/components/powers/SlottedEnhancementList.tsx": [
+      "src/components/powers/SlottedEnhancementIcon.tsx",
+      "src/data/index.ts",
+      "src/types/index.ts"
+    ],
+    "src/components/powers/SlottedSetBonuses.tsx": [
+      "src/components/enhancements/SetBonusList.tsx",
+      "src/data/index.ts",
+      "src/types/index.ts"
+    ],
+    "src/components/powers/TouchableSlot.tsx": [
+      "src/components/powers/PlannerHintBar.tsx",
+      "src/components/powers/SlotContextMenu.tsx",
+      "src/components/powers/SlottedEnhancementIcon.tsx",
+      "src/stores/index.ts",
+      "src/types/index.ts"
+    ],
+    "src/components/powers/index.ts": [],
+    "src/components/powers/power-row-utils.ts": [
+      "src/types/index.ts"
+    ],
+    "src/components/shared/BuildCard.tsx": [
+      "src/services/sharedBuilds.ts",
+      "src/types/shared.ts"
+    ],
+    "src/components/shared/BuildFilters.tsx": [
+      "src/data/index.ts",
+      "src/data/powersets.ts",
+      "src/services/profile.ts",
+      "src/types/shared.ts"
+    ],
+    "src/components/ui/Badge.tsx": [],
+    "src/components/ui/Button.tsx": [],
+    "src/components/ui/CollapsibleSection.tsx": [],
+    "src/components/ui/FloatingWindow.tsx": [
+      "src/stores/index.ts"
+    ],
+    "src/components/ui/Input.tsx": [],
+    "src/components/ui/LevelSpinner.tsx": [],
+    "src/components/ui/Select.tsx": [],
+    "src/components/ui/Slider.tsx": [],
+    "src/components/ui/Toast.tsx": [
+      "src/stores/uiStore.ts"
+    ],
+    "src/components/ui/Toggle.tsx": [],
+    "src/components/ui/Tooltip.tsx": [],
+    "src/components/ui/ViewModeToggle.tsx": [
+      "src/stores/uiStore.ts"
+    ],
+    "src/components/ui/index.ts": [],
+    "src/data/README.md": [],
+    "src/data/_layer.ts": [
+      "src/types/index.ts"
+    ],
+    "src/data/accolades.ts": [
+      "src/types/index.ts"
+    ],
+    "src/data/adaptation-stance-collision.test.ts": [
+      "src/data/dataset.ts",
+      "src/data/index.ts",
+      "src/utils/mids-import/index.ts"
+    ],
+    "src/data/adaptation-stance-gating.test.ts": [
+      "src/data/dataset.ts",
+      "src/data/index.ts",
+      "src/types/index.ts"
+    ],
+    "src/data/ally-range-buff.test.ts": [
+      "src/data/dataset.ts",
+      "src/data/index.ts"
+    ],
+    "src/data/alpha-enhances-destiny.test.ts": [
+      "src/data/dataset.ts",
+      "src/data/index.ts"
+    ],
+    "src/data/archetype-stats.test.ts": [
+      "src/data/dataset.ts",
+      "src/data/index.ts",
+      "src/types/index.ts"
+    ],
+    "src/data/archetypes.ts": [
+      "src/data/dataset.ts",
+      "src/types/index.ts"
+    ],
+    "src/data/assassin-strike-damage.test.ts": [],
+    "src/data/assault-damage-buff-flat.test.ts": [
+      "src/components/info/powerDisplayUtils.ts",
+      "src/data/at-tables.ts",
+      "src/data/core/effect-registry.ts",
+      "src/data/dataset.ts",
+      "src/types/build.ts",
+      "src/utils/calculations/character-totals.ts"
+    ],
+    "src/data/at-table-archetype-coverage.test.ts": [],
+    "src/data/at-tables.ts": [
+      "src/data/dataset.ts"
+    ],
+    "src/data/ato-passive-globals.test.ts": [
+      "src/data/proc-data.ts"
+    ],
+    "src/data/atomic-effect.test.ts": [
+      "src/data/core/atomic-effect.ts"
+    ],
+    "src/data/attuned-only-reward-sets.test.ts": [
+      "src/data/enhancement-registry.ts"
+    ],
+    "src/data/bio-armor-naming.test.ts": [
+      "src/data/dataset.ts",
+      "src/data/index.ts"
+    ],
+    "src/data/chain-target-expressions.test.ts": [
+      "src/utils/chain-expressions.ts"
+    ],
+    "src/data/changelog-manual.ts": [],
+    "src/data/changelog-overrides.ts": [],
+    "src/data/changelog.ts": [
+      "src/data/changelog-manual.ts",
+      "src/data/changelog-overrides.ts"
+    ],
+    "src/data/converter-invariants.test.ts": [],
+    "src/data/converter-recovery-marker.test.ts": [
+      "scripts/convert-powerset.cjs"
+    ],
+    "src/data/converter-table-integrity.test.ts": [
+      "src/components/info/powerDisplayUtils.ts",
+      "src/data/core/effect-registry.ts"
+    ],
+    "src/data/core/announcements.tsx": [],
+    "src/data/core/atom-query.test.ts": [
+      "src/data/core/atom-query.ts",
+      "src/data/core/atomic-effect.ts",
+      "src/types/power.ts"
+    ],
+    "src/data/core/atom-query.ts": [
+      "src/data/core/atomic-effect.ts",
+      "src/types/power.ts"
+    ],
+    "src/data/core/atomic-effect.ts": [],
+    "src/data/core/effect-registry.ts": [
+      "src/data/at-tables.ts",
+      "src/data/core/stat-colors.ts",
+      "src/types/index.ts",
+      "src/utils/calculations/index.ts",
+      "src/utils/format-precision.ts"
+    ],
+    "src/data/core/help-topics.ts": [],
+    "src/data/core/incarnate-registry.ts": [
+      "src/types/index.ts"
+    ],
+    "src/data/core/movement-constants.ts": [],
+    "src/data/core/pool-atoms.verify.test.ts": [
+      "src/data/core/atom-query.ts"
+    ],
+    "src/data/core/resources-atom-native.verify.test.ts": [
+      "src/data/core/atom-query.ts"
+    ],
+    "src/data/core/roadmap.test.ts": [
+      "src/data/core/roadmap.tsx"
+    ],
+    "src/data/core/roadmap.tsx": [],
+    "src/data/core/stat-colors.ts": [],
+    "src/data/core/stat-definitions.test.ts": [
+      "src/data/core/stat-definitions.ts"
+    ],
+    "src/data/core/stat-definitions.ts": [
+      "src/data/core/movement-constants.ts",
+      "src/data/core/stat-colors.ts",
+      "src/hooks/useCalculatedStats.ts",
+      "src/utils/calculations/character-totals.ts",
+      "src/utils/format-precision.ts"
+    ],
+    "src/data/core/themes.ts": [],
+    "src/data/dataset.ts": [
+      "src/data/epic-pools.ts",
+      "src/data/incarnate-effects.ts",
+      "src/data/io-sets.ts",
+      "src/data/power-pools.ts",
+      "src/types/index.ts"
+    ],
+    "src/data/destiny-decay.test.ts": [
+      "src/data/dataset.ts",
+      "src/data/index.ts"
+    ],
+    "src/data/domination-per-effect.test.ts": [
+      "src/types/index.ts",
+      "src/types/power.ts"
+    ],
+    "src/data/domination-perma-classification.test.ts": [
+      "src/data/dataset.ts",
+      "src/data/index.ts",
+      "src/utils/calculations/inherents.ts",
+      "src/utils/calculations/perma.ts"
+    ],
+    "src/data/dormant-pools.test.ts": [
+      "src/data/dataset.ts",
+      "src/data/index.ts"
+    ],
+    "src/data/dormant-powersets.test.ts": [
+      "src/data/dataset.ts",
+      "src/data/index.ts"
+    ],
+    "src/data/effect-registry.ts": [],
+    "src/data/enhancement-registry.ts": [
+      "src/data/enhancements.ts",
+      "src/types/index.ts",
+      "src/utils/paths.ts"
+    ],
+    "src/data/enhancements.ts": [
+      "src/types/index.ts"
+    ],
+    "src/data/epic-pools-availability.test.ts": [
+      "src/data/dataset.ts",
+      "src/data/epic-pools.ts"
+    ],
+    "src/data/epic-pools.ts": [
+      "src/data/dataset.ts",
+      "src/data/levels.ts",
+      "src/types/index.ts"
+    ],
+    "src/data/export-staleness.test.ts": [],
+    "src/data/genesis-incarnate.test.ts": [
+      "src/data/dataset.ts",
+      "src/data/index.ts"
+    ],
+    "src/data/globalboost-not-selectable.test.ts": [
+      "src/data/dataset.ts",
+      "src/data/index.ts",
+      "src/utils/build-serialization.ts"
+    ],
+    "src/data/granted-damage-procs.test.ts": [
+      "src/data/dataset.ts",
+      "src/utils/calculations/index.ts"
+    ],
+    "src/data/granted-powers.ts": [
+      "src/data/dataset.ts"
+    ],
+    "src/data/help-topics.ts": [],
+    "src/data/incarnate-components.ts": [
+      "src/data/incarnate-salvage.ts",
+      "src/types/index.ts"
+    ],
+    "src/data/incarnate-effects.ts": [
+      "src/data/dataset.ts",
+      "src/types/index.ts"
+    ],
+    "src/data/incarnate-indices/alpha.json": [],
+    "src/data/incarnate-indices/destiny.json": [],
+    "src/data/incarnate-indices/genesis.json": [],
+    "src/data/incarnate-indices/hybrid.json": [],
+    "src/data/incarnate-indices/interface.json": [],
+    "src/data/incarnate-indices/judgement.json": [],
+    "src/data/incarnate-indices/lore.json": [],
+    "src/data/incarnate-procs.ts": [
+      "src/data/at-tables.ts",
+      "src/data/proc-data.ts",
+      "src/types/index.ts"
+    ],
+    "src/data/incarnate-recipes.ts": [
+      "src/types/index.ts"
+    ],
+    "src/data/incarnate-registry.ts": [],
+    "src/data/incarnate-salvage.ts": [
+      "src/types/index.ts"
+    ],
+    "src/data/incarnates.ts": [
+      "src/data/dataset.ts",
+      "src/data/incarnate-indices/alpha.json",
+      "src/data/incarnate-indices/destiny.json",
+      "src/data/incarnate-indices/genesis.json",
+      "src/data/incarnate-indices/hybrid.json",
+      "src/data/incarnate-indices/interface.json",
+      "src/data/incarnate-indices/judgement.json",
+      "src/data/incarnate-indices/lore.json",
+      "src/data/incarnate-registry.ts",
+      "src/types/index.ts",
+      "src/utils/power-icons.ts"
+    ],
+    "src/data/index.ts": [],
+    "src/data/inherent-rules.ts": [
+      "src/data/dataset.ts"
+    ],
+    "src/data/inherent-slots.test.ts": [
+      "src/data/index.ts"
+    ],
+    "src/data/invention-salvage.test.ts": [],
+    "src/data/io-sets-bonus-keys.test.ts": [
+      "src/utils/calculations/set-bonuses.ts"
+    ],
+    "src/data/io-sets-heal-absorb.test.ts": [],
+    "src/data/io-sets-proc-resolution.test.ts": [
+      "src/data/proc-data.ts"
+    ],
+    "src/data/io-sets.ts": [
+      "src/data/dataset.ts",
+      "src/types/index.ts"
+    ],
+    "src/data/levels.ts": [
+      "src/data/dataset.ts"
+    ],
+    "src/data/multipet-summon-count.test.ts": [],
+    "src/data/parser-effect-alignment.test.ts": [],
+    "src/data/pet-entities.ts": [
+      "src/data/dataset.ts"
+    ],
+    "src/data/pool-collisions.test.ts": [],
+    "src/data/power-lookup.ts": [],
+    "src/data/power-pools.ts": [
+      "src/data/dataset.ts",
+      "src/data/levels.ts",
+      "src/types/index.ts"
+    ],
+    "src/data/powersets.ts": [
+      "src/data/dataset.ts",
+      "src/types/index.ts"
+    ],
+    "src/data/proc-area-factor.test.ts": [
+      "src/data/proc-data.ts"
+    ],
+    "src/data/proc-damage-parity.test.ts": [
+      "src/data/proc-data.ts"
+    ],
+    "src/data/proc-data.test.ts": [
+      "src/data/proc-data.ts"
+    ],
+    "src/data/proc-data.ts": [
+      "src/data/proc-residual-effects.ts",
+      "src/data/proc-variable-controls.ts",
+      "src/types/build.ts"
+    ],
+    "src/data/proc-effects-coverage.test.ts": [
+      "src/data/proc-data.ts",
+      "src/data/proc-residual-effects.ts"
+    ],
+    "src/data/proc-globals-parity.test.ts": [
+      "src/data/proc-data.ts"
+    ],
+    "src/data/proc-main-target-only.test.ts": [
+      "src/data/proc-data.ts",
+      "src/types/index.ts",
+      "src/utils/calculations/power-proc-damage.ts"
+    ],
+    "src/data/proc-other-parity.test.ts": [
+      "src/data/proc-data.ts"
+    ],
+    "src/data/proc-piece-name-resolution.test.ts": [
+      "src/data/proc-data.ts"
+    ],
+    "src/data/proc-ppm-parity.test.ts": [
+      "src/data/proc-data.ts"
+    ],
+    "src/data/proc-residual-effects.ts": [
+      "src/data/proc-data.ts"
+    ],
+    "src/data/proc-variable-controls.ts": [
+      "src/data/proc-data.ts"
+    ],
+    "src/data/proc-variable-overrides.test.ts": [
+      "src/data/at-tables.ts",
+      "src/data/dataset.ts",
+      "src/data/index.ts",
+      "src/types/build.ts",
+      "src/types/index.ts",
+      "src/utils/build-serialization.ts",
+      "src/utils/import-url.ts",
+      "src/utils/url-build-sync.ts"
+    ],
+    "src/data/pseudopet-summon-entity.test.ts": [],
+    "src/data/purple-patch.ts": [
+      "src/data/dataset.ts"
+    ],
+    "src/data/rebirth-flight-fixes.test.ts": [
+      "src/data/core/movement-constants.ts",
+      "src/data/dataset.ts",
+      "src/data/index.ts",
+      "src/types/power.ts"
+    ],
+    "src/data/rebirth-phalanx-ally-scaling.test.ts": [],
+    "src/data/rebirth-pool-fixes.test.ts": [
+      "src/data/dataset.ts",
+      "src/data/index.ts",
+      "src/types/build.ts",
+      "src/utils/calculations/character-totals.ts"
+    ],
+    "src/data/rebirth-resurrection.test.ts": [
+      "src/data/io-sets.ts"
+    ],
+    "src/data/rebirth-universal-debuff.test.ts": [],
+    "src/data/redirect-info-damage.test.ts": [],
+    "src/data/set-bonus-groups.test.ts": [
+      "src/data/set-bonus-groups.ts",
+      "src/utils/calculations/set-bonuses.ts"
+    ],
+    "src/data/set-bonus-groups.ts": [],
+    "src/data/set-bonus-index.ts": [
+      "src/data/io-sets.ts",
+      "src/types/index.ts",
+      "src/utils/calculations/set-bonuses.ts"
+    ],
+    "src/data/set-mode-resolution.test.ts": [],
+    "src/data/snipe-timing.test.ts": [
+      "src/utils/quick-snipe.ts"
+    ],
+    "src/data/stance-groups.ts": [],
+    "src/data/stat-colors.ts": [],
+    "src/data/stat-definitions.ts": [],
+    "src/data/stealth-proc-naming.test.ts": [
+      "src/data/proc-data.ts"
+    ],
+    "src/data/strengths-disallowed.test.ts": [
+      "src/data/dataset.ts",
+      "src/data/index.ts",
+      "src/types/index.ts",
+      "src/utils/calculations/perma.ts"
+    ],
+    "src/data/summon-copyboosts.test.ts": [],
+    "src/data/synapses-shock-proc.test.ts": [
+      "src/data/proc-data.ts"
+    ],
+    "src/data/thunderspy-ato-categories.test.ts": [],
+    "src/data/thunderspy-defense-data.test.ts": [],
+    "src/data/thunderspy-dot-tickrate.test.ts": [],
+    "src/data/thunderspy-epic-prereqs.test.ts": [
+      "src/data/dataset.ts",
+      "src/data/index.ts"
+    ],
+    "src/data/thunderspy-io-set-roster.test.ts": [],
+    "src/data/thunderspy-mez-knockback.test.ts": [],
+    "src/data/thunderspy-ones-recharge-buff.test.ts": [
+      "src/data/dataset.ts",
+      "src/data/index.ts",
+      "src/utils/calculations/perma.ts"
+    ],
+    "src/data/thunderspy-pet-summon.test.ts": [
+      "src/data/dataset.ts",
+      "src/utils/calculations/pet-damage.ts"
+    ],
+    "src/data/thunderspy-resist-tohit-vocab.test.ts": [
+      "src/data/dataset.ts",
+      "src/types/power.ts"
+    ],
+    "src/data/thunderspy-support-hybrid.test.ts": [],
+    "src/data/trick-arrow-fixes.test.ts": [
+      "src/types/index.ts"
+    ],
+    "src/empty.js": [],
+    "src/hooks/index.ts": [],
+    "src/hooks/shared-calc-cache.test.ts": [
+      "src/hooks/useCalculatedStats.ts",
+      "src/utils/calculations/index.ts"
+    ],
+    "src/hooks/useBuildBudget.ts": [
+      "src/data/index.ts",
+      "src/stores/index.ts",
+      "src/utils/slot-levels.ts"
+    ],
+    "src/hooks/useBuildMaxAttackDamage.ts": [
+      "src/data/incarnate-registry.ts",
+      "src/data/index.ts",
+      "src/hooks/useCalculatedStats.ts",
+      "src/stores/index.ts",
+      "src/types/index.ts",
+      "src/utils/calculations/index.ts",
+      "src/utils/fallback-warnings.ts",
+      "src/utils/quick-snipe.ts"
+    ],
+    "src/hooks/useCalculatedStats.ts": [
+      "src/data/index.ts",
+      "src/stores/index.ts",
+      "src/stores/uiStore.ts",
+      "src/types/index.ts",
+      "src/utils/calculations/index.ts",
+      "src/utils/over-cap-mute.ts"
+    ],
+    "src/hooks/useDashboardCollapseHotkey.ts": [
+      "src/stores/index.ts"
+    ],
+    "src/hooks/useInfoPanelLockHotkey.ts": [
+      "src/stores/index.ts"
+    ],
+    "src/hooks/useIsTouchDevice.ts": [],
+    "src/hooks/useLongPress.ts": [],
+    "src/hooks/useModeSuppression.ts": [
+      "src/data/index.ts",
+      "src/stores/index.ts",
+      "src/types/index.ts",
+      "src/utils/mode-suppression.ts"
+    ],
+    "src/hooks/usePwaInstall.ts": [],
+    "src/hooks/useSlotLevels.ts": [
+      "src/stores/index.ts",
+      "src/utils/slot-levels.ts"
+    ],
+    "src/hooks/useStatusCheck.ts": [],
+    "src/hooks/useSwipeToRemove.ts": [],
+    "src/hooks/useTooltipHotkey.ts": [
+      "src/stores/index.ts"
+    ],
+    "src/hooks/useUndoRedoKeyboard.ts": [
+      "src/stores/buildStore.ts",
+      "src/stores/historyStore.ts"
+    ],
+    "src/index.css": [],
+    "src/lib/links.ts": [],
+    "src/lib/supabase.ts": [],
+    "src/main.tsx": [
+      "src/App.tsx",
+      "src/data/core/themes.ts",
+      "src/data/dataset.ts",
+      "src/index.css",
+      "src/utils/calc-debug.ts",
+      "src/utils/chunk-error-reload.ts",
+      "src/utils/fallback-warnings.ts"
+    ],
+    "src/pages/AuthorPage.tsx": [
+      "src/components/shared/BuildCard.tsx",
+      "src/services/profile.ts",
+      "src/services/sharedBuilds.ts",
+      "src/stores/index.ts",
+      "src/types/shared.ts"
+    ],
+    "src/pages/BuildDetailPage.tsx": [
+      "src/components/ui/Button.tsx",
+      "src/data/dataset.ts",
+      "src/services/sharedBuilds.ts",
+      "src/stores/authStore.ts",
+      "src/stores/buildStore.ts",
+      "src/types/shared.ts"
+    ],
+    "src/pages/BuildsPage.tsx": [
+      "src/components/shared/BuildCard.tsx",
+      "src/components/shared/BuildFilters.tsx",
+      "src/services/sharedBuilds.ts",
+      "src/stores/index.ts",
+      "src/types/shared.ts"
+    ],
+    "src/pages/GeneralSettings.tsx": [
+      "src/components/ui/Button.tsx",
+      "src/data/core/themes.ts",
+      "src/lib/supabase.ts",
+      "src/services/sharedBuilds.ts",
+      "src/stores/index.ts",
+      "src/utils/calc-debug.ts"
+    ],
+    "src/pages/ImportPage.tsx": [
+      "src/components/ui/index.ts",
+      "src/stores/index.ts",
+      "src/utils/external-import/converter.ts",
+      "src/utils/import-url.ts"
+    ],
+    "src/pages/PlannerPage.tsx": [
+      "src/components/info/InfoPanel.tsx",
+      "src/components/info/PopOutInfoPanel.tsx",
+      "src/components/info/SetBonusPopup.tsx",
+      "src/components/powers/AvailablePoolPowers.tsx",
+      "src/components/powers/AvailablePowers.tsx",
+      "src/components/powers/ChronologicalPowerView.tsx",
+      "src/components/powers/PlannerHintBar.tsx",
+      "src/components/powers/PoolPowers.tsx",
+      "src/components/powers/SelectedPowers.tsx",
+      "src/components/ui/ViewModeToggle.tsx",
+      "src/components/ui/index.ts",
+      "src/data/index.ts",
+      "src/stores/index.ts",
+      "src/types/index.ts",
+      "src/utils/planner-layout.ts",
+      "src/utils/url-build-sync.ts"
+    ],
+    "src/pages/PlasmicHost.tsx": [],
+    "src/pages/ProfileSettingsPage.tsx": [
+      "src/components/ui/Button.tsx",
+      "src/components/ui/Input.tsx",
+      "src/services/profile.ts",
+      "src/stores/index.ts"
+    ],
+    "src/pages/index.ts": [],
+    "src/plasmic-init.ts": [],
+    "src/router.tsx": [
+      "src/components/layout/MainLayout.tsx",
+      "src/components/layout/SettingsLayout.tsx",
+      "src/pages/index.ts"
+    ],
+    "src/services/auctionPrices.ts": [
+      "src/lib/supabase.ts",
+      "src/types/index.ts"
+    ],
+    "src/services/auth.ts": [
+      "src/lib/supabase.ts"
+    ],
+    "src/services/profile.ts": [
+      "src/lib/supabase.ts",
+      "src/stores/index.ts"
+    ],
+    "src/services/sharedBuilds.test.ts": [
+      "src/lib/supabase.ts",
+      "src/services/sharedBuilds.ts",
+      "src/types/shared.ts"
+    ],
+    "src/services/sharedBuilds.ts": [
+      "src/lib/supabase.ts",
+      "src/stores/authStore.ts",
+      "src/types/build.ts",
+      "src/types/shared.ts"
+    ],
+    "src/stores/authStore.ts": [
+      "src/services/auth.ts",
+      "src/services/sharedBuilds.ts"
+    ],
+    "src/stores/buildStore.ts": [
+      "src/data/dataset.ts",
+      "src/data/index.ts",
+      "src/data/proc-data.ts",
+      "src/data/set-bonus-groups.ts",
+      "src/stores/historyStore.ts",
+      "src/stores/uiStore.ts",
+      "src/types/index.ts",
+      "src/utils/build-powers.ts",
+      "src/utils/build-serialization.ts",
+      "src/utils/calculations/set-tracking.ts",
+      "src/utils/dataset-switch-overlay.ts",
+      "src/utils/enhancement-eligibility.ts",
+      "src/utils/import-url.ts",
+      "src/utils/per-server-builds.ts",
+      "src/utils/slot-levels.ts"
+    ],
+    "src/stores/cross-dataset-import.test.ts": [
+      "src/data/dataset.ts",
+      "src/stores/buildStore.ts",
+      "src/test/localstorage-polyfill.ts",
+      "src/types/build.ts",
+      "src/utils/build-serialization.ts",
+      "src/utils/import-url.ts"
+    ],
+    "src/stores/historyStore.ts": [
+      "src/types/index.ts"
+    ],
+    "src/stores/index.ts": [],
+    "src/stores/onboardingStore.ts": [],
+    "src/stores/over-cap-mute-rehydrate.test.ts": [
+      "src/data/dataset.ts",
+      "src/stores/buildStore.ts",
+      "src/test/localstorage-polyfill.ts",
+      "src/types/build.ts",
+      "src/utils/per-server-builds.ts"
+    ],
+    "src/stores/over-cap-mute-store.test.ts": [
+      "src/data/set-bonus-groups.ts",
+      "src/stores/buildStore.ts",
+      "src/stores/historyStore.ts",
+      "src/test/localstorage-polyfill.ts",
+      "src/types/build.ts"
+    ],
+    "src/stores/per-server-persist.test.ts": [
+      "src/data/dataset.ts",
+      "src/stores/buildStore.ts",
+      "src/test/localstorage-polyfill.ts",
+      "src/types/build.ts",
+      "src/utils/per-server-builds.ts"
+    ],
+    "src/stores/pool-dedup-self-heal.test.ts": [
+      "src/data/dataset.ts",
+      "src/stores/buildStore.ts",
+      "src/test/localstorage-polyfill.ts",
+      "src/types/build.ts",
+      "src/types/power.ts",
+      "src/utils/build-serialization.ts"
+    ],
+    "src/stores/uiStore.ts": [
+      "src/data/core/themes.ts",
+      "src/types/index.ts",
+      "src/utils/calculations/attack-chain.ts",
+      "src/utils/planner-layout.ts",
+      "src/utils/slot-levels.ts"
+    ],
+    "src/test/localstorage-polyfill.ts": [],
+    "src/types/archetype.ts": [
+      "src/types/common.ts"
+    ],
+    "src/types/build.ts": [
+      "src/types/archetype.ts",
+      "src/types/common.ts",
+      "src/types/incarnate.ts",
+      "src/types/power.ts"
+    ],
+    "src/types/common.ts": [],
+    "src/types/enhancement.ts": [
+      "src/types/common.ts"
+    ],
+    "src/types/incarnate.ts": [],
+    "src/types/index.ts": [],
+    "src/types/power.ts": [
+      "src/data/core/atomic-effect.ts",
+      "src/types/common.ts",
+      "src/types/enhancement.ts"
+    ],
+    "src/types/shared.ts": [
+      "src/types/build.ts"
+    ],
+    "src/types/ui.ts": [
+      "src/types/common.ts",
+      "src/types/enhancement.ts"
+    ],
+    "src/utils/build-enhancement-validation.test.ts": [
+      "src/data/dataset.ts",
+      "src/types/build.ts",
+      "src/types/enhancement.ts",
+      "src/types/index.ts",
+      "src/utils/build-enhancement-validation.ts",
+      "src/utils/calculations/character-totals.ts"
+    ],
+    "src/utils/build-enhancement-validation.ts": [
+      "src/types/enhancement.ts",
+      "src/types/index.ts",
+      "src/utils/enhancement-eligibility.ts"
+    ],
+    "src/utils/build-powers.test.ts": [
+      "src/types/build.ts",
+      "src/types/power.ts",
+      "src/utils/build-powers.ts"
+    ],
+    "src/utils/build-powers.ts": [
+      "src/types/build.ts",
+      "src/types/incarnate.ts",
+      "src/types/power.ts"
+    ],
+    "src/utils/build-serialization.test.ts": [
+      "src/data/dataset.ts",
+      "src/types/build.ts",
+      "src/utils/build-serialization.ts",
+      "src/utils/import-url.ts"
+    ],
+    "src/utils/build-serialization.ts": [
+      "src/data/index.ts",
+      "src/types/index.ts",
+      "src/utils/import-url.ts"
+    ],
+    "src/utils/calc-debug.ts": [],
+    "src/utils/calculations/absorb-stat.test.ts": [
+      "src/data/dataset.ts",
+      "src/types/build.ts",
+      "src/utils/calculations/character-totals.ts",
+      "src/utils/calculations/stats.ts"
+    ],
+    "src/utils/calculations/adaptation-modes.test.ts": [
+      "src/data/dataset.ts",
+      "src/data/powersets.ts",
+      "src/types/build.ts",
+      "src/utils/calculations/character-totals.ts"
+    ],
+    "src/utils/calculations/at-table-normalize.ts": [],
+    "src/utils/calculations/attack-chain-judgement.test.ts": [
+      "src/data/dataset.ts",
+      "src/types/build.ts",
+      "src/types/incarnate.ts",
+      "src/utils/calculations/attack-chain-powers.ts",
+      "src/utils/calculations/attack-chain.ts"
+    ],
+    "src/utils/calculations/attack-chain-persistence.test.ts": [
+      "src/utils/calculations/attack-chain-powers.ts",
+      "src/utils/calculations/attack-chain.ts"
+    ],
+    "src/utils/calculations/attack-chain-powers.ts": [
+      "src/components/info/powerDisplayUtils.ts",
+      "src/data/at-tables.ts",
+      "src/data/index.ts",
+      "src/types/index.ts",
+      "src/utils/calculations/attack-chain.ts",
+      "src/utils/calculations/index.ts",
+      "src/utils/calculations/power-at-mechanics.ts",
+      "src/utils/calculations/power-proc-damage.ts",
+      "src/utils/quick-snipe.ts"
+    ],
+    "src/utils/calculations/attack-chain.test.ts": [
+      "src/utils/calculations/attack-chain.ts"
+    ],
+    "src/utils/calculations/attack-chain.ts": [],
+    "src/utils/calculations/bio-armor-absorb-targets.test.ts": [
+      "src/data/dataset.ts",
+      "src/data/powersets.ts",
+      "src/types/build.ts",
+      "src/types/index.ts",
+      "src/utils/calculations/character-totals.ts",
+      "src/utils/calculations/stats.ts"
+    ],
+    "src/utils/calculations/bo-ryaku-kb-doubling.test.ts": [
+      "src/data/at-tables.ts",
+      "src/data/dataset.ts",
+      "src/types/build.ts",
+      "src/utils/calculations/character-totals.ts"
+    ],
+    "src/utils/calculations/buff-debuff.ts": [
+      "src/types/index.ts"
+    ],
+    "src/utils/calculations/buff-pet-auras.test.ts": [
+      "src/data/dataset.ts",
+      "src/types/build.ts",
+      "src/utils/calculations/buff-pet-auras.ts",
+      "src/utils/calculations/character-totals.ts"
+    ],
+    "src/utils/calculations/buff-pet-auras.ts": [
+      "src/data/pet-entities.ts",
+      "src/types/power.ts"
+    ],
+    "src/utils/calculations/character-totals.ts": [
+      "src/data/at-tables.ts",
+      "src/data/core/atom-query.ts",
+      "src/data/core/atomic-effect.ts",
+      "src/data/core/incarnate-registry.ts",
+      "src/data/epic-pools.ts",
+      "src/data/index.ts",
+      "src/data/power-pools.ts",
+      "src/data/powersets.ts",
+      "src/data/purple-patch.ts",
+      "src/stores/uiStore.ts",
+      "src/types/index.ts",
+      "src/types/power.ts",
+      "src/utils/build-enhancement-validation.ts",
+      "src/utils/calc-debug.ts",
+      "src/utils/calculations/buff-pet-auras.ts",
+      "src/utils/calculations/effective-level.ts",
+      "src/utils/calculations/enhancement-values.ts",
+      "src/utils/calculations/inherents.ts",
+      "src/utils/calculations/set-bonuses.ts",
+      "src/utils/calculations/stats.ts",
+      "src/utils/conditional-effects.ts",
+      "src/utils/fallback-warnings.ts",
+      "src/utils/mode-suppression.ts"
+    ],
+    "src/utils/calculations/damage.ts": [
+      "src/data/at-tables.ts",
+      "src/data/index.ts",
+      "src/types/index.ts",
+      "src/utils/calculations/at-table-normalize.ts",
+      "src/utils/calculations/buff-debuff.ts",
+      "src/utils/fallback-warnings.ts"
+    ],
+    "src/utils/calculations/defense-atom-native.verify.test.ts": [
+      "src/data/core/atom-query.ts"
+    ],
+    "src/utils/calculations/dot-cancel-on-miss.test.ts": [
+      "src/data/dataset.ts",
+      "src/utils/calculations/attack-chain.ts",
+      "src/utils/calculations/damage.ts"
+    ],
+    "src/utils/calculations/dot-tick-count.test.ts": [
+      "src/utils/calculations/damage.ts"
+    ],
+    "src/utils/calculations/dsh8-incarnate-collapse.test.ts": [],
+    "src/utils/calculations/dual-pistols-ammo.test.ts": [
+      "src/data/dataset.ts",
+      "src/data/index.ts",
+      "src/data/powersets.ts"
+    ],
+    "src/utils/calculations/effective-level.ts": [],
+    "src/utils/calculations/enhancement-values.heal-absorb.test.ts": [
+      "src/utils/calculations/enhancement-values.ts"
+    ],
+    "src/utils/calculations/enhancement-values.ts": [
+      "src/types/index.ts",
+      "src/utils/calc-debug.ts"
+    ],
+    "src/utils/calculations/focused-accuracy.test.ts": [
+      "src/data/dataset.ts",
+      "src/types/build.ts",
+      "src/utils/calculations/character-totals.ts"
+    ],
+    "src/utils/calculations/foe-slow.test.ts": [
+      "src/data/dataset.ts",
+      "src/data/powersets.ts",
+      "src/types/index.ts"
+    ],
+    "src/utils/calculations/healing.ts": [],
+    "src/utils/calculations/incandescence-heal-received.test.ts": [
+      "src/data/dataset.ts",
+      "src/data/index.ts",
+      "src/types/build.ts",
+      "src/types/incarnate.ts",
+      "src/utils/calculations/character-totals.ts"
+    ],
+    "src/utils/calculations/incarnate-effects-completeness.test.ts": [
+      "src/data/dataset.ts",
+      "src/data/index.ts",
+      "src/types/build.ts",
+      "src/types/incarnate.ts",
+      "src/utils/calculations/character-totals.ts"
+    ],
+    "src/utils/calculations/incarnate-exemplar.test.ts": [
+      "src/data/dataset.ts",
+      "src/types/build.ts",
+      "src/utils/calculations/character-totals.ts",
+      "src/utils/calculations/effective-level.ts"
+    ],
+    "src/utils/calculations/index.ts": [],
+    "src/utils/calculations/inherents.ts": [
+      "src/data/index.ts",
+      "src/types/index.ts",
+      "src/types/power.ts"
+    ],
+    "src/utils/calculations/jump-height.test.ts": [
+      "src/data/core/movement-constants.ts",
+      "src/data/dataset.ts",
+      "src/data/index.ts",
+      "src/types/build.ts",
+      "src/utils/calculations/character-totals.ts"
+    ],
+    "src/utils/calculations/maxhp-atom-native.verify.test.ts": [
+      "src/data/core/atom-query.ts"
+    ],
+    "src/utils/calculations/mez-duration-bonus.test.ts": [
+      "src/components/info/powerDisplayUtils.ts",
+      "src/utils/calculations/character-totals.ts",
+      "src/utils/calculations/set-bonuses.ts"
+    ],
+    "src/utils/calculations/mez-duration-combat-mod.test.ts": [
+      "src/data/at-tables.ts",
+      "src/data/core/effect-registry.ts",
+      "src/data/dataset.ts",
+      "src/data/purple-patch.ts"
+    ],
+    "src/utils/calculations/movement-atom-native.verify.test.ts": [
+      "src/data/core/atom-query.ts"
+    ],
+    "src/utils/calculations/perma.ts": [
+      "src/types/index.ts",
+      "src/utils/calculations/enhancement-values.ts"
+    ],
+    "src/utils/calculations/pet-damage.ts": [
+      "src/data/at-tables.ts",
+      "src/data/pet-entities.ts",
+      "src/types/power.ts"
+    ],
+    "src/utils/calculations/power-at-mechanics.test.ts": [
+      "src/utils/calculations/power-at-mechanics.ts"
+    ],
+    "src/utils/calculations/power-at-mechanics.ts": [
+      "src/utils/calculations/inherents.ts"
+    ],
+    "src/utils/calculations/power-proc-damage.ts": [
+      "src/data/index.ts",
+      "src/types/index.ts"
+    ],
+    "src/utils/calculations/proc-area-geometry.test.ts": [
+      "src/data/dataset.ts",
+      "src/data/powersets.ts",
+      "src/data/proc-data.ts",
+      "src/utils/calculations/pet-damage.ts"
+    ],
+    "src/utils/calculations/proc-damage-level.test.ts": [
+      "src/utils/calculations/power-proc-damage.ts"
+    ],
+    "src/utils/calculations/proc-global-damage.test.ts": [
+      "src/data/dataset.ts",
+      "src/types/build.ts",
+      "src/utils/calculations/character-totals.ts"
+    ],
+    "src/utils/calculations/proc-global-recharge.test.ts": [
+      "src/data/dataset.ts",
+      "src/types/build.ts",
+      "src/utils/calculations/character-totals.ts"
+    ],
+    "src/utils/calculations/proc-runtime-allowlist.test.ts": [
+      "src/data/dataset.ts",
+      "src/types/build.ts",
+      "src/utils/calculations/character-totals.ts"
+    ],
+    "src/utils/calculations/proc-variable-calc.test.ts": [
+      "src/data/dataset.ts",
+      "src/types/build.ts",
+      "src/types/index.ts",
+      "src/utils/calculations/character-totals.ts"
+    ],
+    "src/utils/calculations/pseudopet-effects.test.ts": [
+      "src/data/dataset.ts",
+      "src/types/power.ts",
+      "src/utils/calculations/pet-damage.ts"
+    ],
+    "src/utils/calculations/pseudopet-redirect.test.ts": [
+      "src/data/dataset.ts",
+      "src/data/pet-entities.ts",
+      "src/types/power.ts",
+      "src/utils/calculations/pet-damage.ts"
+    ],
+    "src/utils/calculations/resistance-atom-native.verify.test.ts": [
+      "src/data/core/atom-query.ts"
+    ],
+    "src/utils/calculations/sc345-converter-self-check.test.ts": [],
+    "src/utils/calculations/self-penalty-towho.test.ts": [
+      "src/data/dataset.ts",
+      "src/data/powersets.ts",
+      "src/types/index.ts"
+    ],
+    "src/utils/calculations/set-bonuses.ts": [
+      "src/types/index.ts"
+    ],
+    "src/utils/calculations/set-tracking.ts": [
+      "src/types/index.ts"
+    ],
+    "src/utils/calculations/stacking-flaw-fix.verify.test.ts": [
+      "src/utils/calculations/perma.ts"
+    ],
+    "src/utils/calculations/stats.ts": [
+      "src/data/index.ts",
+      "src/types/index.ts"
+    ],
+    "src/utils/calculations/stealth-procs.test.ts": [
+      "src/data/dataset.ts",
+      "src/types/build.ts",
+      "src/utils/calculations/character-totals.ts"
+    ],
+    "src/utils/calculations/strength-buffs.test.ts": [
+      "src/components/info/powerDisplayUtils.ts",
+      "src/components/powers/power-row-utils.ts",
+      "src/data/at-tables.ts",
+      "src/data/dataset.ts",
+      "src/data/epic-pools.ts",
+      "src/data/powersets.ts",
+      "src/types/build.ts",
+      "src/utils/calculations/character-totals.ts"
+    ],
+    "src/utils/calculations/tohit-atom-native.verify.test.ts": [
+      "src/data/core/atom-query.ts"
+    ],
+    "src/utils/calculations/travel-speed-fixes.test.ts": [
+      "src/data/core/movement-constants.ts",
+      "src/data/dataset.ts",
+      "src/data/index.ts",
+      "src/data/power-pools.ts",
+      "src/types/build.ts",
+      "src/types/power.ts",
+      "src/utils/calculations/character-totals.ts"
+    ],
+    "src/utils/chain-expressions.ts": [],
+    "src/utils/chunk-error-reload.ts": [
+      "src/stores/uiStore.ts"
+    ],
+    "src/utils/conditional-effects.ts": [
+      "src/types/index.ts"
+    ],
+    "src/utils/dataset-switch-overlay.ts": [],
+    "src/utils/detailed-totals.ts": [
+      "src/data/archetypes.ts",
+      "src/data/stat-definitions.ts",
+      "src/hooks/useCalculatedStats.ts",
+      "src/types/index.ts",
+      "src/utils/calculations/character-totals.ts",
+      "src/utils/set-bonus-format.ts"
+    ],
+    "src/utils/diagnostics.ts": [
+      "src/buildTime.ts",
+      "src/stores/buildStore.ts",
+      "src/stores/uiStore.ts"
+    ],
+    "src/utils/enhancement-eligibility.ts": [
+      "src/data/io-sets.ts",
+      "src/types/common.ts",
+      "src/types/enhancement.ts"
+    ],
+    "src/utils/enhancement-outline.ts": [
+      "src/data/proc-data.ts"
+    ],
+    "src/utils/enhancement-uid.ts": [
+      "src/types/index.ts"
+    ],
+    "src/utils/export-image.ts": [],
+    "src/utils/export-popmenu.ts": [
+      "src/data/index.ts",
+      "src/types/enhancement.ts",
+      "src/types/index.ts"
+    ],
+    "src/utils/export-print.ts": [
+      "src/data/index.ts",
+      "src/types/enhancement.ts",
+      "src/types/incarnate.ts",
+      "src/types/index.ts",
+      "src/utils/calculations/character-totals.ts",
+      "src/utils/slot-levels.ts"
+    ],
+    "src/utils/external-import/converter.ts": [
+      "src/data/index.ts",
+      "src/types/index.ts",
+      "src/utils/game-importer/index.ts"
+    ],
+    "src/utils/external-import/index.ts": [],
+    "src/utils/fallback-warnings.ts": [],
+    "src/utils/format-precision.ts": [],
+    "src/utils/forum-export.ts": [
+      "src/data/index.ts",
+      "src/types/index.ts",
+      "src/utils/slot-levels.ts"
+    ],
+    "src/utils/game-importer/importer.test.ts": [
+      "src/data/dataset.ts",
+      "src/utils/game-importer/importer.ts",
+      "src/utils/game-importer/types.ts"
+    ],
+    "src/utils/game-importer/importer.ts": [
+      "src/data/granted-powers.ts",
+      "src/data/index.ts",
+      "src/types/index.ts",
+      "src/utils/calculations/set-tracking.ts",
+      "src/utils/enhancement-uid.ts",
+      "src/utils/fallback-warnings.ts",
+      "src/utils/game-importer/parser.ts",
+      "src/utils/game-importer/types.ts"
+    ],
+    "src/utils/game-importer/index.ts": [],
+    "src/utils/game-importer/parser.ts": [
+      "src/utils/game-importer/types.ts"
+    ],
+    "src/utils/game-importer/types.ts": [
+      "src/types/index.ts"
+    ],
+    "src/utils/import-uid-parity.test.ts": [
+      "src/utils/enhancement-uid.ts",
+      "src/utils/mids-import/mappers.ts",
+      "src/utils/mxd-import/abbreviations.ts"
+    ],
+    "src/utils/import-url.ts": [],
+    "src/utils/index.ts": [],
+    "src/utils/kheldian-import.test.ts": [
+      "src/data/dataset.ts",
+      "src/types/index.ts",
+      "src/utils/external-import/index.ts",
+      "src/utils/mids-import/index.ts"
+    ],
+    "src/utils/mids-export.ts": [
+      "src/data/at-tables.ts",
+      "src/data/epic-pools.ts",
+      "src/data/io-sets.ts",
+      "src/data/power-pools.ts",
+      "src/data/powersets.ts",
+      "src/types/index.ts",
+      "src/utils/mids-import/types.ts"
+    ],
+    "src/utils/mids-import/importer.test.ts": [
+      "src/data/dataset.ts",
+      "src/utils/mids-import/index.ts"
+    ],
+    "src/utils/mids-import/importer.ts": [
+      "src/data/dataset.ts",
+      "src/data/index.ts",
+      "src/types/index.ts",
+      "src/utils/fallback-warnings.ts",
+      "src/utils/mids-import/mappers.ts",
+      "src/utils/mids-import/types.ts",
+      "src/utils/slot-levels.ts"
+    ],
+    "src/utils/mids-import/index.ts": [],
+    "src/utils/mids-import/legacy-piece-aliases.ts": [],
+    "src/utils/mids-import/mappers.ts": [
+      "src/data/index.ts",
+      "src/types/index.ts",
+      "src/utils/enhancement-uid.ts",
+      "src/utils/fallback-warnings.ts",
+      "src/utils/mids-import/legacy-piece-aliases.ts",
+      "src/utils/mids-import/types.ts"
+    ],
+    "src/utils/mids-import/types.ts": [
+      "src/types/index.ts"
+    ],
+    "src/utils/mode-suppression.test.ts": [
+      "src/utils/mode-suppression.ts"
+    ],
+    "src/utils/mode-suppression.ts": [],
+    "src/utils/mxd-import/abbreviations.ts": [],
+    "src/utils/mxd-import/importer.ts": [
+      "src/data/archetypes.ts",
+      "src/data/dataset.ts",
+      "src/data/incarnates.ts",
+      "src/data/io-sets.ts",
+      "src/data/powersets.ts",
+      "src/types/archetype.ts",
+      "src/types/build.ts",
+      "src/types/enhancement.ts",
+      "src/types/index.ts",
+      "src/types/power.ts",
+      "src/utils/mids-import/types.ts",
+      "src/utils/mxd-import/abbreviations.ts",
+      "src/utils/mxd-import/parser.ts"
+    ],
+    "src/utils/mxd-import/index.ts": [],
+    "src/utils/mxd-import/parser.ts": [],
+    "src/utils/over-cap-mute.test.ts": [
+      "src/data/set-bonus-groups.ts",
+      "src/utils/calculations/index.ts",
+      "src/utils/over-cap-mute.ts"
+    ],
+    "src/utils/over-cap-mute.ts": [
+      "src/data/set-bonus-groups.ts",
+      "src/utils/calculations/index.ts",
+      "src/utils/set-bonus-format.ts"
+    ],
+    "src/utils/paths.ts": [],
+    "src/utils/per-server-builds.test.ts": [
+      "src/types/build.ts",
+      "src/utils/per-server-builds.ts"
+    ],
+    "src/utils/per-server-builds.ts": [
+      "src/types/index.ts"
+    ],
+    "src/utils/planner-layout.test.ts": [
+      "src/types/index.ts",
+      "src/utils/planner-layout.ts"
+    ],
+    "src/utils/planner-layout.ts": [
+      "src/types/index.ts"
+    ],
+    "src/utils/power-icons.ts": [
+      "src/utils/paths.ts"
+    ],
+    "src/utils/power-key.ts": [],
+    "src/utils/quick-snipe.test.ts": [
+      "src/types/index.ts",
+      "src/utils/quick-snipe.ts"
+    ],
+    "src/utils/quick-snipe.ts": [
+      "src/types/index.ts"
+    ],
+    "src/utils/server-deeplink.ts": [
+      "src/utils/per-server-builds.ts"
+    ],
+    "src/utils/set-bonus-format.ts": [
+      "src/utils/format-precision.ts"
+    ],
+    "src/utils/slot-levels-move.test.ts": [
+      "src/data/dataset.ts",
+      "src/types/build.ts",
+      "src/utils/power-key.ts",
+      "src/utils/slot-levels.ts"
+    ],
+    "src/utils/slot-levels.test.ts": [
+      "src/data/dataset.ts",
+      "src/types/build.ts",
+      "src/utils/slot-levels.ts"
+    ],
+    "src/utils/slot-levels.ts": [
+      "src/data/index.ts",
+      "src/types/index.ts",
+      "src/utils/power-key.ts"
+    ],
+    "src/utils/slot-move.test.ts": [
+      "src/data/dataset.ts",
+      "src/stores/buildStore.ts",
+      "src/test/localstorage-polyfill.ts",
+      "src/types/build.ts",
+      "src/utils/enhancement-eligibility.ts",
+      "src/utils/slot-levels.ts"
+    ],
+    "src/utils/url-build-sync.ts": [
+      "src/stores/index.ts",
+      "src/types/index.ts",
+      "src/utils/build-serialization.ts",
+      "src/utils/import-url.ts"
+    ],
+    "src/vite-env.d.ts": [],
+    "streams/CHANGELOG-DISCORD.md": [],
+    "streams/OPEN_ITEMS.md": [],
+    "streams/REARRANGEABLE_LAYOUT_PLAN.md": [],
+    "supabase/.temp/cli-latest": [],
+    "supabase/.temp/gotrue-version": [],
+    "supabase/.temp/linked-project.json": [],
+    "supabase/.temp/pooler-url": [],
+    "supabase/.temp/postgres-version": [],
+    "supabase/.temp/project-ref": [],
+    "supabase/.temp/rest-version": [],
+    "supabase/.temp/storage-migration": [],
+    "supabase/.temp/storage-version": [],
+    "supabase/config.toml": [],
+    "supabase/functions/auction-prices/index.ts": [],
+    "supabase/functions/claim-builds/index.ts": [],
+    "supabase/functions/delete-build/index.ts": [],
+    "supabase/functions/share-build/index.ts": [],
+    "supabase/functions/update-build-visibility/index.ts": [],
+    "supabase/functions/update-profile/index.ts": [],
+    "supabase/schema.sql": [],
+    "tools/bin-crawler/audit_stack_alignment.py": [
+      "tools/bin-crawler/bin_crawler/assets_dir.py",
+      "tools/bin-crawler/bin_crawler/parser/_enums.py",
+      "tools/bin-crawler/bin_crawler/parser/_pigg.py",
+      "tools/bin-crawler/bin_crawler/parser/_powers.py"
+    ],
+    "tools/bin-crawler/bin-crawler.bat": [],
+    "tools/bin-crawler/bin_crawler/__init__.py": [],
+    "tools/bin-crawler/bin_crawler/__main__.py": [
+      "tools/bin-crawler/bin_crawler/server.py"
+    ],
+    "tools/bin-crawler/bin_crawler/_export_fingerprint.py": [],
+    "tools/bin-crawler/bin_crawler/assets_dir.py": [
+      "tools/bin-crawler/bin_crawler/parser/_pigg.py"
+    ],
+    "tools/bin-crawler/bin_crawler/diff_exports.py": [
+      "tools/bin-crawler/bin_crawler/assets_dir.py"
+    ],
+    "tools/bin-crawler/bin_crawler/export_classes.py": [
+      "tools/bin-crawler/bin_crawler/assets_dir.py",
+      "tools/bin-crawler/bin_crawler/parser/_classes.py",
+      "tools/bin-crawler/bin_crawler/parser/_pigg.py"
+    ],
+    "tools/bin-crawler/bin_crawler/export_entities.py": [
+      "tools/bin-crawler/bin_crawler/assets_dir.py",
+      "tools/bin-crawler/bin_crawler/export_powers.py",
+      "tools/bin-crawler/bin_crawler/parser/_entities.py",
+      "tools/bin-crawler/bin_crawler/parser/_messages.py",
+      "tools/bin-crawler/bin_crawler/parser/_pigg.py",
+      "tools/bin-crawler/bin_crawler/parser/_powersets.py"
+    ],
+    "tools/bin-crawler/bin_crawler/export_powers.py": [
+      "tools/bin-crawler/bin_crawler/_export_fingerprint.py",
+      "tools/bin-crawler/bin_crawler/assets_dir.py",
+      "tools/bin-crawler/bin_crawler/parser/_attrib_names.py",
+      "tools/bin-crawler/bin_crawler/parser/_boostsets.py",
+      "tools/bin-crawler/bin_crawler/parser/_classes.py",
+      "tools/bin-crawler/bin_crawler/parser/_enums.py",
+      "tools/bin-crawler/bin_crawler/parser/_messages.py",
+      "tools/bin-crawler/bin_crawler/parser/_pigg.py",
+      "tools/bin-crawler/bin_crawler/parser/_powercats.py",
+      "tools/bin-crawler/bin_crawler/parser/_powers.py",
+      "tools/bin-crawler/bin_crawler/parser/_powersets.py"
+    ],
+    "tools/bin-crawler/bin_crawler/export_salvage.py": [
+      "tools/bin-crawler/bin_crawler/assets_dir.py",
+      "tools/bin-crawler/bin_crawler/parser/_messages.py",
+      "tools/bin-crawler/bin_crawler/parser/_pigg.py",
+      "tools/bin-crawler/bin_crawler/parser/_salvage.py"
+    ],
+    "tools/bin-crawler/bin_crawler/parser/__init__.py": [
+      "tools/bin-crawler/bin_crawler/parser/_boostsets.py",
+      "tools/bin-crawler/bin_crawler/parser/_classes.py",
+      "tools/bin-crawler/bin_crawler/parser/_messages.py",
+      "tools/bin-crawler/bin_crawler/parser/_pigg.py",
+      "tools/bin-crawler/bin_crawler/parser/_powercats.py",
+      "tools/bin-crawler/bin_crawler/parser/_powers.py",
+      "tools/bin-crawler/bin_crawler/parser/_powersets.py"
+    ],
+    "tools/bin-crawler/bin_crawler/parser/_attrib_names.py": [
+      "tools/bin-crawler/bin_crawler/parser/_reader.py"
+    ],
+    "tools/bin-crawler/bin_crawler/parser/_boostsets.py": [
+      "tools/bin-crawler/bin_crawler/parser/_reader.py"
+    ],
+    "tools/bin-crawler/bin_crawler/parser/_classes.py": [
+      "tools/bin-crawler/bin_crawler/parser/_dataclasses.py",
+      "tools/bin-crawler/bin_crawler/parser/_reader.py"
+    ],
+    "tools/bin-crawler/bin_crawler/parser/_dataclasses.py": [
+      "tools/bin-crawler/bin_crawler/parser/_enums.py"
+    ],
+    "tools/bin-crawler/bin_crawler/parser/_entities.py": [
+      "tools/bin-crawler/bin_crawler/parser/_reader.py"
+    ],
+    "tools/bin-crawler/bin_crawler/parser/_enums.py": [],
+    "tools/bin-crawler/bin_crawler/parser/_messages.py": [],
+    "tools/bin-crawler/bin_crawler/parser/_pigg.py": [],
+    "tools/bin-crawler/bin_crawler/parser/_powercats.py": [
+      "tools/bin-crawler/bin_crawler/parser/_dataclasses.py",
+      "tools/bin-crawler/bin_crawler/parser/_reader.py"
+    ],
+    "tools/bin-crawler/bin_crawler/parser/_powers.py": [
+      "tools/bin-crawler/bin_crawler/parser/_dataclasses.py",
+      "tools/bin-crawler/bin_crawler/parser/_enums.py",
+      "tools/bin-crawler/bin_crawler/parser/_reader.py"
+    ],
+    "tools/bin-crawler/bin_crawler/parser/_powersets.py": [
+      "tools/bin-crawler/bin_crawler/parser/_dataclasses.py",
+      "tools/bin-crawler/bin_crawler/parser/_reader.py"
+    ],
+    "tools/bin-crawler/bin_crawler/parser/_reader.py": [],
+    "tools/bin-crawler/bin_crawler/parser/_salvage.py": [
+      "tools/bin-crawler/bin_crawler/parser/_dataclasses.py",
+      "tools/bin-crawler/bin_crawler/parser/_reader.py"
+    ],
+    "tools/bin-crawler/bin_crawler/server.py": [
+      "tools/bin-crawler/bin_crawler/assets_dir.py",
+      "tools/bin-crawler/bin_crawler/parser/__init__.py"
+    ],
+    "tools/bin-crawler/bin_crawler/static/index.html": [],
+    "tools/bin-crawler/bincrawler_icon.af": [],
+    "tools/bin-crawler/dump_template_bytes.py": [
+      "tools/bin-crawler/bin_crawler/assets_dir.py",
+      "tools/bin-crawler/bin_crawler/parser/__init__.py",
+      "tools/bin-crawler/bin_crawler/parser/_pigg.py"
+    ],
+    "tools/bin-crawler/probe_chain_fields.py": [
+      "tools/bin-crawler/bin_crawler/assets_dir.py",
+      "tools/bin-crawler/bin_crawler/parser/_pigg.py",
+      "tools/bin-crawler/bin_crawler/parser/_powers.py"
+    ],
+    "tools/bin-crawler/tests/test_special_attribs.py": [
+      "tools/bin-crawler/bin_crawler/parser/_enums.py"
+    ],
+    "tools/data-audit/count_parity.py": [],
+    "tools/data-audit/reports/census-all.json": [],
+    "tools/data-audit/reports/count-parity-hc.json": [],
+    "tools/data-audit/reports/twins-all.json": [],
+    "tools/extraction-audit/audit.py": [
+      "tools/extraction-audit/parse_powers.py"
+    ],
+    "tools/extraction-audit/gap-report.json": [],
+    "tools/extraction-audit/parse_powers.py": [],
+    "tools/ghidra-audit/FindAttribModParser.java": [],
+    "tools/ghidra-audit/FindBinSerializer.java": [],
+    "tools/ghidra-audit/FindPowerEffectsParser.java": [],
+    "tools/ghidra-audit/FindVillainDefParser.java": [],
+    "tools/ghidra-audit/README.md": [],
+    "tools/ghidra-audit/run_headless.bat": [],
+    "tools/mids-oracle/README.md": [],
+    "tools/mids-oracle/crosscheck_bridge.ts": [
+      "src/data/core/atomic-effect.ts"
+    ],
+    "tools/mids-oracle/diff_enh_oracle.py": [
+      "tools/mids-oracle/read_enhdb.py",
+      "tools/mids-oracle/read_i12.py"
+    ],
+    "tools/mids-oracle/diff_harness.py": [
+      "tools/mids-oracle/read_i12.py"
+    ],
+    "tools/mids-oracle/diff_oracle.py": [
+      "tools/mids-oracle/read_i12.py"
+    ],
+    "tools/mids-oracle/emit_canonical.ts": [
+      "src/data/core/atomic-effect.ts"
+    ],
+    "tools/mids-oracle/enh_oracle_mapping_gap_worklist.json": [],
+    "tools/mids-oracle/enh_oracle_mapping_gap_worklist.md": [],
+    "tools/mids-oracle/enh_oracle_residual_baseline.json": [],
+    "tools/mids-oracle/enh_oracle_triage.json": [],
+    "tools/mids-oracle/oracle_divergence_rules.json": [],
+    "tools/mids-oracle/read_enhdb.py": [
+      "tools/mids-oracle/read_i12.py"
+    ],
+    "tools/mids-oracle/read_i12.py": [],
+    "tools/mids-oracle/test_diff_enh_oracle.py": [
+      "tools/mids-oracle/diff_enh_oracle.py"
+    ],
+    "tools/mids-oracle/test_read_enhdb.py": [
+      "tools/mids-oracle/read_enhdb.py"
+    ],
+    "tools/pigg-wrangler-dist/PiggWrangler.spec": [],
+    "tools/pigg-wrangler/PiggWrangler.bat": [],
+    "tools/pigg-wrangler/PiggWrangler.vbs": [],
+    "tools/pigg-wrangler/create_shortcut.ps1": [],
+    "tools/pigg-wrangler/pigg_wrangler.af": [],
+    "tools/pigg-wrangler/pigg_wrangler/__init__.py": [],
+    "tools/pigg-wrangler/pigg_wrangler/__main__.py": [
+      "tools/pigg-wrangler/pigg_wrangler/server.py"
+    ],
+    "tools/pigg-wrangler/pigg_wrangler/config.py": [],
+    "tools/pigg-wrangler/pigg_wrangler/index_builder.py": [
+      "tools/pigg-wrangler/pigg_wrangler/pigg.py"
+    ],
+    "tools/pigg-wrangler/pigg_wrangler/pigg.py": [],
+    "tools/pigg-wrangler/pigg_wrangler/server.py": [
+      "tools/pigg-wrangler/pigg_wrangler/index_builder.py",
+      "tools/pigg-wrangler/pigg_wrangler/texture.py"
+    ],
+    "tools/pigg-wrangler/pigg_wrangler/static/index.html": [],
+    "tools/pigg-wrangler/pigg_wrangler/texture.py": [],
+    "tools/sidekick-launcher/launcher.py": [],
+    "tools/sidekick-launcher/static/index.html": [],
+    "tools/sidekick-launcher/tools.json": [],
+    "tsconfig.json": [],
+    "tsconfig.node.json": [],
+    "vite.config.ts": []
+  }
+}

@@ -1,0 +1,1109 @@
+{
+ "nodes": [
+  {
+   "id": "file:src/components/info/index.ts",
+   "type": "file",
+   "name": "index.ts",
+   "filePath": "src/components/info/index.ts",
+   "summary": "Barrel file re-exporting the info components InfoPanel and PowerInfoTooltip.",
+   "tags": [
+    "barrel",
+    "entry-point",
+    "info-panel"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:src/components/layout/ExemplarModeBanner.tsx",
+   "type": "file",
+   "name": "ExemplarModeBanner.tsx",
+   "filePath": "src/components/layout/ExemplarModeBanner.tsx",
+   "summary": "Banner shown when exemplar mode is active, reading the exemplar level from the UI store and offering a way to exit the mode.",
+   "tags": [
+    "component",
+    "layout",
+    "banner",
+    "exemplar"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/components/layout/ExemplarModeBanner.tsx:ExemplarModeBanner",
+   "type": "function",
+   "name": "ExemplarModeBanner",
+   "filePath": "src/components/layout/ExemplarModeBanner.tsx",
+   "lineRange": [
+    16,
+    42
+   ],
+   "summary": "Renders the exemplar-mode banner with current exemplar level and exit control.",
+   "tags": [
+    "component",
+    "banner",
+    "exemplar"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:src/components/layout/MainLayout.tsx",
+   "type": "file",
+   "name": "MainLayout.tsx",
+   "filePath": "src/components/layout/MainLayout.tsx",
+   "summary": "Top-level application layout composing the header, stats dashboard, info panels, banners, modals, enhancement picker, and mobile navigation, and wiring global hotkeys and status checks.",
+   "tags": [
+    "component",
+    "layout",
+    "entry-point",
+    "composition"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:src/components/layout/MainLayout.tsx:MainLayout",
+   "type": "function",
+   "name": "MainLayout",
+   "filePath": "src/components/layout/MainLayout.tsx",
+   "lineRange": [
+    42,
+    180
+   ],
+   "summary": "Composes the entire app shell: header, dashboard, info panels, banners, picker, modals, mobile nav, plus hotkey and status hooks.",
+   "tags": [
+    "component",
+    "layout",
+    "composition"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:src/components/layout/MobileBottomNav.tsx",
+   "type": "file",
+   "name": "MobileBottomNav.tsx",
+   "filePath": "src/components/layout/MobileBottomNav.tsx",
+   "summary": "Mobile bottom navigation bar with sheet-based menu and settings panels, inline SVG icons, and access to dashboard, incarnates, and app settings on small screens.",
+   "tags": [
+    "component",
+    "layout",
+    "mobile",
+    "navigation"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:src/components/layout/MobileBottomNav.tsx:MobileBottomNav",
+   "type": "function",
+   "name": "MobileBottomNav",
+   "filePath": "src/components/layout/MobileBottomNav.tsx",
+   "lineRange": [
+    44,
+    206
+   ],
+   "summary": "Bottom navigation bar controlling which mobile sheet (menu, settings, dashboard) is open.",
+   "tags": [
+    "component",
+    "mobile",
+    "navigation"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:src/components/layout/MobileBottomNav.tsx:NavButton",
+   "type": "function",
+   "name": "NavButton",
+   "filePath": "src/components/layout/MobileBottomNav.tsx",
+   "lineRange": [
+    208,
+    238
+   ],
+   "summary": "Single nav button with icon and active state.",
+   "tags": [
+    "component",
+    "mobile",
+    "navigation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/components/layout/MobileBottomNav.tsx:MobileSheet",
+   "type": "function",
+   "name": "MobileSheet",
+   "filePath": "src/components/layout/MobileBottomNav.tsx",
+   "lineRange": [
+    240,
+    278
+   ],
+   "summary": "Bottom-sheet container with backdrop and slide-up animation.",
+   "tags": [
+    "component",
+    "mobile",
+    "sheet"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/components/layout/MobileBottomNav.tsx:MobileMenuContent",
+   "type": "function",
+   "name": "MobileMenuContent",
+   "filePath": "src/components/layout/MobileBottomNav.tsx",
+   "lineRange": [
+    284,
+    406
+   ],
+   "summary": "Menu sheet content with links to modals, export tools, community links, and auth actions.",
+   "tags": [
+    "component",
+    "mobile",
+    "menu"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:src/components/layout/MobileBottomNav.tsx:Section",
+   "type": "function",
+   "name": "Section",
+   "filePath": "src/components/layout/MobileBottomNav.tsx",
+   "lineRange": [
+    408,
+    417
+   ],
+   "summary": "Titled section wrapper used inside mobile sheets.",
+   "tags": [
+    "component",
+    "mobile",
+    "layout"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/components/layout/MobileBottomNav.tsx:MobileSettingsContent",
+   "type": "function",
+   "name": "MobileSettingsContent",
+   "filePath": "src/components/layout/MobileBottomNav.tsx",
+   "lineRange": [
+    423,
+    574
+   ],
+   "summary": "Settings sheet content exposing display, theme, and gameplay toggles on mobile.",
+   "tags": [
+    "component",
+    "mobile",
+    "settings"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:src/components/layout/MobileBottomNav.tsx:ToggleRow",
+   "type": "function",
+   "name": "ToggleRow",
+   "filePath": "src/components/layout/MobileBottomNav.tsx",
+   "lineRange": [
+    585,
+    598
+   ],
+   "summary": "Labeled toggle row used in the mobile settings sheet.",
+   "tags": [
+    "component",
+    "mobile",
+    "settings"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:src/components/layout/MobileBuildBar.tsx",
+   "type": "file",
+   "name": "MobileBuildBar.tsx",
+   "filePath": "src/components/layout/MobileBuildBar.tsx",
+   "summary": "Slim mobile top bar exposing the character/build summary and quick actions, delegating to the shared Header component.",
+   "tags": [
+    "component",
+    "layout",
+    "mobile",
+    "toolbar"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/components/layout/MobileBuildBar.tsx:MobileBuildBar",
+   "type": "function",
+   "name": "MobileBuildBar",
+   "filePath": "src/components/layout/MobileBuildBar.tsx",
+   "lineRange": [
+    19,
+    64
+   ],
+   "summary": "Renders the compact mobile build bar hosting the shared Header in mobile mode.",
+   "tags": [
+    "component",
+    "mobile",
+    "toolbar"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:src/components/layout/PinnedPowersBar.tsx",
+   "type": "file",
+   "name": "PinnedPowersBar.tsx",
+   "filePath": "src/components/layout/PinnedPowersBar.tsx",
+   "summary": "Bar rendering powers the user pinned for quick reference, each with its icon and perma-status ring, collected from all power categories in the build.",
+   "tags": [
+    "component",
+    "layout",
+    "pinned-powers",
+    "display"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:src/components/layout/PinnedPowersBar.tsx:collectBuildPowers",
+   "type": "function",
+   "name": "collectBuildPowers",
+   "filePath": "src/components/layout/PinnedPowersBar.tsx",
+   "lineRange": [
+    20,
+    30
+   ],
+   "summary": "Collects all selected powers across primary/secondary/pool/epic categories of the build.",
+   "tags": [
+    "utility",
+    "build",
+    "aggregation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/components/layout/PinnedPowersBar.tsx:PinnedPowersBar",
+   "type": "function",
+   "name": "PinnedPowersBar",
+   "filePath": "src/components/layout/PinnedPowersBar.tsx",
+   "lineRange": [
+    32,
+    59
+   ],
+   "summary": "Bar listing the user’s pinned powers with icons.",
+   "tags": [
+    "component",
+    "pinned-powers",
+    "display"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/components/layout/PinnedPowersBar.tsx:PinnedPowerItem",
+   "type": "function",
+   "name": "PinnedPowerItem",
+   "filePath": "src/components/layout/PinnedPowersBar.tsx",
+   "lineRange": [
+    61,
+    88
+   ],
+   "summary": "Single pinned power with icon and perma-ring indicator.",
+   "tags": [
+    "component",
+    "pinned-powers",
+    "display"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:src/components/layout/StatsDashboard.tsx",
+   "type": "file",
+   "name": "StatsDashboard.tsx",
+   "filePath": "src/components/layout/StatsDashboard.tsx",
+   "summary": "The character stats dashboard: renders defense/resistance/misc stat groups with breakdown tooltips, cap indicators, collapsed row mode, incarnate grid, pinned powers, and action buttons. Central read-out of the whole calculation pipeline.",
+   "tags": [
+    "component",
+    "layout",
+    "dashboard",
+    "stats",
+    "entry-point"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:src/components/layout/StatsDashboard.tsx:CollapsedDashboardRow",
+   "type": "function",
+   "name": "CollapsedDashboardRow",
+   "filePath": "src/components/layout/StatsDashboard.tsx",
+   "lineRange": [
+    80,
+    136
+   ],
+   "summary": "Compact single-row rendering of key stats when the dashboard is collapsed.",
+   "tags": [
+    "component",
+    "dashboard",
+    "stats"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:src/components/layout/StatsDashboard.tsx:StatsDashboard",
+   "type": "function",
+   "name": "StatsDashboard",
+   "filePath": "src/components/layout/StatsDashboard.tsx",
+   "lineRange": [
+    138,
+    696
+   ],
+   "summary": "Main dashboard component: reads calculated character stats and renders grouped stat items, incarnate grid, pinned powers, exemplar controls, and enemy-level adjuster.",
+   "tags": [
+    "component",
+    "dashboard",
+    "stats"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:src/components/layout/StatsDashboard.tsx:DashboardActionButtons",
+   "type": "function",
+   "name": "DashboardActionButtons",
+   "filePath": "src/components/layout/StatsDashboard.tsx",
+   "lineRange": [
+    738,
+    852
+   ],
+   "summary": "Row of dashboard action buttons (detailed totals, set bonuses, config, collapse, etc.).",
+   "tags": [
+    "component",
+    "dashboard",
+    "actions"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:src/components/layout/StatsDashboard.tsx:StatItem",
+   "type": "function",
+   "name": "StatItem",
+   "filePath": "src/components/layout/StatsDashboard.tsx",
+   "lineRange": [
+    886,
+    1079
+   ],
+   "summary": "One stat display cell with value formatting, cap coloring, over-cap warnings, and breakdown tooltip.",
+   "tags": [
+    "component",
+    "dashboard",
+    "stats"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:src/components/layout/StatusBanner.tsx",
+   "type": "file",
+   "name": "StatusBanner.tsx",
+   "filePath": "src/components/layout/StatusBanner.tsx",
+   "summary": "Banner surfacing backend/service status fetched via the status-check hook (e.g. degraded share service notices).",
+   "tags": [
+    "component",
+    "layout",
+    "banner",
+    "status"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/components/layout/StatusBanner.tsx:StatusBanner",
+   "type": "function",
+   "name": "StatusBanner",
+   "filePath": "src/components/layout/StatusBanner.tsx",
+   "lineRange": [
+    12,
+    53
+   ],
+   "summary": "Renders the service-status banner based on the status-check hook result.",
+   "tags": [
+    "component",
+    "banner",
+    "status"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:src/components/layout/UpdateBanner.tsx",
+   "type": "file",
+   "name": "UpdateBanner.tsx",
+   "filePath": "src/components/layout/UpdateBanner.tsx",
+   "summary": "Banner prompting the user to reload when a new app version is available, driven by update state in the store.",
+   "tags": [
+    "component",
+    "layout",
+    "banner",
+    "update-notification"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/components/layout/UpdateBanner.tsx:UpdateBanner",
+   "type": "function",
+   "name": "UpdateBanner",
+   "filePath": "src/components/layout/UpdateBanner.tsx",
+   "lineRange": [
+    16,
+    55
+   ],
+   "summary": "Renders the update-available banner with a reload action.",
+   "tags": [
+    "component",
+    "banner",
+    "update-notification"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:src/components/modals/AboutModal.tsx",
+   "type": "file",
+   "name": "AboutModal.tsx",
+   "filePath": "src/components/modals/AboutModal.tsx",
+   "summary": "About dialog with app credits, version information, and acknowledgements.",
+   "tags": [
+    "component",
+    "modal",
+    "about",
+    "static-content"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/components/modals/AboutModal.tsx:AboutModal",
+   "type": "function",
+   "name": "AboutModal",
+   "filePath": "src/components/modals/AboutModal.tsx",
+   "lineRange": [
+    42,
+    119
+   ],
+   "summary": "Renders the About dialog content: credits, version, and acknowledgements.",
+   "tags": [
+    "component",
+    "modal",
+    "about"
+   ],
+   "complexity": "moderate"
+  }
+ ],
+ "edges": [
+  {
+   "source": "file:src/components/layout/ExemplarModeBanner.tsx",
+   "target": "function:src/components/layout/ExemplarModeBanner.tsx:ExemplarModeBanner",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/layout/ExemplarModeBanner.tsx",
+   "target": "function:src/components/layout/ExemplarModeBanner.tsx:ExemplarModeBanner",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/components/layout/MainLayout.tsx",
+   "target": "function:src/components/layout/MainLayout.tsx:MainLayout",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/layout/MainLayout.tsx",
+   "target": "function:src/components/layout/MainLayout.tsx:MainLayout",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/components/layout/MobileBottomNav.tsx",
+   "target": "function:src/components/layout/MobileBottomNav.tsx:MobileBottomNav",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/layout/MobileBottomNav.tsx",
+   "target": "function:src/components/layout/MobileBottomNav.tsx:MobileBottomNav",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/components/layout/MobileBottomNav.tsx",
+   "target": "function:src/components/layout/MobileBottomNav.tsx:NavButton",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/layout/MobileBottomNav.tsx",
+   "target": "function:src/components/layout/MobileBottomNav.tsx:MobileSheet",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/layout/MobileBottomNav.tsx",
+   "target": "function:src/components/layout/MobileBottomNav.tsx:MobileMenuContent",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/layout/MobileBottomNav.tsx",
+   "target": "function:src/components/layout/MobileBottomNav.tsx:Section",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/layout/MobileBottomNav.tsx",
+   "target": "function:src/components/layout/MobileBottomNav.tsx:MobileSettingsContent",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/layout/MobileBottomNav.tsx",
+   "target": "function:src/components/layout/MobileBottomNav.tsx:ToggleRow",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/layout/MobileBuildBar.tsx",
+   "target": "function:src/components/layout/MobileBuildBar.tsx:MobileBuildBar",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/layout/MobileBuildBar.tsx",
+   "target": "function:src/components/layout/MobileBuildBar.tsx:MobileBuildBar",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/components/layout/PinnedPowersBar.tsx",
+   "target": "function:src/components/layout/PinnedPowersBar.tsx:collectBuildPowers",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/layout/PinnedPowersBar.tsx",
+   "target": "function:src/components/layout/PinnedPowersBar.tsx:PinnedPowersBar",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/layout/PinnedPowersBar.tsx",
+   "target": "function:src/components/layout/PinnedPowersBar.tsx:PinnedPowersBar",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/components/layout/PinnedPowersBar.tsx",
+   "target": "function:src/components/layout/PinnedPowersBar.tsx:PinnedPowerItem",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/layout/StatsDashboard.tsx",
+   "target": "function:src/components/layout/StatsDashboard.tsx:CollapsedDashboardRow",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/layout/StatsDashboard.tsx",
+   "target": "function:src/components/layout/StatsDashboard.tsx:StatsDashboard",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/layout/StatsDashboard.tsx",
+   "target": "function:src/components/layout/StatsDashboard.tsx:StatsDashboard",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/components/layout/StatsDashboard.tsx",
+   "target": "function:src/components/layout/StatsDashboard.tsx:DashboardActionButtons",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/layout/StatsDashboard.tsx",
+   "target": "function:src/components/layout/StatsDashboard.tsx:StatItem",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/layout/StatusBanner.tsx",
+   "target": "function:src/components/layout/StatusBanner.tsx:StatusBanner",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/layout/StatusBanner.tsx",
+   "target": "function:src/components/layout/StatusBanner.tsx:StatusBanner",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/components/layout/UpdateBanner.tsx",
+   "target": "function:src/components/layout/UpdateBanner.tsx:UpdateBanner",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/layout/UpdateBanner.tsx",
+   "target": "function:src/components/layout/UpdateBanner.tsx:UpdateBanner",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/components/modals/AboutModal.tsx",
+   "target": "function:src/components/modals/AboutModal.tsx:AboutModal",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/modals/AboutModal.tsx",
+   "target": "function:src/components/modals/AboutModal.tsx:AboutModal",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/components/layout/ExemplarModeBanner.tsx",
+   "target": "file:src/stores/uiStore.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/MainLayout.tsx",
+   "target": "file:src/components/enhancements/EnhancementPicker.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/MainLayout.tsx",
+   "target": "file:src/components/info/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/MainLayout.tsx",
+   "target": "file:src/components/layout/ExemplarModeBanner.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/MainLayout.tsx",
+   "target": "file:src/components/layout/Header.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/MainLayout.tsx",
+   "target": "file:src/components/layout/MobileBottomNav.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/MainLayout.tsx",
+   "target": "file:src/components/layout/MobileBuildBar.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/MainLayout.tsx",
+   "target": "file:src/components/layout/RuleOf5Banner.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/MainLayout.tsx",
+   "target": "file:src/components/layout/StatsDashboard.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/MainLayout.tsx",
+   "target": "file:src/components/layout/StatusBanner.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/MainLayout.tsx",
+   "target": "file:src/components/layout/UpdateBanner.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/MainLayout.tsx",
+   "target": "file:src/components/modals/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/MainLayout.tsx",
+   "target": "file:src/components/ui/Toast.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/MainLayout.tsx",
+   "target": "file:src/hooks/useDashboardCollapseHotkey.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/MainLayout.tsx",
+   "target": "file:src/hooks/useInfoPanelLockHotkey.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/MainLayout.tsx",
+   "target": "file:src/hooks/useStatusCheck.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/MainLayout.tsx",
+   "target": "file:src/hooks/useTooltipHotkey.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/MainLayout.tsx",
+   "target": "file:src/hooks/useUndoRedoKeyboard.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/MainLayout.tsx",
+   "target": "file:src/lib/links.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/MainLayout.tsx",
+   "target": "file:src/stores/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/MobileBottomNav.tsx",
+   "target": "file:src/components/layout/StatsDashboard.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/MobileBottomNav.tsx",
+   "target": "file:src/components/modals/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/MobileBottomNav.tsx",
+   "target": "file:src/components/ui/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/MobileBottomNav.tsx",
+   "target": "file:src/data/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/MobileBottomNav.tsx",
+   "target": "file:src/lib/links.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/MobileBottomNav.tsx",
+   "target": "file:src/lib/supabase.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/MobileBottomNav.tsx",
+   "target": "file:src/stores/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/MobileBottomNav.tsx",
+   "target": "file:src/stores/onboardingStore.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/MobileBottomNav.tsx",
+   "target": "file:src/types/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/MobileBuildBar.tsx",
+   "target": "file:src/components/layout/Header.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/MobileBuildBar.tsx",
+   "target": "file:src/components/ui/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/MobileBuildBar.tsx",
+   "target": "file:src/hooks/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/MobileBuildBar.tsx",
+   "target": "file:src/stores/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/PinnedPowersBar.tsx",
+   "target": "file:src/components/powers/PermaRing.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/PinnedPowersBar.tsx",
+   "target": "file:src/stores/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/PinnedPowersBar.tsx",
+   "target": "file:src/types/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/PinnedPowersBar.tsx",
+   "target": "file:src/utils/paths.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/PinnedPowersBar.tsx",
+   "target": "file:src/utils/power-icons.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/StatsDashboard.tsx",
+   "target": "file:src/components/incarnate/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/StatsDashboard.tsx",
+   "target": "file:src/components/layout/PinnedPowersBar.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/StatsDashboard.tsx",
+   "target": "file:src/components/modals/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/StatsDashboard.tsx",
+   "target": "file:src/components/powers/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/StatsDashboard.tsx",
+   "target": "file:src/components/ui/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/StatsDashboard.tsx",
+   "target": "file:src/data/core/movement-constants.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/StatsDashboard.tsx",
+   "target": "file:src/data/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/StatsDashboard.tsx",
+   "target": "file:src/data/purple-patch.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/StatsDashboard.tsx",
+   "target": "file:src/data/set-bonus-groups.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/StatsDashboard.tsx",
+   "target": "file:src/data/stat-definitions.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/StatsDashboard.tsx",
+   "target": "file:src/hooks/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/StatsDashboard.tsx",
+   "target": "file:src/hooks/useCalculatedStats.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/StatsDashboard.tsx",
+   "target": "file:src/stores/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/StatsDashboard.tsx",
+   "target": "file:src/types/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/StatsDashboard.tsx",
+   "target": "file:src/utils/calculations/character-totals.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/StatsDashboard.tsx",
+   "target": "file:src/utils/calculations/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/StatsDashboard.tsx",
+   "target": "file:src/utils/calculations/stats.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/StatsDashboard.tsx",
+   "target": "file:src/utils/set-bonus-format.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/StatusBanner.tsx",
+   "target": "file:src/hooks/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/layout/UpdateBanner.tsx",
+   "target": "file:src/stores/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/AboutModal.tsx",
+   "target": "file:src/components/modals/Modal.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/AboutModal.tsx",
+   "target": "file:src/utils/paths.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  }
+ ]
+}

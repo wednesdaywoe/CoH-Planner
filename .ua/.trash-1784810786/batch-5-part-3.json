@@ -1,0 +1,987 @@
+{
+ "nodes": [
+  {
+   "id": "file:src/components/modals/AccoladesModal.tsx",
+   "type": "file",
+   "name": "AccoladesModal.tsx",
+   "filePath": "src/components/modals/AccoladesModal.tsx",
+   "summary": "Modal for toggling accolade powers on the build, listing each accolade with its passive bonuses from the accolade registry.",
+   "tags": [
+    "component",
+    "modal",
+    "accolades",
+    "build-settings"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:src/components/modals/AccoladesModal.tsx:AccoladesModal",
+   "type": "function",
+   "name": "AccoladesModal",
+   "filePath": "src/components/modals/AccoladesModal.tsx",
+   "lineRange": [
+    16,
+    128
+   ],
+   "summary": "Modal listing accolades with toggles that update the build’s accolade selection.",
+   "tags": [
+    "component",
+    "modal",
+    "accolades"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:src/components/modals/AnnouncementModal.tsx",
+   "type": "file",
+   "name": "AnnouncementModal.tsx",
+   "filePath": "src/components/modals/AnnouncementModal.tsx",
+   "summary": "Modal presenting release announcements and the roadmap panel, reading announcement content from the data layer and tracking seen state in the store.",
+   "tags": [
+    "component",
+    "modal",
+    "announcements",
+    "roadmap"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:src/components/modals/AnnouncementModal.tsx:AnnouncementModal",
+   "type": "function",
+   "name": "AnnouncementModal",
+   "filePath": "src/components/modals/AnnouncementModal.tsx",
+   "lineRange": [
+    28,
+    181
+   ],
+   "summary": "Modal rendering announcement entries and the roadmap panel with seen-state tracking.",
+   "tags": [
+    "component",
+    "modal",
+    "announcements"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:src/components/modals/BuildImageModal.tsx",
+   "type": "file",
+   "name": "BuildImageModal.tsx",
+   "filePath": "src/components/modals/BuildImageModal.tsx",
+   "summary": "Modal orchestrating the Export-as-Image flow: renders the off-screen BuildImageCard with selected options and drives rasterization/download via the export-image utility.",
+   "tags": [
+    "component",
+    "modal",
+    "export",
+    "image-generation"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:src/components/modals/BuildImageModal.tsx:Check",
+   "type": "function",
+   "name": "Check",
+   "filePath": "src/components/modals/BuildImageModal.tsx",
+   "lineRange": [
+    38,
+    58
+   ],
+   "summary": "Checkbox row used for export option toggles.",
+   "tags": [
+    "component",
+    "modal",
+    "form"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/components/modals/BuildImageModal.tsx:BuildImageModal",
+   "type": "function",
+   "name": "BuildImageModal",
+   "filePath": "src/components/modals/BuildImageModal.tsx",
+   "lineRange": [
+    60,
+    318
+   ],
+   "summary": "Drives the image export: option selection, off-screen BuildImageCard rendering, rasterization, and PNG download/copy.",
+   "tags": [
+    "component",
+    "modal",
+    "export"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:src/components/modals/ConfirmModal.tsx",
+   "type": "file",
+   "name": "ConfirmModal.tsx",
+   "filePath": "src/components/modals/ConfirmModal.tsx",
+   "summary": "Generic confirmation dialog with configurable message and confirm/cancel actions.",
+   "tags": [
+    "component",
+    "modal",
+    "confirmation",
+    "utility"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/components/modals/ConfirmModal.tsx:ConfirmModal",
+   "type": "function",
+   "name": "ConfirmModal",
+   "filePath": "src/components/modals/ConfirmModal.tsx",
+   "lineRange": [
+    21,
+    46
+   ],
+   "summary": "Generic confirm/cancel dialog built on the shared Modal.",
+   "tags": [
+    "component",
+    "modal",
+    "confirmation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:src/components/modals/ControlsModal.tsx",
+   "type": "file",
+   "name": "ControlsModal.tsx",
+   "filePath": "src/components/modals/ControlsModal.tsx",
+   "summary": "Modal documenting keyboard shortcuts and mouse controls, organized into sections of control items.",
+   "tags": [
+    "component",
+    "modal",
+    "help",
+    "keyboard-shortcuts"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:src/components/modals/ControlsModal.tsx:ControlSection",
+   "type": "function",
+   "name": "ControlSection",
+   "filePath": "src/components/modals/ControlsModal.tsx",
+   "lineRange": [
+    15,
+    35
+   ],
+   "summary": "Section grouping of related control/shortcut entries.",
+   "tags": [
+    "component",
+    "modal",
+    "help"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/components/modals/ControlsModal.tsx:ControlsModal",
+   "type": "function",
+   "name": "ControlsModal",
+   "filePath": "src/components/modals/ControlsModal.tsx",
+   "lineRange": [
+    49,
+    168
+   ],
+   "summary": "Modal listing keyboard shortcuts and mouse controls by section.",
+   "tags": [
+    "component",
+    "modal",
+    "help"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:src/components/modals/DetailedTotalsModal.tsx",
+   "type": "file",
+   "name": "DetailedTotalsModal.tsx",
+   "filePath": "src/components/modals/DetailedTotalsModal.tsx",
+   "summary": "Modal showing detailed character totals with per-stat breakdown panels and cap meters; can also load and compare a second build parsed from JSON or a shared-build link.",
+   "tags": [
+    "component",
+    "modal",
+    "stats",
+    "build-compare"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:src/components/modals/DetailedTotalsModal.tsx:parseBuildFromJSON",
+   "type": "function",
+   "name": "parseBuildFromJSON",
+   "filePath": "src/components/modals/DetailedTotalsModal.tsx",
+   "lineRange": [
+    40,
+    67
+   ],
+   "summary": "Parses a pasted build-export JSON string into a comparable build object with validation.",
+   "tags": [
+    "utility",
+    "parsing",
+    "build-import"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/components/modals/DetailedTotalsModal.tsx:parseSharedBuild",
+   "type": "function",
+   "name": "parseSharedBuild",
+   "filePath": "src/components/modals/DetailedTotalsModal.tsx",
+   "lineRange": [
+    70,
+    94
+   ],
+   "summary": "Fetches and decodes a shared-build link into a comparable build via the sharedBuilds service.",
+   "tags": [
+    "utility",
+    "parsing",
+    "shared-build"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/components/modals/DetailedTotalsModal.tsx:buildToLoadedBuild",
+   "type": "function",
+   "name": "buildToLoadedBuild",
+   "filePath": "src/components/modals/DetailedTotalsModal.tsx",
+   "lineRange": [
+    97,
+    109
+   ],
+   "summary": "Normalizes a parsed build into the loaded-build shape used for comparison totals.",
+   "tags": [
+    "utility",
+    "normalization",
+    "build-compare"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/components/modals/DetailedTotalsModal.tsx:isNonZero",
+   "type": "function",
+   "name": "isNonZero",
+   "filePath": "src/components/modals/DetailedTotalsModal.tsx",
+   "lineRange": [
+    111,
+    123
+   ],
+   "summary": "Predicate deciding whether a stat value (scalar or by-type) is non-zero and worth showing.",
+   "tags": [
+    "utility",
+    "predicate",
+    "stats"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/components/modals/DetailedTotalsModal.tsx:BreakdownPanel",
+   "type": "function",
+   "name": "BreakdownPanel",
+   "filePath": "src/components/modals/DetailedTotalsModal.tsx",
+   "lineRange": [
+    143,
+    215
+   ],
+   "summary": "Panel listing per-source contributions for a selected stat breakdown.",
+   "tags": [
+    "component",
+    "stats",
+    "breakdown"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:src/components/modals/DetailedTotalsModal.tsx:CapMeter",
+   "type": "function",
+   "name": "CapMeter",
+   "filePath": "src/components/modals/DetailedTotalsModal.tsx",
+   "lineRange": [
+    218,
+    253
+   ],
+   "summary": "Meter visualizing a stat against its archetype cap.",
+   "tags": [
+    "component",
+    "stats",
+    "display"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/components/modals/DetailedTotalsModal.tsx:StatGrid",
+   "type": "function",
+   "name": "StatGrid",
+   "filePath": "src/components/modals/DetailedTotalsModal.tsx",
+   "lineRange": [
+    255,
+    331
+   ],
+   "summary": "Grid of stat values for one section, optionally diffed against a comparison build.",
+   "tags": [
+    "component",
+    "stats",
+    "grid"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:src/components/modals/DetailedTotalsModal.tsx:DetailedTotalsModal",
+   "type": "function",
+   "name": "DetailedTotalsModal",
+   "filePath": "src/components/modals/DetailedTotalsModal.tsx",
+   "lineRange": [
+    342,
+    612
+   ],
+   "summary": "Modal shell wiring stat definitions, calculated totals, breakdowns, and the compare-build loader together.",
+   "tags": [
+    "component",
+    "modal",
+    "stats"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:src/components/modals/DonateModal.tsx",
+   "type": "file",
+   "name": "DonateModal.tsx",
+   "filePath": "src/components/modals/DonateModal.tsx",
+   "summary": "Modal with donation links and supporter information.",
+   "tags": [
+    "component",
+    "modal",
+    "donate",
+    "static-content"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:src/components/modals/DonateModal.tsx:DonateModal",
+   "type": "function",
+   "name": "DonateModal",
+   "filePath": "src/components/modals/DonateModal.tsx",
+   "lineRange": [
+    34,
+    71
+   ],
+   "summary": "Renders donation links and supporter thanks inside the shared Modal.",
+   "tags": [
+    "component",
+    "modal",
+    "donate"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:src/components/modals/EnhancementToolsModal.tsx",
+   "type": "file",
+   "name": "EnhancementToolsModal.tsx",
+   "filePath": "src/components/modals/EnhancementToolsModal.tsx",
+   "summary": "Modal exposing bulk enhancement tools (global IO level, attunement, clearing) that operate across the whole build via the stores.",
+   "tags": [
+    "component",
+    "modal",
+    "enhancement",
+    "bulk-tools"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:src/components/modals/EnhancementToolsModal.tsx:EnhancementToolsModal",
+   "type": "function",
+   "name": "EnhancementToolsModal",
+   "filePath": "src/components/modals/EnhancementToolsModal.tsx",
+   "lineRange": [
+    21,
+    138
+   ],
+   "summary": "Modal with bulk tools: set global IO level, toggle attunement, and clear enhancements across the build.",
+   "tags": [
+    "component",
+    "modal",
+    "bulk-tools"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:src/components/modals/EnhancementToolsModal.tsx:Section",
+   "type": "function",
+   "name": "Section",
+   "filePath": "src/components/modals/EnhancementToolsModal.tsx",
+   "lineRange": [
+    148,
+    168
+   ],
+   "summary": "Titled section wrapper for grouping tools in the modal.",
+   "tags": [
+    "component",
+    "modal",
+    "layout"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:src/components/modals/ForumExportModal.tsx",
+   "type": "file",
+   "name": "ForumExportModal.tsx",
+   "filePath": "src/components/modals/ForumExportModal.tsx",
+   "summary": "Modal generating a forum-formatted (BBCode/text) export of the current build, with share-link creation via the shared-builds service and copy-to-clipboard.",
+   "tags": [
+    "component",
+    "modal",
+    "export",
+    "forum"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:src/components/modals/ForumExportModal.tsx:ForumExportModal",
+   "type": "function",
+   "name": "ForumExportModal",
+   "filePath": "src/components/modals/ForumExportModal.tsx",
+   "lineRange": [
+    30,
+    193
+   ],
+   "summary": "Modal generating forum-formatted build text, optional share-link creation, and clipboard copy.",
+   "tags": [
+    "component",
+    "modal",
+    "export"
+   ],
+   "complexity": "moderate"
+  }
+ ],
+ "edges": [
+  {
+   "source": "file:src/components/modals/AccoladesModal.tsx",
+   "target": "function:src/components/modals/AccoladesModal.tsx:AccoladesModal",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/modals/AccoladesModal.tsx",
+   "target": "function:src/components/modals/AccoladesModal.tsx:AccoladesModal",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/components/modals/AnnouncementModal.tsx",
+   "target": "function:src/components/modals/AnnouncementModal.tsx:AnnouncementModal",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/modals/AnnouncementModal.tsx",
+   "target": "function:src/components/modals/AnnouncementModal.tsx:AnnouncementModal",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/components/modals/BuildImageModal.tsx",
+   "target": "function:src/components/modals/BuildImageModal.tsx:Check",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/modals/BuildImageModal.tsx",
+   "target": "function:src/components/modals/BuildImageModal.tsx:BuildImageModal",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/modals/BuildImageModal.tsx",
+   "target": "function:src/components/modals/BuildImageModal.tsx:BuildImageModal",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/components/modals/ConfirmModal.tsx",
+   "target": "function:src/components/modals/ConfirmModal.tsx:ConfirmModal",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/modals/ConfirmModal.tsx",
+   "target": "function:src/components/modals/ConfirmModal.tsx:ConfirmModal",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/components/modals/ControlsModal.tsx",
+   "target": "function:src/components/modals/ControlsModal.tsx:ControlSection",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/modals/ControlsModal.tsx",
+   "target": "function:src/components/modals/ControlsModal.tsx:ControlsModal",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/modals/ControlsModal.tsx",
+   "target": "function:src/components/modals/ControlsModal.tsx:ControlsModal",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/components/modals/DetailedTotalsModal.tsx",
+   "target": "function:src/components/modals/DetailedTotalsModal.tsx:parseBuildFromJSON",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/modals/DetailedTotalsModal.tsx",
+   "target": "function:src/components/modals/DetailedTotalsModal.tsx:parseSharedBuild",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/modals/DetailedTotalsModal.tsx",
+   "target": "function:src/components/modals/DetailedTotalsModal.tsx:buildToLoadedBuild",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/modals/DetailedTotalsModal.tsx",
+   "target": "function:src/components/modals/DetailedTotalsModal.tsx:isNonZero",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/modals/DetailedTotalsModal.tsx",
+   "target": "function:src/components/modals/DetailedTotalsModal.tsx:BreakdownPanel",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/modals/DetailedTotalsModal.tsx",
+   "target": "function:src/components/modals/DetailedTotalsModal.tsx:CapMeter",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/modals/DetailedTotalsModal.tsx",
+   "target": "function:src/components/modals/DetailedTotalsModal.tsx:StatGrid",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/modals/DetailedTotalsModal.tsx",
+   "target": "function:src/components/modals/DetailedTotalsModal.tsx:DetailedTotalsModal",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/modals/DetailedTotalsModal.tsx",
+   "target": "function:src/components/modals/DetailedTotalsModal.tsx:DetailedTotalsModal",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/components/modals/DonateModal.tsx",
+   "target": "function:src/components/modals/DonateModal.tsx:DonateModal",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/modals/DonateModal.tsx",
+   "target": "function:src/components/modals/DonateModal.tsx:DonateModal",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/components/modals/EnhancementToolsModal.tsx",
+   "target": "function:src/components/modals/EnhancementToolsModal.tsx:EnhancementToolsModal",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/modals/EnhancementToolsModal.tsx",
+   "target": "function:src/components/modals/EnhancementToolsModal.tsx:EnhancementToolsModal",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/components/modals/EnhancementToolsModal.tsx",
+   "target": "function:src/components/modals/EnhancementToolsModal.tsx:Section",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/modals/ForumExportModal.tsx",
+   "target": "function:src/components/modals/ForumExportModal.tsx:ForumExportModal",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1
+  },
+  {
+   "source": "file:src/components/modals/ForumExportModal.tsx",
+   "target": "function:src/components/modals/ForumExportModal.tsx:ForumExportModal",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:src/components/modals/AccoladesModal.tsx",
+   "target": "file:src/components/modals/Modal.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/AccoladesModal.tsx",
+   "target": "file:src/components/ui/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/AccoladesModal.tsx",
+   "target": "file:src/data/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/AccoladesModal.tsx",
+   "target": "file:src/stores/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/AccoladesModal.tsx",
+   "target": "file:src/types/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/AnnouncementModal.tsx",
+   "target": "file:src/components/modals/Modal.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/AnnouncementModal.tsx",
+   "target": "file:src/components/modals/RoadmapPanel.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/AnnouncementModal.tsx",
+   "target": "file:src/components/ui/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/AnnouncementModal.tsx",
+   "target": "file:src/data/core/announcements.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/AnnouncementModal.tsx",
+   "target": "file:src/data/core/roadmap.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/AnnouncementModal.tsx",
+   "target": "file:src/stores/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/AnnouncementModal.tsx",
+   "target": "file:src/utils/paths.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/BuildImageModal.tsx",
+   "target": "file:src/components/export-image/BuildImageCard.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/BuildImageModal.tsx",
+   "target": "file:src/components/export-image/exportOptions.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/BuildImageModal.tsx",
+   "target": "file:src/components/modals/Modal.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/BuildImageModal.tsx",
+   "target": "file:src/components/ui/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/BuildImageModal.tsx",
+   "target": "file:src/hooks/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/BuildImageModal.tsx",
+   "target": "file:src/stores/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/BuildImageModal.tsx",
+   "target": "file:src/utils/calculations/stats.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/BuildImageModal.tsx",
+   "target": "file:src/utils/detailed-totals.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/BuildImageModal.tsx",
+   "target": "file:src/utils/export-image.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/ConfirmModal.tsx",
+   "target": "file:src/components/modals/Modal.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/ConfirmModal.tsx",
+   "target": "file:src/components/ui/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/ControlsModal.tsx",
+   "target": "file:src/components/modals/Modal.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/ControlsModal.tsx",
+   "target": "file:src/hooks/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/DetailedTotalsModal.tsx",
+   "target": "file:src/components/modals/Modal.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/DetailedTotalsModal.tsx",
+   "target": "file:src/data/stat-definitions.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/DetailedTotalsModal.tsx",
+   "target": "file:src/hooks/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/DetailedTotalsModal.tsx",
+   "target": "file:src/hooks/useCalculatedStats.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/DetailedTotalsModal.tsx",
+   "target": "file:src/services/sharedBuilds.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/DetailedTotalsModal.tsx",
+   "target": "file:src/stores/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/DetailedTotalsModal.tsx",
+   "target": "file:src/types/build.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/DetailedTotalsModal.tsx",
+   "target": "file:src/types/shared.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/DetailedTotalsModal.tsx",
+   "target": "file:src/utils/build-serialization.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/DetailedTotalsModal.tsx",
+   "target": "file:src/utils/calculations/character-totals.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/DetailedTotalsModal.tsx",
+   "target": "file:src/utils/calculations/stats.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/DetailedTotalsModal.tsx",
+   "target": "file:src/utils/detailed-totals.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/DetailedTotalsModal.tsx",
+   "target": "file:src/utils/set-bonus-format.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/DonateModal.tsx",
+   "target": "file:src/components/modals/Modal.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/EnhancementToolsModal.tsx",
+   "target": "file:src/components/modals/Modal.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/EnhancementToolsModal.tsx",
+   "target": "file:src/components/ui/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/EnhancementToolsModal.tsx",
+   "target": "file:src/stores/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/ForumExportModal.tsx",
+   "target": "file:src/components/modals/Modal.tsx",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/ForumExportModal.tsx",
+   "target": "file:src/components/ui/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/ForumExportModal.tsx",
+   "target": "file:src/services/sharedBuilds.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/ForumExportModal.tsx",
+   "target": "file:src/stores/index.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/ForumExportModal.tsx",
+   "target": "file:src/types/build.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:src/components/modals/ForumExportModal.tsx",
+   "target": "file:src/utils/forum-export.ts",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  }
+ ]
+}

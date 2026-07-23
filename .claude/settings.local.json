@@ -154,7 +154,22 @@
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5173)",
       "Bash(curl -sS -I \"https://coh-sidekick.com/assets/dataset-homecoming-BfB8npuI.js\")",
       "Bash(curl -sS \"https://coh-sidekick.com/index.html\")",
-      "Bash(npx tsx -e ' *)"
+      "Bash(npx tsx -e ' *)",
+      "Bash(command -v pnpm)",
+      "Bash(command -v corepack)",
+      "Bash(corepack --version)",
+      "Bash(npm ls *)",
+      "Read(//home/jiiwii/.claude/plugins/cache/understand-anything/understand-anything/2.9.4/**)",
+      "Bash(COREPACK_ENABLE_DOWNLOAD_PROMPT=0 corepack pnpm --filter @understand-anything/core build)",
+      "Bash(node /home/jiiwii/.claude/plugins/cache/understand-anything/understand-anything/2.9.4/skills/understand/scan-project.mjs /home/jiiwii/Github/CoH-Sidekick /home/jiiwii/Github/CoH-Sidekick/.ua/tmp/ua-scan-files.json)",
+      "Bash(node /home/jiiwii/.claude/plugins/cache/understand-anything/understand-anything/2.9.4/skills/understand/extract-import-map.mjs /home/jiiwii/Github/CoH-Sidekick/.ua/tmp/ua-import-map-input.json /home/jiiwii/Github/CoH-Sidekick/.ua/tmp/ua-import-map-output.json)",
+      "Bash(node __TRACKED_VAR__/scan-project.mjs /home/jiiwii/Github/CoH-Sidekick)",
+      "Bash(node __TRACKED_VAR__/scan-project.mjs /home/jiiwii/Github/CoH-Sidekick /home/jiiwii/Github/CoH-Sidekick/.ua/intermediate/scan-result.json)",
+      "Bash(node *)",
+      "Bash([ -f \"$UA_DIR/knowledge-graph.json\" ])",
+      "Bash([ -d \"$PLUGIN_ROOT/packages/dashboard\" ])",
+      "Bash(exit 0)",
+      "Bash(GRAPH_DIR=\"/home/jiiwii/Github/CoH-Sidekick\" npx vite --host 127.0.0.1)"
     ],
     "additionalDirectories": [
       "/tmp",
