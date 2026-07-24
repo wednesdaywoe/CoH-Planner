@@ -75,15 +75,37 @@ export interface EngineSetBonusTracking {
   buckets: Record<string, EngineValueBucket>;
 }
 
+/** One always-on proc contribution to the dashboard breakdown (engine `ProcBreakdownSource`). */
+export interface EngineProcBreakdownSource {
+  breakdown_key: string;
+  set_name: string;
+  proc_name: string;
+  value: number;
+  capped: boolean;
+  /** Which proc pass emitted it — drives the label + whether it feeds the over-cap ring. */
+  kind: 'always_on' | 'ppm' | 'build_up';
+  /** "end" / "hp" reinterpretation tag → " (+End)" / " (+HP)" label suffix, else "". */
+  note: string;
+  power_internal_name: string;
+  power_set: string;
+}
+
 export interface EngineTotals {
   stats: EngineStats;
   bonuses: EngineBonuses;
   set_bonus_tracking: EngineSetBonusTracking[];
+  proc_breakdown: EngineProcBreakdownSource[];
+}
+
+/** The minimal power identity every engine source ref carries — resolved to a display name. */
+interface PowerRef {
+  power_internal_name: string;
+  power_set: string;
 }
 
 /** Resolves an engine source ref to the slotting power's display name. Built from the same
  *  build the engine read; falls back to the internal name if a power can't be located. */
-export type PowerNameResolver = (ref: EngineBonusSourceRef) => string;
+export type PowerNameResolver = (ref: PowerRef) => string;
 
 /** The beta's source-string format (`collectAllSetBonuses`): `${set} (${pieces}pc in ${power})`. */
 function sourceLabel(ref: EngineBonusSourceRef, powerName: string): string {
@@ -163,6 +185,57 @@ export function mapSetBonusBreakdown(
     }
   }
   return breakdown;
+}
+
+/** Format the proc source's tooltip label, mirroring the beta's per-pass source strings. */
+function procLabel(src: EngineProcBreakdownSource, resolveName: PowerNameResolver): string {
+  const base = `${src.set_name}: ${src.proc_name}`;
+  switch (src.kind) {
+    case 'ppm':
+      return `${base} (PPM)`;
+    case 'build_up':
+      return `${base} (in ${resolveName(src)})`;
+    case 'always_on':
+    default:
+      return base + (src.note === 'end' ? ' (+End)' : src.note === 'hp' ? ' (+HP)' : '');
+  }
+}
+
+/**
+ * Fold the engine's always-on proc contributions into the dashboard `breakdown` map as
+ * `type:'proc'` sources — the beta's `applySingleProcEffect` / PPM / Build-Up `addToBreakdown`
+ * calls. Mutates `breakdown` in place (procs land on top of the set-bonus sources, as in the
+ * beta's ordering). Only the always-on kind carries a `powerName` (so the over-cap ring lights
+ * for a Rule-of-5-capped proc); PPM / Build-Up rows omit it, matching the beta. Every source
+ * adds its value to the stat total (the beta `addToBreakdown` semantics — including capped ones).
+ */
+export function addProcBreakdown(
+  breakdown: Map<string, DashboardStatBreakdown>,
+  procSources: EngineProcBreakdownSource[],
+  resolveName: PowerNameResolver,
+): void {
+  for (const src of procSources) {
+    const source: StatSource = {
+      name: procLabel(src, resolveName),
+      value: src.value,
+      type: 'proc',
+      capped: src.capped,
+      ...(src.kind === 'always_on' ? { powerName: resolveName(src) } : {}),
+    };
+    const entry = breakdown.get(src.breakdown_key);
+    if (entry) {
+      entry.sources.push(source);
+      entry.total += src.value;
+      if (src.capped) entry.cappedSources++;
+    } else {
+      breakdown.set(src.breakdown_key, {
+        total: src.value,
+        base: 0,
+        sources: [source],
+        cappedSources: src.capped ? 1 : 0,
+      });
+    }
+  }
 }
 
 export function mapStats(s: EngineStats, b: EngineBonuses): CharacterStats {
