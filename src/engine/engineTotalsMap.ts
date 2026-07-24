@@ -6,7 +6,7 @@
  * the beta-only fields with no engine source (`threatLevel`, `protRepel`, …).
  */
 
-import type { CharacterStats } from '@/utils/calculations';
+import type { CharacterStats, BonusTracking, ValueTracking, StatSource, DashboardStatBreakdown } from '@/utils/calculations';
 import type { GlobalBonuses } from '@/utils/calculations/character-totals';
 
 export interface EngineStats {
@@ -47,9 +47,122 @@ export interface EngineBonuses {
   errors: { context: string; detail: string }[];
 }
 
+/** One accepted/rejected set-bonus instance (engine `BonusSourceRef`). The engine owns the
+ *  accept/reject decision; the display name is resolved here from the build. */
+export interface EngineBonusSourceRef {
+  power_internal_name: string;
+  power_set: string;
+  set_name: string;
+  pieces: number;
+}
+
+/** One Rule-of-5 bucket for a `(stat, value)` pair (engine `ValueBucket`). */
+export interface EngineValueBucket {
+  value: number;
+  count: number;
+  capped: boolean;
+  sources: EngineBonusSourceRef[];
+  rejected_sources: EngineBonusSourceRef[];
+}
+
+/** One tracked stat's buckets + its beta routing (engine `SetBonusStatTracking`). */
+export interface EngineSetBonusTracking {
+  /** Beta internal stat key — the `bonusTracking` map key the UI looks up. */
+  stat_key: string;
+  /** camelCase dashboard breakdown-map key(s) the sources surface under. */
+  breakdown_keys: string[];
+  /** 2-dp value key → bucket. */
+  buckets: Record<string, EngineValueBucket>;
+}
+
 export interface EngineTotals {
   stats: EngineStats;
   bonuses: EngineBonuses;
+  set_bonus_tracking: EngineSetBonusTracking[];
+}
+
+/** Resolves an engine source ref to the slotting power's display name. Built from the same
+ *  build the engine read; falls back to the internal name if a power can't be located. */
+export type PowerNameResolver = (ref: EngineBonusSourceRef) => string;
+
+/** The beta's source-string format (`collectAllSetBonuses`): `${set} (${pieces}pc in ${power})`. */
+function sourceLabel(ref: EngineBonusSourceRef, powerName: string): string {
+  return `${ref.set_name} (${ref.pieces}pc in ${powerName})`;
+}
+
+/**
+ * Reshape the engine's set-bonus tracking into the beta `BonusTracking` — the `(x/5)` counters
+ * and capped-strikethrough in the enhancement / set-bonus tooltips. Keyed by the engine's beta
+ * stat key (which equals the UI's `normalizeStatName` output) then the 2-dp value key, matching
+ * `{ [stat]: { [valueKey]: ValueTracking } }`.
+ */
+export function mapBonusTracking(
+  tracking: EngineSetBonusTracking[],
+  resolveName: PowerNameResolver,
+): BonusTracking {
+  const out: BonusTracking = {};
+  const toTracked = (ref: EngineBonusSourceRef) => {
+    const powerName = resolveName(ref);
+    return { name: sourceLabel(ref, powerName), powerName };
+  };
+  for (const stat of tracking) {
+    const byValue: Record<string, ValueTracking> = {};
+    for (const [valueKey, bucket] of Object.entries(stat.buckets)) {
+      byValue[valueKey] = {
+        count: bucket.count,
+        capped: bucket.capped,
+        value: bucket.value,
+        sources: bucket.sources.map(toTracked),
+        rejectedSources: bucket.rejected_sources.map(toTracked),
+      };
+    }
+    out[stat.stat_key] = byValue;
+  }
+  return out;
+}
+
+/**
+ * Reshape the engine's set-bonus tracking into the dashboard `breakdown` map's set-bonus sources
+ * — the per-stat tooltip rows, the over-cap ring (`powerName` + `capped`), and the Rule-of-5
+ * banner. A faithful port of the beta's Step 3 (`character-totals.ts:4280`) + `buildStatBreakdown`:
+ * each accepted instance is a `capped:false` source, each rejected instance a `capped:true` one,
+ * the bucket total is `value × count`, and a stat fans out to every `breakdown_keys` entry
+ * (`+Res(Recharge Debuff)` → both recharge and slow).
+ */
+export function mapSetBonusBreakdown(
+  tracking: EngineSetBonusTracking[],
+  resolveName: PowerNameResolver,
+): Map<string, DashboardStatBreakdown> {
+  const breakdown = new Map<string, DashboardStatBreakdown>();
+  for (const stat of tracking) {
+    const sources: StatSource[] = [];
+    let cappedSources = 0;
+    let total = 0;
+    for (const bucket of Object.values(stat.buckets)) {
+      for (const ref of bucket.sources) {
+        const powerName = resolveName(ref);
+        sources.push({ name: sourceLabel(ref, powerName), value: bucket.value, type: 'set-bonus', capped: false, powerName });
+      }
+      for (const ref of bucket.rejected_sources) {
+        const powerName = resolveName(ref);
+        sources.push({ name: sourceLabel(ref, powerName), value: bucket.value, type: 'set-bonus', capped: true, powerName });
+        cappedSources++;
+      }
+      total += bucket.value * bucket.count;
+    }
+    for (const key of stat.breakdown_keys) {
+      const existing = breakdown.get(key);
+      if (existing) {
+        existing.sources.push(...sources);
+        existing.total += total;
+        existing.cappedSources += cappedSources;
+      } else {
+        // Clone the source array so paired stats don't share a mutable reference.
+        breakdown.set(key, { total, base: 0, sources: [...sources], cappedSources });
+      }
+    }
+  }
+  return breakdown;
 }
 
 export function mapStats(s: EngineStats, b: EngineBonuses): CharacterStats {
