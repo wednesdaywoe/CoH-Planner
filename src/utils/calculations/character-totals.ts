@@ -54,6 +54,11 @@ import { toHitBuffValue, damageBuffValue, resistanceBuffValue, resistanceSelfDeb
 import type { EncodedAtom } from '@/data/core/atomic-effect';
 import { warnFallback } from '@/utils/fallback-warnings';
 import { calculateVigilanceDamageBonus, calculateFuryDamageBonus } from './inherents';
+// SPIKE5 — engine-behind-beta: the totals path now runs coh_math via wasm. `engineCalculate`
+// reshapes the engine output to this file's result type; `legacyCalculateCharacterTotals`
+// (below) is retained only for the SPIKE6 parity diff and is deleted after.
+import { engineCalculate } from '@/engine/engineTotals';
+import type { AdapterCalcContext } from '@/engine/characterStateAdapter';
 import { getEffectiveLevel, areIncarnatesSuppressed } from './effective-level';
 import { computeModeSuppression, type ModeCarrier } from '@/utils/mode-suppression';
 import {
@@ -4147,14 +4152,59 @@ export interface CalculationOptions {
 }
 
 /**
- * Main calculation function - calculates all character stats
+ * SPIKE5 — engine-backed totals. Assembles the calc context from the same args the beta
+ * hook already passes, runs the build through `coh_math::recalculate` (wasm), and reshapes
+ * the result. Falls back to an empty (all-zero) result in two cases, both loud:
+ *   - the dataset isn't loaded yet at boot (`engineCalculate` returns null); the memo
+ *     re-fires once `useEngineStore` marks it loaded, and
+ *   - an input the engine can't honor (adjusters / destinyTime) makes the adapter throw —
+ *     logged here rather than white-screening the app (fail-loud, not fail-fatal).
+ */
+export function calculateCharacterTotals(
+  build: Build,
+  exemplarMode = false,
+  incarnateActive?: IncarnateActiveState,
+  options?: CalculationOptions
+): CharacterCalculationResult {
+  const ctx: AdapterCalcContext = {
+    exemplarMode,
+    exemplarLevel: options?.exemplarLevel ?? 50,
+    incarnateActive: incarnateActive ?? { alpha: false, destiny: false, hybrid: false, interface: false, judgement: false, lore: false, genesis: false },
+    incarnateLevelShiftActive: options?.incarnateLevelShiftActive ?? true,
+    targetsHitValues: options?.targetsHitValues ?? {},
+    targetLevelOffset: options?.targetLevelOffset ?? 0,
+    vigilanceTeamSize: options?.vigilanceTeamSize ?? 0,
+    furyLevel: options?.furyLevel ?? 75,
+    combatMode: options?.combatMode ?? false,
+    destinyTime: options?.destinyTime ?? null,
+    globalAdjusters: options?.globalAdjusters ?? {},
+    mechanicAdjusters: options?.mechanicAdjusters ?? {},
+  };
+
+  try {
+    const result = engineCalculate(withoutIllegalSlots(build), ctx);
+    if (result) return result;
+  } catch (err) {
+    console.error('[engine] calculateCharacterTotals fell back to empty totals:', err);
+  }
+  return {
+    stats: createEmptyStats(),
+    globalBonuses: createEmptyGlobalBonuses(),
+    breakdown: new Map<string, DashboardStatBreakdown>(),
+    setBonuses: {},
+    bonusTracking: {},
+  };
+}
+
+/**
+ * Legacy TS totals calc — retained ONLY for the SPIKE6 parity diff (engine vs old numbers);
+ * deleted after. No live caller.
  * @param build - The current build state
  * @param exemplarMode - When true, respects build level for set bonus suppression.
- *                       When false (default), always calculates as if at level 50.
  * @param incarnateActive - Which incarnate slots are active for stat calculations
  * @param options - Additional calculation options
  */
-export function calculateCharacterTotals(
+export function legacyCalculateCharacterTotals(
   build: Build,
   exemplarMode = false,
   incarnateActive?: IncarnateActiveState,

@@ -9,8 +9,10 @@
  * - Stat breakdown tracking for tooltips
  */
 
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
+import { loadDataset, type ServerId } from '@/engine/engine';
+import { useEngineStore } from '@/engine/engineStore';
 import { getIOSet } from '@/data';
 import { computeOffendingPowerReasons, type CappedBonusReason } from '@/utils/over-cap-mute';
 import type { SetBonus } from '@/types';
@@ -315,6 +317,15 @@ export function useCharacterCalculation(): CharacterCalculationResult {
   const mechanicAdjusters = useUIStore((state) => state.mechanicAdjusters);
   const destinyTime = useUIStore((state) => state.destinyTime);
 
+  // SPIKE5 — load the engine dataset for this build's server once; `engineLoaded` flips the
+  // memo below from boot-time empty totals to real engine numbers when the wasm handle is ready.
+  const engineLoaded = useEngineStore((state) => state.loaded[build.serverId] ?? false);
+  useEffect(() => {
+    loadDataset(build.serverId as ServerId)
+      .then(() => useEngineStore.getState().markLoaded(build.serverId))
+      .catch((e) => useEngineStore.getState().setError(String(e)));
+  }, [build.serverId]);
+
   // When master Proc toggle is off, disable all proc categories
   const effectiveProcSettings = procsEnabled ? procSettings : ALL_PROCS_DISABLED;
 
@@ -322,7 +333,7 @@ export function useCharacterCalculation(): CharacterCalculationResult {
   // unchanged deps; the shared cache (keyed on the same dep tuple) skips the
   // redundant recompute ACROSS the ~150 other instances in the same render pass.
   return useMemo(() => {
-    const deps = [build, exemplarMode, exemplarLevel, incarnateActive, incarnateLevelShiftActive, effectiveProcSettings, targetsHitValues, targetLevelOffset, vigilanceTeamSize, furyLevel, combatMode, globalAdjusters, mechanicAdjusters, destinyTime] as const;
+    const deps = [build, exemplarMode, exemplarLevel, incarnateActive, incarnateLevelShiftActive, effectiveProcSettings, targetsHitValues, targetLevelOffset, vigilanceTeamSize, furyLevel, combatMode, globalAdjusters, mechanicAdjusters, destinyTime, engineLoaded] as const;
     return getSharedCharacterCalculation(deps, () =>
       calculateCharacterTotals(build, exemplarMode, incarnateActive, {
         procSettings: effectiveProcSettings,
@@ -338,7 +349,7 @@ export function useCharacterCalculation(): CharacterCalculationResult {
         destinyTime,
       })
     );
-  }, [build, exemplarMode, exemplarLevel, incarnateActive, incarnateLevelShiftActive, effectiveProcSettings, targetsHitValues, targetLevelOffset, vigilanceTeamSize, furyLevel, combatMode, globalAdjusters, mechanicAdjusters, destinyTime]);
+  }, [build, exemplarMode, exemplarLevel, incarnateActive, incarnateLevelShiftActive, effectiveProcSettings, targetsHitValues, targetLevelOffset, vigilanceTeamSize, furyLevel, combatMode, globalAdjusters, mechanicAdjusters, destinyTime, engineLoaded]);
 }
 
 /**
