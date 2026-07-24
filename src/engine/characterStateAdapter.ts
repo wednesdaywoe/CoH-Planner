@@ -11,16 +11,22 @@
  * docs/SPIKE3-CONTRACT-DIFF.md in the rebuild repo for the full table.
  *
  * Fail-loud (the rebuild mandate): inputs the engine has no equivalent for do NOT get
- * silently dropped. `globalAdjusters`, `mechanicAdjusters`, and a non-null `destinyTime`
- * throw; a disabled `incarnateLevelShiftActive` warns (the engine derives level-shift from
- * the equipped incarnate and can't suppress it independently). A silent drop here would be
- * exactly the field-loss class the rebuild exists to kill.
+ * silently dropped. A non-null `destinyTime` throws; a disabled `incarnateLevelShiftActive`
+ * warns (the engine derives level-shift from the equipped incarnate and can't suppress it
+ * independently). Conditional adjusters (`globalAdjusters` / `mechanicAdjusters`) are forwarded
+ * through build state the engine already reads — stances via `active_sub_power`, out-of-combat via
+ * `combatMode`→`in_combat` — and only fail loud for the one silent-drop case: a global toggle
+ * carrying an unmodeled caster dashboard buff (see the PROD3 classification below). A silent drop
+ * here would be exactly the field-loss class the rebuild exists to kill.
  */
 
 import type { Build, PowersetSelection, PoolSelection } from '@/types/build';
-import type { SelectedPower } from '@/types/power';
+import type { SelectedPower, ConditionalEffect } from '@/types/power';
 import type { Enhancement } from '@/types/enhancement';
 import type { IncarnateActiveState } from '@/types/incarnate';
+import { getPowerset } from '@/data/powersets';
+import { getPowerPool } from '@/data/power-pools';
+import { getEpicPool } from '@/data/epic-pools';
 
 // ============================================
 // OUTPUT WIRE SHAPE (mirrors crates/coh_data/src/character.rs serde)
@@ -206,6 +212,87 @@ function mapIncarnates(build: Build, active: IncarnateActiveState): CharacterSta
 }
 
 // ============================================
+// CONDITIONAL-ADJUSTER CLASSIFICATION (PROD3)
+// ============================================
+
+/**
+ * `ActivePowerEffect` keys that land on a CASTER dashboard total (defense, resistance, +damage,
+ * movement, …) — as opposed to foe-facing control (hold/stun/…) or attack-damage entries, which
+ * never move a Self total. A conditional whose `effects` carry one of these reaches the dashboard.
+ */
+const SELF_TOTAL_EFFECT_KEYS: ReadonlySet<string> = new Set([
+  'tohitBuff', 'tohitBuffUnenhanced', 'accuracyBuff', 'damageBuff', 'rechargeBuff',
+  'defense', 'defenseBuff', 'defenseBuffSuppressible', 'resistance', 'debuffResistance',
+  'mezResistance', 'elusivity', 'absorb', 'protection', 'enduranceDiscount',
+  'runSpeed', 'runSpeedUnenhanced', 'flySpeed', 'jumpHeight', 'jumpSpeed', 'movement',
+  'regeneration', 'recovery', 'maxEndurance', 'maxHealth',
+  'regenBuff', 'regenBuffUnenhanced', 'recoveryBuff', 'recoveryBuffUnenhanced',
+  'maxHPBuff', 'maxHPBuffUnenhanced', 'maxEndBuff',
+]);
+
+/**
+ * Global conditional-adjuster ids whose caster-side buff the engine already accounts for, so
+ * forwarding the beta toggle changes no total and must not fail loud:
+ *  - the Bio Armor adaptation stances flow via `active_sub_power`, and the engine re-admits their
+ *    `Source.Mode?`-gated atoms (PROD3 increment 1);
+ *  - out-of-combat rides `combatMode` → `in_combat` — the engine binds `kOutOfCombat` to `!in_combat`,
+ *    the same signal that governs the suppressible out-of-combat defense.
+ */
+const ENGINE_MODELED_ADJUSTERS: ReadonlySet<string> = new Set([
+  'defensiveadaptation', 'offensiveadaptation', 'restedadaptation',
+  'outofcombat',
+]);
+
+/**
+ * Global conditional-adjuster ids that carry a caster-side buff but gate a COMBAT-TRANSIENT rotation
+ * state (Storm's clear skies, Dual Pistols ammo / status mode, Staff perfection, Storm Blast's
+ * in-cell): a mid-combo pulse, not a sustained total. The engine leaves them Indeterminate and omits
+ * them, so the dashboard shows the sustained value and the toggle is a no-op — the deliberate reading
+ * of a totals dashboard, not a silent drop of a persistent buff.
+ */
+const TRANSIENT_UNMODELED_ADJUSTERS: ReadonlySet<string> = new Set([
+  'clearskies', 'cryoammunition', 'dd_statusmode_2',
+  'perfection_of_body_level_3', 'perfection_of_mind_level_3', 'stormblast_instormcell',
+]);
+
+/** Every `conditionalEffects` entry the build's selected powers carry, indexed by conditional id. */
+function buildConditionalsById(build: Build): Map<string, ConditionalEffect[]> {
+  const byId = new Map<string, ConditionalEffect[]>();
+  const add = (conds?: ConditionalEffect[]) => {
+    for (const c of conds ?? []) {
+      const list = byId.get(c.id);
+      if (list) list.push(c);
+      else byId.set(c.id, [c]);
+    }
+  };
+  const fromSet = (
+    setId: string | null | undefined,
+    powers: { internalName: string }[],
+    lookup: (id: string) => { powers: { internalName: string; conditionalEffects?: ConditionalEffect[] }[] } | undefined,
+  ) => {
+    if (!setId) return;
+    const def = lookup(setId);
+    if (!def) return;
+    for (const pick of powers) add(def.powers.find((p) => p.internalName === pick.internalName)?.conditionalEffects);
+  };
+  fromSet(build.primary.id, build.primary.powers, getPowerset);
+  fromSet(build.secondary.id, build.secondary.powers, getPowerset);
+  for (const pool of build.pools) fromSet(pool.id, pool.powers, getPowerPool);
+  if (build.epicPool) fromSet(build.epicPool.id, build.epicPool.powers, getEpicPool);
+  // Inherents carry their own hydrated conditionalEffects (no powerset def to consult).
+  for (const p of build.inherents) add((p as { conditionalEffects?: ConditionalEffect[] }).conditionalEffects);
+  return byId;
+}
+
+/** True when any `conditionalEffects` entry with this id contributes a caster dashboard total. */
+function adjusterAffectsSelfTotals(byId: Map<string, ConditionalEffect[]>, id: string): boolean {
+  return (byId.get(id) ?? []).some((c) => {
+    const effects = (c as { effects?: Record<string, unknown> }).effects;
+    return !!effects && Object.keys(effects).some((k) => SELF_TOTAL_EFFECT_KEYS.has(k));
+  });
+}
+
+// ============================================
 // MAIN ADAPTER
 // ============================================
 
@@ -214,14 +301,26 @@ function mapIncarnates(build: Build, active: IncarnateActiveState): CharacterSta
  * engine cannot honor (the fail-loud rows of the SPIKE3 table).
  */
 export function toCharacterState(build: Build, ctx: AdapterCalcContext): CharacterState {
-  // --- Fail-loud guards: inputs with no engine equivalent must not silently vanish. ---
-  const activeGlobalAdjusters = Object.entries(ctx.globalAdjusters).filter(([, on]) => on).map(([k]) => k);
-  if (activeGlobalAdjusters.length > 0) {
-    throw new Error(`characterStateAdapter: globalAdjusters have no engine equivalent and would be silently dropped: ${activeGlobalAdjusters.join(', ')}`);
-  }
-  const activeMechanicAdjusters = Object.entries(ctx.mechanicAdjusters).filter(([, on]) => on).map(([k]) => k);
-  if (activeMechanicAdjusters.length > 0) {
-    throw new Error(`characterStateAdapter: mechanicAdjusters have no engine equivalent and would be silently dropped: ${activeMechanicAdjusters.join(', ')}`);
+  // --- Conditional adjusters (PROD3): the engine models them through build state, not these maps. ---
+  // Stance modes flow via `active_sub_power`; out-of-combat rides `combatMode` → `in_combat`. Every
+  // other active toggle is either target-state (mechanicAdjusters — per-power scope is foe-side, zero
+  // Self total) or a combat-transient caster buff the engine deliberately omits from a sustained-totals
+  // dashboard. So forwarding them changes no total and must NOT throw. The guard stays fail-loud for the
+  // one case that WOULD be a silent drop: a global toggle carrying a caster dashboard buff that is
+  // neither modeled nor a known transient — i.e. a future data drop added a totals-relevant conditional
+  // without a decision here. (The mechanic map is target-side by construction, so it is not scanned.)
+  const unclassifiedActive = Object.entries(ctx.globalAdjusters)
+    .filter(([id, on]) => on && !ENGINE_MODELED_ADJUSTERS.has(id) && !TRANSIENT_UNMODELED_ADJUSTERS.has(id))
+    .map(([id]) => id);
+  if (unclassifiedActive.length > 0) {
+    // Only an unknown active toggle reaches the powerset defs — the common no-adjuster path never does.
+    const conditionalsById = buildConditionalsById(build);
+    const unclassifiedTotalsAdjusters = unclassifiedActive.filter((id) => adjusterAffectsSelfTotals(conditionalsById, id));
+    if (unclassifiedTotalsAdjusters.length > 0) {
+      throw new Error(
+        `characterStateAdapter: global adjuster(s) carry a caster dashboard buff the engine does not model and would be silently dropped: ${unclassifiedTotalsAdjusters.join(', ')} — classify in ENGINE_MODELED_ADJUSTERS or TRANSIENT_UNMODELED_ADJUSTERS (or model in the engine) before forwarding`,
+      );
+    }
   }
   if (ctx.destinyTime !== null) {
     throw new Error(`characterStateAdapter: destinyTime=${ctx.destinyTime} (Destiny uptime scrub) has no engine equivalent — the engine models only the sustained Destiny value`);

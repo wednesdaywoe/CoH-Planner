@@ -91,13 +91,43 @@ describe('toCharacterState', () => {
     expect(state.incarnates.alpha).toEqual({ power_name: 'Musculature_Radial', active: true });
   });
 
+  // A build whose only conditional lives on an inherent power (buildConditionalsById reads inherent
+  // conditionalEffects directly, so no powerset def is consulted) — lets us exercise the PROD3 guard
+  // with a synthetic conditional of a chosen id/effects shape.
+  function buildWithInherentConditional(id: string, effects: Record<string, unknown>): Build {
+    const build = createEmptyBuild('homecoming');
+    build.inherents = [
+      { internalName: 'Synthetic', powerSet: '', level: 1, slots: [], conditionalEffects: [{ id, label: '', scope: 'global', effects }] } as unknown as SelectedPower,
+    ];
+    return build;
+  }
+
+  describe('conditional adjusters (PROD3)', () => {
+    it('throws on an unclassified global adjuster that carries a caster dashboard buff', () => {
+      const build = buildWithInherentConditional('novel_totals_toggle', { defense: { Smashing: { scale: 1 } } });
+      expect(() => toCharacterState(build, defaultCtx({ globalAdjusters: { novel_totals_toggle: true } }))).toThrow(/novel_totals_toggle/);
+    });
+    it('passes through an unclassified adjuster whose conditional is foe-side only (no Self total)', () => {
+      const build = buildWithInherentConditional('foe_control_toggle', { stun: { mag: 3 } });
+      expect(() => toCharacterState(build, defaultCtx({ globalAdjusters: { foe_control_toggle: true } }))).not.toThrow();
+    });
+    it('passes through a modeled stance adjuster (engine reads it via active_sub_power)', () => {
+      const build = buildWithInherentConditional('defensiveadaptation', { resistance: { Smashing: { scale: 1 } } });
+      expect(() => toCharacterState(build, defaultCtx({ globalAdjusters: { defensiveadaptation: true } }))).not.toThrow();
+    });
+    it('passes through a combat-transient rotation adjuster (engine omits it from sustained totals)', () => {
+      const build = buildWithInherentConditional('clearskies', { recoveryBuff: { scale: 1 } });
+      expect(() => toCharacterState(build, defaultCtx({ globalAdjusters: { clearskies: true } }))).not.toThrow();
+    });
+    it('passes through active mechanicAdjusters (per-power scope is foe-side)', () => {
+      expect(() => toCharacterState(createEmptyBuild(), defaultCtx({ mechanicAdjusters: { 'power:cond': true } }))).not.toThrow();
+    });
+    it('passes through a global toggle with no matching conditional on the build', () => {
+      expect(() => toCharacterState(createEmptyBuild(), defaultCtx({ globalAdjusters: { some_toggle: true } }))).not.toThrow();
+    });
+  });
+
   describe('fail-loud', () => {
-    it('throws on active globalAdjusters', () => {
-      expect(() => toCharacterState(createEmptyBuild(), defaultCtx({ globalAdjusters: { some_toggle: true } }))).toThrow(/globalAdjusters/);
-    });
-    it('throws on active mechanicAdjusters', () => {
-      expect(() => toCharacterState(createEmptyBuild(), defaultCtx({ mechanicAdjusters: { 'power:cond': true } }))).toThrow(/mechanicAdjusters/);
-    });
     it('throws on a non-null destinyTime', () => {
       expect(() => toCharacterState(createEmptyBuild(), defaultCtx({ destinyTime: 90 }))).toThrow(/destinyTime/);
     });
