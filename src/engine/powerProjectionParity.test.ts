@@ -47,6 +47,7 @@ import { calculateArcanaTime } from '@/utils/calculations/damage';
 import { calcThreeTier, convertGlobalBonusesToAspects, withStrengthBonuses, type ThreeTierValues } from '@/components/info/powerDisplayUtils';
 import { resolvePowerMagnitudes, type ResolvedMagnitude } from '@/components/info/resolvePowerMagnitudes';
 import { buildDisplayEffects, getStackingInfo, withPseudoPetEffects, withTargetsHit } from '@/components/info/buildDisplayEffects';
+import { resolveEffectivePower, effectiveGlobalAdjusters, isCasterHidden, type EffectivePowerState } from '@/components/info/resolveEffectivePower';
 import { toCharacterStateJson, type AdapterCalcContext } from './characterStateAdapter';
 import { mapGlobal, mapOnePowerProjection, mapPowerProjection, projectionKey, type EngineTotals, type GrantedMagnitude, type PowerProjection } from './engineTotalsMap';
 import type { Build } from '@/types/build';
@@ -94,6 +95,8 @@ const CTX: AdapterCalcContext = {
   destinyTime: null,
   globalAdjusters: {},
   mechanicAdjusters: {},
+  dominationActive: false,
+  stalkerHidden: false,
 };
 
 function pickable(p: Power): boolean {
@@ -117,6 +120,7 @@ function buildFor(
   atId: (typeof STANDARD_ARCHETYPE_IDS)[number] = STANDARD_ARCHETYPE_IDS[0],
   level = 50,
   slotted = true,
+  chooseSet: (sets: { powers: Power[] }[]) => number = () => 0,
 ): Build {
   const build = createEmptyBuild(server);
   build.level = level;
@@ -134,11 +138,24 @@ function buildFor(
       isActive: p.powerType === 'Toggle' || p.powerType === 'Auto',
     }));
 
-  const primary = setsFor('primary')[0];
-  const secondary = setsFor('secondary')[0];
+  // Which of the archetype's sets to build from. The default first-set pick is the 6B fixture
+  // every sweep here shares; a caller that needs a corpus carrying some specific transform picks
+  // by measuring the sets' own data instead (PROD6C-3k).
+  const primarySets = setsFor('primary');
+  const secondarySets = setsFor('secondary');
+  const primary = primarySets[chooseSet(primarySets)];
+  const secondary = secondarySets[chooseSet(secondarySets)];
   if (primary) build.primary = { id: primary.id!, name: primary.name, powers: selectFrom(primary.id!, primary.powers) };
   if (secondary) build.secondary = { id: secondary.id!, name: secondary.name, powers: selectFrom(secondary.id!, secondary.powers) };
   return build;
+}
+
+/** Does the effective-power resolution have anything to do on this power — a quick form, a
+ *  mid-combat cast, or a conditional contribution (PROD6C-3k)? Read off the power's own fields so
+ *  the fixture discovers its corpus rather than naming a set. */
+function carriesTransform(power: Power): boolean {
+  const p = power as unknown as { quickSnipe?: unknown; midCombatCast?: unknown; conditionalEffects?: unknown[] };
+  return p.quickSnipe != null || p.midCombatCast != null || (p.conditionalEffects?.length ?? 0) > 0;
 }
 
 /** Does this power carry a +Strength self-buff at all? Read off the bag key the Strength pass
@@ -337,6 +354,21 @@ function baseEnduranceCost(power: SelectedPower): number | null {
 // f32 engine vs f64 JS — a per-power value apart by more than this is a real disagreement.
 const TOLERANCE = 0.05;
 
+/** The same skew as a RELATIVE bound, for the rows whose magnitude makes an absolute one
+ *  meaningless. The engine's enhancement fraction is an f32 and the beta's an f64, which measures
+ *  as a constant ~1.4e-4 relative gap on every "enhanced"/"final" tier — invisible at 0.05 absolute
+ *  on a 12-second recharge, over it on a 400-point heal (measured on the SAME power: its untouched
+ *  `recharge` and `enduranceCost` rows carry the identical relative gap, and every `base` tier,
+ *  which no enhancement multiplies, agrees exactly). Both bounds apply, so a small value is still
+ *  held to the tight absolute one. */
+const RELATIVE_TOLERANCE = 1e-3;
+
+/** Are these two the same number, allowing for the f32/f64 skew above? */
+function withinTolerance(engine: number, beta: number): boolean {
+  const gap = Math.abs(engine - beta);
+  return gap <= TOLERANCE || gap <= Math.abs(beta) * RELATIVE_TOLERANCE;
+}
+
 /** The sub-50 level the PROD6B-2c sweep resolves at. Any level where the AT tables differ from
  *  their level-50 row works; mid-range keeps the movement well clear of [`TOLERANCE`]. */
 const SWEEP_LEVEL = 25;
@@ -346,7 +378,7 @@ function tierDelta(label: string, engine: ThreeTierValues | null, beta: ThreeTie
   if (engine === null || beta === null) return [`${label}: engine ${engine ? 'set' : 'null'} vs beta ${beta ? 'set' : 'null'}`];
   const out: string[] = [];
   for (const k of ['base', 'enhanced', 'final'] as const) {
-    if (Math.abs(engine[k] - beta[k]) > TOLERANCE) out.push(`${label}.${k}: engine ${engine[k]} vs beta ${beta[k]}`);
+    if (!withinTolerance(engine[k], beta[k])) out.push(`${label}.${k}: engine ${engine[k]} vs beta ${beta[k]}`);
   }
   return out;
 }
@@ -458,6 +490,9 @@ interface ReferenceState {
    *  reference with the beta's exemplar CAP swapped for the exported one, which is how it proves a
    *  delta is that cap and nothing else. */
   enhancementOverride?: EnhancementBonuses;
+  /** The combat/toggle state the effective-power resolution reads (PROD6C-3k). Absent = `CTX`,
+   *  the same all-off state every other fixture drives the engine with. */
+  ctx?: AdapterCalcContext;
 }
 
 /** The beta reference for one power — the calculators + resolver PROD6C–E will retire. Both halves
@@ -468,15 +503,19 @@ function betaReference(
   archetypeId: string,
   rawGlobal: ReturnType<typeof mapGlobal>,
   state: ReferenceState = {},
-): { projection: Omit<PowerProjection, 'grantedMagnitudes'>; magnitudes: Map<string, ResolvedMagnitude> } {
+): { projection: Omit<PowerProjection, 'grantedMagnitudes'>; magnitudes: Map<string, ResolvedMagnitude>; bag: Record<string, unknown> } {
   const enh = betaEnhancement(power, build, state);
   const global = convertGlobalBonusesToAspects(rawGlobal);
 
-  const rechargeBase = truthyStat(power, 'recharge', 'recharge');
-  const endBase = baseEnduranceCost(power);
-  const accBase = truthyStat(power, 'accuracy', 'accuracy');
-  const castBase = truthyStat(power, 'castTime', 'castTime');
-  const rangeBase = truthyStat(power, 'range', 'range');
+  // Every execution value describes the power the surface SHOWS (PROD6C-3k): a snipe read in
+  // combat mode reports its fast cast, not its slow one. Only `perma` below stays on the base
+  // power, which is where both beta surfaces read it.
+  const shown = shownPower(power, build, state.ctx) as unknown as SelectedPower;
+  const rechargeBase = truthyStat(shown, 'recharge', 'recharge');
+  const endBase = baseEnduranceCost(shown);
+  const accBase = truthyStat(shown, 'accuracy', 'accuracy');
+  const castBase = truthyStat(shown, 'castTime', 'castTime');
+  const rangeBase = truthyStat(shown, 'range', 'range');
 
   return {
     projection: {
@@ -493,7 +532,7 @@ function betaReference(
       // accepting nothing, an unresolved divergence noted in the PROD6C plan entry.
       range:
         rangeBase !== null
-          ? rangeEnhanceable(power)
+          ? rangeEnhanceable(shown)
             ? calcThreeTier('range', rangeBase, enh, global)
             : calcThreeTier('range', rangeBase, enh, {})
           : null,
@@ -502,28 +541,61 @@ function betaReference(
     // The magnitude rows read the +Strength-augmented globals — the surfaces' own input
     // (PROD6C). The execution half above deliberately does not: Strength carries no
     // recharge / endurance / accuracy / range / cast aspect.
-    magnitudes: betaMagnitudes(power, build, archetypeId, enh, withStrengthBonuses(global, rawGlobal), state.targetsHit),
+    magnitudes: betaMagnitudes(power, build, archetypeId, enh, withStrengthBonuses(global, rawGlobal), state.targetsHit, shown as unknown as Power),
+    // The bag those magnitudes resolved from, returned so every adjudication below reads the SAME
+    // bag the reference did rather than rebuilding one from the authored power.
+    bag: displayBag(power, state.targetsHit ?? 0, shown as unknown as Power),
   };
+}
+
+/** The state the effective-power resolution reads, assembled from a ctx exactly as the adapter
+ *  assembles the engine's (PROD6C-3k) — the stance overlay included — so a delta can never come
+ *  from the two sides being handed different toggle state. */
+function shownState(build: Build, ctx: AdapterCalcContext): EffectivePowerState {
+  return {
+    combatMode: ctx.combatMode,
+    hidden: isCasterHidden(build, ctx.stalkerHidden),
+    globalAdjusters: effectiveGlobalAdjusters(build, ctx.globalAdjusters),
+    mechanicAdjusters: ctx.mechanicAdjusters,
+    atInherentState: { dominationActive: ctx.dominationActive },
+  };
+}
+
+/** The power the surfaces actually SHOW for this selection: the snipe's fast form, the mid-combat
+ *  cast, the active mode-gated contributions merged in (PROD6C-3k). Not the identity even under the
+ *  all-toggles-off `CTX` — a conditional whose own `defaultActive` is true merges with no toggle
+ *  touched, which is why every bag below goes through this rather than the authored power. */
+function shownPower(power: Power | SelectedPower, build: Build, ctx: AdapterCalcContext = CTX): Power {
+  return resolveEffectivePower(power as Power, shownState(build, ctx)).power;
 }
 
 /** The bag a surface resolves for one power: the built bag, the power's own slider, then the
  *  pseudo-pet merge (PROD6C-3c). This is the EVIDENCE bag every adjudication below reads, so it
  *  has to be the merged one — a summon power's pet-derived rows are in neither side's authored
  *  bag, and grading them against the unmerged build would adjudicate every one of them away as
- *  converter drift. */
-function displayBag(power: Power | SelectedPower, targetsHit = 0): Record<string, unknown> {
-  const built = buildDisplayEffects(power as Power);
+ *  converter drift. The same reason `shown` belongs here: a conditional-added row is in neither
+ *  AUTHORED bag either.
+ *
+ *  `shown` is the effective power the bag is BUILT from; `power` stays the base one, because the
+ *  stacking slider is offered for the power the build holds and scales the merged bag with it —
+ *  the asymmetry both the InfoPanel and the engine's `display_effects` carry. */
+function displayBag(
+  power: Power | SelectedPower,
+  targetsHit = 0,
+  shown: Power = power as Power,
+): Record<string, unknown> {
+  const built = buildDisplayEffects(shown);
   return withPseudoPetEffects(
-    power as Power,
+    shown,
     withTargetsHit(power as Power, built, targetsHit),
   ) as unknown as Record<string, unknown>;
 }
 
 /** The bag keys the pseudo-pet merge ADDS to a power (PROD6C-3c) — the rows a summon power
  *  carries only through its non-commandable pet, which its own bag has no key for. */
-function pseudoPetKeys(power: Power | SelectedPower): Set<string> {
-  const built = buildDisplayEffects(power as Power) as unknown as Record<string, unknown>;
-  return new Set(Object.keys(displayBag(power)).filter((key) => !(key in built)));
+function pseudoPetKeys(power: Power | SelectedPower, shown: Power = power as Power): Set<string> {
+  const built = buildDisplayEffects(shown) as unknown as Record<string, unknown>;
+  return new Set(Object.keys(displayBag(power, 0, shown)).filter((key) => !(key in built)));
 }
 
 /** The beta reference magnitudes for one power — the resolver `RegistryEffectsDisplay` calls. */
@@ -534,6 +606,7 @@ function betaMagnitudes(
   enh: Record<string, number | undefined>,
   global: Record<string, number | undefined>,
   targetsHit?: number,
+  shown: Power = power as Power,
 ): Map<string, ResolvedMagnitude> {
   const rows = resolvePowerMagnitudes({
     // The bag the SURFACES resolve, not the authored one (PROD6C-3a): the merged stats, the
@@ -543,7 +616,7 @@ function betaMagnitudes(
     // …at the power's own slider setting, which the surfaces apply to that bag before resolving
     // it (PROD6C-3b) — zero/absent is the identity, so every other fixture here is unaffected —
     // and with the pseudo-pet debuffs merged under it (PROD6C-3c).
-    effects: displayBag(power, targetsHit ?? 0) as unknown as PowerEffects,
+    effects: displayBag(power, targetsHit ?? 0, shown) as unknown as PowerEffects,
     archetypeId,
     level: build.level,
     enhancementBonuses: enh,
@@ -658,7 +731,7 @@ function magnitudeDeltas(
     // under a dragged slider as they always did at one target. A row that grows on one side
     // alone is a hard delta again.
     for (const tier of ['base', 'enhanced', 'final'] as const) {
-      if (Math.abs(engine.value[tier] - beta.tiers[tier]) <= TOLERANCE) continue;
+      if (withinTolerance(engine.value[tier], beta.tiers[tier])) continue;
       const delta = `${powerName}.${key}.${tier}: engine ${engine.value[tier]} vs beta ${beta.tiers[tier]}`;
       if (inputsDiffer) {
         adjudicated.push(`${key}.${tier}: the two datasets carry different '${key}' values (engine ${engineEffects[key]}, beta ${betaEffects![key]})`);
@@ -782,13 +855,13 @@ function diffProjection(
     const engine = projection.get(projectionKey(power.powerSet, power.internalName));
     expect(engine, `${server}: no engine projection for ${power.internalName}`).toBeDefined();
     if (!engine) continue;
-    const { projection: beta, magnitudes } = betaReference(power, build, archetypeId, rawGlobal, state);
+    const { projection: beta, magnitudes, bag } = betaReference(power, build, archetypeId, rawGlobal, state);
     const perma = permaDelta(engine.perma, beta.perma);
     const mags = magnitudeDeltas(
       power.internalName,
       engine.grantedMagnitudes,
       magnitudes,
-      displayBag(power),
+      bag,
     );
     rows += engine.grantedMagnitudes.length;
     deltas.push(
@@ -895,19 +968,19 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
       for (const power of powers) {
         const engine = projection.get(projectionKey(power.powerSet, power.internalName));
         if (!engine) continue;
-        const { magnitudes } = betaReference(power, build, atId, rawGlobal);
+        const { magnitudes, bag } = betaReference(power, build, atId, rawGlobal);
         const mags = magnitudeDeltas(
           `${atId}/${power.internalName}`,
           engine.grantedMagnitudes,
           magnitudes,
-          displayBag(power),
+          bag,
         );
         deltas.push(...mags.real);
         adjudicated.push(
           ...mags.adjudicated.map((d) => `${atId}/${power.internalName}.${d}`),
         );
         rows += engine.grantedMagnitudes.length;
-        const petKeys = pseudoPetKeys(power);
+        const petKeys = pseudoPetKeys(power, shownPower(power, build));
         if (petKeys.size > 0) {
           petPowers += 1;
           enginePetRows += engine.grantedMagnitudes.filter((row) => petKeys.has(row.effectKey)).length;
@@ -984,12 +1057,12 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
 
         // The beta reference for an UNHELD power: the same calculators, run with no slots.
         const unslotted = { ...power, powerSet: unheldSet.id, level: power.available + 1, slots: [] } as SelectedPower;
-        const { projection: beta, magnitudes } = betaReference(unslotted, build, atId, rawGlobal);
+        const { projection: beta, magnitudes, bag } = betaReference(unslotted, build, atId, rawGlobal);
         const mags = magnitudeDeltas(
           `${atId}/${power.internalName}`,
           engine.grantedMagnitudes,
           magnitudes,
-          displayBag(power),
+          bag,
         );
         deltas.push(
           ...tierDelta(`${atId}/${power.internalName}.recharge`, engine.recharge, beta.recharge),
@@ -1084,15 +1157,15 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
           // A pool/epic power is never held by this fixture, so the beta reference is the same
           // calculators run unslotted — identical to the on-demand sweep above.
           const unslotted = { ...power, powerSet: set.id, level: power.available + 1, slots: [] } as SelectedPower;
-          const { projection: beta, magnitudes } = betaReference(unslotted, build, atId, rawGlobal);
+          const { projection: beta, magnitudes, bag } = betaReference(unslotted, build, atId, rawGlobal);
           // The engine's OWN copy of this power — the evidence both adjudications rest on.
           const enginePower = engineBundle.get(projectionKey(set.id, power.internalName));
           const mags = magnitudeDeltas(
             tag,
             engine.grantedMagnitudes,
             magnitudes,
-            displayBag(power),
-            enginePower ? displayBag(enginePower as unknown as Power) : {},
+            bag,
+            enginePower ? displayBag(enginePower as unknown as Power, 0, shownPower(enginePower as unknown as Power, build)) : {},
           );
           const perma = permaDelta(engine.perma, beta.perma, enginePower);
           deltas.push(
@@ -1200,12 +1273,12 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
     for (const power of powers) {
       const engine = projection.get(projectionKey(power.powerSet, power.internalName));
       if (!engine) continue;
-      const { magnitudes } = betaReference(power, build, atId, rawGlobal);
+      const { magnitudes, bag } = betaReference(power, build, atId, rawGlobal);
       const mags = magnitudeDeltas(
         `${atId}/${power.internalName}`,
         engine.grantedMagnitudes,
         magnitudes,
-        displayBag(power),
+        bag,
       );
       deltas.push(...mags.real);
       adjudicated.push(...mags.adjudicated.map((d) => `${atId}/${power.internalName}.${d}`));
@@ -1291,7 +1364,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
         const slidBag = withTargetsHit(power, plainBag, targetsHit);
         if (slidBag !== plainBag) bagsChanged += 1;
 
-        const { magnitudes } = betaReference(power, build, atId, rawGlobal, { targetsHit });
+        const { magnitudes, bag: slidEvidence } = betaReference(power, build, atId, rawGlobal, { targetsHit });
         const { magnitudes: before } = betaReference(power, build, atId, rawGlobal);
         for (const [rowKey, row] of magnitudes) {
           const other = before.get(rowKey);
@@ -1310,9 +1383,9 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
           `${atId}/${power.internalName}@${targetsHit}`,
           engine.grantedMagnitudes,
           magnitudes,
-          displayBag(power, targetsHit),
+          slidEvidence,
           enginePower
-            ? displayBag(enginePower as unknown as Power, targetsHit)
+            ? displayBag(enginePower as unknown as Power, targetsHit, shownPower(enginePower as unknown as Power, build))
             : {},
         );
         deltas.push(...mags.real);
@@ -1322,7 +1395,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
           `${atId}/${power.internalName}@0`,
           zeroed.get(key)?.grantedMagnitudes ?? [],
           betaReference(power, build, atId, rawGlobalZero).magnitudes,
-          displayBag(power),
+          displayBag(power, 0, shownPower(power, build)),
         );
         deltas.push(...atZero.real);
         adjudicated.push(...atZero.adjudicated.map((d) => `${atId}/${power.internalName}@0.${d}`));
@@ -1352,6 +1425,159 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
     expect(engineMoved, `${server}: the slider moved no engine row`).toBeGreaterThan(0);
     expect(deltas).toEqual([]);
   }, 180000);
+
+  // PROD6C-3k — the EFFECTIVE power. Every fixture above runs the all-off `CTX`, where the only
+  // transform that fires is a conditional whose own `defaultActive` is true (12 / 9 / 11 powers per
+  // fork). This one drives the states that decide WHICH power the surfaces show: combat mode (the
+  // snipe's fast form), the from-Hide toggle (a slow opener vs its mid-combat cast), and every
+  // conditional-toggle id the build's own powers publish.
+  //
+  // The toggle ids are data-discovered (Rule 0 — no fixture may name one; they come from the
+  // binary's `requiresExpression` gates at convert time), and the same map reaches both sides: the
+  // adapter forwards it to the engine, `betaReference` resolves the beta power through it.
+  it.each(SERVERS)('%s: the shown power drives the projection under every combat state', async (server) => {
+    await loadDataset(server);
+
+    const deltas: string[] = [];
+    const adjudicated: string[] = [];
+    let quickForms = 0;
+    let openers = 0;
+    let mergedPowers = 0;
+    let mergedRows = 0;
+    let castMoved = 0;
+    let hiddenMoved = 0;
+    const refused: string[] = [];
+
+    for (const atId of STANDARD_ARCHETYPE_IDS) {
+      // Build from the sets that CAN grade this: the 6B fixture's first-set pick reaches almost no
+      // quick form or conditional (measured — 0 on rebirth), because the mechanics that carry them
+      // are spread across an archetype's other sets. Discovered by counting each set's own carriers,
+      // so no powerset is named (Rule 0).
+      const build = buildFor(server, atId, 50, true, (sets) => {
+        const carried = sets.map((set) => set.powers.filter(carriesTransform).length);
+        return carried.indexOf(Math.max(...carried));
+      });
+      const powers = [...build.primary.powers, ...build.secondary.powers];
+      if (powers.length === 0) continue;
+
+      // Every conditional this build's powers carry, turned ON, by the scope the DATA declares.
+      const globalAdjusters: Record<string, boolean> = {};
+      const mechanicAdjusters: Record<string, boolean> = {};
+      for (const power of powers) {
+        for (const conditional of power.conditionalEffects ?? []) {
+          if (conditional.scope === 'global') globalAdjusters[conditional.id] = true;
+          else mechanicAdjusters[`${power.internalName}:${conditional.id}`] = true;
+        }
+        if ((power as unknown as { quickSnipe?: unknown }).quickSnipe != null) quickForms += 1;
+        if (power.midCombatCast != null) openers += 1;
+      }
+
+      // In combat with every toggle on, and NOT hidden — so the snipe fires its fast form and an
+      // opener its mid-combat cast. `hidden` is the same build seen from cover, `CTX` the all-off
+      // state every other fixture here runs: three states, one build, so a value that moves can be
+      // attributed to the state that moved it.
+      const engaged = ctxWith({ combatMode: true, dominationActive: true, globalAdjusters, mechanicAdjusters });
+      const hidden = ctxWith({ ...engaged, stalkerHidden: true });
+      // The adapter's PROD3 guard refuses a toggle whose conditional carries a caster dashboard
+      // buff the engine's TOTALS do not model, and driving every id reaches such a toggle
+      // (thunderspy's two Primalist form modes — recorded in the plan, not classified here: they
+      // belong to the form-redirect transform this slice defers). Recorded rather than caught
+      // silently, and the reach counters below still have to be non-zero, so a fork cannot pass
+      // this test by refusing every state.
+      let runs;
+      try {
+        runs = [engaged, hidden].map((ctx) => {
+          const totals = engineTotals(server, build, ctx);
+          return { ctx, projection: mapPowerProjection(totals.power_projection), rawGlobal: mapGlobal(totals.bonuses) };
+        });
+      } catch (err) {
+        refused.push(`${atId}: ${String(err).split(' — ')[0]}`);
+        continue;
+      }
+      const plain = mapPowerProjection(engineTotals(server, build).power_projection);
+
+      for (const { ctx, projection, rawGlobal } of runs) {
+        const tag = ctx === hidden ? 'hidden' : 'engaged';
+        for (const power of powers) {
+          const key = projectionKey(power.powerSet, power.internalName);
+          const engine = projection.get(key);
+          if (!engine) continue;
+          const { projection: beta, magnitudes, bag } = betaReference(power, build, atId, rawGlobal, { ctx });
+          const mags = magnitudeDeltas(
+            `${atId}/${power.internalName}@${tag}`,
+            engine.grantedMagnitudes,
+            magnitudes,
+            bag,
+          );
+          deltas.push(...mags.real);
+          adjudicated.push(...mags.adjudicated.map((d) => `${atId}/${power.internalName}@${tag}.${d}`));
+          deltas.push(
+            ...tierDelta(`${power.internalName}@${tag}.recharge`, engine.recharge, beta.recharge),
+            ...tierDelta(`${power.internalName}@${tag}.enduranceCost`, engine.enduranceCost, beta.enduranceCost),
+            ...tierDelta(`${power.internalName}@${tag}.accuracy`, engine.accuracy, beta.accuracy),
+            ...tierDelta(`${power.internalName}@${tag}.castTime`, engine.castTime, beta.castTime),
+            ...tierDelta(`${power.internalName}@${tag}.range`, engine.range, beta.range),
+          );
+          if (engine.arcanaTime !== null && beta.arcanaTime !== null && Math.abs(engine.arcanaTime - beta.arcanaTime) > TOLERANCE) {
+            deltas.push(`${power.internalName}@${tag}.arcanaTime: engine ${engine.arcanaTime} vs beta ${beta.arcanaTime}`);
+          }
+
+          // Reach, measured rather than assumed (the PROD6C-3f method): what each state actually
+          // MOVED. A transform that changes nothing cannot be graded by the parity above, however
+          // green it goes — so these counters, not the deltas, are what makes this test non-vacuous.
+          if (tag === 'engaged') {
+            const before = plain.get(key)?.castTime;
+            if (before && engine.castTime && Math.abs(before.base - engine.castTime.base) > TOLERANCE) castMoved += 1;
+            const offBag = displayBag(power, 0, shownPower(power, build));
+            const changed = [...new Set([...Object.keys(offBag), ...Object.keys(bag)])].filter(
+              (bagKey) => JSON.stringify(offBag[bagKey]) !== JSON.stringify(bag[bagKey]),
+            );
+            if (changed.length > 0) {
+              mergedPowers += 1;
+              mergedRows += changed.length;
+            }
+          } else {
+            const engagedCast = runs[0].projection.get(key)?.castTime;
+            if (engagedCast && engine.castTime && Math.abs(engagedCast.base - engine.castTime.base) > TOLERANCE) hiddenMoved += 1;
+          }
+        }
+      }
+    }
+
+    // eslint-disable-next-line no-console
+    console.warn(
+      `[PROD6C-3k effective] ${server}: ${quickForms} quick forms, ${openers} from-Hide openers — ` +
+        `${castMoved} casts move in combat, ${hiddenMoved} move again from cover, ` +
+        `${mergedRows} rows on ${mergedPowers} powers change under the toggles`,
+    );
+    if (refused.length) {
+      // eslint-disable-next-line no-console
+      console.warn(`[PROD6C-3k effective] ${server}: ${refused.length} archetype(s) ungraded — the adapter refuses the toggle state:\n    ${refused.join('\n    ')}`);
+    }
+    if (adjudicated.length) {
+      // eslint-disable-next-line no-console
+      console.warn(`[PROD6C-3k effective] ${server} engine-supersedes-beta (accepted, ${adjudicated.length}):\n    ${adjudicated.slice(0, 20).join('\n    ')}`);
+    }
+    if (deltas.length) {
+      // eslint-disable-next-line no-console
+      console.error(`\n[PROD6C-3k effective] ${server} (${deltas.length} deltas)\n    ${deltas.slice(0, 40).join('\n    ')}`);
+    }
+    // Anti-vacuity, one per transform, each asserted only where the fork's corpus carries the data
+    // and reported when it does not — the PROD6C-3b shape. The conditional merge is the one every
+    // fork carries, so it is unconditional: without it this whole sweep would be the CTX sweep again.
+    expect(mergedRows, `${server}: no row changes under any toggle — the merge is ungraded here`).toBeGreaterThan(0);
+    if (quickForms > 0) {
+      expect(castMoved, `${server}: ${quickForms} quick forms in the corpus and not one cast moved in combat`).toBeGreaterThan(0);
+    } else {
+      // eslint-disable-next-line no-console
+      console.warn(`[PROD6C-3k effective] ${server}: no quick form in the corpus — this fork cannot grade the snipe swap`);
+    }
+    if (hiddenMoved === 0) {
+      // eslint-disable-next-line no-console
+      console.warn(`[PROD6C-3k effective] ${server}: no cast moved from cover — ${openers} openers reached, none whose mid-combat cast differs from its from-Hide one`);
+    }
+    expect(deltas).toEqual([]);
+  }, 300000);
 
   // PROD6B-2c. Every fixture above builds at 50, which is precisely the level the retired pin
   // agreed with — so a magnitude resolved at a fixed 50 and one resolved at the build level were
@@ -1391,14 +1617,15 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
         const engineLow = low.projection.get(key);
         const engineHigh = high.projection.get(key);
         if (!engineLow) continue;
-        const betaLow = betaReference(power, low.build, atId, low.rawGlobal).magnitudes;
+        const low_ = betaReference(power, low.build, atId, low.rawGlobal);
+        const betaLow = low_.magnitudes;
         const betaHigh = betaReference(power, high.build, atId, high.rawGlobal).magnitudes;
 
         const mags = magnitudeDeltas(
           `${atId}/${power.internalName}@${SWEEP_LEVEL}`,
           engineLow.grantedMagnitudes,
           betaLow,
-          displayBag(power),
+          low_.bag,
         );
         deltas.push(...mags.real);
         adjudicated.push(...mags.adjudicated.map((d) => `${atId}/${power.internalName}.${d}`));

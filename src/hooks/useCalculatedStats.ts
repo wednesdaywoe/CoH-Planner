@@ -317,6 +317,9 @@ export function useCharacterCalculation(): CharacterCalculationResult {
   const globalAdjusters = useUIStore((state) => state.globalAdjusters);
   const mechanicAdjusters = useUIStore((state) => state.mechanicAdjusters);
   const destinyTime = useUIStore((state) => state.destinyTime);
+  // Display-only projection inputs (PROD6C-3k): they resolve each power's effective form.
+  const dominationActive = useUIStore((state) => state.dominationActive);
+  const stalkerHidden = useUIStore((state) => state.stalkerHidden);
 
   // SPIKE5 — load the engine dataset for this build's server once; `engineLoaded` flips the
   // memo below from boot-time empty totals to real engine numbers when the wasm handle is ready.
@@ -334,7 +337,7 @@ export function useCharacterCalculation(): CharacterCalculationResult {
   // unchanged deps; the shared cache (keyed on the same dep tuple) skips the
   // redundant recompute ACROSS the ~150 other instances in the same render pass.
   return useMemo(() => {
-    const deps = [build, exemplarMode, exemplarLevel, incarnateActive, incarnateLevelShiftActive, effectiveProcSettings, targetsHitValues, targetLevelOffset, vigilanceTeamSize, furyLevel, combatMode, globalAdjusters, mechanicAdjusters, destinyTime, engineLoaded] as const;
+    const deps = [build, exemplarMode, exemplarLevel, incarnateActive, incarnateLevelShiftActive, effectiveProcSettings, targetsHitValues, targetLevelOffset, vigilanceTeamSize, furyLevel, combatMode, globalAdjusters, mechanicAdjusters, destinyTime, dominationActive, stalkerHidden, engineLoaded] as const;
     return getSharedCharacterCalculation(deps, () =>
       calculateCharacterTotals(build, exemplarMode, incarnateActive, {
         procSettings: effectiveProcSettings,
@@ -348,9 +351,11 @@ export function useCharacterCalculation(): CharacterCalculationResult {
         globalAdjusters,
         mechanicAdjusters,
         destinyTime,
+        dominationActive,
+        stalkerHidden,
       })
     );
-  }, [build, exemplarMode, exemplarLevel, incarnateActive, incarnateLevelShiftActive, effectiveProcSettings, targetsHitValues, targetLevelOffset, vigilanceTeamSize, furyLevel, combatMode, globalAdjusters, mechanicAdjusters, destinyTime, engineLoaded]);
+  }, [build, exemplarMode, exemplarLevel, incarnateActive, incarnateLevelShiftActive, effectiveProcSettings, targetsHitValues, targetLevelOffset, vigilanceTeamSize, furyLevel, combatMode, globalAdjusters, mechanicAdjusters, destinyTime, dominationActive, stalkerHidden, engineLoaded]);
 }
 
 /**

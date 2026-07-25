@@ -4201,6 +4201,12 @@ export interface CalculationOptions {
   /** Active per-power Mechanic Adjuster state — target-state toggles keyed
    *  `<internalName>:<id>` (drowning, Disintegrating, …). Default `{}`. */
   mechanicAdjusters?: Record<string, boolean>;
+  /** Header Domination toggle — drives the `domination` conditional id, which the beta reads
+   *  from AT-inherent state rather than `globalAdjusters` (PROD6C-3k). Display-only. */
+  dominationActive?: boolean;
+  /** Header alpha-strike toggle — with the build's Hide power it becomes the engine's `hidden`,
+   *  which gates a from-Hide opener's mid-combat cast (PROD6C-3k). Display-only. */
+  stalkerHidden?: boolean;
 }
 
 /**
@@ -4231,6 +4237,8 @@ export function calculateCharacterTotals(
     destinyTime: options?.destinyTime ?? null,
     globalAdjusters: options?.globalAdjusters ?? {},
     mechanicAdjusters: options?.mechanicAdjusters ?? {},
+    dominationActive: options?.dominationActive ?? false,
+    stalkerHidden: options?.stalkerHidden ?? false,
   };
 
   try {

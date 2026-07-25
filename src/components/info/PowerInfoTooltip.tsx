@@ -52,9 +52,8 @@ import {
 } from '@/utils/calculations';
 import { calculatePetDamage, calculateResolvedPseudoPetDamage, shouldApplyEnhancements, type PetDamageResult } from '@/utils/calculations/pet-damage';
 import { buildDisplayEffects, withPseudoPetEffects } from './buildDisplayEffects';
+import { resolveEffectivePower, effectiveGlobalAdjusters, isCasterHidden } from './resolveEffectivePower';
 import type { ArchetypeId } from '@/types';
-import { selectActiveConditionals } from '@/utils/conditional-effects';
-import { stanceAdjusterOverrides } from '@/data/stance-groups';
 import {
   convertGlobalBonusesToAspects,
   withStrengthBonuses,
@@ -87,12 +86,10 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
   const vigilanceTeamSize = useVigilanceTeamSize();
   const criticalHitsActive = useCriticalHitsActive();
   const stalkerHidden = useStalkerHidden();
+  const combatMode = useUIStore((s) => s.combatMode);
   const stalkerTeamSize = useStalkerTeamSize();
   const stalkerCritActive = useStalkerCritActive();
-  // Alpha-strike scenario only applies if the build has the Hide power. Without Hide there's no way
-  // to actually be in stealth, so stalkerHidden=true would model an impossible scenario.
-  const hasHide = build.secondary.powers.some((p) => p.internalName === 'Hide');
-  const effectiveHidden = stalkerHidden && hasHide;
+  const effectiveHidden = isCasterHidden(build, stalkerHidden);
   const containmentActive = useContainmentActive();
   const sentinelCritActive = useSentinelCritActive();
 
@@ -178,9 +175,29 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
   // Get powerset for determining damage type
   const powerset = getPowerset(powerSet);
 
+  // The power this hover actually shows — the snipe's fast form, the mid-combat cast, and the
+  // active mode-gated contributions merged onto `effects` and `damage`. Before PROD6C-3k this
+  // surface hand-rolled two thirds of that (conditional damage for the heal row, a castTime patch
+  // on the built bag) and applied neither the conditional EFFECTS merge nor the snipe form, so it
+  // disagreed with the InfoPanel on 110 / 116 / 174 powers per fork. Both now call the same
+  // resolver, which the engine's `effective.rs` mirrors.
+  const effectivePower = useMemo(
+    () =>
+      basePower
+        ? resolveEffectivePower(basePower, {
+            combatMode,
+            hidden: effectiveHidden,
+            globalAdjusters: effectiveGlobalAdjusters(build, globalAdjusters),
+            mechanicAdjusters,
+            atInherentState: { dominationActive },
+          }).power
+        : undefined,
+    [basePower, combatMode, effectiveHidden, mechanicAdjusters, globalAdjusters, dominationActive, build],
+  );
+
   // Calculate actual damage using archetype modifiers and level
   const calculatedDamage = useMemo(() => {
-    if (!basePower?.damage && !basePower?.effects?.damage) return null;
+    if (!effectivePower?.damage && !effectivePower?.effects?.damage) return null;
 
     // Determine if this is a primary or secondary powerset
     const isPrimary = powerSet === build.primary.id;
@@ -197,7 +214,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
     const powersetName = powerset?.name || '';
 
     return calculatePowerDamage(
-      basePower,
+      effectivePower,
       {
         level: build.level,
         archetypeId: archetypeId as ArchetypeId | undefined,
@@ -208,31 +225,11 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
       globalBonusesForCalc.damage,
       0 // active buffs
     );
-  }, [basePower, build.level, archetypeId, enhancementBonuses.damage, globalBonusesForCalc.damage, powerSet, build.primary.id, build.secondary.id, powerset]);
-
-  // The damage array the heal is extracted from, folding in any active mode-gated bonus heal
-  // (e.g. DNA Siphon's Defensive Adaptation +0.375 Heal) so the hover preview matches the
-  // InfoPanel's merged display instead of showing base-only.
-  const effectiveDamage = useMemo(() => {
-    if (!basePower) return undefined;
-    const stancePowers: { internalName: string; activeSubPower?: string }[] = [];
-    const addStance = (powers?: { internalName: string; activeSubPower?: string }[]) =>
-      powers?.forEach((p) => stancePowers.push({ internalName: p.internalName, activeSubPower: p.activeSubPower }));
-    addStance(build.primary?.powers);
-    addStance(build.secondary?.powers);
-    build.pools?.forEach((pool) => addStance(pool.powers));
-    addStance(build.epicPool?.powers);
-    const effectiveGlobalAdjusters = { ...globalAdjusters, ...stanceAdjusterOverrides(stancePowers) };
-    const active = selectActiveConditionals(basePower, mechanicAdjusters, effectiveGlobalAdjusters, { dominationActive });
-    const baseDamage = basePower.damage ?? basePower.effects?.damage;
-    const conditionalHeals = active.flatMap((c) => (c.damage ? (Array.isArray(c.damage) ? c.damage : [c.damage]) : []));
-    if (conditionalHeals.length === 0) return baseDamage;
-    return (Array.isArray(baseDamage) ? baseDamage : baseDamage ? [baseDamage] : []).concat(conditionalHeals);
-  }, [basePower, mechanicAdjusters, globalAdjusters, dominationActive, build.primary?.powers, build.secondary?.powers, build.pools, build.epicPool?.powers]);
+  }, [effectivePower, build.level, archetypeId, enhancementBonuses.damage, globalBonusesForCalc.damage, powerSet, build.primary.id, build.secondary.id, powerset]);
 
   // Calculate aggregate pet damage (supports multi-entity summons)
   const petDamageAggregate = useMemo<{ results: PetDamageResult[]; base: number; enhanced: number; final: number } | null>(() => {
-    const summon = basePower?.effects?.summon;
+    const summon = effectivePower?.effects?.summon;
     if (!summon) return null;
 
     // Build entity list
@@ -245,7 +242,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
     const resolvedList = summon.resolvedEntities ?? [];
     // Conditional ("ignited") entities fold in only when their per-power toggle is on.
     for (const ce of summon.conditionalEntities ?? []) {
-      if (mechanicAdjusters[`${basePower!.internalName}:${ce.toggleId}`]) {
+      if (mechanicAdjusters[`${effectivePower!.internalName}:${ce.toggleId}`]) {
         entityList.push({ entityName: ce.entity, count: 1 });
       }
     }
@@ -283,7 +280,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
     }
 
     return results.length > 0 ? { results, base, enhanced, final: final_ } : null;
-  }, [basePower?.effects?.summon, basePower?.internalName, build.level, enhancementBonuses.damage, globalBonusesForCalc.damage, archetypeId, stormCellActive, mechanicAdjusters]);
+  }, [effectivePower?.effects?.summon, effectivePower?.internalName, build.level, enhancementBonuses.damage, globalBonusesForCalc.damage, archetypeId, stormCellActive, mechanicAdjusters]);
 
   // Calculate archetype-specific damage bonuses
   const damageDisplayInfo = useMemo(() => {
@@ -390,8 +387,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
   // Mirror the from-Hide toggle (which drives its damage) so cast time matches the state —
   // not hidden → the fast mid-combat cast. That is UI state, so it stays here rather than in
   // the shared build (InfoPanel applies the same rule to the power's own stats).
-  const effects = withPseudoPetEffects(basePower, buildDisplayEffects(basePower, effectiveDamage));
-  if (basePower.midCombatCast != null && !effectiveHidden) effects.castTime = basePower.midCombatCast;
+  const effects = withPseudoPetEffects(effectivePower!, buildDisplayEffects(effectivePower!));
 
   // Check if power has any enhancements
   const hasEnhancements = selectedPower && selectedPower.slots.some(s => s !== null);

@@ -14,11 +14,14 @@
  * silently dropped. `destinyTime` passes through to `combat.destiny_time` (the engine scrubs
  * the diminishing Destiny timeline itself; null → its sustained-floor default). A disabled
  * `incarnateLevelShiftActive` warns (the engine derives level-shift from the equipped incarnate
- * and can't suppress it independently). Conditional adjusters (`globalAdjusters` / `mechanicAdjusters`) are forwarded
- * through build state the engine already reads — stances via `active_sub_power`, out-of-combat via
- * `combatMode`→`in_combat` — and only fail loud for the one silent-drop case: a global toggle
- * carrying an unmodeled caster dashboard buff (see the PROD3 classification below). A silent drop
- * here would be exactly the field-loss class the rebuild exists to kill.
+ * and can't suppress it independently). Conditional adjusters (`globalAdjusters` /
+ * `mechanicAdjusters`) reach the engine two ways: for the per-power DISPLAY projection they are
+ * forwarded verbatim as `combat.global_conditionals` / `per_power_conditionals` (PROD6C-3k), and for
+ * the TOTALS they ride build state the engine already reads — stances via `active_sub_power`,
+ * out-of-combat via `combatMode`→`in_combat`. Only the totals half can silently drop a toggle, so
+ * that is where this still fails loud: a global toggle carrying an unmodeled caster dashboard buff
+ * (see the PROD3 classification below). A silent drop here would be exactly the field-loss class
+ * the rebuild exists to kill.
  */
 
 import type { Build, PowersetSelection, PoolSelection } from '@/types/build';
@@ -28,6 +31,7 @@ import type { IncarnateActiveState } from '@/types/incarnate';
 import { getPowerset } from '@/data/powersets';
 import { getPowerPool } from '@/data/power-pools';
 import { getEpicPool } from '@/data/epic-pools';
+import { effectiveGlobalAdjusters, isCasterHidden } from '@/components/info/resolveEffectivePower';
 
 // ============================================
 // OUTPUT WIRE SHAPE (mirrors crates/coh_data/src/character.rs serde)
@@ -104,6 +108,9 @@ export interface CharacterStateCombatContext {
   hit_points_percent: number;
   exemplar_level: number | null;
   destiny_time: number | null;
+  hidden: boolean;
+  global_conditionals: Record<string, boolean>;
+  per_power_conditionals: Record<string, boolean>;
 }
 
 export interface CharacterState {
@@ -145,6 +152,12 @@ export interface AdapterCalcContext {
   destinyTime: number | null;
   globalAdjusters: Record<string, boolean>;
   mechanicAdjusters: Record<string, boolean>;
+  /** Header Domination toggle — an AT-inherent mechanic the conditional `domination` id reads
+   *  instead of `globalAdjusters` (PROD6C-3k). */
+  dominationActive: boolean;
+  /** Header alpha-strike toggle. Combined with the build's Hide power into the engine's
+   *  `hidden`, which gates the mid-combat cast. */
+  stalkerHidden: boolean;
 }
 
 const INCARNATE_SLOTS = ['alpha', 'judgement', 'interface', 'destiny', 'lore', 'hybrid', 'genesis'] as const;
@@ -364,6 +377,15 @@ export function toCharacterState(build: Build, ctx: AdapterCalcContext): Charact
       // default); a number → that exact second. The engine reads the same timeline the beta's
       // getDestinyEffectsAtTime does, so null↔None and n↔Some(n) match the beta path exactly.
       destiny_time: ctx.destinyTime,
+      // The three DISPLAY-side inputs (PROD6C-3k): they resolve the effective power each
+      // per-power projection describes and change no dashboard total, which is why forwarding
+      // the toggle maps here does not disturb the classification above.
+      hidden: isCasterHidden(build, ctx.stalkerHidden),
+      // Stances win over stale UI toggles (the same overlay the surfaces and this calc apply),
+      // and the one AT-inherent id the beta routes to the Header's own state is resolved into
+      // the map here — the engine reads the data's `scope`, not a curated list of mechanic names.
+      global_conditionals: { ...effectiveGlobalAdjusters(build, ctx.globalAdjusters), domination: ctx.dominationActive },
+      per_power_conditionals: ctx.mechanicAdjusters,
     },
   };
 }

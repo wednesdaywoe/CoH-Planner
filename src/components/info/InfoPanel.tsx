@@ -43,11 +43,10 @@ import { getBaselineHealth } from '@/utils/calculations/stats';
 import type { GenesisExemplarEffect } from '@/data';
 import { getActiveIncarnateDamageProcs, computeIncarnateProcContributions } from '@/data/incarnate-procs';
 import { resolvePath } from '@/utils/paths';
-import { applyQuickSnipe } from '@/utils/quick-snipe';
 import { resolveKheldianRedirect } from '@/data/datasets/rebirth/kheldian-redirects';
 import { KHELDIAN_FORM_VARIANT_POWERS } from '@/data/datasets/rebirth/kheldian-form-variants';
 import { resolvePrimalistRedirect, PRIMALIST_FORM_VARIANT_POWERS } from '@/data/datasets/thunderspy/primalist-redirects';
-import { getPowerset, stanceAdjusterOverrides } from '@/data';
+import { getPowerset } from '@/data';
 import { useModeSuppression } from '@/hooks/useModeSuppression';
 import { modeLabel } from '@/utils/mode-suppression';
 import { EnhancementInfoContent } from './EnhancementInfoContent';
@@ -69,10 +68,9 @@ import {
   convertGlobalBonusesToAspects,
   withStrengthBonuses,
   findSelectedPowerInBuild,
-  selectActiveConditionals,
-  applyActiveConditionals,
   calcThreeTier,
 } from './powerDisplayUtils';
+import { resolveEffectivePower, effectiveGlobalAdjusters, isCasterHidden } from './resolveEffectivePower';
 import {
   RegistryEffectsDisplay,
 } from './SharedPowerComponents';
@@ -171,9 +169,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   const stalkerTeamSize = useStalkerTeamSize();
   const stalkerCritActive = useStalkerCritActive();
   const sentinelCritActive = useSentinelCritActive();
-  // Alpha-strike scenario only applies if the build has the Hide power
-  const hasHide = build.secondary.powers.some((p) => p.internalName === 'Hide');
-  const effectiveHidden = stalkerHidden && hasHide;
+  const effectiveHidden = isCasterHidden(build, stalkerHidden);
   const procSettings = useUIStore((s) => s.procSettings);
   const includeProcDamageToggle = useUIStore((s) => s.includeProcDamageInDPS) && procSettings.damage;
   const useArcanaTimeToggle = useUIStore((s) => s.useArcanaTime);
@@ -325,53 +321,23 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
 
   // When combatMode is active and power has quickSnipe, use Quick-cast stats/damage
   const isQuickSnipe = combatMode && !!formRedirectedPower?.quickSnipe;
-  // Single-sourced with useBuildMaxAttackDamage (the damage-bar normalization
-  // reference) so the bar numerator and its reference apply the same snipe form.
-  const snipeAdjustedPower = useMemo(
-    () => (formRedirectedPower ? applyQuickSnipe(formRedirectedPower, combatMode) : formRedirectedPower),
-    [formRedirectedPower, combatMode],
-  );
 
-  // Assassin's Strike fires its slow interruptible animation from Hide (the
-  // displayed base cast) but a much faster Quick animation mid-combat. Mirror
-  // the from-Hide toggle that already drives its damage so the cast time matches
-  // the state: not hidden → the fast mid-combat cast (uninterruptible).
-  const formAdjustedPower = useMemo(() => {
-    const p = snipeAdjustedPower;
-    if (!p || p.midCombatCast == null || effectiveHidden) return p;
-    return { ...p, stats: { ...p.stats, castTime: p.midCombatCast, interruptTime: undefined, timeToRoot: undefined } };
-  }, [snipeAdjustedPower, effectiveHidden]);
-
-  // Layer active Mechanic Adjuster contributions on top of the snipe-
-  // adjusted power so damage / effects display reflect toggle state
-  // (drowning bonus, Disintegrating, Bio Armor adaptation, etc.).
-  // AT-inherent ids (Domination etc.) read the existing Header state
-  // instead of the per-power adjuster maps so the dashboard toggle is
-  // the single source of truth.
+  // The power this panel actually shows: the snipe's fast form, the mid-combat cast, and the
+  // active mode-gated contributions merged in (drowning bonus, Disintegrating, Bio Armor
+  // adaptation). Single-sourced as `resolveEffectivePower` so the picker tooltip and the engine
+  // gate resolve the same power, and mirrored in the engine's `effective.rs` (PROD6C-3k).
   const mechanicAdjusters = useUIStore((s) => s.mechanicAdjusters);
   const globalAdjusters = useUIStore((s) => s.globalAdjusters);
   const conditionalMerge = useMemo(() => {
-    if (!formAdjustedPower) return { power: formAdjustedPower, extraInstances: {} };
-    // Overlay the build's `activeSubPower`-derived stance state so the merge
-    // reflects the selected Bio Armor adaptation / Staff form (build-scoped),
-    // matching the dashboard calc. activeSubPower wins over stale UI toggles.
-    const stancePowers: { internalName: string; activeSubPower?: string }[] = [];
-    const addStance = (powers?: { internalName: string; activeSubPower?: string }[]) =>
-      powers?.forEach((p) => stancePowers.push({ internalName: p.internalName, activeSubPower: p.activeSubPower }));
-    addStance(build.primary?.powers);
-    addStance(build.secondary?.powers);
-    build.pools?.forEach((pool) => addStance(pool.powers));
-    addStance(build.epicPool?.powers);
-    const effectiveGlobalAdjusters = { ...globalAdjusters, ...stanceAdjusterOverrides(stancePowers) };
-    const active = selectActiveConditionals(
-      formAdjustedPower,
+    if (!formRedirectedPower) return { power: formRedirectedPower, extraInstances: {} };
+    return resolveEffectivePower(formRedirectedPower, {
+      combatMode,
+      hidden: effectiveHidden,
+      globalAdjusters: effectiveGlobalAdjusters(build, globalAdjusters),
       mechanicAdjusters,
-      effectiveGlobalAdjusters,
-      { dominationActive },
-    );
-    if (active.length === 0) return { power: formAdjustedPower, extraInstances: {} };
-    return applyActiveConditionals(formAdjustedPower, active);
-  }, [formAdjustedPower, mechanicAdjusters, globalAdjusters, dominationActive, build.primary?.powers, build.secondary?.powers, build.pools, build.epicPool?.powers]);
+      atInherentState: { dominationActive },
+    });
+  }, [formRedirectedPower, combatMode, effectiveHidden, mechanicAdjusters, globalAdjusters, dominationActive, build]);
   const effectivePower = conditionalMerge.power;
   const extraInstances = conditionalMerge.extraInstances;
 

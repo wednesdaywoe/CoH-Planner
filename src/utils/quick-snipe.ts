@@ -7,8 +7,8 @@
  * merged in, or the power unchanged when combat mode is off or the power has no
  * snipe form.
  *
- * Single-sourced so the InfoPanel damage display and `useBuildMaxAttackDamage`
- * (the damage-bar normalization reference) apply the SAME adjustment. If they
+ * Single-sourced so the display surfaces (via `resolveEffectivePower`) and
+ * `useBuildMaxAttackDamage` (the damage-bar normalization reference) apply the SAME adjustment. If they
  * diverged, a fast snipe's bar numerator (boosted damage) would be normalized
  * against a reference computed from its slow damage and clamp to 100% — and the
  * understated reference could push other powers' bars to 100% too.

@@ -35,7 +35,7 @@ export function useBuildMaxAttackDamage(): number {
   const exemplarLevel = useUIStore((s) => s.exemplarLevel);
   const incarnateActive = useUIStore((s) => s.incarnateActive);
   // Combat mode swaps snipe powers to their quick-cast (higher-damage) form.
-  // The InfoPanel damage bars apply this too (snipeAdjustedPower), so the
+  // The InfoPanel damage bars apply this too (`resolveEffectivePower`), so the
   // normalization reference must as well or fast snipes self-clamp at 100%.
   const combatMode = useUIStore((s) => s.combatMode);
 

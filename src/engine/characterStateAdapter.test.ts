@@ -19,6 +19,8 @@ function defaultCtx(overrides: Partial<AdapterCalcContext> = {}): AdapterCalcCon
     destinyTime: null,
     globalAdjusters: {},
     mechanicAdjusters: {},
+    dominationActive: false,
+    stalkerHidden: false,
     ...overrides,
   };
 }
