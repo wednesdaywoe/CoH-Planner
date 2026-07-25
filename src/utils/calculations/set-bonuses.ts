@@ -11,6 +11,11 @@
  */
 
 import type { SelectedPower, Enhancement } from '@/types';
+// PROD6A — the set-bonus stat vocabulary is now a single source of truth shared with the engine.
+// This generated module is emitted by scripts/build-engine.mjs from the rebuild's
+// contract/set-bonus-stat-vocab.json, the SAME file the engine include_str!s (coh_math
+// set_bonuses.rs), so these tables can no longer drift from the engine's map_stat_name / paired().
+import { SET_BONUS_STAT_NAME_MAP, SET_BONUS_PAIRED_STATS } from '@/data/generated/set-bonus-stat-vocab.generated';
 
 // ============================================
 // TYPES
@@ -95,187 +100,19 @@ export interface BuildPowers {
 // ============================================
 
 /**
- * Map of paired damage types in CoH
- * When one type is applied, the paired type should also receive the bonus
- * Example: damage_resistance_(lethal) also applies to smashing
- */
-const PAIRED_STATS: Record<string, string> = {
-  // Resistance pairs
-  resSmashing: 'resLethal',
-  resLethal: 'resSmashing',
-  resFire: 'resCold',
-  resCold: 'resFire',
-  resEnergy: 'resNegative',
-  resNegative: 'resEnergy',
-  resPsionic: 'resToxic',
-  resToxic: 'resPsionic',
-  // Defense pairs
-  defSmashing: 'defLethal',
-  defLethal: 'defSmashing',
-  defFire: 'defCold',
-  defCold: 'defFire',
-  defEnergy: 'defNegative',
-  defNegative: 'defEnergy',
-};
-
-/**
- * Get the paired stat for a given stat (if any)
+ * Get the paired stat for a given stat (if any) — the S/L·F/C·E/N couplings a bonus mirrors
+ * onto. Sourced from the shared vocab (engine `SetBonusStat::paired`), not a local table.
  */
 export function getPairedStat(stat: string): string | undefined {
-  return PAIRED_STATS[stat];
+  return SET_BONUS_PAIRED_STATS[stat];
 }
 
 /**
- * Map of stat names from IO sets to internal stat keys
+ * Map of stat names from IO sets to internal stat keys. Re-exported from the shared vocab
+ * (the engine's `map_stat_name` reads the same file) so the two can't drift; the name is kept
+ * for the existing consumers (io-sets-raw docs, set-bonus-groups.test).
  */
-export const STAT_NAME_MAP: Record<string, string | null> = {
-  // Offense
-  Damage: 'damage',
-  damage: 'damage',
-  DamageBuff: 'damage',
-  Accuracy: 'accuracy',
-  accuracy: 'accuracy',
-  ToHit: 'tohit',
-  tohit: 'tohit',
-  Recharge: 'recharge',
-  recharge: 'recharge',
-  RechargeTime: 'recharge',
-  EnduranceDiscount: 'endrdx',
-  endurance_discount: 'endrdx',
-  EnduranceReduction: 'endrdx',
-
-  // Defense - Positional
-  MeleeDef: 'defMelee',
-  melee_defense: 'defMelee',
-  RangedDef: 'defRanged',
-  ranged_defense: 'defRanged',
-  AoEDef: 'defAoE',
-  aoe_defense: 'defAoE',
-  'defense_(melee)': 'defMelee',
-  'defense_(ranged)': 'defRanged',
-  'defense_(aoe)': 'defAoE',
-  'defense_(area)': 'defAoE',
-
-  // Defense - Typed
-  SmashingDef: 'defSmashing',
-  smashing_defense: 'defSmashing',
-  'defense_(smashing)': 'defSmashing',
-  LethalDef: 'defLethal',
-  lethal_defense: 'defLethal',
-  'defense_(lethal)': 'defLethal',
-  FireDef: 'defFire',
-  fire_defense: 'defFire',
-  'defense_(fire)': 'defFire',
-  ColdDef: 'defCold',
-  cold_defense: 'defCold',
-  'defense_(cold)': 'defCold',
-  EnergyDef: 'defEnergy',
-  energy_defense: 'defEnergy',
-  'defense_(energy)': 'defEnergy',
-  NegativeDef: 'defNegative',
-  negative_defense: 'defNegative',
-  'defense_(negative)': 'defNegative',
-  PsionicDef: 'defPsionic',
-  psionic_defense: 'defPsionic',
-  'defense_(psionic)': 'defPsionic',
-  ToxicDef: 'defToxic',
-  toxic_defense: 'defToxic',
-  'defense_(toxic)': 'defToxic',
-
-  // Resistance
-  SmashingRes: 'resSmashing',
-  'damage_resistance_(smashing)': 'resSmashing',
-  LethalRes: 'resLethal',
-  'damage_resistance_(lethal)': 'resLethal',
-  FireRes: 'resFire',
-  'damage_resistance_(fire)': 'resFire',
-  ColdRes: 'resCold',
-  'damage_resistance_(cold)': 'resCold',
-  EnergyRes: 'resEnergy',
-  'damage_resistance_(energy)': 'resEnergy',
-  NegativeRes: 'resNegative',
-  'damage_resistance_(negative)': 'resNegative',
-  PsionicRes: 'resPsionic',
-  'damage_resistance_(psionic)': 'resPsionic',
-  ToxicRes: 'resToxic',
-  'damage_resistance_(toxic)': 'resToxic',
-
-  // All-resistance (expands to all 8 types — handled specially in bonus processing)
-  'damage_resistance_(all)': 'resAll',
-
-  // Recovery & HP
-  Recovery: 'recovery',
-  recovery: 'recovery',
-  Regeneration: 'regeneration',
-  regeneration: 'regeneration',
-  MaxHitPoints: 'maxhp',
-  maximum_hitpoints: 'maxhp',
-  MaxHealth: 'maxhp',
-  MaxEndurance: 'maxend',
-  maximum_endurance: 'maxend',
-
-  // Movement
-  RunSpeed: 'runspeed',
-  run_speed: 'runspeed',
-  increased_movement: 'runspeed',
-  FlySpeed: 'flyspeed',
-  fly_speed: 'flyspeed',
-  JumpSpeed: 'jumpspeed',
-  jump_speed: 'jumpspeed',
-  JumpHeight: 'jumpheight',
-  jump_height: 'jumpheight',
-
-  // Mez Resistance
-  'mez_resistance_(all)': 'mezresist',
-  MezRes: 'mezresist',
-
-  // Mez / control duration (offensive — boosts the duration of mez YOU apply)
-  'immobilize_duration': 'immobilizeDuration',
-  'hold_duration': 'holdDuration',
-  'stun_duration': 'stunDuration',
-  'sleep_duration': 'sleepDuration',
-  'confuse_duration': 'confuseDuration',
-  'terror_duration': 'terrorDuration',
-
-  // Mez Protection (from IO set unique bonuses)
-  'knockback_protection': 'kbprotection',
-
-  // All-defense (global proc effect handled by proc system, not set bonuses)
-  'defense_(all)': null,
-
-  // Healing
-  healing_strength: 'healOther',
-
-  // Range
-  range: 'range',
-  Range: 'range',
-
-  // Debuff Resistance
-  '+res(recharge_debuff)': 'debuffresistrecharge',
-  '+res(slow)': 'debuffresistslow',
-
-  // Knockback Resistance (from set bonuses)
-  'knockback_resistance': 'kbresistance',
-
-  // Increased run speed (alternate name)
-  'increased_run_speed': 'runspeed',
-
-  // Perception radius buff (Rectified Reticle 3pc, +20%). Feeds the same
-  // perceptionRadius global as in-power +Perception buffs (% based).
-  'perception': 'perceptionradius',
-
-  // Offensive knockback-strength buff (Air Burst 2pc, +2% to the magnitude of
-  // YOUR knockback). The calc has no offensive-KB-strength stat yet (only KB
-  // protection / resistance), so explicitly ignore it rather than silently
-  // dropping it as an unknown stat. Modeling it fully would need a kbStrength
-  // global applied to offensive KB magnitudes — see HOMECOMING_PARSER.md.
-  'knockback_strength': null,
-
-  // Endurance-drain resistance (Thunderspy's Subaluwa 4pc). The calc has no
-  // end-drain-resistance stat, so explicitly ignore it (known, untracked)
-  // rather than logging it as an unknown stat.
-  'endurance_drain_resistance': null,
-};
+export const STAT_NAME_MAP: Record<string, string | null> = SET_BONUS_STAT_NAME_MAP;
 
 /**
  * Normalize stat names from IO set bonuses to internal stat keys

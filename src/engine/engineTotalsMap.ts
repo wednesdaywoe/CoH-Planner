@@ -8,6 +8,8 @@
 
 import type { CharacterStats, BonusTracking, ValueTracking, StatSource, DashboardStatBreakdown } from '@/utils/calculations';
 import type { GlobalBonuses } from '@/utils/calculations/character-totals';
+import type { ThreeTierValues } from '@/components/info/powerDisplayUtils';
+import type { PermaInfo } from '@/utils/calculations/perma';
 
 export interface EngineStats {
   damage: number; accuracy: number; to_hit: number; recharge: number; endurance_reduction: number;
@@ -90,11 +92,111 @@ export interface EngineProcBreakdownSource {
   power_set: string;
 }
 
+/** A base→enhanced→final value (engine `ThreeTier`). `final` is a reserved word in Rust, so
+ *  the engine emits the raw identifier — the JSON key is still `final`. */
+interface EngineThreeTier {
+  base: number;
+  enhanced: number;
+  final: number;
+}
+
+/** Per-power perma tracking (engine `PermaInfo`), snake_case. */
+interface EnginePerma {
+  base_recharge: number;
+  duration: number;
+  effective_recharge: number;
+  recharge_needed: number;
+  total_recharge: number;
+  perma_percent: number;
+  is_perma: boolean;
+}
+
+/** One selected power's non-DPS execution + perma projection (engine `PowerProjection`,
+ *  PROD6B-1). Each execution aspect is `null` when the power lacks that base stat; `perma` is
+ *  `null` for a non-perma-eligible power. */
+export interface EngineGrantedQuantity {
+  kind: 'value' | 'mez_duration' | 'distance';
+  /** Present only on `mez_duration`: the mez rank the effect grabs, shown beside the
+   *  duration the tier carries. */
+  magnitude?: number;
+}
+
+/** One resolved granted buff/debuff magnitude — a display row's worth of already-resolved
+ *  numbers (PROD6B-2). A by-type effect contributes one entry per type. */
+export interface EngineGrantedMagnitude {
+  row_key: string;
+  effect_key: string;
+  label: string;
+  category: string;
+  format: string;
+  priority: number | null;
+  value: EngineThreeTier;
+  quantity: EngineGrantedQuantity;
+  by_type_label: string | null;
+}
+
+export interface EnginePowerProjection {
+  power_internal_name: string;
+  power_set: string;
+  recharge: EngineThreeTier | null;
+  endurance_cost: EngineThreeTier | null;
+  accuracy: EngineThreeTier | null;
+  cast_time: EngineThreeTier | null;
+  arcana_time: number | null;
+  range: EngineThreeTier | null;
+  perma: EnginePerma | null;
+  granted_magnitudes: EngineGrantedMagnitude[];
+}
+
 export interface EngineTotals {
   stats: EngineStats;
   bonuses: EngineBonuses;
   set_bonus_tracking: EngineSetBonusTracking[];
   proc_breakdown: EngineProcBreakdownSource[];
+  power_projection: EnginePowerProjection[];
+}
+
+/** The beta-facing per-power non-DPS projection — the engine's resolved values reshaped to the
+ *  existing calculator output types ({@link ThreeTierValues} / {@link PermaInfo}) so the display
+ *  surfaces (PROD6C–E) read the engine instead of re-deriving via `calculatePowerEnhancementBonuses`
+ *  + `calcThreeTier` + `calculatePermaInfo`. `cycleTime` stays a render-edge composition
+ *  (`recharge.final + (useArcanaTime ? arcanaTime : castTime.base)`) because it depends on a UI
+ *  toggle the engine never sees. */
+export interface GrantedMagnitude {
+  rowKey: string;
+  effectKey: string;
+  label: string;
+  category: string;
+  format: string;
+  priority: number | null;
+  value: ThreeTierValues;
+  quantity: EngineGrantedQuantity;
+  byTypeLabel: string | null;
+}
+
+export interface GrantedMagnitude {
+  rowKey: string;
+  effectKey: string;
+  label: string;
+  category: string;
+  format: string;
+  priority: number | null;
+  value: ThreeTierValues;
+  quantity: EngineGrantedQuantity;
+  byTypeLabel: string | null;
+}
+
+export interface PowerProjection {
+  recharge: ThreeTierValues | null;
+  enduranceCost: ThreeTierValues | null;
+  accuracy: ThreeTierValues | null;
+  castTime: ThreeTierValues | null;
+  arcanaTime: number | null;
+  range: ThreeTierValues | null;
+  perma: PermaInfo | null;
+  /** The magnitudes this power GRANTS, each already resolved and three-tiered. One entry per
+   *  display row, so a by-type effect contributes one per type (PROD6B-2). */
+  grantedMagnitudes: GrantedMagnitude[];
 }
 
 /** The minimal power identity every engine source ref carries — resolved to a display name. */
@@ -288,4 +390,56 @@ export function mapGlobal(b: EngineBonuses): GlobalBonuses {
     immobilizeDuration: b.immobilize_duration, holdDuration: b.hold_duration, stunDuration: b.stun_duration,
     sleepDuration: b.sleep_duration, confuseDuration: b.confuse_duration, terrorDuration: b.terror_duration,
   };
+}
+
+const mapTier = (t: EngineThreeTier | null): ThreeTierValues | null =>
+  t ? { base: t.base, enhanced: t.enhanced, final: t.final } : null;
+
+const mapPerma = (p: EnginePerma | null): PermaInfo | null =>
+  p
+    ? {
+        baseRecharge: p.base_recharge,
+        duration: p.duration,
+        effectiveRecharge: p.effective_recharge,
+        rechargeNeeded: p.recharge_needed,
+        totalRecharge: p.total_recharge,
+        permaPercent: p.perma_percent,
+        isPerma: p.is_perma,
+      }
+    : null;
+
+/**
+ * PROD6B-1 — reshape the engine's per-power projection into a lookup the display surfaces read.
+ * Keyed `${powerSet} ${internalName}` (the same identity `powerNameResolver` uses; internal names
+ * collide across sets, so the set disambiguates). The values are the existing calculator output
+ * types, so PROD6C–E swap their inline `calcThreeTier` / `calculatePermaInfo` calls for a lookup
+ * here with no shape change.
+ */
+const mapGrantedMagnitude = (m: EngineGrantedMagnitude): GrantedMagnitude => ({
+  rowKey: m.row_key,
+  effectKey: m.effect_key,
+  label: m.label,
+  category: m.category,
+  format: m.format,
+  priority: m.priority,
+  value: { base: m.value.base, enhanced: m.value.enhanced, final: m.value.final },
+  quantity: m.quantity,
+  byTypeLabel: m.by_type_label,
+});
+
+export function mapPowerProjection(projection: EnginePowerProjection[]): Map<string, PowerProjection> {
+  const out = new Map<string, PowerProjection>();
+  for (const p of projection) {
+    out.set(`${p.power_set} ${p.power_internal_name}`, {
+      recharge: mapTier(p.recharge),
+      enduranceCost: mapTier(p.endurance_cost),
+      accuracy: mapTier(p.accuracy),
+      castTime: mapTier(p.cast_time),
+      arcanaTime: p.arcana_time,
+      range: mapTier(p.range),
+      perma: mapPerma(p.perma),
+      grantedMagnitudes: p.granted_magnitudes.map(mapGrantedMagnitude),
+    });
+  }
+  return out;
 }

@@ -352,6 +352,10 @@ const MEZ_LABELS: Record<string, string> = {
   sleep: 'Sleep', confuse: 'Confuse', fear: 'Fear', knockback: 'KB',
 };
 
+/** Exported for the PROD6B-2 drift gate only — this vocabulary is shared with the engine via
+ *  `contract/effect-registry.json`, so the gate must be able to read it. */
+export const MEZ_LABELS_FOR_DRIFT_GATE = MEZ_LABELS;
+
 /**
  * Expand a by-type object (DefenseByType, ResistanceByType, ElusivityByType)
  * into individual type entries with calculated percentage values.

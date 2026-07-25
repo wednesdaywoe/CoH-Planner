@@ -127,10 +127,18 @@ describe('toCharacterState', () => {
     });
   });
 
-  describe('fail-loud', () => {
-    it('throws on a non-null destinyTime', () => {
-      expect(() => toCharacterState(createEmptyBuild(), defaultCtx({ destinyTime: 90 }))).toThrow(/destinyTime/);
+  describe('destinyTime', () => {
+    it('passes a non-null destinyTime through to combat.destiny_time', () => {
+      const state = toCharacterState(createEmptyBuild(), defaultCtx({ destinyTime: 90 }));
+      expect(state.combat.destiny_time).toBe(90);
     });
+    it('maps a null destinyTime to null (the engine resolves at the sustained floor)', () => {
+      const state = toCharacterState(createEmptyBuild(), defaultCtx({ destinyTime: null }));
+      expect(state.combat.destiny_time).toBeNull();
+    });
+  });
+
+  describe('fail-loud', () => {
     it('does NOT throw when adjusters are present but all off', () => {
       expect(() => toCharacterState(createEmptyBuild(), defaultCtx({ globalAdjusters: { some_toggle: false } }))).not.toThrow();
     });

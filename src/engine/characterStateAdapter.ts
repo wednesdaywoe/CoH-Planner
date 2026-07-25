@@ -11,9 +11,10 @@
  * docs/SPIKE3-CONTRACT-DIFF.md in the rebuild repo for the full table.
  *
  * Fail-loud (the rebuild mandate): inputs the engine has no equivalent for do NOT get
- * silently dropped. A non-null `destinyTime` throws; a disabled `incarnateLevelShiftActive`
- * warns (the engine derives level-shift from the equipped incarnate and can't suppress it
- * independently). Conditional adjusters (`globalAdjusters` / `mechanicAdjusters`) are forwarded
+ * silently dropped. `destinyTime` passes through to `combat.destiny_time` (the engine scrubs
+ * the diminishing Destiny timeline itself; null → its sustained-floor default). A disabled
+ * `incarnateLevelShiftActive` warns (the engine derives level-shift from the equipped incarnate
+ * and can't suppress it independently). Conditional adjusters (`globalAdjusters` / `mechanicAdjusters`) are forwarded
  * through build state the engine already reads — stances via `active_sub_power`, out-of-combat via
  * `combatMode`→`in_combat` — and only fail loud for the one silent-drop case: a global toggle
  * carrying an unmodeled caster dashboard buff (see the PROD3 classification below). A silent drop
@@ -102,6 +103,7 @@ export interface CharacterStateCombatContext {
   vigilance_team_size: number;
   hit_points_percent: number;
   exemplar_level: number | null;
+  destiny_time: number | null;
 }
 
 export interface CharacterState {
@@ -322,9 +324,6 @@ export function toCharacterState(build: Build, ctx: AdapterCalcContext): Charact
       );
     }
   }
-  if (ctx.destinyTime !== null) {
-    throw new Error(`characterStateAdapter: destinyTime=${ctx.destinyTime} (Destiny uptime scrub) has no engine equivalent — the engine models only the sustained Destiny value`);
-  }
   if (ctx.incarnateLevelShiftActive === false) {
     // Minor gap, not fatal: the engine derives level-shift from the equipped incarnate
     // (WS16 hardcoded-on) and cannot suppress it independently, so the build's totals
@@ -361,6 +360,10 @@ export function toCharacterState(build: Build, ctx: AdapterCalcContext): Charact
       hit_points_percent: 100,
       // (mode + level) → Option: only exemplared when the mode is on.
       exemplar_level: ctx.exemplarMode ? ctx.exemplarLevel : null,
+      // Destiny-time scrub: null → engine resolves at the sustained-floor time (the perma
+      // default); a number → that exact second. The engine reads the same timeline the beta's
+      // getDestinyEffectsAtTime does, so null↔None and n↔Some(n) match the beta path exactly.
+      destiny_time: ctx.destinyTime,
     },
   };
 }

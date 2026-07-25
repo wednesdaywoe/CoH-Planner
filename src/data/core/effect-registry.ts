@@ -78,6 +78,22 @@ export interface EffectDisplayConfig {
    * absurd percentages.
    */
   flatPercentPerScale?: number;
+  /**
+   * A NON-by-type value on an `expandByType` effect resolves through the table-base
+   * resistance-percent path rather than the generic percent path. Declared as data so
+   * neither the component nor the engine branches on the effect NAME.
+   */
+  scalarFromTablePercent?: boolean;
+  /**
+   * A `value`-format effect whose scale resolves to an AMOUNT through its AT table at the
+   * build level (heal / absorb HP) rather than displaying the bare scale.
+   */
+  valueFromTable?: boolean;
+  /**
+   * An authored `maxHPFraction`, or a scale on a `*_Ones` table, means "this fraction of
+   * Max HP" and displays as a percent instead of an amount.
+   */
+  maxHpFractionPercentForm?: boolean;
 }
 
 // ============================================
@@ -563,6 +579,8 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     format: 'value',
     enhancementAspect: 'heal',
     priority: 15,
+    valueFromTable: true,
+    maxHpFractionPercentForm: true,
   },
   specialBuff: {
     label: '+Special',
@@ -654,6 +672,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     format: 'value',
     enhancementAspect: 'heal',
     priority: 2,
+    valueFromTable: true,
   },
 
   // === ARMOR & PROTECTION ===
@@ -682,6 +701,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     format: 'percent',
     expandByType: true,
     priority: 3,
+    scalarFromTablePercent: true,
   },
   protection: {
     label: 'Prot',
