@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -63,10 +64,10 @@
             "Toxic_Dmg",
             "Psionic_Dmg"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "Self",
           "table": "Melee_Ones",
           "scale": -0.2,
           "duration": "10.25 seconds",
@@ -102,10 +103,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "Self",
           "table": "Melee_Ones",
           "scale": 1.0,
           "duration": "10.25 seconds",
@@ -141,10 +142,10 @@
           "attribs": [
             "HealSelf"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Maximum",
+          "target": "Self",
           "table": "Melee_HealSelf",
           "scale": -1.0,
           "duration": "10.25 seconds",
@@ -180,10 +181,10 @@
           "attribs": [
             "Leap"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Melee_Leap",
           "scale": 1.0,
           "duration": "15 seconds",
@@ -219,10 +220,10 @@
           "attribs": [
             "SpeedJumping"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Melee_SpeedJumping",
           "scale": 2.0,
           "duration": "15 seconds",
@@ -258,10 +259,10 @@
           "attribs": [
             "SpeedRunning"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Melee_SpeedRunning",
           "scale": 0.2,
           "duration": "15 seconds",
@@ -295,12 +296,12 @@
       "templates": [
         {
           "attribs": [
-            "Control"
+            "MovementControl"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Melee_Control",
           "scale": 10.0,
           "duration": "15 seconds",
@@ -336,10 +337,10 @@
           "attribs": [
             "Friction"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Melee_Friction",
           "scale": 10.0,
           "duration": "15 seconds",

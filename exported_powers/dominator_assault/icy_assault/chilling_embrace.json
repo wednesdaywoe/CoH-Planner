@@ -53,6 +53,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&",
+  "slot_requires": "",
   "attack_types": [
     112,
     128
@@ -77,7 +78,7 @@
             "JumpingSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Slow",
@@ -96,6 +97,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "PFX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags_raw": 1280
         },
         {
@@ -104,7 +111,7 @@
             "RechargeTime"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Melee_Slow",
@@ -123,6 +130,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "PFX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreStrength"
           ],
@@ -140,7 +153,7 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Melee_Debuff_Dam",
@@ -188,7 +201,7 @@
             "Cold_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Melee_Damage",
@@ -207,6 +220,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Cold damage.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Cold damage.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags_raw": 1280
         }
       ]

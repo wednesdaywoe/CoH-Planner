@@ -49,6 +49,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -67,10 +68,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Melee_Ones",
           "scale": 0.8,
           "duration": "0.75 seconds",
@@ -106,10 +107,10 @@
           "attribs": [
             "Leap"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Melee_Leap",
           "scale": 0.5,
           "duration": "0.75 seconds",
@@ -145,10 +146,10 @@
           "attribs": [
             "SpeedJumping"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Melee_SpeedJumping",
           "scale": 0.5,
           "duration": "0.75 seconds",
@@ -182,12 +183,12 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "MovementControl"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Melee_Ones",
           "scale": 10.0,
           "duration": "0.75 seconds",

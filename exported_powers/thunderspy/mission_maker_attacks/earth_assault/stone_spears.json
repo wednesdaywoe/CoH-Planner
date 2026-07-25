@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     104,
     120
@@ -59,10 +60,10 @@
           "attribs": [
             "Tempdamage"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Ranged_Tempdamage",
           "scale": 1.0,
           "duration": "0 seconds",
@@ -98,10 +99,10 @@
           "attribs": [
             "Knockup"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 0.67,
           "duration": "0 seconds",

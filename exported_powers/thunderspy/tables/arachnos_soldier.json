@@ -1,10 +1,44 @@
 {
   "name": "Class_Arachnos_Soldier",
-  "display_name": "P3192533343",
+  "display_name": "Arachnos Soldier",
+  "display_help": "Characters with Arachnos Soldier training begin their careers as Wolf Spiders. Wolf Spider characters have a strong mix of Melee and Ranged attacks and strong protective powers available via their power armor.  Beginning at level 24, the player has to choose whether he will progress down the \"Crab Spider\" or \"Bane Spider\" path.  Crab Spiders gain access to the \"backpack\" and the powerful claw/cone attacks it provides, while the Bane Spider track provides stealth and a stronger focus on melee.",
+  "display_short_help": "Ranged attacks, Defensive Powers and Ally buffs.",
   "icon": "v_archetypeicon_arachnos_soldier.tga",
   "primary_category": "Arachnos_Soldiers",
   "secondary_category": "Training_Gadgets",
   "pool_category": "Pool",
+  "epic_pool_category": "",
+  "allowed_origins": [
+    "Natural"
+  ],
+  "special_restrictions": [
+    "ArachnosSoldier",
+    "Villain",
+    "OriginLocked"
+  ],
+  "store_requires": "",
+  "locked_tooltip": "This is an Epic Archetype. This Archetype is unlocked by VIP subscribers by getting one character to level 20 and is unlocked by free players by purchasing the Soldiers of Arachnos Archetype Pack.",
+  "product_code": "ctatsold",
+  "reduction_class": "",
+  "reduce_as_archvillain": false,
+  "level_up_respecs": [
+    24
+  ],
+  "archetype_shots": [
+    "archetypeshots_arachnos_soldier_0",
+    "archetypeshots_arachnos_soldier_1",
+    "archetypeshots_arachnos_soldier_2"
+  ],
+  "creation_stats": [
+    7,
+    6,
+    7,
+    3,
+    5,
+    3
+  ],
+  "playstyle_flags": 54,
+  "mechanic_tip": "",
   "named_tables": {
     "Melee_Damage": [
       -10.25,
@@ -5003,5 +5037,7 @@
     "resistance_cap": 0.8500000238418579,
     "base_threat": 2.0,
     "damage_cap": 4.0
-  }
+  },
+  "mechanic_bar_raw": 0,
+  "mechanic_gap_raw": 70
 }

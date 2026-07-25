@@ -50,6 +50,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -68,10 +69,10 @@
           "attribs": [
             "Res_DMG"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Resistance",
+          "target": "AnyAffected",
           "table": "Ranged_Res_Dmg",
           "scale": 1.5,
           "duration": "15 seconds",
@@ -107,10 +108,10 @@
           "attribs": [
             "Res_DMG"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Resistance",
+          "target": "Self",
           "table": "Ranged_Res_Dmg",
           "scale": 1.5,
           "duration": "15 seconds",
@@ -146,10 +147,10 @@
           "attribs": [
             "Res_Boolean"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Ranged_Res_Boolean",
           "scale": -20.0,
           "duration": "15 seconds",
@@ -185,10 +186,10 @@
           "attribs": [
             "Res_Boolean"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Resistance",
+          "target": "AnyAffected",
           "table": "Ranged_Res_Boolean",
           "scale": 2.0,
           "duration": "15 seconds",

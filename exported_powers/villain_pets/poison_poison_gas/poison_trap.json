@@ -45,6 +45,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     112,
     144
@@ -67,7 +68,7 @@
             "Held"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -86,9 +87,21 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "DeepSleep"
-          ],
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} holds {PlayerDest}!",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              383
+            ],
+            "conditional_fx": "V_COV/POWERS/POISON/POISONTRAPCONTINUING.FX"
+          },
           "flags_raw": 2560
         }
       ]
@@ -110,7 +123,7 @@
             "Held"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -129,40 +142,52 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} holds {PlayerDest}!",
+            "display_victim_hit": "You have been held by the {PowerName}!",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              383
+            ],
+            "conditional_fx": "V_COV/POWERS/POISON/POISONTRAPCONTINUING.FX"
+          },
           "suppress_events": [
             {
               "event": "Stunned",
               "event_id": 23,
               "duration": 15.0,
-              "flag": 0
+              "always": 0
             },
             {
-              "event": "Event_24",
+              "event": "Immobilized",
               "event_id": 24,
               "duration": 15.0,
-              "flag": 0
+              "always": 0
             },
             {
               "event": "Held",
               "event_id": 25,
               "duration": 15.0,
-              "flag": 0
+              "always": 0
             },
             {
               "event": "Sleep",
               "event_id": 26,
               "duration": 15.0,
-              "flag": 0
+              "always": 0
             },
             {
-              "event": "Confused",
+              "event": "Terrorized",
               "event_id": 27,
               "duration": 15.0,
-              "flag": 0
+              "always": 0
             }
-          ],
-          "flags": [
-            "DeepSleep"
           ],
           "flags_raw": 2560
         }
@@ -185,7 +210,7 @@
             "Endurance"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -204,6 +229,13 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of their endurance.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} draining {Damage} points of your endurance.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -225,7 +257,7 @@
             "Endurance"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Melee_EndDrain",
@@ -244,6 +276,13 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of their endurance.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} draining {Damage} points of your endurance.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -265,7 +304,7 @@
             "Recovery"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -291,7 +330,7 @@
             "Null"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -310,6 +349,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "WEAPONS/BOW/TRICKARROW/ACIDTRAPCONTINUINGROOT.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags_raw": 1280
         },
         {
@@ -317,7 +362,7 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Melee_Damage",
@@ -336,6 +381,13 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Toxic damage.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Toxic damage.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -357,7 +409,7 @@
             "Stealth"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -376,6 +428,15 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              508,
+              21
+            ],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -401,7 +462,7 @@
             "Stealth"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -420,6 +481,15 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              508,
+              21
+            ],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"

@@ -44,6 +44,7 @@
   "requires": "Pool.Gadgetry.Nano_Net Pool.Gadgetry.Wrist_Blaster && Pool.Gadgetry.Nano_Net Pool.Gadgetry.Jetpack && || Pool.Gadgetry.Wrist_Blaster Pool.Gadgetry.Jetpack && ||",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -63,7 +64,7 @@
             "Absorb"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -85,7 +86,8 @@
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 96
         }
       ]
     },
@@ -106,7 +108,7 @@
             "Absorb"
           ],
           "type": "Expression",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Maximum",
           "target": "Self",
           "table": "Melee_Ones",
@@ -115,7 +117,7 @@
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
-          "magnitude_expression": "",
+          "magnitude_expression": "Max.kHitPoints source> 0.25 * @Strength *",
           "application_period": 0.0,
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
@@ -128,7 +130,8 @@
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 96
         }
       ]
     }

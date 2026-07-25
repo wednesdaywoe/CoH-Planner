@@ -38,6 +38,7 @@
   "requires": "$archetype @Class_Hyper-Advanced_Clockwork ==",
   "activate_requires": "$archetype @Class_Hyper-Advanced_Clockwork ==",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -56,13 +57,13 @@
           "attribs": [
             "HealSelf"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "Self",
           "table": "Melee_HealSelf",
           "scale": 5.0,
-          "duration": "0.50 seconds",
+          "duration": "0.5 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -95,10 +96,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Duration",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Melee_Ones",
           "scale": 15.0,
           "duration": "0 seconds",
@@ -119,6 +120,8 @@
       ]
     }
   ],
+  "castable_after_death": "DeadOnly",
+  "max_boosts": 0,
   "modes_disallowed": [
     "Disable_Temp",
     "Disable_All"

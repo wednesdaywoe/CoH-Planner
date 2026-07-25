@@ -43,6 +43,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     108,
     116
@@ -64,10 +65,10 @@
           "attribs": [
             "Damage"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Melee_Damage",
           "scale": 0.65,
           "duration": "0 seconds",
@@ -103,10 +104,10 @@
           "attribs": [
             "Knockback"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Melee_Knockback",
           "scale": 2.0,
           "duration": "0 seconds",
@@ -142,10 +143,10 @@
           "attribs": [
             "Stunned"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Duration",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 4.0,
           "duration": "0 seconds",
@@ -181,10 +182,10 @@
           "attribs": [
             "DeBuff_ToHit"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Melee_DeBuff_ToHit",
           "scale": 0.5,
           "duration": "10 seconds",
@@ -220,10 +221,10 @@
           "attribs": [
             "Slow"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "AnyAffected",
           "table": "Melee_Slow",
           "scale": 0.15,
           "duration": "10 seconds",
@@ -259,10 +260,10 @@
           "attribs": [
             "Debuff_Dam"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "AnyAffected",
           "table": "Melee_Debuff_Dam",
           "scale": 2.0,
           "duration": "10 seconds",

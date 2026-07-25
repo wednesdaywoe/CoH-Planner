@@ -51,6 +51,7 @@
   "requires": "Pool.Leaping.Combat_Jumping !",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -78,10 +79,10 @@
             "Negative_Energy",
             "Psionic"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Melee_Buff_Def",
           "scale": 0.25,
           "duration": "0.75 seconds",
@@ -117,10 +118,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Melee_Ones",
           "scale": 3.0,
           "duration": "0.75 seconds",
@@ -156,10 +157,10 @@
           "attribs": [
             "SpeedRunning"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Melee_SpeedRunning",
           "scale": 0.1,
           "duration": "0.75 seconds",
@@ -193,12 +194,12 @@
       "templates": [
         {
           "attribs": [
-            "Control"
+            "MovementControl"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Melee_Control",
           "scale": 10.0,
           "duration": "0.75 seconds",
@@ -234,10 +235,10 @@
           "attribs": [
             "Res_Boolean"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Melee_Res_Boolean",
           "scale": -30.0,
           "duration": "0.75 seconds",
@@ -273,10 +274,10 @@
           "attribs": [
             "Res_Boolean"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Resistance",
+          "target": "Self",
           "table": "Melee_Res_Boolean",
           "scale": 3.0,
           "duration": "0.75 seconds",

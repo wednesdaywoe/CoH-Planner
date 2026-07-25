@@ -42,6 +42,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     104,
     140
@@ -64,7 +65,7 @@
             "Psionic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
@@ -83,6 +84,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Psionic damage.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Psionic damage.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags_raw": 1280
         },
         {
@@ -90,7 +98,7 @@
             "Endurance"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_EndDrain",
@@ -109,6 +117,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of their endurance.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} draining {Damage} points of your endurance.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags_raw": 1280
         },
         {
@@ -116,7 +131,7 @@
             "Recovery"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_EndDrain",
@@ -156,7 +171,7 @@
             "Psionic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
@@ -175,6 +190,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Psionic damage.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Psionic damage.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags": [
             "IgnoreStrength"
           ],
@@ -185,7 +207,7 @@
             "Sleep"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Sleep",
@@ -204,9 +226,23 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You Sleep {PlayerDest} with your {PowerName}.",
+            "display_victim_hit": "{PlayerSource} Sleeps you with their {PowerName}.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              388
+            ],
+            "conditional_fx": "PFX"
+          },
           "flags": [
-            "IgnoreStrength",
-            "DeepSleep"
+            "IgnoreStrength"
           ],
           "flags_raw": 2576
         }
@@ -229,14 +265,14 @@
             "Sleep"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_PvPMez",
           "scale": 1.0,
           "duration": "0 seconds",
           "magnitude": 3.0,
-          "delay": 0.20000000298023224,
+          "delay": 0.2,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -248,41 +284,56 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You Sleep {PlayerDest} with your {PowerName}.",
+            "display_victim_hit": "{PlayerSource} Sleeps you with their {PowerName}.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "PFX",
+            "conditional_bits": [
+              387,
+              691
+            ],
+            "conditional_fx": "PFX"
+          },
           "suppress_events": [
             {
               "event": "Stunned",
               "event_id": 23,
               "duration": 15.0,
-              "flag": 0
+              "always": 0
             },
             {
-              "event": "Event_24",
+              "event": "Immobilized",
               "event_id": 24,
               "duration": 15.0,
-              "flag": 0
+              "always": 0
             },
             {
               "event": "Held",
               "event_id": 25,
               "duration": 15.0,
-              "flag": 0
+              "always": 0
             },
             {
               "event": "Sleep",
               "event_id": 26,
               "duration": 15.0,
-              "flag": 0
+              "always": 0
             },
             {
-              "event": "Confused",
+              "event": "Terrorized",
               "event_id": 27,
               "duration": 15.0,
-              "flag": 0
+              "always": 0
             }
           ],
           "flags": [
-            "IgnoreStrength",
-            "DeepSleep"
+            "IgnoreStrength"
           ],
           "flags_raw": 2576
         }
@@ -307,14 +358,14 @@
             "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "0 seconds",
           "magnitude": 1.0,
-          "delay": 1.7000000476837158,
+          "delay": 1.7,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -327,18 +378,24 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Pets.Decoy_Dominator.Lightning_Bolt"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
-            "NoHitDelay"
+            "NoHitDelay",
+            "SetTimer"
           ],
-          "flags_raw": 66816
+          "flags_raw": 66816,
+          "flags2_raw": 1
         }
       ]
     }
+  ],
+  "strengths_disallowed": [
+    "RechargeTime"
   ],
   "available_level": 0,
   "powerset": "Pets.Decoy_Dominator"

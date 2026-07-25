@@ -50,6 +50,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     108,
     116,
@@ -73,7 +74,7 @@
             "Smashing_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Melee_Damage",
@@ -91,7 +92,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -112,7 +114,7 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Melee_Damage",
@@ -130,7 +132,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -151,7 +154,7 @@
             "Smashing_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Melee_Damage",
@@ -169,7 +172,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -190,7 +194,7 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Melee_Damage",
@@ -208,7 +212,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -229,7 +234,7 @@
             "Stunned"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Immobilize",
@@ -247,7 +252,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 2560
         }
       ]
     },
@@ -268,7 +274,7 @@
             "Stunned"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -286,7 +292,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 2560
         }
       ]
     },
@@ -304,10 +311,10 @@
       "templates": [
         {
           "attribs": [
-            "Null"
+            "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
@@ -335,7 +342,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -356,7 +364,7 @@
             "Smashing_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Melee_Debuff_Dam",
@@ -378,7 +386,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -399,7 +408,7 @@
             "Lethal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Melee_Debuff_Dam",
@@ -421,7 +430,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -442,7 +452,7 @@
             "Fire_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Melee_Debuff_Dam",
@@ -464,7 +474,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -485,7 +496,7 @@
             "Cold_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Melee_Debuff_Dam",
@@ -507,7 +518,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -528,7 +540,7 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Melee_Debuff_Dam",
@@ -550,7 +562,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -571,7 +584,7 @@
             "Negative_Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Melee_Debuff_Dam",
@@ -593,7 +606,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -611,10 +625,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -633,10 +647,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Scrapper_Melee.Kinetic_Attack.Power_Siphon"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -657,7 +678,7 @@
             "Fire_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Melee_Damage",
@@ -675,10 +696,14 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     }
+  ],
+  "strengths_disallowed": [
+    "Range"
   ],
   "modes_disallowed": [
     "Disable_All"

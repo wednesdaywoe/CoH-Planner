@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     112,
     132
@@ -60,7 +61,7 @@
             "Sonic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -82,7 +83,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -103,7 +105,7 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -124,7 +126,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength"
-          ]
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -145,7 +148,7 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -167,7 +170,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -188,7 +192,7 @@
             "Sonic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -210,7 +214,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -231,7 +236,7 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -252,7 +257,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength"
-          ]
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -273,7 +279,7 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -295,7 +301,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -313,10 +320,10 @@
       "templates": [
         {
           "attribs": [
-            "Null"
+            "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -344,7 +351,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     }

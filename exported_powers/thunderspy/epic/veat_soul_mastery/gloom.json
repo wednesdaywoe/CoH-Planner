@@ -49,6 +49,7 @@
   "requires": "$archetype @Class_Arachnos_Soldier == $archetype @Class_Arachnos_Widow == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     104,
     136
@@ -70,13 +71,13 @@
           "attribs": [
             "Damage"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Melee_Damage",
           "scale": 0.22,
-          "duration": "1.50 seconds",
+          "duration": "1.5 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -109,10 +110,10 @@
           "attribs": [
             "DeBuff_ToHit"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Melee_DeBuff_ToHit",
           "scale": 0.75,
           "duration": "10 seconds",
@@ -148,13 +149,13 @@
           "attribs": [
             "Damage"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Melee_Damage",
           "scale": 0.209218,
-          "duration": "1.50 seconds",
+          "duration": "1.5 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",

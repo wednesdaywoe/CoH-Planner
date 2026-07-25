@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     112
   ],
@@ -59,7 +60,7 @@
             "Smashing_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Ranged_Debuff_Dam",
@@ -80,7 +81,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength"
-          ]
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -101,7 +103,7 @@
             "Lethal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Ranged_Debuff_Dam",
@@ -122,7 +124,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength"
-          ]
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -143,7 +146,7 @@
             "Fire_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Ranged_Debuff_Dam",
@@ -164,7 +167,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength"
-          ]
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -185,7 +189,7 @@
             "Cold_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Ranged_Debuff_Dam",
@@ -206,7 +210,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength"
-          ]
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -227,7 +232,7 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Ranged_Debuff_Dam",
@@ -248,7 +253,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength"
-          ]
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -269,7 +275,7 @@
             "Negative_Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Ranged_Debuff_Dam",
@@ -290,7 +296,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength"
-          ]
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -311,7 +318,7 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Ranged_Debuff_Dam",
@@ -332,7 +339,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength"
-          ]
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -353,7 +361,7 @@
             "Psionic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Ranged_Debuff_Dam",
@@ -374,7 +382,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength"
-          ]
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -395,7 +404,7 @@
             "Smashing_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "AnyAffected",
           "table": "Ranged_Res_Dmg",
@@ -416,7 +425,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength"
-          ]
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -437,7 +447,7 @@
             "Lethal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "AnyAffected",
           "table": "Ranged_Res_Dmg",
@@ -458,7 +468,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength"
-          ]
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -479,7 +490,7 @@
             "Fire_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "AnyAffected",
           "table": "Ranged_Res_Dmg",
@@ -500,7 +511,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength"
-          ]
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -521,7 +533,7 @@
             "Cold_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "AnyAffected",
           "table": "Ranged_Res_Dmg",
@@ -542,7 +554,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength"
-          ]
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -563,7 +576,7 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "AnyAffected",
           "table": "Ranged_Res_Dmg",
@@ -584,7 +597,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength"
-          ]
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -605,7 +619,7 @@
             "Negative_Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "AnyAffected",
           "table": "Ranged_Res_Dmg",
@@ -626,7 +640,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength"
-          ]
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -647,7 +662,7 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "AnyAffected",
           "table": "Ranged_Res_Dmg",
@@ -668,7 +683,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength"
-          ]
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -689,7 +705,7 @@
             "Psionic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "AnyAffected",
           "table": "Ranged_Res_Dmg",
@@ -710,7 +726,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength"
-          ]
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -731,7 +748,7 @@
             "Base_Defense"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Debuff_Def",
@@ -752,7 +769,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength"
-          ]
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -773,7 +791,7 @@
             "ToHit"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_DeBuff_ToHit",
@@ -794,7 +812,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength"
-          ]
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -815,7 +834,7 @@
             "Held"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -837,7 +856,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -858,7 +878,7 @@
             "Held"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -880,7 +900,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     }

@@ -42,6 +42,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -70,12 +71,12 @@
             "Toxic"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Buff_Def",
           "scale": 0.5,
-          "duration": "10.30 seconds",
+          "duration": "10.3 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -89,6 +90,13 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": "Repelled",
+            "display_info": null
+          },
           "flags": [
             "IgnoreResistance"
           ],
@@ -122,12 +130,12 @@
             "Toxic"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Buff_Def",
           "scale": 0.5,
-          "duration": "10.30 seconds",
+          "duration": "10.3 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",

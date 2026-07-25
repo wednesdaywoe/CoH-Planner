@@ -43,6 +43,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -63,7 +64,7 @@
             "Knockback"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -100,7 +101,7 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "Self",
           "table": "Ranged_Res_Dmg",
@@ -119,6 +120,19 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": null,
+            "display_float": "Fae Blessing!",
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "PFX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -135,7 +149,7 @@
             "Knockback"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -162,6 +176,9 @@
         }
       ]
     }
+  ],
+  "strengths_disallowed": [
+    "RechargeTime"
   ],
   "available_level": 4294967295,
   "powerset": "Vanguard.HERO1"

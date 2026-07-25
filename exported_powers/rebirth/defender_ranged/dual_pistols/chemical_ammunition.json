@@ -42,6 +42,7 @@
   "requires": "Defender_Ranged.Dual_Pistols.Swap_Ammo",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -58,10 +59,10 @@
       "templates": [
         {
           "attribs": [
-            "Grant_Power"
+            "Global_Chance_Mod"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -80,10 +81,17 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "ToxicDamage"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -101,10 +109,10 @@
       "templates": [
         {
           "attribs": [
-            "Grant_Power"
+            "Global_Chance_Mod"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -123,10 +131,17 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "HailofBulletsFire"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -144,10 +159,10 @@
       "templates": [
         {
           "attribs": [
-            "Grant_Power"
+            "Global_Chance_Mod"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -166,10 +181,17 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "HailofBulletsCold"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -187,10 +209,10 @@
       "templates": [
         {
           "attribs": [
-            "Grant_Power"
+            "Global_Chance_Mod"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -209,10 +231,17 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "HailofBulletsToxic"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -230,10 +259,10 @@
       "templates": [
         {
           "attribs": [
-            "Grant_Power"
+            "Global_Chance_Mod"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -252,10 +281,17 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "HailofBulletsLethal"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -273,10 +309,10 @@
       "templates": [
         {
           "attribs": [
-            "Grant_Power"
+            "Global_Chance_Mod"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -295,10 +331,17 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "HailofBulletsEndKnockback"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -316,10 +359,10 @@
       "templates": [
         {
           "attribs": [
-            "Grant_Power"
+            "Global_Chance_Mod"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -338,10 +381,17 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Lethal"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -359,10 +409,10 @@
       "templates": [
         {
           "attribs": [
-            "Grant_Power"
+            "Global_Chance_Mod"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -381,10 +431,17 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "FireDamageDoT"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -402,10 +459,10 @@
       "templates": [
         {
           "attribs": [
-            "Grant_Power"
+            "Global_Chance_Mod"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -424,10 +481,17 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "LethalKB10"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -445,10 +509,10 @@
       "templates": [
         {
           "attribs": [
-            "Grant_Power"
+            "Global_Chance_Mod"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -467,10 +531,17 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "LethalKB25"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -488,10 +559,10 @@
       "templates": [
         {
           "attribs": [
-            "Grant_Power"
+            "Global_Chance_Mod"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -510,10 +581,17 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "LethalKB50"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -531,10 +609,10 @@
       "templates": [
         {
           "attribs": [
-            "Grant_Power"
+            "Global_Chance_Mod"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -553,10 +631,17 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "LethalKB70"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -574,10 +659,10 @@
       "templates": [
         {
           "attribs": [
-            "Grant_Power"
+            "Global_Chance_Mod"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -596,14 +681,22 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "HailofBulletsKnockdown"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     }
   ],
+  "max_boosts": 0,
   "modes_required": [
     "LethalAmmo"
   ],

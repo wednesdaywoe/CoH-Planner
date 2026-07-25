@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -54,10 +55,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -76,10 +77,15 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Phase",
+            "phase_name": "AliveContact1"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -97,10 +103,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -119,10 +125,15 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Phase",
+            "phase_name": "AliveContact1"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -140,10 +151,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -162,10 +173,15 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Phase",
+            "phase_name": "AliveContact3"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -183,10 +199,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -205,10 +221,15 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Phase",
+            "phase_name": "AliveContact4"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -226,10 +247,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -248,10 +269,15 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Phase",
+            "phase_name": "AliveContact5"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -269,10 +295,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -291,10 +317,15 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Phase",
+            "phase_name": "AliveContact1"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -312,10 +343,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -334,10 +365,15 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Phase",
+            "phase_name": "AliveContact1"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -355,10 +391,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -377,10 +413,15 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Phase",
+            "phase_name": "AliveContact2"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -398,10 +439,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -420,10 +461,15 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Phase",
+            "phase_name": "AliveContact7"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -441,10 +487,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -463,10 +509,15 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Phase",
+            "phase_name": "AliveContact2"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -484,10 +535,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -506,10 +557,15 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Phase",
+            "phase_name": "AliveContact6"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -527,10 +583,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -549,10 +605,15 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Phase",
+            "phase_name": "AliveContact2"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -570,10 +631,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -592,10 +653,15 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Phase",
+            "phase_name": "AliveContact3"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -613,10 +679,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -635,10 +701,15 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Phase",
+            "phase_name": "AliveContact4"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -656,10 +727,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -678,10 +749,15 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Phase",
+            "phase_name": "AliveContact5"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -699,10 +775,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -721,10 +797,15 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Phase",
+            "phase_name": "AliveContact2"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -742,10 +823,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -764,10 +845,15 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Phase",
+            "phase_name": "AliveContact1"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -785,10 +871,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -807,10 +893,15 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Phase",
+            "phase_name": "AliveContact2"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -828,10 +919,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -850,10 +941,15 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Phase",
+            "phase_name": "AliveContact1"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -871,10 +967,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -893,10 +989,15 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Phase",
+            "phase_name": "AliveContact2"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -914,10 +1015,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -936,10 +1037,15 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Phase",
+            "phase_name": "AliveContact6"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -957,10 +1063,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -979,10 +1085,15 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Phase",
+            "phase_name": "AliveContact3"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -1000,10 +1111,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -1022,10 +1133,15 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Phase",
+            "phase_name": "AliveContact3"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -1043,10 +1159,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -1065,10 +1181,15 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Phase",
+            "phase_name": "AliveContact3"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -1086,10 +1207,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -1108,14 +1229,20 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Phase",
+            "phase_name": "AliveContact4"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     }
   ],
+  "max_boosts": 0,
   "available_level": 0,
   "powerset": "Inherent.Inherent"
 }

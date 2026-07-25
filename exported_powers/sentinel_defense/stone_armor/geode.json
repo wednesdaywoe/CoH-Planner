@@ -50,6 +50,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -69,7 +70,7 @@
             "Execute_Power"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
@@ -89,28 +90,30 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Redirects.Stone_Armor.Geode_Buff"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "NoHitDelay",
             "CopyBoosts"
           ],
-          "flags_raw": 66816
+          "flags_raw": 66816,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Regeneration"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": 7.5,
-          "duration": "0.20 seconds",
+          "duration": "0.2 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -124,6 +127,13 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": "While Geode is active"
+          },
           "cancel_events": [
             "Stunned",
             "Held",
@@ -139,12 +149,12 @@
             "Recovery"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": 3.0,
-          "duration": "0.20 seconds",
+          "duration": "0.2 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -158,6 +168,13 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": "While Geode is active"
+          },
           "cancel_events": [
             "Stunned",
             "Held",
@@ -187,7 +204,7 @@
                 "Recharge_Power"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Ranged_Ones",
@@ -207,17 +224,19 @@
               "stack_limit": 2,
               "stack_key": null,
               "params": {
-                "type": "Power",
                 "power_names": [
                   "Sentinel_Defense.Stone_Armor.Geode"
-                ]
+                ],
+                "count": 1,
+                "type": "Power"
               },
               "flags": [
                 "IgnoreStrength",
                 "IgnoreResistance",
-                "CopyBoosts"
+                "Cooldown"
               ],
-              "flags_raw": 1072
+              "flags_raw": 1072,
+              "flags2_raw": 4
             }
           ]
         },
@@ -240,7 +259,7 @@
                 "Create_Entity"
               ],
               "type": "Magnitude",
-              "application_type": "OnTick",
+              "application_type": "OnActivate",
               "aspect": "Current",
               "target": "Self",
               "table": "Melee_Ones",
@@ -260,14 +279,19 @@
               "stack_limit": 2,
               "stack_key": null,
               "params": {
-                "type": "EntCreate",
-                "entity_def": "Carin_Beacon",
+                "costume_name": "Carin_Beacon",
+                "display_name": "Geode",
+                "priority_list": "Combat",
                 "redirects": [
                   "Redirects.Stone_Armor.Geode"
                 ],
-                "priority_list": "Geode"
+                "type": "EntCreate"
               },
-              "flags_raw": 1280
+              "flags": [
+                "PseudoPet"
+              ],
+              "flags_raw": 1280,
+              "flags2_raw": 32
             }
           ]
         },
@@ -290,7 +314,7 @@
                 "Create_Entity"
               ],
               "type": "Magnitude",
-              "application_type": "OnTick",
+              "application_type": "OnActivate",
               "aspect": "Current",
               "target": "Self",
               "table": "Melee_Ones",
@@ -310,13 +334,15 @@
               "stack_limit": 2,
               "stack_key": null,
               "params": {
-                "type": "EntCreate",
-                "entity_def": "Class_Minion_Pets",
+                "class_name": "Class_Minion_Pets",
+                "costume_name": "Carin_Beacon",
+                "display_name": "Geode",
+                "priority_list": "Combat",
                 "redirects": [
                   "Redirects.Stone_Armor.Geode",
                   "Redirects.Stone_Armor.Geode_Scaling"
                 ],
-                "priority_list": "Carin_Beacon"
+                "type": "EntCreate"
               },
               "flags_raw": 1280
             }
@@ -344,12 +370,12 @@
             "Knockback"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": 10.0,
-          "duration": "0.20 seconds",
+          "duration": "0.2 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -380,12 +406,12 @@
             "Knockback"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": -10.0,
-          "duration": "0.20 seconds",
+          "duration": "0.2 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -414,12 +440,12 @@
             "Fly"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": -10000.0,
-          "duration": "0.20 seconds",
+          "duration": "0.2 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -444,12 +470,12 @@
             "Untouchable"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": 1000.0,
-          "duration": "0.20 seconds",
+          "duration": "0.2 seconds",
           "magnitude": 0.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -483,12 +509,12 @@
             "Accuracy"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": -999.0,
-          "duration": "0.20 seconds",
+          "duration": "0.2 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -502,6 +528,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "GENERICCONTINUING/DEBUFFDAMAGECONTINUING.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -529,7 +561,7 @@
                 "Grant_Power"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Melee_Ones",
@@ -549,10 +581,11 @@
               "stack_limit": 2,
               "stack_key": null,
               "params": {
-                "type": "Power",
                 "power_names": [
                   "Redirects.Stone_Armor.Thermal"
-                ]
+                ],
+                "count": 1,
+                "type": "Power"
               },
               "flags_raw": 1280
             },
@@ -561,7 +594,7 @@
                 "Global_Chance_Mod"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Melee_Ones",
@@ -580,6 +613,12 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "params": {
+                "tags": [
+                  "GrantThermalBoost"
+                ],
+                "type": "EffectFilter"
+              },
               "flags_raw": 1280
             }
           ]
@@ -605,7 +644,7 @@
             "Execute_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
@@ -625,10 +664,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Redirects.Stone_Armor.Geode_Pull"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "NoHitDelay"
@@ -638,6 +678,7 @@
       ]
     }
   ],
+  "max_toggle_time": 30.0,
   "modes_disallowed": [
     "Disable_All"
   ],

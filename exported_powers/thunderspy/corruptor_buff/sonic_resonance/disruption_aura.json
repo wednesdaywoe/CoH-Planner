@@ -48,6 +48,7 @@
   "requires": "Corruptor_Buff.Sonic_Resonance.Disruption_Field !",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -66,10 +67,10 @@
           "attribs": [
             "SummerIOTornado"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Ranged_Knockback",
           "scale": 3.0,
           "duration": "0 seconds",
@@ -105,10 +106,10 @@
           "attribs": [
             "Knockback"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Ranged_Knockback",
           "scale": 3.0,
           "duration": "0 seconds",
@@ -144,10 +145,10 @@
           "attribs": [
             "Res_DMG"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Resistance",
+          "target": "AnyAffected",
           "table": "Ranged_Res_Dmg",
           "scale": -3.0,
           "duration": "5 seconds",
@@ -183,10 +184,10 @@
           "attribs": [
             "Res_DMG"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Resistance",
+          "target": "AnyAffected",
           "table": "Ranged_Res_Dmg",
           "scale": -3.0,
           "duration": "5 seconds",
@@ -222,13 +223,13 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 0.0,
-          "duration": "0.50 seconds",
+          "duration": "0.5 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",

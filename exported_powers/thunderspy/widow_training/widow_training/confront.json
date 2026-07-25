@@ -45,6 +45,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     104
   ],
@@ -65,10 +66,10 @@
           "attribs": [
             "Taunt"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Duration",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Melee_Taunt",
           "scale": 15.0,
           "duration": "0 seconds",
@@ -104,10 +105,10 @@
           "attribs": [
             "Taunt"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Duration",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Melee_Taunt",
           "scale": 4.0,
           "duration": "0 seconds",

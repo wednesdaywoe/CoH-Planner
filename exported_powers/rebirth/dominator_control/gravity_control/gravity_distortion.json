@@ -54,6 +54,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     104,
     116
@@ -76,7 +77,7 @@
             "Held"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Immobilize",
@@ -94,7 +95,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 2560
         }
       ]
     },
@@ -115,7 +117,7 @@
             "Held"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -133,7 +135,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 2560
         }
       ]
     },
@@ -154,12 +157,12 @@
             "Smashing_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 0.56028,
-          "duration": "4.20 seconds",
+          "duration": "4.2 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -172,7 +175,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -193,7 +197,7 @@
             "Held"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Immobilize",
@@ -211,7 +215,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 2560
         }
       ]
     },
@@ -232,7 +237,7 @@
             "Held"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -253,7 +258,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 2080
         }
       ]
     },
@@ -274,12 +280,12 @@
             "Smashing_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 0.22,
-          "duration": "4.20 seconds",
+          "duration": "4.2 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -292,7 +298,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -310,10 +317,10 @@
       "templates": [
         {
           "attribs": [
-            "Add_Behavior"
+            "Token_Add"
           ],
           "type": "Constant",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -331,7 +338,14 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "GravityDistortion"
+            ]
+          },
+          "flags_raw": 3840
         }
       ]
     },
@@ -352,7 +366,7 @@
             "RunningSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Slow",
@@ -370,7 +384,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -391,7 +406,7 @@
             "FlyingSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Slow",
@@ -409,7 +424,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -430,7 +446,7 @@
             "JumpHeight"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Ranged_Slow",
@@ -451,7 +467,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength"
-          ]
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -472,7 +489,7 @@
             "JumpingSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Slow",
@@ -490,7 +507,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -511,7 +529,7 @@
             "Knockback"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -533,7 +551,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -554,7 +573,7 @@
             "Knockup"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -576,7 +595,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -597,7 +617,7 @@
             "Knockback"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -618,7 +638,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -639,7 +660,7 @@
             "Knockup"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -660,7 +681,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -681,7 +703,7 @@
             "Fly"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -702,7 +724,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     }

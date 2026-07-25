@@ -50,6 +50,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -68,10 +69,10 @@
           "attribs": [
             "HealSelf"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Maximum",
+          "target": "Self",
           "table": "Melee_HealSelf",
           "scale": 0.8,
           "duration": "10 seconds",
@@ -107,10 +108,10 @@
           "attribs": [
             "Negative_Energy_Dmg"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
           "aspect": "Resistance",
-          "target": "",
+          "target": "Self",
           "table": "Melee_Res_DMG",
           "scale": 2.0,
           "duration": "2.25 seconds",
@@ -146,10 +147,10 @@
           "attribs": [
             "Res_Boolean"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Melee_Res_Boolean",
           "scale": -30.0,
           "duration": "2.25 seconds",
@@ -185,10 +186,10 @@
           "attribs": [
             "Res_Boolean"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Resistance",
+          "target": "Self",
           "table": "Melee_Res_Boolean",
           "scale": 3.0,
           "duration": "2.25 seconds",
@@ -224,10 +225,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Melee_Ones",
           "scale": -10.0,
           "duration": "2.25 seconds",
@@ -263,10 +264,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Melee_Ones",
           "scale": -10.0,
           "duration": "2.25 seconds",
@@ -302,10 +303,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Duration",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 2.25,
           "duration": "0 seconds",

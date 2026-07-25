@@ -57,6 +57,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     104,
     116,
@@ -80,7 +81,7 @@
             "Smashing_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
@@ -98,7 +99,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -119,7 +121,7 @@
             "Cold_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
@@ -137,7 +139,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -158,7 +161,7 @@
             "Smashing_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
@@ -176,7 +179,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -197,7 +201,7 @@
             "Cold_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
@@ -215,7 +219,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -236,12 +241,12 @@
             "Cold_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 0.1488,
-          "duration": "4.10 seconds",
+          "duration": "4.1 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -254,7 +259,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -275,7 +281,7 @@
             "JumpHeight"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Ranged_Slow",
@@ -296,7 +302,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength"
-          ]
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -317,7 +324,7 @@
             "JumpingSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Slow",
@@ -335,7 +342,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -356,7 +364,7 @@
             "RunningSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Slow",
@@ -374,7 +382,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -395,7 +404,7 @@
             "FlyingSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Slow",
@@ -413,7 +422,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -434,7 +444,7 @@
             "Base_Defense"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Debuff_Def",
@@ -452,7 +462,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -473,12 +484,12 @@
             "Heal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Ranged_HealSelf",
           "scale": 0.275,
-          "duration": "3.10 seconds",
+          "duration": "3.1 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -494,7 +505,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 320
         }
       ]
     },
@@ -515,12 +527,12 @@
             "Heal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Ranged_HealSelf",
           "scale": 0.4125,
-          "duration": "3.10 seconds",
+          "duration": "3.1 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -536,7 +548,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 320
         }
       ]
     },
@@ -557,7 +570,7 @@
             "Regeneration"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -578,7 +591,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -599,7 +613,7 @@
             "Regeneration"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -620,7 +634,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -638,10 +653,10 @@
       "templates": [
         {
           "attribs": [
-            "Null"
+            "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -669,7 +684,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -687,10 +703,10 @@
       "templates": [
         {
           "attribs": [
-            "Null"
+            "Revoke_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -713,12 +729,14 @@
             "type": "Power",
             "power_names": [
               "Temporary_Powers.Temporary_Powers.Tidal_Power"
-            ]
+            ],
+            "phase_name": "All"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -739,7 +757,7 @@
             "Smashing_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -762,7 +780,8 @@
             "IgnoreStrength",
             "IgnoreResistance",
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 112
         }
       ]
     },
@@ -783,7 +802,7 @@
             "Lethal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -806,7 +825,8 @@
             "IgnoreStrength",
             "IgnoreResistance",
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 112
         }
       ]
     },
@@ -827,7 +847,7 @@
             "Fire_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -850,7 +870,8 @@
             "IgnoreStrength",
             "IgnoreResistance",
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 112
         }
       ]
     },
@@ -871,7 +892,7 @@
             "Cold_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -894,7 +915,8 @@
             "IgnoreStrength",
             "IgnoreResistance",
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 112
         }
       ]
     },
@@ -915,7 +937,7 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -938,7 +960,8 @@
             "IgnoreStrength",
             "IgnoreResistance",
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 112
         }
       ]
     },
@@ -959,7 +982,7 @@
             "Negative_Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -982,7 +1005,8 @@
             "IgnoreStrength",
             "IgnoreResistance",
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 112
         }
       ]
     },
@@ -1003,7 +1027,7 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -1026,7 +1050,8 @@
             "IgnoreStrength",
             "IgnoreResistance",
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 112
         }
       ]
     },
@@ -1047,7 +1072,7 @@
             "Psionic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -1070,7 +1095,8 @@
             "IgnoreStrength",
             "IgnoreResistance",
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 112
         }
       ]
     }

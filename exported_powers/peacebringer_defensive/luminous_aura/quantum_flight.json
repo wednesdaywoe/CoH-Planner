@@ -45,6 +45,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -64,7 +65,7 @@
             "Fly"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -94,7 +95,7 @@
             "FlyingSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_SpeedFlying",
@@ -129,7 +130,7 @@
             "MovementControl"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Control",
@@ -164,7 +165,7 @@
             "MovementFriction"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Friction",
@@ -199,7 +200,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
@@ -219,10 +220,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Temporary_Powers.Temporary_Powers.NoPhase"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -235,7 +237,7 @@
             "Global_Chance_Mod"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -254,6 +256,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "tags": [
+              "FlightActive"
+            ],
+            "type": "EffectFilter"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -281,7 +289,7 @@
                 "Null"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Melee_Ones",
@@ -300,6 +308,12 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "PFX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "IgnoreStrength",
                 "IgnoreResistance"
@@ -311,7 +325,7 @@
                 "Null"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Melee_Ones",
@@ -330,6 +344,12 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "PFX2",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "IgnoreStrength",
                 "IgnoreResistance"
@@ -357,7 +377,7 @@
             "Translucency"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -386,7 +406,7 @@
               "event": "MissionObjectClick",
               "event_id": 37,
               "duration": 10.0,
-              "flag": 1
+              "always": 1
             }
           ],
           "flags": [
@@ -399,7 +419,7 @@
             "StealthRadius_PVE"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -428,7 +448,7 @@
               "event": "MissionObjectClick",
               "event_id": 37,
               "duration": 10.0,
-              "flag": 1
+              "always": 1
             }
           ],
           "flags": [
@@ -441,7 +461,7 @@
             "StealthRadius_PVP"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -470,19 +490,19 @@
               "event": "Attacked",
               "event_id": 2,
               "duration": 10.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "HitByFoe",
               "event_id": 17,
               "duration": 10.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "MissionObjectClick",
               "event_id": 37,
               "duration": 10.0,
-              "flag": 1
+              "always": 1
             }
           ],
           "flags": [
@@ -495,7 +515,7 @@
             "Combat_Phase"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -514,6 +534,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "combat_phases": [
+              3
+            ],
+            "vision_phases": [],
+            "exclusive_vision_phase": -1,
+            "type": "Phase"
+          },
           "cancel_events": [
             "Stunned",
             "Held",
@@ -524,12 +552,11 @@
               "event": "MissionObjectClick",
               "event_id": 37,
               "duration": 10.0,
-              "flag": 1
+              "always": 1
             }
           ],
           "flags": [
-            "IgnoreResistance",
-            "DeepSleep"
+            "IgnoreResistance"
           ],
           "flags_raw": 2080
         },
@@ -538,7 +565,7 @@
             "Combat_Phase"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -557,6 +584,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "combat_phases": [
+              0
+            ],
+            "vision_phases": [],
+            "exclusive_vision_phase": -1,
+            "type": "Phase"
+          },
           "cancel_events": [
             "Stunned",
             "Held",
@@ -567,12 +602,11 @@
               "event": "MissionObjectClick",
               "event_id": 37,
               "duration": 10.0,
-              "flag": 1
+              "always": 1
             }
           ],
           "flags": [
-            "IgnoreResistance",
-            "DeepSleep"
+            "IgnoreResistance"
           ],
           "flags_raw": 2080
         },
@@ -581,7 +615,7 @@
             "Intangible"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -600,6 +634,13 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You Intangibilize {PlayerDest} with your {PowerName}.",
+            "display_victim_hit": "{PlayerSource} Intangibilizes you with their {PowerName}.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "cancel_events": [
             "Stunned",
             "Held",
@@ -610,12 +651,11 @@
               "event": "MissionObjectClick",
               "event_id": 37,
               "duration": 10.0,
-              "flag": 1
+              "always": 1
             }
           ],
           "flags": [
-            "IgnoreResistance",
-            "DeepSleep"
+            "IgnoreResistance"
           ],
           "flags_raw": 2080
         },
@@ -624,7 +664,7 @@
             "ThreatLevel"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -653,7 +693,7 @@
               "event": "MissionObjectClick",
               "event_id": 37,
               "duration": 10.0,
-              "flag": 1
+              "always": 1
             }
           ],
           "flags": [

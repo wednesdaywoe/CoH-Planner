@@ -54,6 +54,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     104,
     132
@@ -76,12 +77,12 @@
             "Energy_Dmg"
           ],
           "type": "Expression",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 2.28,
-          "duration": "1.60 seconds",
+          "duration": "1.6 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -95,6 +96,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage over time.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage over time.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -116,7 +124,7 @@
             "Base_Defense"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Debuff_Def",
@@ -135,6 +143,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "PFX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "CancelOnMiss"
           ],
@@ -145,7 +159,7 @@
             "Base_Defense"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Debuff_Def",
@@ -164,6 +178,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "PFX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "CancelOnMiss"
           ],
@@ -188,12 +208,12 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_PvPDamage",
           "scale": 0.4527,
-          "duration": "1.60 seconds",
+          "duration": "1.6 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -207,6 +227,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage over time.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage over time.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -228,12 +255,12 @@
             "Energy_Dmg"
           ],
           "type": "Expression",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 2.28,
-          "duration": "1.60 seconds",
+          "duration": "1.6 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -247,6 +274,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage over time.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage over time.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -268,12 +302,12 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_PvPDamage",
           "scale": 0.4527,
-          "duration": "1.60 seconds",
+          "duration": "1.6 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -287,6 +321,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage over time (SCOURGE).",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage over time (SCOURGE).",
+            "display_float": "Scourge",
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags_raw": 1280
         }
       ]

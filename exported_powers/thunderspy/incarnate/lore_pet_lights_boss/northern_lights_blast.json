@@ -43,6 +43,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     104,
     132
@@ -64,10 +65,10 @@
           "attribs": [
             "Damage"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 1.64,
           "duration": "0 seconds",
@@ -103,10 +104,10 @@
           "attribs": [
             "Knockback"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Ranged_Knockback",
           "scale": 1.0,
           "duration": "0 seconds",
@@ -142,10 +143,10 @@
           "attribs": [
             "Knockback"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Ranged_Knockback",
           "scale": 1.0,
           "duration": "0 seconds",
@@ -181,10 +182,10 @@
           "attribs": [
             "Debuff_Def"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Ranged_Debuff_Def",
           "scale": 2.0,
           "duration": "6 seconds",

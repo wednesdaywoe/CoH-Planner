@@ -50,6 +50,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "kHeld source> 0 > kSleep source> 0 > || kStunned source> 0 > || !",
+  "slot_requires": "",
   "attack_types": [
     140,
     132
@@ -71,10 +72,10 @@
           "attribs": [
             "Knockback"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Ranged_Knockback",
           "scale": 0.01,
           "duration": "0 seconds",
@@ -110,10 +111,10 @@
           "attribs": [
             "Damage"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 0.055,
           "duration": "0 seconds",
@@ -149,10 +150,10 @@
           "attribs": [
             "Slow"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Melee_Slow",
           "scale": 0.5,
           "duration": "5 seconds",
@@ -188,10 +189,10 @@
           "attribs": [
             "SpeedRunning"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Maximum",
+          "target": "AnyAffected",
           "table": "Melee_SpeedRunning",
           "scale": -1.5,
           "duration": "5 seconds",

@@ -43,6 +43,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     104,
     132
@@ -65,7 +66,7 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Tempdamage",
@@ -84,6 +85,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags": [
             "IgnoreStrength"
           ],
@@ -94,7 +102,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -114,10 +122,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Villain_Pets.Chain_Lightning.Charge3"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -130,7 +139,7 @@
             "Null"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -149,6 +158,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "POWERS/ELECTRICITYCONTROL/RED_ELECTRICITYHITCONTINUING.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"

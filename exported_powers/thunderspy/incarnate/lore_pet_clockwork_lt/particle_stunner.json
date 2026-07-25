@@ -43,6 +43,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     104,
     132
@@ -64,10 +65,10 @@
           "attribs": [
             "Stunned"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Duration",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 8.0,
           "duration": "0 seconds",
@@ -103,10 +104,10 @@
           "attribs": [
             "Stunned"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Duration",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 2.0,
           "duration": "0 seconds",
@@ -142,13 +143,13 @@
           "attribs": [
             "Damage"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 0.1,
-          "duration": "3.10 seconds",
+          "duration": "3.1 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",

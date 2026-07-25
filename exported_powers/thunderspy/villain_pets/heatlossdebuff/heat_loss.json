@@ -42,6 +42,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -60,10 +61,10 @@
           "attribs": [
             "Endurance"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": -0.33,
           "duration": "1 seconds",
@@ -99,10 +100,10 @@
           "attribs": [
             "Endurance"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": -0.1,
           "duration": "1 seconds",
@@ -138,10 +139,10 @@
           "attribs": [
             "Slow"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Melee_Slow",
           "scale": 0.3,
           "duration": "30 seconds",
@@ -177,10 +178,10 @@
           "attribs": [
             "SpeedRunning"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Maximum",
+          "target": "AnyAffected",
           "table": "Melee_SpeedRunning",
           "scale": -1.0,
           "duration": "30 seconds",
@@ -223,10 +224,10 @@
             "Toxic_Dmg",
             "Psionic_Dmg"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
           "aspect": "Resistance",
-          "target": "",
+          "target": "AnyAffected",
           "table": "Melee_Res_DMG",
           "scale": -3.0,
           "duration": "30 seconds",
@@ -263,7 +264,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "",
           "target": "",
           "table": "Melee_Ones",

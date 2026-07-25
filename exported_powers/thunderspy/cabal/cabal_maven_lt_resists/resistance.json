@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -56,10 +57,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Resistance",
+          "target": "Self",
           "table": "Melee_Ones",
           "scale": -0.2,
           "duration": "999999 seconds",

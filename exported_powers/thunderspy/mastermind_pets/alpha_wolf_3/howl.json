@@ -43,6 +43,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -61,10 +62,10 @@
           "attribs": [
             "Buff_Dmg"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "AnyAffected",
           "table": "Ranged_Buff_Dmg",
           "scale": 3.3,
           "duration": "15 seconds",
@@ -100,10 +101,10 @@
           "attribs": [
             "ToHit"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Ranged_Buff_ToHit",
           "scale": 1.0,
           "duration": "15 seconds",

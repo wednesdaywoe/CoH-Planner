@@ -40,6 +40,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -59,7 +60,7 @@
             "Smashing_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Melee_Buff_Dmg",
@@ -81,7 +82,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -102,7 +104,7 @@
             "Lethal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Melee_Buff_Dmg",
@@ -124,7 +126,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -145,7 +148,7 @@
             "Fire_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Melee_Buff_Dmg",
@@ -167,7 +170,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -188,7 +192,7 @@
             "Cold_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Melee_Buff_Dmg",
@@ -210,7 +214,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -231,7 +236,7 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Melee_Buff_Dmg",
@@ -253,7 +258,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -274,7 +280,7 @@
             "Negative_Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Melee_Buff_Dmg",
@@ -296,7 +302,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -317,7 +324,7 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Melee_Buff_Dmg",
@@ -339,7 +346,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -360,7 +368,7 @@
             "Psionic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Melee_Buff_Dmg",
@@ -382,7 +390,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -403,7 +412,7 @@
             "Held"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "AnyAffected",
           "table": "Melee_Res_Boolean",
@@ -424,7 +433,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -445,7 +455,7 @@
             "Stunned"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "AnyAffected",
           "table": "Melee_Res_Boolean",
@@ -466,7 +476,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -487,7 +498,7 @@
             "Sleep"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "AnyAffected",
           "table": "Melee_Res_Boolean",
@@ -508,7 +519,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -529,7 +541,7 @@
             "Immobilized"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "AnyAffected",
           "table": "Melee_Res_Boolean",
@@ -550,7 +562,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -571,7 +584,7 @@
             "RechargeTime"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -593,7 +606,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -614,7 +628,7 @@
             "Recovery"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -635,7 +649,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -656,7 +671,7 @@
             "FlyingSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -677,7 +692,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -698,7 +714,7 @@
             "RunningSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -719,7 +735,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     }

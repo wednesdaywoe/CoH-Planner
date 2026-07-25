@@ -50,6 +50,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     112,
     116
@@ -75,7 +76,7 @@
             "Smashing"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Buff_Def",
@@ -94,6 +95,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "GENERICCONTINUING/BUFFDEFCONTINUING.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -119,7 +126,7 @@
             "Smashing_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Melee_Damage",
@@ -138,6 +145,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Smashing damage.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Smashing damage.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -159,7 +173,7 @@
             "Smashing_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Melee_PvPDamage",
@@ -178,6 +192,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Smashing damage.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Smashing damage.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags_raw": 1280
         }
       ],
@@ -201,7 +222,7 @@
                 "Smashing_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Melee_PvPDamage",
@@ -220,6 +241,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Smashing damage.",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Smashing damage.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags_raw": 1280
             }
           ]
@@ -246,7 +274,7 @@
             "Smashing_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Melee_InherentDamage",
@@ -265,6 +293,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Smashing damage (CRITICAL).",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Smashing damage (CRITICAL).",
+            "display_float": "CRITICAL",
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -288,7 +323,7 @@
             "Fire_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Melee_Damage",
@@ -307,6 +342,19 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Fire damage.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Fire damage.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "POWERS/FIRECONTROL/CINDERSHIT.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -331,7 +379,7 @@
             "Smashing_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Melee_InherentDamage",
@@ -350,6 +398,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Smashing damage (CRITICAL).",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Smashing damage (CRITICAL).",
+            "display_float": "CRITICAL",
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -374,7 +429,7 @@
             "Smashing_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Melee_PvPDamage",
@@ -393,6 +448,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Smashing damage (CRITICAL).",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Smashing damage (CRITICAL).",
+            "display_float": "CRITICAL",
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -418,12 +480,12 @@
             "Set_Mode"
           ],
           "type": "Constant",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": 1.0,
-          "duration": "2.20 seconds",
+          "duration": "2.2 seconds",
           "magnitude": 119.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -450,14 +512,14 @@
             "Execute_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": 0.0,
           "duration": "0 seconds",
           "magnitude": 0.0,
-          "delay": 2.200000047683716,
+          "delay": 2.2,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -470,19 +532,25 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Pets.Titan_Weapons.Set_Momentum"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "NoHitDelay",
             "CopyBoosts"
           ],
-          "flags_raw": 66816
+          "flags_raw": 66816,
+          "flags2_raw": 4
         }
       ]
     }
+  ],
+  "strengths_disallowed": [
+    "Range",
+    "Arc"
   ],
   "modes_disallowed": [
     "Disable_All"

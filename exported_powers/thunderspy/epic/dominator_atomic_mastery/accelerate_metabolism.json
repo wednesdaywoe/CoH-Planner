@@ -48,6 +48,7 @@
   "requires": "$archetype @Class_Dominator ==",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -66,10 +67,10 @@
           "attribs": [
             "Buff_Dmg"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "AnyAffected",
           "table": "Ranged_Buff_Dmg",
           "scale": 2.0,
           "duration": "120 seconds",
@@ -105,10 +106,10 @@
           "attribs": [
             "Res_Boolean"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Resistance",
+          "target": "AnyAffected",
           "table": "Ranged_Res_Boolean",
           "scale": 5.0,
           "duration": "120 seconds",
@@ -144,10 +145,10 @@
           "attribs": [
             "RechargeTime"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 0.3,
           "duration": "120 seconds",
@@ -183,10 +184,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 0.3,
           "duration": "120 seconds",

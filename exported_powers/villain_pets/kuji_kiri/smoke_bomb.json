@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -57,7 +58,7 @@
             "Placate"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Melee_Taunt",
@@ -76,9 +77,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "DeepSleep"
-          ],
+          "messages": {
+            "display_attacker_hit": "You Placate {PlayerDest}.",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags_raw": 2560
         }
       ]
@@ -100,7 +105,7 @@
             "Placate"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Melee_Taunt",
@@ -119,9 +124,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "DeepSleep"
-          ],
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": "The Ninja Placates you with a Smoke Bomb and you cannot target him.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags_raw": 2560
         }
       ]

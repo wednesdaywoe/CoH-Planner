@@ -55,6 +55,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     104,
     116,
@@ -77,10 +78,10 @@
           "attribs": [
             "Damage"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 0.37,
           "duration": "0 seconds",
@@ -116,10 +117,10 @@
           "attribs": [
             "Damage"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 0.568366,
           "duration": "0 seconds",
@@ -155,10 +156,10 @@
           "attribs": [
             "Slow"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "AnyAffected",
           "table": "Ranged_Slow",
           "scale": 0.2,
           "duration": "10 seconds",
@@ -194,10 +195,10 @@
           "attribs": [
             "Knockback"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 0.67,
           "duration": "0 seconds",
@@ -233,10 +234,10 @@
           "attribs": [
             "Knockback"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 0.67,
           "duration": "0 seconds",
@@ -272,10 +273,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 1.0,
           "duration": "0 seconds",
@@ -311,10 +312,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 0.11,
           "duration": "9.17 seconds",

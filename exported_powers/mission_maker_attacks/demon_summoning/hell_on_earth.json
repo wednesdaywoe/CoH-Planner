@@ -23,13 +23,13 @@
   "activate_period": 0.0,
   "endurance_cost": 17.5,
   "interrupt_time": 0.0,
-  "target_type": "MyCreator",
+  "target_type": "MyPet",
   "target_type_secondary": "None",
   "targets_autohit": [
-    "MyCreator"
+    "MyPet"
   ],
   "targets_affected": [
-    "MyCreator"
+    "MyPet"
   ],
   "boosts_allowed": [],
   "allowed_set_categories": null,
@@ -39,6 +39,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -58,7 +59,7 @@
             "ToHit"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Buff_ToHit",
@@ -77,6 +78,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "PFX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreResistance"
           ],
@@ -94,7 +101,7 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Ranged_Buff_Dmg",
@@ -124,7 +131,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Levelminus2",
@@ -144,23 +151,24 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "NPC_Pets_MA_Living_Hellfire",
-            "priority_list": "PL_FightPreferMelee"
+            "priority_list": "PL_FightPreferMelee",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "CopyBoosts"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Levelminus2",
@@ -180,23 +188,24 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "NPC_Pets_MA_Living_Hellfire",
-            "priority_list": "PL_FightPreferMelee"
+            "priority_list": "PL_FightPreferMelee",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "CopyBoosts"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Levelminus2",
@@ -216,23 +225,24 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "NPC_Pets_MA_Living_Hellfire",
-            "priority_list": "PL_FightPreferMelee"
+            "priority_list": "PL_FightPreferMelee",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "CopyBoosts"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Levelminus2",
@@ -252,16 +262,17 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "NPC_Pets_MA_Living_Hellfire",
-            "priority_list": "PL_FightPreferMelee"
+            "priority_list": "PL_FightPreferMelee",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "CopyBoosts"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 4
         }
       ]
     },
@@ -282,7 +293,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Levelminus2",
@@ -302,16 +313,17 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "NPC_Pets_MA_Living_Hellfire",
-            "priority_list": "PL_FightPreferMelee"
+            "priority_list": "PL_FightPreferMelee",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "CopyBoosts"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 4
         }
       ]
     },
@@ -332,7 +344,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Levelminus2",
@@ -352,16 +364,17 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "NPC_Pets_MA_Living_Hellfire",
-            "priority_list": "PL_FightPreferMelee"
+            "priority_list": "PL_FightPreferMelee",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "CopyBoosts"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 4
         }
       ]
     },
@@ -382,7 +395,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Levelminus2",
@@ -402,16 +415,17 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "NPC_Pets_MA_Living_Hellfire",
-            "priority_list": "PL_FightPreferMelee"
+            "priority_list": "PL_FightPreferMelee",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "CopyBoosts"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 4
         }
       ]
     },
@@ -432,7 +446,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Levelminus2",
@@ -452,16 +466,17 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "NPC_Pets_MA_Living_Hellfire",
-            "priority_list": "PL_FightPreferMelee"
+            "priority_list": "PL_FightPreferMelee",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "CopyBoosts"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 4
         }
       ]
     },
@@ -482,7 +497,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Levelminus2",
@@ -502,16 +517,17 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "NPC_Pets_MA_Living_Hellfire",
-            "priority_list": "PL_FightPreferMelee"
+            "priority_list": "PL_FightPreferMelee",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "CopyBoosts"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 4
         }
       ]
     },
@@ -532,7 +548,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Levelminus2",
@@ -552,16 +568,17 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "NPC_Pets_MA_Living_Hellfire",
-            "priority_list": "PL_FightPreferMelee"
+            "priority_list": "PL_FightPreferMelee",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "CopyBoosts"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 4
         }
       ]
     }

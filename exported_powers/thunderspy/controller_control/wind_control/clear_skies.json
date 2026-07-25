@@ -43,6 +43,7 @@
   "requires": "Controller_Control.Wind_Control.Vortex Controller_Control.Wind_Control.Vacuum &&",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -61,13 +62,13 @@
           "attribs": [
             "ToHit"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Buff_ToHit",
           "scale": 2.5,
-          "duration": "2.10 seconds",
+          "duration": "2.1 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -100,13 +101,13 @@
           "attribs": [
             "RechargeTime"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 0.25,
-          "duration": "2.10 seconds",
+          "duration": "2.1 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -139,13 +140,13 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": -1.0,
-          "duration": "2.10 seconds",
+          "duration": "2.1 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -163,6 +164,7 @@
       ]
     }
   ],
+  "max_boosts": 0,
   "modes_disallowed": [
     "Disable_All"
   ],

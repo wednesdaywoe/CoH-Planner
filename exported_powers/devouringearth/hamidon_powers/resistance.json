@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -65,7 +66,7 @@
             "Repel"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Resistance",
           "target": "Self",
           "table": "Melee_Ones",
@@ -95,7 +96,7 @@
             "Immobilized"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -126,7 +127,7 @@
             "Recovery"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Resistance",
           "target": "Self",
           "table": "Melee_Ones",
@@ -156,7 +157,7 @@
             "Regeneration"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Resistance",
           "target": "Self",
           "table": "Melee_Ones",
@@ -194,7 +195,7 @@
             "Special_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Resistance",
           "target": "Self",
           "table": "Melee_Ones",

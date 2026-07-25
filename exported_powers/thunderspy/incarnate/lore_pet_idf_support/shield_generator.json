@@ -42,6 +42,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -68,10 +69,10 @@
             "Negative_Energy",
             "Psionic"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Ranged_Buff_Def",
           "scale": 0.5,
           "duration": "10.25 seconds",
@@ -107,10 +108,10 @@
           "attribs": [
             "Res_Boolean"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Ranged_Res_Boolean",
           "scale": -3.0,
           "duration": "10.25 seconds",

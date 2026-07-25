@@ -51,6 +51,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     112,
     116
@@ -73,7 +74,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Level",
@@ -93,19 +94,22 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
-            "entity_def": "Meteor",
+            "display_name": "Meteor",
+            "priority_list": "PL_StaticObject",
             "redirects": [
               "Pets.ResistAll.ResistAll",
               "Redirects.Seismic_Blast.Meteor"
             ],
-            "priority_list": "PL_StaticObject"
+            "type": "EntCreate"
           },
           "flags": [
             "NoHitDelay",
-            "CopyBoosts"
+            "CopyBoosts",
+            "CopyCreatorMods",
+            "PseudoPet"
           ],
-          "flags_raw": 66816
+          "flags_raw": 66816,
+          "flags2_raw": 44
         }
       ]
     }

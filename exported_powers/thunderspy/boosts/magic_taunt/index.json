@@ -1,0 +1,19 @@
+{
+  "key": "Boosts.Magic_Taunt",
+  "display_name": "Magic Taunt",
+  "help": "Increases the duration a taunted target will stay on you.",
+  "short_help": "Dimensional Entities (Magic)",
+  "icon": "magic_taunt_set.ico",
+  "powers": [
+    "Boosts.Magic_Taunt.Magic_Taunt"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Voice of Hermes"
+  ],
+  "power_short_helps": [
+    "Enhances Taunt Effectiveness"
+  ]
+}

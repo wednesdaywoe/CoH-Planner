@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     104,
     132
@@ -60,7 +61,7 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
@@ -79,6 +80,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage over time.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage over time.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -100,7 +108,7 @@
             "Special_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
@@ -119,6 +127,19 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "RUUFW9K5DM5MWNVD8R8VL4PVCS",
+            "display_victim_hit": "2TB7ESBLP6Y3WSVSKH7AT8N76Q",
+            "display_float": "FREEM!",
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "ENEMYFX/RIKTI/HEAVYASSAULTSUIT/FUSIONEXPLOSION/FUSIONEXPLOSION_HIT.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -130,7 +151,7 @@
             "Special_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
@@ -149,6 +170,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of unresistable Special damage.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of unresistable Special damage.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"

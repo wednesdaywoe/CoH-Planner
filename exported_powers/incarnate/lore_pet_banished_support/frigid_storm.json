@@ -44,6 +44,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -63,7 +64,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Level",
@@ -83,24 +84,29 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
-            "entity_def": "Class_Minion_PraetorianSmall",
+            "class_name": "Class_Minion_PraetorianSmall",
             "display_name": "Enervating Storm",
+            "priority_list": "PL_StaticObject",
             "redirects": [
               "Incarnate.Lore_Pet_Banished_Storm.Frigid_Storm",
               "Pets.ResistAll.ResistAll"
             ],
-            "priority_list": "PL_StaticObject"
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreCombatMods",
             "KeepThroughDeath",
-            "CopyBoosts"
+            "CopyBoosts",
+            "PseudoPet"
           ],
-          "flags_raw": 16704
+          "flags_raw": 16704,
+          "flags2_raw": 36
         }
       ]
     }
+  ],
+  "strengths_disallowed": [
+    "Range"
   ],
   "available_level": 0,
   "powerset": "Incarnate.Lore_Pet_Banished_Support"

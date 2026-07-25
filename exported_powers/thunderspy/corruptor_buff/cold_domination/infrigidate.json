@@ -49,6 +49,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     104,
     128
@@ -70,10 +71,10 @@
           "attribs": [
             "Slow"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Ranged_Slow",
           "scale": 0.7,
           "duration": "20 seconds",
@@ -109,10 +110,10 @@
           "attribs": [
             "SpeedRunning"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Maximum",
+          "target": "AnyAffected",
           "table": "Ranged_SpeedRunning",
           "scale": -1.0,
           "duration": "20 seconds",
@@ -148,10 +149,10 @@
           "attribs": [
             "Debuff_Def"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Ranged_Debuff_Def",
           "scale": 2.5,
           "duration": "20 seconds",
@@ -187,10 +188,10 @@
           "attribs": [
             "Debuff_Dam"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "AnyAffected",
           "table": "Ranged_Debuff_Dam",
           "scale": 3.0,
           "duration": "20 seconds",

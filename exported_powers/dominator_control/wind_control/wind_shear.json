@@ -52,6 +52,7 @@
   "requires": "accesslevel char> 0 >=",
   "activate_requires": "",
   "target_requires": "Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -71,12 +72,12 @@
             "ToHit"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_DeBuff_ToHit",
           "scale": 0.75,
-          "duration": "2.10 seconds",
+          "duration": "2.1 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -97,12 +98,12 @@
             "JumpHeight"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Melee_Slow",
           "scale": 0.65,
-          "duration": "2.10 seconds",
+          "duration": "2.1 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -128,12 +129,12 @@
             "JumpingSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Slow",
           "scale": 0.65,
-          "duration": "2.10 seconds",
+          "duration": "2.1 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -161,12 +162,12 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Melee_Debuff_Dam",
           "scale": 1.25,
-          "duration": "2.10 seconds",
+          "duration": "2.1 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -190,12 +191,12 @@
             "Fly"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": -2.0,
-          "duration": "2.10 seconds",
+          "duration": "2.1 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -233,12 +234,12 @@
             "RunningSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Maximum",
           "target": "AnyAffected",
           "table": "Melee_SpeedRunning",
           "scale": -1.0,
-          "duration": "2.10 seconds",
+          "duration": "2.1 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -259,6 +260,9 @@
         }
       ]
     }
+  ],
+  "strengths_disallowed": [
+    "Range"
   ],
   "modes_disallowed": [
     "Disable_All"

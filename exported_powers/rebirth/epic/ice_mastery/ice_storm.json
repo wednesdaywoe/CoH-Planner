@@ -49,6 +49,7 @@
   "requires": "Epic.Ice_Mastery.Ice_Blast Epic.Ice_Mastery.Hibernate && Epic.Ice_Mastery.Ice_Blast Epic.Ice_Mastery.Frozen_Armor && || Epic.Ice_Mastery.Hibernate Epic.Ice_Mastery.Frozen_Armor && || Epic.Ice_Mastery.Ice_Blast Epic.Ice_Mastery.Hibernate && || Epic.Ice_Mastery.Ice_Blast Epic.Ice_Mastery.Frost_Breath && || Epic.Ice_Mastery.Hibernate Epic.Ice_Mastery.Frost_Breath && ||",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -68,7 +69,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Level",
@@ -91,7 +92,8 @@
             "type": "EntCreate",
             "entity_def": "Pets_Epic_IceStorm",
             "priority_list": "PL_StaticObject"
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     }

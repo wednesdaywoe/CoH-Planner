@@ -46,6 +46,7 @@
   "requires": "Epic ownPowerNum? 0 >",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -65,7 +66,7 @@
             "HitPoints"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Maximum",
           "target": "Self",
           "table": "Melee_HealSelf",
@@ -84,6 +85,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "PFX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -95,7 +102,7 @@
             "HitPoints"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Maximum",
           "target": "Self",
           "table": "Melee_HealSelf",
@@ -124,7 +131,7 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "Self",
           "table": "Melee_Res_Dmg",
@@ -153,7 +160,7 @@
             "Heal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_HealSelf",
@@ -172,6 +179,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": "You are healed by your {PowerName} for {Damage} health points.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags_raw": 1280
         }
       ]

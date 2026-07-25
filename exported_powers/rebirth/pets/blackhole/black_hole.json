@@ -46,6 +46,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     112
   ],
@@ -67,7 +68,7 @@
             "Intangible"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -89,7 +90,8 @@
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 96
         }
       ]
     },
@@ -107,10 +109,10 @@
       "templates": [
         {
           "attribs": [
-            "Global_Chance_Mod"
+            "Combat_Phase"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -129,10 +131,15 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Phase",
+            "phase_name": "Phased"
+          },
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 96
         }
       ]
     },
@@ -150,10 +157,10 @@
       "templates": [
         {
           "attribs": [
-            "Global_Chance_Mod"
+            "Combat_Phase"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -172,10 +179,15 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Phase",
+            "phase_name": "NoPrime"
+          },
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 96
         }
       ]
     },
@@ -196,7 +208,7 @@
             "ThreatLevel"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -218,7 +230,8 @@
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 96
         }
       ]
     },
@@ -239,7 +252,7 @@
             "Immobilized"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -261,7 +274,8 @@
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 96
         }
       ]
     },
@@ -282,7 +296,7 @@
             "Accuracy"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -304,7 +318,8 @@
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 96
         }
       ]
     },
@@ -325,7 +340,7 @@
             "Intangible"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -343,7 +358,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 2560
         }
       ]
     },
@@ -361,10 +377,10 @@
       "templates": [
         {
           "attribs": [
-            "Global_Chance_Mod"
+            "Combat_Phase"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -382,7 +398,12 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Phase",
+            "phase_name": "Phased"
+          },
+          "flags_raw": 2560
         }
       ]
     },
@@ -400,10 +421,10 @@
       "templates": [
         {
           "attribs": [
-            "Global_Chance_Mod"
+            "Combat_Phase"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -421,7 +442,12 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Phase",
+            "phase_name": "NoPrime"
+          },
+          "flags_raw": 2560
         }
       ]
     },
@@ -442,7 +468,7 @@
             "ThreatLevel"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -460,7 +486,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -481,7 +508,7 @@
             "Immobilized"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -499,7 +526,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 2560
         }
       ]
     },
@@ -520,7 +548,7 @@
             "Accuracy"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -538,7 +566,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 2560
         }
       ]
     }

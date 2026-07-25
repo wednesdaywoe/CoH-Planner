@@ -47,6 +47,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -72,10 +73,10 @@
             "Psionic_Dmg",
             "Toxic_Dmg"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "Self",
           "table": "Ranged_Buff_Dmg",
           "scale": 5.0,
           "duration": "60 seconds",
@@ -118,10 +119,10 @@
             "Psionic_Dmg",
             "Toxic_Dmg"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "AnyAffected",
           "table": "Ranged_Buff_Dmg",
           "scale": 5.0,
           "duration": "60 seconds",
@@ -157,10 +158,10 @@
           "attribs": [
             "Regeneration"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": -5.0,
           "duration": "60 seconds",

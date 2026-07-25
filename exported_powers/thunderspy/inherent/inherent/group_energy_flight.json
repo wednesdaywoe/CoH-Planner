@@ -50,6 +50,7 @@
   "requires": "$archetype @Class_Peacebringer ==",
   "activate_requires": "$archetype @Class_Peacebringer ==",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -68,10 +69,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 1.0,
           "duration": "10 seconds",
@@ -105,12 +106,12 @@
       "templates": [
         {
           "attribs": [
-            "Control"
+            "MovementControl"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Melee_Control",
           "scale": 10.0,
           "duration": "10 seconds",
@@ -146,10 +147,10 @@
           "attribs": [
             "SpeedFlying"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Melee_SpeedFlying",
           "scale": 0.5,
           "duration": "10 seconds",
@@ -185,10 +186,10 @@
           "attribs": [
             "Friction"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Melee_Friction",
           "scale": 10.0,
           "duration": "10 seconds",

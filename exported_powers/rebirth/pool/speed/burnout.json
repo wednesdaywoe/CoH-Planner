@@ -46,6 +46,7 @@
   "requires": "Pool.Speed.Flurry Pool.Speed.Hasten && Pool.Speed.Flurry Pool.Speed.Super_Speed && || Pool.Speed.Hasten Pool.Speed.Super_Speed && ||",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -65,7 +66,7 @@
             "RunningSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Maximum",
           "target": "Self",
           "table": "Melee_Ones",
@@ -86,7 +87,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -107,7 +109,7 @@
             "JumpHeight"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -128,7 +130,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -149,7 +152,7 @@
             "RunningSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_SpeedRunning",
@@ -170,7 +173,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -191,7 +195,7 @@
             "RechargeTime"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "Self",
           "table": "Melee_Ones",
@@ -213,7 +217,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -234,7 +239,7 @@
             "RunningSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "Self",
           "table": "Melee_Ones",
@@ -256,7 +261,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -277,7 +283,7 @@
             "FlyingSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "Self",
           "table": "Melee_Ones",
@@ -299,7 +305,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -320,7 +327,7 @@
             "JumpHeight"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "Self",
           "table": "Melee_Ones",
@@ -342,7 +349,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -363,7 +371,7 @@
             "JumpingSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "Self",
           "table": "Melee_Ones",
@@ -385,7 +393,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -406,7 +415,7 @@
             "Melee"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Buff_Def",
@@ -427,7 +436,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -448,7 +458,7 @@
             "Ranged"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Buff_Def",
@@ -469,7 +479,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -490,7 +501,7 @@
             "Area"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Buff_Def",
@@ -511,7 +522,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -532,7 +544,7 @@
             "Smashing"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Buff_Def",
@@ -553,7 +565,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -574,7 +587,7 @@
             "Lethal"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Buff_Def",
@@ -595,7 +608,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -616,7 +630,7 @@
             "Fire"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Buff_Def",
@@ -637,7 +651,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -658,7 +673,7 @@
             "Cold"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Buff_Def",
@@ -679,7 +694,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -700,7 +716,7 @@
             "Energy"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Buff_Def",
@@ -721,7 +737,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -742,7 +759,7 @@
             "Negative_Energy"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Buff_Def",
@@ -763,7 +780,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -784,7 +802,7 @@
             "Psionic"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Buff_Def",
@@ -805,7 +823,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -823,10 +842,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -845,10 +864,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Pool.Speed.Flurry"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -866,10 +892,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -888,10 +914,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Pool.Speed.Whirlwind"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -909,10 +942,10 @@
       "templates": [
         {
           "attribs": [
-            "Null"
+            "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
@@ -940,7 +973,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -958,10 +992,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -980,10 +1014,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Tanker_Defense"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -1001,10 +1042,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -1023,10 +1064,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Tanker_Melee"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -1044,10 +1092,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -1066,10 +1114,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Scrapper_Melee"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -1087,10 +1142,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -1109,10 +1164,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Scrapper_Defense"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -1130,10 +1192,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -1152,10 +1214,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Blaster_Ranged"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -1173,10 +1242,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -1195,10 +1264,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Blaster_Support"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -1216,10 +1292,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -1238,10 +1314,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Defender_Buff"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -1259,10 +1342,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -1281,10 +1364,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Defender_Ranged"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -1302,10 +1392,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -1324,10 +1414,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Controller_Control"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -1345,10 +1442,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -1367,10 +1464,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Controller_Buff"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -1388,10 +1492,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -1410,10 +1514,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Brute_Melee"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -1431,10 +1542,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -1453,10 +1564,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Brute_Defense"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -1474,10 +1592,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -1496,10 +1614,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Stalker_Defense"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -1517,10 +1642,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -1539,10 +1664,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Stalker_Melee"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -1560,10 +1692,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -1582,10 +1714,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Corruptor_Ranged"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -1603,10 +1742,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -1625,10 +1764,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Corruptor_Buff"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -1646,10 +1792,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -1668,10 +1814,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Dominator_Control"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -1689,10 +1842,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -1711,10 +1864,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Dominator_Assault"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -1732,10 +1892,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -1754,10 +1914,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Guardian_Assault"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -1775,10 +1942,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -1797,10 +1964,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Guardian_Comp"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -1818,10 +1992,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -1840,10 +2014,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Mastermind_Summon"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -1861,10 +2042,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -1883,10 +2064,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Mastermind_Buff"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -1904,10 +2092,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -1926,10 +2114,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Peacebringer_Offensive"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -1947,10 +2142,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -1969,10 +2164,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Peacebringer_Defensive"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -1990,10 +2192,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -2012,10 +2214,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Warshade_Offensive"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -2033,10 +2242,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -2055,10 +2264,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Warshade_Defensive"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -2076,10 +2292,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -2098,10 +2314,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Widow_Training"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -2119,10 +2342,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -2141,10 +2364,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Teamwork"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -2162,10 +2392,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -2184,10 +2414,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Arachnos_Soldiers"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -2205,10 +2442,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -2227,10 +2464,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Training_Gadgets"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -2248,10 +2492,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -2270,10 +2514,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Devoured_Offensive"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -2291,10 +2542,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -2313,10 +2564,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Devoured_Defensive"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -2334,10 +2592,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -2356,10 +2614,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "HAC_Offense"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -2377,10 +2642,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -2399,10 +2664,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "HAC_Defense"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -2420,10 +2692,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -2442,10 +2714,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Pets.Titan_Weapons"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -2463,10 +2742,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -2485,10 +2764,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Pets.Titan_Weapons_Tanker"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -2506,10 +2792,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -2528,10 +2814,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Pets.Titan_Weapons_Brute"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -2549,10 +2842,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -2571,10 +2864,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Pets.Water_Blast_Defender"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -2592,10 +2892,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -2614,10 +2914,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Pets.Water_Blast_Blaster"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -2635,10 +2942,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -2657,10 +2964,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Pets.Water_Blast_Corruptor"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -2678,10 +2992,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -2700,10 +3014,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Pets.Nature_Affinity_Defender"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -2721,10 +3042,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -2743,10 +3064,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Pets.Nature_Affinity_Mastermind"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -2764,10 +3092,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -2786,10 +3114,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Pets.Nature_Affinity_Corruptor"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -2807,10 +3142,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -2829,10 +3164,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Pets.Nature_Affinity_Controller"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -2853,7 +3195,7 @@
             "Endurance"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Maximum",
           "target": "Self",
           "table": "Melee_Ones",
@@ -2875,7 +3217,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     }

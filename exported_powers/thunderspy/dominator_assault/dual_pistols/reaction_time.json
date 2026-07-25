@@ -55,6 +55,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "kHeld source> 0 > kSleep source> 0 > || kStunned source> 0 > || !",
+  "slot_requires": "",
   "attack_types": [
     112,
     132
@@ -76,10 +77,10 @@
           "attribs": [
             "Slow"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Melee_Slow",
           "scale": 0.7,
           "duration": "5 seconds",
@@ -115,10 +116,10 @@
           "attribs": [
             "SpeedRunning"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Maximum",
+          "target": "AnyAffected",
           "table": "Melee_SpeedRunning",
           "scale": -1.0,
           "duration": "5 seconds",
@@ -154,10 +155,10 @@
           "attribs": [
             "Slow"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnDeactivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Melee_Slow",
           "scale": -0.7,
           "duration": "10 seconds",
@@ -193,10 +194,10 @@
           "attribs": [
             "SpeedRunning"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnDeactivate",
+          "aspect": "Maximum",
+          "target": "Self",
           "table": "Melee_SpeedRunning",
           "scale": 1.0,
           "duration": "10 seconds",

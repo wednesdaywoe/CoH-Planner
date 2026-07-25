@@ -39,6 +39,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     112,
     120
@@ -61,7 +62,7 @@
             "Lethal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
@@ -80,6 +81,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Lethal damage.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Lethal damage.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags_raw": 1280
         },
         {
@@ -94,14 +102,14 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "AnyAffected",
           "table": "Ranged_Res_Dmg",
           "scale": -1.0,
           "duration": "10 seconds",
           "magnitude": 1.0,
-          "delay": 0.30000001192092896,
+          "delay": 0.3,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -113,6 +121,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "GENERICCONTINUING/DAMAGERESISTANCE/DEBUFFDAMRESCONTINUING.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreStrength"
           ],
@@ -137,14 +151,14 @@
             "Lethal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 0.35,
-          "duration": "2.10 seconds",
+          "duration": "2.1 seconds",
           "magnitude": 1.0,
-          "delay": 0.30000001192092896,
+          "delay": 0.3,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.20000000298023224,
@@ -156,6 +170,19 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Lethal damage over time.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Lethal damage over time.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "POWERS/ITEMSANDTEMPPOWERS/INHERENT2ORIGIN/NATKNIFECONTINUING.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags_raw": 1280
         }
       ]

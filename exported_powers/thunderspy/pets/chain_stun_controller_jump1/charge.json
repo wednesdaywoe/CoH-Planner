@@ -45,6 +45,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "kChain_Stun_Mode target.mode? !",
+  "slot_requires": "",
   "attack_types": [
     104,
     132
@@ -66,10 +67,10 @@
           "attribs": [
             "Damage"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Melee_Damage",
           "scale": 0.14,
           "duration": "0 seconds",
@@ -105,10 +106,10 @@
           "attribs": [
             "Damage"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Melee_Damage",
           "scale": 0.14,
           "duration": "0 seconds",
@@ -144,10 +145,10 @@
           "attribs": [
             "Stunned"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Duration",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Melee_Stun",
           "scale": 2.0,
           "duration": "0 seconds",
@@ -183,10 +184,10 @@
           "attribs": [
             "Immobilized"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Duration",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 0.25,
           "duration": "0 seconds",
@@ -222,10 +223,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Constant",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 1.0,
           "duration": "1 seconds",

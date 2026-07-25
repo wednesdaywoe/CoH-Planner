@@ -42,6 +42,7 @@
   "requires": "Tanker_Melee.Staff_Fighting.Staff_Mastery",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -58,10 +59,10 @@
       "templates": [
         {
           "attribs": [
-            "Grant_Power"
+            "Global_Chance_Mod"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -80,10 +81,17 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "PerfectionofSoul"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -101,10 +109,10 @@
       "templates": [
         {
           "attribs": [
-            "Grant_Power"
+            "Global_Chance_Mod"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -123,10 +131,17 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "PerfectionofMind"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -144,10 +159,10 @@
       "templates": [
         {
           "attribs": [
-            "Grant_Power"
+            "Global_Chance_Mod"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -166,10 +181,17 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "PerfectionofBody"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -187,10 +209,10 @@
       "templates": [
         {
           "attribs": [
-            "Null"
+            "Revoke_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -218,7 +240,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -236,10 +259,10 @@
       "templates": [
         {
           "attribs": [
-            "Null"
+            "Revoke_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -267,7 +290,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -285,10 +309,10 @@
       "templates": [
         {
           "attribs": [
-            "Null"
+            "Revoke_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -316,7 +340,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -334,10 +359,10 @@
       "templates": [
         {
           "attribs": [
-            "Null"
+            "Revoke_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -365,7 +390,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -383,10 +409,10 @@
       "templates": [
         {
           "attribs": [
-            "Null"
+            "Revoke_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -414,7 +440,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -432,10 +459,10 @@
       "templates": [
         {
           "attribs": [
-            "Null"
+            "Revoke_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -463,11 +490,13 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     }
   ],
+  "max_boosts": 0,
   "modes_disallowed": [
     "Disable_All"
   ],

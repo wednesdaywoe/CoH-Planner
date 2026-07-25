@@ -53,6 +53,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     112,
     140
@@ -101,7 +102,7 @@
                     "Sleep"
                   ],
                   "type": "Duration",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Current",
                   "target": "AnyAffected",
                   "table": "Melee_Sleep",
@@ -120,9 +121,21 @@
                   "stack": "Replace",
                   "stack_limit": 2,
                   "stack_key": null,
-                  "flags": [
-                    "DeepSleep"
-                  ],
+                  "messages": {
+                    "display_attacker_hit": "You Sleep {PlayerDest} with your {PowerName}.",
+                    "display_victim_hit": "{PlayerSource} Sleeps you with their {PowerName}.",
+                    "display_float": null,
+                    "display_attrib_defense_float": null,
+                    "display_info": null
+                  },
+                  "fx": {
+                    "continuing_bits": [],
+                    "continuing_fx": null,
+                    "conditional_bits": [
+                      384
+                    ],
+                    "conditional_fx": "PFX"
+                  },
                   "flags_raw": 2560
                 }
               ]
@@ -144,7 +157,7 @@
                     "Placate"
                   ],
                   "type": "Duration",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Absolute",
                   "target": "AnyAffected",
                   "table": "Melee_Taunt",
@@ -163,9 +176,19 @@
                   "stack": "Stack",
                   "stack_limit": 2,
                   "stack_key": null,
-                  "flags": [
-                    "DeepSleep"
-                  ],
+                  "messages": {
+                    "display_attacker_hit": "You Placate {PlayerDest} with your {PowerName}.",
+                    "display_victim_hit": "{PlayerSource} Placates you with their {PowerName}.",
+                    "display_float": null,
+                    "display_attrib_defense_float": null,
+                    "display_info": "Requires a hit roll"
+                  },
+                  "fx": {
+                    "continuing_bits": [],
+                    "continuing_fx": null,
+                    "conditional_bits": [],
+                    "conditional_fx": "GENERICCONTINUING/PLACATEHIT.FX"
+                  },
                   "flags_raw": 2560
                 },
                 {
@@ -173,7 +196,7 @@
                     "PerceptionRadius"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Current",
                   "target": "AnyAffected",
                   "table": "Melee_Ones",
@@ -192,6 +215,13 @@
                   "stack": "Replace",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "messages": {
+                    "display_attacker_hit": null,
+                    "display_victim_hit": null,
+                    "display_float": null,
+                    "display_attrib_defense_float": null,
+                    "display_info": "Requires a hit roll"
+                  },
                   "flags_raw": 1280
                 },
                 {
@@ -199,7 +229,7 @@
                     "ToHit"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Current",
                   "target": "AnyAffected",
                   "table": "Melee_DeBuff_ToHit",
@@ -218,6 +248,19 @@
                   "stack": "Replace",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "messages": {
+                    "display_attacker_hit": null,
+                    "display_victim_hit": null,
+                    "display_float": null,
+                    "display_attrib_defense_float": null,
+                    "display_info": "Requires a hit roll"
+                  },
+                  "fx": {
+                    "continuing_bits": [],
+                    "continuing_fx": "PFX",
+                    "conditional_bits": [],
+                    "conditional_fx": null
+                  },
                   "flags_raw": 1280
                 }
               ]
@@ -239,7 +282,7 @@
                     "Confused"
                   ],
                   "type": "Duration",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Current",
                   "target": "AnyAffected",
                   "table": "Melee_Immobilize",
@@ -258,9 +301,19 @@
                   "stack": "Replace",
                   "stack_limit": 2,
                   "stack_key": null,
-                  "flags": [
-                    "DeepSleep"
-                  ],
+                  "messages": {
+                    "display_attacker_hit": "You Confuse {PlayerDest} with your {PowerName}.",
+                    "display_victim_hit": "{PlayerSource} Confuses you with their {PowerName}.",
+                    "display_float": null,
+                    "display_attrib_defense_float": null,
+                    "display_info": "Requires a hit roll"
+                  },
+                  "fx": {
+                    "continuing_bits": [],
+                    "continuing_fx": null,
+                    "conditional_bits": [],
+                    "conditional_fx": "GENERICCONTINUING/CONFUSECONTINUING.FX"
+                  },
                   "flags_raw": 2560
                 }
               ]
@@ -297,7 +350,7 @@
                     "Sleep"
                   ],
                   "type": "Duration",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Current",
                   "target": "AnyAffected",
                   "table": "Melee_PvPMez",
@@ -316,40 +369,52 @@
                   "stack": "Stack",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "messages": {
+                    "display_attacker_hit": "You Sleep {PlayerDest} with your {PowerName}.",
+                    "display_victim_hit": "{PlayerSource} Sleeps you with their {PowerName}.",
+                    "display_float": null,
+                    "display_attrib_defense_float": null,
+                    "display_info": "Requires a hit roll"
+                  },
+                  "fx": {
+                    "continuing_bits": [],
+                    "continuing_fx": null,
+                    "conditional_bits": [
+                      384
+                    ],
+                    "conditional_fx": "PFX"
+                  },
                   "suppress_events": [
                     {
                       "event": "Stunned",
                       "event_id": 23,
                       "duration": 15.0,
-                      "flag": 0
+                      "always": 0
                     },
                     {
-                      "event": "Event_24",
+                      "event": "Immobilized",
                       "event_id": 24,
                       "duration": 15.0,
-                      "flag": 0
+                      "always": 0
                     },
                     {
                       "event": "Held",
                       "event_id": 25,
                       "duration": 15.0,
-                      "flag": 0
+                      "always": 0
                     },
                     {
                       "event": "Sleep",
                       "event_id": 26,
                       "duration": 15.0,
-                      "flag": 0
+                      "always": 0
                     },
                     {
-                      "event": "Confused",
+                      "event": "Terrorized",
                       "event_id": 27,
                       "duration": 15.0,
-                      "flag": 0
+                      "always": 0
                     }
-                  ],
-                  "flags": [
-                    "DeepSleep"
                   ],
                   "flags_raw": 2560
                 },
@@ -358,7 +423,7 @@
                     "Placate"
                   ],
                   "type": "Duration",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Absolute",
                   "target": "AnyAffected",
                   "table": "Melee_Taunt",
@@ -377,9 +442,19 @@
                   "stack": "Stack",
                   "stack_limit": 2,
                   "stack_key": null,
-                  "flags": [
-                    "DeepSleep"
-                  ],
+                  "messages": {
+                    "display_attacker_hit": "You Placate {PlayerDest} with your {PowerName}.",
+                    "display_victim_hit": "{PlayerSource} Placates you with their {PowerName}.",
+                    "display_float": null,
+                    "display_attrib_defense_float": null,
+                    "display_info": "Requires a hit roll"
+                  },
+                  "fx": {
+                    "continuing_bits": [],
+                    "continuing_fx": null,
+                    "conditional_bits": [],
+                    "conditional_fx": "GENERICCONTINUING/PLACATEHIT.FX"
+                  },
                   "flags_raw": 2560
                 },
                 {
@@ -387,7 +462,7 @@
                     "PerceptionRadius"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Current",
                   "target": "AnyAffected",
                   "table": "Melee_Ones",
@@ -406,6 +481,13 @@
                   "stack": "Replace",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "messages": {
+                    "display_attacker_hit": null,
+                    "display_victim_hit": null,
+                    "display_float": null,
+                    "display_attrib_defense_float": null,
+                    "display_info": "Requires a hit roll"
+                  },
                   "cancel_events": [
                     "Damaged"
                   ],
@@ -416,7 +498,7 @@
                     "ToHit"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Current",
                   "target": "AnyAffected",
                   "table": "Melee_DeBuff_ToHit",
@@ -435,6 +517,19 @@
                   "stack": "Replace",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "messages": {
+                    "display_attacker_hit": null,
+                    "display_victim_hit": null,
+                    "display_float": null,
+                    "display_attrib_defense_float": null,
+                    "display_info": "Requires a hit roll"
+                  },
+                  "fx": {
+                    "continuing_bits": [],
+                    "continuing_fx": "PFX",
+                    "conditional_bits": [],
+                    "conditional_fx": null
+                  },
                   "flags_raw": 1280
                 }
               ]
@@ -456,7 +551,7 @@
                     "Confused"
                   ],
                   "type": "Duration",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Current",
                   "target": "AnyAffected",
                   "table": "Melee_PvPMez",
@@ -475,16 +570,26 @@
                   "stack": "Replace",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "messages": {
+                    "display_attacker_hit": "You Confuse {PlayerDest} with your {PowerName}.",
+                    "display_victim_hit": "{PlayerSource} Confuses you with their {PowerName}.",
+                    "display_float": null,
+                    "display_attrib_defense_float": null,
+                    "display_info": "Requires a hit roll"
+                  },
+                  "fx": {
+                    "continuing_bits": [],
+                    "continuing_fx": null,
+                    "conditional_bits": [],
+                    "conditional_fx": "GENERICCONTINUING/CONFUSECONTINUING.FX"
+                  },
                   "suppress_events": [
                     {
-                      "event": "Event_28",
+                      "event": "Confused",
                       "event_id": 28,
                       "duration": 15.0,
-                      "flag": 0
+                      "always": 0
                     }
-                  ],
-                  "flags": [
-                    "DeepSleep"
                   ],
                   "flags_raw": 2560
                 }
@@ -513,14 +618,14 @@
             "Global_Chance_Mod"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": 0.3,
           "duration": "10 seconds",
           "magnitude": 1.0,
-          "delay": 1.6699999570846558,
+          "delay": 1.67,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -532,6 +637,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "tags": [
+              "ScrapperCrit_ST"
+            ],
+            "type": "EffectFilter"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -543,14 +654,14 @@
             "Global_Chance_Mod"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": 0.3,
           "duration": "10 seconds",
           "magnitude": 1.0,
-          "delay": 1.6699999570846558,
+          "delay": 1.67,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -562,6 +673,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "tags": [
+              "ScrapperCrit_AoE"
+            ],
+            "type": "EffectFilter"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"

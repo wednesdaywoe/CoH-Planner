@@ -45,6 +45,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -63,10 +64,10 @@
           "attribs": [
             "Heal"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Maximum",
+          "target": "AnyAffected",
           "table": "Ranged_Heal",
           "scale": 4.0,
           "duration": "120 seconds",
@@ -102,10 +103,10 @@
           "attribs": [
             "Res_DMG"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Resistance",
+          "target": "AnyAffected",
           "table": "Ranged_Res_Dmg",
           "scale": 2.0,
           "duration": "120 seconds",

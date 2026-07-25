@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -57,7 +58,7 @@
             "Translucency"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -86,7 +87,7 @@
             "StealthRadius_PVE"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -115,7 +116,7 @@
             "StealthRadius_PVP"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -146,7 +147,7 @@
             "OnlyAffectsSelf"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -166,8 +167,7 @@
           "stack_limit": 2,
           "stack_key": null,
           "flags": [
-            "IgnoreResistance",
-            "DeepSleep"
+            "IgnoreResistance"
           ],
           "flags_raw": 2080
         }

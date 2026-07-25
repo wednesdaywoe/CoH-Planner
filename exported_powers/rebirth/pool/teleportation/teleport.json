@@ -44,6 +44,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -60,10 +61,10 @@
       "templates": [
         {
           "attribs": [
-            "Create_Entity"
+            "Set_Mode"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -85,7 +86,9 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072,
+          "mode_name": "Peacebringer_Human_Mode"
         }
       ]
     },
@@ -103,10 +106,10 @@
       "templates": [
         {
           "attribs": [
-            "Create_Entity"
+            "Set_Mode"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -128,7 +131,9 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072,
+          "mode_name": "Warshade_Human_Mode"
         }
       ]
     },
@@ -146,10 +151,10 @@
       "templates": [
         {
           "attribs": [
-            "Create_Entity"
+            "Set_Mode"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -171,7 +176,9 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072,
+          "mode_name": "Warshade_Human_Mode2"
         }
       ]
     },
@@ -189,10 +196,10 @@
       "templates": [
         {
           "attribs": [
-            "Add_Behavior"
+            "Power_Redirect"
           ],
           "type": "Constant",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -211,10 +218,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Pets.Pool_Teleportation.Team_Teleport"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 3120
         }
       ]
     },
@@ -232,15 +246,15 @@
       "templates": [
         {
           "attribs": [
-            "Create_Entity"
+            "Translucency"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
           "scale": 0.0,
-          "duration": "1.50 seconds",
+          "duration": "1.5 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -256,7 +270,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -277,14 +292,14 @@
             "Teleport"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
           "scale": 1.0,
           "duration": "0 seconds",
           "magnitude": 1.0,
-          "delay": 0.27000001072883606,
+          "delay": 0.27,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -298,7 +313,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -319,7 +335,7 @@
             "Fly"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -341,7 +357,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -362,7 +379,7 @@
             "FlyingSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -384,7 +401,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -405,7 +423,7 @@
             "MovementControl"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -427,7 +445,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -448,7 +467,7 @@
             "MovementFriction"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -470,7 +489,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -488,10 +508,10 @@
       "templates": [
         {
           "attribs": [
-            "Add_Behavior"
+            "Power_Redirect"
           ],
           "type": "Constant",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -510,10 +530,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Pets.Pool_Teleportation.Teleport_Enhanced"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 3120
         }
       ]
     },
@@ -531,10 +558,10 @@
       "templates": [
         {
           "attribs": [
-            "Add_Behavior"
+            "Power_Redirect"
           ],
           "type": "Constant",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -553,10 +580,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Pets.Pool_Teleportation.Teleport_Efficient"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 3120
         }
       ]
     },
@@ -574,10 +608,10 @@
       "templates": [
         {
           "attribs": [
-            "Add_Behavior"
+            "Power_Redirect"
           ],
           "type": "Constant",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -596,12 +630,37 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Pets.Pool_Teleportation.Teleport_Enhanced_Efficient"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 3120
         }
       ]
+    }
+  ],
+  "redirect": [
+    {
+      "name": "Pets.Pool_Teleportation.Team_Teleport",
+      "condition_expression": "kTeamTeleportOn source.Mode?"
+    },
+    {
+      "name": "Pets.Pool_Teleportation.Teleport_Enhanced",
+      "condition_expression": "Pool.Teleportation.Long_Range_Teleporting source.ownPower? Pool.Teleportation.Team_Teleport source.ownPower? ! &&"
+    },
+    {
+      "name": "Pets.Pool_Teleportation.Teleport_Efficient",
+      "condition_expression": "Pool.Teleportation.Team_Teleport source.ownPower? Pool.Teleportation.Long_Range_Teleporting source.ownPower? ! &&"
+    },
+    {
+      "name": "Pets.Pool_Teleportation.Teleport_Enhanced_Efficient",
+      "condition_expression": "Pool.Teleportation.Long_Range_Teleporting source.ownPower? Pool.Teleportation.Team_Teleport source.ownPower? &&"
     }
   ],
   "modes_disallowed": [

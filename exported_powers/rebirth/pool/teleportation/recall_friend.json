@@ -48,6 +48,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -67,7 +68,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -95,7 +96,8 @@
             "IgnoreStrength",
             "IgnoreResistance",
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 112
         }
       ]
     },
@@ -113,10 +115,10 @@
       "templates": [
         {
           "attribs": [
-            "Add_Behavior"
+            "Power_Redirect"
           ],
           "type": "Constant",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -135,11 +137,18 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Pets.Pool_Teleportation.Teleport_Friend"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 112
         }
       ]
     },
@@ -157,10 +166,10 @@
       "templates": [
         {
           "attribs": [
-            "Add_Behavior"
+            "Power_Redirect"
           ],
           "type": "Constant",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -179,11 +188,18 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Pets.Pool_Teleportation.Teleport_Enemy"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 112
         }
       ]
     },
@@ -201,10 +217,10 @@
       "templates": [
         {
           "attribs": [
-            "Add_Behavior"
+            "Power_Redirect"
           ],
           "type": "Constant",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -223,11 +239,18 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Pets.Pool_Teleportation.Teleport_NPC"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 112
         }
       ]
     },
@@ -245,10 +268,10 @@
       "templates": [
         {
           "attribs": [
-            "Add_Behavior"
+            "Power_Redirect"
           ],
           "type": "Constant",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -267,11 +290,18 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Pets.Pool_Teleportation.Teleport_Enemy"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 112
         }
       ]
     },
@@ -289,15 +319,15 @@
       "templates": [
         {
           "attribs": [
-            "Create_Entity"
+            "Translucency"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 0.0,
-          "duration": "1.50 seconds",
+          "duration": "1.5 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -313,7 +343,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -334,14 +365,14 @@
             "Teleport"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 1.0,
           "duration": "0 seconds",
           "magnitude": 1.0,
-          "delay": 1.1699999570846558,
+          "delay": 1.17,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -355,9 +386,28 @@
           "stack_key": null,
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
+    }
+  ],
+  "redirect": [
+    {
+      "name": "Pets.Pool_Teleportation.Teleport_Friend",
+      "condition_expression": "target.isFriend?"
+    },
+    {
+      "name": "Pets.Pool_Teleportation.Teleport_Enemy",
+      "condition_expression": "target.isFriend? ! Pool.Teleportation.Teleport_Foe source.ownPower? ! &&"
+    },
+    {
+      "name": "Pets.Pool_Teleportation.Teleport_NPC",
+      "condition_expression": "enttype target> critter eq Pool.Teleportation.Teleport_Foe source.ownPower? && target.isFriend? ! &&"
+    },
+    {
+      "name": "Pets.Pool_Teleportation.Teleport_Enemy",
+      "condition_expression": "enttype target> player eq Pool.Teleportation.Teleport_Foe source.ownPower? && target.isFriend? ! &&"
     }
   ],
   "modes_disallowed": [

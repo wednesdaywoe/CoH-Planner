@@ -44,6 +44,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     104,
     144
@@ -66,7 +67,7 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
@@ -85,6 +86,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Toxic damage.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Toxic damage.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags": [
             "IgnoreStrength"
           ],
@@ -95,7 +103,7 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
@@ -114,6 +122,19 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Toxic damage over time.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Toxic damage over time.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "ENEMYFX/DEVOURINGEARTH/HAMIDON/POWER_NUCLEUS_ATTACK/HIT_FX/NUCLEUS_ATTACK_CONTINUING.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreStrength"
           ],
@@ -124,7 +145,7 @@
             "Heal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -143,6 +164,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "GENERICCONTINUING/DEBUFFMAXHPCONTINUING.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreStrength"
           ],
@@ -153,7 +180,7 @@
             "Regeneration"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Slow",
@@ -182,7 +209,7 @@
             "Endurance"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -201,6 +228,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of their endurance.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} draining {Damage} points of your endurance.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags_raw": 1280
         },
         {
@@ -208,7 +242,7 @@
             "Recovery"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -252,7 +286,7 @@
             "Knockback"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Knockback",
@@ -271,6 +305,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You knock {PlayerDest} off their feet with your {PowerName}!",
+            "display_victim_hit": "{PlayerSource} knocks you off your feet with their {PowerName}!",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -292,7 +333,7 @@
             "Stunned"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Immobilize",
@@ -311,9 +352,19 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "DeepSleep"
-          ],
+          "messages": {
+            "display_attacker_hit": "You Stun {PlayerDest} with your {PowerName}.",
+            "display_victim_hit": "{PlayerSource} Stuns you with their {PowerName}.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "GENERICCONTINUING/STUNCONTINUING.FX"
+          },
           "flags_raw": 2560
         }
       ]

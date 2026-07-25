@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     104,
     120
@@ -59,10 +60,10 @@
           "attribs": [
             "Tempdamage"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Ranged_Tempdamage",
           "scale": 0.7,
           "duration": "0 seconds",
@@ -98,10 +99,10 @@
           "attribs": [
             "Lethal"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Ranged_Tempdamage",
           "scale": 0.35,
           "duration": "0 seconds",
@@ -137,10 +138,10 @@
           "attribs": [
             "FireDamage"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Ranged_Tempdamage",
           "scale": 0.3,
           "duration": "0 seconds",
@@ -176,10 +177,10 @@
           "attribs": [
             "ColdDamage"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Ranged_Tempdamage",
           "scale": 0.3,
           "duration": "0 seconds",
@@ -215,10 +216,10 @@
           "attribs": [
             "ToxicDamage"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Ranged_Tempdamage",
           "scale": 0.3,
           "duration": "0 seconds",

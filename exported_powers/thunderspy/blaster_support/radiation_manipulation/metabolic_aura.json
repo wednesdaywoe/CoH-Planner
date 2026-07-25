@@ -57,6 +57,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -75,10 +76,10 @@
           "attribs": [
             "HealSelf"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Maximum",
+          "target": "Self",
           "table": "Melee_HealSelf",
           "scale": 0.333,
           "duration": "2.25 seconds",
@@ -114,10 +115,10 @@
           "attribs": [
             "Recovery"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 0.5,
           "duration": "2.25 seconds",

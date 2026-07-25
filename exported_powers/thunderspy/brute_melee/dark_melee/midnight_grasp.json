@@ -52,6 +52,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     108,
     136
@@ -73,10 +74,10 @@
           "attribs": [
             "Damage"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Melee_Damage",
           "scale": 2.74,
           "duration": "0 seconds",
@@ -112,10 +113,10 @@
           "attribs": [
             "Damage"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Melee_Damage",
           "scale": 2.74,
           "duration": "0 seconds",
@@ -151,13 +152,13 @@
           "attribs": [
             "Damage"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Melee_Damage",
           "scale": 0.1,
-          "duration": "3.10 seconds",
+          "duration": "3.1 seconds",
           "magnitude": 1.0,
           "delay": 0.5,
           "duration_expression": "",
@@ -190,10 +191,10 @@
           "attribs": [
             "Immobilized"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Duration",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Melee_Immobilize",
           "scale": 15.0,
           "duration": "0 seconds",
@@ -229,10 +230,10 @@
           "attribs": [
             "Immobilized"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Duration",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 2.0,
           "duration": "0 seconds",
@@ -268,10 +269,10 @@
           "attribs": [
             "DeBuff_ToHit"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Melee_DeBuff_ToHit",
           "scale": 0.75,
           "duration": "20 seconds",
@@ -307,10 +308,10 @@
           "attribs": [
             "InherentTaunt"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Duration",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Melee_InherentTaunt",
           "scale": 1.0,
           "duration": "0 seconds",
@@ -346,10 +347,10 @@
           "attribs": [
             "InherentTaunt"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Duration",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Melee_InherentTaunt",
           "scale": 1.0,
           "duration": "0 seconds",
@@ -385,10 +386,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Melee_Ones",
           "scale": 0.05,
           "duration": "0 seconds",
@@ -424,13 +425,13 @@
           "attribs": [
             "FieryEmbrace"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Melee_Damage",
           "scale": 0.0495,
-          "duration": "3.10 seconds",
+          "duration": "3.1 seconds",
           "magnitude": 1.0,
           "delay": 0.5,
           "duration_expression": "",
@@ -463,10 +464,10 @@
           "attribs": [
             "FieryEmbrace"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Melee_Damage",
           "scale": 0.9945,
           "duration": "0 seconds",

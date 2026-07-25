@@ -41,6 +41,7 @@
   "requires": "$archetype @Class_Corruptor == $archetype @Class_Defender == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -59,10 +60,10 @@
           "attribs": [
             "Stunned"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "Self",
           "table": "Melee_Ones",
           "scale": 0.75,
           "duration": "15 seconds",

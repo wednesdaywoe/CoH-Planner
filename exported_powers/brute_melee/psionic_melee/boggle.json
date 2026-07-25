@@ -47,6 +47,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     140
   ],
@@ -68,7 +69,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -88,10 +89,24 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Temporary_Powers.Temporary_Powers.Boggled"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
+          },
+          "messages": {
+            "display_attacker_hit": "You boggle your foe causing your Psionic Melee attacks on your target to be more likely to grant you Insight.",
+            "display_victim_hit": "You've become Boggled!",
+            "display_float": "Boggled!",
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "GENERICCONTINUING/CONFUSECONTINUING.FX"
           },
           "flags": [
             "IgnoreStrength",
@@ -104,7 +119,7 @@
             "Set_Mode"
           ],
           "type": "Constant",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -150,7 +165,7 @@
             "Confused"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -169,9 +184,19 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "DeepSleep"
-          ],
+          "messages": {
+            "display_attacker_hit": "You Confuse {PlayerDest} with your {PowerName}.",
+            "display_victim_hit": "{PlayerSource} Confuses you with their {PowerName}.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "GENERICCONTINUING/CONFUSECONTINUING.FX"
+          },
           "flags_raw": 2560
         }
       ]
@@ -193,7 +218,7 @@
             "Confused"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_PvPMez",
@@ -212,16 +237,26 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You Confuse {PlayerDest} with your {PowerName}.",
+            "display_victim_hit": "{PlayerSource} Confuses you with their {PowerName}.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "GENERICCONTINUING/CONFUSECONTINUING.FX"
+          },
           "suppress_events": [
             {
-              "event": "Event_28",
+              "event": "Confused",
               "event_id": 28,
               "duration": 15.0,
-              "flag": 0
+              "always": 0
             }
-          ],
-          "flags": [
-            "DeepSleep"
           ],
           "flags_raw": 2560
         }

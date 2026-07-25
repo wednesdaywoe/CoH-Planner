@@ -45,6 +45,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     112,
     132
@@ -80,7 +81,7 @@
                 "Sleep"
               ],
               "type": "Duration",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_Immobilize",
@@ -99,9 +100,21 @@
               "stack": "RefreshToCount",
               "stack_limit": 1,
               "stack_key": null,
-              "flags": [
-                "DeepSleep"
-              ],
+              "messages": {
+                "display_attacker_hit": "You Sleep {PlayerDest} with your {PowerName}.",
+                "display_victim_hit": "{PlayerSource} Sleeps you with their {PowerName}.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": null,
+                "conditional_bits": [
+                  284
+                ],
+                "conditional_fx": "GENERICCONTINUING/SLEEPCONTINUING.FX"
+              },
               "flags_raw": 2560
             }
           ],
@@ -125,7 +138,7 @@
                     "Sleep"
                   ],
                   "type": "Duration",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Current",
                   "target": "AnyAffected",
                   "table": "Ranged_Immobilize",
@@ -144,9 +157,21 @@
                   "stack": "RefreshToCount",
                   "stack_limit": 1,
                   "stack_key": null,
-                  "flags": [
-                    "DeepSleep"
-                  ],
+                  "messages": {
+                    "display_attacker_hit": "You Sleep {PlayerDest} with your {PowerName}.",
+                    "display_victim_hit": "{PlayerSource} Sleeps you with their {PowerName}.",
+                    "display_float": null,
+                    "display_attrib_defense_float": null,
+                    "display_info": "While under the effects of Domination"
+                  },
+                  "fx": {
+                    "continuing_bits": [],
+                    "continuing_fx": null,
+                    "conditional_bits": [
+                      284
+                    ],
+                    "conditional_fx": "GENERICCONTINUING/SLEEPCONTINUING.FX"
+                  },
                   "flags_raw": 2560
                 },
                 {
@@ -154,7 +179,7 @@
                     "Null"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Current",
                   "target": "AnyAffected",
                   "table": "Melee_Ones",
@@ -173,6 +198,13 @@
                   "stack": "Stack",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "messages": {
+                    "display_attacker_hit": null,
+                    "display_victim_hit": null,
+                    "display_float": "DOMINATION",
+                    "display_attrib_defense_float": null,
+                    "display_info": null
+                  },
                   "flags_raw": 1280
                 }
               ]
@@ -196,7 +228,7 @@
                     "Sleep"
                   ],
                   "type": "Duration",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Current",
                   "target": "AnyAffected",
                   "table": "Ranged_Immobilize",
@@ -215,9 +247,21 @@
                   "stack": "RefreshToCount",
                   "stack_limit": 1,
                   "stack_key": null,
+                  "messages": {
+                    "display_attacker_hit": "You Sleep {PlayerDest} with your {PowerName}.",
+                    "display_victim_hit": "{PlayerSource} Sleeps you with their {PowerName}.",
+                    "display_float": null,
+                    "display_attrib_defense_float": null,
+                    "display_info": "Overpower"
+                  },
+                  "fx": {
+                    "continuing_bits": [],
+                    "continuing_fx": null,
+                    "conditional_bits": [],
+                    "conditional_fx": "GENERICCONTINUING/SLEEPCONTINUING.FX"
+                  },
                   "flags": [
-                    "NearGround",
-                    "DeepSleep"
+                    "NearGround"
                   ],
                   "flags_raw": 2568
                 },
@@ -226,7 +270,7 @@
                     "Null"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Current",
                   "target": "AnyAffected",
                   "table": "Melee_Ones",
@@ -245,6 +289,13 @@
                   "stack": "Stack",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "messages": {
+                    "display_attacker_hit": null,
+                    "display_victim_hit": null,
+                    "display_float": "Overpower",
+                    "display_attrib_defense_float": null,
+                    "display_info": null
+                  },
                   "flags_raw": 1280
                 }
               ]
@@ -270,7 +321,7 @@
             "Sleep"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_PvPMez",
@@ -289,40 +340,45 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              284
+            ],
+            "conditional_fx": "GENERICCONTINUING/SLEEPCONTINUING.FX"
+          },
           "suppress_events": [
             {
               "event": "Stunned",
               "event_id": 23,
               "duration": 15.0,
-              "flag": 0
+              "always": 0
             },
             {
-              "event": "Event_24",
+              "event": "Immobilized",
               "event_id": 24,
               "duration": 15.0,
-              "flag": 0
+              "always": 0
             },
             {
               "event": "Held",
               "event_id": 25,
               "duration": 15.0,
-              "flag": 0
+              "always": 0
             },
             {
               "event": "Sleep",
               "event_id": 26,
               "duration": 15.0,
-              "flag": 0
+              "always": 0
             },
             {
-              "event": "Confused",
+              "event": "Terrorized",
               "event_id": 27,
               "duration": 15.0,
-              "flag": 0
+              "always": 0
             }
-          ],
-          "flags": [
-            "DeepSleep"
           ],
           "flags_raw": 2560
         }
@@ -345,7 +401,7 @@
             "Endurance"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_EndDrain",
@@ -364,6 +420,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of their endurance.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} draining {Damage} points of your endurance.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -385,7 +448,7 @@
             "Endurance"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_EndDrain",
@@ -404,6 +467,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of their endurance.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} draining {Damage} points of your endurance.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -425,7 +495,7 @@
             "Execute_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -445,15 +515,17 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Pets.Static_Field_End_Recovery_Controller.Endurance_Recovered"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "CopyBoosts"
           ],
-          "flags_raw": 1280
+          "flags_raw": 1280,
+          "flags2_raw": 4
         }
       ]
     },
@@ -476,7 +548,7 @@
             "JumpingSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Slow",
@@ -495,6 +567,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "PFX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags_raw": 1280
         },
         {
@@ -502,7 +580,7 @@
             "JumpHeight"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Ranged_Slow",
@@ -531,7 +609,7 @@
             "RechargeTime"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Ranged_Slow",

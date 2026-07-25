@@ -1,0 +1,6 @@
+{
+  "schema": "bin-crawler-export-manifest/1",
+  "note": "entities_fingerprint is the sha256 of the entities exporter (bin_crawler/parser/**/*.py + export_entities.py) at export time. If it disagrees with the current committed exporter source, THIS entities/ tree is stale \u2014 re-run export_entities for this dataset and commit. Guarded by src/data/export-staleness.test.ts.",
+  "entities_fingerprint": "098f42a2a1c06fc058f222a934ae802c64145b55565a55877ff2ba611d5c3ed1",
+  "entity_files": 731
+}

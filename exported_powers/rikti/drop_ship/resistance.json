@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -63,7 +64,7 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Resistance",
           "target": "Self",
           "table": "Melee_Res_Dmg",
@@ -94,7 +95,7 @@
             "Repel"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Resistance",
           "target": "Self",
           "table": "Melee_Ones",
@@ -143,7 +144,7 @@
             "RechargeTime"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Resistance",
           "target": "Self",
           "table": "Melee_ArchVillain_Res",
@@ -176,7 +177,7 @@
             "Stunned"
           ],
           "type": "Duration",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -197,8 +198,7 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance",
-            "DeepSleep"
+            "IgnoreResistance"
           ],
           "flags_raw": 2096
         },
@@ -209,7 +209,7 @@
             "Repel"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",

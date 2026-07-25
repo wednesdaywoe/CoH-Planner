@@ -22,13 +22,13 @@
   "activate_period": 0.0,
   "endurance_cost": 11.375,
   "interrupt_time": 0.0,
-  "target_type": "MyCreator",
+  "target_type": "MyPet",
   "target_type_secondary": "None",
   "targets_autohit": [
-    "MyCreator"
+    "MyPet"
   ],
   "targets_affected": [
-    "MyCreator"
+    "MyPet"
   ],
   "boosts_allowed": [
     "Res_Damage",
@@ -44,6 +44,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -63,7 +64,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -83,10 +84,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Mastermind_Pets.Zombie_2.Projectile_Vomit"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -99,7 +101,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -119,10 +121,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Mastermind_Pets.Zombie_2.Zombie_Vomit"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -135,7 +138,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -155,10 +158,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Mastermind_Pets.Zombie_2.Enchant"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -171,7 +175,7 @@
             "Grant_Boosted_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -190,6 +194,13 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "power_names": [
+              "Mastermind_Pets.Zombie_2.Resistance"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -215,7 +226,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -235,10 +246,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Mastermind_Pets.Skeleton_2.Disembowel"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -251,7 +263,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -271,10 +283,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Mastermind_Pets.Skeleton_2.Hack"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -287,7 +300,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -307,10 +320,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Mastermind_Pets.Skeleton_2.Slash"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -337,7 +351,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -357,10 +371,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Mastermind_Pets.Skeleton_3.Disembowel"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -387,7 +402,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -407,10 +422,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Mastermind_Pets.Skeleton_2.Gloom"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -423,7 +439,7 @@
             "Revoke_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -443,10 +459,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Mastermind_Pets.Skeleton.Hack"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -459,7 +476,7 @@
             "Revoke_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -479,10 +496,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Mastermind_Pets.Skeleton.Slash"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -495,7 +513,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -515,10 +533,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Mastermind_Pets.Skeleton_2.Costume1"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -531,7 +550,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -551,10 +570,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Mastermind_Pets.Skeleton_2.Enchant"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -567,7 +587,7 @@
             "Grant_Boosted_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -586,6 +606,13 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "power_names": [
+              "Mastermind_Pets.Skeleton_2.Resistance"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -611,7 +638,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -631,10 +658,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Mastermind_Pets.Lich_2.Tenebrous_Tentacles"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -647,7 +675,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -667,10 +695,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Mastermind_Pets.Lich_2.Costume1"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -683,7 +712,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -703,10 +732,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Mastermind_Pets.Lich_2.Enchant"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -719,7 +749,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -739,10 +769,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Mastermind_Pets.Lich_2.Petrifying_Gaze"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -755,7 +786,7 @@
             "Grant_Boosted_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -774,6 +805,13 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "power_names": [
+              "Mastermind_Pets.Lich_2.Resistance"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -782,6 +820,10 @@
         }
       ]
     }
+  ],
+  "procs_allowed": false,
+  "strengths_disallowed": [
+    "RechargeTime"
   ],
   "modes_disallowed": [
     "Disable_All"

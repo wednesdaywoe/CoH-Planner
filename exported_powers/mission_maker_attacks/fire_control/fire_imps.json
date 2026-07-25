@@ -39,6 +39,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -58,7 +59,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Levelminus",
@@ -78,21 +79,29 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Pets_FireImp",
-            "priority_list": "PL_FightPreferMelee"
+            "priority_list": "PL_FightPreferMelee",
+            "type": "EntCreate"
+          },
+          "messages": {
+            "display_attacker_hit": "You call forth Three {PowerName} of dancing flame!",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
           },
           "flags": [
             "CopyBoosts"
           ],
-          "flags_raw": 1280
+          "flags_raw": 1280,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Levelminus",
@@ -112,21 +121,22 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Pets_FireImp",
-            "priority_list": "PL_FightPreferMelee"
+            "priority_list": "PL_FightPreferMelee",
+            "type": "EntCreate"
           },
           "flags": [
             "CopyBoosts"
           ],
-          "flags_raw": 1280
+          "flags_raw": 1280,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Levelminus",
@@ -146,14 +156,15 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Pets_FireImp",
-            "priority_list": "PL_FightPreferMelee"
+            "priority_list": "PL_FightPreferMelee",
+            "type": "EntCreate"
           },
           "flags": [
             "CopyBoosts"
           ],
-          "flags_raw": 1280
+          "flags_raw": 1280,
+          "flags2_raw": 4
         }
       ]
     }

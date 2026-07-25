@@ -39,6 +39,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     140
   ],
@@ -60,7 +61,7 @@
             "Confused"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Immobilize",
@@ -79,9 +80,19 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "DeepSleep"
-          ],
+          "messages": {
+            "display_attacker_hit": "You Confuse {PlayerDest} with your {PowerName}.",
+            "display_victim_hit": "{PlayerSource} Confuses you with their {PowerName}.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "PFX"
+          },
           "flags_raw": 2560
         },
         {
@@ -89,14 +100,14 @@
             "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": 14.5,
           "duration": "0 seconds",
           "magnitude": 0.0,
-          "delay": 1.7000000476837158,
+          "delay": 1.7,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -109,17 +120,20 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "CircleOfThorns.Circle_Mage_Archus.Mass_Confusion"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreCombatMods",
             "NoHitDelay",
-            "NoProjectileDelay"
+            "NoProjectileDelay",
+            "AdjustTimer"
           ],
-          "flags_raw": 196928
+          "flags_raw": 196928,
+          "flags2_raw": 2
         }
       ]
     }

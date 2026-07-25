@@ -49,6 +49,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     104
   ],
@@ -69,10 +70,10 @@
           "attribs": [
             "Held"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Duration",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Ranged_Immobilize",
           "scale": 10.0,
           "duration": "0 seconds",
@@ -108,10 +109,10 @@
           "attribs": [
             "Held"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Duration",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 2.0,
           "duration": "0 seconds",
@@ -147,10 +148,10 @@
           "attribs": [
             "Slow"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "AnyAffected",
           "table": "Ranged_Slow",
           "scale": 0.5,
           "duration": "15 seconds",
@@ -184,12 +185,12 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "JumpHeight"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": -500.0,
           "duration": "15 seconds",

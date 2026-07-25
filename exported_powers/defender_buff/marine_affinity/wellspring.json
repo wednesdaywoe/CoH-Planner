@@ -48,6 +48,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -67,7 +68,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Level",
@@ -87,14 +88,16 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
-            "entity_def": "Pets_Wellspring_Def"
+            "entity_def": "Pets_Wellspring_Def",
+            "priority_list": "Pet.Follow",
+            "type": "EntCreate"
           },
           "flags": [
             "NoFloaters",
             "CopyBoosts"
           ],
-          "flags_raw": 1281
+          "flags_raw": 1281,
+          "flags2_raw": 4
         }
       ]
     }

@@ -44,6 +44,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -63,7 +64,7 @@
             "ToHit"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Buff_ToHit",
@@ -82,6 +83,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You prepare yourself to unleash a devastating attack on your foes.",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags": [
             "IgnoreResistance"
           ],
@@ -99,7 +107,7 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Buff_Dmg",
@@ -118,41 +126,11 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "IgnoreStrength",
-            "IgnoreResistance"
-          ],
-          "flags_raw": 1072
-        },
-        {
-          "attribs": [
-            "Revoke_Power"
-          ],
-          "type": "Magnitude",
-          "application_type": "Immediate",
-          "aspect": "Absolute",
-          "target": "Self",
-          "table": "Melee_Ones",
-          "scale": 1.0,
-          "duration": "0 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Ignore",
-          "stack_limit": 2,
-          "stack_key": null,
-          "params": {
-            "type": "Power",
-            "power_names": [
-              "Temporary_Powers.Temporary_Powers.Combo_Level_1"
-            ]
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "GENERICCONTINUING/BUFFDAMAGECONTINUING.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
           },
           "flags": [
             "IgnoreStrength",
@@ -165,7 +143,7 @@
             "Revoke_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
@@ -185,10 +163,48 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Combo_Level_1"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
+        },
+        {
+          "attribs": [
+            "Revoke_Power"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": null,
+          "params": {
             "power_names": [
               "Temporary_Powers.Temporary_Powers.Combo_Level_2"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -201,7 +217,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
@@ -221,10 +237,18 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Temporary_Powers.Temporary_Powers.Combo_Level_3"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
+          },
+          "messages": {
+            "display_attacker_hit": "You boost your combo level to 3!",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
           },
           "flags": [
             "IgnoreStrength",

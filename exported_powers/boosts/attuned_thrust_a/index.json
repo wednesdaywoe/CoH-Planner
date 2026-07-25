@@ -1,0 +1,19 @@
+{
+  "key": "Boosts.Attuned_Thrust_A",
+  "display_name": "Attuned Thrust A",
+  "help": "Increases run speed by {Boost.Attrib.Movement.Scale}%.",
+  "short_help": "Set: Thrust",
+  "icon": "e_icon_thrust",
+  "powers": [
+    "Boosts.Attuned_Thrust_A.Attuned_Thrust_A"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Thrust: Running Speed"
+  ],
+  "power_short_helps": [
+    "+Run Speed"
+  ]
+}

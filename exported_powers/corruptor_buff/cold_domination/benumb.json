@@ -44,6 +44,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     104,
     128
@@ -73,7 +74,7 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Ranged_Debuff_Dam",
@@ -92,6 +93,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "PFX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreStrength"
           ],
@@ -129,7 +136,7 @@
                 "Repel"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Strength",
               "target": "AnyAffected",
               "table": "Ranged_Stun",
@@ -148,6 +155,12 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "PFX2",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "IgnoreStrength"
               ],
@@ -186,7 +199,7 @@
                 "ToHit"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Strength",
               "target": "AnyAffected",
               "table": "Ranged_Stun",
@@ -205,6 +218,12 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "PFX2",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "IgnoreStrength"
               ],
@@ -231,7 +250,7 @@
             "Regeneration"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -260,7 +279,7 @@
             "Endurance"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -279,6 +298,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of their endurance.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} draining {Damage} points of your endurance.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -300,7 +326,7 @@
             "Regeneration"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Res_Boolean",
@@ -329,7 +355,7 @@
             "Endurance"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_EndDrain",
@@ -348,6 +374,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of their endurance.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} draining {Damage} points of your endurance.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags_raw": 1280
         }
       ]

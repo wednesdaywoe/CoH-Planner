@@ -49,6 +49,7 @@
   "requires": "Epic ownPowerNum? 1 >",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     112,
     124
@@ -71,7 +72,7 @@
             "Endurance"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
@@ -90,6 +91,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": "Your {PowerName} grants you {Damage} points of endurance.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags": [
             "IgnoreResistance"
           ],
@@ -100,7 +108,7 @@
             "Recovery"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -143,7 +151,7 @@
                 "Fire_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Melee_Damage",
@@ -162,6 +170,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Fire damage.",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Fire damage.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags_raw": 1280
             }
           ],
@@ -185,7 +200,7 @@
                     "Fire_Dmg"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Absolute",
                   "target": "AnyAffected",
                   "table": "Melee_InherentDamage",
@@ -204,6 +219,13 @@
                   "stack": "Stack",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "messages": {
+                    "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Fire damage (CONTAINMENT).",
+                    "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Fire damage (CONTAINMENT).",
+                    "display_float": "Containment",
+                    "display_attrib_defense_float": null,
+                    "display_info": "Only against immobilized, held, sleeping, terrified or stunned targets"
+                  },
                   "flags_raw": 1280
                 }
               ]
@@ -227,7 +249,7 @@
                     "Fire_Dmg"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Absolute",
                   "target": "AnyAffected",
                   "table": "Melee_PvPDamage",
@@ -246,6 +268,13 @@
                   "stack": "Stack",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "messages": {
+                    "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Fire damage (CONTAINMENT).",
+                    "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Fire damage (CONTAINMENT).",
+                    "display_float": "Containment",
+                    "display_attrib_defense_float": null,
+                    "display_info": "Only against immobilized, held, sleeping, terrified or stunned targets"
+                  },
                   "flags_raw": 1280
                 }
               ]
@@ -273,7 +302,7 @@
             "Endurance"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "Self",
           "table": "Melee_Ones",

@@ -39,6 +39,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     112,
     140
@@ -61,7 +62,7 @@
             "Psionic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
@@ -80,6 +81,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Psionic damage.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Psionic damage.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags_raw": 1280
         },
         {
@@ -87,7 +95,7 @@
             "Stunned"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Stun",
@@ -106,9 +114,19 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "DeepSleep"
-          ],
+          "messages": {
+            "display_attacker_hit": "You Stun {PlayerDest} with your {PowerName}.",
+            "display_victim_hit": "{PlayerSource} Stuns you with their {PowerName}.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "GENERICCONTINUING/STUNCONTINUING.FX"
+          },
           "flags_raw": 2560
         },
         {
@@ -116,7 +134,7 @@
             "RechargeTime"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Ranged_Slow",
@@ -135,6 +153,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "POWERS/PSIONICS/TEALHITCONTNUING.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreStrength"
           ],
@@ -159,7 +183,7 @@
                 "Psionic_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Ranged_Damage",
@@ -178,6 +202,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Psionic damage.",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Psionic damage.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags_raw": 1280
             }
           ]
@@ -199,7 +230,7 @@
                 "Psionic_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Ranged_Damage",
@@ -218,6 +249,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Psionic damage.",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Psionic damage.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags_raw": 1280
             }
           ]
@@ -241,7 +279,7 @@
             "Psionic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
@@ -260,6 +298,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Psionic damage.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Psionic damage.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags_raw": 1280
         },
         {
@@ -267,7 +312,7 @@
             "Stunned"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Stun",
@@ -286,9 +331,19 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "DeepSleep"
-          ],
+          "messages": {
+            "display_attacker_hit": "You Stun {PlayerDest} with your {PowerName}.",
+            "display_victim_hit": "{PlayerSource} Stuns you with their {PowerName}.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "GENERICCONTINUING/STUNCONTINUING.FX"
+          },
           "flags_raw": 2560
         },
         {
@@ -296,7 +351,7 @@
             "RechargeTime"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Ranged_Slow",
@@ -315,6 +370,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "POWERS/PSIONICS/TEALHITCONTNUING.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreStrength"
           ],
@@ -339,7 +400,7 @@
                 "Psionic_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Ranged_Damage",
@@ -358,6 +419,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Psionic damage.",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Psionic damage.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags_raw": 1280
             }
           ]
@@ -379,7 +447,7 @@
                 "Psionic_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Ranged_Damage",
@@ -398,6 +466,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Psionic damage.",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Psionic damage.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags_raw": 1280
             }
           ]

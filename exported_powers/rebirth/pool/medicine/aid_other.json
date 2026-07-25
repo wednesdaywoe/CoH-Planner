@@ -45,6 +45,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -61,10 +62,10 @@
       "templates": [
         {
           "attribs": [
-            "Add_Behavior"
+            "Power_Redirect"
           ],
           "type": "Constant",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -83,10 +84,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Pets.Pool_Medicine_AidOther.AidOther_NoInterrupt"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 3120
         }
       ]
     },
@@ -104,10 +112,10 @@
       "templates": [
         {
           "attribs": [
-            "Add_Behavior"
+            "Power_Redirect"
           ],
           "type": "Constant",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -126,10 +134,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Pets.Pool_Medicine_AidOther.AidOther_Interrupt"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 3120
         }
       ]
     },
@@ -150,7 +165,7 @@
             "Heal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Heal",
@@ -168,9 +183,20 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
+    }
+  ],
+  "redirect": [
+    {
+      "name": "Pets.Pool_Medicine_AidOther.AidOther_NoInterrupt",
+      "condition_expression": "Pool.Medicine.Field_Medic source.ownPower?"
+    },
+    {
+      "name": "Pets.Pool_Medicine_AidOther.AidOther_Interrupt",
+      "condition_expression": "Always"
     }
   ],
   "modes_disallowed": [

@@ -22,13 +22,13 @@
   "activate_period": 0.0,
   "endurance_cost": 11.375,
   "interrupt_time": 0.0,
-  "target_type": "MyCreator",
+  "target_type": "MyPet",
   "target_type_secondary": "None",
   "targets_autohit": [
-    "MyCreator"
+    "MyPet"
   ],
   "targets_affected": [
-    "MyCreator"
+    "MyPet"
   ],
   "boosts_allowed": [
     "EnduranceDiscount",
@@ -44,6 +44,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -63,7 +64,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -83,10 +84,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Mastermind_Pets.Droid_3.Full_Auto_Laser"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -99,7 +101,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -119,10 +121,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Mastermind_Pets.Droid_3.Overcharged_Burst"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -135,7 +138,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -155,10 +158,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Mastermind_Pets.Droid_3.Upgrade"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -185,7 +189,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -205,10 +209,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Mastermind_Pets.Protector_3.Photon_Grenade"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -221,7 +226,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -241,10 +246,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Mastermind_Pets.Protector_3.Seeker_Drones"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -257,7 +263,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -277,10 +283,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Mastermind_Pets.Protector_3.Overcharged_Burst"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -293,37 +300,7 @@
             "Grant_Boosted_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
-          "aspect": "Absolute",
-          "target": "AnyAffected",
-          "table": "Ranged_Ones",
-          "scale": 1.0,
-          "duration": "0 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Ignore",
-          "stack_limit": 2,
-          "stack_key": null,
-          "flags": [
-            "IgnoreStrength",
-            "IgnoreResistance"
-          ],
-          "flags_raw": 1072
-        },
-        {
-          "attribs": [
-            "Grant_Power"
-          ],
-          "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -343,10 +320,48 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
+            "power_names": [
+              "Mastermind_Pets.Protector_3.Repair"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
+        },
+        {
+          "attribs": [
+            "Grant_Power"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": null,
+          "params": {
             "power_names": [
               "Mastermind_Pets.Protector_3.Upgrade"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -373,7 +388,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -393,10 +408,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Mastermind_Pets.Assault_3.Swarm_Missiles"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -409,7 +425,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -429,10 +445,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Mastermind_Pets.Assault_3.Incendiary_Swarm_Missiles"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -445,7 +462,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -465,10 +482,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Mastermind_Pets.Assault_3.Overcharged_Blast"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -481,7 +499,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -501,10 +519,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Mastermind_Pets.Assault_3.Upgrade"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -531,12 +550,12 @@
             "Evade"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 100.0,
-          "duration": "11.50 seconds",
+          "duration": "11.5 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -550,6 +569,15 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [
+              49,
+              397
+            ],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
@@ -559,6 +587,10 @@
         }
       ]
     }
+  ],
+  "procs_allowed": false,
+  "strengths_disallowed": [
+    "RechargeTime"
   ],
   "modes_disallowed": [
     "Disable_All"

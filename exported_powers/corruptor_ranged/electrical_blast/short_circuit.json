@@ -50,6 +50,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     112,
     132
@@ -72,12 +73,12 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 0.18,
-          "duration": "1.50 seconds",
+          "duration": "1.5 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -91,6 +92,19 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage over time.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage over time.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "PFX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags_raw": 1280
         },
         {
@@ -98,7 +112,7 @@
             "Endurance"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_EndDrain",
@@ -117,6 +131,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of their endurance.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} draining {Damage} points of your endurance.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags_raw": 1280
         }
       ],
@@ -138,7 +159,7 @@
                 "Energy_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Ranged_Damage",
@@ -157,6 +178,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage.",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags_raw": 1280
             }
           ]
@@ -180,7 +208,7 @@
                 "Energy_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Ranged_Damage",
@@ -199,6 +227,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage (SHOCKED!).",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage (SHOCKED!).",
+                "display_float": "Shocked!",
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags_raw": 1280
             },
             {
@@ -206,7 +241,7 @@
                 "Endurance"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "Self",
               "table": "Ranged_EndDrain",
@@ -225,6 +260,13 @@
               "stack": "Ignore",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": null,
+                "display_victim_hit": "Your {PowerName} grants you {Damage} points of endurance.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags": [
                 "IgnoreStrength",
                 "IgnoreResistance"
@@ -236,7 +278,7 @@
                 "Recovery"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_EndDrain",
@@ -278,12 +320,12 @@
                 "Energy_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Ranged_InherentDamage",
               "scale": 0.18,
-              "duration": "1.50 seconds",
+              "duration": "1.5 seconds",
               "magnitude": 1.0,
               "delay": 0.0,
               "duration_expression": "",
@@ -297,6 +339,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage over time (SCOURGE).",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage over time (SCOURGE).",
+                "display_float": "Scourge",
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags_raw": 1280
             }
           ],
@@ -318,7 +367,7 @@
                     "Energy_Dmg"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Absolute",
                   "target": "AnyAffected",
                   "table": "Ranged_InherentDamage",
@@ -337,6 +386,13 @@
                   "stack": "Stack",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "messages": {
+                    "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage (SCOURGE).",
+                    "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage (SCOURGE).",
+                    "display_float": "Scourge",
+                    "display_attrib_defense_float": null,
+                    "display_info": null
+                  },
                   "flags_raw": 1280
                 }
               ]
@@ -362,12 +418,12 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_PvPDamage",
           "scale": 0.1475,
-          "duration": "2.10 seconds",
+          "duration": "2.1 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -381,6 +437,19 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage over time.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage over time.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "PFX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags_raw": 1280
         },
         {
@@ -388,7 +457,7 @@
             "Endurance"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_EndDrain",
@@ -407,6 +476,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of their endurance.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} draining {Damage} points of your endurance.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags_raw": 1280
         }
       ],
@@ -430,7 +506,7 @@
                 "Energy_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Ranged_PvPDamage",
@@ -449,6 +525,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage (SHOCKED!).",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage (SHOCKED!).",
+                "display_float": "Shocked!",
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags_raw": 1280
             },
             {
@@ -456,7 +539,7 @@
                 "Endurance"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "Self",
               "table": "Ranged_EndDrain",
@@ -475,6 +558,13 @@
               "stack": "Ignore",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": null,
+                "display_victim_hit": "Your {PowerName} grants you {Damage} points of endurance.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags": [
                 "IgnoreStrength",
                 "IgnoreResistance"
@@ -486,7 +576,7 @@
                 "Recovery"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_EndDrain",
@@ -528,12 +618,12 @@
                 "Energy_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Ranged_PvPDamage",
               "scale": 0.1475,
-              "duration": "2.10 seconds",
+              "duration": "2.1 seconds",
               "magnitude": 1.0,
               "delay": 0.0,
               "duration_expression": "",
@@ -547,6 +637,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage over time (SCOURGE).",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage over time (SCOURGE).",
+                "display_float": "Scourge",
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags_raw": 1280
             }
           ]
@@ -570,7 +667,7 @@
             "Recovery"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_EndDrain",
@@ -612,7 +709,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
@@ -632,10 +729,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Redirects.Shock_Therapy.Shock_Therapy_Static"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",

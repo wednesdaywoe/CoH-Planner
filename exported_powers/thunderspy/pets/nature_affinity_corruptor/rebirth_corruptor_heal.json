@@ -47,6 +47,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -65,13 +66,13 @@
           "attribs": [
             "Heal"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Ranged_Heal",
           "scale": 0.909091,
-          "duration": "60.10 seconds",
+          "duration": "60.1 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -104,13 +105,13 @@
           "attribs": [
             "Endurance"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 0.090909,
-          "duration": "60.10 seconds",
+          "duration": "60.1 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",

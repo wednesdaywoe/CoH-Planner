@@ -45,6 +45,7 @@
   "requires": "",
   "activate_requires": "isVIP? isAccountInventoryLoaded? ! ||",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -63,10 +64,10 @@
           "attribs": [
             "Terrorized"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Duration",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 10.0,
           "duration": "0 seconds",
@@ -102,10 +103,10 @@
           "attribs": [
             "Terrorized"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Duration",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 2.0,
           "duration": "0 seconds",
@@ -126,6 +127,7 @@
       ]
     }
   ],
+  "max_boosts": 0,
   "modes_disallowed": [
     "Disable_All",
     "Disable_Incarn"

@@ -39,6 +39,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -58,7 +59,7 @@
             "Silent_Kill"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -87,7 +88,7 @@
             "Create_Entity"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -107,22 +108,29 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "CircleOfThorns_Explosion",
-            "priority_list": "PL_StaticObject"
+            "priority_list": "PL_StaticObject",
+            "type": "EntCreate"
+          },
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": "The Mage explodes in a massive blast of energy, killing himself and dealing {Damage} points of energy damage to you.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
           },
           "flags": [
-            "DeepSleep",
             "CopyBoosts"
           ],
-          "flags_raw": 2560
+          "flags_raw": 2560,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Null"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",

@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     104,
     124
@@ -59,10 +60,10 @@
           "attribs": [
             "Held"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Duration",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Ranged_Immobilize",
           "scale": 8.0,
           "duration": "0 seconds",
@@ -98,10 +99,10 @@
           "attribs": [
             "Held"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Duration",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Ranged_Immobilize",
           "scale": 8.0,
           "duration": "0 seconds",
@@ -137,13 +138,13 @@
           "attribs": [
             "Tempdamage"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Ranged_Tempdamage",
           "scale": 0.22,
-          "duration": "4.20 seconds",
+          "duration": "4.2 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",

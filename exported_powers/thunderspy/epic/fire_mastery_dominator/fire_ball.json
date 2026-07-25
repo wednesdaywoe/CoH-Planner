@@ -46,6 +46,7 @@
   "requires": "$archetype @Class_Dominator ==",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     112,
     124
@@ -67,13 +68,13 @@
           "attribs": [
             "Damage"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 0.585,
-          "duration": "2.10 seconds",
+          "duration": "2.1 seconds",
           "magnitude": 1.0,
           "delay": 1.0,
           "duration_expression": "",
@@ -106,10 +107,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 8.0,
           "duration": "0 seconds",
@@ -145,13 +146,13 @@
           "attribs": [
             "Damage"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 0.942731,
-          "duration": "2.10 seconds",
+          "duration": "2.1 seconds",
           "magnitude": 1.0,
           "delay": 1.0,
           "duration_expression": "",

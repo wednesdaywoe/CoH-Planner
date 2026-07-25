@@ -52,6 +52,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -71,7 +72,7 @@
             "Fly"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -90,6 +91,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "PFX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreResistance"
           ],
@@ -100,7 +107,7 @@
             "FlyingSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_SpeedFlying",
@@ -134,7 +141,7 @@
             "MovementControl"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Control",
@@ -168,7 +175,7 @@
             "MovementFriction"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Friction",
@@ -202,7 +209,7 @@
             "Recovery"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -236,7 +243,7 @@
             "ToHit"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Buff_ToHit",
@@ -271,7 +278,7 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Buff_Dmg",
@@ -307,7 +314,7 @@
             "Negative_Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "Self",
           "table": "Melee_Ones",
@@ -342,7 +349,7 @@
             "Set_Mode"
           ],
           "type": "Constant",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -363,8 +370,7 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance",
-            "DeepSleep"
+            "IgnoreResistance"
           ],
           "flags_raw": 3120,
           "mode_name": "Suppress_PoolToggles"
@@ -374,7 +380,7 @@
             "Set_Mode"
           ],
           "type": "Constant",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -395,8 +401,7 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance",
-            "DeepSleep"
+            "IgnoreResistance"
           ],
           "flags_raw": 3120,
           "mode_name": "Disable_Walk"
@@ -406,7 +411,7 @@
             "Set_Mode"
           ],
           "type": "Constant",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -427,8 +432,7 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance",
-            "DeepSleep"
+            "IgnoreResistance"
           ],
           "flags_raw": 3120,
           "mode_name": "Peacebringer_Blaster_Mode"
@@ -438,7 +442,7 @@
             "Set_Costume"
           ],
           "type": "Constant",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -457,10 +461,14 @@
           "stack": "Extend",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "costume_name": "Kheldian_Nova_Peacebringer",
+            "priority": 9,
+            "type": "Costume"
+          },
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance",
-            "DeepSleep"
+            "IgnoreResistance"
           ],
           "flags_raw": 3120
         }
@@ -485,7 +493,7 @@
                 "Fly"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Melee_Ones",
@@ -528,7 +536,7 @@
                 "Null"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Melee_Ones",
@@ -547,6 +555,12 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "PFX2",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "IgnoreResistance"
               ],

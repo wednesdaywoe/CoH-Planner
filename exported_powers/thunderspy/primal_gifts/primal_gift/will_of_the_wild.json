@@ -50,6 +50,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -75,10 +76,10 @@
             "Psionic_Dmg",
             "Toxic_Dmg"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
           "aspect": "Resistance",
-          "target": "",
+          "target": "Self",
           "table": "Melee_Res_DMG",
           "scale": 2.5,
           "duration": "120 seconds",
@@ -114,10 +115,10 @@
           "attribs": [
             "Regeneration"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Melee_Ones",
           "scale": 1.0,
           "duration": "120 seconds",
@@ -153,10 +154,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "Self",
           "table": "Melee_Ones",
           "scale": 0.5,
           "duration": "120 seconds",
@@ -192,10 +193,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 0.5,
           "duration": "120 seconds",

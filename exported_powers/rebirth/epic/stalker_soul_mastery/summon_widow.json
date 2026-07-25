@@ -52,6 +52,7 @@
   "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Stalker_Soul_Mastery.Dark_Blast Epic.Stalker_Soul_Mastery.Moonbeam && Epic.Stalker_Soul_Mastery.Dark_Blast Epic.Stalker_Soul_Mastery.Shadow_Meld && || Epic.Stalker_Soul_Mastery.Dark_Blast Epic.Stalker_Soul_Mastery.Soul_Storm && || Epic.Stalker_Soul_Mastery.Moonbeam Epic.Stalker_Soul_Mastery.Shadow_Meld && || Epic.Stalker_Soul_Mastery.Moonbeam Epic.Stalker_Soul_Mastery.Soul_Storm && || &&",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -71,7 +72,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -98,7 +99,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     }

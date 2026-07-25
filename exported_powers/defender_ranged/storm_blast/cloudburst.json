@@ -54,6 +54,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     104,
     128
@@ -78,12 +79,12 @@
             "Cold_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 0.2275,
-          "duration": "2.90 seconds",
+          "duration": "2.9 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -97,6 +98,19 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Cold damage over time.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Cold damage over time.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": "50% chance of Lightning"
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "PFX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags_raw": 1280
         }
       ],
@@ -118,7 +132,7 @@
                 "RechargeTime"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Slow",
@@ -137,6 +151,13 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": null,
+                "display_victim_hit": null,
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "If target is in a Storm Cell"
+              },
               "flags": [
                 "IgnoreStrength"
               ],
@@ -147,7 +168,7 @@
                 "JumpHeight"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Strength",
               "target": "AnyAffected",
               "table": "Melee_Slow",
@@ -166,6 +187,13 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": null,
+                "display_victim_hit": null,
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "If target is in a Storm Cell"
+              },
               "flags": [
                 "IgnoreStrength"
               ],
@@ -178,7 +206,7 @@
                 "JumpingSpeed"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Slow",
@@ -197,6 +225,13 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": null,
+                "display_victim_hit": null,
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "If target is in a Storm Cell"
+              },
               "flags_raw": 1280
             },
             {
@@ -204,7 +239,7 @@
                 "ToHit"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_Debuff_ToHit",
@@ -223,6 +258,13 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": null,
+                "display_victim_hit": null,
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "If target is in a Storm Cell"
+              },
               "flags_raw": 1280
             }
           ]
@@ -246,7 +288,7 @@
                 "Set_Mode"
               ],
               "type": "Constant",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
@@ -265,6 +307,13 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "Your {PowerName} has left {PlayerDest} wet.",
+                "display_victim_hit": null,
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags": [
                 "IgnoreStrength",
                 "IgnoreResistance",
@@ -296,12 +345,12 @@
             "Cold_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_PvPDamage",
           "scale": 0.201,
-          "duration": "2.90 seconds",
+          "duration": "2.9 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -315,6 +364,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Cold damage over time.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Cold damage over time.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": "50% chance of Lightning"
+          },
           "flags_raw": 1280
         }
       ],
@@ -336,7 +392,7 @@
                 "RechargeTime"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Slow",
@@ -355,6 +411,13 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": null,
+                "display_victim_hit": null,
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "If target is in a Storm Cell"
+              },
               "flags": [
                 "IgnoreStrength"
               ],
@@ -365,7 +428,7 @@
                 "JumpHeight"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Strength",
               "target": "AnyAffected",
               "table": "Melee_Slow",
@@ -384,6 +447,13 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": null,
+                "display_victim_hit": null,
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "If target is in a Storm Cell"
+              },
               "flags": [
                 "IgnoreStrength"
               ],
@@ -396,7 +466,7 @@
                 "JumpingSpeed"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Slow",
@@ -415,6 +485,13 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": null,
+                "display_victim_hit": null,
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "If target is in a Storm Cell"
+              },
               "flags_raw": 1280
             },
             {
@@ -422,7 +499,7 @@
                 "ToHit"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_Debuff_ToHit",
@@ -441,6 +518,13 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": null,
+                "display_victim_hit": null,
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "If target is in a Storm Cell"
+              },
               "flags_raw": 1280
             }
           ]
@@ -468,7 +552,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "SelfAndPets",
           "table": "Melee_Ones",
@@ -488,10 +572,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Redirects.Storm_Blast.StormCell_LightningAura"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags_raw": 1280
         },
@@ -500,7 +585,7 @@
             "Set_Mode"
           ],
           "type": "Constant",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -546,7 +631,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -566,10 +651,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Temporary_Powers.Temporary_Powers.StormBlast_StormBrewing"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -613,7 +699,7 @@
                     "Grant_Power"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Current",
                   "target": "SelfAndPets",
                   "table": "Melee_Ones",
@@ -633,10 +719,11 @@
                   "stack_limit": 2,
                   "stack_key": null,
                   "params": {
-                    "type": "Power",
                     "power_names": [
                       "Redirects.Storm_Blast.StormCell_WindSpeed"
-                    ]
+                    ],
+                    "count": 1,
+                    "type": "Power"
                   },
                   "flags_raw": 1280
                 }

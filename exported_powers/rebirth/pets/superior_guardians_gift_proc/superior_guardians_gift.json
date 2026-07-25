@@ -40,6 +40,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -59,7 +60,7 @@
             "Absorb"
           ],
           "type": "Expression",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Maximum",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -68,19 +69,20 @@
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
-          "magnitude_expression": "",
+          "magnitude_expression": "Max.kHitPoints target> 0.05 *",
           "application_period": 0.0,
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "isPVPMap? ! enttype target> player eq &&",
-          "caster_stack": "Unlimited",
+          "caster_stack": "Collective",
           "stack": "StackThenIgnore",
           "stack_limit": 5,
           "stack_key": "ResolveAbsorb",
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -101,7 +103,7 @@
             "Stunned"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -116,13 +118,14 @@
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "isPVPMap? ! enttype target> player eq &&",
-          "caster_stack": "Unlimited",
+          "caster_stack": "Collective",
           "stack": "StackThenIgnore",
           "stack_limit": 5,
           "stack_key": "ResolveStun",
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -143,7 +146,7 @@
             "Sleep"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -158,13 +161,14 @@
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "isPVPMap? ! enttype target> player eq &&",
-          "caster_stack": "Unlimited",
+          "caster_stack": "Collective",
           "stack": "StackThenIgnore",
           "stack_limit": 5,
           "stack_key": "ResolveSleep",
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -185,7 +189,7 @@
             "Immobilized"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -200,13 +204,14 @@
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "isPVPMap? ! enttype target> player eq &&",
-          "caster_stack": "Unlimited",
+          "caster_stack": "Collective",
           "stack": "StackThenIgnore",
           "stack_limit": 5,
           "stack_key": "ResolveImmob",
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -227,7 +232,7 @@
             "Held"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -242,13 +247,14 @@
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "isPVPMap? ! enttype target> player eq &&",
-          "caster_stack": "Unlimited",
+          "caster_stack": "Collective",
           "stack": "StackThenIgnore",
           "stack_limit": 5,
           "stack_key": "ResolveHeld",
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -269,7 +275,7 @@
             "Terrorized"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -284,13 +290,14 @@
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "isPVPMap? ! enttype target> player eq &&",
-          "caster_stack": "Unlimited",
+          "caster_stack": "Collective",
           "stack": "StackThenIgnore",
           "stack_limit": 5,
           "stack_key": "ResolveFear",
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -311,7 +318,7 @@
             "Confused"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -326,13 +333,14 @@
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "isPVPMap? ! enttype target> player eq &&",
-          "caster_stack": "Unlimited",
+          "caster_stack": "Collective",
           "stack": "StackThenIgnore",
           "stack_limit": 5,
           "stack_key": "ResolveConfuse",
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -353,7 +361,7 @@
             "Absorb"
           ],
           "type": "Expression",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Maximum",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -362,19 +370,20 @@
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
-          "magnitude_expression": "",
+          "magnitude_expression": "Max.kHitPoints target> 0.20 *",
           "application_period": 0.0,
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "isPVPMap? enttype target> player eq &&",
-          "caster_stack": "Unlimited",
+          "caster_stack": "Collective",
           "stack": "StackThenIgnore",
           "stack_limit": 3,
           "stack_key": "ResolveAbsorb",
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -395,7 +404,7 @@
             "Stunned"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "AnyAffected",
           "table": "Ranged_Res_Boolean",
@@ -410,14 +419,15 @@
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "isPVPMap? enttype target> player eq &&",
-          "caster_stack": "Unlimited",
+          "caster_stack": "Collective",
           "stack": "StackThenIgnore",
           "stack_limit": 3,
           "stack_key": "ResolveStun",
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -438,7 +448,7 @@
             "Sleep"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "AnyAffected",
           "table": "Ranged_Res_Boolean",
@@ -453,14 +463,15 @@
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "isPVPMap? enttype target> player eq &&",
-          "caster_stack": "Unlimited",
+          "caster_stack": "Collective",
           "stack": "StackThenIgnore",
           "stack_limit": 3,
           "stack_key": "ResolveSleep",
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -481,7 +492,7 @@
             "Immobilized"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "AnyAffected",
           "table": "Ranged_Res_Boolean",
@@ -496,14 +507,15 @@
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "isPVPMap? enttype target> player eq &&",
-          "caster_stack": "Unlimited",
+          "caster_stack": "Collective",
           "stack": "StackThenIgnore",
           "stack_limit": 3,
           "stack_key": "ResolveImmob",
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -524,7 +536,7 @@
             "Held"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "AnyAffected",
           "table": "Ranged_Res_Boolean",
@@ -539,14 +551,15 @@
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "isPVPMap? enttype target> player eq &&",
-          "caster_stack": "Unlimited",
+          "caster_stack": "Collective",
           "stack": "StackThenIgnore",
           "stack_limit": 3,
           "stack_key": "ResolveHeld",
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -567,7 +580,7 @@
             "Terrorized"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "AnyAffected",
           "table": "Ranged_Res_Boolean",
@@ -582,14 +595,15 @@
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "isPVPMap? enttype target> player eq &&",
-          "caster_stack": "Unlimited",
+          "caster_stack": "Collective",
           "stack": "StackThenIgnore",
           "stack_limit": 3,
           "stack_key": "ResolveFear",
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -610,7 +624,7 @@
             "Confused"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "AnyAffected",
           "table": "Ranged_Res_Boolean",
@@ -625,14 +639,15 @@
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "isPVPMap? enttype target> player eq &&",
-          "caster_stack": "Unlimited",
+          "caster_stack": "Collective",
           "stack": "StackThenIgnore",
           "stack_limit": 3,
           "stack_key": "ResolveConfuse",
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -650,10 +665,10 @@
       "templates": [
         {
           "attribs": [
-            "Null"
+            "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -668,7 +683,7 @@
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "",
-          "caster_stack": "Unlimited",
+          "caster_stack": "Collective",
           "stack": "StackThenIgnore",
           "stack_limit": 5,
           "stack_key": null,
@@ -681,7 +696,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     }

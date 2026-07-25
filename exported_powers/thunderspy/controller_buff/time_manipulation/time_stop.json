@@ -46,6 +46,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     104,
     132
@@ -67,10 +68,10 @@
           "attribs": [
             "Held"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Duration",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Ranged_Immobilize",
           "scale": 8.0,
           "duration": "0 seconds",
@@ -106,10 +107,10 @@
           "attribs": [
             "Held"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Duration",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Ranged_Immobilize",
           "scale": 2.0,
           "duration": "0 seconds",
@@ -145,10 +146,10 @@
           "attribs": [
             "Held"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Duration",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Ranged_Immobilize",
           "scale": 4.0,
           "duration": "0 seconds",
@@ -184,10 +185,10 @@
           "attribs": [
             "Held"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Duration",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Ranged_Immobilize",
           "scale": 1.0,
           "duration": "0 seconds",
@@ -223,10 +224,10 @@
           "attribs": [
             "Stun"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "AnyAffected",
           "table": "Ranged_Stun",
           "scale": -0.25,
           "duration": "20 seconds",
@@ -262,10 +263,10 @@
           "attribs": [
             "Regeneration"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": -0.5,
           "duration": "20 seconds",
@@ -301,10 +302,10 @@
           "attribs": [
             "Regeneration"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": -2.0,
           "duration": "20 seconds",

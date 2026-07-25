@@ -47,6 +47,7 @@
   "requires": "Corruptor_Buff.Nature_Affinity.Living_Spores !",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -66,7 +67,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "",
           "target": "",
           "table": "Ranged_Ones",

@@ -45,6 +45,7 @@
   "requires": "",
   "activate_requires": "isVIP? isAccountInventoryLoaded? ! ||",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -64,12 +65,12 @@
             "Smashing_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": 0.22,
-          "duration": "10.30 seconds",
+          "duration": "10.3 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -85,8 +86,10 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance"
-          ]
+            "IgnoreResistance",
+            "Boost"
+          ],
+          "flags_raw": 5168
         }
       ]
     },
@@ -107,12 +110,12 @@
             "Lethal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": 0.22,
-          "duration": "10.30 seconds",
+          "duration": "10.3 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -128,8 +131,10 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance"
-          ]
+            "IgnoreResistance",
+            "Boost"
+          ],
+          "flags_raw": 5168
         }
       ]
     },
@@ -150,12 +155,12 @@
             "Fire_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": 0.22,
-          "duration": "10.30 seconds",
+          "duration": "10.3 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -171,8 +176,10 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance"
-          ]
+            "IgnoreResistance",
+            "Boost"
+          ],
+          "flags_raw": 5168
         }
       ]
     },
@@ -193,12 +200,12 @@
             "Cold_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": 0.22,
-          "duration": "10.30 seconds",
+          "duration": "10.3 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -214,8 +221,10 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance"
-          ]
+            "IgnoreResistance",
+            "Boost"
+          ],
+          "flags_raw": 5168
         }
       ]
     },
@@ -236,12 +245,12 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": 0.22,
-          "duration": "10.30 seconds",
+          "duration": "10.3 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -257,8 +266,10 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance"
-          ]
+            "IgnoreResistance",
+            "Boost"
+          ],
+          "flags_raw": 5168
         }
       ]
     },
@@ -279,12 +290,12 @@
             "Negative_Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": 0.22,
-          "duration": "10.30 seconds",
+          "duration": "10.3 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -300,8 +311,10 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance"
-          ]
+            "IgnoreResistance",
+            "Boost"
+          ],
+          "flags_raw": 5168
         }
       ]
     },
@@ -322,12 +335,12 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": 0.22,
-          "duration": "10.30 seconds",
+          "duration": "10.3 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -343,8 +356,10 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance"
-          ]
+            "IgnoreResistance",
+            "Boost"
+          ],
+          "flags_raw": 5168
         }
       ]
     },
@@ -365,12 +380,12 @@
             "Psionic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": 0.22,
-          "duration": "10.30 seconds",
+          "duration": "10.3 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -386,8 +401,10 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance"
-          ]
+            "IgnoreResistance",
+            "Boost"
+          ],
+          "flags_raw": 5168
         }
       ]
     },
@@ -408,12 +425,12 @@
             "Smashing_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": 0.11,
-          "duration": "10.30 seconds",
+          "duration": "10.3 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -428,9 +445,12 @@
           "stack_limit": 2,
           "stack_key": null,
           "flags": [
+            "BoostIgnoreDiminishing",
             "IgnoreStrength",
-            "IgnoreResistance"
-          ]
+            "IgnoreResistance",
+            "Boost"
+          ],
+          "flags_raw": 5170
         }
       ]
     },
@@ -451,12 +471,12 @@
             "Lethal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": 0.11,
-          "duration": "10.30 seconds",
+          "duration": "10.3 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -471,9 +491,12 @@
           "stack_limit": 2,
           "stack_key": null,
           "flags": [
+            "BoostIgnoreDiminishing",
             "IgnoreStrength",
-            "IgnoreResistance"
-          ]
+            "IgnoreResistance",
+            "Boost"
+          ],
+          "flags_raw": 5170
         }
       ]
     },
@@ -494,12 +517,12 @@
             "Fire_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": 0.11,
-          "duration": "10.30 seconds",
+          "duration": "10.3 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -514,9 +537,12 @@
           "stack_limit": 2,
           "stack_key": null,
           "flags": [
+            "BoostIgnoreDiminishing",
             "IgnoreStrength",
-            "IgnoreResistance"
-          ]
+            "IgnoreResistance",
+            "Boost"
+          ],
+          "flags_raw": 5170
         }
       ]
     },
@@ -537,12 +563,12 @@
             "Cold_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": 0.11,
-          "duration": "10.30 seconds",
+          "duration": "10.3 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -557,9 +583,12 @@
           "stack_limit": 2,
           "stack_key": null,
           "flags": [
+            "BoostIgnoreDiminishing",
             "IgnoreStrength",
-            "IgnoreResistance"
-          ]
+            "IgnoreResistance",
+            "Boost"
+          ],
+          "flags_raw": 5170
         }
       ]
     },
@@ -580,12 +609,12 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": 0.11,
-          "duration": "10.30 seconds",
+          "duration": "10.3 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -600,9 +629,12 @@
           "stack_limit": 2,
           "stack_key": null,
           "flags": [
+            "BoostIgnoreDiminishing",
             "IgnoreStrength",
-            "IgnoreResistance"
-          ]
+            "IgnoreResistance",
+            "Boost"
+          ],
+          "flags_raw": 5170
         }
       ]
     },
@@ -623,12 +655,12 @@
             "Negative_Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": 0.11,
-          "duration": "10.30 seconds",
+          "duration": "10.3 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -643,9 +675,12 @@
           "stack_limit": 2,
           "stack_key": null,
           "flags": [
+            "BoostIgnoreDiminishing",
             "IgnoreStrength",
-            "IgnoreResistance"
-          ]
+            "IgnoreResistance",
+            "Boost"
+          ],
+          "flags_raw": 5170
         }
       ]
     },
@@ -666,12 +701,12 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": 0.11,
-          "duration": "10.30 seconds",
+          "duration": "10.3 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -686,9 +721,12 @@
           "stack_limit": 2,
           "stack_key": null,
           "flags": [
+            "BoostIgnoreDiminishing",
             "IgnoreStrength",
-            "IgnoreResistance"
-          ]
+            "IgnoreResistance",
+            "Boost"
+          ],
+          "flags_raw": 5170
         }
       ]
     },
@@ -709,12 +747,12 @@
             "Psionic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": 0.11,
-          "duration": "10.30 seconds",
+          "duration": "10.3 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -729,13 +767,17 @@
           "stack_limit": 2,
           "stack_key": null,
           "flags": [
+            "BoostIgnoreDiminishing",
             "IgnoreStrength",
-            "IgnoreResistance"
-          ]
+            "IgnoreResistance",
+            "Boost"
+          ],
+          "flags_raw": 5170
         }
       ]
     }
   ],
+  "max_boosts": 0,
   "modes_disallowed": [
     "Disable_All",
     "Disable_Epic",

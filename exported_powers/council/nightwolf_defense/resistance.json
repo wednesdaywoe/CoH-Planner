@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -57,7 +58,7 @@
             "Immobilized"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -87,7 +88,7 @@
             "Immobilized"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Resistance",
           "target": "Self",
           "table": "Melee_Ones",
@@ -119,7 +120,7 @@
             "RechargeTime"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Resistance",
           "target": "Self",
           "table": "Melee_Ones",
@@ -150,7 +151,7 @@
             "Lethal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Resistance",
           "target": "Self",
           "table": "Melee_Ones",
@@ -184,7 +185,7 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Resistance",
           "target": "Self",
           "table": "Melee_Ones",

@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     112,
     120
@@ -59,13 +60,13 @@
           "attribs": [
             "Tempdamage"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Ranged_Tempdamage",
           "scale": 0.162,
-          "duration": "3.30 seconds",
+          "duration": "3.3 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -98,15 +99,15 @@
           "attribs": [
             "Tempdamage"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Ranged_Tempdamage",
           "scale": 1.0,
           "duration": "0 seconds",
           "magnitude": 0.10000000149011612,
-          "delay": 3.299999952316284,
+          "delay": 3.3,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,

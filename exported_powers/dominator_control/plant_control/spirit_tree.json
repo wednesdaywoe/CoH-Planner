@@ -48,6 +48,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -67,7 +68,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -87,23 +88,31 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Pets_Spirit_Tree",
-            "priority_list": "PL_FightPreferRanged"
+            "priority_list": "PL_FightPreferRanged",
+            "type": "EntCreate"
+          },
+          "messages": {
+            "display_attacker_hit": "A {PowerName} springs from the ground!",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "CopyBoosts"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Level",
@@ -123,17 +132,19 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
-            "entity_def": "PL_StaticObject",
             "display_name": "Spirit Tree",
+            "priority_list": "PL_StaticObject",
             "redirects": [
               "Villain_Pets.Spirit_Tree_Aura.Spirit_Tree"
-            ]
+            ],
+            "type": "EntCreate"
           },
           "flags": [
-            "CopyBoosts"
+            "CopyBoosts",
+            "PseudoPet"
           ],
-          "flags_raw": 1280
+          "flags_raw": 1280,
+          "flags2_raw": 36
         }
       ]
     }

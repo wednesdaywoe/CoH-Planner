@@ -49,6 +49,7 @@
   "requires": "$archetype @Class_Sentinel ==",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     108,
     128
@@ -84,7 +85,7 @@
                 "Lethal_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Melee_Damage",
@@ -103,6 +104,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Lethal damage.",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Lethal damage.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags_raw": 1280
             },
             {
@@ -110,7 +118,7 @@
                 "Cold_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Melee_Damage",
@@ -129,6 +137,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Cold damage.",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Cold damage.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags_raw": 1280
             }
           ]
@@ -153,7 +168,7 @@
                 "Lethal_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Melee_InherentDamage",
@@ -172,6 +187,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Lethal damage (CRITICAL).",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Lethal damage (CRITICAL).",
+                "display_float": "CRITICAL",
+                "display_attrib_defense_float": null,
+                "display_info": "Opportunity"
+              },
               "flags_raw": 1280
             },
             {
@@ -179,7 +201,7 @@
                 "Cold_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Melee_InherentDamage",
@@ -198,6 +220,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Cold damage (CRITICAL).",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Cold damage (CRITICAL).",
+                "display_float": "CRITICAL",
+                "display_attrib_defense_float": null,
+                "display_info": "Opportunity"
+              },
               "flags_raw": 1280
             }
           ]
@@ -234,7 +263,7 @@
                 "Cold_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Melee_PvPDamage",
@@ -253,6 +282,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Cold damage.",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Cold damage.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags_raw": 1280
             }
           ]
@@ -277,7 +313,7 @@
                 "Cold_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Melee_PvPDamage",
@@ -296,6 +332,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Cold damage (CRITICAL).",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Cold damage (CRITICAL).",
+                "display_float": "CRITICAL",
+                "display_attrib_defense_float": null,
+                "display_info": "Opportunity"
+              },
               "flags_raw": 1280
             }
           ]
@@ -320,7 +363,7 @@
             "RechargeTime"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Melee_Slow",
@@ -351,7 +394,7 @@
             "JumpingSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Slow",
@@ -374,6 +417,9 @@
         }
       ]
     }
+  ],
+  "strengths_disallowed": [
+    "Range"
   ],
   "modes_disallowed": [
     "Disable_All",

@@ -50,6 +50,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -68,10 +69,10 @@
           "attribs": [
             "RechargeTime"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 0.5,
           "duration": "240 seconds",
@@ -107,10 +108,10 @@
           "attribs": [
             "SpeedRunning"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Melee_SpeedRunning",
           "scale": 0.5,
           "duration": "240 seconds",
@@ -146,10 +147,10 @@
           "attribs": [
             "SpeedFlying"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Melee_SpeedFlying",
           "scale": 0.5,
           "duration": "240 seconds",
@@ -185,10 +186,10 @@
           "attribs": [
             "SpeedRunning"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Resistance",
+          "target": "AnyAffected",
           "table": "Melee_SpeedRunning",
           "scale": 0.5,
           "duration": "240 seconds",
@@ -224,10 +225,10 @@
           "attribs": [
             "SpeedFlying"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Resistance",
+          "target": "AnyAffected",
           "table": "Melee_SpeedFlying",
           "scale": 0.5,
           "duration": "240 seconds",
@@ -263,10 +264,10 @@
           "attribs": [
             "Recovery"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Melee_Ones",
           "scale": 0.25,
           "duration": "240 seconds",
@@ -302,10 +303,10 @@
           "attribs": [
             "SpeedRunning"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Melee_SpeedRunning",
           "scale": 0.25,
           "duration": "240 seconds",
@@ -341,10 +342,10 @@
           "attribs": [
             "SpeedFlying"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Melee_SpeedFlying",
           "scale": 0.25,
           "duration": "240 seconds",
@@ -380,10 +381,10 @@
           "attribs": [
             "SpeedRunning"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Resistance",
+          "target": "Self",
           "table": "Melee_SpeedRunning",
           "scale": 0.25,
           "duration": "240 seconds",
@@ -419,10 +420,10 @@
           "attribs": [
             "SpeedFlying"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Resistance",
+          "target": "Self",
           "table": "Melee_SpeedFlying",
           "scale": 0.25,
           "duration": "240 seconds",

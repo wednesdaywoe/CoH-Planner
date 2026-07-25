@@ -43,6 +43,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -59,10 +60,10 @@
       "templates": [
         {
           "attribs": [
-            "Create_Entity"
+            "Translucency"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -83,7 +84,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -104,7 +106,7 @@
             "Intangible"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -125,7 +127,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 2080
         }
       ]
     },
@@ -146,7 +149,7 @@
             "Untouchable"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -167,7 +170,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 2080
         }
       ]
     },
@@ -185,17 +189,17 @@
       "templates": [
         {
           "attribs": [
-            "Create_Entity"
+            "Silent_Kill"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": 1.0,
           "duration": "0 seconds",
           "magnitude": 1.0,
-          "delay": 0.05999999865889549,
+          "delay": 0.06,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -209,7 +213,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -230,14 +235,14 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": -1.0,
           "duration": "0 seconds",
           "magnitude": 1.0,
-          "delay": 0.029999999329447746,
+          "delay": 0.03,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -253,7 +258,8 @@
             "type": "EntCreate",
             "entity_def": "Arachnos_FB_Giant_Spider_Exposed",
             "priority_list": "PL_FightPreferRange"
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     }

@@ -45,6 +45,7 @@
   "requires": "Stalker_Defense.Willpower.Rise_to_the_Challenge !",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -63,10 +64,10 @@
           "attribs": [
             "HealSelf"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "Self",
           "table": "Melee_HealSelf",
           "scale": 2.5,
           "duration": "0 seconds",
@@ -102,10 +103,10 @@
           "attribs": [
             "Toxic_Dmg"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
           "aspect": "Resistance",
-          "target": "",
+          "target": "Self",
           "table": "Melee_Res_DMG",
           "scale": 2.0,
           "duration": "60 seconds",

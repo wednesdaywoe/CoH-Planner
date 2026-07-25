@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "isVIP? isAccountInventoryLoaded? ! ||",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -54,7 +55,7 @@
       "templates": [
         {
           "attribs": [
-            "Null"
+            "Grant_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnEnable",
@@ -85,7 +86,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -103,7 +105,7 @@
       "templates": [
         {
           "attribs": [
-            "Null"
+            "Revoke_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnDisable",
@@ -134,7 +136,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -152,7 +155,7 @@
       "templates": [
         {
           "attribs": [
-            "Null"
+            "Grant_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnEnable",
@@ -183,7 +186,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -201,7 +205,7 @@
       "templates": [
         {
           "attribs": [
-            "Null"
+            "Revoke_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnDisable",
@@ -232,11 +236,13 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     }
   ],
+  "max_boosts": 0,
   "modes_disallowed": [
     "Disable_All",
     "Disable_Epic",

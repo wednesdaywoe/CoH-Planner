@@ -23,7 +23,7 @@
   "activate_period": 0.0,
   "endurance_cost": 13.52,
   "interrupt_time": 0.0,
-  "target_type": "DeadMyPet",
+  "target_type": "Teleport",
   "target_type_secondary": "None",
   "targets_autohit": [
     "Self"
@@ -51,6 +51,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -70,14 +71,14 @@
             "Teleport"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
           "scale": 1.0,
           "duration": "0 seconds",
           "magnitude": 1.0,
-          "delay": 0.699999988079071,
+          "delay": 0.7,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -99,7 +100,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Level",
@@ -119,17 +120,20 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
-            "entity_def": "PL_StaticObject",
             "display_name": "Shield Charge",
+            "priority_list": "PL_StaticObject",
             "redirects": [
               "Redirects.Shield_Defense.Shield_Charge_AoE"
-            ]
+            ],
+            "type": "EntCreate"
           },
           "flags": [
-            "CopyBoosts"
+            "CopyBoosts",
+            "CopyCreatorMods",
+            "PseudoPet"
           ],
-          "flags_raw": 1280
+          "flags_raw": 1280,
+          "flags2_raw": 44
         }
       ]
     }

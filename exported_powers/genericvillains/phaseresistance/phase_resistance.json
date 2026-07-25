@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -57,7 +58,7 @@
             "Combat_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -76,6 +77,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "combat_phases": [
+              2
+            ],
+            "vision_phases": [],
+            "exclusive_vision_phase": -1,
+            "type": "Phase"
+          },
           "flags": [
             "IgnoreResistance"
           ],

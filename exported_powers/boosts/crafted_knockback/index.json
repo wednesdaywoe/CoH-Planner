@@ -1,0 +1,19 @@
+{
+  "key": "Boosts.Crafted_Knockback",
+  "display_name": "Crafted Knockback 10",
+  "help": "Increases knockback distance by {Boost.Attrib.Knock.Scale}%.",
+  "short_help": "Invention",
+  "icon": "crafted_knockback_set.ico",
+  "powers": [
+    "Boosts.Crafted_Knockback.Crafted_Knockback"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Invention: Knockback Distance"
+  ],
+  "power_short_helps": [
+    "Enhances KnockBack Distance"
+  ]
+}

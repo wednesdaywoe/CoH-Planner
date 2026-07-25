@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -56,10 +57,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -95,10 +96,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -134,10 +135,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -173,10 +174,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -212,10 +213,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -251,10 +252,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -290,10 +291,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -329,10 +330,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -368,10 +369,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -407,10 +408,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -446,10 +447,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -485,10 +486,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -524,10 +525,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -563,10 +564,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -602,10 +603,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -641,10 +642,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -680,10 +681,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -719,10 +720,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -758,10 +759,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -797,10 +798,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -836,10 +837,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -875,10 +876,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -914,10 +915,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -953,10 +954,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -992,10 +993,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -1016,6 +1017,7 @@
       ]
     }
   ],
+  "max_boosts": 0,
   "available_level": 0,
   "powerset": "Inherent.Inherent"
 }

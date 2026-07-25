@@ -49,6 +49,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "kChain_Induction target.mode? !",
+  "slot_requires": "",
   "attack_types": [
     112,
     132
@@ -70,10 +71,10 @@
           "attribs": [
             "Tempdamage"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Ranged_Tempdamage",
           "scale": 4.0,
           "duration": "0 seconds",
@@ -109,10 +110,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Constant",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 1.0,
           "duration": "4 seconds",

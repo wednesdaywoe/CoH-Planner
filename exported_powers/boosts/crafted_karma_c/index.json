@@ -1,0 +1,19 @@
+{
+  "key": "Boosts.Crafted_Karma_C",
+  "display_name": "Crafted Karma C",
+  "help": "Provides 4 points of Knockback protection.",
+  "short_help": "Set: Karma",
+  "icon": "crafted_karma_c_set.ico",
+  "powers": [
+    "Boosts.Crafted_Karma_C.Crafted_Karma_C"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Karma: Knockback Protection"
+  ],
+  "power_short_helps": [
+    "-KB"
+  ]
+}

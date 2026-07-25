@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -57,7 +58,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -83,7 +84,8 @@
           },
           "flags": [
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 320
         }
       ]
     },
@@ -104,7 +106,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -130,7 +132,8 @@
           },
           "flags": [
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 320
         }
       ]
     },
@@ -151,7 +154,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -177,7 +180,8 @@
           },
           "flags": [
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 320
         }
       ]
     },
@@ -198,7 +202,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -224,7 +228,8 @@
           },
           "flags": [
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 320
         }
       ]
     },
@@ -245,7 +250,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -271,7 +276,8 @@
           },
           "flags": [
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 320
         }
       ]
     },
@@ -292,7 +298,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -318,7 +324,8 @@
           },
           "flags": [
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 320
         }
       ]
     },
@@ -339,7 +346,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -365,7 +372,8 @@
           },
           "flags": [
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 320
         }
       ]
     },
@@ -386,7 +394,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -412,7 +420,8 @@
           },
           "flags": [
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 320
         }
       ]
     },
@@ -433,7 +442,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -459,7 +468,8 @@
           },
           "flags": [
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 320
         }
       ]
     },
@@ -480,7 +490,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -506,7 +516,8 @@
           },
           "flags": [
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 320
         }
       ]
     },
@@ -527,7 +538,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -553,7 +564,8 @@
           },
           "flags": [
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 320
         }
       ]
     },
@@ -574,7 +586,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -600,7 +612,8 @@
           },
           "flags": [
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 320
         }
       ]
     },
@@ -621,7 +634,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -647,7 +660,8 @@
           },
           "flags": [
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 320
         }
       ]
     },
@@ -665,10 +679,10 @@
       "templates": [
         {
           "attribs": [
-            "Set_Mode"
+            "Null"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -691,7 +705,7 @@
             "IgnoreStrength",
             "IgnoreResistance"
           ],
-          "mode_name": "Peacebringer_Blaster_Mode"
+          "flags_raw": 1072
         }
       ]
     }

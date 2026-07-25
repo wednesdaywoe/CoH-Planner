@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -54,10 +55,10 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -76,11 +77,65 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Phase",
+            "phase_name": "NoPrime"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 112
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Vision_Phase"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 9001.0,
+          "duration": "999999 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "params": {
+            "type": "Phase",
+            "phase_name": "Marker"
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 112
         }
       ]
     },
@@ -101,7 +156,7 @@
             "Combat_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -120,11 +175,16 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Phase",
+            "phase_name": "NoPrime"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 112
         }
       ]
     },
@@ -142,10 +202,10 @@
       "templates": [
         {
           "attribs": [
-            "Global_Chance_Mod"
+            "Combat_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -164,59 +224,21 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Phase",
+            "phase_name": "LordWinter"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "IgnoreCombatMods"
-          ]
-        }
-      ]
-    },
-    {
-      "chance": 1.0,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": "",
-      "tags": [],
-      "flags": [],
-      "is_pvp": "EITHER",
-      "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "Global_Chance_Mod"
           ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "Current",
-          "target": "Self",
-          "table": "Melee_Ones",
-          "scale": 9001.0,
-          "duration": "999999 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Replace",
-          "stack_limit": 2,
-          "stack_key": null,
-          "flags": [
-            "IgnoreStrength",
-            "IgnoreResistance",
-            "IgnoreCombatMods"
-          ]
+          "flags_raw": 112
         }
       ]
     }
   ],
+  "castable_after_death": "DeadOrAlive",
   "available_level": 0,
   "powerset": "GenericVillains.Marker_Phase"
 }

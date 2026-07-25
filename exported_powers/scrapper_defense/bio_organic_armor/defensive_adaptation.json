@@ -42,6 +42,7 @@
   "requires": "Scrapper_Defense.Bio_Organic_Armor.Evolution",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -61,12 +62,12 @@
             "Set_Mode"
           ],
           "type": "Constant",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": 1.0,
-          "duration": "1.10 seconds",
+          "duration": "1.1 seconds",
           "magnitude": 154.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -93,14 +94,14 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": 1.0,
           "duration": "0 seconds",
           "magnitude": 1.0,
-          "delay": 0.10000000149011612,
+          "delay": 0.1,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -113,46 +114,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Temporary_Powers.Temporary_Powers.Defensive_Adaptation_Proc"
-            ]
-          },
-          "flags": [
-            "IgnoreStrength",
-            "IgnoreResistance"
-          ],
-          "flags_raw": 1072
-        },
-        {
-          "attribs": [
-            "Revoke_Power"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "Absolute",
-          "target": "Self",
-          "table": "Melee_Ones",
-          "scale": 1.0,
-          "duration": "0 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Replace",
-          "stack_limit": 2,
-          "stack_key": null,
-          "params": {
-            "type": "Power",
-            "power_names": [
-              "Temporary_Powers.Temporary_Powers.Offensive_Adaptation_Proc"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -185,10 +151,48 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Offensive_Adaptation_Proc"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
+        },
+        {
+          "attribs": [
+            "Revoke_Power"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnDeactivate",
+          "aspect": "Absolute",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "params": {
             "power_names": [
               "Temporary_Powers.Temporary_Powers.Defensive_Adaptation_Proc"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -208,12 +212,12 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": -0.25,
-          "duration": "1.10 seconds",
+          "duration": "1.1 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -236,6 +240,7 @@
       ]
     }
   ],
+  "max_boosts": 0,
   "modes_disallowed": [
     "Disable_All"
   ],

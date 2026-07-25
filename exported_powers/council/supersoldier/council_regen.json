@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -58,7 +59,7 @@
             "Lethal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "Self",
           "table": "Melee_Res_Dmg",
@@ -77,6 +78,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "POWERS/INVULNERABILITY/INVULNERABILITY.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "cancel_events": [
             "Stunned",
             "Held",
@@ -97,7 +104,7 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "Self",
           "table": "Melee_Res_Dmg",
@@ -146,7 +153,7 @@
             "Regeneration"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -175,7 +182,7 @@
             "Regeneration"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Resistance",
           "target": "Self",
           "table": "Melee_Res_Boolean",
@@ -205,7 +212,7 @@
             "HitPoints"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Maximum",
           "target": "Self",
           "table": "Melee_HealSelf",
@@ -235,7 +242,7 @@
             "Recovery"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",

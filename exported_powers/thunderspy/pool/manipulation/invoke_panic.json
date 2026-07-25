@@ -45,6 +45,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     108,
     140
@@ -66,10 +67,10 @@
           "attribs": [
             "Terrorized"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Duration",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Melee_Fear",
           "scale": 10.0,
           "duration": "0 seconds",
@@ -105,10 +106,10 @@
           "attribs": [
             "Terrorized"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Duration",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Melee_Fear",
           "scale": 5.0,
           "duration": "0 seconds",
@@ -144,10 +145,10 @@
           "attribs": [
             "Terrorized"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Duration",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Melee_Fear",
           "scale": 15.0,
           "duration": "0 seconds",

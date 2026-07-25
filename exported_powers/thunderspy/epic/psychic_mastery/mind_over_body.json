@@ -48,6 +48,7 @@
   "requires": "$archetype @Class_Defender == $archetype @Class_Corruptor == ||",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -66,10 +67,10 @@
           "attribs": [
             "Smashing_Dmg"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
           "aspect": "Resistance",
-          "target": "",
+          "target": "Self",
           "table": "Melee_Res_DMG",
           "scale": 2.75,
           "duration": "0.75 seconds",

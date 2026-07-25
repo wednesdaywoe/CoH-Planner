@@ -43,6 +43,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -62,7 +63,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -82,9 +83,9 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Coralax_Leviathans_Bounty_ZTF",
             "display_name": "Leviathan's Bounty",
+            "priority_list": "DoNotAggroCritters(1),Pet",
             "redirects": [
               "Redirects.Marine_Affinity.Wellspring_Skin",
               "V_Coralax.Leviathans_Bounty.Adrenalin_Boost",
@@ -95,7 +96,8 @@
               "V_Coralax.Leviathans_Bounty.Assault",
               "V_Coralax.Leviathans_Bounty.Resistance",
               "Challenge_Empowerment.Constitution_HM.HM_Constitution"
-            ]
+            ],
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
@@ -122,7 +124,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -142,9 +144,9 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Arachnos_Arachnids_Bounty_Weaver1",
             "display_name": "Arachnid's Bounty",
+            "priority_list": "DoNotAggroCritters(1),Pet",
             "redirects": [
               "Mission_Maker_Movement.Flight.Fly",
               "V_Coralax.Leviathans_Bounty.Adrenalin_Boost",
@@ -155,7 +157,8 @@
               "V_Coralax.Leviathans_Bounty.Assault",
               "V_Coralax.Leviathans_Bounty.Resistance",
               "Challenge_Empowerment.Constitution_HM.HM_Constitution"
-            ]
+            ],
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",

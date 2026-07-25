@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -64,10 +65,10 @@
             "Toxic_Dmg",
             "Special_Dmg"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
           "aspect": "Resistance",
-          "target": "",
+          "target": "Self",
           "table": "Melee_Res_DMG",
           "scale": -9.0,
           "duration": "999999 seconds",
@@ -103,10 +104,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Resistance",
+          "target": "Self",
           "table": "Melee_Ones",
           "scale": 100.0,
           "duration": "999999 seconds",
@@ -142,10 +143,10 @@
           "attribs": [
             "Base_Defense"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Melee_Buff_Def",
           "scale": -25.0,
           "duration": "999999 seconds",

@@ -47,6 +47,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -79,7 +80,7 @@
                 "Execute_Power"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
@@ -99,16 +100,18 @@
               "stack_limit": 2,
               "stack_key": null,
               "params": {
-                "type": "Power",
                 "power_names": [
                   "Redirects.Regeneration.Second_Wind"
-                ]
+                ],
+                "count": 1,
+                "type": "Power"
               },
               "flags": [
                 "KeepThroughDeath",
                 "CopyBoosts"
               ],
-              "flags_raw": 17664
+              "flags_raw": 17664,
+              "flags2_raw": 4
             }
           ]
         },
@@ -142,7 +145,7 @@
                     "Grant_Boosted_Power"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Absolute",
                   "target": "AnyAffected",
                   "table": "Melee_Ones",
@@ -161,19 +164,27 @@
                   "stack": "Stack",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "params": {
+                    "power_names": [
+                      "Temporary_Powers.Temporary_Powers.Revive"
+                    ],
+                    "count": 1,
+                    "type": "Power"
+                  },
                   "flags": [
                     "KeepThroughDeath",
                     "NoHitDelay",
                     "CopyBoosts"
                   ],
-                  "flags_raw": 83200
+                  "flags_raw": 83200,
+                  "flags2_raw": 4
                 },
                 {
                   "attribs": [
                     "Heal_Dmg"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Absolute",
                   "target": "Self",
                   "table": "Melee_HealSelf",
@@ -192,6 +203,13 @@
                   "stack": "Stack",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "messages": {
+                    "display_attacker_hit": null,
+                    "display_victim_hit": "You are healed by your {PowerName} for {Damage} health points.",
+                    "display_float": null,
+                    "display_attrib_defense_float": null,
+                    "display_info": "If used while conscious"
+                  },
                   "flags": [
                     "IgnoreResistance"
                   ],
@@ -216,7 +234,7 @@
                     "Heal_Dmg"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Absolute",
                   "target": "Self",
                   "table": "Melee_HealSelf",
@@ -235,6 +253,13 @@
                   "stack": "Stack",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "messages": {
+                    "display_attacker_hit": null,
+                    "display_victim_hit": "You are healed by your {PowerName} for {Damage} health points.",
+                    "display_float": null,
+                    "display_attrib_defense_float": null,
+                    "display_info": "If used while defeated"
+                  },
                   "flags": [
                     "IgnoreResistance"
                   ],
@@ -245,7 +270,7 @@
                     "Endurance"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Absolute",
                   "target": "Self",
                   "table": "Melee_Ones",
@@ -264,6 +289,22 @@
                   "stack": "Stack",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "messages": {
+                    "display_attacker_hit": null,
+                    "display_victim_hit": "Your {PowerName} grants you {Damage} points of endurance.",
+                    "display_float": null,
+                    "display_attrib_defense_float": null,
+                    "display_info": "If used while defeated"
+                  },
+                  "fx": {
+                    "continuing_bits": [
+                      395,
+                      49
+                    ],
+                    "continuing_fx": null,
+                    "conditional_bits": [],
+                    "conditional_fx": null
+                  },
                   "flags": [
                     "IgnoreResistance",
                     "KeepThroughDeath"
@@ -275,7 +316,7 @@
                     "Execute_Power"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Strength",
                   "target": "AnyAffected",
                   "table": "Melee_Ones",
@@ -295,16 +336,18 @@
                   "stack_limit": 2,
                   "stack_key": null,
                   "params": {
-                    "type": "Power",
                     "power_names": [
                       "Redirects.Comeback.Comeback",
                       "Redirects.Comeback.Debt_Protection"
-                    ]
+                    ],
+                    "count": 1,
+                    "type": "Power"
                   },
                   "flags": [
                     "CopyBoosts"
                   ],
-                  "flags_raw": 1280
+                  "flags_raw": 1280,
+                  "flags2_raw": 4
                 }
               ],
               "child_effects": [
@@ -325,7 +368,7 @@
                         "Immobilized"
                       ],
                       "type": "Duration",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Current",
                       "target": "Self",
                       "table": "Melee_Ones",
@@ -347,7 +390,6 @@
                       "flags": [
                         "IgnoreStrength",
                         "IgnoreResistance",
-                        "DeepSleep",
                         "KeepThroughDeath"
                       ],
                       "flags_raw": 18480
@@ -361,6 +403,7 @@
       ]
     }
   ],
+  "castable_after_death": "DeadOrAlive",
   "modes_disallowed": [
     "Disable_All"
   ],

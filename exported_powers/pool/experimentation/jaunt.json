@@ -23,7 +23,7 @@
   "activate_period": 0.0,
   "endurance_cost": 13.0,
   "interrupt_time": 0.0,
-  "target_type": "DeadMyPet",
+  "target_type": "Teleport",
   "target_type_secondary": "None",
   "targets_autohit": [
     "Self"
@@ -39,6 +39,7 @@
   "requires": "Pool.Experimentation.Speed_of_Sound",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -58,7 +59,7 @@
             "Translucency"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -88,14 +89,14 @@
             "Teleport"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
           "scale": 1.0,
           "duration": "0 seconds",
           "magnitude": 1.0,
-          "delay": 0.30000001192092896,
+          "delay": 0.3,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -135,7 +136,7 @@
             "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -155,10 +156,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Pool.Experimentation.Jaunt"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -171,7 +173,7 @@
             "Global_Chance_Mod"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -190,6 +192,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "tags": [
+              "QuickJaunt"
+            ],
+            "type": "EffectFilter"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
@@ -233,7 +241,7 @@
                 "Recharge_Power"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Ranged_Ones",
@@ -253,10 +261,11 @@
               "stack_limit": 2,
               "stack_key": null,
               "params": {
-                "type": "Power",
                 "power_names": [
                   "Pool.Experimentation.Jaunt"
-                ]
+                ],
+                "count": 1,
+                "type": "Power"
               },
               "flags": [
                 "IgnoreStrength",
@@ -269,7 +278,7 @@
                 "Global_Chance_Mod"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Ranged_Ones",
@@ -288,6 +297,12 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "params": {
+                "tags": [
+                  "QuickJaunt"
+                ],
+                "type": "EffectFilter"
+              },
               "flags": [
                 "IgnoreStrength",
                 "IgnoreResistance",
@@ -314,7 +329,7 @@
                 "Recharge_Power"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Ranged_Ones",
@@ -334,21 +349,27 @@
               "stack_limit": 2,
               "stack_key": null,
               "params": {
-                "type": "Power",
                 "power_names": [
                   "Pool.Experimentation.Jaunt"
-                ]
+                ],
+                "count": 1,
+                "type": "Power"
               },
               "flags": [
                 "IgnoreStrength",
-                "IgnoreResistance"
+                "IgnoreResistance",
+                "SetTimer"
               ],
-              "flags_raw": 1072
+              "flags_raw": 1072,
+              "flags2_raw": 1
             }
           ]
         }
       ]
     }
+  ],
+  "strengths_disallowed": [
+    "RechargeTime"
   ],
   "modes_required": [
     "SpeedofSoundOn"

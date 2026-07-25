@@ -25,10 +25,10 @@
   "target_type": "Self",
   "target_type_secondary": "None",
   "targets_autohit": [
-    "Unknown(37)"
+    "Anything"
   ],
   "targets_affected": [
-    "Unknown(37)"
+    "Anything"
   ],
   "boosts_allowed": [],
   "allowed_set_categories": null,
@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "Rikti_Honoree target.VillainName>",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -57,12 +58,12 @@
             "Null"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Melee_PvPDamage",
           "scale": 1.5257,
-          "duration": "1.50 seconds",
+          "duration": "1.5 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -76,6 +77,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "ENEMYFX/RIKTI/PYLON/DRAINHAMIDON/DRAIN_BEAM_LOW.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags_raw": 1280
         }
       ]

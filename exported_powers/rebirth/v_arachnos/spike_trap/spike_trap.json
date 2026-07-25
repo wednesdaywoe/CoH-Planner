@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     112
   ],
@@ -59,7 +60,7 @@
             "RunningSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Slow",
@@ -80,7 +81,8 @@
           "stack_key": null,
           "flags": [
             "NearGround"
-          ]
+          ],
+          "flags_raw": 1288
         }
       ]
     },
@@ -101,7 +103,7 @@
             "Lethal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Melee_Damage",
@@ -122,7 +124,8 @@
           "stack_key": null,
           "flags": [
             "NearGround"
-          ]
+          ],
+          "flags_raw": 1288
         }
       ]
     },
@@ -143,7 +146,7 @@
             "RunningSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Maximum",
           "target": "AnyAffected",
           "table": "Melee_SpeedRunning",
@@ -164,7 +167,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength"
-          ]
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -185,7 +189,7 @@
             "JumpHeight"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Slow",
@@ -208,7 +212,8 @@
             "NearGround",
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1080
         }
       ]
     },
@@ -226,10 +231,10 @@
       "templates": [
         {
           "attribs": [
-            "Set_Mode"
+            "Null"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -252,7 +257,7 @@
             "IgnoreStrength",
             "IgnoreResistance"
           ],
-          "mode_name": "Peacebringer_Blaster_Mode"
+          "flags_raw": 1072
         }
       ]
     },
@@ -273,7 +278,7 @@
             "Afraid"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -295,7 +300,8 @@
           "flags": [
             "NearGround",
             "IgnoreStrength"
-          ]
+          ],
+          "flags_raw": 2584
         }
       ]
     }

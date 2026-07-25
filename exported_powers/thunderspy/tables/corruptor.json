@@ -1,10 +1,44 @@
 {
   "name": "Class_Corruptor",
-  "display_name": "P1616616548",
+  "display_name": "Corruptor",
+  "display_help": "Corruptors twist the forces of the universe to do their bidding. As a corruptor, you might strike your foes down with blasts of fire, entomb them in ice, infect them with radiation, or curse them with pure darkness. As your foes are weakened, your (scourge) ability kicks in, increasing your damage to an enemy as their hit points drop. You can even impart a portion of your twisted power to your allies to protect them from harm, heal them, or increase the damage they deal. This wide array of abilities comes at a price. Your defenses aren't strong, and you can quickly attract the ire of your enemies if you aren't careful.",
+  "display_short_help": "Blast and weaken your enemies",
   "icon": "v_archetypeicon_corruptor.tga",
   "primary_category": "Corruptor_Ranged",
   "secondary_category": "Corruptor_BUFF",
   "pool_category": "Pool",
+  "epic_pool_category": "",
+  "allowed_origins": [
+    "Science",
+    "Magic",
+    "Natural",
+    "Mutation",
+    "Technology"
+  ],
+  "special_restrictions": [
+    "Villain"
+  ],
+  "store_requires": "",
+  "locked_tooltip": "",
+  "product_code": "",
+  "reduction_class": "",
+  "reduce_as_archvillain": false,
+  "level_up_respecs": [],
+  "archetype_shots": [
+    "archetypeshots_corruptor_0",
+    "archetypeshots_corruptor_1",
+    "archetypeshots_corruptor_2"
+  ],
+  "creation_stats": [
+    4,
+    2,
+    7,
+    4,
+    8,
+    2
+  ],
+  "playstyle_flags": 20,
+  "mechanic_tip": "",
   "named_tables": {
     "Melee_Damage": [
       -9.699999809265137,
@@ -4899,5 +4933,7 @@
     "resistance_cap": 0.75,
     "base_threat": 1.0,
     "damage_cap": 5.0
-  }
+  },
+  "mechanic_bar_raw": 0,
+  "mechanic_gap_raw": 0
 }

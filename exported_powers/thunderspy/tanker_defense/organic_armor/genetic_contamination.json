@@ -47,6 +47,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     108
   ],
@@ -67,10 +68,10 @@
           "attribs": [
             "Damage"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Melee_Damage",
           "scale": 0.15,
           "duration": "0 seconds",
@@ -106,10 +107,10 @@
           "attribs": [
             "Damage"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Melee_Damage",
           "scale": 0.05,
           "duration": "6 seconds",
@@ -145,10 +146,10 @@
           "attribs": [
             "InherentTaunt"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Duration",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Melee_InherentTaunt",
           "scale": 1.0,
           "duration": "0 seconds",
@@ -184,10 +185,10 @@
           "attribs": [
             "InherentTaunt"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Duration",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Melee_InherentTaunt",
           "scale": 1.0,
           "duration": "0 seconds",
@@ -223,10 +224,10 @@
           "attribs": [
             "NormalDebuff"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "AnyAffected",
           "table": "Melee_Debuff_Dam",
           "scale": 1.5,
           "duration": "5 seconds",
@@ -262,10 +263,10 @@
           "attribs": [
             "DefensiveAdaptation"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "AnyAffected",
           "table": "Melee_Debuff_Dam",
           "scale": 1.995,
           "duration": "5 seconds",
@@ -301,10 +302,10 @@
           "attribs": [
             "OffensiveAdaptation"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "AnyAffected",
           "table": "Melee_Debuff_Dam",
           "scale": 1.995,
           "duration": "5 seconds",
@@ -346,10 +347,10 @@
             "Negative_Energy_Dmg",
             "Psionic_Dmg"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
           "aspect": "Resistance",
-          "target": "",
+          "target": "Self",
           "table": "Melee_Res_DMG",
           "scale": -0.3,
           "duration": "2 seconds",

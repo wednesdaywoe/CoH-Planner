@@ -1,10 +1,45 @@
 {
   "name": "Class_Primalist",
-  "display_name": "P297054078",
+  "display_name": "Primalist",
+  "display_help": "Primalists are competent melee combatants, this is enhanced by their ability to shapeshift into a Hunter or a Prowler. While in primal form, the Primalist will deal good damage and heal nearby allies. In Hunter form you can attack foes with tooth and claw and weaken nearby foes and in Prowler form you can shred enemies and stun them.",
+  "display_short_help": "Melee attacks, Defensive Powers and Ally buffs.",
   "icon": "archetypeicon_primalist.texture",
   "primary_category": "Feral_Might",
   "secondary_category": "Primal_Gifts",
   "pool_category": "Pool",
+  "epic_pool_category": "",
+  "allowed_origins": [
+    "Science",
+    "Magic",
+    "Natural",
+    "Mutation",
+    "Technology"
+  ],
+  "special_restrictions": [
+    "Hero",
+    "Villain"
+  ],
+  "store_requires": "",
+  "locked_tooltip": "P1372576813",
+  "product_code": "ctatprim",
+  "reduction_class": "",
+  "reduce_as_archvillain": false,
+  "level_up_respecs": [],
+  "archetype_shots": [
+    "archetypeshots_brute_0",
+    "archetypeshots_brute_1",
+    "archetypeshots_brute_2"
+  ],
+  "creation_stats": [
+    7,
+    6,
+    1,
+    2,
+    6,
+    3
+  ],
+  "playstyle_flags": 50,
+  "mechanic_tip": "PrimalEnergyTip",
   "named_tables": {
     "Melee_Damage": [
       -9.800000190734863,
@@ -5003,5 +5038,7 @@
     "resistance_cap": 0.75,
     "base_threat": 1.0,
     "damage_cap": 4.0
-  }
+  },
+  "mechanic_bar_raw": 1,
+  "mechanic_gap_raw": 64
 }

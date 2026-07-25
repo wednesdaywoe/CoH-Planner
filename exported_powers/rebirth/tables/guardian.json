@@ -1,10 +1,44 @@
 {
   "name": "Class_Guardian",
-  "display_name": "ATG0000001",
+  "display_name": "Guardian",
+  "display_help": "As a Guardian, you are skilled at ranged and close combat, allowing you to move into and out of combat with ease. Your abilities offer decent protection, allowing you to take blows with stride. Although you are not able to take hits as well as others, your very presence can strengthen your allies and weaken enemies.",
+  "display_short_help": "Guardians have good ranged and melee while still maintaining decent support and protection.",
   "icon": "archetypeicon_guardian.tga",
   "primary_category": "Guardian_Assault",
   "secondary_category": "Guardian_Comp",
   "pool_category": "Pool",
+  "epic_pool_category": "",
+  "allowed_origins": [
+    "Science",
+    "Magic",
+    "Natural",
+    "Mutation",
+    "Technology"
+  ],
+  "special_restrictions": [
+    "Hero"
+  ],
+  "store_requires": "",
+  "locked_tooltip": "",
+  "product_code": "",
+  "reduction_class": "",
+  "reduce_as_archvillain": false,
+  "level_up_respecs": [],
+  "archetype_shots": [
+    "archetypeshots_guardian_0",
+    "archetypeshots_guardian_1",
+    "archetypeshots_guardian_2"
+  ],
+  "creation_stats": [
+    6,
+    7,
+    7,
+    2,
+    6,
+    2
+  ],
+  "playstyle_flags": 22,
+  "mechanic_tip": "",
   "named_tables": {
     "Melee_Damage": [
       -10.100000381469727,
@@ -4899,5 +4933,7 @@
     "resistance_cap": 0.75,
     "base_threat": 2.0,
     "damage_cap": 5.0
-  }
+  },
+  "mechanic_bar_raw": 0,
+  "mechanic_gap_raw": 0
 }

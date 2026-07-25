@@ -24,7 +24,7 @@
   "endurance_cost": 15.0,
   "interrupt_time": 2.0,
   "target_type": "Foe",
-  "target_type_secondary": "DeadMyPet",
+  "target_type_secondary": "Teleport",
   "targets_autohit": [
     "None"
   ],
@@ -48,6 +48,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     104,
     136
@@ -70,12 +71,12 @@
             "Translucency"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 0.0,
-          "duration": "1.50 seconds",
+          "duration": "1.5 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -99,14 +100,14 @@
             "Teleport"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 2.1,
           "duration": "0 seconds",
           "magnitude": 1.0,
-          "delay": 1.1699999570846558,
+          "delay": 1.17,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -125,7 +126,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Level",
@@ -145,9 +146,9 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Pets_TPFoeTaunt",
-            "priority_list": "PL_StaticObject"
+            "priority_list": "PL_StaticObject",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
@@ -156,7 +157,8 @@
             "KeepThroughDeath",
             "CopyBoosts"
           ],
-          "flags_raw": 16496
+          "flags_raw": 16496,
+          "flags2_raw": 4
         }
       ]
     },
@@ -177,7 +179,7 @@
             "Teleport"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -207,14 +209,14 @@
             "Translucency"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 0.3,
           "duration": "0.75 seconds",
           "magnitude": 1.0,
-          "delay": 1.1699999570846558,
+          "delay": 1.17,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -226,6 +228,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "PFX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "cancel_events": [
             "Stunned",
             "Held",
@@ -236,7 +244,7 @@
               "event": "MissionObjectClick",
               "event_id": 37,
               "duration": 10.0,
-              "flag": 1
+              "always": 1
             }
           ],
           "flags": [
@@ -249,14 +257,14 @@
             "StealthRadius_PVE"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 20.0,
           "duration": "0.75 seconds",
           "magnitude": 1.0,
-          "delay": 1.1699999570846558,
+          "delay": 1.17,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -278,7 +286,7 @@
               "event": "MissionObjectClick",
               "event_id": 37,
               "duration": 10.0,
-              "flag": 1
+              "always": 1
             }
           ],
           "flags": [
@@ -291,14 +299,14 @@
             "Intangible"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 0.75,
           "duration": "0 seconds",
           "magnitude": 3.0,
-          "delay": 1.1699999570846558,
+          "delay": 1.17,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -310,6 +318,13 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You Intangibilize {PlayerDest} with your {PowerName}.",
+            "display_victim_hit": "{PlayerSource} Intangibilizes you with their {PowerName}.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "cancel_events": [
             "Stunned",
             "Held",
@@ -320,12 +335,11 @@
               "event": "MissionObjectClick",
               "event_id": 37,
               "duration": 10.0,
-              "flag": 1
+              "always": 1
             }
           ],
           "flags": [
-            "IgnoreResistance",
-            "DeepSleep"
+            "IgnoreResistance"
           ],
           "flags_raw": 2080
         },
@@ -334,14 +348,14 @@
             "Untouchable"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 0.75,
           "duration": "0 seconds",
           "magnitude": 3.0,
-          "delay": 1.1699999570846558,
+          "delay": 1.17,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -353,6 +367,13 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You Phase {PlayerDest} with your {PowerName}.",
+            "display_victim_hit": "{PlayerSource} Phases you with their {PowerName}.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "cancel_events": [
             "Stunned",
             "Held",
@@ -363,12 +384,11 @@
               "event": "MissionObjectClick",
               "event_id": 37,
               "duration": 10.0,
-              "flag": 1
+              "always": 1
             }
           ],
           "flags": [
-            "IgnoreResistance",
-            "DeepSleep"
+            "IgnoreResistance"
           ],
           "flags_raw": 2080
         },
@@ -377,14 +397,14 @@
             "ThreatLevel"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": -1.0,
           "duration": "0.75 seconds",
           "magnitude": 1.0,
-          "delay": 1.1699999570846558,
+          "delay": 1.17,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -406,7 +426,7 @@
               "event": "MissionObjectClick",
               "event_id": 37,
               "duration": 10.0,
-              "flag": 1
+              "always": 1
             }
           ],
           "flags": [
@@ -420,14 +440,14 @@
             "OnlyAffectsSelf"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 0.75,
           "duration": "0 seconds",
           "magnitude": 3.0,
-          "delay": 1.1699999570846558,
+          "delay": 1.17,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -439,17 +459,23 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You Shackle {PlayerDest} with your {PowerName}.",
+            "display_victim_hit": "{PlayerSource} Shackles you with their {PowerName}.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "suppress_events": [
             {
               "event": "MissionObjectClick",
               "event_id": 37,
               "duration": 10.0,
-              "flag": 1
+              "always": 1
             }
           ],
           "flags": [
-            "IgnoreResistance",
-            "DeepSleep"
+            "IgnoreResistance"
           ],
           "flags_raw": 2080
         }

@@ -47,6 +47,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -66,7 +67,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Level",
@@ -86,20 +87,22 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
-            "entity_def": "PL_FightPreferMelee",
             "display_name": "Glittering Column",
+            "priority_list": "PL_FightPreferMelee",
             "redirects": [
               "Redirects.Pyrotechnic_Control.GlitteringColumn_Skin",
               "Redirects.Pyrotechnic_Control.GlitteringColumn_Aura",
               "Redirects.Pyrotechnic_Control.GlitteringColumn_GlitterExplosion",
               "Redirects.Pyrotechnic_Control.GlitteringColumn_SelfDestruct"
-            ]
+            ],
+            "type": "EntCreate"
           },
           "flags": [
-            "CopyBoosts"
+            "CopyBoosts",
+            "PseudoPet"
           ],
-          "flags_raw": 1280
+          "flags_raw": 1280,
+          "flags2_raw": 36
         }
       ]
     }

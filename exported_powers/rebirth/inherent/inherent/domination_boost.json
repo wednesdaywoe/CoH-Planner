@@ -38,6 +38,7 @@
   "requires": "$archetype @Class_Dominator ==",
   "activate_requires": "$archetype @Class_Dominator ==",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -57,7 +58,7 @@
             "Rage"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
@@ -80,11 +81,13 @@
             "IgnoreStrength",
             "IgnoreResistance",
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 112
         }
       ]
     }
   ],
+  "max_boosts": 0,
   "available_level": 0,
   "powerset": "Inherent.Inherent"
 }

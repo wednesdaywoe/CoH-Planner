@@ -1,0 +1,19 @@
+{
+  "key": "Boosts.Technology_Natural_Endurance_Discount",
+  "display_name": "Technology Natural Endurance Discount",
+  "help": "Decreases the endurance cost of a power.",
+  "short_help": "Gadget (Technology, Natural)",
+  "icon": "technology_natural_endurance_discount_set.ico",
+  "powers": [
+    "Boosts.Technology_Natural_Endurance_Discount.Technology_Natural_Endurance_Discount"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Oxygen Device (Endurance Discount)"
+  ],
+  "power_short_helps": [
+    "Reduces Endurance Cost"
+  ]
+}

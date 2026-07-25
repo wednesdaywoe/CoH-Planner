@@ -43,6 +43,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -62,7 +63,7 @@
             "Smashing_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Ranged_Buff_Dmg",
@@ -77,7 +78,7 @@
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "MastermindPets_Howler_Wolf target.VillainName> MastermindPets_Howler_Wolf_Alpha target.VillainName> || MastermindPets_Lioness target.VillainName> || MastermindPets_Dire_Wolf target.VillainName> ||",
-          "caster_stack": "Unlimited",
+          "caster_stack": "Collective",
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
@@ -85,7 +86,8 @@
             "IgnoreStrength",
             "IgnoreResistance",
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 112
         }
       ]
     },
@@ -106,7 +108,7 @@
             "Lethal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Ranged_Buff_Dmg",
@@ -121,7 +123,7 @@
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "MastermindPets_Howler_Wolf target.VillainName> MastermindPets_Howler_Wolf_Alpha target.VillainName> || MastermindPets_Lioness target.VillainName> || MastermindPets_Dire_Wolf target.VillainName> ||",
-          "caster_stack": "Unlimited",
+          "caster_stack": "Collective",
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
@@ -129,7 +131,8 @@
             "IgnoreStrength",
             "IgnoreResistance",
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 112
         }
       ]
     },
@@ -150,7 +153,7 @@
             "Fire_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Ranged_Buff_Dmg",
@@ -165,7 +168,7 @@
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "MastermindPets_Howler_Wolf target.VillainName> MastermindPets_Howler_Wolf_Alpha target.VillainName> || MastermindPets_Lioness target.VillainName> || MastermindPets_Dire_Wolf target.VillainName> ||",
-          "caster_stack": "Unlimited",
+          "caster_stack": "Collective",
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
@@ -173,7 +176,8 @@
             "IgnoreStrength",
             "IgnoreResistance",
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 112
         }
       ]
     },
@@ -194,7 +198,7 @@
             "Cold_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Ranged_Buff_Dmg",
@@ -209,7 +213,7 @@
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "MastermindPets_Howler_Wolf target.VillainName> MastermindPets_Howler_Wolf_Alpha target.VillainName> || MastermindPets_Lioness target.VillainName> || MastermindPets_Dire_Wolf target.VillainName> ||",
-          "caster_stack": "Unlimited",
+          "caster_stack": "Collective",
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
@@ -217,7 +221,8 @@
             "IgnoreStrength",
             "IgnoreResistance",
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 112
         }
       ]
     },
@@ -238,7 +243,7 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Ranged_Buff_Dmg",
@@ -253,7 +258,7 @@
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "MastermindPets_Howler_Wolf target.VillainName> MastermindPets_Howler_Wolf_Alpha target.VillainName> || MastermindPets_Lioness target.VillainName> || MastermindPets_Dire_Wolf target.VillainName> ||",
-          "caster_stack": "Unlimited",
+          "caster_stack": "Collective",
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
@@ -261,7 +266,8 @@
             "IgnoreStrength",
             "IgnoreResistance",
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 112
         }
       ]
     },
@@ -282,7 +288,7 @@
             "Negative_Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Ranged_Buff_Dmg",
@@ -297,7 +303,7 @@
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "MastermindPets_Howler_Wolf target.VillainName> MastermindPets_Howler_Wolf_Alpha target.VillainName> || MastermindPets_Lioness target.VillainName> || MastermindPets_Dire_Wolf target.VillainName> ||",
-          "caster_stack": "Unlimited",
+          "caster_stack": "Collective",
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
@@ -305,7 +311,8 @@
             "IgnoreStrength",
             "IgnoreResistance",
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 112
         }
       ]
     },
@@ -326,7 +333,7 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Ranged_Buff_Dmg",
@@ -341,7 +348,7 @@
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "MastermindPets_Howler_Wolf target.VillainName> MastermindPets_Howler_Wolf_Alpha target.VillainName> || MastermindPets_Lioness target.VillainName> || MastermindPets_Dire_Wolf target.VillainName> ||",
-          "caster_stack": "Unlimited",
+          "caster_stack": "Collective",
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
@@ -349,7 +356,8 @@
             "IgnoreStrength",
             "IgnoreResistance",
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 112
         }
       ]
     },
@@ -370,7 +378,7 @@
             "Psionic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Ranged_Buff_Dmg",
@@ -385,7 +393,7 @@
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "MastermindPets_Howler_Wolf target.VillainName> MastermindPets_Howler_Wolf_Alpha target.VillainName> || MastermindPets_Lioness target.VillainName> || MastermindPets_Dire_Wolf target.VillainName> ||",
-          "caster_stack": "Unlimited",
+          "caster_stack": "Collective",
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
@@ -393,7 +401,8 @@
             "IgnoreStrength",
             "IgnoreResistance",
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 112
         }
       ]
     },
@@ -414,7 +423,7 @@
             "ToHit"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Buff_ToHit",
@@ -429,17 +438,21 @@
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "MastermindPets_Howler_Wolf target.VillainName> MastermindPets_Howler_Wolf_Alpha target.VillainName> || MastermindPets_Lioness target.VillainName> || MastermindPets_Dire_Wolf target.VillainName> ||",
-          "caster_stack": "Unlimited",
+          "caster_stack": "Collective",
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 96
         }
       ]
     }
+  ],
+  "strengths_disallowed": [
+    "RechargeTime"
   ],
   "modes_disallowed": [
     "Disable_All"

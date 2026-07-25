@@ -39,6 +39,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -58,7 +59,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Levelminus",
@@ -78,16 +79,17 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "NPC_Pets_MA_Skeletal_Warrior",
-            "priority_list": "Combat"
+            "priority_list": "Combat",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "CopyBoosts"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 4
         }
       ]
     },
@@ -108,7 +110,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Levelminus",
@@ -128,16 +130,17 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "NPC_Pets_MA_Skeletal_Warrior",
-            "priority_list": "Combat"
+            "priority_list": "Combat",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "CopyBoosts"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 4
         }
       ]
     }

@@ -52,6 +52,7 @@
   "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Guardian_Mu_Mastery.Electric_Shackles Epic.Guardian_Mu_Mastery.Ball_Lightning && Epic.Guardian_Mu_Mastery.Electric_Shackles Epic.Guardian_Mu_Mastery.Thunder_Strike && || Epic.Guardian_Mu_Mastery.Electric_Shackles Epic.Guardian_Mu_Mastery.Conserve_Power && || Epic.Guardian_Mu_Mastery.Ball_Lightning Epic.Guardian_Mu_Mastery.Conserve_Power && || Epic.Guardian_Mu_Mastery.Ball_Lightning Epic.Guardian_Mu_Mastery.Thunder_Strike && || &&",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -71,7 +72,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -98,7 +99,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     }

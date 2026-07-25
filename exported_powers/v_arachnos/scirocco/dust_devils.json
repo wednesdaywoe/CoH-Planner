@@ -39,6 +39,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -58,7 +59,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -78,23 +79,24 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Arachnos_Dust_Devil1",
-            "priority_list": "PL_Untargetable_FightPreferRanged"
+            "priority_list": "PL_Untargetable_FightPreferRanged",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "CopyBoosts"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -114,23 +116,24 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Arachnos_Dust_Devil3",
-            "priority_list": "PL_Untargetable_FightPreferRanged"
+            "priority_list": "PL_Untargetable_FightPreferRanged",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "CopyBoosts"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -150,16 +153,17 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Arachnos_Dust_Devil5",
-            "priority_list": "PL_Untargetable_FightPreferRanged"
+            "priority_list": "PL_Untargetable_FightPreferRanged",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "CopyBoosts"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 4
         }
       ]
     },
@@ -180,7 +184,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -200,23 +204,24 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Arachnos_Dust_Devil2",
-            "priority_list": "PL_Untargetable_FightPreferRanged"
+            "priority_list": "PL_Untargetable_FightPreferRanged",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "CopyBoosts"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -236,16 +241,17 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Arachnos_Dust_Devil4",
-            "priority_list": "PL_Untargetable_FightPreferRanged"
+            "priority_list": "PL_Untargetable_FightPreferRanged",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "CopyBoosts"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 4
         }
       ]
     }

@@ -50,6 +50,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     104,
     116
@@ -72,7 +73,7 @@
             "Knockup"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Knockback",
@@ -91,6 +92,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You knock {PlayerDest} off their feet with your {PowerName}!",
+            "display_victim_hit": "{PlayerSource} knocks you off your feet with their {PowerName}!",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags_raw": 1280
         },
         {
@@ -98,7 +106,7 @@
             "Smashing_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
@@ -117,6 +125,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Smashing damage.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Smashing damage.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -138,7 +153,7 @@
             "Knockup"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Knockback",
@@ -157,12 +172,19 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You knock {PlayerDest} off their feet with your {PowerName}!",
+            "display_victim_hit": "{PlayerSource} knocks you off your feet with their {PowerName}!",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "suppress_events": [
             {
-              "event": "MissionObjectInteract",
+              "event": "Knocked",
               "event_id": 33,
               "duration": 10.0,
-              "flag": 0
+              "always": 0
             }
           ],
           "flags_raw": 1280
@@ -172,7 +194,7 @@
             "Smashing_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_PvPDamage",
@@ -191,6 +213,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Smashing damage.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Smashing damage.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -214,7 +243,7 @@
             "Smashing_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_InherentDamage",
@@ -233,6 +262,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Smashing damage (CONTAINMENT).",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Smashing damage (CONTAINMENT).",
+            "display_float": "Containment",
+            "display_attrib_defense_float": null,
+            "display_info": "Only against immobilized, held, sleeping, terrified or stunned targets"
+          },
           "flags_raw": 1280
         }
       ]
@@ -256,7 +292,7 @@
             "Smashing_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_PvPDamage",
@@ -275,6 +311,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Smashing damage (CONTAINMENT).",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Smashing damage (CONTAINMENT).",
+            "display_float": "Containment",
+            "display_attrib_defense_float": null,
+            "display_info": "Only against immobilized, held, sleeping, terrified or stunned targets"
+          },
           "flags_raw": 1280
         }
       ]
@@ -296,7 +339,7 @@
             "Fly"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -339,7 +382,7 @@
             "Smashing_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
@@ -358,6 +401,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Smashing damage (IMPACT!).",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Smashing damage (IMPACT!).",
+            "display_float": "Impact!",
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags_raw": 1280
         }
       ]

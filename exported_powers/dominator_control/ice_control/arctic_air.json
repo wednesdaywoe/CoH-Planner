@@ -52,6 +52,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -71,7 +72,7 @@
             "RechargeTime"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Ranged_Slow",
@@ -90,6 +91,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "PFX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreStrength"
           ],
@@ -102,7 +109,7 @@
             "JumpingSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Slow",
@@ -128,7 +135,7 @@
             "JumpHeight"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Ranged_Slow",
@@ -157,7 +164,7 @@
             "StealthRadius_PVE"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -181,7 +188,7 @@
               "event": "MissionObjectClick",
               "event_id": 37,
               "duration": 10.0,
-              "flag": 1
+              "always": 1
             }
           ],
           "flags_raw": 1280
@@ -191,7 +198,7 @@
             "StealthRadius_PVP"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -215,19 +222,19 @@
               "event": "Attacked",
               "event_id": 2,
               "duration": 10.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "HitByFoe",
               "event_id": 17,
               "duration": 10.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "MissionObjectClick",
               "event_id": 37,
               "duration": 10.0,
-              "flag": 1
+              "always": 1
             }
           ],
           "flags_raw": 1280
@@ -251,7 +258,7 @@
             "RunningSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Maximum",
           "target": "AnyAffected",
           "table": "Ranged_SpeedRunning",
@@ -309,7 +316,7 @@
                     "Confused"
                   ],
                   "type": "Duration",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Current",
                   "target": "AnyAffected",
                   "table": "Ranged_Fear",
@@ -328,9 +335,12 @@
                   "stack": "Replace",
                   "stack_limit": 2,
                   "stack_key": null,
-                  "flags": [
-                    "DeepSleep"
-                  ],
+                  "fx": {
+                    "continuing_bits": [],
+                    "continuing_fx": null,
+                    "conditional_bits": [],
+                    "conditional_fx": "GENERICCONTINUING/CONFUSECONTINUING.FX"
+                  },
                   "flags_raw": 2560
                 },
                 {
@@ -338,7 +348,7 @@
                     "Confused"
                   ],
                   "type": "Duration",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Current",
                   "target": "AnyAffected",
                   "table": "Ranged_Fear",
@@ -357,8 +367,20 @@
                   "stack": "Replace",
                   "stack_limit": 2,
                   "stack_key": "ArcticAir",
+                  "messages": {
+                    "display_attacker_hit": null,
+                    "display_victim_hit": null,
+                    "display_float": "DOMINATION",
+                    "display_attrib_defense_float": null,
+                    "display_info": "While under the effects of Domination"
+                  },
+                  "fx": {
+                    "continuing_bits": [],
+                    "continuing_fx": null,
+                    "conditional_bits": [],
+                    "conditional_fx": "GENERICCONTINUING/CONFUSECONTINUING.FX"
+                  },
                   "flags": [
-                    "DeepSleep",
                     "StackByAttribAndKey"
                   ],
                   "flags_raw": 264704
@@ -382,7 +404,7 @@
                     "Confused"
                   ],
                   "type": "Duration",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Current",
                   "target": "AnyAffected",
                   "table": "Ranged_Fear",
@@ -401,8 +423,20 @@
                   "stack": "Replace",
                   "stack_limit": 2,
                   "stack_key": "ArcticAir",
+                  "messages": {
+                    "display_attacker_hit": null,
+                    "display_victim_hit": null,
+                    "display_float": null,
+                    "display_attrib_defense_float": null,
+                    "display_info": "Only while domination is not active"
+                  },
+                  "fx": {
+                    "continuing_bits": [],
+                    "continuing_fx": null,
+                    "conditional_bits": [],
+                    "conditional_fx": "GENERICCONTINUING/CONFUSECONTINUING.FX"
+                  },
                   "flags": [
-                    "DeepSleep",
                     "StackByAttribAndKey"
                   ],
                   "flags_raw": 264704
@@ -430,7 +464,7 @@
             "Afraid"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -470,7 +504,7 @@
             "Confused"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_PvPMez",
@@ -489,16 +523,26 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You Confuse {PlayerDest} with your {PowerName}.",
+            "display_victim_hit": "{PlayerSource} Confuses you with their {PowerName}.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "GENERICCONTINUING/CONFUSECONTINUING.FX"
+          },
           "suppress_events": [
             {
-              "event": "Event_28",
+              "event": "Confused",
               "event_id": 28,
               "duration": 15.0,
-              "flag": 0
+              "always": 0
             }
-          ],
-          "flags": [
-            "DeepSleep"
           ],
           "flags_raw": 2560
         }
@@ -521,7 +565,7 @@
                 "Confused"
               ],
               "type": "Duration",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_PvPMez",
@@ -540,16 +584,19 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": null,
+                "conditional_bits": [],
+                "conditional_fx": "GENERICCONTINUING/CONFUSECONTINUING.FX"
+              },
               "suppress_events": [
                 {
-                  "event": "Event_28",
+                  "event": "Confused",
                   "event_id": 28,
                   "duration": 15.0,
-                  "flag": 0
+                  "always": 0
                 }
-              ],
-              "flags": [
-                "DeepSleep"
               ],
               "flags_raw": 2560
             }

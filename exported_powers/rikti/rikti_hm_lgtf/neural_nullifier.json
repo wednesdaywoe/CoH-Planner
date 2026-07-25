@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     140
   ],
@@ -59,7 +60,7 @@
             "Terrorized"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Fear",
@@ -78,9 +79,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "GENERICCONTINUING/AFRAIDCONTINUING.FX"
+          },
           "flags": [
-            "IgnoreStrength",
-            "DeepSleep"
+            "IgnoreStrength"
           ],
           "flags_raw": 2576
         },
@@ -89,14 +95,14 @@
             "Special_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": -1.0,
           "duration": "0 seconds",
           "magnitude": 1.0,
-          "delay": 3.133699893951416,
+          "delay": 3.1337,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -108,6 +114,13 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of unresistable Special damage.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of unresistable Special damage.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
@@ -120,7 +133,7 @@
             "Designer_Status"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -139,6 +152,13 @@
           "stack": "Extend",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": "NEURAL NULLIFIED!",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -164,7 +184,7 @@
                 "Base_Defense"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_Debuff_Def",
@@ -183,6 +203,12 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "POWERS/PSIONICS/MINDOVERBODY.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "IgnoreStrength",
                 "IgnoreResistance"
@@ -201,7 +227,7 @@
                 "Toxic_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Resistance",
               "target": "AnyAffected",
               "table": "Ranged_Debuff_Res_Dmg",
@@ -220,6 +246,12 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "ENEMYFX/RIKTI/DEATH_FIELDS/NEURALNULLFIER_FIELD.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "IgnoreStrength",
                 "IgnoreResistance"
@@ -245,7 +277,7 @@
                 "Base_Defense"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_Debuff_Def",
@@ -264,6 +296,12 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "POWERS/PSIONICS/MINDOVERBODY.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "IgnoreStrength",
                 "IgnoreResistance"
@@ -282,7 +320,7 @@
                 "Toxic_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Resistance",
               "target": "AnyAffected",
               "table": "Ranged_Debuff_Res_Dmg",
@@ -301,6 +339,12 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "ENEMYFX/RIKTI/DEATH_FIELDS/NEURALNULLFIER_FIELD.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "IgnoreStrength",
                 "IgnoreResistance"
@@ -326,7 +370,7 @@
                 "Base_Defense"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_Debuff_Def",
@@ -345,6 +389,12 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "POWERS/PSIONICS/MINDOVERBODY.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "IgnoreStrength",
                 "IgnoreResistance"
@@ -363,7 +413,7 @@
                 "Toxic_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Resistance",
               "target": "AnyAffected",
               "table": "Ranged_Debuff_Res_Dmg",
@@ -382,6 +432,12 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "ENEMYFX/RIKTI/DEATH_FIELDS/NEURALNULLFIER_FIELD.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "IgnoreStrength",
                 "IgnoreResistance"
@@ -407,7 +463,7 @@
                 "Base_Defense"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_Debuff_Def",
@@ -426,6 +482,12 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "POWERS/PSIONICS/MINDOVERBODY.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "IgnoreStrength",
                 "IgnoreResistance"
@@ -444,7 +506,7 @@
                 "Toxic_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Resistance",
               "target": "AnyAffected",
               "table": "Ranged_Debuff_Res_Dmg",
@@ -463,6 +525,12 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "ENEMYFX/RIKTI/DEATH_FIELDS/NEURALNULLFIER_FIELD.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "IgnoreStrength",
                 "IgnoreResistance"

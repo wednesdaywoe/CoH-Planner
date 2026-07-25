@@ -1,0 +1,19 @@
+{
+  "key": "Boosts.Crafted_Triumphant_Insult_A",
+  "display_name": "Crafted Triumphant Insult A",
+  "help": "Enhances the taunt and placate duration of a power by {Boost.Attrib.Mez.Scale}%.",
+  "short_help": "Set: Triumphant Insult",
+  "icon": "crafted_triumphant_insult_a_set.ico",
+  "powers": [
+    "Boosts.Crafted_Triumphant_Insult_A.Crafted_Triumphant_Insult_A"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Triumphant Insult: Taunt/Placate"
+  ],
+  "power_short_helps": [
+    "+Taunt, +Placate"
+  ]
+}

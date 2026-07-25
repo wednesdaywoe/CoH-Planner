@@ -44,6 +44,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -63,7 +64,7 @@
             "ToHit"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Buff_ToHit",
@@ -82,6 +83,19 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": "SeismicForceBuff",
+          "messages": {
+            "display_attacker_hit": "You take a moment to concentrate and are much more accurate for a short while.",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "GENERICCONTINUING/BUFFTOHITCONT.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreResistance",
             "StackByAttribAndKey"
@@ -100,7 +114,7 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Buff_Dmg",
@@ -145,7 +159,7 @@
             "Revoke_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -165,12 +179,13 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Blaster_Ranged.Seismic_Blast.Shockwaves",
               "Corruptor_Ranged.Seismic_Blast.Shockwaves",
               "Defender_Ranged.Seismic_Blast.Shockwaves"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags_raw": 1280
         },
@@ -179,7 +194,7 @@
             "Revoke_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -199,10 +214,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Redirects.Seismic_Blast.Shockwaves_Buff"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags_raw": 1280
         },
@@ -211,7 +227,7 @@
             "Cancel_Mods"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
@@ -230,6 +246,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "tags": [
+              "SeismicShockwaves"
+            ],
+            "type": "EffectFilter"
+          },
           "flags_raw": 1280
         }
       ]

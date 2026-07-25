@@ -45,6 +45,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -81,7 +82,7 @@
                 "Lethal_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Melee_Tempdamage",
@@ -96,10 +97,23 @@
               "tick_mag_multiplier": 1.0,
               "tick_mag_additive": 0.0,
               "jit_requires": "",
-              "caster_stack": "Unlimited",
+              "caster_stack": "Collective",
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Lethal damage (WAYLAY!).",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Lethal damage (WAYLAY!).",
+                "display_float": "Waylay!",
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "INCARNATEPOWERS/INTERFACE/REACTIVE.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "CancelOnMiss",
                 "IgnoreStrength"
@@ -125,7 +139,7 @@
                 "Lethal_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Melee_IncarnateProcDamage",
@@ -140,10 +154,23 @@
               "tick_mag_multiplier": 1.0,
               "tick_mag_additive": 0.0,
               "jit_requires": "",
-              "caster_stack": "Unlimited",
+              "caster_stack": "Collective",
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Lethal damage (WAYLAY!).",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Lethal damage (WAYLAY!).",
+                "display_float": "Waylay!",
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "INCARNATEPOWERS/INTERFACE/REACTIVE.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "CancelOnMiss",
                 "IgnoreStrength"
@@ -155,6 +182,7 @@
       ]
     }
   ],
+  "max_boosts": 0,
   "modes_disallowed": [
     "Disable_All",
     "Disable_Epic",

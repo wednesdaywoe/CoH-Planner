@@ -53,6 +53,7 @@
   "requires": "$archetype @Class_Stalker == $archetype @Class_Scrapper == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     104,
     136

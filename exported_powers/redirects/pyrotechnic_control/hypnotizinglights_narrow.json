@@ -46,6 +46,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     112,
     140
@@ -81,7 +82,7 @@
                 "Confused"
               ],
               "type": "Duration",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_Fear",
@@ -100,9 +101,19 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
-              "flags": [
-                "DeepSleep"
-              ],
+              "messages": {
+                "display_attacker_hit": "You Confuse {PlayerDest} with your {PowerName}.",
+                "display_victim_hit": "{PlayerSource} Confuses you with their {PowerName}.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "Within 20ft radius, against up to 5 foes"
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": null,
+                "conditional_bits": [],
+                "conditional_fx": "GENERICCONTINUING/CONFUSECONTINUING.FX"
+              },
               "flags_raw": 2560
             }
           ]
@@ -126,7 +137,7 @@
                 "Confused"
               ],
               "type": "Duration",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_Fear",
@@ -145,9 +156,19 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
-              "flags": [
-                "DeepSleep"
-              ],
+              "messages": {
+                "display_attacker_hit": "You Confuse {PlayerDest} with your {PowerName} (OVERPOWER).",
+                "display_victim_hit": "{PlayerSource} Confuses you with their {PowerName} (OVERPOWER).",
+                "display_float": "Overpower",
+                "display_attrib_defense_float": null,
+                "display_info": "Overpower<br>Within 20ft radius, against up to 5 foes"
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": null,
+                "conditional_bits": [],
+                "conditional_fx": "GENERICCONTINUING/CONFUSECONTINUING.FX"
+              },
               "flags_raw": 2560
             }
           ]
@@ -171,7 +192,7 @@
                 "Confused"
               ],
               "type": "Duration",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_Fear",
@@ -190,9 +211,19 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
-              "flags": [
-                "DeepSleep"
-              ],
+              "messages": {
+                "display_attacker_hit": "You Confuse {PlayerDest} with your {PowerName} (DOMINATION).",
+                "display_victim_hit": "{PlayerSource} Confuses you with their {PowerName} (DOMINATION).",
+                "display_float": "DOMINATION",
+                "display_attrib_defense_float": null,
+                "display_info": "While under the effects of Domination<br>Within 20ft radius, against up to 5 foes"
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": null,
+                "conditional_bits": [],
+                "conditional_fx": "PFX"
+              },
               "flags_raw": 2560
             }
           ]
@@ -214,7 +245,7 @@
                 "Psionic_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Ranged_Damage",
@@ -233,6 +264,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Psionic damage over time.",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Psionic damage over time.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "Within 20ft radius, against up to 5 foes"
+              },
               "flags_raw": 1280
             }
           ]
@@ -256,7 +294,7 @@
                 "Psionic_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Ranged_InherentDamage",
@@ -275,6 +313,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Psionic damage over time (CONTAINMENT).",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Psionic damage over time (CONTAINMENT).",
+                "display_float": "Containment",
+                "display_attrib_defense_float": null,
+                "display_info": "Only against immobilized, held, sleeping, terrified or stunned targets"
+              },
               "flags_raw": 1280
             }
           ]
@@ -311,7 +356,7 @@
                 "Confused"
               ],
               "type": "Duration",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_PvPMez",
@@ -330,16 +375,26 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You Confuse {PlayerDest} with your {PowerName}.",
+                "display_victim_hit": "{PlayerSource} Confuses you with their {PowerName}.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "Within 20ft radius, against up to 5 foes"
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": null,
+                "conditional_bits": [],
+                "conditional_fx": "PFX"
+              },
               "suppress_events": [
                 {
-                  "event": "Event_28",
+                  "event": "Confused",
                   "event_id": 28,
                   "duration": 15.0,
-                  "flag": 0
+                  "always": 0
                 }
-              ],
-              "flags": [
-                "DeepSleep"
               ],
               "flags_raw": 2560
             }
@@ -364,7 +419,7 @@
                 "Confused"
               ],
               "type": "Duration",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_PvPMez",
@@ -383,17 +438,29 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You Confuse {PlayerDest} with your {PowerName} (DOMINATION).",
+                "display_victim_hit": "{PlayerSource} Confuses you with their {PowerName} (DOMINATION).",
+                "display_float": "DOMINATION",
+                "display_attrib_defense_float": null,
+                "display_info": "While under the effects of Domination<br>Within 20ft radius, against up to 5 foes"
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": null,
+                "conditional_bits": [],
+                "conditional_fx": "PFX"
+              },
               "suppress_events": [
                 {
-                  "event": "Event_28",
+                  "event": "Confused",
                   "event_id": 28,
                   "duration": 15.0,
-                  "flag": 0
+                  "always": 0
                 }
               ],
               "flags": [
-                "IgnoreResistance",
-                "DeepSleep"
+                "IgnoreResistance"
               ],
               "flags_raw": 2080
             }
@@ -416,7 +483,7 @@
                 "Psionic_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Ranged_PvPDamage",
@@ -435,6 +502,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Psionic damage over time.",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Psionic damage over time.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "Within 20ft radius, against up to 5 foes"
+              },
               "flags_raw": 1280
             }
           ]
@@ -458,7 +532,7 @@
                 "Psionic_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Ranged_PvPDamage",
@@ -477,12 +551,22 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Psionic damage over time (CONTAINMENT).",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Psionic damage over time (CONTAINMENT).",
+                "display_float": "Containment",
+                "display_attrib_defense_float": null,
+                "display_info": "Only against immobilized, held, sleeping, terrified or stunned targets"
+              },
               "flags_raw": 1280
             }
           ]
         }
       ]
     }
+  ],
+  "strengths_disallowed": [
+    "Range"
   ],
   "modes_disallowed": [
     "Disable_All"

@@ -63,6 +63,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&",
+  "slot_requires": "",
   "attack_types": [
     112,
     140
@@ -98,7 +99,7 @@
                 "Special_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "Self",
               "table": "Melee_HealSelf",
@@ -117,6 +118,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of unresistable Special damage.",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of unresistable Special damage.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags": [
                 "IgnoreStrength",
                 "IgnoreResistance",
@@ -129,7 +137,7 @@
                 "Regeneration"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
@@ -148,20 +156,31 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
-              "suppress_events": [
+              "messages": {
+                "display_attacker_hit": "You drain the Psyche from {PlayerDest} and reduce their Regeneration and Recovery rate.",
+                "display_victim_hit": null,
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "For up to 4 seconds after a target was stunned"
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "GENERICCONTINUING/DEBUFFMAXHPCONTINUING.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
+              "required_events": [
                 {
-                  "event": "Event_1082130432",
-                  "event_id": 1082130432,
-                  "duration": 0.0,
-                  "flag": 0
-                },
-                {
-                  "event": "Event_5120",
-                  "event_id": 5120,
-                  "duration": 7.550714494110037e-36,
-                  "flag": 0
+                  "event": "Stunned",
+                  "event_id": 23,
+                  "duration": 4.0,
+                  "always": 0
                 }
-              ]
+              ],
+              "flags": [
+                "IgnoreStrength"
+              ],
+              "flags_raw": 1296
             },
             {
               "attribs": [
@@ -175,7 +194,7 @@
                 "Toxic_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Resistance",
               "target": "AnyAffected",
               "table": "Melee_Debuff_Def",
@@ -194,27 +213,38 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
-              "suppress_events": [
+              "messages": {
+                "display_attacker_hit": null,
+                "display_victim_hit": null,
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "For up to 4 seconds after a target was asleep"
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "GENERICCONTINUING/DAMAGERESISTANCE/DEBUFFDAMRESCONTINUING.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
+              "required_events": [
                 {
-                  "event": "Event_1082130432",
-                  "event_id": 1082130432,
-                  "duration": 0.0,
-                  "flag": 0
-                },
-                {
-                  "event": "Event_0",
-                  "event_id": 0,
-                  "duration": 0.0,
-                  "flag": 0
+                  "event": "Sleep",
+                  "event_id": 26,
+                  "duration": 4.0,
+                  "always": 0
                 }
-              ]
+              ],
+              "flags": [
+                "IgnoreStrength"
+              ],
+              "flags_raw": 1296
             },
             {
               "attribs": [
                 "Base_Defense"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Debuff_Def",
@@ -233,27 +263,38 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
-              "suppress_events": [
+              "messages": {
+                "display_attacker_hit": null,
+                "display_victim_hit": null,
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "For up to 4 seconds after a target was held"
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "GENERICCONTINUING/DEBUFFDEFCONTINUING.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
+              "required_events": [
                 {
-                  "event": "Event_1082130432",
-                  "event_id": 1082130432,
-                  "duration": 0.0,
-                  "flag": 0
-                },
-                {
-                  "event": "Event_0",
-                  "event_id": 0,
-                  "duration": 0.0,
-                  "flag": 0
+                  "event": "Held",
+                  "event_id": 25,
+                  "duration": 4.0,
+                  "always": 0
                 }
-              ]
+              ],
+              "flags": [
+                "IgnoreStrength"
+              ],
+              "flags_raw": 1296
             },
             {
               "attribs": [
                 "ToHit"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_DeBuff_ToHit",
@@ -272,34 +313,45 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
-              "suppress_events": [
+              "messages": {
+                "display_attacker_hit": null,
+                "display_victim_hit": null,
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "For up to 4 seconds after a target was terrorized"
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "GENERICCONTINUING/DEBUFFTOHITCONTINUING.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
+              "required_events": [
                 {
-                  "event": "Event_1082130432",
-                  "event_id": 1082130432,
-                  "duration": 0.0,
-                  "flag": 0
-                },
-                {
-                  "event": "Event_0",
-                  "event_id": 0,
-                  "duration": 0.0,
-                  "flag": 0
+                  "event": "Terrorized",
+                  "event_id": 27,
+                  "duration": 4.0,
+                  "always": 0
                 }
-              ]
+              ],
+              "flags": [
+                "IgnoreStrength"
+              ],
+              "flags_raw": 1296
             },
             {
               "attribs": [
                 "Psionic_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Melee_Damage",
               "scale": 0.05,
               "duration": "3.75 seconds",
               "magnitude": 1.0,
-              "delay": 0.20000000298023224,
+              "delay": 0.2,
               "duration_expression": "",
               "magnitude_expression": "",
               "application_period": 1.0,
@@ -311,36 +363,43 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Psionic damage over time.",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Psionic damage over time.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "If the target is not under control effects"
+              },
               "suppress_events": [
                 {
                   "event": "Stunned",
                   "event_id": 23,
                   "duration": 0.5,
-                  "flag": 1
+                  "always": 1
                 },
                 {
                   "event": "Held",
                   "event_id": 25,
                   "duration": 0.5,
-                  "flag": 1
+                  "always": 1
                 },
                 {
                   "event": "Sleep",
                   "event_id": 26,
                   "duration": 0.5,
-                  "flag": 1
+                  "always": 1
+                },
+                {
+                  "event": "Terrorized",
+                  "event_id": 27,
+                  "duration": 0.5,
+                  "always": 1
                 },
                 {
                   "event": "Confused",
-                  "event_id": 27,
-                  "duration": 0.5,
-                  "flag": 1
-                },
-                {
-                  "event": "Event_28",
                   "event_id": 28,
                   "duration": 0.5,
-                  "flag": 1
+                  "always": 1
                 }
               ],
               "flags_raw": 1280
@@ -392,7 +451,7 @@
                         "Confused"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Current",
                       "target": "AnyAffected",
                       "table": "Melee_Ones",
@@ -411,6 +470,19 @@
                       "stack": "RefreshToCount",
                       "stack_limit": 1,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You Confuse {PlayerDest} with your {PowerName}.",
+                        "display_victim_hit": "{PlayerSource} Confuses you with their {PowerName}.",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
+                      "fx": {
+                        "continuing_bits": [],
+                        "continuing_fx": null,
+                        "conditional_bits": [],
+                        "conditional_fx": "GENERICCONTINUING/CONFUSECONTINUING.FX"
+                      },
                       "flags": [
                         "IgnoreResistance"
                       ],
@@ -421,7 +493,7 @@
                         "Confused"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Current",
                       "target": "AnyAffected",
                       "table": "Melee_Ones",
@@ -440,6 +512,19 @@
                       "stack": "RefreshToCount",
                       "stack_limit": 1,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You Confuse {PlayerDest} with your {PowerName}.",
+                        "display_victim_hit": "{PlayerSource} Confuses you with their {PowerName}.",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
+                      "fx": {
+                        "continuing_bits": [],
+                        "continuing_fx": null,
+                        "conditional_bits": [],
+                        "conditional_fx": "GENERICCONTINUING/CONFUSECONTINUING.FX"
+                      },
                       "flags": [
                         "IgnoreStrength",
                         "IgnoreResistance"
@@ -465,7 +550,7 @@
                         "Stunned"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Current",
                       "target": "AnyAffected",
                       "table": "Melee_Ones",
@@ -484,6 +569,19 @@
                       "stack": "RefreshToCount",
                       "stack_limit": 1,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You Stun {PlayerDest} with your {PowerName}.",
+                        "display_victim_hit": "{PlayerSource} Stuns you with their {PowerName}.",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
+                      "fx": {
+                        "continuing_bits": [],
+                        "continuing_fx": null,
+                        "conditional_bits": [],
+                        "conditional_fx": "GENERICCONTINUING/STUNCONTINUING.FX"
+                      },
                       "flags": [
                         "IgnoreResistance"
                       ],
@@ -494,7 +592,7 @@
                         "Stunned"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Current",
                       "target": "AnyAffected",
                       "table": "Melee_Ones",
@@ -513,6 +611,19 @@
                       "stack": "RefreshToCount",
                       "stack_limit": 1,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You Stun {PlayerDest} with your {PowerName}.",
+                        "display_victim_hit": "{PlayerSource} Stuns you with their {PowerName}.",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
+                      "fx": {
+                        "continuing_bits": [],
+                        "continuing_fx": null,
+                        "conditional_bits": [],
+                        "conditional_fx": "GENERICCONTINUING/STUNCONTINUING.FX"
+                      },
                       "flags": [
                         "IgnoreStrength",
                         "IgnoreResistance"
@@ -538,7 +649,7 @@
                         "Sleep"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Current",
                       "target": "AnyAffected",
                       "table": "Melee_Ones",
@@ -557,6 +668,19 @@
                       "stack": "RefreshToCount",
                       "stack_limit": 1,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You Sleep {PlayerDest} with your {PowerName}.",
+                        "display_victim_hit": "{PlayerSource} Sleeps you with their {PowerName}.",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
+                      "fx": {
+                        "continuing_bits": [],
+                        "continuing_fx": null,
+                        "conditional_bits": [],
+                        "conditional_fx": "GENERICCONTINUING/STUNCONTINUING.FX"
+                      },
                       "flags": [
                         "IgnoreResistance"
                       ],
@@ -567,7 +691,7 @@
                         "Sleep"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Current",
                       "target": "AnyAffected",
                       "table": "Melee_Ones",
@@ -586,6 +710,19 @@
                       "stack": "RefreshToCount",
                       "stack_limit": 1,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You Sleep {PlayerDest} with your {PowerName}.",
+                        "display_victim_hit": "{PlayerSource} Sleeps you with their {PowerName}.",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
+                      "fx": {
+                        "continuing_bits": [],
+                        "continuing_fx": null,
+                        "conditional_bits": [],
+                        "conditional_fx": "GENERICCONTINUING/STUNCONTINUING.FX"
+                      },
                       "flags": [
                         "IgnoreStrength",
                         "IgnoreResistance"
@@ -611,7 +748,7 @@
                         "Held"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Current",
                       "target": "AnyAffected",
                       "table": "Melee_Ones",
@@ -630,6 +767,21 @@
                       "stack": "RefreshToCount",
                       "stack_limit": 1,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You Hold {PlayerDest} with your {PowerName}.",
+                        "display_victim_hit": "{PlayerSource} Holds you with their {PowerName}.",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
+                      "fx": {
+                        "continuing_bits": [],
+                        "continuing_fx": null,
+                        "conditional_bits": [
+                          384
+                        ],
+                        "conditional_fx": null
+                      },
                       "flags": [
                         "IgnoreResistance"
                       ],
@@ -640,7 +792,7 @@
                         "Held"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Current",
                       "target": "AnyAffected",
                       "table": "Melee_Ones",
@@ -659,6 +811,21 @@
                       "stack": "RefreshToCount",
                       "stack_limit": 1,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You Hold {PlayerDest} with your {PowerName}.",
+                        "display_victim_hit": "{PlayerSource} Holds you with their {PowerName}.",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
+                      "fx": {
+                        "continuing_bits": [],
+                        "continuing_fx": null,
+                        "conditional_bits": [
+                          384
+                        ],
+                        "conditional_fx": null
+                      },
                       "flags": [
                         "IgnoreStrength",
                         "IgnoreResistance"
@@ -684,7 +851,7 @@
                         "Terrorized"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Current",
                       "target": "AnyAffected",
                       "table": "Melee_Ones",
@@ -703,6 +870,19 @@
                       "stack": "RefreshToCount",
                       "stack_limit": 1,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You Terrorize {PlayerDest} with your {PowerName}.",
+                        "display_victim_hit": "{PlayerSource} Terrorizes you with their {PowerName}.",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
+                      "fx": {
+                        "continuing_bits": [],
+                        "continuing_fx": null,
+                        "conditional_bits": [],
+                        "conditional_fx": "GENERICCONTINUING/AFRAIDCONTINUING.FX"
+                      },
                       "flags": [
                         "IgnoreResistance"
                       ],
@@ -713,7 +893,7 @@
                         "Terrorized"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Current",
                       "target": "AnyAffected",
                       "table": "Melee_Ones",
@@ -732,6 +912,19 @@
                       "stack": "RefreshToCount",
                       "stack_limit": 1,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You Terrorize {PlayerDest} with your {PowerName}.",
+                        "display_victim_hit": "{PlayerSource} Terrorizes you with their {PowerName}.",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
+                      "fx": {
+                        "continuing_bits": [],
+                        "continuing_fx": null,
+                        "conditional_bits": [],
+                        "conditional_fx": "GENERICCONTINUING/AFRAIDCONTINUING.FX"
+                      },
                       "flags": [
                         "IgnoreStrength",
                         "IgnoreResistance"
@@ -772,7 +965,7 @@
                         "Confused"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Current",
                       "target": "AnyAffected",
                       "table": "Melee_Ones",
@@ -791,6 +984,19 @@
                       "stack": "RefreshToCount",
                       "stack_limit": 1,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You Confuse {PlayerDest} with your {PowerName}.",
+                        "display_victim_hit": "{PlayerSource} Confuses you with their {PowerName}.",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
+                      "fx": {
+                        "continuing_bits": [],
+                        "continuing_fx": null,
+                        "conditional_bits": [],
+                        "conditional_fx": "GENERICCONTINUING/CONFUSECONTINUING.FX"
+                      },
                       "flags": [
                         "IgnoreResistance"
                       ],
@@ -801,7 +1007,7 @@
                         "Confused"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Current",
                       "target": "AnyAffected",
                       "table": "Melee_Ones",
@@ -820,6 +1026,19 @@
                       "stack": "RefreshToCount",
                       "stack_limit": 1,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You Confuse {PlayerDest} with your {PowerName}.",
+                        "display_victim_hit": "{PlayerSource} Confuses you with their {PowerName}.",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
+                      "fx": {
+                        "continuing_bits": [],
+                        "continuing_fx": null,
+                        "conditional_bits": [],
+                        "conditional_fx": "GENERICCONTINUING/CONFUSECONTINUING.FX"
+                      },
                       "flags": [
                         "IgnoreStrength",
                         "IgnoreResistance"
@@ -858,7 +1077,7 @@
                             "Stunned"
                           ],
                           "type": "Magnitude",
-                          "application_type": "Immediate",
+                          "application_type": "OnTick",
                           "aspect": "Current",
                           "target": "AnyAffected",
                           "table": "Melee_Ones",
@@ -877,6 +1096,19 @@
                           "stack": "RefreshToCount",
                           "stack_limit": 1,
                           "stack_key": null,
+                          "messages": {
+                            "display_attacker_hit": "You Stun {PlayerDest} with your {PowerName}.",
+                            "display_victim_hit": "{PlayerSource} Stuns you with their {PowerName}.",
+                            "display_float": null,
+                            "display_attrib_defense_float": null,
+                            "display_info": null
+                          },
+                          "fx": {
+                            "continuing_bits": [],
+                            "continuing_fx": null,
+                            "conditional_bits": [],
+                            "conditional_fx": "GENERICCONTINUING/STUNCONTINUING.FX"
+                          },
                           "flags": [
                             "IgnoreResistance"
                           ],
@@ -887,7 +1119,7 @@
                             "Stunned"
                           ],
                           "type": "Magnitude",
-                          "application_type": "Immediate",
+                          "application_type": "OnTick",
                           "aspect": "Current",
                           "target": "AnyAffected",
                           "table": "Melee_Ones",
@@ -906,6 +1138,19 @@
                           "stack": "RefreshToCount",
                           "stack_limit": 1,
                           "stack_key": null,
+                          "messages": {
+                            "display_attacker_hit": "You Stun {PlayerDest} with your {PowerName}.",
+                            "display_victim_hit": "{PlayerSource} Stuns you with their {PowerName}.",
+                            "display_float": null,
+                            "display_attrib_defense_float": null,
+                            "display_info": null
+                          },
+                          "fx": {
+                            "continuing_bits": [],
+                            "continuing_fx": null,
+                            "conditional_bits": [],
+                            "conditional_fx": "GENERICCONTINUING/STUNCONTINUING.FX"
+                          },
                           "flags": [
                             "IgnoreStrength",
                             "IgnoreResistance"
@@ -944,7 +1189,7 @@
                                 "Sleep"
                               ],
                               "type": "Magnitude",
-                              "application_type": "Immediate",
+                              "application_type": "OnTick",
                               "aspect": "Current",
                               "target": "AnyAffected",
                               "table": "Melee_Ones",
@@ -963,6 +1208,19 @@
                               "stack": "RefreshToCount",
                               "stack_limit": 1,
                               "stack_key": null,
+                              "messages": {
+                                "display_attacker_hit": "You Sleep {PlayerDest} with your {PowerName}.",
+                                "display_victim_hit": "{PlayerSource} Sleeps you with their {PowerName}.",
+                                "display_float": null,
+                                "display_attrib_defense_float": null,
+                                "display_info": null
+                              },
+                              "fx": {
+                                "continuing_bits": [],
+                                "continuing_fx": null,
+                                "conditional_bits": [],
+                                "conditional_fx": "GENERICCONTINUING/SLEEPCONTINUING.FX"
+                              },
                               "flags": [
                                 "IgnoreResistance"
                               ],
@@ -973,7 +1231,7 @@
                                 "Sleep"
                               ],
                               "type": "Magnitude",
-                              "application_type": "Immediate",
+                              "application_type": "OnTick",
                               "aspect": "Current",
                               "target": "AnyAffected",
                               "table": "Melee_Ones",
@@ -992,6 +1250,19 @@
                               "stack": "RefreshToCount",
                               "stack_limit": 1,
                               "stack_key": null,
+                              "messages": {
+                                "display_attacker_hit": "You Sleep {PlayerDest} with your {PowerName}.",
+                                "display_victim_hit": "{PlayerSource} Sleeps you with their {PowerName}.",
+                                "display_float": null,
+                                "display_attrib_defense_float": null,
+                                "display_info": null
+                              },
+                              "fx": {
+                                "continuing_bits": [],
+                                "continuing_fx": null,
+                                "conditional_bits": [],
+                                "conditional_fx": "GENERICCONTINUING/SLEEPCONTINUING.FX"
+                              },
                               "flags": [
                                 "IgnoreStrength",
                                 "IgnoreResistance"
@@ -1030,7 +1301,7 @@
                                     "Held"
                                   ],
                                   "type": "Magnitude",
-                                  "application_type": "Immediate",
+                                  "application_type": "OnTick",
                                   "aspect": "Current",
                                   "target": "AnyAffected",
                                   "table": "Melee_Ones",
@@ -1049,6 +1320,21 @@
                                   "stack": "RefreshToCount",
                                   "stack_limit": 1,
                                   "stack_key": null,
+                                  "messages": {
+                                    "display_attacker_hit": "You Hold {PlayerDest} with your {PowerName}.",
+                                    "display_victim_hit": "{PlayerSource} Holds you with their {PowerName}.",
+                                    "display_float": null,
+                                    "display_attrib_defense_float": null,
+                                    "display_info": null
+                                  },
+                                  "fx": {
+                                    "continuing_bits": [],
+                                    "continuing_fx": null,
+                                    "conditional_bits": [
+                                      384
+                                    ],
+                                    "conditional_fx": "GENERICCONTINUING/STUNCONTINUING.FX"
+                                  },
                                   "flags": [
                                     "IgnoreResistance"
                                   ],
@@ -1059,7 +1345,7 @@
                                     "Held"
                                   ],
                                   "type": "Magnitude",
-                                  "application_type": "Immediate",
+                                  "application_type": "OnTick",
                                   "aspect": "Current",
                                   "target": "AnyAffected",
                                   "table": "Melee_Ones",
@@ -1078,6 +1364,21 @@
                                   "stack": "RefreshToCount",
                                   "stack_limit": 1,
                                   "stack_key": null,
+                                  "messages": {
+                                    "display_attacker_hit": "You Hold {PlayerDest} with your {PowerName}.",
+                                    "display_victim_hit": "{PlayerSource} Holds you with their {PowerName}.",
+                                    "display_float": null,
+                                    "display_attrib_defense_float": null,
+                                    "display_info": null
+                                  },
+                                  "fx": {
+                                    "continuing_bits": [],
+                                    "continuing_fx": null,
+                                    "conditional_bits": [
+                                      384
+                                    ],
+                                    "conditional_fx": "GENERICCONTINUING/STUNCONTINUING.FX"
+                                  },
                                   "flags": [
                                     "IgnoreStrength",
                                     "IgnoreResistance"
@@ -1103,7 +1404,7 @@
                                     "Terrorized"
                                   ],
                                   "type": "Magnitude",
-                                  "application_type": "Immediate",
+                                  "application_type": "OnTick",
                                   "aspect": "Current",
                                   "target": "AnyAffected",
                                   "table": "Melee_Ones",
@@ -1122,6 +1423,19 @@
                                   "stack": "RefreshToCount",
                                   "stack_limit": 1,
                                   "stack_key": null,
+                                  "messages": {
+                                    "display_attacker_hit": "You Terrorize {PlayerDest} with your {PowerName}.",
+                                    "display_victim_hit": "{PlayerSource} Terrorizes you with their {PowerName}.",
+                                    "display_float": null,
+                                    "display_attrib_defense_float": null,
+                                    "display_info": null
+                                  },
+                                  "fx": {
+                                    "continuing_bits": [],
+                                    "continuing_fx": null,
+                                    "conditional_bits": [],
+                                    "conditional_fx": "GENERICCONTINUING/AFRAIDCONTINUING.FX"
+                                  },
                                   "flags": [
                                     "IgnoreResistance"
                                   ],
@@ -1132,7 +1446,7 @@
                                     "Terrorized"
                                   ],
                                   "type": "Magnitude",
-                                  "application_type": "Immediate",
+                                  "application_type": "OnTick",
                                   "aspect": "Current",
                                   "target": "AnyAffected",
                                   "table": "Melee_Ones",
@@ -1151,6 +1465,19 @@
                                   "stack": "RefreshToCount",
                                   "stack_limit": 1,
                                   "stack_key": null,
+                                  "messages": {
+                                    "display_attacker_hit": "You Terrorize {PlayerDest} with your {PowerName}.",
+                                    "display_victim_hit": "{PlayerSource} Terrorizes you with their {PowerName}.",
+                                    "display_float": null,
+                                    "display_attrib_defense_float": null,
+                                    "display_info": null
+                                  },
+                                  "fx": {
+                                    "continuing_bits": [],
+                                    "continuing_fx": null,
+                                    "conditional_bits": [],
+                                    "conditional_fx": "GENERICCONTINUING/AFRAIDCONTINUING.FX"
+                                  },
                                   "flags": [
                                     "IgnoreStrength",
                                     "IgnoreResistance"
@@ -1214,7 +1541,7 @@
                         "Confused"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Current",
                       "target": "AnyAffected",
                       "table": "Melee_Ones",
@@ -1233,12 +1560,25 @@
                       "stack": "RefreshToCount",
                       "stack_limit": 1,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You Confuse {PlayerDest} with your {PowerName}.",
+                        "display_victim_hit": "{PlayerSource} Confuses you with their {PowerName}.",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
+                      "fx": {
+                        "continuing_bits": [],
+                        "continuing_fx": null,
+                        "conditional_bits": [],
+                        "conditional_fx": "GENERICCONTINUING/CONFUSECONTINUING.FX"
+                      },
                       "suppress_events": [
                         {
-                          "event": "Event_28",
+                          "event": "Confused",
                           "event_id": 28,
                           "duration": 15.0,
-                          "flag": 0
+                          "always": 0
                         }
                       ],
                       "flags": [
@@ -1265,7 +1605,7 @@
                         "Stunned"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Current",
                       "target": "AnyAffected",
                       "table": "Melee_Ones",
@@ -1284,36 +1624,49 @@
                       "stack": "RefreshToCount",
                       "stack_limit": 1,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You Stun {PlayerDest} with your {PowerName}.",
+                        "display_victim_hit": "{PlayerSource} Stuns you with their {PowerName}.",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
+                      "fx": {
+                        "continuing_bits": [],
+                        "continuing_fx": null,
+                        "conditional_bits": [],
+                        "conditional_fx": "GENERICCONTINUING/STUNCONTINUING.FX"
+                      },
                       "suppress_events": [
                         {
                           "event": "Helped",
                           "event_id": 4,
                           "duration": 15.0,
-                          "flag": 0
+                          "always": 0
                         },
                         {
                           "event": "Stunned",
                           "event_id": 23,
                           "duration": 15.0,
-                          "flag": 0
+                          "always": 0
                         },
                         {
                           "event": "Stunned",
                           "event_id": 23,
                           "duration": 15.0,
-                          "flag": 0
+                          "always": 0
                         },
                         {
-                          "event": "Event_24",
+                          "event": "Immobilized",
                           "event_id": 24,
                           "duration": 15.0,
-                          "flag": 0
+                          "always": 0
                         },
                         {
-                          "event": "Confused",
+                          "event": "Terrorized",
                           "event_id": 27,
                           "duration": 15.0,
-                          "flag": 0
+                          "always": 0
                         }
                       ],
                       "flags": [
@@ -1340,7 +1693,7 @@
                         "Sleep"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Current",
                       "target": "AnyAffected",
                       "table": "Melee_Ones",
@@ -1359,36 +1712,49 @@
                       "stack": "RefreshToCount",
                       "stack_limit": 1,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You Sleep {PlayerDest} with your {PowerName}.",
+                        "display_victim_hit": "{PlayerSource} Sleeps you with their {PowerName}.",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
+                      "fx": {
+                        "continuing_bits": [],
+                        "continuing_fx": null,
+                        "conditional_bits": [],
+                        "conditional_fx": "GENERICCONTINUING/STUNCONTINUING.FX"
+                      },
                       "suppress_events": [
                         {
                           "event": "Helped",
                           "event_id": 4,
                           "duration": 15.0,
-                          "flag": 0
+                          "always": 0
                         },
                         {
                           "event": "Stunned",
                           "event_id": 23,
                           "duration": 15.0,
-                          "flag": 0
+                          "always": 0
                         },
                         {
                           "event": "Stunned",
                           "event_id": 23,
                           "duration": 15.0,
-                          "flag": 0
+                          "always": 0
                         },
                         {
-                          "event": "Event_24",
+                          "event": "Immobilized",
                           "event_id": 24,
                           "duration": 15.0,
-                          "flag": 0
+                          "always": 0
                         },
                         {
-                          "event": "Confused",
+                          "event": "Terrorized",
                           "event_id": 27,
                           "duration": 15.0,
-                          "flag": 0
+                          "always": 0
                         }
                       ],
                       "flags": [
@@ -1415,7 +1781,7 @@
                         "Held"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Current",
                       "target": "AnyAffected",
                       "table": "Melee_Ones",
@@ -1434,6 +1800,21 @@
                       "stack": "RefreshToCount",
                       "stack_limit": 1,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You Hold {PlayerDest} with your {PowerName}.",
+                        "display_victim_hit": "{PlayerSource} Holds you with their {PowerName}.",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
+                      "fx": {
+                        "continuing_bits": [],
+                        "continuing_fx": null,
+                        "conditional_bits": [
+                          384
+                        ],
+                        "conditional_fx": null
+                      },
                       "flags": [
                         "IgnoreResistance"
                       ],
@@ -1458,7 +1839,7 @@
                         "Terrorized"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Current",
                       "target": "AnyAffected",
                       "table": "Melee_Ones",
@@ -1477,36 +1858,49 @@
                       "stack": "RefreshToCount",
                       "stack_limit": 1,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You Terrorize {PlayerDest} with your {PowerName}.",
+                        "display_victim_hit": "{PlayerSource} Terrorizes you with their {PowerName}.",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
+                      "fx": {
+                        "continuing_bits": [],
+                        "continuing_fx": null,
+                        "conditional_bits": [],
+                        "conditional_fx": "GENERICCONTINUING/AFRAIDCONTINUING.FX"
+                      },
                       "suppress_events": [
                         {
                           "event": "Helped",
                           "event_id": 4,
                           "duration": 15.0,
-                          "flag": 0
+                          "always": 0
                         },
                         {
                           "event": "Stunned",
                           "event_id": 23,
                           "duration": 15.0,
-                          "flag": 0
+                          "always": 0
                         },
                         {
                           "event": "Stunned",
                           "event_id": 23,
                           "duration": 15.0,
-                          "flag": 0
+                          "always": 0
                         },
                         {
-                          "event": "Event_24",
+                          "event": "Immobilized",
                           "event_id": 24,
                           "duration": 15.0,
-                          "flag": 0
+                          "always": 0
                         },
                         {
-                          "event": "Confused",
+                          "event": "Terrorized",
                           "event_id": 27,
                           "duration": 15.0,
-                          "flag": 0
+                          "always": 0
                         }
                       ],
                       "flags": [
@@ -1548,7 +1942,7 @@
                         "Confused"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Current",
                       "target": "AnyAffected",
                       "table": "Melee_Ones",
@@ -1567,12 +1961,25 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You Confuse {PlayerDest} with your {PowerName}.",
+                        "display_victim_hit": "{PlayerSource} Confuses you with their {PowerName}.",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
+                      "fx": {
+                        "continuing_bits": [],
+                        "continuing_fx": null,
+                        "conditional_bits": [],
+                        "conditional_fx": "GENERICCONTINUING/CONFUSECONTINUING.FX"
+                      },
                       "suppress_events": [
                         {
-                          "event": "Event_28",
+                          "event": "Confused",
                           "event_id": 28,
                           "duration": 15.0,
-                          "flag": 0
+                          "always": 0
                         }
                       ],
                       "flags": [
@@ -1612,7 +2019,7 @@
                             "Stunned"
                           ],
                           "type": "Magnitude",
-                          "application_type": "Immediate",
+                          "application_type": "OnTick",
                           "aspect": "Current",
                           "target": "AnyAffected",
                           "table": "Melee_Ones",
@@ -1631,36 +2038,49 @@
                           "stack": "Stack",
                           "stack_limit": 2,
                           "stack_key": null,
+                          "messages": {
+                            "display_attacker_hit": "You Stun {PlayerDest} with your {PowerName}.",
+                            "display_victim_hit": "{PlayerSource} Stuns you with their {PowerName}.",
+                            "display_float": null,
+                            "display_attrib_defense_float": null,
+                            "display_info": null
+                          },
+                          "fx": {
+                            "continuing_bits": [],
+                            "continuing_fx": null,
+                            "conditional_bits": [],
+                            "conditional_fx": "GENERICCONTINUING/STUNCONTINUING.FX"
+                          },
                           "suppress_events": [
                             {
                               "event": "Stunned",
                               "event_id": 23,
                               "duration": 15.0,
-                              "flag": 0
+                              "always": 0
                             },
                             {
-                              "event": "Event_24",
+                              "event": "Immobilized",
                               "event_id": 24,
                               "duration": 15.0,
-                              "flag": 0
+                              "always": 0
                             },
                             {
                               "event": "Held",
                               "event_id": 25,
                               "duration": 15.0,
-                              "flag": 0
+                              "always": 0
                             },
                             {
                               "event": "Sleep",
                               "event_id": 26,
                               "duration": 15.0,
-                              "flag": 0
+                              "always": 0
                             },
                             {
-                              "event": "Confused",
+                              "event": "Terrorized",
                               "event_id": 27,
                               "duration": 15.0,
-                              "flag": 0
+                              "always": 0
                             }
                           ],
                           "flags": [
@@ -1700,7 +2120,7 @@
                                 "Sleep"
                               ],
                               "type": "Magnitude",
-                              "application_type": "Immediate",
+                              "application_type": "OnTick",
                               "aspect": "Current",
                               "target": "AnyAffected",
                               "table": "Melee_Ones",
@@ -1719,36 +2139,49 @@
                               "stack": "Stack",
                               "stack_limit": 2,
                               "stack_key": null,
+                              "messages": {
+                                "display_attacker_hit": "You Sleep {PlayerDest} with your {PowerName}.",
+                                "display_victim_hit": "{PlayerSource} Sleeps you with their {PowerName}.",
+                                "display_float": null,
+                                "display_attrib_defense_float": null,
+                                "display_info": null
+                              },
+                              "fx": {
+                                "continuing_bits": [],
+                                "continuing_fx": null,
+                                "conditional_bits": [],
+                                "conditional_fx": "GENERICCONTINUING/SLEEPCONTINUING.FX"
+                              },
                               "suppress_events": [
                                 {
                                   "event": "Stunned",
                                   "event_id": 23,
                                   "duration": 15.0,
-                                  "flag": 0
+                                  "always": 0
                                 },
                                 {
-                                  "event": "Event_24",
+                                  "event": "Immobilized",
                                   "event_id": 24,
                                   "duration": 15.0,
-                                  "flag": 0
+                                  "always": 0
                                 },
                                 {
                                   "event": "Held",
                                   "event_id": 25,
                                   "duration": 15.0,
-                                  "flag": 0
+                                  "always": 0
                                 },
                                 {
                                   "event": "Sleep",
                                   "event_id": 26,
                                   "duration": 15.0,
-                                  "flag": 0
+                                  "always": 0
                                 },
                                 {
-                                  "event": "Confused",
+                                  "event": "Terrorized",
                                   "event_id": 27,
                                   "duration": 15.0,
-                                  "flag": 0
+                                  "always": 0
                                 }
                               ],
                               "flags": [
@@ -1788,7 +2221,7 @@
                                     "Held"
                                   ],
                                   "type": "Magnitude",
-                                  "application_type": "Immediate",
+                                  "application_type": "OnTick",
                                   "aspect": "Current",
                                   "target": "AnyAffected",
                                   "table": "Melee_Ones",
@@ -1807,36 +2240,51 @@
                                   "stack": "Stack",
                                   "stack_limit": 2,
                                   "stack_key": null,
+                                  "messages": {
+                                    "display_attacker_hit": "You Hold {PlayerDest} with your {PowerName}.",
+                                    "display_victim_hit": "{PlayerSource} Holds you with their {PowerName}.",
+                                    "display_float": null,
+                                    "display_attrib_defense_float": null,
+                                    "display_info": null
+                                  },
+                                  "fx": {
+                                    "continuing_bits": [],
+                                    "continuing_fx": null,
+                                    "conditional_bits": [
+                                      384
+                                    ],
+                                    "conditional_fx": "GENERICCONTINUING/STUNCONTINUING.FX"
+                                  },
                                   "suppress_events": [
                                     {
                                       "event": "Stunned",
                                       "event_id": 23,
                                       "duration": 15.0,
-                                      "flag": 0
+                                      "always": 0
                                     },
                                     {
-                                      "event": "Event_24",
+                                      "event": "Immobilized",
                                       "event_id": 24,
                                       "duration": 15.0,
-                                      "flag": 0
+                                      "always": 0
                                     },
                                     {
                                       "event": "Held",
                                       "event_id": 25,
                                       "duration": 15.0,
-                                      "flag": 0
+                                      "always": 0
                                     },
                                     {
                                       "event": "Sleep",
                                       "event_id": 26,
                                       "duration": 15.0,
-                                      "flag": 0
+                                      "always": 0
                                     },
                                     {
-                                      "event": "Confused",
+                                      "event": "Terrorized",
                                       "event_id": 27,
                                       "duration": 15.0,
-                                      "flag": 0
+                                      "always": 0
                                     }
                                   ],
                                   "flags": [
@@ -1863,7 +2311,7 @@
                                     "Terrorized"
                                   ],
                                   "type": "Magnitude",
-                                  "application_type": "Immediate",
+                                  "application_type": "OnTick",
                                   "aspect": "Current",
                                   "target": "AnyAffected",
                                   "table": "Melee_Ones",
@@ -1882,36 +2330,49 @@
                                   "stack": "Stack",
                                   "stack_limit": 2,
                                   "stack_key": null,
+                                  "messages": {
+                                    "display_attacker_hit": "You Terrorize {PlayerDest} with your {PowerName}.",
+                                    "display_victim_hit": "{PlayerSource} Terrorizes you with their {PowerName}.",
+                                    "display_float": null,
+                                    "display_attrib_defense_float": null,
+                                    "display_info": null
+                                  },
+                                  "fx": {
+                                    "continuing_bits": [],
+                                    "continuing_fx": null,
+                                    "conditional_bits": [],
+                                    "conditional_fx": "GENERICCONTINUING/AFRAIDCONTINUING.FX"
+                                  },
                                   "suppress_events": [
                                     {
                                       "event": "Stunned",
                                       "event_id": 23,
                                       "duration": 15.0,
-                                      "flag": 0
+                                      "always": 0
                                     },
                                     {
-                                      "event": "Event_24",
+                                      "event": "Immobilized",
                                       "event_id": 24,
                                       "duration": 15.0,
-                                      "flag": 0
+                                      "always": 0
                                     },
                                     {
                                       "event": "Held",
                                       "event_id": 25,
                                       "duration": 15.0,
-                                      "flag": 0
+                                      "always": 0
                                     },
                                     {
                                       "event": "Sleep",
                                       "event_id": 26,
                                       "duration": 15.0,
-                                      "flag": 0
+                                      "always": 0
                                     },
                                     {
-                                      "event": "Confused",
+                                      "event": "Terrorized",
                                       "event_id": 27,
                                       "duration": 15.0,
-                                      "flag": 0
+                                      "always": 0
                                     }
                                   ],
                                   "flags": [
@@ -1952,7 +2413,7 @@
             "Execute_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -1972,19 +2433,24 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Redirects.Inherents.Gauntlet_Proc_Aura"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "CopyBoosts"
           ],
-          "flags_raw": 1280
+          "flags_raw": 1280,
+          "flags2_raw": 4
         }
       ]
     }
   ],
+  "over_cap_trigger": 1,
+  "over_cap_multiplier": 0.9,
+  "over_cap_exponential": true,
   "modes_disallowed": [
     "Disable_All"
   ],

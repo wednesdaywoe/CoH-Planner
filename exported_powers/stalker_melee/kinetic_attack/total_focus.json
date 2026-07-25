@@ -50,6 +50,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     108,
     132
@@ -85,14 +86,14 @@
                 "Energy_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Melee_Damage",
               "scale": 0.6,
               "duration": "2 seconds",
               "magnitude": 1.0,
-              "delay": 0.20000000298023224,
+              "delay": 0.2,
               "duration_expression": "",
               "magnitude_expression": "",
               "application_period": 1.100000023841858,
@@ -104,6 +105,19 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage over time.",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage over time.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "PFX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "NoHitDelay",
                 "NoProjectileDelay"
@@ -115,7 +129,7 @@
                 "Energy_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Melee_Damage",
@@ -134,6 +148,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage.",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags_raw": 1280
             },
             {
@@ -141,7 +162,7 @@
                 "Smashing_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Melee_Damage",
@@ -160,6 +181,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Smashing damage.",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Smashing damage.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags_raw": 1280
             },
             {
@@ -167,7 +195,7 @@
                 "Stunned"
               ],
               "type": "Duration",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Immobilize",
@@ -186,9 +214,23 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You Stun {PlayerDest} with your {PowerName}.",
+                "display_victim_hit": "{PlayerSource} Stuns you with their {PowerName}.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": null,
+                "conditional_bits": [
+                  21
+                ],
+                "conditional_fx": "GENERICCONTINUING/STUNCONTINUING.FX"
+              },
               "flags": [
-                "IgnoreEfficiency",
-                "DeepSleep"
+                "IgnoreEfficiency"
               ],
               "flags_raw": 2688
             }
@@ -213,14 +255,14 @@
                 "Energy_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Melee_InherentDamage",
               "scale": 1.1867,
               "duration": "3 seconds",
               "magnitude": 1.0,
-              "delay": 0.20000000298023224,
+              "delay": 0.2,
               "duration_expression": "",
               "magnitude_expression": "",
               "application_period": 1.100000023841858,
@@ -232,6 +274,19 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage over time (CRITICAL).",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage over time (CRITICAL).",
+                "display_float": "CRITICAL",
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "PFX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags_raw": 1280
             }
           ]
@@ -255,14 +310,14 @@
                 "Energy_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Melee_InherentDamage",
               "scale": 1.1867,
               "duration": "3 seconds",
               "magnitude": 1.0,
-              "delay": 0.20000000298023224,
+              "delay": 0.2,
               "duration_expression": "",
               "magnitude_expression": "",
               "application_period": 1.100000023841858,
@@ -274,6 +329,19 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage over time (CRITICAL).",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage over time (CRITICAL).",
+                "display_float": "CRITICAL",
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "PFX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "HideZero"
               ],
@@ -313,14 +381,14 @@
                 "Energy_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Melee_PvPDamage",
               "scale": 0.5171,
               "duration": "2 seconds",
               "magnitude": 1.0,
-              "delay": 0.20000000298023224,
+              "delay": 0.2,
               "duration_expression": "",
               "magnitude_expression": "",
               "application_period": 1.100000023841858,
@@ -332,6 +400,19 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage over time.",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage over time.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "PFX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "NoHitDelay",
                 "NoProjectileDelay"
@@ -343,7 +424,7 @@
                 "Energy_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Melee_PvPDamage",
@@ -362,6 +443,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage.",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags_raw": 1280
             },
             {
@@ -369,7 +457,7 @@
                 "Smashing_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Melee_PvPDamage",
@@ -388,6 +476,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Smashing damage.",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Smashing damage.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags_raw": 1280
             },
             {
@@ -395,7 +490,7 @@
                 "Stunned"
               ],
               "type": "Duration",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_PvPMez",
@@ -414,41 +509,55 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You Stun {PlayerDest} with your {PowerName}.",
+                "display_victim_hit": "{PlayerSource} Stuns you with their {PowerName}.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": null,
+                "conditional_bits": [
+                  21
+                ],
+                "conditional_fx": "GENERICCONTINUING/STUNCONTINUING.FX"
+              },
               "suppress_events": [
                 {
                   "event": "Stunned",
                   "event_id": 23,
                   "duration": 15.0,
-                  "flag": 0
+                  "always": 0
                 },
                 {
-                  "event": "Event_24",
+                  "event": "Immobilized",
                   "event_id": 24,
                   "duration": 15.0,
-                  "flag": 0
+                  "always": 0
                 },
                 {
                   "event": "Held",
                   "event_id": 25,
                   "duration": 15.0,
-                  "flag": 0
+                  "always": 0
                 },
                 {
                   "event": "Sleep",
                   "event_id": 26,
                   "duration": 15.0,
-                  "flag": 0
+                  "always": 0
                 },
                 {
-                  "event": "Confused",
+                  "event": "Terrorized",
                   "event_id": 27,
                   "duration": 15.0,
-                  "flag": 0
+                  "always": 0
                 }
               ],
               "flags": [
-                "IgnoreEfficiency",
-                "DeepSleep"
+                "IgnoreEfficiency"
               ],
               "flags_raw": 2688
             }
@@ -473,14 +582,14 @@
                 "Energy_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Melee_PvPDamage",
               "scale": 1.023,
               "duration": "3 seconds",
               "magnitude": 1.0,
-              "delay": 0.20000000298023224,
+              "delay": 0.2,
               "duration_expression": "",
               "magnitude_expression": "",
               "application_period": 1.100000023841858,
@@ -492,6 +601,19 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage over time (CRITICAL).",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage over time (CRITICAL).",
+                "display_float": "CRITICAL",
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "PFX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags_raw": 1280
             }
           ]
@@ -513,14 +635,14 @@
                 "Energy_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Melee_PvPDamage",
               "scale": 1.023,
               "duration": "3 seconds",
               "magnitude": 1.0,
-              "delay": 0.20000000298023224,
+              "delay": 0.2,
               "duration_expression": "",
               "magnitude_expression": "",
               "application_period": 1.100000023841858,
@@ -532,6 +654,19 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage over time (CRITICAL).",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage over time (CRITICAL).",
+                "display_float": "CRITICAL",
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "PFX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags_raw": 1280
             }
           ]
@@ -562,7 +697,7 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Melee_Debuff_Dam",
@@ -594,7 +729,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
@@ -614,10 +749,18 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Temporary_Powers.Temporary_Powers.Assassins_Focus"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
+          },
+          "messages": {
+            "display_attacker_hit": "You gain 1 stack of Assassin's Focus!",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
           },
           "flags": [
             "IgnoreStrength",
@@ -628,6 +771,9 @@
         }
       ]
     }
+  ],
+  "strengths_disallowed": [
+    "Range"
   ],
   "modes_disallowed": [
     "Disable_All"

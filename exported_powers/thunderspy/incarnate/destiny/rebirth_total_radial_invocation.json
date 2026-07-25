@@ -43,6 +43,7 @@
   "requires": "",
   "activate_requires": "isVIP? isAccountInventoryLoaded? ! ||",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -61,10 +62,10 @@
           "attribs": [
             "Heal_Dmg"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
           "aspect": "Absolute",
-          "target": "",
+          "target": "AnyAffected",
           "table": "Ranged_Tempdamage",
           "scale": -7.0,
           "duration": "0 seconds",
@@ -100,10 +101,10 @@
           "attribs": [
             "Regeneration"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "5 seconds",
@@ -124,6 +125,7 @@
       ]
     }
   ],
+  "max_boosts": 0,
   "modes_disallowed": [
     "Disable_All",
     "Disable_Incarn"

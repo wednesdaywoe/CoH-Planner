@@ -40,6 +40,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "entref source.owner> entref target> eq !",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -58,10 +59,10 @@
           "attribs": [
             "NBInactive"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Melee_Heal",
           "scale": 0.195,
           "duration": "1 seconds",
@@ -97,10 +98,10 @@
           "attribs": [
             "NBActive"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Melee_Heal",
           "scale": 0.39,
           "duration": "1 seconds",

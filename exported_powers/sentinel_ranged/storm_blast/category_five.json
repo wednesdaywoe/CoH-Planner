@@ -51,6 +51,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -70,7 +71,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Level",
@@ -90,26 +91,29 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
-            "entity_def": "PL_StaticObject",
             "display_name": "Category Five",
+            "priority_list": "PL_StaticObject",
             "redirects": [
               "Pets.ResistAll_NoFly.ResistAll",
               "Redirects.Storm_Blast.Category_Five_Sentinel"
-            ]
+            ],
+            "type": "EntCreate"
           },
           "flags": [
             "HideZero",
-            "CopyBoosts"
+            "CopyBoosts",
+            "CopyCreatorMods",
+            "PseudoPet"
           ],
-          "flags_raw": 9472
+          "flags_raw": 9472,
+          "flags2_raw": 44
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Level",
@@ -129,21 +133,24 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
-            "entity_def": "PL_StaticObject",
             "display_name": "Category Five Eye",
+            "priority_list": "PL_StaticObject",
             "redirects": [
               "Pets.ResistAll_NoFly.ResistAll",
               "Redirects.Storm_Blast.Nukenado_Skin",
               "Redirects.Storm_Blast.Nukenado_Pulse_Sentinel",
               "Redirects.Storm_Blast.Nukenado_SelfDestruct",
               "Redirects.Storm_Blast.Category_Five_Lightning_Sentinel"
-            ]
+            ],
+            "type": "EntCreate"
           },
           "flags": [
-            "CopyBoosts"
+            "CopyBoosts",
+            "CopyCreatorMods",
+            "PseudoPet"
           ],
-          "flags_raw": 1280
+          "flags_raw": 1280,
+          "flags2_raw": 44
         }
       ]
     }
@@ -166,7 +173,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -186,10 +193,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Temporary_Powers.Temporary_Powers.StormBlast_StormBrewing"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",

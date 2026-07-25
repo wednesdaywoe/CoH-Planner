@@ -45,6 +45,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "kChain_Confuse_Mode target.mode? ! kConfuse target> 0 <= &&",
+  "slot_requires": "",
   "attack_types": [
     104,
     132
@@ -66,10 +67,10 @@
           "attribs": [
             "Confused"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Duration",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Melee_Stun",
           "scale": 15.0,
           "duration": "0 seconds",
@@ -105,10 +106,10 @@
           "attribs": [
             "Confused"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Duration",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Melee_Stun",
           "scale": 4.0,
           "duration": "0 seconds",
@@ -144,10 +145,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Constant",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 1.0,
           "duration": "8 seconds",

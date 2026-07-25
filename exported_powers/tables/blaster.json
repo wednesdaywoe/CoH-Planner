@@ -1,10 +1,36 @@
 {
   "name": "Class_Blaster",
-  "display_name": "P426732286",
+  "display_name": "Blaster",
+  "display_help": "The Blaster is an offensive juggernaut. This hero can deal a ton of damage from a distance. But the Blaster must be careful, because they're somewhat fragile compared to other heroes. The Blaster can't stand toe to toe with most opponents at melee for long. A Blaster's best defense is a great offense!",
+  "display_short_help": "Superior ranged attacks and tactical support.",
   "icon": "archetypeicon_Blaster.tga",
   "primary_category": "Blaster_RANGED",
   "secondary_category": "Blaster_SUPPORT",
   "pool_category": "Pool",
+  "epic_pool_category": "",
+  "allowed_origins": [],
+  "special_restrictions": [],
+  "store_requires": "",
+  "locked_tooltip": "",
+  "product_code": "",
+  "reduction_class": "",
+  "reduce_as_archvillain": false,
+  "level_up_respecs": [],
+  "archetype_shots": [
+    "archetypeshots_blaster_0",
+    "archetypeshots_blaster_1",
+    "archetypeshots_blaster_2"
+  ],
+  "creation_stats": [
+    4,
+    8,
+    10,
+    4,
+    2,
+    2
+  ],
+  "playstyle_flags": 4,
+  "mechanic_tip": "",
   "named_tables": {
     "Melee_Damage": [
       -10.0,
@@ -11885,5 +11911,7 @@
     "resistance_cap": 0.75,
     "base_threat": 1.0,
     "damage_cap": 5.0
-  }
+  },
+  "villain_rank": 0,
+  "tail_scalar_raw": 0.1
 }

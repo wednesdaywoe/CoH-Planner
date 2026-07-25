@@ -48,6 +48,7 @@
   "requires": "$archetype @Class_Warshade == Warshade_Offensive.Umbral_Blast.Dark_Nova &&",
   "activate_requires": "$archetype @Class_Warshade == Warshade_Offensive.Umbral_Blast.Dark_Nova &&",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     104,
     136
@@ -69,10 +70,10 @@
           "attribs": [
             "SSDamage"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Ranged_SSDamage",
           "scale": 1.2,
           "duration": "0 seconds",
@@ -108,10 +109,10 @@
           "attribs": [
             "Slow"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "AnyAffected",
           "table": "Ranged_Slow",
           "scale": 0.2,
           "duration": "3 seconds",
@@ -147,10 +148,10 @@
           "attribs": [
             "SSDamage"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Ranged_SSDamage",
           "scale": 1.812,
           "duration": "0 seconds",
@@ -171,6 +172,7 @@
       ]
     }
   ],
+  "max_boosts": 0,
   "modes_required": [
     "Warshade_Blaster_Mode"
   ],

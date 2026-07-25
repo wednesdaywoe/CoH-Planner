@@ -52,6 +52,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     104,
     132
@@ -71,10 +72,10 @@
       "templates": [
         {
           "attribs": [
-            "Add_Behavior"
+            "Power_Redirect"
           ],
           "type": "Constant",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -93,11 +94,18 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Kheldian_Pets.Luminous_Blast.Gleaming_Bolt"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 112
         }
       ]
     },
@@ -115,10 +123,10 @@
       "templates": [
         {
           "attribs": [
-            "Add_Behavior"
+            "Power_Redirect"
           ],
           "type": "Constant",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -137,11 +145,18 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Kheldian_Pets.Bright_Nova.Bright_Nova_Bolt"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 112
         }
       ]
     },
@@ -159,10 +174,10 @@
       "templates": [
         {
           "attribs": [
-            "Add_Behavior"
+            "Power_Redirect"
           ],
           "type": "Constant",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -181,11 +196,18 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Kheldian_Pets.White_Dwarf.White_Dwarf_Bolt"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 112
         }
       ]
     },
@@ -206,7 +228,7 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
@@ -224,7 +246,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -245,7 +268,7 @@
             "Base_Defense"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Debuff_Def",
@@ -266,7 +289,8 @@
           "stack_key": null,
           "flags": [
             "CancelOnMiss"
-          ]
+          ],
+          "flags_raw": 1284
         }
       ]
     },
@@ -287,7 +311,7 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
@@ -305,9 +329,24 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
+    }
+  ],
+  "redirect": [
+    {
+      "name": "Kheldian_Pets.Luminous_Blast.Gleaming_Bolt",
+      "condition_expression": "kPeacebringer_Blaster_Mode source.Mode? ! kPeacebringer_Tanker_Mode source.Mode? ! &&"
+    },
+    {
+      "name": "Kheldian_Pets.Bright_Nova.Bright_Nova_Bolt",
+      "condition_expression": "kPeacebringer_Blaster_Mode source.Mode?"
+    },
+    {
+      "name": "Kheldian_Pets.White_Dwarf.White_Dwarf_Bolt",
+      "condition_expression": "kPeacebringer_Tanker_Mode source.Mode?"
     }
   ],
   "modes_disallowed": [

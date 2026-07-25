@@ -1,10 +1,44 @@
 {
   "name": "Class_Dominator",
-  "display_name": "P52984251",
+  "display_name": "Dominator",
+  "display_help": "As a Dominator, you control a devastating combination of control and assault powers. A Dominator can freeze foes in place, render them unconscious, or cause them to flee in terror. Dominators can also smite their foes with a selection of single-target melee and ranged attacks, with devastating effectiveness. Additionally, each time a Dominator attacks, he comes closer to unleashing his true sadistic power of Domination. With so much emphasis on diverse offensive powers, Dominators lack in defenses and work best with teammates who can provide protection.",
+  "display_short_help": "Controls foes and blow them away.",
   "icon": "v_archetypeicon_dominator.tga",
   "primary_category": "Dominator_CONTROL",
   "secondary_category": "Dominator_Assault",
   "pool_category": "Pool",
+  "epic_pool_category": "",
+  "allowed_origins": [
+    "Science",
+    "Magic",
+    "Natural",
+    "Mutation",
+    "Technology"
+  ],
+  "special_restrictions": [
+    "Villain"
+  ],
+  "store_requires": "",
+  "locked_tooltip": "",
+  "product_code": "",
+  "reduction_class": "",
+  "reduce_as_archvillain": false,
+  "level_up_respecs": [],
+  "archetype_shots": [
+    "archetypeshots_dominator_0",
+    "archetypeshots_dominator_1",
+    "archetypeshots_dominator_2"
+  ],
+  "creation_stats": [
+    4,
+    9,
+    8,
+    10,
+    2,
+    5
+  ],
+  "playstyle_flags": 46,
+  "mechanic_tip": "DominationTip",
   "named_tables": {
     "Melee_Damage": [
       -10.100000381469727,
@@ -4899,5 +4933,7 @@
     "resistance_cap": 0.75,
     "base_threat": 1.0,
     "damage_cap": 4.0
-  }
+  },
+  "mechanic_bar_raw": 3,
+  "mechanic_gap_raw": 0
 }

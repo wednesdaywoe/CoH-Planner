@@ -50,6 +50,7 @@
   "requires": "Epic.Earth_Mastery.Stone_Prison Epic.Earth_Mastery.Salt_Crystals && Epic.Earth_Mastery.Stone_Prison Epic.Earth_Mastery.Fossilize && || Epic.Earth_Mastery.Salt_Crystals Epic.Earth_Mastery.Fossilize && || Epic.Earth_Mastery.Stone_Prison Epic.Earth_Mastery.Quick_Sand && || Epic.Earth_Mastery.Salt_Crystals Epic.Earth_Mastery.Quick_Sand && ||",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     112,
     120
@@ -72,7 +73,7 @@
             "Stunned"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Stun",
@@ -93,7 +94,8 @@
           "stack_key": null,
           "flags": [
             "NearGround"
-          ]
+          ],
+          "flags_raw": 2568
         }
       ]
     },
@@ -114,7 +116,7 @@
             "Stunned"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -135,7 +137,8 @@
           "stack_key": null,
           "flags": [
             "NearGround"
-          ]
+          ],
+          "flags_raw": 2568
         }
       ]
     },
@@ -156,7 +159,7 @@
             "Lethal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Melee_Damage",
@@ -174,7 +177,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -195,7 +199,7 @@
             "Lethal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Melee_Damage",
@@ -216,7 +220,8 @@
           "stack_key": null,
           "flags": [
             "NearGround"
-          ]
+          ],
+          "flags_raw": 1288
         }
       ]
     },
@@ -237,7 +242,7 @@
             "Base_Defense"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Debuff_Def",
@@ -255,7 +260,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -276,7 +282,7 @@
             "Taunt"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Melee_InherentTaunt",
@@ -297,7 +303,8 @@
           "stack_key": null,
           "flags": [
             "CancelOnMiss"
-          ]
+          ],
+          "flags_raw": 2564
         }
       ]
     },
@@ -318,7 +325,7 @@
             "Taunt"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Melee_InherentTaunt",
@@ -339,7 +346,8 @@
           "stack_key": null,
           "flags": [
             "CancelOnMiss"
-          ]
+          ],
+          "flags_raw": 2564
         }
       ]
     },
@@ -360,7 +368,7 @@
             "Taunt"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -378,7 +386,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 2560
         }
       ]
     },
@@ -399,7 +408,7 @@
             "Fire_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Melee_Damage",
@@ -417,7 +426,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     }

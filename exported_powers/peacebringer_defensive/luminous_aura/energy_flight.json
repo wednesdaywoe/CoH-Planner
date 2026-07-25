@@ -48,6 +48,7 @@
   "requires": "Inherent.Inherent.Energy_Flight !",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -67,7 +68,7 @@
             "Fly"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -97,7 +98,7 @@
             "MovementControl"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Control",
@@ -132,7 +133,7 @@
             "MovementFriction"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Friction",
@@ -167,7 +168,7 @@
             "Set_Mode"
           ],
           "type": "Constant",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -188,8 +189,7 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance",
-            "DeepSleep"
+            "IgnoreResistance"
           ],
           "flags_raw": 3120,
           "mode_name": "FlyOn"
@@ -199,7 +199,7 @@
             "Global_Chance_Mod"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -218,6 +218,12 @@
           "stack": "Overlap",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "tags": [
+              "FlightActive"
+            ],
+            "type": "EffectFilter"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -245,7 +251,7 @@
                 "Fly"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Melee_Ones",
@@ -291,7 +297,7 @@
                 "Fly"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Melee_Ones",
@@ -336,7 +342,7 @@
                 "Null"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Melee_Ones",
@@ -355,6 +361,12 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "PFX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "IgnoreStrength",
                 "IgnoreResistance"
@@ -366,7 +378,7 @@
                 "Null"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Melee_Ones",
@@ -385,6 +397,12 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "PFX2",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "IgnoreStrength",
                 "IgnoreResistance"
@@ -414,7 +432,7 @@
             "FlyingSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_SpeedFlying",
@@ -443,7 +461,7 @@
               "event": "ActivateAttackClick",
               "event_id": 1,
               "duration": 4.0,
-              "flag": 1
+              "always": 1
             }
           ],
           "flags": [
@@ -457,7 +475,7 @@
             "FlyingSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Maximum",
           "target": "Self",
           "table": "Melee_Ones",
@@ -504,7 +522,7 @@
             "FlyingSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_SpeedFlying",
@@ -539,7 +557,7 @@
             "FlyingSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Maximum",
           "target": "Self",
           "table": "Melee_Ones",

@@ -47,6 +47,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -68,7 +69,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -88,21 +89,28 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Pets_Dimension_Shift",
-            "priority_list": "PFX"
+            "priority_list": "PL_StaticObject",
+            "type": "EntCreate"
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "PFX"
           },
           "flags": [
             "CopyBoosts"
           ],
-          "flags_raw": 1280
+          "flags_raw": 1280,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -122,14 +130,15 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Pets_Dimension_Shift_Phased",
-            "priority_list": "PL_StaticObject"
+            "priority_list": "PL_StaticObject",
+            "type": "EntCreate"
           },
           "flags": [
             "CopyBoosts"
           ],
-          "flags_raw": 1280
+          "flags_raw": 1280,
+          "flags2_raw": 4
         }
       ]
     },
@@ -152,7 +161,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -172,21 +181,28 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Pets_Dimension_Shift",
-            "priority_list": "PFX"
+            "priority_list": "PL_StaticObject",
+            "type": "EntCreate"
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "PFX"
           },
           "flags": [
             "CopyBoosts"
           ],
-          "flags_raw": 1280
+          "flags_raw": 1280,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -206,14 +222,15 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Pets_Dimension_Shift_Phased",
-            "priority_list": "PL_StaticObject"
+            "priority_list": "PL_StaticObject",
+            "type": "EntCreate"
           },
           "flags": [
             "CopyBoosts"
           ],
-          "flags_raw": 1280
+          "flags_raw": 1280,
+          "flags2_raw": 4
         }
       ]
     }

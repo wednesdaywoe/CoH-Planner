@@ -46,6 +46,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [],
   "redirect": [
@@ -60,6 +61,7 @@
       "show_in_info": true
     }
   ],
+  "castable_after_death": "DeadOrAlive",
   "modes_disallowed": [
     "Disable_All"
   ],

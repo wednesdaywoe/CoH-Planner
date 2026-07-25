@@ -45,6 +45,7 @@
   "requires": "",
   "activate_requires": "isVIP? isAccountInventoryLoaded? ! ||",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -63,17 +64,17 @@
           "attribs": [
             "InterfaceMaxHP"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Expression",
+          "application_type": "OnTick",
+          "aspect": "Maximum",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 0.035,
-          "duration": "8.30 seconds",
+          "duration": "8.3 seconds",
           "magnitude": 0.0,
           "delay": 0.0,
           "duration_expression": "",
-          "magnitude_expression": "",
+          "magnitude_expression": "@Scale @Effectiveness * Max.kHitPoints target> * negate",
           "application_period": 0.0,
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
@@ -102,17 +103,17 @@
           "attribs": [
             "InterfaceMaxHP"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Expression",
+          "application_type": "OnTick",
+          "aspect": "Maximum",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 0.035,
-          "duration": "8.30 seconds",
+          "duration": "8.3 seconds",
           "magnitude": 0.0,
           "delay": 0.0,
           "duration_expression": "",
-          "magnitude_expression": "",
+          "magnitude_expression": "@Scale @Effectiveness * Max.kHitPoints target> * 0 1000 minmax negate",
           "application_period": 0.0,
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
@@ -126,6 +127,7 @@
       ]
     }
   ],
+  "max_boosts": 0,
   "modes_disallowed": [
     "Disable_All",
     "Disable_Incarn"

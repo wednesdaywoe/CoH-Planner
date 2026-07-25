@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     112,
     128
@@ -60,7 +61,7 @@
             "Lethal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Tempdamage",
@@ -81,7 +82,8 @@
           "stack_key": null,
           "flags": [
             "NearGround"
-          ]
+          ],
+          "flags_raw": 1288
         }
       ]
     },
@@ -102,7 +104,7 @@
             "Cold_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Tempdamage",
@@ -123,7 +125,8 @@
           "stack_key": null,
           "flags": [
             "NearGround"
-          ]
+          ],
+          "flags_raw": 1288
         }
       ]
     },
@@ -144,7 +147,7 @@
             "Sleep"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Sleep",
@@ -165,7 +168,8 @@
           "stack_key": null,
           "flags": [
             "NearGround"
-          ]
+          ],
+          "flags_raw": 2568
         }
       ]
     },
@@ -186,7 +190,7 @@
             "Sleep"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Sleep",
@@ -207,7 +211,8 @@
           "stack_key": null,
           "flags": [
             "NearGround"
-          ]
+          ],
+          "flags_raw": 2568
         }
       ]
     }

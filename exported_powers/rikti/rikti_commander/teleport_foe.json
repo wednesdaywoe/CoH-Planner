@@ -24,7 +24,7 @@
   "endurance_cost": 20.0,
   "interrupt_time": 2.0,
   "target_type": "Foe",
-  "target_type_secondary": "DeadMyPet",
+  "target_type_secondary": "Teleport",
   "targets_autohit": [
     "None"
   ],
@@ -39,6 +39,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     140
   ],
@@ -60,12 +61,12 @@
             "Translucency"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 0.0,
-          "duration": "1.50 seconds",
+          "duration": "1.5 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -89,14 +90,14 @@
             "Teleport"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 2.1,
           "duration": "0 seconds",
           "magnitude": 1.0,
-          "delay": 1.1699999570846558,
+          "delay": 1.17,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -118,7 +119,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Level",
@@ -138,16 +139,17 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Pets_TPFoeTaunt",
-            "priority_list": "PL_StaticObject"
+            "priority_list": "PL_StaticObject",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "CopyBoosts"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 4
         }
       ]
     }

@@ -39,6 +39,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     108,
     116
@@ -61,7 +62,7 @@
             "Smashing_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Melee_Damage",
@@ -80,6 +81,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Smashing damage.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Smashing damage.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags_raw": 1280
         },
         {
@@ -87,7 +95,7 @@
             "Base_Defense"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Debuff_Def",
@@ -113,7 +121,7 @@
             "Fly"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -156,7 +164,7 @@
             "Knockup"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Knockback",
@@ -175,6 +183,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You knock {PlayerDest} off their feet with your {PowerName}!",
+            "display_victim_hit": "{PlayerSource} knocks you off your feet with their {PowerName}!",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -196,7 +211,7 @@
             "Knockup"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Knockback",
@@ -215,12 +230,19 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You knock {PlayerDest} off their feet with your {PowerName}!",
+            "display_victim_hit": "{PlayerSource} knocks you off your feet with their {PowerName}!",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "suppress_events": [
             {
-              "event": "MissionObjectInteract",
+              "event": "Knocked",
               "event_id": 33,
               "duration": 5.0,
-              "flag": 0
+              "always": 0
             }
           ],
           "flags_raw": 1280
@@ -244,7 +266,7 @@
             "Confused"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Stun",
@@ -263,9 +285,19 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "DeepSleep"
-          ],
+          "messages": {
+            "display_attacker_hit": "You Confuse {PlayerDest} with your {PowerName}.",
+            "display_victim_hit": "{PlayerSource} Confuses you with their {PowerName}.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "GENERICCONTINUING/CONFUSECONTINUING.FX"
+          },
           "flags_raw": 2560
         }
       ]
@@ -287,7 +319,7 @@
             "Confused"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -306,12 +338,25 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You Confuse {PlayerDest} with your {PowerName}.",
+            "display_victim_hit": "{PlayerSource} Confuses you with their {PowerName}.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "GENERICCONTINUING/CONFUSECONTINUING.FX"
+          },
           "suppress_events": [
             {
-              "event": "Event_28",
+              "event": "Confused",
               "event_id": 28,
               "duration": 10.0,
-              "flag": 0
+              "always": 0
             }
           ],
           "flags": [
@@ -339,7 +384,7 @@
             "Stunned"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Stun",
@@ -358,9 +403,19 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "DeepSleep"
-          ],
+          "messages": {
+            "display_attacker_hit": "You Stun {PlayerDest} with your {PowerName}.",
+            "display_victim_hit": "{PlayerSource} Stuns you with their {PowerName}.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "GENERICCONTINUING/STUNCONTINUING.FX"
+          },
           "flags_raw": 2560
         }
       ]
@@ -382,7 +437,7 @@
             "Stunned"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -401,12 +456,25 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You Stun {PlayerDest} with your {PowerName}.",
+            "display_victim_hit": "{PlayerSource} Stuns you with their {PowerName}.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "GENERICCONTINUING/STUNCONTINUING.FX"
+          },
           "suppress_events": [
             {
               "event": "Stunned",
               "event_id": 23,
               "duration": 10.0,
-              "flag": 0
+              "always": 0
             }
           ],
           "flags": [
@@ -417,6 +485,9 @@
         }
       ]
     }
+  ],
+  "strengths_disallowed": [
+    "Range"
   ],
   "available_level": 0,
   "powerset": "RoguesGallery.Concrete_Bill"

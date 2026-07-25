@@ -51,6 +51,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "kChain_Induction target.Mode? !",
+  "slot_requires": "",
   "attack_types": [
     112,
     132
@@ -73,7 +74,7 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_TempDamage",
@@ -88,54 +89,11 @@
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "@ToHitRoll @ToHit <",
-          "caster_stack": "Unlimited",
-          "stack": "Ignore",
-          "stack_limit": 2,
-          "stack_key": null
-        }
-      ]
-    },
-    {
-      "chance": 1.0,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": "",
-      "tags": [],
-      "flags": [],
-      "is_pvp": "EITHER",
-      "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "Create_Entity"
-          ],
-          "type": "Constant",
-          "application_type": "Immediate",
-          "aspect": "Current",
-          "target": "AnyAffected",
-          "table": "Ranged_Ones",
-          "scale": 1.0,
-          "duration": "4 seconds",
-          "magnitude": 59.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Unlimited",
+          "caster_stack": "Collective",
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "IgnoreStrength",
-            "IgnoreResistance",
-            "IgnoreCombatMods"
-          ]
+          "flags_raw": 1280
         }
       ]
     },
@@ -155,8 +113,54 @@
           "attribs": [
             "Set_Mode"
           ],
+          "type": "Constant",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "4 seconds",
+          "magnitude": 59.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Collective",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 112,
+          "mode_name": "Chain_Induction"
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Null"
+          ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -171,7 +175,7 @@
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "",
-          "caster_stack": "Unlimited",
+          "caster_stack": "Collective",
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
@@ -179,7 +183,7 @@
             "IgnoreStrength",
             "IgnoreResistance"
           ],
-          "mode_name": "Peacebringer_Blaster_Mode"
+          "flags_raw": 1072
         }
       ]
     },
@@ -200,7 +204,7 @@
             "Endurance"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -215,10 +219,11 @@
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "@ToHitRoll @ToHit < enttype target> critter eq &&",
-          "caster_stack": "Unlimited",
+          "caster_stack": "Collective",
           "stack": "Ignore",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -239,7 +244,7 @@
             "Endurance"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -254,10 +259,11 @@
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "@ToHitRoll @ToHit < enttype target> player eq &&",
-          "caster_stack": "Unlimited",
+          "caster_stack": "Collective",
           "stack": "Ignore",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -278,7 +284,7 @@
             "Recovery"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -293,10 +299,11 @@
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "@ToHitRoll @ToHit <",
-          "caster_stack": "Unlimited",
+          "caster_stack": "Collective",
           "stack": "Ignore",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -317,7 +324,7 @@
             "Held"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -332,10 +339,11 @@
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "@ToHitRoll @ToHit < enttype target> critter eq &&",
-          "caster_stack": "Unlimited",
+          "caster_stack": "Collective",
           "stack": "Ignore",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 2560
         }
       ]
     },
@@ -356,7 +364,7 @@
             "Held"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -371,13 +379,17 @@
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "@ToHitRoll @ToHit < enttype target> player eq &&",
-          "caster_stack": "Unlimited",
+          "caster_stack": "Collective",
           "stack": "Ignore",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 2560
         }
       ]
     }
+  ],
+  "strengths_disallowed": [
+    "RechargeTime"
   ],
   "modes_disallowed": [
     "Disable_All",

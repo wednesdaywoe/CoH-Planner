@@ -44,6 +44,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -62,10 +63,10 @@
           "attribs": [
             "NBInactive"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "Self",
           "table": "Melee_Ones",
           "scale": 0.05,
           "duration": "10.25 seconds",
@@ -101,10 +102,10 @@
           "attribs": [
             "NBActive"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "Self",
           "table": "Melee_Ones",
           "scale": 0.1,
           "duration": "10.25 seconds",
@@ -140,10 +141,10 @@
           "attribs": [
             "NBActive"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Melee_Ones",
           "scale": 1.2,
           "duration": "10.25 seconds",
@@ -179,10 +180,10 @@
           "attribs": [
             "NBInactive"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 1.2,
           "duration": "10.25 seconds",
@@ -218,10 +219,10 @@
           "attribs": [
             "NBActive"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 2.4,
           "duration": "10.25 seconds",
@@ -257,10 +258,10 @@
           "attribs": [
             "NBInactive"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "Self",
           "table": "Melee_Ones",
           "scale": 0.05,
           "duration": "10.25 seconds",
@@ -296,10 +297,10 @@
           "attribs": [
             "NBInactive"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 0.1,
           "duration": "10.25 seconds",
@@ -335,10 +336,10 @@
           "attribs": [
             "NBActive"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "Self",
           "table": "Melee_Ones",
           "scale": 0.1,
           "duration": "10.25 seconds",
@@ -374,10 +375,10 @@
           "attribs": [
             "NBActive"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "Self",
           "table": "Melee_Ones",
           "scale": 0.1,
           "duration": "10.25 seconds",
@@ -413,10 +414,10 @@
           "attribs": [
             "NBActive"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "Self",
           "table": "Melee_Ones",
           "scale": 0.1,
           "duration": "10.25 seconds",
@@ -452,10 +453,10 @@
           "attribs": [
             "NBActive"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "Self",
           "table": "Melee_Ones",
           "scale": 0.1,
           "duration": "10.25 seconds",
@@ -491,10 +492,10 @@
           "attribs": [
             "NBActive"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "Self",
           "table": "Melee_Ones",
           "scale": 0.1,
           "duration": "10.25 seconds",
@@ -530,10 +531,10 @@
           "attribs": [
             "NBActive"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "Self",
           "table": "Melee_Ones",
           "scale": 0.1,
           "duration": "10.25 seconds",
@@ -569,10 +570,10 @@
           "attribs": [
             "NBActive"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "Self",
           "table": "Melee_Ones",
           "scale": 0.1,
           "duration": "10.25 seconds",
@@ -608,10 +609,10 @@
           "attribs": [
             "NBActive"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "Self",
           "table": "Melee_Ones",
           "scale": 0.1,
           "duration": "10.25 seconds",
@@ -647,10 +648,10 @@
           "attribs": [
             "NBActive"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 0.2,
           "duration": "10.25 seconds",
@@ -686,10 +687,10 @@
           "attribs": [
             "NBActive"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 0.2,
           "duration": "10.25 seconds",
@@ -725,10 +726,10 @@
           "attribs": [
             "NBActive"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 0.2,
           "duration": "10.25 seconds",
@@ -764,10 +765,10 @@
           "attribs": [
             "NBActive"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 0.2,
           "duration": "10.25 seconds",
@@ -803,10 +804,10 @@
           "attribs": [
             "NBActive"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 0.2,
           "duration": "10.25 seconds",
@@ -842,10 +843,10 @@
           "attribs": [
             "NBActive"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 0.2,
           "duration": "10.25 seconds",
@@ -881,10 +882,10 @@
           "attribs": [
             "NBActive"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 0.2,
           "duration": "10.25 seconds",
@@ -920,10 +921,10 @@
           "attribs": [
             "NBActive"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 0.2,
           "duration": "10.25 seconds",
@@ -959,10 +960,10 @@
           "attribs": [
             "NBInactive"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "Self",
           "table": "Melee_Ones",
           "scale": 0.05,
           "duration": "10.25 seconds",
@@ -998,10 +999,10 @@
           "attribs": [
             "NBInactive"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 0.1,
           "duration": "10.25 seconds",
@@ -1037,10 +1038,10 @@
           "attribs": [
             "NBActive"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "Self",
           "table": "Melee_Ones",
           "scale": 0.1,
           "duration": "10.25 seconds",
@@ -1076,10 +1077,10 @@
           "attribs": [
             "NBActive"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 0.2,
           "duration": "10.25 seconds",

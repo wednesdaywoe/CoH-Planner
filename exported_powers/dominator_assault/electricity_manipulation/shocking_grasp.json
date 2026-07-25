@@ -51,6 +51,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -70,7 +71,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -90,24 +91,34 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
-            "entity_def": "Pet_NoCollision",
+            "costume_name": "Pet_NoCollision",
             "display_name": "Voltaic Sentinel",
+            "priority_list": "PL_Untargetable_FightPreferRanged",
             "redirects": [
               "Pets.ResistAll_NoFly.ResistAll",
               "Pets.VoltaicSentinel_Dominator.Electrical_Bolt",
               "Pets.VoltaicSentinel_Dominator.Electrical_Field"
             ],
-            "priority_list": "PL_Untargetable_FightPreferRanged"
+            "type": "EntCreate"
+          },
+          "messages": {
+            "display_attacker_hit": "You focus your electrical powers to form a {PowerName}!",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
           },
           "flags": [
-            "CopyBoosts"
+            "CopyBoosts",
+            "PseudoPet"
           ],
-          "flags_raw": 1280
+          "flags_raw": 1280,
+          "flags2_raw": 36
         }
       ]
     }
   ],
+  "procs_allowed": false,
   "modes_disallowed": [
     "Disable_All"
   ],

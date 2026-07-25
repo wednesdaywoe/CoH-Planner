@@ -59,6 +59,7 @@
   "requires": "",
   "activate_requires": "isVIP? isAccountInventoryLoaded? ! ||",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -77,10 +78,10 @@
           "attribs": [
             "Smashing_Dmg"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
           "aspect": "Strength",
-          "target": "",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 0.03,
           "duration": "10 seconds",
@@ -129,10 +130,10 @@
             "Terrorized",
             "Heal_Dmg"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
           "aspect": "Strength",
-          "target": "",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 0.03,
           "duration": "10 seconds",
@@ -168,10 +169,10 @@
           "attribs": [
             "Melee"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
           "aspect": "Current",
-          "target": "",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 0.03,
           "duration": "10 seconds",
@@ -207,10 +208,10 @@
           "attribs": [
             "Stunned"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 0.03,
           "duration": "10 seconds",
@@ -246,10 +247,10 @@
           "attribs": [
             "Smashing_Dmg"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
           "aspect": "Strength",
-          "target": "",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 0.06,
           "duration": "10 seconds",
@@ -298,10 +299,10 @@
             "Terrorized",
             "Heal_Dmg"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
           "aspect": "Strength",
-          "target": "",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 0.06,
           "duration": "10 seconds",
@@ -337,10 +338,10 @@
           "attribs": [
             "Melee"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
           "aspect": "Current",
-          "target": "",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 0.06,
           "duration": "10 seconds",
@@ -376,10 +377,10 @@
           "attribs": [
             "Stunned"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 0.06,
           "duration": "10 seconds",
@@ -415,10 +416,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "Self",
           "table": "Melee_Ones",
           "scale": 1.0,
           "duration": "0 seconds",
@@ -439,6 +440,7 @@
       ]
     }
   ],
+  "max_boosts": 0,
   "modes_disallowed": [
     "Disable_All",
     "Disable_Incarn",

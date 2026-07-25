@@ -1,0 +1,19 @@
+{
+  "key": "Boosts.Mutation_Science_Range",
+  "display_name": "Mutation Science Range",
+  "help": "Enhances the range of a power.",
+  "short_help": "Genetic Alteration (Mutation, Science)",
+  "icon": "mutation_science_range_set.ico",
+  "powers": [
+    "Boosts.Mutation_Science_Range.Mutation_Science_Range"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Genome Alteration Range Boost"
+  ],
+  "power_short_helps": [
+    "Enhances Range"
+  ]
+}

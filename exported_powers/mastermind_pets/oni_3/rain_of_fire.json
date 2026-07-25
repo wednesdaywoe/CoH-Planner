@@ -43,6 +43,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -62,7 +63,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Level",
@@ -82,23 +83,29 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
-            "entity_def": "PL_StaticObject",
             "display_name": "Oni's Rain of Fire",
+            "priority_list": "PL_StaticObject",
             "redirects": [
               "Mastermind_Pets.Ninja_Pets.RainofFire",
               "Mastermind_Pets.Ninja_Pets.Avoid"
-            ]
+            ],
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreCombatMods",
             "KeepThroughDeath",
-            "CopyBoosts"
+            "CopyBoosts",
+            "PseudoPet"
           ],
-          "flags_raw": 16704
+          "flags_raw": 16704,
+          "flags2_raw": 36
         }
       ]
     }
+  ],
+  "procs_allowed": false,
+  "strengths_disallowed": [
+    "RechargeTime"
   ],
   "modes_disallowed": [
     "Disable_All"

@@ -38,6 +38,7 @@
   "requires": "accesslevel char> 0 >=",
   "activate_requires": "accesslevel char> 0 >=",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -57,7 +58,7 @@
             "Null"
           ],
           "type": "Constant",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
@@ -78,14 +79,14 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance",
-            "DeepSleep"
+            "IgnoreResistance"
           ],
           "flags_raw": 3120
         }
       ]
     }
   ],
+  "max_boosts": 0,
   "available_level": 0,
   "powerset": "Temporary_Powers.Temporary_Powers"
 }

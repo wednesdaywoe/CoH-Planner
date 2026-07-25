@@ -46,6 +46,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "kLevitated target.mode? kHitPoints% target> 0 > ||",
+  "slot_requires": "",
   "attack_types": [
     140
   ],
@@ -67,7 +68,7 @@
             "Cancel_Mods"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -86,6 +87,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "tags": [
+              "Telekinesis"
+            ],
+            "type": "EffectFilter"
+          },
           "flags": [
             "NoHitDelay"
           ],
@@ -96,7 +103,7 @@
             "Cancel_Mods"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
@@ -115,6 +122,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "tags": [
+              "Telekinesis"
+            ],
+            "type": "EffectFilter"
+          },
           "flags": [
             "NoHitDelay"
           ],
@@ -125,7 +138,7 @@
         {
           "chance": 1.0,
           "ppm": 0.0,
-          "delay": 0.10000000149011612,
+          "delay": 0.1,
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "enttype target> critter eq",
@@ -139,7 +152,7 @@
                 "Knockup"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_Knockback",
@@ -158,6 +171,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You knock {PlayerDest} off their feet with your {PowerName}!",
+                "display_victim_hit": "{PlayerSource} knocks you off your feet with their {PowerName}!",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "On enemies around your levitated target"
+              },
               "flags_raw": 1280
             },
             {
@@ -165,7 +185,7 @@
                 "Smashing_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Ranged_Damage",
@@ -184,6 +204,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Smashing damage.",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Smashing damage.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "On enemies around your levitated target"
+              },
               "flags_raw": 1280
             },
             {
@@ -191,7 +218,7 @@
                 "Fly"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_Ones",
@@ -210,6 +237,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": null,
+                "display_victim_hit": null,
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "On enemies around your levitated target"
+              },
               "flags": [
                 "IgnoreResistance"
               ],
@@ -236,7 +270,7 @@
                     "Smashing_Dmg"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Absolute",
                   "target": "AnyAffected",
                   "table": "Ranged_InherentDamage",
@@ -255,6 +289,13 @@
                   "stack": "Stack",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "messages": {
+                    "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Smashing damage (CONTAINMENT).",
+                    "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Smashing damage (CONTAINMENT).",
+                    "display_float": "Containment",
+                    "display_attrib_defense_float": null,
+                    "display_info": "Only against immobilized, held, sleeping, terrified or stunned targets"
+                  },
                   "flags_raw": 1280
                 }
               ]
@@ -262,7 +303,7 @@
             {
               "chance": 1.0,
               "ppm": 0.0,
-              "delay": 0.10000000149011612,
+              "delay": 0.1,
               "radius_inner": -1.0,
               "radius_outer": -1.0,
               "requires_expression": "",
@@ -276,14 +317,14 @@
                     "Recharge_Power"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Current",
                   "target": "Self",
                   "table": "Ranged_Ones",
                   "scale": 1.0,
                   "duration": "0 seconds",
                   "magnitude": 1.0,
-                  "delay": 0.10000000149011612,
+                  "delay": 0.1,
                   "duration_expression": "",
                   "magnitude_expression": "",
                   "application_period": 0.0,
@@ -296,27 +337,29 @@
                   "stack_limit": 2,
                   "stack_key": null,
                   "params": {
-                    "type": "Power",
                     "power_names": [
                       "Controller_Control.Mind_Control.Telekinesis",
                       "Dominator_Control.Mind_Control.Telekinesis"
-                    ]
+                    ],
+                    "count": 1,
+                    "type": "Power"
                   },
                   "flags": [
                     "IgnoreStrength",
                     "IgnoreResistance",
                     "KeepThroughDeath",
                     "NoHitDelay",
-                    "CopyBoosts"
+                    "Cooldown"
                   ],
-                  "flags_raw": 82992
+                  "flags_raw": 82992,
+                  "flags2_raw": 4
                 }
               ],
               "child_effects": [
                 {
                   "chance": 1.0,
                   "ppm": 0.0,
-                  "delay": 0.10000000149011612,
+                  "delay": 0.1,
                   "radius_inner": -1.0,
                   "radius_outer": -1.0,
                   "requires_expression": "",
@@ -330,7 +373,7 @@
                         "Cancel_Mods"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Strength",
                       "target": "AnyAffected",
                       "table": "Melee_Ones",
@@ -349,6 +392,12 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "params": {
+                        "tags": [
+                          "Telekinesis"
+                        ],
+                        "type": "EffectFilter"
+                      },
                       "flags": [
                         "NoHitDelay"
                       ],
@@ -359,7 +408,7 @@
                         "Cancel_Mods"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Strength",
                       "target": "Self",
                       "table": "Melee_Ones",
@@ -378,6 +427,12 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "params": {
+                        "tags": [
+                          "Telekinesis"
+                        ],
+                        "type": "EffectFilter"
+                      },
                       "flags": [
                         "NoHitDelay"
                       ],
@@ -392,7 +447,7 @@
         {
           "chance": 1.0,
           "ppm": 0.0,
-          "delay": 0.10000000149011612,
+          "delay": 0.1,
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "enttype target> player eq",
@@ -406,7 +461,7 @@
                 "Knockup"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_Knockback",
@@ -425,12 +480,19 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You knock {PlayerDest} off their feet with your {PowerName}!",
+                "display_victim_hit": "{PlayerSource} knocks you off your feet with their {PowerName}!",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "On enemies around your levitated target"
+              },
               "suppress_events": [
                 {
-                  "event": "MissionObjectInteract",
+                  "event": "Knocked",
                   "event_id": 33,
                   "duration": 10.0,
-                  "flag": 0
+                  "always": 0
                 }
               ],
               "flags_raw": 1280
@@ -440,7 +502,7 @@
                 "Smashing_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Ranged_PvPDamage",
@@ -459,6 +521,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Smashing damage.",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Smashing damage.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "On enemies around your levitated target"
+              },
               "flags_raw": 1280
             },
             {
@@ -466,7 +535,7 @@
                 "Fly"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_Ones",
@@ -485,6 +554,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": null,
+                "display_victim_hit": null,
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "On enemies around your levitated target"
+              },
               "flags": [
                 "IgnoreResistance"
               ],
@@ -511,7 +587,7 @@
                     "Smashing_Dmg"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Absolute",
                   "target": "AnyAffected",
                   "table": "Ranged_PvPDamage",
@@ -530,6 +606,13 @@
                   "stack": "Stack",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "messages": {
+                    "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Smashing damage (CONTAINMENT).",
+                    "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Smashing damage (CONTAINMENT).",
+                    "display_float": "Containment",
+                    "display_attrib_defense_float": null,
+                    "display_info": "Only against immobilized, held, sleeping, terrified or stunned targets"
+                  },
                   "flags_raw": 1280
                 }
               ]
@@ -537,7 +620,7 @@
             {
               "chance": 1.0,
               "ppm": 0.0,
-              "delay": 0.10000000149011612,
+              "delay": 0.1,
               "radius_inner": -1.0,
               "radius_outer": -1.0,
               "requires_expression": "",
@@ -551,14 +634,14 @@
                     "Recharge_Power"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Current",
                   "target": "Self",
                   "table": "Ranged_Ones",
                   "scale": 1.0,
                   "duration": "0 seconds",
                   "magnitude": 1.0,
-                  "delay": 0.10000000149011612,
+                  "delay": 0.1,
                   "duration_expression": "",
                   "magnitude_expression": "",
                   "application_period": 0.0,
@@ -571,27 +654,29 @@
                   "stack_limit": 2,
                   "stack_key": null,
                   "params": {
-                    "type": "Power",
                     "power_names": [
                       "Controller_Control.Mind_Control.Telekinesis",
                       "Dominator_Control.Mind_Control.Telekinesis"
-                    ]
+                    ],
+                    "count": 1,
+                    "type": "Power"
                   },
                   "flags": [
                     "IgnoreStrength",
                     "IgnoreResistance",
                     "KeepThroughDeath",
                     "NoHitDelay",
-                    "CopyBoosts"
+                    "Cooldown"
                   ],
-                  "flags_raw": 82992
+                  "flags_raw": 82992,
+                  "flags2_raw": 4
                 }
               ],
               "child_effects": [
                 {
                   "chance": 1.0,
                   "ppm": 0.0,
-                  "delay": 0.10000000149011612,
+                  "delay": 0.1,
                   "radius_inner": -1.0,
                   "radius_outer": -1.0,
                   "requires_expression": "",
@@ -605,7 +690,7 @@
                         "Cancel_Mods"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Strength",
                       "target": "AnyAffected",
                       "table": "Melee_Ones",
@@ -624,6 +709,12 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "params": {
+                        "tags": [
+                          "Telekinesis"
+                        ],
+                        "type": "EffectFilter"
+                      },
                       "flags": [
                         "NoHitDelay"
                       ],
@@ -634,7 +725,7 @@
                         "Cancel_Mods"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Strength",
                       "target": "Self",
                       "table": "Melee_Ones",
@@ -653,6 +744,12 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "params": {
+                        "tags": [
+                          "Telekinesis"
+                        ],
+                        "type": "EffectFilter"
+                      },
                       "flags": [
                         "NoHitDelay"
                       ],

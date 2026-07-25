@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -57,7 +58,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Level",
@@ -77,21 +78,22 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "DevouringEarth_Rock_Beast_Piece",
-            "priority_list": "PL_FightPreferMelee"
+            "priority_list": "PL_FightPreferMelee",
+            "type": "EntCreate"
           },
           "flags": [
             "CopyBoosts"
           ],
-          "flags_raw": 1280
+          "flags_raw": 1280,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Level",
@@ -111,18 +113,20 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "DevouringEarth_Rock_Beast_Piece",
-            "priority_list": "PL_FightPreferMelee"
+            "priority_list": "PL_FightPreferMelee",
+            "type": "EntCreate"
           },
           "flags": [
             "CopyBoosts"
           ],
-          "flags_raw": 1280
+          "flags_raw": 1280,
+          "flags2_raw": 4
         }
       ]
     }
   ],
+  "castable_after_death": "DeadOnly",
   "available_level": 0,
   "powerset": "DevouringEarth.Devouring_Earth_Rock_Divide"
 }

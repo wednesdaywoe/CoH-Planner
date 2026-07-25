@@ -39,6 +39,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     140
   ],
@@ -60,14 +61,14 @@
             "Sleep"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Sleep",
           "scale": 12.0,
           "duration": "0 seconds",
           "magnitude": 3.0,
-          "delay": 0.10000000149011612,
+          "delay": 0.1,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -79,9 +80,21 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "DeepSleep"
-          ],
+          "messages": {
+            "display_attacker_hit": "You Sleep {PlayerDest} with your {PowerName}.",
+            "display_victim_hit": "{PlayerSource} Sleeps you with their {PowerName}.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              284
+            ],
+            "conditional_fx": "GENERICCONTINUING/SLEEPCONTINUING.FX"
+          },
           "flags_raw": 2560
         }
       ]

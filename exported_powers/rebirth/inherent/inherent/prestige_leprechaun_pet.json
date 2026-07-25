@@ -42,6 +42,7 @@
   "requires": "cucplepr productOwned? Inherent.Inherent.prestige_Leprechaun_Pet || accesslevel char> 0 >= &&",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -61,7 +62,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -82,12 +83,14 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "Pets_Leprechaun_Mini_Pet"
+            "entity_def": "Pets_Leprechaun_Mini_Pet",
+            "priority_list": "Pet"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -108,7 +111,7 @@
             "InfluenceGain"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -130,11 +133,13 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     }
   ],
+  "max_boosts": 0,
   "modes_disallowed": [
     "Disable_Walk",
     "Disable_Temp"

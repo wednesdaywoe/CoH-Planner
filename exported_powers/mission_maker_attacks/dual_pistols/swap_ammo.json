@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -59,7 +60,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -79,10 +80,18 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Temporary_Powers.Temporary_Powers.Chemical_Ammunition"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
+          },
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": null,
+            "display_float": "Chemical Ammo Loaded",
+            "display_attrib_defense_float": null,
+            "display_info": null
           },
           "flags": [
             "IgnoreStrength",
@@ -95,7 +104,7 @@
             "Revoke_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -115,10 +124,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Temporary_Powers.Temporary_Powers.Incendiary_Ammunition"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -147,7 +157,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -167,10 +177,18 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Temporary_Powers.Temporary_Powers.Incendiary_Ammunition"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
+          },
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": null,
+            "display_float": "Incendiary Ammo Loaded",
+            "display_attrib_defense_float": null,
+            "display_info": null
           },
           "flags": [
             "IgnoreStrength",
@@ -183,7 +201,7 @@
             "Revoke_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -203,10 +221,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Temporary_Powers.Temporary_Powers.Cryo_Ammunition"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -233,7 +252,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -253,10 +272,18 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Temporary_Powers.Temporary_Powers.Cryo_Ammunition"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
+          },
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": null,
+            "display_float": "Cryo Ammo Loaded",
+            "display_attrib_defense_float": null,
+            "display_info": null
           },
           "flags": [
             "IgnoreStrength",
@@ -283,7 +310,7 @@
             "Revoke_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -303,10 +330,18 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Temporary_Powers.Temporary_Powers.Chemical_Ammunition"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
+          },
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": null,
+            "display_float": "Standard Ammo Loaded",
+            "display_attrib_defense_float": null,
+            "display_info": null
           },
           "flags": [
             "IgnoreStrength",

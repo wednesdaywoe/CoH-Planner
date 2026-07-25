@@ -38,6 +38,7 @@
   "requires": "$archetype @Class_Sentinel ==",
   "activate_requires": "$archetype @Class_Sentinel ==",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -57,7 +58,7 @@
             "Meter"
           ],
           "type": "Expression",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -87,7 +88,7 @@
             "Rage"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
@@ -106,10 +107,25 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "CopyBoosts"
+          "required_events": [
+            {
+              "event": "Attacked",
+              "event_id": 2,
+              "duration": 8.0,
+              "always": 0
+            },
+            {
+              "event": "PseudoPetAttacked",
+              "event_id": 47,
+              "duration": 8.0,
+              "always": 0
+            }
           ],
-          "boost_mod_allowed_id": 1090519040
+          "flags": [
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 96
         },
         {
           "attribs": [
@@ -117,7 +133,7 @@
             "PerceptionRadius"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "Self",
           "table": "Melee_Ones",
@@ -163,7 +179,7 @@
             "Set_Mode"
           ],
           "type": "Constant",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -184,8 +200,7 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance",
-            "DeepSleep"
+            "IgnoreResistance"
           ],
           "flags_raw": 3120,
           "mode_name": "Domination"
@@ -211,7 +226,7 @@
             "Set_Mode"
           ],
           "type": "Constant",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -232,8 +247,7 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance",
-            "DeepSleep"
+            "IgnoreResistance"
           ],
           "flags_raw": 3120,
           "mode_name": "Opportunity"
@@ -241,6 +255,7 @@
       ]
     }
   ],
+  "max_boosts": 0,
   "available_level": 0,
   "powerset": "Inherent.Inherent"
 }

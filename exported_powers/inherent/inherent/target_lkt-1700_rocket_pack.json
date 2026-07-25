@@ -38,6 +38,7 @@
   "requires": "0",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -57,7 +58,7 @@
             "Revoke_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
@@ -76,6 +77,13 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "power_names": [
+              "Inherent.Inherent.Target:LKT-1700_Rocket_Pack"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -85,6 +93,7 @@
       ]
     }
   ],
+  "max_boosts": 0,
   "available_level": 0,
   "powerset": "Inherent.Inherent"
 }

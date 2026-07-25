@@ -41,6 +41,7 @@
   "requires": "Pool.Medicine.Aid_Other Pool.Medicine.Stimulant && Pool.Medicine.Aid_Other Pool.Medicine.Aid_Self && || Pool.Medicine.Aid_Other Pool.Medicine.Resuscitate && || Pool.Medicine.Stimulant Pool.Medicine.Aid_Self && || Pool.Medicine.Stimulant Pool.Medicine.Resuscitate && || Pool.Medicine.Aid_Self Pool.Medicine.Resuscitate && ||",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -60,7 +61,7 @@
             "Heal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
@@ -82,7 +83,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -103,7 +105,7 @@
             "Heal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "Self",
           "table": "Melee_Ones",
@@ -125,7 +127,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     }

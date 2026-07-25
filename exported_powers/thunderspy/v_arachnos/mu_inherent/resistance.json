@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -57,10 +58,10 @@
             "Energy",
             "Negative_Energy"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Melee_Buff_Def",
           "scale": 1.0,
           "duration": "999999 seconds",
@@ -97,10 +98,10 @@
             "Energy_Dmg",
             "Negative_Energy_Dmg"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
           "aspect": "Resistance",
-          "target": "",
+          "target": "Self",
           "table": "Melee_Res_DMG",
           "scale": 1.0,
           "duration": "999999 seconds",

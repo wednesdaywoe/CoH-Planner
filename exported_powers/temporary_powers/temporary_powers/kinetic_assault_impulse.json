@@ -38,6 +38,7 @@
   "requires": "accesslevel char> 0 >=",
   "activate_requires": "accesslevel char> 0 >=",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -57,7 +58,7 @@
             "Token_Set"
           ],
           "type": "Constant",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
@@ -76,6 +77,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "tokens": [
+              "KineticAssaultSecondaries"
+            ],
+            "type": "Token"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
@@ -86,6 +93,7 @@
       ]
     }
   ],
+  "max_boosts": 0,
   "available_level": 0,
   "powerset": "Temporary_Powers.Temporary_Powers"
 }

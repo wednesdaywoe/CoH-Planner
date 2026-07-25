@@ -41,6 +41,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     112,
     144
@@ -76,7 +77,7 @@
                 "Held"
               ],
               "type": "Duration",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_Immobilize",
@@ -95,8 +96,22 @@
               "stack": "RefreshToCount",
               "stack_limit": 1,
               "stack_key": "AoEHold",
+              "messages": {
+                "display_attacker_hit": "You Hold {PlayerDest} with your {PowerName}.",
+                "display_victim_hit": "{PlayerSource} Holds you with their {PowerName}.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "Against up to 16 targets, only at initial summoning time"
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": null,
+                "conditional_bits": [
+                  387
+                ],
+                "conditional_fx": "PFX"
+              },
               "flags": [
-                "DeepSleep",
                 "StackByAttribAndKey"
               ],
               "flags_raw": 264704
@@ -122,7 +137,7 @@
                 "Held"
               ],
               "type": "Duration",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_Immobilize",
@@ -141,8 +156,22 @@
               "stack": "RefreshToCount",
               "stack_limit": 1,
               "stack_key": "AoEHoldInherent",
+              "messages": {
+                "display_attacker_hit": "You Hold {PlayerDest} with your {PowerName}.",
+                "display_victim_hit": "{PlayerSource} Holds you with their {PowerName}.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "Overpower<br>Against up to 16 targets, only at initial summoning time"
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": null,
+                "conditional_bits": [
+                  387
+                ],
+                "conditional_fx": "PFX"
+              },
               "flags": [
-                "DeepSleep",
                 "StackByAttribAndKey"
               ],
               "flags_raw": 264704
@@ -152,7 +181,7 @@
                 "Null"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
@@ -171,6 +200,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": null,
+                "display_victim_hit": null,
+                "display_float": "Overpower",
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags_raw": 1280
             }
           ]
@@ -194,7 +230,7 @@
                 "Held"
               ],
               "type": "Duration",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_Immobilize",
@@ -213,8 +249,22 @@
               "stack": "RefreshToCount",
               "stack_limit": 1,
               "stack_key": "AoEHoldInherent",
+              "messages": {
+                "display_attacker_hit": "You Hold {PlayerDest} with your {PowerName}.",
+                "display_victim_hit": "{PlayerSource} Holds you with their {PowerName}.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "While under the effects of Domination<br>Against up to 16 targets, only at initial summoning time"
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": null,
+                "conditional_bits": [
+                  387
+                ],
+                "conditional_fx": "PFX"
+              },
               "flags": [
-                "DeepSleep",
                 "StackByAttribAndKey"
               ],
               "flags_raw": 264704
@@ -224,7 +274,7 @@
                 "Null"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
@@ -243,6 +293,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": null,
+                "display_victim_hit": null,
+                "display_float": "DOMINATION",
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags_raw": 1280
             }
           ]
@@ -279,7 +336,7 @@
                 "Held"
               ],
               "type": "Duration",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_PvPMez",
@@ -298,40 +355,52 @@
               "stack": "RefreshToCount",
               "stack_limit": 1,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You Hold {PlayerDest} with your {PowerName}.",
+                "display_victim_hit": "{PlayerSource} Holds you with their {PowerName}.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "Against up to 16 targets, only at initial summoning time"
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": null,
+                "conditional_bits": [
+                  387
+                ],
+                "conditional_fx": "PFX"
+              },
               "suppress_events": [
                 {
                   "event": "Stunned",
                   "event_id": 23,
                   "duration": 15.0,
-                  "flag": 0
+                  "always": 0
                 },
                 {
-                  "event": "Event_24",
+                  "event": "Immobilized",
                   "event_id": 24,
                   "duration": 15.0,
-                  "flag": 0
+                  "always": 0
                 },
                 {
                   "event": "Held",
                   "event_id": 25,
                   "duration": 15.0,
-                  "flag": 0
+                  "always": 0
                 },
                 {
                   "event": "Sleep",
                   "event_id": 26,
                   "duration": 15.0,
-                  "flag": 0
+                  "always": 0
                 },
                 {
-                  "event": "Confused",
+                  "event": "Terrorized",
                   "event_id": 27,
                   "duration": 15.0,
-                  "flag": 0
+                  "always": 0
                 }
-              ],
-              "flags": [
-                "DeepSleep"
               ],
               "flags_raw": 2560
             }
@@ -356,7 +425,7 @@
                 "Held"
               ],
               "type": "Duration",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_PvPMez",
@@ -375,40 +444,52 @@
               "stack": "RefreshToCount",
               "stack_limit": 1,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You Hold {PlayerDest} with your {PowerName} (DOMINATION).",
+                "display_victim_hit": "{PlayerSource} Holds you with their {PowerName} (DOMINATION).",
+                "display_float": "DOMINATION",
+                "display_attrib_defense_float": null,
+                "display_info": "While under the effects of Domination<br>Against up to 16 targets, only at initial summoning time"
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": null,
+                "conditional_bits": [
+                  387
+                ],
+                "conditional_fx": "PFX"
+              },
               "suppress_events": [
                 {
                   "event": "Stunned",
                   "event_id": 23,
                   "duration": 15.0,
-                  "flag": 0
+                  "always": 0
                 },
                 {
-                  "event": "Event_24",
+                  "event": "Immobilized",
                   "event_id": 24,
                   "duration": 15.0,
-                  "flag": 0
+                  "always": 0
                 },
                 {
                   "event": "Held",
                   "event_id": 25,
                   "duration": 15.0,
-                  "flag": 0
+                  "always": 0
                 },
                 {
                   "event": "Sleep",
                   "event_id": 26,
                   "duration": 15.0,
-                  "flag": 0
+                  "always": 0
                 },
                 {
-                  "event": "Confused",
+                  "event": "Terrorized",
                   "event_id": 27,
                   "duration": 15.0,
-                  "flag": 0
+                  "always": 0
                 }
-              ],
-              "flags": [
-                "DeepSleep"
               ],
               "flags_raw": 2560
             }
@@ -417,6 +498,7 @@
       ]
     }
   ],
+  "procs_allowed": false,
   "available_level": 0,
   "powerset": "Villain_Pets.Vines"
 }

@@ -1,0 +1,19 @@
+{
+  "key": "Boosts.Mutation_Stun",
+  "display_name": "Mutation Stun",
+  "help": "Increases the duration of a disorient power.",
+  "short_help": "Secondary Mutation (Mutation)",
+  "icon": "mutation_stun_set.ico",
+  "powers": [
+    "Boosts.Mutation_Stun.Mutation_Stun"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Evolution: Increased Stun"
+  ],
+  "power_short_helps": [
+    "Enhances Disorient Duration"
+  ]
+}

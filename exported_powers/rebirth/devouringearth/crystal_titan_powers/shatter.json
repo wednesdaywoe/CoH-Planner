@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -57,7 +58,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -80,7 +81,8 @@
             "type": "EntCreate",
             "entity_def": "DevouringEarth_Eden_Trial_Crystal_Titan_Intermediate",
             "priority_list": "PL_FightPreferMelee"
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     },
@@ -101,7 +103,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -124,7 +126,8 @@
             "type": "EntCreate",
             "entity_def": "DevouringEarth_Eden_Trial_Crystal_Titan_Intermediate",
             "priority_list": "PL_FightPreferMelee"
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     },
@@ -145,7 +148,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -168,7 +171,8 @@
             "type": "EntCreate",
             "entity_def": "DevouringEarth_Eden_Trial_Crystal_Titan_Intermediate",
             "priority_list": "PL_FightPreferMelee"
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     },
@@ -189,7 +193,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -212,11 +216,13 @@
             "type": "EntCreate",
             "entity_def": "DevouringEarth_Eden_Trial_Crystal_Titan_Intermediate",
             "priority_list": "PL_FightPreferMelee"
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     }
   ],
+  "castable_after_death": "DeadOnly",
   "available_level": 0,
   "powerset": "DevouringEarth.Crystal_Titan_Powers"
 }

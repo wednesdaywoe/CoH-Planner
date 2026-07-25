@@ -47,6 +47,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -65,10 +66,10 @@
           "attribs": [
             "Leap"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Melee_Leap",
           "scale": 1.0,
           "duration": "60 seconds",
@@ -104,10 +105,10 @@
           "attribs": [
             "SpeedJumping"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Melee_SpeedJumping",
           "scale": 1.0,
           "duration": "60 seconds",
@@ -141,12 +142,12 @@
       "templates": [
         {
           "attribs": [
-            "Control"
+            "MovementControl"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Melee_Control",
           "scale": 10.0,
           "duration": "60 seconds",
@@ -182,10 +183,10 @@
           "attribs": [
             "Friction"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Melee_Friction",
           "scale": 10.0,
           "duration": "60 seconds",

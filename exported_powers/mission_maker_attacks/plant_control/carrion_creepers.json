@@ -39,6 +39,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -58,7 +59,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Level",
@@ -78,9 +79,9 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
-            "entity_def": "Pet_NoCollision",
+            "costume_name": "Pet_NoCollision",
             "display_name": "Carrion Creeper",
+            "priority_list": "PL_Untargetable_FightPreferRanged",
             "redirects": [
               "Pets.ResistAll.ResistAll",
               "Villain_Pets.Creeper_Patch.Carrion_Creepers",
@@ -88,12 +89,14 @@
               "Villain_Pets.Creeper_Patch.Bramble",
               "Villain_Pets.Creeper_Patch.FX"
             ],
-            "priority_list": "PL_Untargetable_FightPreferRanged"
+            "type": "EntCreate"
           },
           "flags": [
-            "CopyBoosts"
+            "CopyBoosts",
+            "PseudoPet"
           ],
-          "flags_raw": 1280
+          "flags_raw": 1280,
+          "flags2_raw": 36
         }
       ]
     }

@@ -48,6 +48,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -71,7 +72,7 @@
             "Area"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Buff_Def",
@@ -105,7 +106,7 @@
             "Null"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -124,6 +125,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "PFX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "cancel_events": [
             "Stunned",
             "Held",
@@ -158,7 +165,7 @@
             "Area"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Buff_Def",
@@ -187,7 +194,7 @@
             "Null"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -206,6 +213,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "PFX2",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -231,7 +244,7 @@
             "Set_Mode"
           ],
           "type": "Constant",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -253,7 +266,6 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
-            "DeepSleep",
             "StackByAttribAndKey"
           ],
           "flags_raw": 265264,
@@ -271,7 +283,7 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Buff_Dmg",
@@ -322,7 +334,7 @@
             "Global_Chance_Mod"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -341,6 +353,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "tags": [
+              "ScrapperCrit_ST"
+            ],
+            "type": "EffectFilter"
+          },
           "cancel_events": [
             "Stunned",
             "Held",
@@ -351,25 +369,25 @@
               "event": "Attacked",
               "event_id": 2,
               "duration": 8.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "Damaged",
               "event_id": 21,
               "duration": 8.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "MissionObjectClick",
               "event_id": 37,
               "duration": 8.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "PseudoPetAttacked",
               "event_id": 47,
               "duration": 8.0,
-              "flag": 1
+              "always": 1
             }
           ],
           "flags": [
@@ -383,7 +401,7 @@
             "Global_Chance_Mod"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -402,6 +420,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "tags": [
+              "ScrapperCrit_AoE"
+            ],
+            "type": "EffectFilter"
+          },
           "cancel_events": [
             "Stunned",
             "Held",
@@ -412,25 +436,25 @@
               "event": "Attacked",
               "event_id": 2,
               "duration": 8.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "Damaged",
               "event_id": 21,
               "duration": 8.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "MissionObjectClick",
               "event_id": 37,
               "duration": 8.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "PseudoPetAttacked",
               "event_id": 47,
               "duration": 8.0,
-              "flag": 1
+              "always": 1
             }
           ],
           "flags": [
@@ -458,7 +482,7 @@
             "StealthRadius_PVE"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -497,7 +521,7 @@
             "StealthRadius_PVP"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -536,7 +560,7 @@
             "Translucency"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",

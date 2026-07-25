@@ -48,6 +48,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -64,10 +65,10 @@
       "templates": [
         {
           "attribs": [
-            "Create_Entity"
+            "Set_Mode"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -89,7 +90,9 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072,
+          "mode_name": "Peacebringer_Human_Mode"
         }
       ]
     },
@@ -107,10 +110,10 @@
       "templates": [
         {
           "attribs": [
-            "Create_Entity"
+            "Set_Mode"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -132,7 +135,9 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072,
+          "mode_name": "Warshade_Human_Mode"
         }
       ]
     },
@@ -150,10 +155,10 @@
       "templates": [
         {
           "attribs": [
-            "Create_Entity"
+            "Set_Mode"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -175,7 +180,9 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072,
+          "mode_name": "Warshade_Human_Mode2"
         }
       ]
     },
@@ -196,7 +203,7 @@
             "Fly"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -217,7 +224,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -238,7 +246,7 @@
             "FlyingSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_SpeedFlying",
@@ -258,13 +266,14 @@
           "stack_limit": 2,
           "stack_key": null,
           "cancel_events": [
-            "Damaged",
-            "Event_19",
-            "Event_22"
+            "Held",
+            "Stunned",
+            "Sleep"
           ],
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -285,7 +294,7 @@
             "FlyingSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_SpeedFlying",
@@ -306,7 +315,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -327,7 +337,7 @@
             "FlyingSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -347,14 +357,15 @@
           "stack_limit": 2,
           "stack_key": null,
           "cancel_events": [
-            "Damaged",
-            "Event_19",
-            "Event_22"
+            "Held",
+            "Stunned",
+            "Sleep"
           ],
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -375,7 +386,7 @@
             "FlyingSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -397,7 +408,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -418,7 +430,7 @@
             "FlyingSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_SpeedFlying",
@@ -438,13 +450,14 @@
           "stack_limit": 2,
           "stack_key": null,
           "cancel_events": [
-            "Damaged",
-            "Event_19",
-            "Event_22"
+            "Held",
+            "Stunned",
+            "Sleep"
           ],
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -465,7 +478,7 @@
             "FlyingSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -485,14 +498,15 @@
           "stack_limit": 2,
           "stack_key": null,
           "cancel_events": [
-            "Damaged",
-            "Event_19",
-            "Event_22"
+            "Held",
+            "Stunned",
+            "Sleep"
           ],
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -513,7 +527,7 @@
             "FlyingSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -533,14 +547,15 @@
           "stack_limit": 2,
           "stack_key": null,
           "cancel_events": [
-            "Damaged",
-            "Event_19",
-            "Event_22"
+            "Held",
+            "Stunned",
+            "Sleep"
           ],
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -561,7 +576,7 @@
             "FlyingSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -583,7 +598,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -604,7 +620,7 @@
             "MovementControl"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Control",
@@ -624,13 +640,14 @@
           "stack_limit": 2,
           "stack_key": null,
           "cancel_events": [
-            "Damaged",
-            "Event_19",
-            "Event_22"
+            "Held",
+            "Stunned",
+            "Sleep"
           ],
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -651,7 +668,7 @@
             "MovementFriction"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Friction",
@@ -671,13 +688,14 @@
           "stack_limit": 2,
           "stack_key": null,
           "cancel_events": [
-            "Damaged",
-            "Event_19",
-            "Event_22"
+            "Held",
+            "Stunned",
+            "Sleep"
           ],
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -695,10 +713,10 @@
       "templates": [
         {
           "attribs": [
-            "Grant_Power"
+            "Global_Chance_Mod"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -717,10 +735,17 @@
           "stack": "RefreshToCount",
           "stack_limit": 1,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "FlightActive"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -738,10 +763,10 @@
       "templates": [
         {
           "attribs": [
-            "Grant_Power"
+            "Global_Chance_Mod"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -760,10 +785,17 @@
           "stack": "RefreshToCount",
           "stack_limit": 1,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "FeetCantTouchTheGround"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -781,10 +813,10 @@
       "templates": [
         {
           "attribs": [
-            "Create_Entity"
+            "Set_Mode"
           ],
           "type": "Constant",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -806,7 +838,9 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 3120,
+          "mode_name": "FlyOn"
         }
       ]
     }

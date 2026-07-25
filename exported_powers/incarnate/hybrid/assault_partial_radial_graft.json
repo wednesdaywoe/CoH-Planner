@@ -49,6 +49,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -68,7 +69,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
@@ -88,10 +89,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Incarnate.Hybrid_Silent.Assault_Partial_Radial_Graft"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -104,7 +106,7 @@
             "Revoke_Power"
           ],
           "type": "Magnitude",
-          "application_type": "OnActivate",
+          "application_type": "OnDeactivate",
           "aspect": "Absolute",
           "target": "SelfAndPets",
           "table": "Melee_Ones",
@@ -124,10 +126,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Incarnate.Hybrid_Silent.Assault_Partial_Radial_Graft"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -140,7 +143,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
@@ -160,10 +163,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Incarnate.Hybrid_Silent.Doublehit_Partial_Radial"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -176,7 +180,7 @@
             "Revoke_Power"
           ],
           "type": "Magnitude",
-          "application_type": "OnActivate",
+          "application_type": "OnDeactivate",
           "aspect": "Absolute",
           "target": "SelfAndPets",
           "table": "Melee_Ones",
@@ -196,10 +200,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Incarnate.Hybrid_Silent.Doublehit_Partial_Radial"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -232,10 +237,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Incarnate.Hybrid_Silent.Assault_Boost_Rare"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -268,10 +274,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Incarnate.Hybrid_Silent.Assault_Boost_Rare"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -281,6 +288,11 @@
         }
       ]
     }
+  ],
+  "max_toggle_time": 120.0,
+  "max_boosts": 0,
+  "strengths_disallowed": [
+    "RechargeTime"
   ],
   "modes_disallowed": [
     "Disable_All",

@@ -24,12 +24,12 @@
   "endurance_cost": 15.0,
   "interrupt_time": 4.0,
   "target_type": "Any",
-  "target_type_secondary": "DeadMyPet",
+  "target_type_secondary": "Teleport",
   "targets_autohit": [
-    "Unknown(35)"
+    "DeadOrAliveLeaguemate"
   ],
   "targets_affected": [
-    "Unknown(35)",
+    "DeadOrAliveLeaguemate",
     "Foe"
   ],
   "boosts_allowed": [
@@ -49,6 +49,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [],
   "redirect": [

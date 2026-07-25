@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -57,12 +58,12 @@
             "Set_Mode"
           ],
           "type": "Constant",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": 1.0,
-          "duration": "0.50 seconds",
+          "duration": "0.5 seconds",
           "magnitude": 69.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -103,12 +104,12 @@
             "Set_Mode"
           ],
           "type": "Constant",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": 1.0,
-          "duration": "0.50 seconds",
+          "duration": "0.5 seconds",
           "magnitude": 70.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -124,7 +125,7 @@
           "stack_key": null,
           "cancel_events": [
             "Attacked",
-            "Event_12",
+            "AttackedByOther",
             "Stunned",
             "Held",
             "Sleep",
@@ -135,19 +136,19 @@
               "event": "Attacked",
               "event_id": 2,
               "duration": 8.0,
-              "flag": 0
+              "always": 0
             },
             {
-              "event": "Event_12",
+              "event": "AttackedByOther",
               "event_id": 12,
               "duration": 8.0,
-              "flag": 0
+              "always": 0
             },
             {
               "event": "MissionObjectClick",
               "event_id": 37,
               "duration": 8.0,
-              "flag": 0
+              "always": 0
             }
           ],
           "flags": [
@@ -161,6 +162,7 @@
       ]
     }
   ],
+  "max_boosts": 0,
   "modes_disallowed": [
     "Disable_All"
   ],

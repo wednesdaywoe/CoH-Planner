@@ -44,6 +44,7 @@
   "requires": "$archetype @Class_Warshade == Warshade_Defensive.Umbral_Aura.Black_Dwarf &&",
   "activate_requires": "$archetype @Class_Warshade == Warshade_Defensive.Umbral_Aura.Black_Dwarf &&",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -62,13 +63,13 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 0.0,
-          "duration": "1.50 seconds",
+          "duration": "1.5 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -86,6 +87,7 @@
       ]
     }
   ],
+  "max_boosts": 0,
   "modes_required": [
     "Warshade_Tanker_Mode"
   ],

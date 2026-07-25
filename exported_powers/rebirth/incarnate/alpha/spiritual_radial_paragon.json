@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "isVIP? isAccountInventoryLoaded? ! ||",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -54,7 +55,7 @@
       "templates": [
         {
           "attribs": [
-            "Null"
+            "Grant_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnEnable",
@@ -64,7 +65,7 @@
           "scale": 1.0,
           "duration": "0 seconds",
           "magnitude": 1.0,
-          "delay": 0.10000000149011612,
+          "delay": 0.1,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -85,7 +86,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -103,7 +105,7 @@
       "templates": [
         {
           "attribs": [
-            "Null"
+            "Grant_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnEnable",
@@ -113,7 +115,7 @@
           "scale": 1.0,
           "duration": "0 seconds",
           "magnitude": 1.0,
-          "delay": 0.10000000149011612,
+          "delay": 0.1,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -134,7 +136,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -152,7 +155,7 @@
       "templates": [
         {
           "attribs": [
-            "Null"
+            "Grant_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnEnable",
@@ -162,7 +165,7 @@
           "scale": 1.0,
           "duration": "0 seconds",
           "magnitude": 1.0,
-          "delay": 0.10000000149011612,
+          "delay": 0.1,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -183,7 +186,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -201,7 +205,7 @@
       "templates": [
         {
           "attribs": [
-            "Null"
+            "Grant_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnEnable",
@@ -211,7 +215,7 @@
           "scale": 1.0,
           "duration": "0 seconds",
           "magnitude": 1.0,
-          "delay": 0.10000000149011612,
+          "delay": 0.1,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -232,7 +236,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -250,7 +255,7 @@
       "templates": [
         {
           "attribs": [
-            "Null"
+            "Grant_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnEnable",
@@ -260,7 +265,7 @@
           "scale": 1.0,
           "duration": "0 seconds",
           "magnitude": 1.0,
-          "delay": 0.10000000149011612,
+          "delay": 0.1,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -281,7 +286,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -299,7 +305,7 @@
       "templates": [
         {
           "attribs": [
-            "Null"
+            "Grant_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnEnable",
@@ -309,7 +315,7 @@
           "scale": 1.0,
           "duration": "0 seconds",
           "magnitude": 1.0,
-          "delay": 0.10000000149011612,
+          "delay": 0.1,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -330,7 +336,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -348,7 +355,7 @@
       "templates": [
         {
           "attribs": [
-            "Null"
+            "Revoke_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnDisable",
@@ -379,7 +386,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -397,7 +405,7 @@
       "templates": [
         {
           "attribs": [
-            "Null"
+            "Revoke_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnDisable",
@@ -428,7 +436,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -446,7 +455,7 @@
       "templates": [
         {
           "attribs": [
-            "Null"
+            "Revoke_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnDisable",
@@ -477,7 +486,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -495,7 +505,7 @@
       "templates": [
         {
           "attribs": [
-            "Null"
+            "Revoke_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnDisable",
@@ -526,7 +536,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -544,7 +555,7 @@
       "templates": [
         {
           "attribs": [
-            "Null"
+            "Revoke_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnDisable",
@@ -575,7 +586,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -593,7 +605,7 @@
       "templates": [
         {
           "attribs": [
-            "Null"
+            "Revoke_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnDisable",
@@ -624,7 +636,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -642,15 +655,15 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Combat_Mod_Shift"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffectedAndPets",
           "table": "Melee_Ones",
           "scale": 1.0,
-          "duration": "10.30 seconds",
+          "duration": "10.3 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -667,7 +680,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -685,15 +699,15 @@
       "templates": [
         {
           "attribs": [
-            "Create_Entity"
+            "Set_Mode"
           ],
           "type": "Constant",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 1.0,
-          "duration": "10.30 seconds",
+          "duration": "10.3 seconds",
           "magnitude": 102.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -711,11 +725,14 @@
             "IgnoreStrength",
             "IgnoreResistance",
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 112,
+          "mode_name": "Incarnate_Equipped"
         }
       ]
     }
   ],
+  "max_boosts": 0,
   "modes_disallowed": [
     "Disable_All",
     "Disable_Epic",

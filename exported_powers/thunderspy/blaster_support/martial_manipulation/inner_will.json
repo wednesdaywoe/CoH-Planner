@@ -48,6 +48,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "kHitPoints% source> 50 < kEndurance% source> 50 < || cur.kHeld source> 0 > || cur.kImmobilize source> 0 > || cur.kStun source> 0 > || cur.kTerrorized source> 0 > || cur.kConfused source> 0 > || cur.kSleep source> 0 > ||",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -66,17 +67,17 @@
           "attribs": [
             "Stunned"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Expression",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Melee_Ones",
           "scale": 1.0,
           "duration": "30 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
-          "magnitude_expression": "",
+          "magnitude_expression": "mod.kStun source> 1 + 2 30 minmax negate",
           "application_period": 0.0,
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,

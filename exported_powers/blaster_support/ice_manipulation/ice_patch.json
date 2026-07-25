@@ -42,6 +42,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -61,7 +62,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Level",
@@ -81,15 +82,23 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Pets_IcePatch",
-            "priority_list": "PL_StaticObject"
+            "priority_list": "PL_StaticObject",
+            "type": "EntCreate"
+          },
+          "messages": {
+            "display_attacker_hit": "You freeze the ground underneath you into an {PowerName}!",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
           },
           "flags": [
             "NearGround",
             "CopyBoosts"
           ],
-          "flags_raw": 1288
+          "flags_raw": 1288,
+          "flags2_raw": 4
         }
       ]
     },
@@ -119,7 +128,7 @@
             "Toxic_Dmg"
           ],
           "type": "Expression",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Ranged_Ones",

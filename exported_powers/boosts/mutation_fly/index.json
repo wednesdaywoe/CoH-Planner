@@ -1,0 +1,19 @@
+{
+  "key": "Boosts.Mutation_Fly",
+  "display_name": "Mutation Fly",
+  "help": "Increases the flight speed of a flight power.",
+  "short_help": "Secondary Mutation (Mutation)",
+  "icon": "mutation_fly_set.ico",
+  "powers": [
+    "Boosts.Mutation_Fly.Mutation_Fly"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Catalyst: Amplified Flying (Fly)"
+  ],
+  "power_short_helps": [
+    "Enhances Flight Speed"
+  ]
+}

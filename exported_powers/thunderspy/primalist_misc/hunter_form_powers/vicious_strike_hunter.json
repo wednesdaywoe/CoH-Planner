@@ -47,6 +47,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     108,
     120
@@ -68,10 +69,10 @@
           "attribs": [
             "Damage"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Melee_Damage",
           "scale": 1.5,
           "duration": "0 seconds",
@@ -107,10 +108,10 @@
           "attribs": [
             "Damage"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Melee_Damage",
           "scale": 1.896,
           "duration": "0 seconds",
@@ -146,10 +147,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Melee_Ones",
           "scale": 0.1,
           "duration": "0 seconds",
@@ -185,10 +186,10 @@
           "attribs": [
             "NBInactive"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Resistance",
+          "target": "AnyAffected",
           "table": "Melee_Res_DMG",
           "scale": -1.0,
           "duration": "6 seconds",
@@ -224,10 +225,10 @@
           "attribs": [
             "NBActive"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Resistance",
+          "target": "AnyAffected",
           "table": "Melee_Res_DMG",
           "scale": -1.5,
           "duration": "6 seconds",
@@ -263,10 +264,10 @@
           "attribs": [
             "NBActive"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Resistance",
+          "target": "AnyAffected",
           "table": "Melee_Res_DMG",
           "scale": -1.5,
           "duration": "6 seconds",
@@ -302,10 +303,10 @@
           "attribs": [
             "NBActive"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Resistance",
+          "target": "AnyAffected",
           "table": "Melee_Res_DMG",
           "scale": -1.5,
           "duration": "6 seconds",
@@ -341,10 +342,10 @@
           "attribs": [
             "NBActive"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Resistance",
+          "target": "AnyAffected",
           "table": "Melee_Res_DMG",
           "scale": -1.5,
           "duration": "6 seconds",
@@ -380,10 +381,10 @@
           "attribs": [
             "NBActive"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Resistance",
+          "target": "AnyAffected",
           "table": "Melee_Res_DMG",
           "scale": -1.5,
           "duration": "6 seconds",
@@ -419,10 +420,10 @@
           "attribs": [
             "NBActive"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Resistance",
+          "target": "AnyAffected",
           "table": "Melee_Res_DMG",
           "scale": -1.5,
           "duration": "6 seconds",
@@ -458,10 +459,10 @@
           "attribs": [
             "NBActive"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Resistance",
+          "target": "AnyAffected",
           "table": "Melee_Res_DMG",
           "scale": -1.5,
           "duration": "6 seconds",
@@ -497,10 +498,10 @@
           "attribs": [
             "NBActive"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Resistance",
+          "target": "AnyAffected",
           "table": "Melee_Res_DMG",
           "scale": -1.5,
           "duration": "6 seconds",

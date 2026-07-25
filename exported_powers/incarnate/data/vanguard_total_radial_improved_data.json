@@ -43,6 +43,7 @@
   "requires": "",
   "activate_requires": "isVIP? isAccountInventoryLoaded? ! || combatlevel char> 45 < &&",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -62,7 +63,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Levelminus",
@@ -82,23 +83,26 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "IncarnatePets_Fate_Vanguard_LT",
-            "priority_list": "Pet"
+            "priority_list": "Pet",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
+            "VanishEntOnTimeout",
+            "DoNotTintCostume",
             "CopyBoosts"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 7
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Levelminus",
@@ -118,19 +122,26 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "IncarnatePets_Fate_Vanguard_Support_Protected",
-            "priority_list": "Pet"
+            "priority_list": "Pet",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
+            "VanishEntOnTimeout",
+            "DoNotTintCostume",
             "CopyBoosts"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 7
         }
       ]
     }
+  ],
+  "max_boosts": 0,
+  "strengths_disallowed": [
+    "RechargeTime"
   ],
   "modes_disallowed": [
     "Disable_All",

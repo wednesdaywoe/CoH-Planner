@@ -39,6 +39,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     112,
     140
@@ -61,7 +62,7 @@
             "Held"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Immobilize",
@@ -80,9 +81,23 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You Hold {PlayerDest} with your {PowerName}.",
+            "display_victim_hit": "{PlayerSource} Holds you with their {PowerName}.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              384
+            ],
+            "conditional_fx": "PFX"
+          },
           "flags": [
-            "NearGround",
-            "DeepSleep"
+            "NearGround"
           ],
           "flags_raw": 2568
         }
@@ -109,7 +124,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "SelfAndPets",
           "table": "Melee_Ones",
@@ -129,10 +144,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Pets.Reverberant.Chords_of_Despair"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags_raw": 1280
         }

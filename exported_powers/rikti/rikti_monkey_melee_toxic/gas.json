@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -57,7 +58,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Level",
@@ -77,19 +78,22 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Pets_MonkeyGas",
-            "priority_list": "PL_StaticObject"
+            "priority_list": "PL_StaticObject",
+            "type": "EntCreate"
           },
           "flags": [
             "KeepThroughDeath",
+            "DoNotTintCostume",
             "CopyBoosts"
           ],
-          "flags_raw": 17664
+          "flags_raw": 17664,
+          "flags2_raw": 6
         }
       ]
     }
   ],
+  "castable_after_death": "DeadOnly",
   "available_level": 0,
   "powerset": "Rikti.Rikti_Monkey_Melee_Toxic"
 }

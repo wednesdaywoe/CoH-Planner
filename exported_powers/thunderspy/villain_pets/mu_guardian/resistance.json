@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -56,13 +57,13 @@
           "attribs": [
             "Energy_Dmg"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
           "aspect": "Resistance",
-          "target": "",
+          "target": "Self",
           "table": "Melee_Res_DMG",
           "scale": 2.0,
-          "duration": "10.50 seconds",
+          "duration": "10.5 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",

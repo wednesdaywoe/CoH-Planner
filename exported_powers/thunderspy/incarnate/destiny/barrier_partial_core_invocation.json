@@ -44,6 +44,7 @@
   "requires": "",
   "activate_requires": "isVIP? isAccountInventoryLoaded? ! ||",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -71,13 +72,13 @@
             "Ranged",
             "Area"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
           "aspect": "Current",
-          "target": "",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 0.575,
-          "duration": "7.50 seconds",
+          "duration": "7.5 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -95,6 +96,7 @@
       ]
     }
   ],
+  "max_boosts": 0,
   "modes_disallowed": [
     "Disable_All",
     "Disable_Incarn"

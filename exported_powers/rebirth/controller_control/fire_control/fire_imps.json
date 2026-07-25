@@ -48,6 +48,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -67,7 +68,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_LevelMinus",
@@ -90,7 +91,8 @@
             "type": "EntCreate",
             "entity_def": "Pets_FireImp",
             "priority_list": "PL_FightPreferMelee"
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     },
@@ -111,7 +113,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_LevelMinus",
@@ -134,7 +136,8 @@
             "type": "EntCreate",
             "entity_def": "Pets_FireImp",
             "priority_list": "PL_FightPreferMelee"
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     },
@@ -155,7 +158,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_LevelMinus",
@@ -178,7 +181,8 @@
             "type": "EntCreate",
             "entity_def": "Pets_FireImp",
             "priority_list": "PL_FightPreferMelee"
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     }

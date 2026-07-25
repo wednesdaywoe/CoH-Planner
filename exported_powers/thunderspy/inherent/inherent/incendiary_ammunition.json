@@ -42,6 +42,7 @@
   "requires": "Inherent.Inherent.Swap_Ammo",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -60,10 +61,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 1.0,
           "duration": "0.75 seconds",
@@ -84,6 +85,7 @@
       ]
     }
   ],
+  "max_boosts": 0,
   "modes_required": [
     "LethalAmmo"
   ],

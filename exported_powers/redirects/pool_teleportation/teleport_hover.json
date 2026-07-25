@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "isTutorialMap? !",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -57,7 +58,7 @@
             "Fly"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -79,7 +80,7 @@
           "cancel_events": [
             "Attacked",
             "Event_11",
-            "Event_15",
+            "HitByOther",
             "MissionObjectClick",
             "Event_38"
           ],
@@ -94,7 +95,7 @@
             "FlyingSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_SpeedFlying",
@@ -116,7 +117,7 @@
           "cancel_events": [
             "Attacked",
             "Event_11",
-            "Event_15",
+            "HitByOther",
             "MissionObjectClick",
             "Event_38"
           ],
@@ -133,7 +134,7 @@
             "Intangible"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -155,7 +156,7 @@
           "cancel_events": [
             "Attacked",
             "Event_11",
-            "Event_15",
+            "HitByOther",
             "MissionObjectClick",
             "Event_38"
           ],
@@ -170,7 +171,7 @@
             "Set_Mode"
           ],
           "type": "Constant",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -192,14 +193,13 @@
           "cancel_events": [
             "Attacked",
             "Event_11",
-            "Event_15",
+            "HitByOther",
             "MissionObjectClick",
             "Event_38"
           ],
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance",
-            "DeepSleep"
+            "IgnoreResistance"
           ],
           "flags_raw": 3120,
           "mode_name": "ChainTeleport"
@@ -223,7 +223,7 @@
                 "Untouchable"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Ranged_Ones",
@@ -245,7 +245,7 @@
               "cancel_events": [
                 "Attacked",
                 "Event_11",
-                "Event_15",
+                "HitByOther",
                 "MissionObjectClick",
                 "Event_38"
               ],
@@ -254,19 +254,19 @@
                   "event": "Attacked",
                   "event_id": 2,
                   "duration": 10.0,
-                  "flag": 1
+                  "always": 1
                 },
                 {
                   "event": "HitByFoe",
                   "event_id": 17,
                   "duration": 10.0,
-                  "flag": 1
+                  "always": 1
                 },
                 {
                   "event": "MissionObjectClick",
                   "event_id": 37,
                   "duration": 10.0,
-                  "flag": 1
+                  "always": 1
                 }
               ],
               "flags": [
@@ -280,7 +280,7 @@
                 "Translucency"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Ranged_Ones",
@@ -302,7 +302,7 @@
               "cancel_events": [
                 "Attacked",
                 "Event_11",
-                "Event_15",
+                "HitByOther",
                 "MissionObjectClick",
                 "Event_38"
               ],
@@ -311,19 +311,19 @@
                   "event": "Attacked",
                   "event_id": 2,
                   "duration": 10.0,
-                  "flag": 1
+                  "always": 1
                 },
                 {
-                  "event": "Event_12",
+                  "event": "AttackedByOther",
                   "event_id": 12,
                   "duration": 10.0,
-                  "flag": 1
+                  "always": 1
                 },
                 {
                   "event": "HitByFoe",
                   "event_id": 17,
                   "duration": 10.0,
-                  "flag": 1
+                  "always": 1
                 }
               ],
               "flags": [
@@ -336,7 +336,7 @@
                 "Designer_Status"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "Self",
               "table": "Melee_Ones",
@@ -355,10 +355,17 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": null,
+                "display_victim_hit": "Untouchable",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "cancel_events": [
                 "Attacked",
                 "Event_11",
-                "Event_15",
+                "HitByOther",
                 "MissionObjectClick",
                 "Event_38"
               ],
@@ -367,19 +374,19 @@
                   "event": "Attacked",
                   "event_id": 2,
                   "duration": 10.0,
-                  "flag": 1
+                  "always": 1
                 },
                 {
                   "event": "HitByFoe",
                   "event_id": 17,
                   "duration": 10.0,
-                  "flag": 1
+                  "always": 1
                 },
                 {
                   "event": "MissionObjectClick",
                   "event_id": 37,
                   "duration": 10.0,
-                  "flag": 1
+                  "always": 1
                 }
               ],
               "flags": [
@@ -392,6 +399,11 @@
         }
       ]
     }
+  ],
+  "max_boosts": 0,
+  "procs_allowed": false,
+  "strengths_disallowed": [
+    "RechargeTime"
   ],
   "modes_disallowed": [
     "Disable_All"

@@ -39,6 +39,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -71,7 +72,7 @@
                 "Translucency"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
@@ -100,7 +101,7 @@
                 "Intangible"
               ],
               "type": "Duration",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
@@ -119,9 +120,15 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You Intangibilize {PlayerDest} with your {PowerName}.",
+                "display_victim_hit": "{PlayerSource} Intangibilizes you with their {PowerName}.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags": [
-                "IgnoreResistance",
-                "DeepSleep"
+                "IgnoreResistance"
               ],
               "flags_raw": 2080
             },
@@ -130,7 +137,7 @@
                 "Untouchable"
               ],
               "type": "Duration",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
@@ -149,9 +156,15 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You Phase {PlayerDest} with your {PowerName}.",
+                "display_victim_hit": "{PlayerSource} Phases you with their {PowerName}.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags": [
-                "IgnoreResistance",
-                "DeepSleep"
+                "IgnoreResistance"
               ],
               "flags_raw": 2080
             },
@@ -160,14 +173,14 @@
                 "Silent_Kill"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Melee_Ones",
               "scale": 1.0,
               "duration": "0 seconds",
               "magnitude": 1.0,
-              "delay": 0.05999999865889549,
+              "delay": 0.06,
               "duration_expression": "",
               "magnitude_expression": "",
               "application_period": 0.0,
@@ -189,14 +202,14 @@
                 "Create_Entity"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
               "scale": -1.0,
               "duration": "0 seconds",
               "magnitude": 1.0,
-              "delay": 0.029999999329447746,
+              "delay": 0.03,
               "duration_expression": "",
               "magnitude_expression": "",
               "application_period": 0.0,
@@ -209,14 +222,15 @@
               "stack_limit": 2,
               "stack_key": null,
               "params": {
-                "type": "EntCreate",
                 "entity_def": "Council_Lt_Nightwolf_Lycan",
-                "priority_list": "PL_FightPreferMelee"
+                "priority_list": "PL_FightPreferMelee",
+                "type": "EntCreate"
               },
               "flags": [
                 "CopyBoosts"
               ],
-              "flags_raw": 1280
+              "flags_raw": 1280,
+              "flags2_raw": 4
             }
           ]
         },
@@ -237,7 +251,7 @@
                 "Translucency"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
@@ -266,7 +280,7 @@
                 "Intangible"
               ],
               "type": "Duration",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
@@ -285,9 +299,15 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You Intangibilize {PlayerDest} with your {PowerName}.",
+                "display_victim_hit": "{PlayerSource} Intangibilizes you with their {PowerName}.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags": [
-                "IgnoreResistance",
-                "DeepSleep"
+                "IgnoreResistance"
               ],
               "flags_raw": 2080
             },
@@ -296,7 +316,7 @@
                 "Untouchable"
               ],
               "type": "Duration",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
@@ -315,9 +335,15 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You Phase {PlayerDest} with your {PowerName}.",
+                "display_victim_hit": "{PlayerSource} Phases you with their {PowerName}.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags": [
-                "IgnoreResistance",
-                "DeepSleep"
+                "IgnoreResistance"
               ],
               "flags_raw": 2080
             },
@@ -326,14 +352,14 @@
                 "Silent_Kill"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Melee_Ones",
               "scale": 1.0,
               "duration": "0 seconds",
               "magnitude": 1.0,
-              "delay": 0.05999999865889549,
+              "delay": 0.06,
               "duration_expression": "",
               "magnitude_expression": "",
               "application_period": 0.0,
@@ -355,14 +381,14 @@
                 "Create_Entity"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
               "scale": -1.0,
               "duration": "0 seconds",
               "magnitude": 1.0,
-              "delay": 0.029999999329447746,
+              "delay": 0.03,
               "duration_expression": "",
               "magnitude_expression": "",
               "application_period": 0.0,
@@ -375,14 +401,15 @@
               "stack_limit": 2,
               "stack_key": null,
               "params": {
-                "type": "EntCreate",
                 "entity_def": "Council_Lt_Nyctwolf_Lycan",
-                "priority_list": "PL_FightPreferMelee"
+                "priority_list": "PL_FightPreferMelee",
+                "type": "EntCreate"
               },
               "flags": [
                 "CopyBoosts"
               ],
-              "flags_raw": 1280
+              "flags_raw": 1280,
+              "flags2_raw": 4
             }
           ]
         }

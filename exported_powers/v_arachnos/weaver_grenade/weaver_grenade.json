@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -70,7 +71,7 @@
                 "Set_Mode"
               ],
               "type": "Constant",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
@@ -85,14 +86,20 @@
               "tick_mag_multiplier": 1.0,
               "tick_mag_additive": 0.0,
               "jit_requires": "",
-              "caster_stack": "Unlimited",
+              "caster_stack": "Collective",
               "stack": "Ignore",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": null,
+                "display_victim_hit": "The {PlayerSource} toxin has entered its first stage, get away!",
+                "display_float": "Weaver Grenade 33%!",
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags": [
                 "IgnoreStrength",
-                "IgnoreResistance",
-                "DeepSleep"
+                "IgnoreResistance"
               ],
               "flags_raw": 3120,
               "mode_name": "OnePowerCell"
@@ -102,12 +109,12 @@
                 "Toxic_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Melee_Damage",
               "scale": 0.1,
-              "duration": "14.10 seconds",
+              "duration": "14.1 seconds",
               "magnitude": 1.0,
               "delay": 0.0,
               "duration_expression": "",
@@ -117,10 +124,23 @@
               "tick_mag_multiplier": 1.0,
               "tick_mag_additive": 0.0,
               "jit_requires": "",
-              "caster_stack": "Unlimited",
+              "caster_stack": "Collective",
               "stack": "Ignore",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Toxic damage over time.",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Toxic damage over time.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "V_COV/ENEMYPOWERS/ARACHNOS/BANEMACE/BANEMACEHITCONTINUING.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags_raw": 1280
             }
           ]
@@ -142,7 +162,7 @@
                 "Set_Mode"
               ],
               "type": "Constant",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
@@ -157,14 +177,20 @@
               "tick_mag_multiplier": 1.0,
               "tick_mag_additive": 0.0,
               "jit_requires": "",
-              "caster_stack": "Unlimited",
+              "caster_stack": "Collective",
               "stack": "Ignore",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": null,
+                "display_victim_hit": "The {PlayerSource} toxin has entered its second stage, get away if you still can!",
+                "display_float": "Weaver Grenade 67%!",
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags": [
                 "IgnoreStrength",
-                "IgnoreResistance",
-                "DeepSleep"
+                "IgnoreResistance"
               ],
               "flags_raw": 3120,
               "mode_name": "TwoPowerCell"
@@ -174,7 +200,7 @@
                 "Toxic_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Melee_Damage",
@@ -189,10 +215,23 @@
               "tick_mag_multiplier": 1.0,
               "tick_mag_additive": 0.0,
               "jit_requires": "",
-              "caster_stack": "Unlimited",
+              "caster_stack": "Collective",
               "stack": "Ignore",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Toxic damage over time.",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Toxic damage over time.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "V_COV/ENEMYPOWERS/ARACHNOS/BANEMACE/BANEMACEHITCONTINUING.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags_raw": 1280
             },
             {
@@ -202,7 +241,7 @@
                 "JumpingSpeed"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Slow",
@@ -217,10 +256,16 @@
               "tick_mag_multiplier": 1.0,
               "tick_mag_additive": 0.0,
               "jit_requires": "",
-              "caster_stack": "Unlimited",
+              "caster_stack": "Collective",
               "stack": "Ignore",
               "stack_limit": 2,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "V_COV/ENEMYPOWERS/ARACHNOS/ARACHNOID_WEBTRAPCAGE.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "IgnoreStrength",
                 "IgnoreResistance"
@@ -246,7 +291,7 @@
                 "Set_Mode"
               ],
               "type": "Constant",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
@@ -261,14 +306,20 @@
               "tick_mag_multiplier": 1.0,
               "tick_mag_additive": 0.0,
               "jit_requires": "",
-              "caster_stack": "Unlimited",
+              "caster_stack": "Collective",
               "stack": "Ignore",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": null,
+                "display_victim_hit": "The {PlayerSource} toxin has entered the third and final stage! Get ready to die!",
+                "display_float": "Weaver Grenade 100%! You have been completely ensnared!",
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags": [
                 "IgnoreStrength",
-                "IgnoreResistance",
-                "DeepSleep"
+                "IgnoreResistance"
               ],
               "flags_raw": 3120,
               "mode_name": "ThreePowerCell"
@@ -278,7 +329,7 @@
                 "Immobilized"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
@@ -293,10 +344,23 @@
               "tick_mag_multiplier": 1.0,
               "tick_mag_additive": 0.0,
               "jit_requires": "",
-              "caster_stack": "Unlimited",
+              "caster_stack": "Collective",
               "stack": "Ignore",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You Immobilize {PlayerDest} with your {PowerName}.",
+                "display_victim_hit": "{PlayerSource} Immobilizes you with their {PowerName}.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "V_COV/ENEMYPOWERS/ARACHNOS/BANEMACE/BANEMACEHITCONTINUING.FX",
+                "conditional_bits": [],
+                "conditional_fx": "POWERS/GADGETS/WEBCAGE.FX"
+              },
               "flags": [
                 "IgnoreStrength",
                 "IgnoreResistance"
@@ -310,7 +374,7 @@
                 "JumpingSpeed"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Slow",
@@ -325,10 +389,16 @@
               "tick_mag_multiplier": 1.0,
               "tick_mag_additive": 0.0,
               "jit_requires": "",
-              "caster_stack": "Unlimited",
+              "caster_stack": "Collective",
               "stack": "Ignore",
               "stack_limit": 2,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "V_COV/ENEMYPOWERS/ARACHNOS/ARACHNOID_WEBTRAPCAGE.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "IgnoreStrength",
                 "IgnoreResistance"
@@ -341,7 +411,7 @@
                 "RechargeTime"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Strength",
               "target": "AnyAffected",
               "table": "Melee_Slow",
@@ -356,7 +426,7 @@
               "tick_mag_multiplier": 1.0,
               "tick_mag_additive": 0.0,
               "jit_requires": "",
-              "caster_stack": "Unlimited",
+              "caster_stack": "Collective",
               "stack": "Ignore",
               "stack_limit": 2,
               "stack_key": null,
@@ -371,7 +441,7 @@
                 "RunningSpeed"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Maximum",
               "target": "AnyAffected",
               "table": "Melee_SpeedRunning",
@@ -386,7 +456,7 @@
               "tick_mag_multiplier": 1.0,
               "tick_mag_additive": 0.0,
               "jit_requires": "",
-              "caster_stack": "Unlimited",
+              "caster_stack": "Collective",
               "stack": "Ignore",
               "stack_limit": 2,
               "stack_key": null,

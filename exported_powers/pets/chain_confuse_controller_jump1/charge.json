@@ -45,6 +45,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "kChain_Confuse_Mode target.mode? ! kConfused target> 0 <= &&",
+  "slot_requires": "",
   "attack_types": [
     104,
     132
@@ -67,7 +68,7 @@
             "Confused"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Stun",
@@ -86,9 +87,19 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "DeepSleep"
-          ],
+          "messages": {
+            "display_attacker_hit": "Synaptic Overload jumps to {playerdest}, Confusing them.",
+            "display_victim_hit": "Synaptic Overload jumps to you, confusing you!",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "PFX"
+          },
           "flags_raw": 2560
         }
       ]
@@ -110,7 +121,7 @@
             "Confused"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Stun",
@@ -129,16 +140,26 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Synaptic Overload jumps to {playerdest}, Confusing them.",
+            "display_victim_hit": "Synaptic Overload jumps to you, confusing you!",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "PFX"
+          },
           "suppress_events": [
             {
-              "event": "Event_28",
+              "event": "Confused",
               "event_id": 28,
               "duration": 15.0,
-              "flag": 0
+              "always": 0
             }
-          ],
-          "flags": [
-            "DeepSleep"
           ],
           "flags_raw": 2560
         }
@@ -163,7 +184,7 @@
             "Confused"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Immobilize",
@@ -182,9 +203,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "DeepSleep"
-          ],
+          "messages": {
+            "display_attacker_hit": "You confuse {PlayerDest} even more!",
+            "display_victim_hit": "{PlayerSource} confuses you even more!",
+            "display_float": "Overpower",
+            "display_attrib_defense_float": null,
+            "display_info": "Overpower"
+          },
           "flags_raw": 2560
         }
       ]
@@ -206,12 +231,12 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": -1.0,
-          "duration": "8.10 seconds",
+          "duration": "8.1 seconds",
           "magnitude": 1.0,
           "delay": 2.0,
           "duration_expression": "",
@@ -226,27 +251,28 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Pets_Chain_Confuse_Controller_Jump2",
-            "priority_list": "PL_Untargetable_FightPreferRanged"
+            "priority_list": "PL_Untargetable_FightPreferRanged",
+            "type": "EntCreate"
           },
           "flags": [
             "KeepThroughDeath",
             "CopyBoosts"
           ],
-          "flags_raw": 17664
+          "flags_raw": 17664,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": -1.0,
-          "duration": "8.10 seconds",
+          "duration": "8.1 seconds",
           "magnitude": 1.0,
           "delay": 4.0,
           "duration_expression": "",
@@ -261,22 +287,23 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Pets_Chain_Confuse_Controller_Jump2",
-            "priority_list": "PL_Untargetable_FightPreferRanged"
+            "priority_list": "PL_Untargetable_FightPreferRanged",
+            "type": "EntCreate"
           },
           "flags": [
             "KeepThroughDeath",
             "CopyBoosts"
           ],
-          "flags_raw": 17664
+          "flags_raw": 17664,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Set_Mode"
           ],
           "type": "Constant",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -308,12 +335,12 @@
             "Null"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 1.0,
-          "duration": "0.50 seconds",
+          "duration": "0.5 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",

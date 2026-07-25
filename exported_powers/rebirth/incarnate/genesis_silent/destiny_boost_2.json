@@ -45,6 +45,7 @@
   "requires": "",
   "activate_requires": "isVIP? isAccountInventoryLoaded? ! ||",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -64,7 +65,7 @@
             "Melee"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
@@ -86,8 +87,10 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
-            "IgnoreCombatMods"
-          ]
+            "IgnoreCombatMods",
+            "Boost"
+          ],
+          "flags_raw": 4208
         }
       ]
     },
@@ -108,7 +111,7 @@
             "Ranged"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
@@ -130,8 +133,10 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
-            "IgnoreCombatMods"
-          ]
+            "IgnoreCombatMods",
+            "Boost"
+          ],
+          "flags_raw": 4208
         }
       ]
     },
@@ -152,7 +157,7 @@
             "Area"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
@@ -174,8 +179,10 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
-            "IgnoreCombatMods"
-          ]
+            "IgnoreCombatMods",
+            "Boost"
+          ],
+          "flags_raw": 4208
         }
       ]
     },
@@ -196,7 +203,7 @@
             "Smashing"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
@@ -218,8 +225,10 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
-            "IgnoreCombatMods"
-          ]
+            "IgnoreCombatMods",
+            "Boost"
+          ],
+          "flags_raw": 4208
         }
       ]
     },
@@ -240,7 +249,7 @@
             "Lethal"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
@@ -262,8 +271,10 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
-            "IgnoreCombatMods"
-          ]
+            "IgnoreCombatMods",
+            "Boost"
+          ],
+          "flags_raw": 4208
         }
       ]
     },
@@ -284,7 +295,7 @@
             "Fire"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
@@ -306,8 +317,10 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
-            "IgnoreCombatMods"
-          ]
+            "IgnoreCombatMods",
+            "Boost"
+          ],
+          "flags_raw": 4208
         }
       ]
     },
@@ -328,7 +341,7 @@
             "Cold"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
@@ -350,8 +363,10 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
-            "IgnoreCombatMods"
-          ]
+            "IgnoreCombatMods",
+            "Boost"
+          ],
+          "flags_raw": 4208
         }
       ]
     },
@@ -372,7 +387,7 @@
             "Energy"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
@@ -394,8 +409,10 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
-            "IgnoreCombatMods"
-          ]
+            "IgnoreCombatMods",
+            "Boost"
+          ],
+          "flags_raw": 4208
         }
       ]
     },
@@ -416,7 +433,7 @@
             "Negative_Energy"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
@@ -438,8 +455,10 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
-            "IgnoreCombatMods"
-          ]
+            "IgnoreCombatMods",
+            "Boost"
+          ],
+          "flags_raw": 4208
         }
       ]
     },
@@ -460,7 +479,7 @@
             "Psionic"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
@@ -482,8 +501,10 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
-            "IgnoreCombatMods"
-          ]
+            "IgnoreCombatMods",
+            "Boost"
+          ],
+          "flags_raw": 4208
         }
       ]
     },
@@ -504,7 +525,7 @@
             "HitPoints"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
@@ -526,8 +547,10 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
-            "IgnoreCombatMods"
-          ]
+            "IgnoreCombatMods",
+            "Boost"
+          ],
+          "flags_raw": 4208
         }
       ]
     },
@@ -548,7 +571,7 @@
             "Heal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
@@ -570,8 +593,10 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
-            "IgnoreCombatMods"
-          ]
+            "IgnoreCombatMods",
+            "Boost"
+          ],
+          "flags_raw": 4208
         }
       ]
     },
@@ -592,7 +617,7 @@
             "Endurance"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
@@ -614,8 +639,10 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
-            "IgnoreCombatMods"
-          ]
+            "IgnoreCombatMods",
+            "Boost"
+          ],
+          "flags_raw": 4208
         }
       ]
     },
@@ -636,7 +663,7 @@
             "Stunned"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
@@ -658,8 +685,10 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
-            "IgnoreCombatMods"
-          ]
+            "IgnoreCombatMods",
+            "Boost"
+          ],
+          "flags_raw": 4208
         }
       ]
     },
@@ -680,7 +709,7 @@
             "Sleep"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
@@ -702,8 +731,10 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
-            "IgnoreCombatMods"
-          ]
+            "IgnoreCombatMods",
+            "Boost"
+          ],
+          "flags_raw": 4208
         }
       ]
     },
@@ -724,7 +755,7 @@
             "Confused"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
@@ -746,8 +777,10 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
-            "IgnoreCombatMods"
-          ]
+            "IgnoreCombatMods",
+            "Boost"
+          ],
+          "flags_raw": 4208
         }
       ]
     },
@@ -768,7 +801,7 @@
             "Taunt"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
@@ -790,8 +823,10 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
-            "IgnoreCombatMods"
-          ]
+            "IgnoreCombatMods",
+            "Boost"
+          ],
+          "flags_raw": 4208
         }
       ]
     },
@@ -812,7 +847,7 @@
             "Placate"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
@@ -834,8 +869,10 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
-            "IgnoreCombatMods"
-          ]
+            "IgnoreCombatMods",
+            "Boost"
+          ],
+          "flags_raw": 4208
         }
       ]
     },
@@ -856,7 +893,7 @@
             "Afraid"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
@@ -878,8 +915,10 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
-            "IgnoreCombatMods"
-          ]
+            "IgnoreCombatMods",
+            "Boost"
+          ],
+          "flags_raw": 4208
         }
       ]
     },
@@ -900,7 +939,7 @@
             "Terrorized"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
@@ -922,8 +961,10 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
-            "IgnoreCombatMods"
-          ]
+            "IgnoreCombatMods",
+            "Boost"
+          ],
+          "flags_raw": 4208
         }
       ]
     },
@@ -944,7 +985,7 @@
             "Immobilized"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
@@ -966,8 +1007,10 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
-            "IgnoreCombatMods"
-          ]
+            "IgnoreCombatMods",
+            "Boost"
+          ],
+          "flags_raw": 4208
         }
       ]
     },
@@ -988,7 +1031,7 @@
             "Held"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
@@ -1010,12 +1053,15 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
-            "IgnoreCombatMods"
-          ]
+            "IgnoreCombatMods",
+            "Boost"
+          ],
+          "flags_raw": 4208
         }
       ]
     }
   ],
+  "max_boosts": 0,
   "modes_disallowed": [
     "Disable_All",
     "Disable_Epic",

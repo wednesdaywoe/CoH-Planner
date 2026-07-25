@@ -49,6 +49,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -84,7 +85,7 @@
                 "Knockback"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_Knockback",
@@ -103,6 +104,13 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You knock {PlayerDest} off their feet with your {PowerName}!",
+                "display_victim_hit": "{PlayerSource} knocks you off your feet with their {PowerName}!",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags": [
                 "IgnoreCombatMods"
               ],
@@ -130,7 +138,7 @@
                 "Repel"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_Ones",
@@ -185,7 +193,7 @@
                 "Null"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_Ones",
@@ -204,6 +212,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "Your {PowerName} partially hit! {PlayerDest} is not repelled by the Force Bubble!",
+                "display_victim_hit": "{Playersource} partially hits you with their Force Bubble! You evaded the Repel!",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags": [
                 "IgnoreStrength",
                 "IgnoreResistance"
@@ -229,7 +244,7 @@
                 "Knockback"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_Knockback",
@@ -248,12 +263,19 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You knock {PlayerDest} off their feet with your {PowerName}!",
+                "display_victim_hit": "{PlayerSource} knocks you off your feet with their {PowerName}!",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "suppress_events": [
                 {
-                  "event": "MissionObjectInteract",
+                  "event": "Knocked",
                   "event_id": 33,
                   "duration": 10.0,
-                  "flag": 0
+                  "always": 0
                 }
               ],
               "flags": [
@@ -266,7 +288,7 @@
                 "Endurance"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "Self",
               "table": "Ranged_Ones",
@@ -285,12 +307,19 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": null,
+                "display_victim_hit": "Your {PowerName} drains {Damage} points of your endurance.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "suppress_events": [
                 {
-                  "event": "MissionObjectInteract",
+                  "event": "Knocked",
                   "event_id": 33,
                   "duration": 10.0,
-                  "flag": 0
+                  "always": 0
                 }
               ],
               "flags": [
@@ -305,7 +334,7 @@
                 "Null"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Strength",
               "target": "AnyAffected",
               "table": "Ranged_Ones",
@@ -347,12 +376,12 @@
                 "Repel"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_Ones",
               "scale": 10.0,
-              "duration": "0.50 seconds",
+              "duration": "0.5 seconds",
               "magnitude": 1.0,
               "delay": 0.0,
               "duration_expression": "",
@@ -393,12 +422,12 @@
             "Global_Chance_Mod"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": -10000.0,
-          "duration": "0.30 seconds",
+          "duration": "0.3 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -412,6 +441,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "tags": [
+              "RepulsionField"
+            ],
+            "type": "EffectFilter"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",

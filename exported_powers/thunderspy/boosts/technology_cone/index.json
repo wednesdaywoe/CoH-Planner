@@ -1,0 +1,19 @@
+{
+  "key": "Boosts.Technology_Cone",
+  "display_name": "Technology Range",
+  "help": "Enhances the range of a power.",
+  "short_help": "Cybernetics (Technology)",
+  "icon": "technology_cone_set.ico",
+  "powers": [
+    "Boosts.Technology_Cone.Technology_Cone"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Benedict Tech Telescoping Eye"
+  ],
+  "power_short_helps": [
+    "Enhances Range"
+  ]
+}

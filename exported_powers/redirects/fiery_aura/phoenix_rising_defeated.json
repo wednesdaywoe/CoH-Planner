@@ -57,6 +57,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -89,7 +90,7 @@
                 "Create_Entity"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Melee_Level",
@@ -109,17 +110,20 @@
               "stack_limit": 2,
               "stack_key": null,
               "params": {
-                "type": "EntCreate",
-                "entity_def": "PL_StaticObject",
                 "display_name": "Phoenix Rising (Resurecting)",
+                "priority_list": "PL_StaticObject",
                 "redirects": [
                   "Redirects.Fiery_Aura.Phoenix"
-                ]
+                ],
+                "type": "EntCreate"
               },
               "flags": [
-                "CopyBoosts"
+                "CopyBoosts",
+                "CopyCreatorMods",
+                "PseudoPet"
               ],
-              "flags_raw": 1280
+              "flags_raw": 1280,
+              "flags2_raw": 44
             }
           ]
         },
@@ -140,7 +144,7 @@
                 "HitPoints"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Maximum",
               "target": "Self",
               "table": "Melee_HealSelf",
@@ -170,7 +174,7 @@
                 "Heal_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "Self",
               "table": "Melee_HealSelf",
@@ -189,6 +193,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": null,
+                "display_victim_hit": "You are healed by your {PowerName} for {Damage} health points.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags_raw": 1280
             },
             {
@@ -196,7 +207,7 @@
                 "Endurance"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "Self",
               "table": "Melee_Ones",
@@ -215,6 +226,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": null,
+                "display_victim_hit": "Your {PowerName} grants you {Damage} points of endurance.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags_raw": 1280
             },
             {
@@ -222,7 +240,7 @@
                 "Null"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
@@ -241,6 +259,12 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "PFX2",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags_raw": 1280
             }
           ]
@@ -262,12 +286,12 @@
                 "Null"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "Self",
               "table": "Melee_Ones",
               "scale": 5.0,
-              "duration": "0.50 seconds",
+              "duration": "0.5 seconds",
               "magnitude": 1.0,
               "delay": 0.0,
               "duration_expression": "",
@@ -281,6 +305,14 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [
+                  331
+                ],
+                "continuing_fx": null,
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "IgnoreResistance"
               ],
@@ -291,7 +323,7 @@
                 "Immobilized"
               ],
               "type": "Duration",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Melee_Ones",
@@ -313,7 +345,6 @@
               "flags": [
                 "IgnoreStrength",
                 "IgnoreResistance",
-                "DeepSleep",
                 "KeepThroughDeath"
               ],
               "flags_raw": 18480
@@ -323,7 +354,7 @@
                 "Execute_Power"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Strength",
               "target": "AnyAffected",
               "table": "Melee_Ones",
@@ -343,22 +374,25 @@
               "stack_limit": 2,
               "stack_key": null,
               "params": {
-                "type": "Power",
                 "power_names": [
                   "Redirects.Comeback.Comeback",
                   "Redirects.Comeback.Debt_Protection"
-                ]
+                ],
+                "count": 1,
+                "type": "Power"
               },
               "flags": [
                 "CopyBoosts"
               ],
-              "flags_raw": 1280
+              "flags_raw": 1280,
+              "flags2_raw": 4
             }
           ]
         }
       ]
     }
   ],
+  "castable_after_death": "DeadOrAlive",
   "modes_disallowed": [
     "Disable_All",
     "Disable_GiftOfThePhoenix"

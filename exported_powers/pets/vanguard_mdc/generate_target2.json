@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -57,14 +58,14 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": -1.0,
           "duration": "0 seconds",
           "magnitude": 1.0,
-          "delay": 0.10000000149011612,
+          "delay": 0.1,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -77,8 +78,9 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
-            "entity_def": "PracticeRobots_Summonable_VanguardDummy"
+            "entity_def": "PracticeRobots_Summonable_VanguardDummy",
+            "priority_list": "DoNotAggroCritters(1),BeEvilAndDoNotMove",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
@@ -92,14 +94,14 @@
             "Silent_Kill"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": 1.0,
           "duration": "0 seconds",
           "magnitude": 1.0,
-          "delay": 9.999999747378752e-05,
+          "delay": 0.0001,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,

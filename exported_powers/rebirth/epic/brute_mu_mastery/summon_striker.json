@@ -51,6 +51,7 @@
   "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Brute_Mu_Mastery.Mu_Lightning Epic.Brute_Mu_Mastery.Electrifying_Fences && Epic.Brute_Mu_Mastery.Mu_Lightning Epic.Brute_Mu_Mastery.Ball_Lightning && || Epic.Brute_Mu_Mastery.Mu_Lightning Epic.Brute_Mu_Mastery.Static_Discharge && || Epic.Brute_Mu_Mastery.Electrifying_Fences Epic.Brute_Mu_Mastery.Ball_Lightning && || Epic.Brute_Mu_Mastery.Electrifying_Fences Epic.Brute_Mu_Mastery.Static_Discharge && || &&",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -70,7 +71,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -97,7 +98,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     }

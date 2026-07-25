@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "kTower_Protection target.mode? !",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -56,13 +57,13 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Constant",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 1.0,
-          "duration": "19.80 seconds",
+          "duration": "19.8 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -95,13 +96,13 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Constant",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 1.0,
-          "duration": "19.80 seconds",
+          "duration": "19.8 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",

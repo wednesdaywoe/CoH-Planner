@@ -50,6 +50,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -79,7 +80,7 @@
             "Toxic"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Buff_Def",
@@ -114,7 +115,7 @@
             "ToHit"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Buff_ToHit",
@@ -143,19 +144,19 @@
               "event": "Attacked",
               "event_id": 2,
               "duration": 10.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "Damaged",
               "event_id": 21,
               "duration": 10.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "MissionObjectClick",
               "event_id": 37,
               "duration": 10.0,
-              "flag": 1
+              "always": 1
             }
           ],
           "flags": [
@@ -166,42 +167,6 @@
         {
           "attribs": [
             "Grant_Power"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "Absolute",
-          "target": "Self",
-          "table": "Melee_Ones",
-          "scale": 1.0,
-          "duration": "0 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Replace",
-          "stack_limit": 2,
-          "stack_key": null,
-          "params": {
-            "type": "Power",
-            "power_names": [
-              "Redirects.Blaster_Ninja_Training.Shinobi_Proc"
-            ]
-          },
-          "flags": [
-            "IgnoreStrength",
-            "IgnoreResistance"
-          ],
-          "flags_raw": 1072
-        },
-        {
-          "attribs": [
-            "Revoke_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnActivate",
@@ -224,10 +189,48 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Redirects.Blaster_Ninja_Training.Shinobi_Proc"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
+        },
+        {
+          "attribs": [
+            "Revoke_Power"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnDeactivate",
+          "aspect": "Absolute",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "params": {
+            "power_names": [
+              "Redirects.Blaster_Ninja_Training.Shinobi_Proc"
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -240,7 +243,7 @@
             "Set_Mode"
           ],
           "type": "Constant",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -262,7 +265,6 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
-            "DeepSleep",
             "StackByAttribAndKey"
           ],
           "flags_raw": 265264,
@@ -273,7 +275,7 @@
             "Null"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -292,6 +294,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "PFX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "cancel_events": [
             "Stunned",
             "Held",
@@ -331,7 +339,7 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Buff_Dmg",
@@ -360,19 +368,19 @@
               "event": "Attacked",
               "event_id": 2,
               "duration": 10.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "Damaged",
               "event_id": 21,
               "duration": 10.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "MissionObjectClick",
               "event_id": 37,
               "duration": 10.0,
-              "flag": 1
+              "always": 1
             }
           ],
           "flags": [
@@ -401,7 +409,7 @@
             "StealthRadius_PVE"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -438,7 +446,7 @@
             "StealthRadius_PVP"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -485,7 +493,7 @@
             "Toxic"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Buff_Def",
@@ -522,7 +530,7 @@
             "Translucency"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",

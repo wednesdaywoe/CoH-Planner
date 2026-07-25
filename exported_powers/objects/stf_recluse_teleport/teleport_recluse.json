@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "Arachnos_Lord_Recluse_SSF target.VillainName>",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -57,7 +58,7 @@
             "Teleport"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -76,6 +77,10 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "destination": "marker:STF_Recluse_Teleport",
+            "type": "Teleport"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -87,7 +92,7 @@
             "Evade"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -106,6 +111,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [
+              49,
+              724,
+              288,
+              312
+            ],
+            "continuing_fx": "POWERS/TELEPORTATION/TELEPORTRECALL.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"

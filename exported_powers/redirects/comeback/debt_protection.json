@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -57,14 +58,14 @@
             "XPDebtProtection"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": 1.0,
           "duration": "90 seconds",
           "magnitude": 1.0,
-          "delay": 0.10000000149011612,
+          "delay": 0.1,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -76,6 +77,13 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": "If power us used while caster is unconscious"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -85,6 +93,7 @@
       ]
     }
   ],
+  "castable_after_death": "DeadOrAlive",
   "available_level": 0,
   "powerset": "Redirects.Comeback"
 }

@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -57,7 +58,7 @@
             "Combat_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -76,6 +77,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "combat_phases": [
+              5
+            ],
+            "vision_phases": [],
+            "exclusive_vision_phase": -1,
+            "type": "Phase"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
@@ -88,7 +97,7 @@
             "Combat_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -107,6 +116,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "combat_phases": [
+              0
+            ],
+            "vision_phases": [],
+            "exclusive_vision_phase": -1,
+            "type": "Phase"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
@@ -119,7 +136,7 @@
             "Combat_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -138,6 +155,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "combat_phases": [
+              6
+            ],
+            "vision_phases": [],
+            "exclusive_vision_phase": -1,
+            "type": "Phase"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",

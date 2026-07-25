@@ -48,6 +48,7 @@
   "requires": "$archetype @Class_Controller ==",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -67,10 +68,10 @@
             "Smashing_Dmg",
             "Lethal_Dmg"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
           "aspect": "Resistance",
-          "target": "",
+          "target": "Self",
           "table": "Melee_Res_DMG",
           "scale": 2.75,
           "duration": "0.75 seconds",

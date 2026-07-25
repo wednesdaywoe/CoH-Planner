@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -62,10 +63,10 @@
             "Toxic_Dmg",
             "Negative_Energy_Dmg"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
           "aspect": "Resistance",
-          "target": "",
+          "target": "Self",
           "table": "Melee_Res_DMG",
           "scale": 2.0,
           "duration": "999999 seconds",
@@ -101,10 +102,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Resistance",
+          "target": "Self",
           "table": "Melee_Ones",
           "scale": 1.0,
           "duration": "999999 seconds",
@@ -140,10 +141,10 @@
           "attribs": [
             "ArchVillain_Res"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Resistance",
+          "target": "Self",
           "table": "Melee_ArchVillain_Res",
           "scale": 1.0,
           "duration": "999999 seconds",

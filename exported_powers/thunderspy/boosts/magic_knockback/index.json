@@ -1,0 +1,19 @@
+{
+  "key": "Boosts.Magic_Knockback",
+  "display_name": "Magic Knockback",
+  "help": "Increases the knockback and knockup distance.",
+  "short_help": "Dimensional Entities (Magic)",
+  "icon": "magic_knockback_set.ico",
+  "powers": [
+    "Boosts.Magic_Knockback.Magic_Knockback"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Smite of Hermes"
+  ],
+  "power_short_helps": [
+    "Enhances KnockBack Distance"
+  ]
+}

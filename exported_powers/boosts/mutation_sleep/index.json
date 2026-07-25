@@ -1,0 +1,19 @@
+{
+  "key": "Boosts.Mutation_Sleep",
+  "display_name": "Mutation Sleep",
+  "help": "Increases the duration of a sleep power.",
+  "short_help": "Secondary Mutation (Mutation)",
+  "icon": "mutation_sleep_set.ico",
+  "powers": [
+    "Boosts.Mutation_Sleep.Mutation_Sleep"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Evolution: Neural Paralysis (Sleep)"
+  ],
+  "power_short_helps": [
+    "Enhances Sleep Duration"
+  ]
+}

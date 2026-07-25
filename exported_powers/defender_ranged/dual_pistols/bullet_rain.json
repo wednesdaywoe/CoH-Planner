@@ -53,6 +53,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     112,
     120
@@ -118,12 +119,12 @@
                         "Lethal_Dmg"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Absolute",
                       "target": "AnyAffected",
                       "table": "Ranged_Damage",
                       "scale": 0.3323,
-                      "duration": "1.10 seconds",
+                      "duration": "1.1 seconds",
                       "magnitude": 1.0,
                       "delay": 0.0,
                       "duration_expression": "",
@@ -137,6 +138,13 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Lethal damage over time.",
+                        "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Lethal damage over time.",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
                       "flags_raw": 1280
                     }
                   ]
@@ -160,7 +168,7 @@
                         "Knockback"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Current",
                       "target": "AnyAffected",
                       "table": "Ranged_Knockback",
@@ -179,6 +187,13 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You knock {PlayerDest} off their feet with your {PowerName}!",
+                        "display_victim_hit": "{PlayerSource} knocks you off your feet with their {PowerName}!",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
                       "flags_raw": 1280
                     }
                   ]
@@ -219,12 +234,12 @@
                         "Fire_Dmg"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Absolute",
                       "target": "AnyAffected",
                       "table": "Ranged_Damage",
                       "scale": 0.3323,
-                      "duration": "1.10 seconds",
+                      "duration": "1.1 seconds",
                       "magnitude": 1.0,
                       "delay": 0.0,
                       "duration_expression": "",
@@ -238,6 +253,13 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Fire damage over time.",
+                        "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Fire damage over time.",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
                       "flags_raw": 1280
                     }
                   ]
@@ -261,12 +283,12 @@
                         "Fire_Dmg"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Absolute",
                       "target": "AnyAffected",
                       "table": "Ranged_Damage",
                       "scale": 0.113,
-                      "duration": "2.10 seconds",
+                      "duration": "2.1 seconds",
                       "magnitude": 1.0,
                       "delay": 0.5,
                       "duration_expression": "",
@@ -280,6 +302,19 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Fire damage over time.",
+                        "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Fire damage over time.",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
+                      "fx": {
+                        "continuing_bits": [],
+                        "continuing_fx": "POWERS/FIRECONTROL/CINDERSHIT.FX",
+                        "conditional_bits": [],
+                        "conditional_fx": null
+                      },
                       "flags": [
                         "CancelOnMiss"
                       ],
@@ -308,12 +343,12 @@
                     "Cold_Dmg"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Absolute",
                   "target": "AnyAffected",
                   "table": "Ranged_Damage",
                   "scale": 0.3323,
-                  "duration": "1.10 seconds",
+                  "duration": "1.1 seconds",
                   "magnitude": 1.0,
                   "delay": 0.0,
                   "duration_expression": "",
@@ -327,6 +362,13 @@
                   "stack": "Stack",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "messages": {
+                    "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Cold damage over time.",
+                    "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Cold damage over time.",
+                    "display_float": null,
+                    "display_attrib_defense_float": null,
+                    "display_info": null
+                  },
                   "flags_raw": 1280
                 },
                 {
@@ -336,7 +378,7 @@
                     "JumpingSpeed"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Current",
                   "target": "AnyAffected",
                   "table": "Ranged_Slow",
@@ -363,7 +405,7 @@
                     "RechargeTime"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Strength",
                   "target": "AnyAffected",
                   "table": "Ranged_Slow",
@@ -408,12 +450,12 @@
                     "Toxic_Dmg"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Absolute",
                   "target": "AnyAffected",
                   "table": "Ranged_Damage",
                   "scale": 0.3323,
-                  "duration": "1.10 seconds",
+                  "duration": "1.1 seconds",
                   "magnitude": 1.0,
                   "delay": 0.0,
                   "duration_expression": "",
@@ -427,6 +469,13 @@
                   "stack": "Stack",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "messages": {
+                    "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Toxic damage over time.",
+                    "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Toxic damage over time.",
+                    "display_float": null,
+                    "display_attrib_defense_float": null,
+                    "display_info": null
+                  },
                   "flags_raw": 1280
                 },
                 {
@@ -441,7 +490,7 @@
                     "Toxic_Dmg"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Strength",
                   "target": "AnyAffected",
                   "table": "Ranged_Debuff_Dam",
@@ -460,6 +509,12 @@
                   "stack": "Replace",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "fx": {
+                    "continuing_bits": [],
+                    "continuing_fx": "GENERICCONTINUING/DEBUFFDAMAGECONTINUING.FX",
+                    "conditional_bits": [],
+                    "conditional_fx": null
+                  },
                   "flags": [
                     "IgnoreStrength"
                   ],
@@ -516,12 +571,12 @@
                         "Lethal_Dmg"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Absolute",
                       "target": "AnyAffected",
                       "table": "Ranged_PvPDamage",
                       "scale": 0.2348,
-                      "duration": "1.10 seconds",
+                      "duration": "1.1 seconds",
                       "magnitude": 1.0,
                       "delay": 0.0,
                       "duration_expression": "",
@@ -535,6 +590,13 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Lethal damage over time.",
+                        "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Lethal damage over time.",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
                       "flags_raw": 1280
                     }
                   ]
@@ -558,7 +620,7 @@
                         "Knockback"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Current",
                       "target": "AnyAffected",
                       "table": "Ranged_Knockback",
@@ -577,12 +639,19 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You knock {PlayerDest} off their feet with your {PowerName}!",
+                        "display_victim_hit": "{PlayerSource} knocks you off your feet with their {PowerName}!",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
                       "suppress_events": [
                         {
-                          "event": "MissionObjectInteract",
+                          "event": "Knocked",
                           "event_id": 33,
                           "duration": 10.0,
-                          "flag": 0
+                          "always": 0
                         }
                       ],
                       "flags_raw": 1280
@@ -625,12 +694,12 @@
                         "Fire_Dmg"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Absolute",
                       "target": "AnyAffected",
                       "table": "Ranged_PvPDamage",
                       "scale": 0.2348,
-                      "duration": "1.10 seconds",
+                      "duration": "1.1 seconds",
                       "magnitude": 1.0,
                       "delay": 0.0,
                       "duration_expression": "",
@@ -644,6 +713,13 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Fire damage over time.",
+                        "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Fire damage over time.",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
                       "flags_raw": 1280
                     }
                   ]
@@ -667,12 +743,12 @@
                         "Fire_Dmg"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Absolute",
                       "target": "AnyAffected",
                       "table": "Ranged_PvPDamage",
                       "scale": 0.0919,
-                      "duration": "2.10 seconds",
+                      "duration": "2.1 seconds",
                       "magnitude": 1.0,
                       "delay": 0.5,
                       "duration_expression": "",
@@ -686,6 +762,19 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Fire damage over time.",
+                        "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Fire damage over time.",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
+                      "fx": {
+                        "continuing_bits": [],
+                        "continuing_fx": "POWERS/FIRECONTROL/CINDERSHIT.FX",
+                        "conditional_bits": [],
+                        "conditional_fx": null
+                      },
                       "flags": [
                         "CancelOnMiss"
                       ],
@@ -714,12 +803,12 @@
                     "Cold_Dmg"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Absolute",
                   "target": "AnyAffected",
                   "table": "Ranged_PvPDamage",
                   "scale": 0.2348,
-                  "duration": "1.10 seconds",
+                  "duration": "1.1 seconds",
                   "magnitude": 1.0,
                   "delay": 0.0,
                   "duration_expression": "",
@@ -733,6 +822,13 @@
                   "stack": "Stack",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "messages": {
+                    "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Cold damage over time.",
+                    "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Cold damage over time.",
+                    "display_float": null,
+                    "display_attrib_defense_float": null,
+                    "display_info": null
+                  },
                   "flags_raw": 1280
                 },
                 {
@@ -742,7 +838,7 @@
                     "JumpingSpeed"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Current",
                   "target": "AnyAffected",
                   "table": "Ranged_Slow",
@@ -769,7 +865,7 @@
                     "RechargeTime"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Strength",
                   "target": "AnyAffected",
                   "table": "Ranged_Slow",
@@ -814,12 +910,12 @@
                     "Toxic_Dmg"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Absolute",
                   "target": "AnyAffected",
                   "table": "Ranged_PvPDamage",
                   "scale": 0.2348,
-                  "duration": "1.10 seconds",
+                  "duration": "1.1 seconds",
                   "magnitude": 1.0,
                   "delay": 0.0,
                   "duration_expression": "",
@@ -833,6 +929,13 @@
                   "stack": "Stack",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "messages": {
+                    "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Toxic damage over time.",
+                    "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Toxic damage over time.",
+                    "display_float": null,
+                    "display_attrib_defense_float": null,
+                    "display_info": null
+                  },
                   "flags_raw": 1280
                 },
                 {
@@ -847,7 +950,7 @@
                     "Toxic_Dmg"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Strength",
                   "target": "AnyAffected",
                   "table": "Ranged_Debuff_Dam",
@@ -866,6 +969,12 @@
                   "stack": "Replace",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "fx": {
+                    "continuing_bits": [],
+                    "continuing_fx": "GENERICCONTINUING/DEBUFFDAMAGECONTINUING.FX",
+                    "conditional_bits": [],
+                    "conditional_fx": null
+                  },
                   "flags": [
                     "IgnoreStrength"
                   ],

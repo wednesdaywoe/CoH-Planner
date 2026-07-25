@@ -1,0 +1,19 @@
+{
+  "key": "Boosts.Natural_Magic_Drain_Endurance",
+  "display_name": "Natural Magic Endurance",
+  "help": "Increases the endurance modification ability of a power.",
+  "short_help": "Relic (Natural, Magic)",
+  "icon": "natural_magic_drain_endurance_set.ico",
+  "powers": [
+    "Boosts.Natural_Magic_Drain_Endurance.Natural_Magic_Drain_Endurance"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Nectanebo's Work (Endurance Modification)"
+  ],
+  "power_short_helps": [
+    "Enhances Endurance Modification"
+  ]
+}

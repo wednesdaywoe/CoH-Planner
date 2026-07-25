@@ -45,6 +45,7 @@
   "requires": "$archetype @Class_Warshade == Warshade_Defensive.Umbral_Aura.Black_Dwarf &&",
   "activate_requires": "$archetype @Class_Warshade == Warshade_Defensive.Umbral_Aura.Black_Dwarf &&",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -63,10 +64,10 @@
           "attribs": [
             "Taunt"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Duration",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Melee_Taunt",
           "scale": 8.0,
           "duration": "0 seconds",
@@ -102,10 +103,10 @@
           "attribs": [
             "Taunt"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Duration",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Melee_Taunt",
           "scale": 5.0,
           "duration": "0 seconds",
@@ -141,10 +142,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": -0.75,
           "duration": "12 seconds",
@@ -180,10 +181,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 1.0,
           "duration": "0 seconds",
@@ -204,6 +205,7 @@
       ]
     }
   ],
+  "max_boosts": 0,
   "modes_required": [
     "Warshade_Tanker_Mode"
   ],

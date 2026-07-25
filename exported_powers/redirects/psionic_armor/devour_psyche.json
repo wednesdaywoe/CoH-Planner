@@ -47,6 +47,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     112,
     140
@@ -82,7 +83,7 @@
                 "Regeneration"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Melee_Ones",
@@ -101,6 +102,13 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": null,
+                "display_victim_hit": null,
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "From first target only"
+              },
               "flags": [
                 "IgnoreResistance",
                 "IgnoreCombatMods"
@@ -112,7 +120,7 @@
                 "Recovery"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Melee_Ones",
@@ -131,6 +139,19 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": null,
+                "display_victim_hit": null,
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "From first target only"
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "GENERICCONTINUING/BUFFENDCONTINUING.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "IgnoreResistance",
                 "IgnoreCombatMods"
@@ -142,7 +163,7 @@
                 "Regeneration"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Melee_Ones",
@@ -172,7 +193,7 @@
                 "Recovery"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Melee_Ones",
@@ -191,6 +212,12 @@
               "stack": "RefreshToCount",
               "stack_limit": 10,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "GENERICCONTINUING/BUFFENDCONTINUING.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "IgnoreResistance",
                 "IgnoreCombatMods"
@@ -202,14 +229,14 @@
                 "Recharge_Power"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "Self",
               "table": "Melee_Ones",
               "scale": 5.5,
               "duration": "0 seconds",
               "magnitude": 0.0,
-              "delay": 1.0499999523162842,
+              "delay": 1.05,
               "duration_expression": "",
               "magnitude_expression": "",
               "application_period": 0.0,
@@ -222,33 +249,36 @@
               "stack_limit": 2,
               "stack_key": null,
               "params": {
-                "type": "Power",
                 "power_names": [
                   "Brute_Defense.Psionic_Armor.Consume_Psyche",
                   "Scrapper_Defense.Psionic_Armor.Devour_Psyche",
                   "Sentinel_Defense.Psionic_Armor.Devour_Psyche",
                   "Stalker_Defense.Psionic_Armor.Devour_Psyche",
                   "Tanker_Defense.Psionic_Armor.Consume_Psyche"
-                ]
+                ],
+                "count": 1,
+                "type": "Power"
               },
               "flags": [
                 "IgnoreCombatMods",
                 "NoHitDelay",
-                "NoProjectileDelay"
+                "NoProjectileDelay",
+                "AdjustTimer"
               ],
-              "flags_raw": 196928
+              "flags_raw": 196928,
+              "flags2_raw": 2
             },
             {
               "attribs": [
                 "Null"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Ranged_Ones",
               "scale": 1.0,
-              "duration": "1.50 seconds",
+              "duration": "1.5 seconds",
               "magnitude": 1.0,
               "delay": 0.0,
               "duration_expression": "",
@@ -262,6 +292,12 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "PFX2",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "NoHitDelay"
               ],
@@ -272,7 +308,7 @@
                 "Grant_Power"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "Self",
               "table": "Melee_Ones",
@@ -292,10 +328,11 @@
               "stack_limit": 2,
               "stack_key": null,
               "params": {
-                "type": "Power",
                 "power_names": [
                   "Redirects.Psionic_Armor.Monitor"
-                ]
+                ],
+                "count": 1,
+                "type": "Power"
               },
               "flags": [
                 "IgnoreStrength",
@@ -322,7 +359,7 @@
                 "Heal_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Resistance",
               "target": "AnyAffected",
               "table": "Melee_Ones",
@@ -341,6 +378,19 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You drain the Psyche from {PlayerDest} and reduce their Regeneration and Recovery rate.",
+                "display_victim_hit": null,
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "GENERICCONTINUING/DEBUFFMAXHPCONTINUING.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "IgnoreStrength"
               ],
@@ -351,7 +401,7 @@
                 "Regeneration"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
@@ -370,6 +420,19 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You drain the Psyche from {PlayerDest} and reduce their Regeneration and Recovery rate.",
+                "display_victim_hit": null,
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "GENERICCONTINUING/DEBUFFMAXHPCONTINUING.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "IgnoreStrength"
               ],
@@ -380,7 +443,7 @@
                 "Recovery"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
@@ -399,6 +462,12 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "GENERICCONTINUING/DEBUFFEND2CONTINUING.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags_raw": 1280
             },
             {
@@ -406,7 +475,7 @@
                 "Recovery"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
@@ -425,6 +494,12 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "GENERICCONTINUING/DEBUFFEND2CONTINUING.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags_raw": 1280
             }
           ]
@@ -446,7 +521,7 @@
                 "Heal_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Resistance",
               "target": "AnyAffected",
               "table": "Melee_Ones",
@@ -465,6 +540,19 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You drain the Psyche from {PlayerDest} and reduce their Regeneration and Recovery rate.",
+                "display_victim_hit": null,
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "GENERICCONTINUING/DEBUFFMAXHPCONTINUING.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "IgnoreStrength"
               ],
@@ -475,7 +563,7 @@
                 "Regeneration"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
@@ -494,6 +582,19 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You drain the Psyche from {PlayerDest} and reduce their Regeneration and Recovery rate.",
+                "display_victim_hit": "{PlayerSource} Drains your Psyche and reduces your Regeneration and Recovery rate.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "GENERICCONTINUING/DEBUFFMAXHPCONTINUING.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "IgnoreStrength"
               ],
@@ -504,7 +605,7 @@
                 "Recovery"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
@@ -523,6 +624,12 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "GENERICCONTINUING/DEBUFFEND2CONTINUING.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags_raw": 1280
             }
           ]
@@ -546,7 +653,7 @@
                 "Execute_Power"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Strength",
               "target": "Self",
               "table": "Melee_Ones",
@@ -566,10 +673,11 @@
               "stack_limit": 2,
               "stack_key": null,
               "params": {
-                "type": "Power",
                 "power_names": [
                   "Redirects.Psionic_Armor.Monitor_Psyche"
-                ]
+                ],
+                "count": 1,
+                "type": "Power"
               },
               "flags_raw": 1280
             }

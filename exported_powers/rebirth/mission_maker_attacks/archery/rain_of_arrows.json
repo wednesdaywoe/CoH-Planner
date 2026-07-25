@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -57,7 +58,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Level",
@@ -80,7 +81,8 @@
             "type": "EntCreate",
             "entity_def": "Pets_RainofArrows_Visual",
             "priority_list": "PL_StaticObject"
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     },
@@ -101,14 +103,14 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Level",
           "scale": 1.0,
           "duration": "1 seconds",
           "magnitude": 1.0,
-          "delay": 1.7999999523162842,
+          "delay": 1.8,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -124,7 +126,8 @@
             "type": "EntCreate",
             "entity_def": "Pets_RainofArrows_Critter",
             "priority_list": "PL_StaticObject"
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     }

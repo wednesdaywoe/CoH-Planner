@@ -45,6 +45,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -79,7 +80,7 @@
                 "Immobilized"
               ],
               "type": "Duration",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
@@ -94,13 +95,25 @@
               "tick_mag_multiplier": 1.0,
               "tick_mag_additive": 0.0,
               "jit_requires": "",
-              "caster_stack": "Unlimited",
+              "caster_stack": "Collective",
               "stack": "StackThenIgnore",
               "stack_limit": 4,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You Immobilize {PlayerDest} with your {PowerName}.",
+                "display_victim_hit": "{PlayerSource} Immobilizes you with their {PowerName}.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "INCARNATEPOWERS/INTERFACE/SPECTRAL.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
-                "IgnoreStrength",
-                "DeepSleep"
+                "IgnoreStrength"
               ],
               "flags_raw": 2576
             }
@@ -123,7 +136,7 @@
                 "Immobilized"
               ],
               "type": "Duration",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_PvPMez",
@@ -138,45 +151,51 @@
               "tick_mag_multiplier": 1.0,
               "tick_mag_additive": 0.0,
               "jit_requires": "",
-              "caster_stack": "Unlimited",
+              "caster_stack": "Collective",
               "stack": "StackThenIgnore",
               "stack_limit": 4,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You Immobilize {PlayerDest} with your {PowerName}.",
+                "display_victim_hit": "{PlayerSource} Immobilizes you with their {PowerName}.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "suppress_events": [
                 {
                   "event": "Stunned",
                   "event_id": 23,
                   "duration": 15.0,
-                  "flag": 0
+                  "always": 0
                 },
                 {
-                  "event": "Event_24",
+                  "event": "Immobilized",
                   "event_id": 24,
                   "duration": 15.0,
-                  "flag": 0
+                  "always": 0
                 },
                 {
                   "event": "Held",
                   "event_id": 25,
                   "duration": 15.0,
-                  "flag": 0
+                  "always": 0
                 },
                 {
                   "event": "Sleep",
                   "event_id": 26,
                   "duration": 15.0,
-                  "flag": 0
+                  "always": 0
                 },
                 {
-                  "event": "Confused",
+                  "event": "Terrorized",
                   "event_id": 27,
                   "duration": 15.0,
-                  "flag": 0
+                  "always": 0
                 }
               ],
               "flags": [
-                "IgnoreStrength",
-                "DeepSleep"
+                "IgnoreStrength"
               ],
               "flags_raw": 2576
             }
@@ -185,6 +204,7 @@
       ]
     }
   ],
+  "max_boosts": 0,
   "modes_disallowed": [
     "Disable_All",
     "Disable_Epic",

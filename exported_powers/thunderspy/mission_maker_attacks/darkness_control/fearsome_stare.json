@@ -45,6 +45,7 @@
   "requires": "Mission_Maker_Secondary.Darkness_Control.Shadowy_Binds Mission_Maker_Secondary.Darkness_Control.Dark_Grasp || !",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     136
   ],
@@ -65,10 +66,10 @@
           "attribs": [
             "Terrorized"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Duration",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Ranged_Fear",
           "scale": 15.0,
           "duration": "0 seconds",
@@ -104,10 +105,10 @@
           "attribs": [
             "DeBuff_ToHit"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Ranged_DeBuff_ToHit",
           "scale": 1.5,
           "duration": "20 seconds",
@@ -143,10 +144,10 @@
           "attribs": [
             "Terrorized"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Duration",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Ranged_Fear",
           "scale": 10.0,
           "duration": "0 seconds",

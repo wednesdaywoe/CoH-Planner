@@ -53,6 +53,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     104,
     128
@@ -88,14 +89,14 @@
                 "Sleep"
               ],
               "type": "Duration",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_Sleep",
               "scale": 8.0,
               "duration": "0 seconds",
               "magnitude": 3.0,
-              "delay": 0.20000000298023224,
+              "delay": 0.2,
               "duration_expression": "",
               "magnitude_expression": "",
               "application_period": 0.0,
@@ -107,9 +108,22 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
-              "flags": [
-                "DeepSleep"
-              ],
+              "messages": {
+                "display_attacker_hit": "You Sleep {PlayerDest} with your {PowerName}.",
+                "display_victim_hit": "{PlayerSource} Sleeps you with their {PowerName}.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "PFX",
+                "conditional_bits": [
+                  387,
+                  691
+                ],
+                "conditional_fx": "PFX"
+              },
               "flags_raw": 2560
             }
           ],
@@ -133,7 +147,7 @@
                     "JumpingSpeed"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Current",
                   "target": "AnyAffected",
                   "table": "Ranged_Slow",
@@ -160,7 +174,7 @@
                     "RechargeTime"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Strength",
                   "target": "AnyAffected",
                   "table": "Ranged_Slow",
@@ -203,7 +217,7 @@
                         "Cold_Dmg"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Absolute",
                       "target": "AnyAffected",
                       "table": "Ranged_Damage",
@@ -222,6 +236,13 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Cold damage.",
+                        "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Cold damage.",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
                       "flags_raw": 1280
                     }
                   ]
@@ -246,7 +267,7 @@
                         "Cold_Dmg"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Absolute",
                       "target": "AnyAffected",
                       "table": "Ranged_InherentDamage",
@@ -265,6 +286,13 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Cold damage (CRITICAL).",
+                        "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Cold damage (CRITICAL).",
+                        "display_float": "CRITICAL",
+                        "display_attrib_defense_float": null,
+                        "display_info": "Opportunity"
+                      },
                       "flags_raw": 1280
                     }
                   ]
@@ -290,14 +318,14 @@
                 "Sleep"
               ],
               "type": "Duration",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_Sleep",
               "scale": 8.0,
               "duration": "0 seconds",
               "magnitude": 3.0,
-              "delay": 0.20000000298023224,
+              "delay": 0.2,
               "duration_expression": "",
               "magnitude_expression": "",
               "application_period": 0.0,
@@ -309,9 +337,22 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
-              "flags": [
-                "DeepSleep"
-              ],
+              "messages": {
+                "display_attacker_hit": "You Sleep {PlayerDest} with your {PowerName}.",
+                "display_victim_hit": "{PlayerSource} Sleeps you with their {PowerName}.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "PFX",
+                "conditional_bits": [
+                  387,
+                  691
+                ],
+                "conditional_fx": "PFX"
+              },
               "flags_raw": 2560
             }
           ],
@@ -335,7 +376,7 @@
                     "JumpingSpeed"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Current",
                   "target": "AnyAffected",
                   "table": "Ranged_Slow",
@@ -362,7 +403,7 @@
                     "RechargeTime"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Strength",
                   "target": "AnyAffected",
                   "table": "Ranged_Slow",
@@ -405,7 +446,7 @@
                         "Cold_Dmg"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Absolute",
                       "target": "AnyAffected",
                       "table": "Ranged_Damage",
@@ -424,6 +465,13 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Cold damage.",
+                        "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Cold damage.",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
                       "flags_raw": 1280
                     }
                   ]
@@ -448,7 +496,7 @@
                         "Cold_Dmg"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Absolute",
                       "target": "AnyAffected",
                       "table": "Ranged_InherentDamage",
@@ -467,6 +515,13 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Cold damage (CRITICAL).",
+                        "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Cold damage (CRITICAL).",
+                        "display_float": "CRITICAL",
+                        "display_attrib_defense_float": null,
+                        "display_info": "Opportunity"
+                      },
                       "flags_raw": 1280
                     }
                   ]
@@ -496,7 +551,7 @@
             "JumpingSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Slow",
@@ -523,7 +578,7 @@
             "RechargeTime"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Ranged_Slow",
@@ -566,7 +621,7 @@
                 "Cold_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Ranged_PvPDamage",
@@ -585,6 +640,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Cold damage.",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Cold damage.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags_raw": 1280
             }
           ]
@@ -609,7 +671,7 @@
                 "Cold_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Ranged_PvPDamage",
@@ -628,6 +690,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Cold damage (CRITICAL).",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Cold damage (CRITICAL).",
+                "display_float": "CRITICAL",
+                "display_attrib_defense_float": null,
+                "display_info": "Opportunity"
+              },
               "flags_raw": 1280
             }
           ]
@@ -649,14 +718,14 @@
                 "Sleep"
               ],
               "type": "Duration",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_PvPMez",
               "scale": 1.0,
               "duration": "0 seconds",
               "magnitude": 3.0,
-              "delay": 0.20000000298023224,
+              "delay": 0.2,
               "duration_expression": "",
               "magnitude_expression": "",
               "application_period": 0.0,
@@ -668,40 +737,53 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You Sleep {PlayerDest} with your {PowerName}.",
+                "display_victim_hit": "{PlayerSource} Sleeps you with their {PowerName}.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "PFX",
+                "conditional_bits": [
+                  387,
+                  691
+                ],
+                "conditional_fx": "PFX"
+              },
               "suppress_events": [
                 {
                   "event": "Stunned",
                   "event_id": 23,
                   "duration": 15.0,
-                  "flag": 0
+                  "always": 0
                 },
                 {
-                  "event": "Event_24",
+                  "event": "Immobilized",
                   "event_id": 24,
                   "duration": 15.0,
-                  "flag": 0
+                  "always": 0
                 },
                 {
                   "event": "Held",
                   "event_id": 25,
                   "duration": 15.0,
-                  "flag": 0
+                  "always": 0
                 },
                 {
                   "event": "Sleep",
                   "event_id": 26,
                   "duration": 15.0,
-                  "flag": 0
+                  "always": 0
                 },
                 {
-                  "event": "Confused",
+                  "event": "Terrorized",
                   "event_id": 27,
                   "duration": 15.0,
-                  "flag": 0
+                  "always": 0
                 }
-              ],
-              "flags": [
-                "DeepSleep"
               ],
               "flags_raw": 2560
             }

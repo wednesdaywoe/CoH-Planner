@@ -1,0 +1,19 @@
+{
+  "key": "Boosts.Yins_Technology_Endurance_Discount",
+  "display_name": "Yins Technology Endurance Discount",
+  "help": "Decreases the endurance cost of a power.",
+  "short_help": "Talisman (All Origins)",
+  "icon": "yins_technology_endurance_discount_set.ico",
+  "powers": [
+    "Boosts.Yins_Technology_Endurance_Discount.Yins_Technology_Endurance_Discount"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Talisman of the Sleeping Lion (Endurance Reduction)"
+  ],
+  "power_short_helps": [
+    "Reduces Endurance Cost"
+  ]
+}

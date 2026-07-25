@@ -50,6 +50,7 @@
   "requires": "Tanker_Defense.Shield_Defense !",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     108,
     116

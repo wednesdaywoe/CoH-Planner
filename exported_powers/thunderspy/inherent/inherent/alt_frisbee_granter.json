@@ -38,6 +38,7 @@
   "requires": "ctpsfris productOwned? Inherent.Inherent.Alt_Frisbee_Granter || accesslevel char> 0 >= &&",
   "activate_requires": "",
   "target_requires": "enttype target> player eq inherent.inherent.alt_coyote_travel_power target.ToggleActive? ! && inherent.inherent.alt_cheetah_travel_power target.ToggleActive? ! && inherent.inherent.alt_panther_travel_power target.ToggleActive? ! &&",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -56,10 +57,10 @@
           "attribs": [
             "Ones"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 1.0,
           "duration": "0 seconds",

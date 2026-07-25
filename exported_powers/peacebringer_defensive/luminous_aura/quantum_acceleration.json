@@ -50,6 +50,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -79,12 +80,12 @@
             "Toxic"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Buff_Def",
           "scale": 1.5,
-          "duration": "0.20 seconds",
+          "duration": "0.2 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -103,37 +104,37 @@
               "event": "Attacked",
               "event_id": 2,
               "duration": 10.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "Helped",
               "event_id": 4,
               "duration": 10.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "MissionObjectClick",
               "event_id": 37,
               "duration": 10.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "CommandedPet",
               "event_id": 41,
               "duration": 10.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "PseudoPetAttacked",
               "event_id": 47,
               "duration": 10.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "PseudoPetHelped",
               "event_id": 48,
               "duration": 10.0,
-              "flag": 1
+              "always": 1
             }
           ],
           "flags": [
@@ -162,12 +163,12 @@
                 "Null"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Melee_Ones",
               "scale": 1.0,
-              "duration": "0.20 seconds",
+              "duration": "0.2 seconds",
               "magnitude": 1.0,
               "delay": 0.0,
               "duration_expression": "",
@@ -181,6 +182,12 @@
               "stack": "Continuous",
               "stack_limit": 2,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "PFX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "IgnoreStrength",
                 "IgnoreResistance"
@@ -192,12 +199,12 @@
                 "Null"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Melee_Ones",
               "scale": 1.0,
-              "duration": "0.20 seconds",
+              "duration": "0.2 seconds",
               "magnitude": 1.0,
               "delay": 0.0,
               "duration_expression": "",
@@ -211,6 +218,12 @@
               "stack": "Continuous",
               "stack_limit": 2,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "PFX2",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "IgnoreStrength",
                 "IgnoreResistance"
@@ -240,12 +253,12 @@
             "Fly"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": 4.0,
-          "duration": "0.20 seconds",
+          "duration": "0.2 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -269,12 +282,12 @@
             "MovementControl"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Control",
           "scale": 15.0,
-          "duration": "0.20 seconds",
+          "duration": "0.2 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -303,12 +316,12 @@
             "MovementFriction"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Friction",
           "scale": 15.0,
-          "duration": "0.20 seconds",
+          "duration": "0.2 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -337,12 +350,12 @@
             "FlyingSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_SpeedFlying",
           "scale": 0.4,
-          "duration": "0.20 seconds",
+          "duration": "0.2 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -387,12 +400,12 @@
                 "Immobilized"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Melee_Res_Boolean",
               "scale": -30.0,
-              "duration": "0.20 seconds",
+              "duration": "0.2 seconds",
               "magnitude": 1.0,
               "delay": 0.0,
               "duration_expression": "",
@@ -423,12 +436,12 @@
                 "Knockback"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Resistance",
               "target": "Self",
               "table": "Melee_Res_Boolean",
               "scale": 1.75,
-              "duration": "0.20 seconds",
+              "duration": "0.2 seconds",
               "magnitude": 1.0,
               "delay": 0.0,
               "duration_expression": "",
@@ -474,12 +487,12 @@
                 "Immobilized"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Resistance",
               "target": "Self",
               "table": "Melee_Res_Boolean",
               "scale": 3.0,
-              "duration": "0.20 seconds",
+              "duration": "0.2 seconds",
               "magnitude": 1.0,
               "delay": 0.0,
               "duration_expression": "",
@@ -510,12 +523,12 @@
                 "Knockback"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Resistance",
               "target": "Self",
               "table": "Melee_Res_Boolean",
               "scale": 1.75,
-              "duration": "0.20 seconds",
+              "duration": "0.2 seconds",
               "magnitude": 1.0,
               "delay": 0.0,
               "duration_expression": "",
@@ -556,12 +569,12 @@
                 "Fly"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Melee_Ones",
               "scale": 2.0,
-              "duration": "0.20 seconds",
+              "duration": "0.2 seconds",
               "magnitude": 1.0,
               "delay": 0.0,
               "duration_expression": "",

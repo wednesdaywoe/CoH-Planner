@@ -46,6 +46,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     112,
     136
@@ -65,10 +66,10 @@
       "templates": [
         {
           "attribs": [
-            "Set_Mode"
+            "Null"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -90,7 +91,7 @@
           "flags": [
             "IgnoreStrength"
           ],
-          "mode_name": "Peacebringer_Blaster_Mode"
+          "flags_raw": 1296
         }
       ]
     },
@@ -111,7 +112,7 @@
             "Heal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_HealSelf",
@@ -132,7 +133,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 320
         }
       ]
     },
@@ -153,7 +155,7 @@
             "Heal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_HealSelf",
@@ -174,7 +176,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 320
         }
       ]
     },
@@ -195,7 +198,7 @@
             "Heal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_HealSelf",
@@ -216,7 +219,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 320
         }
       ]
     },
@@ -237,7 +241,7 @@
             "Heal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_HealSelf",
@@ -258,7 +262,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 320
         }
       ]
     },
@@ -279,7 +284,7 @@
             "Heal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_SSHealSelf",
@@ -300,7 +305,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 320
         }
       ]
     },
@@ -321,7 +327,7 @@
             "Heal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_SSHealSelf",
@@ -342,7 +348,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 320
         }
       ]
     },
@@ -363,7 +370,7 @@
             "Heal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_SSHealSelf",
@@ -384,7 +391,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 320
         }
       ]
     },
@@ -405,7 +413,7 @@
             "Heal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_SSHealSelf",
@@ -426,7 +434,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 320
         }
       ]
     },
@@ -447,7 +456,7 @@
             "Endurance"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
@@ -469,7 +478,8 @@
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 96
         }
       ]
     }

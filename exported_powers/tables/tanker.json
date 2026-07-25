@@ -1,10 +1,36 @@
 {
   "name": "Class_Tanker",
-  "display_name": "P3145047740",
+  "display_name": "Tanker",
+  "display_help": "The Tanker can take it and dish it out all at once. Tankers deal the lowest damage of all melee archetypes but make up for it in numbers by being able to hit more enemies than their melee peers while absorbing vast amounts of damage. The Tanker lacks long range punch, but they would prefer just to charge straight into a large group of foes anyway.",
+  "display_short_help": "Excellent defense, good melee.",
   "icon": "archetypeicon_Tanker.tga",
   "primary_category": "Tanker_DEFENSE",
   "secondary_category": "Tanker_MELEE",
   "pool_category": "Pool",
+  "epic_pool_category": "",
+  "allowed_origins": [],
+  "special_restrictions": [],
+  "store_requires": "",
+  "locked_tooltip": "",
+  "product_code": "",
+  "reduction_class": "",
+  "reduce_as_archvillain": false,
+  "level_up_respecs": [],
+  "archetype_shots": [
+    "archetypeshots_tanker_0",
+    "archetypeshots_tanker_1",
+    "archetypeshots_tanker_2"
+  ],
+  "creation_stats": [
+    10,
+    7,
+    2,
+    5,
+    3,
+    2
+  ],
+  "playstyle_flags": 3,
+  "mechanic_tip": "",
   "named_tables": {
     "Melee_Damage": [
       -9.899999618530273,
@@ -11992,5 +12018,7 @@
     "resistance_cap": 0.8999999761581421,
     "base_threat": 4.0,
     "damage_cap": 5.0
-  }
+  },
+  "villain_rank": 0,
+  "tail_scalar_raw": 0.1
 }

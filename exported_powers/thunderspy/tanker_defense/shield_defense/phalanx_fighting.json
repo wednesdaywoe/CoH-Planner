@@ -44,6 +44,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -55,7 +56,7 @@
       "requires_expression": "entref target> entref source> eq ! enttype target> player eq &&",
       "tags": [],
       "flags": [],
-      "is_pvp": "PVP_ONLY",
+      "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
@@ -64,10 +65,10 @@
             "Ranged",
             "Area"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Melee_Buff_Def",
           "scale": 0.3,
           "duration": "0.81 seconds",
@@ -105,10 +106,10 @@
             "Ranged",
             "Area"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Melee_Buff_Def",
           "scale": 0.5,
           "duration": "1.25 seconds",

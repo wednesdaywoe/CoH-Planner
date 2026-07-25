@@ -42,6 +42,7 @@
   "requires": "$archetype @Class_Stalker ==",
   "activate_requires": "$archetype @Class_Stalker ==",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -60,10 +61,10 @@
           "attribs": [
             "Recovery"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Melee_Ones",
           "scale": 0.25,
           "duration": "15 seconds",
@@ -99,10 +100,10 @@
           "attribs": [
             "Taunt"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Duration",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Melee_Taunt",
           "scale": 10.0,
           "duration": "0 seconds",
@@ -138,10 +139,10 @@
           "attribs": [
             "Taunt"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Duration",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Melee_Taunt",
           "scale": 6.0,
           "duration": "0 seconds",
@@ -162,6 +163,7 @@
       ]
     }
   ],
+  "max_boosts": 0,
   "modes_disallowed": [
     "Disable_All"
   ],

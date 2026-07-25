@@ -49,6 +49,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -70,14 +71,14 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": -1.0,
           "duration": "60 seconds",
           "magnitude": 1.0,
-          "delay": 0.10000000149011612,
+          "delay": 0.1,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -90,23 +91,31 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Pets_Decoy_Dominator",
-            "priority_list": "PL_FightPreferRanged"
+            "priority_list": "PL_FightPreferRanged",
+            "type": "EntCreate"
+          },
+          "messages": {
+            "display_attacker_hit": "You create a {PowerName} of pure illusion!",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "CopyBoosts"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -126,23 +135,24 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Pets_Decoy_Dominator",
-            "priority_list": "PL_FightPreferRanged"
+            "priority_list": "PL_FightPreferRanged",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "CopyBoosts"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -162,23 +172,24 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Pets_Decoy_Dominator",
-            "priority_list": "PL_FightPreferRanged"
+            "priority_list": "PL_FightPreferRanged",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "CopyBoosts"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Cancel_Mods"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
@@ -197,6 +208,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "tags": [
+              "MirrorArmy"
+            ],
+            "type": "EffectFilter"
+          },
           "flags": [
             "NoHitDelay"
           ],
@@ -223,14 +240,14 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": -1.0,
           "duration": "60 seconds",
           "magnitude": 1.0,
-          "delay": 0.10000000149011612,
+          "delay": 0.1,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -243,23 +260,33 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Pets_Decoy_Dominator",
-            "priority_list": "PL_FightPreferRanged"
+            "priority_list": "PL_FightPreferRanged",
+            "type": "EntCreate"
+          },
+          "messages": {
+            "display_attacker_hit": "You create a {PowerName} of pure illusion!",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
-            "CopyBoosts"
+            "DoNotTintCostume",
+            "CopyBoosts",
+            "CopyCreatorCostume"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 262
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -279,23 +306,26 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Pets_Decoy_Dominator",
-            "priority_list": "PL_FightPreferRanged"
+            "priority_list": "PL_FightPreferRanged",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
-            "CopyBoosts"
+            "DoNotTintCostume",
+            "CopyBoosts",
+            "CopyCreatorCostume"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 262
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -315,23 +345,26 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Pets_Decoy_Dominator",
-            "priority_list": "PL_FightPreferRanged"
+            "priority_list": "PL_FightPreferRanged",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
-            "CopyBoosts"
+            "DoNotTintCostume",
+            "CopyBoosts",
+            "CopyCreatorCostume"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 262
         },
         {
           "attribs": [
             "Cancel_Mods"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
@@ -350,6 +383,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "tags": [
+              "PhantomArmy"
+            ],
+            "type": "EffectFilter"
+          },
           "flags": [
             "NoHitDelay"
           ],
@@ -358,6 +397,7 @@
       ]
     }
   ],
+  "procs_allowed": false,
   "modes_disallowed": [
     "Disable_All"
   ],

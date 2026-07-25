@@ -42,6 +42,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -90,7 +91,7 @@
                     "Cold_Dmg"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Resistance",
                   "target": "Self",
                   "table": "Melee_Res_Dmg",
@@ -119,7 +120,7 @@
                     "Energy_Dmg"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Resistance",
                   "target": "Self",
                   "table": "Melee_Res_Dmg",
@@ -148,7 +149,7 @@
                     "Negative_Energy_Dmg"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Resistance",
                   "target": "Self",
                   "table": "Melee_Res_Dmg",
@@ -177,7 +178,7 @@
                     "Endurance"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Resistance",
                   "target": "Self",
                   "table": "Melee_Res_Boolean",
@@ -221,7 +222,7 @@
                     "Knockup"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Current",
                   "target": "Self",
                   "table": "Melee_Knockback",
@@ -240,6 +241,13 @@
                   "stack": "RefreshToCount",
                   "stack_limit": 1,
                   "stack_key": null,
+                  "messages": {
+                    "display_attacker_hit": "You have become grounded, increasing your knockback protection!",
+                    "display_victim_hit": null,
+                    "display_float": null,
+                    "display_attrib_defense_float": null,
+                    "display_info": "If grounded in the last 10 seconds"
+                  },
                   "flags": [
                     "IgnoreResistance"
                   ],
@@ -250,7 +258,7 @@
                     "Knockback"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Current",
                   "target": "Self",
                   "table": "Melee_Knockback",
@@ -269,6 +277,13 @@
                   "stack": "RefreshToCount",
                   "stack_limit": 1,
                   "stack_key": null,
+                  "messages": {
+                    "display_attacker_hit": null,
+                    "display_victim_hit": null,
+                    "display_float": null,
+                    "display_attrib_defense_float": null,
+                    "display_info": "If grounded in the last 10 seconds"
+                  },
                   "flags": [
                     "IgnoreResistance"
                   ],
@@ -297,7 +312,7 @@
                 "Immobilized"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Melee_Ones",
@@ -343,7 +358,7 @@
                 "Immobilized"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Resistance",
               "target": "Self",
               "table": "Melee_Res_Boolean",

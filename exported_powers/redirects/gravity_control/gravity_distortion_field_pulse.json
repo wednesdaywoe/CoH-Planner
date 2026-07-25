@@ -42,6 +42,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     116
   ],
@@ -76,7 +77,7 @@
                 "Held"
               ],
               "type": "Duration",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_Immobilize",
@@ -95,8 +96,22 @@
               "stack": "RefreshToCount",
               "stack_limit": 1,
               "stack_key": "AoEHold",
+              "messages": {
+                "display_attacker_hit": "You Hold {PlayerDest} with your {PowerName}.",
+                "display_victim_hit": "{PlayerSource} Holds you with their {PowerName}.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "Against up to 5 targets every 4 seconds"
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": null,
+                "conditional_bits": [
+                  401
+                ],
+                "conditional_fx": "PFX"
+              },
               "flags": [
-                "DeepSleep",
                 "StackByAttribAndKey"
               ],
               "flags_raw": 264704
@@ -122,7 +137,7 @@
                 "Held"
               ],
               "type": "Duration",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_Immobilize",
@@ -141,8 +156,22 @@
               "stack": "RefreshToCount",
               "stack_limit": 1,
               "stack_key": "AoEHoldInherent",
+              "messages": {
+                "display_attacker_hit": "You Hold {PlayerDest} with your {PowerName}.",
+                "display_victim_hit": "{PlayerSource} Holds you with their {PowerName}.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "Overpower<br>Against up to 5 targets every 4 seconds"
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": null,
+                "conditional_bits": [
+                  401
+                ],
+                "conditional_fx": "PFX"
+              },
               "flags": [
-                "DeepSleep",
                 "StackByAttribAndKey"
               ],
               "flags_raw": 264704
@@ -152,7 +181,7 @@
                 "Null"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
@@ -171,6 +200,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": null,
+                "display_victim_hit": null,
+                "display_float": "Overpower",
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags_raw": 1280
             }
           ]
@@ -194,7 +230,7 @@
                 "Held"
               ],
               "type": "Duration",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_Immobilize",
@@ -213,8 +249,22 @@
               "stack": "RefreshToCount",
               "stack_limit": 1,
               "stack_key": "AoEHoldInherent",
+              "messages": {
+                "display_attacker_hit": "You Hold {PlayerDest} with your {PowerName}.",
+                "display_victim_hit": "{PlayerSource} Holds you with their {PowerName}.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "While under the effects of Domination<br>Against up to 5 targets every 4 seconds"
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": null,
+                "conditional_bits": [
+                  401
+                ],
+                "conditional_fx": "PFX"
+              },
               "flags": [
-                "DeepSleep",
                 "StackByAttribAndKey"
               ],
               "flags_raw": 264704
@@ -224,7 +274,7 @@
                 "Null"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
@@ -243,6 +293,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": null,
+                "display_victim_hit": null,
+                "display_float": "DOMINATION",
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags_raw": 1280
             }
           ]
@@ -266,7 +323,7 @@
             "Held"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_PvPMez",
@@ -285,40 +342,52 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": "Against up to 5 targets every 4 seconds"
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              401
+            ],
+            "conditional_fx": "PFX"
+          },
           "suppress_events": [
             {
               "event": "Stunned",
               "event_id": 23,
               "duration": 15.0,
-              "flag": 0
+              "always": 0
             },
             {
-              "event": "Event_24",
+              "event": "Immobilized",
               "event_id": 24,
               "duration": 15.0,
-              "flag": 0
+              "always": 0
             },
             {
               "event": "Held",
               "event_id": 25,
               "duration": 15.0,
-              "flag": 0
+              "always": 0
             },
             {
               "event": "Sleep",
               "event_id": 26,
               "duration": 15.0,
-              "flag": 0
+              "always": 0
             },
             {
-              "event": "Confused",
+              "event": "Terrorized",
               "event_id": 27,
               "duration": 15.0,
-              "flag": 0
+              "always": 0
             }
-          ],
-          "flags": [
-            "DeepSleep"
           ],
           "flags_raw": 2560
         }
@@ -354,14 +423,14 @@
                 "Smashing_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Ranged_Damage",
               "scale": 0.3,
               "duration": "0 seconds",
               "magnitude": 1.0,
-              "delay": 0.10000000149011612,
+              "delay": 0.1,
               "duration_expression": "",
               "magnitude_expression": "",
               "application_period": 0.0,
@@ -373,20 +442,22 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
-              "suppress_events": [
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Smashing damage.",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Smashing damage.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "Only against held targets<br>Against up to 5 targets every 4 seconds"
+              },
+              "required_events": [
                 {
-                  "event": "Event_1056964608",
-                  "event_id": 1056964608,
-                  "duration": 0.0,
-                  "flag": 0
-                },
-                {
-                  "event": "Event_3590324224",
-                  "event_id": 3590324224,
-                  "duration": -1.4757502571302512e+20,
-                  "flag": 61
+                  "event": "Held",
+                  "event_id": 25,
+                  "duration": 0.5,
+                  "always": 0
                 }
-              ]
+              ],
+              "flags_raw": 1280
             }
           ]
         },
@@ -409,14 +480,14 @@
                 "Smashing_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Ranged_InherentDamage",
               "scale": 0.3,
               "duration": "0 seconds",
               "magnitude": 1.0,
-              "delay": 0.10000000149011612,
+              "delay": 0.1,
               "duration_expression": "",
               "magnitude_expression": "",
               "application_period": 0.0,
@@ -428,20 +499,22 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
-              "suppress_events": [
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Smashing damage (CONTAINMENT).",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Smashing damage (CONTAINMENT).",
+                "display_float": "Containment",
+                "display_attrib_defense_float": null,
+                "display_info": "Only against immobilized, held, sleeping, terrified or stunned targets"
+              },
+              "required_events": [
                 {
-                  "event": "Event_1056964608",
-                  "event_id": 1056964608,
-                  "duration": 0.0,
-                  "flag": 0
-                },
-                {
-                  "event": "Event_33554432",
-                  "event_id": 33554432,
-                  "duration": 1.6949223576379555e-21,
-                  "flag": 939528337
+                  "event": "Held",
+                  "event_id": 25,
+                  "duration": 0.5,
+                  "always": 0
                 }
-              ]
+              ],
+              "flags_raw": 1280
             }
           ]
         }

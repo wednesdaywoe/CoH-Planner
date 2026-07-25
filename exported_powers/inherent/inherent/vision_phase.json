@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -57,7 +58,7 @@
             "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -76,6 +77,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "combat_phases": [],
+            "vision_phases": [
+              2
+            ],
+            "exclusive_vision_phase": -1,
+            "type": "Phase"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -101,7 +110,7 @@
             "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -120,6 +129,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "combat_phases": [],
+            "vision_phases": [
+              2
+            ],
+            "exclusive_vision_phase": -1,
+            "type": "Phase"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -145,7 +162,7 @@
             "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -164,6 +181,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "combat_phases": [],
+            "vision_phases": [
+              4
+            ],
+            "exclusive_vision_phase": -1,
+            "type": "Phase"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -189,7 +214,7 @@
             "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -208,6 +233,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "combat_phases": [],
+            "vision_phases": [
+              5
+            ],
+            "exclusive_vision_phase": -1,
+            "type": "Phase"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -233,7 +266,7 @@
             "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -252,6 +285,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "combat_phases": [],
+            "vision_phases": [
+              6
+            ],
+            "exclusive_vision_phase": -1,
+            "type": "Phase"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -277,7 +318,7 @@
             "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -296,6 +337,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "combat_phases": [],
+            "vision_phases": [
+              2
+            ],
+            "exclusive_vision_phase": -1,
+            "type": "Phase"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -321,7 +370,7 @@
             "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -340,6 +389,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "combat_phases": [],
+            "vision_phases": [
+              2
+            ],
+            "exclusive_vision_phase": -1,
+            "type": "Phase"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -365,7 +422,7 @@
             "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -384,6 +441,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "combat_phases": [],
+            "vision_phases": [
+              3
+            ],
+            "exclusive_vision_phase": -1,
+            "type": "Phase"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -409,7 +474,7 @@
             "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -428,6 +493,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "combat_phases": [],
+            "vision_phases": [
+              8
+            ],
+            "exclusive_vision_phase": -1,
+            "type": "Phase"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -453,7 +526,7 @@
             "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -472,6 +545,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "combat_phases": [],
+            "vision_phases": [
+              3
+            ],
+            "exclusive_vision_phase": -1,
+            "type": "Phase"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -497,7 +578,7 @@
             "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -516,6 +597,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "combat_phases": [],
+            "vision_phases": [
+              7
+            ],
+            "exclusive_vision_phase": -1,
+            "type": "Phase"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -541,7 +630,7 @@
             "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -560,6 +649,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "combat_phases": [],
+            "vision_phases": [
+              3
+            ],
+            "exclusive_vision_phase": -1,
+            "type": "Phase"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -585,7 +682,7 @@
             "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -604,6 +701,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "combat_phases": [],
+            "vision_phases": [
+              4
+            ],
+            "exclusive_vision_phase": -1,
+            "type": "Phase"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -629,7 +734,7 @@
             "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -648,6 +753,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "combat_phases": [],
+            "vision_phases": [
+              5
+            ],
+            "exclusive_vision_phase": -1,
+            "type": "Phase"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -673,7 +786,7 @@
             "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -692,6 +805,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "combat_phases": [],
+            "vision_phases": [
+              3
+            ],
+            "exclusive_vision_phase": -1,
+            "type": "Phase"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -717,7 +838,7 @@
             "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -736,6 +857,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "combat_phases": [],
+            "vision_phases": [
+              2
+            ],
+            "exclusive_vision_phase": -1,
+            "type": "Phase"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -761,7 +890,7 @@
             "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -780,6 +909,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "combat_phases": [],
+            "vision_phases": [
+              3
+            ],
+            "exclusive_vision_phase": -1,
+            "type": "Phase"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -805,7 +942,7 @@
             "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -824,6 +961,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "combat_phases": [],
+            "vision_phases": [
+              2
+            ],
+            "exclusive_vision_phase": -1,
+            "type": "Phase"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -849,7 +994,7 @@
             "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -868,6 +1013,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "combat_phases": [],
+            "vision_phases": [
+              7
+            ],
+            "exclusive_vision_phase": -1,
+            "type": "Phase"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -893,7 +1046,7 @@
             "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -912,6 +1065,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "combat_phases": [],
+            "vision_phases": [
+              4
+            ],
+            "exclusive_vision_phase": -1,
+            "type": "Phase"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -937,7 +1098,7 @@
             "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -956,6 +1117,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "combat_phases": [],
+            "vision_phases": [
+              4
+            ],
+            "exclusive_vision_phase": -1,
+            "type": "Phase"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -981,7 +1150,7 @@
             "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -1000,6 +1169,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "combat_phases": [],
+            "vision_phases": [
+              4
+            ],
+            "exclusive_vision_phase": -1,
+            "type": "Phase"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -1025,7 +1202,7 @@
             "Vision_Phase"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -1044,6 +1221,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "combat_phases": [],
+            "vision_phases": [
+              5
+            ],
+            "exclusive_vision_phase": -1,
+            "type": "Phase"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -1053,6 +1238,7 @@
       ]
     }
   ],
+  "max_boosts": 0,
   "available_level": 0,
   "powerset": "Inherent.Inherent"
 }

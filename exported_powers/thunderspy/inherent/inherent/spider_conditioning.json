@@ -38,6 +38,7 @@
   "requires": "$archetype @Class_Arachnos_Soldier ==",
   "activate_requires": "$archetype @Class_Arachnos_Soldier ==",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -56,10 +57,10 @@
           "attribs": [
             "Recovery"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 0.0825,
           "duration": "0.75 seconds",
@@ -95,10 +96,10 @@
           "attribs": [
             "Accuracy"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "Self",
           "table": "Melee_Buff_ToHit",
           "scale": 1.0,
           "duration": "0.75 seconds",
@@ -119,6 +120,7 @@
       ]
     }
   ],
+  "max_boosts": 0,
   "available_level": 0,
   "powerset": "Inherent.Inherent"
 }

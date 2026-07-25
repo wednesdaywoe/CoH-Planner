@@ -47,6 +47,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -66,7 +67,7 @@
             "StealthRadius_PVE"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -95,25 +96,25 @@
               "event": "Attacked",
               "event_id": 2,
               "duration": 8.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "Damaged",
               "event_id": 21,
               "duration": 8.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "MissionObjectClick",
               "event_id": 37,
               "duration": 8.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "PseudoPetAttacked",
               "event_id": 47,
               "duration": 8.0,
-              "flag": 1
+              "always": 1
             }
           ],
           "flags": [
@@ -126,7 +127,7 @@
             "StealthRadius_PVP"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -155,25 +156,25 @@
               "event": "Attacked",
               "event_id": 2,
               "duration": 8.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "Damaged",
               "event_id": 21,
               "duration": 8.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "MissionObjectClick",
               "event_id": 37,
               "duration": 8.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "PseudoPetAttacked",
               "event_id": 47,
               "duration": 8.0,
-              "flag": 1
+              "always": 1
             }
           ],
           "flags": [
@@ -186,7 +187,7 @@
             "Meter"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -215,25 +216,25 @@
               "event": "Attacked",
               "event_id": 2,
               "duration": 8.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "Damaged",
               "event_id": 21,
               "duration": 8.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "MissionObjectClick",
               "event_id": 37,
               "duration": 8.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "PseudoPetAttacked",
               "event_id": 47,
               "duration": 8.0,
-              "flag": 1
+              "always": 1
             }
           ],
           "flags": [
@@ -247,7 +248,7 @@
             "Translucency"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -276,25 +277,25 @@
               "event": "Attacked",
               "event_id": 2,
               "duration": 8.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "Damaged",
               "event_id": 21,
               "duration": 8.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "MissionObjectClick",
               "event_id": 37,
               "duration": 8.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "PseudoPetAttacked",
               "event_id": 47,
               "duration": 8.0,
-              "flag": 1
+              "always": 1
             }
           ],
           "flags": [
@@ -306,42 +307,6 @@
         {
           "attribs": [
             "Grant_Power"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "Absolute",
-          "target": "Self",
-          "table": "Melee_Ones",
-          "scale": 1.0,
-          "duration": "0 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Replace",
-          "stack_limit": 2,
-          "stack_key": null,
-          "params": {
-            "type": "Power",
-            "power_names": [
-              "Temporary_Powers.Temporary_Powers.Molten_Embrace_Proc"
-            ]
-          },
-          "flags": [
-            "IgnoreStrength",
-            "IgnoreResistance"
-          ],
-          "flags_raw": 1072
-        },
-        {
-          "attribs": [
-            "Revoke_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnActivate",
@@ -364,10 +329,48 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Temporary_Powers.Temporary_Powers.Molten_Embrace_Proc"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
+        },
+        {
+          "attribs": [
+            "Revoke_Power"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnDeactivate",
+          "aspect": "Absolute",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "params": {
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Molten_Embrace_Proc"
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -406,7 +409,7 @@
             "Toxic"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Buff_Def",
@@ -425,6 +428,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "PFX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "cancel_events": [
             "Stunned",
             "Held",
@@ -449,7 +458,7 @@
             "Toxic"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Buff_Def",
@@ -478,25 +487,25 @@
               "event": "Attacked",
               "event_id": 2,
               "duration": 8.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "Damaged",
               "event_id": 21,
               "duration": 8.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "MissionObjectClick",
               "event_id": 37,
               "duration": 8.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "PseudoPetAttacked",
               "event_id": 47,
               "duration": 8.0,
-              "flag": 1
+              "always": 1
             }
           ],
           "flags": [
@@ -509,7 +518,7 @@
             "Area"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Buff_Def",
@@ -538,25 +547,25 @@
               "event": "Attacked",
               "event_id": 2,
               "duration": 8.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "Damaged",
               "event_id": 21,
               "duration": 8.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "MissionObjectClick",
               "event_id": 37,
               "duration": 8.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "PseudoPetAttacked",
               "event_id": 47,
               "duration": 8.0,
-              "flag": 1
+              "always": 1
             }
           ],
           "flags": [
@@ -595,7 +604,7 @@
             "Toxic"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Buff_Def",
@@ -638,7 +647,7 @@
             "Toxic"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Buff_Def",
@@ -667,25 +676,25 @@
               "event": "Attacked",
               "event_id": 2,
               "duration": 8.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "Damaged",
               "event_id": 21,
               "duration": 8.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "MissionObjectClick",
               "event_id": 37,
               "duration": 8.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "PseudoPetAttacked",
               "event_id": 47,
               "duration": 8.0,
-              "flag": 1
+              "always": 1
             }
           ],
           "flags": [
@@ -698,7 +707,7 @@
             "Area"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Buff_Def",
@@ -727,25 +736,25 @@
               "event": "Attacked",
               "event_id": 2,
               "duration": 8.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "Damaged",
               "event_id": 21,
               "duration": 8.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "MissionObjectClick",
               "event_id": 37,
               "duration": 8.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "PseudoPetAttacked",
               "event_id": 47,
               "duration": 8.0,
-              "flag": 1
+              "always": 1
             }
           ],
           "flags": [

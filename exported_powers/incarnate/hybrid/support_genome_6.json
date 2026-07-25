@@ -26,11 +26,11 @@
   "target_type_secondary": "None",
   "targets_autohit": [
     "Self",
-    "DeadOrAliveLeaguemate"
+    "Leaguemate"
   ],
   "targets_affected": [
     "Self",
-    "DeadOrAliveLeaguemate"
+    "Leaguemate"
   ],
   "boosts_allowed": [
     "EnduranceDiscount",
@@ -53,6 +53,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -80,7 +81,7 @@
             "Accuracy"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -117,7 +118,7 @@
             "Negative_Energy"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -167,10 +168,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Incarnate.Hybrid_Silent.Support_Boost_Rare"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -203,10 +205,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Incarnate.Hybrid_Silent.Support_Boost_Rare"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -216,6 +219,11 @@
         }
       ]
     }
+  ],
+  "max_toggle_time": 120.0,
+  "max_boosts": 0,
+  "strengths_disallowed": [
+    "RechargeTime"
   ],
   "modes_disallowed": [
     "Disable_All",

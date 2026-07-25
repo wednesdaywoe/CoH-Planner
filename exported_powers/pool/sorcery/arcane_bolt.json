@@ -50,6 +50,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     104,
     132
@@ -72,7 +73,7 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
@@ -91,6 +92,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags_raw": 1280
         }
       ],
@@ -114,7 +122,7 @@
                 "Energy_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Ranged_InherentDamage",
@@ -133,6 +141,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage (CRITICAL).",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage (CRITICAL).",
+                "display_float": "CRITICAL",
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags_raw": 1280
             }
           ]
@@ -156,7 +171,7 @@
                 "Energy_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Ranged_InherentDamage",
@@ -175,6 +190,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage (SCOURGE).",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage (SCOURGE).",
+                "display_float": "Scourge",
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags_raw": 1280
             }
           ]
@@ -199,7 +221,7 @@
                 "Energy_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Ranged_InherentDamage",
@@ -218,6 +240,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage (CONTAINMENT).",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage (CONTAINMENT).",
+                "display_float": "Containment",
+                "display_attrib_defense_float": null,
+                "display_info": "Only against immobilized, held, sleeping, terrified or stunned targets"
+              },
               "flags_raw": 1280
             }
           ]
@@ -239,7 +268,7 @@
                 "Knockback"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_Ones",
@@ -258,6 +287,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You knock {PlayerDest} off their feet with your {PowerName}!",
+                "display_victim_hit": "{PlayerSource} knocks you off your feet with their {PowerName}!",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags_raw": 1280
             }
           ]
@@ -294,7 +330,7 @@
                     "Energy_Dmg"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Absolute",
                   "target": "AnyAffected",
                   "table": "Ranged_InherentDamage",
@@ -313,6 +349,13 @@
                   "stack": "Stack",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "messages": {
+                    "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage (CRITICAL).",
+                    "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage (CRITICAL).",
+                    "display_float": "CRITICAL",
+                    "display_attrib_defense_float": null,
+                    "display_info": null
+                  },
                   "flags_raw": 1280
                 }
               ]
@@ -334,7 +377,7 @@
                     "Energy_Dmg"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Absolute",
                   "target": "AnyAffected",
                   "table": "Ranged_InherentDamage",
@@ -353,6 +396,13 @@
                   "stack": "Stack",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "messages": {
+                    "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage (CRITICAL).",
+                    "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage (CRITICAL).",
+                    "display_float": "CRITICAL",
+                    "display_attrib_defense_float": null,
+                    "display_info": null
+                  },
                   "flags_raw": 1280
                 }
               ]
@@ -376,7 +426,7 @@
                 "Energy_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Ranged_Damage",
@@ -395,6 +445,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage (ARCANE).",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage (ARCANE).",
+                "display_float": "Arcane",
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags_raw": 1280
             },
             {
@@ -402,7 +459,7 @@
                 "Cancel_Mods"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Strength",
               "target": "Self",
               "table": "Melee_Ones",
@@ -421,6 +478,12 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "params": {
+                "tags": [
+                  "ArcanePower"
+                ],
+                "type": "EffectFilter"
+              },
               "flags_raw": 1280
             },
             {
@@ -428,7 +491,7 @@
                 "Unset_Mode"
               ],
               "type": "Constant",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Melee_Ones",
@@ -449,10 +512,10 @@
               "stack_key": null,
               "flags": [
                 "IgnoreStrength",
-                "IgnoreResistance",
-                "DeepSleep"
+                "IgnoreResistance"
               ],
-              "flags_raw": 3120
+              "flags_raw": 3120,
+              "mode_name": "ArcaneBolt"
             }
           ]
         }
@@ -475,7 +538,7 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_PvPDamage",
@@ -494,6 +557,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags_raw": 1280
         }
       ],
@@ -518,7 +588,7 @@
                 "Energy_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Ranged_PvPDamage",
@@ -537,6 +607,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage (CONTAINMENT).",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage (CONTAINMENT).",
+                "display_float": "Containment",
+                "display_attrib_defense_float": null,
+                "display_info": "Only against immobilized, held, sleeping, terrified or stunned targets"
+              },
               "flags_raw": 1280
             }
           ]
@@ -560,7 +637,7 @@
                 "Energy_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Ranged_PvPDamage",
@@ -579,6 +656,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage (SCOURGE).",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage (SCOURGE).",
+                "display_float": "Scourge",
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags_raw": 1280
             }
           ]
@@ -602,7 +686,7 @@
                 "Energy_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Ranged_PvPDamage",
@@ -621,6 +705,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage (CRITICAL).",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage (CRITICAL).",
+                "display_float": "CRITICAL",
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags_raw": 1280
             }
           ]
@@ -657,7 +748,7 @@
                     "Energy_Dmg"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Absolute",
                   "target": "AnyAffected",
                   "table": "Ranged_PvPDamage",
@@ -676,6 +767,13 @@
                   "stack": "Stack",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "messages": {
+                    "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage (CRITICAL).",
+                    "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage (CRITICAL).",
+                    "display_float": "CRITICAL",
+                    "display_attrib_defense_float": null,
+                    "display_info": null
+                  },
                   "flags_raw": 1280
                 }
               ]
@@ -697,7 +795,7 @@
                     "Energy_Dmg"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Absolute",
                   "target": "AnyAffected",
                   "table": "Ranged_PvPDamage",
@@ -716,6 +814,13 @@
                   "stack": "Stack",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "messages": {
+                    "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage (CRITICAL).",
+                    "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage (CRITICAL).",
+                    "display_float": "CRITICAL",
+                    "display_attrib_defense_float": null,
+                    "display_info": null
+                  },
                   "flags_raw": 1280
                 }
               ]
@@ -739,7 +844,7 @@
                 "Knockback"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_Ones",
@@ -758,12 +863,19 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You knock {PlayerDest} off their feet with your {PowerName}!",
+                "display_victim_hit": "{PlayerSource} knocks you off your feet with their {PowerName}!",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "suppress_events": [
                 {
-                  "event": "MissionObjectInteract",
+                  "event": "Knocked",
                   "event_id": 33,
                   "duration": 10.0,
-                  "flag": 0
+                  "always": 0
                 }
               ],
               "flags_raw": 1280
@@ -787,7 +899,7 @@
                 "Energy_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Ranged_PvPDamage",
@@ -806,6 +918,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage.",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags_raw": 1280
             },
             {
@@ -813,7 +932,7 @@
                 "Unset_Mode"
               ],
               "type": "Constant",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Melee_Ones",
@@ -834,17 +953,17 @@
               "stack_key": null,
               "flags": [
                 "IgnoreStrength",
-                "IgnoreResistance",
-                "DeepSleep"
+                "IgnoreResistance"
               ],
-              "flags_raw": 3120
+              "flags_raw": 3120,
+              "mode_name": "ArcaneBolt"
             },
             {
               "attribs": [
                 "Cancel_Mods"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Strength",
               "target": "Self",
               "table": "Melee_Ones",
@@ -863,6 +982,12 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "params": {
+                "tags": [
+                  "ArcanePower"
+                ],
+                "type": "EffectFilter"
+              },
               "flags_raw": 1280
             }
           ]

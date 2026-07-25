@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -54,10 +55,10 @@
       "templates": [
         {
           "attribs": [],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Melee_Ones",
           "scale": 9001.0,
           "duration": "999999 seconds",
@@ -78,6 +79,7 @@
       ]
     }
   ],
+  "castable_after_death": "DeadOrAlive",
   "available_level": 0,
   "powerset": "GenericVillains.Marker_Phase"
 }

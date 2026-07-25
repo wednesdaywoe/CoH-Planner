@@ -23,7 +23,7 @@
   "activate_period": 0.0,
   "endurance_cost": 13.52,
   "interrupt_time": 0.0,
-  "target_type": "DeadMyPet",
+  "target_type": "Teleport",
   "target_type_secondary": "None",
   "targets_autohit": [
     "Self"
@@ -51,6 +51,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -70,14 +71,14 @@
             "Teleport"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
           "scale": 1.0,
           "duration": "0 seconds",
           "magnitude": 1.0,
-          "delay": -0.30000001192092896,
+          "delay": -0.3,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -99,14 +100,14 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": -1.0,
           "duration": "2 seconds",
           "magnitude": 1.0,
-          "delay": -0.20000000298023224,
+          "delay": -0.2,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -119,16 +120,17 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Pets_Burst_of_Speed",
-            "priority_list": "PL_StaticObject"
+            "priority_list": "PL_StaticObject",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "CopyBoosts"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 4
         },
         {
           "attribs": [
@@ -142,12 +144,12 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Ranged_Ones",
           "scale": 0.026,
-          "duration": "8.50 seconds",
+          "duration": "8.5 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -189,7 +191,7 @@
             "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -209,10 +211,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Blaster_Support.Martial_Manipulation.Burst_of_Speed"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -239,7 +242,7 @@
             "Global_Chance_Mod"
           ],
           "type": "Expression",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -258,10 +261,15 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "tags": [
+              "SpeedRefresh"
+            ],
+            "type": "EffectFilter"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
-            "DeepSleep",
             "KeepThroughDeath"
           ],
           "flags_raw": 19504

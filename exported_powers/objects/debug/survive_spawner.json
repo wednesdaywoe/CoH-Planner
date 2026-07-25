@@ -39,12 +39,13 @@
   "requires": "accesslevel char> 0 >=",
   "activate_requires": "",
   "target_requires": "enttype target> player eq",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
       "chance": 1.0,
       "ppm": 0.0,
-      "delay": 0.10000000149011612,
+      "delay": 0.1,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
@@ -58,14 +59,14 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": -1.0,
           "duration": "10000 seconds",
           "magnitude": 1.0,
-          "delay": 0.10000000149011612,
+          "delay": 0.1,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -78,21 +79,29 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Survive_Minion",
-            "priority_list": "PL_FightPreferRanged"
+            "priority_list": "PL_FightPreferRanged",
+            "type": "EntCreate"
+          },
+          "messages": {
+            "display_attacker_hit": "You turn the ground into a sticky {PowerName}, reducing your foes movement rate and resistance to damage!",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
           },
           "flags": [
             "CopyBoosts"
           ],
-          "flags_raw": 1280
+          "flags_raw": 1280,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -112,21 +121,29 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Survive_Minion",
-            "priority_list": "PL_FightPreferRanged"
+            "priority_list": "PL_FightPreferRanged",
+            "type": "EntCreate"
+          },
+          "messages": {
+            "display_attacker_hit": "You turn the ground into a sticky {PowerName}, reducing your foes movement rate and resistance to damage!",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
           },
           "flags": [
             "CopyBoosts"
           ],
-          "flags_raw": 1280
+          "flags_raw": 1280,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -146,21 +163,29 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Survive_Minion",
-            "priority_list": "PL_FightPreferRanged"
+            "priority_list": "PL_FightPreferRanged",
+            "type": "EntCreate"
+          },
+          "messages": {
+            "display_attacker_hit": "You turn the ground into a sticky {PowerName}, reducing your foes movement rate and resistance to damage!",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
           },
           "flags": [
             "CopyBoosts"
           ],
-          "flags_raw": 1280
+          "flags_raw": 1280,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -180,21 +205,29 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Survive_Minion",
-            "priority_list": "PL_FightPreferRanged"
+            "priority_list": "PL_FightPreferRanged",
+            "type": "EntCreate"
+          },
+          "messages": {
+            "display_attacker_hit": "You turn the ground into a sticky {PowerName}, reducing your foes movement rate and resistance to damage!",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
           },
           "flags": [
             "CopyBoosts"
           ],
-          "flags_raw": 1280
+          "flags_raw": 1280,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -214,21 +247,29 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Survive_Minion",
-            "priority_list": "PL_FightPreferRanged"
+            "priority_list": "PL_FightPreferRanged",
+            "type": "EntCreate"
+          },
+          "messages": {
+            "display_attacker_hit": "You turn the ground into a sticky {PowerName}, reducing your foes movement rate and resistance to damage!",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
           },
           "flags": [
             "CopyBoosts"
           ],
-          "flags_raw": 1280
+          "flags_raw": 1280,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -248,21 +289,29 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Survive_Minion",
-            "priority_list": "PL_FightPreferRanged"
+            "priority_list": "PL_FightPreferRanged",
+            "type": "EntCreate"
+          },
+          "messages": {
+            "display_attacker_hit": "You turn the ground into a sticky {PowerName}, reducing your foes movement rate and resistance to damage!",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
           },
           "flags": [
             "CopyBoosts"
           ],
-          "flags_raw": 1280
+          "flags_raw": 1280,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -282,21 +331,29 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Survive_Minion",
-            "priority_list": "PL_FightPreferRanged"
+            "priority_list": "PL_FightPreferRanged",
+            "type": "EntCreate"
+          },
+          "messages": {
+            "display_attacker_hit": "You turn the ground into a sticky {PowerName}, reducing your foes movement rate and resistance to damage!",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
           },
           "flags": [
             "CopyBoosts"
           ],
-          "flags_raw": 1280
+          "flags_raw": 1280,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -316,21 +373,29 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Survive_Minion",
-            "priority_list": "PL_FightPreferRanged"
+            "priority_list": "PL_FightPreferRanged",
+            "type": "EntCreate"
+          },
+          "messages": {
+            "display_attacker_hit": "You turn the ground into a sticky {PowerName}, reducing your foes movement rate and resistance to damage!",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
           },
           "flags": [
             "CopyBoosts"
           ],
-          "flags_raw": 1280
+          "flags_raw": 1280,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -350,21 +415,29 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Survive_Minion",
-            "priority_list": "PL_FightPreferRanged"
+            "priority_list": "PL_FightPreferRanged",
+            "type": "EntCreate"
+          },
+          "messages": {
+            "display_attacker_hit": "You turn the ground into a sticky {PowerName}, reducing your foes movement rate and resistance to damage!",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
           },
           "flags": [
             "CopyBoosts"
           ],
-          "flags_raw": 1280
+          "flags_raw": 1280,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -384,21 +457,29 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Survive_Minion",
-            "priority_list": "PL_FightPreferRanged"
+            "priority_list": "PL_FightPreferRanged",
+            "type": "EntCreate"
+          },
+          "messages": {
+            "display_attacker_hit": "You turn the ground into a sticky {PowerName}, reducing your foes movement rate and resistance to damage!",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
           },
           "flags": [
             "CopyBoosts"
           ],
-          "flags_raw": 1280
+          "flags_raw": 1280,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -418,21 +499,29 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Survive_Minion",
-            "priority_list": "PL_FightPreferRanged"
+            "priority_list": "PL_FightPreferRanged",
+            "type": "EntCreate"
+          },
+          "messages": {
+            "display_attacker_hit": "You turn the ground into a sticky {PowerName}, reducing your foes movement rate and resistance to damage!",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
           },
           "flags": [
             "CopyBoosts"
           ],
-          "flags_raw": 1280
+          "flags_raw": 1280,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -452,21 +541,29 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Survive_Minion",
-            "priority_list": "PL_FightPreferRanged"
+            "priority_list": "PL_FightPreferRanged",
+            "type": "EntCreate"
+          },
+          "messages": {
+            "display_attacker_hit": "You turn the ground into a sticky {PowerName}, reducing your foes movement rate and resistance to damage!",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
           },
           "flags": [
             "CopyBoosts"
           ],
-          "flags_raw": 1280
+          "flags_raw": 1280,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -486,21 +583,29 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Survive_Minion",
-            "priority_list": "PL_FightPreferRanged"
+            "priority_list": "PL_FightPreferRanged",
+            "type": "EntCreate"
+          },
+          "messages": {
+            "display_attacker_hit": "You turn the ground into a sticky {PowerName}, reducing your foes movement rate and resistance to damage!",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
           },
           "flags": [
             "CopyBoosts"
           ],
-          "flags_raw": 1280
+          "flags_raw": 1280,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -520,21 +625,29 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Survive_Minion",
-            "priority_list": "PL_FightPreferRanged"
+            "priority_list": "PL_FightPreferRanged",
+            "type": "EntCreate"
+          },
+          "messages": {
+            "display_attacker_hit": "You turn the ground into a sticky {PowerName}, reducing your foes movement rate and resistance to damage!",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
           },
           "flags": [
             "CopyBoosts"
           ],
-          "flags_raw": 1280
+          "flags_raw": 1280,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -554,14 +667,22 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Survive_Minion",
-            "priority_list": "PL_FightPreferRanged"
+            "priority_list": "PL_FightPreferRanged",
+            "type": "EntCreate"
+          },
+          "messages": {
+            "display_attacker_hit": "You turn the ground into a sticky {PowerName}, reducing your foes movement rate and resistance to damage!",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
           },
           "flags": [
             "CopyBoosts"
           ],
-          "flags_raw": 1280
+          "flags_raw": 1280,
+          "flags2_raw": 4
         }
       ]
     },
@@ -582,7 +703,7 @@
             "Teleport"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -601,6 +722,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You Teleport {PlayerDest} into melee range.",
+            "display_victim_hit": "{PlayerSource} teleports you into melee range with their {PowerName}.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags": [
             "IgnoreResistance"
           ],
@@ -625,7 +753,7 @@
             "Revoke_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
@@ -645,10 +773,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Objects.Debug.Survive_Spawner"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",

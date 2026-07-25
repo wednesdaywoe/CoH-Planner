@@ -43,6 +43,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -62,7 +63,7 @@
             "Script_Notify"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Damage",
@@ -81,6 +82,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "channel": "DK_ShieldUp1",
+            "notify_event": [
+              "FirstTick"
+            ],
+            "type": "ScriptNotify"
+          },
           "flags": [
             "IgnoreStrength"
           ],
@@ -105,7 +113,7 @@
             "Script_Notify"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Damage",
@@ -124,6 +132,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "channel": "DK_ShieldUp2",
+            "notify_event": [
+              "FirstTick"
+            ],
+            "type": "ScriptNotify"
+          },
           "flags": [
             "IgnoreStrength"
           ],
@@ -148,7 +163,7 @@
             "Script_Notify"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Damage",
@@ -167,6 +182,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "channel": "DK_ShieldUp3",
+            "notify_event": [
+              "FirstTick"
+            ],
+            "type": "ScriptNotify"
+          },
           "flags": [
             "IgnoreStrength"
           ],
@@ -191,7 +213,7 @@
             "Script_Notify"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Damage",
@@ -210,6 +232,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "channel": "DK_ShieldUp4",
+            "notify_event": [
+              "FirstTick"
+            ],
+            "type": "ScriptNotify"
+          },
           "flags": [
             "IgnoreStrength"
           ],

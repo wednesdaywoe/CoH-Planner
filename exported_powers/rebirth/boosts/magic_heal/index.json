@@ -1,0 +1,19 @@
+{
+  "key": "Boosts.Magic_Heal",
+  "display_name": "Magic Heal",
+  "help": "Enhances the healing ability of a power.",
+  "short_help": "Dimensional Entities (Magic)",
+  "icon": "magic_heal_set.ico",
+  "powers": [
+    "Boosts.Magic_Heal.Magic_Heal"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Grace of Joule (Heal)"
+  ],
+  "power_short_helps": [
+    "Enhances Heal and Absorb"
+  ]
+}

@@ -62,6 +62,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -81,7 +82,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -102,12 +103,14 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "MastermindPets_Dire_Wolf"
+            "entity_def": "MastermindPets_Dire_Wolf",
+            "priority_list": "Pet"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     }
