@@ -47,7 +47,7 @@ import { calculatePermaInfo, type PermaInfo } from '@/utils/calculations/perma';
 import { calculateArcanaTime } from '@/utils/calculations/damage';
 import { calcThreeTier, convertGlobalBonusesToAspects, withStrengthBonuses, type ThreeTierValues } from '@/components/info/powerDisplayUtils';
 import { resolvePowerMagnitudes, type ResolvedMagnitude } from '@/components/info/resolvePowerMagnitudes';
-import { buildDisplayEffects } from '@/components/info/buildDisplayEffects';
+import { buildDisplayEffects, getStackingInfo, hasPerTargetField, withTargetsHit } from '@/components/info/buildDisplayEffects';
 import { toCharacterStateJson, type AdapterCalcContext } from './characterStateAdapter';
 import { mapGlobal, mapOnePowerProjection, mapPowerProjection, projectionKey, type EngineTotals, type GrantedMagnitude, type PowerProjection } from './engineTotalsMap';
 import type { Build } from '@/types/build';
@@ -66,7 +66,7 @@ const artifactsReady =
 
 type EngineHandle = {
   recalculate: (json: string) => string;
-  project_power: (json: string, powerSet: string, internalName: string) => string;
+  project_power: (json: string, powerSet: string, internalName: string, targetsHit?: number) => string;
 };
 const nodeEngine = artifactsReady
   ? (require('./wasm-node/coh_wasm.cjs') as { load_dataset: (bytes: Uint8Array) => EngineHandle })
@@ -306,26 +306,28 @@ function exportedExemplarBonusCap(server: Server, exemplarLevel: number): number
   return curve[index] ?? 1.0;
 }
 
-/** The pool/epic power the ENGINE actually reads, keyed the way the engine addresses it — the
- *  aggregate's `id` plus the `fullName`-derived identity `coh_data` normalizes to at load.
+/** The power the ENGINE actually reads, keyed the way the engine addresses it — the aggregate's
+ *  `id` plus the power's own `internalName`, or for the pool/epic partitions (which carry
+ *  neither) the `fullName`-derived identity `coh_data` normalizes to at load.
  *
- *  This is the evidence side of the PROD6C-3h adjudications. The two repos' converters have
- *  drifted in BOTH directions for these two partitions ([[prod6b2a-absorb-stdresult]]), so a row
- *  the beta resolves and the engine does not is only acceptable when the engine's own copy of the
- *  power has nothing to resolve it FROM. Reading the bundle proves that rather than assuming it. */
+ *  This is the evidence side of the PROD6C-3h and 6C-3b adjudications. The two repos' converters
+ *  have drifted in BOTH directions ([[prod6b2a-absorb-stdresult]]), so a row the beta resolves
+ *  and the engine does not — or one whose two sides read a differently SHAPED authored value —
+ *  is only acceptable when the engine's own copy of the power proves it. Reading the bundle
+ *  proves that rather than assuming it. */
 type BundlePower = { effects?: Record<string, unknown>; strengthsDisallowed?: string[]; globalStrengthsDisallowed?: string[] };
 const bundlePartitionCache = new Map<Server, Map<string, BundlePower>>();
-function bundlePartitionPowers(server: Server): Map<string, BundlePower> {
+function bundlePowers(server: Server): Map<string, BundlePower> {
   const cached = bundlePartitionCache.get(server);
   if (cached) return cached;
   const bundle = JSON.parse(
     gunzipSync(readFileSync(join(BUNDLE_DIR, `${server}.json.gz`))).toString('utf8'),
-  ) as Record<string, Record<string, { id?: string; powers?: (BundlePower & { name?: string; fullName?: string })[] }>>;
+  ) as Record<string, Record<string, { id?: string; powers?: (BundlePower & { name?: string; internalName?: string; fullName?: string })[] }>>;
   const out = new Map<string, BundlePower>();
-  for (const section of ['power-pools', 'epic-pools']) {
+  for (const section of ['powersets', 'power-pools', 'epic-pools']) {
     for (const [setKey, set] of Object.entries(bundle[section] ?? {})) {
       for (const power of set.powers ?? []) {
-        const source = power.fullName?.split('.').pop() ?? power.name ?? '';
+        const source = power.internalName ?? power.fullName?.split('.').pop() ?? power.name ?? '';
         out.set(projectionKey(set.id ?? setKey, source.replace(/\s+/g, '_')), power);
       }
     }
@@ -495,6 +497,9 @@ interface ReferenceState {
   alpha?: AlphaFixture;
   /** The exemplared-to level, or undefined for an unexemplared build. */
   exemplarLevel?: number;
+  /** This power's stacking-slider setting (PROD6C-3b), which the display bag reads before the
+   *  resolver ever sees it. Absent = the untouched slider every other fixture here runs. */
+  targetsHit?: number;
   /** Post-ED bonuses to use verbatim instead of computing them. The exemplar test re-runs the whole
    *  reference with the beta's exemplar CAP swapped for the exported one, which is how it proves a
    *  delta is that cap and nothing else. */
@@ -543,7 +548,7 @@ function betaReference(
     // The magnitude rows read the +Strength-augmented globals — the surfaces' own input
     // (PROD6C). The execution half above deliberately does not: Strength carries no
     // recharge / endurance / accuracy / range / cast aspect.
-    magnitudes: betaMagnitudes(power, build, archetypeId, enh, withStrengthBonuses(global, rawGlobal)),
+    magnitudes: betaMagnitudes(power, build, archetypeId, enh, withStrengthBonuses(global, rawGlobal), state.targetsHit),
   };
 }
 
@@ -554,13 +559,17 @@ function betaMagnitudes(
   archetypeId: string,
   enh: Record<string, number | undefined>,
   global: Record<string, number | undefined>,
+  targetsHit?: number,
 ): Map<string, ResolvedMagnitude> {
   const rows = resolvePowerMagnitudes({
     // The bag the SURFACES resolve, not the authored one (PROD6C-3a): the merged stats, the
     // heal extracted from the damage array, a summon's duration as the buff duration, and the
     // flattened movement object. Before this the gate handed both sides the authored bag, so
     // every one of those transforms went ungraded.
-    effects: buildDisplayEffects(power),
+    // …and at the power's own slider setting, which the surfaces apply to that bag before
+    // resolving it (PROD6C-3b). Zero/absent is the identity, so every other fixture here is
+    // unaffected.
+    effects: withTargetsHit(power, buildDisplayEffects(power), targetsHit ?? 0),
     archetypeId,
     level: build.level,
     enhancementBonuses: enh,
@@ -625,6 +634,7 @@ function magnitudeDeltas(
   betaRows: Map<string, ResolvedMagnitude>,
   betaEffects: Record<string, unknown> | undefined,
   engineEffects?: Record<string, unknown>,
+  targetsHit = 0,
 ): { real: string[]; adjudicated: string[] } {
   const out: string[] = [];
   const adjudicated: string[] = [];
@@ -670,11 +680,24 @@ function magnitudeDeltas(
       typeof engineEffects[key] === 'number' &&
       typeof (betaEffects?.[key]) === 'number' &&
       Math.abs((engineEffects[key] as number) - (betaEffects![key] as number)) > TOLERANCE;
+    // PROD6C-3b. The same drift reaching a SHAPE rather than a value: only the beta's copy of
+    // this effect carries the `perTarget` field the slider grows, so under a dragged slider the
+    // two sides diverge by exactly that growth while agreeing everywhere else. Requires a
+    // dragged slider, so it is inert in every other sweep here — and those sweeps, which run the
+    // same powers and rows at an untouched slider as hard must-equals, are what prove the two
+    // shapes agree at one target.
+    const perTargetDrift =
+      targetsHit > 1 &&
+      engineEffects != null &&
+      hasPerTargetField(betaEffects?.[engine.effectKey]) &&
+      !hasPerTargetField(engineEffects[engine.effectKey]);
     for (const tier of ['base', 'enhanced', 'final'] as const) {
       if (Math.abs(engine.value[tier] - beta.tiers[tier]) <= TOLERANCE) continue;
       const delta = `${powerName}.${key}.${tier}: engine ${engine.value[tier]} vs beta ${beta.tiers[tier]}`;
       if (inputsDiffer) {
         adjudicated.push(`${key}.${tier}: the two datasets carry different '${key}' values (engine ${engineEffects[key]}, beta ${betaEffects![key]})`);
+      } else if (perTargetDrift) {
+        adjudicated.push(`${key}.${tier}: only the beta's '${engine.effectKey}' carries perTarget, so the slider grows one side alone (engine ${engine.value[tier]}, beta ${beta.tiers[tier]})`);
       } else {
         out.push(delta);
       }
@@ -1065,7 +1088,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
     const atId = build.archetype.id as string;
     const stateJson = toCharacterStateJson(withoutIllegalSlots(build), CTX);
     const rawGlobal = mapGlobal(engineTotals(server, build).bonuses);
-    const bundlePowers = bundlePartitionPowers(server);
+    const engineBundle = bundlePowers(server);
 
     const partitions: { label: string; sets: { id: string; powers: Power[] }[] }[] = [
       { label: 'pool', sets: Object.values(getAllPowerPools()) as { id: string; powers: Power[] }[] },
@@ -1103,7 +1126,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
           const unslotted = { ...power, powerSet: set.id, level: power.available + 1, slots: [] } as SelectedPower;
           const { projection: beta, magnitudes } = betaReference(unslotted, build, atId, rawGlobal);
           // The engine's OWN copy of this power — the evidence both adjudications rest on.
-          const enginePower = bundlePowers.get(projectionKey(set.id, power.internalName));
+          const enginePower = engineBundle.get(projectionKey(set.id, power.internalName));
           const mags = magnitudeDeltas(
             tag,
             engine.grantedMagnitudes,
@@ -1240,6 +1263,136 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
     }
     expect(deltas).toEqual([]);
   }, 60000);
+
+  // PROD6C-3b — the targets-hit slider, which every fixture in this file left at zero. The
+  // display bag a surface renders is the built bag AFTER the power's own slider is applied to it
+  // (`withTargetsHit`): an effect carrying `perTarget` grows with the foes hit, and one the power
+  // lists in `stacksLinear` is multiplied by the capped stack count. The engine had the transform
+  // (`stacking.rs`, ported for the TOTALS in PROD6B-2d) but `granted.rs` never called it, so every
+  // magnitude row it emitted was a one-target row — and no gate could see that, because
+  // `targetsHitValues: {}` is the identity on both sides.
+  //
+  // Same two-part shape as the level and Alpha sweeps: parity alone would stay green if the
+  // transform were dropped from BOTH sides at once, so each side must also be shown to MOVE.
+  // A fork whose corpus reaches the transform on no power is reported and skipped rather than
+  // passing vacuously — the reach is measured with the beta's own bag builder, not asserted.
+  it.each(SERVERS)('%s: granted magnitudes scale with the targets-hit slider', async (server) => {
+    await loadDataset(server);
+
+    const deltas: string[] = [];
+    const adjudicated: string[] = [];
+    let sliders = 0;
+    let bagsChanged = 0;
+    let betaMoved = 0;
+    let engineMoved = 0;
+
+    for (const atId of STANDARD_ARCHETYPE_IDS) {
+      const build = buildFor(server, atId);
+      const powers = [...build.primary.powers, ...build.secondary.powers];
+      // Data-discovered (Rule 0 — no power is named here): the powers this fork gives a slider,
+      // each dragged to the maximum its OWN data declares.
+      const sliderMax = new Map<string, number>();
+      for (const power of powers) {
+        const info = getStackingInfo(power);
+        if (info) sliderMax.set(power.internalName, info.maxStacks);
+      }
+      if (sliderMax.size === 0) continue;
+      sliders += sliderMax.size;
+
+      // The slider state is keyed by internalName, exactly as the store keys it — including the
+      // collisions that keying carries (`characterStateAdapter`), so the engine sees what the
+      // surfaces see.
+      const ctx = ctxWith({ targetsHitValues: Object.fromEntries(sliderMax) });
+      const engineBundle = bundlePowers(server);
+      const totals = engineTotals(server, build, ctx);
+      const projection = mapPowerProjection(totals.power_projection);
+      const unslid = mapPowerProjection(engineTotals(server, build).power_projection);
+      // A slider dragged back to Off is an EXPLICIT zero, and on the display that is the
+      // identity — not the totals path's "no foes were hit, so the buff does not fire"
+      // (PROD6B-2d). No other fixture here sets one: they all leave the map empty, which both
+      // sides read as absent, so the two readings of zero looked the same.
+      const zeroedTotals = engineTotals(server, build, ctxWith({
+        targetsHitValues: Object.fromEntries([...sliderMax.keys()].map((name) => [name, 0])),
+      }));
+      const zeroed = mapPowerProjection(zeroedTotals.power_projection);
+      const rawGlobal = mapGlobal(totals.bonuses);
+      // The accumulator sees the slider too, so a stacked self-buff moves the build-wide bonus
+      // every row's "final" tier reads. Each comparison below takes the globals from its OWN run.
+      const rawGlobalZero = mapGlobal(zeroedTotals.bonuses);
+
+      for (const power of powers) {
+        const targetsHit = sliderMax.get(power.internalName);
+        if (targetsHit === undefined) continue;
+        const key = projectionKey(power.powerSet, power.internalName);
+        const engine = projection.get(key);
+        if (!engine) continue;
+
+        const plainBag = buildDisplayEffects(power);
+        const slidBag = withTargetsHit(power, plainBag, targetsHit);
+        if (slidBag !== plainBag) bagsChanged += 1;
+
+        const { magnitudes } = betaReference(power, build, atId, rawGlobal, { targetsHit });
+        const { magnitudes: before } = betaReference(power, build, atId, rawGlobal);
+        for (const [rowKey, row] of magnitudes) {
+          const other = before.get(rowKey);
+          if (other && Math.abs(row.tiers.base - other.tiers.base) > TOLERANCE) betaMoved += 1;
+        }
+        const engineBefore = new Map((unslid.get(key)?.grantedMagnitudes ?? []).map((r) => [r.rowKey, r]));
+        for (const row of engine.grantedMagnitudes) {
+          const other = engineBefore.get(row.rowKey);
+          if (other && Math.abs(row.value.base - other.value.base) > TOLERANCE) engineMoved += 1;
+        }
+
+        // The engine's OWN copy of this power, dragged to the same setting — the evidence the
+        // shape adjudication rests on.
+        const enginePower = engineBundle.get(key);
+        const mags = magnitudeDeltas(
+          `${atId}/${power.internalName}@${targetsHit}`,
+          engine.grantedMagnitudes,
+          magnitudes,
+          slidBag as Record<string, unknown>,
+          enginePower
+            ? withTargetsHit(power, buildDisplayEffects(enginePower as unknown as Power), targetsHit) as Record<string, unknown>
+            : {},
+          targetsHit,
+        );
+        deltas.push(...mags.real);
+        adjudicated.push(...mags.adjudicated.map((d) => `${atId}/${power.internalName}.${d}`));
+
+        const atZero = magnitudeDeltas(
+          `${atId}/${power.internalName}@0`,
+          zeroed.get(key)?.grantedMagnitudes ?? [],
+          betaReference(power, build, atId, rawGlobalZero).magnitudes,
+          plainBag as Record<string, unknown>,
+        );
+        deltas.push(...atZero.real);
+        adjudicated.push(...atZero.adjudicated.map((d) => `${atId}/${power.internalName}@0.${d}`));
+      }
+    }
+
+    // eslint-disable-next-line no-console
+    console.warn(
+      `[PROD6C-3b targets-hit] ${server}: ${sliders} powers carry a stacking slider, ` +
+        `${bagsChanged} display bags change under it, ${betaMoved} beta / ${engineMoved} engine rows move`,
+    );
+    if (adjudicated.length) {
+      // eslint-disable-next-line no-console
+      console.warn(`[PROD6C-3b targets-hit] ${server} engine-supersedes-beta (accepted, ${adjudicated.length}):\n    ${adjudicated.slice(0, 20).join('\n    ')}`);
+    }
+    if (deltas.length) {
+      // eslint-disable-next-line no-console
+      console.error(`\n[PROD6C-3b targets-hit] ${server} (${deltas.length} deltas)\n    ${deltas.slice(0, 40).join('\n    ')}`);
+    }
+    if (bagsChanged === 0) {
+      // eslint-disable-next-line no-console
+      console.warn(`[PROD6C-3b targets-hit] ${server}: no power's display bag changes under its own slider — this fork's corpus cannot grade the transform`);
+      expect(deltas).toEqual([]);
+      return;
+    }
+    expect(betaMoved, `${server}: the slider moved no beta row`).toBeGreaterThan(0);
+    expect(engineMoved, `${server}: the slider moved no engine row`).toBeGreaterThan(0);
+    expect(deltas).toEqual([]);
+  }, 180000);
 
   // PROD6B-2c. Every fixture above builds at 50, which is precisely the level the retired pin
   // agreed with — so a magnitude resolved at a fixed 50 and one resolved at the build level were

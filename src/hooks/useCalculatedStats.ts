@@ -413,6 +413,9 @@ export function usePowerProjection(
 ): PowerProjection | null {
   const result = useCharacterCalculation();
   const serverId = useBuildStore((state) => state.build.serverId);
+  // The slider value the display bag's per-target transform reads (PROD6C-3b). A HELD power
+  // carries it on its own selection, so only the on-demand call below needs it passed.
+  const targetsHit = useUIStore((state) => (internalName ? state.targetsHitValues[internalName] : undefined));
   const { powerProjection, engineStateJson } = result;
 
   return useMemo(() => {
@@ -421,11 +424,11 @@ export function usePowerProjection(
     if (held) return held;
     if (engineStateJson === null) return null;
 
-    const json = projectPowerJson(serverId as ServerId, engineStateJson, powerSet, internalName);
+    const json = projectPowerJson(serverId as ServerId, engineStateJson, powerSet, internalName, targetsHit);
     if (json === null) return null;
     const projected = JSON.parse(json) as EnginePowerProjection | null;
     return projected ? mapOnePowerProjection(projected) : null;
-  }, [powerSet, internalName, powerProjection, engineStateJson, serverId]);
+  }, [powerSet, internalName, powerProjection, engineStateJson, serverId, targetsHit]);
 }
 
 // ============================================

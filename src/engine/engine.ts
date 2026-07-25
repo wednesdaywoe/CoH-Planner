@@ -74,7 +74,8 @@ export function recalcJson(server: ServerId, buildJson: string): string | null {
  * Project ONE power against a serialized `CharacterState` — including a power the build does
  * not hold, which is what the info surfaces render while you hover the picker (PROD6C). The
  * build's `power_projection` block already covers every SELECTED power, so this is only for
- * the unheld case. Returns the engine's `PowerProjection` JSON, `"null"` for a ref the
+ * the unheld case — which is also why `targetsHit` is a parameter: a held power carries its
+ * stacking-slider value on its own selection, an unheld one has no selection to carry it. Returns the engine's `PowerProjection` JSON, `"null"` for a ref the
  * dataset has no power for, or `null` if the dataset isn't loaded yet.
  */
 export function projectPowerJson(
@@ -82,7 +83,8 @@ export function projectPowerJson(
   buildJson: string,
   powerSet: string,
   internalName: string,
+  targetsHit?: number,
 ): string | null {
   const handle = handles.get(server);
-  return handle ? handle.project_power(buildJson, powerSet, internalName) : null;
+  return handle ? handle.project_power(buildJson, powerSet, internalName, targetsHit) : null;
 }

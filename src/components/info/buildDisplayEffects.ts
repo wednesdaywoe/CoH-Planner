@@ -95,3 +95,157 @@ export function buildDisplayEffects(
 
   return bag as PowerEffects;
 }
+
+// ---------------------------------------------------------------------------
+// the per-target transform (PROD6C-3b)
+// ---------------------------------------------------------------------------
+//
+// Unlike everything above this is NOT a pure function of the power: it reads the power's own
+// stacking-slider value out of the UI store. It lives here anyway because it transforms the
+// same bag, immediately after it is built, and because the engine's `stacking.rs` mirrors the
+// pair — the slider gate and the adjustment — as one step of `display_effects`.
+
+
+/**
+ * Check if a value (or by-type sub-values) has a perTarget field.
+ */
+export function hasPerTargetField(value: unknown): boolean {
+  if (typeof value !== 'object' || value === null) return false;
+  if ('perTarget' in value) return true;
+  // Check by-type sub-objects (defenseBuff, resistance, etc.)
+  for (const subVal of Object.values(value as Record<string, unknown>)) {
+    if (typeof subVal === 'object' && subVal !== null && 'perTarget' in subVal) return true;
+  }
+  return false;
+}
+
+/**
+ * Data-driven detection: show stacking slider for either per-target AoE
+ * scaling (perTarget metadata + maxTargets) or linear self-stacking
+ * (`effects.maxStacks` set explicitly, e.g. Psychokinetic Barrier).
+ */
+export function getStackingInfo(power: Power): { maxStacks: number; label: string } | null {
+  if (!power.effects) return null;
+
+  // AoE per-target powers (Soul Drain, Eclipse, Power Sink, etc.) — when
+  // any effect carries a `perTarget` field, the slider's natural axis is
+  // "targets hit" with max from stats.maxTargets. Soul Drain in particular
+  // also has effects.maxStacks (self-stack on double-cast), but the
+  // per-target story is the dominant one for tooltip math, so check it
+  // first to prevent the smaller stack-2 cap from winning.
+  const hasPerTarget = Object.values(power.effects).some(v => hasPerTargetField(v));
+  if (hasPerTarget) {
+    const maxTargets = power.stats?.maxTargets;
+    if (maxTargets && maxTargets > 1 && maxTargets !== 255) {
+      return { maxStacks: maxTargets, label: 'Targets Hit' };
+    }
+  }
+
+  // Linear self-stacking — power declares maxStacks directly. Doesn't
+  // require perTarget metadata; the slider just multiplies scale of any
+  // effect listed in `effects.stacksLinear`. Falls through here when there
+  // is no per-target scaling (e.g. Siphon Speed's caster recharge buff).
+  if (power.effects.maxStacks) {
+    // Ramp-stacking powers (Spirit Ward → 1 stack per 3s within one cast)
+    // carry `stackInterval`; recast-stacking powers (Crab Spider Serum,
+    // Build Up, etc.) don't. Surface the cadence on the slider label only
+    // for the ramp case so we don't mislabel recast stacking as "every Xs".
+    const label = power.effects.stackInterval && power.effects.stackInterval > 0
+      ? `Stacks (every ${power.effects.stackInterval}s)`
+      : 'Stacks';
+    return { maxStacks: power.effects.maxStacks, label };
+  }
+
+  return null;
+}
+
+/**
+ * Adjust ScaledEffect scale values for per-target stacking.
+ * At N targets: effective_scale = scale + perTarget × (N - 1)
+ * Recursively handles by-type objects (defenseBuff, resistance).
+ */
+function adjustScaledValue(value: unknown, targetsHit: number): unknown {
+  if (typeof value !== 'object' || value === null) return value;
+  if ('scale' in value && 'perTarget' in value) {
+    const se = value as { scale: number; table: string; perTarget?: number };
+    if (se.perTarget && targetsHit > 1) {
+      return { ...se, scale: se.scale + se.perTarget * (targetsHit - 1) };
+    }
+    return value;
+  }
+  // By-type object — recurse into sub-entries
+  const result: Record<string, unknown> = {};
+  let changed = false;
+  for (const [k, v] of Object.entries(value as Record<string, unknown>)) {
+    const adjusted = adjustScaledValue(v, targetsHit);
+    result[k] = adjusted;
+    if (adjusted !== v) changed = true;
+  }
+  return changed ? result : value;
+}
+
+/**
+ * Multiply the `scale` field of a ScaledEffect (or every leaf of a by-type
+ * object) by `multiplier`. Used for linear self-stacking — every additional
+ * stack just adds another instance of the base magnitude.
+ */
+function multiplyScale(value: unknown, multiplier: number): unknown {
+  if (multiplier === 1) return value;
+  if (typeof value !== 'object' || value === null) return value;
+  if ('scale' in value && typeof (value as { scale: unknown }).scale === 'number') {
+    const se = value as { scale: number; [k: string]: unknown };
+    return { ...se, scale: se.scale * multiplier };
+  }
+  // By-type object — recurse
+  const result: Record<string, unknown> = {};
+  let changed = false;
+  for (const [k, v] of Object.entries(value as Record<string, unknown>)) {
+    const adj = multiplyScale(v, multiplier);
+    result[k] = adj;
+    if (adj !== v) changed = true;
+  }
+  return changed ? result : value;
+}
+
+/**
+ * Create an adjusted copy of effects with per-target scale values multiplied
+ * (perTarget AoE math) and/or stacks-linear effects multiplied by stack count.
+ */
+function adjustEffectsForTargets(
+  effects: PowerEffects,
+  targetsHit: number
+): PowerEffects {
+  if (targetsHit <= 1) return effects;
+  const stacksLinear = new Set(effects.stacksLinear || []);
+  const adjusted: Record<string, unknown> = {};
+  let changed = false;
+  for (const [key, value] of Object.entries(effects)) {
+    let adj = adjustScaledValue(value, targetsHit);
+    // Linear self-stack multiply — but only for keys NOT already driven by
+    // perTarget (adjustScaledValue above handles those); applying both would
+    // double-scale. Honor a per-effect cap so a lower-cap key (Psychokinetic
+    // Barrier's absorb, cap 2) doesn't over-multiply when the slider (maxStacks
+    // 3) is dragged past its own limit.
+    if (stacksLinear.has(key) && !hasPerTargetField(value)) {
+      const cap = effects.stackCaps?.[key] ?? effects.maxStacks;
+      const n = cap ? Math.min(targetsHit, cap) : targetsHit;
+      adj = multiplyScale(adj, n);
+    }
+    adjusted[key] = adj;
+    if (adj !== value) changed = true;
+  }
+  return (changed ? adjusted : effects) as PowerEffects;
+}
+
+/**
+ * The display bag a surface renders for one power at its current slider setting: the built bag
+ * when the power shows no stacking slider or the slider is at 0/1, else the adjusted copy.
+ *
+ * The `targetsHit > 1` identity is the DISPLAY rule, and deliberately not the totals one — the
+ * accumulator reads an absent count as zero foes and zeroes a `perTarget` buff (PROD6B-2d).
+ * A display row is only ever grown here, never zeroed.
+ */
+export function withTargetsHit(power: Power, effects: PowerEffects, targetsHit: number): PowerEffects {
+  if (!getStackingInfo(power) || targetsHit <= 1) return effects;
+  return adjustEffectsForTargets(effects, targetsHit);
+}
