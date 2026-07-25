@@ -49,10 +49,13 @@ export const ParasiticAura: Power = {
     }
   },
   "atoms": [
-    ["Recovery",null,0.3,1,45,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,2,1,30,"Melee_Debuff_Dam","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kDefensiveAdaptation Source.Mode? !"],
-    ["Unmapped",null,0.09,1,45,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kRestedAdaptation Source.Mode?",true],
-    ["Unmapped",null,0.03,1,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
-    ["Unmapped",null,2.66,1,30,"Melee_Debuff_Dam","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true]
+    ["Recovery",null,0.3,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,2,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kDefensiveAdaptation Source.Mode? !"],
+    ["Unmapped",null,0.09,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kRestedAdaptation Source.Mode?",true],
+    ["Unmapped",null,0.03,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
+    ["Unmapped",null,2.66,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true]
+  ],
+  "damageTypes": [
+    "Lethal"
   ]
 };

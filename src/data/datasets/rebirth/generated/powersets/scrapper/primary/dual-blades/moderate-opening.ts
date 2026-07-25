@@ -58,7 +58,7 @@ export const ModerateOpening: Power = {
     ["Damage","Lethal",2.003421,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Lethal",1.16,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
     ["Damage","Lethal",1.16,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true],
-    ["EntCreate",null,1,52,5,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Ignore",2,null,5.25,1,null,true,null,null,null,null,"kDD_BonusAoEMode_1 source.Mode?",true]
+    ["Meta",null,1,52,5,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Ignore",2,null,5.25,1,null,true,null,null,null,null,"kDD_BonusAoEMode_1 source.Mode?",true]
   ],
   "specialEffects": [
     {
@@ -67,5 +67,8 @@ export const ModerateOpening: Power = {
       "label": "Lethal_Dmg"
     }
   ],
-  "requires": "Scrapper_Defense.Shield_Defense !"
+  "requires": "Scrapper_Defense.Shield_Defense !",
+  "setsModes": [
+    "DD_BonusAoEMode_2"
+  ]
 };

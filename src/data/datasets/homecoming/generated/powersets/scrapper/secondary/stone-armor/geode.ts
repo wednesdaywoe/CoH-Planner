@@ -99,85 +99,12 @@ export const Geode: Power = {
       }
     },
     "summon": {
+      "displayName": "Geode",
       "duration": 99999,
-      "entity": "Class_Minion_Pets",
       "isPseudoPet": false,
       "powers": [
         "Redirects.Stone_Armor.Geode",
         "Redirects.Stone_Armor.Geode_Scaling"
-      ],
-      "resolvedEntities": [
-        {
-          "displayName": "Geode",
-          "duration": 99999,
-          "copyCreatorMods": true,
-          "abilities": [
-            {
-              "name": "Geode",
-              "displayName": "Geode",
-              "type": "Auto",
-              "damage": [],
-              "effects": [
-                {
-                  "type": "KnockupProtection",
-                  "scale": 10000,
-                  "table": "Melee_Ones",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "KnockbackProtection",
-                  "scale": 10000,
-                  "table": "Melee_Ones",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "Immobilize",
-                  "magnitude": 1000,
-                  "scale": 0.2,
-                  "table": "Melee_Ones",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "Knockup",
-                  "magnitude": 1,
-                  "scale": 10,
-                  "table": "Melee_Ones",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "DefenseDebuff",
-                  "scale": 100,
-                  "table": "Melee_Ones",
-                  "ignoreStrength": true
-                }
-              ],
-              "recharge": 120,
-              "castTime": 0,
-              "activatePeriod": 0.1,
-              "effectArea": "SingleTarget"
-            },
-            {
-              "name": "Geode_Scaling",
-              "displayName": "Geode",
-              "type": "Auto",
-              "damage": [],
-              "effects": [
-                {
-                  "type": "Taunt",
-                  "magnitude": 3,
-                  "scale": 1,
-                  "table": "Melee_InherentTaunt"
-                }
-              ],
-              "recharge": 120,
-              "castTime": 0,
-              "activatePeriod": 0.1,
-              "effectArea": "Sphere",
-              "radius": 30,
-              "maxTargets": 5
-            }
-          ]
-        }
       ]
     },
     "taunt": {

@@ -52,6 +52,6 @@ export const GravityShield: Power = {
     }
   },
   "atoms": [
-    ["Resistance","Smashing",3,1,0.75,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kWarshade_Blaster_Mode Source.Mode? !"]
+    ["Resistance","Smashing",3,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kWarshade_Blaster_Mode Source.Mode? !"]
   ]
 };

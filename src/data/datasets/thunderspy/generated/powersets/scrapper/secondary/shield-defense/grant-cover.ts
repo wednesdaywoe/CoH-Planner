@@ -43,6 +43,12 @@ export const GrantCover: Power = {
   "maxSlots": 6,
   "effects": {
     "buffDuration": 2.25,
+    "debuffResistance": {
+      "recharge": {
+        "scale": 0.3,
+        "table": "Melee_Ones"
+      }
+    },
     "defenseBuff": {
       "aoe": {
         "scale": 1.125,
@@ -82,20 +88,21 @@ export const GrantCover: Power = {
       }
     },
     "durations": {
+      "debuffResistance": 2.25,
       "defenseBuff": 2.25
     }
   },
   "atoms": [
-    ["Defense","Ranged",1.125,1,2.25,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq !"],
-    ["Defense","Melee",1.125,1,2.25,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq !"],
-    ["Defense","AoE",1.125,1,2.25,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq !"],
-    ["Defense","Smashing",1.125,1,2.25,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq !"],
-    ["Defense","Lethal",1.125,1,2.25,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq !"],
-    ["Defense","Fire",1.125,1,2.25,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq !"],
-    ["Defense","Cold",1.125,1,2.25,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq !"],
-    ["Defense","Energy",1.125,1,2.25,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq !"],
-    ["Defense","Negative",1.125,1,2.25,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq !"],
-    ["Unmapped",null,0.4,1,2.25,"Melee_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["RechargeTime",null,0.3,1,2.25,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Defense","Ranged",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq !"],
+    ["Defense","Melee",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq !"],
+    ["Defense","AoE",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq !"],
+    ["Defense","Smashing",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq !"],
+    ["Defense","Lethal",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq !"],
+    ["Defense","Fire",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq !"],
+    ["Defense","Cold",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq !"],
+    ["Defense","Energy",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq !"],
+    ["Defense","Negative",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq !"],
+    ["Unmapped",null,0.4,1,2.25,"Melee_Res_Boolean","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["RechargeTime",null,0.3,1,2.25,"Melee_Ones","Res","Magnitude","Target","Any",true,"No",null,null,null,1]
   ]
 };

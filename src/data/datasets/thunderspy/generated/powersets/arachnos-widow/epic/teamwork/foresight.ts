@@ -52,12 +52,12 @@ export const Foresight: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,0.2,1,0.75,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.5,1,0.75,"Melee_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","AoE",0.75,1,0.75,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Ranged",0.75,1,0.75,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Melee",0.75,1,0.75,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.1,1,0.75,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
+    ["Unmapped",null,0.2,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.5,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Defense","AoE",0.75,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Defense","Ranged",0.75,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Defense","Melee",0.75,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
   ],
   "mechanicType": "parentMechanic"
 };

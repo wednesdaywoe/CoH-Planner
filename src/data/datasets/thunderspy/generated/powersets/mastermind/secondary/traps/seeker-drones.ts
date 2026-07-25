@@ -36,7 +36,6 @@ export const SeekerDrones: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
-    "Mastermind Archetype Sets",
     "Ranged AoE Damage",
     "Stuns",
     "To Hit Debuff",
@@ -62,5 +61,8 @@ export const SeekerDrones: Power = {
   "atoms": [
     ["EntCreate",null,1,1,240,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["EntCreate",null,1,1,240,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ],
+  "damageTypes": [
+    "Energy"
   ]
 };

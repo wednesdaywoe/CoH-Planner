@@ -56,11 +56,15 @@ export const PsiWhipCrack: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,0.82,1,0,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Knockback",0.3,0.4000000059604645,0,"Ranged_Knockback","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.82,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",0.3,0.4000000059604645,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["EntCreate",null,-1,1,15,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1.3223,1,0,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Knockback",0.3,0.4000000059604645,0,"Ranged_Knockback","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,8,1,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Unmapped",null,1.3223,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Knockback",0.3,0.4000000059604645,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Unmapped",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+  ],
+  "damageTypes": [
+    "Energy",
+    "Psionic"
   ]
 };

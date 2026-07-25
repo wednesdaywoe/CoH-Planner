@@ -78,7 +78,7 @@ export const MineralArmor: Power = {
     }
   },
   "atoms": [
-    ["Recovery",null,1,1,2,"Melee_Ones","Cur","Expression","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Recovery",null,1,1,2,"Melee_Ones","Cur","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"endurancecost power.boosted>"],
     ["Defense","Psionic",2.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
     ["Perception",null,0.6,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Perception",null,0.6,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],

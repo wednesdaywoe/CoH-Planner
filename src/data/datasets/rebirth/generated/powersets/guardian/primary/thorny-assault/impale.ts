@@ -102,7 +102,7 @@ export const Impale: Power = {
     }
   },
   "atoms": [
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"No",3,null,null,1,null,true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"No",3,null,null,1,null,true],
     ["Damage","Lethal",1.64,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Movement","FlyMode",-1.6,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],

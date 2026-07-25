@@ -40,8 +40,8 @@ export const Inexhaustible: Power = {
     }
   },
   "atoms": [
-    ["Recovery",null,0.3,1,10.25,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,2,1,10.25,"Melee_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Recovery",null,0.3,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,2,1,10.25,"Melee_Res_Boolean","Res","Magnitude","Self","Any",true,"No",null,null,null,1]
   ],
   "mechanicType": "parentMechanic"
 };

@@ -39,6 +39,10 @@ export const Reconstruction: Power = {
     "durations": {
       "resistance": 60
     },
+    "healing": {
+      "scale": 2.5,
+      "table": "Melee_HealSelf"
+    },
     "resistance": {
       "toxic": {
         "scale": 2,
@@ -47,8 +51,8 @@ export const Reconstruction: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,2.5,1,0,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Toxic",2,1,60,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Unmapped",null,2.5,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Resistance","Toxic",2,1,60,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1]
   ],
   "requires": "Stalker_Defense.Willpower.Rise_to_the_Challenge !"
 };

@@ -40,12 +40,12 @@ export const PoisonDart: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Toxic",
       "scale": 0.7,
       "table": "Ranged_Damage"
     },
     {
-      "type": "Special",
+      "type": "Toxic",
       "scale": 0.1,
       "table": "Ranged_Damage",
       "duration": 2.1,
@@ -63,10 +63,14 @@ export const PoisonDart: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,0.7,1,0,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.1,1,2.1,"Ranged_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,1,1],
-    ["Regeneration",null,-0.25,1,15,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.2,1,4,"Melee_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1.141,1,0,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Unmapped",null,0.7,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.1,1,2.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,1,1],
+    ["Regeneration",null,-0.25,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.2,1,4,"Melee_Slow","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1.141,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+  ],
+  "damageTypes": [
+    "Lethal",
+    "Toxic"
   ]
 };

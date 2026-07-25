@@ -43,7 +43,7 @@ export const GravimetricSnare: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Negative",
     "scale": 0.1,
     "table": "Ranged_Damage",
     "duration": 9.2,
@@ -57,10 +57,14 @@ export const GravimetricSnare: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,0.1,1,9.2,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,2,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.2,1,6,"Ranged_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.20748,1,9.2,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,2,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Immobilized",2,3,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Unmapped",null,0.1,1,9.2,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,2,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.2,1,6,"Ranged_Slow","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.20748,1,9.2,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,2,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Immobilized",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+  ],
+  "damageTypes": [
+    "Negative",
+    "Smashing"
   ]
 };

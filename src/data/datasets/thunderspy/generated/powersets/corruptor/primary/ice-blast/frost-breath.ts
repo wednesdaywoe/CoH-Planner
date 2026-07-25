@@ -44,17 +44,20 @@ export const FrostBreath: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Cold",
     "scale": 0.7,
     "table": "Ranged_Damage",
     "duration": 0.6,
     "tickRate": 0.5
   },
   "atoms": [
-    ["Unmapped",null,0.7,1,0.6,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.2,1,10,"Ranged_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.7,1,0.6,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,0.5,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> critter eq &&",true],
-    ["Unmapped",null,0.91076,1,0.6,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,0.5,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,0.91076,1,0.6,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,0.5,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> player eq &&",true]
+    ["Unmapped",null,0.7,1,0.6,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.2,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.7,1,0.6,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,0.5,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> critter eq &&",true],
+    ["Unmapped",null,0.91076,1,0.6,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,0.5,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Unmapped",null,0.91076,1,0.6,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,0.5,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> player eq &&",true]
+  ],
+  "damageTypes": [
+    "Cold"
   ]
 };

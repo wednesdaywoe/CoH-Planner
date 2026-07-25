@@ -37,24 +37,26 @@ export const CallSwarm: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
-    "Mastermind Archetype Sets",
     "Ranged Damage",
     "Slow Movement",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 0.264,
     "table": "Ranged_Damage",
     "duration": 1.5,
     "tickRate": 0.375
   },
   "atoms": [
-    ["Unmapped",null,0.264,1,1.5,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,0.375,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1,1,8,"Ranged_Debuff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.2,1,8,"Ranged_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,0.3199999928474426,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"temporary_powers.temporary_powers.Pack_Mentality_Lock source.ownPower? !"],
-    ["Unmapped",null,0.368199,1,1.5,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,0.375,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Unmapped",null,0.264,1,1.5,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,0.375,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,1,1,8,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.2,1,8,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1,0.3199999928474426,0,"Ranged_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"temporary_powers.temporary_powers.Pack_Mentality_Lock source.ownPower? !"],
+    ["Unmapped",null,0.368199,1,1.5,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,0.375,1,null,null,null,null,null,null,"enttype target> player eq",true]
+  ],
+  "damageTypes": [
+    "Lethal"
   ]
 };

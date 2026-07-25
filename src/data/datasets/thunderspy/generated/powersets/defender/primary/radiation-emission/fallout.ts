@@ -16,6 +16,7 @@ export const Fallout: Power = {
   "shortHelp": "Post-Defeat: PBAoE, Extreme DMG(Energy), Foe -To Hit, -DEF, -DMG, -Res(All)",
   "icon": "radiationpoisoning_fallout.png",
   "powerType": "Click",
+  "targetType": "Dead Teammate",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -36,7 +37,6 @@ export const Fallout: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Accurate To-Hit Debuff",
-    "Defender Archetype Sets",
     "Defense Debuff",
     "Ranged AoE Damage",
     "To Hit Debuff",
@@ -52,5 +52,8 @@ export const Fallout: Power = {
   },
   "atoms": [
     ["EntCreate",null,-1,1,1,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ],
+  "damageTypes": [
+    "Energy"
   ]
 };

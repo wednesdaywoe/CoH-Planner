@@ -66,5 +66,8 @@ export const Decoy: Power = {
         }
       }
     }
+  ],
+  "damageTypes": [
+    "Energy"
   ]
 };

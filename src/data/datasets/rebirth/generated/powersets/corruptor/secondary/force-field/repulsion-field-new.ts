@@ -48,7 +48,7 @@ export const RepulsionFieldNew: Power = {
     ["Mez","Knockback",3,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || enttype target> player eq && entref target> entref source> eq ! &&",true],
     ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || enttype target> player eq && entref target> entref source> eq ! &&",true],
     ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || enttype target> player eq && entref target> entref source> eq ! &&",true],
-    ["GrantPower",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",1,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq",true]
+    ["GlobalChanceMod",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",1,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq",true]
   ],
   "requires": "Corruptor_Buff.Force_Field.Force_Bubble"
 };

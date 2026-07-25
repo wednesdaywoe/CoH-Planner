@@ -46,7 +46,7 @@ export const LivingShadows: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Negative",
     "scale": 0.13,
     "table": "Ranged_Damage",
     "duration": 5.2,
@@ -65,15 +65,19 @@ export const LivingShadows: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,0.13,1,5.2,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,2,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.75,1,8,"Ranged_DeBuff_ToHit","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Mez","Immobilized",15,4,0,"Ranged_Immobilize","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Immobilized",15,3,1,"Ranged_Immobilize","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Immobilized",7.5,1,0,"Ranged_Immobilize","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.99,1,15,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.356913,1,5.2,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,2,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,0.13,1,5.2,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,2,1,null,null,null,null,null,null,"enttype target> critter eq kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || IncarnateBoss target.HasTag? || &&",true],
-    ["Unmapped",null,0.178456,1,5.2,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,2,1,null,null,null,null,null,null,"enttype target> player eq kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || &&",true],
-    ["Mez","Immobilized",4,3,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Unmapped",null,0.13,1,5.2,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,2,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.75,1,8,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Mez","Immobilized",15,4,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Immobilized",15,3,1,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Immobilized",7.5,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.99,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.356913,1,5.2,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,2,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Unmapped",null,0.13,1,5.2,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,2,1,null,null,null,null,null,null,"enttype target> critter eq kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || IncarnateBoss target.HasTag? || &&",true],
+    ["Unmapped",null,0.178456,1,5.2,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,2,1,null,null,null,null,null,null,"enttype target> player eq kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || &&",true],
+    ["Mez","Immobilized",4,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+  ],
+  "damageTypes": [
+    "Negative",
+    "Smashing"
   ]
 };

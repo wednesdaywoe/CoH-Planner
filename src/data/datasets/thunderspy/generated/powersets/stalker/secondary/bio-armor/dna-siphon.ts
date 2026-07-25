@@ -57,21 +57,29 @@ export const DNASiphon: Power = {
       "scale": 5,
       "table": "Melee_Ones"
     },
+    "healing": {
+      "scale": 1.25,
+      "table": "Melee_HealSelf"
+    },
     "regenBuff": {
       "scale": 0.2,
       "table": "Melee_Ones"
     }
   },
   "atoms": [
-    ["Unmapped",null,0.2,1,0,"Melee_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 >"],
-    ["Unmapped",null,1.25,1,0,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 >"],
-    ["Endurance",null,5,1,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 >"],
-    ["Regeneration",null,0.2,1,30,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 =="],
-    ["Unmapped",null,-1,1,30,"Melee_Ones","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kOffensiveAdaptation Source.Mode? ! &&"],
-    ["Unmapped",null,0.375,1,0,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 > kDefensiveAdaptation Source.Mode? &&",true],
-    ["Unmapped",null,0.06,1,30,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 == kRestedAdaptation Source.Mode? &&",true],
-    ["Unmapped",null,-2,1,30,"Melee_Res_Boolean","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq kOffensiveAdaptation Source.Mode? ! &&",true],
-    ["Unmapped",null,-1.33,1,30,"Melee_Ones","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kOffensiveAdaptation Source.Mode? &&",true],
-    ["Unmapped",null,-2.66,1,30,"Melee_Res_Boolean","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq kOffensiveAdaptation Source.Mode? &&",true]
+    ["Unmapped",null,0.2,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 >"],
+    ["Unmapped",null,1.25,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 >"],
+    ["Endurance",null,5,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 >"],
+    ["Regeneration",null,0.2,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 =="],
+    ["Unmapped",null,-1,1,30,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kOffensiveAdaptation Source.Mode? ! &&"],
+    ["Unmapped",null,0.375,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 > kDefensiveAdaptation Source.Mode? &&",true],
+    ["Unmapped",null,0.06,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 == kRestedAdaptation Source.Mode? &&",true],
+    ["Unmapped",null,-2,1,30,"Melee_Res_Boolean","Cur","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq kOffensiveAdaptation Source.Mode? ! &&",true],
+    ["Unmapped",null,-1.33,1,30,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kOffensiveAdaptation Source.Mode? &&",true],
+    ["Unmapped",null,-2.66,1,30,"Melee_Res_Boolean","Cur","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq kOffensiveAdaptation Source.Mode? &&",true]
+  ],
+  "damageTypes": [
+    "Lethal",
+    "Toxic"
   ]
 };

@@ -46,8 +46,11 @@ export const AssassinsFrenzy: Power = {
   "fromHideBonus": 0.3999999999999999,
   "midCombatCast": 1,
   "atoms": [
-    ["Unmapped",null,2.5,1,0,"Melee_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted source.ownPower? !"],
-    ["Unmapped",null,-1,1,8,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Unmapped",null,2.5,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted source.ownPower? !"],
+    ["Unmapped",null,-1,1,8,"Melee_Ones","Str","Magnitude","Self","Any",true,"No",null,null,null,1]
+  ],
+  "damageTypes": [
+    "Lethal"
   ]
 };

@@ -16,7 +16,7 @@ export const HellonEarth: Power = {
   "shortHelp": "Ranged, Pet +Dmg, +To Hit, Summon Living Hellfire",
   "icon": "demonsummoning_hellonearth.png",
   "powerType": "Click",
-  "targetType": "Self",
+  "targetType": "Own Pet (Alive)",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,

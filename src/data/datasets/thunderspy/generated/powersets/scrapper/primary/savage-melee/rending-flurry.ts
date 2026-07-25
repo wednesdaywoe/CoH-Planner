@@ -44,7 +44,10 @@ export const RendingFlurry: Power = {
     "table": "Melee_Damage"
   },
   "atoms": [
-    ["Unmapped",null,1,1,0,"Melee_Damage","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1,1,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Unmapped",null,1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy source.ownPowerNum? .06 * 1.18 + @StdResult *"],
+    ["Unmapped",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1]
+  ],
+  "damageTypes": [
+    "Lethal"
   ]
 };

@@ -48,7 +48,7 @@ export const BurstofSpeed: Power = {
   },
   "atoms": [
     ["EntCreate",null,1,1,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,2,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,-1,2,30,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Unmapped",null,1,2,0,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,-1,2,30,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1]
   ]
 };

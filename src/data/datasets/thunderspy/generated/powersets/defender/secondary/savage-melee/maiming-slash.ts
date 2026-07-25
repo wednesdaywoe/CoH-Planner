@@ -45,10 +45,27 @@ export const MaimingSlash: Power = {
     "table": "Melee_Damage"
   },
   "atoms": [
-    ["Unmapped",null,1.16,1,0,"Melee_Damage","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1,1,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted source.ownPower? !"],
-    ["Unmapped",null,0.7,1,10,"Melee_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,0,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,1,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.BloodDrink source.ownPower?",true],
-    ["Unmapped",null,1.919227,1,0,"Melee_Damage","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Unmapped",null,1.16,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted source.ownPower? !"],
+    ["Unmapped",null,0.7,1,10,"Melee_Slow","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"No",null,null,1,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.BloodDrink source.ownPower?",true],
+    ["Unmapped",null,1.919227,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+  ],
+  "conditionalEffects": [
+    {
+      "id": "blooddrink",
+      "label": "BloodDrink",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "healing": {
+          "scale": 1,
+          "table": "Melee_HealSelf"
+        }
+      }
+    }
+  ],
+  "damageTypes": [
+    "Lethal"
   ]
 };

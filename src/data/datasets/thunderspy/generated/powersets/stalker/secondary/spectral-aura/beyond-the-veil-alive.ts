@@ -32,9 +32,19 @@ export const BeyondTheVeilAlive: Power = {
     "Endurance Modification"
   ],
   "maxSlots": 6,
+  "effects": {
+    "buffDuration": 0.5,
+    "durations": {
+      "healing": 0.5
+    },
+    "healing": {
+      "scale": 5,
+      "table": "Melee_HealSelf"
+    }
+  },
   "atoms": [
-    ["Unmapped",null,10,1,15,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,5,1,0.5,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,1,1],
-    ["Unmapped",null,1,1,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints source> 1 <",true]
+    ["Unmapped",null,10,1,15,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,5,1,0.5,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"No",null,null,1,1],
+    ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints source> 1 <",true]
   ]
 };

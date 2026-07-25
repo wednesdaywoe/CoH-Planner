@@ -37,12 +37,12 @@ export const IncreaseDensity: Power = {
   ],
   "maxSlots": 6,
   "atoms": [
-    ["Unmapped",null,2.5,1,240,"Ranged_Res_Dmg","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,-30,1,240,"Ranged_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["Unmapped",null,-10,1,240,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.1,1,240,"Ranged_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"],
-    ["Unmapped",null,1.25,1,240,"Ranged_Res_Dmg","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.05,1,240,"Ranged_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"],
-    ["Unmapped",null,3,1,240,"Ranged_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
+    ["Unmapped",null,2.5,1,240,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,-30,1,240,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Unmapped",null,-10,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.1,1,240,"Ranged_Slow","Str","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"],
+    ["Unmapped",null,1.25,1,240,"Ranged_Res_Dmg","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.05,1,240,"Ranged_Slow","Str","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"],
+    ["Unmapped",null,3,1,240,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
   ]
 };

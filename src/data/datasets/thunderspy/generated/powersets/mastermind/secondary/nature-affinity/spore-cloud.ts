@@ -40,7 +40,12 @@ export const SporeCloud: Power = {
   "maxSlots": 6,
   "effects": {
     "buffDuration": 5,
+    "damageDebuff": {
+      "scale": 2.25,
+      "table": "Ranged_Debuff_Dam"
+    },
     "durations": {
+      "damageDebuff": 5,
       "regenDebuff": 5
     },
     "regenDebuff": {
@@ -49,15 +54,15 @@ export const SporeCloud: Power = {
     }
   },
   "atoms": [
-    ["Damage","Smashing",2.25,1,5,"Ranged_Debuff_Dam","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Damage","Lethal",2.25,1,5,"Ranged_Debuff_Dam","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Damage","Fire",2.25,1,5,"Ranged_Debuff_Dam","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Damage","Cold",2.25,1,5,"Ranged_Debuff_Dam","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Damage","Energy",2.25,1,5,"Ranged_Debuff_Dam","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Damage","Negative",2.25,1,5,"Ranged_Debuff_Dam","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Damage","Psionic",2.25,1,5,"Ranged_Debuff_Dam","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Damage","Toxic",2.25,1,5,"Ranged_Debuff_Dam","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1.5,1,5,"Ranged_DeBuff_ToHit","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Regeneration",null,-2,1,5,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["DamageBuff","Smashing",2.25,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["DamageBuff","Lethal",2.25,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["DamageBuff","Fire",2.25,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["DamageBuff","Cold",2.25,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["DamageBuff","Energy",2.25,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["DamageBuff","Negative",2.25,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["DamageBuff","Psionic",2.25,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["DamageBuff","Toxic",2.25,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1.5,1,5,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Regeneration",null,-2,1,5,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1]
   ]
 };

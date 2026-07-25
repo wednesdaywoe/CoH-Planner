@@ -1196,7 +1196,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Immobilized",2,3,0,"Melee_Immobilize","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Fire",1.313839,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true],
           ["Damage","Fire",1.313839,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
-          ["Damage","Fire",1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true],
+          ["Damage","Fire",1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
           ["Damage","Fire",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true]
         ],
         "effects": {
@@ -1258,7 +1258,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Fire",0.5,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || ! arch source> class_scrapper == &&",true],
           ["Damage","Fire",1.971164,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true],
           ["Damage","Fire",1.971164,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
-          ["Damage","Fire",1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true],
+          ["Damage","Fire",1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
           ["Damage","Fire",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true]
         ],
         "effects": {
@@ -1314,7 +1314,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Fire",1.660797,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq arch source> class_scrapper == &&",true],
           ["Damage","Fire",1.468026,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true],
           ["Damage","Fire",1.468026,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
-          ["Damage","Fire",1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true],
+          ["Damage","Fire",1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
           ["Damage","Fire",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true]
         ],
         "effects": {
@@ -1465,7 +1465,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Fire",0.92443,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq arch source> class_scrapper == &&",true],
           ["Damage","Fire",0.594277,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true],
           ["Damage","Fire",0.594277,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
-          ["Damage","Fire",1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true],
+          ["Damage","Fire",1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
           ["Damage","Fire",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true]
         ],
         "effects": {
@@ -1932,7 +1932,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Energy",1.660797,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Energy",1.660797,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true],
           ["Damage","Energy",1.660797,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
-          ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true],
+          ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
           ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true]
         ],
         "effects": {
@@ -2034,7 +2034,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Energy",1.016922,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true],
           ["Damage","Energy",1.016922,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
-          ["Damage","Energy",0.99,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true],
+          ["Damage","Energy",0.99,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
           ["Damage","Energy",0.99,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true]
         ],
         "effects": {
@@ -3910,12 +3910,12 @@ export const EPIC_POOLS_RAW = {
           ["Resistance","Negative",4,1,120,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Resistance","Toxic",5,1,120,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Recovery",null,1,1,120,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["EntCreate",null,0,1,120,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+          ["Stealth","Translucency",0,1,120,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["Endurance",null,-1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["Meta",null,1,1,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["Recovery",null,-100,1,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["GrantPower",null,-1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["GrantPower",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+          ["GlobalChanceMod",null,-1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+          ["GlobalChanceMod",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
         ],
         "effects": {
           "accuracy": 1,
@@ -3927,7 +3927,8 @@ export const EPIC_POOLS_RAW = {
           "durations": {
             "recoveryBuffUnenhanced": 120,
             "recoveryDebuff": 15,
-            "resistance": 120
+            "resistance": 120,
+            "stealth": 120
           },
           "enduranceDrain": {
             "scale": 1,
@@ -3969,6 +3970,12 @@ export const EPIC_POOLS_RAW = {
             "toxic": {
               "scale": 5,
               "table": "Melee_Res_Dmg"
+            }
+          },
+          "stealth": {
+            "translucency": {
+              "scale": 0,
+              "table": "Melee_Ones"
             }
           }
         }
@@ -4369,7 +4376,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","OnlyAffectsSelf",0.75,100,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["Regeneration",null,10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Recovery",null,4,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-          ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true]
+          ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true]
         ],
         "effects": {
           "accuracy": 1,
@@ -4744,7 +4751,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","OnlyAffectsSelf",0.75,100,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["Regeneration",null,10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Recovery",null,4,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-          ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true]
+          ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true]
         ],
         "effects": {
           "accuracy": 1,
@@ -5342,7 +5349,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","OnlyAffectsSelf",0.75,100,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["Regeneration",null,10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Recovery",null,4,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-          ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true]
+          ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true]
         ],
         "effects": {
           "accuracy": 1,
@@ -6773,7 +6780,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Untouchable",10,1,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["Endurance",null,30,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,30],
           ["Mez","Immobilized",4,50,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Stack",2,null,null,1,null,true],
-          ["EntCreate",null,1,1,90,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+          ["Meta",null,1,1,90,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["Mez","Stunned",2,30,0,"Melee_Stun","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
         "effects": {
@@ -6962,7 +6969,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Smashing",0.4,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || ! arch source> class_scrapper == &&",true],
           ["Damage","Smashing",0.22345,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq && arch source> class_stalker eq &&",true],
           ["Damage","Smashing",0.22345,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && arch source> class_stalker eq &&",true],
-          ["Damage","Smashing",0.4,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < && arch source> class_stalker eq &&",true],
+          ["Damage","Smashing",0.4,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < && arch source> class_stalker eq &&",true,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
           ["Damage","Smashing",0.4,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq && arch source> class_stalker eq &&",true],
           ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? enttype target> player eq || kRage Source> 0.7 < && arch source> class_brute == &&",true],
           ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < && arch source> class_brute == &&",true],
@@ -7077,7 +7084,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || ! arch source> class_scrapper == &&",true],
           ["Damage","Negative",1.23,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq && arch source> class_stalker eq &&",true],
           ["Damage","Negative",1.23,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && arch source> class_stalker eq &&",true],
-          ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < && arch source> class_stalker eq &&",true],
+          ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < && arch source> class_stalker eq &&",true,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
           ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq && arch source> class_stalker eq &&",true],
           ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? enttype target> player eq || kRage Source> 0.7 < && arch source> class_brute == &&",true],
           ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < && arch source> class_brute == &&",true],
@@ -7141,7 +7148,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Negative",1.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || ! arch source> class_scrapper == &&",true],
           ["Damage","Negative",1.48,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq && arch source> class_stalker eq &&",true],
           ["Damage","Negative",1.48,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && arch source> class_stalker eq &&",true],
-          ["Damage","Negative",1.1,1,0,"Ranged_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < && arch source> class_stalker eq &&",true],
+          ["Damage","Negative",1.1,1,0,"Ranged_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < && arch source> class_stalker eq &&",true,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
           ["Damage","Negative",1.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq && arch source> class_stalker eq &&",true],
           ["Meta",null,0.05,1,0,"Ranged_Ones","Cur","Magnitude","Self","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? enttype target> player eq || kRage Source> 0.7 < && arch source> class_brute == &&",true],
           ["Mez","Taunt",1,4,0,"Ranged_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < && arch source> class_brute == &&",true],
@@ -7217,7 +7224,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Negative",0.935,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || ! arch source> class_scrapper == &&",true],
           ["Damage","Negative",1.258634,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq && arch source> class_stalker eq &&",true],
           ["Damage","Negative",1.258634,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && arch source> class_stalker eq &&",true],
-          ["Damage","Negative",0.935,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < && arch source> class_stalker eq &&",true],
+          ["Damage","Negative",0.935,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < && arch source> class_stalker eq &&",true,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
           ["Damage","Negative",0.935,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq && arch source> class_stalker eq &&",true],
           ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? enttype target> player eq || kRage Source> 0.7 < && arch source> class_brute == &&",true],
           ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < && arch source> class_brute == &&",true],
@@ -7410,7 +7417,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","OnlyAffectsSelf",0.75,100,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["Regeneration",null,10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Recovery",null,4,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-          ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true]
+          ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true]
         ],
         "effects": {
           "accuracy": 1,
@@ -8205,12 +8212,12 @@ export const EPIC_POOLS_RAW = {
           ["Resistance","Negative",4,1,120,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Resistance","Toxic",5,1,120,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Recovery",null,1,1,120,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["EntCreate",null,0,1,120,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+          ["Stealth","Translucency",0,1,120,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["Endurance",null,-1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["Meta",null,1,1,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["Recovery",null,-100,1,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["GrantPower",null,-1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["GrantPower",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+          ["GlobalChanceMod",null,-1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+          ["GlobalChanceMod",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
         ],
         "effects": {
           "accuracy": 1,
@@ -8222,7 +8229,8 @@ export const EPIC_POOLS_RAW = {
           "durations": {
             "recoveryBuffUnenhanced": 120,
             "recoveryDebuff": 15,
-            "resistance": 120
+            "resistance": 120,
+            "stealth": 120
           },
           "enduranceDrain": {
             "scale": 1,
@@ -8264,6 +8272,12 @@ export const EPIC_POOLS_RAW = {
             "toxic": {
               "scale": 5,
               "table": "Melee_Res_Dmg"
+            }
+          },
+          "stealth": {
+            "translucency": {
+              "scale": 0,
+              "table": "Melee_Ones"
             }
           }
         }
@@ -9191,12 +9205,12 @@ export const EPIC_POOLS_RAW = {
           ["Resistance","Negative",4,1,120,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Resistance","Toxic",5,1,120,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Recovery",null,1,1,120,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["EntCreate",null,0,1,120,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+          ["Stealth","Translucency",0,1,120,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["Endurance",null,-1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["Meta",null,1,1,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["Recovery",null,-100,1,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["GrantPower",null,-1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["GrantPower",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+          ["GlobalChanceMod",null,-1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+          ["GlobalChanceMod",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
         ],
         "effects": {
           "accuracy": 1,
@@ -9208,7 +9222,8 @@ export const EPIC_POOLS_RAW = {
           "durations": {
             "recoveryBuffUnenhanced": 120,
             "recoveryDebuff": 15,
-            "resistance": 120
+            "resistance": 120,
+            "stealth": 120
           },
           "enduranceDrain": {
             "scale": 1,
@@ -9250,6 +9265,12 @@ export const EPIC_POOLS_RAW = {
             "toxic": {
               "scale": 5,
               "table": "Melee_Res_Dmg"
+            }
+          },
+          "stealth": {
+            "translucency": {
+              "scale": 0,
+              "table": "Melee_Ones"
             }
           }
         }
@@ -10546,8 +10567,8 @@ export const EPIC_POOLS_RAW = {
           ["Recovery",null,1,1,120,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
           ["Recovery",null,-1,1,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
           ["Endurance",null,-1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-          ["GrantPower",null,-1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["GrantPower",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+          ["GlobalChanceMod",null,-1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+          ["GlobalChanceMod",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
         ],
         "effects": {
           "accuracy": 1,
@@ -10848,7 +10869,7 @@ export const EPIC_POOLS_RAW = {
           ["DamageBuff","Toxic",5,1,90,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
           ["DamageBuff","Psionic",5,1,90,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
           ["Mez","Immobilized",4,50,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Stack",2,null,null,1,null,true],
-          ["EntCreate",null,1,1,60,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+          ["Meta",null,1,1,60,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
         ],
         "effects": {
           "accuracy": 1,
@@ -11185,7 +11206,7 @@ export const EPIC_POOLS_RAW = {
           ["DamageBuff","Toxic",5,1,90,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
           ["DamageBuff","Psionic",5,1,90,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
           ["Mez","Immobilized",4,50,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Stack",2,null,null,1,null,true],
-          ["EntCreate",null,1,1,60,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+          ["Meta",null,1,1,60,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
         ],
         "effects": {
           "accuracy": 1,
@@ -11638,7 +11659,7 @@ export const EPIC_POOLS_RAW = {
           ["DamageBuff","Toxic",5,1,90,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
           ["DamageBuff","Psionic",5,1,90,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
           ["Mez","Immobilized",4,50,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Stack",2,null,null,1,null,true],
-          ["EntCreate",null,1,1,60,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+          ["Meta",null,1,1,60,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
         ],
         "effects": {
           "accuracy": 1,
@@ -12008,8 +12029,8 @@ export const EPIC_POOLS_RAW = {
           ["Recovery",null,1,1,120,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
           ["Recovery",null,-1,1,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
           ["Endurance",null,-1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-          ["GrantPower",null,-1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["GrantPower",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+          ["GlobalChanceMod",null,-1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+          ["GlobalChanceMod",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
         ],
         "effects": {
           "accuracy": 1,
@@ -12445,7 +12466,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","OnlyAffectsSelf",0.75,100,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["Regeneration",null,10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Recovery",null,4,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-          ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true]
+          ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true]
         ],
         "effects": {
           "accuracy": 1,
@@ -14445,7 +14466,7 @@ export const EPIC_POOLS_RAW = {
           "Universal Debuff"
         ],
         "atoms": [
-          ["GrantPower",null,54,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+          ["Meta",null,54,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
           ["Resistance","Smashing",-2,1,20,"Melee_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
           ["Resistance","Lethal",-2,1,20,"Melee_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
           ["Resistance","Fire",-2,1,20,"Melee_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
@@ -15654,7 +15675,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Untouchable",15,10,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["Endurance",null,50,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
           ["Mez","Immobilized",4,50,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Stack",2,null,null,1,null,true],
-          ["EntCreate",null,1,1,60,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+          ["Meta",null,1,1,60,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
         ],
         "effects": {
           "accuracy": 1,
@@ -15823,7 +15844,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","OnlyAffectsSelf",0.75,100,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["Regeneration",null,10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Recovery",null,4,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-          ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true]
+          ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true]
         ],
         "effects": {
           "accuracy": 1,
@@ -16171,7 +16192,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","OnlyAffectsSelf",0.75,100,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["Regeneration",null,10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Recovery",null,4,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-          ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true]
+          ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true]
         ],
         "effects": {
           "accuracy": 1,
@@ -16691,7 +16712,7 @@ export const EPIC_POOLS_RAW = {
           ["DamageBuff","Toxic",5,1,90,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
           ["DamageBuff","Psionic",5,1,90,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
           ["Mez","Immobilized",4,50,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Stack",2,null,null,1,null,true],
-          ["EntCreate",null,1,1,60,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+          ["Meta",null,1,1,60,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
         ],
         "effects": {
           "accuracy": 1,
@@ -16774,7 +16795,7 @@ export const EPIC_POOLS_RAW = {
           "Universal Debuff"
         ],
         "atoms": [
-          ["GrantPower",null,54,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+          ["Meta",null,54,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
           ["Resistance","Smashing",-2,1,20,"Melee_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
           ["Resistance","Lethal",-2,1,20,"Melee_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
           ["Resistance","Fire",-2,1,20,"Melee_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
@@ -16982,7 +17003,7 @@ export const EPIC_POOLS_RAW = {
           "Universal Travel"
         ],
         "atoms": [
-          ["EntCreate",null,0.15,1,8,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+          ["Stealth","Translucency",0.15,1,8,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["Mez","Teleport",0.1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
           ["Stealth","RadiusPvE",120,1,8.5,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
           ["Stealth","RadiusPvP",400,1,8.5,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
@@ -17018,6 +17039,10 @@ export const EPIC_POOLS_RAW = {
             },
             "stealthPvP": {
               "scale": 400,
+              "table": "Melee_Ones"
+            },
+            "translucency": {
+              "scale": 0.15,
               "table": "Melee_Ones"
             }
           },
@@ -17436,7 +17461,7 @@ export const EPIC_POOLS_RAW = {
           "Universal Debuff"
         ],
         "atoms": [
-          ["GrantPower",null,54,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+          ["Meta",null,54,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
           ["Resistance","Smashing",-2,1,20,"Melee_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
           ["Resistance","Lethal",-2,1,20,"Melee_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
           ["Resistance","Fire",-2,1,20,"Melee_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
@@ -17608,7 +17633,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Lethal",2.158393,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Lethal",2.158393,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true],
           ["Damage","Lethal",2.158393,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
-          ["Damage","Lethal",1.64,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true],
+          ["Damage","Lethal",1.64,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
           ["Damage","Lethal",1.84,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true]
         ],
         "effects": {
@@ -17993,7 +18018,7 @@ export const EPIC_POOLS_RAW = {
         "powerType": "Auto",
         "targetType": "Self",
         "requires": "Epic.Martial_Mastery_Tanker.Throwing_Dagger Epic.Martial_Mastery_Tanker.Battle_Hardened ||",
-        "maxSlots": 6,
+        "maxSlots": 0,
         "allowedEnhancements": [],
         "allowedSetCategories": [],
         "atoms": [
@@ -19709,7 +19734,7 @@ export const EPIC_POOLS_RAW = {
           "Universal Debuff"
         ],
         "atoms": [
-          ["GrantPower",null,54,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+          ["Meta",null,54,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
           ["Resistance","Smashing",-2,1,20,"Melee_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
           ["Resistance","Lethal",-2,1,20,"Melee_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
           ["Resistance","Fire",-2,1,20,"Melee_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
@@ -20138,8 +20163,8 @@ export const EPIC_POOLS_RAW = {
           ["Recovery",null,1,1,120,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
           ["Recovery",null,-1,1,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
           ["Endurance",null,-1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-          ["GrantPower",null,-1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["GrantPower",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+          ["GlobalChanceMod",null,-1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+          ["GlobalChanceMod",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
         ],
         "effects": {
           "accuracy": 1,
@@ -21857,7 +21882,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Held",0.75,3,0,"Melee_Immobilize","Cur","Duration","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Mez","Repel",1,1,0.75,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Mez","Held",0.75,1.5,0,"Melee_Immobilize","Cur","Duration","Target","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-          ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
+          ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
         ],
         "effects": {
           "accuracy": 1,
@@ -22324,7 +22349,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Lethal",2.77943,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Lethal",2.77943,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq && arch source> Class_Stalker eq &&",true],
           ["Damage","Lethal",2.77943,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && arch source> Class_Stalker eq &&",true],
-          ["Damage","Lethal",1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < && arch source> Class_Stalker eq &&",true],
+          ["Damage","Lethal",1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < && arch source> Class_Stalker eq &&",true,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
           ["Damage","Lethal",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq && arch source> Class_Stalker eq &&",true],
           ["Damage","Lethal",2.77943,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq arch source> class_scrapper == &&",true],
           ["Damage","Lethal",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || arch source> class_scrapper == &&",true],
@@ -22397,7 +22422,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 180,
           "endurance": 26,
           "activationTime": 1.17,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "duration": 30,
+            "entity": "Pets_Patron_Powers_Water_Spout_Stalker",
+            "isPseudoPet": false
+          }
         }
       },
       {
@@ -22432,7 +22462,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","OnlyAffectsSelf",0.75,100,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["Regeneration",null,10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Recovery",null,4,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-          ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true]
+          ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true]
         ],
         "effects": {
           "accuracy": 1,
@@ -22653,7 +22683,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Energy",0.827743,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Energy",1.655485,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq && arch source> Class_Stalker eq &&",true],
           ["Damage","Energy",1.655485,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && arch source> Class_Stalker eq &&",true],
-          ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < && arch source> Class_Stalker eq &&",true],
+          ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < && arch source> Class_Stalker eq &&",true,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
           ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq && arch source> Class_Stalker eq &&",true],
           ["Damage","Energy",1.655485,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq arch source> class_scrapper == &&",true],
           ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || arch source> class_scrapper == &&",true],
@@ -22721,7 +22751,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Energy",1.119887,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Energy",2.239774,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq && arch source> Class_Stalker eq &&",true],
           ["Damage","Energy",2.239774,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && arch source> Class_Stalker eq &&",true],
-          ["Damage","Energy",2.3,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < && arch source> Class_Stalker eq &&",true],
+          ["Damage","Energy",2.3,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < && arch source> Class_Stalker eq &&",true,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
           ["Damage","Energy",2.3,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq && arch source> Class_Stalker eq &&",true],
           ["Damage","Energy",2.239774,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq arch source> class_scrapper == &&",true],
           ["Damage","Energy",2.3,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || arch source> class_scrapper == &&",true],
@@ -22787,7 +22817,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Energy",0.600831,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Energy",1.201663,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq && arch source> Class_Stalker eq &&",true],
           ["Damage","Energy",1.201663,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && arch source> Class_Stalker eq &&",true],
-          ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < && arch source> Class_Stalker eq &&",true],
+          ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < && arch source> Class_Stalker eq &&",true,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
           ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq && arch source> Class_Stalker eq &&",true],
           ["Damage","Energy",1.201663,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq arch source> class_scrapper == &&",true],
           ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || arch source> class_scrapper == &&",true],
@@ -22991,7 +23021,7 @@ export const EPIC_POOLS_RAW = {
           ["Endurance",null,-0.125,1,0,"Melee_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Energy",1.183997,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq && arch source> Class_Stalker eq &&",true],
           ["Damage","Energy",1.183997,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && arch source> Class_Stalker eq &&",true],
-          ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < && arch source> Class_Stalker eq &&",true],
+          ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < && arch source> Class_Stalker eq &&",true,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
           ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq && arch source> Class_Stalker eq &&",true],
           ["Damage","Energy",1.183997,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq arch source> class_scrapper == &&",true],
           ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || arch source> class_scrapper == &&",true],
@@ -23143,7 +23173,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Energy",0.132674,1,3.1,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Energy",0.75814,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq && arch source> Class_Stalker eq &&",true],
           ["Damage","Energy",0.75814,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && arch source> Class_Stalker eq &&",true],
-          ["Damage","Energy",1.02,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < && arch source> Class_Stalker eq &&",true],
+          ["Damage","Energy",1.02,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < && arch source> Class_Stalker eq &&",true,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
           ["Damage","Energy",1.02,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq && arch source> Class_Stalker eq &&",true],
           ["Damage","Energy",0.75814,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq arch source> class_scrapper == &&",true],
           ["Damage","Energy",1.02,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || arch source> class_scrapper == &&",true],
@@ -23356,7 +23386,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Negative",1.087427,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Negative",1.087427,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq && arch source> Class_Stalker eq &&",true],
           ["Damage","Negative",1.087427,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && arch source> Class_Stalker eq &&",true],
-          ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < && arch source> Class_Stalker eq &&",true],
+          ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < && arch source> Class_Stalker eq &&",true,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
           ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq && arch source> Class_Stalker eq &&",true],
           ["Damage","Negative",1.087427,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq arch source> class_scrapper == &&",true],
           ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || arch source> class_scrapper == &&",true],
@@ -23420,7 +23450,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Negative",1.859175,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Negative",1.859175,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq && arch source> Class_Stalker eq &&",true],
           ["Damage","Negative",1.859175,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && arch source> Class_Stalker eq &&",true],
-          ["Damage","Negative",2.3,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < && arch source> Class_Stalker eq &&",true],
+          ["Damage","Negative",2.3,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < && arch source> Class_Stalker eq &&",true,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
           ["Damage","Negative",2.3,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq && arch source> Class_Stalker eq &&",true],
           ["Damage","Negative",1.859175,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq arch source> class_scrapper == &&",true],
           ["Damage","Negative",2.3,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || arch source> class_scrapper == &&",true],
@@ -23480,7 +23510,7 @@ export const EPIC_POOLS_RAW = {
           ["Defense","Psionic",2.7,1,15,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Defense","Energy",2.7,1,15,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Defense","Negative",2.7,1,15,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-          ["EntCreate",null,0,1,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+          ["Stealth","Translucency",0,1,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
         ],
         "effects": {
           "accuracy": 1,
@@ -23532,7 +23562,14 @@ export const EPIC_POOLS_RAW = {
             }
           },
           "durations": {
-            "defenseBuff": 15
+            "defenseBuff": 15,
+            "stealth": 15
+          },
+          "stealth": {
+            "translucency": {
+              "scale": 0,
+              "table": "Melee_Ones"
+            }
           }
         }
       },
@@ -25757,7 +25794,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Lethal",1.165037,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Lethal",1.165037,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq && arch source> class_stalker eq &&",true],
           ["Damage","Lethal",1.165037,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && arch source> class_stalker eq &&",true],
-          ["Damage","Lethal",0.84,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < && arch source> class_stalker eq &&",true],
+          ["Damage","Lethal",0.84,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < && arch source> class_stalker eq &&",true,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
           ["Damage","Lethal",0.84,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq && arch source> class_stalker eq &&",true]
         ],
         "effects": {
@@ -25867,7 +25904,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Lethal",1.115002,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Damage","Lethal",1.115002,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq && arch source> class_stalker eq &&",true],
           ["Damage","Lethal",1.115002,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && arch source> class_stalker eq &&",true],
-          ["Damage","Lethal",1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < && arch source> class_stalker eq &&",true],
+          ["Damage","Lethal",1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < && arch source> class_stalker eq &&",true,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
           ["Damage","Lethal",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq && arch source> class_stalker eq &&",true]
         ],
         "effects": {

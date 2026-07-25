@@ -51,9 +51,12 @@ export const FearsomeStare: Power = {
     }
   },
   "atoms": [
-    ["Mez","Terrorized",15,3,0,"Ranged_Fear","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1.5,1,20,"Ranged_DeBuff_ToHit","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Mez","Terrorized",10,1,0,"Ranged_Fear","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Terrorized",4,3,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Mez","Terrorized",15,3,0,"Ranged_Fear","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,1.5,1,20,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Mez","Terrorized",10,1,0,"Ranged_Fear","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Terrorized",4,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+  ],
+  "damageTypes": [
+    "Negative"
   ]
 };

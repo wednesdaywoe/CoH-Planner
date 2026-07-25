@@ -44,8 +44,7 @@ export const GravityDistortionField: Power = {
       "copyBoosts": true,
       "displayName": "Gravity Distortion Field",
       "duration": 60,
-      "entity": "PL_StaticObject",
-      "isPseudoPet": false,
+      "isPseudoPet": true,
       "powers": [
         "Redirects.Gravity_Control.Gravity_Distortion_Field_Pulse",
         "Redirects.Gravity_Control.Gravity_Distortion_Field_Slow",
@@ -69,6 +68,7 @@ export const GravityDistortionField: Power = {
                   "table": "Ranged_Damage"
                 }
               ],
+              "conditionalDamage": true,
               "effects": [
                 {
                   "type": "Hold",
@@ -132,7 +132,8 @@ export const GravityDistortionField: Power = {
             }
           ]
         }
-      ]
+      ],
+      "entity": "PL_StaticObject"
     }
   },
   "atoms": [

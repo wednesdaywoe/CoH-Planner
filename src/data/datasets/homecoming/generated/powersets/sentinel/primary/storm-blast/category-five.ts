@@ -46,9 +46,8 @@ export const CategoryFive: Power = {
       "copyBoosts": true,
       "displayName": "Category Five",
       "duration": 15,
-      "entity": "PL_StaticObject",
       "entityCount": 2,
-      "isPseudoPet": false,
+      "isPseudoPet": true,
       "powers": [
         "Pets.ResistAll_NoFly.ResistAll",
         "Redirects.Storm_Blast.Category_Five_Sentinel"
@@ -178,7 +177,8 @@ export const CategoryFive: Power = {
             }
           ]
         }
-      ]
+      ],
+      "entity": "PL_StaticObject"
     }
   },
   "atoms": [

@@ -69,7 +69,7 @@ export const Breathless: Power = {
     }
   },
   "atoms": [
-    ["Damage","Lethal",0.3,1,0,"Ranged_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Lethal",0.3,1,0,"Ranged_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"@Scale 0.02 Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPowerNum? * + @Value * @Effectiveness * @Strength *"],
     ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["DamageBuff","Smashing",2,1,15,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
     ["DamageBuff","Lethal",2,1,15,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],

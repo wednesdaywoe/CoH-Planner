@@ -68,7 +68,7 @@ export const ChargedBolts: Power = {
     ]
   },
   "atoms": [
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"No",3,null,null,1,null,true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"No",3,null,null,1,null,true],
     ["Damage","Energy",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Endurance",null,-0.07,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Recovery",null,-1,1,2,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224],

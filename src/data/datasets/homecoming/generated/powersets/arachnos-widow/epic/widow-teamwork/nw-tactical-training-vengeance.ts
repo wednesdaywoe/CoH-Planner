@@ -16,7 +16,7 @@ export const NWTacticalTrainingVengeance: Power = {
   "shortHelp": "Ranged (Targeted AoE), Teammates +DMG, +To Hit, +DEF(All), Res(Effects)",
   "icon": "widowteamwork_tacticaltrainingvengeance.png",
   "powerType": "Click",
-  "targetType": "Location",
+  "targetType": "Dead Teammate",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,

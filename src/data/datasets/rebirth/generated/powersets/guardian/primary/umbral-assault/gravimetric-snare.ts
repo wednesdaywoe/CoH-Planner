@@ -95,7 +95,7 @@ export const GravimetricSnare: Power = {
     }
   },
   "atoms": [
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"No",3,null,null,1,null,true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"No",3,null,null,1,null,true],
     ["Damage","Negative",0.11,1,3.6,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Smashing",0.11,1,3.6,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Immobilized",6,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],

@@ -44,7 +44,7 @@ export const PowerSiphon: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,1,1,20,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,1,1],
-    ["ToHit",null,2,1,20,"Melee_Buff_ToHit","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Unmapped",null,1,1,20,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,1,1],
+    ["ToHit",null,2,1,20,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",true,"No",null,null,null,1]
   ]
 };

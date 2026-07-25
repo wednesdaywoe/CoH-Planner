@@ -52,7 +52,7 @@ export const DragonsTail: Power = {
     }
   },
   "atoms": [
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"No",3,null,null,1,null,true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"No",3,null,null,1,null,true],
     ["Damage","Smashing",1.1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.75,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.75,null,null,null,null,null,null,"enttype target> player eq",true],

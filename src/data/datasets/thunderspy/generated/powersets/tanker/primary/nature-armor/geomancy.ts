@@ -82,15 +82,15 @@ export const Geomancy: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,0,1,1.25,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Smashing",0.07,1,1.25,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Lethal",0.07,1,1.25,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Fire",0.07,1,1.25,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Cold",0.07,1,1.25,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Energy",0.07,1,1.25,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Negative",0.07,1,1.25,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Psionic",0.07,1,1.25,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Toxic",0.07,1,1.25,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,100,1,1.25,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"]
+    ["Unmapped",null,0,1,1.25,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Resistance","Smashing",0.07,1,1.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Resistance","Lethal",0.07,1,1.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Resistance","Fire",0.07,1,1.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Resistance","Cold",0.07,1,1.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Resistance","Energy",0.07,1,1.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Resistance","Negative",0.07,1,1.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Resistance","Psionic",0.07,1,1.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Resistance","Toxic",0.07,1,1.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,100,1,1.25,"Melee_Ones","Res","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"]
   ]
 };

@@ -37,7 +37,6 @@ export const UmbraBeast: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
-    "Controller Archetype Sets",
     "Fear",
     "Immobilize",
     "Pet Damage",

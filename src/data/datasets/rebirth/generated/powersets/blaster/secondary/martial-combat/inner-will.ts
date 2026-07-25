@@ -128,11 +128,11 @@ export const InnerWill: Power = {
     ["Enhancement","Terrorized",0.5,1,30,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["Heal",null,0.075,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["Heal",null,0.075,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
-    ["Mez","Stunned",1,1,30,"Melee_Ones","Cur","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"mod.kStun source> 0 >",true],
-    ["Mez","Sleep",1,1,30,"Melee_Ones","Cur","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"mod.kSleep source> 0 >",true],
-    ["Mez","Immobilized",1,1,30,"Melee_Ones","Cur","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"mod.kImmobilize source> 0 >",true],
-    ["Mez","Held",1,1,30,"Melee_Ones","Cur","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"mod.kHeld source> 0 >",true],
-    ["Mez","Confused",1,1,30,"Melee_Ones","Cur","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"mod.kConfused source> 0 >",true],
-    ["Mez","Terrorized",1,1,30,"Melee_Ones","Cur","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"mod.kTerrorized source> 0 >",true]
+    ["Mez","Stunned",1,1,30,"Melee_Ones","Cur","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"mod.kStun source> 0 >",true,null,null,null,null,"mod.kStun source> 1 + negate"],
+    ["Mez","Sleep",1,1,30,"Melee_Ones","Cur","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"mod.kSleep source> 0 >",true,null,null,null,null,"mod.kSleep source> 1 + negate"],
+    ["Mez","Immobilized",1,1,30,"Melee_Ones","Cur","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"mod.kImmobilize source> 0 >",true,null,null,null,null,"mod.kImmobilize source> 1 + negate"],
+    ["Mez","Held",1,1,30,"Melee_Ones","Cur","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"mod.kHeld source> 0 >",true,null,null,null,null,"mod.kHeld source> 1 + negate"],
+    ["Mez","Confused",1,1,30,"Melee_Ones","Cur","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"mod.kConfused source> 0 >",true,null,null,null,null,"mod.kConfused source> 1 + negate"],
+    ["Mez","Terrorized",1,1,30,"Melee_Ones","Cur","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"mod.kTerrorized source> 0 >",true,null,null,null,null,"mod.kTerrorized source> 1 + negate"]
   ]
 };

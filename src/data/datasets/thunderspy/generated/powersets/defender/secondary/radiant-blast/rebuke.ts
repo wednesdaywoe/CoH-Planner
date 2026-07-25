@@ -44,9 +44,12 @@ export const Rebuke: Power = {
     "table": "Ranged_Damage"
   },
   "atoms": [
-    ["Unmapped",null,1,1,0,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq target.isFriend? ! &&"],
-    ["Unmapped",null,0.5,1,0,"Ranged_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Ghost target.HasTag? Demon target.HasTag? || Undead target.HasTag? || target.isFriend? ! &&"],
-    ["Unmapped",null,1.7,1,0,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq target.isFriend? ! &&",true],
-    ["Unmapped",null,-1,1,0,"Ranged_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"target.isFriend?",true]
+    ["Unmapped",null,1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq target.isFriend? ! &&"],
+    ["Unmapped",null,0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Ghost target.HasTag? Demon target.HasTag? || Undead target.HasTag? || target.isFriend? ! &&"],
+    ["Unmapped",null,1.7,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq target.isFriend? ! &&",true],
+    ["Unmapped",null,-1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"target.isFriend?",true]
+  ],
+  "damageTypes": [
+    "Fire"
   ]
 };

@@ -57,11 +57,14 @@ export const KeeningWinds: Power = {
     }
   },
   "atoms": [
-    ["Mez","Confused",15,3,0,"Ranged_Fear","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Confused",8,1,0,"Ranged_Fear","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Endurance",null,-0.04,1,2.1,"Ranged_Ones","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,10,1,0,"Ranged_EndDrain","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Mez","Confused",4,4,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,-2.5,1,2.1,"Ranged_EndDrain","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Mez","Confused",15,3,0,"Ranged_Fear","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Confused",8,1,0,"Ranged_Fear","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Endurance",null,-0.04,1,2.1,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"No",null,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,10,1,0,"Ranged_EndDrain","Abs","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Mez","Confused",4,4,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Unmapped",null,-2.5,1,2.1,"Ranged_EndDrain","Abs","Magnitude","Target","PvP",true,"No",null,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true]
+  ],
+  "damageTypes": [
+    "Smashing"
   ]
 };

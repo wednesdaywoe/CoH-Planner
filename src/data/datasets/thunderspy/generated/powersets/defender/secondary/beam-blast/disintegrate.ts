@@ -42,14 +42,14 @@ export const Disintegrate: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Energy",
       "scale": 0.216,
       "table": "Ranged_Damage",
       "duration": 10.5,
       "tickRate": 1.1100000143051147
     },
     {
-      "type": "Special",
+      "type": "Energy",
       "scale": 0.108,
       "table": "Ranged_Damage",
       "duration": 10.5,
@@ -67,12 +67,15 @@ export const Disintegrate: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,0.216,1,10.5,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,1.1100000143051147,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.108,1,10.5,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,1.1100000143051147,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1,1,15,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Regeneration",null,-1.5,1,15,"Ranged_Ones","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.365649,1,10.5,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,1.1100000143051147,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,0.1825,1,10.5,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,1.1100000143051147,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,-6,1,15,"Ranged_Res_Boolean","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Unmapped",null,0.216,1,10.5,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,1.1100000143051147,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.108,1,10.5,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,1.1100000143051147,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,1,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Regeneration",null,-1.5,1,15,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.365649,1,10.5,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,1.1100000143051147,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Unmapped",null,0.1825,1,10.5,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,1.1100000143051147,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Unmapped",null,-6,1,15,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+  ],
+  "damageTypes": [
+    "Energy"
   ]
 };

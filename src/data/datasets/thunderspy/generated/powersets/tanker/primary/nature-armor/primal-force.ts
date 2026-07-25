@@ -32,7 +32,19 @@ export const PrimalForce: Power = {
     "Recharge"
   ],
   "maxSlots": 6,
+  "effects": {
+    "buffDuration": 15,
+    "durations": {
+      "slow": 15
+    },
+    "slow": {
+      "jumpHeight": {
+        "scale": 500,
+        "table": "Ranged_Ones"
+      }
+    }
+  },
   "atoms": [
-    ["Unmapped",null,-500,1,15,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Movement","JumpHeight",-500,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1]
   ]
 };

@@ -49,17 +49,17 @@ export const DisruptingTorrent: Power = {
   },
   "effects": {},
   "atoms": [
-    ["Unmapped",null,0.819,1,0,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.67,0.4000000059604645,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Regeneration",null,1,1,15,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,null,null,null,null,true],
-    ["Unmapped",null,1,1,0,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? 1 >= &&",true],
-    ["Unmapped",null,1.037488,1,0,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,1,1,0,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? 1 >= &&",true],
-    ["Unmapped",null,0.67,0.4000000059604645,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,1,1,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? 5 <",true],
-    ["Unmapped",null,1,1,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? 5 >=",true],
-    ["Unmapped",null,8,1,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,1,0.14000000059604645,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? 5 >= Dominator_Assault.Kinetic_Assault.Coalescence source.ownPower? &&",true]
+    ["Unmapped",null,0.819,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.67,0.4000000059604645,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Regeneration",null,1,1,15,"Ranged_Ones","Cur","Expression","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,null,null,null,null,true,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? -.08 * .1 - @StdResult *"],
+    ["Unmapped",null,1,1,0,"Ranged_Damage","Abs","Expression","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? 1 >= &&",true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? .063 * @StdResult *"],
+    ["Unmapped",null,1.037488,1,0,"Ranged_Damage","Abs","Expression","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Unmapped",null,1,1,0,"Ranged_Damage","Abs","Expression","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? 1 >= &&",true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? .079 * @StdResult *"],
+    ["Unmapped",null,0.67,0.4000000059604645,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? 5 <",true],
+    ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? 5 >=",true],
+    ["Unmapped",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Unmapped",null,1,0.14000000059604645,0,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? 5 >= Dominator_Assault.Kinetic_Assault.Coalescence source.ownPower? &&",true]
   ],
   "conditionalEffects": [
     {
@@ -73,5 +73,9 @@ export const DisruptingTorrent: Power = {
         "table": "Ranged_Damage"
       }
     }
+  ],
+  "damageTypes": [
+    "Energy",
+    "Smashing"
   ]
 };

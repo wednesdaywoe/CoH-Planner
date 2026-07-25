@@ -83,7 +83,7 @@ export const ChainInduction: Power = {
     ["Damage","Energy",0.52,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Meta",null,1,1,2,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["EntCreate",null,-1,1,1,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["EntCreate",null,1,59,4,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,4.300000190734863,1,null,true],
+    ["Meta",null,1,59,4,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,4.300000190734863,1,null,true],
     ["Endurance",null,-0.1,1,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Recovery",null,-1,1,4,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
@@ -102,6 +102,6 @@ export const ChainInduction: Power = {
     }
   ],
   "setsModes": [
-    "Peacebringer_Blaster_Mode"
+    "Chain_Induction"
   ]
 };

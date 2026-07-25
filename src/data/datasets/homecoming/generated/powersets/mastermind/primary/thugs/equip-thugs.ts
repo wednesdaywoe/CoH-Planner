@@ -16,7 +16,7 @@ export const EquipThugs: Power = {
   "shortHelp": "Ranged, Equip Thug Henchman",
   "icon": "thugs_equipthugs.png",
   "powerType": "Click",
-  "targetType": "Self",
+  "targetType": "Own Pet (Alive)",
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "RechargeTime"

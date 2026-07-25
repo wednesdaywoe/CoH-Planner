@@ -36,17 +36,27 @@ export const ConserveEnergy: Power = {
   "effects": {
     "buffDuration": 60,
     "durations": {
-      "regenBuff": 60
+      "regenBuff": 60,
+      "specialBuff": 60
     },
-    "effectDuration": 60,
+    "healing": {
+      "scale": 1,
+      "table": "Melee_HealSelf"
+    },
     "regenBuff": {
       "scale": 1.125,
       "table": "Melee_Ones"
+    },
+    "specialBuff": {
+      "stun": {
+        "scale": 1,
+        "table": "Melee_Stun"
+      }
     }
   },
   "atoms": [
-    ["Mez","Stunned",1,1,60,"Melee_Stun","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Regeneration",null,1.125,1,60,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,0,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Enhancement","Stunned",1,1,60,"Melee_Stun","Str","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Regeneration",null,1.125,1,60,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"No",null,null,null,1]
   ]
 };

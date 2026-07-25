@@ -48,8 +48,20 @@ export const WhiteDwarf: Power = {
   "effects": {
     "buffDuration": 2,
     "durations": {
+      "maxHPBuff": 2,
+      "movement": 2,
       "recoveryBuff": 2,
       "resistance": 2
+    },
+    "maxHPBuff": {
+      "scale": 7.5,
+      "table": "Melee_HealSelf"
+    },
+    "movement": {
+      "movementControl": {
+        "scale": 10,
+        "table": "Melee_Control"
+      }
     },
     "recoveryBuff": {
       "scale": 0.15,
@@ -87,18 +99,18 @@ export const WhiteDwarf: Power = {
     }
   },
   "atoms": [
-    ["Resistance","Smashing",3,1,2,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Lethal",3,1,2,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Fire",3,1,2,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Cold",3,1,2,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Energy",3,1,2,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Negative",3,1,2,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Toxic",3,1,2,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,7.5,1,2,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Recovery",null,0.15,1,2,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Movement","Control",10,1,2,"Melee_Control","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,100,1,2,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["Unmapped",null,-50,1,2.03,"Melee_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["Unmapped",null,5,1,2,"Melee_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
+    ["Resistance","Smashing",3,1,2,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Resistance","Lethal",3,1,2,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Resistance","Fire",3,1,2,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Resistance","Cold",3,1,2,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Resistance","Energy",3,1,2,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Resistance","Negative",3,1,2,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Resistance","Toxic",3,1,2,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["MaxHP",null,7.5,1,2,"Melee_HealSelf","Max","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Recovery",null,0.15,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Movement","Control",10,1,2,"Melee_Control","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,100,1,2,"Melee_Ones","Res","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Unmapped",null,-50,1,2.03,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Unmapped",null,5,1,2,"Melee_Res_Boolean","Res","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
   ]
 };

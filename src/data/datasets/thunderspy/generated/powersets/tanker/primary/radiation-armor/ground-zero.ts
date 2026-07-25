@@ -51,10 +51,14 @@ export const GroundZero: Power = {
     "table": "Melee_Damage"
   },
   "atoms": [
-    ["Unmapped",null,1,1,0,"Melee_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! target.isFriend? ! &&"],
-    ["Unmapped",null,2,1,10,"Melee_Debuff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! target.isFriend? ! &&"],
-    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Raid target.HasTag? ! &&"],
-    ["Unmapped",null,1,1,0,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! target.isFriend? &&",true],
-    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag?",true]
+    ["Unmapped",null,1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! target.isFriend? ! &&"],
+    ["Unmapped",null,2,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! target.isFriend? ! &&"],
+    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Raid target.HasTag? ! &&"],
+    ["Unmapped",null,1,1,0,"Melee_HealSelf","Abs","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! target.isFriend? &&",true],
+    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag?",true]
+  ],
+  "damageTypes": [
+    "Energy",
+    "Toxic"
   ]
 };

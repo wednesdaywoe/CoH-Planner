@@ -58,9 +58,12 @@ export const AssassinsPsiBlade: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,1.875,1,0,"Melee_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,-1,1,8,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,0.7111111283302307,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower? ! Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight_Lockout source.ownPower? ! && Temporary_Powers.Temporary_Powers.Boggled target.ownPower? ! &&"],
-    ["Resistance","Psionic",-2,1,5,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Unmapped",null,1.875,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,-1,1,8,"Melee_Ones","Str","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1,0.7111111283302307,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower? ! Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight_Lockout source.ownPower? ! && Temporary_Powers.Temporary_Powers.Boggled target.ownPower? ! &&"],
+    ["Resistance","Psionic",-2,1,5,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"No",null,null,null,1]
+  ],
+  "damageTypes": [
+    "Psionic"
   ]
 };

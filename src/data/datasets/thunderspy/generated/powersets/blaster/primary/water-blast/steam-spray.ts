@@ -61,11 +61,14 @@ export const SteamSpray: Power = {
     }
   ],
   "atoms": [
-    ["Unmapped",null,0.835,1,0.6,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.1,1,3.1,"Ranged_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,1,1],
-    ["Unmapped",null,1,1,8,"Ranged_Debuff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.073,1,10.03,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.855913,1,0.6,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,0.5,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Unmapped",null,0.835,1,0.6,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.1,1,3.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,1,1],
+    ["Unmapped",null,1,1,8,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.073,1,10.03,"Ranged_Ones","Str","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.855913,1,0.6,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,0.5,1,null,null,null,null,null,null,"enttype target> player eq",true]
+  ],
+  "damageTypes": [
+    "Fire"
   ]
 };

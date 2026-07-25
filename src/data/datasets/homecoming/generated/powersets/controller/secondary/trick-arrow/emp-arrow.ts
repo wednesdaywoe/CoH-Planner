@@ -174,8 +174,7 @@ export const EMPArrow: Power = {
       "copyBoosts": true,
       "displayName": "EMP Field",
       "duration": 240,
-      "entity": "PL_StaticObject",
-      "isPseudoPet": false,
+      "isPseudoPet": true,
       "powers": [
         "Redirects.Trick_Arrow.EMP_Arrow",
         "Redirects.Trick_Arrow.EMP_Arrow_Fx"
@@ -256,7 +255,8 @@ export const EMPArrow: Power = {
             }
           ]
         }
-      ]
+      ],
+      "entity": "PL_StaticObject"
     }
   },
   "atoms": [

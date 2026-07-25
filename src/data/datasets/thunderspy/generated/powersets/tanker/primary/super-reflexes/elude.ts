@@ -58,8 +58,13 @@ export const Elude: Power = {
     },
     "durations": {
       "defenseBuff": 60,
+      "maxHPBuff": 60,
       "movement": 60,
       "recoveryBuff": 60
+    },
+    "maxHPBuff": {
+      "scale": 4,
+      "table": "Melee_HealSelf"
     },
     "movement": {
       "runSpeed": {
@@ -73,14 +78,14 @@ export const Elude: Power = {
     }
   },
   "atoms": [
-    ["Defense","Melee",3,1,60,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Ranged",3,1,60,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","AoE",3,1,60,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Recovery",null,1,1,60,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Movement","Run",0.5,1,60,"Melee_SpeedRunning","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,60,"Melee_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,60,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["Unmapped",null,4,1,60,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,60,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
+    ["Defense","Melee",3,1,60,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Defense","Ranged",3,1,60,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Defense","AoE",3,1,60,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Recovery",null,1,1,60,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Movement","Run",0.5,1,60,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1,1,60,"Melee_Res_Boolean","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1,1,60,"Melee_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["MaxHP",null,4,1,60,"Melee_HealSelf","Max","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1,1,60,"Melee_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
   ]
 };

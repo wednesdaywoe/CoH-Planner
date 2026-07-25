@@ -43,14 +43,14 @@ export const DartBurst: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Toxic",
       "scale": 0.1785,
       "table": "Ranged_Damage",
       "duration": 0.8,
       "tickRate": 0.33000001311302185
     },
     {
-      "type": "Special",
+      "type": "Toxic",
       "scale": 0.11,
       "table": "Ranged_Damage",
       "duration": 5,
@@ -68,10 +68,14 @@ export const DartBurst: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,0.1785,1,0.8,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,0.33000001311302185,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.11,1,5,"Ranged_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,1,1],
-    ["Regeneration",null,-0.25,1,15,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.2,1,6,"Melee_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.6144,1,0,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Unmapped",null,0.1785,1,0.8,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,0.33000001311302185,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.11,1,5,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,1,1],
+    ["Regeneration",null,-0.25,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.2,1,6,"Melee_Slow","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.6144,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+  ],
+  "damageTypes": [
+    "Lethal",
+    "Toxic"
   ]
 };

@@ -36,7 +36,6 @@ export const PoisonTrap: Power = {
   "allowedSetCategories": [
     "Endurance Modification",
     "Holds",
-    "Mastermind Archetype Sets",
     "Melee AoE Damage",
     "Universal Damage Sets"
   ],
@@ -50,5 +49,8 @@ export const PoisonTrap: Power = {
   },
   "atoms": [
     ["EntCreate",null,1,1,260,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ],
+  "damageTypes": [
+    "Toxic"
   ]
 };

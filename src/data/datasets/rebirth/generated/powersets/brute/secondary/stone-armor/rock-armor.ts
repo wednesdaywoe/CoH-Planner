@@ -63,7 +63,7 @@ export const RockArmor: Power = {
     }
   },
   "atoms": [
-    ["Recovery",null,1,1,2,"Melee_Ones","Cur","Expression","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Recovery",null,1,1,2,"Melee_Ones","Cur","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"endurancecost power.boosted>"],
     ["Defense","Smashing",1.6,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
     ["Defense","Lethal",1.6,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
     ["Defense","All",0.4,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],

@@ -38,7 +38,12 @@ export const EssenceBoost: Power = {
   "effects": {
     "buffDuration": 120,
     "durations": {
+      "maxHPBuff": 120,
       "resistance": 120
+    },
+    "maxHPBuff": {
+      "scale": 2,
+      "table": "Melee_HealSelf"
     },
     "resistance": {
       "toxic": {
@@ -48,7 +53,7 @@ export const EssenceBoost: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,2,1,120,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Toxic",2,1,120,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["MaxHP",null,2,1,120,"Melee_HealSelf","Max","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Resistance","Toxic",2,1,120,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1]
   ]
 };

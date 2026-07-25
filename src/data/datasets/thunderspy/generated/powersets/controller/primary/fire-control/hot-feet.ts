@@ -45,7 +45,7 @@ export const HotFeet: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Fire",
     "scale": 0.25,
     "table": "Ranged_Damage"
   },
@@ -57,10 +57,13 @@ export const HotFeet: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,0.25,1,0,"Ranged_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Mez","Afraid",4,3,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.7,1,2.25,"Ranged_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.25,0.75,0,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || IncarnateBoss target.HasTag? || &&",true],
-    ["Unmapped",null,0.125,0.75,0,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || &&",true]
+    ["Unmapped",null,0.25,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Mez","Afraid",4,3,0,"Ranged_Ones","Cur","Duration","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.7,1,2.25,"Ranged_Slow","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.25,0.75,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || IncarnateBoss target.HasTag? || &&",true],
+    ["Unmapped",null,0.125,0.75,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || &&",true]
+  ],
+  "damageTypes": [
+    "Fire"
   ]
 };

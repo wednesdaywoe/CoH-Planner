@@ -39,16 +39,34 @@ export const AgingTouch: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 10,
+    "durations": {
+      "movement": 10
+    },
     "knockback": {
       "scale": 2.54,
       "table": "Melee_Ones"
+    },
+    "movement": {
+      "flySpeed": {
+        "scale": 0.15,
+        "table": "Melee_SpeedFlying"
+      },
+      "jumpSpeed": {
+        "scale": 0.1,
+        "table": "Melee_SpeedJumping"
+      },
+      "runSpeed": {
+        "scale": 0.1,
+        "table": "Melee_SpeedRunning"
+      }
     }
   },
   "atoms": [
-    ["Mez","Knockback",2.54,1,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Movement","Run",0.1,1,10,"Melee_SpeedRunning","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Movement","Fly",0.15,1,10,"Melee_SpeedFlying","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Movement","Jump",0.1,1,10,"Melee_SpeedJumping","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.066,1,8.5,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Mez","Knockback",2.54,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Movement","Run",0.1,1,10,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Movement","Fly",0.15,1,10,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Movement","Jump",0.1,1,10,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.066,1,8.5,"Melee_Ones","Str","Magnitude","Self","Any",true,"No",null,null,null,1]
   ]
 };

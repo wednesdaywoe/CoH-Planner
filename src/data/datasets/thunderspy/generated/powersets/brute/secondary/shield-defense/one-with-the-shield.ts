@@ -40,7 +40,12 @@ export const OnewiththeShield: Power = {
   "effects": {
     "buffDuration": 120,
     "durations": {
+      "maxHPBuff": 120,
       "resistance": 120
+    },
+    "maxHPBuff": {
+      "scale": 2,
+      "table": "Melee_HealSelf"
     },
     "resistance": {
       "smashing": {
@@ -50,11 +55,11 @@ export const OnewiththeShield: Power = {
     }
   },
   "atoms": [
-    ["Resistance","Smashing",3,1,120,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,2,1,120,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,-100,1,120,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,-50,1,120,"Melee_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["Unmapped",null,-0.6,1,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,5,1,120,"Melee_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
+    ["Resistance","Smashing",3,1,120,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["MaxHP",null,2,1,120,"Melee_HealSelf","Max","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,-100,1,120,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,-50,1,120,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Unmapped",null,-0.6,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,5,1,120,"Melee_Res_Boolean","Res","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
   ]
 };

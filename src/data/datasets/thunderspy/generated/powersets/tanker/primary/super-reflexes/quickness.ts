@@ -55,9 +55,9 @@ export const Quickness: Power = {
     }
   },
   "atoms": [
-    ["RechargeTime",null,0.2,1,10.25,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Movement","Run",0.1,1,10.25,"Melee_SpeedRunning","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Movement","Fly",0.1,1,10.25,"Melee_SpeedFlying","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1]
+    ["RechargeTime",null,0.2,1,10.25,"Melee_Ones","Str","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Movement","Run",0.1,1,10.25,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Movement","Fly",0.1,1,10.25,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",true,"No",null,null,null,1]
   ],
   "mechanicType": "parentMechanic"
 };

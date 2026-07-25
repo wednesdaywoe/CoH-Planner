@@ -40,8 +40,7 @@ export const TarPatch: Power = {
       "copyBoosts": true,
       "displayName": "Tar Patch",
       "duration": 45,
-      "entity": "PL_StaticObject",
-      "isPseudoPet": false,
+      "isPseudoPet": true,
       "powers": [
         "Redirects.Dark_Miasma.Tar"
       ],
@@ -78,7 +77,8 @@ export const TarPatch: Power = {
             }
           ]
         }
-      ]
+      ],
+      "entity": "PL_StaticObject"
     }
   },
   "atoms": [

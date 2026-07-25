@@ -47,9 +47,18 @@ export const EssenceDrain: Power = {
     "scale": 1,
     "table": "Melee_Damage"
   },
+  "effects": {
+    "healing": {
+      "scale": 1,
+      "table": "Melee_HealSelf"
+    }
+  },
   "atoms": [
-    ["Unmapped",null,1,1,0,"Melee_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,0,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.2,1,6,"Melee_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Unmapped",null,1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.2,1,6,"Melee_Slow","Str","Magnitude","Target","Any",true,"No",null,null,null,1]
+  ],
+  "damageTypes": [
+    "Negative"
   ]
 };

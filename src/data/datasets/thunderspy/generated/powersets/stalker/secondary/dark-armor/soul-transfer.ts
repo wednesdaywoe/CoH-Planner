@@ -36,7 +36,6 @@ export const SoulTransfer: Power = {
     "Endurance Modification",
     "Healing",
     "Melee AoE Damage",
-    "Stalker Archetype Sets",
     "Stuns",
     "Universal Damage Sets"
   ],
@@ -47,6 +46,14 @@ export const SoulTransfer: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
+    "buffDuration": 0.5,
+    "durations": {
+      "healing": 0.5
+    },
+    "healing": {
+      "scale": 3,
+      "table": "Melee_Heal"
+    },
     "stun": {
       "mag": 30,
       "scale": 10,
@@ -54,10 +61,13 @@ export const SoulTransfer: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,1,1,0,"Melee_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Mez","Stunned",10,30,0,"Melee_Stun","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,3,1,0.5,"Melee_Heal","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,1,1],
-    ["Unmapped",null,10,1,15,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Mez","Stunned",2,30,0,"Melee_Stun","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Unmapped",null,1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Mez","Stunned",10,30,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,3,1,0.5,"Melee_Heal","Abs","Magnitude","Self","Any",true,"No",null,null,1,1],
+    ["Unmapped",null,10,1,15,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Mez","Stunned",2,30,0,"Melee_Stun","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+  ],
+  "damageTypes": [
+    "Negative"
   ]
 };

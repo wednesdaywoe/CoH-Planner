@@ -87,16 +87,19 @@ export const EnergyAbsorption: Power = {
     }
   },
   "atoms": [
-    ["Endurance",null,15,1,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Smashing",0.06,1,45,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Lethal",0.06,1,45,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Fire",0.06,1,45,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Cold",0.06,1,45,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Energy",0.06,1,45,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Negative",0.06,1,45,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Endurance",null,-0.35,1,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.7,1,45,"Melee_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Movement","Run",-1,1,45,"Melee_SpeedRunning","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,-16.5,1,0,"Melee_EndDrain","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Endurance",null,15,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Defense","Smashing",0.06,1,45,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Defense","Lethal",0.06,1,45,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Defense","Fire",0.06,1,45,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Defense","Cold",0.06,1,45,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Defense","Energy",0.06,1,45,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Defense","Negative",0.06,1,45,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Endurance",null,-0.35,1,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.7,1,45,"Melee_Slow","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Movement","Run",-1,1,45,"Melee_SpeedRunning","Max","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,-16.5,1,0,"Melee_EndDrain","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+  ],
+  "damageTypes": [
+    "Cold"
   ]
 };

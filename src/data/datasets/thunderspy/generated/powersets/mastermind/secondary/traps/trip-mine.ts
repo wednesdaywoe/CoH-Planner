@@ -32,7 +32,6 @@ export const TripMine: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Mastermind Archetype Sets",
     "Melee AoE Damage",
     "Ranged Damage",
     "Recharge Intensive Pets",
@@ -50,5 +49,8 @@ export const TripMine: Power = {
   "atoms": [
     ["EntCreate",null,1,1,90,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["EntCreate",null,1,1,90,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ],
+  "damageTypes": [
+    "Lethal"
   ]
 };

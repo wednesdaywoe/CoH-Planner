@@ -51,6 +51,10 @@ export const DarkNova: Power = {
       "flySpeed": {
         "scale": 1.5,
         "table": "Melee_SpeedFlying"
+      },
+      "movementControl": {
+        "scale": 2,
+        "table": "Melee_Control"
       }
     },
     "tohitBuff": {
@@ -59,11 +63,11 @@ export const DarkNova: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,4,1,2,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Movement","Fly",1.5,1,2,"Melee_SpeedFlying","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Movement","Control",2,1,2,"Melee_Control","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Movement","Friction",2,1,2,"Melee_Friction","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["ToHit",null,1,1,2,"Melee_Buff_ToHit","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,5,1,2,"Melee_Buff_Dmg","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Unmapped",null,4,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Movement","Fly",1.5,1,2,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Movement","Control",2,1,2,"Melee_Control","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Movement","Friction",2,1,2,"Melee_Friction","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["ToHit",null,1,1,2,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,5,1,2,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",true,"No",null,null,null,1]
   ]
 };

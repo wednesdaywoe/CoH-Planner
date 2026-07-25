@@ -56,10 +56,10 @@ export const Deflection: Power = {
     }
   },
   "atoms": [
-    ["Defense","Ranged",1.65,1,0.75,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","AoE",1.65,1,0.75,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.4,1,0.75,"Melee_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.1,1,0.75,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
+    ["Defense","Ranged",1.65,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Defense","AoE",1.65,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.4,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
   ],
   "requires": "Brute_Melee.Dual_Blades Brute_Melee.Claws || Brute_Melee.Staff_Fighting || Brute_Melee.Katana || Brute_Melee.Titan_Weapons || !"
 };

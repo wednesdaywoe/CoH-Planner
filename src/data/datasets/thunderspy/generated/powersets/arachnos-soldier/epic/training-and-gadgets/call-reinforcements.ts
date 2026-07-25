@@ -36,7 +36,6 @@ export const CallReinforcements: Power = {
   "allowedSetCategories": [
     "Pet Damage",
     "Recharge Intensive Pets",
-    "Soldiers of Arachnos Archetype Sets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
@@ -51,5 +50,8 @@ export const CallReinforcements: Power = {
   "atoms": [
     ["EntCreate",null,1,1,240,"Ranged_Levelminus","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["EntCreate",null,1,1,240,"Ranged_Levelminus","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ],
+  "damageTypes": [
+    "Lethal"
   ]
 };

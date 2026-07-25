@@ -47,6 +47,7 @@ export const TimeWall: Power = {
   "effects": {
     "buffDuration": 20,
     "durations": {
+      "movement": 10,
       "regenDebuff": 20,
       "slow": 20
     },
@@ -54,6 +55,20 @@ export const TimeWall: Power = {
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"
+    },
+    "movement": {
+      "flySpeed": {
+        "scale": 0.1,
+        "table": "Melee_SpeedFlying"
+      },
+      "jumpSpeed": {
+        "scale": 0.1,
+        "table": "Melee_SpeedJumping"
+      },
+      "runSpeed": {
+        "scale": 0.1,
+        "table": "Melee_SpeedRunning"
+      }
     },
     "regenDebuff": {
       "scale": 0.25,
@@ -67,16 +82,19 @@ export const TimeWall: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,0.5,1,20,"Ranged_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,10,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Movement","Run",-1,1,20,"Ranged_SpeedRunning","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Regeneration",null,-0.25,1,20,"Ranged_Ones","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Movement","Run",0.1,1,10,"Melee_SpeedRunning","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Movement","Fly",0.1,1,10,"Melee_SpeedFlying","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Movement","Jump",0.1,1,10,"Melee_SpeedJumping","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.106,1,9.1,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Mez","Immobilized",2,3,0,"Ranged_Immobilize","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Regeneration",null,-0.2,1,20,"Ranged_Ones","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Unmapped",null,0.5,1,20,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1,1,10,"Ranged_Ones","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Movement","Run",-1,1,20,"Ranged_SpeedRunning","Max","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Regeneration",null,-0.25,1,20,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Movement","Run",0.1,1,10,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Movement","Fly",0.1,1,10,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Movement","Jump",0.1,1,10,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.106,1,9.1,"Ranged_Ones","Str","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Mez","Immobilized",2,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Regeneration",null,-0.2,1,20,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+  ],
+  "damageTypes": [
+    "Energy"
   ]
 };

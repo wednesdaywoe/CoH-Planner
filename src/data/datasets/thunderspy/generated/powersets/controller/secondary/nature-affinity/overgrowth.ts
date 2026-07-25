@@ -38,18 +38,24 @@ export const Overgrowth: Power = {
   "effects": {
     "buffDuration": 60,
     "durations": {
+      "specialBuff": 60,
       "tohitBuff": 60
     },
-    "effectDuration": 60,
+    "specialBuff": {
+      "stun": {
+        "scale": 0.5,
+        "table": "Ranged_Stun"
+      }
+    },
     "tohitBuff": {
       "scale": 1,
       "table": "Ranged_Buff_ToHit"
     }
   },
   "atoms": [
-    ["ToHit",null,1,1,60,"Ranged_Buff_ToHit","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,6.6,1,60,"Ranged_Buff_Dmg","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Mez","Stunned",0.5,1,60,"Ranged_Stun","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["ToHit",null,1,1,60,"Ranged_Buff_ToHit","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,6.6,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Enhancement","Stunned",0.5,1,60,"Ranged_Stun","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",true,"No",null,null,null,1]
   ]
 };

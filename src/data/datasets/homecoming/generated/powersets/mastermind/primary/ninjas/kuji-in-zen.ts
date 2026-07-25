@@ -16,7 +16,7 @@ export const KujiInZen: Power = {
   "shortHelp": "Ranged, Enlighten Ninja Henchman",
   "icon": "ninjas_upgradeequipment.png",
   "powerType": "Click",
-  "targetType": "Self",
+  "targetType": "Own Pet (Alive)",
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "RechargeTime"

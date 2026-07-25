@@ -16,7 +16,7 @@ export const Serum: Power = {
   "shortHelp": "Buff Mercenaries +DMG, +RES(All except Psionic), +To Hit, +Recovery",
   "icon": "paramilitary_serum.png",
   "powerType": "Click",
-  "targetType": "Self",
+  "targetType": "Own Pet (Alive)",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,

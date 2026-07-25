@@ -44,8 +44,11 @@ export const TremblingEarth: Power = {
     "table": "Melee_Damage"
   },
   "atoms": [
-    ["Unmapped",null,0.86,1,0,"Melee_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,-1.5,1,16,"Ranged_Res_Dmg","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0,1,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Unmapped",null,0.86,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,-1.5,1,16,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1]
+  ],
+  "damageTypes": [
+    "Fire"
   ]
 };

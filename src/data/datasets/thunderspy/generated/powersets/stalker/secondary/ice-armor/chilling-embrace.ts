@@ -49,8 +49,11 @@ export const ChillingEmbrace: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,0.7,1,5,"Melee_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Movement","Run",-1,1,5,"Melee_SpeedRunning","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,2,1,5,"Melee_Debuff_Dam","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Unmapped",null,0.7,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Movement","Run",-1,1,5,"Melee_SpeedRunning","Max","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,2,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1]
+  ],
+  "damageTypes": [
+    "Cold"
   ]
 };

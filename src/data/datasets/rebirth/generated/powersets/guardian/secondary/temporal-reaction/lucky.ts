@@ -78,12 +78,12 @@ export const Lucky: Power = {
   "atoms": [
     ["Defense","AoE",0.75,1,2.5,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Defense","All",0.2,1,2.5,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Resistance","Smashing",0,1,2.5,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Resistance","Lethal",0,1,2.5,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Resistance","Fire",0,1,2.5,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Resistance","Cold",0,1,2.5,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Resistance","Energy",0,1,2.5,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Resistance","Negative",0,1,2.5,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,true]
+    ["Resistance","Smashing",0,1,2.5,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"60 kHitPoints% source> - 0 100 minmax 60 / 0.25 *"],
+    ["Resistance","Lethal",0,1,2.5,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"60 kHitPoints% source> - 0 100 minmax 60 / 0.25 *"],
+    ["Resistance","Fire",0,1,2.5,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"60 kHitPoints% source> - 0 100 minmax 60 / 0.25 *"],
+    ["Resistance","Cold",0,1,2.5,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"60 kHitPoints% source> - 0 100 minmax 60 / 0.25 *"],
+    ["Resistance","Energy",0,1,2.5,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"60 kHitPoints% source> - 0 100 minmax 60 / 0.25 *"],
+    ["Resistance","Negative",0,1,2.5,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"60 kHitPoints% source> - 0 100 minmax 60 / 0.25 *"]
   ],
   "mechanicType": "parentMechanic"
 };

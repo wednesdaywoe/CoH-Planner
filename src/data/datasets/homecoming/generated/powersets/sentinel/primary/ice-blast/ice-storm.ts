@@ -45,8 +45,7 @@ export const IceStorm: Power = {
       "copyBoosts": true,
       "displayName": "Ice Storm",
       "duration": 15,
-      "entity": "PL_StaticObject",
-      "isPseudoPet": false,
+      "isPseudoPet": true,
       "powers": [
         "Pets.IceStorm_Sentinel.Avoid",
         "Pets.IceStorm_Sentinel.IceStorm"
@@ -96,7 +95,8 @@ export const IceStorm: Power = {
             }
           ]
         }
-      ]
+      ],
+      "entity": "PL_StaticObject"
     }
   },
   "atoms": [

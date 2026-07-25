@@ -36,9 +36,15 @@ export const Oxygenate: Power = {
     "Healing"
   ],
   "maxSlots": 6,
+  "effects": {
+    "healing": {
+      "scale": 1,
+      "table": "Ranged_Heal"
+    }
+  },
   "atoms": [
-    ["Unmapped",null,1,1,0,"Ranged_Heal","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,2,1,60,"Ranged_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Unmapped",null,1,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,2,1,60,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",true,"No",null,null,null,1]
   ],
   "requires": "Mastermind_Buff.Storm_Summoning.O2_Boost !"
 };

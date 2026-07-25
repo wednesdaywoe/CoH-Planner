@@ -48,8 +48,8 @@ export const Surveillance: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,54,1,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Smashing",-2,1,20,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,2,1,20,"Melee_Debuff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Unmapped",null,54,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Resistance","Smashing",-2,1,20,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,2,1,20,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1]
   ]
 };

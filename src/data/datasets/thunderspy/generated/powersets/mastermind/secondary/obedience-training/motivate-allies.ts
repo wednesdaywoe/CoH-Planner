@@ -37,16 +37,16 @@ export const MotivateAllies: Power = {
   ],
   "maxSlots": 6,
   "atoms": [
-    ["Unmapped",null,2,1,0,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> player eq &&",true],
-    ["Unmapped",null,2.5,1,0,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> critter eq &&",true],
-    ["Unmapped",null,0,1,0,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 0.1 - 50 < enttype target> player eq &&",true],
-    ["Unmapped",null,0,1,0,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 0.1 - 50 < enttype target> critter eq &&",true],
-    ["Unmapped",null,4,1,30,"Ranged_Buff_Dmg","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> critter eq &&",true],
-    ["Unmapped",null,4,1,30,"Ranged_Buff_Dmg","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> player eq &&",true],
-    ["ToHit",null,1.5,1,30,"Ranged_Buff_ToHit","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> player eq &&",true],
-    ["ToHit",null,1.5,1,30,"Ranged_Buff_ToHit","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> critter eq &&",true],
-    ["Unmapped",null,2,1,30,"Ranged_Buff_Dmg","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> player eq &&",true],
-    ["ToHit",null,0.75,1,30,"Ranged_Buff_ToHit","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> player eq &&",true]
+    ["Unmapped",null,2,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> player eq &&",true],
+    ["Unmapped",null,2.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> critter eq &&",true],
+    ["Unmapped",null,0,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 0.1 - 50 < enttype target> player eq &&",true],
+    ["Unmapped",null,0,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 0.1 - 50 < enttype target> critter eq &&",true],
+    ["Unmapped",null,4,1,30,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> critter eq &&",true],
+    ["Unmapped",null,4,1,30,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> player eq &&",true],
+    ["ToHit",null,1.5,1,30,"Ranged_Buff_ToHit","Cur","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> player eq &&",true],
+    ["ToHit",null,1.5,1,30,"Ranged_Buff_ToHit","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> critter eq &&",true],
+    ["Unmapped",null,2,1,30,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> player eq &&",true],
+    ["ToHit",null,0.75,1,30,"Ranged_Buff_ToHit","Cur","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 50 - 100 < enttype target> player eq &&",true]
   ],
   "conditionalEffects": [
     {
@@ -70,5 +70,8 @@ export const MotivateAllies: Power = {
         }
       }
     }
+  ],
+  "damageTypes": [
+    "Psionic"
   ]
 };

@@ -37,12 +37,22 @@ export const O2Boost: Power = {
     "Healing"
   ],
   "maxSlots": 6,
+  "effects": {
+    "buffDuration": 1,
+    "durations": {
+      "healing": 1
+    },
+    "healing": {
+      "scale": 2.3200000000000003,
+      "table": "Ranged_Heal"
+    }
+  },
   "atoms": [
-    ["Unmapped",null,1.32,1,0,"Ranged_Heal","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,1,"Ranged_Heal","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,-20,1,60,"Ranged_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["Unmapped",null,2,1,60,"Ranged_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,2,1,60,"Ranged_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
+    ["Unmapped",null,1.32,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1,1,1,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,-20,1,60,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Unmapped",null,2,1,60,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,2,1,60,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
   ],
   "requires": "Mastermind_Buff.Storm_Summoning.Oxygenate !"
 };

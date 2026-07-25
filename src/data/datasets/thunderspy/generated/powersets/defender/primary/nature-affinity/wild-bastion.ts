@@ -35,8 +35,18 @@ export const WildBastion: Power = {
     "Healing"
   ],
   "maxSlots": 6,
+  "effects": {
+    "buffDuration": 10.1,
+    "durations": {
+      "healing": 10.1
+    },
+    "healing": {
+      "scale": 0.272727,
+      "table": "Ranged_Heal"
+    }
+  },
   "atoms": [
-    ["Unmapped",null,0.25,1,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.272727,1,10.1,"Ranged_Heal","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,1,1]
+    ["Unmapped",null,0.25,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.272727,1,10.1,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"No",null,null,1,1]
   ]
 };

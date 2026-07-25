@@ -39,8 +39,18 @@ export const Praise: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
+  "effects": {
+    "buffDuration": 5,
+    "durations": {
+      "healing": 5
+    },
+    "healing": {
+      "scale": 0.35,
+      "table": "Ranged_Heal"
+    }
+  },
   "atoms": [
-    ["Unmapped",null,0.35,1,5,"Ranged_Heal","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,1,1],
-    ["Unmapped",null,1.5,1,60,"Ranged_Res_Dmg","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Unmapped",null,0.35,1,5,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"No",null,null,1,1],
+    ["Unmapped",null,1.5,1,60,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1]
   ]
 };

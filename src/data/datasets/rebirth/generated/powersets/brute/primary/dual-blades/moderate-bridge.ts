@@ -72,13 +72,18 @@ export const ModerateBridge: Power = {
     ["Meta",null,1,47,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["Meta",null,1,51,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["Meta",null,1,52,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["EntCreate",null,1,53,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,5.25,1,null,true,null,null,null,null,"kDD_StatusMode_1 source.Mode? ! kDD_DebuffMode_1 source.Mode? ! ||"],
+    ["Meta",null,1,53,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,5.25,1,null,true,null,null,null,null,"kDD_StatusMode_1 source.Mode? ! kDD_DebuffMode_1 source.Mode? ! ||"],
     ["Meta",null,1,54,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["Damage","Fire",0.297,1,0.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.4000000059604645,1],
     ["Damage","Lethal",0.92039,1,0.6,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? enttype target> player eq || kRage Source> 70 < &&",true],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
-    ["EntCreate",null,1,50,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,5.25,1,null,true,null,null,null,null,"kDD_DebuffMode_1 source.Mode?",true],
-    ["EntCreate",null,1,48,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,5.25,1,null,true,null,null,null,null,"kDD_StatusMode_1 source.Mode?",true]
+    ["Meta",null,1,50,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,5.25,1,null,true,null,null,null,null,"kDD_DebuffMode_1 source.Mode?",true],
+    ["Meta",null,1,48,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,5.25,1,null,true,null,null,null,null,"kDD_StatusMode_1 source.Mode?",true]
+  ],
+  "setsModes": [
+    "DD_DebuffMode_2",
+    "DD_StatusMode_2",
+    "DD_BonusDoTMode_1"
   ]
 };

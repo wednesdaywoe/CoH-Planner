@@ -30,6 +30,6 @@ export const FieryEmbrace: Power = {
   ],
   "maxSlots": 6,
   "atoms": [
-    ["Unmapped",null,10,1,30,"Melee_Buff_Dmg","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Unmapped",null,10,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",true,"No",null,null,null,1]
   ]
 };

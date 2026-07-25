@@ -38,6 +38,6 @@ export const InnerWill: Power = {
   ],
   "maxSlots": 6,
   "atoms": [
-    ["Mez","Stunned",1,1,30,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Mez","Stunned",1,1,30,"Melee_Ones","Cur","Expression","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"mod.kStun source> 1 + 2 30 minmax negate"]
   ]
 };

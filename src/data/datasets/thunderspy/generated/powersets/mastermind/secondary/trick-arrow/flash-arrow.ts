@@ -44,10 +44,10 @@ export const FlashArrow: Power = {
     "table": "Ranged_Damage"
   },
   "atoms": [
-    ["Unmapped",null,-0.9,1,60,"Ranged_Ones","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1.5,1,60,"Ranged_DeBuff_ToHit","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.15,1,0,"Ranged_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1.5,1,20,"Ranged_DeBuff_ToHit","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll @ToHit < @ForceHit || &&",true],
-    ["Unmapped",null,-0.9,1,20,"Ranged_Ones","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll @ToHit < @ForceHit || &&",true]
+    ["Unmapped",null,-0.9,1,60,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,1.5,1,60,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.15,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1.5,1,20,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll @ToHit < @ForceHit || &&",true],
+    ["Unmapped",null,-0.9,1,20,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll @ToHit < @ForceHit || &&",true]
   ]
 };

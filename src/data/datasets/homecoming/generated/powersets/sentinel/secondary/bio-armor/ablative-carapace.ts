@@ -50,9 +50,9 @@ export const AblativeCarapace: Power = {
     }
   },
   "atoms": [
-    ["Absorb",null,0.3,1,30,"Melee_Ones","Max","Expression","Self","Any",true,"Replace",2,null,null,1],
+    ["Absorb",null,0.3,1,30,"Melee_Ones","Max","Expression","Self","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"Max.kHitPoints source> @StdResult *"],
     ["Regeneration",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Absorb",null,0.09,1,30,"Melee_Ones","Max","Expression","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
+    ["Absorb",null,0.09,1,30,"Melee_Ones","Max","Expression","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true,null,null,null,null,"Max.kHitPoints source> @StdResult *"],
     ["Regeneration",null,0.3,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kRestedAdaptation Source.Mode?",true]
   ],
   "conditionalEffects": [
@@ -63,7 +63,6 @@ export const AblativeCarapace: Power = {
       "defaultActive": false,
       "effects": {
         "absorb": {
-          "appliesStrength": true,
           "maxHPFraction": 0.09,
           "table": "Melee_Ones"
         },

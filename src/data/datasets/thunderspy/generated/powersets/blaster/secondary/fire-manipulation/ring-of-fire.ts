@@ -47,7 +47,7 @@ export const RingofFire: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Fire",
     "scale": 0.22,
     "table": "Ranged_Damage",
     "duration": 9.2,
@@ -61,10 +61,13 @@ export const RingofFire: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,0.22,1,9.2,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,1.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,100,1,15,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.298989,1,9.2,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,1.5,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Immobilized",2,3,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Unmapped",null,0.22,1,9.2,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,1.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.298989,1,9.2,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,1.5,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Immobilized",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+  ],
+  "damageTypes": [
+    "Fire"
   ]
 };

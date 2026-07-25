@@ -42,8 +42,7 @@ export const GlueArrow: Power = {
       "copyBoosts": true,
       "displayName": "Glue Arrow",
       "duration": 60,
-      "entity": "PL_StaticObject",
-      "isPseudoPet": false,
+      "isPseudoPet": true,
       "powers": [
         "Redirects.Trick_Arrow.GlueArrow"
       ],
@@ -80,7 +79,8 @@ export const GlueArrow: Power = {
             }
           ]
         }
-      ]
+      ],
+      "entity": "PL_StaticObject"
     }
   },
   "atoms": [

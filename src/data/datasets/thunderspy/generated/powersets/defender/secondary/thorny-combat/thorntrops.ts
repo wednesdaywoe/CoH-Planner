@@ -48,5 +48,8 @@ export const Thorntrops: Power = {
   },
   "atoms": [
     ["EntCreate",null,-1,1,45,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ],
+  "damageTypes": [
+    "Lethal"
   ]
 };

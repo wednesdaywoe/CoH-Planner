@@ -45,11 +45,14 @@ export const ModerateOpening: Power = {
     "tickRate": 0.4000000059604645
   },
   "atoms": [
-    ["Unmapped",null,0.3867,1,1,"Melee_Damage","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,0.4000000059604645,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1,1,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade1 source.ownPower? ! Temporary_Powers.Temporary_Powers.ComboBlade2 source.ownPower? ! && Temporary_Powers.Temporary_Powers.ComboBlade3 source.ownPower? ! &&"],
-    ["Unmapped",null,0.705204,1,1,"Melee_Damage","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,0.4000000059604645,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,1,1,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade1 source.ownPower?",true],
-    ["Unmapped",null,1,1,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade2 source.ownPower? Temporary_Powers.Temporary_Powers.ComboBlade3 source.ownPower? ||",true],
-    ["Unmapped",null,1,1,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade2 source.ownPower?",true]
+    ["Unmapped",null,0.3867,1,1,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,0.4000000059604645,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade1 source.ownPower? ! Temporary_Powers.Temporary_Powers.ComboBlade2 source.ownPower? ! && Temporary_Powers.Temporary_Powers.ComboBlade3 source.ownPower? ! &&"],
+    ["Unmapped",null,0.705204,1,1,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,0.4000000059604645,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Unmapped",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade1 source.ownPower?",true],
+    ["Unmapped",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade2 source.ownPower? Temporary_Powers.Temporary_Powers.ComboBlade3 source.ownPower? ||",true],
+    ["Unmapped",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade2 source.ownPower?",true]
+  ],
+  "damageTypes": [
+    "Lethal"
   ]
 };

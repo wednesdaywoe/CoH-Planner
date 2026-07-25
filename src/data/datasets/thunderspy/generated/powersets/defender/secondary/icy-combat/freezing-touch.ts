@@ -41,7 +41,7 @@ export const FreezingTouch: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Cold",
     "scale": 0.28,
     "table": "Melee_Damage",
     "duration": 5.1,
@@ -55,11 +55,14 @@ export const FreezingTouch: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,0.28,1,5.1,"Melee_Damage","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Held",10,3,0,"Melee_Immobilize","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,100,1,6,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.367717,1,5.1,"Melee_Damage","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Held",2,3,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Unmapped",null,0.28,1,5.1,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Held",10,3,0,"Melee_Immobilize","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,100,1,6,"Melee_Ones","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.367717,1,5.1,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Held",2,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
-  "requires": "Defender_Ranged.Ice_Blast.Bitter_Freeze_Ray !"
+  "requires": "Defender_Ranged.Ice_Blast.Bitter_Freeze_Ray !",
+  "damageTypes": [
+    "Cold"
+  ]
 };

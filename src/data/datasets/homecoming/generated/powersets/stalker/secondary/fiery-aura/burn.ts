@@ -54,8 +54,7 @@ export const Burn: Power = {
       "copyBoosts": true,
       "displayName": "Burn Flames",
       "duration": 10,
-      "entity": "PL_StaticObject",
-      "isPseudoPet": false,
+      "isPseudoPet": true,
       "powers": [
         "Redirects.Fiery_Aura.FieryBurn",
         "Redirects.Fiery_Aura.FieryBurn_FrontDamage"
@@ -124,7 +123,8 @@ export const Burn: Power = {
             }
           ]
         }
-      ]
+      ],
+      "entity": "PL_StaticObject"
     }
   },
   "atoms": [

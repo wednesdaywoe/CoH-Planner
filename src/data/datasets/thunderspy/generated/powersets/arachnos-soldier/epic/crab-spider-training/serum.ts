@@ -33,7 +33,17 @@ export const Serum: Power = {
     "Healing"
   ],
   "maxSlots": 6,
+  "effects": {
+    "buffDuration": 120,
+    "durations": {
+      "maxHPBuff": 120
+    },
+    "maxHPBuff": {
+      "scale": 2,
+      "table": "Melee_HealSelf"
+    }
+  },
   "atoms": [
-    ["Unmapped",null,2,1,120,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["MaxHP",null,2,1,120,"Melee_HealSelf","Max","Magnitude","Self","Any",true,"No",null,null,null,1]
   ]
 };

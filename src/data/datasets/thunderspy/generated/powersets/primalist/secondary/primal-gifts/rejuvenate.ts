@@ -37,11 +37,17 @@ export const Rejuvenate: Power = {
     "Healing"
   ],
   "maxSlots": 6,
+  "effects": {
+    "healing": {
+      "scale": 2,
+      "table": "Melee_Heal"
+    }
+  },
   "atoms": [
-    ["Unmapped",null,2,1,0,"Melee_Heal","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! &&"],
-    ["Unmapped",null,0.3,1,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,2.5,1,0,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kProwlerMode Source.Mode? kHunterMode Source.Mode? ||",true],
-    ["Recovery",null,0.5,1,30,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kProwlerMode Source.Mode? kHunterMode Source.Mode? ||",true]
+    ["Unmapped",null,2,1,0,"Melee_Heal","Abs","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! &&"],
+    ["Unmapped",null,0.3,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,2.5,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kProwlerMode Source.Mode? kHunterMode Source.Mode? ||",true],
+    ["Recovery",null,0.5,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kProwlerMode Source.Mode? kHunterMode Source.Mode? ||",true]
   ],
   "conditionalEffects": [
     {
@@ -53,6 +59,10 @@ export const Rejuvenate: Power = {
         "buffDuration": 30,
         "durations": {
           "recoveryBuff": 30
+        },
+        "healing": {
+          "scale": 2.5,
+          "table": "Melee_HealSelf"
         },
         "recoveryBuff": {
           "scale": 0.5,

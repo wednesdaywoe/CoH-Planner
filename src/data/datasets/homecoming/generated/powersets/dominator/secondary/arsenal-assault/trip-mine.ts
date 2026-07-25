@@ -40,9 +40,9 @@ export const TripMine: Power = {
   "effects": {
     "summon": {
       "copyBoosts": true,
+      "displayName": "Mine",
       "duration": 170,
-      "entity": "Mine",
-      "isPseudoPet": false,
+      "isPseudoPet": true,
       "powers": [
         "Pets.Trip_Mine_Dominator.TripMine_Resistance",
         "Pets.Trip_Mine_Dominator.TripMine_Info"

@@ -48,6 +48,6 @@ export const AdrenalinBoost: Power = {
     }
   },
   "atoms": [
-    ["Recovery",null,8,1,60,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Recovery",null,8,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1]
   ]
 };

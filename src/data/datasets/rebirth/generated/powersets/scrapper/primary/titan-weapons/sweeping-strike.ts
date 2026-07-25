@@ -58,8 +58,8 @@ export const SweepingStrike: Power = {
     ["Damage","Smashing",1.429,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.6600000262260437,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Fire",0.64305,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["EntCreate",null,1,98,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["RechargePower",null,-1,1,5,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,98,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,-1,1,5,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kFastMode source.Mode?",true],
     ["Damage","Smashing",2.050093,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Smashing",2.050093,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq",true],
@@ -78,5 +78,8 @@ export const SweepingStrike: Power = {
       "chance": 0.05000000074505806,
       "label": "Smashing_Dmg"
     }
+  ],
+  "setsModes": [
+    "FastMode"
   ]
 };

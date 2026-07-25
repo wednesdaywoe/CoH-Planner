@@ -48,5 +48,8 @@ export const RainofFire: Power = {
   "atoms": [
     ["EntCreate",null,1,1,15,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
   ],
-  "requires": "Defender_Ranged.Fire_Blast.Fire_Sword_Circle !"
+  "requires": "Defender_Ranged.Fire_Blast.Fire_Sword_Circle !",
+  "damageTypes": [
+    "Fire"
+  ]
 };

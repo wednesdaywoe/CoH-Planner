@@ -124,7 +124,7 @@ export const GroupEnergyFlight: Power = {
     }
   },
   "atoms": [
-    ["Recovery",null,1,1,2,"Melee_Ones","Cur","Expression","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Recovery",null,1,1,2,"Melee_Ones","Cur","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"endurancecost power.boosted>"],
     ["Movement","FlyMode",1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Movement","Fly",0.5,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Movement","Fly",-0.5,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
@@ -154,8 +154,8 @@ export const GroupEnergyFlight: Power = {
     ["Movement","Friction",15,1,0.75,"Melee_Friction","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Power_DisallowMoveControlFriction target.TokenOwned? !"],
     ["Movement","FlyMode",3.75,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1],
     ["Movement","Fly",0.2,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["EntCreate",null,1,129,999999,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["EntCreate",null,1,135,999999,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,129,999999,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,135,999999,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Defense","Melee",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
     ["Defense","Ranged",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
     ["Defense","AoE",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
@@ -176,5 +176,9 @@ export const GroupEnergyFlight: Power = {
     ["Defense","Energy",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
     ["Defense","Negative",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
     ["Defense","Psionic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
+  ],
+  "setsModes": [
+    "AerobaticsOn",
+    "WeaveOff"
   ]
 };

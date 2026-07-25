@@ -36,7 +36,6 @@ export const BackhandSlap: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
-    "Mastermind Archetype Sets",
     "Melee AoE Damage",
     "To Hit Debuff",
     "Universal Damage Sets"
@@ -48,7 +47,10 @@ export const BackhandSlap: Power = {
     "table": "Melee_Damage"
   },
   "atoms": [
-    ["Unmapped",null,0.8,1,0,"Melee_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1.75,1,30,"Melee_DeBuff_ToHit","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Unmapped",null,0.8,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1.75,1,30,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"No",null,null,null,1]
+  ],
+  "damageTypes": [
+    "Psionic"
   ]
 };

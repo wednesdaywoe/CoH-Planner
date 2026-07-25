@@ -51,7 +51,12 @@ export const MetabolicAura: Power = {
   "effects": {
     "buffDuration": 2.25,
     "durations": {
+      "maxHPBuff": 2.25,
       "recoveryBuff": 2.25
+    },
+    "maxHPBuff": {
+      "scale": 0.333,
+      "table": "Melee_HealSelf"
     },
     "recoveryBuff": {
       "scale": 0.5,
@@ -59,7 +64,7 @@ export const MetabolicAura: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,0.333,1,2.25,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Recovery",null,0.5,1,2.25,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["MaxHP",null,0.333,1,2.25,"Melee_HealSelf","Max","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Recovery",null,0.5,1,2.25,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1]
   ]
 };

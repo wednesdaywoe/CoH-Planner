@@ -50,13 +50,13 @@ export const Hurricane: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,-0.6,1,10,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,3,1,10,"Ranged_DeBuff_ToHit","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,1.05,"Ranged_Ones","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Knockback",0.2,0.05000000074505806,0,"Ranged_Knockback","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1,1,0.75,"Ranged_Ones","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,1,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll .10 + @ToHit < &&",true],
-    ["Mez","Knockback",4,1,0,"Ranged_Knockback","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,1,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll .10 + @ToHit < &&",true],
-    ["Unmapped",null,1,1,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll .10 + @ToHit >= &&",true]
+    ["Unmapped",null,-0.6,1,10,"Ranged_Ones","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,3,1,10,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1,1,1.05,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",0.2,0.05000000074505806,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,1,1,0.75,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"No",null,null,1,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll .10 + @ToHit < &&",true],
+    ["Mez","Knockback",4,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"No",null,null,1,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll .10 + @ToHit < &&",true],
+    ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll .10 + @ToHit >= &&",true]
   ],
   "requires": "Defender_Buff.Storm_Summoning.Typhoon !"
 };

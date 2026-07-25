@@ -43,8 +43,8 @@ export const DefensiveAdaptation: Power = {
     }
   },
   "atoms": [
-    ["EntCreate",null,1,113,1.1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,113,1.1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Smashing",-0.25,1,1.1,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Lethal",-0.25,1,1.1,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
@@ -55,5 +55,8 @@ export const DefensiveAdaptation: Power = {
     ["DamageBuff","Toxic",-0.25,1,1.1,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Psionic",-0.25,1,1.1,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
   ],
-  "requires": "Brute_Defense.Bio_Organic_Armor.Evolution"
+  "requires": "Brute_Defense.Bio_Organic_Armor.Evolution",
+  "setsModes": [
+    "DefensiveAdaptation"
+  ]
 };

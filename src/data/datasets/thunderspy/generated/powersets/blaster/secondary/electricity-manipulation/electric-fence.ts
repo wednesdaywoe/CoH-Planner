@@ -49,7 +49,7 @@ export const ElectricFence: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 0.2,
     "table": "Ranged_Damage",
     "duration": 8.2,
@@ -76,13 +76,16 @@ export const ElectricFence: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,0.2,1,8.2,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,2,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Endurance",null,-0.028,1,6.2,"Ranged_Ones","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,2,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,100,1,15,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Recovery",null,-1,0.20000000298023224,2,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.339114,1,8.2,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,2,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Immobilized",2,3,0,"Ranged_Immobilize","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,-1,1,6.2,"Ranged_EndDrain","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,2,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Unmapped",null,0.2,1,8.2,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,2,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Endurance",null,-0.028,1,6.2,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"No",null,null,2,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Recovery",null,-1,0.20000000298023224,2,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.339114,1,8.2,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,2,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Immobilized",2,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Unmapped",null,-1,1,6.2,"Ranged_EndDrain","Abs","Magnitude","Target","PvP",true,"No",null,null,2,1,null,null,null,null,null,null,"enttype target> player eq",true]
+  ],
+  "damageTypes": [
+    "Energy"
   ]
 };

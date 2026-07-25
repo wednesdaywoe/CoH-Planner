@@ -56,15 +56,18 @@ export const Breathless: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,0.3,1,0,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Immobilized",15,1,0,"Ranged_Immobilize","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.3,1,15,"Ranged_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,2,1,15,"Ranged_Debuff_Dam","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.3,1,0,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || IncarnateBoss target.HasTag? || &&",true],
-    ["Unmapped",null,0.661221,1,0,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || &&",true],
-    ["Mez","Immobilized",4,4,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,1,1,1.1,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,0.20000000298023224,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPower?",true],
-    ["Unmapped",null,2,1,15,"Ranged_Debuff_Dam","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPowerNum? 2 <",true]
+    ["Unmapped",null,0.3,1,0,"Ranged_Damage","Abs","Expression","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"@Scale 0.25 Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPowerNum? * + @Value * @Effectiveness * @Strength *"],
+    ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Immobilized",15,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.3,1,15,"Ranged_Slow","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,2,1,15,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.3,1,0,"Ranged_Damage","Abs","Expression","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || IncarnateBoss target.HasTag? || &&",true,null,null,null,null,"@Scale 0.25 Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPowerNum? * + @Value * @Effectiveness * @Strength *"],
+    ["Unmapped",null,0.661221,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || &&",true,null,null,null,null,"@Scale 0.22 Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPowerNum? * + @Value * @Effectiveness * @Strength *"],
+    ["Mez","Immobilized",4,4,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Unmapped",null,1,1,1.1,"Ranged_Ones","Abs","Magnitude","All","Any",true,"No",null,null,0.20000000298023224,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPower?",true],
+    ["Unmapped",null,2,1,15,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPowerNum? 2 <",true]
+  ],
+  "damageTypes": [
+    "Lethal"
   ]
 };

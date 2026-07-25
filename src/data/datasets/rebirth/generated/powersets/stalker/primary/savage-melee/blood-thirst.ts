@@ -41,9 +41,9 @@ export const BloodThirst: Power = {
   "atoms": [
     ["Heal",null,1,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
-    ["Heal",null,1,1,9.1,"Melee_HealSelf","Abs","Expression","Self","Any",false,"Stack",2,null,3,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? 5 <",true],
-    ["Heal",null,1,1,12.1,"Melee_HealSelf","Abs","Expression","Self","Any",false,"Stack",2,null,3,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? 4 >",true],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted source.ownPower? ! Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? 4 > &&",true]
+    ["Heal",null,1,1,9.1,"Melee_HealSelf","Abs","Expression","Self","Any",false,"Stack",2,null,3,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? 5 <",true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? .084 * .33 + @StdResult *"],
+    ["Heal",null,1,1,12.1,"Melee_HealSelf","Abs","Expression","Self","Any",false,"Stack",2,null,3,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? 4 >",true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? .084 * .33 + @StdResult *"],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted source.ownPower? ! Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? 4 > &&",true]
   ],
   "conditionalEffects": [
     {

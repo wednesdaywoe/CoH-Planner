@@ -52,11 +52,11 @@ export const PrimalistsCloak: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,35,1,1.25,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kProwlerMode Source.Mode? !"],
-    ["Defense","AoE",2,1,1.25,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["Unmapped",null,1,1,1.25,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.3,1,1.25,"Melee_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,45,1,1.25,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kProwlerMode Source.Mode?",true],
-    ["Defense","AoE",2,1,1.25,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
+    ["Unmapped",null,35,1,1.25,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kProwlerMode Source.Mode? !"],
+    ["Defense","AoE",2,1,1.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Unmapped",null,1,1,1.25,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.3,1,1.25,"Melee_Res_Boolean","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,45,1,1.25,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kProwlerMode Source.Mode?",true],
+    ["Defense","AoE",2,1,1.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
   ]
 };

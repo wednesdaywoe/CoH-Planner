@@ -16,6 +16,7 @@ export const TouchofFear: Power = {
   "shortHelp": "Fear, Foe -To Hit, Self +Regeneration, +Recovery, +Res(Fear)",
   "icon": "darknessmanipulation_touchoffear.png",
   "powerType": "Click",
+  "targetType": "Location",
   "effectArea": "SingleTarget",
   "strengthsDisallowed": [
     "Range"

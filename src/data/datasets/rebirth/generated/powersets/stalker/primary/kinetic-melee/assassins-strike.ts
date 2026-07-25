@@ -51,6 +51,7 @@ export const AssassinsStrike: Power = {
     }
   ],
   "fromHideBonus": 1.7999999999999998,
+  "midCombatCast": 0.67,
   "effects": {
     "buffDuration": 8,
     "durations": {
@@ -76,6 +77,6 @@ export const AssassinsStrike: Power = {
     ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kMeter source> .9 <",true],
     ["Damage","Energy",4.5,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> 0 > &&",true],
     ["Damage","Energy",4.5,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kMeter source> 0 > &&",true],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","PvE",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq kMeter source> 0 > &&",true]
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","PvE",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq kMeter source> 0 > &&",true]
   ]
 };

@@ -65,17 +65,17 @@ export const InsulationShield: Power = {
     }
   },
   "atoms": [
-    ["Defense","Ranged",1.5,1,240,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","AoE",1.5,1,240,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Fire",1.5,1,240,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Energy",1.5,1,240,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Negative",1.5,1,240,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,2,1,240,"Ranged_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Ranged",0.75,1,240,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","AoE",0.75,1,240,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Fire",0.75,1,240,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Energy",0.75,1,240,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Negative",0.75,1,240,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,240,"Ranged_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Defense","Ranged",1.5,1,240,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Defense","AoE",1.5,1,240,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Defense","Fire",1.5,1,240,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Defense","Energy",1.5,1,240,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Defense","Negative",1.5,1,240,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,2,1,240,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Defense","Ranged",0.75,1,240,"Ranged_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Defense","AoE",0.75,1,240,"Ranged_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Defense","Fire",0.75,1,240,"Ranged_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Defense","Energy",0.75,1,240,"Ranged_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Defense","Negative",0.75,1,240,"Ranged_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1,1,240,"Ranged_Res_Boolean","Res","Magnitude","Self","Any",true,"No",null,null,null,1]
   ]
 };

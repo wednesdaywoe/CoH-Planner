@@ -45,16 +45,20 @@ export const AbsorbPain: Power = {
     "durations": {
       "regenDebuff": 20
     },
+    "healing": {
+      "scale": 5,
+      "table": "Ranged_Heal"
+    },
     "regenDebuff": {
       "scale": 1,
       "table": "Ranged_Ones"
     }
   },
   "atoms": [
-    ["Unmapped",null,5,1,0,"Ranged_Heal","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,3,1,0,"Ranged_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Regeneration",null,-1,1,20,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,-30,1,5,"Ranged_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? ! Defender_Buff.Empathy.Clear_Mind source.ownPower? Controller_Buff.Empathy.Clear_Mind source.ownPower? || &&",true],
-    ["Unmapped",null,3,1,5,"Ranged_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? Defender_Buff.Empathy.Clear_Mind source.ownPower? Controller_Buff.Empathy.Clear_Mind source.ownPower? || &&",true]
+    ["Unmapped",null,5,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,3,1,0,"Ranged_Damage","Abs","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Regeneration",null,-1,1,20,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,-30,1,5,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? ! Defender_Buff.Empathy.Clear_Mind source.ownPower? Controller_Buff.Empathy.Clear_Mind source.ownPower? || &&",true],
+    ["Unmapped",null,3,1,5,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? Defender_Buff.Empathy.Clear_Mind source.ownPower? Controller_Buff.Empathy.Clear_Mind source.ownPower? || &&",true]
   ]
 };

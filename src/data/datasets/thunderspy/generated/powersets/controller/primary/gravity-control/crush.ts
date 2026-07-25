@@ -40,6 +40,7 @@ export const Crush: Power = {
     "Damage"
   ],
   "allowedSetCategories": [
+    "Controller Archetype Sets",
     "Knockback",
     "Melee AoE Damage",
     "Ranged Damage",
@@ -48,21 +49,34 @@ export const Crush: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 0.1,
     "table": "Ranged_Damage"
   },
   "effects": {
+    "buffDuration": 2.25,
+    "durations": {
+      "slow": 2.25
+    },
     "knockback": {
       "scale": 1,
       "table": "Ranged_Knockback"
+    },
+    "slow": {
+      "jumpHeight": {
+        "scale": 500,
+        "table": "Ranged_Ones"
+      }
     }
   },
   "atoms": [
-    ["Unmapped",null,0.1,1,0,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Knockback",1,0.20000000298023224,0,"Ranged_Knockback","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1,1,2.25,"Ranged_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,-500,1,2.25,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.1,1,0,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Unmapped",null,0.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",1,0.20000000298023224,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,1,1,2.25,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Movement","JumpHeight",-500,1,2.25,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+  ],
+  "damageTypes": [
+    "Smashing"
   ]
 };

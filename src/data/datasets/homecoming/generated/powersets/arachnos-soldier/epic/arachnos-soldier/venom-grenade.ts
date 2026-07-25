@@ -44,7 +44,7 @@ export const VenomGrenade: Power = {
     "type": "Toxic",
     "scale": 0.1964,
     "table": "Ranged_Damage",
-    "duration": 4.12,
+    "duration": 4.125,
     "tickRate": 1
   },
   "effects": {
@@ -88,7 +88,7 @@ export const VenomGrenade: Power = {
     }
   },
   "atoms": [
-    ["Damage","Toxic",0.1964,1,4.12,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Toxic",0.1964,1,4.125,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Resistance","Smashing",-2,1,16,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Resistance","Lethal",-2,1,16,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Resistance","Fire",-2,1,16,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],

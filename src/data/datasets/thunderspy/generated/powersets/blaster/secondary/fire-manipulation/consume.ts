@@ -47,18 +47,23 @@ export const Consume: Power = {
   },
   "effects": {
     "buffDuration": 120,
-    "durations": {
-      "enduranceGain": 120
+    "debuffResistance": {
+      "endurance": {
+        "scale": 0.5,
+        "table": "Melee_Ones"
+      }
     },
-    "enduranceGain": {
-      "scale": 0.5,
-      "table": "Melee_Ones"
+    "durations": {
+      "debuffResistance": 120
     }
   },
   "atoms": [
-    ["Endurance",null,0.5,1,120,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.4,1,0,"Melee_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.4,1,0,"Melee_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"@ToHitRoll @ToHit < @ForceHit ||",true],
-    ["Endurance",null,20,1,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"@ToHitRoll @ToHit < @ForceHit ||",true]
+    ["Endurance",null,0.5,1,120,"Melee_Ones","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.4,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.4,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"@ToHitRoll @ToHit < @ForceHit ||",true],
+    ["Endurance",null,20,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"@ToHitRoll @ToHit < @ForceHit ||",true]
+  ],
+  "damageTypes": [
+    "Fire"
   ]
 };

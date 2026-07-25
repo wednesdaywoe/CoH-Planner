@@ -33,9 +33,19 @@ export const DullPain: Power = {
     "Healing"
   ],
   "maxSlots": 6,
+  "effects": {
+    "buffDuration": 120,
+    "durations": {
+      "maxHPBuff": 120
+    },
+    "maxHPBuff": {
+      "scale": 2,
+      "table": "Melee_HealSelf"
+    }
+  },
   "atoms": [
-    ["Unmapped",null,2,1,120,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,120,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["Unmapped",null,1,1,120,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
+    ["MaxHP",null,2,1,120,"Melee_HealSelf","Max","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1,1,120,"Melee_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Unmapped",null,1,1,120,"Melee_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
   ]
 };

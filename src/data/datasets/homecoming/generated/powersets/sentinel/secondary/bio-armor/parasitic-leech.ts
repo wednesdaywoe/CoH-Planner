@@ -42,9 +42,10 @@ export const ParasiticLeech: Power = {
   "maxSlots": 6,
   "effects": {
     "absorb": {
-      "scale": 0.143,
+      "appliesStrength": true,
+      "maxHPFraction": 0.143,
       "table": "Melee_Ones",
-      "perTarget": 0.143
+      "maxHPFractionPerTarget": 0.143
     },
     "buffDuration": 45,
     "durations": {
@@ -71,14 +72,14 @@ export const ParasiticLeech: Power = {
   "atoms": [
     ["Recovery",null,0.429,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.429],
     ["Regeneration",null,0.714,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.714],
-    ["Absorb",null,0.143,1,45,"Melee_Ones","Max","Expression","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.143],
+    ["Absorb",null,0.143,1,45,"Melee_Ones","Max","Expression","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"Max.kHitPoints source> @StdResult *"],
     ["Regeneration",null,-1,1,30,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq kOffensiveAdaptation Source.Mode? ! &&"],
     ["Regeneration",null,-2,1,30,"Melee_Res_Boolean","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq kOffensiveAdaptation Source.Mode? ! &&",true],
     ["Regeneration",null,-1.3,1,30,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq kOffensiveAdaptation Source.Mode? &&",true],
     ["Regeneration",null,-2.6,1,30,"Melee_Res_Boolean","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq kOffensiveAdaptation Source.Mode? &&",true],
     ["Recovery",null,0.129,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kRestedAdaptation Source.Mode?",true],
     ["Regeneration",null,0.214,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kRestedAdaptation Source.Mode?",true],
-    ["Absorb",null,0.043,1,45,"Melee_Ones","Max","Expression","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
+    ["Absorb",null,0.043,1,45,"Melee_Ones","Max","Expression","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true,null,null,null,null,"Max.kHitPoints source> @StdResult *"],
     ["DamageBuff","Smashing",2.66,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
     ["DamageBuff","Lethal",2.66,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
     ["DamageBuff","Fire",2.66,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
@@ -137,9 +138,9 @@ export const ParasiticLeech: Power = {
       "defaultActive": false,
       "effects": {
         "absorb": {
-          "scale": 0.043,
+          "maxHPFraction": 0.043,
           "table": "Melee_Ones",
-          "perTarget": 0.043
+          "maxHPFractionPerTarget": 0.043
         },
         "buffDuration": 45,
         "damageDebuff": {

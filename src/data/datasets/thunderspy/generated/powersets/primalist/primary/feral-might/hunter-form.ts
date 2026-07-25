@@ -45,6 +45,10 @@ export const HunterForm: Power = {
         "scale": 0.55,
         "table": "Melee_SpeedJumping"
       },
+      "movementControl": {
+        "scale": 10,
+        "table": "Melee_Ones"
+      },
       "runSpeed": {
         "scale": 0.4,
         "table": "Melee_SpeedRunning"
@@ -52,17 +56,17 @@ export const HunterForm: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,1,1,2.25,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,2.25,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"@CustomFX Wodan eq ! @CustomFX ShadowHound eq ! &&"],
-    ["Unmapped",null,1,1,2.25,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"@CustomFX Wodan eq @CustomFX ShadowHound eq ! &&"],
-    ["Unmapped",null,1,1,2.25,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"@CustomFX ShadowHound eq @CustomFX Wodan eq ! &&"],
-    ["Unmapped",null,0.25,1,2.25,"Melee_Leap","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["Movement","Jump",0.55,1,2.25,"Melee_SpeedJumping","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["Unmapped",null,10,1,2.25,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["Movement","Run",0.4,1,2.25,"Melee_SpeedRunning","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["Unmapped",null,0.25,1,2.25,"Melee_Leap","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
-    ["Movement","Jump",0.55,1,2.25,"Melee_SpeedJumping","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
-    ["Unmapped",null,10,1,2.25,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
-    ["Movement","Run",0.4,1,2.25,"Melee_SpeedRunning","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
+    ["Unmapped",null,1,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"@CustomFX Wodan eq ! @CustomFX ShadowHound eq ! &&"],
+    ["Unmapped",null,1,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"@CustomFX Wodan eq @CustomFX ShadowHound eq ! &&"],
+    ["Unmapped",null,1,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"@CustomFX ShadowHound eq @CustomFX Wodan eq ! &&"],
+    ["Unmapped",null,0.25,1,2.25,"Melee_Leap","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Movement","Jump",0.55,1,2.25,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Movement","Control",10,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Movement","Run",0.4,1,2.25,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Unmapped",null,0.25,1,2.25,"Melee_Leap","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
+    ["Movement","Jump",0.55,1,2.25,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
+    ["Movement","Control",10,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
+    ["Movement","Run",0.4,1,2.25,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
   ]
 };

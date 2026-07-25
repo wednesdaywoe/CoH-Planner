@@ -46,19 +46,23 @@ export const ShadowMaul: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 0.16,
     "table": "Melee_Damage",
     "duration": 2,
     "tickRate": 0.625
   },
   "atoms": [
-    ["Unmapped",null,0.16,1,2,"Melee_Damage","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,0.625,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.75,1,10,"Melee_DeBuff_ToHit","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
-    ["Unmapped",null,0.24255,1,2,"Melee_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,6.25,1],
-    ["Unmapped",null,0.29,1,2,"Melee_Damage","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,0.625,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
-    ["Unmapped",null,6,0.2150000035762787,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Unmapped",null,0.16,1,2,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,0.625,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.75,1,10,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
+    ["Unmapped",null,0.24255,1,2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,6.25,1],
+    ["Unmapped",null,0.29,1,2,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,0.625,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
+    ["Unmapped",null,6,0.2150000035762787,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+  ],
+  "damageTypes": [
+    "Negative",
+    "Smashing"
   ]
 };

@@ -36,8 +36,18 @@ export const ReformEssence: Power = {
     "Healing"
   ],
   "maxSlots": 6,
+  "effects": {
+    "buffDuration": 1,
+    "durations": {
+      "healing": 1
+    },
+    "healing": {
+      "scale": 2.25,
+      "table": "Ranged_Heal"
+    }
+  },
   "atoms": [
-    ["Unmapped",null,4,1,0,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,2.25,1,1,"Ranged_Heal","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Unmapped",null,4,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,2.25,1,1,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"No",null,null,null,1]
   ]
 };

@@ -43,6 +43,14 @@ export const PowerofthePhoenix: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.5,
+    "durations": {
+      "healing": 0.5
+    },
+    "healing": {
+      "scale": 7,
+      "table": "Ranged_HealSelf"
+    },
     "summon": {
       "duration": 5,
       "entity": "Pets_Phoenix",
@@ -50,7 +58,7 @@ export const PowerofthePhoenix: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,7,1,0.5,"Ranged_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,1,1],
+    ["Unmapped",null,7,1,0.5,"Ranged_HealSelf","Abs","Magnitude","Target","Any",true,"No",null,null,1,1],
     ["EntCreate",null,-1,1,5,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
   ]
 };

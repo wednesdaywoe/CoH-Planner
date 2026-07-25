@@ -43,22 +43,13 @@ export const ConfoundingChant: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Psionic",
-      "scale": 0.125,
-      "table": "Ranged_Damage",
-      "duration": 19.75,
-      "tickRate": 1
-    },
-    {
-      "type": "Psionic",
-      "scale": 0.125,
-      "table": "Ranged_Damage",
-      "duration": 34.75,
-      "tickRate": 1
-    }
-  ],
+  "damage": {
+    "type": "Psionic",
+    "scale": 0.125,
+    "table": "Ranged_Damage",
+    "duration": 19.75,
+    "tickRate": 1
+  },
   "effects": {
     "stun": {
       "mag": 3,
@@ -68,9 +59,9 @@ export const ConfoundingChant: Power = {
   },
   "atoms": [
     ["Damage","Psionic",0.125,1,19.75,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Replace",2,null,1,1],
-    ["Damage","Psionic",0.125,1,34.75,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Replace",2,null,1,1],
     ["Mez","Stunned",8,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","All","Any",true,"Stack",2,null,null,1],
+    ["Damage","Psionic",0.125,1,34.75,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Replace",2,null,1,1,null,null,null,null,null,null,null,true,null,null,null,null,null,"Stunned"],
     ["Mez","Stunned",1,4,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Stunned",1,1,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
     ["Mez","Stunned",12,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]

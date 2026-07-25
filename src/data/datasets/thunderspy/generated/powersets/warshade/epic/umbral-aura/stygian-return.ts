@@ -42,9 +42,22 @@ export const StygianReturn: Power = {
     "scale": 1,
     "table": "Melee_Damage"
   },
+  "effects": {
+    "buffDuration": 0.5,
+    "durations": {
+      "healing": 0.5
+    },
+    "healing": {
+      "scale": 3,
+      "table": "Melee_Heal"
+    }
+  },
   "atoms": [
-    ["Unmapped",null,1,1,0,"Melee_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,3,1,0.5,"Melee_Heal","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,1,1],
-    ["Unmapped",null,10,1,15,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Unmapped",null,1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,3,1,0.5,"Melee_Heal","Abs","Magnitude","Self","Any",true,"No",null,null,1,1],
+    ["Unmapped",null,10,1,15,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1]
+  ],
+  "damageTypes": [
+    "Negative"
   ]
 };

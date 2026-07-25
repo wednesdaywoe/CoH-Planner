@@ -46,8 +46,7 @@ export const TidePool: Power = {
       "copyBoosts": true,
       "displayName": "Tide Pool",
       "duration": 240,
-      "entity": "PL_StaticObject",
-      "isPseudoPet": false,
+      "isPseudoPet": true,
       "powers": [
         "Redirects.Marine_Affinity.TidePool_Aura",
         "Redirects.Marine_Affinity.TidePool_Aura_Debuff"
@@ -106,7 +105,8 @@ export const TidePool: Power = {
             }
           ]
         }
-      ]
+      ],
+      "entity": "PL_StaticObject"
     }
   },
   "atoms": [

@@ -71,19 +71,19 @@ export const Shred: Power = {
     }
   },
   "atoms": [
-    ["Damage","Lethal",1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Lethal",1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? .0675 * 1.35 + @StdResult *"],
     ["Damage","Lethal",0.108,1,3.1,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,0.800000011920929,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Defense","All",1.2,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Mez","CombatPhase",1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
+    ["RechargePower",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
     ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.875,null,true],
-    ["Damage","Lethal",1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true],
-    ["Damage","Lethal",1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true],
-    ["Damage","Lethal",1,1,0,"Melee_Damage","Abs","Expression","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.875,null,true],
+    ["Damage","Lethal",1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? .0675 * 1.35 + @StdResult * *"],
+    ["Damage","Lethal",1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? .0675 * 1.35 + @StdResult *"],
+    ["Damage","Lethal",1,1,0,"Melee_Damage","Abs","Expression","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? .1 * 2.03 + @StdResult *"],
     ["Damage","Lethal",0.1856,1,3.1,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,0.800000011920929,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Lethal",1,1,0,"Melee_Damage","Abs","Expression","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true],
-    ["Damage","Lethal",1,1,0,"Melee_Damage","Abs","Expression","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted source.ownPower? ! Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? 4 > &&",true]
+    ["Damage","Lethal",1,1,0,"Melee_Damage","Abs","Expression","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? .1 * 2.03 + @StdResult *"],
+    ["Damage","Lethal",1,1,0,"Melee_Damage","Abs","Expression","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? .1 * 2.03 + @StdResult *"],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted source.ownPower? ! Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? 4 > &&",true]
   ],
   "specialEffects": [
     {

@@ -120,8 +120,5 @@ export const Thaw: Power = {
     ["MezResist","Held",3,1,90,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
     ["MezResist","Confused",3,1,90,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
     ["MezResist","Terrorized",3,1,90,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
-  ],
-  "setsModes": [
-    "Peacebringer_Blaster_Mode"
   ]
 };

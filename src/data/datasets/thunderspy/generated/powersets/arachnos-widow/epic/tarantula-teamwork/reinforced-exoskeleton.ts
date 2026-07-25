@@ -76,14 +76,14 @@ export const ReinforcedExoskeleton: Power = {
     }
   },
   "atoms": [
-    ["Resistance","Smashing",2,1,0.75,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Lethal",2,1,0.75,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Fire",2,1,0.75,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Cold",2,1,0.75,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Energy",2,1,0.75,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Negative",2,1,0.75,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Toxic",2,1,0.75,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,0.75,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,0.25,1]
+    ["Resistance","Smashing",2,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Resistance","Lethal",2,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Resistance","Fire",2,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Resistance","Cold",2,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Resistance","Energy",2,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Resistance","Negative",2,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Resistance","Toxic",2,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1,1,0.75,"Melee_Ones","Max","Expression","Self","Any",true,"No",null,null,0.25,1,null,null,null,null,null,null,null,null,null,null,null,null,"Max.kHitPoints source> .015 * @Strength *"]
   ],
   "modesRequired": [
     "Widow_Tarantula_Mode"

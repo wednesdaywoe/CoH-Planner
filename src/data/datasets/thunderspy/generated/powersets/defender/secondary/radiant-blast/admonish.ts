@@ -51,9 +51,12 @@ export const Admonish: Power = {
     }
   ],
   "atoms": [
-    ["Unmapped",null,1.64,1,0,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq target.isFriend? ! &&"],
-    ["Unmapped",null,0.82,1,0,"Ranged_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Ghost target.HasTag? Demon target.HasTag? || Undead target.HasTag? || target.isFriend? ! &&"],
-    ["Unmapped",null,2.2668,1,0,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq target.isFriend? ! &&",true],
-    ["Unmapped",null,1.64,1,0,"Ranged_Heal","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"target.isFriend?",true]
+    ["Unmapped",null,1.64,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq target.isFriend? ! &&"],
+    ["Unmapped",null,0.82,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Ghost target.HasTag? Demon target.HasTag? || Undead target.HasTag? || target.isFriend? ! &&"],
+    ["Unmapped",null,2.2668,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq target.isFriend? ! &&",true],
+    ["Unmapped",null,1.64,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"target.isFriend?",true]
+  ],
+  "damageTypes": [
+    "Fire"
   ]
 };

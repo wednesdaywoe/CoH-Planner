@@ -92,6 +92,10 @@ export const GroupInvisibility: Power = {
       "stealthPvP": {
         "scale": 667,
         "table": "Ranged_Ones"
+      },
+      "translucency": {
+        "scale": 0.3,
+        "table": "Ranged_Ones"
       }
     },
     "threatDebuff": {
@@ -122,8 +126,8 @@ export const GroupInvisibility: Power = {
     ["Defense","Energy",0.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
     ["Defense","Negative",0.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
     ["Defense","Psionic",0.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
-    ["EntCreate",null,0.1,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
-    ["EntCreate",null,0.3,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Stealth","Translucency",0.1,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Stealth","Translucency",0.3,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
     ["ThreatLevel",null,-1,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true]
   ]
 };

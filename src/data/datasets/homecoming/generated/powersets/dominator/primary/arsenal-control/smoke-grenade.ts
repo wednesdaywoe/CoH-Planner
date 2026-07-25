@@ -45,8 +45,7 @@ export const SmokeGrenade: Power = {
       "copyBoosts": true,
       "displayName": "Smoke Grenade",
       "duration": 30,
-      "entity": "Class_Minion_Pets",
-      "isPseudoPet": false,
+      "isPseudoPet": true,
       "powers": [
         "Pets.ResistAll.ResistAll",
         "Redirects.Assault_Rifle.Smoke_Grenade",
@@ -67,17 +66,20 @@ export const SmokeGrenade: Power = {
                 {
                   "type": "Knockup",
                   "scale": 1000,
-                  "table": "Melee_Ones"
+                  "table": "Melee_Ones",
+                  "ignoreStrength": true,
+                  "conditional": true
                 },
                 {
                   "type": "Confuse",
                   "magnitude": 3,
                   "scale": 2,
-                  "table": "Ranged_Fear"
+                  "table": "Ranged_Fear",
+                  "conditional": true
                 },
                 {
                   "type": "ToHitDebuff",
-                  "scale": 1.5,
+                  "scale": 0.7,
                   "table": "Ranged_Debuff_ToHit"
                 }
               ],
@@ -90,7 +92,8 @@ export const SmokeGrenade: Power = {
             }
           ]
         }
-      ]
+      ],
+      "entity": "PL_StaticObject"
     }
   },
   "atoms": [

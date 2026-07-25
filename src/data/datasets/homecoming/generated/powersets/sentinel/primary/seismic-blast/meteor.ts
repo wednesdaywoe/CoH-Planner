@@ -43,9 +43,9 @@ export const Meteor: Power = {
   "effects": {
     "summon": {
       "copyBoosts": true,
+      "displayName": "Meteor",
       "duration": 10,
-      "entity": "Meteor",
-      "isPseudoPet": false,
+      "isPseudoPet": true,
       "powers": [
         "Pets.ResistAll.ResistAll",
         "Redirects.Seismic_Blast.Sentinel_Meteor"
@@ -92,7 +92,8 @@ export const Meteor: Power = {
             }
           ]
         }
-      ]
+      ],
+      "entity": "PL_StaticObject"
     }
   },
   "atoms": [

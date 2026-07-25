@@ -46,8 +46,7 @@ export const StaticField: Power = {
       "copyBoosts": true,
       "displayName": "Static Field",
       "duration": 25,
-      "entity": "PL_StaticObject",
-      "isPseudoPet": false,
+      "isPseudoPet": true,
       "powers": [
         "Pets.Static_Field_Controller.Static_Field"
       ],
@@ -96,7 +95,8 @@ export const StaticField: Power = {
             }
           ]
         }
-      ]
+      ],
+      "entity": "PL_StaticObject"
     }
   },
   "atoms": [

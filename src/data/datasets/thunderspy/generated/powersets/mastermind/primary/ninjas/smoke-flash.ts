@@ -16,6 +16,7 @@ export const SmokeFlash: Power = {
   "shortHelp": "Hide Ninja",
   "icon": "ninjas_kujikiri.png",
   "powerType": "Click",
+  "targetType": "Own Pet (Alive)",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
@@ -32,6 +33,6 @@ export const SmokeFlash: Power = {
   ],
   "maxSlots": 6,
   "atoms": [
-    ["Unmapped",null,54,1,30,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"MastermindPets_Genin target.VillainName> MastermindPets_Jounin target.VillainName> || MastermindPets_Oni target.VillainName> ||",true]
+    ["Unmapped",null,54,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"MastermindPets_Genin target.VillainName> MastermindPets_Jounin target.VillainName> || MastermindPets_Oni target.VillainName> ||",true]
   ]
 };

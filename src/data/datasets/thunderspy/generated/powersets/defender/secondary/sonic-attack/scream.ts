@@ -39,15 +39,19 @@ export const Scream: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 0.132,
     "table": "Ranged_Damage",
     "duration": 1.05,
     "tickRate": 0.25
   },
   "atoms": [
-    ["Unmapped",null,0.132,1,1.05,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,0.25,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,-2,1,7,"Ranged_Res_Dmg","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.282313,1,1.05,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,0.25,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Unmapped",null,0.132,1,1.05,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,0.25,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,-2,1,7,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.282313,1,1.05,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,0.25,1,null,null,null,null,null,null,"enttype target> player eq",true]
+  ],
+  "damageTypes": [
+    "Energy",
+    "Smashing"
   ]
 };

@@ -43,14 +43,18 @@ export const QuantumFlight: Power = {
       "flySpeed": {
         "scale": 5,
         "table": "Melee_SpeedFlying"
+      },
+      "movementControl": {
+        "scale": 3,
+        "table": "Melee_Control"
       }
     }
   },
   "atoms": [
-    ["Unmapped",null,1,1,0.75,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Movement","Fly",5,1,0.75,"Melee_SpeedFlying","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Movement","Control",3,1,0.75,"Melee_Control","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Movement","Friction",3,1,0.75,"Melee_Friction","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.8,1,0.75,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kDisable_Toggle Source.Mode? !"]
+    ["Unmapped",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Movement","Fly",5,1,0.75,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Movement","Control",3,1,0.75,"Melee_Control","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Movement","Friction",3,1,0.75,"Melee_Friction","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.8,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kDisable_Toggle Source.Mode? !"]
   ]
 };

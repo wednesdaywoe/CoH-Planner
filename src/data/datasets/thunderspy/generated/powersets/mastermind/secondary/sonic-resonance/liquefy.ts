@@ -41,7 +41,6 @@ export const Liquefy: Power = {
     "Defense Debuff",
     "Holds",
     "Knockback",
-    "Mastermind Archetype Sets",
     "Ranged AoE Damage",
     "To Hit Debuff",
     "Universal Damage Sets"
@@ -66,5 +65,9 @@ export const Liquefy: Power = {
   "atoms": [
     ["EntCreate",null,1,1,30,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["EntCreate",null,1,1,30,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ],
+  "damageTypes": [
+    "Energy",
+    "Smashing"
   ]
 };

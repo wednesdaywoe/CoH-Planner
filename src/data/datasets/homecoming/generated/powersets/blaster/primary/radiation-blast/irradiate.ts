@@ -61,14 +61,14 @@ export const Irradiate: Power = {
   "atoms": [
     ["Damage","Energy",0.1,1,4.6,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Defense","All",3,1,10,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["DamageBuff","Smashing",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["DamageBuff","Lethal",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["DamageBuff","Fire",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["DamageBuff","Cold",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["DamageBuff","Energy",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["DamageBuff","Negative",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["DamageBuff","Psionic",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["DamageBuff","Toxic",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Smashing",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /"],
+    ["DamageBuff","Lethal",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /"],
+    ["DamageBuff","Fire",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /"],
+    ["DamageBuff","Cold",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /"],
+    ["DamageBuff","Energy",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /"],
+    ["DamageBuff","Negative",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /"],
+    ["DamageBuff","Psionic",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /"],
+    ["DamageBuff","Toxic",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,".066 activatetime power.base> * areafactor power.base> /"],
     ["Damage","Energy",0.0287,1,4.6,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ]
 };

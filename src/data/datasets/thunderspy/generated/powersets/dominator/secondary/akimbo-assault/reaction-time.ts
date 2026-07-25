@@ -48,10 +48,10 @@ export const Reactiontime: Power = {
   ],
   "maxSlots": 6,
   "atoms": [
-    ["Unmapped",null,0.7,1,5,"Melee_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq !"],
-    ["Movement","Run",-1,1,5,"Melee_SpeedRunning","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq entref target> entref source> eq ! &&"],
-    ["Unmapped",null,-0.7,1,10,"Melee_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Movement","Run",1,1,10,"Melee_SpeedRunning","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Unmapped",null,0.7,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq !"],
+    ["Movement","Run",-1,1,5,"Melee_SpeedRunning","Max","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq entref target> entref source> eq ! &&"],
+    ["Unmapped",null,-0.7,1,10,"Melee_Slow","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Movement","Run",1,1,10,"Melee_SpeedRunning","Max","Magnitude","Self","Any",true,"No",null,null,null,1]
   ],
   "conditionalEffects": [
     {
@@ -73,5 +73,8 @@ export const Reactiontime: Power = {
         "buffDuration": 5
       }
     }
+  ],
+  "damageTypes": [
+    "Energy"
   ]
 };

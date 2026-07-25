@@ -48,7 +48,7 @@ export const BlazingArrow: Power = {
       "type": "Fire",
       "scale": 0.125,
       "table": "Ranged_Damage",
-      "duration": 4.12,
+      "duration": 4.125,
       "tickRate": 1
     }
   ],
@@ -68,7 +68,7 @@ export const BlazingArrow: Power = {
   },
   "atoms": [
     ["Damage","Lethal",1.96,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Fire",0.125,1,4.12,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["Damage","Fire",0.125,1,4.125,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
     ["DamageBuff","Smashing",0.121,1,9.33,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Lethal",0.121,1,9.33,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Fire",0.121,1,9.33,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],

@@ -46,8 +46,7 @@ export const ParalyzingBlast: Power = {
       "copyBoosts": true,
       "displayName": "Tesla Coil",
       "duration": 60,
-      "entity": "PL_StaticObject",
-      "isPseudoPet": false,
+      "isPseudoPet": true,
       "powers": [
         "Redirects.Electric_Control.Tesla_Coil_Pulse",
         "Redirects.Electric_Control.Tesla_Coil_Debuff",
@@ -71,6 +70,7 @@ export const ParalyzingBlast: Power = {
                   "table": "Melee_Damage"
                 }
               ],
+              "conditionalDamage": true,
               "effects": [
                 {
                   "type": "Hold",
@@ -148,7 +148,8 @@ export const ParalyzingBlast: Power = {
             }
           ]
         }
-      ]
+      ],
+      "entity": "PL_StaticObject"
     }
   },
   "atoms": [

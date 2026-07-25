@@ -40,6 +40,14 @@ export const RiseofthePhoenix: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.5,
+    "durations": {
+      "healing": 0.5
+    },
+    "healing": {
+      "scale": 5,
+      "table": "Melee_HealSelf"
+    },
     "summon": {
       "duration": 5,
       "entity": "Pets_Phoenix",
@@ -47,8 +55,8 @@ export const RiseofthePhoenix: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,5,1,0.5,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,1,1],
+    ["Unmapped",null,5,1,0.5,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"No",null,null,1,1],
     ["EntCreate",null,1,1,5,"Melee_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,10,1,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Unmapped",null,10,1,0,"Melee_Ones","Cur","Duration","Self","Any",true,"No",null,null,null,1]
   ]
 };

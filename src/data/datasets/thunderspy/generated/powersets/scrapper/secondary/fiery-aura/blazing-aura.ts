@@ -40,12 +40,15 @@ export const BlazingAura: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Fire",
     "scale": 0.22,
     "table": "Melee_Damage"
   },
   "atoms": [
-    ["Unmapped",null,0.22,1,0,"Melee_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.099,0,0,"Melee_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Unmapped",null,0.22,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.099,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1]
+  ],
+  "damageTypes": [
+    "Fire"
   ]
 };

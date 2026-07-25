@@ -41,9 +41,27 @@ export const FuturePain: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 10,
+    "durations": {
+      "movement": 10
+    },
     "knockback": {
       "scale": 0.4,
       "table": "Ranged_Knockback"
+    },
+    "movement": {
+      "flySpeed": {
+        "scale": 0.15,
+        "table": "Melee_SpeedFlying"
+      },
+      "jumpSpeed": {
+        "scale": 0.1,
+        "table": "Melee_SpeedJumping"
+      },
+      "runSpeed": {
+        "scale": 0.1,
+        "table": "Melee_SpeedRunning"
+      }
     },
     "stun": {
       "mag": 3,
@@ -52,16 +70,16 @@ export const FuturePain: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,0,1,1.5,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Mez","Stunned",8,3,0,"Ranged_Stun","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Knockback",0.4,1,0,"Ranged_Knockback","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Movement","Run",0.1,1,10,"Melee_SpeedRunning","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Movement","Fly",0.15,1,10,"Melee_SpeedFlying","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Movement","Jump",0.1,1,10,"Melee_SpeedJumping","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.11,1,9.17,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Mez","Stunned",4,4,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Stunned",22,3,0,"Ranged_Stun","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kStealth source> 0.5 > &&",true],
-    ["Mez","Stunned",4,1,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq kStealth source> 0.5 > &&",true]
+    ["Unmapped",null,0,1,1.5,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Mez","Stunned",8,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",0.4,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Movement","Run",0.1,1,10,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Movement","Fly",0.15,1,10,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Movement","Jump",0.1,1,10,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.11,1,9.17,"Melee_Ones","Str","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Mez","Stunned",4,4,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Stunned",22,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kStealth source> 0.5 > &&",true],
+    ["Mez","Stunned",4,1,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq kStealth source> 0.5 > &&",true]
   ],
   "conditionalEffects": [
     {

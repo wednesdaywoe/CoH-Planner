@@ -126,7 +126,7 @@ export const Dehydrate: Power = {
     ["Damage","Cold",2.744264,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> player eq &&",true],
     ["Regeneration",null,0.6,1,30,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"temporary_powers.temporary_powers.tidal_power source.ownPowerNum? 2 <= isPVPMap? &&",true],
     ["Regeneration",null,0.9,1,30,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"temporary_powers.temporary_powers.tidal_power source.ownPowerNum? 3 == isPVPMap? &&",true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"temporary_powers.temporary_powers.tidal_power source.ownPowerNum? 2 <=",true],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"temporary_powers.temporary_powers.tidal_power source.ownPowerNum? 2 <=",true],
     ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"temporary_powers.temporary_powers.tidal_power source.ownPowerNum? 3 ==",true]
   ]
 };

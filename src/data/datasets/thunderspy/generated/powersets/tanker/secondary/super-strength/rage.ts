@@ -37,10 +37,10 @@ export const Rage: Power = {
   "effects": {
     "buffDuration": 90,
     "durations": {
-      "enduranceDrain": 90,
+      "maxEndBuff": 90,
       "tohitBuff": 90
     },
-    "enduranceDrain": {
+    "maxEndBuff": {
       "scale": 15,
       "table": "Melee_Ones"
     },
@@ -50,9 +50,9 @@ export const Rage: Power = {
     }
   },
   "atoms": [
-    ["ToHit",null,2,1,90,"Melee_Buff_ToHit","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["Unmapped",null,8,1,90,"Melee_Buff_Dmg","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Endurance",null,-15,1,90,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["ToHit",null,0.5,1,90,"Melee_Buff_ToHit","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
+    ["ToHit",null,2,1,90,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Unmapped",null,8,1,90,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["MaxEndurance",null,-15,1,90,"Melee_Ones","Max","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["ToHit",null,0.5,1,90,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
   ]
 };

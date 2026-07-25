@@ -55,9 +55,12 @@ export const DragonBreath: Power = {
     }
   ],
   "atoms": [
-    ["Unmapped",null,0.22,1,0,"Melee_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.22,1,3.1,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.297,1,0.3,"Melee_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,0.25,1],
-    ["Unmapped",null,1,1,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Unmapped",null,0.22,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.22,1,3.1,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.297,1,0.3,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,0.25,1],
+    ["Unmapped",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",true,"No",null,null,null,1]
+  ],
+  "damageTypes": [
+    "Lethal"
   ]
 };

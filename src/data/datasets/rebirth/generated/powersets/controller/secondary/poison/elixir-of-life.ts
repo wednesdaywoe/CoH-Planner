@@ -113,7 +113,7 @@ export const ElixirofLife: Power = {
     ["DamageBuff","Psionic",4,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["ToHit",null,3,1,90,"Ranged_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["Resistance","Toxic",2,1,90,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1],
-    ["EntCreate",null,1,1,90,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,1,90,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["Mez","Held",1000,1,4,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Smashing",4,1,45,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
@@ -125,8 +125,5 @@ export const ElixirofLife: Power = {
     ["DamageBuff","Toxic",4,1,45,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Psionic",4,1,45,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
     ["ToHit",null,3,1,45,"Ranged_Debuff_ToHit","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true]
-  ],
-  "setsModes": [
-    "Peacebringer_Blaster_Mode"
   ]
 };

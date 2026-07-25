@@ -16,6 +16,7 @@ export const TimeBomb: Power = {
   "shortHelp": "Place Bomb: PBAoE, DMG(Lethal/Fire), Foe Knockback, Special",
   "icon": "traps_remotebomb.png",
   "powerType": "Click",
+  "targetType": "Location",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 2

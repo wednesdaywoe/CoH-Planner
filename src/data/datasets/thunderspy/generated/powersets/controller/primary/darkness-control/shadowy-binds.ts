@@ -58,7 +58,7 @@ export const ShadowyBinds: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,3,1,30.25,"Melee_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,3,1,30.25,"Melee_Res_Boolean","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
     ["EntCreate",null,1,1,30,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["EntCreate",null,1,1,30,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["EntCreate",null,1,1,30,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]

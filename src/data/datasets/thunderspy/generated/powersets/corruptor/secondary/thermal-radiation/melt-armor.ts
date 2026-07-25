@@ -40,7 +40,10 @@ export const MeltArmor: Power = {
   ],
   "maxSlots": 6,
   "atoms": [
-    ["Unmapped",null,2,1,40,"Ranged_Debuff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,-3,1,40,"Ranged_Res_Dmg","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Unmapped",null,2,1,40,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,-3,1,40,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1]
+  ],
+  "damageTypes": [
+    "Energy"
   ]
 };

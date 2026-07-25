@@ -34,7 +34,12 @@ export const HighPainTolerance: Power = {
   "effects": {
     "buffDuration": 10.25,
     "durations": {
+      "maxHPBuff": 10.25,
       "resistance": 10.25
+    },
+    "maxHPBuff": {
+      "scale": 1,
+      "table": "Melee_HealSelf"
     },
     "resistance": {
       "cold": {
@@ -72,15 +77,15 @@ export const HighPainTolerance: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,1,1,10.25,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Smashing",0.75,1,10.25,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Lethal",0.75,1,10.25,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Fire",0.75,1,10.25,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Cold",0.75,1,10.25,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Energy",0.75,1,10.25,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Negative",0.75,1,10.25,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Psionic",0.75,1,10.25,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Toxic",0.75,1,10.25,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["MaxHP",null,1,1,10.25,"Melee_HealSelf","Max","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Resistance","Smashing",0.75,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Resistance","Lethal",0.75,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Resistance","Fire",0.75,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Resistance","Cold",0.75,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Resistance","Energy",0.75,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Resistance","Negative",0.75,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Resistance","Psionic",0.75,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Resistance","Toxic",0.75,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1]
   ],
   "mechanicType": "parentMechanic"
 };

@@ -102,8 +102,5 @@ export const Quills: Power = {
       "chance": 0.05000000074505806,
       "label": "Lethal_Dmg"
     }
-  ],
-  "setsModes": [
-    "Peacebringer_Blaster_Mode"
   ]
 };

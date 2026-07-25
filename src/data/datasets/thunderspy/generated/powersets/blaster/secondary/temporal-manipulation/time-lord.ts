@@ -70,10 +70,10 @@ export const TimeLord: Power = {
   },
   "atoms": [
     ["EntCreate",null,1,1,120,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["RechargeTime",null,0.2,1,10,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Movement","Run",0.1,1,10,"Melee_SpeedRunning","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Movement","Fly",0.15,1,10,"Melee_SpeedFlying","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Movement","Jump",0.1,1,10,"Melee_SpeedJumping","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.11,1,9.17,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["RechargeTime",null,0.2,1,10,"Melee_Ones","Str","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Movement","Run",0.1,1,10,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Movement","Fly",0.15,1,10,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Movement","Jump",0.1,1,10,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.11,1,9.17,"Melee_Ones","Str","Magnitude","Self","Any",true,"No",null,null,null,1]
   ]
 };

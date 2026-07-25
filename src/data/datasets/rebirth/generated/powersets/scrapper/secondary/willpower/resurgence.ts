@@ -113,13 +113,10 @@ export const Resurgence: Power = {
     ["DamageBuff","Toxic",4,1,45,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Psionic",4,1,45,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
     ["ToHit",null,3,1,45,"Ranged_Debuff_ToHit","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
-    ["EntCreate",null,1,1,90,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,1,90,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["Meta",null,1,1,90,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
     ["Meta",null,1,1,90,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
     ["Meta",null,1,1,90,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
     ["Meta",null,1,1,90,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
-  ],
-  "setsModes": [
-    "Peacebringer_Blaster_Mode"
   ]
 };

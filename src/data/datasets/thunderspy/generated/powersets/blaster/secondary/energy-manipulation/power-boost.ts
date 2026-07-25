@@ -29,7 +29,19 @@ export const PowerBoost: Power = {
     "Recharge"
   ],
   "maxSlots": 6,
+  "effects": {
+    "buffDuration": 15,
+    "durations": {
+      "specialBuff": 15
+    },
+    "specialBuff": {
+      "stun": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      }
+    }
+  },
   "atoms": [
-    ["Mez","Stunned",0.75,1,15,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Enhancement","Stunned",0.75,1,15,"Melee_Ones","Str","Magnitude","Self","Any",true,"No",null,null,null,1]
   ]
 };

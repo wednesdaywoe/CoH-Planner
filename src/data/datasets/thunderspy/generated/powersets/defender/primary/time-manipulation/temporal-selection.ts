@@ -46,7 +46,7 @@ export const TemporalSelection: Power = {
     }
   },
   "atoms": [
-    ["RechargeTime",null,0.3,1,120,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,2.5,1,120,"Ranged_Buff_Dmg","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["RechargeTime",null,0.3,1,120,"Ranged_Ones","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,2.5,1,120,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"No",null,null,null,1]
   ]
 };

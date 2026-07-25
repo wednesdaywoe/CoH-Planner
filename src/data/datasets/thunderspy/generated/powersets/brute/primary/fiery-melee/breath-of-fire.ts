@@ -37,7 +37,6 @@ export const BreathofFire: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Brute Archetype Sets",
     "Ranged AoE Damage",
     "Threat Duration",
     "Universal Damage Sets"
@@ -45,14 +44,14 @@ export const BreathofFire: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Fire",
       "scale": 0.68,
       "table": "Melee_Damage",
       "duration": 0.6,
       "tickRate": 0.5
     },
     {
-      "type": "Special",
+      "type": "Fire",
       "scale": 0.1,
       "table": "Melee_Damage",
       "duration": 3.1,
@@ -60,12 +59,15 @@ export const BreathofFire: Power = {
     }
   ],
   "atoms": [
-    ["Unmapped",null,0.68,1,0.6,"Melee_Damage","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.1,1,3.1,"Melee_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,1,1],
-    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
-    ["Unmapped",null,0.306,1,0.6,"Melee_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,0.5,1],
-    ["Unmapped",null,1.25343,1,0.6,"Melee_Damage","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,0.5,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,0.05,1,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? enttype target> player eq || kRage source> 70 < &&",true],
-    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true]
+    ["Unmapped",null,0.68,1,0.6,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.1,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,1,1],
+    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
+    ["Unmapped",null,0.306,1,0.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,0.5,1],
+    ["Unmapped",null,1.25343,1,0.6,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,0.5,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Unmapped",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? enttype target> player eq || kRage source> 70 < &&",true],
+    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true]
+  ],
+  "damageTypes": [
+    "Fire"
   ]
 };

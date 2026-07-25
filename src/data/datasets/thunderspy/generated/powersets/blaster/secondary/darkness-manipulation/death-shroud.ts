@@ -44,11 +44,14 @@ export const DeathShroud: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Negative",
     "scale": 0.2,
     "table": "Melee_Damage"
   },
   "atoms": [
-    ["Unmapped",null,0.2,1,0,"Melee_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Unmapped",null,0.2,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1]
+  ],
+  "damageTypes": [
+    "Negative"
   ]
 };

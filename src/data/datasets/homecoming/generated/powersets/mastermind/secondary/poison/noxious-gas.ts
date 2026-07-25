@@ -16,7 +16,7 @@ export const NoxiousGas: Power = {
   "shortHelp": "Ranged (Infect Henchman); Foe -RES, -DEF, -To Hit, -Res, +Special",
   "icon": "poison_noxiousgas.png",
   "powerType": "Click",
-  "targetType": "Self",
+  "targetType": "Own Pet (Alive)",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,

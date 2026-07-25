@@ -42,14 +42,17 @@ export const PoisonousRay: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Toxic",
     "scale": 0.4,
     "table": "Ranged_Damage",
     "duration": 2.1,
     "tickRate": 0.5
   },
   "atoms": [
-    ["Unmapped",null,0.4,1,2.1,"Ranged_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,0.5,1],
-    ["Unmapped",null,1,1,15,"Ranged_Debuff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Unmapped",null,0.4,1,2.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,0.5,1],
+    ["Unmapped",null,1,1,15,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1]
+  ],
+  "damageTypes": [
+    "Toxic"
   ]
 };

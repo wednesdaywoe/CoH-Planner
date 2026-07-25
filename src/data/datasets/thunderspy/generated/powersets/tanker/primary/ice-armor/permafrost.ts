@@ -34,7 +34,12 @@ export const Permafrost: Power = {
   "effects": {
     "buffDuration": 10.25,
     "durations": {
+      "maxHPBuff": 10.25,
       "resistance": 10.25
+    },
+    "maxHPBuff": {
+      "scale": 1,
+      "table": "Melee_HealSelf"
     },
     "resistance": {
       "cold": {
@@ -44,9 +49,9 @@ export const Permafrost: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,1,1,10.25,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Cold",3,1,10.25,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.2,1,10.25,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["MaxHP",null,1,1,10.25,"Melee_HealSelf","Max","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Resistance","Cold",3,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.2,1,10.25,"Melee_Ones","Res","Magnitude","Self","Any",true,"No",null,null,null,1]
   ],
   "mechanicType": "parentMechanic"
 };

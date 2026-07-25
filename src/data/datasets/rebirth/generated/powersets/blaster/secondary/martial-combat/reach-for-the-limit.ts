@@ -27,8 +27,5 @@ export const ReachfortheLimit: Power = {
   "atoms": [
     ["Meta",null,1,1,10.25,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
   ],
-  "setsModes": [
-    "Peacebringer_Blaster_Mode"
-  ],
   "mechanicType": "parentMechanic"
 };

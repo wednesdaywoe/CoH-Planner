@@ -55,10 +55,10 @@ export const CombatTrainingDefensive: Power = {
     }
   },
   "atoms": [
-    ["Defense","Melee",0.75,1,0.75,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0,1,0.75,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Movement","Run",0.1,1,10.25,"Melee_SpeedRunning","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Movement","Fly",0.1,1,10.25,"Melee_SpeedFlying","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1]
+    ["Defense","Melee",0.75,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0,1,0.75,"Melee_Ones","Res","Expression","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"75 kHitPoints% source> - 0 100 minmax 60 / 0.25 *"],
+    ["Movement","Run",0.1,1,10.25,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Movement","Fly",0.1,1,10.25,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",true,"No",null,null,null,1]
   ],
   "mechanicType": "parentMechanic"
 };

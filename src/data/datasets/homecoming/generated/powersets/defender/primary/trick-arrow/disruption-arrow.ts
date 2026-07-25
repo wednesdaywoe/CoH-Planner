@@ -40,8 +40,7 @@ export const DisruptionArrow: Power = {
       "copyBoosts": true,
       "displayName": "Disruption Arrow",
       "duration": 45,
-      "entity": "PL_StaticObject",
-      "isPseudoPet": false,
+      "isPseudoPet": true,
       "powers": [
         "Redirects.Trick_Arrow.Disruption_Arrow",
         "Pets.ResistAll.ResistAll"
@@ -79,7 +78,8 @@ export const DisruptionArrow: Power = {
             }
           ]
         }
-      ]
+      ],
+      "entity": "PL_StaticObject"
     }
   },
   "atoms": [

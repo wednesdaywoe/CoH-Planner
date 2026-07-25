@@ -42,9 +42,14 @@ export const PhantasmalPhase: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "buffDuration": 2.25,
+    "buffDuration": 10,
     "durations": {
+      "maxHPBuff": 10,
       "resistance": 2.25
+    },
+    "maxHPBuff": {
+      "scale": 0.8,
+      "table": "Melee_HealSelf"
     },
     "resistance": {
       "negative": {
@@ -54,12 +59,12 @@ export const PhantasmalPhase: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,0.8,1,10,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Negative",2,1,2.25,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,-30,1,2.25,"Melee_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["Unmapped",null,-10,1,2.25,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["Unmapped",null,2.25,1,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,3,1,2.25,"Melee_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
-    ["Unmapped",null,-10,1,2.25,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
+    ["MaxHP",null,0.8,1,10,"Melee_HealSelf","Max","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Resistance","Negative",2,1,2.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,-30,1,2.25,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Unmapped",null,-10,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Unmapped",null,2.25,1,0,"Ranged_Ones","Cur","Duration","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,3,1,2.25,"Melee_Res_Boolean","Res","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
+    ["Unmapped",null,-10,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
   ]
 };

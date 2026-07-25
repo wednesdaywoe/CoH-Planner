@@ -41,12 +41,16 @@ export const ChronoShift: Power = {
     "enduranceGain": {
       "scale": 0.15,
       "table": "Ranged_Ones"
+    },
+    "healing": {
+      "scale": 2.64,
+      "table": "Ranged_Heal"
     }
   },
   "atoms": [
-    ["Unmapped",null,1.056,1,0,"Ranged_Heal","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower? ! isPVPMap? ! &&"],
-    ["Unmapped",null,1.584,1,0,"Ranged_Heal","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower? isPVPMap? ! &&"],
-    ["Endurance",null,0.15,1,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Regeneration",null,0.93808,1,30,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
+    ["Unmapped",null,1.056,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower? ! isPVPMap? ! &&"],
+    ["Unmapped",null,1.584,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower? isPVPMap? ! &&"],
+    ["Endurance",null,0.15,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Regeneration",null,0.93808,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
   ]
 };

@@ -33,8 +33,18 @@ export const WillOfArachnae: Power = {
     "Healing"
   ],
   "maxSlots": 6,
+  "effects": {
+    "buffDuration": 60,
+    "durations": {
+      "maxHPBuff": 60
+    },
+    "maxHPBuff": {
+      "scale": 2,
+      "table": "Melee_HealSelf"
+    }
+  },
   "atoms": [
-    ["Unmapped",null,2,1,60,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["MaxHP",null,2,1,60,"Melee_HealSelf","Max","Magnitude","Self","Any",true,"No",null,null,null,1]
   ],
   "modesRequired": [
     "Widow_Tarantula_Mode"

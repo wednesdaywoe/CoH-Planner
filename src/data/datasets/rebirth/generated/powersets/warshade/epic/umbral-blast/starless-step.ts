@@ -90,7 +90,14 @@ export const StarlessStep: Power = {
       }
     },
     "durations": {
-      "defenseBuff": 10
+      "defenseBuff": 10,
+      "stealth": 0.4
+    },
+    "stealth": {
+      "translucency": {
+        "scale": 0,
+        "table": "Ranged_Ones"
+      }
     },
     "teleport": {
       "scale": 1,
@@ -98,7 +105,7 @@ export const StarlessStep: Power = {
     }
   },
   "atoms": [
-    ["EntCreate",null,0,1,0.4,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Stealth","Translucency",0,1,0.4,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["Mez","Teleport",1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Defense","Melee",0.725,1,10,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],

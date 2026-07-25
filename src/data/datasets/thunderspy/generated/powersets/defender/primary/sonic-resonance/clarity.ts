@@ -32,8 +32,8 @@ export const Clarity: Power = {
   ],
   "maxSlots": 6,
   "atoms": [
-    ["Unmapped",null,-30,1,90,"Ranged_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["Unmapped",null,2.5,1,90,"Ranged_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,3,1,90,"Ranged_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
+    ["Unmapped",null,-30,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Unmapped",null,2.5,1,90,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,3,1,90,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
   ]
 };

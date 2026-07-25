@@ -16,6 +16,7 @@ export const HellonEarth: Power = {
   "shortHelp": "Ranged, Pet +Dmg, +To Hit, Summon Living Hellfire",
   "icon": "demonsummoning_hellonearth.png",
   "powerType": "Click",
+  "targetType": "Own Pet (Alive)",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -55,8 +56,8 @@ export const HellonEarth: Power = {
     }
   },
   "atoms": [
-    ["ToHit",null,1,1,90,"Ranged_Buff_ToHit","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,5,1,90,"Ranged_Buff_Dmg","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["ToHit",null,1,1,90,"Ranged_Buff_ToHit","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,5,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
     ["EntCreate",null,1,1,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["EntCreate",null,1,1,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["EntCreate",null,1,1,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],

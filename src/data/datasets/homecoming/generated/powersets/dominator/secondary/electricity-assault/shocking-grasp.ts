@@ -46,8 +46,7 @@ export const ShockingGrasp: Power = {
       "copyBoosts": true,
       "displayName": "Voltaic Sentinel",
       "duration": 60,
-      "entity": "Pet_NoCollision",
-      "isPseudoPet": false,
+      "isPseudoPet": true,
       "powers": [
         "Pets.ResistAll_NoFly.ResistAll",
         "Pets.VoltaicSentinel_Dominator.Electrical_Bolt",
@@ -89,7 +88,8 @@ export const ShockingGrasp: Power = {
             }
           ]
         }
-      ]
+      ],
+      "entity": "PL_Untargetable_FightPreferRanged"
     }
   },
   "atoms": [

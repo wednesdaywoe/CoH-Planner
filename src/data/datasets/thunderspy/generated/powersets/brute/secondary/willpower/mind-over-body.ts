@@ -52,6 +52,6 @@ export const MindOverBody: Power = {
     }
   },
   "atoms": [
-    ["Resistance","Smashing",2.25,1,0.75,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Resistance","Smashing",2.25,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1]
   ]
 };

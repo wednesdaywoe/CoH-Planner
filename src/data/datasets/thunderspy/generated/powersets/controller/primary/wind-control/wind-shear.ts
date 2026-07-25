@@ -39,6 +39,7 @@ export const WindShear: Power = {
     "ToHit Debuff"
   ],
   "allowedSetCategories": [
+    "Controller Archetype Sets",
     "Slow Movement",
     "To Hit Debuff"
   ],
@@ -56,10 +57,10 @@ export const WindShear: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,0.75,1,2.1,"Melee_DeBuff_ToHit","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.65,1,2.1,"Melee_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Movement","Run",-1,1,2.1,"Melee_SpeedRunning","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1.25,1,2.1,"Melee_Debuff_Dam","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,-2,1,2.1,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Unmapped",null,0.75,1,2.1,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.65,1,2.1,"Melee_Slow","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Movement","Run",-1,1,2.1,"Melee_SpeedRunning","Max","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,1.25,1,2.1,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,-2,1,2.1,"Melee_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1]
   ]
 };

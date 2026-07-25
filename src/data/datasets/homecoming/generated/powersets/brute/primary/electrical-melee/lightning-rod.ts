@@ -16,7 +16,7 @@ export const LightningRod: Power = {
   "shortHelp": "PBAoE, Foe Knockback; Self Teleport;",
   "icon": "electricmelee_pbaoeteleport.png",
   "powerType": "Click",
-  "targetType": "Dead Teammate",
+  "targetType": "Teleport",
   "effectArea": "Location",
   "stats": {
     "accuracy": 1,
@@ -47,8 +47,7 @@ export const LightningRod: Power = {
       "copyBoosts": true,
       "displayName": "Lightning Rod",
       "duration": 1,
-      "entity": "PL_StaticObject",
-      "isPseudoPet": false,
+      "isPseudoPet": true,
       "powers": [
         "Pets.Lightning_Rod_Universal.Lightning_Rod_Center",
         "Pets.Lightning_Rod_Universal.Lightning_Rod",
@@ -112,7 +111,8 @@ export const LightningRod: Power = {
             }
           ]
         }
-      ]
+      ],
+      "entity": "PL_StaticObject"
     },
     "teleport": {
       "scale": 1,

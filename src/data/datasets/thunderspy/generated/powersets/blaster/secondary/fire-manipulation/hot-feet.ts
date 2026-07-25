@@ -49,9 +49,12 @@ export const HotFeet: Power = {
     }
   },
   "atoms": [
-    ["Mez","Afraid",4,3,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.7,1,2.3,"Melee_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.25,1,0,"Melee_Damage","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq @ToHitRoll @ToHit < @ForceHit || &&",true],
-    ["Unmapped",null,0.25,1,0,"Melee_Damage","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll @ToHit < @ForceHit || &&",true]
+    ["Mez","Afraid",4,3,0,"Melee_Ones","Cur","Duration","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.7,1,2.3,"Melee_Slow","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.25,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq @ToHitRoll @ToHit < @ForceHit || &&",true],
+    ["Unmapped",null,0.25,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll @ToHit < @ForceHit || &&",true]
+  ],
+  "damageTypes": [
+    "Fire"
   ]
 };

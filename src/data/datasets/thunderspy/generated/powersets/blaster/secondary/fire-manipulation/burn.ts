@@ -39,7 +39,7 @@ export const Burn: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Fire",
     "scale": 1.6,
     "table": "Melee_Damage"
   },
@@ -52,8 +52,11 @@ export const Burn: Power = {
   },
   "atoms": [
     ["EntCreate",null,1,1,10,"Melee_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,100,1,0,"Melee_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1.6,1,0,"Melee_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"@ToHitRoll @ToHit < @ForceHit || entref source> entref target> == ! &&"],
-    ["Unmapped",null,0.061,1,9.53,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Unmapped",null,100,1,0,"Melee_Res_Boolean","Cur","Duration","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1.6,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"@ToHitRoll @ToHit < @ForceHit || entref source> entref target> == ! &&"],
+    ["Unmapped",null,0.061,1,9.53,"Melee_Ones","Str","Magnitude","Self","Any",true,"No",null,null,null,1]
+  ],
+  "damageTypes": [
+    "Fire"
   ]
 };

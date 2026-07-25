@@ -47,7 +47,6 @@ export const SleepGrenade: Power = {
       "copyBoosts": true,
       "displayName": "Sleep Grenade",
       "duration": 30,
-      "entity": "Class_Minion_Pets",
       "isPseudoPet": false,
       "powers": [
         "Pets.ResistAll.ResistAll",
@@ -111,7 +110,8 @@ export const SleepGrenade: Power = {
             }
           ]
         }
-      ]
+      ],
+      "entity": "PL_StaticObject"
     }
   },
   "atoms": [

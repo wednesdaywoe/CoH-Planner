@@ -47,8 +47,7 @@ export const GlitteringColumn: Power = {
       "copyBoosts": true,
       "displayName": "Glittering Column",
       "duration": 7,
-      "entity": "PL_FightPreferMelee",
-      "isPseudoPet": false,
+      "isPseudoPet": true,
       "powers": [
         "Redirects.Pyrotechnic_Control.GlitteringColumn_Skin",
         "Redirects.Pyrotechnic_Control.GlitteringColumn_Aura",
@@ -102,7 +101,8 @@ export const GlitteringColumn: Power = {
             }
           ]
         }
-      ]
+      ],
+      "entity": "PL_FightPreferMelee"
     }
   },
   "atoms": [

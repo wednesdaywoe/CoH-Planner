@@ -37,10 +37,20 @@ export const DisciplineAllies: Power = {
     "Healing"
   ],
   "maxSlots": 6,
+  "effects": {
+    "buffDuration": 120,
+    "durations": {
+      "maxHPBuff": 120
+    },
+    "maxHPBuff": {
+      "scale": 4,
+      "table": "Melee_Heal"
+    }
+  },
   "atoms": [
-    ["Unmapped",null,4,1,120,"Melee_Heal","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Regeneration",null,2.5,1,30,"Ranged_Ones","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 1 - 30 < enttype target> critter eq &&",true],
-    ["Regeneration",null,2.5,1,30,"Ranged_Ones","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 1 - 30 < enttype target> player eq &&",true]
+    ["MaxHP",null,4,1,120,"Melee_Heal","Max","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Regeneration",null,2.5,1,30,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 1 - 30 < enttype target> critter eq &&",true],
+    ["Regeneration",null,2.5,1,30,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 1 - 30 < enttype target> player eq &&",true]
   ],
   "conditionalEffects": [
     {

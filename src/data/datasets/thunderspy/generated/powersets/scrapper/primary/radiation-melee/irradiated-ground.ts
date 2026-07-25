@@ -34,7 +34,6 @@ export const IrradiatedGround: Power = {
   ],
   "allowedSetCategories": [
     "Melee AoE Damage",
-    "Scrapper Archetype Sets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
@@ -46,5 +45,8 @@ export const IrradiatedGround: Power = {
   },
   "atoms": [
     ["EntCreate",null,-1,1,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ],
+  "damageTypes": [
+    "Toxic"
   ]
 };

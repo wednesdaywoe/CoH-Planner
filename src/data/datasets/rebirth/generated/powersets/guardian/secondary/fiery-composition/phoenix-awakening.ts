@@ -77,7 +77,7 @@ export const PhoenixAwakening: Power = {
     ["Mez","Untouchable",10,1,15,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"cur.kHitPoints target> 1 <",true],
     ["Heal",null,1,1,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,1.5,1,null,null,null,null,null,null,"cur.kHitPoints target> 1 <",true],
     ["Endurance",null,1,1,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,1.5,1,null,null,null,null,null,null,"cur.kHitPoints target> 1 <",true],
-    ["EntCreate",null,1,1,90,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"cur.kHitPoints target> 1 <",true]
+    ["Meta",null,1,1,90,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"cur.kHitPoints target> 1 <",true]
   ],
   "conditionalEffects": [
     {

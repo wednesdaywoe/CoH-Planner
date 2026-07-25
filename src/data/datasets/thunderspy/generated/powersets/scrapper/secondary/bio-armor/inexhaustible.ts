@@ -34,7 +34,12 @@ export const Inexhaustible: Power = {
   "effects": {
     "buffDuration": 5.25,
     "durations": {
+      "maxHPBuff": 5.25,
       "regenBuff": 5.25
+    },
+    "maxHPBuff": {
+      "scale": 0.5,
+      "table": "Melee_HealSelf"
     },
     "regenBuff": {
       "scale": 0.5,
@@ -42,11 +47,11 @@ export const Inexhaustible: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,0.5,1,5.25,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Regeneration",null,0.5,1,5.25,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,2,1,5.25,"Melee_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.45,1,5.25,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
-    ["Unmapped",null,0.15,1,5.25,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kRestedAdaptation Source.Mode?",true]
+    ["MaxHP",null,0.5,1,5.25,"Melee_HealSelf","Max","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Regeneration",null,0.5,1,5.25,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,2,1,5.25,"Melee_Res_Boolean","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.45,1,5.25,"Melee_HealSelf","Max","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
+    ["Unmapped",null,0.15,1,5.25,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kRestedAdaptation Source.Mode?",true]
   ],
   "mechanicType": "parentMechanic"
 };

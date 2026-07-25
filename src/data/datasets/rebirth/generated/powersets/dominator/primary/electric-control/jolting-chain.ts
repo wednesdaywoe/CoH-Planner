@@ -76,7 +76,7 @@ export const JoltingChain: Power = {
     ["Damage","Energy",0.3,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["EntCreate",null,-1,1,1,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["EntCreate",null,-1,1,1,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["EntCreate",null,1,61,4,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,4.25,1,null,true],
+    ["Meta",null,1,61,4,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,4.25,1,null,true],
     ["Recovery",null,-1,1,8,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5],
     ["Damage","Energy",3.0366,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Endurance",null,-2,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
@@ -87,5 +87,8 @@ export const JoltingChain: Power = {
       "chance": 0.5,
       "label": "Recovery"
     }
+  ],
+  "setsModes": [
+    "Chain_Jolt_Mode"
   ]
 };

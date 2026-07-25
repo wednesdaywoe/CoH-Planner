@@ -52,6 +52,6 @@ export const ProtonArmor: Power = {
     }
   },
   "atoms": [
-    ["Resistance","Energy",4,1,0.75,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Resistance","Energy",4,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1]
   ]
 };

@@ -55,13 +55,13 @@ export const Hypothermia: Power = {
     }
   },
   "atoms": [
-    ["Mez","Sleep",4,3,15.1,"Ranged_Sleep","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,3,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? ! &&"],
-    ["Unmapped",null,0.35,1,15,"Ranged_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? !"],
-    ["Unmapped",null,1,0.32465052604675293,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Mez","Sleep",3,4,15.1,"Ranged_Ones","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,3,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? ! &&",true],
-    ["Mez","Sleep",4,3,15.1,"Ranged_Sleep","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,3,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? &&",true],
-    ["Mez","Sleep",3,4,15.1,"Ranged_Ones","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,3,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? &&",true],
-    ["Unmapped",null,0.4375,1,15,"Ranged_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower?",true]
+    ["Mez","Sleep",4,3,15.1,"Ranged_Sleep","Cur","Duration","Target","PvE",true,"No",null,null,3,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? ! &&"],
+    ["Unmapped",null,0.35,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? !"],
+    ["Unmapped",null,1,0.32465052604675293,0,"Ranged_Ones","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Mez","Sleep",3,4,15.1,"Ranged_Ones","Cur","Duration","Target","PvP",true,"No",null,null,3,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? ! &&",true],
+    ["Mez","Sleep",4,3,15.1,"Ranged_Sleep","Cur","Duration","Target","PvE",true,"No",null,null,3,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? &&",true],
+    ["Mez","Sleep",3,4,15.1,"Ranged_Ones","Cur","Duration","Target","PvP",true,"No",null,null,3,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? &&",true],
+    ["Unmapped",null,0.4375,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower?",true]
   ],
   "conditionalEffects": [
     {

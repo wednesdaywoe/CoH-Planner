@@ -38,13 +38,18 @@ export const Grace: Power = {
       }
     },
     "durations": {
-      "defenseBuff": 10.75
+      "defenseBuff": 10.75,
+      "maxHPBuff": 10.75
+    },
+    "maxHPBuff": {
+      "scale": 1,
+      "table": "Melee_HealSelf"
     }
   },
   "atoms": [
-    ["Unmapped",null,1,1,10.75,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Psionic",1,1,10.75,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.5,1,10.75,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
+    ["MaxHP",null,1,1,10.75,"Melee_HealSelf","Max","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Defense","Psionic",1,1,10.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.5,1,10.75,"Melee_Ones","Res","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
   ],
   "mechanicType": "parentMechanic"
 };

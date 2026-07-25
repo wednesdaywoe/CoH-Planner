@@ -45,14 +45,14 @@ export const TRCocoon: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Smashing",
       "scale": 0.155,
       "table": "Ranged_Damage",
       "duration": 6,
       "tickRate": 0.4000000059604645
     },
     {
-      "type": "Special",
+      "type": "Smashing",
       "scale": 0.0755,
       "table": "Ranged_Damage",
       "duration": 6,
@@ -60,6 +60,10 @@ export const TRCocoon: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 15,
+    "durations": {
+      "slow": 15
+    },
     "hold": {
       "mag": 3,
       "scale": 10,
@@ -69,18 +73,27 @@ export const TRCocoon: Power = {
       "mag": 2,
       "scale": 15,
       "table": "Ranged_Immobilize"
+    },
+    "slow": {
+      "jumpHeight": {
+        "scale": 500,
+        "table": "Ranged_Ones"
+      }
     }
   },
   "atoms": [
-    ["Mez","Immobilized",15,2,0,"Ranged_Immobilize","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.155,1,6,"Ranged_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,0.4000000059604645,1],
-    ["Unmapped",null,0.0755,1,6,"Ranged_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,0.4000000059604645,1],
-    ["Mez","Held",10,3,0,"Ranged_Immobilize","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.5,1,15,"Ranged_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,-500,1,15,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Mez","Held",2,3,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Mez","Immobilized",15,2,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.155,1,6,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,0.4000000059604645,1],
+    ["Unmapped",null,0.0755,1,6,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,0.4000000059604645,1],
+    ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.5,1,15,"Ranged_Slow","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Movement","JumpHeight",-500,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Mez","Held",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "modesRequired": [
     "Widow_Tarantula_Mode"
+  ],
+  "damageTypes": [
+    "Smashing"
   ]
 };

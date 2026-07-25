@@ -51,29 +51,19 @@ export const ReactionTime: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "buffDuration": 10,
+    "buffDuration": 5,
     "durations": {
-      "movementCapBump": 10,
-      "rechargeDebuff": 10,
-      "slow": 10,
-      "specialBuff": 10
-    },
-    "movementCapBump": {
-      "runSpeed": {
-        "scale": 1,
-        "table": "Melee_SpeedRunning"
-      }
+      "rechargeDebuff": 5,
+      "slow": 5
     },
     "rechargeDebuff": {
       "scale": 0.4,
-      "table": "Melee_Slow",
-      "toWho": "Self"
+      "table": "Melee_Slow"
     },
     "slow": {
       "flySpeed": {
         "scale": 0.7,
-        "table": "Melee_Slow",
-        "toWho": "Self"
+        "table": "Melee_Slow"
       },
       "jumpHeight": {
         "scale": 0.7,
@@ -81,19 +71,11 @@ export const ReactionTime: Power = {
       },
       "jumpSpeed": {
         "scale": 0.7,
-        "table": "Melee_Slow",
-        "toWho": "Self"
+        "table": "Melee_Slow"
       },
       "runSpeed": {
-        "scale": 0.7,
-        "table": "Melee_Slow",
-        "toWho": "Self"
-      }
-    },
-    "specialBuff": {
-      "movement": {
-        "scale": 0.7,
-        "table": "Melee_Slow"
+        "scale": 1,
+        "table": "Melee_SpeedRunning"
       }
     }
   },

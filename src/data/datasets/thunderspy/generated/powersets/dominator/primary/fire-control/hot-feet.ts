@@ -45,7 +45,7 @@ export const HotFeet: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Fire",
     "scale": 0.25,
     "table": "Ranged_Damage"
   },
@@ -57,8 +57,11 @@ export const HotFeet: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,0.25,1,0,"Ranged_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Mez","Afraid",4,3,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.7,1,2.25,"Ranged_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Unmapped",null,0.25,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Mez","Afraid",4,3,0,"Ranged_Ones","Cur","Duration","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.7,1,2.25,"Ranged_Slow","Str","Magnitude","Target","Any",true,"No",null,null,null,1]
+  ],
+  "damageTypes": [
+    "Fire"
   ]
 };

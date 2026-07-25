@@ -131,7 +131,7 @@ export const EnforcedMorale: Power = {
     ["MezResist","Held",3,1,90,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kMeter target> 0.9 < isPVPMap? &&",true],
     ["MezResist","Confused",3,1,90,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kMeter target> 0.9 < isPVPMap? &&",true],
     ["MezResist","Terrorized",3,1,90,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kMeter target> 0.9 < isPVPMap? &&",true],
-    ["Damage","Special",1,1,0,"Ranged_Ones","Abs","Expression","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kMeter target> 0.9 < Cur.kHitPoints target> Max.kHitPoints target> 0.9 * > &&",true],
+    ["Damage","Special",1,1,0,"Ranged_Ones","Abs","Expression","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kMeter target> 0.9 < Cur.kHitPoints target> Max.kHitPoints target> 0.9 * > &&",true,null,null,null,null,"Max.kHitPoints target> 0.9 * Cur.kHitPoints target> -"],
     ["RechargeTime",null,0.05,1,90,"Ranged_Ones","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kMeter target> 0.9 < Str.kRechargeTime target> 1.21 < &&",true]
   ]
 };

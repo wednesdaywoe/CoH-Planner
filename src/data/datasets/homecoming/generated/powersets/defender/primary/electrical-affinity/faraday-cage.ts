@@ -44,8 +44,7 @@ export const FaradayCage: Power = {
       "copyBoosts": true,
       "displayName": "Faraday Cage",
       "duration": 240,
-      "entity": "PL_StaticObject",
-      "isPseudoPet": false,
+      "isPseudoPet": true,
       "powers": [
         "Redirects.Shock_Therapy.FaradayCage",
         "Redirects.Shock_Therapy.FaradayCageFx",
@@ -126,7 +125,8 @@ export const FaradayCage: Power = {
             }
           ]
         }
-      ]
+      ],
+      "entity": "PL_StaticObject"
     }
   },
   "atoms": [

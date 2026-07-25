@@ -38,6 +38,16 @@ export const ShadowRecall: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 1.5,
+    "durations": {
+      "stealth": 1.5
+    },
+    "stealth": {
+      "translucency": {
+        "scale": 0,
+        "table": "Ranged_Ones"
+      }
+    },
     "teleport": {
       "scale": 1,
       "table": "Ranged_Ones"
@@ -46,7 +56,7 @@ export const ShadowRecall: Power = {
   "atoms": [
     ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"target.isFriend? ! Warshade_Offensive.Umbral_Blast.Starless_Step source.ownPower? ! &&"],
     ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq Warshade_Offensive.Umbral_Blast.Starless_Step source.ownPower? && target.isFriend? ! &&"],
-    ["EntCreate",null,0,1,1.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["Stealth","Translucency",0,1,1.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"target.isFriend?",true],
     ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq Warshade_Offensive.Umbral_Blast.Starless_Step source.ownPower? && target.isFriend? ! &&",true]

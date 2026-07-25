@@ -38,7 +38,6 @@ export const Liquefy: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Accurate To-Hit Debuff",
-    "Controller Archetype Sets",
     "Defense Debuff",
     "Holds",
     "Knockback",
@@ -66,5 +65,9 @@ export const Liquefy: Power = {
   "atoms": [
     ["EntCreate",null,1,1,30,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["EntCreate",null,1,1,30,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ],
+  "damageTypes": [
+    "Energy",
+    "Smashing"
   ]
 };

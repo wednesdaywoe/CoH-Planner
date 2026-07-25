@@ -36,9 +36,15 @@ export const Manifest: Power = {
   "effects": {
     "buffDuration": 10,
     "durations": {
+      "specialBuff": 10,
       "tohitBuff": 10
     },
-    "effectDuration": 10,
+    "specialBuff": {
+      "stun": {
+        "scale": 0.5,
+        "table": "Melee_Ones"
+      }
+    },
     "summon": {
       "duration": 10,
       "entity": "Pets_Telekinetic_Sword",
@@ -51,9 +57,9 @@ export const Manifest: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,5,1,20,"Melee_Buff_Dmg","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["ToHit",null,2,1,10,"Melee_Buff_ToHit","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Mez","Stunned",0.5,1,10,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,5,1,20,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["ToHit",null,2,1,10,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Enhancement","Stunned",0.5,1,10,"Melee_Ones","Str","Magnitude","Self","Any",true,"No",null,null,null,1],
     ["EntCreate",null,0.5,1,10,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["EntCreate",null,0.5,1,10,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["EntCreate",null,0.5,1,10,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]

@@ -16,7 +16,7 @@ export const EnchantDemon: Power = {
   "shortHelp": "Ranged, Enchant Demon Henchman",
   "icon": "demonsummoning_enchantdemon.png",
   "powerType": "Click",
-  "targetType": "Self",
+  "targetType": "Own Pet (Alive)",
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "RechargeTime"

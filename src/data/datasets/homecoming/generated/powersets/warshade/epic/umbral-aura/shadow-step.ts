@@ -16,7 +16,7 @@ export const ShadowStep: Power = {
   "shortHelp": "Ranged (Location), Self Teleport",
   "icon": "umbralaura_teleportself.png",
   "powerType": "Click",
-  "targetType": "Dead Teammate",
+  "targetType": "Teleport",
   "effectArea": "Location",
   "stats": {
     "accuracy": 1,

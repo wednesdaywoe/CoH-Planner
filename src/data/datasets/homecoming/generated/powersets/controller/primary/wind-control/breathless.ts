@@ -69,7 +69,7 @@ export const Breathless: Power = {
     }
   },
   "atoms": [
-    ["Damage","Lethal",0.3,1,0,"Ranged_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Lethal",0.3,1,0,"Ranged_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"@Scale 0.02 Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPowerNum? * + @Value * @Effectiveness * @Strength *"],
     ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["DamageBuff","Smashing",2,1,15,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
     ["DamageBuff","Lethal",2,1,15,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
@@ -81,7 +81,7 @@ export const Breathless: Power = {
     ["DamageBuff","Toxic",2,1,15,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Immobilized",15,1,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"],
     ["RechargeTime",null,0.3,1,15,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Damage","Lethal",0.3,1,0,"Ranged_InherentDamage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || &&",true],
+    ["Damage","Lethal",0.3,1,0,"Ranged_InherentDamage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || &&",true,null,null,null,null,"@Scale 0.02 Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPowerNum? * + @Value * @Effectiveness * @Strength *"],
     ["Damage","Lethal",0.3944,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || &&",true],
     ["Damage","Lethal",0.1972,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || &&",true],
     ["Mez","Immobilized",1,4,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],

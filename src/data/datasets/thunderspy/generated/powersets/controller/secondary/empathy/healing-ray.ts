@@ -37,9 +37,23 @@ export const HealingRay: Power = {
   ],
   "maxSlots": 6,
   "atoms": [
-    ["Unmapped",null,-0.25,1,0.13,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.03,1,0.13,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0,1,0,"Ranged_Heal","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,0.125,1,null,null,null,null,null,null,"target.TickDamage 0 >",true],
-    ["Unmapped",null,0,1,0,"Ranged_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,0.125,1,null,null,null,null,null,null,"target.TickDamage 0 >",true]
+    ["Unmapped",null,-0.25,1,0.13,"Ranged_Ones","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.03,1,0.13,"Melee_Ones","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0,1,0,"Ranged_Heal","Abs","Expression","Target","Any",true,"No",null,null,0.125,1,null,null,null,null,null,null,"target.TickDamage 0 >",true,null,null,null,null,"target.TickDamage 0.25 *"],
+    ["Unmapped",null,0,1,0,"Ranged_Damage","Abs","Expression","Self","Any",true,"No",null,null,0.125,1,null,null,null,null,null,null,"target.TickDamage 0 >",true,null,null,null,null,"target.TickDamage -0.25 *"]
+  ],
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "effects": {
+        "healing": {
+          "scale": 0,
+          "table": "Ranged_Heal"
+        }
+      }
+    }
   ]
 };

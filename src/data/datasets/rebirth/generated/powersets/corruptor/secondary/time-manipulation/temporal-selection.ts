@@ -68,9 +68,6 @@ export const TemporalSelection: Power = {
     ["Regeneration",null,1.5,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
     ["Meta",null,1,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["Meta",null,1,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true]
-  ],
-  "setsModes": [
-    "Peacebringer_Blaster_Mode"
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true]
   ]
 };

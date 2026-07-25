@@ -40,16 +40,19 @@ export const OrbitingDeath: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Negative",
     "scale": 0.17,
     "table": "Melee_Damage",
     "duration": 2.5,
     "tickRate": 3
   },
   "atoms": [
-    ["Unmapped",null,0.17,1,2.5,"Melee_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,3,1],
-    ["Unmapped",null,1,1,2.5,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,2,1],
-    ["Unmapped",null,1,1,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < && kWarshade_Tanker_Mode Source.Mode? &&",true],
-    ["Unmapped",null,1,1,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq && kWarshade_Tanker_Mode Source.Mode? &&",true]
+    ["Unmapped",null,0.17,1,2.5,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,3,1],
+    ["Unmapped",null,1,1,2.5,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,2,1],
+    ["Unmapped",null,1,1,0,"Melee_Ones","Abs","Duration","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < && kWarshade_Tanker_Mode Source.Mode? &&",true],
+    ["Unmapped",null,1,1,0,"Melee_Ones","Abs","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq && kWarshade_Tanker_Mode Source.Mode? &&",true]
+  ],
+  "damageTypes": [
+    "Negative"
   ]
 };

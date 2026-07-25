@@ -41,16 +41,19 @@ export const Gloom: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Negative",
     "scale": 0.22,
     "table": "Ranged_Damage",
     "duration": 1.5,
     "tickRate": 0.20000000298023224
   },
   "atoms": [
-    ["Unmapped",null,0.22,1,1.5,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,0.20000000298023224,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.75,1,10,"Ranged_DeBuff_ToHit","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.26075,1,1.5,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,0.20000000298023224,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,8,1,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Unmapped",null,0.22,1,1.5,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,0.20000000298023224,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.75,1,10,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.26075,1,1.5,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,0.20000000298023224,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Unmapped",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+  ],
+  "damageTypes": [
+    "Negative"
   ]
 };

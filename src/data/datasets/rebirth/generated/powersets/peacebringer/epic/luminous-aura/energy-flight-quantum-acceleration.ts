@@ -63,13 +63,16 @@ export const EnergyFlightQuantumAcceleration: Power = {
     }
   },
   "atoms": [
-    ["EntCreate",null,1,128,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,1,1,null,true],
+    ["Meta",null,1,128,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,1,1,null,true],
     ["Movement","Fly",1,1,0.75,"Melee_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Movement","Fly",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Movement","Fly",-1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Movement","FlyMode",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1]
   ],
   "requires": "Peacebringer_Defensive.Luminous_Aura.Quantum_Acceleration",
+  "setsModes": [
+    "AfterburnerOff"
+  ],
   "modesRequired": [
     "EnergyFlyOn"
   ]

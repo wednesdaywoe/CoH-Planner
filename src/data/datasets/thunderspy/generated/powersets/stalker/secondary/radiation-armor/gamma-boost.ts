@@ -42,8 +42,8 @@ export const GammaBoost: Power = {
     }
   },
   "atoms": [
-    ["Regeneration",null,1,1,1.25,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.5,1,1.25,"Melee_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Regeneration",null,1,1,1.25,"Melee_Ones","Cur","Expression","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"75 kHitPoints% source> - 30 + 100 / @StdResult *"],
+    ["Unmapped",null,0.5,1,1.25,"Melee_Res_Boolean","Res","Magnitude","Self","Any",true,"No",null,null,null,1]
   ],
   "mechanicType": "parentMechanic"
 };

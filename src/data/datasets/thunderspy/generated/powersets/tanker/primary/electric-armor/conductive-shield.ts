@@ -52,6 +52,6 @@ export const ConductiveShield: Power = {
     }
   },
   "atoms": [
-    ["Resistance","Fire",3.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Resistance","Fire",3.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1]
   ]
 };

@@ -59,8 +59,13 @@ export const KujiInRetsu: Power = {
     },
     "durations": {
       "defenseBuff": 90,
+      "maxHPBuff": 60,
       "movement": 90,
       "recoveryBuff": 90
+    },
+    "maxHPBuff": {
+      "scale": 4,
+      "table": "Melee_HealSelf"
     },
     "movement": {
       "runSpeed": {
@@ -74,12 +79,12 @@ export const KujiInRetsu: Power = {
     }
   },
   "atoms": [
-    ["Defense","Melee",6,1,90,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Ranged",6,1,90,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","AoE",6,1,90,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Recovery",null,1,1,90,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Movement","Run",0.5,1,90,"Melee_SpeedRunning","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,90,"Melee_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,4,1,60,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Defense","Melee",6,1,90,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Defense","Ranged",6,1,90,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Defense","AoE",6,1,90,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Recovery",null,1,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Movement","Run",0.5,1,90,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1,1,90,"Melee_Res_Boolean","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["MaxHP",null,4,1,60,"Melee_HealSelf","Max","Magnitude","Target","Any",true,"No",null,null,null,1]
   ]
 };

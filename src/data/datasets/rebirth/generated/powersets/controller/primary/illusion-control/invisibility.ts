@@ -96,6 +96,10 @@ export const Invisibility: Power = {
       "stealthPvP": {
         "scale": 1000,
         "table": "Melee_Ones"
+      },
+      "translucency": {
+        "scale": 0.3,
+        "table": "Melee_Ones"
       }
     },
     "threatDebuff": {
@@ -126,8 +130,8 @@ export const Invisibility: Power = {
     ["Defense","Energy",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Defense","Negative",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Defense","Psionic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["EntCreate",null,0.1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["EntCreate",null,0.3,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Stealth","Translucency",0.1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Stealth","Translucency",0.3,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["ThreatLevel",null,-1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
   ]
 };

@@ -37,7 +37,7 @@ export const FireShield: Power = {
   ],
   "maxSlots": 6,
   "atoms": [
-    ["Unmapped",null,2,1,240,"Ranged_Res_Dmg","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,240,"Ranged_Res_Dmg","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Unmapped",null,2,1,240,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1,1,240,"Ranged_Res_Dmg","Res","Magnitude","Self","Any",true,"No",null,null,null,1]
   ]
 };

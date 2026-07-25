@@ -63,6 +63,6 @@ export const Fusion: Power = {
     ["DamageBuff","Negative",5,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Toxic",5,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Psionic",5,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["GrantPower",null,1,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
+    ["GlobalChanceMod",null,1,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
   ]
 };

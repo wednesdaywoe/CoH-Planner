@@ -171,11 +171,6 @@ export const BlackDwarf: Power = {
       "scale": 50,
       "table": "Melee_Res_Boolean"
     },
-    "summon": {
-      "duration": 2,
-      "entity": "KHELDIAN_DWARF_WARSHADE",
-      "isPseudoPet": false
-    },
     "threatBuff": {
       "scale": 1,
       "table": "Melee_Ones"
@@ -214,12 +209,12 @@ export const BlackDwarf: Power = {
     ["Mez","Immobilized",-60,1,2.03,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
     ["Mez","Confused",-50,1,2.03,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
     ["Mez","Terrorized",-50,1,2.03,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["EntCreate",null,1,15,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,1,3,null,true],
-    ["EntCreate",null,1,7,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,1,3,null,true],
-    ["EntCreate",null,1,11,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true],
-    ["EntCreate",null,1,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,1,3,null,true],
-    ["GrantPower",null,-1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",1,null,null,1,null,true],
-    ["GrantPower",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",1,null,null,1,null,true],
+    ["Meta",null,1,15,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,1,3,null,true],
+    ["Meta",null,1,7,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,1,3,null,true],
+    ["Meta",null,1,11,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true],
+    ["Meta",null,1,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,1,3,null,true],
+    ["GlobalChanceMod",null,-1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",1,null,null,1,null,true],
+    ["GlobalChanceMod",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",1,null,null,1,null,true],
     ["Resistance","Smashing",5,1,2,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
     ["Resistance","Lethal",5,1,2,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
     ["Resistance","Fire",5,1,2,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
@@ -255,5 +250,10 @@ export const BlackDwarf: Power = {
     ["Movement","Fly",0.5,1,2.03,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
     ["Movement","JumpHeight",0.5,1,2.03,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
     ["Movement","Jump",0.5,1,2.03,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
+  ],
+  "setsModes": [
+    "Disable_Temp",
+    "Warshade_Tanker_Mode",
+    "Warshade_Form_Change2"
   ]
 };

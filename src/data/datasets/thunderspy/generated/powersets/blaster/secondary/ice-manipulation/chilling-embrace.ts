@@ -56,10 +56,13 @@ export const ChillingEmbrace: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,0.7,1,5,"Melee_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&"],
-    ["Movement","Run",-1,1,5,"Melee_SpeedRunning","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq entref target> entref source> eq ! && cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&"],
-    ["Unmapped",null,2,1,5,"Melee_Debuff_Dam","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&"],
-    ["Unmapped",null,0.5,1,3,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq",true],
-    ["Recovery",null,0.5,1,3,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq",true]
+    ["Unmapped",null,0.7,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&"],
+    ["Movement","Run",-1,1,5,"Melee_SpeedRunning","Max","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq entref target> entref source> eq ! && cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&"],
+    ["Unmapped",null,2,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&"],
+    ["MaxHP",null,0.5,1,3,"Melee_HealSelf","Max","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq",true],
+    ["Recovery",null,0.5,1,3,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq",true]
+  ],
+  "damageTypes": [
+    "Cold"
   ]
 };

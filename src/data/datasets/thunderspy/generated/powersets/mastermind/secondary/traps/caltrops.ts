@@ -34,7 +34,6 @@ export const Caltrops: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Mastermind Archetype Sets",
     "Melee AoE Damage",
     "Ranged AoE Damage",
     "Slow Movement",
@@ -60,5 +59,8 @@ export const Caltrops: Power = {
   "atoms": [
     ["EntCreate",null,1,1,45,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["EntCreate",null,1,1,45,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ],
+  "damageTypes": [
+    "Lethal"
   ]
 };

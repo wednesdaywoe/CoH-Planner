@@ -31,6 +31,7 @@ export const Confront: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Scrapper Archetype Sets",
     "Threat Duration"
   ],
   "maxSlots": 6,
@@ -41,9 +42,9 @@ export const Confront: Power = {
     }
   },
   "atoms": [
-    ["Mez","Taunt",15,1,0,"Melee_Taunt","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,-0.75,1,12,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Mez","Taunt",4,1,0,"Melee_Taunt","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll @ToHit < @ForceHit || &&",true],
-    ["Unmapped",null,1,1,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll @ToHit >= @ForceHit || &&",true]
+    ["Mez","Taunt",15,1,0,"Melee_Taunt","Abs","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,-0.75,1,12,"Melee_Ones","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Mez","Taunt",4,1,0,"Melee_Taunt","Abs","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll @ToHit < @ForceHit || &&",true],
+    ["Unmapped",null,1,1,0,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll @ToHit >= @ForceHit || &&",true]
   ]
 };

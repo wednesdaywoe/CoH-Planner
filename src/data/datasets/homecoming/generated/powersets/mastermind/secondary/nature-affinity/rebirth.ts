@@ -16,6 +16,7 @@ export const Rebirth: Power = {
   "shortHelp": "Ranged, Ally Rez, +Heal Over Time, Special, +3 Bloom",
   "icon": "natureaffinity_rebirth.png",
   "powerType": "Click",
+  "targetType": "Teammate",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,

@@ -35,7 +35,6 @@ export const JackFrost: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Controller Archetype Sets",
     "Pet Damage",
     "Recharge Intensive Pets",
     "Universal Damage Sets"
@@ -50,5 +49,8 @@ export const JackFrost: Power = {
   },
   "atoms": [
     ["EntCreate",null,-1,1,99999,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ],
+  "damageTypes": [
+    "Cold"
   ]
 };

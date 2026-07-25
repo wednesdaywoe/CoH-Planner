@@ -58,7 +58,7 @@ export const RendingFlurry: Power = {
     }
   ],
   "atoms": [
-    ["Damage","Lethal",1.182,1,0,"Melee_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Lethal",1.182,1,0,"Melee_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? .04 * 1 + @StdResult *"],
     ["Damage","Lethal",0.095,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
     ["Damage","Fire",0.532,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0]

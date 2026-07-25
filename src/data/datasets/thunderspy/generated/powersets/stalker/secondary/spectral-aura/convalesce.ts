@@ -35,9 +35,15 @@ export const Convalesce: Power = {
     "Healing"
   ],
   "maxSlots": 6,
+  "effects": {
+    "healing": {
+      "scale": 2.5,
+      "table": "Melee_HealSelf"
+    }
+  },
   "atoms": [
-    ["Meta",null,0,1,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,2.5,1,0,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,6,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Meta",null,0,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,2.5,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1,1,6,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1]
   ]
 };

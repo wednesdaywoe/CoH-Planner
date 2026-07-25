@@ -52,8 +52,12 @@ export const HeavyBurst: Power = {
     "tickRate": 0.30000001192092896
   },
   "atoms": [
-    ["Unmapped",null,0.109,1,2,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1,1,12,"Ranged_Debuff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.1138,1,2,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Unmapped",null,0.109,1,2,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,1,1,12,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.1138,1,2,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq",true]
+  ],
+  "damageTypes": [
+    "Lethal",
+    "Toxic"
   ]
 };

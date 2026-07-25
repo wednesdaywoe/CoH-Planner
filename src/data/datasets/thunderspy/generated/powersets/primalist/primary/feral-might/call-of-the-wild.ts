@@ -33,7 +33,6 @@ export const CalloftheWild: Power = {
   ],
   "allowedSetCategories": [
     "Pet Damage",
-    "Primalist Archetype Sets",
     "Recharge Intensive Pets",
     "Universal Damage Sets"
   ],

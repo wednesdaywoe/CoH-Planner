@@ -34,13 +34,21 @@ export const Revive: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.5,
+    "durations": {
+      "healing": 0.5
+    },
     "enduranceGain": {
       "scale": 50,
       "table": "Melee_Ones"
+    },
+    "healing": {
+      "scale": 7.5,
+      "table": "Melee_HealSelf"
     }
   },
   "atoms": [
-    ["Unmapped",null,7.5,1,0.5,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,1,1],
-    ["Endurance",null,50,1,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Unmapped",null,7.5,1,0.5,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"No",null,null,1,1],
+    ["Endurance",null,50,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1]
   ]
 };

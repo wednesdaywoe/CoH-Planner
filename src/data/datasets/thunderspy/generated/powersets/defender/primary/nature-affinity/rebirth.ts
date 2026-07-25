@@ -41,10 +41,14 @@ export const Rebirth: Power = {
     "enduranceGain": {
       "scale": 0.5,
       "table": "Ranged_Ones"
+    },
+    "healing": {
+      "scale": 5,
+      "table": "Ranged_Heal"
     }
   },
   "atoms": [
-    ["Unmapped",null,5,1,0,"Ranged_Heal","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Endurance",null,0.5,1,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Unmapped",null,5,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Endurance",null,0.5,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1]
   ]
 };

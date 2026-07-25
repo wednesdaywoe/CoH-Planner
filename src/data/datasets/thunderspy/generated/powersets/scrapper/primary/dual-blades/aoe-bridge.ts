@@ -46,18 +46,18 @@ export const AoEBridge: Power = {
     "tickRate": 0.4000000059604645
   },
   "atoms": [
-    ["Unmapped",null,0.57,1,0.6,"Melee_Damage","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,0.4000000059604645,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1,1,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.2565,1,0.6,"Melee_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,0.4000000059604645,1],
-    ["Unmapped",null,0.894475,1,0.6,"Melee_Damage","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,0.4000000059604645,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,1.78895,0.05000000074505806,0,"Melee_Damage","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,1.14,0.05000000074505806,0,"Melee_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
-    ["Unmapped",null,1.14,0.10000000149011612,0,"Melee_Damage","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true],
-    ["Resistance","Lethal",-1.34,1,35,"Melee_Res_DMG","Res","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade3 source.ownPower? enttype target> critter eq &&",true],
-    ["Unmapped",null,1.34,1,20,"Melee_DeBuff_ToHit","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade3 source.ownPower? enttype target> critter eq &&",true],
-    ["Unmapped",null,0.57,1,0,"Melee_Damage","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade3 source.ownPower? enttype target> critter eq &&",true],
-    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade3 source.ownPower? enttype target> critter eq &&",true],
-    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade3 source.ownPower? enttype target> player eq &&",true]
+    ["Unmapped",null,0.57,1,0.6,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,0.4000000059604645,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.2565,1,0.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,0.4000000059604645,1],
+    ["Unmapped",null,0.894475,1,0.6,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,0.4000000059604645,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Unmapped",null,1.78895,0.05000000074505806,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Unmapped",null,1.14,0.05000000074505806,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
+    ["Unmapped",null,1.14,0.10000000149011612,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true],
+    ["Resistance","Lethal",-1.34,1,35,"Melee_Res_DMG","Res","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade3 source.ownPower? enttype target> critter eq &&",true],
+    ["Unmapped",null,1.34,1,20,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade3 source.ownPower? enttype target> critter eq &&",true],
+    ["Unmapped",null,0.57,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade3 source.ownPower? enttype target> critter eq &&",true],
+    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade3 source.ownPower? enttype target> critter eq &&",true],
+    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade3 source.ownPower? enttype target> player eq &&",true]
   ],
   "conditionalEffects": [
     {
@@ -87,5 +87,8 @@ export const AoEBridge: Power = {
         }
       }
     }
+  ],
+  "damageTypes": [
+    "Lethal"
   ]
 };

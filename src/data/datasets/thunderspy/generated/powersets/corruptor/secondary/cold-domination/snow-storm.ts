@@ -39,7 +39,12 @@ export const SnowStorm: Power = {
   "maxSlots": 6,
   "effects": {
     "buffDuration": 5,
+    "damageDebuff": {
+      "scale": 3,
+      "table": "Ranged_Debuff_Dam"
+    },
     "durations": {
+      "damageDebuff": 5,
       "slow": 5
     },
     "slow": {
@@ -50,17 +55,20 @@ export const SnowStorm: Power = {
     }
   },
   "atoms": [
-    ["Damage","Smashing",3,1,5,"Ranged_Debuff_Dam","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Damage","Lethal",3,1,5,"Ranged_Debuff_Dam","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Damage","Fire",3,1,5,"Ranged_Debuff_Dam","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Damage","Cold",3,1,5,"Ranged_Debuff_Dam","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Damage","Energy",3,1,5,"Ranged_Debuff_Dam","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Damage","Negative",3,1,5,"Ranged_Debuff_Dam","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Damage","Psionic",3,1,5,"Ranged_Debuff_Dam","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Damage","Toxic",3,1,5,"Ranged_Debuff_Dam","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.5,1,5,"Ranged_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Movement","Run",-1,1,5,"Ranged_SpeedRunning","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,-1.6,1,5,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["DamageBuff","Smashing",3,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["DamageBuff","Lethal",3,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["DamageBuff","Fire",3,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["DamageBuff","Cold",3,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["DamageBuff","Energy",3,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["DamageBuff","Negative",3,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["DamageBuff","Psionic",3,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["DamageBuff","Toxic",3,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.5,1,5,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Movement","Run",-1,1,5,"Ranged_SpeedRunning","Max","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,-1.6,1,5,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1]
   ],
-  "requires": "Corruptor_Buff.Cold_Domination.Snow_Field !"
+  "requires": "Corruptor_Buff.Cold_Domination.Snow_Field !",
+  "damageTypes": [
+    "Cold"
+  ]
 };

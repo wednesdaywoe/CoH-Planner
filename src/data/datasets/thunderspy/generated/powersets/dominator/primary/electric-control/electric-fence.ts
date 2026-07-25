@@ -28,14 +28,15 @@ export const ElectricFence: Power = {
     "EnduranceModification"
   ],
   "allowedSetCategories": [
+    "Dominator Archetype Sets",
     "Endurance Modification",
     "Ranged Damage"
   ],
   "maxSlots": 6,
   "effects": {},
   "atoms": [
-    ["RechargeTime",null,0.2,1,10.25,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1.5,1,10.25,"Ranged_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["RechargeTime",null,0.2,1,10.25,"Ranged_Ones","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1.5,1,10.25,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",true,"No",null,null,null,1]
   ],
   "mechanicType": "parentMechanic"
 };

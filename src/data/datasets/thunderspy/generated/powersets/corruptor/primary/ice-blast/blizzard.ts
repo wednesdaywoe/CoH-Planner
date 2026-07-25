@@ -52,5 +52,8 @@ export const Blizzard: Power = {
   },
   "atoms": [
     ["EntCreate",null,-1,1,15,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ],
+  "damageTypes": [
+    "Cold"
   ]
 };

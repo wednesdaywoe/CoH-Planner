@@ -39,16 +39,16 @@ export const FortifyPack: Power = {
   "maxSlots": 6,
   "effects": {},
   "atoms": [
-    ["Defense","Ranged",0,1,60,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Melee",0,1,60,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","AoE",0,1,60,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Smashing",0,1,60,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Lethal",0,1,60,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Fire",0,1,60,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Cold",0,1,60,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Energy",0,1,60,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Negative",0,1,60,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Psionic",0,1,60,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Regeneration",null,0,1,60,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,null,null,null,null,true]
+    ["Defense","Ranged",0,1,60,"Ranged_Buff_Def","Cur","Expression","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"cur.kMeter source> .1 * .05 + @Strength *"],
+    ["Defense","Melee",0,1,60,"Ranged_Buff_Def","Cur","Expression","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"cur.kMeter source> .1 * .05 + @Strength *"],
+    ["Defense","AoE",0,1,60,"Ranged_Buff_Def","Cur","Expression","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"cur.kMeter source> .1 * .05 + @Strength *"],
+    ["Defense","Smashing",0,1,60,"Ranged_Buff_Def","Cur","Expression","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"cur.kMeter source> .1 * .05 + @Strength *"],
+    ["Defense","Lethal",0,1,60,"Ranged_Buff_Def","Cur","Expression","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"cur.kMeter source> .1 * .05 + @Strength *"],
+    ["Defense","Fire",0,1,60,"Ranged_Buff_Def","Cur","Expression","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"cur.kMeter source> .1 * .05 + @Strength *"],
+    ["Defense","Cold",0,1,60,"Ranged_Buff_Def","Cur","Expression","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"cur.kMeter source> .1 * .05 + @Strength *"],
+    ["Defense","Energy",0,1,60,"Ranged_Buff_Def","Cur","Expression","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"cur.kMeter source> .1 * .05 + @Strength *"],
+    ["Defense","Negative",0,1,60,"Ranged_Buff_Def","Cur","Expression","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"cur.kMeter source> .1 * .05 + @Strength *"],
+    ["Defense","Psionic",0,1,60,"Ranged_Buff_Def","Cur","Expression","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"cur.kMeter source> .1 * .05 + @Strength *"],
+    ["Regeneration",null,0,1,60,"Ranged_Ones","Cur","Expression","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,null,null,null,null,true,null,"cur.kMeter source> 2 * 1 + @Strength *"]
   ]
 };

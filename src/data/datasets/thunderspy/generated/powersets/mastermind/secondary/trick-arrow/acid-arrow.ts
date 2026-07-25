@@ -38,13 +38,12 @@ export const AcidArrow: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
-    "Mastermind Archetype Sets",
     "Ranged AoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Toxic",
     "scale": 0.01,
     "table": "Ranged_Damage",
     "duration": 20,
@@ -61,15 +60,18 @@ export const AcidArrow: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,0.01,1,20,"Ranged_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,1,1],
-    ["Unmapped",null,-2,1,20,"Ranged_Res_Dmg","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,2,1,20,"Ranged_Debuff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Regeneration",null,-1,1,20,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,-2,1,20,"Ranged_Res_Dmg","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kImmobilized target> 0 >",true],
-    ["Unmapped",null,2,1,20,"Ranged_Debuff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kImmobilized target> 0 >",true],
-    ["Unmapped",null,-3,1,20,"Ranged_Res_Dmg","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kHeld target> 0 >",true],
-    ["Unmapped",null,3,1,20,"Ranged_Debuff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kHeld target> 0 >",true],
-    ["Regeneration",null,-1,1,20,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kImmobilized target> 0 >",true],
-    ["Regeneration",null,-1,1,20,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kHeld target> 0 >",true]
+    ["Unmapped",null,0.01,1,20,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,1,1],
+    ["Unmapped",null,-2,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,2,1,20,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Regeneration",null,-1,1,20,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,-2,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kImmobilized target> 0 >",true],
+    ["Unmapped",null,2,1,20,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kImmobilized target> 0 >",true],
+    ["Unmapped",null,-3,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kHeld target> 0 >",true],
+    ["Unmapped",null,3,1,20,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kHeld target> 0 >",true],
+    ["Regeneration",null,-1,1,20,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kImmobilized target> 0 >",true],
+    ["Regeneration",null,-1,1,20,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kHeld target> 0 >",true]
+  ],
+  "damageTypes": [
+    "Toxic"
   ]
 };
