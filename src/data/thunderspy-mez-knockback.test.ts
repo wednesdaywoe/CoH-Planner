@@ -71,13 +71,17 @@ describe('Thunderspy applied-mez & knockback recovery (data-driven)', () => {
     expect(Geyser.effects?.knockup).toEqual({ scale: 1.5, table: 'Ranged_Ones' });
   });
 
-  // --- Target-trap veto: a Self-only +mez-strength buff gets NO applied mez ---
-  it('Power Boost (Self +mez-strength buff) does not gain a phantom Stun', () => {
-    // Its index names `Stunned`, but targets_affected=['Self'] → guardThunderspyAppliedMez
-    // drops it. The power has no other captured effect, so the hollow effects block is
-    // cleaned away entirely.
-    expect(PowerBoost.effects?.stun).toBeUndefined();
-    expect(PowerBoost.effects).toBeUndefined();
+  // --- Aspect distinguishes mez-STRENGTH from applied mez (TSPY-3) --------------
+  it('Power Boost gains its mez-STRENGTH buff (specialBuff.stun), not an applied Stun', () => {
+    // Power Boost is a +Strength self-buff (the Power Boost family): its `Stun` template is
+    // aspect=Strength, toWho=Self — a buff to the CASTER'S stun MAGNITUDE, not an applied
+    // Stun mez. Before TSPY-3 recovered the AttribMod aspect, the blank aspect (plus
+    // targets_affected=['Self']) made guardThunderspyAppliedMez drop the whole template, so
+    // the power carried nothing — while HC's Power Boost / Power Up carries exactly this
+    // specialBuff.stun. With the aspect now read from the binary, it routes correctly to
+    // specialBuff.stun (matching HC) and is STILL not an applied `effects.stun` mez.
+    expect(PowerBoost.effects?.stun).toBeUndefined(); // no applied Stun mez
+    expect(PowerBoost.effects?.specialBuff?.stun).toEqual({ scale: 0.75, table: 'Melee_Ones' });
   });
 
   // --- Sign rule: a negative-scale mez on a duration table is not applied --------

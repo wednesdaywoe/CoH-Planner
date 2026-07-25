@@ -89,7 +89,7 @@ export type EffectType =
   | 'Endurance' | 'EnduranceDiscount' | 'Recovery' | 'Regeneration'
   | 'MaxHP' | 'MaxEndurance'
   // utility stats
-  | 'RechargeTime' | 'Range' | 'ThreatLevel' | 'Perception' | 'Stealth'
+  | 'RechargeTime' | 'InterruptTime' | 'Range' | 'ThreatLevel' | 'Perception' | 'Stealth'
   // movement (subType: Run|Fly|FlyMode|Jump|JumpHeight|Control|Friction).
   // `Fly` is the FlyingSpeed buff; `FlyMode` is the kFly flight-mode grant
   // (magnitude = "can fly"), a different attrib entirely — see MOVEMENT_AXIS.
@@ -125,6 +125,20 @@ export interface AtomicEffect {
 
   // --- value / context (non-identity) ---
   magnitude: number;
+  /**
+   * Raw `magnitude_expression` — the CoH stack-machine program that computes this
+   * atom's magnitude at runtime (evaluated by the expr VM), present when the value is
+   * a formula rather than a fixed `scale`/`magnitude`. The meter-driven inherents live
+   * here: Brute Fury's `Rage_Buff` carries `kRage source> .02 *` (2% damage-Strength
+   * per Rage point) on each damage-type atom, so the calc reads the coefficient from
+   * the data instead of a hardcoded constant. Absent for ordinary numeric-magnitude
+   * atoms. Distinct from {@link requiresExpression}, which GATES rather than values.
+   *
+   * Only Homecoming's export currently carries it; the Rebirth/Thunderspy parsers drop
+   * the expression string (their `Rage_Buff` damage atoms arrive value-less), so Fury is
+   * not derivable there — a recorded data gap (DATA-GAP INHERENT-2), not a fallback.
+   */
+  magnitudeExpression?: string;
   duration: number;
   ticks?: number;
   applicationPeriod?: number;
@@ -140,6 +154,18 @@ export interface AtomicEffect {
    * consumer.
    */
   stackKey?: string;
+  /**
+   * Raw `RequiredEvents` gate from the AttribMod tail, comma-joined in authored
+   * order (`'Held,Sleep'`). The mod applies only when one of these events is
+   * live on the target/caster — the mez-state bonus family (Sonic Thrust's
+   * +Energy vs Held/Slept foes, Telekinesis's repel-while-Immobilized, Aura of
+   * Insanity's per-mez debuffs, sleep-breaks-on-damage duration mods). A parser
+   * field like {@link stackKey}, NOT a converter verdict — but the base
+   * collectors treat any carrier as conditional, so every carrier atom is also
+   * {@link gated}. The per-event post-event window (seconds) stays in the
+   * export; this projection carries the event names only.
+   */
+  requiredEvents?: string;
   baseProbability: number;
   procsPerMinute?: number;
 
@@ -287,11 +313,21 @@ export const ATOM_TUPLE_FIELDS = [
   // only 0.8% of templates carry one (and only ~320 pair it with `Suppress`, the
   // one flavor that means anything), so appending keeps every other atom's
   // encoding byte-identical and the keyed few pay a handful of interior nulls.
+  // `magnitudeExpression` appends after all of them: only ~757 Homecoming atoms carry
+  // one (the meter/expression-valued powers — Fury's Rage_Buff among them) and none on
+  // Rebirth/Thunderspy, so every other atom's encoding stays byte-identical (a trailing
+  // null trims away) and the expression-valued few pay the interior nulls.
+  // `requiredEvents` appends after `magnitudeExpression` for the same
+  // trailing-null economics: only ~48 Homecoming templates (and their
+  // Rebirth twins) carry an event gate, so every other atom's encoding
+  // stays byte-identical.
   'gated',
   'perTarget',
   'suppressible',
   'notOnCaster',
   'stackKey',
+  'magnitudeExpression',
+  'requiredEvents',
 ] as const satisfies ReadonlyArray<keyof AtomicEffect>;
 
 /** One atom, positionally encoded. A `null` at position `i` means the field
@@ -415,7 +451,10 @@ const MEZ_SUBTYPE: Record<string, string> = {
 
 /** scalar-stat attribs → effectType (no subType). */
 const SCALAR_EFFECT: Record<string, EffectType> = {
-  rechargetime: 'RechargeTime', endurance: 'Endurance',
+  // InterruptTime surfaced 2026-07-20 when ATTRIB_NAME id 91 stopped
+  // misdecoding (incarnate alpha_silent interrupt boosts are its only HC
+  // carriers) — scalar activation-interrupt window, RechargeTime's sibling.
+  rechargetime: 'RechargeTime', interrupttime: 'InterruptTime', endurance: 'Endurance',
   endurancediscount: 'EnduranceDiscount', recovery: 'Recovery',
   regeneration: 'Regeneration', hitpoints: 'MaxHP', accuracy: 'Accuracy',
   tohit: 'ToHit', range: 'Range', threatlevel: 'ThreatLevel',
@@ -494,6 +533,18 @@ const META_EFFECT: Record<string, EffectType> = {
   vision_phase: 'Meta', combat_mod_shift: 'Meta', avoid: 'Meta',
   grant_boosted_power: 'Meta', set_script_value: 'Meta', reward: 'Meta',
   ninja_run: 'Meta', script_notify: 'Meta',
+  // Rebirth's raw-keyed special-attrib decode (SPECIAL_ATTRIB_BY_RAW_REBIRTH,
+  // WS7) surfaces the full i24 special block under its real names — all
+  // non-stat engine markers. `power_redirect` in particular is the fork's
+  // redirect mechanism; its mechanical meaning (target + condition) is
+  // exported on the power-level `redirect` list, so the atom is a marker.
+  power_redirect: 'Meta', unset_mode: 'Meta', drop_toggles: 'Meta',
+  power_chance_mod: 'Meta', reward_source: 'Meta', reward_source_team: 'Meta',
+  clear_fog: 'Meta', xpdebt: 'Meta', exclusive_vision_phase: 'Meta',
+  token_clear: 'Meta', lua_exec: 'Meta', force_move: 'Meta',
+  // travel-stance markers
+  glide: 'Meta', walk: 'Meta', beast_run: 'Meta', steam_jump: 'Meta',
+  hover_board: 'Meta', magic_carpet: 'Meta', parkour_run: 'Meta',
 };
 
 /**
@@ -562,11 +613,11 @@ export function bridgeAttrib(attrib: string, aspect?: string, table?: string): B
     return { effectType: 'Mez', subType: sub };
   }
 
-  // Scalar stats keep their type at any aspect (Mids keeps Recovery/Regen/ToHit at
   // Stealth radius / translucency — the axis lives in the subType [BRIDGE-2]. Must precede
   // SCALAR/META (which used to catch these attrib-typed with no subType).
   if (a in STEALTH_AXIS) return { effectType: 'Stealth', subType: STEALTH_AXIS[a] };
 
+  // Scalar stats keep their type at any aspect (Mids keeps Recovery/Regen/ToHit at
   // Str); only Endurance gains a Max variant.
   if (a in SCALAR_EFFECT) {
     if (a === 'endurance' && asp === 'maximum') return { effectType: 'MaxEndurance' };
@@ -611,6 +662,12 @@ export function bridgeAttrib(attrib: string, aspect?: string, table?: string): B
     return { effectType: 'Unmapped', reason: `by-type '${attrib}' at aspect '${aspect ?? '?'}' on non-def/res table '${table}' (deferred — DSH6 routing)` };
   }
 
+  // kSpecial: the game's per-power special-behavior attribute (the exporter
+  // prints it with its index, e.g. `Special(485)` on HC). Entered the corpus
+  // with the Boosts.*/Set_Bonus.* piece templates — Cupid's Crush "chance
+  // to..." segments carry it. Not a quantity the calc models; recognized here
+  // so the no-bridge-rule tripwire stays sharp for genuinely new attrib names.
+  if (a.startsWith('special(')) return { effectType: 'Unmapped', reason: `kSpecial special-behavior attrib (not a modeled quantity): ${attrib}` };
   if (a.startsWith('unknown(')) return { effectType: 'Unmapped', reason: `parser-unmapped attrib index: ${attrib}` };
   return { effectType: 'Unmapped', reason: `no bridge rule: ${attrib}` };
 }
@@ -635,12 +692,15 @@ export interface ExportTemplate {
   table?: string;
   scale?: number;
   magnitude?: number;
+  magnitude_expression?: string;
   duration?: string | number;
   application_period?: number;
   stack?: string;
   stack_key?: string;
   stack_limit?: number;
   flags?: string[];
+  /** AttribMod-tail event gate records; only the event names reach the atom. */
+  required_events?: Array<{ event: string; event_id?: number; duration?: number; always?: number }>;
 }
 
 const PV_MAP: Record<string, PvMode> = { EITHER: 'Any', PVE_ONLY: 'PvE', PVP_ONLY: 'PvP' };
@@ -670,6 +730,11 @@ const STACK_KEY_NONE = '4294967295';
 
 function mapStackKey(k?: string): string | undefined {
   return !k || k === STACK_KEY_NONE ? undefined : k;
+}
+
+function mapRequiredEvents(evs?: ExportTemplate['required_events']): string | undefined {
+  if (!evs || evs.length === 0) return undefined;
+  return evs.map((e) => e.event).join(',');
 }
 
 function mapStacking(s?: string): Stacking {
@@ -737,11 +802,15 @@ export function ingestTemplate(t: ExportTemplate, ctx: IngestContext): AtomicEff
       modifierTable: t.table ?? '',
       scale: t.scale ?? 0,
       magnitude: t.magnitude ?? 0,
+      // A value expression (kRage-driven Fury etc.); empty string ⇒ absent, like the
+      // other optional strings. Read by the calc's expr VM, not by the bag.
+      magnitudeExpression: t.magnitude_expression || undefined,
       duration: parseDuration(t.duration),
       applicationPeriod: t.application_period || undefined,
       stacking,
       stackCap: t.stack_limit && t.stack_limit > 0 ? t.stack_limit : undefined,
       stackKey: mapStackKey(t.stack_key),
+      requiredEvents: mapRequiredEvents(t.required_events),
       baseProbability: ctx.baseProbability,
       procsPerMinute: ctx.procsPerMinute,
       ignoreStrength: ignoreStrength || undefined,

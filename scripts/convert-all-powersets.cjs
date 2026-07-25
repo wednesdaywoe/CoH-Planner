@@ -11,7 +11,9 @@ const fs = require('fs');
 const path = require('path');
 const { parseDatasetArg } = require('./_dataset-paths.cjs');
 
-const { RAW_DATA_PATH } = require('./convert-powerset.cjs');
+// CATEGORY_MAP is the single raw-category → archetype/type routing table; the
+// per-powerset converter owns it and this orchestrator only iterates it.
+const { RAW_DATA_PATH, CATEGORY_MAP } = require('./convert-powerset.cjs');
 
 const datasetId = parseDatasetArg();
 // Forward `--dataset <id>` to each child convert-powerset.cjs invocation
@@ -20,59 +22,6 @@ const datasetFlag = `--dataset ${datasetId}`;
 
 const force = process.argv.includes('--force');
 
-// Map raw category names to our folder structure
-const CATEGORIES = {
-  // Heroes
-  'defender_buff': { archetype: 'defender', type: 'primary' },
-  'defender_ranged': { archetype: 'defender', type: 'secondary' },
-  'controller_control': { archetype: 'controller', type: 'primary' },
-  'controller_buff': { archetype: 'controller', type: 'secondary' },
-  'blaster_ranged': { archetype: 'blaster', type: 'primary' },
-  'blaster_support': { archetype: 'blaster', type: 'secondary' },
-  'tanker_defense': { archetype: 'tanker', type: 'primary' },
-  'tanker_melee': { archetype: 'tanker', type: 'secondary' },
-  'scrapper_melee': { archetype: 'scrapper', type: 'primary' },
-  'scrapper_defense': { archetype: 'scrapper', type: 'secondary' },
-  // Villains
-  'corruptor_ranged': { archetype: 'corruptor', type: 'primary' },
-  'corruptor_buff': { archetype: 'corruptor', type: 'secondary' },
-  'brute_melee': { archetype: 'brute', type: 'primary' },
-  'brute_defense': { archetype: 'brute', type: 'secondary' },
-  'dominator_control': { archetype: 'dominator', type: 'primary' },
-  'dominator_assault': { archetype: 'dominator', type: 'secondary' },
-  'mastermind_summon': { archetype: 'mastermind', type: 'primary' },
-  'mastermind_buff': { archetype: 'mastermind', type: 'secondary' },
-  'stalker_melee': { archetype: 'stalker', type: 'primary' },
-  'stalker_defense': { archetype: 'stalker', type: 'secondary' },
-  // Praetorian
-  'sentinel_ranged': { archetype: 'sentinel', type: 'primary' },
-  'sentinel_defense': { archetype: 'sentinel', type: 'secondary' },
-};
-
-// EAT/VEAT categories. Bin export uses different names than the old
-// CoD2 archive — Kheldians are "_defensive"/"_offensive" instead of
-// "_defense"/"_ranged"; SoA spans 4 source categories that all land
-// under arachnos-soldier/epic. Match the CATEGORY_MAP in convert-powerset.cjs.
-const EXTRA_CATEGORIES = {
-  'peacebringer_defensive': { archetype: 'peacebringer', type: 'epic' },
-  'peacebringer_offensive': { archetype: 'peacebringer', type: 'epic' },
-  'warshade_defensive':     { archetype: 'warshade',     type: 'epic' },
-  'warshade_offensive':     { archetype: 'warshade',     type: 'epic' },
-  'arachnos_soldiers':      { archetype: 'arachnos-soldier', type: 'epic' },
-  'training_gadgets':       { archetype: 'arachnos-soldier', type: 'epic' },
-  'widow_training':         { archetype: 'arachnos-widow',   type: 'epic' },
-  'teamwork':               { archetype: 'arachnos-widow',   type: 'epic' },
-  // Rebirth-only Guardian
-  'guardian_assault':       { archetype: 'guardian', type: 'primary' },
-  'guardian_comp':          { archetype: 'guardian', type: 'secondary' },
-  // Thunderspy-only Primalist — a Kheldian-style form-shifter. Single primary
-  // (Feral_Might) + single secondary (Primal_Gifts) powerset; form-attack
-  // variants live in Primalist_Misc (handled as redirects, not a pickable set).
-  'feral_might':            { archetype: 'primalist', type: 'primary' },
-  'primal_gifts':           { archetype: 'primalist', type: 'secondary' },
-};
-
-const ALL_CATEGORIES = { ...CATEGORIES, ...EXTRA_CATEGORIES };
 
 let converted = 0;
 let failed = 0;
@@ -87,14 +36,14 @@ const powersPath = (() => {
   const newLayout = RAW_DATA_PATH;  // categories are direct children
   const oldLayout = path.join(RAW_DATA_PATH, 'powers');
   // Detect by checking for any known category directory
-  for (const cat of Object.keys(ALL_CATEGORIES)) {
+  for (const cat of Object.keys(CATEGORY_MAP)) {
     if (fs.existsSync(path.join(newLayout, cat))) return newLayout;
     if (fs.existsSync(path.join(oldLayout, cat))) return oldLayout;
   }
   return newLayout;
 })();
 
-for (const [category, info] of Object.entries(ALL_CATEGORIES)) {
+for (const [category, info] of Object.entries(CATEGORY_MAP)) {
   const categoryPath = path.join(powersPath, category);
 
   if (!fs.existsSync(categoryPath)) {

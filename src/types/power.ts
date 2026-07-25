@@ -79,6 +79,12 @@ export interface MaxHPFractionAbsorb {
   maxHPFraction: number;
   appliesStrength?: boolean;
   table?: string;
+  /** Per-foe growth for an absorb inside a foe-targeted AoE (Parasitic Aura:
+   *  +10% Max HP per foe, up to 10). The companion to {@link ScaledEffect}'s
+   *  `perTarget`, which this form has no scale to carry: the magnitude is an
+   *  Expression the converter recovers as a fraction, and each foe hit
+   *  re-applies that same Expression. */
+  maxHPFractionPerTarget?: number;
 }
 
 /**
@@ -770,6 +776,15 @@ export interface Power {
   description: string;
   /** Short help text shown in UI */
   shortHelp?: string;
+  /**
+   * The power's damage-type SET, emitted only where the per-template element is
+   * genuinely absent from the export (Thunderspy, whose damage atoms arrive
+   * `Unmapped`). Recovered from `attack_types` ∪ the shortHelp `DMG()`/`DoT()`
+   * clauses, so it is power-level and undercounts rather than inventing a type —
+   * never stamped onto individual atoms, which would fabricate the multi-component
+   * split. Absent on HC/Rebirth, where the atoms carry the element themselves.
+   */
+  damageTypes?: DamageType[];
   /** Icon filename */
   icon?: string;
   /** Click, Toggle, Auto, or Passive */

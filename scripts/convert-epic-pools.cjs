@@ -187,8 +187,6 @@ function convertEpicPower(rawJson, rank, availableLevel) {
     );
     power.allowedSetCategories = inferAllowedSetCategories(
       rawJson.boosts_allowed || [],
-      'epic',
-      'epic',
       EFFECT_AREA_MAP[rawJson.effect_area] ?? rawJson.effect_area,
       rawJson.range,
       rawJson.powerset || rawJson.full_name,
@@ -446,6 +444,8 @@ function convertEpicPool(poolId, existingPool) {
     // prerequisite tier level so it sorts into its true slot: a single-power
     // requirement (`||` only) is the level-41 tier (available 40); a compound
     // requirement (`&&`, i.e. own two others) is the level-44 capstone (43).
+    // The 35/40/43 ladder itself is game knowledge the export doesn't carry
+    // (DATA-GAP-REGISTER SOURCE-1).
     if (availableLevel === 0 && poolIndex.key
         && typeof rawJson.requires === 'string'
         && rawJson.requires.includes(poolIndex.key + '.')) {

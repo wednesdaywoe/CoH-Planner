@@ -65,6 +65,34 @@ describe('bridgeAttrib — vocabulary rules', () => {
     expect(bridgeAttrib('Smashing', 'Resistance', 'Res_Smashing')).toEqual({ effectType: 'Resistance', subType: 'Smashing' });
   });
 
+  it('maps the Thunderspy mez/movement vocab respellings (TSPY-3 step 2)', () => {
+    // Thunderspy drops the canonical participle / `Movement` prefix on four attribs
+    // where HC/Rebirth spell them fully. Same present-but-respelled class as the
+    // SpeedRunning→Run movement vocab already mapped. Each is confirmed by its table:
+    //   Stun→Stunned (Melee_Stun), Immobilize→Immobilized (Ranged_Immobilize),
+    //   Friction→MovementFriction (Melee_Friction, == HC's table), Control→MovementControl.
+    // aspect drives the mez face exactly as for the canonical spelling.
+    expect(bridgeAttrib('Stun', 'Strength', 'Melee_Stun')).toEqual({ effectType: 'Enhancement', subType: 'Stunned' });
+    expect(bridgeAttrib('Stun', 'Duration', 'Ranged_Stun')).toEqual({ effectType: 'Mez', subType: 'Stunned' });
+    expect(bridgeAttrib('Immobilize', 'Current', 'Ranged_Immobilize')).toEqual({ effectType: 'Mez', subType: 'Immobilized' });
+    expect(bridgeAttrib('Friction', 'Current', 'Melee_Friction')).toEqual({ effectType: 'Movement', subType: 'Friction' });
+    expect(bridgeAttrib('Control', 'Current', 'Melee_Control')).toEqual({ effectType: 'Movement', subType: 'Control' });
+  });
+
+  it('maps the Thunderspy Heal/HealSelf +MaxHP respelling (ATOM-TSPY step 2)', () => {
+    // tspy spells HC's `HitPoints`@Maximum (+MaxHP) as bare `Heal`/`HealSelf` on the same
+    // `*_HealSelf`/`*_Heal` tables (Dull Pain, Earth's Embrace, True Grit…). ONLY the Maximum
+    // face is a consumed total — it bridges to MaxHP exactly as `HitPoints`@Maximum does. The
+    // applied-heal (Absolute) and heal-strength (Strength) faces stay Unmapped, matching HC,
+    // where they ride the separate `Heal_Dmg` attrib and feed no MaxHP total.
+    expect(bridgeAttrib('HealSelf', 'Maximum', 'Melee_HealSelf')).toEqual({ effectType: 'MaxHP' });
+    expect(bridgeAttrib('Heal', 'Maximum', 'Ranged_Heal')).toEqual({ effectType: 'MaxHP' });
+    expect(bridgeAttrib('HealSelf', 'Absolute', 'Melee_HealSelf').effectType).toBe('Unmapped');
+    expect(bridgeAttrib('Heal', 'Strength', 'Melee_Boosts_33').effectType).toBe('Unmapped');
+    // canonical HC spelling is unchanged
+    expect(bridgeAttrib('HitPoints', 'Maximum', 'Melee_HealSelf')).toEqual({ effectType: 'MaxHP' });
+  });
+
   it('Heal_Dmg with aspect=Resistance is healing-received, not -resistance', () => {
     expect(bridgeAttrib('Heal_Dmg', 'Absolute', 'Ranged_Heal')).toEqual({ effectType: 'Heal' });
     expect(bridgeAttrib('Heal_Dmg', 'Resistance', 'Ranged_Ones')).toEqual({ effectType: 'HealResistance' });

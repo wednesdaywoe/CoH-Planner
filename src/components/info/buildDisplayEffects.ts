@@ -111,10 +111,13 @@ export function buildDisplayEffects(
  */
 export function hasPerTargetField(value: unknown): boolean {
   if (typeof value !== 'object' || value === null) return false;
-  if ('perTarget' in value) return true;
+  // `maxHPFractionPerTarget` is the same field for an absorb whose magnitude is an
+  // Expression rather than a scale — it grows the row the same way.
+  if ('perTarget' in value || 'maxHPFractionPerTarget' in value) return true;
   // Check by-type sub-objects (defenseBuff, resistance, etc.)
   for (const subVal of Object.values(value as Record<string, unknown>)) {
-    if (typeof subVal === 'object' && subVal !== null && 'perTarget' in subVal) return true;
+    if (typeof subVal === 'object' && subVal !== null
+      && ('perTarget' in subVal || 'maxHPFractionPerTarget' in subVal)) return true;
   }
   return false;
 }
@@ -170,6 +173,15 @@ function adjustScaledValue(value: unknown, targetsHit: number): unknown {
     const se = value as { scale: number; table: string; perTarget?: number };
     if (se.perTarget && targetsHit > 1) {
       return { ...se, scale: se.scale + se.perTarget * (targetsHit - 1) };
+    }
+    return value;
+  }
+  // A MaxHP-fraction absorb has no `scale` for the increment to grow — its magnitude
+  // rides an Expression, so the per-foe step arrives as `maxHPFractionPerTarget`.
+  if ('maxHPFraction' in value && 'maxHPFractionPerTarget' in value) {
+    const fr = value as { maxHPFraction: number; maxHPFractionPerTarget?: number };
+    if (fr.maxHPFractionPerTarget && targetsHit > 1) {
+      return { ...fr, maxHPFraction: fr.maxHPFraction + fr.maxHPFractionPerTarget * (targetsHit - 1) };
     }
     return value;
   }

@@ -57,15 +57,23 @@ describe('selfPenalty → toWho retirement', () => {
     expect(isSelfDirectedEffect(jump)).toBe(false);
   });
 
-  it('HC Reaction Time: self -slow / -recharge preserved; foe -JumpHeight excluded', async () => {
+  it('HC Reaction Time: no self-penalty — its Self faces are the OnDeactivate burst, not base', async () => {
     await loadDataset('homecoming');
     const rt = getPowerset('blaster/martial-combat')?.powers.find((p) => p.internalName === 'Reaction_Time');
     expect(rt).toBeDefined();
-    expect(isSelfDirectedEffect(slowEntry(rt!.effects, 'runSpeed'))).toBe(true);
-    expect(isSelfDirectedEffect(rt!.effects!.rechargeDebuff)).toBe(true);
-    // jumpHeight on Reaction Time comes from an AnyAffected(Strength) template → foe.
+    // The authored def (Reaction_Time.powers) puts every Target kSelf mod at
+    // ApplicationType kOnDeactivate with NEGATIVE slow-table scales (−0.7
+    // speeds / −0.4 recharge / +1.0 max run): the deactivation speed burst, a
+    // self-BUFF that fires once when the toggle drops. The beta's converter
+    // abs()'d the scales and folded them into the base bag as a permanent
+    // self-slow (`toWho:'Self'`), which this test originally pinned. The
+    // pipeline converter keeps only base-application mods in the bag, so the
+    // surviving slow/rechargeDebuff entries are the AnyAffected FOE debuffs —
+    // no self marker anywhere on this power.
+    expect(isSelfDirectedEffect(slowEntry(rt!.effects, 'runSpeed'))).toBe(false);
+    expect(isSelfDirectedEffect(rt!.effects!.rechargeDebuff)).toBe(false);
     expect(isSelfDirectedEffect(slowEntry(rt!.effects, 'jumpHeight'))).toBe(false);
-    expect(hasSelfDirectedPenalty(rt!.effects)).toBe(true);
+    expect(hasSelfDirectedPenalty(rt!.effects)).toBe(false);
   });
 
   it('a pure foe slow (Ice Bolt) is never self-directed', async () => {

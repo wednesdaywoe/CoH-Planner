@@ -562,17 +562,25 @@ type MezScaled = { mag?: number; scale: number; table: string };
  */
 function adjustForPerTarget(value: ScalarOrScaled, targetsHit?: number): ScalarOrScaled {
   if (typeof value !== 'object' || value === null) return value;
-  const obj = value as { scale: number; table?: string; perTarget?: number };
-  if (!obj.perTarget) return value;
+  const obj = value as Record<string, unknown>;
+  // A MaxHP-fraction absorb carries its per-foe growth as `maxHPFractionPerTarget`
+  // beside `maxHPFraction`: the magnitude rides an Expression, so there is no
+  // `scale` for the increment to grow. Same arithmetic, other field pair.
+  const [magnitudeKey, incrementKey] = typeof obj.maxHPFractionPerTarget === 'number'
+    ? ['maxHPFraction', 'maxHPFractionPerTarget']
+    : ['scale', 'perTarget'];
+  const increment = obj[incrementKey];
+  const magnitude = obj[magnitudeKey];
+  if (typeof increment !== 'number' || !increment || typeof magnitude !== 'number') return value;
   // An untouched slider (no map entry ⇒ `undefined`) reads as "Off" in the UI
   // (InfoPanel coerces the absent value to 0 and renders "Off"), so the calc must
   // treat it as 0 targets too — otherwise the power silently computes its N=1
   // value while the slider says Off (the "defaults to 1-target values despite
   // showing Off" bug). Coerce absent → 0.
   const n = targetsHit ?? 0;
-  if (n <= 0) return { ...value, scale: 0 };
+  if (n <= 0) return { ...value, [magnitudeKey]: 0 } as ScalarOrScaled;
   if (n === 1) return value;
-  return { ...value, scale: value.scale + obj.perTarget * (n - 1) };
+  return { ...value, [magnitudeKey]: magnitude + increment * (n - 1) } as ScalarOrScaled;
 }
 
 /**
@@ -593,7 +601,9 @@ function adjustForStacking(
   maxStacks?: number,
   stackCaps?: Record<string, number>,
 ): ScalarOrScaled {
-  const hasPerTarget = typeof value === 'object' && value !== null && 'perTarget' in value && !!(value as { perTarget?: number }).perTarget;
+  const hasPerTarget = typeof value === 'object' && value !== null
+    && (!!(value as { perTarget?: number }).perTarget
+      || !!(value as { maxHPFractionPerTarget?: number }).maxHPFractionPerTarget);
   if (hasPerTarget) {
     // perTarget already drives the scaling; do not also multiply by N.
     return adjustForPerTarget(value, targetsHit);

@@ -92,24 +92,6 @@ const POOL_DIR_MAP = {
   utility_belt: 'utility_belt',
 };
 
-// Pool display names
-const POOL_DISPLAY_NAMES = {
-  experimentation: 'Experimentation',
-  fighting: 'Fighting',
-  fitness: 'Fitness',
-  flight: 'Flight',
-  force_of_will: 'Force of Will',
-  gadgetry: 'Gadgetry',
-  invisibility: 'Concealment',
-  leadership: 'Leadership',
-  leaping: 'Leaping',
-  presence: 'Presence',
-  medicine: 'Medicine',
-  sorcery: 'Sorcery',
-  speed: 'Speed',
-  teleportation: 'Teleportation',
-  utility_belt: 'Utility Belt',
-};
 
 // Dormancy overrides for pools that no bin signal can classify. Per a Rebirth
 // dev (2026-07-08), Rebirth's Utility Belt is "present but locked — nobody owns
@@ -227,8 +209,6 @@ function convertPoolPower(rawJson, rank, availableLevel) {
     );
     power.allowedSetCategories = inferAllowedSetCategories(
       rawJson.boosts_allowed || [],
-      'pool',
-      'pool',
       EFFECT_AREA_MAP[rawJson.effect_area] ?? rawJson.effect_area,
       rawJson.range,
       rawJson.powerset || rawJson.full_name,
@@ -314,7 +294,11 @@ function convertPoolPower(rawJson, rank, availableLevel) {
   // until 2026-07-15, which meant every atom-native applier silently fell back to
   // the bag for Health, Stamina, Tough, Weave, Maneuvers, Assault et al. — safe
   // (that is what the fallback is for) but invisible, and a hard blocker on Phase 3,
-  // since the bag cannot be deleted while ~15% of powers have no atom representation.
+  // since the bag could not be deleted while those pool powers (~15% of the corpus at
+  // the time) had no atom representation. RESOLVED by this block: as of 2026-07-18 the
+  // census shows 0% of powers lack atoms in EVERY dataset (docs/ATOMIC-STATE-AUDIT.md).
+  // The bag's remaining reasons to exist are the unmigrated bag-consumed families and
+  // Thunderspy's 21.7% only-`Unmapped` powers (TSPY-3) — NOT any power lacking atoms.
   //
   // Union of `allTemplates` (what the bag saw) with `collectAtomTemplates` (which adds
   // back the gated groups the bag's collector drops); the difference is stamped
@@ -349,11 +333,10 @@ function convertPoolPower(rawJson, rank, availableLevel) {
 // ============================================
 
 function convertPool(poolId) {
-  const rawDir = POOL_DIR_MAP[poolId];
-  if (!rawDir) {
-    console.error(`No raw directory mapping for pool: ${poolId}`);
-    return null;
-  }
+  // A disk-discovered pool absent from POOL_DIR_MAP converts from the
+  // directory bearing its own name (the map's only real rename is
+  // presence → manipulation/).
+  const rawDir = POOL_DIR_MAP[poolId] || poolId;
 
   const poolPath = path.join(RAW_POWERS_PATH, rawDir);
   if (!fs.existsSync(poolPath)) {
@@ -372,11 +355,18 @@ function convertPool(poolId) {
 
   const poolIndex = JSON.parse(fs.readFileSync(indexPath, 'utf-8'));
 
+  // Every pool index in all three exports carries display_name (censused
+  // 2026-07-20), and it owns the id→name renames (invisibility →
+  // "Concealment", manipulation/ → "Presence") — never hand-map these.
+  if (!poolIndex.display_name) {
+    throw new Error(`${indexPath}: missing display_name`);
+  }
+
   // Build pool metadata from index
   const pool = {
     id: poolId,
-    name: POOL_DISPLAY_NAMES[poolId] || poolId,
-    displayName: POOL_DISPLAY_NAMES[poolId] || poolId,
+    name: poolIndex.display_name,
+    displayName: poolIndex.display_name,
     description: poolIndex.description || poolIndex.display_help || '',
     icon: poolIndex.icon || '',
     requires: poolIndex.requires || '',
@@ -502,7 +492,26 @@ function main() {
   console.log(`=== CONVERT POOL POWERS ${applyChanges ? '(APPLYING)' : '(DRY RUN)'} ===\n`);
 
   const existingPools = loadExistingPools();
-  const poolIds = poolFilter ? [poolFilter] : Object.keys(POOL_DIR_MAP);
+  // Discover pools on disk too — a new pool directory in the bin export must not
+  // be silently skipped by a closed list (the convert-epic-pools pattern). Raw
+  // dir names map back through POOL_DIR_MAP's rename (manipulation → presence);
+  // an unmapped dir converts under its own name. Map order comes first so the
+  // emitted object keeps its committed key order; genuine discoveries append.
+  const rawDirToPoolId = Object.fromEntries(
+    Object.entries(POOL_DIR_MAP).map(([id, dir]) => [dir, id]),
+  );
+  let discoveredIds = [];
+  try {
+    discoveredIds = fs.readdirSync(RAW_POWERS_PATH)
+      .filter((entry) => fs.existsSync(path.join(RAW_POWERS_PATH, entry, 'index.json')))
+      .map((dir) => rawDirToPoolId[dir] || dir)
+      .filter((id) => !(id in POOL_DIR_MAP))
+      .sort();
+  } catch (_) {
+    // RAW_POWERS_PATH missing — this dataset ships no pool dir; the map union
+    // still runs so cross-dataset pools resolve their absence in convertPool.
+  }
+  const poolIds = poolFilter ? [poolFilter] : [...Object.keys(POOL_DIR_MAP), ...discoveredIds];
   const allPools = {};
 
   for (const poolId of poolIds) {

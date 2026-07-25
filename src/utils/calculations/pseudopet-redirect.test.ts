@@ -271,14 +271,16 @@ describe('pseudo-pet redirect resolution', () => {
     });
   });
 
-  describe('Freezing Rain (P-hash priority_list shell)', () => {
-    // entity_def is an opaque P-hash; the shell name (PL_StaticObject) lives in
-    // priority_list. The resolver mirrors the main builder's P-hash resolution.
-    const re = FreezingRain.effects!.summon!.resolvedEntities![0];
-    const fr = re.abilities.find(a => a.name === 'FreezingRain')!;
+  describe('Freezing Rain (absent-entity_def priority_list shell)', () => {
+    // entity_def is absent; the shell name (PL_StaticObject) lives in
+    // priority_list and the payload in Pets.* redirects. SHELL-1 (fixed):
+    // the resolver falls back to priority_list for the effective entity, so
+    // these summons carry resolvedEntities + the shell name as entity.
+    const re = () => FreezingRain.effects!.summon!.resolvedEntities![0];
+    const fr = () => re().abilities.find(a => a.name === 'FreezingRain')!;
 
     it('surfaces the signature -res / -def / -rech / slow debuff kit', () => {
-      const byType = (t: string) => fr.effects!.find(e => e.type === t);
+      const byType = (t: string) => fr().effects!.find(e => e.type === t);
       expect(byType('ResistanceDebuff')).toMatchObject({ ignoreStrength: true });
       expect(byType('ResistanceDebuff')!.table).toMatch(/Res_Dmg/i);
       expect(byType('DefenseDebuff')).toBeDefined();
@@ -287,19 +289,19 @@ describe('pseudo-pet redirect resolution', () => {
     });
 
     it('carries minor Cold damage scaled off the summoner AT', () => {
-      expect(fr.damage.some(d => d.damageType === 'Cold')).toBe(true);
-      const r = calculateResolvedPseudoPetDamage(re, 'defender', 50);
+      expect(fr().damage.some(d => d.damageType === 'Cold')).toBe(true);
+      const r = calculateResolvedPseudoPetDamage(re(), 'defender', 50);
       expect(r!.abilities.some(a => a.damageByType.some(d => d.type === 'Cold' && d.base > 0))).toBe(true);
     });
   });
 
-  describe('Voltaic Sentinel (Pet_NoCollision shell, permanent pet)', () => {
+  describe('Voltaic Sentinel (PL_Untargetable_FightPreferRanged shell, permanent pet)', () => {
     const summon = VoltaicSentinel.effects!.summon!;
-    const re = summon.resolvedEntities![0];
+    const re = () => summon.resolvedEntities![0];
 
     it('resolves the bolt (Energy damage + EndDrain) off the generic mobile shell', () => {
       expect(getPetEntity(summon.entity!)).toBeUndefined(); // Pet_NoCollision → no double-count
-      const bolt = re.abilities.find(a => a.name === 'Electrical_Bolt')!;
+      const bolt = re().abilities.find(a => a.name === 'Electrical_Bolt')!;
       expect(bolt.damage.some(d => d.damageType === 'Energy')).toBe(true);
       expect(bolt.effects!.some(e => e.type === 'EndDrain')).toBe(true);
     });
@@ -307,8 +309,8 @@ describe('pseudo-pet redirect resolution', () => {
     it('is a "permanent" pet (99999s sentinel) — headline shows per-activation, not a 99999s total', () => {
       // The InfoPanel shows PER-ACTIVATION damage for these (PERMANENT_PSEUDOPET_DURATION)
       // rather than an astronomical lifetime total; the calc yields bounded per-hit/DPS.
-      expect(re.duration).toBeGreaterThanOrEqual(1000);
-      const r = calculateResolvedPseudoPetDamage(re, 'blaster', 50)!;
+      expect(re().duration).toBeGreaterThanOrEqual(1000);
+      const r = calculateResolvedPseudoPetDamage(re(), 'blaster', 50)!;
       expect(r.totalDpsBase).toBeGreaterThan(0);
       expect(Number.isFinite(r.totalDpsBase)).toBe(true);
       // per-activation (one bolt) damage is bounded and non-zero
@@ -319,17 +321,17 @@ describe('pseudo-pet redirect resolution', () => {
   });
 
   describe('Sentinel Rain of Fire (inherent-damage split, no double-count)', () => {
-    const re = SentinelRainOfFire.effects!.summon!.resolvedEntities![0];
+    const re = () => SentinelRainOfFire.effects!.summon!.resolvedEntities![0];
 
     it('keeps both Melee_Damage and Melee_InherentDamage entries in the data', () => {
-      const fr = re.abilities.find(a => a.name === 'RainofFire')!;
+      const fr = re().abilities.find(a => a.name === 'RainofFire')!;
       const tables = fr.damage.filter(d => d.damageType === 'Fire').map(d => d.table);
       expect(tables).toContain('Melee_Damage');
       expect(tables).toContain('Melee_InherentDamage');
     });
 
     it('counts the Fire hit ONCE at runtime (inherent table is unknown → skipped, not doubled)', () => {
-      const r = calculateResolvedPseudoPetDamage(re, 'sentinel', 50)!;
+      const r = calculateResolvedPseudoPetDamage(re(), 'sentinel', 50)!;
       const fire = r.abilities.flatMap(a => a.damageByType).filter(d => d.type === 'Fire');
       expect(fire).toHaveLength(1); // Melee_InherentDamage contributes nothing
       expect(fire[0].base).toBeGreaterThan(0);
@@ -340,13 +342,22 @@ describe('pseudo-pet redirect resolution', () => {
     it("getPetEntity tolerates the bare name and finds the Pets_-prefixed entity", () => {
       expect(getPetEntity('Sleet')?.name).toBe('Pets_Sleet');
     });
-    it('Sleet summon resolves to the real pet so its damage/effects surface', () => {
+    // SHELL-1 (fixed): HC Sleet is the same absent-entity_def shell class as
+    // Freezing Rain — the payload lives in Pets.Sleet.* redirects, so it
+    // resolves as a shell (entity = PL_StaticObject + resolvedEntities), NOT
+    // via the getPetEntity('Sleet') pet-entity fallback the beta used.
+    it('Sleet summon resolves the shell so its damage/effects surface', () => {
       const summon = Sleet.effects!.summon!;
-      expect(summon.entity).toBe('Sleet'); // stays un-prefixed in data
-      const r = calculatePetDamage(summon.entity!, 50, 1, summon.duration);
-      expect(r).not.toBeNull();
-      // Pets_Sleet carries Cold damage + Slow/-Def
-      expect(r!.abilities.some(a => a.damageByType.some(d => d.type === 'Cold'))).toBe(true);
+      expect(summon.entity).toBe('PL_StaticObject');
+      expect(getPetEntity(summon.entity!)).toBeUndefined(); // no double-count
+      const re = summon.resolvedEntities![0];
+      const sleet = re.abilities.find(a => a.name === 'Sleet')!;
+      // Pets.Sleet.Sleet carries Cold damage + the -res/-def/slow kit
+      expect(sleet.damage.some(d => d.damageType === 'Cold')).toBe(true);
+      expect(sleet.effects!.some(e => e.type === 'ResistanceDebuff')).toBe(true);
+      expect(sleet.effects!.some(e => e.type === 'DefenseDebuff')).toBe(true);
+      const r = calculateResolvedPseudoPetDamage(re, 'defender', 50);
+      expect(r!.abilities.some(a => a.damageByType.some(d => d.type === 'Cold' && d.base > 0))).toBe(true);
     });
   });
 });
