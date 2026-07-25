@@ -577,8 +577,6 @@ interface RegistryEffectsDisplayProps {
   enhancementBonuses?: Record<string, number | undefined>;
   /** Global bonuses by aspect */
   globalBonuses?: Record<string, number | undefined>;
-  /** Buff/debuff modifier from archetype */
-  buffDebuffMod?: number;
   /** Archetype ID for AT-specific table lookups (resistance, etc.) */
   archetypeId?: string;
   /** Character level for AT-specific table lookups */
@@ -640,7 +638,6 @@ export function RegistryEffectsDisplay({
   allowedEnhancements = [],
   enhancementBonuses = {},
   globalBonuses = {},
-  buffDebuffMod = 1.0,
   archetypeId,
   level,
   categories = ['execution', 'buff', 'debuff'],
@@ -724,7 +721,6 @@ export function RegistryEffectsDisplay({
     level,
     enhancementBonuses,
     globalBonuses,
-    buffDebuffMod,
   });
 
   const displayableEffects: DisplayableEffect[] = [];

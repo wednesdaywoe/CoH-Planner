@@ -10,7 +10,7 @@ import { useUIStore, useBuildStore, useDominationActive, useScourgeActive, useFu
 import { getBaseToHit } from '@/data/purple-patch';
 import { useGlobalBonuses } from '@/hooks/useCalculatedStats';
 import { useBuildMaxAttackDamage } from '@/hooks/useBuildMaxAttackDamage';
-import { lookupPower, getArchetype, getIOSet, getPowerset } from '@/data';
+import { lookupPower, getIOSet, getPowerset } from '@/data';
 import type { Power } from '@/types';
 import {
   calculatePowerEnhancementBonuses,
@@ -56,8 +56,8 @@ import { INCARNATE_TIER_REGISTRY } from '@/data/incarnate-registry';
 import { selectActiveConditionals } from '@/utils/conditional-effects';
 import { stanceAdjusterOverrides } from '@/data/stance-groups';
 import {
-  getEffectiveBuffDebuffModifier,
   convertGlobalBonusesToAspects,
+  withStrengthBonuses,
   findSelectedPowerInBuild,
   getDamageCap,
 } from './powerDisplayUtils';
@@ -140,7 +140,9 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
 
     if (hasAlpha && selectedPower?.slots) {
       return combineWithAlphaED(
-        { name: selectedPower.name, slots: selectedPower.slots },
+        // Alpha applies only to the aspects the power accepts; without this list
+        // `combineWithAlphaED` applies it to all of them (PROD6C-3f).
+        { name: selectedPower.name, slots: selectedPower.slots, allowedEnhancements: selectedPower.allowedEnhancements },
         build.level,
         getIOSet,
         alphaBonuses,
@@ -165,6 +167,15 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
   const globalBonusesForCalc = useMemo(
     () => convertGlobalBonusesToAspects(globalBonuses),
     [globalBonuses]
+  );
+
+  // The magnitude rows read the +Strength-augmented globals, same as InfoPanel's — the two
+  // surfaces render the same rows from the same resolver and must not disagree on them.
+  // The damage half below deliberately keeps the un-augmented `globalBonusesForCalc`:
+  // strength carries no damage aspect.
+  const globalBonusesWithStrength = useMemo(
+    () => withStrengthBonuses(globalBonusesForCalc, globalBonuses),
+    [globalBonusesForCalc, globalBonuses]
   );
 
   // Get powerset for determining damage type
@@ -431,11 +442,6 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
 
   const effects = { ...pseudoPetEffects, ...rawEffects, ...extraEffects } as typeof rawEffects;
 
-  // Get archetype modifier for buff/debuff calculations
-  const archetype = archetypeId ? getArchetype(archetypeId as ArchetypeId) : null;
-  const buffDebuffMod = archetype?.stats?.buffDebuffModifier ?? 1.0;
-  const effectiveMod = getEffectiveBuffDebuffModifier(powerSet, buffDebuffMod);
-
   // Check if power has any enhancements
   const hasEnhancements = selectedPower && selectedPower.slots.some(s => s !== null);
 
@@ -536,8 +542,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
         effects={effects}
         allowedEnhancements={basePower?.allowedEnhancements || []}
         enhancementBonuses={enhancementBonuses}
-        globalBonuses={globalBonusesForCalc}
-        buffDebuffMod={effectiveMod}
+        globalBonuses={globalBonusesWithStrength}
         archetypeId={archetypeId ?? undefined}
         level={build.level}
         categories={['execution', 'buff', 'debuff', 'control', 'protection', 'movement']}

@@ -10,7 +10,6 @@ import React, { useState, useMemo, useCallback, useEffect } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
 import { getBaseToHit } from '@/data/purple-patch';
 import { lookupPower, getIOSet, getPowerIconPath } from '@/data';
-import { getArchetype } from '@/data';
 import { calculatePowerEnhancementBonuses } from '@/utils/calculations/enhancement-values';
 import { calculatePowerDamage } from '@/utils/calculations/damage';
 import { extractHealingFromDamage } from '@/utils/calculations/healing';
@@ -18,7 +17,7 @@ import { getAlphaEnhancementBonuses, calculateCharacterTotals } from '@/utils/ca
 import { computeSetTracking } from '@/utils/calculations/set-tracking';
 import { getBaselineHealth } from '@/utils/calculations/stats';
 import { useGlobalBonuses, useCharacterCalculation, convertToLegacyStats } from '@/hooks';
-import { convertGlobalBonusesToAspects, getEffectiveBuffDebuffModifier, findSelectedPowerInBuild } from '@/components/info/powerDisplayUtils';
+import { convertGlobalBonusesToAspects, findSelectedPowerInBuild } from '@/components/info/powerDisplayUtils';
 import { STAT_DEFINITIONS } from '@/data/stat-definitions';
 import type { StatValue } from '@/data/stat-definitions';
 
@@ -132,12 +131,6 @@ export function CompareSlottingModal() {
   );
 
   const archetypeId = build.archetype.id;
-  const archetype = archetypeId ? getArchetype(archetypeId as ArchetypeId) : null;
-  const buffDebuffMod = archetype?.stats?.buffDebuffModifier ?? 1.0;
-  const effectiveMod = compareTarget
-    ? getEffectiveBuffDebuffModifier(compareTarget.powerSet, buffDebuffMod)
-    : 1.0;
-
   // Build merged effects for RegistryEffectsDisplay
   const mergedEffects = useMemo(() => {
     if (!power || !compareTarget) return {};
@@ -479,7 +472,6 @@ export function CompareSlottingModal() {
               allowedEnhancements={power.allowedEnhancements}
               enhancementBonuses={activeEnhBonuses}
               globalBonuses={globalBonusesForCalc}
-              buffDebuffMod={effectiveMod}
               archetypeId={archetypeId ?? undefined}
               level={build.level}
               categories={['execution', 'buff', 'debuff', 'control', 'protection', 'movement']}

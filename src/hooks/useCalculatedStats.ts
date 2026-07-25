@@ -11,8 +11,9 @@
 
 import { useEffect, useMemo } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
-import { loadDataset, type ServerId } from '@/engine/engine';
+import { loadDataset, projectPowerJson, type ServerId } from '@/engine/engine';
 import { useEngineStore } from '@/engine/engineStore';
+import { mapOnePowerProjection, projectionKey, type EnginePowerProjection, type PowerProjection } from '@/engine/engineTotalsMap';
 import { getIOSet } from '@/data';
 import { computeOffendingPowerReasons, type CappedBonusReason } from '@/utils/over-cap-mute';
 import type { SetBonus } from '@/types';
@@ -391,6 +392,40 @@ export function useStatBreakdown(stat: string): DashboardStatBreakdown | undefin
 export function useStatBreakdowns(): Map<string, DashboardStatBreakdown> {
   const result = useCharacterCalculation();
   return result.breakdown;
+}
+
+/**
+ * One power's engine-resolved non-DPS values — the execution three-tiers, ArcanaTime, perma
+ * tracking, and the buff/debuff magnitudes it grants (PROD6C).
+ *
+ * A power the build HOLDS comes out of the calculation's own projection at no extra cost. A
+ * power it does not — the info surfaces render whatever you hover in the picker — is projected
+ * on demand against the exact `CharacterState` those totals ran on, so a hovered power's
+ * numbers come from the same engine pass as a picked one's rather than from a second
+ * calculator. The on-demand call costs one engine run per distinct power, memoized here.
+ *
+ * `null` while the dataset is still loading, and for a ref the dataset has no power for — the
+ * caller renders the row as unavailable rather than substituting a fabricated value (Rule 1).
+ */
+export function usePowerProjection(
+  powerSet: string | undefined,
+  internalName: string | undefined,
+): PowerProjection | null {
+  const result = useCharacterCalculation();
+  const serverId = useBuildStore((state) => state.build.serverId);
+  const { powerProjection, engineStateJson } = result;
+
+  return useMemo(() => {
+    if (!powerSet || !internalName) return null;
+    const held = powerProjection.get(projectionKey(powerSet, internalName));
+    if (held) return held;
+    if (engineStateJson === null) return null;
+
+    const json = projectPowerJson(serverId as ServerId, engineStateJson, powerSet, internalName);
+    if (json === null) return null;
+    const projected = JSON.parse(json) as EnginePowerProjection | null;
+    return projected ? mapOnePowerProjection(projected) : null;
+  }, [powerSet, internalName, powerProjection, engineStateJson, serverId]);
 }
 
 // ============================================

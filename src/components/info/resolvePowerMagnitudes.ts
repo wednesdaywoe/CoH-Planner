@@ -12,11 +12,17 @@
  *    `contract/effect-registry.json`). `powerProjectionParity.test.ts` diffs the engine's
  *    output against THIS function over all three forks' corpora — a gate that means
  *    something only because the component runs the same code path it grades.
- * 2. PROD6C swaps the component onto the engine's projection. That swap is a matter of
- *    replacing this call with a lookup, because the shapes already match.
+ * 2. PROD6C-3 swaps the component onto the engine's projection. The shapes already match, but
+ *    the inputs do not: the bag `RegistryEffectsDisplay` resolves is one InfoPanel BUILDS at the
+ *    render edge (redirects, merged stats, extracted healing, per-target scaling, pseudo-pet
+ *    effects), while the engine reads the power's authored bag. Those transforms have to move
+ *    into the engine before the call becomes a lookup — see the PROD6C-3 plan entry.
  *
  * The `getEffectBaseValue` / `calcEffectThreeTier` / mez-duration / knockback-distance
- * logic here is unchanged behavior, only relocated.
+ * logic here was relocated unchanged, then corrected in one place: the mez / buff-debuff /
+ * percent table reads used to be pinned to level 50 while the by-type and heal/absorb reads
+ * used the build level. All of them now read the build level (PROD6B-2c — see
+ * [`DEFAULT_TABLE_LEVEL`]).
  */
 import type { NumberOrScaled, PowerEffects } from '@/types';
 import { getScaleValue } from '@/types';
@@ -72,12 +78,27 @@ export interface ResolveMagnitudesParams {
   enhancementBonuses?: Record<string, number | undefined>;
   /** Build-wide globals, keyed by aspect (`convertGlobalBonusesToAspects`). */
   globalBonuses?: Record<string, number | undefined>;
-  /** Support modifier, reached only on the table-less fallback paths. */
+  /**
+   * Multiplier applied on the table-less fallback paths only. Always 1.0 in production: the
+   * archetype-name rule that once supplied another value was measured dead and deleted
+   * (PROD6B-2b). It stays a parameter because `supportModifierReach.test.ts` varies it to
+   * detect which rows take those fallbacks, without reimplementing the resolution.
+   */
   buffDebuffMod?: number;
 }
 
-/** The level the mez / buff-debuff / percent table reads are pinned to. */
-const DISPLAY_TABLE_LEVEL = 50;
+/**
+ * The level table reads assume when the caller supplies none. Every real call site passes
+ * the build level.
+ *
+ * The game resolves a displayed magnitude at the character's level, never at a fixed one:
+ * the client's own power-info window reads `class_GetNamedTableValue(pclass, table, iLevel)`
+ * with `iLevel` set from `e->pchar->iLevel` / `iCombatLevel` at every entry point
+ * (`uiPowerInfo.c` `modGetMagnitudeAndDuration`, `powerInfoSetLevel`), and the runtime uses
+ * `iEffCombatLevel` (`attribmod.c` `mod_Fill`). ~70% of the AT tables vary across levels, so
+ * a pinned read is a wrong number, not a stable one.
+ */
+const DEFAULT_TABLE_LEVEL = 50;
 
 /**
  * Calculate three-tier values for an effect using its registry config. An effect with no
@@ -117,7 +138,7 @@ function getEffectBaseValue(
     if (isMezEffect(value)) {
       // Mez protection effects use res_boolean tables — calculate from scale × tableValue
       if (archetypeId && value.table.toLowerCase().includes('res_boolean')) {
-        const tableVal = getTableValue(archetypeId, value.table, DISPLAY_TABLE_LEVEL);
+        const tableVal = getTableValue(archetypeId, value.table, level ?? DEFAULT_TABLE_LEVEL);
         if (tableVal !== undefined) return Math.abs(value.scale) * tableVal;
       }
       return value.mag;
@@ -125,7 +146,7 @@ function getEffectBaseValue(
     // ScaledEffect without mag (knockback, knockup, repel) — resolve via table when available
     if (archetypeId && typeof value === 'object' && value !== null && 'scale' in value && 'table' in value) {
       const sv = value as { scale: number; table: string };
-      const tableVal = getTableValue(archetypeId, sv.table, DISPLAY_TABLE_LEVEL);
+      const tableVal = getTableValue(archetypeId, sv.table, level ?? DEFAULT_TABLE_LEVEL);
       if (tableVal !== undefined) return Math.abs(sv.scale * tableVal);
     }
     const scaled = getScaleValue(value as NumberOrScaled);
@@ -149,7 +170,7 @@ function getEffectBaseValue(
     }
     // Use AT table directly when available (accurate per-AT values)
     if (archetypeId && typeof scaled === 'object' && scaled !== null && 'table' in scaled && 'scale' in scaled) {
-      const tableVal = getTableValue(archetypeId, (scaled as { scale: number; table: string }).table, DISPLAY_TABLE_LEVEL);
+      const tableVal = getTableValue(archetypeId, (scaled as { scale: number; table: string }).table, level ?? DEFAULT_TABLE_LEVEL);
       if (tableVal !== undefined) {
         return Math.abs((scaled as { scale: number; table: string }).scale * tableVal) * 100;
       }
@@ -168,7 +189,7 @@ function getEffectBaseValue(
   if (config.format === 'percent') {
     // Use AT table directly when available (accurate per-AT values)
     if (archetypeId && typeof value === 'object' && value !== null && 'table' in value && 'scale' in value) {
-      const tableVal = getTableValue(archetypeId, (value as { scale: number; table: string }).table, DISPLAY_TABLE_LEVEL);
+      const tableVal = getTableValue(archetypeId, (value as { scale: number; table: string }).table, level ?? DEFAULT_TABLE_LEVEL);
       if (tableVal !== undefined) {
         return Math.abs((value as { scale: number; table: string }).scale * tableVal) * 100;
       }
@@ -177,11 +198,9 @@ function getEffectBaseValue(
     return scaled * multiplier * buffDebuffMod;
   }
 
-  // Heal / absorb resolve their scale through the table into an HP amount, at the BUILD
-  // level (the one level-aware read — the pinned-50 reads above are the display's own
-  // long-standing inconsistency).
+  // Heal / absorb resolve their scale through the table into an HP amount.
   if (config.valueFromTable && typeof value === 'object' && value !== null && 'table' in value && archetypeId) {
-    const tableVal = getTableValue(archetypeId, (value as { table: string }).table, level ?? DISPLAY_TABLE_LEVEL);
+    const tableVal = getTableValue(archetypeId, (value as { table: string }).table, level ?? DEFAULT_TABLE_LEVEL);
     if (tableVal !== undefined) return scaled * tableVal;
   }
 

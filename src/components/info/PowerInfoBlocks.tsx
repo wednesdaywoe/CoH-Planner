@@ -19,8 +19,8 @@ import { useState } from 'react';
 import { useUIStore } from '@/stores';
 import type { Power, TargetType, EffectArea, SelectedPower, IOSetEnhancement, ResolvedPseudoPetAbility } from '@/types';
 import type { PowerDamageResult } from '@/utils/calculations';
-import { calcThreeTier as calcThreeTierUtil } from './powerDisplayUtils';
-import { abbreviateDamageType, calculateArcanaTime } from '@/utils/calculations';
+import type { PowerProjection } from '@/engine/engineTotalsMap';
+import { abbreviateDamageType } from '@/utils/calculations';
 import { resolveProcAreaGeometry } from '@/utils/calculations/pet-damage';
 import { describeChainTarget, describeTargetCap } from '@/utils/chain-expressions';
 import { Chip, type TagKind } from './TagsRow';
@@ -150,7 +150,11 @@ interface GeneralStatsBlockProps {
     maxTargets?: number;
   };
   enhancementBonuses: Record<string, number | undefined>;
-  globalBonusesForCalc: Record<string, number | undefined>;
+  /** The engine's resolved values for this power (PROD6C) — Activation, Pwr Range and
+   *  ArcanaTime read straight off it instead of re-deriving the three-tier here. Null while
+   *  the dataset loads or for a power the dataset cannot resolve, which hides those rows
+   *  rather than showing a fabricated number (Rule 1). */
+  projection: PowerProjection | null;
   /** Attack-type composite needs the rendered damage types. */
   damageType?: string;
   /** Whether the user prefers Arcanatime as the inline activation value. */
@@ -163,30 +167,16 @@ export function GeneralStatsBlock({
   power,
   effects,
   enhancementBonuses,
-  globalBonusesForCalc,
+  projection,
   damageType,
   useArcanaTime,
   selectedPower,
 }: GeneralStatsBlockProps) {
-  const tier = (aspect: string, base: number | undefined) =>
-    base != null ? calcThreeTierUtil(aspect, base, enhancementBonuses, globalBonusesForCalc) : null;
-
-  const activation = tier('castTime', effects.castTime);
-  // A power's Range is only extended by +Range strength (set bonuses, the Range
-  // Alpha, Boost Range, …) when the power actually accepts Range enhancement —
-  // i.e. its boostsAllowed lists "Range". Melee attacks carry a reach value
-  // (e.g. 5–7 ft) but are NOT range-enhanceable, so their Pwr Range must stay
-  // at base regardless of any global +Range bonus. Ranged attacks and ranged
-  // cones (which list "Range") still get the full three-tier treatment. This
-  // mirrors the game's per-power boostsAllowed gate rather than guessing from
-  // the numeric range value.
-  const rangeEnhanceable = power.allowedEnhancements?.includes('Range') ?? false;
-  const rng =
-    effects.range == null
-      ? null
-      : rangeEnhanceable
-        ? tier('range', effects.range)
-        : { base: effects.range, enhanced: effects.range, final: effects.range };
+  const activation = projection?.castTime ?? null;
+  // The +Range gate — a global reaches this power only when its boostsAllowed lists "Range",
+  // so a melee attack's reach stays at base — now lives in the engine
+  // (`reachable_global_range`), applied before this row ever sees the value.
+  const rng = projection?.range ?? null;
 
   // Ground-patch / summon-shell powers (Burn, Rain of Fire, Caltrops, …) carry
   // their shell's Self/SingleTarget/Location area with radius 0, so their real
@@ -217,10 +207,14 @@ export function GeneralStatsBlock({
 
   return (
     <div className="bg-slate-800/40 rounded p-2 space-y-0.5">
-      {effects.castTime != null && activation && (
-        <ActivationRow castTime={activation.final} useArcanaTime={useArcanaTime} />
+      {activation && (
+        <ActivationRow
+          castTime={activation.final}
+          arcanaTime={projection?.arcanaTime ?? null}
+          useArcanaTime={useArcanaTime}
+        />
       )}
-      {effects.range != null && rng && rng.final > 0 && (
+      {rng && rng.final > 0 && (
         <KvRow label="Pwr Range" value={`${rng.final.toFixed(0)}ft`} />
       )}
       {effectAreaLabel && <KvRow label="Effect Area" value={effectAreaLabel} />}
@@ -265,12 +259,16 @@ export function GeneralStatsBlock({
 // Range / Effect Area / Attack Type for visual consistency.
 // ----------------------------------------------------------------------
 
-function ActivationRow({ castTime, useArcanaTime }: { castTime: number; useArcanaTime: boolean }) {
+function ActivationRow({
+  castTime,
+  arcanaTime,
+  useArcanaTime,
+}: { castTime: number; arcanaTime: number | null; useArcanaTime: boolean }) {
   return (
     <>
       <KvRow label="Activation" value={`${castTime.toFixed(3)}s`} />
-      {useArcanaTime && (
-        <KvRow label="ArcanaTime" value={`${calculateArcanaTime(castTime).toFixed(3)}s`} />
+      {useArcanaTime && arcanaTime != null && (
+        <KvRow label="ArcanaTime" value={`${arcanaTime.toFixed(3)}s`} />
       )}
     </>
   );

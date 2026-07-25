@@ -57,12 +57,6 @@ export const TABLE_BASE_VALUES: Record<string, number> = {
   'default': 0.10,
 };
 
-// The 10%/5%-per-scale buff/debuff rule and the effective-modifier logic are
-// single-sourced in calculations/buff-debuff.ts. Re-exported here for the UI
-// surfaces that import from this module (InfoPanel, PowerInfoTooltip,
-// CompareSlottingModal).
-export { getEffectiveBuffDebuffModifier } from '@/utils/calculations/buff-debuff';
-
 export type EffectCategory = 'buff' | 'debuff';
 
 /**
@@ -281,6 +275,41 @@ export function convertGlobalBonusesToAspects(
     }
   }
   return result;
+}
+
+/**
+ * The mez effect keys a single `strengthMez` fraction feeds — the same six the
+ * mez-duration rows read their global from (`GLOBAL_BONUS_ASPECT_MAP` above).
+ */
+const STRENGTH_MEZ_ASPECTS = ['immobilize', 'hold', 'stun', 'sleep', 'confuse', 'fear'];
+
+/**
+ * Augment aspect-keyed globals with the active +Strength self-buffs (Power Boost family).
+ *
+ * Strength is a non-ED multiplier on the caster's OWN matching output, so it lands in the
+ * Final column exactly like a global bonus (`final = base × (1 + enh + global)`). Only
+ * three families are folded: defense and mez have no pre-existing global coupling in
+ * `GLOBAL_BONUS_ASPECT_MAP`, and heal-strength is genuinely additive with the +Heal set
+ * bonus already there. ToHit and damage are deliberately left out — the dashboard totals
+ * have already folded ToHit strength into the field those rows read, and the family grants
+ * no damage strength, so either would double-count. The fields are stored as FRACTIONS by
+ * `calculateCharacterTotals` (`collectStrengthBuffs`), so they add without the /100.
+ *
+ * The engine owns this rule (`granted.rs` `STRENGTH_ASPECTS`); this is its beta twin, kept
+ * as the reference `powerProjectionParity.test.ts` grades the engine against.
+ */
+export function withStrengthBonuses(
+  aspectBonuses: Record<string, number>,
+  globalBonuses: CharacterGlobalBonuses
+): Record<string, number> {
+  const out: Record<string, number> = { ...aspectBonuses };
+  const add = (aspect: string, value: number | undefined) => {
+    if (value) out[aspect] = (out[aspect] || 0) + value;
+  };
+  add('defense', globalBonuses.strengthDefense);
+  add('heal', globalBonuses.strengthHeal);
+  for (const aspect of STRENGTH_MEZ_ASPECTS) add(aspect, globalBonuses.strengthMez);
+  return out;
 }
 
 /**

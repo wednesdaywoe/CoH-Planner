@@ -69,3 +69,20 @@ export function recalcJson(server: ServerId, buildJson: string): string | null {
   const handle = handles.get(server);
   return handle ? handle.recalculate(buildJson) : null;
 }
+
+/**
+ * Project ONE power against a serialized `CharacterState` — including a power the build does
+ * not hold, which is what the info surfaces render while you hover the picker (PROD6C). The
+ * build's `power_projection` block already covers every SELECTED power, so this is only for
+ * the unheld case. Returns the engine's `PowerProjection` JSON, `"null"` for a ref the
+ * dataset has no power for, or `null` if the dataset isn't loaded yet.
+ */
+export function projectPowerJson(
+  server: ServerId,
+  buildJson: string,
+  powerSet: string,
+  internalName: string,
+): string | null {
+  const handle = handles.get(server);
+  return handle ? handle.project_power(buildJson, powerSet, internalName) : null;
+}

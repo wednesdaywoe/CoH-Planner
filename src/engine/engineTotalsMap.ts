@@ -156,36 +156,26 @@ export interface EngineTotals {
   power_projection: EnginePowerProjection[];
 }
 
+/** The beta-facing form of one resolved granted magnitude — {@link EngineGrantedMagnitude} with
+ *  its keys reshaped. One entry per display row, so a by-type effect contributes one per type. */
+export interface GrantedMagnitude {
+  rowKey: string;
+  effectKey: string;
+  label: string;
+  category: string;
+  format: string;
+  priority: number | null;
+  value: ThreeTierValues;
+  quantity: EngineGrantedQuantity;
+  byTypeLabel: string | null;
+}
+
 /** The beta-facing per-power non-DPS projection — the engine's resolved values reshaped to the
  *  existing calculator output types ({@link ThreeTierValues} / {@link PermaInfo}) so the display
- *  surfaces (PROD6C–E) read the engine instead of re-deriving via `calculatePowerEnhancementBonuses`
+ *  surfaces read the engine instead of re-deriving via `calculatePowerEnhancementBonuses`
  *  + `calcThreeTier` + `calculatePermaInfo`. `cycleTime` stays a render-edge composition
  *  (`recharge.final + (useArcanaTime ? arcanaTime : castTime.base)`) because it depends on a UI
  *  toggle the engine never sees. */
-export interface GrantedMagnitude {
-  rowKey: string;
-  effectKey: string;
-  label: string;
-  category: string;
-  format: string;
-  priority: number | null;
-  value: ThreeTierValues;
-  quantity: EngineGrantedQuantity;
-  byTypeLabel: string | null;
-}
-
-export interface GrantedMagnitude {
-  rowKey: string;
-  effectKey: string;
-  label: string;
-  category: string;
-  format: string;
-  priority: number | null;
-  value: ThreeTierValues;
-  quantity: EngineGrantedQuantity;
-  byTypeLabel: string | null;
-}
-
 export interface PowerProjection {
   recharge: ThreeTierValues | null;
   enduranceCost: ThreeTierValues | null;
@@ -410,10 +400,10 @@ const mapPerma = (p: EnginePerma | null): PermaInfo | null =>
 
 /**
  * PROD6B-1 — reshape the engine's per-power projection into a lookup the display surfaces read.
- * Keyed `${powerSet} ${internalName}` (the same identity `powerNameResolver` uses; internal names
+ * Keyed by {@link projectionKey} (the same identity `powerNameResolver` uses; internal names
  * collide across sets, so the set disambiguates). The values are the existing calculator output
- * types, so PROD6C–E swap their inline `calcThreeTier` / `calculatePermaInfo` calls for a lookup
- * here with no shape change.
+ * types, so a surface swaps its inline `calcThreeTier` / `calculatePermaInfo` call for a lookup
+ * with no shape change — `usePowerProjection` is the read path (PROD6C).
  */
 const mapGrantedMagnitude = (m: EngineGrantedMagnitude): GrantedMagnitude => ({
   rowKey: m.row_key,
@@ -427,19 +417,34 @@ const mapGrantedMagnitude = (m: EngineGrantedMagnitude): GrantedMagnitude => ({
   byTypeLabel: m.by_type_label,
 });
 
+/**
+ * The projection map's key. A power's identity is `(powerSet, internalName)` — `internalName`
+ * alone is not unique (see `findSelectedPowerInBuild`) — and the separator is the same `\0` the
+ * power-name resolver uses, so every key into an engine-keyed map is built one way.
+ */
+export function projectionKey(powerSet: string, internalName: string): string {
+  return `${powerSet}\0${internalName}`;
+}
+
+/** One engine projection reshaped to the beta calculator output types. Also the shape the
+ *  on-demand single-power projection comes back in (PROD6C), which is why it stands alone. */
+export function mapOnePowerProjection(p: EnginePowerProjection): PowerProjection {
+  return {
+    recharge: mapTier(p.recharge),
+    enduranceCost: mapTier(p.endurance_cost),
+    accuracy: mapTier(p.accuracy),
+    castTime: mapTier(p.cast_time),
+    arcanaTime: p.arcana_time,
+    range: mapTier(p.range),
+    perma: mapPerma(p.perma),
+    grantedMagnitudes: p.granted_magnitudes.map(mapGrantedMagnitude),
+  };
+}
+
 export function mapPowerProjection(projection: EnginePowerProjection[]): Map<string, PowerProjection> {
   const out = new Map<string, PowerProjection>();
   for (const p of projection) {
-    out.set(`${p.power_set} ${p.power_internal_name}`, {
-      recharge: mapTier(p.recharge),
-      enduranceCost: mapTier(p.endurance_cost),
-      accuracy: mapTier(p.accuracy),
-      castTime: mapTier(p.cast_time),
-      arcanaTime: p.arcana_time,
-      range: mapTier(p.range),
-      perma: mapPerma(p.perma),
-      grantedMagnitudes: p.granted_magnitudes.map(mapGrantedMagnitude),
-    });
+    out.set(projectionKey(p.power_set, p.power_internal_name), mapOnePowerProjection(p));
   }
   return out;
 }

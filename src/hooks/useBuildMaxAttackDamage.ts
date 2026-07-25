@@ -79,7 +79,9 @@ export function useBuildMaxAttackDamage(): number {
       let enhDamage = alphaBonuses.damage ?? 0;
       if (power.slots) {
         const bonuses = hasAlpha
-          ? combineWithAlphaED({ name: power.name, slots: power.slots }, build.level, getIOSet, alphaBonuses, edBypassRatio, exLevel)
+          // Alpha applies only to the aspects the power accepts; without this list
+          // `combineWithAlphaED` applies it to all of them (PROD6C-3f).
+          ? combineWithAlphaED({ name: power.name, slots: power.slots, allowedEnhancements: power.allowedEnhancements }, build.level, getIOSet, alphaBonuses, edBypassRatio, exLevel)
           : calculatePowerEnhancementBonuses({ name: power.name, slots: power.slots }, build.level, getIOSet, exLevel);
         enhDamage = bonuses.damage ?? 0;
       }

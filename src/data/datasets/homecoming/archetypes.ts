@@ -15,10 +15,10 @@ import { ARCHETYPE_BINARY_STATS } from './generated/archetype-stats.generated';
 // The remaining scalars (damageModifier, buffDebuffModifier, baseEndurance,
 // baseRecovery, defenseCap) stay hand-curated. NOTE: damageModifier and
 // buffDebuffModifier are a LIVE table-less fallback, NOT vestigial — `damage.ts`
-// reads buffDebuffModifier (calculateBuffDebuffValue, damage.ts:864) and
-// damageModifier (damage.ts:278) for effects with no {scale, table} pair, and
-// several UI surfaces (InfoPanel, PowerInfoTooltip, CompareSlottingModal,
-// DetailedTotalsModal) read the effective buff/debuff modifier. Most effects DO
+// reads buffDebuffModifier (`calculateBuffDebuffPercent`) and damageModifier
+// (`getBaseDamage`) for effects with no {scale, table} pair. That is now the only
+// reader: the display surfaces used to apply an archetype-name-derived variant of
+// the same modifier, which PROD6B-2b measured dead and deleted. Most effects DO
 // carry a {scale, table} pair and use the binary per-category named_tables
 // (at-tables.ts), so the fallback fires only for table-less effects — but it
 // does fire, so keep these maintained. They aren't single binary quantities

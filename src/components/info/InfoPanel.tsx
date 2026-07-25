@@ -9,7 +9,6 @@ import { useUIStore, useBuildStore, useDominationActive, useScourgeActive, useFu
 import { getBaseToHit } from '@/data/purple-patch';
 import {
   lookupPower,
-  getArchetype,
   getIOSet,
   getPowerIconPath,
   getAlphaEffects,
@@ -29,13 +28,13 @@ import {
   isDamageMainTargetOnlyPower,
   getActiveDamageConversion,
 } from '@/data';
-import { useGlobalBonuses } from '@/hooks/useCalculatedStats';
+import { useGlobalBonuses, usePowerProjection } from '@/hooks/useCalculatedStats';
 import { useBuildMaxAttackDamage } from '@/hooks/useBuildMaxAttackDamage';
 import { calculatePowerEnhancementBonuses, combineWithAlphaED, calculatePowerDamage, getAlphaEnhancementBonuses, abbreviateDamageType, calculateArcanaTime, dotTickCount, calculateDamageWithATTable, type EnhancementBonuses, type PowerDamageResult, isControllerPower, isCorruptorAttackPower, isBruteAttackPower, isScrapperAttackPower, isStalkerAttackPower, calculateFuryDamageBonus, calculateAssassinationDamageBonus, getContainmentInfo, getScourgeInfo, getCriticalHitInfo, getFuryInfo, getEffectiveLevel, areIncarnatesSuppressed } from '@/utils/calculations';
 import { resolveAtMechanic } from '@/utils/calculations/power-at-mechanics';
 import type { IOSetEnhancement } from '@/types';
 import { INCARNATE_TIER_REGISTRY } from '@/data/incarnate-registry';
-import { isPermaEligible, calculatePermaInfo } from '@/utils/calculations/perma';
+import { isPermaEligible } from '@/utils/calculations/perma';
 import { extractHealingFromDamage } from '@/utils/calculations/healing';
 import { calculatePetDamage, calculateResolvedPseudoPetDamage, shouldApplyEnhancements, synthesizePseudoPetEffects, resolveProcAreaGeometry, type PetDamageResult, type PetAbilityDamage, type PetEffectComputed } from '@/utils/calculations/pet-damage';
 import { getPetEntity, type PetAbility } from '@/data/pet-entities';
@@ -68,8 +67,8 @@ import type {
 } from '@/types';
 import { getSlotColor, getTierColor, getTierDisplayName } from '@/data';
 import {
-  getEffectiveBuffDebuffModifier,
   convertGlobalBonusesToAspects,
+  withStrengthBonuses,
   findSelectedPowerInBuild,
   selectActiveConditionals,
   applyActiveConditionals,
@@ -333,6 +332,11 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   // Find the selected power from build to get its slots
   const selectedPower = findSelectedPowerInBuild(powerName, powerSet, build);
 
+  // The engine's resolved non-DPS values for this power — execution three-tiers, ArcanaTime,
+  // perma, and the magnitudes it grants (PROD6C). Covers a power the build has not picked too,
+  // which is what the panel shows while you browse the picker.
+  const projection = usePowerProjection(powerSet, powerName);
+
   // Get Alpha incarnate enhancement bonuses (apply to all powers)
   const alphaBonuses = useMemo<EnhancementBonuses>(() => {
     return getAlphaEnhancementBonuses(build.incarnates, incarnateActive);
@@ -354,7 +358,12 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     if (hasAlpha && selectedPower?.slots) {
       // Use combined calculation that properly splits alpha through/around ED
       return combineWithAlphaED(
-        { name: selectedPower.name, slots: selectedPower.slots },
+        // `allowedEnhancements` gates Alpha to the aspects this power accepts — the game's own rule
+        // (an Alpha's +Damage does not boost a power that only takes EndRdx and Recharge), which
+        // `combineWithAlphaED` falls back to "apply everything" without. Omitting it here leaked
+        // Alpha onto every aspect on this surface while the totals path and the engine both filtered
+        // (PROD6C-3f).
+        { name: selectedPower.name, slots: selectedPower.slots, allowedEnhancements: selectedPower.allowedEnhancements },
         build.level,
         getIOSet,
         alphaBonuses,
@@ -382,29 +391,10 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     [globalBonuses]
   );
 
-  // Augment the aspect-keyed bonuses with active +Strength self-buffs (Power
-  // Boost family). Strength is a non-ED multiplier on the caster's OWN matching
-  // output, so it lands in the Final column exactly like a global bonus
-  // (final = base × (1 + enh + global)). Defense and mez have no pre-existing
-  // global coupling here, and heal-strength is genuinely additive with the
-  // existing +Heal set-bonus strength — so strength is added for those.
-  // ToHit/damage are intentionally left to their existing handling: the
-  // dashboard totals already fold in ToHit strength, and Power Boost grants no
-  // damage strength at all. Stored on globalBonuses as fractions by
-  // calculateCharacterTotals (collectStrengthBuffs).
-  const globalBonusesWithStrength = useMemo(() => {
-    const out: Record<string, number> = { ...globalBonusesForCalc };
-    const add = (aspect: string, val: number) => {
-      if (val) out[aspect] = (out[aspect] || 0) + val;
-    };
-    add('defense', globalBonuses.strengthDefense);
-    add('heal', globalBonuses.strengthHeal);
-    const mezStr = globalBonuses.strengthMez;
-    if (mezStr) {
-      for (const k of ['hold', 'stun', 'sleep', 'confuse', 'fear', 'immobilize']) add(k, mezStr);
-    }
-    return out;
-  }, [globalBonusesForCalc, globalBonuses.strengthDefense, globalBonuses.strengthHeal, globalBonuses.strengthMez]);
+  const globalBonusesWithStrength = useMemo(
+    () => withStrengthBonuses(globalBonusesForCalc, globalBonuses),
+    [globalBonusesForCalc, globalBonuses]
+  );
 
   // Kheldian form redirect (Rebirth only): for human-form base powers
   // that PowerRedirector to a form-specific variant, swap the displayed
@@ -1020,13 +1010,6 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     })()),
   };
 
-  // Get archetype modifier for buff/debuff calculations
-  const archetype = archetypeId ? getArchetype(archetypeId as ArchetypeId) : null;
-  const buffDebuffMod = archetype?.stats?.buffDebuffModifier ?? 1.0;
-
-  // Get the effective buff/debuff modifier for this powerset
-  const effectiveMod = getEffectiveBuffDebuffModifier(powerSet, buffDebuffMod);
-
   // Check if power has any enhancements
   const hasEnhancements = selectedPower && selectedPower.slots.some(s => s !== null);
 
@@ -1159,7 +1142,6 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         allowedEnhancements={power?.allowedEnhancements || []}
         enhancementBonuses={enhancementBonuses}
         globalBonuses={globalBonusesWithStrength}
-        buffDebuffMod={effectiveMod}
         archetypeId={archetypeId ?? undefined}
         level={build.level}
         categories={['execution', 'buff', 'debuff', 'control', 'protection', 'movement']}
@@ -1458,11 +1440,12 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         </>
       )}
 
-      {/* Perma Tracker */}
+      {/* Perma Tracker. The numbers come from the engine's projection for this power
+        * (PROD6C) — the same pass the totals ran, rather than a second TS calc. */}
       {isPermaEligible(power) && (() => {
         const permaTracked = useUIStore.getState().permaTrackedPowers.includes(power.internalName);
         const togglePerma = useUIStore.getState().togglePermaTracked;
-        const permaInfo = calculatePermaInfo(power, enhancementBonuses, (globalBonuses.recharge ?? 0) / 100);
+        const permaInfo = projection?.perma ?? null;
 
         return (
           <div className="border-t border-slate-700 pt-2 mt-2">
@@ -1534,7 +1517,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         power={power}
         effects={effects}
         enhancementBonuses={enhancementBonuses}
-        globalBonusesForCalc={globalBonusesForCalc}
+        projection={projection}
         damageType={calculatedDamage?.type}
         useArcanaTime={useArcanaTimeToggle}
         selectedPower={selectedPower}

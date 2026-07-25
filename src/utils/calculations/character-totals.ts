@@ -14,6 +14,7 @@
 
 import type { Build, Accolade, ConditionalEffect, Enhancement, EnhancementStatType, IncarnateActiveState, IncarnateBuildState, IOSetEnhancement } from '@/types';
 import type { ProcSettings } from '@/stores/uiStore';
+import type { PowerProjection } from '@/engine/engineTotalsMap';
 import { isSelfDirectedEffect } from '@/types';
 import { AT_INHERENT_CONDITIONAL_IDS } from '@/utils/conditional-effects';
 import { getBuffPetSources, BUFF_PET_TOGGLE_ID, type BuffPetSource } from './buff-pet-auras';
@@ -246,6 +247,16 @@ export interface CharacterCalculationResult {
   setBonuses: AggregatedBonuses;
   /** Raw Rule of 5 tracking — use getBonusCount/isBonusCapped to query */
   bonusTracking: BonusTracking;
+  /** Per-power non-DPS execution + perma + granted magnitudes for every SELECTED power,
+   *  keyed `${powerSet}\0${internalName}` (PROD6B-1/2). Read it through
+   *  `usePowerProjection`, which also covers powers the build does not hold. */
+  powerProjection: Map<string, PowerProjection>;
+  /** The exact `CharacterState` JSON the engine ran for this result, or null when the
+   *  dataset wasn't loaded. `usePowerProjection` replays it to project an UNHELD power
+   *  against the identical state these totals came from — reusing the string is what
+   *  guarantees the hovered power and the picked one are computed the same way, rather
+   *  than a second assembly of the context drifting from this one. */
+  engineStateJson: string | null;
 }
 
 // ============================================
@@ -541,7 +552,7 @@ type MezScaled = { mag?: number; scale: number; table: string };
  * contribution); each additional target adds `perTarget` to it.
  *
  * Semantics with respect to the targets-hit slider:
- *   - N undefined → no slider yet; return the original (1-target value).
+ *   - N undefined → no slider input; reads as 0, same as an explicit 0.
  *   - N = 0       → power whiffed; the buff doesn't fire. Return scale 0.
  *   - N = 1       → original value.
  *   - N ≥ 2       → scale + perTarget × (N − 1).
@@ -1898,9 +1909,13 @@ function applyActivePowerBonuses(
       const tableLower = mez.table.toLowerCase();
       const isResBoolean = tableLower.includes('res_boolean');
       if (!(isResBoolean || kbIsSelfAtom)) continue;
-      // Mez protection uses level 50 table values — protection magnitude is a fixed value
-      // that doesn't scale down during leveling (matches Mids/in-game behavior)
-      const tableValue = getTableValue(archetypeId, tableLower, 50);
+      // Read at the build level, like every other table read in this pass. This used to be
+      // pinned to 50 on the claim that protection magnitude doesn't scale while leveling;
+      // both oracles say otherwise — `Res_Boolean` appears nowhere in the game source (no
+      // branch special-cases it, so `mod_Fill` resolves it at `iEffCombatLevel` like any
+      // other template), and the tables vary by level (`melee_res_boolean` runs 0.120 → 0.277
+      // across 1–50), so the pin roughly doubled a level-10 build's protection (PROD6B-2c).
+      const tableValue = getTableValue(archetypeId, tableLower, buildLevel);
       if (tableValue === undefined) continue;
       let mag = Math.abs(mez.scale) * tableValue;
       // Knockback enhancements boost non-Res_Boolean self-KB protection (per Acrobatics description).
@@ -4193,6 +4208,8 @@ export function calculateCharacterTotals(
     breakdown: new Map<string, DashboardStatBreakdown>(),
     setBonuses: {},
     bonusTracking: {},
+    powerProjection: new Map(),
+    engineStateJson: null,
   };
 }
 
@@ -4572,6 +4589,10 @@ export function legacyCalculateCharacterTotals(
     breakdown,
     setBonuses: setBonusAggregated,
     bonusTracking: tracking,
+    // The legacy calc has no engine behind it, so it projects nothing. Its only caller is the
+    // parity diff, which reads the dashboard totals.
+    powerProjection: new Map(),
+    engineStateJson: null,
   };
 }
 

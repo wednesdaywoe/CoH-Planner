@@ -14,6 +14,11 @@
  * that component now calls (decision 2026-07-24, user-chosen: extract the real resolver rather
  * than reimplement it in the test, so the gate grades the code path the UI actually runs).
  *
+ * PROD6B-2c adds the level sweep. Every fixture here builds at level 50, so a magnitude resolved
+ * at a pinned 50 and one resolved at the build level looked identical to all of the above — the
+ * blindness that let the pin through 6B-2. The last test re-runs the magnitude diff at a level
+ * where the two answers differ.
+ *
  * The engine runs via wasm-node (the browser `engine.ts` has no Node path), same as
  * `serverParity.test.ts`. The fixture is deliberately parallel to that gate but kept local so the
  * committed dashboard gate stays untouched.
@@ -22,6 +27,7 @@
 import { describe, it, expect, beforeAll } from 'vitest';
 import { createRequire } from 'node:module';
 import { existsSync, readFileSync } from 'node:fs';
+import { gunzipSync } from 'node:zlib';
 import { join } from 'node:path';
 import { loadDataset } from '@/data/dataset';
 import { getArchetype, STANDARD_ARCHETYPE_IDS } from '@/data/archetypes';
@@ -30,15 +36,20 @@ import { getAvailableGenericIOs, createGenericIOEnhancement } from '@/data/enhan
 import { getIOSet } from '@/data/io-sets';
 import { withoutIllegalSlots } from '@/utils/build-enhancement-validation';
 import { createEmptyBuild } from '@/types/build';
-import { calculatePowerEnhancementBonuses } from '@/utils/calculations/enhancement-values';
+import { applyExemplarScaling, calculatePowerEnhancementBonuses, combineWithAlphaED, normalizeAspectName, type EnhancementBonuses } from '@/utils/calculations/enhancement-values';
+import { getAlphaEnhancementBonuses } from '@/utils/calculations/character-totals';
+import { areIncarnatesSuppressed, INCARNATE_MIN_LEVEL } from '@/utils/calculations/effective-level';
+import { getIncarnateTrees } from '@/data/incarnates';
+import { INCARNATE_TIER_REGISTRY } from '@/data/core/incarnate-registry';
 import { calculatePermaInfo, type PermaInfo } from '@/utils/calculations/perma';
 import { calculateArcanaTime } from '@/utils/calculations/damage';
-import { calcThreeTier, convertGlobalBonusesToAspects, type ThreeTierValues } from '@/components/info/powerDisplayUtils';
+import { calcThreeTier, convertGlobalBonusesToAspects, withStrengthBonuses, type ThreeTierValues } from '@/components/info/powerDisplayUtils';
 import { resolvePowerMagnitudes, type ResolvedMagnitude } from '@/components/info/resolvePowerMagnitudes';
 import { toCharacterStateJson, type AdapterCalcContext } from './characterStateAdapter';
-import { mapGlobal, mapPowerProjection, type EngineTotals, type GrantedMagnitude, type PowerProjection } from './engineTotalsMap';
+import { mapGlobal, mapOnePowerProjection, mapPowerProjection, projectionKey, type EngineTotals, type GrantedMagnitude, type PowerProjection } from './engineTotalsMap';
 import type { Build } from '@/types/build';
 import type { Power, SelectedPower } from '@/types/power';
+import type { SelectedIncarnatePower } from '@/types/incarnate';
 
 const require = createRequire(import.meta.url);
 
@@ -50,7 +61,10 @@ const BUNDLE_DIR = join(__dirname, '..', '..', 'public', 'engine', 'contract');
 const artifactsReady =
   existsSync(NODE_ENGINE) && SERVERS.every((s) => existsSync(join(BUNDLE_DIR, `${s}.json.gz`)));
 
-type EngineHandle = { recalculate: (json: string) => string };
+type EngineHandle = {
+  recalculate: (json: string) => string;
+  project_power: (json: string, powerSet: string, internalName: string) => string;
+};
 const nodeEngine = artifactsReady
   ? (require('./wasm-node/coh_wasm.cjs') as { load_dataset: (bytes: Uint8Array) => EngineHandle })
   : null;
@@ -90,10 +104,20 @@ function slotsFor(power: Power): SelectedPower['slots'] {
 }
 
 /** The richest data-driven build a fork offers, assembled with no proper nouns (mirrors the PROD5
- *  gate): first standard AT's first primary + secondary, every ≤50 power, three generic IOs each. */
-function buildFor(server: Server, atId: (typeof STANDARD_ARCHETYPE_IDS)[number] = STANDARD_ARCHETYPE_IDS[0]): Build {
+ *  gate): first standard AT's first primary + secondary, every ≤50 power, three generic IOs each.
+ *
+ *  `level` drives the AT-table reads on both sides. `slotted: false` is for the sub-50 sweep: the
+ *  fixture's IOs are level-50 ones, which `withoutIllegalSlots` strips out of the ENGINE's input at
+ *  a lower build level while the beta reference still reads them off the build — an asymmetry in
+ *  the fixture, not in the math under test. Unslotted, both sides see the same slots. */
+function buildFor(
+  server: Server,
+  atId: (typeof STANDARD_ARCHETYPE_IDS)[number] = STANDARD_ARCHETYPE_IDS[0],
+  level = 50,
+  slotted = true,
+): Build {
   const build = createEmptyBuild(server);
-  build.level = 50;
+  build.level = level;
   const at = getArchetype(atId);
   build.archetype = { id: atId, name: at?.name ?? atId, stats: null, inherent: null } as Build['archetype'];
 
@@ -104,7 +128,7 @@ function buildFor(server: Server, atId: (typeof STANDARD_ARCHETYPE_IDS)[number] 
       ...p,
       powerSet: powersetId,
       level: p.available + 1,
-      slots: slotsFor(p),
+      slots: slotted ? slotsFor(p) : [],
       isActive: p.powerType === 'Toggle' || p.powerType === 'Auto',
     }));
 
@@ -115,8 +139,178 @@ function buildFor(server: Server, atId: (typeof STANDARD_ARCHETYPE_IDS)[number] 
   return build;
 }
 
-function engineTotals(server: Server, build: Build): EngineTotals {
-  const json = engineHandle(server).recalculate(toCharacterStateJson(withoutIllegalSlots(build), CTX));
+/** Does this power carry a +Strength self-buff at all? Read off the bag key the Strength pass
+ *  consumes on both sides, so the fixture below discovers its own carriers from the fork's data
+ *  rather than naming any (Rule 0). */
+function grantsStrength(power: Power): boolean {
+  return (power as unknown as { effects?: { specialBuff?: unknown } }).effects?.specialBuff != null;
+}
+
+/** Candidate builds whose ACTIVE powers grant +Strength (the Power Boost family), for the
+ *  PROD6C fold. `buildFor` activates only toggles and autos, and these are clicks, so no fixture
+ *  above can produce a non-zero `strength*` — which is exactly what made the fold invisible to
+ *  this gate.
+ *
+ *  Discovered rather than named (Rule 0): every archetype powerset carrying a `specialBuff`
+ *  power becomes a candidate, with all its pickable powers selected and its carriers switched
+ *  on. Only some Strength aspects reach a display row — the caller runs each candidate through
+ *  the engine and keeps the first whose `strength*` lands in a family the fold reads, rather
+ *  than this replicating the bag's aspect routing to guess. */
+function strengthCandidates(server: Server): { build: Build; atId: string; carriers: string[] }[] {
+  const out: { build: Build; atId: string; carriers: string[] }[] = [];
+  for (const atId of STANDARD_ARCHETYPE_IDS) {
+    for (const set of getPowersetsForArchetype(atId)) {
+      if (set.dormant || !set.id) continue;
+      const pickables = (set.powers ?? []).filter(pickable);
+      const carriers = pickables.filter(grantsStrength);
+      if (carriers.length === 0) continue;
+
+      const build = createEmptyBuild(server);
+      build.level = 50;
+      const at = getArchetype(atId);
+      build.archetype = { id: atId, name: at?.name ?? atId, stats: null, inherent: null } as Build['archetype'];
+      const selected: SelectedPower[] = pickables.map((p) => ({
+        ...p,
+        powerSet: set.id!,
+        level: p.available + 1,
+        slots: slotsFor(p),
+        isActive: grantsStrength(p) || p.powerType === 'Toggle' || p.powerType === 'Auto',
+      }));
+      const placed = { id: set.id, name: set.name, powers: selected };
+      if ((set.category ?? '').toLowerCase() === 'secondary') build.secondary = placed;
+      else build.primary = placed;
+      out.push({ build, atId, carriers: carriers.map((c) => c.internalName) });
+    }
+  }
+  return out;
+}
+
+/** An equipped Alpha and everything both sides need to agree about it: the build selection the
+ *  adapter forwards, the beta's aspect-keyed bonuses, and the ED-bypass ratio its tier implies. */
+interface AlphaFixture {
+  selection: SelectedIncarnatePower;
+  bonuses: EnhancementBonuses;
+  edBypassRatio: number;
+  aspects: string[];
+  /**
+   * Can the beta's per-TIER bypass ratio reproduce this Alpha's authored per-ASPECT bypass?
+   *
+   * The engine reads `GENERATED_ALPHA_ED_BYPASS` — the exported silent-grant data, one value per
+   * aspect. The beta has no such data at all: it multiplies the whole Alpha value by a hardcoded
+   * per-rarity ratio (`INCARNATE_TIER_REGISTRY`), a value the export owns (Rule 0). The two agree
+   * only where a fork happened to author its splits on the rarity pattern. Where they do not, the
+   * ENGINE is right and the beta's table is the defect — which is why the fixture selects an
+   * expressible Alpha for the parity test and grades the inexpressible ones separately.
+   */
+  tierExpressible: boolean;
+}
+
+/** The exported per-aspect Alpha ED-bypass, straight out of the fork's engine bundle — the data
+ *  the beta's rarity table stands in for. Keyed by normalized power id, the same normalization
+ *  both `normalizePowerId` (beta) and `normalize_incarnate_power_id` (engine) apply. */
+function alphaEdBypassFromBundle(server: Server): Record<string, Record<string, number>> {
+  const bundle = JSON.parse(
+    gunzipSync(readFileSync(join(BUNDLE_DIR, `${server}.json.gz`))).toString('utf8'),
+  ) as { incarnate?: { GENERATED_ALPHA_ED_BYPASS?: Record<string, Record<string, number>> } };
+  return bundle.incarnate?.GENERATED_ALPHA_ED_BYPASS ?? {};
+}
+
+/** The exported bypass keys the beta's aspect vocabulary spells differently. `getAlphaEffects`
+ *  data and the bypass data share their key set, but `getAlphaEnhancementBonuses` renames two on
+ *  the way into `EnhancementBonuses`, so an aspect-by-aspect comparison has to follow it. */
+const ALPHA_EFFECT_KEY_TO_ASPECT: Record<string, string> = {
+  enduranceReduction: 'endurance',
+  enduranceModification: 'enduranceMod',
+  toHitDebuff: 'tohitDebuff',
+  defenseDebuff: 'defenseDebuff',
+  toHitBuff: 'tohit',
+};
+
+/** Exported bypass values are rounded to four decimals, so an exact `ratio × value` comparison
+ *  would call every entry a divergence. Anything beyond this is an authored split, not rounding. */
+const BYPASS_ROUNDING = 0.0002;
+
+/** Every Alpha a fork offers, richest first — discovered from the fork's own incarnate data
+ *  (Rule 0: no power is named here). "Richest" is the most non-zero enhancement aspects, so the ED
+ *  split is exercised across as many schedules as the fork has; ties break on the power's full name
+ *  so the fixture is deterministic.
+ *
+ *  `levelShift` is deliberately not counted: it is not an enhancement aspect and
+ *  `getAlphaEnhancementBonuses` maps it nowhere. */
+function alphaFixturesFor(server: Server): AlphaFixture[] {
+  const bypass = alphaEdBypassFromBundle(server);
+  const out: AlphaFixture[] = [];
+  for (const tree of getIncarnateTrees('alpha')) {
+    for (const power of tree.powers) {
+      const bonuses = getAlphaEnhancementBonuses(
+        { alpha: { powerId: power.fullName } } as unknown as Parameters<typeof getAlphaEnhancementBonuses>[0],
+        { alpha: true } as Parameters<typeof getAlphaEnhancementBonuses>[1],
+      );
+      const aspects = Object.entries(bonuses)
+        .filter(([, value]) => value !== undefined && value !== 0)
+        .map(([aspect]) => aspect)
+        .sort();
+      if (aspects.length === 0) continue;
+
+      const edBypassRatio = INCARNATE_TIER_REGISTRY[power.tier]?.edBypassRatio ?? 1 / 6;
+      const exported = bypass[power.id] ?? {};
+      const exportedByAspect: Record<string, number> = {};
+      for (const [key, value] of Object.entries(exported)) {
+        exportedByAspect[ALPHA_EFFECT_KEY_TO_ASPECT[key] ?? key] = value;
+      }
+      const tierExpressible = aspects.every(
+        (aspect) => Math.abs((exportedByAspect[aspect] ?? 0) - edBypassRatio * (bonuses[aspect] ?? 0)) <= BYPASS_ROUNDING,
+      );
+
+      out.push({
+        selection: {
+          slotId: 'alpha',
+          powerId: power.fullName,
+          powerName: power.fullName,
+          displayName: power.displayName,
+          icon: power.icon,
+          tier: power.tier,
+          treeId: tree.id,
+          treeName: tree.name,
+        },
+        bonuses,
+        edBypassRatio,
+        aspects,
+        tierExpressible,
+      });
+    }
+  }
+  return out.sort(
+    (a, b) => b.aspects.length - a.aspects.length || a.selection.powerId.localeCompare(b.selection.powerId),
+  );
+}
+
+/** The beta's own maximum-bonus cap for an exemplared build, read out of `applyExemplarScaling`
+ *  rather than restated: a raw bonus of 1.0 at IO level 50 can only come back as the cap. */
+function exemplarBonusCap(exemplarLevel: number): number {
+  return applyExemplarScaling(1.0, 50, exemplarLevel);
+}
+
+/** The exported exemplar bonus cap the engine reads — `exemplar_handicaps.bin`'s `preClamp`, indexed
+ *  `curve[level - 1]` the way `boost.c`'s `boost_HandicapExemplar` indexes it. This is the value the
+ *  beta's constant stands in for, and the two do not agree. */
+function exportedExemplarBonusCap(server: Server, exemplarLevel: number): number {
+  const bundle = JSON.parse(
+    gunzipSync(readFileSync(join(BUNDLE_DIR, `${server}.json.gz`))).toString('utf8'),
+  ) as { 'enhancement-curves'?: { exemplarHandicaps?: { preClamp?: number[] } } };
+  const curve = bundle['enhancement-curves']?.exemplarHandicaps?.preClamp ?? [];
+  const index = Math.min(Math.max(exemplarLevel, 1), curve.length) - 1;
+  return curve[index] ?? 1.0;
+}
+
+/** `CTX` with the PROD6C-1d inputs turned on. Everything else stays at the totals hook's own
+ *  defaults so a delta can only come from the input under test. */
+function ctxWith(overrides: Partial<AdapterCalcContext>): AdapterCalcContext {
+  return { ...CTX, ...overrides };
+}
+
+function engineTotals(server: Server, build: Build, ctx: AdapterCalcContext = CTX): EngineTotals {
+  const json = engineHandle(server).recalculate(toCharacterStateJson(withoutIllegalSlots(build), ctx));
   return JSON.parse(json) as EngineTotals;
 }
 
@@ -129,6 +323,14 @@ function truthyStat(power: SelectedPower, statKey: string, effectsKey: string): 
   if (s) return s;
   const e = effects?.[effectsKey];
   return e || null;
+}
+
+/** Does a build-wide +Range reach this power? Its `boostsAllowed` must list Range; an ABSENT
+ *  list accepts every type (the export's tri-state, which `calculatePowerEnhancementBonuses`
+ *  reads the same way). */
+function rangeEnhanceable(power: SelectedPower): boolean {
+  const allowed = power.allowedEnhancements;
+  return allowed == null || allowed.includes('Range');
 }
 
 function baseEnduranceCost(power: SelectedPower): number | null {
@@ -147,6 +349,10 @@ function baseEnduranceCost(power: SelectedPower): number | null {
 
 // f32 engine vs f64 JS — a per-power value apart by more than this is a real disagreement.
 const TOLERANCE = 0.05;
+
+/** The sub-50 level the PROD6B-2c sweep resolves at. Any level where the AT tables differ from
+ *  their level-50 row works; mid-range keeps the movement well clear of [`TOLERANCE`]. */
+const SWEEP_LEVEL = 25;
 
 function tierDelta(label: string, engine: ThreeTierValues | null, beta: ThreeTierValues | null): string[] {
   if (engine === null && beta === null) return [];
@@ -179,6 +385,47 @@ function permaDelta(engine: PermaInfo | null, beta: PermaInfo | null): { real: s
   return { real, adjudicated: [] };
 }
 
+/**
+ * This power's post-ED enhancement bonuses the beta's way. With no Alpha equipped that is
+ * `calculatePowerEnhancementBonuses`; with one it is `combineWithAlphaED`, which folds Alpha's
+ * ED-subject slice into the raw IO sum, applies ED once, then adds the bypass slice on top.
+ *
+ * `allowedEnhancements` is passed on BOTH paths, gating Alpha to the aspects the power accepts —
+ * the rule `combineWithAlphaED` documents as the game's own (an Alpha's +Damage does not boost a
+ * power that only takes EndRdx and Recharge) and the rule the engine's `power_enhancement`
+ * applies. The beta's four DISPLAY call sites omitted it, so Alpha leaked onto every aspect
+ * there; PROD6C-3f fixed them to pass it, which is what lets this reference grade the path the
+ * surfaces actually run.
+ */
+function betaEnhancement(power: SelectedPower, build: Build, state: ReferenceState): EnhancementBonuses {
+  if (state.enhancementOverride) return state.enhancementOverride;
+  const identity = { name: power.name, slots: power.slots, allowedEnhancements: power.allowedEnhancements };
+  if (state.alpha) {
+    return combineWithAlphaED(
+      identity,
+      build.level,
+      getIOSet,
+      state.alpha.bonuses,
+      state.alpha.edBypassRatio,
+      state.exemplarLevel,
+    );
+  }
+  return calculatePowerEnhancementBonuses(identity, build.level, getIOSet, state.exemplarLevel);
+}
+
+/** The two inputs PROD6C-1d found ungraded: an equipped Alpha (which splits through ED) and an
+ *  exemplared build (which rescales non-attuned IOs and, below 45, suppresses incarnates
+ *  outright). Absent = the 6B fixture's own state, no Alpha and no exemplar. */
+interface ReferenceState {
+  alpha?: AlphaFixture;
+  /** The exemplared-to level, or undefined for an unexemplared build. */
+  exemplarLevel?: number;
+  /** Post-ED bonuses to use verbatim instead of computing them. The exemplar test re-runs the whole
+   *  reference with the beta's exemplar CAP swapped for the exported one, which is how it proves a
+   *  delta is that cap and nothing else. */
+  enhancementOverride?: EnhancementBonuses;
+}
+
 /** The beta reference for one power — the calculators + resolver PROD6C–E will retire. Both halves
  *  come from one call so the enhancement bonuses they read are the same object. */
 function betaReference(
@@ -186,13 +433,9 @@ function betaReference(
   build: Build,
   archetypeId: string,
   rawGlobal: ReturnType<typeof mapGlobal>,
+  state: ReferenceState = {},
 ): { projection: Omit<PowerProjection, 'grantedMagnitudes'>; magnitudes: Map<string, ResolvedMagnitude> } {
-  const enh = calculatePowerEnhancementBonuses(
-    { name: power.name, slots: power.slots, allowedEnhancements: power.allowedEnhancements },
-    build.level,
-    getIOSet,
-    undefined,
-  );
+  const enh = betaEnhancement(power, build, state);
   const global = convertGlobalBonusesToAspects(rawGlobal);
 
   const rechargeBase = truthyStat(power, 'recharge', 'recharge');
@@ -208,10 +451,24 @@ function betaReference(
       accuracy: accBase !== null ? calcThreeTier('accuracy', accBase, enh, global) : null,
       castTime: castBase !== null ? calcThreeTier('castTime', castBase, enh, global) : null,
       arcanaTime: castBase !== null ? calculateArcanaTime(castBase) : null,
-      range: rangeBase !== null ? calcThreeTier('range', rangeBase, enh, global) : null,
+      // A global +Range reaches a power only when it accepts Range enhancement (`GeneralStatsBlock`,
+      // engine `reachable_global_range`). The corpus carries no set bonuses, so the global is zero
+      // and gated and ungated agree here — the rule itself is pinned by the engine's own unit test.
+      // The tri-state follows the ENGINE (absent list ⇒ every type), which is how
+      // `calculatePowerEnhancementBonuses` reads it; the beta's display rule treats absent as
+      // accepting nothing, an unresolved divergence noted in the PROD6C plan entry.
+      range:
+        rangeBase !== null
+          ? rangeEnhanceable(power)
+            ? calcThreeTier('range', rangeBase, enh, global)
+            : calcThreeTier('range', rangeBase, enh, {})
+          : null,
       perma: calculatePermaInfo(power, enh, (rawGlobal.recharge ?? 0) / 100),
     },
-    magnitudes: betaMagnitudes(power, build, archetypeId, enh, global),
+    // The magnitude rows read the +Strength-augmented globals — the surfaces' own input
+    // (PROD6C). The execution half above deliberately does not: Strength carries no
+    // recharge / endurance / accuracy / range / cast aspect.
+    magnitudes: betaMagnitudes(power, build, archetypeId, enh, withStrengthBonuses(global, rawGlobal)),
   };
 }
 
@@ -229,30 +486,20 @@ function betaMagnitudes(
     level: build.level,
     enhancementBonuses: enh,
     globalBonuses: global,
-    // 1.0, not the archetype's support modifier: the engine cannot carry the beta's
-    // Defender/Controller-primary rule (it keys on archetype NAMES — Rule 0). The path is
-    // unreachable while every effect value carries a resolvable table; a power that DID reach
-    // it would surface here as a delta rather than pass silently.
+    // 1.0 on both sides, and now unconditionally so: the beta's Defender/Controller-primary
+    // support rule keyed on archetype NAMES (Rule 0), was measured to match no row that
+    // actually reaches a table-less fallback, and was deleted in PROD6B-2b. The precondition
+    // that keeps it dead is held down by supportModifierReach.test.ts.
     buffDebuffMod: 1.0,
   });
   return new Map(rows.map((row) => [row.rowKey, row]));
 }
 
-/** Effect keys the rebuild's EXPORT is missing on at least one fork while the beta's converted
- *  dataset still carries them — so the beta resolves a row the engine cannot. Verified per key
- *  against `contract/<fork>/bundle.json.gz`:
- *
- *   - `absorb`: HC `sentinel/bio-armor Parasitic_Leech` records `durations.absorb: 45` but carries
- *     NO `absorb` magnitude. The export knows the effect exists and dropped its value — a real
- *     export gap, not a resolution disagreement.
- *   - `effectDuration`: tspy `dominator/akimbo-assault Power_Build_Up` has no `effectDuration` in
- *     the export while the beta dataset does.
- *
- *  Listed rather than tolerated wholesale: anything NOT here still fails, so this cannot quietly
- *  absorb a genuine engine drop. These are export/converter defects tracked in the plan doc — the
- *  parser owns them, and this gate is what keeps them visible. Effect keys are schema vocabulary,
- *  not game proper nouns, so naming them here does not breach Rule 0. */
-const KNOWN_EXPORT_GAP_EFFECT_KEYS = new Set(['absorb', 'effectDuration']);
+/** The bag's untyped-duration slot: a duration with no attrib behind it, which a converter emits
+ *  when it read a template's duration but could not type the effect itself. It is the one beta-only
+ *  row that can be adjudicated rather than failed — see `magnitudeDeltas`. Effect keys are schema
+ *  vocabulary, not game proper nouns, so naming it here does not breach Rule 0. */
+const UNTYPED_DURATION_EFFECT_KEY = 'effectDuration';
 
 /** Diff one power's granted magnitudes, split into real disagreements and adjudicated
  *  engine-supersedes-beta ones. Rows are matched by key, not position — the engine emits them in
@@ -263,17 +510,25 @@ const KNOWN_EXPORT_GAP_EFFECT_KEYS = new Set(['absorb', 'effectDuration']);
  *  that means the fork's beta converter dropped an effect the rebuild's parser recovered (the
  *  export is truth — the PROD5 pattern), not that the engine invented a row. If the beta HAS the
  *  key and still resolved no row, the two disagree about resolution and that is a hard delta.
- *  "beta only" is always hard: the engine dropping a row the beta carries is an engine defect. */
+ *
+ *  "beta only" is a hard delta — the engine dropping a row the beta carries is an engine defect —
+ *  with ONE adjudicated case: a bare `effectDuration` on a power where the engine typed a template
+ *  the beta's bag has no key for. Both rows are then the SAME template read twice: the rebuild's
+ *  parser recovered its attrib (tspy `Power_Build_Up` → `+Special: Stun`), while the beta's
+ *  converter could only keep the duration it hung on. Accepting it needs that typed engine row as
+ *  evidence, so a genuine engine drop — no typed row to point at — still fails. */
 function magnitudeDeltas(
   powerName: string,
   engineRows: GrantedMagnitude[],
   betaRows: Map<string, ResolvedMagnitude>,
   betaEffects: Record<string, unknown> | undefined,
-): { real: string[]; adjudicated: string[]; exportGaps: string[] } {
+): { real: string[]; adjudicated: string[] } {
   const out: string[] = [];
   const adjudicated: string[] = [];
-  const exportGaps: string[] = [];
   const engineByKey = new Map(engineRows.map((row) => [row.rowKey, row]));
+  // Rows the engine typed off effect keys the beta's own bag lacks — the evidence an untyped
+  // beta-only duration is the same template seen through the weaker converter.
+  const enginesOwnTypings = engineRows.filter((row) => betaEffects?.[row.effectKey] == null);
 
   for (const key of new Set([...engineByKey.keys(), ...betaRows.keys()])) {
     const engine = engineByKey.get(key);
@@ -287,9 +542,12 @@ function magnitudeDeltas(
       continue;
     }
     if (!engine || !beta) {
-      const message = `${powerName}.${key}: beta only (engine resolved no row)`;
-      if (beta && KNOWN_EXPORT_GAP_EFFECT_KEYS.has(beta.effectKey)) exportGaps.push(message);
-      else out.push(message);
+      const untypedResidue = beta?.effectKey === UNTYPED_DURATION_EFFECT_KEY && enginesOwnTypings.length > 0;
+      if (untypedResidue) {
+        adjudicated.push(`${key}: beta resolved a bare ${beta!.config.label} where the export types the template as ${enginesOwnTypings.map((row) => row.label).join(', ')}`);
+      } else {
+        out.push(`${powerName}.${key}: beta only (engine resolved no row)`);
+      }
       continue;
     }
     for (const tier of ['base', 'enhanced', 'final'] as const) {
@@ -317,7 +575,153 @@ function magnitudeDeltas(
       out.push(`${powerName}.${key}.byTypeLabel: engine ${engineByType} vs beta ${betaByType}`);
     }
   }
-  return { real: out, adjudicated, exportGaps };
+  return { real: out, adjudicated };
+}
+
+/** A bypass ratio no tier uses, for probing whether the split is observable at all. */
+const PROBE_BYPASS_RATIO = 0.25;
+
+/**
+ * `buildFor`'s fixture, re-slotted to SATURATE Enhancement Diversification in one aspect: up to six
+ * generic IOs of the same stat on every power that accepts it, instead of three of different stats.
+ *
+ * This exists because the ordinary fixture cannot grade Alpha's ED split at all. The split only
+ * matters once the raw IO sum plus Alpha's ED-subject slice crosses an ED threshold — below it, ED is
+ * the identity and every division of Alpha's value sums to the same total. Three IOs of distinct
+ * aspects put roughly 0.42 into each, which with any Alpha stays under Schedule A's 0.7 knee: probed
+ * against a bypass ratio no tier uses, that fixture produced ZERO deltas on all three forks. Six of
+ * one stat put ~2.5 into a single aspect, so ED bites hard and the division is load-bearing.
+ *
+ * `stat` is chosen by the caller to be an aspect the equipped Alpha also buffs; a power that does not
+ * accept it keeps the ordinary slotting so the fixture stays a full build.
+ */
+function saturatedBuild(server: Server, stat: string, level = 50): Build {
+  const build = buildFor(server, STANDARD_ARCHETYPE_IDS[0], level);
+  const saturate = (powers: SelectedPower[]) =>
+    powers.map((power) => {
+      if (!getAvailableGenericIOs(power).some((available) => available === stat)) return power;
+      return {
+        ...power,
+        slots: Array.from({ length: MAX_SLOTS_PER_POWER }, () => createGenericIOEnhancement(stat as never, 50)),
+      };
+    });
+  build.primary = { ...build.primary, powers: saturate(build.primary.powers) };
+  build.secondary = { ...build.secondary, powers: saturate(build.secondary.powers) };
+  return build;
+}
+
+/** The generic-IO stats whose aspect this Alpha also buffs — the saturation candidates for
+ *  [`saturatedBuild`]. Derived from the beta's own stat→aspect map, not a second list. */
+function saturationStatsFor(powers: SelectedPower[], alpha: AlphaFixture): string[] {
+  const stats = new Set<string>();
+  for (const power of powers) {
+    for (const stat of getAvailableGenericIOs(power)) {
+      const aspect = normalizeAspectName(stat);
+      if (aspect && alpha.aspects.includes(aspect)) stats.add(stat);
+    }
+  }
+  return [...stats].sort();
+}
+
+
+/** A power holds at most six slots, so at most six IOs can have been clamped in one aspect. The
+ *  bound is what makes the cap-multiple proof a proof rather than a fit to any number. */
+const MAX_SLOTS_PER_POWER = 6;
+
+/** Two enhancement bonuses apart by more than this are genuinely different. Tighter than
+ *  [`TOLERANCE`], which is a tolerance on displayed VALUES; a bonus is a fraction. */
+const BONUS_TOLERANCE = 1e-6;
+
+/** The per-aspect enhancement bonus the engine must have used, recovered from its own three-tiers.
+ *  `enhanced` is `base / (1 + bonus)` for a reduction aspect and `base × (1 + bonus)` for a
+ *  multiplicative one, so each tier inverts to exactly one bonus. Reading it back this way needs no
+ *  new engine output and cannot drift from what the tier actually shows. */
+function impliedEnhancementBonuses(projection: PowerProjection): Record<string, number> {
+  const out: Record<string, number> = {};
+  const reduction: [keyof PowerProjection, string][] = [['recharge', 'recharge'], ['enduranceCost', 'endurance']];
+  const multiplicative: [keyof PowerProjection, string][] = [['accuracy', 'accuracy'], ['range', 'range']];
+  for (const [field, aspect] of reduction) {
+    const tier = projection[field] as ThreeTierValues | null;
+    if (tier && tier.base > 0 && tier.enhanced > 0) out[aspect] = tier.base / tier.enhanced - 1;
+  }
+  for (const [field, aspect] of multiplicative) {
+    const tier = projection[field] as ThreeTierValues | null;
+    if (tier && tier.base > 0) out[aspect] = tier.enhanced / tier.base - 1;
+  }
+  return out;
+}
+
+/** Did any projected value for this power change between two runs? Every enhanceable surface the
+ *  projection carries, not one chosen aspect: an Alpha that enhances only Heal moves magnitude rows
+ *  and no execution tier, and a guard watching recharge alone would call that "no effect". */
+function projectedValuesMoved(a: PowerProjection, b: PowerProjection): boolean {
+  const tiers: (keyof PowerProjection)[] = ['recharge', 'enduranceCost', 'accuracy', 'castTime', 'range'];
+  for (const key of tiers) {
+    const left = a[key] as ThreeTierValues | null;
+    const right = b[key] as ThreeTierValues | null;
+    if (!left || !right) continue;
+    if (Math.abs(left.enhanced - right.enhanced) > TOLERANCE) return true;
+  }
+  const rightRows = new Map(b.grantedMagnitudes.map((row) => [row.rowKey, row]));
+  for (const row of a.grantedMagnitudes) {
+    const other = rightRows.get(row.rowKey);
+    if (other && Math.abs(row.value.enhanced - other.value.enhanced) > TOLERANCE) return true;
+  }
+  return false;
+}
+
+/** Diff every power of one fixture: the execution three-tiers, ArcanaTime, perma and granted
+ *  magnitudes, against the beta calculators run in the same `state`. The 6B-1 walk inlines this
+ *  same body; it is factored out here because PROD6C-3f re-runs the WHOLE diff under two new
+ *  inputs, and a second copy of it could drift from the one that grades the base fixture. */
+function diffProjection(
+  server: Server,
+  powers: SelectedPower[],
+  build: Build,
+  archetypeId: string,
+  projection: Map<string, PowerProjection>,
+  rawGlobal: ReturnType<typeof mapGlobal>,
+  state: ReferenceState = {},
+): { deltas: string[]; adjudicated: string[]; rows: number } {
+  const deltas: string[] = [];
+  const adjudicated: string[] = [];
+  let rows = 0;
+
+  for (const power of powers) {
+    const engine = projection.get(projectionKey(power.powerSet, power.internalName));
+    expect(engine, `${server}: no engine projection for ${power.internalName}`).toBeDefined();
+    if (!engine) continue;
+    const { projection: beta, magnitudes } = betaReference(power, build, archetypeId, rawGlobal, state);
+    const perma = permaDelta(engine.perma, beta.perma);
+    const mags = magnitudeDeltas(
+      power.internalName,
+      engine.grantedMagnitudes,
+      magnitudes,
+      (power as unknown as { effects?: Record<string, unknown> }).effects,
+    );
+    rows += engine.grantedMagnitudes.length;
+    deltas.push(
+      ...tierDelta(`${power.internalName}.recharge`, engine.recharge, beta.recharge),
+      ...tierDelta(`${power.internalName}.enduranceCost`, engine.enduranceCost, beta.enduranceCost),
+      ...tierDelta(`${power.internalName}.accuracy`, engine.accuracy, beta.accuracy),
+      ...tierDelta(`${power.internalName}.castTime`, engine.castTime, beta.castTime),
+      ...tierDelta(`${power.internalName}.range`, engine.range, beta.range),
+      ...perma.real.map((d) => `${power.internalName}.${d}`),
+      ...mags.real,
+    );
+    adjudicated.push(
+      ...perma.adjudicated.map((d) => `${power.internalName}.${d}`),
+      ...mags.adjudicated.map((d) => `${power.internalName}.${d}`),
+    );
+    const arcanaEngine = engine.arcanaTime ?? null;
+    const arcanaBeta = beta.arcanaTime ?? null;
+    if (arcanaEngine === null || arcanaBeta === null) {
+      if (arcanaEngine !== arcanaBeta) deltas.push(`${power.internalName}.arcanaTime: engine ${arcanaEngine} vs beta ${arcanaBeta}`);
+    } else if (Math.abs(arcanaEngine - arcanaBeta) > TOLERANCE) {
+      deltas.push(`${power.internalName}.arcanaTime: engine ${arcanaEngine} vs beta ${arcanaBeta}`);
+    }
+  }
+  return { deltas, adjudicated, rows };
 }
 
 const suite = artifactsReady ? describe : describe.skip;
@@ -348,45 +752,13 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
     const magnitudeRows = [...projection.values()].reduce((n, p) => n + p.grantedMagnitudes.length, 0);
     expect(magnitudeRows, `${server}: engine resolved no granted magnitudes`).toBeGreaterThan(0);
 
-    const deltas: string[] = [];
-    const adjudicated: string[] = [];
-    let matchedRows = 0;
-    for (const power of powers) {
-      const key = `${power.powerSet} ${power.internalName}`;
-      const engine = projection.get(key);
-      expect(engine, `${server}: no engine projection for ${key}`).toBeDefined();
-      if (!engine) continue;
-      const { projection: beta, magnitudes } = betaReference(power, build, archetypeId, rawGlobal);
-      const perma = permaDelta(engine.perma, beta.perma);
-      const mags = magnitudeDeltas(
-        power.internalName,
-        engine.grantedMagnitudes,
-        magnitudes,
-        (power as unknown as { effects?: Record<string, unknown> }).effects,
-      );
-      matchedRows += engine.grantedMagnitudes.filter((r) => magnitudes.has(r.rowKey)).length;
-      deltas.push(
-        ...tierDelta(`${power.internalName}.recharge`, engine.recharge, beta.recharge),
-        ...tierDelta(`${power.internalName}.enduranceCost`, engine.enduranceCost, beta.enduranceCost),
-        ...tierDelta(`${power.internalName}.accuracy`, engine.accuracy, beta.accuracy),
-        ...tierDelta(`${power.internalName}.castTime`, engine.castTime, beta.castTime),
-        ...tierDelta(`${power.internalName}.range`, engine.range, beta.range),
-        ...perma.real.map((d) => `${power.internalName}.${d}`),
-        ...mags.real,
-      );
-      adjudicated.push(
-        ...perma.adjudicated.map((d) => `${power.internalName}.${d}`),
-        ...mags.adjudicated.map((d) => `${power.internalName}.${d}`),
-        ...mags.exportGaps.map((d) => `EXPORT GAP ${d}`),
-      );
-      const arcanaEngine = engine.arcanaTime ?? null;
-      const arcanaBeta = beta.arcanaTime ?? null;
-      if (arcanaEngine === null || arcanaBeta === null) {
-        if (arcanaEngine !== arcanaBeta) deltas.push(`${power.internalName}.arcanaTime: engine ${arcanaEngine} vs beta ${arcanaBeta}`);
-      } else if (Math.abs(arcanaEngine - arcanaBeta) > TOLERANCE) {
-        deltas.push(`${power.internalName}.arcanaTime: engine ${arcanaEngine} vs beta ${arcanaBeta}`);
-      }
-    }
+    const matchedRows = powers.reduce((n, power) => {
+      const engine = projection.get(projectionKey(power.powerSet, power.internalName));
+      if (!engine) return n;
+      const { magnitudes } = betaReference(power, build, archetypeId, rawGlobal);
+      return n + engine.grantedMagnitudes.filter((r) => magnitudes.has(r.rowKey)).length;
+    }, 0);
+    const { deltas, adjudicated } = diffProjection(server, powers, build, archetypeId, projection, rawGlobal);
 
     // eslint-disable-next-line no-console
     console.warn(`[PROD6B-2 magnitudes] ${server}: ${magnitudeRows} engine rows across ${powers.length} powers, ${matchedRows} matched key-for-key`);
@@ -424,7 +796,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
       const rawGlobal = mapGlobal(totals.bonuses);
 
       for (const power of powers) {
-        const engine = projection.get(`${power.powerSet} ${power.internalName}`);
+        const engine = projection.get(projectionKey(power.powerSet, power.internalName));
         if (!engine) continue;
         const { magnitudes } = betaReference(power, build, atId, rawGlobal);
         const mags = magnitudeDeltas(
@@ -436,7 +808,6 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
         deltas.push(...mags.real);
         adjudicated.push(
           ...mags.adjudicated.map((d) => `${atId}/${power.internalName}.${d}`),
-          ...mags.exportGaps.map((d) => `EXPORT GAP ${d}`),
         );
         rows += engine.grantedMagnitudes.length;
         for (const row of engine.grantedMagnitudes) {
@@ -460,4 +831,549 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
     expect([...kinds.keys()].some((k) => k.endsWith('+expanded')), `${server}: sweep reached no expanded by-type row`).toBe(true);
     expect(deltas).toEqual([]);
   }, 120000);
+
+  // PROD6C. The info surfaces render powers the build does NOT hold — the tooltip fires off the
+  // picker (`AvailablePowers`), which resolves through `lookupPower`, not the build. No
+  // `all_selected()` walk reaches those, so the projection could not answer for them at all and
+  // the surfaces would have had to keep a second calculator for the unheld case. `project_power`
+  // closes that: it projects an arbitrary ref against the same finalized accumulator.
+  //
+  // What must hold is that the on-demand answer is the SAME answer, not a parallel one. Each
+  // unheld power is graded against the beta calculators run unslotted — the state it is actually
+  // in — over every archetype's second powerset, which the fixture never picks.
+  it.each(SERVERS)('%s: a power the build does not hold projects on demand', async (server) => {
+    await loadDataset(server);
+
+    const deltas: string[] = [];
+    const adjudicated: string[] = [];
+    let projected = 0;
+    let magnitudeRows = 0;
+
+    for (const atId of STANDARD_ARCHETYPE_IDS) {
+      const build = buildFor(server, atId);
+      const held = new Set(
+        [...build.primary.powers, ...build.secondary.powers].map((p) => projectionKey(p.powerSet, p.internalName)),
+      );
+      // A set the fixture did NOT take, so its powers are genuinely unheld.
+      const unheldSet = getPowersetsForArchetype(atId).filter(
+        (ps) => !ps.dormant && ps.id && ps.id !== build.primary.id && ps.id !== build.secondary.id,
+      )[0];
+      if (!unheldSet?.id) continue;
+
+      const stateJson = toCharacterStateJson(withoutIllegalSlots(build), CTX);
+      const totals = engineTotals(server, build);
+      const rawGlobal = mapGlobal(totals.bonuses);
+
+      for (const power of (unheldSet.powers ?? []).filter(pickable)) {
+        expect(held.has(projectionKey(unheldSet.id, power.internalName)), `${server}: ${power.internalName} is not actually unheld`).toBe(false);
+
+        const json = engineHandle(server).project_power(stateJson, unheldSet.id, power.internalName);
+        const raw = JSON.parse(json) as Parameters<typeof mapOnePowerProjection>[0] | null;
+        expect(raw, `${server}: no on-demand projection for ${unheldSet.id}/${power.internalName}`).not.toBeNull();
+        if (!raw) continue;
+        const engine = mapOnePowerProjection(raw);
+        projected += 1;
+        magnitudeRows += engine.grantedMagnitudes.length;
+
+        // The beta reference for an UNHELD power: the same calculators, run with no slots.
+        const unslotted = { ...power, powerSet: unheldSet.id, level: power.available + 1, slots: [] } as SelectedPower;
+        const { projection: beta, magnitudes } = betaReference(unslotted, build, atId, rawGlobal);
+        const mags = magnitudeDeltas(
+          `${atId}/${power.internalName}`,
+          engine.grantedMagnitudes,
+          magnitudes,
+          (power as unknown as { effects?: Record<string, unknown> }).effects,
+        );
+        deltas.push(
+          ...tierDelta(`${atId}/${power.internalName}.recharge`, engine.recharge, beta.recharge),
+          ...tierDelta(`${atId}/${power.internalName}.enduranceCost`, engine.enduranceCost, beta.enduranceCost),
+          ...tierDelta(`${atId}/${power.internalName}.accuracy`, engine.accuracy, beta.accuracy),
+          ...tierDelta(`${atId}/${power.internalName}.castTime`, engine.castTime, beta.castTime),
+          ...tierDelta(`${atId}/${power.internalName}.range`, engine.range, beta.range),
+          ...permaDelta(engine.perma, beta.perma).real.map((d) => `${atId}/${power.internalName}.${d}`),
+          ...mags.real,
+        );
+        adjudicated.push(
+          ...permaDelta(engine.perma, beta.perma).adjudicated.map((d) => `${atId}/${power.internalName}.${d}`),
+          ...mags.adjudicated.map((d) => `${atId}/${power.internalName}.${d}`),
+        );
+      }
+    }
+
+    // eslint-disable-next-line no-console
+    console.warn(`[PROD6C on-demand] ${server}: ${projected} unheld powers projected, ${magnitudeRows} magnitude rows`);
+    if (adjudicated.length) {
+      // eslint-disable-next-line no-console
+      console.warn(`[PROD6C on-demand] ${server} engine-supersedes-beta (accepted, ${adjudicated.length}):\n    ${adjudicated.join('\n    ')}`);
+    }
+    if (deltas.length) {
+      // eslint-disable-next-line no-console
+      console.error(`\n[PROD6C on-demand] ${server} (${deltas.length} deltas)\n    ${deltas.slice(0, 40).join('\n    ')}`);
+    }
+    // Guard the sweep: an empty walk would pass vacuously.
+    expect(projected, `${server}: no unheld power was projected`).toBeGreaterThan(0);
+    expect(magnitudeRows, `${server}: no unheld power resolved a magnitude row`).toBeGreaterThan(0);
+    expect(deltas).toEqual([]);
+  }, 120000);
+
+  // PROD6C. The active +Strength self-buffs (Power Boost family) land in a magnitude row's FINAL
+  // column exactly like a build-wide global — InfoPanel has always folded them in, the tooltip
+  // never did, and the engine did neither. Every fixture above activates only toggles and autos,
+  // so `strength*` is zero throughout and both sides agreed on a row nobody had augmented: the
+  // same shape as the 6B-2c level pin, a rule kept alive by a corpus that could not reach it.
+  //
+  // Three assertions, and the middle one is the point. Parity alone would stay green if the fold
+  // were deleted from BOTH sides, so the gate also proves the fold is observable at all — the
+  // REAL resolver run twice over the same fixture, with and without the augmentation (the 6B-2b
+  // method: no reimplementation of the code under test).
+  it.each(SERVERS)('%s: +Strength self-buffs reach the granted magnitudes', async (server) => {
+    await loadDataset(server);
+    const candidates = strengthCandidates(server);
+    if (candidates.length === 0) {
+      // eslint-disable-next-line no-console
+      console.warn(`[PROD6C strength] ${server}: fork carries no specialBuff power — nothing to grade`);
+      return;
+    }
+
+    // (1) Some candidate must produce a Strength fraction in a family the fold reads, or the
+    // rest of this measures nothing. Most carriers grant ToHit / endurance / movement Strength,
+    // which no display row reads a global from.
+    const foldable = (g: ReturnType<typeof mapGlobal>) => g.strengthDefense + g.strengthHeal + g.strengthMez;
+    const chosen = candidates
+      .map((c) => ({ ...c, totals: engineTotals(server, c.build) }))
+      .find((c) => foldable(mapGlobal(c.totals.bonuses)) > 0);
+    expect(chosen, `${server}: none of ${candidates.length} +Strength candidate builds produced a foldable defense/heal/mez fraction`).toBeDefined();
+    if (!chosen) return;
+
+    const { build, atId, carriers, totals } = chosen;
+    const powers = [...build.primary.powers, ...build.secondary.powers];
+    const projection = mapPowerProjection(totals.power_projection);
+    const rawGlobal = mapGlobal(totals.bonuses);
+
+    // (2) …and some displayed row must move when it is folded in, or parity is blind to it.
+    const plain = convertGlobalBonusesToAspects(rawGlobal);
+    const augmented = withStrengthBonuses(plain, rawGlobal);
+    let movedRows = 0;
+    for (const power of powers) {
+      const enh = calculatePowerEnhancementBonuses(
+        { name: power.name, slots: power.slots, allowedEnhancements: power.allowedEnhancements },
+        build.level,
+        getIOSet,
+        undefined,
+      );
+      const without = betaMagnitudes(power, build, atId, enh, plain);
+      const with_ = betaMagnitudes(power, build, atId, enh, augmented);
+      for (const [key, row] of with_) {
+        const other = without.get(key);
+        if (other && Math.abs(row.tiers.final - other.tiers.final) > TOLERANCE) movedRows += 1;
+      }
+    }
+    expect(movedRows, `${server}: the +Strength fold changed no displayed row`).toBeGreaterThan(0);
+
+    // (3) …and on that fixture the engine still matches the beta row for row.
+    const deltas: string[] = [];
+    const adjudicated: string[] = [];
+    for (const power of powers) {
+      const engine = projection.get(projectionKey(power.powerSet, power.internalName));
+      if (!engine) continue;
+      const { magnitudes } = betaReference(power, build, atId, rawGlobal);
+      const mags = magnitudeDeltas(
+        `${atId}/${power.internalName}`,
+        engine.grantedMagnitudes,
+        magnitudes,
+        (power as unknown as { effects?: Record<string, unknown> }).effects,
+      );
+      deltas.push(...mags.real);
+      adjudicated.push(...mags.adjudicated.map((d) => `${atId}/${power.internalName}.${d}`));
+    }
+
+    // eslint-disable-next-line no-console
+    console.warn(`[PROD6C strength] ${server}: ${atId} — strength def/heal/mez ${rawGlobal.strengthDefense}/${rawGlobal.strengthHeal}/${rawGlobal.strengthMez} from ${carriers.length} carrier(s), ${movedRows} rows move under the fold`);
+    if (adjudicated.length) {
+      // eslint-disable-next-line no-console
+      console.warn(`[PROD6C strength] ${server} engine-supersedes-beta (accepted, ${adjudicated.length}):\n    ${adjudicated.join('\n    ')}`);
+    }
+    if (deltas.length) {
+      // eslint-disable-next-line no-console
+      console.error(`\n[PROD6C strength] ${server} (${deltas.length} deltas)\n    ${deltas.slice(0, 40).join('\n    ')}`);
+    }
+    expect(deltas).toEqual([]);
+  }, 60000);
+
+  // PROD6B-2c. Every fixture above builds at 50, which is precisely the level the retired pin
+  // agreed with — so a magnitude resolved at a fixed 50 and one resolved at the build level were
+  // indistinguishable to every gate in this file. That is how the pin survived 6B-2. This runs the
+  // same magnitude diff at a level where the two disagree, and holds the property that made the
+  // pin visible: ~70% of the AT tables vary by level, so a correct resolver's numbers MOVE when
+  // the build level does.
+  //
+  // Between them the two assertions close both re-pin directions. A pin re-introduced on ONE side
+  // shows up as a level-25 parity delta; a pin re-introduced on BOTH at once still resolves in
+  // lockstep, so the moved-row counts catch that instead.
+  it.each(SERVERS)('%s: granted magnitudes resolve at the build level, not a pinned one', async (server) => {
+    await loadDataset(server);
+
+    const deltas: string[] = [];
+    const adjudicated: string[] = [];
+    let engineMoved = 0;
+    let betaMoved = 0;
+    let rows = 0;
+
+    for (const atId of STANDARD_ARCHETYPE_IDS) {
+      const atLevel = (level: number) => {
+        const build = buildFor(server, atId, level, false);
+        const powers = [...build.primary.powers, ...build.secondary.powers];
+        const totals = engineTotals(server, build);
+        const projection = mapPowerProjection(totals.power_projection);
+        const rawGlobal = mapGlobal(totals.bonuses);
+        return { build, powers, projection, rawGlobal };
+      };
+
+      const low = atLevel(SWEEP_LEVEL);
+      const high = atLevel(50);
+      if (low.powers.length === 0) continue;
+
+      for (const power of low.powers) {
+        const key = projectionKey(power.powerSet, power.internalName);
+        const engineLow = low.projection.get(key);
+        const engineHigh = high.projection.get(key);
+        if (!engineLow) continue;
+        const betaLow = betaReference(power, low.build, atId, low.rawGlobal).magnitudes;
+        const betaHigh = betaReference(power, high.build, atId, high.rawGlobal).magnitudes;
+
+        const mags = magnitudeDeltas(
+          `${atId}/${power.internalName}@${SWEEP_LEVEL}`,
+          engineLow.grantedMagnitudes,
+          betaLow,
+          (power as unknown as { effects?: Record<string, unknown> }).effects,
+        );
+        deltas.push(...mags.real);
+        adjudicated.push(...mags.adjudicated.map((d) => `${atId}/${power.internalName}.${d}`));
+        rows += engineLow.grantedMagnitudes.length;
+
+        const engineHighByKey = new Map((engineHigh?.grantedMagnitudes ?? []).map((r) => [r.rowKey, r]));
+        for (const row of engineLow.grantedMagnitudes) {
+          const other = engineHighByKey.get(row.rowKey);
+          if (other && Math.abs(other.value.base - row.value.base) > TOLERANCE) engineMoved++;
+        }
+        for (const [rowKey, row] of betaLow) {
+          const other = betaHigh.get(rowKey);
+          if (other && Math.abs(other.tiers.base - row.tiers.base) > TOLERANCE) betaMoved++;
+        }
+      }
+    }
+
+    // eslint-disable-next-line no-console
+    console.warn(
+      `[PROD6B-2c] ${server}: ${rows} rows at level ${SWEEP_LEVEL}, ` +
+        `${engineMoved} engine / ${betaMoved} beta rows moved vs level 50`,
+    );
+    if (adjudicated.length) {
+      // eslint-disable-next-line no-console
+      console.warn(`[PROD6B-2c] ${server} engine-supersedes-beta (accepted, ${adjudicated.length})`);
+    }
+    if (deltas.length) {
+      // eslint-disable-next-line no-console
+      console.error(`\n[PROD6B-2c] ${server} (${deltas.length} deltas)\n    ${deltas.slice(0, 60).join('\n    ')}`);
+    }
+
+    expect(engineMoved, `${server}: no engine row changed between level ${SWEEP_LEVEL} and 50 — the level is being ignored`).toBeGreaterThan(0);
+    expect(betaMoved, `${server}: no beta row changed between level ${SWEEP_LEVEL} and 50 — the level is being ignored`).toBeGreaterThan(0);
+    expect(deltas).toEqual([]);
+  }, 180000);
+
+  // PROD6C-3f — the two inputs 6C-1d recorded as ungraded. Every fixture above runs `CTX`, which
+  // has every incarnate slot off and every build at 50, so `combineWithAlphaED`'s ED split and
+  // `exemplarLevel`'s IO rescale had never been diffed at all: not one row in this file had ever
+  // been resolved with an Alpha equipped. Both feed the same magnitude and execution rows PROD6C-3
+  // is about to swap onto the projection, so they are closed BEFORE those rows move, not after.
+  //
+  // Same two-part shape as the 6B-2c sweep, for the same reason: parity alone would stay green if
+  // Alpha were dropped from BOTH sides at once, so each test also proves its input MOVES rows.
+  it.each(SERVERS)('%s: an equipped Alpha splits through ED on every projected power', async (server) => {
+    await loadDataset(server);
+    const fixtures = alphaFixturesFor(server);
+    const archetypeId = STANDARD_ARCHETYPE_IDS[0];
+    const ctx = ctxWith({ incarnateActive: { ...CTX.incarnateActive, alpha: true } });
+    // Tier-expressible, so this stays a hard must-equal rather than exempting the aspects the beta's
+    // rarity table gets wrong.
+    const expressible = fixtures.filter((f) => f.tierExpressible);
+    expect(expressible.length, `${server}: no Alpha with an enhancement aspect whose bypass the tier table can express`).toBeGreaterThan(0);
+    if (expressible.length === 0) return;
+
+    // Search for an (Alpha, saturated aspect) pair whose ED split this comparison can actually SEE,
+    // proven by re-running the diff against a bypass ratio no tier uses. The ordinary three-IO
+    // fixture can see none — measured, not assumed — so the search is what makes this test grade the
+    // split rather than only Alpha's presence.
+    const probeFixture = (alpha: AlphaFixture, build: Build) => {
+      const powers = [...build.primary.powers, ...build.secondary.powers];
+      const projection = mapPowerProjection(engineTotals(server, build, ctx).power_projection);
+      const rawGlobal = mapGlobal(engineTotals(server, build, ctx).bonuses);
+      const probe = diffProjection(server, powers, build, archetypeId, projection, rawGlobal, {
+        alpha: { ...alpha, edBypassRatio: PROBE_BYPASS_RATIO },
+      });
+      return { powers, projection, rawGlobal, observable: probe.deltas.length > 0 };
+    };
+
+    let alpha = expressible[0];
+    let build = buildFor(server);
+    build.incarnates = { ...build.incarnates, alpha: alpha.selection };
+    let probed = probeFixture(alpha, build);
+    let saturatedOn: string | null = null;
+    search: for (const candidate of expressible) {
+      const base = buildFor(server);
+      for (const stat of saturationStatsFor([...base.primary.powers, ...base.secondary.powers], candidate)) {
+        const saturated = saturatedBuild(server, stat);
+        saturated.incarnates = { ...saturated.incarnates, alpha: candidate.selection };
+        const attempt = probeFixture(candidate, saturated);
+        if (!attempt.observable) continue;
+        alpha = candidate;
+        build = saturated;
+        probed = attempt;
+        saturatedOn = stat;
+        break search;
+      }
+    }
+    const { powers, projection, rawGlobal } = probed;
+    const splitGraded = probed.observable;
+    const state: ReferenceState = { alpha };
+
+    // (1) Alpha must actually reach the projected values, or the parity below measures nothing.
+    // Measured by running the REAL calculators twice over the same fixture — with and without the
+    // equipped Alpha — rather than by reimplementing the split here (the PROD6B-2b method).
+    const plainProjection = mapPowerProjection(engineTotals(server, build).power_projection);
+    let engineMoved = 0;
+    let betaMoved = 0;
+    for (const power of powers) {
+      const key = projectionKey(power.powerSet, power.internalName);
+      const withAlpha = projection.get(key);
+      const without = plainProjection.get(key);
+      if (withAlpha && without && projectedValuesMoved(withAlpha, without)) engineMoved++;
+      const betaWith = betaEnhancement(power, build, state);
+      const betaWithout = betaEnhancement(power, build, {});
+      for (const aspect of alpha.aspects) {
+        if (Math.abs((betaWith[aspect] ?? 0) - (betaWithout[aspect] ?? 0)) > 1e-9) { betaMoved++; break; }
+      }
+    }
+    expect(engineMoved, `${server}: equipping Alpha changed no engine-projected value`).toBeGreaterThan(0);
+    expect(betaMoved, `${server}: equipping Alpha changed no beta enhancement bonus`).toBeGreaterThan(0);
+
+    // (2) …and under that Alpha the engine still matches the beta calculators row for row.
+    const { deltas, adjudicated, rows } = diffProjection(server, powers, build, archetypeId, projection, rawGlobal, state);
+
+    // eslint-disable-next-line no-console
+    console.warn(
+      `[PROD6C-3f alpha] ${server}: ${alpha.selection.displayName} (${alpha.selection.tier}, bypass ${alpha.edBypassRatio.toFixed(3)}) ` +
+        `on ${alpha.aspects.join('/')} — ${rows} magnitude rows, ${engineMoved} engine / ${betaMoved} beta powers move; ` +
+        `${expressible.length}/${fixtures.length} of the fork's Alphas are tier-expressible; ` +
+        `ED split ${splitGraded ? `graded here (saturated on ${saturatedOn ?? 'the base fixture'})` : 'NOT observable on any fixture tried (graded by the export-vs-rarity-table test)'}`,
+    );
+    if (adjudicated.length) {
+      // eslint-disable-next-line no-console
+      console.warn(`[PROD6C-3f alpha] ${server} engine-supersedes-beta (accepted, ${adjudicated.length}):\n    ${adjudicated.slice(0, 20).join('\n    ')}`);
+    }
+    if (deltas.length) {
+      // eslint-disable-next-line no-console
+      console.error(`\n[PROD6C-3f alpha] ${server} (${deltas.length} deltas)\n    ${deltas.slice(0, 60).join('\n    ')}`);
+    }
+    expect(deltas).toEqual([]);
+  }, 60000);
+
+  // What the Alpha test above found, held down so it cannot be quietly "fixed" the wrong way.
+  //
+  // The engine reads Alpha's ED-bypass per ASPECT from the exported silent-grant data. The beta has
+  // no such data in its tree at all: it derives the whole split from a hardcoded per-rarity ratio
+  // table — a value the export owns, which is Rule 0 verbatim. The two coincide only where a fork
+  // authored its splits on the rarity pattern, and one fork does not: it publishes Alphas whose
+  // recharge slice bypasses ED not at all while the table claims two thirds of it does.
+  //
+  // This is the FLAGS-2 shape again: both sides were self-consistent and no gate compared them,
+  // because the projection gates ran every incarnate off. It stays an adjudicated
+  // engine-supersedes-beta divergence rather than an engine change (PROD6C-open) — the export is
+  // truth, and the beta calc is the side being retired. So what is asserted is the engine's
+  // reading, not agreement: on an Alpha the rarity table cannot express, the engine's answer must
+  // DIFFER from the beta's, and it must differ on the aspects the export authored differently.
+  // An engine "simplified" back onto the ratio would pass the test above and fail this one.
+  it.each(SERVERS)('%s: Alpha ED-bypass comes from the export, not the rarity table', async (server) => {
+    await loadDataset(server);
+    const fixtures = alphaFixturesFor(server);
+    const inexpressible = fixtures.filter((f) => !f.tierExpressible);
+
+    // eslint-disable-next-line no-console
+    console.warn(
+      `[PROD6C-3f bypass] ${server}: ${inexpressible.length}/${fixtures.length} Alphas author a bypass the beta's rarity table cannot express` +
+        (inexpressible.length ? ` (e.g. ${inexpressible[0].selection.displayName})` : ''),
+    );
+    if (inexpressible.length === 0) {
+      // A fork whose splits all follow the rarity pattern can't distinguish the two readings, so
+      // there is nothing here to grade. Reported rather than skipped silently.
+      return;
+    }
+
+    // The richest such Alpha, so the divergence lands on a real slotted aspect rather than one no
+    // fixture power enhances.
+    const alpha = inexpressible[0];
+    const build = buildFor(server);
+    build.incarnates = { ...build.incarnates, alpha: alpha.selection };
+    const powers = [...build.primary.powers, ...build.secondary.powers];
+    const ctx = ctxWith({ incarnateActive: { ...CTX.incarnateActive, alpha: true } });
+    const totals = engineTotals(server, build, ctx);
+    const projection = mapPowerProjection(totals.power_projection);
+    const rawGlobal = mapGlobal(totals.bonuses);
+
+    const { deltas } = diffProjection(server, powers, build, build.archetype.id!, projection, rawGlobal, { alpha });
+
+    // eslint-disable-next-line no-console
+    console.warn(
+      `[PROD6C-3f bypass] ${server}: ${alpha.selection.displayName} (${alpha.selection.tier}) — ` +
+        `${deltas.length} projected values differ from the rarity-table answer, as they must`,
+    );
+    expect(
+      deltas.length,
+      `${server}: the engine matched the rarity-table answer on ${alpha.selection.displayName}, whose exported bypass diverges from it — the engine has stopped reading GENERATED_ALPHA_ED_BYPASS`,
+    ).toBeGreaterThan(0);
+  }, 60000);
+
+  // The exemplar half. Two levels, because the rule changes across 45: at 45+ the incarnate stays
+  // alive and only the non-attuned IOs rescale, while below 45 `areIncarnatesSuppressed` /
+  // `incarnates_suppressed` drop Alpha entirely. A one-level test would grade whichever branch it
+  // happened to pick and call the other one covered.
+  it.each(SERVERS)('%s: an exemplared build rescales IOs, and below 45 suppresses Alpha', async (server) => {
+    await loadDataset(server);
+    // Same tier-expressible selection as the Alpha test, for the same reason: the exemplar rule is
+    // what is under test here, not the bypass source.
+    const alpha = alphaFixturesFor(server).find((f) => f.tierExpressible);
+    if (!alpha) return;
+
+    const deltas: string[] = [];
+    const adjudicated: string[] = [];
+    const capAdjudicated: string[] = [];
+    let rows = 0;
+    let rescaled = 0;
+    const suppression: string[] = [];
+
+    // 45 is the incarnate floor itself, so `above` keeps them alive while still rescaling IOs and
+    // `below` is the first level that suppresses. Read off the beta's own constant rather than
+    // written twice.
+    const above = INCARNATE_MIN_LEVEL;
+    const below = INCARNATE_MIN_LEVEL - 1;
+
+    const betaCap = exemplarBonusCap(above);
+    const exportedCap = exportedExemplarBonusCap(server, above);
+
+    for (const exemplarLevel of [above, below]) {
+      const build = buildFor(server);
+      build.incarnates = { ...build.incarnates, alpha: alpha.selection };
+      const powers = [...build.primary.powers, ...build.secondary.powers];
+      const ctx = ctxWith({
+        incarnateActive: { ...CTX.incarnateActive, alpha: true },
+        exemplarMode: true,
+        exemplarLevel,
+      });
+      const totals = engineTotals(server, build, ctx);
+      const projection = mapPowerProjection(totals.power_projection);
+      const rawGlobal = mapGlobal(totals.bonuses);
+
+      // Below the floor the incarnate is gone, so the beta reference drops Alpha too. That the
+      // ENGINE also drops it is asserted rather than assumed: its exemplared projection must equal
+      // the one it produces with no Alpha equipped at all, or one side is keeping a buff the other
+      // suppressed.
+      const suppressed = areIncarnatesSuppressed(exemplarLevel);
+      const state: ReferenceState = { alpha: suppressed ? undefined : alpha, exemplarLevel };
+      if (suppressed) {
+        const noAlpha = buildFor(server);
+        const withoutAlpha = mapPowerProjection(
+          engineTotals(server, noAlpha, ctxWith({ exemplarMode: true, exemplarLevel })).power_projection,
+        );
+        const kept = powers.filter((power) => {
+          const key = projectionKey(power.powerSet, power.internalName);
+          const a = projection.get(key);
+          const b = withoutAlpha.get(key);
+          return a && b && projectedValuesMoved(a, b);
+        });
+        expect(
+          kept.map((p) => p.internalName),
+          `${server}: exemplared to ${exemplarLevel} (below ${INCARNATE_MIN_LEVEL}) the engine still applied Alpha`,
+        ).toEqual([]);
+      }
+
+      // The IO rescale must be observable at this level, or parity here is vacuous.
+      for (const power of powers) {
+        const scaled = betaEnhancement(power, build, { exemplarLevel });
+        const unscaled = betaEnhancement(power, build, {});
+        for (const aspect of new Set([...Object.keys(scaled), ...Object.keys(unscaled)])) {
+          if (Math.abs((scaled[aspect] ?? 0) - (unscaled[aspect] ?? 0)) > 1e-9) { rescaled++; break; }
+        }
+      }
+
+      // Per power, so a delta can be attributed to the cap or not. A power whose beta bonuses never
+      // reached the clamp gets no exemption — its parity is a hard must-equal.
+      for (const power of powers) {
+        const single = [power];
+        const diff = diffProjection(server, single, build, build.archetype.id!, projection, rawGlobal, state);
+        rows += diff.rows;
+        adjudicated.push(...diff.adjudicated.map((d) => `@ex${exemplarLevel} ${d}`));
+        if (diff.deltas.length === 0) continue;
+
+        // The cap proof. The clamp lands on each IO's raw value BEFORE ED, not on the post-ED
+        // total, so it cannot be spotted by looking for a bonus sitting at the cap. What it does
+        // leave is an exact signature: every clamped IO contributes `exportedCap − betaCap` more on
+        // the engine's side, so the two sides' bonus for an aspect must differ by a whole number of
+        // cap-deltas — one per clamped IO in that aspect, at most one per slot.
+        //
+        // That is what is asserted. A delta whose bonus difference is NOT such a multiple is
+        // something else and stays real, which is what keeps this from being a blanket exemption.
+        const engineBonuses = impliedEnhancementBonuses(projection.get(projectionKey(power.powerSet, power.internalName))!);
+        const betaBonuses = betaEnhancement(power, build, state);
+        const capDelta = exportedCap - betaCap;
+        const explained: string[] = [];
+        let unexplained = false;
+        for (const [aspect, engineValue] of Object.entries(engineBonuses)) {
+          const difference = engineValue - (betaBonuses[aspect] ?? 0);
+          if (Math.abs(difference) <= BONUS_TOLERANCE) continue;
+          const multiple = difference / capDelta;
+          const whole = Math.round(multiple);
+          if (whole >= 1 && whole <= MAX_SLOTS_PER_POWER && Math.abs(multiple - whole) * capDelta <= BONUS_TOLERANCE) {
+            explained.push(`${aspect}×${whole}`);
+          } else {
+            unexplained = true;
+          }
+        }
+        if (unexplained || explained.length === 0) {
+          deltas.push(...diff.deltas.map((d) => `@ex${exemplarLevel} ${d}`));
+        } else {
+          capAdjudicated.push(`@ex${exemplarLevel} ${power.internalName}: ${explained.join(' ')} clamped IOs, beta ${betaCap} vs export ${exportedCap}`);
+        }
+      }
+      suppression.push(`ex${exemplarLevel}: alpha ${suppressed ? 'suppressed' : 'live'}`);
+    }
+
+    // eslint-disable-next-line no-console
+    console.warn(
+      `[PROD6C-3f exemplar] ${server}: ${rows} magnitude rows across ex${above}/ex${below}, ${rescaled} powers rescaled — ${suppression.join(', ')}; ` +
+        `${capAdjudicated.length} powers differ by the bonus cap alone (beta ${betaCap} vs export ${exportedCap})`,
+    );
+    if (capAdjudicated.length) {
+      // eslint-disable-next-line no-console
+      console.warn(`[PROD6C-3f exemplar] ${server} exemplar-cap divergence (engine supersedes, accepted, ${capAdjudicated.length}):\n    ${capAdjudicated.slice(0, 10).join('\n    ')}`);
+    }
+    if (adjudicated.length) {
+      // eslint-disable-next-line no-console
+      console.warn(`[PROD6C-3f exemplar] ${server} engine-supersedes-beta (accepted, ${adjudicated.length}):\n    ${adjudicated.slice(0, 20).join('\n    ')}`);
+    }
+    if (deltas.length) {
+      // eslint-disable-next-line no-console
+      console.error(`\n[PROD6C-3f exemplar] ${server} (${deltas.length} deltas)\n    ${deltas.slice(0, 60).join('\n    ')}`);
+    }
+    expect(rescaled, `${server}: exemplaring changed no enhancement bonus — the fixture's IOs are all attuned`).toBeGreaterThan(0);
+    // The engine must be reading the EXPORTED cap, not the beta's constant. Without this the test
+    // accepts either one: an engine switched to 0.415 agrees with the beta exactly, so parity goes
+    // green and the cap-multiple ledger empties — a pass that means the engine stopped reading
+    // `exemplar_handicaps.bin`. The bypass test above holds its half of the same rule.
+    expect(
+      capAdjudicated.length,
+      `${server}: no power's bonus differed from the beta by a whole cap-delta — the engine has stopped reading the exported exemplar pre-clamp and is using the beta's hardcoded ${betaCap}`,
+    ).toBeGreaterThan(0);
+    expect(deltas).toEqual([]);
+  }, 90000);
 });

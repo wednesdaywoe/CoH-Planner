@@ -178,7 +178,6 @@ export {
 // Buff/debuff base-rate rule (single source of truth)
 export {
   calculateBuffDebuffFraction,
-  getEffectiveBuffDebuffModifier,
   BASE_BUFF,
   BASE_DEBUFF,
   type BuffDebuffCategory,

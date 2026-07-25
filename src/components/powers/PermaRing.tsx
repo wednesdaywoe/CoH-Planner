@@ -47,7 +47,9 @@ export function PermaRing({ power, size, children }: PermaRingProps) {
     let enhBonuses: EnhancementBonuses;
     if (hasAlpha) {
       enhBonuses = combineWithAlphaED(
-        { name: power.name, slots: power.slots },
+        // Alpha applies only to the aspects the power accepts; without this list
+        // `combineWithAlphaED` applies it to all of them (PROD6C-3f).
+        { name: power.name, slots: power.slots, allowedEnhancements: power.allowedEnhancements },
         globalIOLevel,
         getIOSet,
         alphaBonuses,
