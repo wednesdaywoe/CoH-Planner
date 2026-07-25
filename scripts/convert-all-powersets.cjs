@@ -80,7 +80,10 @@ for (const [category, info] of Object.entries(CATEGORY_MAP)) {
     try {
       console.log(`  [CONVERT] ${category}/${powerset} -> ${info.archetype}/${info.type}/${powerset}`);
       execSync(`node scripts/convert-powerset.cjs ${category} ${powerset} ${datasetFlag}`, {
-        stdio: 'pipe',
+        // Child stdout is the per-power listing (thousands of lines); its stderr is the
+        // converter's warning path — a record it read but could not use. Piping BOTH made every
+        // such warning vanish from the batch run that regen actually uses.
+        stdio: ['ignore', 'pipe', 'inherit'],
         timeout: 30000
       });
       converted++;

@@ -72,6 +72,50 @@ export const DefensiveSweep: Power = {
     ["Unmapped",null,0.30555,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
     ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"]
   ],
+  "modeVariants": {
+    "FastMode": {
+      "internalName": "Defensive_Sweep_Fast",
+      "stats": {
+        "accuracy": 1,
+        "range": 10,
+        "radius": 10,
+        "arc": 2.094395160675049,
+        "recharge": 4,
+        "endurance": 5.2,
+        "castTime": 1,
+        "maxTargets": 5
+      },
+      "damage": {
+        "type": "Smashing",
+        "scale": 0.679,
+        "table": "Melee_Damage"
+      },
+      "damageTypes": [
+        "Smashing"
+      ],
+      "effects": {
+        "buffDuration": 10,
+        "defenseBuff": {
+          "melee": {
+            "scale": 1.5,
+            "table": "Melee_Buff_Def"
+          },
+          "smashing": {
+            "scale": 1.5,
+            "table": "Melee_Buff_Def"
+          }
+        },
+        "durations": {
+          "defenseBuff": 10
+        }
+      },
+      "shortHelp": "Melee(Cone), Light DMG(Smashing), Self +DEF(Melee, Smash)",
+      "description": "You take a defensive stance and strike your opponents.  Successfully executing this attack will cause light smashing damage to nearby foes, while giving you increased defense against their melee and smashing attacks.  Damage: Light, Recharge: Fast",
+      "effectArea": "Cone",
+      "targetType": "Foe",
+      "powerType": "Click"
+    }
+  },
   "requires": "Brute_Defense.Shield_Defense !",
   "damageTypes": [
     "Smashing"

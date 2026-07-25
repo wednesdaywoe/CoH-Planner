@@ -79,5 +79,46 @@ export const SolarFlare: Power = {
       "label": "Knockback"
     }
   ],
+  "modeVariants": {
+    "Peacebringer_Tanker_Mode": {
+      "internalName": "White_Dwarf_Flare",
+      "stats": {
+        "accuracy": 1,
+        "radius": 15,
+        "recharge": 16,
+        "endurance": 15.184,
+        "castTime": 2.1,
+        "maxTargets": 10
+      },
+      "damage": {
+        "type": "Energy",
+        "scale": 0.9,
+        "table": "Melee_SSDamage"
+      },
+      "effects": {
+        "buffDuration": 10,
+        "defenseDebuff": {
+          "scale": 2,
+          "table": "Melee_Debuff_Def"
+        },
+        "durations": {
+          "defenseDebuff": 10
+        },
+        "knockback": {
+          "scale": 0.67,
+          "table": "Melee_Ones"
+        },
+        "taunt": {
+          "scale": 1,
+          "table": "Melee_InherentTaunt"
+        }
+      },
+      "shortHelp": "PBAoE Melee, High DMG(Energy), Foe -DEF, Knockback",
+      "description": "You channel the might of your Kheldian energy into the very Earth itself.  The ground erupts and cracks with luminous energy, blasting all nearby foes, knocking them back and reducing their defense. This power is only available while in White Dwarf Form. Damage: High, Recharge: Slow",
+      "effectArea": "AoE",
+      "targetType": "Self",
+      "powerType": "Click"
+    }
+  },
   "requires": "Peacebringer_Defensive.Luminous_Aura.White_Dwarf Peacebringer_Defensive.Luminous_Aura.White_Dwarf_Flare ! && Inherent.Inherent.White_Dwarf_Flare ! &&"
 };

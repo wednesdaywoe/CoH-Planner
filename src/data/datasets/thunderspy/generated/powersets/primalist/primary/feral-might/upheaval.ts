@@ -63,6 +63,82 @@ export const Upheaval: Power = {
     ["Unmapped",null,0.2,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"No",null,null,null,1],
     ["Unmapped",null,0.4,0,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"No",null,null,null,1]
   ],
+  "modeVariants": {
+    "HunterMode": {
+      "internalName": "Upheaval_Hunter",
+      "stats": {
+        "accuracy": 1,
+        "radius": 15,
+        "recharge": 15,
+        "endurance": 13.52,
+        "castTime": 2.1,
+        "maxTargets": 10
+      },
+      "damage": {
+        "type": "Special",
+        "scale": 1,
+        "table": "Melee_Damage"
+      },
+      "damageTypes": [
+        "Lethal"
+      ],
+      "effects": {
+        "knockback": {
+          "scale": 0.67,
+          "table": "Melee_Ones"
+        }
+      },
+      "shortHelp": "PBAoE, Special DMG, Foe Knockdown, -All Primal Energy",
+      "description": "You channel the forces of nature and release them shattering the earth beneath you sending shards of stone and debris out at nearby foes causing high damage and potentially knocking them down. In primal (human) form you will deal smashing damage and will heal yourself and up to 3 nearby allies for a large amount of health. In Hunter form you'll deal lethal damage and reduce the targets' resistance slightly. In Prowler form you'll deal lethal damage, cause minor lethal damage over time and have a high chance to stun. Upheaval will deal high damage if the user has no Primal Energy, however it will deal additional damage for each charge of Primal Energies the user owns. Upheaval consumes all Primal Energies. Damage: Special, Recharge: Long",
+      "effectArea": "AoE",
+      "targetType": "Self",
+      "powerType": "Click"
+    },
+    "ProwlerMode": {
+      "internalName": "Upheaval_Prowler",
+      "stats": {
+        "accuracy": 1,
+        "radius": 15,
+        "recharge": 15,
+        "endurance": 13.52,
+        "castTime": 2.1,
+        "maxTargets": 10
+      },
+      "damage": [
+        {
+          "type": "Special",
+          "scale": 1,
+          "table": "Melee_Damage"
+        },
+        {
+          "type": "Special",
+          "scale": 0.1,
+          "table": "Melee_Damage",
+          "duration": 4.1,
+          "tickRate": 1
+        }
+      ],
+      "damageTypes": [
+        "Lethal"
+      ],
+      "effects": {
+        "knockback": {
+          "scale": 0.67,
+          "table": "Melee_Ones"
+        },
+        "stun": {
+          "mag": 2,
+          "scale": 5,
+          "table": "Melee_Stun"
+        }
+      },
+      "shortHelp": "PBAoE, Special DMG, Foe Knockdown, -All Primal Energy",
+      "description": "You channel the forces of nature and release them shattering the earth beneath you sending shards of stone and debris out at nearby foes causing high damage and potentially knocking them down. In primal (human) form you will deal smashing damage and will heal yourself and up to 3 nearby allies for a large amount of health. In Hunter form you'll deal lethal damage and reduce the targets' resistance slightly. In Prowler form you'll deal lethal damage, cause minor lethal damage over time and have a high chance to stun. Upheaval will deal high damage if the user has no Primal Energy, however it will deal additional damage for each charge of Primal Energies the user owns. Upheaval consumes all Primal Energies. Damage: Special, Recharge: Long",
+      "effectArea": "AoE",
+      "targetType": "Self",
+      "powerType": "Click"
+    }
+  },
   "damageTypes": [
     "Smashing"
   ]

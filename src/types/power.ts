@@ -851,6 +851,16 @@ export interface Power {
    */
   setsModes?: string[];
   /**
+   * What this power BECOMES while a mode is live, keyed by the mode id that selects it. The
+   * game's PowerRedirector fires a different record entirely at activation time — a Kheldian
+   * attack in Nova form, a Titan Weapons attack under Momentum, Seismic Blast under Seismic
+   * Power — and the binary carries the whole table on the base power's `Redirect` block.
+   *
+   * Only the display half is carried: the base keeps its identity, slots and enhancements
+   * because every mode shares them. Absent on all but ~30 powers per fork.
+   */
+  modeVariants?: Record<string, Partial<Power>>;
+  /**
    * Modes that SUSPEND this power's own effect contribution while live. The
    * other Stone Armor toggles carry `['Granite_Mode']` (Granite suspends them);
    * pool/travel toggles carry the `Suppress_*` markers Granite/forms set. When

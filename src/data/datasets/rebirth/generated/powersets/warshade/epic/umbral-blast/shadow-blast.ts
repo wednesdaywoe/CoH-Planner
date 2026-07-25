@@ -100,5 +100,60 @@ export const ShadowBlast: Power = {
       "chance": 0.10000000149011612,
       "label": "Knockback"
     }
-  ]
+  ],
+  "modeVariants": {
+    "Warshade_Blaster_Mode": {
+      "internalName": "Dark_Nova_Blast",
+      "stats": {
+        "accuracy": 1,
+        "range": 100,
+        "recharge": 8,
+        "endurance": 8.528,
+        "castTime": 1.5
+      },
+      "damage": {
+        "type": "Negative",
+        "scale": 1.64,
+        "table": "Ranged_SSDamage"
+      },
+      "effects": {
+        "buffDuration": 6,
+        "durations": {
+          "rechargeDebuff": 6,
+          "slow": 6
+        },
+        "knockback": {
+          "scale": 1,
+          "table": "Ranged_Knockback"
+        },
+        "rechargeDebuff": {
+          "scale": 0.2,
+          "table": "Ranged_Slow"
+        },
+        "slow": {
+          "flySpeed": {
+            "scale": 0.2,
+            "table": "Ranged_Slow"
+          },
+          "jumpHeight": {
+            "scale": 0.2,
+            "table": "Ranged_Slow"
+          },
+          "jumpSpeed": {
+            "scale": 0.2,
+            "table": "Ranged_Slow"
+          },
+          "runSpeed": {
+            "scale": 0.2,
+            "table": "Ranged_Slow"
+          }
+        }
+      },
+      "shortHelp": "Ranged, Moderate DMG(Negative), Foe Knockback, -Recharge, -SPD",
+      "description": "A much more powerful, yet slower version of Dark Nova Bolt. Dark Nova Blast sends focused negative Nictus energy at a foe.  This attack can knock down foes and will leave the targets' attack and movement speed slowed. This power is only available while in Dark Nova Form. Damage: Moderate, Recharge: Moderate",
+      "effectArea": "SingleTarget",
+      "targetType": "Foe",
+      "powerType": "Click"
+    }
+  }
 };

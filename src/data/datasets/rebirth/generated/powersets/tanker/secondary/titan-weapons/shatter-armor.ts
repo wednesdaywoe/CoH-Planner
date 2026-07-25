@@ -120,6 +120,79 @@ export const ShatterArmor: Power = {
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
     ["Mez","Taunt",6,4,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,0.15000000596046448,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
+  "modeVariants": {
+    "FastMode": {
+      "internalName": "Shatter_Armor_Fast",
+      "stats": {
+        "accuracy": 1,
+        "range": 9,
+        "radius": 15,
+        "recharge": 16,
+        "endurance": 15.6395,
+        "castTime": 1.3,
+        "maxTargets": 5
+      },
+      "damage": {
+        "type": "Smashing",
+        "scale": 3.212,
+        "table": "Melee_Damage"
+      },
+      "effects": {
+        "buffDuration": 10,
+        "defenseDebuff": {
+          "scale": 1,
+          "table": "Melee_Debuff_Def"
+        },
+        "durations": {
+          "defenseDebuff": 10,
+          "resistanceDebuff": 8
+        },
+        "resistanceDebuff": {
+          "cold": {
+            "scale": 1,
+            "table": "Melee_Res_Dmg"
+          },
+          "energy": {
+            "scale": 1,
+            "table": "Melee_Res_Dmg"
+          },
+          "fire": {
+            "scale": 1,
+            "table": "Melee_Res_Dmg"
+          },
+          "lethal": {
+            "scale": 1,
+            "table": "Melee_Res_Dmg"
+          },
+          "negative": {
+            "scale": 1,
+            "table": "Melee_Res_Dmg"
+          },
+          "psionic": {
+            "scale": 1,
+            "table": "Melee_Res_Dmg"
+          },
+          "smashing": {
+            "scale": 1,
+            "table": "Melee_Res_Dmg"
+          },
+          "toxic": {
+            "scale": 1,
+            "table": "Melee_Res_Dmg"
+          }
+        },
+        "taunt": {
+          "scale": 1,
+          "table": "Melee_InherentTaunt"
+        }
+      },
+      "shortHelp": "Melee, Extreme DMG(Smashing), Foe -Def(All), -Res(All)",
+      "description": "You batter your enemy with your mighty weapon dealing Extreme Smashing damage and reducing their resistance to damage as well as their defense to all types of attacks for a short time. Damage: Extreme, Recharge: Long",
+      "effectArea": "AoE",
+      "targetType": "Foe",
+      "powerType": "Click"
+    }
+  },
   "setsModes": [
     "FastMode"
   ]

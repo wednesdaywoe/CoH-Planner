@@ -8,14 +8,12 @@ import { useBuildStore, useUIStore } from '@/stores';
 import { useIsTouchDevice } from '@/hooks';
 
 import { getPowerset, getPowerIconPath, MAX_POWER_PICKS, GRANTED_POWER_GROUPS, getArchetypeInherentPowers, getPowerPicksAtLevel } from '@/data';
-import { KHELDIAN_FORM_VARIANT_NAMES } from '@/data/datasets/rebirth/kheldian-redirects';
 import { resolvePath } from '@/utils/paths';
 import type { Power } from '@/types';
 
 /**
- * Set of form sub-power INTERNAL NAMES (auto-granted on HC; redirect-only
- * on Rebirth). Either way, never user-pickable — filter them from the
- * picker.
+ * Set of form sub-power INTERNAL NAMES (auto-granted on HC; redirect-only where the game uses
+ * PowerRedirector). Either way, never user-pickable — filter them from the picker.
  *
  * Computed lazily inside the component because GRANTED_POWER_GROUPS is a
  * dataset-backed Proxy: reading it at module-load time runs before the
@@ -26,17 +24,21 @@ import type { Power } from '@/types';
  * Includes both:
  *   - HC's slottable granted-power members (still works for HC where forms
  *     auto-grant their variants as separate slottable picks).
- *   - The full Rebirth `KHELDIAN_FORM_VARIANT_NAMES` set (Rebirth uses
- *     PowerRedirector, so these are never picks regardless of whether
- *     a form toggle is in the build).
+ *   - Every mode-redirect target in the powerset: a power the game reaches only by redirecting
+ *     from a base is not a pick, whichever fork it is on. Read from the powerset's own
+ *     `modeVariants` tables rather than a list of variant names.
  */
-function buildFormSubPowerNames(): Set<string> {
+function buildFormSubPowerNames(powers: Power[]): Set<string> {
   const names = new Set<string>(
     Object.values(GRANTED_POWER_GROUPS)
       .filter(g => g.slottable)
       .flatMap(g => g.grantedPowers),
   );
-  for (const n of KHELDIAN_FORM_VARIANT_NAMES) names.add(n);
+  for (const p of powers) {
+    for (const variant of Object.values(p.modeVariants ?? {})) {
+      if (variant.internalName) names.add(variant.internalName);
+    }
+  }
   return names;
 }
 
@@ -444,10 +446,6 @@ export function AvailablePowers({
   const archetypeId = build.archetype.id;
   const categoryLabel = category === 'primary' ? 'Primary' : 'Secondary';
 
-  // Lazy because GRANTED_POWER_GROUPS is dataset-backed; recomputed when
-  // the active server changes (via build.serverId in the dependency).
-  const formSubPowerNames = useMemo(buildFormSubPowerNames, [build.serverId]);
-
   // Both powersets must be selected before powers can be chosen
   const bothPowersetsSelected = build.primary.id && build.secondary.id;
 
@@ -466,6 +464,14 @@ export function AvailablePowers({
   const levelUpPickQuotaReached = levelUpMode && totalPicksUsed >= getPowerPicksAtLevel(build.level);
 
   const powerset = powersetId ? getPowerset(powersetId) : null;
+
+  // Lazy because GRANTED_POWER_GROUPS is dataset-backed; recomputed when the active server
+  // changes (via build.serverId) or the powerset does — the redirect targets are its own.
+  const formSubPowerNames = useMemo(
+    () => buildFormSubPowerNames(powerset?.powers ?? []),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [build.serverId, powersetId],
+  );
 
   // Build context for requires expression evaluation. Include pool + epic
   // display names so prerequisites that reference them (e.g. "Hover" for

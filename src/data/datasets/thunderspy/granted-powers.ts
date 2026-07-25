@@ -17,9 +17,8 @@
  * from the picker — so they're only obtainable via the form grant, matching
  * the game.
  *
- * Note: the Primal/Hunter/Prowler form-shell *attack redirects* are a
- * separate mechanic (see [./primalist-redirects.ts](./primalist-redirects.ts)),
- * not granted sub-powers.
+ * Note: the Primal/Hunter/Prowler form-shell *attack redirects* are a separate
+ * mechanic, carried per-power as `modeVariants`, not granted sub-powers.
  */
 
 import {

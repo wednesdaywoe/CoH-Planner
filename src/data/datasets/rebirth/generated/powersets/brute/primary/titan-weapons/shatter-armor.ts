@@ -118,6 +118,77 @@ export const ShatterArmor: Power = {
     ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? enttype target> player eq || kRage Source> 70 < &&",true],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true]
   ],
+  "modeVariants": {
+    "FastMode": {
+      "internalName": "Shatter_Armor_Fast",
+      "stats": {
+        "accuracy": 1,
+        "range": 9,
+        "recharge": 16,
+        "endurance": 15.6395,
+        "castTime": 1.3
+      },
+      "damage": {
+        "type": "Smashing",
+        "scale": 3.212,
+        "table": "Melee_Damage"
+      },
+      "effects": {
+        "buffDuration": 10,
+        "defenseDebuff": {
+          "scale": 1,
+          "table": "Melee_Debuff_Def"
+        },
+        "durations": {
+          "defenseDebuff": 10,
+          "resistanceDebuff": 8
+        },
+        "resistanceDebuff": {
+          "cold": {
+            "scale": 1,
+            "table": "Melee_Res_Dmg"
+          },
+          "energy": {
+            "scale": 1,
+            "table": "Melee_Res_Dmg"
+          },
+          "fire": {
+            "scale": 1,
+            "table": "Melee_Res_Dmg"
+          },
+          "lethal": {
+            "scale": 1,
+            "table": "Melee_Res_Dmg"
+          },
+          "negative": {
+            "scale": 1,
+            "table": "Melee_Res_Dmg"
+          },
+          "psionic": {
+            "scale": 1,
+            "table": "Melee_Res_Dmg"
+          },
+          "smashing": {
+            "scale": 1,
+            "table": "Melee_Res_Dmg"
+          },
+          "toxic": {
+            "scale": 1,
+            "table": "Melee_Res_Dmg"
+          }
+        },
+        "taunt": {
+          "scale": 1,
+          "table": "Melee_InherentTaunt"
+        }
+      },
+      "shortHelp": "Melee, Extreme DMG(Smashing), Foe -Def(All), -Res(All)",
+      "description": "You batter your enemy with your mighty weapon dealing Extreme Smashing damage and reducing their resistance to damage as well as their defense to all types of attacks for a short time. Damage: Extreme, Recharge: Long",
+      "effectArea": "SingleTarget",
+      "targetType": "Foe",
+      "powerType": "Click"
+    }
+  },
   "setsModes": [
     "FastMode"
   ]

@@ -4,16 +4,17 @@
  * `buildDisplayEffects` and the bag transforms beside it are pure functions of one power
  * object. This resolves WHICH power that object is, from the build's combat state:
  *
- * 1. **quick snipe** — in combat, a snipe shows its fast cast/range and the quick form's damage.
- * 2. **mid-combat cast** — an opener with a separate `midCombatCast` uses it when NOT hidden;
+ * 1. **mode redirect** — while a caster mode is live, the game's PowerRedirector fires a
+ *    different record entirely (a Kheldian attack in Nova form, a Titan Weapons attack under
+ *    Momentum). The converter carries the whole table as `power.modeVariants`.
+ * 2. **quick snipe** — in combat, a snipe shows its fast cast/range and the quick form's damage.
+ * 3. **mid-combat cast** — an opener with a separate `midCombatCast` uses it when NOT hidden;
  *    the slow interruptible animation is the from-Hide one.
- * 3. **active conditionals** — the mode-gated contributions whose toggle is on merge onto
+ * 4. **active conditionals** — the mode-gated contributions whose toggle is on merge onto
  *    `effects` and `damage`, with the additive collisions returned as `extraInstances`.
  *
- * Extracted from `InfoPanel`'s three memos so the panel, the picker tooltip, and the engine
- * gate all resolve the same power. The Kheldian / Primalist form redirect stays in `InfoPanel`:
- * its variant data is beta-only and the engine cannot address it, so it is applied to the power
- * BEFORE this is called rather than inside it.
+ * Extracted from `InfoPanel`'s memos so the panel, the picker tooltip, and the engine gate all
+ * resolve the same power.
  *
  * The engine mirrors every rule here in `coh_math/src/effective.rs`; the projection's values
  * describe this power, keyed to the base power's identity.
@@ -39,6 +40,24 @@ export interface EffectivePowerState {
   mechanicAdjusters: Record<string, boolean>;
   /** AT-inherent mechanics the Header owns rather than the toggle maps. */
   atInherentState?: ATInherentState;
+  /** Caster modes the player has switched on (Kheldian/Primalist forms, Momentum, Seismic
+   *  Power) — the `power.modeVariants` keys. Absent means no mode is live. */
+  activeModes?: readonly string[];
+}
+
+/**
+ * The variant the game redirects to while one of `activeModes` is live, or the power itself.
+ *
+ * The base keeps its identity — slots, enhancements and picker entry live there and every mode
+ * shares them — so only what the power DOES is replaced. When more than one live mode has a
+ * variant, the power's own table order decides, which is the order the binary lists the
+ * redirects in.
+ */
+function applyModeRedirect(power: Power, activeModes: readonly string[] | undefined): Power {
+  if (!power.modeVariants || !activeModes?.length) return power;
+  const mode = Object.keys(power.modeVariants).find((m) => activeModes.includes(m));
+  if (mode === undefined) return power;
+  return { ...power, ...power.modeVariants[mode] };
 }
 
 /**
@@ -71,7 +90,7 @@ export function isCasterHidden(build: Build, stalkerHidden: boolean): boolean {
 }
 
 export function resolveEffectivePower(power: Power, state: EffectivePowerState): ApplyConditionalsResult {
-  const sniped = applyQuickSnipe(power, state.combatMode);
+  const sniped = applyQuickSnipe(applyModeRedirect(power, state.activeModes), state.combatMode);
   // Assassin's Strike fires its slow interruptible animation from Hide (the displayed base cast)
   // but a much faster Quick animation mid-combat. Mirror the from-Hide toggle that already drives
   // its damage so the cast time matches the state: not hidden → the fast uninterruptible cast.

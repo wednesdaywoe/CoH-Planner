@@ -77,6 +77,21 @@ export function computeModeSuppression(powers: ModeCarrier[]): Map<string, Suppr
   return suppressed;
 }
 
+/**
+ * The modes this build can switch between: every key of a selected power's `modeVariants`.
+ *
+ * A mode is selectable exactly when some power in the build displays differently under it —
+ * which is what the binary's per-power `Redirect` table says, so the selector is a read of the
+ * build's own data rather than a list of which archetypes have forms.
+ */
+export function selectableModes(powers: { modeVariants?: Record<string, unknown> }[]): string[] {
+  const modes = new Set<string>();
+  for (const p of powers) {
+    for (const mode of Object.keys(p.modeVariants ?? {})) modes.add(mode);
+  }
+  return [...modes];
+}
+
 /** Curated → human labels for the ~15 `modesRequired` values (annotation only). */
 const MODE_LABELS: Record<string, string> = {
   FastMode: 'Momentum',

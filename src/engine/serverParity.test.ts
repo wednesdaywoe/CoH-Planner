@@ -39,11 +39,9 @@ const require = createRequire(import.meta.url);
 const SERVERS = ['homecoming', 'rebirth', 'thunderspy'] as const;
 type Server = (typeof SERVERS)[number];
 
-// The engine artifacts are generated and gitignored: the web target + bundles come from
-// `npm run build:engine`; this test additionally needs the Node target, built with
-//   wasm-bindgen --target nodejs --out-dir src/engine/wasm-node --out-name coh_wasm <coh_wasm.wasm>
-//   (then rename the emitted coh_wasm.js → coh_wasm.cjs, since the repo is "type":"module").
-// A fresh checkout / CI without those cannot run this — skip loudly rather than error.
+// The engine artifacts are generated and gitignored — the web target, the Node target this test
+// loads, and the bundles all come from `npm run build:engine`. A fresh checkout / CI without
+// those cannot run this — skip loudly rather than error.
 const NODE_ENGINE = join(__dirname, 'wasm-node', 'coh_wasm.cjs');
 const BUNDLE_DIR = join(__dirname, '..', '..', 'public', 'engine', 'contract');
 const artifactsReady =

@@ -78,5 +78,41 @@ export const GleamingBlast: Power = {
       "chance": 0.10000000149011612,
       "label": "Knockback"
     }
-  ]
+  ],
+  "modeVariants": {
+    "Peacebringer_Blaster_Mode": {
+      "internalName": "Bright_Nova_Blast",
+      "stats": {
+        "accuracy": 1,
+        "range": 100,
+        "recharge": 8,
+        "endurance": 8.528,
+        "castTime": 1.5
+      },
+      "damage": {
+        "type": "Energy",
+        "scale": 1.64,
+        "table": "Ranged_SSDamage"
+      },
+      "effects": {
+        "buffDuration": 6,
+        "defenseDebuff": {
+          "scale": 2,
+          "table": "Ranged_Debuff_Def"
+        },
+        "durations": {
+          "defenseDebuff": 6
+        },
+        "knockback": {
+          "scale": 1,
+          "table": "Ranged_Knockback"
+        }
+      },
+      "shortHelp": "Ranged, High DMG(Energy), Foe -DEF, Knockback",
+      "description": "A much more powerful, yet slower version of Bright Nova Bolt. Bright Nova Blast sends a focused blast of Kheldian energy at a foe that can knock him back and reduce his defense. This power is only available while in Bright Nova Form. Damage: High, Recharge: Moderate",
+      "effectArea": "SingleTarget",
+      "targetType": "Foe",
+      "powerType": "Click"
+    }
+  }
 };

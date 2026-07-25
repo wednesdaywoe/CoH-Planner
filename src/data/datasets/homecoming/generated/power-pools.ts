@@ -5431,6 +5431,62 @@ export const POWER_POOLS_RAW = {
         "icon": "teleportation_teleport.png",
         "powerType": "Click",
         "targetType": "Teleport",
+        "modeVariants": {
+          "ChainTeleport": {
+            "internalName": "Teleport_LowEnd",
+            "stats": {
+              "accuracy": 1,
+              "range": 350,
+              "endurance": 7.8,
+              "castTime": 1.5
+            },
+            "effects": {
+              "buffDuration": 1,
+              "durations": {
+                "movement": 15,
+                "stealth": 1,
+                "untouchable": 1
+              },
+              "movement": {
+                "fly": {
+                  "scale": 1,
+                  "table": "Ranged_Ones"
+                },
+                "flySpeed": {
+                  "scale": 500,
+                  "table": "Melee_SpeedFlying"
+                },
+                "movementControl": {
+                  "scale": 8,
+                  "table": "Melee_Ones"
+                },
+                "movementFriction": {
+                  "scale": 8,
+                  "table": "Melee_Ones"
+                }
+              },
+              "stealth": {
+                "translucency": {
+                  "scale": 0.25,
+                  "table": "Ranged_Ones"
+                }
+              },
+              "teleport": {
+                "scale": 1,
+                "table": "Ranged_Ones"
+              },
+              "untouchable": {
+                "scale": 1000,
+                "table": "Ranged_Ones"
+              }
+            },
+            "shortHelp": "Ranged (Location), Self Teleport",
+            "description": "You can Teleport long distances. Once at your destination, you will be stuck in between dimensions for up to 15s. While in this state, you will not be affected by gravity, and be able to execute additional teleportation jumps at a discounted endurance cost.Moving or taking any non-teleport action, though, will snap you back into reality, and you will once more be affected by gravity. Teleport has no recharge time, and can be reactivated without pause, as long as you have Endurance.",
+            "effectArea": "Location",
+            "targetType": "Teleport",
+            "powerType": "Click"
+          }
+        },
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [

@@ -69,5 +69,43 @@ export const ArcofDestruction: Power = {
     ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.75,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Smashing",1.9519,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.15000000596046448,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Fire",0.8783,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0]
-  ]
+  ],
+  "modeVariants": {
+    "FastMode": {
+      "internalName": "Arc_of_Destruction_Fast",
+      "stats": {
+        "accuracy": 1,
+        "range": 10,
+        "radius": 10,
+        "arc": 2.094395160675049,
+        "recharge": 12,
+        "endurance": 9.1588,
+        "castTime": 1.37,
+        "maxTargets": 5
+      },
+      "damage": [
+        {
+          "type": "Smashing",
+          "scale": 1.5241,
+          "table": "Melee_Damage"
+        },
+        {
+          "type": "Smashing",
+          "scale": 1.5241,
+          "table": "Melee_InherentDamage"
+        }
+      ],
+      "effects": {
+        "knockback": {
+          "scale": 0.67,
+          "table": "Melee_Ones"
+        }
+      },
+      "shortHelp": "Melee (Cone), DMG(Smashing), Foe Knockback",
+      "description": "You swing your weapon in a devastating Arc of Destruction that deals Superior Smashing damage and has a good chance to knock foes down. Arc of Destruction may only be used while on the ground.Notes: Arc of Destruction (Fast) is unaffected by Arc changes.",
+      "effectArea": "Cone",
+      "targetType": "Foe",
+      "powerType": "Click"
+    }
+  }
 };

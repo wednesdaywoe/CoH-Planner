@@ -813,6 +813,89 @@ function extractQuickSnipeData(powerJson) {
   };
 }
 
+/** A redirect that fires while exactly one caster mode is live: `kNovaMode Source.Mode?`. */
+const MODE_REDIRECT_CONDITION = /^k(\w+)\s+[Ss]ource\.Mode\?$/;
+
+/**
+ * The same redirect negated, one or more times ANDed: the branch that fires while NONE of the
+ * power's modes is live. That is the power's own base record, so it needs no variant.
+ */
+const NO_MODE_REDIRECT_CONDITION =
+  /^k\w+\s+[Ss]ource\.Mode\?\s+!(\s+k\w+\s+[Ss]ource\.Mode\?\s+!)*(\s+&&)*$/;
+
+/**
+ * Classify one redirect entry's condition. `mode` names the mode that selects it, `default` is
+ * the no-mode branch, and `null` means this is not a mode-shaped condition at all.
+ */
+function classifyModeRedirect(conditionExpression) {
+  const expression = (conditionExpression || '').trim();
+  if (expression === 'Always') return { kind: 'default' };
+  const positive = expression.match(MODE_REDIRECT_CONDITION);
+  if (positive) return { kind: 'mode', mode: positive[1] };
+  if (NO_MODE_REDIRECT_CONDITION.test(expression)) return { kind: 'default' };
+  return null;
+}
+
+/**
+ * Display fields a mode variant replaces on the base power. The base keeps its identity (name,
+ * icon, allowedEnhancements, maxSlots) because the slots live there and every form shares them —
+ * only what the power DOES changes with the mode.
+ */
+const MODE_VARIANT_FIELDS = [
+  'stats', 'damage', 'damageTypes', 'effects',
+  'shortHelp', 'description', 'effectArea', 'targetType', 'powerType',
+];
+
+/**
+ * Mode-gated redirect variants: `power.modeVariants[<Mode>]` is what the power becomes while that
+ * caster mode is live. The game decides this at activation time through the PowerRedirector, and
+ * the binary carries the whole table — a Kheldian attack in Nova form, a Titan Weapons attack under
+ * Momentum, Seismic Blast under Seismic Power all read the same way.
+ *
+ * Each variant is converted by `convertPower`, so it carries the same atoms, bag and stat
+ * treatment as any other power rather than a parallel extraction.
+ *
+ * Returns null when the power has no mode-gated redirect. A power whose redirect set mixes mode
+ * conditions with ones this cannot read (a distance test, a target test, a second mode ANDed in)
+ * yields null WITH a warning: which branch is the default depends on conditions we cannot
+ * evaluate, so half a table would be worse than none.
+ */
+function extractModeVariants(powerJson, archetypeId, powerType) {
+  const entries = powerJson.redirect || [];
+  const classified = entries.map((entry) => ({ entry, kind: classifyModeRedirect(entry.condition_expression) }));
+  if (!classified.some((c) => c.kind?.kind === 'mode')) return null;
+
+  const unreadable = classified.filter((c) => !c.kind);
+  if (unreadable.length) {
+    console.warn(
+      `  [mode-variants] ${powerJson.name}: mode redirect skipped — unreadable condition(s): ` +
+        unreadable.map((c) => JSON.stringify(c.entry.condition_expression)).join(', '),
+    );
+    return null;
+  }
+
+  const variants = {};
+  for (const { entry, kind } of classified) {
+    if (kind.kind !== 'mode') continue;
+    const variantPath = resolveRedirectPath(entry.name);
+    if (!fs.existsSync(variantPath)) {
+      console.warn(`  [mode-variants] ${powerJson.name}: ${entry.name} has no exported record`);
+      continue;
+    }
+    const variantJson = JSON.parse(fs.readFileSync(variantPath, 'utf-8'));
+    // A variant record redirects no further (verified across all three forks); the guard keeps a
+    // future data drop from recursing rather than discovering it as a stack overflow.
+    if (variantJson.redirect?.length) delete variantJson.redirect;
+    const converted = convertPower(variantJson, 1, archetypeId, powerType);
+    const variant = { internalName: converted.internalName };
+    for (const field of MODE_VARIANT_FIELDS) {
+      if (converted[field] !== undefined) variant[field] = converted[field];
+    }
+    variants[kind.mode] = variant;
+  }
+  return Object.keys(variants).length ? variants : null;
+}
+
 /**
  * Assassin's Strike (every Stalker primary's AS) delivers all its damage through
  * a redirect whose targets gate damage on `kMeter` (Hide state): Hidden
@@ -6653,6 +6736,13 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
     else delete power.stats.timeToRoot; // base overrides the shell's castTime; a stale root value from the (unread) shell would mismatch it
   }
 
+  // Mode-gated redirect variants (Kheldian forms, Primalist forms, Titan Momentum, Seismic
+  // Power): what this power becomes while a caster mode is live. See extractModeVariants.
+  const modeVariants = extractModeVariants(powerJson, archetypeId, powerType);
+  if (modeVariants) {
+    power.modeVariants = modeVariants;
+  }
+
   // Requirements
   if (powerJson.requires) {
     power.requires = powerJson.requires;
@@ -7064,6 +7154,9 @@ module.exports = {
   collectAtomTemplates,
   encodeAtomsForEmit,
   resolveRedirectPath,
+  convertPower,
+  classifyModeRedirect,
+  extractModeVariants,
   collectRedirectTemplates,
   collectBaseTemplates,
   _filterFieryEmbraceBonus,

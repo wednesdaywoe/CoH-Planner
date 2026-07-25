@@ -13,6 +13,7 @@ import { supabase } from '@/lib/supabase';
 import { getPowersetsForArchetype, getPowerset, MAX_LEVEL, ARCHETYPES, getPowerPicksAtLevel, getTotalSlotsAtLevel, getNextGrantLevel, getProgressionLevel, getPicksGrantedAtLevel, getSlotsGrantedAtLevel, STANCE_GROUPS, findStanceParent, activeStanceOptionId } from '@/data';
 import type { StanceGroup } from '@/data';
 import { countPlacedBudgetSlots } from '@/utils/slot-levels';
+import { selectableModes, modeLabel } from '@/utils/mode-suppression';
 import { Badge, Button, Select, Slider, Toggle, Tooltip } from '@/components/ui';
 import type { BadgeVariant } from '@/components/ui';
 import { getActiveDataset } from '@/data/dataset';
@@ -290,8 +291,7 @@ export function Header() {
         </div>
 
         {archetypeId && <ATMechanics archetypeId={archetypeId} />}
-        <KheldianFormSelector />
-        <PrimalistFormSelector />
+        <ModeSelector />
         {STANCE_GROUPS.map((group) => (
           <StanceSelector key={group.key} group={group} />
         ))}
@@ -1421,83 +1421,66 @@ function SettingsPopover() {
 }
 
 // ---- AT Mechanics Row ----
-
-function KheldianFormSelector() {
+/**
+ * Caster-mode selector — the modes the build's own powers redirect on.
+ *
+ * A power the game redirects by mode (a Kheldian attack in Nova form, a Titan Weapons attack
+ * under Momentum) carries the whole table as `modeVariants`; the union of those keys IS the set
+ * of modes this build can switch between, so the selector needs no list of which archetypes have
+ * forms. Selecting a mode also activates the power that SETS it, so its persistent effects reach
+ * the totals; re-clicking clears back to no mode.
+ *
+ * Display only for the powers themselves — slots stay on the base power, which every mode shares.
+ */
+function ModeSelector() {
   const build = useBuildStore((s) => s.build);
-  const setKheldianForm = useBuildStore((s) => s.setKheldianForm);
+  const setActiveModes = useBuildStore((s) => s.setActiveModes);
 
-  // Only show on Rebirth Kheldian builds.
-  if (build.serverId !== 'rebirth') return null;
-  if (build.archetype.id !== 'peacebringer' && build.archetype.id !== 'warshade') return null;
-
-  const current = build.kheldianForm ?? 'human';
-  const isPB = build.archetype.id === 'peacebringer';
-  const novaLabel = isPB ? 'Bright Nova' : 'Dark Nova';
-  const dwarfLabel = isPB ? 'White Dwarf' : 'Black Dwarf';
-
-  const button = (form: 'human' | 'nova' | 'dwarf', label: string) => {
-    const active = current === form;
-    return (
-      <button
-        type="button"
-        onClick={() => setKheldianForm(form)}
-        className={`px-2 py-0.5 text-xs rounded border transition-colors ${
-          active
-            ? 'bg-[var(--color-selected)]/40 border-[var(--color-selected)] text-[var(--color-link)]'
-            : 'bg-slate-700/50 border-slate-600 text-slate-300 hover:bg-slate-600/50'
-        }`}
-      >
-        {label}
-      </button>
-    );
-  };
-
-  return (
-    <Tooltip content="Display variant of redirect-style Kheldian powers based on the active form. Slot allocation is unchanged.">
-      <div className="flex items-center gap-1 px-2 py-1 rounded border bg-slate-700/50 border-slate-600">
-        <span className="text-xs text-slate-400 mr-1">Form:</span>
-        {button('human', 'Human')}
-        {button('nova', novaLabel)}
-        {button('dwarf', dwarfLabel)}
-      </div>
-    </Tooltip>
+  const modes = useMemo(
+    () => selectableModes([
+      ...(build.primary.id ? getPowerset(build.primary.id)?.powers ?? [] : []),
+      ...(build.secondary.id ? getPowerset(build.secondary.id)?.powers ?? [] : []),
+    ]),
+    [build.primary.id, build.secondary.id],
   );
-}
 
-function PrimalistFormSelector() {
-  const build = useBuildStore((s) => s.build);
-  const setPrimalistForm = useBuildStore((s) => s.setPrimalistForm);
+  if (modes.length === 0) return null;
 
-  // Only show on Thunderspy Primalist builds.
-  if (build.serverId !== 'thunderspy') return null;
-  if (build.archetype.id !== 'primalist') return null;
-
-  const current = build.primalistForm ?? 'primal';
-
-  const button = (form: 'primal' | 'hunter' | 'prowler', label: string) => {
-    const active = current === form;
+  const active = build.activeModes ?? [];
+  const button = (mode: string) => {
+    const isActive = active.includes(mode);
     return (
       <button
+        key={mode}
         type="button"
-        onClick={() => setPrimalistForm(form)}
+        onClick={() => setActiveModes(isActive ? [] : [mode])}
         className={`px-2 py-0.5 text-xs rounded border transition-colors ${
-          active
+          isActive
             ? 'bg-[var(--color-selected)]/40 border-[var(--color-selected)] text-[var(--color-link)]'
             : 'bg-slate-700/50 border-slate-600 text-slate-300 hover:bg-slate-600/50'
         }`}
       >
-        {label}
+        {modeLabel(mode)}
       </button>
     );
   };
 
   return (
-    <Tooltip content="Primalist attacks change with the active form (Primal / Hunter / Prowler). The info panel shows the selected form's damage and effects; slot allocation is unchanged.">
+    <Tooltip content="Powers the game redirects by caster mode show that mode's damage and effects. Slot allocation is unchanged.">
       <div className="flex items-center gap-1 px-2 py-1 rounded border bg-slate-700/50 border-slate-600">
-        <span className="text-xs text-slate-400 mr-1">Form:</span>
-        {button('primal', 'Primal')}
-        {button('hunter', 'Hunter')}
-        {button('prowler', 'Prowler')}
+        <span className="text-xs text-slate-400 mr-1">Mode:</span>
+        <button
+          type="button"
+          onClick={() => setActiveModes([])}
+          className={`px-2 py-0.5 text-xs rounded border transition-colors ${
+            active.length === 0
+              ? 'bg-[var(--color-selected)]/40 border-[var(--color-selected)] text-[var(--color-link)]'
+              : 'bg-slate-700/50 border-slate-600 text-slate-300 hover:bg-slate-600/50'
+          }`}
+        >
+          Base
+        </button>
+        {modes.map(button)}
       </div>
     </Tooltip>
   );

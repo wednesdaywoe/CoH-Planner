@@ -43,10 +43,6 @@ import { getBaselineHealth } from '@/utils/calculations/stats';
 import type { GenesisExemplarEffect } from '@/data';
 import { getActiveIncarnateDamageProcs, computeIncarnateProcContributions } from '@/data/incarnate-procs';
 import { resolvePath } from '@/utils/paths';
-import { resolveKheldianRedirect } from '@/data/datasets/rebirth/kheldian-redirects';
-import { KHELDIAN_FORM_VARIANT_POWERS } from '@/data/datasets/rebirth/kheldian-form-variants';
-import { resolvePrimalistRedirect, PRIMALIST_FORM_VARIANT_POWERS } from '@/data/datasets/thunderspy/primalist-redirects';
-import { getPowerset } from '@/data';
 import { useModeSuppression } from '@/hooks/useModeSuppression';
 import { modeLabel } from '@/utils/mode-suppression';
 import { EnhancementInfoContent } from './EnhancementInfoContent';
@@ -257,70 +253,9 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     [globalBonusesForCalc, globalBonuses]
   );
 
-  // Kheldian form redirect (Rebirth only): for human-form base powers
-  // that PowerRedirector to a form-specific variant, swap the displayed
-  // power's effect data to the variant when the user has selected that
-  // form. Build state (slots, enhancements) is unaffected — slots stay
-  // on the human base.
-  const formRedirectedPower = useMemo(() => {
-    if (!power) return power;
-    // Thunderspy Primalist: Feral Might / Primal Howl attacks are empty shells
-    // whose real per-form effect data lives in <Power>_Primal/_Hunter/_Prowler
-    // variants. Every form (incl. the default Primal) redirects — overlay the
-    // resolved variant's stats/damage/effects onto the shell for display.
-    if (build.serverId === 'thunderspy' && build.archetype.id === 'primalist') {
-      const pForm = build.primalistForm ?? 'primal';
-      const targetName = resolvePrimalistRedirect(power.internalName ?? '', pForm);
-      if (targetName === power.internalName) return power; // not a form shell
-      const variant = PRIMALIST_FORM_VARIANT_POWERS[targetName];
-      if (!variant) return power;
-      return {
-        ...power,
-        stats: variant.stats ?? power.stats,
-        damage: variant.damage ?? power.damage,
-        effects: variant.effects ?? power.effects,
-        shortHelp: variant.shortHelp ?? power.shortHelp,
-        description: variant.description ?? power.description,
-        effectArea: variant.effectArea ?? power.effectArea,
-        targetType: variant.targetType ?? power.targetType,
-        powerType: variant.powerType ?? power.powerType,
-      } as Power;
-    }
-    if (build.serverId !== 'rebirth') return power;
-    if (build.archetype.id !== 'peacebringer' && build.archetype.id !== 'warshade') return power;
-    const form = build.kheldianForm ?? 'human';
-    if (form === 'human') return power;
-    const targetName = resolveKheldianRedirect(power.internalName ?? '', form);
-    if (targetName === power.internalName) return power;
-    // Find the variant. Some variants live as siblings of their human
-    // counterpart in the same powerset (e.g. Bright_Nova_Bolt under
-    // Luminous_Blast); others ONLY exist under Kheldian_Pets.<form>.* in
-    // the binary (e.g. White_Dwarf_Bolt — has no Luminous_Aura entry).
-    // The KHELDIAN_FORM_VARIANT_POWERS map contains the latter, fed by
-    // `scripts/generate-kheldian-variants.cjs`.
-    const set = getPowerset(powerSet);
-    const variant = set?.powers.find(p => p.internalName === targetName)
-      ?? KHELDIAN_FORM_VARIANT_POWERS[targetName];
-    if (!variant) return power;
-    // Merge: keep human-form identity (name, icon, allowedEnhancements,
-    // maxSlots) but display the variant's stats / damage / effects /
-    // shortHelp / description so the info panel reflects the current
-    // form.
-    return {
-      ...power,
-      stats: variant.stats ?? power.stats,
-      damage: variant.damage ?? power.damage,
-      effects: variant.effects ?? power.effects,
-      shortHelp: variant.shortHelp ?? power.shortHelp,
-      description: variant.description ?? power.description,
-      effectArea: variant.effectArea ?? power.effectArea,
-      targetType: variant.targetType ?? power.targetType,
-      powerType: variant.powerType ?? power.powerType,
-    } as Power;
-  }, [power, build.serverId, build.archetype.id, build.kheldianForm, build.primalistForm, powerSet]);
 
   // When combatMode is active and power has quickSnipe, use Quick-cast stats/damage
-  const isQuickSnipe = combatMode && !!formRedirectedPower?.quickSnipe;
+  const isQuickSnipe = combatMode && !!power?.quickSnipe;
 
   // The power this panel actually shows: the snipe's fast form, the mid-combat cast, and the
   // active mode-gated contributions merged in (drowning bonus, Disintegrating, Bio Armor
@@ -329,15 +264,16 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   const mechanicAdjusters = useUIStore((s) => s.mechanicAdjusters);
   const globalAdjusters = useUIStore((s) => s.globalAdjusters);
   const conditionalMerge = useMemo(() => {
-    if (!formRedirectedPower) return { power: formRedirectedPower, extraInstances: {} };
-    return resolveEffectivePower(formRedirectedPower, {
+    if (!power) return { power, extraInstances: {} };
+    return resolveEffectivePower(power, {
       combatMode,
       hidden: effectiveHidden,
       globalAdjusters: effectiveGlobalAdjusters(build, globalAdjusters),
       mechanicAdjusters,
       atInherentState: { dominationActive },
+      activeModes: build.activeModes,
     });
-  }, [formRedirectedPower, combatMode, effectiveHidden, mechanicAdjusters, globalAdjusters, dominationActive, build]);
+  }, [power, combatMode, effectiveHidden, mechanicAdjusters, globalAdjusters, dominationActive, build]);
   const effectivePower = conditionalMerge.power;
   const extraInstances = conditionalMerge.extraInstances;
 

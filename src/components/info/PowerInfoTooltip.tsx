@@ -190,6 +190,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
             globalAdjusters: effectiveGlobalAdjusters(build, globalAdjusters),
             mechanicAdjusters,
             atInherentState: { dominationActive },
+            activeModes: build.activeModes,
           }).power
         : undefined,
     [basePower, combatMode, effectiveHidden, mechanicAdjusters, globalAdjusters, dominationActive, build],

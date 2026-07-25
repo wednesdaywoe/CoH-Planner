@@ -59,6 +59,76 @@ export const BrutalSwipe: Power = {
     ["Unmapped",null,0.195,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"No",null,null,null,1],
     ["Unmapped",null,0.39,0,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"No",null,null,null,1]
   ],
+  "modeVariants": {
+    "HunterMode": {
+      "internalName": "Brutal_Swipe_Hunter",
+      "stats": {
+        "accuracy": 1,
+        "range": 7,
+        "radius": 7,
+        "arc": 1.2217304706573486,
+        "recharge": 7.5,
+        "endurance": 8.112,
+        "castTime": 2.13,
+        "maxTargets": 5
+      },
+      "damage": {
+        "type": "Special",
+        "scale": 1.95,
+        "table": "Melee_Damage"
+      },
+      "damageTypes": [
+        "Lethal"
+      ],
+      "shortHelp": "Melee Cone, High DMG(Special), Special",
+      "description": "You lash out at nearby foes in a single broad strike hitting up to 5 enemies in a cone in front of you. In primal (human) form you will deal smashing damage and will heal yourself and up to 3 nearby allies for a fair amount of health. In Hunter form you'll deal lethal damage and reduce the targets' defense. In Prowler form you'll deal lethal damage, cause minor lethal damage over time and have a good chance to stun. Brutal Swipe builds 1 Primal Energy. Damage: High, Recharge: Moderate",
+      "effectArea": "Cone",
+      "targetType": "Foe",
+      "powerType": "Click"
+    },
+    "ProwlerMode": {
+      "internalName": "Brutal_Swipe_Prowler",
+      "stats": {
+        "accuracy": 1,
+        "range": 7,
+        "radius": 7,
+        "arc": 1.2217304706573486,
+        "recharge": 7.5,
+        "endurance": 8.112,
+        "castTime": 2.13,
+        "maxTargets": 5
+      },
+      "damage": [
+        {
+          "type": "Special",
+          "scale": 1.95,
+          "table": "Melee_Damage"
+        },
+        {
+          "type": "Special",
+          "scale": 0.1,
+          "table": "Melee_Damage",
+          "duration": 4.1,
+          "tickRate": 1
+        }
+      ],
+      "damageTypes": [
+        "Lethal"
+      ],
+      "effects": {
+        "stun": {
+          "mag": 2,
+          "scale": 5,
+          "table": "Melee_Stun"
+        }
+      },
+      "shortHelp": "Melee Cone, High DMG(Special), Special",
+      "description": "You lash out at nearby foes in a single broad strike hitting up to 5 enemies in a cone in front of you. In primal (human) form you will deal smashing damage and will heal yourself and up to 3 nearby allies for a fair amount of health. In Hunter form you'll deal lethal damage and reduce the targets' defense. In Prowler form you'll deal lethal damage, cause minor lethal damage over time and have a good chance to stun. Brutal Swipe builds 1 Primal Energy. Damage: High, Recharge: Moderate",
+      "effectArea": "Cone",
+      "targetType": "Foe",
+      "powerType": "Click"
+    }
+  },
   "damageTypes": [
     "Smashing"
   ]

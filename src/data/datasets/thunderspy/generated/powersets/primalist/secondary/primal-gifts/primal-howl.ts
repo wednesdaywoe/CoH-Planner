@@ -50,5 +50,23 @@ export const PrimalHowl: Power = {
   "atoms": [
     ["Regeneration",null,1,1,60,"Melee_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! &&"],
     ["Unmapped",null,0.3,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1]
-  ]
+  ],
+  "modeVariants": {
+    "HunterMode": {
+      "internalName": "Primal_Howl_Hunter",
+      "stats": {
+        "accuracy": 1,
+        "radius": 15,
+        "recharge": 120,
+        "endurance": 13,
+        "castTime": 2.83,
+        "maxTargets": 10
+      },
+      "shortHelp": "PBAoE Special, Requires Primal or Hunter Form",
+      "description": "The Primalist lets out a Primal Howl with varying effects depending on their current form. In Primal Form, you will boost their recovery and regeneration significantly for a good while. In Hunter Form you will reduce the damage and damage resistance of nearby foes. Primal Howl builds 3 Primal Energy. Primal Howl may not be used in Prowler Form. Recharge: Very Long",
+      "effectArea": "AoE",
+      "targetType": "Self",
+      "powerType": "Click"
+    }
+  }
 };

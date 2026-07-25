@@ -79,6 +79,37 @@ export const SweepingStrike: Power = {
       "label": "Smashing_Dmg"
     }
   ],
+  "modeVariants": {
+    "FastMode": {
+      "internalName": "Sweeping_Strike_Fast",
+      "stats": {
+        "accuracy": 1,
+        "range": 10,
+        "radius": 10,
+        "arc": 2.094395160675049,
+        "recharge": 10,
+        "endurance": 10.4978,
+        "castTime": 1,
+        "maxTargets": 5
+      },
+      "damage": {
+        "type": "Smashing",
+        "scale": 1.429,
+        "table": "Melee_Damage"
+      },
+      "effects": {
+        "knockback": {
+          "scale": 0.67,
+          "table": "Melee_Ones"
+        }
+      },
+      "shortHelp": "Melee (Cone), High DMG(Smashing), Foe Knockdown",
+      "description": "You make a sweeping slash with your weapon, causing high damage and possibly knocking your opponent down. Damage: High, Recharge: Long",
+      "effectArea": "Cone",
+      "targetType": "Foe",
+      "powerType": "Click"
+    }
+  },
   "setsModes": [
     "FastMode"
   ]

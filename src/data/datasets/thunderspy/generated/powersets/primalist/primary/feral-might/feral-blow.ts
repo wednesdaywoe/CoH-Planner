@@ -57,6 +57,65 @@ export const FeralBlow: Power = {
     ["Unmapped",null,0.084,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"No",null,null,null,1],
     ["Unmapped",null,0.168,0,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"No",null,null,null,1]
   ],
+  "modeVariants": {
+    "HunterMode": {
+      "internalName": "Feral_Blow_Hunter",
+      "stats": {
+        "accuracy": 1,
+        "range": 7,
+        "recharge": 2.5,
+        "endurance": 3.536,
+        "castTime": 1,
+        "maxTargets": 1
+      },
+      "damage": {
+        "type": "Special",
+        "scale": 0.84,
+        "table": "Melee_Damage"
+      },
+      "damageTypes": [
+        "Lethal"
+      ],
+      "shortHelp": "Melee, Light DMG(Special), Special",
+      "description": "You lash out at a nearby foe dealing Light damage. In primal (human) form you will deal smashing damage and will heal yourself and up to 3 nearby allies for a tiny amount of health. In Hunter form you'll deal lethal damage and reduce the target's defense. In Prowler form you'll deal lethal damage, cause minor lethal damage over time and have a small chance to stun. This power builds 1 Primal Energy. Damage: Light, Recharge: Very Fast",
+      "effectArea": "SingleTarget",
+      "targetType": "Foe",
+      "powerType": "Click"
+    },
+    "ProwlerMode": {
+      "internalName": "Feral_Blow_Prowler",
+      "stats": {
+        "accuracy": 1,
+        "range": 7,
+        "recharge": 2.5,
+        "endurance": 3.536,
+        "castTime": 1,
+        "maxTargets": 1
+      },
+      "damage": [
+        {
+          "type": "Special",
+          "scale": 0.84,
+          "table": "Melee_Damage"
+        },
+        {
+          "type": "Special",
+          "scale": 0.1,
+          "table": "Melee_Damage",
+          "duration": 4.1,
+          "tickRate": 1
+        }
+      ],
+      "damageTypes": [
+        "Lethal"
+      ],
+      "shortHelp": "Melee, Light DMG(Special), Special",
+      "description": "You lash out at a nearby foe dealing Light damage. In primal (human) form you will deal smashing damage and will heal yourself and up to 3 nearby allies for a tiny amount of health. In Hunter form you'll deal lethal damage and reduce the target's defense. In Prowler form you'll deal lethal damage, cause minor lethal damage over time and have a small chance to stun. This power builds 1 Primal Energy. Damage: Light, Recharge: Very Fast",
+      "effectArea": "SingleTarget",
+      "targetType": "Foe",
+      "powerType": "Click"
+    }
+  },
   "damageTypes": [
     "Smashing"
   ]

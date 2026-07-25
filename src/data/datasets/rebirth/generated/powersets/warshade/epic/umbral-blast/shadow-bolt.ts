@@ -76,5 +76,101 @@ export const ShadowBolt: Power = {
     ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kWarshade_Blaster_Mode source.Mode?",true],
     ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kWarshade_Tanker_Mode source.Mode?",true],
     ["Damage","Negative",1.416,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
-  ]
+  ],
+  "modeVariants": {
+    "Warshade_Blaster_Mode": {
+      "internalName": "Dark_Nova_Bolt",
+      "stats": {
+        "accuracy": 1,
+        "range": 100,
+        "recharge": 2,
+        "endurance": 3.536,
+        "castTime": 1.5
+      },
+      "damage": {
+        "type": "Negative",
+        "scale": 0.68,
+        "table": "Ranged_SSDamage"
+      },
+      "effects": {
+        "buffDuration": 3,
+        "durations": {
+          "rechargeDebuff": 3,
+          "slow": 3
+        },
+        "rechargeDebuff": {
+          "scale": 0.2,
+          "table": "Ranged_Slow"
+        },
+        "slow": {
+          "flySpeed": {
+            "scale": 0.2,
+            "table": "Ranged_Slow"
+          },
+          "jumpHeight": {
+            "scale": 0.2,
+            "table": "Ranged_Slow"
+          },
+          "jumpSpeed": {
+            "scale": 0.2,
+            "table": "Ranged_Slow"
+          },
+          "runSpeed": {
+            "scale": 0.2,
+            "table": "Ranged_Slow"
+          }
+        }
+      },
+      "shortHelp": "Ranged, Minor DMG(Negative), Foe -Recharge, -SPD",
+      "description": "A very quick, but low damage attack that lowers your target's attack and movement speed. This power is only available while in Dark Nova Form. Damage: Minor, Recharge: Very Fast",
+      "effectArea": "SingleTarget",
+      "targetType": "Foe",
+      "powerType": "Click"
+    },
+    "Warshade_Tanker_Mode": {
+      "internalName": "Black_Dwarf_Bolt",
+      "stats": {
+        "accuracy": 1,
+        "range": 60,
+        "recharge": 2,
+        "endurance": 3.536,
+        "castTime": 1
+      },
+      "damage": {
+        "type": "Negative",
+        "scale": 0.68,
+        "table": "Melee_SSDamage"
+      },
+      "effects": {
+        "buffDuration": 4,
+        "durations": {
+          "rechargeDebuff": 4,
+          "slow": 4
+        },
+        "rechargeDebuff": {
+          "scale": 0.2,
+          "table": "Ranged_Slow"
+        },
+        "slow": {
+          "flySpeed": {
+            "scale": 0.2,
+            "table": "Ranged_Slow"
+          },
+          "runSpeed": {
+            "scale": 0.2,
+            "table": "Ranged_Slow"
+          }
+        },
+        "taunt": {
+          "scale": 1,
+          "table": "Melee_InherentTaunt"
+        }
+      },
+      "shortHelp": "Ranged, Minor DMG(Negative), Foe -Recharge, -SPD",
+      "description": "A very quick, but low damage attack that can lower your target's attack rate and movement speed. This power can be used while in Dark Nova or Black Dwarf form.  While in Dark Nova, this power has increased range and higher damage. While in Black Dwarf form, this power taunts its target but has shorter range and deals slightly more damage. Damage: Minor, Recharge: Very Fast",
+      "effectArea": "SingleTarget",
+      "targetType": "Foe",
+      "powerType": "Click"
+    }
+  }
 };

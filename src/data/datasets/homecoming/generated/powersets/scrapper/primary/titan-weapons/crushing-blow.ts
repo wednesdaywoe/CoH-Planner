@@ -63,5 +63,37 @@ export const CrushingBlow: Power = {
     ["Damage","Smashing",1.64,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Fire",0.738,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0]
   ],
+  "modeVariants": {
+    "FastMode": {
+      "internalName": "Crushing_Blow_Fast",
+      "stats": {
+        "accuracy": 1,
+        "range": 9,
+        "recharge": 6,
+        "endurance": 5.3024,
+        "castTime": 1.2
+      },
+      "damage": {
+        "type": "Smashing",
+        "scale": 1.32,
+        "table": "Melee_Damage"
+      },
+      "effects": {
+        "buffDuration": 10,
+        "defenseDebuff": {
+          "scale": 1,
+          "table": "Melee_Debuff_Def"
+        },
+        "durations": {
+          "defenseDebuff": 10
+        }
+      },
+      "shortHelp": "Melee, DMG(Smashing), -DEF",
+      "description": "You swing a mighty crushing blow at your opponent dealing High Smashing damage and reducing their defense.",
+      "effectArea": "SingleTarget",
+      "targetType": "Foe",
+      "powerType": "Click"
+    }
+  },
   "requires": "Scrapper_Defense.Shield_Defense !"
 };

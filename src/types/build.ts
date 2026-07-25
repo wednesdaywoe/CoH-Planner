@@ -182,22 +182,13 @@ export interface Build {
   slotOrder: { powerName: string; slotIndex: number; category?: string; level?: number }[];
 
   /**
-   * Active form for Kheldian (Peacebringer / Warshade) builds. Used by
-   * the damage/info display to show the right variant of redirect-style
-   * powers (Gleaming_Bolt → Bright_Nova_Bolt in Nova form, etc.). Has
-   * no effect on slot allocation — slots stay on the human-form base
-   * power regardless. Defaults to 'human' for non-Kheldian ATs.
+   * Caster modes the player has switched on — the ids a selected power's `modeVariants` is
+   * keyed by (`Peacebringer_Blaster_Mode`, `HunterMode`, `FastMode`, `SeismicPower`). While a
+   * mode is live the display shows the variant the game's PowerRedirector fires instead of the
+   * base record. No effect on slot allocation: slots stay on the base power, which every mode
+   * shares. Absent means no mode is live.
    */
-  kheldianForm?: 'human' | 'nova' | 'dwarf';
-
-  /**
-   * Active form for Thunderspy Primalist builds. Selects which per-form
-   * variant of the empty Feral Might / Primal Howl shell powers the
-   * damage/info display shows (Feral_Blow → Feral_Blow_Hunter in Hunter
-   * form, etc.). Defaults to 'primal' (the human/base form). Like
-   * kheldianForm, this has no effect on slot allocation.
-   */
-  primalistForm?: 'primal' | 'hunter' | 'prowler';
+  activeModes?: string[];
 
   /**
    * If this build was loaded from the user's Build Library, the source

@@ -96,5 +96,61 @@ export const ShadowStep: Power = {
     ["Stealth","Translucency",0.25,1,1,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.NoPhase source.ownPower? !",null,null,true],
     ["Meta",null,-1,1,1,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.NoPhase source.ownPower? !",null,null,true]
   ],
+  "modeVariants": {
+    "ChainTeleport": {
+      "internalName": "Shadow_Step_LowEnd",
+      "stats": {
+        "accuracy": 1,
+        "range": 350,
+        "endurance": 7.8,
+        "castTime": 1.67
+      },
+      "effects": {
+        "buffDuration": 1,
+        "durations": {
+          "movement": 15,
+          "stealth": 1,
+          "untouchable": 1
+        },
+        "movement": {
+          "fly": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          },
+          "flySpeed": {
+            "scale": 500,
+            "table": "Melee_SpeedFlying"
+          },
+          "movementControl": {
+            "scale": 8,
+            "table": "Melee_Ones"
+          },
+          "movementFriction": {
+            "scale": 8,
+            "table": "Melee_Ones"
+          }
+        },
+        "stealth": {
+          "translucency": {
+            "scale": 0.25,
+            "table": "Ranged_Ones"
+          }
+        },
+        "teleport": {
+          "scale": 1,
+          "table": "Ranged_Ones"
+        },
+        "untouchable": {
+          "scale": 1000,
+          "table": "Ranged_Ones"
+        }
+      },
+      "shortHelp": "Ranged (Location), Self Teleport",
+      "description": "You can Teleport long distances. Shadow Step has no recharge time, and can be reactivated without pause, as long as you have Endurance.",
+      "effectArea": "Location",
+      "targetType": "Teleport",
+      "powerType": "Click"
+    }
+  },
   "requires": "Inherent.Inherent.Shadow_Step !"
 };

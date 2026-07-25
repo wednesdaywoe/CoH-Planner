@@ -78,6 +78,44 @@ export const CrushingBlow: Power = {
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
     ["Mez","Taunt",6,4,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,0.18000000715255737,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
+  "modeVariants": {
+    "FastMode": {
+      "internalName": "Crushing_Blow_Fast",
+      "stats": {
+        "accuracy": 1,
+        "range": 9,
+        "radius": 9,
+        "recharge": 8,
+        "endurance": 8.7838,
+        "castTime": 1.2,
+        "maxTargets": 5
+      },
+      "damage": {
+        "type": "Smashing",
+        "scale": 1.804,
+        "table": "Melee_Damage"
+      },
+      "effects": {
+        "buffDuration": 10,
+        "defenseDebuff": {
+          "scale": 1,
+          "table": "Melee_Debuff_Def"
+        },
+        "durations": {
+          "defenseDebuff": 10
+        },
+        "taunt": {
+          "scale": 1,
+          "table": "Melee_InherentTaunt"
+        }
+      },
+      "shortHelp": "Melee, High DMG(Smashing), -DEF",
+      "description": "You swing a mighty crushing blow at your opponent dealing High Smashing damage and reducing their defense.  Damage: High, Recharge: Moderate",
+      "effectArea": "AoE",
+      "targetType": "Foe",
+      "powerType": "Click"
+    }
+  },
   "requires": "Tanker_Defense.Shield_Defense !",
   "setsModes": [
     "FastMode"

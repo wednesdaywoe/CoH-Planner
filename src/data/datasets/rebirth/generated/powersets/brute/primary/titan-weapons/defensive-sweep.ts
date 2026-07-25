@@ -85,6 +85,53 @@ export const DefensiveSweep: Power = {
     ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? enttype target> player eq || kRage Source> 70 < &&",true],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true]
   ],
+  "modeVariants": {
+    "FastMode": {
+      "internalName": "Defensive_Sweep_Fast",
+      "stats": {
+        "accuracy": 1,
+        "range": 10,
+        "radius": 10,
+        "arc": 2.094395160675049,
+        "recharge": 4,
+        "endurance": 5.356,
+        "castTime": 1,
+        "maxTargets": 5
+      },
+      "damage": {
+        "type": "Smashing",
+        "scale": 0.729,
+        "table": "Melee_Damage"
+      },
+      "effects": {
+        "buffDuration": 10,
+        "defenseBuff": {
+          "melee": {
+            "scale": 1.5,
+            "table": "Melee_Buff_Def",
+            "perTarget": 1.5
+          },
+          "smashing": {
+            "scale": 1.5,
+            "table": "Melee_Buff_Def",
+            "perTarget": 1.5
+          }
+        },
+        "durations": {
+          "defenseBuff": 10
+        },
+        "taunt": {
+          "scale": 1,
+          "table": "Melee_InherentTaunt"
+        }
+      },
+      "shortHelp": "Melee(Cone), Light DMG(Smashing), Self +DEF(Melee, Smash)",
+      "description": "You take a defensive stance and strike your opponents.  Successfully executing this attack will cause light smashing damage to nearby foes, while giving you increased defense against their melee and smashing attacks.  Damage: Light, Recharge: Fast",
+      "effectArea": "Cone",
+      "targetType": "Foe",
+      "powerType": "Click"
+    }
+  },
   "requires": "Brute_Defense.Shield_Defense !",
   "setsModes": [
     "FastMode"

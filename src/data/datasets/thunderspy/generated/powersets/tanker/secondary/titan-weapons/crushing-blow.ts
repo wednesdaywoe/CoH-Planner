@@ -56,6 +56,33 @@ export const CrushingBlow: Power = {
     ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
     ["Unmapped",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"No",null,null,null,1]
   ],
+  "modeVariants": {
+    "FastMode": {
+      "internalName": "Crushing_Blow_Fast",
+      "stats": {
+        "accuracy": 1,
+        "range": 9,
+        "radius": 9,
+        "recharge": 8,
+        "endurance": 8.528,
+        "castTime": 1.2,
+        "maxTargets": 5
+      },
+      "damage": {
+        "type": "Smashing",
+        "scale": 1.7548,
+        "table": "Melee_Damage"
+      },
+      "damageTypes": [
+        "Smashing"
+      ],
+      "shortHelp": "Melee, High DMG(Smashing), -DEF",
+      "description": "You swing a mighty crushing blow at your opponent dealing High Smashing damage and reducing their defense.  Damage: High, Recharge: Moderate",
+      "effectArea": "AoE",
+      "targetType": "Foe",
+      "powerType": "Click"
+    }
+  },
   "requires": "Tanker_Defense.Shield_Defense !",
   "damageTypes": [
     "Smashing"

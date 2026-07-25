@@ -9,9 +9,9 @@
  * human-form base powers — not separate slottable picks. So those
  * entries are stripped from the Rebirth copy.
  *
- * See [./kheldian-redirects.ts](./kheldian-redirects.ts) for the
- * Rebirth-specific form mapping table that replaces the auto-grant
- * model.
+ * The redirect targets themselves are carried per-power as `modeVariants`,
+ * converted from the binary's own Redirect table, so no mapping list here
+ * replaces the auto-grant model.
  */
 
 import { GRANTED_POWER_GROUPS as HC_GRANTED_POWER_GROUPS } from '../homecoming/granted-powers';

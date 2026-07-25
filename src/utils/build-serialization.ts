@@ -109,7 +109,7 @@ export function slimBuild(build: Build): SlimBuildData {
     incarnateObtained: build.incarnateObtained,
     shoppingListAcquired: build.shoppingListAcquired,
     slotOrder: build.slotOrder,
-    kheldianForm: build.kheldianForm,
+    activeModes: build.activeModes,
     attackChains: build.attackChains ?? [],
     procOverrides: build.procOverrides ?? {},
     mutedOverCapStats: build.mutedOverCapStats ?? [],
@@ -368,7 +368,7 @@ export function hydrateBuild(slim: Record<string, any>): Build {
     incarnateObtained: slim.incarnateObtained ?? {},
     shoppingListAcquired: slim.shoppingListAcquired ?? {},
     slotOrder: slim.slotOrder ?? [],
-    ...(slim.kheldianForm ? { kheldianForm: slim.kheldianForm } : {}),
+    ...(Array.isArray(slim.activeModes) ? { activeModes: slim.activeModes } : {}),
     ...(Array.isArray(slim.attackChains) ? { attackChains: slim.attackChains } : {}),
     ...(slim.procOverrides && typeof slim.procOverrides === 'object'
       ? { procOverrides: slim.procOverrides as Build['procOverrides'] }

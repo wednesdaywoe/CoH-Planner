@@ -5,8 +5,11 @@
  *   1. Verify the installed `wasm-bindgen` CLI matches the version the rebuild's
  *      Cargo.lock resolved (the CLI and the linked lib MUST be identical or the glue
  *      it emits is incompatible with the .wasm) — fail loud otherwise.
- *   2. Build `coh_wasm` for wasm32 and run `wasm-bindgen --target web` into
- *      src/engine/wasm/ (the browser glue engine.ts imports).
+ *   2. Build `coh_wasm` for wasm32 and run `wasm-bindgen` twice: `--target web` into
+ *      src/engine/wasm/ (the browser glue engine.ts imports) and `--target nodejs` into
+ *      src/engine/wasm-node/ (the artifact the src/engine/ parity gates load). Both, because
+ *      a run that refreshed only the browser one left every gate grading a stale engine —
+ *      a Rust change could then read as "the engine does nothing" with no failure anywhere.
  *   3. Copy the rebuild's per-dataset contract bundles into public/engine/contract/
  *      as <server>.json.gz (what engine.ts fetches at boot).
  *
@@ -16,7 +19,7 @@
  */
 
 import { execFileSync } from 'node:child_process';
-import { existsSync, mkdirSync, copyFileSync, readdirSync, readFileSync, writeFileSync, statSync } from 'node:fs';
+import { existsSync, mkdirSync, copyFileSync, readdirSync, readFileSync, renameSync, statSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -77,6 +80,14 @@ if (!existsSync(wasmArtifact)) die(`cargo did not produce ${wasmArtifact}.`);
 const wasmOutDir = join(betaRoot, 'src', 'engine', 'wasm');
 mkdirSync(wasmOutDir, { recursive: true });
 run('wasm-bindgen', ['--target', 'web', '--out-dir', wasmOutDir, '--out-name', 'coh_wasm', wasmArtifact], betaRoot);
+
+const nodeOutDir = join(betaRoot, 'src', 'engine', 'wasm-node');
+mkdirSync(nodeOutDir, { recursive: true });
+run('wasm-bindgen', ['--target', 'nodejs', '--out-dir', nodeOutDir, '--out-name', 'coh_wasm', wasmArtifact], betaRoot);
+// The emitted glue is CommonJS but lands as `.js`, which this ESM package would parse as a
+// module — the gates `require` it as `.cjs`. Rename rather than leave both, or the stale one
+// keeps being the file that loads.
+renameSync(join(nodeOutDir, 'coh_wasm.js'), join(nodeOutDir, 'coh_wasm.cjs'));
 
 // --- 3. copy the per-dataset contract bundles ---
 

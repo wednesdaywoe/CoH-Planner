@@ -103,5 +103,62 @@ export const DarkMatterDetonation: Power = {
       "label": "Knockback"
     }
   ],
+  "modeVariants": {
+    "Warshade_Blaster_Mode": {
+      "internalName": "Dark_Nova_Detonation",
+      "stats": {
+        "accuracy": 1,
+        "range": 100,
+        "radius": 15,
+        "recharge": 16,
+        "endurance": 15.184,
+        "castTime": 2.5,
+        "maxTargets": 16
+      },
+      "damage": {
+        "type": "Negative",
+        "scale": 0.9,
+        "table": "Ranged_SSDamage"
+      },
+      "effects": {
+        "buffDuration": 10,
+        "durations": {
+          "rechargeDebuff": 10,
+          "slow": 10
+        },
+        "knockback": {
+          "scale": 2,
+          "table": "Ranged_Knockback"
+        },
+        "rechargeDebuff": {
+          "scale": 0.2,
+          "table": "Ranged_Slow"
+        },
+        "slow": {
+          "flySpeed": {
+            "scale": 0.2,
+            "table": "Ranged_Slow"
+          },
+          "jumpHeight": {
+            "scale": 0.2,
+            "table": "Ranged_Slow"
+          },
+          "jumpSpeed": {
+            "scale": 0.2,
+            "table": "Ranged_Slow"
+          },
+          "runSpeed": {
+            "scale": 0.2,
+            "table": "Ranged_Slow"
+          }
+        }
+      },
+      "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Negative), Foe Knockback, -Recharge, -SPD",
+      "description": "You hurl a blast of Dark Matter that violently explodes on impact, damaging all foes near the target. All affected targets' attack and movement speed are slowed.  Some foes may be knocked down. This power is only available while in Dark Nova Form. Damage: Moderate, Recharge: Slow",
+      "effectArea": "AoE",
+      "targetType": "Foe",
+      "powerType": "Click"
+    }
+  },
   "requires": "Warshade_Offensive.Umbral_Blast.Dark_Nova Warshade_Offensive.Umbral_Blast.Dark_Nova_Detonation ! && Inherent.Inherent.Dark_Nova_Detonation ! &&"
 };

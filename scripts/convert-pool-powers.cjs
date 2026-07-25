@@ -21,6 +21,7 @@ const {
   SET_CATEGORY_MAP,
   extractEffects,
   extractDamage,
+  extractModeVariants,
   guardThunderspyOnesBuffs,
   resolveThunderspyMovementTargets,
   inferAllowedSetCategories,
@@ -172,6 +173,13 @@ function convertPoolPower(rawJson, rank, availableLevel) {
   if (rawJson.target_type) {
     const mapped = TARGET_TYPE_MAP[rawJson.target_type];
     if (mapped) power.targetType = mapped;
+  }
+
+  // Mode-gated redirect variants — the same transform archetype powers get, so a pool power
+  // the game redirects by mode (Teleport under ChainTeleport) is not left behind.
+  const modeVariants = extractModeVariants(rawJson);
+  if (modeVariants) {
+    power.modeVariants = modeVariants;
   }
 
   // Requires

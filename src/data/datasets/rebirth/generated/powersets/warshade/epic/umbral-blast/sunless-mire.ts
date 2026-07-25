@@ -119,5 +119,135 @@ export const SunlessMire: Power = {
     ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kWarshade_Tanker_Mode source.Mode?",true],
     ["Damage","Negative",2.532554,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
+  "modeVariants": {
+    "Warshade_Blaster_Mode": {
+      "internalName": "Dark_Nova_Mire",
+      "stats": {
+        "accuracy": 1.2,
+        "radius": 15,
+        "recharge": 90,
+        "endurance": 15.6,
+        "castTime": 1.33,
+        "maxTargets": 10
+      },
+      "damage": {
+        "type": "Negative",
+        "scale": 1,
+        "table": "Ranged_SSDamage"
+      },
+      "effects": {
+        "buffDuration": 30,
+        "damageBuff": {
+          "scale": 1.25,
+          "table": "Melee_Buff_Dmg",
+          "perTarget": 1.25
+        },
+        "durations": {
+          "damageBuff": 30,
+          "rechargeDebuff": 6,
+          "slow": 6,
+          "tohitBuff": 30
+        },
+        "rechargeDebuff": {
+          "scale": 0.2,
+          "table": "Melee_Slow"
+        },
+        "slow": {
+          "flySpeed": {
+            "scale": 0.2,
+            "table": "Melee_Slow"
+          },
+          "jumpHeight": {
+            "scale": 0.2,
+            "table": "Melee_Slow"
+          },
+          "jumpSpeed": {
+            "scale": 0.2,
+            "table": "Melee_Slow"
+          },
+          "runSpeed": {
+            "scale": 0.2,
+            "table": "Melee_Slow"
+          }
+        },
+        "tohitBuff": {
+          "scale": 0.5,
+          "table": "Melee_Buff_ToHit",
+          "perTarget": 0.5
+        }
+      },
+      "shortHelp": "PBAoE, Moderate DMG(Negative), Foe -Recharge, -SPD; Self +DMG, +ACC",
+      "description": "Black Dwarf Mire can drain the essence of all nearby foes, thus increasing your own strength. Each affected foe will lose some Hit Points and add to your Damage and Accuracy. Damage: Moderate, Recharge: Very Long",
+      "effectArea": "AoE",
+      "targetType": "Self",
+      "powerType": "Click"
+    },
+    "Warshade_Tanker_Mode": {
+      "internalName": "Black_Dwarf_Mire",
+      "stats": {
+        "accuracy": 1.2,
+        "radius": 15,
+        "recharge": 20,
+        "endurance": 15.6,
+        "castTime": 0.73,
+        "maxTargets": 10
+      },
+      "damage": {
+        "type": "Negative",
+        "scale": 1,
+        "table": "Melee_SSDamage"
+      },
+      "effects": {
+        "buffDuration": 10,
+        "damageBuff": {
+          "scale": 1.25,
+          "table": "Melee_Buff_Dmg",
+          "perTarget": 1.25
+        },
+        "durations": {
+          "damageBuff": 10,
+          "rechargeDebuff": 6,
+          "slow": 6,
+          "tohitBuff": 10
+        },
+        "rechargeDebuff": {
+          "scale": 0.2,
+          "table": "Melee_Slow"
+        },
+        "slow": {
+          "flySpeed": {
+            "scale": 0.2,
+            "table": "Melee_Slow"
+          },
+          "jumpHeight": {
+            "scale": 0.2,
+            "table": "Melee_Slow"
+          },
+          "jumpSpeed": {
+            "scale": 0.2,
+            "table": "Melee_Slow"
+          },
+          "runSpeed": {
+            "scale": 0.2,
+            "table": "Melee_Slow"
+          }
+        },
+        "taunt": {
+          "scale": 1,
+          "table": "Melee_InherentTaunt"
+        },
+        "tohitBuff": {
+          "scale": 0.5,
+          "table": "Melee_Buff_ToHit",
+          "perTarget": 0.5
+        }
+      },
+      "shortHelp": "PBAoE, Moderate DMG(Negative), Foe -Recharge, -SPD; Self +DMG, +ACC",
+      "description": "Black Dwarf Mire can drain the essence of all nearby foes, thus increasing your own strength. Each affected foe will lose some Hit Points and add to your Damage and Accuracy. Damage: Moderate, Recharge: Very Long",
+      "effectArea": "AoE",
+      "targetType": "Self",
+      "powerType": "Click"
+    }
+  },
   "requires": "Warshade_Defensive.Umbral_Aura.Black_Dwarf Warshade_Defensive.Umbral_Aura.Black_Dwarf_Mire ! && Inherent.Inherent.Black_Dwarf_Mire ! &&"
 };

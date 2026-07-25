@@ -99,5 +99,123 @@ export const EssenceDrain: Power = {
     ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kWarshade_Tanker_Mode source.Mode?",true],
     ["Damage","Negative",2.5812,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
+  "modeVariants": {
+    "Warshade_Blaster_Mode": {
+      "internalName": "Dark_Nova_Essence_Drain",
+      "stats": {
+        "accuracy": 1,
+        "range": 100,
+        "recharge": 8,
+        "endurance": 8.528,
+        "castTime": 1.83
+      },
+      "damage": [
+        {
+          "type": "Negative",
+          "scale": 1.64,
+          "table": "Ranged_SSDamage"
+        },
+        {
+          "type": "Heal",
+          "scale": 1,
+          "table": "Ranged_HealSelf"
+        }
+      ],
+      "effects": {
+        "buffDuration": 6,
+        "durations": {
+          "rechargeDebuff": 6,
+          "slow": 6
+        },
+        "rechargeDebuff": {
+          "scale": 0.2,
+          "table": "Melee_Slow"
+        },
+        "slow": {
+          "flySpeed": {
+            "scale": 0.2,
+            "table": "Melee_Slow"
+          },
+          "jumpHeight": {
+            "scale": 0.2,
+            "table": "Melee_Slow"
+          },
+          "jumpSpeed": {
+            "scale": 0.2,
+            "table": "Melee_Slow"
+          },
+          "runSpeed": {
+            "scale": 0.2,
+            "table": "Melee_Slow"
+          }
+        }
+      },
+      "shortHelp": "Ranged, High DMG(Negative), Foe -Recharge, -SPD; Self +HP",
+      "description": "You tap the primal forces of your Nictus power to create an Essence Draining conduit between a foe and yourself. This will transfer Hit Points from your enemy to you. Foes drained in this manner have their attack rate and movement speed reduced. This power can be used while in Dark Nova or Black Dwarf form. While in Dark Nova, this power becomes a ranged attack with a quicker recharge and higher damage. While in Black Dwarf form, this power remains a melee attack, but taunts its target and deals lower damage. Damage: Superior, Recharge: Slow",
+      "effectArea": "SingleTarget",
+      "targetType": "Foe",
+      "powerType": "Click"
+    },
+    "Warshade_Tanker_Mode": {
+      "internalName": "Black_Dwarf_Drain",
+      "stats": {
+        "accuracy": 1,
+        "range": 7,
+        "recharge": 10,
+        "endurance": 11.96,
+        "castTime": 1.93
+      },
+      "damage": [
+        {
+          "type": "Negative",
+          "scale": 1.96,
+          "table": "Melee_SSDamage"
+        },
+        {
+          "type": "Heal",
+          "scale": 1,
+          "table": "Melee_SSHealSelf"
+        }
+      ],
+      "effects": {
+        "buffDuration": 6,
+        "durations": {
+          "rechargeDebuff": 6,
+          "slow": 6
+        },
+        "rechargeDebuff": {
+          "scale": 0.2,
+          "table": "Melee_Slow"
+        },
+        "slow": {
+          "flySpeed": {
+            "scale": 0.2,
+            "table": "Melee_Slow"
+          },
+          "jumpHeight": {
+            "scale": 0.2,
+            "table": "Melee_Slow"
+          },
+          "jumpSpeed": {
+            "scale": 0.2,
+            "table": "Melee_Slow"
+          },
+          "runSpeed": {
+            "scale": 0.2,
+            "table": "Melee_Slow"
+          }
+        },
+        "taunt": {
+          "scale": 1,
+          "table": "Melee_InherentTaunt"
+        }
+      },
+      "shortHelp": "Melee, Superior DMG(Negative), Foe -Recharge, -SPD; Self +HP",
+      "description": "You tap the primal forces of your Nictus power to create an Essence Draining conduit between a foe and yourself. This will transfer Hit Points from your enemy to yourself. Foes drained in this manner have their attack and movement speed reduced. This power is only available while in Black Dwarf Form. Damage: Superior, Recharge: Slow",
+      "effectArea": "SingleTarget",
+      "targetType": "Foe",
+      "powerType": "Click"
+    }
+  },
   "requires": "Warshade_Defensive.Umbral_Aura.Black_Dwarf Warshade_Defensive.Umbral_Aura.Black_Dwarf_Drain ! && Inherent.Inherent.Black_Dwarf_Drain ! &&"
 };

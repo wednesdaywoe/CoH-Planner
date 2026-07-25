@@ -61,6 +61,40 @@ export const ArcofDestruction: Power = {
     ["Unmapped",null,1.087776,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
     ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"]
   ],
+  "modeVariants": {
+    "FastMode": {
+      "internalName": "Arc_of_Destruction_Fast",
+      "stats": {
+        "accuracy": 1,
+        "range": 10,
+        "radius": 10,
+        "arc": 2.094395160675049,
+        "recharge": 20,
+        "endurance": 18.512,
+        "castTime": 1.5,
+        "maxTargets": 5
+      },
+      "damage": {
+        "type": "Smashing",
+        "scale": 2.41728,
+        "table": "Melee_Damage"
+      },
+      "damageTypes": [
+        "Smashing"
+      ],
+      "effects": {
+        "knockback": {
+          "scale": 0.67,
+          "table": "Melee_Ones"
+        }
+      },
+      "shortHelp": "Melee (Cone), Superior DMG(Smashing), Foe Knockback",
+      "description": "You swing your weapon in a devastating Arc of Destruction that deals Superior Smashing damage and has a good chance to knock foes down.  Arc of Destruction may only be used while on the ground.  Damage: Superior, Recharge: Slow",
+      "effectArea": "Cone",
+      "targetType": "Foe",
+      "powerType": "Click"
+    }
+  },
   "damageTypes": [
     "Smashing"
   ]

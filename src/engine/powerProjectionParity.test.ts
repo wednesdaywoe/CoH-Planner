@@ -48,6 +48,7 @@ import { calcThreeTier, convertGlobalBonusesToAspects, withStrengthBonuses, type
 import { resolvePowerMagnitudes, type ResolvedMagnitude } from '@/components/info/resolvePowerMagnitudes';
 import { buildDisplayEffects, getStackingInfo, withPseudoPetEffects, withTargetsHit } from '@/components/info/buildDisplayEffects';
 import { resolveEffectivePower, effectiveGlobalAdjusters, isCasterHidden, type EffectivePowerState } from '@/components/info/resolveEffectivePower';
+import { selectableModes } from '@/utils/mode-suppression';
 import { toCharacterStateJson, type AdapterCalcContext } from './characterStateAdapter';
 import { mapGlobal, mapOnePowerProjection, mapPowerProjection, projectionKey, type EngineTotals, type GrantedMagnitude, type PowerProjection } from './engineTotalsMap';
 import type { Build } from '@/types/build';
@@ -156,6 +157,12 @@ function buildFor(
 function carriesTransform(power: Power): boolean {
   const p = power as unknown as { quickSnipe?: unknown; midCombatCast?: unknown; conditionalEffects?: unknown[] };
   return p.quickSnipe != null || p.midCombatCast != null || (p.conditionalEffects?.length ?? 0) > 0;
+}
+
+/** Does this power redirect on a caster mode (PROD6C-3l)? Read off the power's own table so the
+ *  fixture discovers which archetypes have modes instead of naming any. */
+function carriesModeVariant(power: Power): boolean {
+  return Object.keys((power as unknown as { modeVariants?: Record<string, unknown> }).modeVariants ?? {}).length > 0;
 }
 
 /** Does this power carry a +Strength self-buff at all? Read off the bag key the Strength pass
@@ -558,6 +565,9 @@ function shownState(build: Build, ctx: AdapterCalcContext): EffectivePowerState 
     globalAdjusters: effectiveGlobalAdjusters(build, ctx.globalAdjusters),
     mechanicAdjusters: ctx.mechanicAdjusters,
     atInherentState: { dominationActive: ctx.dominationActive },
+    // Read off the build, exactly as the adapter reads it for the engine — the mode redirect is
+    // build state, not ctx state (PROD6C-3l).
+    activeModes: build.activeModes,
   };
 }
 
@@ -1576,6 +1586,100 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
       // eslint-disable-next-line no-console
       console.warn(`[PROD6C-3k effective] ${server}: no cast moved from cover — ${openers} openers reached, none whose mid-combat cast differs from its from-Hide one`);
     }
+    expect(deltas).toEqual([]);
+  }, 300000);
+
+  // PROD6C-3l. The fourth effective-power transform: while a caster mode is live the game's
+  // PowerRedirector fires a DIFFERENT record, so every projected value describes that record and
+  // not the base one. Every fixture above runs with no mode live, which is exactly the state the
+  // redirect agrees with the base power in — so no gate here could see it.
+  //
+  // The modes come from the build's own powers (`modeVariants` keys, converted from the binary's
+  // Redirect table), so the fixture discovers which archetypes have them rather than naming any.
+  it.each(SERVERS)('%s: a live caster mode redirects the projected power', async (server) => {
+    await loadDataset(server);
+
+    const deltas: string[] = [];
+    const adjudicated: string[] = [];
+    let modedPowers = 0;
+    let movedPowers = 0;
+    let movedRows = 0;
+
+    for (const atId of STANDARD_ARCHETYPE_IDS) {
+      // Build from the sets that CARRY a mode redirect — the 6B first-set pick reaches none on
+      // two of the three forks (measured), so a fixture that did not choose by the data would
+      // grade nothing and still pass.
+      const base = buildFor(server, atId, 50, true, (sets) => {
+        const carried = sets.map((set) => set.powers.filter(carriesModeVariant).length);
+        return carried.indexOf(Math.max(...carried));
+      });
+      const powers = [...base.primary.powers, ...base.secondary.powers];
+      const modes = selectableModes(powers as unknown as { modeVariants?: Record<string, unknown> }[]);
+      if (modes.length === 0) continue;
+
+      const plain = mapPowerProjection(engineTotals(server, base).power_projection);
+
+      for (const mode of modes) {
+        // One mode at a time: the Header selector is single-select, and a variant is chosen by
+        // the FIRST live mode its table names, so grading them together would hide the rest.
+        const build = { ...base, activeModes: [mode] };
+        const totals = engineTotals(server, build);
+        const projection = mapPowerProjection(totals.power_projection);
+        const rawGlobal = mapGlobal(totals.bonuses);
+
+        for (const power of powers) {
+          if (!carriesModeVariant(power as Power)) continue;
+          const key = projectionKey(power.powerSet, power.internalName);
+          const engine = projection.get(key);
+          if (!engine) continue;
+          modedPowers += 1;
+
+          const { projection: beta, magnitudes, bag } = betaReference(power, build, atId, rawGlobal);
+          const mags = magnitudeDeltas(`${atId}/${power.internalName}@${mode}`, engine.grantedMagnitudes, magnitudes, bag);
+          deltas.push(...mags.real);
+          adjudicated.push(...mags.adjudicated.map((d) => `${atId}/${power.internalName}@${mode}.${d}`));
+          deltas.push(
+            ...tierDelta(`${power.internalName}@${mode}.recharge`, engine.recharge, beta.recharge),
+            ...tierDelta(`${power.internalName}@${mode}.enduranceCost`, engine.enduranceCost, beta.enduranceCost),
+            ...tierDelta(`${power.internalName}@${mode}.accuracy`, engine.accuracy, beta.accuracy),
+            ...tierDelta(`${power.internalName}@${mode}.castTime`, engine.castTime, beta.castTime),
+            ...tierDelta(`${power.internalName}@${mode}.range`, engine.range, beta.range),
+          );
+
+          // Reach: what the mode actually MOVED against the no-mode run. A redirect that changes
+          // nothing is ungraded however green the parity goes (the PROD6C-3f method).
+          const offBag = displayBag(power, 0, shownPower(power, base));
+          const changed = [...new Set([...Object.keys(offBag), ...Object.keys(bag)])].filter(
+            (bagKey) => JSON.stringify(offBag[bagKey]) !== JSON.stringify(bag[bagKey]),
+          );
+          const beforeCast = plain.get(key)?.castTime;
+          const castMoved = !!beforeCast && !!engine.castTime && Math.abs(beforeCast.base - engine.castTime.base) > TOLERANCE;
+          if (changed.length > 0 || castMoved) {
+            movedPowers += 1;
+            movedRows += changed.length;
+          }
+        }
+      }
+    }
+
+    // eslint-disable-next-line no-console
+    console.warn(
+      `[PROD6C-3l mode redirect] ${server}: ${modedPowers} power/mode pairs projected, ` +
+        `${movedRows} rows on ${movedPowers} of them move against the no-mode run`,
+    );
+    if (adjudicated.length) {
+      // eslint-disable-next-line no-console
+      console.warn(`[PROD6C-3l mode redirect] ${server} engine-supersedes-beta (accepted, ${adjudicated.length}):\n    ${adjudicated.slice(0, 20).join('\n    ')}`);
+    }
+    if (deltas.length) {
+      // eslint-disable-next-line no-console
+      console.error(`\n[PROD6C-3l mode redirect] ${server} (${deltas.length} deltas)\n    ${deltas.slice(0, 40).join('\n    ')}`);
+    }
+    // Anti-vacuity: the corpus must actually REACH a redirect, and the redirect must actually
+    // change something. Asserted per fork because all three carry mode redirects (measured:
+    // 28 / 32 / 22 powers), so none of them may quietly grade nothing.
+    expect(modedPowers, `${server}: no power/mode pair reached — the fixture grades no redirect`).toBeGreaterThan(0);
+    expect(movedPowers, `${server}: ${modedPowers} pairs reached and not one value moved`).toBeGreaterThan(0);
     expect(deltas).toEqual([]);
   }, 300000);
 

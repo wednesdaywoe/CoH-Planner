@@ -111,6 +111,7 @@ export interface CharacterStateCombatContext {
   hidden: boolean;
   global_conditionals: Record<string, boolean>;
   per_power_conditionals: Record<string, boolean>;
+  active_modes: string[];
 }
 
 export interface CharacterState {
@@ -386,6 +387,10 @@ export function toCharacterState(build: Build, ctx: AdapterCalcContext): Charact
       // the map here — the engine reads the data's `scope`, not a curated list of mechanic names.
       global_conditionals: { ...effectiveGlobalAdjusters(build, ctx.globalAdjusters), domination: ctx.dominationActive },
       per_power_conditionals: ctx.mechanicAdjusters,
+      // The caster modes the player switched on. Display only: the engine swaps the redirected
+      // record into the projection, and the TOTALS pass reads the same states through the
+      // powers' own `setsModes` gates, so no total moves (PROD6C-3l).
+      active_modes: build.activeModes ?? [],
     },
   };
 }

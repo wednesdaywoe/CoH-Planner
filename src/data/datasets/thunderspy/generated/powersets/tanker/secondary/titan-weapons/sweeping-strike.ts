@@ -61,6 +61,40 @@ export const SweepingStrike: Power = {
     ["Unmapped",null,0.598905,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
     ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"]
   ],
+  "modeVariants": {
+    "FastMode": {
+      "internalName": "Sweeping_Strike_Fast",
+      "stats": {
+        "accuracy": 1,
+        "range": 10,
+        "radius": 10,
+        "arc": 2.094395160675049,
+        "recharge": 10,
+        "endurance": 10.192,
+        "castTime": 1,
+        "maxTargets": 5
+      },
+      "damage": {
+        "type": "Smashing",
+        "scale": 1.3309,
+        "table": "Melee_Damage"
+      },
+      "damageTypes": [
+        "Smashing"
+      ],
+      "effects": {
+        "knockback": {
+          "scale": 0.67,
+          "table": "Melee_Ones"
+        }
+      },
+      "shortHelp": "Melee (Cone), High DMG(Smashing), Foe Knockdown",
+      "description": "You make a sweeping slash with your weapon, causing high damage and possibly knocking your opponent down. Damage: High, Recharge: Long",
+      "effectArea": "Cone",
+      "targetType": "Foe",
+      "powerType": "Click"
+    }
+  },
   "damageTypes": [
     "Smashing"
   ]

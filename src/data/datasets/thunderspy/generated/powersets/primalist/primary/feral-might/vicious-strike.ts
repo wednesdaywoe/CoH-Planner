@@ -54,6 +54,65 @@ export const ViciousStrike: Power = {
     ["Unmapped",null,0.15,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"No",null,null,null,1],
     ["Unmapped",null,0.3,0,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"No",null,null,null,1]
   ],
+  "modeVariants": {
+    "HunterMode": {
+      "internalName": "Vicious_Strike_Hunter",
+      "stats": {
+        "accuracy": 1,
+        "range": 7,
+        "recharge": 5,
+        "endurance": 6.032,
+        "castTime": 1.4,
+        "maxTargets": 1
+      },
+      "damage": {
+        "type": "Special",
+        "scale": 1.5,
+        "table": "Melee_Damage"
+      },
+      "damageTypes": [
+        "Lethal"
+      ],
+      "shortHelp": "Melee, Moderate DMG(Special), Special",
+      "description": "You strike a foe dealing Moderate damage. In primal (human) form you will deal smashing damage and will heal yourself and up to 3 nearby allies for a small amount of health. In Hunter form you'll deal lethal damage and reduce the target's damage resistance. In Prowler form you'll deal lethal damage, cause minor lethal damage over time and have a fair chance to stun. This power builds 1 primal energy. Damage: Moderate, Recharge: Fast",
+      "effectArea": "SingleTarget",
+      "targetType": "Foe",
+      "powerType": "Click"
+    },
+    "ProwlerMode": {
+      "internalName": "Vicious_Strike_Prowler",
+      "stats": {
+        "accuracy": 1,
+        "range": 7,
+        "recharge": 5,
+        "endurance": 6.032,
+        "castTime": 1.4,
+        "maxTargets": 1
+      },
+      "damage": [
+        {
+          "type": "Special",
+          "scale": 1.5,
+          "table": "Melee_Damage"
+        },
+        {
+          "type": "Special",
+          "scale": 0.1,
+          "table": "Melee_Damage",
+          "duration": 4.1,
+          "tickRate": 1
+        }
+      ],
+      "damageTypes": [
+        "Lethal"
+      ],
+      "shortHelp": "Melee, Moderate DMG(Special), Special",
+      "description": "You strike a foe dealing Moderate damage. In primal (human) form you will deal smashing damage and will heal yourself and up to 3 nearby allies for a small amount of health. In Hunter form you'll deal lethal damage and reduce the target's damage resistance. In Prowler form you'll deal lethal damage, cause minor lethal damage over time and have a fair chance to stun. This power builds 1 primal energy. Damage: Moderate, Recharge: Fast",
+      "effectArea": "SingleTarget",
+      "targetType": "Foe",
+      "powerType": "Click"
+    }
+  },
   "damageTypes": [
     "Smashing"
   ]
