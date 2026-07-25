@@ -32,6 +32,8 @@ import { join } from 'node:path';
 import { loadDataset } from '@/data/dataset';
 import { getArchetype, STANDARD_ARCHETYPE_IDS } from '@/data/archetypes';
 import { getPowersetsForArchetype } from '@/data/powersets';
+import { getAllPowerPools } from '@/data/power-pools';
+import { getAllEpicPools } from '@/data/epic-pools';
 import { getAvailableGenericIOs, createGenericIOEnhancement } from '@/data/enhancement-registry';
 import { getIOSet } from '@/data/io-sets';
 import { withoutIllegalSlots } from '@/utils/build-enhancement-validation';
@@ -303,6 +305,34 @@ function exportedExemplarBonusCap(server: Server, exemplarLevel: number): number
   return curve[index] ?? 1.0;
 }
 
+/** The pool/epic power the ENGINE actually reads, keyed the way the engine addresses it — the
+ *  aggregate's `id` plus the `fullName`-derived identity `coh_data` normalizes to at load.
+ *
+ *  This is the evidence side of the PROD6C-3h adjudications. The two repos' converters have
+ *  drifted in BOTH directions for these two partitions ([[prod6b2a-absorb-stdresult]]), so a row
+ *  the beta resolves and the engine does not is only acceptable when the engine's own copy of the
+ *  power has nothing to resolve it FROM. Reading the bundle proves that rather than assuming it. */
+type BundlePower = { effects?: Record<string, unknown>; strengthsDisallowed?: string[]; globalStrengthsDisallowed?: string[] };
+const bundlePartitionCache = new Map<Server, Map<string, BundlePower>>();
+function bundlePartitionPowers(server: Server): Map<string, BundlePower> {
+  const cached = bundlePartitionCache.get(server);
+  if (cached) return cached;
+  const bundle = JSON.parse(
+    gunzipSync(readFileSync(join(BUNDLE_DIR, `${server}.json.gz`))).toString('utf8'),
+  ) as Record<string, Record<string, { id?: string; powers?: (BundlePower & { name?: string; fullName?: string })[] }>>;
+  const out = new Map<string, BundlePower>();
+  for (const section of ['power-pools', 'epic-pools']) {
+    for (const [setKey, set] of Object.entries(bundle[section] ?? {})) {
+      for (const power of set.powers ?? []) {
+        const source = power.fullName?.split('.').pop() ?? power.name ?? '';
+        out.set(projectionKey(set.id ?? setKey, source.replace(/\s+/g, '_')), power);
+      }
+    }
+  }
+  bundlePartitionCache.set(server, out);
+  return out;
+}
+
 /** `CTX` with the PROD6C-1d inputs turned on. Everything else stays at the totals hook's own
  *  defaults so a delta can only come from the input under test. */
 function ctxWith(overrides: Partial<AdapterCalcContext>): AdapterCalcContext {
@@ -370,19 +400,63 @@ function tierDelta(label: string, engine: ThreeTierValues | null, beta: ThreeTie
 // PROD5 pattern — the export is truth). That is logged, not failed. The reverse (engine null while
 // the beta has a perma) would mean the engine dropped a duration the beta carries — a real defect,
 // so it stays a hard delta.
-function permaDelta(engine: PermaInfo | null, beta: PermaInfo | null): { real: string[]; adjudicated: string[] } {
+/** The `strengthsDisallowed` entry that locks a power's recharge. Schema vocabulary (the export's
+ *  own strength name), not a game proper noun. */
+const RECHARGE_STRENGTH = 'RechargeTime';
+
+/** Evidence that a perma disagreement is the engine reading an export field the beta ignores,
+ *  rather than engine perma math being wrong. Supplied only where the caller has the engine's own
+ *  copy of the power (PROD6C-3h); absent, every field stays a hard delta.
+ *
+ *  Two shapes, each pinned to a specific field set so an unrelated perma bug still fails:
+ *   - the power's `strengthsDisallowed` / `globalStrengthsDisallowed` lists RechargeTime, so the
+ *     engine correctly holds `totalRecharge` at 0 while the beta applies the build's global; the
+ *     three fields that derive from it move together;
+ *   - the two datasets resolved different durations, which moves `duration` and the
+ *     `rechargeNeeded` computed from it. */
+function permaEvidence(power: BundlePower | undefined, betaDuration: number): { rechargeLocked: boolean; durationDiffers: boolean } {
+  const disallowed = [...(power?.strengthsDisallowed ?? []), ...(power?.globalStrengthsDisallowed ?? [])];
+  const engineDuration = (power?.effects as { buffDuration?: number; effectDuration?: number } | undefined);
+  const resolved = engineDuration?.buffDuration ?? engineDuration?.effectDuration;
+  return {
+    rechargeLocked: disallowed.includes(RECHARGE_STRENGTH),
+    durationDiffers: resolved != null && Math.abs(resolved - betaDuration) > TOLERANCE,
+  };
+}
+
+function permaDelta(
+  engine: PermaInfo | null,
+  beta: PermaInfo | null,
+  evidence?: BundlePower | undefined,
+): { real: string[]; adjudicated: string[] } {
   if (engine === null && beta === null) return { real: [], adjudicated: [] };
   if (engine !== null && beta === null) {
     return { real: [], adjudicated: [`perma: engine computes (recharge ${engine.baseRecharge}s / dur ${engine.duration}s) but beta dropped the duration → null`] };
   }
   if (engine === null || beta === null) return { real: [`perma: engine ${engine ? 'set' : 'null'} vs beta ${beta ? 'set' : 'null'}`], adjudicated: [] };
   const real: string[] = [];
+  const adjudicated: string[] = [];
+  const { rechargeLocked, durationDiffers } = evidence !== undefined
+    ? permaEvidence(evidence, beta.duration)
+    : { rechargeLocked: false, durationDiffers: false };
+  // Fields each piece of evidence explains. Anything outside these sets is still a real delta
+  // even on a power the evidence covers.
+  const lockedFields = new Set<keyof PermaInfo>(['totalRecharge', 'effectiveRecharge', 'permaPercent']);
+  const durationFields = new Set<keyof PermaInfo>(['duration', 'rechargeNeeded', 'permaPercent']);
+
   const numeric: (keyof PermaInfo)[] = ['baseRecharge', 'duration', 'effectiveRecharge', 'rechargeNeeded', 'totalRecharge', 'permaPercent'];
   for (const k of numeric) {
-    if (Math.abs((engine[k] as number) - (beta[k] as number)) > TOLERANCE) real.push(`perma.${k}: engine ${engine[k]} vs beta ${beta[k]}`);
+    if (Math.abs((engine[k] as number) - (beta[k] as number)) <= TOLERANCE) continue;
+    if (rechargeLocked && lockedFields.has(k)) {
+      adjudicated.push(`perma.${k}: engine ${engine[k]} vs beta ${beta[k]} — the export disallows ${RECHARGE_STRENGTH} on this power and the beta applies the global anyway`);
+    } else if (durationDiffers && durationFields.has(k)) {
+      adjudicated.push(`perma.${k}: engine ${engine[k]} vs beta ${beta[k]} — the two datasets resolved different durations (engine ${engine.duration}s, beta ${beta.duration}s)`);
+    } else {
+      real.push(`perma.${k}: engine ${engine[k]} vs beta ${beta[k]}`);
+    }
   }
   if (engine.isPerma !== beta.isPerma) real.push(`perma.isPerma: engine ${engine.isPerma} vs beta ${beta.isPerma}`);
-  return { real, adjudicated: [] };
+  return { real, adjudicated };
 }
 
 /**
@@ -501,6 +575,17 @@ function betaMagnitudes(
  *  vocabulary, not game proper nouns, so naming it here does not breach Rule 0. */
 const UNTYPED_DURATION_EFFECT_KEY = 'effectDuration';
 
+/** Effect keys the engine SYNTHESIZES when it normalizes a legacy pool/epic power
+ *  (`coh_data`'s `normalize_legacy_power`), rather than reading from the converter.
+ *
+ *  These are excluded from the beta-only adjudication below. That adjudication accepts a missing
+ *  engine key as converter drift, which is true for an authored effect and false for these: here a
+ *  missing key means the normalization itself broke, and "the engine's dataset carries no
+ *  'castTime'" is a description of the defect, not an excuse for it. Measured — with the renames
+ *  disabled the adjudication swallowed every one of these rows, and only the separate
+ *  projection-field comparison still failed the gate. */
+const ENGINE_NORMALIZED_EFFECT_KEYS = new Set(['enduranceCost', 'castTime']);
+
 /** Diff one power's granted magnitudes, split into real disagreements and adjudicated
  *  engine-supersedes-beta ones. Rows are matched by key, not position — the engine emits them in
  *  bag order while the beta resolver emits them in registry-group order, and row ORDER is the
@@ -516,12 +601,20 @@ const UNTYPED_DURATION_EFFECT_KEY = 'effectDuration';
  *  the beta's bag has no key for. Both rows are then the SAME template read twice: the rebuild's
  *  parser recovered its attrib (tspy `Power_Build_Up` → `+Special: Stun`), while the beta's
  *  converter could only keep the duration it hung on. Accepting it needs that typed engine row as
- *  evidence, so a genuine engine drop — no typed row to point at — still fails. */
+ *  evidence, so a genuine engine drop — no typed row to point at — still fails.
+ *
+ *  `engineEffects` opens the SYMMETRIC case, and only when the caller can supply the engine's own
+ *  copy of the bag (PROD6C-3h, the pool/epic partitions). The rule mirrors the engine-only one
+ *  exactly: a beta-only row is adjudicated when the ENGINE's bag has no such key to resolve from,
+ *  and stays a hard delta when it HAS the key and still resolved nothing — which is the actual
+ *  engine defect this branch exists to catch. Without the bag the branch is unchanged, so every
+ *  other sweep keeps failing on beta-only rows. */
 function magnitudeDeltas(
   powerName: string,
   engineRows: GrantedMagnitude[],
   betaRows: Map<string, ResolvedMagnitude>,
   betaEffects: Record<string, unknown> | undefined,
+  engineEffects?: Record<string, unknown>,
 ): { real: string[]; adjudicated: string[] } {
   const out: string[] = [];
   const adjudicated: string[] = [];
@@ -543,8 +636,15 @@ function magnitudeDeltas(
     }
     if (!engine || !beta) {
       const untypedResidue = beta?.effectKey === UNTYPED_DURATION_EFFECT_KEY && enginesOwnTypings.length > 0;
+      const engineHasNothingToResolve =
+        engineEffects != null &&
+        beta != null &&
+        !ENGINE_NORMALIZED_EFFECT_KEYS.has(beta.effectKey) &&
+        engineEffects[beta.effectKey] == null;
       if (untypedResidue) {
         adjudicated.push(`${key}: beta resolved a bare ${beta!.config.label} where the export types the template as ${enginesOwnTypings.map((row) => row.label).join(', ')}`);
+      } else if (engineHasNothingToResolve) {
+        adjudicated.push(`${key}: beta resolved ${beta!.config.label} but the engine's dataset carries no '${beta!.effectKey}' effect`);
       } else {
         out.push(`${powerName}.${key}: beta only (engine resolved no row)`);
       }
@@ -915,6 +1015,123 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
     expect(magnitudeRows, `${server}: no unheld power resolved a magnitude row`).toBeGreaterThan(0);
     expect(deltas).toEqual([]);
   }, 120000);
+
+  // PROD6C-3h. The pool and epic partitions, which no projection gate had ever reached: the sweeps
+  // above walk powerSETS (the fixture's own two, then an unpicked one), so every pool and epic
+  // power went ungraded — the PROD6B-2b blind spot exactly, where `getAllPowersets()` omitting
+  // pools and epics hid 100% of that finding.
+  //
+  // Both partitions arrive in the converter's LEGACY shape: identity only in `fullName`, execution
+  // stats under `endurance` / `activationTime`. The beta normalizes them at runtime
+  // (`transformPoolPower`); `coh_data` now does the same at bundle load. Two guards below prove the
+  // gate can actually SEE a regression in that, rather than passing on a corpus that cannot reach
+  // it — the 6C-3f method:
+  //
+  //   * `renamed` counts powers whose internal name differs from their display name (Swift/Quick,
+  //     Hover/Combat_Flight — the game renamed them and kept the original internal name). These are
+  //     addressable ONLY through the fullName derivation, so a non-zero count is what makes the
+  //     non-null assertion load-bearing.
+  //   * `shared` counts internal names published by more than one epic mastery at their own scales.
+  //     A lookup that ignores the requested set answers with another archetype's copy, so a
+  //     non-zero count is what makes the set-scoped resolution load-bearing.
+  it.each(SERVERS)('%s: pool and epic powers project through their legacy shape', async (server) => {
+    await loadDataset(server);
+
+    const build = buildFor(server);
+    const atId = build.archetype.id as string;
+    const stateJson = toCharacterStateJson(withoutIllegalSlots(build), CTX);
+    const rawGlobal = mapGlobal(engineTotals(server, build).bonuses);
+    const bundlePowers = bundlePartitionPowers(server);
+
+    const partitions: { label: string; sets: { id: string; powers: Power[] }[] }[] = [
+      { label: 'pool', sets: Object.values(getAllPowerPools()) as { id: string; powers: Power[] }[] },
+      { label: 'epic', sets: Object.values(getAllEpicPools()) as { id: string; powers: Power[] }[] },
+    ];
+
+    const deltas: string[] = [];
+    const adjudicated: string[] = [];
+    let projected = 0;
+    let magnitudeRows = 0;
+    let renamed = 0;
+    const epicNameOwners = new Map<string, Set<string>>();
+
+    for (const { label, sets } of partitions) {
+      for (const set of sets) {
+        for (const power of set.powers ?? []) {
+          if (power.internalName !== power.name.replace(/\s+/g, '_')) renamed += 1;
+          if (label === 'epic') {
+            const owners = epicNameOwners.get(power.internalName) ?? new Set<string>();
+            owners.add(set.id);
+            epicNameOwners.set(power.internalName, owners);
+          }
+
+          const tag = `${label}/${set.id}/${power.internalName}`;
+          const json = engineHandle(server).project_power(stateJson, set.id, power.internalName);
+          const raw = JSON.parse(json) as Parameters<typeof mapOnePowerProjection>[0] | null;
+          expect(raw, `${server}: no projection for ${tag} — the partition's identity is unreachable`).not.toBeNull();
+          if (!raw) continue;
+          const engine = mapOnePowerProjection(raw);
+          projected += 1;
+          magnitudeRows += engine.grantedMagnitudes.length;
+
+          // A pool/epic power is never held by this fixture, so the beta reference is the same
+          // calculators run unslotted — identical to the on-demand sweep above.
+          const unslotted = { ...power, powerSet: set.id, level: power.available + 1, slots: [] } as SelectedPower;
+          const { projection: beta, magnitudes } = betaReference(unslotted, build, atId, rawGlobal);
+          // The engine's OWN copy of this power — the evidence both adjudications rest on.
+          const enginePower = bundlePowers.get(projectionKey(set.id, power.internalName));
+          const mags = magnitudeDeltas(
+            tag,
+            engine.grantedMagnitudes,
+            magnitudes,
+            (power as unknown as { effects?: Record<string, unknown> }).effects,
+            enginePower?.effects ?? {},
+          );
+          const perma = permaDelta(engine.perma, beta.perma, enginePower);
+          deltas.push(
+            ...tierDelta(`${tag}.recharge`, engine.recharge, beta.recharge),
+            ...tierDelta(`${tag}.enduranceCost`, engine.enduranceCost, beta.enduranceCost),
+            ...tierDelta(`${tag}.accuracy`, engine.accuracy, beta.accuracy),
+            ...tierDelta(`${tag}.castTime`, engine.castTime, beta.castTime),
+            ...tierDelta(`${tag}.range`, engine.range, beta.range),
+            ...perma.real.map((d) => `${tag}.${d}`),
+            ...mags.real,
+          );
+          adjudicated.push(
+            ...perma.adjudicated.map((d) => `${tag}.${d}`),
+            ...mags.adjudicated.map((d) => `${tag}.${d}`),
+          );
+        }
+      }
+    }
+
+    const shared = [...epicNameOwners.values()].filter((owners) => owners.size > 1).length;
+
+    // eslint-disable-next-line no-console
+    console.warn(
+      `[PROD6C-3h partitions] ${server}: ${projected} pool/epic powers projected, ${magnitudeRows} magnitude rows, ` +
+        `${renamed} carry an internal name their display name does not yield, ${shared} epic names published by more than one mastery`,
+    );
+    if (adjudicated.length) {
+      // eslint-disable-next-line no-console
+      console.warn(`[PROD6C-3h partitions] ${server} engine-supersedes-beta (accepted, ${adjudicated.length}):\n    ${adjudicated.slice(0, 20).join('\n    ')}`);
+    }
+    if (deltas.length) {
+      // eslint-disable-next-line no-console
+      console.error(`\n[PROD6C-3h partitions] ${server} (${deltas.length} deltas)\n    ${deltas.slice(0, 40).join('\n    ')}`);
+    }
+    expect(projected, `${server}: no pool or epic power was projected`).toBeGreaterThan(0);
+    expect(magnitudeRows, `${server}: no pool or epic power resolved a magnitude row`).toBeGreaterThan(0);
+    expect(
+      renamed,
+      `${server}: no pool/epic power's internal name differs from its display name — the non-null assertion above cannot detect a lost fullName derivation`,
+    ).toBeGreaterThan(0);
+    expect(
+      shared,
+      `${server}: no epic internal name is published by two masteries — this sweep cannot detect an unscoped pool/epic lookup`,
+    ).toBeGreaterThan(0);
+    expect(deltas).toEqual([]);
+  }, 180000);
 
   // PROD6C. The active +Strength self-buffs (Power Boost family) land in a magnitude row's FINAL
   // column exactly like a build-wide global — InfoPanel has always folded them in, the tooltip
