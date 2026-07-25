@@ -161,6 +161,152 @@ export const GENERATED_ALPHA_EFFECTS: Record<string, Record<string, number>> = {
   'vigor_total_radial_revamp': {"levelShift":1,"heal":0.33,"accuracy":0.165,"enduranceReduction":0.33,"confuse":0.33},
 };
 
+// Per-aspect portion of each GENERATED_ALPHA_EFFECTS bonus that bypasses
+// Enhancement Diversification — the BoostIgnoreDiminishing-flagged template
+// (HC/Rebirth) or the generic `Ones` template (Thunderspy) in the silent
+// grant power. Authored per silent FILE, so secondary aspects can carry a
+// different split than the headline aspect. Absent aspect = no bypass
+// (the whole bonus is subject to ED).
+
+export const GENERATED_ALPHA_ED_BYPASS: Record<string, Record<string, number>> = {
+  // Agility Boost
+  'agility_boost': {"enduranceModification":0.055},
+  // Agility Core Boost
+  'agility_core_boost': {"enduranceModification":0.11},
+  // Agility Core Paragon
+  'agility_core_paragon': {"enduranceModification":0.3,"defense":0.0667},
+  // Agility Partial Core Revamp
+  'agility_partial_core_revamp': {"enduranceModification":0.165,"defense":0.1},
+  // Agility Partial Radial Revamp
+  'agility_partial_radial_revamp': {"enduranceModification":0.165,"defense":0.1},
+  // Agility Radial Boost
+  'agility_radial_boost': {"enduranceModification":0.11,"defense":0.1333},
+  // Agility Radial Paragon
+  'agility_radial_paragon': {"enduranceModification":0.22,"defense":0.0667,"jumpSpeed":0.22,"flySpeed":0.22},
+  // Agility Total Core Revamp
+  'agility_total_core_revamp': {"enduranceModification":0.225},
+  // Agility Total Radial Revamp
+  'agility_total_radial_revamp': {"enduranceModification":0.165,"defense":0.1,"jumpSpeed":0.165},
+  // Cardiac Boost
+  'cardiac_boost': {"enduranceReduction":0.055},
+  // Cardiac Core Boost
+  'cardiac_core_boost': {"enduranceReduction":0.11,"range":0.0667},
+  // Cardiac Core Paragon
+  'cardiac_core_paragon': {"enduranceReduction":0.3,"range":0.1333,"resistance":0.0667},
+  // Cardiac Partial Core Revamp
+  'cardiac_partial_core_revamp': {"enduranceReduction":0.165,"range":0.1,"resistance":0.1},
+  // Cardiac Partial Radial Revamp
+  'cardiac_partial_radial_revamp': {"enduranceReduction":0.165,"range":0.05,"resistance":0.1,"fear":0.165},
+  // Cardiac Radial Boost
+  'cardiac_radial_boost': {"enduranceReduction":0.11,"resistance":0.1333},
+  // Cardiac Radial Paragon
+  'cardiac_radial_paragon': {"enduranceReduction":0.22,"range":0.1333,"resistance":0.0667,"fear":0.22},
+  // Cardiac Total Core Revamp
+  'cardiac_total_core_revamp': {"enduranceReduction":0.225,"range":0.1},
+  // Cardiac Total Radial Revamp
+  'cardiac_total_radial_revamp': {"enduranceReduction":0.165,"range":0.05,"resistance":0.1},
+  // Intuition Core Boost
+  'intuition_core_boost': {"defenseDebuff":0.22},
+  // Intuition Core Paragon
+  'intuition_core_paragon': {"defenseDebuff":0.11,"range":0.1333},
+  // Intuition Partial Core Revamp
+  'intuition_partial_core_revamp': {"defenseDebuff":0.165,"range":0.1},
+  // Intuition Partial Radial Revamp
+  'intuition_partial_radial_revamp': {"defenseDebuff":0.0825,"range":0.1,"damage":0.165},
+  // Intuition Radial Boost
+  'intuition_radial_boost': {"range":0.0667},
+  // Intuition Radial Paragon
+  'intuition_radial_paragon': {"defenseDebuff":0.11,"range":0.1333,"toHitDebuff":0.1333,"damage":0.11},
+  // Intuition Total Core Revamp
+  'intuition_total_core_revamp': {"defenseDebuff":0.165},
+  // Intuition Total Radial Revamp
+  'intuition_total_radial_revamp': {"defenseDebuff":0.0825,"range":0.1,"toHitDebuff":0.1},
+  // Musculature Boost
+  'musculature_boost': {"damage":0.275},
+  // Musculature Core Boost
+  'musculature_core_boost': {"damage":0.22},
+  // Musculature Core Paragon
+  'musculature_core_paragon': {"damage":0.15,"defenseDebuff":0.11},
+  // Musculature Partial Core Revamp
+  'musculature_partial_core_revamp': {"damage":0.165,"defenseDebuff":0.165},
+  // Musculature Partial Radial Revamp
+  'musculature_partial_radial_revamp': {"damage":0.165,"defenseDebuff":0.165,"toHitDebuff":0.1},
+  // Musculature Radial Boost
+  'musculature_radial_boost': {"damage":0.22,"defenseDebuff":0.22},
+  // Musculature Radial Paragon
+  'musculature_radial_paragon': {"damage":0.11,"defenseDebuff":0.11,"enduranceModification":0.22,"toHitDebuff":0.1333},
+  // Musculature Total Core Revamp
+  'musculature_total_core_revamp': {"damage":0.225},
+  // Musculature Total Radial Revamp
+  'musculature_total_radial_revamp': {"damage":0.165,"defenseDebuff":0.165,"enduranceModification":0.165},
+  // Nerve Boost
+  'nerve_boost': {"accuracy":0.055},
+  // Nerve Core Boost
+  'nerve_core_boost': {"accuracy":0.11},
+  // Nerve Core Paragon
+  'nerve_core_paragon': {"accuracy":0.3,"defense":0.0667},
+  // Nerve Partial Core Revamp
+  'nerve_partial_core_revamp': {"accuracy":0.165,"defense":0.1},
+  // Nerve Partial Radial Revamp
+  'nerve_partial_radial_revamp': {"accuracy":0.165,"defense":0.1,"taunt":0.165},
+  // Nerve Radial Boost
+  'nerve_radial_boost': {"accuracy":0.11,"defense":0.1333},
+  // Nerve Radial Paragon
+  'nerve_radial_paragon': {"accuracy":0.22,"defense":0.0667,"taunt":0.22,"flySpeed":0.22},
+  // Nerve Total Core Revamp
+  'nerve_total_core_revamp': {"accuracy":0.225},
+  // Nerve Total Radial Revamp
+  'nerve_total_radial_revamp': {"accuracy":0.165,"defense":0.1},
+  // Resilient Boost
+  'resilient_boost': {"resistance":0.1667},
+  // Resilient Core Boost
+  'resilient_core_boost': {"resistance":0.1333,"toHitBuff":0.0667},
+  // Resilient Core Paragon
+  'resilient_core_paragon': {"resistance":0.11,"toHitBuff":0.1333},
+  // Resilient Partial Core Revamp
+  'resilient_partial_core_revamp': {"resistance":0.1,"toHitBuff":0.1},
+  // Resilient Partial Radial Revamp
+  'resilient_partial_radial_revamp': {"resistance":0.1,"toHitBuff":0.05},
+  // Resilient Radial Boost
+  'resilient_radial_boost': {"resistance":0.1333},
+  // Resilient Radial Paragon
+  'resilient_radial_paragon': {"resistance":0.0667,"toHitBuff":0.1333,"taunt":0.22},
+  // Resilient Total Core Revamp
+  'resilient_total_core_revamp': {"resistance":0.165,"toHitBuff":0.1},
+  // Resilient Total Radial Revamp
+  'resilient_total_radial_revamp': {"resistance":0.1,"toHitBuff":0.05},
+  // Spiritual Core Paragon
+  'spiritual_core_paragon': {"heal":0.22},
+  // Spiritual Partial Core Revamp
+  'spiritual_partial_core_revamp': {"heal":0.165},
+  // Spiritual Partial Radial Revamp
+  'spiritual_partial_radial_revamp': {"heal":0.165},
+  // Spiritual Radial Boost
+  'spiritual_radial_boost': {"heal":0.11},
+  // Spiritual Radial Paragon
+  'spiritual_radial_paragon': {"heal":0.22,"toHitBuff":0.1333,"jumpSpeed":0.22},
+  // Spiritual Total Radial Revamp
+  'spiritual_total_radial_revamp': {"heal":0.165,"toHitBuff":0.1},
+  // Vigor Boost
+  'vigor_boost': {"heal":0.055},
+  // Vigor Core Boost
+  'vigor_core_boost': {"heal":0.11,"accuracy":0.11},
+  // Vigor Core Paragon
+  'vigor_core_paragon': {"heal":0.3,"accuracy":0.22,"enduranceReduction":0.22},
+  // Vigor Partial Core Revamp
+  'vigor_partial_core_revamp': {"heal":0.165,"accuracy":0.165,"enduranceReduction":0.165},
+  // Vigor Partial Radial Revamp
+  'vigor_partial_radial_revamp': {"heal":0.165,"accuracy":0.0825,"enduranceReduction":0.165},
+  // Vigor Radial Boost
+  'vigor_radial_boost': {"heal":0.11,"enduranceReduction":0.11},
+  // Vigor Radial Paragon
+  'vigor_radial_paragon': {"heal":0.22,"accuracy":0.22,"enduranceReduction":0.22,"fear":0.22},
+  // Vigor Total Core Revamp
+  'vigor_total_core_revamp': {"heal":0.225,"accuracy":0.165},
+  // Vigor Total Radial Revamp
+  'vigor_total_radial_revamp': {"heal":0.165,"accuracy":0.0825,"enduranceReduction":0.165},
+};
+
 // ============================================
 // DESTINY EFFECTS
 // ============================================
@@ -896,95 +1042,95 @@ export const GENERATED_JUDGEMENT_EFFECTS: Record<string, {
   secondaryEffects: string[];
 }> = {
   // Cryonic Core Final Judgement
-  'cryonic_core_final_judgement': {"damageType":"Unknown","effectArea":"Cone","range":120,"radius":120,"arc":0.8,"maxTargets":32,"activationTime":2,"rechargeTime":90,"damageScale":0,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'cryonic_core_final_judgement': {"damageType":"Cold","effectArea":"Cone","range":120,"radius":120,"arc":0.8,"maxTargets":32,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
   // Cryonic Core Judgement
-  'cryonic_core_judgement': {"damageType":"Unknown","effectArea":"Cone","range":80,"radius":80,"arc":0.5,"maxTargets":16,"activationTime":2,"rechargeTime":90,"damageScale":0,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'cryonic_core_judgement': {"damageType":"Cold","effectArea":"Cone","range":80,"radius":80,"arc":0.5,"maxTargets":16,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
   // Cryonic Judgement
-  'cryonic_judgement': {"damageType":"Unknown","effectArea":"Cone","range":80,"radius":80,"arc":0.5,"maxTargets":16,"activationTime":2,"rechargeTime":90,"damageScale":0,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'cryonic_judgement': {"damageType":"Cold","effectArea":"Cone","range":80,"radius":80,"arc":0.5,"maxTargets":16,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
   // Cryonic Partial Core Judgement
-  'cryonic_partial_core_judgement': {"damageType":"Unknown","effectArea":"Cone","range":80,"radius":80,"arc":0.5,"maxTargets":24,"activationTime":2,"rechargeTime":90,"damageScale":0,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'cryonic_partial_core_judgement': {"damageType":"Cold","effectArea":"Cone","range":80,"radius":80,"arc":0.5,"maxTargets":24,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
   // Cryonic Partial Radial Judgement
-  'cryonic_partial_radial_judgement': {"damageType":"Unknown","effectArea":"Cone","range":120,"radius":120,"arc":0.8,"maxTargets":32,"activationTime":2,"rechargeTime":90,"damageScale":0,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'cryonic_partial_radial_judgement': {"damageType":"Cold","effectArea":"Cone","range":120,"radius":120,"arc":0.8,"maxTargets":32,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
   // Cryonic Radial Final Judgement
-  'cryonic_radial_final_judgement': {"damageType":"Unknown","effectArea":"Cone","range":120,"radius":120,"arc":0.8,"maxTargets":32,"activationTime":2,"rechargeTime":90,"damageScale":0,"tableName":"Ranged_Tempdamage","secondaryEffects":["Held Mag 4"]},
+  'cryonic_radial_final_judgement': {"damageType":"Cold","effectArea":"Cone","range":120,"radius":120,"arc":0.8,"maxTargets":32,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["Held Mag 4"]},
   // Cryonic Radial Judgement
-  'cryonic_radial_judgement': {"damageType":"Unknown","effectArea":"Cone","range":80,"radius":80,"arc":0.5,"maxTargets":16,"activationTime":2,"rechargeTime":90,"damageScale":0,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'cryonic_radial_judgement': {"damageType":"Cold","effectArea":"Cone","range":80,"radius":80,"arc":0.5,"maxTargets":16,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
   // Cryonic Total Core Judgement
-  'cryonic_total_core_judgement': {"damageType":"Unknown","effectArea":"Cone","range":80,"radius":80,"arc":0.5,"maxTargets":24,"activationTime":2,"rechargeTime":90,"damageScale":0,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'cryonic_total_core_judgement': {"damageType":"Cold","effectArea":"Cone","range":80,"radius":80,"arc":0.5,"maxTargets":24,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
   // Cryonic Total Radial Judgement
-  'cryonic_total_radial_judgement': {"damageType":"Unknown","effectArea":"Cone","range":80,"radius":80,"arc":0.5,"maxTargets":24,"activationTime":2,"rechargeTime":90,"damageScale":0,"tableName":"Ranged_Tempdamage","secondaryEffects":["Held Mag 4"]},
+  'cryonic_total_radial_judgement': {"damageType":"Cold","effectArea":"Cone","range":80,"radius":80,"arc":0.5,"maxTargets":24,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["Held Mag 4"]},
   // Ion Core Final Judgement
-  'ion_core_final_judgement': {"damageType":"Unknown","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":0,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'ion_core_final_judgement': {"damageType":"Energy","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
   // Ion Core Judgement
-  'ion_core_judgement': {"damageType":"Unknown","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":0,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'ion_core_judgement': {"damageType":"Energy","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
   // Ion Judgement
-  'ion_judgement': {"damageType":"Unknown","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":0,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'ion_judgement': {"damageType":"Energy","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
   // Ion Partial Core Judgement
-  'ion_partial_core_judgement': {"damageType":"Unknown","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":0,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'ion_partial_core_judgement': {"damageType":"Energy","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
   // Ion Partial Radial Judgement
-  'ion_partial_radial_judgement': {"damageType":"Unknown","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":0,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'ion_partial_radial_judgement': {"damageType":"Energy","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
   // Ion Radial Final Judgement
-  'ion_radial_final_judgement': {"damageType":"Unknown","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":0,"tableName":"Ranged_Tempdamage","secondaryEffects":["Held Mag 4"]},
+  'ion_radial_final_judgement': {"damageType":"Energy","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["Held Mag 4"]},
   // Ion Radial Judgement
-  'ion_radial_judgement': {"damageType":"Unknown","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":0,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'ion_radial_judgement': {"damageType":"Energy","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
   // Ion Total Core Judgement
-  'ion_total_core_judgement': {"damageType":"Unknown","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":0,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'ion_total_core_judgement': {"damageType":"Energy","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
   // Ion Total Radial Judgement
-  'ion_total_radial_judgement': {"damageType":"Unknown","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":0,"tableName":"Ranged_Tempdamage","secondaryEffects":["Held Mag 4"]},
+  'ion_total_radial_judgement': {"damageType":"Energy","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["Held Mag 4"]},
   // Pyronic Core Final Judgement
-  'pyronic_core_final_judgement': {"damageType":"Unknown","effectArea":"Targeted AoE","range":80,"radius":40,"arc":0,"maxTargets":24,"activationTime":1,"rechargeTime":90,"damageScale":0,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'pyronic_core_final_judgement': {"damageType":"Fire","effectArea":"Targeted AoE","range":80,"radius":40,"arc":0,"maxTargets":24,"activationTime":1,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
   // Pyronic Core Judgement
-  'pyronic_core_judgement': {"damageType":"Unknown","effectArea":"Targeted AoE","range":80,"radius":25,"arc":0,"maxTargets":16,"activationTime":1,"rechargeTime":90,"damageScale":0,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'pyronic_core_judgement': {"damageType":"Fire","effectArea":"Targeted AoE","range":80,"radius":25,"arc":0,"maxTargets":16,"activationTime":1,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
   // Pyronic Judgement
-  'pyronic_judgement': {"damageType":"Unknown","effectArea":"Targeted AoE","range":80,"radius":25,"arc":0,"maxTargets":16,"activationTime":1,"rechargeTime":90,"damageScale":0,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'pyronic_judgement': {"damageType":"Fire","effectArea":"Targeted AoE","range":80,"radius":25,"arc":0,"maxTargets":16,"activationTime":1,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
   // Pyronic Partial Core Judgement
-  'pyronic_partial_core_judgement': {"damageType":"Unknown","effectArea":"Targeted AoE","range":80,"radius":25,"arc":0,"maxTargets":16,"activationTime":1,"rechargeTime":90,"damageScale":0,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'pyronic_partial_core_judgement': {"damageType":"Fire","effectArea":"Targeted AoE","range":80,"radius":25,"arc":0,"maxTargets":16,"activationTime":1,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
   // Pyronic Partial Radial Judgement
-  'pyronic_partial_radial_judgement': {"damageType":"Unknown","effectArea":"Targeted AoE","range":80,"radius":40,"arc":0,"maxTargets":32,"activationTime":1,"rechargeTime":90,"damageScale":0,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'pyronic_partial_radial_judgement': {"damageType":"Fire","effectArea":"Targeted AoE","range":80,"radius":40,"arc":0,"maxTargets":32,"activationTime":1,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
   // Pyronic Radial Final Judgement
-  'pyronic_radial_final_judgement': {"damageType":"Unknown","effectArea":"Targeted AoE","range":80,"radius":40,"arc":0,"maxTargets":32,"activationTime":1,"rechargeTime":90,"damageScale":0,"tableName":"Ranged_Tempdamage","secondaryEffects":["Stunned Mag 4"]},
+  'pyronic_radial_final_judgement': {"damageType":"Fire","effectArea":"Targeted AoE","range":80,"radius":40,"arc":0,"maxTargets":32,"activationTime":1,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["Stunned Mag 4"]},
   // Pyronic Radial Judgement
-  'pyronic_radial_judgement': {"damageType":"Unknown","effectArea":"Targeted AoE","range":80,"radius":40,"arc":0,"maxTargets":24,"activationTime":1,"rechargeTime":90,"damageScale":0,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'pyronic_radial_judgement': {"damageType":"Fire","effectArea":"Targeted AoE","range":80,"radius":40,"arc":0,"maxTargets":24,"activationTime":1,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
   // Pyronic Total Core Judgement
-  'pyronic_total_core_judgement': {"damageType":"Unknown","effectArea":"Targeted AoE","range":80,"radius":25,"arc":0,"maxTargets":16,"activationTime":1,"rechargeTime":90,"damageScale":0,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'pyronic_total_core_judgement': {"damageType":"Fire","effectArea":"Targeted AoE","range":80,"radius":25,"arc":0,"maxTargets":16,"activationTime":1,"rechargeTime":90,"damageScale":3.5,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
   // Pyronic Total Radial Judgement
-  'pyronic_total_radial_judgement': {"damageType":"Unknown","effectArea":"Targeted AoE","range":80,"radius":40,"arc":0,"maxTargets":24,"activationTime":1,"rechargeTime":90,"damageScale":0,"tableName":"Ranged_Tempdamage","secondaryEffects":["Stunned Mag 4"]},
+  'pyronic_total_radial_judgement': {"damageType":"Fire","effectArea":"Targeted AoE","range":80,"radius":40,"arc":0,"maxTargets":24,"activationTime":1,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["Stunned Mag 4"]},
   // Void Core Final Judgement
-  'void_core_final_judgement': {"damageType":"Unknown","effectArea":"PBAoE","range":0,"radius":50,"arc":0,"maxTargets":24,"activationTime":2,"rechargeTime":90,"damageScale":0,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'void_core_final_judgement': {"damageType":"Negative Energy","effectArea":"PBAoE","range":0,"radius":50,"arc":0,"maxTargets":24,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
   // Void Core Judgement
-  'void_core_judgement': {"damageType":"Unknown","effectArea":"PBAoE","range":0,"radius":30,"arc":0,"maxTargets":16,"activationTime":2,"rechargeTime":90,"damageScale":0,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'void_core_judgement': {"damageType":"Negative Energy","effectArea":"PBAoE","range":0,"radius":30,"arc":0,"maxTargets":16,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
   // Void Judgement
-  'void_judgement': {"damageType":"Unknown","effectArea":"PBAoE","range":0,"radius":30,"arc":0,"maxTargets":16,"activationTime":2,"rechargeTime":90,"damageScale":0,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'void_judgement': {"damageType":"Negative Energy","effectArea":"PBAoE","range":0,"radius":30,"arc":0,"maxTargets":16,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
   // Void Partial Core Judgement
-  'void_partial_core_judgement': {"damageType":"Unknown","effectArea":"PBAoE","range":0,"radius":30,"arc":0,"maxTargets":16,"activationTime":2,"rechargeTime":90,"damageScale":0,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'void_partial_core_judgement': {"damageType":"Negative Energy","effectArea":"PBAoE","range":0,"radius":30,"arc":0,"maxTargets":16,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
   // Void Partial Radial Judgement
-  'void_partial_radial_judgement': {"damageType":"Unknown","effectArea":"PBAoE","range":0,"radius":30,"arc":0,"maxTargets":16,"activationTime":2,"rechargeTime":90,"damageScale":0,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'void_partial_radial_judgement': {"damageType":"Negative Energy","effectArea":"PBAoE","range":0,"radius":30,"arc":0,"maxTargets":16,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
   // Void Radial Final Judgement
-  'void_radial_final_judgement': {"damageType":"Unknown","effectArea":"PBAoE","range":0,"radius":50,"arc":0,"maxTargets":32,"activationTime":2,"rechargeTime":90,"damageScale":0,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'void_radial_final_judgement': {"damageType":"Negative Energy","effectArea":"PBAoE","range":0,"radius":50,"arc":0,"maxTargets":32,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
   // Void Radial Judgement
-  'void_radial_judgement': {"damageType":"Unknown","effectArea":"PBAoE","range":0,"radius":30,"arc":0,"maxTargets":16,"activationTime":2,"rechargeTime":90,"damageScale":0,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'void_radial_judgement': {"damageType":"Negative Energy","effectArea":"PBAoE","range":0,"radius":30,"arc":0,"maxTargets":16,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
   // Void Total Core Judgement
-  'void_total_core_judgement': {"damageType":"Unknown","effectArea":"PBAoE","range":0,"radius":30,"arc":0,"maxTargets":16,"activationTime":2,"rechargeTime":90,"damageScale":0,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'void_total_core_judgement': {"damageType":"Negative Energy","effectArea":"PBAoE","range":0,"radius":30,"arc":0,"maxTargets":16,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
   // Void Total Radial Judgement
-  'void_total_radial_judgement': {"damageType":"Unknown","effectArea":"PBAoE","range":0,"radius":50,"arc":0,"maxTargets":24,"activationTime":2,"rechargeTime":90,"damageScale":0,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'void_total_radial_judgement': {"damageType":"Negative Energy","effectArea":"PBAoE","range":0,"radius":50,"arc":0,"maxTargets":24,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
   // Vorpal Core Final Judgement
-  'vorpal_core_final_judgement': {"damageType":"Unknown","effectArea":"Cone","range":120,"radius":120,"arc":2.1,"maxTargets":30,"activationTime":2.5,"rechargeTime":90,"damageScale":0,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'vorpal_core_final_judgement': {"damageType":"Smashing","effectArea":"Cone","range":120,"radius":120,"arc":2.1,"maxTargets":30,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
   // Vorpal Core Judgement
-  'vorpal_core_judgement': {"damageType":"Unknown","effectArea":"Cone","range":80,"radius":80,"arc":1.4,"maxTargets":20,"activationTime":2.5,"rechargeTime":90,"damageScale":0,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'vorpal_core_judgement': {"damageType":"Smashing","effectArea":"Cone","range":80,"radius":80,"arc":1.4,"maxTargets":20,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
   // Vorpal Judgement
-  'vorpal_judgement': {"damageType":"Unknown","effectArea":"Cone","range":80,"radius":80,"arc":1.4,"maxTargets":20,"activationTime":2.5,"rechargeTime":90,"damageScale":0,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'vorpal_judgement': {"damageType":"Smashing","effectArea":"Cone","range":80,"radius":80,"arc":1.4,"maxTargets":20,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
   // Vorpal Partial Core Judgement
-  'vorpal_partial_core_judgement': {"damageType":"Unknown","effectArea":"Cone","range":120,"radius":120,"arc":1.4,"maxTargets":20,"activationTime":2.5,"rechargeTime":90,"damageScale":0,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'vorpal_partial_core_judgement': {"damageType":"Smashing","effectArea":"Cone","range":120,"radius":120,"arc":1.4,"maxTargets":20,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
   // Vorpal Partial Radial Judgement
-  'vorpal_partial_radial_judgement': {"damageType":"Unknown","effectArea":"Cone","range":80,"radius":80,"arc":2.1,"maxTargets":40,"activationTime":2.5,"rechargeTime":90,"damageScale":0,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'vorpal_partial_radial_judgement': {"damageType":"Smashing","effectArea":"Cone","range":80,"radius":80,"arc":2.1,"maxTargets":40,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
   // Vorpal Radial Final Judgement
-  'vorpal_radial_final_judgement': {"damageType":"Unknown","effectArea":"Cone","range":120,"radius":120,"arc":2.1,"maxTargets":40,"activationTime":2.5,"rechargeTime":90,"damageScale":0,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'vorpal_radial_final_judgement': {"damageType":"Smashing","effectArea":"Cone","range":120,"radius":120,"arc":2.1,"maxTargets":40,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
   // Vorpal Radial Judgement
-  'vorpal_radial_judgement': {"damageType":"Unknown","effectArea":"Cone","range":80,"radius":80,"arc":2.1,"maxTargets":30,"activationTime":2.5,"rechargeTime":90,"damageScale":0,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'vorpal_radial_judgement': {"damageType":"Smashing","effectArea":"Cone","range":80,"radius":80,"arc":2.1,"maxTargets":30,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
   // Vorpal Total Core Judgement
-  'vorpal_total_core_judgement': {"damageType":"Unknown","effectArea":"Cone","range":120,"radius":120,"arc":1.4,"maxTargets":20,"activationTime":2.5,"rechargeTime":90,"damageScale":0,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'vorpal_total_core_judgement': {"damageType":"Smashing","effectArea":"Cone","range":120,"radius":120,"arc":1.4,"maxTargets":20,"activationTime":2.5,"rechargeTime":90,"damageScale":3.5,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
   // Vorpal Total Radial Judgement
-  'vorpal_total_radial_judgement': {"damageType":"Unknown","effectArea":"Cone","range":80,"radius":80,"arc":2.1,"maxTargets":30,"activationTime":2.5,"rechargeTime":90,"damageScale":0,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'vorpal_total_radial_judgement': {"damageType":"Smashing","effectArea":"Cone","range":80,"radius":80,"arc":2.1,"maxTargets":30,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
 };
 
 // ============================================

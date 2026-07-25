@@ -12,6 +12,7 @@ import {
   getIOSet,
   getPowerIconPath,
   getAlphaEffects,
+  getAlphaEdBypass,
   getDestinyEffects,
   getHybridEffects,
   getInterfaceEffects,
@@ -30,13 +31,12 @@ import {
 } from '@/data';
 import { useGlobalBonuses, usePowerProjection } from '@/hooks/useCalculatedStats';
 import { useBuildMaxAttackDamage } from '@/hooks/useBuildMaxAttackDamage';
-import { calculatePowerEnhancementBonuses, combineWithAlphaED, calculatePowerDamage, getAlphaEnhancementBonuses, abbreviateDamageType, calculateArcanaTime, dotTickCount, calculateDamageWithATTable, type EnhancementBonuses, type PowerDamageResult, isControllerPower, isCorruptorAttackPower, isBruteAttackPower, isScrapperAttackPower, isStalkerAttackPower, calculateFuryDamageBonus, calculateAssassinationDamageBonus, getContainmentInfo, getScourgeInfo, getCriticalHitInfo, getFuryInfo, getEffectiveLevel, areIncarnatesSuppressed } from '@/utils/calculations';
+import { calculatePowerEnhancementBonuses, combineWithAlphaED, calculatePowerDamage, getAlphaEnhancementBonuses, getAlphaEdBypassBonuses, abbreviateDamageType, calculateArcanaTime, dotTickCount, calculateDamageWithATTable, type EnhancementBonuses, type PowerDamageResult, isControllerPower, isCorruptorAttackPower, isBruteAttackPower, isScrapperAttackPower, isStalkerAttackPower, calculateFuryDamageBonus, calculateAssassinationDamageBonus, getContainmentInfo, getScourgeInfo, getCriticalHitInfo, getFuryInfo, getEffectiveLevel, areIncarnatesSuppressed } from '@/utils/calculations';
 import { resolveAtMechanic } from '@/utils/calculations/power-at-mechanics';
 import type { IOSetEnhancement } from '@/types';
-import { INCARNATE_TIER_REGISTRY } from '@/data/incarnate-registry';
 import { isPermaEligible } from '@/utils/calculations/perma';
-import { buildDisplayEffects, getStackingInfo, withTargetsHit } from './buildDisplayEffects';
-import { calculatePetDamage, calculateResolvedPseudoPetDamage, shouldApplyEnhancements, synthesizePseudoPetEffects, resolveProcAreaGeometry, type PetDamageResult, type PetAbilityDamage, type PetEffectComputed } from '@/utils/calculations/pet-damage';
+import { buildDisplayEffects, getStackingInfo, withPseudoPetEffects, withTargetsHit } from './buildDisplayEffects';
+import { calculatePetDamage, calculateResolvedPseudoPetDamage, shouldApplyEnhancements, resolveProcAreaGeometry, type PetDamageResult, type PetAbilityDamage, type PetEffectComputed } from '@/utils/calculations/pet-damage';
 import { getPetEntity, type PetAbility } from '@/data/pet-entities';
 import { calculateIncarnateDamage } from '@/data/at-tables';
 import { getBaselineHealth } from '@/utils/calculations/stats';
@@ -218,10 +218,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   // the rest is added to raw IO bonuses before ED is applied.
   const enhancementBonuses = useMemo<EnhancementBonuses>(() => {
     const hasAlpha = Object.values(alphaBonuses).some((v) => v !== undefined && v !== 0);
-    const alphaTier = build.incarnates?.alpha?.tier;
-    const edBypassRatio = alphaTier
-      ? (INCARNATE_TIER_REGISTRY[alphaTier]?.edBypassRatio ?? 1 / 6)
-      : 1 / 6;
+    const alphaEdBypass = getAlphaEdBypassBonuses(build.incarnates, incarnateActive);
 
     if (hasAlpha && selectedPower?.slots) {
       // Use combined calculation that properly splits alpha through/around ED
@@ -235,7 +232,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         build.level,
         getIOSet,
         alphaBonuses,
-        edBypassRatio,
+        alphaEdBypass,
         exemplarMode ? exemplarLevel : undefined
       );
     }
@@ -251,7 +248,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     }
 
     return { ...alphaBonuses };
-  }, [selectedPower, build.level, alphaBonuses, exemplarMode, exemplarLevel, build.incarnates?.alpha?.tier]);
+  }, [selectedPower, build.level, alphaBonuses, exemplarMode, exemplarLevel, build.incarnates, incarnateActive]);
 
   // Convert global bonuses to enhancement-aspect-keyed decimals for three-tier display
   const globalBonusesForCalc = useMemo(
@@ -556,19 +553,6 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
 
   // Resolved damage shown in the Damage block — direct first, pseudo-pet fallback.
   const resolvedDamage = calculatedDamage ?? pseudoPetDamage;
-
-  // Pseudo-pet enhanceable EFFECTS (slow / -def / -tohit, …) surfaced into the
-  // Power Effects block — the analogue of pseudoPetDamage. Powers like Glue
-  // Arrow deliver their enhanceable debuffs through a non-commandable pseudo-pet
-  // and carry nothing on the parent, so the player's enhancements never showed
-  // on them. The pet inherits the summoner's enhancements (CopyBoosts), so
-  // merging these into the parent effects lets RegistryEffectsDisplay scale them
-  // correctly. The helper guards commandable pets and only maps enhanceable
-  // (non-IgnoreStrength) scalar debuffs.
-  const pseudoPetEffects = useMemo(
-    () => synthesizePseudoPetEffects(effectivePower?.effects?.summon),
-    [effectivePower],
-  );
 
   // Archetype hit-time damage multiplier (Containment, Scourge, crits, …).
   // ONLY hit-time multipliers that sit OUTSIDE the damage cap belong here.
@@ -956,10 +940,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
           (Glue Arrow's slow, etc.) are merged in — parent effects win on key
           collisions; the pet fills in keys the parent power doesn't carry. */}
       <RegistryEffectsDisplay
-        effects={(() => {
-          const e = withTargetsHit(power, effects, targetsHit);
-          return pseudoPetEffects ? { ...pseudoPetEffects, ...e } : e;
-        })()}
+        effects={withPseudoPetEffects(effectivePower, withTargetsHit(power, effects, targetsHit))}
         allowedEnhancements={power?.allowedEnhancements || []}
         enhancementBonuses={enhancementBonuses}
         globalBonuses={globalBonusesWithStrength}
@@ -1508,6 +1489,9 @@ function IncarnateInfo({ slotId, powerId }: IncarnateInfoProps) {
 
   // Get the effects based on slot type
   const alphaEffects = slotId === 'alpha' ? getAlphaEffects(powerId) : null;
+  // Per-aspect ED-bypass slice authored in the silent grant power (read via
+  // getAlphaEdBypass). Feeds the "ED Bypass" column beside each total.
+  const alphaEdBypass = slotId === 'alpha' ? getAlphaEdBypass(powerId) : null;
   const destinyEffects = slotId === 'destiny' ? getDestinyEffects(powerId) : null;
   const hybridEffects = slotId === 'hybrid' ? getHybridEffects(powerId) : null;
   const interfaceEffects = slotId === 'interface' ? getInterfaceEffects(powerId) : null;
@@ -1584,73 +1568,73 @@ function IncarnateInfo({ slotId, powerId }: IncarnateInfoProps) {
               <span>ED Bypass</span>
             </div>
             {alphaEffects.damage !== undefined && (
-              <AlphaEffectRow label="Damage" value={alphaEffects.damage} edBypass={alphaEffects.edBypass} colorClass="text-red-400" />
+              <AlphaEffectRow label="Damage" value={alphaEffects.damage} edBypass={alphaEdBypass?.damage} colorClass="text-red-400" />
             )}
             {alphaEffects.accuracy !== undefined && (
-              <AlphaEffectRow label="Accuracy" value={alphaEffects.accuracy} edBypass={alphaEffects.edBypass} colorClass="text-yellow-400" />
+              <AlphaEffectRow label="Accuracy" value={alphaEffects.accuracy} edBypass={alphaEdBypass?.accuracy} colorClass="text-yellow-400" />
             )}
             {alphaEffects.recharge !== undefined && (
-              <AlphaEffectRow label="Recharge" value={alphaEffects.recharge} edBypass={alphaEffects.edBypass} colorClass="text-cyan-400" />
+              <AlphaEffectRow label="Recharge" value={alphaEffects.recharge} edBypass={alphaEdBypass?.recharge} colorClass="text-cyan-400" />
             )}
             {alphaEffects.enduranceReduction !== undefined && (
-              <AlphaEffectRow label="End Reduc" value={alphaEffects.enduranceReduction} edBypass={alphaEffects.edBypass} colorClass="text-blue-400" />
+              <AlphaEffectRow label="End Reduc" value={alphaEffects.enduranceReduction} edBypass={alphaEdBypass?.enduranceReduction} colorClass="text-blue-400" />
             )}
             {alphaEffects.heal !== undefined && (
-              <AlphaEffectRow label="Heal" value={alphaEffects.heal} edBypass={alphaEffects.edBypass} colorClass="text-green-400" />
+              <AlphaEffectRow label="Heal" value={alphaEffects.heal} edBypass={alphaEdBypass?.heal} colorClass="text-green-400" />
             )}
             {alphaEffects.defense !== undefined && (
-              <AlphaEffectRow label="Defense" value={alphaEffects.defense} edBypass={alphaEffects.edBypass} colorClass="text-purple-400" />
+              <AlphaEffectRow label="Defense" value={alphaEffects.defense} edBypass={alphaEdBypass?.defense} colorClass="text-purple-400" />
             )}
             {alphaEffects.resistance !== undefined && (
-              <AlphaEffectRow label="Resistance" value={alphaEffects.resistance} edBypass={alphaEffects.edBypass} colorClass="text-orange-400" />
+              <AlphaEffectRow label="Resistance" value={alphaEffects.resistance} edBypass={alphaEdBypass?.resistance} colorClass="text-orange-400" />
             )}
             {alphaEffects.range !== undefined && (
-              <AlphaEffectRow label="Range" value={alphaEffects.range} edBypass={alphaEffects.edBypass} colorClass="text-slate-300" />
+              <AlphaEffectRow label="Range" value={alphaEffects.range} edBypass={alphaEdBypass?.range} colorClass="text-slate-300" />
             )}
             {alphaEffects.hold !== undefined && (
-              <AlphaEffectRow label="Hold" value={alphaEffects.hold} edBypass={alphaEffects.edBypass} colorClass="text-purple-400" />
+              <AlphaEffectRow label="Hold" value={alphaEffects.hold} edBypass={alphaEdBypass?.hold} colorClass="text-purple-400" />
             )}
             {alphaEffects.stun !== undefined && (
-              <AlphaEffectRow label="Stun" value={alphaEffects.stun} edBypass={alphaEffects.edBypass} colorClass="text-purple-400" />
+              <AlphaEffectRow label="Stun" value={alphaEffects.stun} edBypass={alphaEdBypass?.stun} colorClass="text-purple-400" />
             )}
             {alphaEffects.immobilize !== undefined && (
-              <AlphaEffectRow label="Immobilize" value={alphaEffects.immobilize} edBypass={alphaEffects.edBypass} colorClass="text-purple-400" />
+              <AlphaEffectRow label="Immobilize" value={alphaEffects.immobilize} edBypass={alphaEdBypass?.immobilize} colorClass="text-purple-400" />
             )}
             {alphaEffects.sleep !== undefined && (
-              <AlphaEffectRow label="Sleep" value={alphaEffects.sleep} edBypass={alphaEffects.edBypass} colorClass="text-purple-400" />
+              <AlphaEffectRow label="Sleep" value={alphaEffects.sleep} edBypass={alphaEdBypass?.sleep} colorClass="text-purple-400" />
             )}
             {alphaEffects.fear !== undefined && (
-              <AlphaEffectRow label="Fear" value={alphaEffects.fear} edBypass={alphaEffects.edBypass} colorClass="text-purple-400" />
+              <AlphaEffectRow label="Fear" value={alphaEffects.fear} edBypass={alphaEdBypass?.fear} colorClass="text-purple-400" />
             )}
             {alphaEffects.confuse !== undefined && (
-              <AlphaEffectRow label="Confuse" value={alphaEffects.confuse} edBypass={alphaEffects.edBypass} colorClass="text-purple-400" />
+              <AlphaEffectRow label="Confuse" value={alphaEffects.confuse} edBypass={alphaEdBypass?.confuse} colorClass="text-purple-400" />
             )}
             {alphaEffects.slow !== undefined && (
-              <AlphaEffectRow label="Slow" value={alphaEffects.slow} edBypass={alphaEffects.edBypass} colorClass="text-cyan-400" />
+              <AlphaEffectRow label="Slow" value={alphaEffects.slow} edBypass={alphaEdBypass?.slow} colorClass="text-cyan-400" />
             )}
             {alphaEffects.toHitBuff !== undefined && (
-              <AlphaEffectRow label="ToHit Buff" value={alphaEffects.toHitBuff} edBypass={alphaEffects.edBypass} colorClass="text-yellow-400" />
+              <AlphaEffectRow label="ToHit Buff" value={alphaEffects.toHitBuff} edBypass={alphaEdBypass?.toHitBuff} colorClass="text-yellow-400" />
             )}
             {alphaEffects.toHitDebuff !== undefined && (
-              <AlphaEffectRow label="ToHit Debuff" value={alphaEffects.toHitDebuff} edBypass={alphaEffects.edBypass} colorClass="text-yellow-400" />
+              <AlphaEffectRow label="ToHit Debuff" value={alphaEffects.toHitDebuff} edBypass={alphaEdBypass?.toHitDebuff} colorClass="text-yellow-400" />
             )}
             {alphaEffects.defenseDebuff !== undefined && (
-              <AlphaEffectRow label="Def Debuff" value={alphaEffects.defenseDebuff} edBypass={alphaEffects.edBypass} colorClass="text-purple-400" />
+              <AlphaEffectRow label="Def Debuff" value={alphaEffects.defenseDebuff} edBypass={alphaEdBypass?.defenseDebuff} colorClass="text-purple-400" />
             )}
             {alphaEffects.taunt !== undefined && (
-              <AlphaEffectRow label="Taunt" value={alphaEffects.taunt} edBypass={alphaEffects.edBypass} colorClass="text-slate-300" />
+              <AlphaEffectRow label="Taunt" value={alphaEffects.taunt} edBypass={alphaEdBypass?.taunt} colorClass="text-slate-300" />
             )}
             {alphaEffects.runSpeed !== undefined && (
-              <AlphaEffectRow label="Run Speed" value={alphaEffects.runSpeed} edBypass={alphaEffects.edBypass} colorClass="text-cyan-400" />
+              <AlphaEffectRow label="Run Speed" value={alphaEffects.runSpeed} edBypass={alphaEdBypass?.runSpeed} colorClass="text-cyan-400" />
             )}
             {alphaEffects.jumpSpeed !== undefined && (
-              <AlphaEffectRow label="Jump Speed" value={alphaEffects.jumpSpeed} edBypass={alphaEffects.edBypass} colorClass="text-cyan-400" />
+              <AlphaEffectRow label="Jump Speed" value={alphaEffects.jumpSpeed} edBypass={alphaEdBypass?.jumpSpeed} colorClass="text-cyan-400" />
             )}
             {alphaEffects.flySpeed !== undefined && (
-              <AlphaEffectRow label="Fly Speed" value={alphaEffects.flySpeed} edBypass={alphaEffects.edBypass} colorClass="text-cyan-400" />
+              <AlphaEffectRow label="Fly Speed" value={alphaEffects.flySpeed} edBypass={alphaEdBypass?.flySpeed} colorClass="text-cyan-400" />
             )}
             {alphaEffects.absorb !== undefined && (
-              <AlphaEffectRow label="Absorb" value={alphaEffects.absorb} edBypass={alphaEffects.edBypass} colorClass="text-blue-400" />
+              <AlphaEffectRow label="Absorb" value={alphaEffects.absorb} edBypass={alphaEdBypass?.absorb} colorClass="text-blue-400" />
             )}
           </div>
           {/* Level Shift and ED Bypass info */}
@@ -1659,11 +1643,6 @@ function IncarnateInfo({ slotId, powerId }: IncarnateInfoProps) {
               <div className="flex justify-between text-sm">
                 <span className="text-amber-400">Level Shift</span>
                 <span className="text-amber-400">+{alphaEffects.levelShift}</span>
-              </div>
-            )}
-            {alphaEffects.edBypass !== undefined && (
-              <div className="text-[11px] text-slate-400 mt-1">
-                ED Bypass: {(alphaEffects.edBypass * 100).toFixed(1)}% of bonuses ignore Enhancement Diversification
               </div>
             )}
           </div>
@@ -2102,16 +2081,16 @@ function AlphaEffectRow({
 }: {
   label: string;
   value: number;
+  /** Data-authored portion of `value` that bypasses ED (absent = none bypasses). */
   edBypass?: number;
   colorClass: string;
 }) {
-  const bypassValue = edBypass !== undefined ? value * edBypass : 0;
   return (
     <div className="grid grid-cols-[5rem_1fr_1fr] gap-1 items-baseline text-sm">
       <span className="text-slate-300">{label}</span>
       <span className={colorClass}>{formatEffectValue(value)}</span>
       <span className="text-green-400">
-        {edBypass !== undefined ? formatEffectValue(bypassValue) : '—'}
+        {edBypass !== undefined ? formatEffectValue(edBypass) : '—'}
       </span>
     </div>
   );

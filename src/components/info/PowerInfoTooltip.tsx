@@ -47,12 +47,12 @@ import {
   calculateOpportunityCritDamage,
   isSentinelAttackPower,
   getAlphaEnhancementBonuses,
+  getAlphaEdBypassBonuses,
   type EnhancementBonuses,
 } from '@/utils/calculations';
-import { calculatePetDamage, calculateResolvedPseudoPetDamage, shouldApplyEnhancements, synthesizePseudoPetEffects, type PetDamageResult } from '@/utils/calculations/pet-damage';
-import { buildDisplayEffects } from './buildDisplayEffects';
+import { calculatePetDamage, calculateResolvedPseudoPetDamage, shouldApplyEnhancements, type PetDamageResult } from '@/utils/calculations/pet-damage';
+import { buildDisplayEffects, withPseudoPetEffects } from './buildDisplayEffects';
 import type { ArchetypeId } from '@/types';
-import { INCARNATE_TIER_REGISTRY } from '@/data/incarnate-registry';
 import { selectActiveConditionals } from '@/utils/conditional-effects';
 import { stanceAdjusterOverrides } from '@/data/stance-groups';
 import {
@@ -133,10 +133,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
   // Calculate enhancement bonuses with proper Alpha ED bypass handling
   const enhancementBonuses = useMemo<EnhancementBonuses>(() => {
     const hasAlpha = Object.values(alphaBonuses).some((v) => v !== undefined && v !== 0);
-    const alphaTier = build.incarnates?.alpha?.tier;
-    const edBypassRatio = alphaTier
-      ? (INCARNATE_TIER_REGISTRY[alphaTier]?.edBypassRatio ?? 1 / 6)
-      : 1 / 6;
+    const alphaEdBypass = getAlphaEdBypassBonuses(build.incarnates, incarnateActive);
 
     if (hasAlpha && selectedPower?.slots) {
       return combineWithAlphaED(
@@ -146,7 +143,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
         build.level,
         getIOSet,
         alphaBonuses,
-        edBypassRatio,
+        alphaEdBypass,
         exemplarMode ? exemplarLevel : undefined
       );
     }
@@ -161,7 +158,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
     }
 
     return { ...alphaBonuses };
-  }, [selectedPower, build.level, alphaBonuses, exemplarMode, exemplarLevel, build.incarnates?.alpha?.tier]);
+  }, [selectedPower, build.level, alphaBonuses, exemplarMode, exemplarLevel, build.incarnates, incarnateActive]);
 
   // Convert global bonuses to enhancement-aspect-keyed decimals for three-tier display
   const globalBonusesForCalc = useMemo(
@@ -288,14 +285,6 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
     return results.length > 0 ? { results, base, enhanced, final: final_ } : null;
   }, [basePower?.effects?.summon, basePower?.internalName, build.level, enhancementBonuses.damage, globalBonusesForCalc.damage, archetypeId, stormCellActive, mechanicAdjusters]);
 
-  // Pseudo-pet enhanceable debuffs (Glue Arrow's slow, etc.) surfaced into the
-  // Power Effects block — mirrors InfoPanel. Merged into `effects` below so the
-  // player's enhancements scale them; parent effects win on key collisions.
-  const pseudoPetEffects = useMemo(
-    () => synthesizePseudoPetEffects(basePower?.effects?.summon),
-    [basePower?.effects?.summon],
-  );
-
   // Calculate archetype-specific damage bonuses
   const damageDisplayInfo = useMemo(() => {
     if (!calculatedDamage) return null;
@@ -401,7 +390,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
   // Mirror the from-Hide toggle (which drives its damage) so cast time matches the state —
   // not hidden → the fast mid-combat cast. That is UI state, so it stays here rather than in
   // the shared build (InfoPanel applies the same rule to the power's own stats).
-  const effects = { ...pseudoPetEffects, ...buildDisplayEffects(basePower, effectiveDamage) };
+  const effects = withPseudoPetEffects(basePower, buildDisplayEffects(basePower, effectiveDamage));
   if (basePower.midCombatCast != null && !effectiveHidden) effects.castTime = basePower.midCombatCast;
 
   // Check if power has any enhancements

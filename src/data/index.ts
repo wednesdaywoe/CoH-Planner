@@ -233,6 +233,7 @@ export type {
 // Incarnate effects data
 export {
   getAlphaEffects,
+  getAlphaEdBypass,
   getDestinyEffects,
   getDestinyEffectsAtTime,
   getDestinyTimeline,

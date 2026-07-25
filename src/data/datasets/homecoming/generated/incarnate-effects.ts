@@ -161,6 +161,160 @@ export const GENERATED_ALPHA_EFFECTS: Record<string, Record<string, number>> = {
   'vigor_total_radial_revamp': {"levelShift":1,"heal":0.33,"accuracy":0.165,"enduranceReduction":0.33,"confuse":0.33},
 };
 
+// Per-aspect portion of each GENERATED_ALPHA_EFFECTS bonus that bypasses
+// Enhancement Diversification — the BoostIgnoreDiminishing-flagged template
+// (HC/Rebirth) or the generic `Ones` template (Thunderspy) in the silent
+// grant power. Authored per silent FILE, so secondary aspects can carry a
+// different split than the headline aspect. Absent aspect = no bypass
+// (the whole bonus is subject to ED).
+
+export const GENERATED_ALPHA_ED_BYPASS: Record<string, Record<string, number>> = {
+  // Agility Boost
+  'agility_boost': {"enduranceModification":0.055},
+  // Agility Core Boost
+  'agility_core_boost': {"enduranceModification":0.11,"recharge":0.11},
+  // Agility Core Paragon
+  'agility_core_paragon': {"enduranceModification":0.3,"recharge":0.22,"defense":0.1333},
+  // Agility Partial Core Revamp
+  'agility_partial_core_revamp': {"enduranceModification":0.165,"recharge":0.165,"defense":0.1},
+  // Agility Partial Radial Revamp
+  'agility_partial_radial_revamp': {"enduranceModification":0.165,"recharge":0.0825,"defense":0.1,"runSpeed":0.165},
+  // Agility Radial Boost
+  'agility_radial_boost': {"enduranceModification":0.11,"defense":0.0667},
+  // Agility Radial Paragon
+  'agility_radial_paragon': {"enduranceModification":0.22,"recharge":0.22,"defense":0.1333,"jumpSpeed":0.22,"runSpeed":0.22,"flySpeed":0.22},
+  // Agility Total Core Revamp
+  'agility_total_core_revamp': {"enduranceModification":0.225,"recharge":0.165},
+  // Agility Total Radial Revamp
+  'agility_total_radial_revamp': {"enduranceModification":0.165,"recharge":0.0825,"defense":0.1,"jumpSpeed":0.165},
+  // Cardiac Boost
+  'cardiac_boost': {"enduranceReduction":0.055},
+  // Cardiac Core Boost
+  'cardiac_core_boost': {"enduranceReduction":0.11,"range":0.0667},
+  // Cardiac Core Paragon
+  'cardiac_core_paragon': {"enduranceReduction":0.3,"range":0.1333,"resistance":0.1333},
+  // Cardiac Partial Core Revamp
+  'cardiac_partial_core_revamp': {"enduranceReduction":0.165,"range":0.1,"resistance":0.1},
+  // Cardiac Partial Radial Revamp
+  'cardiac_partial_radial_revamp': {"enduranceReduction":0.165,"range":0.05,"resistance":0.1,"fear":0.165},
+  // Cardiac Radial Boost
+  'cardiac_radial_boost': {"enduranceReduction":0.11,"resistance":0.0667},
+  // Cardiac Radial Paragon
+  'cardiac_radial_paragon': {"enduranceReduction":0.22,"range":0.1333,"resistance":0.1333,"sleep":0.22,"fear":0.22,"intangible":0.22},
+  // Cardiac Total Core Revamp
+  'cardiac_total_core_revamp': {"enduranceReduction":0.225,"range":0.1},
+  // Cardiac Total Radial Revamp
+  'cardiac_total_radial_revamp': {"enduranceReduction":0.165,"range":0.05,"resistance":0.1,"sleep":0.165},
+  // Intuition Boost
+  'intuition_boost': {"hold":0.055},
+  // Intuition Core Boost
+  'intuition_core_boost': {"hold":0.11,"defenseDebuff":0.11},
+  // Intuition Core Paragon
+  'intuition_core_paragon': {"hold":0.3,"defenseDebuff":0.22,"range":0.1333},
+  // Intuition Partial Core Revamp
+  'intuition_partial_core_revamp': {"hold":0.165,"defenseDebuff":0.165,"range":0.1},
+  // Intuition Partial Radial Revamp
+  'intuition_partial_radial_revamp': {"hold":0.165,"defenseDebuff":0.0825,"range":0.1,"damage":0.165},
+  // Intuition Radial Boost
+  'intuition_radial_boost': {"hold":0.11,"range":0.0667},
+  // Intuition Radial Paragon
+  'intuition_radial_paragon': {"hold":0.22,"defenseDebuff":0.22,"range":0.1333,"toHitDebuff":0.1333,"damage":0.22,"slow":0.22},
+  // Intuition Total Core Revamp
+  'intuition_total_core_revamp': {"hold":0.225,"defenseDebuff":0.165},
+  // Intuition Total Radial Revamp
+  'intuition_total_radial_revamp': {"hold":0.165,"defenseDebuff":0.0825,"range":0.1,"toHitDebuff":0.1},
+  // Musculature Boost
+  'musculature_boost': {"damage":0.055},
+  // Musculature Core Boost
+  'musculature_core_boost': {"damage":0.11,"immobilize":0.11},
+  // Musculature Core Paragon
+  'musculature_core_paragon': {"damage":0.3,"immobilize":0.22,"defenseDebuff":0.22},
+  // Musculature Partial Core Revamp
+  'musculature_partial_core_revamp': {"damage":0.165,"immobilize":0.165,"defenseDebuff":0.165},
+  // Musculature Partial Radial Revamp
+  'musculature_partial_radial_revamp': {"damage":0.165,"immobilize":0.0825,"defenseDebuff":0.165,"toHitDebuff":0.1},
+  // Musculature Radial Boost
+  'musculature_radial_boost': {"damage":0.11,"defenseDebuff":0.11},
+  // Musculature Radial Paragon
+  'musculature_radial_paragon': {"damage":0.22,"immobilize":0.22,"defenseDebuff":0.22,"enduranceModification":0.22,"toHitDebuff":0.1333,"runSpeed":0.22},
+  // Musculature Total Core Revamp
+  'musculature_total_core_revamp': {"damage":0.225,"immobilize":0.165},
+  // Musculature Total Radial Revamp
+  'musculature_total_radial_revamp': {"damage":0.165,"immobilize":0.0825,"defenseDebuff":0.165,"enduranceModification":0.165},
+  // Nerve Boost
+  'nerve_boost': {"accuracy":0.055},
+  // Nerve Core Boost
+  'nerve_core_boost': {"accuracy":0.11,"hold":0.11},
+  // Nerve Core Paragon
+  'nerve_core_paragon': {"accuracy":0.3,"hold":0.22,"defense":0.1333},
+  // Nerve Partial Core Revamp
+  'nerve_partial_core_revamp': {"accuracy":0.165,"hold":0.165,"defense":0.1},
+  // Nerve Partial Radial Revamp
+  'nerve_partial_radial_revamp': {"accuracy":0.165,"hold":0.0825,"defense":0.1,"taunt":0.165},
+  // Nerve Radial Boost
+  'nerve_radial_boost': {"accuracy":0.11,"defense":0.0667},
+  // Nerve Radial Paragon
+  'nerve_radial_paragon': {"accuracy":0.22,"hold":0.22,"defense":0.1333,"confuse":0.22,"taunt":0.22,"flySpeed":0.22},
+  // Nerve Total Core Revamp
+  'nerve_total_core_revamp': {"accuracy":0.225,"hold":0.165},
+  // Nerve Total Radial Revamp
+  'nerve_total_radial_revamp': {"accuracy":0.165,"hold":0.0825,"defense":0.1,"confuse":0.165},
+  // Resilient Boost
+  'resilient_boost': {"resistance":0.0333},
+  // Resilient Core Boost
+  'resilient_core_boost': {"resistance":0.0667,"toHitBuff":0.0667},
+  // Resilient Core Paragon
+  'resilient_core_paragon': {"resistance":0.22,"toHitBuff":0.1333,"immobilize":0.22},
+  // Resilient Partial Core Revamp
+  'resilient_partial_core_revamp': {"resistance":0.1,"toHitBuff":0.1,"immobilize":0.165},
+  // Resilient Partial Radial Revamp
+  'resilient_partial_radial_revamp': {"resistance":0.1,"toHitBuff":0.05,"immobilize":0.165,"stun":0.165},
+  // Resilient Radial Boost
+  'resilient_radial_boost': {"resistance":0.0667,"immobilize":0.11},
+  // Resilient Radial Paragon
+  'resilient_radial_paragon': {"resistance":0.1333,"toHitBuff":0.1333,"immobilize":0.22,"intangible":0.22,"stun":0.22,"taunt":0.22},
+  // Resilient Total Core Revamp
+  'resilient_total_core_revamp': {"resistance":0.165,"toHitBuff":0.1},
+  // Resilient Total Radial Revamp
+  'resilient_total_radial_revamp': {"resistance":0.1,"toHitBuff":0.05,"immobilize":0.165,"intangible":0.165},
+  // Spiritual Boost
+  'spiritual_boost': {"recharge":0.055},
+  // Spiritual Core Boost
+  'spiritual_core_boost': {"recharge":0.11,"stun":0.11},
+  // Spiritual Core Paragon
+  'spiritual_core_paragon': {"recharge":0.3,"stun":0.22,"heal":0.22},
+  // Spiritual Partial Core Revamp
+  'spiritual_partial_core_revamp': {"recharge":0.165,"stun":0.165,"heal":0.165},
+  // Spiritual Partial Radial Revamp
+  'spiritual_partial_radial_revamp': {"recharge":0.165,"stun":0.0825,"heal":0.165,"slow":0.165},
+  // Spiritual Radial Boost
+  'spiritual_radial_boost': {"recharge":0.11,"heal":0.11},
+  // Spiritual Radial Paragon
+  'spiritual_radial_paragon': {"recharge":0.22,"stun":0.22,"heal":0.22,"toHitBuff":0.1333,"slow":0.22,"jumpSpeed":0.22},
+  // Spiritual Total Core Revamp
+  'spiritual_total_core_revamp': {"recharge":0.225,"stun":0.165},
+  // Spiritual Total Radial Revamp
+  'spiritual_total_radial_revamp': {"recharge":0.165,"stun":0.0825,"heal":0.165,"toHitBuff":0.1},
+  // Vigor Boost
+  'vigor_boost': {"heal":0.055},
+  // Vigor Core Boost
+  'vigor_core_boost': {"heal":0.11,"accuracy":0.11},
+  // Vigor Core Paragon
+  'vigor_core_paragon': {"heal":0.3,"accuracy":0.22,"enduranceReduction":0.22},
+  // Vigor Partial Core Revamp
+  'vigor_partial_core_revamp': {"heal":0.165,"accuracy":0.165,"enduranceReduction":0.165},
+  // Vigor Partial Radial Revamp
+  'vigor_partial_radial_revamp': {"heal":0.165,"accuracy":0.0825,"enduranceReduction":0.165,"sleep":0.165},
+  // Vigor Radial Boost
+  'vigor_radial_boost': {"heal":0.11,"enduranceReduction":0.11},
+  // Vigor Radial Paragon
+  'vigor_radial_paragon': {"heal":0.22,"accuracy":0.22,"enduranceReduction":0.22,"confuse":0.22,"sleep":0.22,"fear":0.22},
+  // Vigor Total Core Revamp
+  'vigor_total_core_revamp': {"heal":0.225,"accuracy":0.165},
+  // Vigor Total Radial Revamp
+  'vigor_total_radial_revamp': {"heal":0.165,"accuracy":0.0825,"enduranceReduction":0.165,"confuse":0.165},
+};
+
 // ============================================
 // DESTINY EFFECTS
 // ============================================
@@ -800,41 +954,41 @@ export const GENERATED_INTERFACE_EFFECTS: Record<string, {
   procChance: number;
 }> = {
   // Cognitive Core Flawless Interface
-  'cognitive_core_flawless_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
+  'cognitive_core_flawless_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":"Psionic","dotDamage":0.1,"dotDuration":4.3,"dotTableName":"Melee_Tempdamage","procChance":0.25},
   // Cognitive Core Interface
   'cognitive_core_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.12},
   // Cognitive Interface
   'cognitive_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.08},
   // Cognitive Partial Core Conversion
-  'cognitive_partial_core_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
+  'cognitive_partial_core_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":"Psionic","dotDamage":0.1,"dotDuration":4.3,"dotTableName":"Melee_Tempdamage","procChance":0.25},
   // Cognitive Partial Radial Conversion
-  'cognitive_partial_radial_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.5},
+  'cognitive_partial_radial_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":"Psionic","dotDamage":0.1,"dotDuration":4.3,"dotTableName":"Melee_Tempdamage","procChance":0.5},
   // Cognitive Radial Flawless Interface
-  'cognitive_radial_flawless_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
+  'cognitive_radial_flawless_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":"Psionic","dotDamage":0.1,"dotDuration":4.3,"dotTableName":"Melee_Tempdamage","procChance":0.75},
   // Cognitive Radial Interface
-  'cognitive_radial_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
+  'cognitive_radial_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":"Psionic","dotDamage":0.1,"dotDuration":4.3,"dotTableName":"Melee_Tempdamage","procChance":0.25},
   // Cognitive Total Core Conversion
   'cognitive_total_core_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.16},
   // Cognitive Total Radial Conversion
-  'cognitive_total_radial_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
+  'cognitive_total_radial_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":"Psionic","dotDamage":0.1,"dotDuration":4.3,"dotTableName":"Melee_Tempdamage","procChance":0.75},
   // Degenerative Core Flawless Interface
-  'degenerative_core_flawless_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
+  'degenerative_core_flawless_interface': {"debuffType":"-MaxHP","debuffMagnitude":0.035,"debuffDuration":8.3,"dotType":"Toxic","dotDamage":0.1,"dotDuration":4.3,"dotTableName":"Melee_Tempdamage","procChance":0.75},
   // Degenerative Core Interface
-  'degenerative_core_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.5},
+  'degenerative_core_interface': {"debuffType":"-MaxHP","debuffMagnitude":0.035,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.5},
   // Degenerative Interface
-  'degenerative_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
+  'degenerative_interface': {"debuffType":"-MaxHP","debuffMagnitude":0.035,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
   // Degenerative Partial Core Conversion
-  'degenerative_partial_core_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.5},
+  'degenerative_partial_core_conversion': {"debuffType":"-MaxHP","debuffMagnitude":0.035,"debuffDuration":8.3,"dotType":"Toxic","dotDamage":0.1,"dotDuration":4.3,"dotTableName":"Melee_Tempdamage","procChance":0.5},
   // Degenerative Partial Radial Conversion
-  'degenerative_partial_radial_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
+  'degenerative_partial_radial_conversion': {"debuffType":"-MaxHP","debuffMagnitude":0.035,"debuffDuration":8.3,"dotType":"Toxic","dotDamage":0.1,"dotDuration":4.3,"dotTableName":"Melee_Tempdamage","procChance":0.5},
   // Degenerative Radial Flawless Interface
-  'degenerative_radial_flawless_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
+  'degenerative_radial_flawless_interface': {"debuffType":"-MaxHP","debuffMagnitude":0.035,"debuffDuration":8.3,"dotType":"Toxic","dotDamage":0.1,"dotDuration":4.3,"dotTableName":"Melee_Tempdamage","procChance":0.75},
   // Degenerative Radial Interface
-  'degenerative_radial_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
+  'degenerative_radial_interface': {"debuffType":"-MaxHP","debuffMagnitude":0.035,"debuffDuration":8.3,"dotType":"Toxic","dotDamage":0.1,"dotDuration":4.3,"dotTableName":"Melee_Tempdamage","procChance":0.25},
   // Degenerative Total Core Conversion
-  'degenerative_total_core_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
+  'degenerative_total_core_conversion': {"debuffType":"-MaxHP","debuffMagnitude":0.035,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
   // Degenerative Total Radial Conversion
-  'degenerative_total_radial_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
+  'degenerative_total_radial_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":"Toxic","dotDamage":0.1,"dotDuration":4.3,"dotTableName":"Melee_Tempdamage","procChance":0.75},
   // Diamagnetic Core Flawless Interface
   'diamagnetic_core_flawless_interface': {"debuffType":"-Regen","debuffMagnitude":0.1,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":1},
   // Diamagnetic Core Interface
@@ -890,59 +1044,59 @@ export const GENERATED_INTERFACE_EFFECTS: Record<string, {
   // Paralytic Total Radial Conversion
   'paralytic_total_radial_conversion': {"debuffType":"-Damage","debuffMagnitude":0.05,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
   // Preemptive Core Flawless Interface
-  'preemptive_core_flawless_interface': {"debuffType":"-Recovery","debuffMagnitude":0.05,"debuffDuration":4.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
+  'preemptive_core_flawless_interface': {"debuffType":"-Endurance","debuffMagnitude":0.5,"debuffDuration":4.3,"dotType":"Energy","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Melee_Tempdamage","procChance":0.75},
   // Preemptive Core Interface
-  'preemptive_core_interface': {"debuffType":"-Recovery","debuffMagnitude":0.05,"debuffDuration":4.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.5},
+  'preemptive_core_interface': {"debuffType":"-Endurance","debuffMagnitude":0.5,"debuffDuration":4.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.5},
   // Preemptive Interface
-  'preemptive_interface': {"debuffType":"-Recovery","debuffMagnitude":0.05,"debuffDuration":4.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
+  'preemptive_interface': {"debuffType":"-Endurance","debuffMagnitude":0.5,"debuffDuration":4.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
   // Preemptive Partial Core Conversion
-  'preemptive_partial_core_conversion': {"debuffType":"-Recovery","debuffMagnitude":0.05,"debuffDuration":4.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
+  'preemptive_partial_core_conversion': {"debuffType":"-Endurance","debuffMagnitude":0.5,"debuffDuration":4.3,"dotType":"Energy","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Melee_Tempdamage","procChance":0.5},
   // Preemptive Partial Radial Conversion
-  'preemptive_partial_radial_conversion': {"debuffType":"-Recovery","debuffMagnitude":0.05,"debuffDuration":4.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.5},
+  'preemptive_partial_radial_conversion': {"debuffType":"-Endurance","debuffMagnitude":0.5,"debuffDuration":4.3,"dotType":"Energy","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Melee_Tempdamage","procChance":0.5},
   // Preemptive Radial Flawless Interface
-  'preemptive_radial_flawless_interface': {"debuffType":"-Recovery","debuffMagnitude":0.05,"debuffDuration":4.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
+  'preemptive_radial_flawless_interface': {"debuffType":"-Endurance","debuffMagnitude":0.5,"debuffDuration":4.3,"dotType":"Energy","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Melee_Tempdamage","procChance":0.75},
   // Preemptive Radial Interface
-  'preemptive_radial_interface': {"debuffType":"-Recovery","debuffMagnitude":0.05,"debuffDuration":4.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
+  'preemptive_radial_interface': {"debuffType":"-Endurance","debuffMagnitude":0.5,"debuffDuration":4.3,"dotType":"Energy","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Melee_Tempdamage","procChance":0.25},
   // Preemptive Total Core Conversion
-  'preemptive_total_core_conversion': {"debuffType":"-Recovery","debuffMagnitude":0.05,"debuffDuration":4.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
+  'preemptive_total_core_conversion': {"debuffType":"-Endurance","debuffMagnitude":0.5,"debuffDuration":4.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
   // Preemptive Total Radial Conversion
-  'preemptive_total_radial_conversion': {"debuffType":"-Recovery","debuffMagnitude":0.05,"debuffDuration":4.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
+  'preemptive_total_radial_conversion': {"debuffType":"-Endurance","debuffMagnitude":0.5,"debuffDuration":4.3,"dotType":"Energy","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Melee_Tempdamage","procChance":0.75},
   // Reactive Core Flawless Interface
-  'reactive_core_flawless_interface': {"debuffType":"-Damage","debuffMagnitude":0.025,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
+  'reactive_core_flawless_interface': {"debuffType":"-Damage","debuffMagnitude":0.025,"debuffDuration":8.3,"dotType":"Fire","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Melee_Tempdamage","procChance":0.75},
   // Reactive Core Interface
   'reactive_core_interface': {"debuffType":"-Damage","debuffMagnitude":0.025,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.5},
   // Reactive Interface
   'reactive_interface': {"debuffType":"-Damage","debuffMagnitude":0.025,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
   // Reactive Partial Core Conversion
-  'reactive_partial_core_conversion': {"debuffType":"-Damage","debuffMagnitude":0.025,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
+  'reactive_partial_core_conversion': {"debuffType":"-Damage","debuffMagnitude":0.025,"debuffDuration":8.3,"dotType":"Fire","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Melee_Tempdamage","procChance":0.25},
   // Reactive Partial Radial Conversion
-  'reactive_partial_radial_conversion': {"debuffType":"-Damage","debuffMagnitude":0.025,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
+  'reactive_partial_radial_conversion': {"debuffType":"-Damage","debuffMagnitude":0.025,"debuffDuration":8.3,"dotType":"Fire","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Melee_Tempdamage","procChance":0.5},
   // Reactive Radial Flawless Interface
-  'reactive_radial_flawless_interface': {"debuffType":"-Damage","debuffMagnitude":0.025,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
+  'reactive_radial_flawless_interface': {"debuffType":"-Damage","debuffMagnitude":0.025,"debuffDuration":8.3,"dotType":"Fire","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Melee_Tempdamage","procChance":0.75},
   // Reactive Radial Interface
-  'reactive_radial_interface': {"debuffType":"-Damage","debuffMagnitude":0.025,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
+  'reactive_radial_interface': {"debuffType":"-Damage","debuffMagnitude":0.025,"debuffDuration":8.3,"dotType":"Fire","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Melee_Tempdamage","procChance":0.25},
   // Reactive Total Core Conversion
   'reactive_total_core_conversion': {"debuffType":"-Damage","debuffMagnitude":0.025,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
   // Reactive Total Radial Conversion
-  'reactive_total_radial_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
+  'reactive_total_radial_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":"Fire","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Melee_Tempdamage","procChance":0.75},
   // Spectral Core Flawless Interface
-  'spectral_core_flawless_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
+  'spectral_core_flawless_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":"Negative","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Melee_Tempdamage","procChance":0.25},
   // Spectral Core Interface
   'spectral_core_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.15},
   // Spectral Interface
   'spectral_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.1},
   // Spectral Partial Core Conversion
-  'spectral_partial_core_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
+  'spectral_partial_core_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":"Negative","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Melee_Tempdamage","procChance":0.25},
   // Spectral Partial Radial Conversion
-  'spectral_partial_radial_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.5},
+  'spectral_partial_radial_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":"Negative","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Melee_Tempdamage","procChance":0.5},
   // Spectral Radial Flawless Interface
-  'spectral_radial_flawless_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
+  'spectral_radial_flawless_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":"Negative","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Melee_Tempdamage","procChance":0.75},
   // Spectral Radial Interface
-  'spectral_radial_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
+  'spectral_radial_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":"Negative","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Melee_Tempdamage","procChance":0.25},
   // Spectral Total Core Conversion
   'spectral_total_core_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.2},
   // Spectral Total Radial Conversion
-  'spectral_total_radial_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
+  'spectral_total_radial_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":"Negative","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Melee_Tempdamage","procChance":0.75},
 };
 
 // ============================================

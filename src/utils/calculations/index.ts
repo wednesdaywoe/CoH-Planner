@@ -83,6 +83,7 @@ export {
   getBreakdownForStat,
   hasStatBonuses,
   getAlphaEnhancementBonuses,
+  getAlphaEdBypassBonuses,
   type GlobalBonuses as CharacterGlobalBonuses,
   type StatSource,
   type DashboardStatBreakdown,

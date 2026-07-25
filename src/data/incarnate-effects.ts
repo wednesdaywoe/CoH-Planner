@@ -30,12 +30,13 @@ import { getActiveDataset } from './dataset';
  * Enhancement bonuses from Alpha slot (boost power effectiveness)
  *
  * Alpha slot abilities provide enhancement bonuses that apply to ALL powers
- * that accept that enhancement type. A portion of these bonuses bypass
- * Enhancement Diversification (ED), with the ratio depending on rarity:
- * - Common: 1/6 (~16.7%) bypasses ED
- * - Uncommon Core/Radial: 1/3 (~33.3%) bypasses ED
- * - Rare (Total/Partial): 1/2 (50%) bypasses ED
- * - Very Rare (Paragon): 2/3 (~66.7%) bypasses ED
+ * that accept that enhancement type. A portion of these bonuses bypasses
+ * Enhancement Diversification (ED). That portion is authored per silent grant
+ * file (the BoostIgnoreDiminishing-flagged template, or Thunderspy's `Ones`
+ * template) and read via {@link getAlphaEdBypass} — it is NOT a per-tier
+ * constant: Thunderspy splits many aspects differently from the HC/Rebirth
+ * 1/6 · 1/3 · 1/2 · 2/3 rarity pattern (some tspy aspects have no bypass at
+ * all).
  */
 export interface AlphaEffects {
   // Enhancement bonuses (percentage as decimal, e.g., 0.45 = 45%)
@@ -65,9 +66,6 @@ export interface AlphaEffects {
   absorb?: number;
   // Special: Level shift
   levelShift?: number;
-  // ED bypass ratio (portion of bonus that bypasses Enhancement Diversification)
-  // Common: 1/6, Uncommon: 1/3, Rare: 1/2, VeryRare: 2/3
-  edBypass?: number;
 }
 
 /**
@@ -307,6 +305,8 @@ export interface GenesisEffects {
  */
 export interface IncarnateEffectsRaw {
   alpha: Record<string, AlphaEffects>;
+  /** Per-aspect slice of each `alpha` entry that bypasses ED (see {@link getAlphaEdBypass}). */
+  alphaEdBypass: Record<string, AlphaEffects>;
   destiny: Record<string, DestinyEffects>;
   destinyTimeline: Record<string, DestinyTimeline>;
   destinyBoosts: Record<string, string[]>;
@@ -341,6 +341,10 @@ export interface IncarnatePowerEffects {
 // Alpha data auto-generated — see scripts/convert-incarnate-effects.cjs
 function alphaEffects(): Record<string, AlphaEffects> {
   return getActiveDataset().incarnateEffectsRaw.alpha;
+}
+
+function alphaEdBypassTable(): Record<string, AlphaEffects> {
+  return getActiveDataset().incarnateEffectsRaw.alphaEdBypass;
 }
 
 // ============================================
@@ -438,6 +442,16 @@ function normalizePowerId(powerId: string): string {
 export function getAlphaEffects(powerId: string): AlphaEffects | null {
   const normalized = normalizePowerId(powerId);
   return alphaEffects()[normalized] || null;
+}
+
+/**
+ * Per-aspect ED-bypass portion of an Alpha power's enhancement bonuses —
+ * the slice `combineWithAlphaED` adds AFTER Enhancement Diversification.
+ * Same key shape as {@link getAlphaEffects}; null when nothing bypasses.
+ */
+export function getAlphaEdBypass(powerId: string): AlphaEffects | null {
+  const normalized = normalizePowerId(powerId);
+  return alphaEdBypassTable()[normalized] || null;
 }
 
 /**

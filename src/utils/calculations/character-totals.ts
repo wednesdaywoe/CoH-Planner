@@ -21,8 +21,8 @@ import { getBuffPetSources, BUFF_PET_TOGGLE_ID, type BuffPetSource } from './buf
 import type { SummonEffect } from '@/types/power';
 import { withoutIllegalSlots } from '@/utils/build-enhancement-validation';
 import { stanceAdjusterOverrides, STANCE_GROUPS, activeStanceOptionId } from '@/data';
-import { getIOSet, getAlphaEffects, getDestinyEffects, getDestinyEffectsAtTime, getDestinySustainedFloorTime, getDestinyBoostsAllowed, applyAlphaToDestiny, getHybridEffects, getLoreEffects, getGenesisEffects, findProcData, getProcEffects, isProcAlwaysOn, calculateAutoToggleProcsPerMinute, calculateProcChance, arcToDegrees, getProcControlType, DEFAULT_STACK_COUNT, resolveProcContribution, procOverrideKey } from '@/data';
-import type { DestinyEffects, GenesisEffects } from '@/data';
+import { getIOSet, getAlphaEffects, getAlphaEdBypass, getDestinyEffects, getDestinyEffectsAtTime, getDestinySustainedFloorTime, getDestinyBoostsAllowed, applyAlphaToDestiny, getHybridEffects, getLoreEffects, getGenesisEffects, findProcData, getProcEffects, isProcAlwaysOn, calculateAutoToggleProcsPerMinute, calculateProcChance, arcToDegrees, getProcControlType, DEFAULT_STACK_COUNT, resolveProcContribution, procOverrideKey } from '@/data';
+import type { AlphaEffects, DestinyEffects, GenesisEffects } from '@/data';
 import { getTableValue } from '@/data/at-tables';
 import { getBaseToHit, getCombatModifier } from '@/data/purple-patch';
 import { getPowerPool } from '@/data/power-pools';
@@ -50,7 +50,6 @@ import {
   BASE_REGEN_RATE,
   type EnhancementBonuses,
 } from './enhancement-values';
-import { INCARNATE_TIER_REGISTRY } from '@/data/core/incarnate-registry';
 import { toHitBuffValue, damageBuffValue, resistanceBuffValue, resistanceSelfDebuffValue, defenseBuffValue, defenseBuffSuppressibleValue, maxHPBuffValue, regenBuffValue, recoveryBuffValue, movementBuffValue, kbProtectionValue } from '@/data/core/atom-query';
 import type { EncodedAtom } from '@/data/core/atomic-effect';
 import { warnFallback } from '@/utils/fallback-warnings';
@@ -797,7 +796,7 @@ function applyToggleEndCosts(
   breakdown: Map<string, DashboardStatBreakdown>,
   buildLevel: number,
   alphaBonuses: EnhancementBonuses = {},
-  alphaEdBypassRatio: number = 0,
+  alphaEdBypass: EnhancementBonuses = {},
   exemplarLevel?: number,
 ): void {
   const globalEndDiscDecimal = (global.endurance || 0) / 100;
@@ -821,7 +820,7 @@ function applyToggleEndCosts(
         buildLevel,
         getIOSet,
         alphaBonuses,
-        alphaEdBypassRatio,
+        alphaEdBypass,
         exemplarLevel
       );
     } else {
@@ -1094,7 +1093,7 @@ function applyActivePowerBonuses(
   buildLevel: number,
   archetypeId: string,
   alphaBonuses: EnhancementBonuses = {},
-  alphaEdBypassRatio: number = 0,
+  alphaEdBypass: EnhancementBonuses = {},
   targetsHitValues: Record<string, number> = {},
   exemplarLevel?: number,
   combatMode?: boolean,
@@ -1139,7 +1138,7 @@ function applyActivePowerBonuses(
         buildLevel,
         getIOSet,
         alphaBonuses,
-        alphaEdBypassRatio,
+        alphaEdBypass,
         exemplarLevel
       );
     } else {
@@ -2276,7 +2275,7 @@ function applyFitnessPowerBonuses(
   breakdown: Map<string, DashboardStatBreakdown>,
   globalIOLevel: number,
   alphaBonuses: EnhancementBonuses = {},
-  alphaEdBypassRatio: number = 0,
+  alphaEdBypass: EnhancementBonuses = {},
   exemplarLevel?: number
 ): void {
   const fitnessPowers = (build.inherents || []).filter(
@@ -2294,7 +2293,7 @@ function applyFitnessPowerBonuses(
       globalIOLevel,
       getIOSet,
       alphaBonuses,
-      alphaEdBypassRatio,
+      alphaEdBypass,
       exemplarLevel
     );
 
@@ -3253,17 +3252,45 @@ export function getAlphaEnhancementBonuses(
   incarnateActive: IncarnateActiveState | undefined,
   incarnatesSuppressed = false,
 ): EnhancementBonuses {
+  const alphaEffects = activeAlphaEffects(incarnates, incarnateActive, incarnatesSuppressed, getAlphaEffects);
+  return alphaEffects ? mapAlphaEffectsToEnhancementBonuses(alphaEffects) : {};
+}
+
+/**
+ * Per-aspect ED-bypass portion of the Alpha bonuses, in the same
+ * EnhancementBonuses shape as `getAlphaEnhancementBonuses` — read from the
+ * silent grant power's BoostIgnoreDiminishing / `Ones` templates rather than
+ * a per-tier ratio (Thunderspy's authored splits diverge from the HC rarity
+ * pattern). `combineWithAlphaED` adds exactly this slice after ED.
+ */
+export function getAlphaEdBypassBonuses(
+  incarnates: IncarnateBuildState | undefined,
+  incarnateActive: IncarnateActiveState | undefined,
+  incarnatesSuppressed = false,
+): EnhancementBonuses {
+  const bypass = activeAlphaEffects(incarnates, incarnateActive, incarnatesSuppressed, getAlphaEdBypass);
+  return bypass ? mapAlphaEffectsToEnhancementBonuses(bypass) : {};
+}
+
+/** Shared active/suppression gate for the alpha total and ED-bypass lookups. */
+function activeAlphaEffects(
+  incarnates: IncarnateBuildState | undefined,
+  incarnateActive: IncarnateActiveState | undefined,
+  incarnatesSuppressed: boolean,
+  lookup: (powerId: string) => AlphaEffects | null,
+): AlphaEffects | null {
   // Exemplared below 45 — incarnate abilities are off entirely.
-  if (incarnatesSuppressed) return {};
-  if (!incarnates?.alpha) return {};
+  if (incarnatesSuppressed) return null;
+  if (!incarnates?.alpha) return null;
 
   // Check if alpha is active
   const active = incarnateActive || { alpha: true, destiny: true, hybrid: true, interface: true, judgement: true, lore: true };
-  if (!active.alpha) return {};
+  if (!active.alpha) return null;
 
-  const alphaEffects = getAlphaEffects(incarnates.alpha.powerId);
-  if (!alphaEffects) return {};
+  return lookup(incarnates.alpha.powerId);
+}
 
+function mapAlphaEffectsToEnhancementBonuses(alphaEffects: AlphaEffects): EnhancementBonuses {
   // Convert AlphaEffects to EnhancementBonuses format
   const bonuses: EnhancementBonuses = {};
 
@@ -4351,16 +4378,16 @@ export function legacyCalculateCharacterTotals(
 
   // Step 5: Get Alpha incarnate enhancement bonuses (apply to all powers including fitness)
   const alphaBonuses = getAlphaEnhancementBonuses(build.incarnates, incarnateActive, incarnatesSuppressed);
-  // Alpha tier dictates how much of the boost bypasses ED (Common 1/6 …
-  // Very Rare 2/3). Passed alongside alphaBonuses so combineWithAlphaED
-  // splits the buff correctly against the per-power IO ED total.
-  const alphaTier = build.incarnates?.alpha?.tier;
-  const alphaEdBypassRatio = alphaTier ? INCARNATE_TIER_REGISTRY[alphaTier].edBypassRatio : 0;
+  // Per-aspect slice of the alpha bonus that bypasses ED, read from the same
+  // silent grant data (BoostIgnoreDiminishing / `Ones` templates). Passed
+  // alongside alphaBonuses so combineWithAlphaED splits the buff correctly
+  // against the per-power IO ED total.
+  const alphaEdBypass = getAlphaEdBypassBonuses(build.incarnates, incarnateActive, incarnatesSuppressed);
   if (_debug) debugAlphaBonuses(alphaBonuses);
 
   // Step 6: Apply inherent power bonuses (Fitness powers, with Alpha bonuses)
   if (_debug) debugGroup('Step 6: Fitness Powers');
-  applyFitnessPowerBonuses(build, globalBonuses, breakdown, effectiveLevel, alphaBonuses, alphaEdBypassRatio, exemplarLevel);
+  applyFitnessPowerBonuses(build, globalBonuses, breakdown, effectiveLevel, alphaBonuses, alphaEdBypass, exemplarLevel);
   if (_debug) debugGroupEnd();
 
   // Step 7: Apply active toggle power bonuses (with enhancement multipliers + Alpha bonuses)
@@ -4390,7 +4417,7 @@ export function legacyCalculateCharacterTotals(
   // Resistible self -Res debuffs (Offensive Adaptation) — mitigated by same-type
   // resistance after every pass has summed the totals (see resolution below).
   const resSelfDebuffContribs: { name: string; type: string; nominal: number; resistible: boolean }[] = [];
-  applyActivePowerBonuses(allPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', alphaBonuses, alphaEdBypassRatio, options?.targetsHitValues ?? {}, exemplarLevel, options?.combatMode, strengthBuffs, stealthContribs, absorbFractionContribs, movementContribs, resSelfDebuffContribs);
+  applyActivePowerBonuses(allPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', alphaBonuses, alphaEdBypass, options?.targetsHitValues ?? {}, exemplarLevel, options?.combatMode, strengthBuffs, stealthContribs, absorbFractionContribs, movementContribs, resSelfDebuffContribs);
 
   // Step 7.1: Apply active mode-/state-gated conditional contributions (Bio
   // Armor adaptation modes, …). Each active conditional is a synthetic active
@@ -4413,7 +4440,7 @@ export function legacyCalculateCharacterTotals(
     options?.mechanicAdjusters ?? {},
   );
   if (conditionalPowers.length > 0) {
-    applyActivePowerBonuses(conditionalPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', {}, 0, options?.targetsHitValues ?? {}, exemplarLevel, options?.combatMode, emptyStrengthBuffs(), stealthContribs, absorbFractionContribs, movementContribs, resSelfDebuffContribs);
+    applyActivePowerBonuses(conditionalPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', {}, {}, options?.targetsHitValues ?? {}, exemplarLevel, options?.combatMode, emptyStrengthBuffs(), stealthContribs, absorbFractionContribs, movementContribs, resSelfDebuffContribs);
   }
 
   // Step 7.2: Fold toggled-on buff-pet auras (Force Field Generator, Barrier
@@ -4424,7 +4451,7 @@ export function legacyCalculateCharacterTotals(
   // Default-safe: no buff-pet toggled → no synthetics → totals unchanged.
   const buffPetPowers = expandBuffPetAuras(allPowers, options?.mechanicAdjusters ?? {});
   if (buffPetPowers.length > 0) {
-    applyActivePowerBonuses(buffPetPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', {}, 0, options?.targetsHitValues ?? {}, exemplarLevel, options?.combatMode, emptyStrengthBuffs(), stealthContribs, absorbFractionContribs, movementContribs, resSelfDebuffContribs);
+    applyActivePowerBonuses(buffPetPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', {}, {}, options?.targetsHitValues ?? {}, exemplarLevel, options?.combatMode, emptyStrengthBuffs(), stealthContribs, absorbFractionContribs, movementContribs, resSelfDebuffContribs);
   }
   if (_debug) debugGroupEnd();
 
@@ -4568,7 +4595,7 @@ export function legacyCalculateCharacterTotals(
   // that hadn't been aggregated by the time Step 7 ran, e.g. Hybrid T4 in
   // Step 9).
   if (_debug) debugGroup('Step 9.7: Toggle End Costs');
-  applyToggleEndCosts(allPowers, globalBonuses, breakdown, effectiveLevel, alphaBonuses, alphaEdBypassRatio, exemplarLevel);
+  applyToggleEndCosts(allPowers, globalBonuses, breakdown, effectiveLevel, alphaBonuses, alphaEdBypass, exemplarLevel);
   if (_debug) debugGroupEnd();
 
   // Step 10: Convert to character stats format

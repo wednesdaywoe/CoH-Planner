@@ -10,9 +10,10 @@
  * Everything here is a pure function of the power object — the four transforms PROD6C-3
  * enumerates as (2) the merged `stats`, (3) healing extracted from the damage array,
  * (4) `buffDuration` backfilled from a summon's duration, and (5) the flattened `movement`
- * object. The transforms that need build or UI state — the redirect / quick-snipe /
- * conditional merge that decides WHICH power this is, per-target scaling, and the pseudo-pet
- * merge — stay at the call sites.
+ * object. Two further transforms live below it rather than inside it, because each runs on
+ * the built bag: (6) per-target scaling, which reads UI state, and (7) the pseudo-pet merge.
+ * The one transform that stays at the call sites is the redirect / quick-snipe / conditional
+ * merge that decides WHICH power this is.
  *
  * Two divergences between the surfaces are settled here rather than preserved (counts are
  * powers per fork over the deduped runtime corpus, homecoming / rebirth / thunderspy):
@@ -33,6 +34,7 @@
 import type { Power, PowerEffects } from '@/types';
 import { arcToDegrees } from '@/data/proc-data';
 import { extractHealingFromDamage } from '@/utils/calculations/healing';
+import { synthesizePseudoPetEffects } from '@/utils/calculations/pet-damage';
 
 /** Toggle tick interval when the data omits one — end/s = endurance / activatePeriod. */
 const DEFAULT_ACTIVATE_PERIOD = 0.5;
@@ -260,4 +262,22 @@ function adjustEffectsForTargets(
 export function withTargetsHit(power: Power, effects: PowerEffects, targetsHit: number): PowerEffects {
   if (!getStackingInfo(power) || targetsHit <= 1) return effects;
   return adjustEffectsForTargets(effects, targetsHit);
+}
+
+// ---------------------------------------------------------------------------
+// the pseudo-pet merge (PROD6C-3c)
+// ---------------------------------------------------------------------------
+
+/**
+ * Merge a summon power's pseudo-pet debuffs UNDER its own bag — the parent's keys win, the
+ * pet fills in keys the parent doesn't carry. Powers like Glue Arrow deliver their
+ * enhanceable debuffs entirely through a non-commandable pseudo-pet, so without this the
+ * player's enhancements never reach the rows they scale.
+ *
+ * Applied AFTER `withTargetsHit`, as both surfaces do: the synthesized fragment carries no
+ * `perTarget` metadata for the slider to grow.
+ */
+export function withPseudoPetEffects(power: Power, effects: PowerEffects): PowerEffects {
+  const pseudo = synthesizePseudoPetEffects(power.effects?.summon);
+  return pseudo ? { ...pseudo, ...effects } : effects;
 }

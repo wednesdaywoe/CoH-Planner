@@ -161,6 +161,160 @@ export const GENERATED_ALPHA_EFFECTS: Record<string, Record<string, number>> = {
   'vigor_total_radial_revamp': {"levelShift":1,"heal":0.33,"accuracy":0.165,"enduranceReduction":0.33,"confuse":0.33},
 };
 
+// Per-aspect portion of each GENERATED_ALPHA_EFFECTS bonus that bypasses
+// Enhancement Diversification — the BoostIgnoreDiminishing-flagged template
+// (HC/Rebirth) or the generic `Ones` template (Thunderspy) in the silent
+// grant power. Authored per silent FILE, so secondary aspects can carry a
+// different split than the headline aspect. Absent aspect = no bypass
+// (the whole bonus is subject to ED).
+
+export const GENERATED_ALPHA_ED_BYPASS: Record<string, Record<string, number>> = {
+  // Agility Boost
+  'agility_boost': {"enduranceModification":0.055},
+  // Agility Core Boost
+  'agility_core_boost': {"enduranceModification":0.11,"recharge":0.11},
+  // Agility Core Paragon
+  'agility_core_paragon': {"enduranceModification":0.3,"recharge":0.22,"defense":0.1333},
+  // Agility Partial Core Revamp
+  'agility_partial_core_revamp': {"enduranceModification":0.165,"recharge":0.165,"defense":0.1},
+  // Agility Partial Radial Revamp
+  'agility_partial_radial_revamp': {"enduranceModification":0.165,"recharge":0.0825,"defense":0.1,"runSpeed":0.165},
+  // Agility Radial Boost
+  'agility_radial_boost': {"enduranceModification":0.11,"defense":0.0667},
+  // Agility Radial Paragon
+  'agility_radial_paragon': {"enduranceModification":0.22,"recharge":0.22,"defense":0.1333,"jumpSpeed":0.22,"runSpeed":0.22,"flySpeed":0.22},
+  // Agility Total Core Revamp
+  'agility_total_core_revamp': {"enduranceModification":0.225,"recharge":0.165},
+  // Agility Total Radial Revamp
+  'agility_total_radial_revamp': {"enduranceModification":0.165,"recharge":0.0825,"defense":0.1,"jumpSpeed":0.165},
+  // Cardiac Boost
+  'cardiac_boost': {"enduranceReduction":0.055},
+  // Cardiac Core Boost
+  'cardiac_core_boost': {"enduranceReduction":0.11,"range":0.0667},
+  // Cardiac Core Paragon
+  'cardiac_core_paragon': {"enduranceReduction":0.3,"range":0.1333,"resistance":0.1333},
+  // Cardiac Partial Core Revamp
+  'cardiac_partial_core_revamp': {"enduranceReduction":0.165,"range":0.1,"resistance":0.1},
+  // Cardiac Partial Radial Revamp
+  'cardiac_partial_radial_revamp': {"enduranceReduction":0.165,"range":0.05,"resistance":0.1,"fear":0.165},
+  // Cardiac Radial Boost
+  'cardiac_radial_boost': {"enduranceReduction":0.11,"resistance":0.0667},
+  // Cardiac Radial Paragon
+  'cardiac_radial_paragon': {"enduranceReduction":0.22,"range":0.1333,"resistance":0.1333,"sleep":0.22,"fear":0.22,"intangible":0.22},
+  // Cardiac Total Core Revamp
+  'cardiac_total_core_revamp': {"enduranceReduction":0.225,"range":0.1},
+  // Cardiac Total Radial Revamp
+  'cardiac_total_radial_revamp': {"enduranceReduction":0.165,"range":0.05,"resistance":0.1,"sleep":0.165},
+  // Intuition Boost
+  'intuition_boost': {"hold":0.055},
+  // Intuition Core Boost
+  'intuition_core_boost': {"hold":0.11,"defenseDebuff":0.11},
+  // Intuition Core Paragon
+  'intuition_core_paragon': {"hold":0.3,"defenseDebuff":0.22,"range":0.1333},
+  // Intuition Partial Core Revamp
+  'intuition_partial_core_revamp': {"hold":0.165,"defenseDebuff":0.165,"range":0.1},
+  // Intuition Partial Radial Revamp
+  'intuition_partial_radial_revamp': {"hold":0.165,"defenseDebuff":0.0825,"range":0.1,"damage":0.165},
+  // Intuition Radial Boost
+  'intuition_radial_boost': {"hold":0.11,"range":0.0667},
+  // Intuition Radial Paragon
+  'intuition_radial_paragon': {"hold":0.22,"defenseDebuff":0.22,"range":0.1333,"toHitDebuff":0.1333,"damage":0.22,"slow":0.22},
+  // Intuition Total Core Revamp
+  'intuition_total_core_revamp': {"hold":0.225,"defenseDebuff":0.165},
+  // Intuition Total Radial Revamp
+  'intuition_total_radial_revamp': {"hold":0.165,"defenseDebuff":0.0825,"range":0.1,"toHitDebuff":0.1},
+  // Musculature Boost
+  'musculature_boost': {"damage":0.055},
+  // Musculature Core Boost
+  'musculature_core_boost': {"damage":0.11,"immobilize":0.11},
+  // Musculature Core Paragon
+  'musculature_core_paragon': {"damage":0.3,"immobilize":0.22,"defenseDebuff":0.22},
+  // Musculature Partial Core Revamp
+  'musculature_partial_core_revamp': {"damage":0.165,"immobilize":0.165,"defenseDebuff":0.165},
+  // Musculature Partial Radial Revamp
+  'musculature_partial_radial_revamp': {"damage":0.165,"immobilize":0.0825,"defenseDebuff":0.165,"toHitDebuff":0.1},
+  // Musculature Radial Boost
+  'musculature_radial_boost': {"damage":0.11,"defenseDebuff":0.11},
+  // Musculature Radial Paragon
+  'musculature_radial_paragon': {"damage":0.22,"immobilize":0.22,"defenseDebuff":0.22,"enduranceModification":0.22,"toHitDebuff":0.1333,"runSpeed":0.22},
+  // Musculature Total Core Revamp
+  'musculature_total_core_revamp': {"damage":0.225,"immobilize":0.165},
+  // Musculature Total Radial Revamp
+  'musculature_total_radial_revamp': {"damage":0.165,"immobilize":0.0825,"defenseDebuff":0.165,"enduranceModification":0.165},
+  // Nerve Boost
+  'nerve_boost': {"accuracy":0.055},
+  // Nerve Core Boost
+  'nerve_core_boost': {"accuracy":0.11,"hold":0.11},
+  // Nerve Core Paragon
+  'nerve_core_paragon': {"accuracy":0.3,"hold":0.22,"defense":0.1333},
+  // Nerve Partial Core Revamp
+  'nerve_partial_core_revamp': {"accuracy":0.165,"hold":0.165,"defense":0.1},
+  // Nerve Partial Radial Revamp
+  'nerve_partial_radial_revamp': {"accuracy":0.165,"hold":0.0825,"defense":0.1,"taunt":0.165},
+  // Nerve Radial Boost
+  'nerve_radial_boost': {"accuracy":0.11,"defense":0.0667},
+  // Nerve Radial Paragon
+  'nerve_radial_paragon': {"accuracy":0.22,"hold":0.22,"defense":0.1333,"confuse":0.22,"taunt":0.22,"flySpeed":0.22},
+  // Nerve Total Core Revamp
+  'nerve_total_core_revamp': {"accuracy":0.225,"hold":0.165},
+  // Nerve Total Radial Revamp
+  'nerve_total_radial_revamp': {"accuracy":0.165,"hold":0.0825,"defense":0.1,"confuse":0.165},
+  // Resilient Boost
+  'resilient_boost': {"resistance":0.0333},
+  // Resilient Core Boost
+  'resilient_core_boost': {"resistance":0.0667,"toHitBuff":0.0667},
+  // Resilient Core Paragon
+  'resilient_core_paragon': {"resistance":0.22,"toHitBuff":0.1333,"immobilize":0.22},
+  // Resilient Partial Core Revamp
+  'resilient_partial_core_revamp': {"resistance":0.1,"toHitBuff":0.1,"immobilize":0.165},
+  // Resilient Partial Radial Revamp
+  'resilient_partial_radial_revamp': {"resistance":0.1,"toHitBuff":0.05,"immobilize":0.165,"stun":0.165},
+  // Resilient Radial Boost
+  'resilient_radial_boost': {"resistance":0.0667,"immobilize":0.11},
+  // Resilient Radial Paragon
+  'resilient_radial_paragon': {"resistance":0.1333,"toHitBuff":0.1333,"immobilize":0.22,"intangible":0.22,"stun":0.22,"taunt":0.22},
+  // Resilient Total Core Revamp
+  'resilient_total_core_revamp': {"resistance":0.165,"toHitBuff":0.1},
+  // Resilient Total Radial Revamp
+  'resilient_total_radial_revamp': {"resistance":0.1,"toHitBuff":0.05,"immobilize":0.165,"intangible":0.165},
+  // Spiritual Boost
+  'spiritual_boost': {"recharge":0.055},
+  // Spiritual Core Boost
+  'spiritual_core_boost': {"recharge":0.11,"stun":0.11},
+  // Spiritual Core Paragon
+  'spiritual_core_paragon': {"recharge":0.3,"stun":0.22,"heal":0.22},
+  // Spiritual Partial Core Revamp
+  'spiritual_partial_core_revamp': {"recharge":0.165,"stun":0.165,"heal":0.165},
+  // Spiritual Partial Radial Revamp
+  'spiritual_partial_radial_revamp': {"recharge":0.165,"stun":0.0825,"heal":0.165,"slow":0.165},
+  // Spiritual Radial Boost
+  'spiritual_radial_boost': {"recharge":0.11,"heal":0.11},
+  // Spiritual Radial Paragon
+  'spiritual_radial_paragon': {"recharge":0.22,"stun":0.22,"heal":0.22,"toHitBuff":0.1333,"slow":0.22,"jumpSpeed":0.22},
+  // Spiritual Total Core Revamp
+  'spiritual_total_core_revamp': {"recharge":0.225,"stun":0.165},
+  // Spiritual Total Radial Revamp
+  'spiritual_total_radial_revamp': {"recharge":0.165,"stun":0.0825,"heal":0.165,"toHitBuff":0.1},
+  // Vigor Boost
+  'vigor_boost': {"heal":0.055},
+  // Vigor Core Boost
+  'vigor_core_boost': {"heal":0.11,"accuracy":0.11},
+  // Vigor Core Paragon
+  'vigor_core_paragon': {"heal":0.3,"accuracy":0.22,"enduranceReduction":0.22},
+  // Vigor Partial Core Revamp
+  'vigor_partial_core_revamp': {"heal":0.165,"accuracy":0.165,"enduranceReduction":0.165},
+  // Vigor Partial Radial Revamp
+  'vigor_partial_radial_revamp': {"heal":0.165,"accuracy":0.0825,"enduranceReduction":0.165,"sleep":0.165},
+  // Vigor Radial Boost
+  'vigor_radial_boost': {"heal":0.11,"enduranceReduction":0.11},
+  // Vigor Radial Paragon
+  'vigor_radial_paragon': {"heal":0.22,"accuracy":0.22,"enduranceReduction":0.22,"confuse":0.22,"sleep":0.22,"fear":0.22},
+  // Vigor Total Core Revamp
+  'vigor_total_core_revamp': {"heal":0.225,"accuracy":0.165},
+  // Vigor Total Radial Revamp
+  'vigor_total_radial_revamp': {"heal":0.165,"accuracy":0.0825,"enduranceReduction":0.165,"confuse":0.165},
+};
+
 // ============================================
 // DESTINY EFFECTS
 // ============================================
@@ -800,149 +954,149 @@ export const GENERATED_INTERFACE_EFFECTS: Record<string, {
   procChance: number;
 }> = {
   // Cognitive Core Flawless Interface
-  'cognitive_core_flawless_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":"Psionic","dotDamage":0.1,"dotDuration":4.3,"dotTableName":"Ranged_Tempdamage","procChance":0},
+  'cognitive_core_flawless_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":"Psionic","dotDamage":0.1,"dotDuration":4.3,"dotTableName":"Melee_TempDamage","procChance":0.25},
   // Cognitive Core Interface
-  'cognitive_core_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0},
+  'cognitive_core_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.12},
   // Cognitive Interface
-  'cognitive_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0},
+  'cognitive_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.08},
   // Cognitive Partial Core Conversion
-  'cognitive_partial_core_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":"Psionic","dotDamage":0.1,"dotDuration":4.3,"dotTableName":"Ranged_Tempdamage","procChance":0},
+  'cognitive_partial_core_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":"Psionic","dotDamage":0.1,"dotDuration":4.3,"dotTableName":"Melee_TempDamage","procChance":0.25},
   // Cognitive Partial Radial Conversion
-  'cognitive_partial_radial_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":"Psionic","dotDamage":0.1,"dotDuration":4.3,"dotTableName":"Ranged_Tempdamage","procChance":0},
+  'cognitive_partial_radial_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":"Psionic","dotDamage":0.1,"dotDuration":4.3,"dotTableName":"Melee_TempDamage","procChance":0.5},
   // Cognitive Radial Flawless Interface
-  'cognitive_radial_flawless_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":"Psionic","dotDamage":0.1,"dotDuration":4.3,"dotTableName":"Ranged_Tempdamage","procChance":0},
+  'cognitive_radial_flawless_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":"Psionic","dotDamage":0.1,"dotDuration":4.3,"dotTableName":"Melee_TempDamage","procChance":0.75},
   // Cognitive Radial Interface
-  'cognitive_radial_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":"Psionic","dotDamage":0.1,"dotDuration":4.3,"dotTableName":"Ranged_Tempdamage","procChance":0},
+  'cognitive_radial_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":"Psionic","dotDamage":0.1,"dotDuration":4.3,"dotTableName":"Melee_TempDamage","procChance":0.25},
   // Cognitive Total Core Conversion
-  'cognitive_total_core_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0},
+  'cognitive_total_core_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.16},
   // Cognitive Total Radial Conversion
-  'cognitive_total_radial_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":"Psionic","dotDamage":0.1,"dotDuration":4.3,"dotTableName":"Ranged_Tempdamage","procChance":0},
+  'cognitive_total_radial_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":"Psionic","dotDamage":0.1,"dotDuration":4.3,"dotTableName":"Melee_TempDamage","procChance":0.75},
   // Degenerative Core Flawless Interface
-  'degenerative_core_flawless_interface': {"debuffType":"-MaxHP","debuffMagnitude":0.035,"debuffDuration":8.3,"dotType":"Toxic","dotDamage":0.1,"dotDuration":4.3,"dotTableName":"Ranged_Tempdamage","procChance":0},
+  'degenerative_core_flawless_interface': {"debuffType":"-MaxHP","debuffMagnitude":0.035,"debuffDuration":8.3,"dotType":"Toxic","dotDamage":0.1,"dotDuration":4.3,"dotTableName":"Melee_TempDamage","procChance":0.75},
   // Degenerative Core Interface
-  'degenerative_core_interface': {"debuffType":"-MaxHP","debuffMagnitude":0.035,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0},
+  'degenerative_core_interface': {"debuffType":"-MaxHP","debuffMagnitude":0.035,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.5},
   // Degenerative Interface
-  'degenerative_interface': {"debuffType":"-MaxHP","debuffMagnitude":0.035,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0},
+  'degenerative_interface': {"debuffType":"-MaxHP","debuffMagnitude":0.035,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
   // Degenerative Partial Core Conversion
-  'degenerative_partial_core_conversion': {"debuffType":"-MaxHP","debuffMagnitude":0.035,"debuffDuration":8.3,"dotType":"Toxic","dotDamage":0.1,"dotDuration":4.3,"dotTableName":"Ranged_Tempdamage","procChance":0},
+  'degenerative_partial_core_conversion': {"debuffType":"-MaxHP","debuffMagnitude":0.035,"debuffDuration":8.3,"dotType":"Toxic","dotDamage":0.1,"dotDuration":4.3,"dotTableName":"Melee_TempDamage","procChance":0.5},
   // Degenerative Partial Radial Conversion
-  'degenerative_partial_radial_conversion': {"debuffType":"-MaxHP","debuffMagnitude":0.035,"debuffDuration":8.3,"dotType":"Toxic","dotDamage":0.1,"dotDuration":4.3,"dotTableName":"Ranged_Tempdamage","procChance":0},
+  'degenerative_partial_radial_conversion': {"debuffType":"-MaxHP","debuffMagnitude":0.035,"debuffDuration":8.3,"dotType":"Toxic","dotDamage":0.1,"dotDuration":4.3,"dotTableName":"Melee_TempDamage","procChance":0.5},
   // Degenerative Radial Flawless Interface
-  'degenerative_radial_flawless_interface': {"debuffType":"-MaxHP","debuffMagnitude":0.035,"debuffDuration":8.3,"dotType":"Toxic","dotDamage":0.1,"dotDuration":4.3,"dotTableName":"Ranged_Tempdamage","procChance":0},
+  'degenerative_radial_flawless_interface': {"debuffType":"-MaxHP","debuffMagnitude":0.035,"debuffDuration":8.3,"dotType":"Toxic","dotDamage":0.1,"dotDuration":4.3,"dotTableName":"Melee_TempDamage","procChance":0.75},
   // Degenerative Radial Interface
-  'degenerative_radial_interface': {"debuffType":"-MaxHP","debuffMagnitude":0.035,"debuffDuration":8.3,"dotType":"Toxic","dotDamage":0.1,"dotDuration":4.3,"dotTableName":"Ranged_Tempdamage","procChance":0},
+  'degenerative_radial_interface': {"debuffType":"-MaxHP","debuffMagnitude":0.035,"debuffDuration":8.3,"dotType":"Toxic","dotDamage":0.1,"dotDuration":4.3,"dotTableName":"Melee_TempDamage","procChance":0.25},
   // Degenerative Total Core Conversion
-  'degenerative_total_core_conversion': {"debuffType":"-MaxHP","debuffMagnitude":0.035,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0},
+  'degenerative_total_core_conversion': {"debuffType":"-MaxHP","debuffMagnitude":0.035,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
   // Degenerative Total Radial Conversion
-  'degenerative_total_radial_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":"Toxic","dotDamage":0.1,"dotDuration":4.3,"dotTableName":"Ranged_Tempdamage","procChance":0},
+  'degenerative_total_radial_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":"Toxic","dotDamage":0.1,"dotDuration":4.3,"dotTableName":"Melee_TempDamage","procChance":0.75},
   // Diamagnetic Core Flawless Interface
-  'diamagnetic_core_flawless_interface': {"debuffType":"-Regen","debuffMagnitude":0.1,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0},
+  'diamagnetic_core_flawless_interface': {"debuffType":"-Regen","debuffMagnitude":0.1,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":1},
   // Diamagnetic Core Interface
-  'diamagnetic_core_interface': {"debuffType":"-ToHit","debuffMagnitude":0.05,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0},
+  'diamagnetic_core_interface': {"debuffType":"-ToHit","debuffMagnitude":0.05,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
   // Diamagnetic Interface
-  'diamagnetic_interface': {"debuffType":"-ToHit","debuffMagnitude":0.05,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0},
+  'diamagnetic_interface': {"debuffType":"-ToHit","debuffMagnitude":0.05,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.5},
   // Diamagnetic Partial Core Conversion
-  'diamagnetic_partial_core_conversion': {"debuffType":"-Regen","debuffMagnitude":0.1,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0},
+  'diamagnetic_partial_core_conversion': {"debuffType":"-Regen","debuffMagnitude":0.1,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
   // Diamagnetic Partial Radial Conversion
-  'diamagnetic_partial_radial_conversion': {"debuffType":"-Regen","debuffMagnitude":0.1,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0},
+  'diamagnetic_partial_radial_conversion': {"debuffType":"-Regen","debuffMagnitude":0.1,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
   // Diamagnetic Radial Flawless Interface
-  'diamagnetic_radial_flawless_interface': {"debuffType":"-Regen","debuffMagnitude":0.1,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0},
+  'diamagnetic_radial_flawless_interface': {"debuffType":"-Regen","debuffMagnitude":0.1,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":1},
   // Diamagnetic Radial Interface
-  'diamagnetic_radial_interface': {"debuffType":"-Regen","debuffMagnitude":0.1,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0},
+  'diamagnetic_radial_interface': {"debuffType":"-Regen","debuffMagnitude":0.1,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.5},
   // Diamagnetic Total Core Conversion
-  'diamagnetic_total_core_conversion': {"debuffType":"-ToHit","debuffMagnitude":0.05,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0},
+  'diamagnetic_total_core_conversion': {"debuffType":"-ToHit","debuffMagnitude":0.05,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":1},
   // Diamagnetic Total Radial Conversion
-  'diamagnetic_total_radial_conversion': {"debuffType":"-Regen","debuffMagnitude":0.1,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0},
+  'diamagnetic_total_radial_conversion': {"debuffType":"-Regen","debuffMagnitude":0.1,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":1},
   // Gravitic Core Flawless Interface
-  'gravitic_core_flawless_interface': {"debuffType":"-Recharge","debuffMagnitude":0.1,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0},
+  'gravitic_core_flawless_interface': {"debuffType":"-Recharge","debuffMagnitude":0.1,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
   // Gravitic Core Interface
-  'gravitic_core_interface': {"debuffType":"-Recharge","debuffMagnitude":0.1,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0},
+  'gravitic_core_interface': {"debuffType":"-Recharge","debuffMagnitude":0.1,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
   // Gravitic Interface
-  'gravitic_interface': {"debuffType":"-Recharge","debuffMagnitude":0.1,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0},
+  'gravitic_interface': {"debuffType":"-Recharge","debuffMagnitude":0.1,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
   // Gravitic Partial Core Conversion
-  'gravitic_partial_core_conversion': {"debuffType":"-Recharge","debuffMagnitude":0.1,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0},
+  'gravitic_partial_core_conversion': {"debuffType":"-Recharge","debuffMagnitude":0.1,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
   // Gravitic Partial Radial Conversion
-  'gravitic_partial_radial_conversion': {"debuffType":"-Recharge","debuffMagnitude":0.1,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0},
+  'gravitic_partial_radial_conversion': {"debuffType":"-Recharge","debuffMagnitude":0.1,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
   // Gravitic Radial Flawless Interface
-  'gravitic_radial_flawless_interface': {"debuffType":"-Recharge","debuffMagnitude":0.1,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0},
+  'gravitic_radial_flawless_interface': {"debuffType":"-Recharge","debuffMagnitude":0.1,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
   // Gravitic Radial Interface
-  'gravitic_radial_interface': {"debuffType":"-Recharge","debuffMagnitude":0.1,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0},
+  'gravitic_radial_interface': {"debuffType":"-Recharge","debuffMagnitude":0.1,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
   // Gravitic Total Core Conversion
-  'gravitic_total_core_conversion': {"debuffType":"-Recharge","debuffMagnitude":0.1,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0},
+  'gravitic_total_core_conversion': {"debuffType":"-Recharge","debuffMagnitude":0.1,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.5},
   // Gravitic Total Radial Conversion
-  'gravitic_total_radial_conversion': {"debuffType":"-Recharge","debuffMagnitude":0.1,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0},
+  'gravitic_total_radial_conversion': {"debuffType":"-Recharge","debuffMagnitude":0.1,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.5},
   // Paralytic Core Flawless Interface
-  'paralytic_core_flawless_interface': {"debuffType":"-Damage","debuffMagnitude":0.05,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0},
+  'paralytic_core_flawless_interface': {"debuffType":"-Damage","debuffMagnitude":0.05,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
   // Paralytic Core Interface
-  'paralytic_core_interface': {"debuffType":"-Defense","debuffMagnitude":0.025,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0},
+  'paralytic_core_interface': {"debuffType":"-Defense","debuffMagnitude":0.025,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.5},
   // Paralytic Interface
-  'paralytic_interface': {"debuffType":"-Defense","debuffMagnitude":0.025,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0},
+  'paralytic_interface': {"debuffType":"-Defense","debuffMagnitude":0.025,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
   // Paralytic Partial Core Conversion
-  'paralytic_partial_core_conversion': {"debuffType":"-Damage","debuffMagnitude":0.05,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0},
+  'paralytic_partial_core_conversion': {"debuffType":"-Damage","debuffMagnitude":0.05,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.5},
   // Paralytic Partial Radial Conversion
-  'paralytic_partial_radial_conversion': {"debuffType":"-Damage","debuffMagnitude":0.05,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0},
+  'paralytic_partial_radial_conversion': {"debuffType":"-Damage","debuffMagnitude":0.05,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.5},
   // Paralytic Radial Flawless Interface
-  'paralytic_radial_flawless_interface': {"debuffType":"-Damage","debuffMagnitude":0.05,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0},
+  'paralytic_radial_flawless_interface': {"debuffType":"-Damage","debuffMagnitude":0.05,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
   // Paralytic Radial Interface
-  'paralytic_radial_interface': {"debuffType":"-Damage","debuffMagnitude":0.05,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0},
+  'paralytic_radial_interface': {"debuffType":"-Damage","debuffMagnitude":0.05,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
   // Paralytic Total Core Conversion
-  'paralytic_total_core_conversion': {"debuffType":"-Defense","debuffMagnitude":0.025,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0},
+  'paralytic_total_core_conversion': {"debuffType":"-Defense","debuffMagnitude":0.025,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
   // Paralytic Total Radial Conversion
-  'paralytic_total_radial_conversion': {"debuffType":"-Damage","debuffMagnitude":0.05,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0},
+  'paralytic_total_radial_conversion': {"debuffType":"-Damage","debuffMagnitude":0.05,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
   // Preemptive Core Flawless Interface
-  'preemptive_core_flawless_interface': {"debuffType":"-Endurance","debuffMagnitude":0.5,"debuffDuration":4.3,"dotType":"Energy","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Ranged_Tempdamage","procChance":0},
+  'preemptive_core_flawless_interface': {"debuffType":"-Endurance","debuffMagnitude":0.5,"debuffDuration":4.3,"dotType":"Energy","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Melee_TempDamage","procChance":0.75},
   // Preemptive Core Interface
-  'preemptive_core_interface': {"debuffType":"-Endurance","debuffMagnitude":0.5,"debuffDuration":4.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0},
+  'preemptive_core_interface': {"debuffType":"-Endurance","debuffMagnitude":0.5,"debuffDuration":4.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.5},
   // Preemptive Interface
-  'preemptive_interface': {"debuffType":"-Endurance","debuffMagnitude":0.5,"debuffDuration":4.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0},
+  'preemptive_interface': {"debuffType":"-Endurance","debuffMagnitude":0.5,"debuffDuration":4.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
   // Preemptive Partial Core Conversion
-  'preemptive_partial_core_conversion': {"debuffType":"-Endurance","debuffMagnitude":0.5,"debuffDuration":4.3,"dotType":"Energy","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Ranged_Tempdamage","procChance":0},
+  'preemptive_partial_core_conversion': {"debuffType":"-Endurance","debuffMagnitude":0.5,"debuffDuration":4.3,"dotType":"Energy","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Melee_TempDamage","procChance":0.5},
   // Preemptive Partial Radial Conversion
-  'preemptive_partial_radial_conversion': {"debuffType":"-Endurance","debuffMagnitude":0.5,"debuffDuration":4.3,"dotType":"Energy","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Ranged_Tempdamage","procChance":0},
+  'preemptive_partial_radial_conversion': {"debuffType":"-Endurance","debuffMagnitude":0.5,"debuffDuration":4.3,"dotType":"Energy","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Melee_TempDamage","procChance":0.5},
   // Preemptive Radial Flawless Interface
-  'preemptive_radial_flawless_interface': {"debuffType":"-Endurance","debuffMagnitude":0.5,"debuffDuration":4.3,"dotType":"Energy","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Ranged_Tempdamage","procChance":0},
+  'preemptive_radial_flawless_interface': {"debuffType":"-Endurance","debuffMagnitude":0.5,"debuffDuration":4.3,"dotType":"Energy","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Melee_TempDamage","procChance":0.75},
   // Preemptive Radial Interface
-  'preemptive_radial_interface': {"debuffType":"-Endurance","debuffMagnitude":0.5,"debuffDuration":4.3,"dotType":"Energy","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Ranged_Tempdamage","procChance":0},
+  'preemptive_radial_interface': {"debuffType":"-Endurance","debuffMagnitude":0.5,"debuffDuration":4.3,"dotType":"Energy","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Melee_TempDamage","procChance":0.25},
   // Preemptive Total Core Conversion
-  'preemptive_total_core_conversion': {"debuffType":"-Endurance","debuffMagnitude":0.5,"debuffDuration":4.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0},
+  'preemptive_total_core_conversion': {"debuffType":"-Endurance","debuffMagnitude":0.5,"debuffDuration":4.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
   // Preemptive Total Radial Conversion
-  'preemptive_total_radial_conversion': {"debuffType":"-Endurance","debuffMagnitude":0.5,"debuffDuration":4.3,"dotType":"Energy","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Ranged_Tempdamage","procChance":0},
+  'preemptive_total_radial_conversion': {"debuffType":"-Endurance","debuffMagnitude":0.5,"debuffDuration":4.3,"dotType":"Energy","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Melee_TempDamage","procChance":0.75},
   // Reactive Core Flawless Interface
-  'reactive_core_flawless_interface': {"debuffType":"-Damage","debuffMagnitude":0.025,"debuffDuration":8.3,"dotType":"Fire","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Ranged_Tempdamage","procChance":0},
+  'reactive_core_flawless_interface': {"debuffType":"-Damage","debuffMagnitude":0.025,"debuffDuration":8.3,"dotType":"Fire","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Melee_TempDamage","procChance":0.75},
   // Reactive Core Interface
-  'reactive_core_interface': {"debuffType":"-Damage","debuffMagnitude":0.025,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0},
+  'reactive_core_interface': {"debuffType":"-Damage","debuffMagnitude":0.025,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.5},
   // Reactive Interface
-  'reactive_interface': {"debuffType":"-Damage","debuffMagnitude":0.025,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0},
+  'reactive_interface': {"debuffType":"-Damage","debuffMagnitude":0.025,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
   // Reactive Partial Core Conversion
-  'reactive_partial_core_conversion': {"debuffType":"-Damage","debuffMagnitude":0.025,"debuffDuration":8.3,"dotType":"Fire","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Ranged_Tempdamage","procChance":0},
+  'reactive_partial_core_conversion': {"debuffType":"-Damage","debuffMagnitude":0.025,"debuffDuration":8.3,"dotType":"Fire","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Melee_TempDamage","procChance":0.25},
   // Reactive Partial Radial Conversion
-  'reactive_partial_radial_conversion': {"debuffType":"-Damage","debuffMagnitude":0.025,"debuffDuration":8.3,"dotType":"Fire","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Ranged_Tempdamage","procChance":0},
+  'reactive_partial_radial_conversion': {"debuffType":"-Damage","debuffMagnitude":0.025,"debuffDuration":8.3,"dotType":"Fire","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Melee_TempDamage","procChance":0.5},
   // Reactive Radial Flawless Interface
-  'reactive_radial_flawless_interface': {"debuffType":"-Damage","debuffMagnitude":0.025,"debuffDuration":8.3,"dotType":"Fire","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Ranged_Tempdamage","procChance":0},
+  'reactive_radial_flawless_interface': {"debuffType":"-Damage","debuffMagnitude":0.025,"debuffDuration":8.3,"dotType":"Fire","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Melee_TempDamage","procChance":0.75},
   // Reactive Radial Interface
-  'reactive_radial_interface': {"debuffType":"-Damage","debuffMagnitude":0.025,"debuffDuration":8.3,"dotType":"Fire","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Ranged_Tempdamage","procChance":0},
+  'reactive_radial_interface': {"debuffType":"-Damage","debuffMagnitude":0.025,"debuffDuration":8.3,"dotType":"Fire","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Melee_TempDamage","procChance":0.25},
   // Reactive Total Core Conversion
-  'reactive_total_core_conversion': {"debuffType":"-Damage","debuffMagnitude":0.025,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0},
+  'reactive_total_core_conversion': {"debuffType":"-Damage","debuffMagnitude":0.025,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
   // Reactive Total Radial Conversion
-  'reactive_total_radial_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":"Fire","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Ranged_Tempdamage","procChance":0},
+  'reactive_total_radial_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":"Fire","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Melee_TempDamage","procChance":0.75},
   // Spectral Core Flawless Interface
-  'spectral_core_flawless_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":"Negative","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Ranged_Tempdamage","procChance":0},
+  'spectral_core_flawless_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":"Negative","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Melee_TempDamage","procChance":0.25},
   // Spectral Core Interface
-  'spectral_core_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0},
+  'spectral_core_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.15},
   // Spectral Interface
-  'spectral_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0},
+  'spectral_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.1},
   // Spectral Partial Core Conversion
-  'spectral_partial_core_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":"Negative","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Ranged_Tempdamage","procChance":0},
+  'spectral_partial_core_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":"Negative","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Melee_TempDamage","procChance":0.25},
   // Spectral Partial Radial Conversion
-  'spectral_partial_radial_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":"Negative","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Ranged_Tempdamage","procChance":0},
+  'spectral_partial_radial_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":"Negative","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Melee_TempDamage","procChance":0.5},
   // Spectral Radial Flawless Interface
-  'spectral_radial_flawless_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":"Negative","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Ranged_Tempdamage","procChance":0},
+  'spectral_radial_flawless_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":"Negative","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Melee_TempDamage","procChance":0.75},
   // Spectral Radial Interface
-  'spectral_radial_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":"Negative","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Ranged_Tempdamage","procChance":0},
+  'spectral_radial_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":"Negative","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Melee_TempDamage","procChance":0.25},
   // Spectral Total Core Conversion
-  'spectral_total_core_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0},
+  'spectral_total_core_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.2},
   // Spectral Total Radial Conversion
-  'spectral_total_radial_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":"Negative","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Ranged_Tempdamage","procChance":0},
+  'spectral_total_radial_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":"Negative","dotDamage":0.125,"dotDuration":4.3,"dotTableName":"Melee_TempDamage","procChance":0.75},
 };
 
 // ============================================
@@ -964,95 +1118,95 @@ export const GENERATED_JUDGEMENT_EFFECTS: Record<string, {
   secondaryEffects: string[];
 }> = {
   // Cryonic Core Final Judgement
-  'cryonic_core_final_judgement': {"damageType":"Cold","effectArea":"Cone","range":120,"radius":120,"arc":0.8,"maxTargets":32,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'cryonic_core_final_judgement': {"damageType":"Cold","effectArea":"Cone","range":120,"radius":120,"arc":0.8,"maxTargets":32,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_TempDamage","secondaryEffects":[]},
   // Cryonic Core Judgement
-  'cryonic_core_judgement': {"damageType":"Cold","effectArea":"Cone","range":80,"radius":80,"arc":0.5,"maxTargets":16,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'cryonic_core_judgement': {"damageType":"Cold","effectArea":"Cone","range":80,"radius":80,"arc":0.5,"maxTargets":16,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_TempDamage","secondaryEffects":[]},
   // Cryonic Judgement
-  'cryonic_judgement': {"damageType":"Cold","effectArea":"Cone","range":80,"radius":80,"arc":0.5,"maxTargets":16,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'cryonic_judgement': {"damageType":"Cold","effectArea":"Cone","range":80,"radius":80,"arc":0.5,"maxTargets":16,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_TempDamage","secondaryEffects":[]},
   // Cryonic Partial Core Judgement
-  'cryonic_partial_core_judgement': {"damageType":"Cold","effectArea":"Cone","range":80,"radius":80,"arc":0.5,"maxTargets":24,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["Slow"]},
+  'cryonic_partial_core_judgement': {"damageType":"Cold","effectArea":"Cone","range":80,"radius":80,"arc":0.5,"maxTargets":24,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_TempDamage","secondaryEffects":["Slow"]},
   // Cryonic Partial Radial Judgement
-  'cryonic_partial_radial_judgement': {"damageType":"Cold","effectArea":"Cone","range":120,"radius":120,"arc":0.8,"maxTargets":32,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["Slow"]},
+  'cryonic_partial_radial_judgement': {"damageType":"Cold","effectArea":"Cone","range":120,"radius":120,"arc":0.8,"maxTargets":32,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_TempDamage","secondaryEffects":["Slow"]},
   // Cryonic Radial Final Judgement
-  'cryonic_radial_final_judgement': {"damageType":"Cold","effectArea":"Cone","range":120,"radius":120,"arc":0.8,"maxTargets":32,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["Slow","Held Mag 4"]},
+  'cryonic_radial_final_judgement': {"damageType":"Cold","effectArea":"Cone","range":120,"radius":120,"arc":0.8,"maxTargets":32,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_TempDamage","secondaryEffects":["Slow","Held Mag 4"]},
   // Cryonic Radial Judgement
-  'cryonic_radial_judgement': {"damageType":"Cold","effectArea":"Cone","range":80,"radius":80,"arc":0.5,"maxTargets":16,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["Slow"]},
+  'cryonic_radial_judgement': {"damageType":"Cold","effectArea":"Cone","range":80,"radius":80,"arc":0.5,"maxTargets":16,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_TempDamage","secondaryEffects":["Slow"]},
   // Cryonic Total Core Judgement
-  'cryonic_total_core_judgement': {"damageType":"Cold","effectArea":"Cone","range":80,"radius":80,"arc":0.5,"maxTargets":24,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'cryonic_total_core_judgement': {"damageType":"Cold","effectArea":"Cone","range":80,"radius":80,"arc":0.5,"maxTargets":24,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_TempDamage","secondaryEffects":[]},
   // Cryonic Total Radial Judgement
-  'cryonic_total_radial_judgement': {"damageType":"Cold","effectArea":"Cone","range":80,"radius":80,"arc":0.5,"maxTargets":24,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["Slow","Held Mag 4"]},
+  'cryonic_total_radial_judgement': {"damageType":"Cold","effectArea":"Cone","range":80,"radius":80,"arc":0.5,"maxTargets":24,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_TempDamage","secondaryEffects":["Slow","Held Mag 4"]},
   // Ion Core Final Judgement
-  'ion_core_final_judgement': {"damageType":"Energy","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'ion_core_final_judgement': {"damageType":"Energy","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_TempDamage","secondaryEffects":[]},
   // Ion Core Judgement
-  'ion_core_judgement': {"damageType":"Energy","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'ion_core_judgement': {"damageType":"Energy","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_TempDamage","secondaryEffects":[]},
   // Ion Judgement
-  'ion_judgement': {"damageType":"Energy","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'ion_judgement': {"damageType":"Energy","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_TempDamage","secondaryEffects":[]},
   // Ion Partial Core Judgement
-  'ion_partial_core_judgement': {"damageType":"Energy","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'ion_partial_core_judgement': {"damageType":"Energy","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_TempDamage","secondaryEffects":[]},
   // Ion Partial Radial Judgement
-  'ion_partial_radial_judgement': {"damageType":"Energy","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'ion_partial_radial_judgement': {"damageType":"Energy","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_TempDamage","secondaryEffects":[]},
   // Ion Radial Final Judgement
-  'ion_radial_final_judgement': {"damageType":"Energy","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["Held Mag 4"]},
+  'ion_radial_final_judgement': {"damageType":"Energy","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_TempDamage","secondaryEffects":["Held Mag 4"]},
   // Ion Radial Judgement
-  'ion_radial_judgement': {"damageType":"Energy","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'ion_radial_judgement': {"damageType":"Energy","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_TempDamage","secondaryEffects":[]},
   // Ion Total Core Judgement
-  'ion_total_core_judgement': {"damageType":"Energy","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'ion_total_core_judgement': {"damageType":"Energy","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_TempDamage","secondaryEffects":[]},
   // Ion Total Radial Judgement
-  'ion_total_radial_judgement': {"damageType":"Energy","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["Held Mag 4"]},
+  'ion_total_radial_judgement': {"damageType":"Energy","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_TempDamage","secondaryEffects":["Held Mag 4"]},
   // Pyronic Core Final Judgement
-  'pyronic_core_final_judgement': {"damageType":"Fire","effectArea":"Targeted AoE","range":80,"radius":40,"arc":0,"maxTargets":24,"activationTime":1,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["DoT(Fire) 0.2 scale/10.6s"]},
+  'pyronic_core_final_judgement': {"damageType":"Fire","effectArea":"Targeted AoE","range":80,"radius":40,"arc":0,"maxTargets":24,"activationTime":1,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_TempDamage","secondaryEffects":["DoT(Fire) 0.2 scale/10.6s"]},
   // Pyronic Core Judgement
-  'pyronic_core_judgement': {"damageType":"Fire","effectArea":"Targeted AoE","range":80,"radius":25,"arc":0,"maxTargets":16,"activationTime":1,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["DoT(Fire) 0.05 scale/10.6s"]},
+  'pyronic_core_judgement': {"damageType":"Fire","effectArea":"Targeted AoE","range":80,"radius":25,"arc":0,"maxTargets":16,"activationTime":1,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_TempDamage","secondaryEffects":["DoT(Fire) 0.05 scale/10.6s"]},
   // Pyronic Judgement
-  'pyronic_judgement': {"damageType":"Fire","effectArea":"Targeted AoE","range":80,"radius":25,"arc":0,"maxTargets":16,"activationTime":1,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'pyronic_judgement': {"damageType":"Fire","effectArea":"Targeted AoE","range":80,"radius":25,"arc":0,"maxTargets":16,"activationTime":1,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_TempDamage","secondaryEffects":[]},
   // Pyronic Partial Core Judgement
-  'pyronic_partial_core_judgement': {"damageType":"Fire","effectArea":"Targeted AoE","range":80,"radius":25,"arc":0,"maxTargets":16,"activationTime":1,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["DoT(Fire) 0.08 scale/10.6s"]},
+  'pyronic_partial_core_judgement': {"damageType":"Fire","effectArea":"Targeted AoE","range":80,"radius":25,"arc":0,"maxTargets":16,"activationTime":1,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_TempDamage","secondaryEffects":["DoT(Fire) 0.08 scale/10.6s"]},
   // Pyronic Partial Radial Judgement
-  'pyronic_partial_radial_judgement': {"damageType":"Fire","effectArea":"Targeted AoE","range":80,"radius":40,"arc":0,"maxTargets":32,"activationTime":1,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'pyronic_partial_radial_judgement': {"damageType":"Fire","effectArea":"Targeted AoE","range":80,"radius":40,"arc":0,"maxTargets":32,"activationTime":1,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_TempDamage","secondaryEffects":[]},
   // Pyronic Radial Final Judgement
-  'pyronic_radial_final_judgement': {"damageType":"Fire","effectArea":"Targeted AoE","range":80,"radius":40,"arc":0,"maxTargets":32,"activationTime":1,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["Stunned Mag 4"]},
+  'pyronic_radial_final_judgement': {"damageType":"Fire","effectArea":"Targeted AoE","range":80,"radius":40,"arc":0,"maxTargets":32,"activationTime":1,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_TempDamage","secondaryEffects":["Stunned Mag 4"]},
   // Pyronic Radial Judgement
-  'pyronic_radial_judgement': {"damageType":"Fire","effectArea":"Targeted AoE","range":80,"radius":40,"arc":0,"maxTargets":24,"activationTime":1,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'pyronic_radial_judgement': {"damageType":"Fire","effectArea":"Targeted AoE","range":80,"radius":40,"arc":0,"maxTargets":24,"activationTime":1,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_TempDamage","secondaryEffects":[]},
   // Pyronic Total Core Judgement
-  'pyronic_total_core_judgement': {"damageType":"Fire","effectArea":"Targeted AoE","range":80,"radius":25,"arc":0,"maxTargets":16,"activationTime":1,"rechargeTime":90,"damageScale":3.5,"tableName":"Ranged_Tempdamage","secondaryEffects":["DoT(Fire) 0.25 scale/10.6s"]},
+  'pyronic_total_core_judgement': {"damageType":"Fire","effectArea":"Targeted AoE","range":80,"radius":25,"arc":0,"maxTargets":16,"activationTime":1,"rechargeTime":90,"damageScale":3.5,"tableName":"Ranged_TempDamage","secondaryEffects":["DoT(Fire) 0.25 scale/10.6s"]},
   // Pyronic Total Radial Judgement
-  'pyronic_total_radial_judgement': {"damageType":"Fire","effectArea":"Targeted AoE","range":80,"radius":40,"arc":0,"maxTargets":24,"activationTime":1,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["Stunned Mag 4"]},
+  'pyronic_total_radial_judgement': {"damageType":"Fire","effectArea":"Targeted AoE","range":80,"radius":40,"arc":0,"maxTargets":24,"activationTime":1,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_TempDamage","secondaryEffects":["Stunned Mag 4"]},
   // Void Core Final Judgement
-  'void_core_final_judgement': {"damageType":"Negative Energy","effectArea":"PBAoE","range":0,"radius":50,"arc":0,"maxTargets":24,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'void_core_final_judgement': {"damageType":"Negative Energy","effectArea":"PBAoE","range":0,"radius":50,"arc":0,"maxTargets":24,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_TempDamage","secondaryEffects":[]},
   // Void Core Judgement
-  'void_core_judgement': {"damageType":"Negative Energy","effectArea":"PBAoE","range":0,"radius":30,"arc":0,"maxTargets":16,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'void_core_judgement': {"damageType":"Negative Energy","effectArea":"PBAoE","range":0,"radius":30,"arc":0,"maxTargets":16,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_TempDamage","secondaryEffects":[]},
   // Void Judgement
-  'void_judgement': {"damageType":"Negative Energy","effectArea":"PBAoE","range":0,"radius":30,"arc":0,"maxTargets":16,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'void_judgement': {"damageType":"Negative Energy","effectArea":"PBAoE","range":0,"radius":30,"arc":0,"maxTargets":16,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_TempDamage","secondaryEffects":[]},
   // Void Partial Core Judgement
-  'void_partial_core_judgement': {"damageType":"Negative Energy","effectArea":"PBAoE","range":0,"radius":30,"arc":0,"maxTargets":16,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'void_partial_core_judgement': {"damageType":"Negative Energy","effectArea":"PBAoE","range":0,"radius":30,"arc":0,"maxTargets":16,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_TempDamage","secondaryEffects":[]},
   // Void Partial Radial Judgement
-  'void_partial_radial_judgement': {"damageType":"Negative Energy","effectArea":"PBAoE","range":0,"radius":30,"arc":0,"maxTargets":16,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'void_partial_radial_judgement': {"damageType":"Negative Energy","effectArea":"PBAoE","range":0,"radius":30,"arc":0,"maxTargets":16,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_TempDamage","secondaryEffects":[]},
   // Void Radial Final Judgement
-  'void_radial_final_judgement': {"damageType":"Negative Energy","effectArea":"PBAoE","range":0,"radius":50,"arc":0,"maxTargets":32,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'void_radial_final_judgement': {"damageType":"Negative Energy","effectArea":"PBAoE","range":0,"radius":50,"arc":0,"maxTargets":32,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_TempDamage","secondaryEffects":[]},
   // Void Radial Judgement
-  'void_radial_judgement': {"damageType":"Negative Energy","effectArea":"PBAoE","range":0,"radius":30,"arc":0,"maxTargets":16,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'void_radial_judgement': {"damageType":"Negative Energy","effectArea":"PBAoE","range":0,"radius":30,"arc":0,"maxTargets":16,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_TempDamage","secondaryEffects":[]},
   // Void Total Core Judgement
-  'void_total_core_judgement': {"damageType":"Negative Energy","effectArea":"PBAoE","range":0,"radius":30,"arc":0,"maxTargets":16,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'void_total_core_judgement': {"damageType":"Negative Energy","effectArea":"PBAoE","range":0,"radius":30,"arc":0,"maxTargets":16,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_TempDamage","secondaryEffects":[]},
   // Void Total Radial Judgement
-  'void_total_radial_judgement': {"damageType":"Negative Energy","effectArea":"PBAoE","range":0,"radius":50,"arc":0,"maxTargets":24,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'void_total_radial_judgement': {"damageType":"Negative Energy","effectArea":"PBAoE","range":0,"radius":50,"arc":0,"maxTargets":24,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_TempDamage","secondaryEffects":[]},
   // Vorpal Core Final Judgement
-  'vorpal_core_final_judgement': {"damageType":"Smashing","effectArea":"Cone","range":120,"radius":120,"arc":2.1,"maxTargets":30,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["DoT(Lethal) 0.2 scale/10.6s"]},
+  'vorpal_core_final_judgement': {"damageType":"Smashing","effectArea":"Cone","range":120,"radius":120,"arc":2.1,"maxTargets":30,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_TempDamage","secondaryEffects":["DoT(Lethal) 0.2 scale/10.6s"]},
   // Vorpal Core Judgement
-  'vorpal_core_judgement': {"damageType":"Smashing","effectArea":"Cone","range":80,"radius":80,"arc":1.4,"maxTargets":20,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["DoT(Lethal) 0.05 scale/10.6s"]},
+  'vorpal_core_judgement': {"damageType":"Smashing","effectArea":"Cone","range":80,"radius":80,"arc":1.4,"maxTargets":20,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_TempDamage","secondaryEffects":["DoT(Lethal) 0.05 scale/10.6s"]},
   // Vorpal Judgement
-  'vorpal_judgement': {"damageType":"Smashing","effectArea":"Cone","range":80,"radius":80,"arc":1.4,"maxTargets":20,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'vorpal_judgement': {"damageType":"Smashing","effectArea":"Cone","range":80,"radius":80,"arc":1.4,"maxTargets":20,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_TempDamage","secondaryEffects":[]},
   // Vorpal Partial Core Judgement
-  'vorpal_partial_core_judgement': {"damageType":"Smashing","effectArea":"Cone","range":120,"radius":120,"arc":1.4,"maxTargets":20,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["DoT(Lethal) 0.08 scale/10.6s"]},
+  'vorpal_partial_core_judgement': {"damageType":"Smashing","effectArea":"Cone","range":120,"radius":120,"arc":1.4,"maxTargets":20,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_TempDamage","secondaryEffects":["DoT(Lethal) 0.08 scale/10.6s"]},
   // Vorpal Partial Radial Judgement
-  'vorpal_partial_radial_judgement': {"damageType":"Smashing","effectArea":"Cone","range":80,"radius":80,"arc":2.1,"maxTargets":40,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'vorpal_partial_radial_judgement': {"damageType":"Smashing","effectArea":"Cone","range":80,"radius":80,"arc":2.1,"maxTargets":40,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_TempDamage","secondaryEffects":[]},
   // Vorpal Radial Final Judgement
-  'vorpal_radial_final_judgement': {"damageType":"Smashing","effectArea":"Cone","range":120,"radius":120,"arc":2.1,"maxTargets":40,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'vorpal_radial_final_judgement': {"damageType":"Smashing","effectArea":"Cone","range":120,"radius":120,"arc":2.1,"maxTargets":40,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_TempDamage","secondaryEffects":[]},
   // Vorpal Radial Judgement
-  'vorpal_radial_judgement': {"damageType":"Smashing","effectArea":"Cone","range":80,"radius":80,"arc":2.1,"maxTargets":30,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'vorpal_radial_judgement': {"damageType":"Smashing","effectArea":"Cone","range":80,"radius":80,"arc":2.1,"maxTargets":30,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_TempDamage","secondaryEffects":[]},
   // Vorpal Total Core Judgement
-  'vorpal_total_core_judgement': {"damageType":"Smashing","effectArea":"Cone","range":120,"radius":120,"arc":1.4,"maxTargets":20,"activationTime":2.5,"rechargeTime":90,"damageScale":3.5,"tableName":"Ranged_Tempdamage","secondaryEffects":["DoT(Lethal) 0.25 scale/10.6s"]},
+  'vorpal_total_core_judgement': {"damageType":"Smashing","effectArea":"Cone","range":120,"radius":120,"arc":1.4,"maxTargets":20,"activationTime":2.5,"rechargeTime":90,"damageScale":3.5,"tableName":"Ranged_TempDamage","secondaryEffects":["DoT(Lethal) 0.25 scale/10.6s"]},
   // Vorpal Total Radial Judgement
-  'vorpal_total_radial_judgement': {"damageType":"Smashing","effectArea":"Cone","range":80,"radius":80,"arc":2.1,"maxTargets":30,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  'vorpal_total_radial_judgement': {"damageType":"Smashing","effectArea":"Cone","range":80,"radius":80,"arc":2.1,"maxTargets":30,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_TempDamage","secondaryEffects":[]},
 };
 
 // ============================================
@@ -1507,21 +1661,21 @@ export const GENERATED_GENESIS_EFFECTS: Record<string, {
   // Socket Total Radial Genesis
   'socket_total_radial_genesis': {"displayName":"Socket Total Radial Genesis","tree":"socket","enhancesSlot":"interface","tierPercent":0.075,"exemplarPower":"Incarnate.Socket.DoT_Toxic","exemplarEffect":{"kind":"proc","label":"Minor DoT(Toxic)","duration":4.3,"procPeriod":10,"dotType":"Toxic","dotDamage":0.05,"dotTableName":"Melee_TempDamage"}},
   // Verdict Core Flawless Genesis
-  'verdict_core_flawless_genesis': {"displayName":"Verdict Core Flawless Genesis","tree":"verdict","enhancesSlot":"judgement","tierPercent":0.1,"exemplarPower":"Incarnate.Verdict.Pyronic_Core_Final_Verdict","exemplarEffect":{"kind":"attack","damageType":"Fire","effectArea":"Targeted AoE","range":80,"radius":40,"arc":0,"maxTargets":24,"activationTime":1,"recharge":180,"damageScale":2,"tableName":"Ranged_Tempdamage","secondaryEffects":["DoT(Fire) 0.1 scale/10.6s"]}},
+  'verdict_core_flawless_genesis': {"displayName":"Verdict Core Flawless Genesis","tree":"verdict","enhancesSlot":"judgement","tierPercent":0.1,"exemplarPower":"Incarnate.Verdict.Pyronic_Core_Final_Verdict","exemplarEffect":{"kind":"attack","damageType":"Fire","effectArea":"Targeted AoE","range":80,"radius":40,"arc":0,"maxTargets":24,"activationTime":1,"recharge":180,"damageScale":2,"tableName":"Ranged_TempDamage","secondaryEffects":["DoT(Fire) 0.1 scale/10.6s"]}},
   // Verdict Core Genesis
-  'verdict_core_genesis': {"displayName":"Verdict Core Genesis","tree":"verdict","enhancesSlot":"judgement","tierPercent":0.05,"exemplarPower":"Incarnate.Verdict.Void_Core_Verdict","exemplarEffect":{"kind":"attack","damageType":"Negative Energy","effectArea":"PBAoE","range":0,"radius":30,"arc":0,"maxTargets":16,"activationTime":2,"recharge":180,"damageScale":2,"tableName":"Ranged_Tempdamage","secondaryEffects":[]}},
+  'verdict_core_genesis': {"displayName":"Verdict Core Genesis","tree":"verdict","enhancesSlot":"judgement","tierPercent":0.05,"exemplarPower":"Incarnate.Verdict.Void_Core_Verdict","exemplarEffect":{"kind":"attack","damageType":"Negative Energy","effectArea":"PBAoE","range":0,"radius":30,"arc":0,"maxTargets":16,"activationTime":2,"recharge":180,"damageScale":2,"tableName":"Ranged_TempDamage","secondaryEffects":[]}},
   // Verdict Genesis
-  'verdict_genesis': {"displayName":"Verdict Genesis","tree":"verdict","enhancesSlot":"judgement","tierPercent":0.025,"exemplarPower":"Incarnate.Verdict.Void_Verdict","exemplarEffect":{"kind":"attack","damageType":"Negative Energy","effectArea":"PBAoE","range":0,"radius":30,"arc":0,"maxTargets":16,"activationTime":2,"recharge":180,"damageScale":2,"tableName":"Ranged_Tempdamage","secondaryEffects":[]}},
+  'verdict_genesis': {"displayName":"Verdict Genesis","tree":"verdict","enhancesSlot":"judgement","tierPercent":0.025,"exemplarPower":"Incarnate.Verdict.Void_Verdict","exemplarEffect":{"kind":"attack","damageType":"Negative Energy","effectArea":"PBAoE","range":0,"radius":30,"arc":0,"maxTargets":16,"activationTime":2,"recharge":180,"damageScale":2,"tableName":"Ranged_TempDamage","secondaryEffects":[]}},
   // Verdict Partial Core Genesis
-  'verdict_partial_core_genesis': {"displayName":"Verdict Partial Core Genesis","tree":"verdict","enhancesSlot":"judgement","tierPercent":0.075,"exemplarPower":"Incarnate.Verdict.Ion_Partial_Core_Verdict","exemplarEffect":{"kind":"attack","damageType":"Energy","effectArea":"AoE","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"recharge":180,"damageScale":2,"tableName":"Ranged_Tempdamage","secondaryEffects":[]}},
+  'verdict_partial_core_genesis': {"displayName":"Verdict Partial Core Genesis","tree":"verdict","enhancesSlot":"judgement","tierPercent":0.075,"exemplarPower":"Incarnate.Verdict.Ion_Partial_Core_Verdict","exemplarEffect":{"kind":"attack","damageType":"Energy","effectArea":"AoE","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"recharge":180,"damageScale":2,"tableName":"Ranged_TempDamage","secondaryEffects":[]}},
   // Verdict Partial Radial Genesis
-  'verdict_partial_radial_genesis': {"displayName":"Verdict Partial Radial Genesis","tree":"verdict","enhancesSlot":"judgement","tierPercent":0.075,"exemplarPower":"Incarnate.Verdict.Cryonic_Partial_Radial_Verdict","exemplarEffect":{"kind":"attack","damageType":"Cold","effectArea":"Cone","range":120,"radius":120,"arc":0.8,"maxTargets":32,"activationTime":2,"recharge":180,"damageScale":2,"tableName":"Ranged_Tempdamage","secondaryEffects":[]}},
+  'verdict_partial_radial_genesis': {"displayName":"Verdict Partial Radial Genesis","tree":"verdict","enhancesSlot":"judgement","tierPercent":0.075,"exemplarPower":"Incarnate.Verdict.Cryonic_Partial_Radial_Verdict","exemplarEffect":{"kind":"attack","damageType":"Cold","effectArea":"Cone","range":120,"radius":120,"arc":0.8,"maxTargets":32,"activationTime":2,"recharge":180,"damageScale":2,"tableName":"Ranged_TempDamage","secondaryEffects":[]}},
   // Verdict Radial Flawless Genesis
-  'verdict_radial_flawless_genesis': {"displayName":"Verdict Radial Flawless Genesis","tree":"verdict","enhancesSlot":"judgement","tierPercent":0.1,"exemplarPower":"Incarnate.Verdict.Vorpal_Radial_Final_Verdict","exemplarEffect":{"kind":"attack","damageType":"Smashing","effectArea":"Cone","range":120,"radius":120,"arc":2.1,"maxTargets":40,"activationTime":2.5,"recharge":180,"damageScale":2,"tableName":"Ranged_Tempdamage","secondaryEffects":[]}},
+  'verdict_radial_flawless_genesis': {"displayName":"Verdict Radial Flawless Genesis","tree":"verdict","enhancesSlot":"judgement","tierPercent":0.1,"exemplarPower":"Incarnate.Verdict.Vorpal_Radial_Final_Verdict","exemplarEffect":{"kind":"attack","damageType":"Smashing","effectArea":"Cone","range":120,"radius":120,"arc":2.1,"maxTargets":40,"activationTime":2.5,"recharge":180,"damageScale":2,"tableName":"Ranged_TempDamage","secondaryEffects":[]}},
   // Verdict Radial Genesis
-  'verdict_radial_genesis': {"displayName":"Verdict Radial Genesis","tree":"verdict","enhancesSlot":"judgement","tierPercent":0.05,"exemplarPower":"Incarnate.Verdict.Void_Radial_Verdict","exemplarEffect":{"kind":"attack","damageType":"Negative Energy","effectArea":"PBAoE","range":0,"radius":30,"arc":0,"maxTargets":16,"activationTime":2,"recharge":180,"damageScale":2,"tableName":"Ranged_Tempdamage","secondaryEffects":[]}},
+  'verdict_radial_genesis': {"displayName":"Verdict Radial Genesis","tree":"verdict","enhancesSlot":"judgement","tierPercent":0.05,"exemplarPower":"Incarnate.Verdict.Void_Radial_Verdict","exemplarEffect":{"kind":"attack","damageType":"Negative Energy","effectArea":"PBAoE","range":0,"radius":30,"arc":0,"maxTargets":16,"activationTime":2,"recharge":180,"damageScale":2,"tableName":"Ranged_TempDamage","secondaryEffects":[]}},
   // Verdict Total Core Genesis
-  'verdict_total_core_genesis': {"displayName":"Verdict Total Core Genesis","tree":"verdict","enhancesSlot":"judgement","tierPercent":0.075,"exemplarPower":"Incarnate.Verdict.Ion_Total_Core_Verdict","exemplarEffect":{"kind":"attack","damageType":"Energy","effectArea":"AoE","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"recharge":180,"damageScale":2,"tableName":"Ranged_Tempdamage","secondaryEffects":[]}},
+  'verdict_total_core_genesis': {"displayName":"Verdict Total Core Genesis","tree":"verdict","enhancesSlot":"judgement","tierPercent":0.075,"exemplarPower":"Incarnate.Verdict.Ion_Total_Core_Verdict","exemplarEffect":{"kind":"attack","damageType":"Energy","effectArea":"AoE","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"recharge":180,"damageScale":2,"tableName":"Ranged_TempDamage","secondaryEffects":[]}},
   // Verdict Total Radial Genesis
-  'verdict_total_radial_genesis': {"displayName":"Verdict Total Radial Genesis","tree":"verdict","enhancesSlot":"judgement","tierPercent":0.075,"exemplarPower":"Incarnate.Verdict.Cryonic_Total_Radial_Verdict","exemplarEffect":{"kind":"attack","damageType":"Cold","effectArea":"Cone","range":80,"radius":80,"arc":0.5,"maxTargets":24,"activationTime":2,"recharge":180,"damageScale":2,"tableName":"Ranged_Tempdamage","secondaryEffects":["Held Mag 2"]}},
+  'verdict_total_radial_genesis': {"displayName":"Verdict Total Radial Genesis","tree":"verdict","enhancesSlot":"judgement","tierPercent":0.075,"exemplarPower":"Incarnate.Verdict.Cryonic_Total_Radial_Verdict","exemplarEffect":{"kind":"attack","damageType":"Cold","effectArea":"Cone","range":80,"radius":80,"arc":0.5,"maxTargets":24,"activationTime":2,"recharge":180,"damageScale":2,"tableName":"Ranged_TempDamage","secondaryEffects":["Held Mag 2"]}},
 };

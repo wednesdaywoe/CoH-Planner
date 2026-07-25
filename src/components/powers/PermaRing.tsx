@@ -9,10 +9,9 @@
 import { useMemo } from 'react';
 import { useUIStore, useBuildStore } from '@/stores';
 import { useGlobalBonuses } from '@/hooks/useCalculatedStats';
-import { calculatePowerEnhancementBonuses, combineWithAlphaED, getAlphaEnhancementBonuses, type EnhancementBonuses } from '@/utils/calculations';
+import { calculatePowerEnhancementBonuses, combineWithAlphaED, getAlphaEnhancementBonuses, getAlphaEdBypassBonuses, type EnhancementBonuses } from '@/utils/calculations';
 import { calculatePermaInfo, type PermaInfo } from '@/utils/calculations/perma';
 import { getIOSet } from '@/data';
-import { INCARNATE_TIER_REGISTRY } from '@/data/incarnate-registry';
 import { Tooltip } from '@/components/ui/Tooltip';
 import type { SelectedPower } from '@/types';
 
@@ -39,10 +38,7 @@ export function PermaRing({ power, size, children }: PermaRingProps) {
 
     const alphaBonuses = getAlphaEnhancementBonuses(build.incarnates, incarnateActive);
     const hasAlpha = Object.values(alphaBonuses).some((v) => v !== undefined && v !== 0);
-    const alphaTier = build.incarnates?.alpha?.tier;
-    const edBypassRatio = alphaTier
-      ? (INCARNATE_TIER_REGISTRY[alphaTier]?.edBypassRatio ?? 1 / 6)
-      : 1 / 6;
+    const alphaEdBypass = getAlphaEdBypassBonuses(build.incarnates, incarnateActive);
 
     let enhBonuses: EnhancementBonuses;
     if (hasAlpha) {
@@ -53,7 +49,7 @@ export function PermaRing({ power, size, children }: PermaRingProps) {
         globalIOLevel,
         getIOSet,
         alphaBonuses,
-        edBypassRatio,
+        alphaEdBypass,
         exemplarMode ? exemplarLevel : undefined,
       );
     } else {

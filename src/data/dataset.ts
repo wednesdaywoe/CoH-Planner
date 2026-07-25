@@ -18,6 +18,13 @@ import type { LegacyIOSetRegistry } from './io-sets';
 import type { LegacyEpicPoolRegistry } from './epic-pools';
 import type { IncarnateEffectsRaw } from './incarnate-effects';
 import type { LegacyPowerPoolRegistry } from './power-pools';
+// The canonical EnhancementCurvesData shape is authored by the SW3 converter
+// (scripts/convert-enhancement-curves.cjs) into every dataset's generated
+// module; the homecoming copy is imported type-only as the contract's
+// reference declaration.
+import type { EnhancementCurvesData } from './datasets/homecoming/generated/enhancement-curves';
+
+export type { EnhancementCurvesData } from './datasets/homecoming/generated/enhancement-curves';
 
 // ============================================
 // DATA SHAPES SHARED ACROSS DATASETS
@@ -200,6 +207,13 @@ export interface Dataset {
   // Pet entities — pet abilities + upgrade tiers used for pet damage
   // calculation (Mastermind summons, Voltaic Sentinel, Lore pets, etc.).
   petEntities: Record<string, PetEntity>;
+
+  // Enhancement curves — ED thresholds, boost-type→schedule assignment,
+  // per-boost-level strength curves, multi-aspect scale, relative-level
+  // attenuation, and the exemplar magnitude handicaps, all generated from the
+  // dataset's binary export (SOURCE-1 SW3). Read through
+  // `src/data/enhancement-curves.ts`.
+  enhancementCurves: EnhancementCurvesData;
 
   // Raw powerset registry (INCLUDES dormant sets). Lives on the dataset —
   // and therefore in this dataset's dynamic chunk — so only the active
