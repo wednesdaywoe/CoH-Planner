@@ -47,6 +47,7 @@ import { calculatePermaInfo, type PermaInfo } from '@/utils/calculations/perma';
 import { calculateArcanaTime } from '@/utils/calculations/damage';
 import { calcThreeTier, convertGlobalBonusesToAspects, withStrengthBonuses, type ThreeTierValues } from '@/components/info/powerDisplayUtils';
 import { resolvePowerMagnitudes, type ResolvedMagnitude } from '@/components/info/resolvePowerMagnitudes';
+import { buildDisplayEffects } from '@/components/info/buildDisplayEffects';
 import { toCharacterStateJson, type AdapterCalcContext } from './characterStateAdapter';
 import { mapGlobal, mapOnePowerProjection, mapPowerProjection, projectionKey, type EngineTotals, type GrantedMagnitude, type PowerProjection } from './engineTotalsMap';
 import type { Build } from '@/types/build';
@@ -555,7 +556,11 @@ function betaMagnitudes(
   global: Record<string, number | undefined>,
 ): Map<string, ResolvedMagnitude> {
   const rows = resolvePowerMagnitudes({
-    effects: (power as unknown as { effects?: Parameters<typeof resolvePowerMagnitudes>[0]['effects'] }).effects,
+    // The bag the SURFACES resolve, not the authored one (PROD6C-3a): the merged stats, the
+    // heal extracted from the damage array, a summon's duration as the buff duration, and the
+    // flattened movement object. Before this the gate handed both sides the authored bag, so
+    // every one of those transforms went ungraded.
+    effects: buildDisplayEffects(power),
     archetypeId,
     level: build.level,
     enhancementBonuses: enh,
@@ -608,7 +613,12 @@ const ENGINE_NORMALIZED_EFFECT_KEYS = new Set(['enduranceCost', 'castTime']);
  *  exactly: a beta-only row is adjudicated when the ENGINE's bag has no such key to resolve from,
  *  and stays a hard delta when it HAS the key and still resolved nothing — which is the actual
  *  engine defect this branch exists to catch. Without the bag the branch is unchanged, so every
- *  other sweep keeps failing on beta-only rows. */
+ *  other sweep keeps failing on beta-only rows.
+ *
+ *  Both bags are DISPLAY bags (`buildDisplayEffects`), the same input each side resolves from,
+ *  so "the engine has no such key" means the engine's dataset yields no such row rather than
+ *  merely authoring it elsewhere. That also makes the third adjudication below possible: a row
+ *  both sides resolve from a bare number, where those two numbers differ, is converter drift. */
 function magnitudeDeltas(
   powerName: string,
   engineRows: GrantedMagnitude[],
@@ -650,9 +660,23 @@ function magnitudeDeltas(
       }
       continue;
     }
+    // A row whose two sides resolved from DIFFERENT authored values is converter drift, not a
+    // resolution disagreement — the same evidence `permaEvidence` already accepts for the perma
+    // duration, now reachable for the row that duration renders as (PROD6C-3a). It needs the
+    // engine's own bag, is pinned to the specific key, and compares the inputs: two sides that
+    // read the SAME value and still disagree stay a hard delta.
+    const inputsDiffer =
+      engineEffects != null &&
+      typeof engineEffects[key] === 'number' &&
+      typeof (betaEffects?.[key]) === 'number' &&
+      Math.abs((engineEffects[key] as number) - (betaEffects![key] as number)) > TOLERANCE;
     for (const tier of ['base', 'enhanced', 'final'] as const) {
-      if (Math.abs(engine.value[tier] - beta.tiers[tier]) > TOLERANCE) {
-        out.push(`${powerName}.${key}.${tier}: engine ${engine.value[tier]} vs beta ${beta.tiers[tier]}`);
+      if (Math.abs(engine.value[tier] - beta.tiers[tier]) <= TOLERANCE) continue;
+      const delta = `${powerName}.${key}.${tier}: engine ${engine.value[tier]} vs beta ${beta.tiers[tier]}`;
+      if (inputsDiffer) {
+        adjudicated.push(`${key}.${tier}: the two datasets carry different '${key}' values (engine ${engineEffects[key]}, beta ${betaEffects![key]})`);
+      } else {
+        out.push(delta);
       }
     }
     // The row's identity and unit must agree too — a magnitude landing in the right number but
@@ -797,7 +821,7 @@ function diffProjection(
       power.internalName,
       engine.grantedMagnitudes,
       magnitudes,
-      (power as unknown as { effects?: Record<string, unknown> }).effects,
+      buildDisplayEffects(power) as Record<string, unknown>,
     );
     rows += engine.grantedMagnitudes.length;
     deltas.push(
@@ -903,7 +927,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
           `${atId}/${power.internalName}`,
           engine.grantedMagnitudes,
           magnitudes,
-          (power as unknown as { effects?: Record<string, unknown> }).effects,
+          buildDisplayEffects(power) as Record<string, unknown>,
         );
         deltas.push(...mags.real);
         adjudicated.push(
@@ -982,7 +1006,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
           `${atId}/${power.internalName}`,
           engine.grantedMagnitudes,
           magnitudes,
-          (power as unknown as { effects?: Record<string, unknown> }).effects,
+          buildDisplayEffects(power) as Record<string, unknown>,
         );
         deltas.push(
           ...tierDelta(`${atId}/${power.internalName}.recharge`, engine.recharge, beta.recharge),
@@ -1084,8 +1108,8 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
             tag,
             engine.grantedMagnitudes,
             magnitudes,
-            (power as unknown as { effects?: Record<string, unknown> }).effects,
-            enginePower?.effects ?? {},
+            buildDisplayEffects(power) as Record<string, unknown>,
+            enginePower ? buildDisplayEffects(enginePower as unknown as Power) as Record<string, unknown> : {},
           );
           const perma = permaDelta(engine.perma, beta.perma, enginePower);
           deltas.push(
@@ -1198,7 +1222,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
         `${atId}/${power.internalName}`,
         engine.grantedMagnitudes,
         magnitudes,
-        (power as unknown as { effects?: Record<string, unknown> }).effects,
+        buildDisplayEffects(power) as Record<string, unknown>,
       );
       deltas.push(...mags.real);
       adjudicated.push(...mags.adjudicated.map((d) => `${atId}/${power.internalName}.${d}`));
@@ -1262,7 +1286,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
           `${atId}/${power.internalName}@${SWEEP_LEVEL}`,
           engineLow.grantedMagnitudes,
           betaLow,
-          (power as unknown as { effects?: Record<string, unknown> }).effects,
+          buildDisplayEffects(power) as Record<string, unknown>,
         );
         deltas.push(...mags.real);
         adjudicated.push(...mags.adjudicated.map((d) => `${atId}/${power.internalName}.${d}`));

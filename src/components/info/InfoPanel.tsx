@@ -35,7 +35,7 @@ import { resolveAtMechanic } from '@/utils/calculations/power-at-mechanics';
 import type { IOSetEnhancement } from '@/types';
 import { INCARNATE_TIER_REGISTRY } from '@/data/incarnate-registry';
 import { isPermaEligible } from '@/utils/calculations/perma';
-import { extractHealingFromDamage } from '@/utils/calculations/healing';
+import { buildDisplayEffects } from './buildDisplayEffects';
 import { calculatePetDamage, calculateResolvedPseudoPetDamage, shouldApplyEnhancements, synthesizePseudoPetEffects, resolveProcAreaGeometry, type PetDamageResult, type PetAbilityDamage, type PetEffectComputed } from '@/utils/calculations/pet-damage';
 import { getPetEntity, type PetAbility } from '@/data/pet-entities';
 import { calculateIncarnateDamage } from '@/data/at-tables';
@@ -957,58 +957,11 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     return <div className="text-slate-400 text-sm">Power not found</div>;
   }
 
-  const baseEffects = effectivePower.effects;
-
-  // Extract healing from damage field (e.g., Life Drain, Reconstruction)
-  // Handles both single object { type: "Heal", scale, table } and array entries
-  const healFromDamage = baseEffects?.healing
-    ? undefined
-    : extractHealingFromDamage(effectivePower.damage ?? effectivePower.effects?.damage);
-
-  // Use effective stats (quickSnipe-aware) for display
-  const effectiveStats = effectivePower.stats;
-
-  // Normalize arc to degrees once, regardless of source. Primary/secondary
-  // powers carry arc on `power.stats` and pool/epic powers carry it on
-  // `power.effects` (because `transformPoolPower` never builds a `stats`
-  // object) — both store the raw binary value in radians. The downstream
-  // contract (GeneralStatsBlock → ProcChanceRow) requires degrees; without
-  // this, cone pool powers like Wall of Force end up feeding ~1.57 into a
-  // formula that expects 90 and the displayed proc chance is wildly off.
-  const rawArc = effectiveStats?.arc ?? baseEffects?.arc;
-  const arcInDegrees = rawArc != null ? arcToDegrees(rawArc) : undefined;
-
-  // Merge power.stats into effects for registry-driven display
-  // Map stats field names to registry-expected names
-  const effects = {
-    ...baseEffects,
-    // Execution stats from power.stats
-    ...(effectiveStats?.endurance && { enduranceCost: effectivePower.powerType === 'Toggle' ? effectiveStats.endurance / (effectiveStats.activatePeriod ?? 0.5) : effectiveStats.endurance }),
-    ...(effectiveStats?.recharge && { recharge: effectiveStats.recharge }),
-    ...(effectiveStats?.accuracy && { accuracy: effectiveStats.accuracy }),
-    ...(effectiveStats?.range && { range: effectiveStats.range }),
-    ...(effectiveStats?.castTime && { castTime: effectiveStats.castTime }),
-    // AoE stats
-    ...(effectiveStats?.radius && { radius: effectiveStats.radius }),
-    ...(arcInDegrees != null && { arc: arcInDegrees }),
-    ...(effectiveStats?.maxTargets && { maxTargets: effectiveStats.maxTargets }),
-    // Healing from damage array
-    ...(healFromDamage && { healing: healFromDamage }),
-    // Surface summon duration as buffDuration when no explicit duration exists
-    ...(!baseEffects?.buffDuration && !baseEffects?.effectDuration && baseEffects?.summon?.duration && {
-      buffDuration: baseEffects.summon.duration,
-    }),
-    // Flatten nested movement object (e.g., Super Jump, Fly, Sprint)
-    ...(baseEffects?.movement && typeof baseEffects.movement === 'object' && (() => {
-      const mov = baseEffects.movement as Record<string, unknown>;
-      const flat: Record<string, unknown> = {};
-      if (mov.flySpeed) flat.fly = mov.flySpeed;
-      if (mov.runSpeed) flat.runSpeed = mov.runSpeed;
-      if (mov.jumpSpeed) flat.jumpSpeed = mov.jumpSpeed;
-      if (mov.jumpHeight) flat.jumpHeight = mov.jumpHeight;
-      return flat;
-    })()),
-  };
+  // The bag the registry display resolves — the merged stats, the heal extracted from the
+  // damage array, a summon's duration as the buff duration, and the flattened movement
+  // object. Shared with PowerInfoTooltip, and mirrored by the engine's `granted.rs`
+  // (PROD6C-3a).
+  const effects = buildDisplayEffects(effectivePower);
 
   // Check if power has any enhancements
   const hasEnhancements = selectedPower && selectedPower.slots.some(s => s !== null);

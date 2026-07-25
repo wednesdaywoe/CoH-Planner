@@ -50,7 +50,7 @@ import {
   type EnhancementBonuses,
 } from '@/utils/calculations';
 import { calculatePetDamage, calculateResolvedPseudoPetDamage, shouldApplyEnhancements, synthesizePseudoPetEffects, type PetDamageResult } from '@/utils/calculations/pet-damage';
-import { extractHealingFromDamage } from '@/utils/calculations/healing';
+import { buildDisplayEffects } from './buildDisplayEffects';
 import type { ArchetypeId } from '@/types';
 import { INCARNATE_TIER_REGISTRY } from '@/data/incarnate-registry';
 import { selectActiveConditionals } from '@/utils/conditional-effects';
@@ -213,11 +213,10 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
     );
   }, [basePower, build.level, archetypeId, enhancementBonuses.damage, globalBonusesForCalc.damage, powerSet, build.primary.id, build.secondary.id, powerset]);
 
-  // Extract healing from damage field (e.g., Life Drain, Dark Regeneration, Reconstruction),
-  // folding in any active mode-gated bonus heal (e.g. DNA Siphon's Defensive
-  // Adaptation +0.375 Heal) so the hover preview matches the InfoPanel's merged
-  // display instead of showing base-only.
-  const healFromDamageArray = useMemo(() => {
+  // The damage array the heal is extracted from, folding in any active mode-gated bonus heal
+  // (e.g. DNA Siphon's Defensive Adaptation +0.375 Heal) so the hover preview matches the
+  // InfoPanel's merged display instead of showing base-only.
+  const effectiveDamage = useMemo(() => {
     if (!basePower) return undefined;
     const stancePowers: { internalName: string; activeSubPower?: string }[] = [];
     const addStance = (powers?: { internalName: string; activeSubPower?: string }[]) =>
@@ -230,9 +229,8 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
     const active = selectActiveConditionals(basePower, mechanicAdjusters, effectiveGlobalAdjusters, { dominationActive });
     const baseDamage = basePower.damage ?? basePower.effects?.damage;
     const conditionalHeals = active.flatMap((c) => (c.damage ? (Array.isArray(c.damage) ? c.damage : [c.damage]) : []));
-    if (conditionalHeals.length === 0) return extractHealingFromDamage(baseDamage);
-    const merged = (Array.isArray(baseDamage) ? baseDamage : baseDamage ? [baseDamage] : []).concat(conditionalHeals);
-    return extractHealingFromDamage(merged);
+    if (conditionalHeals.length === 0) return baseDamage;
+    return (Array.isArray(baseDamage) ? baseDamage : baseDamage ? [baseDamage] : []).concat(conditionalHeals);
   }, [basePower, mechanicAdjusters, globalAdjusters, dominationActive, build.primary?.powers, build.secondary?.powers, build.pools, build.epicPool?.powers]);
 
   // Calculate aggregate pet damage (supports multi-entity summons)
@@ -396,51 +394,15 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
     return <div className="text-slate-400 text-xs">Power not found</div>;
   }
 
-  // Merge power.stats and normalize effect keys for registry-driven display
-  // Pool/inherent powers use different keys than the registry expects
-  const rawEffects = basePower.effects ?? {};
-  const raw = rawEffects as Record<string, unknown>;
-
-  // Build additional mappings for keys that differ between data formats
-  const extraEffects: Record<string, unknown> = {};
-  // Execution stats from power.stats
-  if (basePower.stats?.endurance) extraEffects.enduranceCost = basePower.powerType === 'Toggle' ? basePower.stats.endurance / (basePower.stats.activatePeriod ?? 0.5) : basePower.stats.endurance;
-  if (basePower.stats?.recharge) extraEffects.recharge = basePower.stats.recharge;
-  if (basePower.stats?.accuracy) extraEffects.accuracy = basePower.stats.accuracy;
-  if (basePower.stats?.range) extraEffects.range = basePower.stats.range;
-  // Assassin's Strike: fast Quick animation mid-combat, slow interruptible cast
-  // from Hide. Mirror the from-Hide toggle (which drives its damage) so cast
-  // time matches the state — not hidden → the fast mid-combat cast.
-  if (basePower.stats?.castTime) {
-    extraEffects.castTime = basePower.midCombatCast != null && !effectiveHidden
-      ? basePower.midCombatCast
-      : basePower.stats.castTime;
-  }
-  // AoE stats
-  if (basePower.stats?.radius) extraEffects.radius = basePower.stats.radius;
-  if (basePower.stats?.arc) extraEffects.arc = basePower.stats.arc <= 2 * Math.PI ? basePower.stats.arc * (180 / Math.PI) : basePower.stats.arc;
-  if (basePower.stats?.maxTargets) extraEffects.maxTargets = basePower.stats.maxTargets;
-  // Map pool/inherent effect keys to registry names
-  if (raw.flySpeed && !rawEffects.fly) extraEffects.fly = raw.flySpeed;
-  if (rawEffects.runSpeed) extraEffects.runSpeed = rawEffects.runSpeed;
-  if (rawEffects.jumpSpeed) extraEffects.jumpSpeed = rawEffects.jumpSpeed;
-  if (rawEffects.jumpHeight) extraEffects.jumpHeight = rawEffects.jumpHeight;
-  // Flatten nested movement object (e.g., Super Jump, Fly, Sprint)
-  if (raw.movement && typeof raw.movement === 'object') {
-    const mov = raw.movement as Record<string, unknown>;
-    if (mov.flySpeed && !extraEffects.fly) extraEffects.fly = mov.flySpeed;
-    if (mov.runSpeed && !extraEffects.runSpeed) extraEffects.runSpeed = mov.runSpeed;
-    if (mov.jumpSpeed && !extraEffects.jumpSpeed) extraEffects.jumpSpeed = mov.jumpSpeed;
-    if (mov.jumpHeight && !extraEffects.jumpHeight) extraEffects.jumpHeight = mov.jumpHeight;
-  }
-  if (raw.regeneration && !rawEffects.regenBuff) extraEffects.regenBuff = raw.regeneration;
-  if (raw.recovery && !rawEffects.recoveryBuff) extraEffects.recoveryBuff = raw.recovery;
-  // Pool powers may have endurance inside effects instead of stats
-  if (raw.endurance && !rawEffects.enduranceCost && !basePower.stats?.endurance) extraEffects.enduranceCost = raw.endurance;
-  // Inject healing extracted from damage array
-  if (healFromDamageArray && !rawEffects.healing) extraEffects.healing = healFromDamageArray;
-
-  const effects = { ...pseudoPetEffects, ...rawEffects, ...extraEffects } as typeof rawEffects;
+  // The bag the registry display resolves, shared with InfoPanel (PROD6C-3a). The pseudo-pet
+  // effects sit under it — the parent power's own keys win on a collision.
+  //
+  // Assassin's Strike: fast Quick animation mid-combat, slow interruptible cast from Hide.
+  // Mirror the from-Hide toggle (which drives its damage) so cast time matches the state —
+  // not hidden → the fast mid-combat cast. That is UI state, so it stays here rather than in
+  // the shared build (InfoPanel applies the same rule to the power's own stats).
+  const effects = { ...pseudoPetEffects, ...buildDisplayEffects(basePower, effectiveDamage) };
+  if (basePower.midCombatCast != null && !effectiveHidden) effects.castTime = basePower.midCombatCast;
 
   // Check if power has any enhancements
   const hasEnhancements = selectedPower && selectedPower.slots.some(s => s !== null);

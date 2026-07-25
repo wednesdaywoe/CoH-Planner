@@ -12,12 +12,12 @@ import { getBaseToHit } from '@/data/purple-patch';
 import { lookupPower, getIOSet, getPowerIconPath } from '@/data';
 import { calculatePowerEnhancementBonuses } from '@/utils/calculations/enhancement-values';
 import { calculatePowerDamage } from '@/utils/calculations/damage';
-import { extractHealingFromDamage } from '@/utils/calculations/healing';
 import { getAlphaEnhancementBonuses, calculateCharacterTotals } from '@/utils/calculations/character-totals';
 import { computeSetTracking } from '@/utils/calculations/set-tracking';
 import { getBaselineHealth } from '@/utils/calculations/stats';
 import { useGlobalBonuses, useCharacterCalculation, convertToLegacyStats } from '@/hooks';
 import { convertGlobalBonusesToAspects, findSelectedPowerInBuild } from '@/components/info/powerDisplayUtils';
+import { buildDisplayEffects } from '@/components/info/buildDisplayEffects';
 import { STAT_DEFINITIONS } from '@/data/stat-definitions';
 import type { StatValue } from '@/data/stat-definitions';
 
@@ -131,26 +131,10 @@ export function CompareSlottingModal() {
   );
 
   const archetypeId = build.archetype.id;
-  // Build merged effects for RegistryEffectsDisplay
-  const mergedEffects = useMemo(() => {
-    if (!power || !compareTarget) return {};
-    const baseEffects = power.effects;
-
-    // Extract healing from damage field (e.g. Life Drain)
-    const healFromDamage = baseEffects?.healing
-      ? undefined
-      : extractHealingFromDamage(power.damage);
-
-    return {
-      ...baseEffects,
-      ...(power.stats?.endurance && { enduranceCost: power.powerType === 'Toggle' ? power.stats.endurance / (power.stats.activatePeriod ?? 0.5) : power.stats.endurance }),
-      ...(power.stats?.recharge && { recharge: power.stats.recharge }),
-      ...(power.stats?.accuracy && { accuracy: power.stats.accuracy }),
-      ...(power.stats?.range && { range: power.stats.range }),
-      ...(power.stats?.castTime && { castTime: power.stats.castTime }),
-      ...(healFromDamage && { healing: healFromDamage }),
-    };
-  }, [power, compareTarget]);
+  const mergedEffects = useMemo(
+    () => (power && compareTarget ? buildDisplayEffects(power) : {}),
+    [power, compareTarget]
+  );
 
   const exemplarMode = useUIStore((s) => s.exemplarMode);
   const exemplarLevel = useUIStore((s) => s.exemplarLevel);

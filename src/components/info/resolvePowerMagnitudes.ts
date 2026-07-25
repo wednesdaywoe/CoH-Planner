@@ -12,11 +12,12 @@
  *    `contract/effect-registry.json`). `powerProjectionParity.test.ts` diffs the engine's
  *    output against THIS function over all three forks' corpora — a gate that means
  *    something only because the component runs the same code path it grades.
- * 2. PROD6C-3 swaps the component onto the engine's projection. The shapes already match, but
- *    the inputs do not: the bag `RegistryEffectsDisplay` resolves is one InfoPanel BUILDS at the
- *    render edge (redirects, merged stats, extracted healing, per-target scaling, pseudo-pet
- *    effects), while the engine reads the power's authored bag. Those transforms have to move
- *    into the engine before the call becomes a lookup — see the PROD6C-3 plan entry.
+ * 2. PROD6C-3 swaps the component onto the engine's projection. The shapes already match, and
+ *    the inputs now partly do: the bag this resolves is one the surfaces BUILD at the render
+ *    edge, and its power-only half is `buildDisplayEffects`, which the engine mirrors
+ *    (PROD6C-3a). The transforms that still need build or UI state — the redirect / quick-snipe
+ *    / conditional merge, per-target scaling, pseudo-pet effects — have to move into the engine
+ *    before the call becomes a lookup; see the PROD6C-3 plan entry.
  *
  * The `getEffectBaseValue` / `calcEffectThreeTier` / mez-duration / knockback-distance
  * logic here was relocated unchanged, then corrected in one place: the mez / buff-debuff /
