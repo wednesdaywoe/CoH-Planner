@@ -47,7 +47,7 @@ import { calculatePermaInfo, type PermaInfo } from '@/utils/calculations/perma';
 import { calculateArcanaTime } from '@/utils/calculations/damage';
 import { calcThreeTier, convertGlobalBonusesToAspects, withStrengthBonuses, type ThreeTierValues } from '@/components/info/powerDisplayUtils';
 import { resolvePowerMagnitudes, type ResolvedMagnitude } from '@/components/info/resolvePowerMagnitudes';
-import { buildDisplayEffects, getStackingInfo, hasPerTargetField, withTargetsHit } from '@/components/info/buildDisplayEffects';
+import { buildDisplayEffects, getStackingInfo, withTargetsHit } from '@/components/info/buildDisplayEffects';
 import { toCharacterStateJson, type AdapterCalcContext } from './characterStateAdapter';
 import { mapGlobal, mapOnePowerProjection, mapPowerProjection, projectionKey, type EngineTotals, type GrantedMagnitude, type PowerProjection } from './engineTotalsMap';
 import type { Build } from '@/types/build';
@@ -310,11 +310,11 @@ function exportedExemplarBonusCap(server: Server, exemplarLevel: number): number
  *  `id` plus the power's own `internalName`, or for the pool/epic partitions (which carry
  *  neither) the `fullName`-derived identity `coh_data` normalizes to at load.
  *
- *  This is the evidence side of the PROD6C-3h and 6C-3b adjudications. The two repos' converters
- *  have drifted in BOTH directions ([[prod6b2a-absorb-stdresult]]), so a row the beta resolves
- *  and the engine does not — or one whose two sides read a differently SHAPED authored value —
- *  is only acceptable when the engine's own copy of the power proves it. Reading the bundle
- *  proves that rather than assuming it. */
+ *  This is the evidence side of the PROD6C-3h adjudications. The two repos' converters have
+ *  drifted in BOTH directions ([[prod6b2a-absorb-stdresult]]), so a row the beta resolves and the
+ *  engine does not — or one whose two sides read different authored VALUES — is only acceptable
+ *  when the engine's own copy of the power proves it. Reading the bundle proves that rather than
+ *  assuming it. */
 type BundlePower = { effects?: Record<string, unknown>; strengthsDisallowed?: string[]; globalStrengthsDisallowed?: string[] };
 const bundlePartitionCache = new Map<Server, Map<string, BundlePower>>();
 function bundlePowers(server: Server): Map<string, BundlePower> {
@@ -634,7 +634,6 @@ function magnitudeDeltas(
   betaRows: Map<string, ResolvedMagnitude>,
   betaEffects: Record<string, unknown> | undefined,
   engineEffects?: Record<string, unknown>,
-  targetsHit = 0,
 ): { real: string[]; adjudicated: string[] } {
   const out: string[] = [];
   const adjudicated: string[] = [];
@@ -680,24 +679,15 @@ function magnitudeDeltas(
       typeof engineEffects[key] === 'number' &&
       typeof (betaEffects?.[key]) === 'number' &&
       Math.abs((engineEffects[key] as number) - (betaEffects![key] as number)) > TOLERANCE;
-    // PROD6C-3b. The same drift reaching a SHAPE rather than a value: only the beta's copy of
-    // this effect carries the `perTarget` field the slider grows, so under a dragged slider the
-    // two sides diverge by exactly that growth while agreeing everywhere else. Requires a
-    // dragged slider, so it is inert in every other sweep here — and those sweeps, which run the
-    // same powers and rows at an untouched slider as hard must-equals, are what prove the two
-    // shapes agree at one target.
-    const perTargetDrift =
-      targetsHit > 1 &&
-      engineEffects != null &&
-      hasPerTargetField(betaEffects?.[engine.effectKey]) &&
-      !hasPerTargetField(engineEffects[engine.effectKey]);
+    // PROD6C-3b's per-target SHAPE adjudication is gone (PROD6C-3j): the engine's converter now
+    // exports the per-foe increment for a MaxHP-fraction absorb too, so the two shapes agree
+    // under a dragged slider as they always did at one target. A row that grows on one side
+    // alone is a hard delta again.
     for (const tier of ['base', 'enhanced', 'final'] as const) {
       if (Math.abs(engine.value[tier] - beta.tiers[tier]) <= TOLERANCE) continue;
       const delta = `${powerName}.${key}.${tier}: engine ${engine.value[tier]} vs beta ${beta.tiers[tier]}`;
       if (inputsDiffer) {
         adjudicated.push(`${key}.${tier}: the two datasets carry different '${key}' values (engine ${engineEffects[key]}, beta ${betaEffects![key]})`);
-      } else if (perTargetDrift) {
-        adjudicated.push(`${key}.${tier}: only the beta's '${engine.effectKey}' carries perTarget, so the slider grows one side alone (engine ${engine.value[tier]}, beta ${beta.tiers[tier]})`);
       } else {
         out.push(delta);
       }
@@ -1343,8 +1333,8 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
           if (other && Math.abs(row.value.base - other.value.base) > TOLERANCE) engineMoved += 1;
         }
 
-        // The engine's OWN copy of this power, dragged to the same setting — the evidence the
-        // shape adjudication rests on.
+        // The engine's OWN copy of this power, dragged to the same setting: the authored values
+        // both sides read, which is what separates a converter-value difference from a calc bug.
         const enginePower = engineBundle.get(key);
         const mags = magnitudeDeltas(
           `${atId}/${power.internalName}@${targetsHit}`,
@@ -1354,7 +1344,6 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
           enginePower
             ? withTargetsHit(power, buildDisplayEffects(enginePower as unknown as Power), targetsHit) as Record<string, unknown>
             : {},
-          targetsHit,
         );
         deltas.push(...mags.real);
         adjudicated.push(...mags.adjudicated.map((d) => `${atId}/${power.internalName}.${d}`));

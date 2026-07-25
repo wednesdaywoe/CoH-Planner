@@ -295,12 +295,24 @@ suite('PROD5 — engine vs legacy dashboard parity, per server', () => {
   // every OTHER family — that is why the defect survived. This drives the count instead, and
   // grades the RESPONSE (totals at N minus totals at 0) rather than the absolute totals, so a
   // constant fixture difference cancels and only slider handling is under test.
+  //
+  // Widened by PROD6C-3j, which the walk as first written was structurally blind to: it carried
+  // no absorb reader, and it filtered to Toggle/Auto while every power whose absorb grows per
+  // foe (Parasitic Aura / Leech) is a Click. Both halves of that blindness are lifted here —
+  // absorb is bag-only, so it is read off the slot, in BOTH spellings of the increment (the
+  // fraction form's `maxHPFractionPerTarget`, the scale form's `perTarget`), since the two
+  // repos' converters recover the same authored Expression into different shapes.
   it.each(SERVERS)('%s: per-foe buffs track the targets-hit count identically on both calcs', async (server) => {
     await loadDataset(server);
 
     const READERS = [toHitBuffValue, damageBuffValue, resistanceBuffValue, defenseBuffValue, defenseBuffSuppressibleValue, regenBuffValue, recoveryBuffValue];
-    const carriesPerTarget = (power: Power) =>
-      READERS.some((read) => {
+    const absorbSlot = (power: Power) =>
+      (power as unknown as { effects?: { absorb?: { perTarget?: number; maxHPFractionPerTarget?: number } } })
+        .effects?.absorb;
+    const carriesPerTarget = (power: Power) => {
+      const absorb = absorbSlot(power);
+      if (absorb && (absorb.perTarget || absorb.maxHPFractionPerTarget)) return true;
+      return READERS.some((read) => {
         const value = read(power as never) as unknown;
         if (!value || typeof value !== 'object') return false;
         const entries = typeof (value as { scale?: number }).scale === 'number'
@@ -308,6 +320,7 @@ suite('PROD5 — engine vs legacy dashboard parity, per server', () => {
           : Object.values(value as Record<string, { perTarget?: number }>);
         return entries.some((entry) => entry && !!entry.perTarget);
       });
+    };
 
     // Powerset keys are `<archetypeId>/<setId>`, so the prefix arrives as a bare string; this is
     // the one place it re-enters the typed registry.
@@ -346,7 +359,9 @@ suite('PROD5 — engine vs legacy dashboard parity, per server', () => {
       const atId = powersetKey.split('/')[0];
       if (!archetypeOf(atId)) continue;
       for (const power of powerset.powers ?? []) {
-        if (power.powerType !== 'Toggle' && power.powerType !== 'Auto') continue;
+        // Click powers join Toggle/Auto here (PROD6C-3j): `solo` forces the power active, which
+        // is what puts a click's buff in the totals, and the per-foe absorbs live only on clicks.
+        if (power.powerType !== 'Toggle' && power.powerType !== 'Auto' && power.powerType !== 'Click') continue;
         if (!carriesPerTarget(power)) continue;
         examined++;
 
@@ -377,13 +392,17 @@ suite('PROD5 — engine vs legacy dashboard parity, per server', () => {
       (powerset.powers ?? []).some((power) =>
         Object.values((power as unknown as { effects?: Record<string, unknown> }).effects ?? {}).some((slot) =>
           slot && typeof slot === 'object' &&
-          Object.values(slot as Record<string, unknown>).some((entry) => entry && typeof entry === 'object' && !!(entry as { perTarget?: number }).perTarget),
+          // Either a by-type sub-entry's increment, or the slot's own — an absorb carries its
+          // per-foe growth at the top level of the slot, not one level down.
+          (!!(slot as { perTarget?: number }).perTarget ||
+            !!(slot as { maxHPFractionPerTarget?: number }).maxHPFractionPerTarget ||
+            Object.values(slot as Record<string, unknown>).some((entry) => entry && typeof entry === 'object' && !!(entry as { perTarget?: number }).perTarget)),
         ),
       ),
     );
 
     // eslint-disable-next-line no-console
-    console.warn(`[PROD6B-2d] ${server}: ${examined} per-foe toggle/auto powers, ${responsive} slider responses observed`);
+    console.warn(`[PROD6B-2d] ${server}: ${examined} per-foe powers, ${responsive} slider responses observed`);
 
     if (mismatches.length) {
       // eslint-disable-next-line no-console
