@@ -34,6 +34,15 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
   {
+    date: '2026-07-26',
+
+    items: [
+      { id: 'rust-calc-engine', message: 'Every number on the dashboard is now computed by a new calculation engine, written in Rust and compiled to WebAssembly, replacing the TypeScript math Sidekick has used until now. The best possible outcome here is that you notice nothing at all — the old and new engines were run side by side across Homecoming, Rebirth and Thunderspy until they agreed on every stat, and the gate that proves it runs on every change from here on. What it buys is what comes next: the new engine reads the game\'s own data losslessly, which is the groundwork for per-power damage, attack chains and proc DPS.', type: 'update' },
+      { id: 'engine-offline-cache', message: 'The calculation engine and its game data are now cached for offline use, so a flaky connection no longer leaves you with a planner full of zeros.', type: 'feat' },
+      { id: 'engine-failure-visible', message: 'If the calculation engine ever fails to load, you now get a red banner telling you so. Previously it quietly showed 0% for everything, which looks like a broken build rather than a broken Sidekick.', type: 'fix' },
+    ]
+  },
+  {
     date: '2026-07-14',
 
     items: [
