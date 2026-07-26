@@ -5,9 +5,13 @@
  * `DatasetHandle` per dataset (cached; the heavyweight `PowerDatabase` stays in wasm), and
  * a synchronous `recalcJson` the totals hook calls once a dataset is loaded.
  *
- * Local-only spike scaffolding: the bundles are the REBUILD's contract bundles copied to
- * `public/engine/contract/`, not the beta's own data — `coh_wasm.load_dataset` reads the
- * rebuild wire format.
+ * The bundles are the REBUILD's contract bundles, copied to `public/engine/contract/` by
+ * `npm run build:engine` — not the beta's own data; `coh_wasm.load_dataset` reads the rebuild
+ * wire format. Both the glue under `wasm/` and those bundles are COMMITTED build output, so
+ * this repo builds and deploys with only Node (see .gitignore). Refresh them with
+ * `npm run build:engine` whenever the engine changes.
+ *
+ * `engine.node.ts` is the same API over the wasm-node target — what vitest runs against.
  */
 
 import __wbg_init, { load_dataset, type DatasetHandle } from './wasm/coh_wasm';
