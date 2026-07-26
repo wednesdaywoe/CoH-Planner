@@ -32,7 +32,25 @@ export const PrimalForce: Power = {
     "Recharge"
   ],
   "maxSlots": 6,
+  "effects": {
+    "buffDuration": 15,
+    "durations": {
+      "slow": 15
+    },
+    "slow": {
+      "fly": {
+        "scale": 10,
+        "table": "Ranged_Ones"
+      },
+      "jumpHeight": {
+        "scale": 500,
+        "table": "Ranged_Ones"
+      }
+    }
+  },
   "atoms": [
-    ["Unmapped",null,-500,1,15,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Movement","JumpHeight",-500,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Movement","FlyMode",-10,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Range",null,-0.25,1,2.25,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true]
   ]
 };

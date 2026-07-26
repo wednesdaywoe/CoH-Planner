@@ -35,7 +35,6 @@ export const Caltrops: Power = {
   "allowedSetCategories": [
     "Ranged AoE Damage",
     "Slow Movement",
-    "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
@@ -47,6 +46,10 @@ export const Caltrops: Power = {
     }
   },
   "atoms": [
+    ["EntCreate",null,-1,1,45,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["EntCreate",null,-1,1,45,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ],
+  "damageTypes": [
+    "Lethal"
   ]
 };

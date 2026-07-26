@@ -59,15 +59,23 @@ describe('Bio Armor absorb + targets-hit fixes (homecoming)', () => {
 
   // --- #1b Parasitic Aura absorb value -----------------------------------
   describe('Parasitic Aura absorb = 10% of MaxHP per foe (not 110%)', () => {
-    it.each(PARASITIC_ATS)('%s base absorb is scale 0.1 / perTarget 0.1', (setId) => {
+    // The 10%-per-foe fraction is authored in TWO equivalent spellings across the ATs: a
+    // `_ones` `scale`/`perTarget` (Scrapper/Tanker/Stalker) and an explicit
+    // `maxHPFraction`/`maxHPFractionPerTarget` (Brute, whose export carries the RPN form the
+    // converter recovers). The calc resolves both identically — measured: all four ATs credit
+    // exactly 0.10 × base HP per foe — so this asserts the FRACTION, not the encoding, and
+    // still pins the defect it was written for (the summed cap-twin placeholder, 1.1).
+    it.each(PARASITIC_ATS)('%s base absorb is 10%% of Max HP per foe', (setId) => {
       const ab = power(setId, 'Parasitic_Aura')?.effects?.absorb as
-        | { scale?: number; perTarget?: number; table?: string }
+        | { scale?: number; perTarget?: number; maxHPFraction?: number; maxHPFractionPerTarget?: number; table?: string }
         | undefined;
       expect(ab).toBeDefined();
-      expect(ab!.scale).toBeCloseTo(0.1, 5);
-      expect(ab!.perTarget).toBeCloseTo(0.1, 5);
+      const fraction = ab!.maxHPFraction ?? ab!.scale;
+      const perTarget = ab!.maxHPFractionPerTarget ?? ab!.perTarget;
+      expect(fraction).toBeCloseTo(0.1, 5);
+      expect(perTarget).toBeCloseTo(0.1, 5);
       // Never the summed cap-twin placeholder (1.1).
-      expect(ab!.scale).toBeLessThan(1);
+      expect(fraction).toBeLessThan(1);
     });
   });
 
@@ -82,7 +90,7 @@ describe('Bio Armor absorb + targets-hit fixes (homecoming)', () => {
       b.secondary = {
         id: 'scrapper/bio-armor',
         name: 'Bio Armor',
-        powers: [{ internalName: 'Parasitic_Aura', name: 'Parasitic Aura', isActive: true, slots: [] }],
+        powers: [{ internalName: 'Parasitic_Aura', name: 'Parasitic Aura', powerSet: 'scrapper/bio-armor', level: 1, isActive: true, slots: [] }],
       } as any;
       const targetsHitValues: Record<string, number> = targetsHit === undefined ? {} : { Parasitic_Aura: targetsHit };
       return calculateCharacterTotals(b, false, undefined, { targetsHitValues }).globalBonuses.absorb;
@@ -112,8 +120,8 @@ describe('Bio Armor absorb + targets-hit fixes (homecoming)', () => {
       b.archetype = { id: 'tanker', name: 'Tanker', stats: null, inherent: null } as any;
       const powers = [
         // Hardened Carapace grants +25% Smashing/Toxic resistance (0% Fire).
-        { internalName: 'Hardened_Carapace', name: 'Hardened Carapace', isActive: true, slots: [] },
-        { internalName: 'Adaptation', name: 'Evolving Armor', isActive: false, slots: [], activeSubPower },
+        { internalName: 'Hardened_Carapace', name: 'Hardened Carapace', powerSet: 'tanker/bio-armor', level: 1, isActive: true, slots: [] },
+        { internalName: 'Adaptation', name: 'Evolving Armor', powerSet: 'tanker/bio-armor', level: 1, isActive: false, slots: [], activeSubPower },
       ];
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       b.primary = { id: 'tanker/bio-armor', name: 'Bio Armor', powers } as any;

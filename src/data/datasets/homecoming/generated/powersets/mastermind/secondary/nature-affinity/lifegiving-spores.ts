@@ -43,8 +43,7 @@ export const LifegivingSpores: Power = {
       "copyBoosts": true,
       "displayName": "LIfegiving Spores",
       "duration": 99999,
-      "entity": "PL_StaticObject",
-      "isPseudoPet": false,
+      "isPseudoPet": true,
       "powers": [
         "Pets.ResistAll.ResistAll",
         "Pets.Lifegiving_Spores.Lifegiving_Spores"
@@ -75,7 +74,8 @@ export const LifegivingSpores: Power = {
             }
           ]
         }
-      ]
+      ],
+      "entity": "PL_StaticObject"
     }
   },
   "atoms": [

@@ -63,8 +63,7 @@ export const RiseofthePhoenix: Power = {
       "copyBoosts": true,
       "displayName": "Phoenix Rising (Resurecting)",
       "duration": 10,
-      "entity": "PL_StaticObject",
-      "isPseudoPet": false,
+      "isPseudoPet": true,
       "powers": [
         "Redirects.Fiery_Aura.Phoenix"
       ]

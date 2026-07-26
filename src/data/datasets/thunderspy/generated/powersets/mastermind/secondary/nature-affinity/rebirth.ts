@@ -37,6 +37,20 @@ export const Rebirth: Power = {
     "Healing"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Heal",
+      "scale": 5,
+      "table": "Ranged_Heal"
+    },
+    {
+      "type": "Heal",
+      "scale": 0.454545,
+      "table": "Ranged_Heal",
+      "duration": 10.1,
+      "tickRate": 1
+    }
+  ],
   "effects": {
     "enduranceGain": {
       "scale": 0.5,
@@ -44,7 +58,9 @@ export const Rebirth: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,5,1,0,"Ranged_Heal","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Endurance",null,0.5,1,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Heal",null,5,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["Heal",null,0.454545,1,10.1,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["Endurance",null,0.5,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true]
   ]
 };

@@ -26,10 +26,10 @@
   "target_type": "Self",
   "target_type_secondary": "None",
   "targets_autohit": [
-    "MyCreator"
+    "MyPet"
   ],
   "targets_affected": [
-    "MyCreator"
+    "MyPet"
   ],
   "boosts_allowed": [
     "Hold",
@@ -58,6 +58,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "MastermindPets_Zombie target.VillainName> MastermindPets_Skeletal_Warrior target.VillainName> || MastermindPets_Lich target.VillainName> ||",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -79,12 +80,12 @@
             "Heal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 0.0,
-          "duration": "0.50 seconds",
+          "duration": "0.5 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -98,6 +99,22 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You heal {PlayerDest} with {PowerName} for {Damage} health points over time.",
+            "display_victim_hit": "{PlayerSource} heals you with their {PowerName} for {Damage} health points over time.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
+          "fx": {
+            "continuing_bits": [
+              593,
+              49
+            ],
+            "continuing_fx": "PFX",
+            "conditional_bits": [],
+            "conditional_fx": "PFX"
+          },
           "flags": [
             "IgnoreStrength"
           ],
@@ -122,7 +139,7 @@
                 "Create_Entity"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_Ones",
@@ -142,9 +159,9 @@
               "stack_limit": 2,
               "stack_key": null,
               "params": {
-                "type": "EntCreate",
                 "entity_def": "MastermindPets_Ghost_Boss",
-                "priority_list": "PL_FightPreferMelee"
+                "priority_list": "PL_FightPreferMelee",
+                "type": "EntCreate"
               },
               "flags": [
                 "IgnoreStrength",
@@ -152,7 +169,8 @@
                 "IgnoreCombatMods",
                 "CopyBoosts"
               ],
-              "flags_raw": 112
+              "flags_raw": 112,
+              "flags2_raw": 4
             }
           ]
         },
@@ -173,7 +191,7 @@
                 "Create_Entity"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_Ones",
@@ -193,9 +211,9 @@
               "stack_limit": 2,
               "stack_key": null,
               "params": {
-                "type": "EntCreate",
                 "entity_def": "MastermindPets_Ghost_Lt",
-                "priority_list": "PL_FightPreferMelee"
+                "priority_list": "PL_FightPreferMelee",
+                "type": "EntCreate"
               },
               "flags": [
                 "IgnoreStrength",
@@ -203,7 +221,8 @@
                 "IgnoreCombatMods",
                 "CopyBoosts"
               ],
-              "flags_raw": 112
+              "flags_raw": 112,
+              "flags2_raw": 4
             }
           ]
         },
@@ -224,7 +243,7 @@
                 "Create_Entity"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_Ones",
@@ -244,9 +263,9 @@
               "stack_limit": 2,
               "stack_key": null,
               "params": {
-                "type": "EntCreate",
                 "entity_def": "MastermindPets_Ghost_Minion",
-                "priority_list": "PL_FightPreferMelee"
+                "priority_list": "PL_FightPreferMelee",
+                "type": "EntCreate"
               },
               "flags": [
                 "IgnoreStrength",
@@ -254,7 +273,8 @@
                 "IgnoreCombatMods",
                 "CopyBoosts"
               ],
-              "flags_raw": 112
+              "flags_raw": 112,
+              "flags2_raw": 4
             }
           ]
         }

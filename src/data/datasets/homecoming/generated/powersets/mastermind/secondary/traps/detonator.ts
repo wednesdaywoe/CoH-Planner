@@ -16,7 +16,7 @@ export const Detonator: Power = {
   "shortHelp": "Sacrifice Henchman, PBAoE, Extreme DMG(Lethal/Fire), Foe Knockback",
   "icon": "traps_aoemassivedamage.png",
   "powerType": "Click",
-  "targetType": "Self",
+  "targetType": "Own Pet (Alive)",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,

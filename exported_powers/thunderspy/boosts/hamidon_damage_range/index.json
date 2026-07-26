@@ -1,0 +1,19 @@
+{
+  "key": "Boosts.Hamidon_Damage_Range",
+  "display_name": "Hamidon Damage Range",
+  "help": "Enhances the damage and range of a power.",
+  "short_help": "Hamidon (All Origins)",
+  "icon": "hamidon_damage_range_set.ico",
+  "powers": [
+    "Boosts.Hamidon_Damage_Range.Hamidon_Damage_Range"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Centriole Exposure"
+  ],
+  "power_short_helps": [
+    "Enhances Damage and Range"
+  ]
+}

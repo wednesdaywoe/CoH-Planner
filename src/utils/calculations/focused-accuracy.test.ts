@@ -24,7 +24,7 @@ describe('Focused Accuracy +Accuracy self-buff (homecoming)', () => {
     b.archetype = { id: 'scrapper', name: 'Scrapper', stats: null, inherent: null } as any;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     b.epicPool = { id: 'body_mastery', name: 'Body Mastery', powers: [
-      { internalName: 'Focused_Accuracy', name: 'Focused Accuracy', isActive: active, slots: [] },
+      { internalName: 'Focused_Accuracy', name: 'Focused Accuracy', powerSet: 'body_mastery', level: 1, isActive: active, slots: [] },
     ] } as any;
     return b;
   }

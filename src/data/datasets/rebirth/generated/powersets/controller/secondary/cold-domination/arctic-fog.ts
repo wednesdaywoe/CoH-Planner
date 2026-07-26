@@ -125,6 +125,10 @@ export const ArcticFog: Power = {
       "stealthPvP": {
         "scale": 389,
         "table": "Ranged_Ones"
+      },
+      "translucency": {
+        "scale": 0.7,
+        "table": "Ranged_Ones"
       }
     }
   },
@@ -141,7 +145,7 @@ export const ArcticFog: Power = {
     ["Defense","Energy",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
     ["Defense","Negative",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
     ["Defense","Psionic",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
-    ["EntCreate",null,0.7,1,2.25,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Stealth","Translucency",0.7,1,2.25,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["Resistance","Fire",2,1,2.25,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
     ["Resistance","Cold",2,1,2.25,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
     ["Resistance","Energy",2,1,2.25,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],

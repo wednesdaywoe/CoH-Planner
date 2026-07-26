@@ -35,7 +35,12 @@ export const Cauterize: Power = {
     "Healing"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Heal",
+    "scale": 1.72,
+    "table": "Ranged_Heal"
+  },
   "atoms": [
-    ["Unmapped",null,1.72,1,0,"Ranged_Heal","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Heal",null,1.72,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1]
   ]
 };

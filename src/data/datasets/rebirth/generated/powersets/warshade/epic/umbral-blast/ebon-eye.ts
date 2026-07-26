@@ -86,5 +86,109 @@ export const EbonEye: Power = {
     ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kWarshade_Blaster_Mode source.Mode?",true],
     ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kWarshade_Tanker_Mode source.Mode?",true],
     ["Damage","Negative",2.1708,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
-  ]
+  ],
+  "modeVariants": {
+    "Warshade_Blaster_Mode": {
+      "internalName": "Dark_Nova_Ebon_Eye",
+      "stats": {
+        "accuracy": 1.1,
+        "range": 100,
+        "recharge": 6,
+        "endurance": 5.2,
+        "castTime": 1.5
+      },
+      "damage": {
+        "type": "Negative",
+        "scale": 1.32,
+        "table": "Ranged_SSDamage"
+      },
+      "effects": {
+        "buffDuration": 6,
+        "durations": {
+          "rechargeDebuff": 6,
+          "slow": 6
+        },
+        "rechargeDebuff": {
+          "scale": 0.2,
+          "table": "Ranged_Slow"
+        },
+        "slow": {
+          "flySpeed": {
+            "scale": 0.2,
+            "table": "Ranged_Slow"
+          },
+          "jumpHeight": {
+            "scale": 0.2,
+            "table": "Ranged_Slow"
+          },
+          "jumpSpeed": {
+            "scale": 0.2,
+            "table": "Ranged_Slow"
+          },
+          "runSpeed": {
+            "scale": 0.2,
+            "table": "Ranged_Slow"
+          }
+        }
+      },
+      "shortHelp": "Ranged, Moderate DMG(Negative), Foe -Recharge, -SPD",
+      "description": "You can emit a beam of dark energy from your eyes, dealing moderate Negative Energy damage. Ebon Eye can also slow your target's attack rate and movement speed. This power can be used while in Dark Nova or Black Dwarf form.  While in Dark Nova, this power has increased range and higher damage. While in Black Dwarf form, this power taunts its target but has shorter range and deals slightly more damage. Damage: Moderate, Recharge: Fast",
+      "effectArea": "SingleTarget",
+      "targetType": "Foe",
+      "powerType": "Click"
+    },
+    "Warshade_Tanker_Mode": {
+      "internalName": "Black_Dwarf_Eye",
+      "stats": {
+        "accuracy": 1.1,
+        "range": 60,
+        "recharge": 6,
+        "endurance": 5.2,
+        "castTime": 1.67
+      },
+      "damage": {
+        "type": "Negative",
+        "scale": 1.32,
+        "table": "Melee_SSDamage"
+      },
+      "effects": {
+        "buffDuration": 6,
+        "durations": {
+          "rechargeDebuff": 6,
+          "slow": 6
+        },
+        "rechargeDebuff": {
+          "scale": 0.2,
+          "table": "Ranged_Slow"
+        },
+        "slow": {
+          "flySpeed": {
+            "scale": 0.2,
+            "table": "Ranged_Slow"
+          },
+          "jumpHeight": {
+            "scale": 0.2,
+            "table": "Ranged_Slow"
+          },
+          "jumpSpeed": {
+            "scale": 0.2,
+            "table": "Ranged_Slow"
+          },
+          "runSpeed": {
+            "scale": 0.2,
+            "table": "Ranged_Slow"
+          }
+        },
+        "taunt": {
+          "scale": 1,
+          "table": "Melee_InherentTaunt"
+        }
+      },
+      "shortHelp": "Ranged, Moderate DMG(Negative), Foe -Recharge, -SPD",
+      "description": "You can emit a beam of dark energy from your eyes, dealing moderate Negative Energy damage. Ebon Eye can also slow your target's attack rate and movement speed. This power can be used while in Dark Nova or Black Dwarf form.  While in Dark Nova, this power has increased range and higher damage. While in Black Dwarf form, this power taunts its target but has shorter range and deals slightly more damage. Damage: Moderate, Recharge: Fast",
+      "effectArea": "SingleTarget",
+      "targetType": "Foe",
+      "powerType": "Click"
+    }
+  }
 };

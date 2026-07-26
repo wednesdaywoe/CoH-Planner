@@ -42,7 +42,6 @@ export const LightningStorm: Power = {
   "allowedSetCategories": [
     "Endurance Modification",
     "Knockback",
-    "Mastermind Archetype Sets",
     "Ranged Damage",
     "Recharge Intensive Pets",
     "Universal Damage Sets"
@@ -56,6 +55,10 @@ export const LightningStorm: Power = {
     }
   },
   "atoms": [
+    ["EntCreate",null,1,1,60,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["EntCreate",null,1,1,60,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ],
+  "damageTypes": [
+    "Energy"
   ]
 };

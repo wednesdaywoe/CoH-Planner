@@ -1,10 +1,44 @@
 {
   "name": "Class_Arachnos_Widow",
-  "display_name": "P2278903469",
+  "display_name": "Arachnos Widow",
+  "display_help": "Characters with Widow Training begin their careers as Blood Widows. Blood Widow characters begin with modest melee, ranged and buff skills.  Beginning at level 24, they may chose to switch to the \"Fortunata\" path or remain on the \"Widow\" path and become \"Night Widows.\"  Night Widows gain considerably stronger melee capabilities, and only have modest ranged abilities, while those who go with the Fortunata path learn stronger ranged attack abilities and control abilities.",
+  "display_short_help": "Ranged attacks, Defensive Powers and Ally buffs.",
   "icon": "v_archetypeicon_arachnos_widow.tga",
   "primary_category": "Widow_Training",
   "secondary_category": "Teamwork",
   "pool_category": "Pool",
+  "epic_pool_category": "",
+  "allowed_origins": [
+    "Natural"
+  ],
+  "special_restrictions": [
+    "ArachnosWidow",
+    "Villain",
+    "OriginLocked"
+  ],
+  "store_requires": "",
+  "locked_tooltip": "This is an Epic Archetype. This Archetype is unlocked by VIP subscribers by getting one character to level 20 and is unlocked by free players by purchasing the Soldiers of Arachnos Archetype Pack.",
+  "product_code": "ctatveat",
+  "reduction_class": "",
+  "reduce_as_archvillain": false,
+  "level_up_respecs": [
+    24
+  ],
+  "archetype_shots": [
+    "archetypeshots_arachnos_widow_0",
+    "archetypeshots_arachnos_widow_1",
+    "archetypeshots_arachnos_widow_2"
+  ],
+  "creation_stats": [
+    7,
+    8,
+    6,
+    2,
+    5,
+    2
+  ],
+  "playstyle_flags": 22,
+  "mechanic_tip": "",
   "named_tables": {
     "Melee_Damage": [
       -10.25,
@@ -5003,5 +5037,7 @@
     "resistance_cap": 0.8500000238418579,
     "base_threat": 2.0,
     "damage_cap": 4.0
-  }
+  },
+  "mechanic_bar_raw": 0,
+  "mechanic_gap_raw": 70
 }

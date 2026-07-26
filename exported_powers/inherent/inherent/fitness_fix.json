@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -57,7 +58,7 @@
             "Revoke_Power"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
@@ -77,10 +78,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Inherent.Fitness.Swift"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -93,7 +95,7 @@
             "Revoke_Power"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
@@ -113,10 +115,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Inherent.Fitness.Hurdle"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -129,7 +132,7 @@
             "Revoke_Power"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
@@ -149,10 +152,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Inherent.Fitness.Health"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -165,7 +169,7 @@
             "Revoke_Power"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
@@ -185,10 +189,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Inherent.Fitness.Stamina"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -199,6 +204,7 @@
       ]
     }
   ],
+  "max_boosts": 0,
   "available_level": 1,
   "powerset": "Inherent.Inherent"
 }

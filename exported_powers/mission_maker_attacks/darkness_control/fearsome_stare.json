@@ -39,6 +39,7 @@
   "requires": "Mission_Maker_Secondary.Darkness_Control.Shadowy_Binds Mission_Maker_Secondary.Darkness_Control.Dark_Grasp || !",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     136
   ],
@@ -60,7 +61,7 @@
             "Terrorized"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Fear",
@@ -79,9 +80,19 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "DeepSleep"
-          ],
+          "messages": {
+            "display_attacker_hit": "You Terrorize {PlayerDest} with your {PowerName}.",
+            "display_victim_hit": "{PlayerSource} Terrorizes you with their {PowerName}.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "PFX"
+          },
           "flags_raw": 2560
         },
         {
@@ -89,7 +100,7 @@
             "ToHit"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Debuff_ToHit",
@@ -131,7 +142,7 @@
             "Terrorized"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Fear",
@@ -150,9 +161,19 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "DeepSleep"
-          ],
+          "messages": {
+            "display_attacker_hit": "You Terrorize {PlayerDest} with your {PowerName} (OVERPOWER).",
+            "display_victim_hit": "{PlayerSource} Terrorizes you with their {PowerName} (OVERPOWER).",
+            "display_float": "Overpower",
+            "display_attrib_defense_float": null,
+            "display_info": "Overpower"
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "PFX"
+          },
           "flags_raw": 2560
         }
       ]

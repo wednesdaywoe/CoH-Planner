@@ -34,7 +34,6 @@ export const OilSlickArrow: Power = {
   ],
   "allowedSetCategories": [
     "Defense Debuff",
-    "Mastermind Archetype Sets",
     "Ranged AoE Damage",
     "Slow Movement",
     "Universal Damage Sets"
@@ -55,6 +54,7 @@ export const OilSlickArrow: Power = {
     }
   },
   "atoms": [
+    ["EntCreate",null,-1,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["EntCreate",null,-1,1,30,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
   ],
   "conditionalEffects": [

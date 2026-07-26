@@ -23,13 +23,13 @@
   "activate_period": 0.0,
   "endurance_cost": 14.0,
   "interrupt_time": 0.0,
-  "target_type": "MyOwner",
+  "target_type": "DeadMyPet",
   "target_type_secondary": "None",
   "targets_autohit": [
-    "MyOwner"
+    "DeadMyPet"
   ],
   "targets_affected": [
-    "MyOwner"
+    "DeadMyPet"
   ],
   "boosts_allowed": [],
   "allowed_set_categories": null,
@@ -39,6 +39,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -58,7 +59,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Levelminus",
@@ -78,9 +79,9 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "NPC_Pets_MA_Ghost_Minion",
-            "priority_list": "Combat"
+            "priority_list": "Combat",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
@@ -88,7 +89,8 @@
             "IgnoreCombatMods",
             "CopyBoosts"
           ],
-          "flags_raw": 112
+          "flags_raw": 112,
+          "flags2_raw": 4
         }
       ]
     },
@@ -109,7 +111,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Levelminus",
@@ -129,9 +131,9 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "NPC_Pets_MA_Ghost_Lt",
-            "priority_list": "Combat"
+            "priority_list": "Combat",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
@@ -139,7 +141,8 @@
             "IgnoreCombatMods",
             "CopyBoosts"
           ],
-          "flags_raw": 112
+          "flags_raw": 112,
+          "flags2_raw": 4
         }
       ]
     },
@@ -160,7 +163,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Levelminus",
@@ -180,9 +183,9 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "NPC_Pets_MA_Ghost_Boss",
-            "priority_list": "Combat"
+            "priority_list": "Combat",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
@@ -190,7 +193,8 @@
             "IgnoreCombatMods",
             "CopyBoosts"
           ],
-          "flags_raw": 112
+          "flags_raw": 112,
+          "flags2_raw": 4
         }
       ]
     },
@@ -211,12 +215,12 @@
             "Heal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 0.0,
-          "duration": "0.50 seconds",
+          "duration": "0.5 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -230,6 +234,22 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You heal {PlayerDest} with {PowerName} for {Damage} health points over time.",
+            "display_victim_hit": "{PlayerSource} heals you with their {PowerName} for {Damage} health points over time.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
+          "fx": {
+            "continuing_bits": [
+              331,
+              691
+            ],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"

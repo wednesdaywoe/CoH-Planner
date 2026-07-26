@@ -23,7 +23,7 @@
   "activate_period": 0.0,
   "endurance_cost": 13.0,
   "interrupt_time": 0.0,
-  "target_type": "DeadMyPet",
+  "target_type": "Teleport",
   "target_type_secondary": "None",
   "targets_autohit": [
     "Self"
@@ -45,6 +45,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -64,7 +65,7 @@
             "Translucency"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -94,7 +95,7 @@
             "Teleport"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -141,7 +142,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -161,10 +162,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Temporary_Powers.Temporary_Powers.NoPhase"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -193,7 +195,7 @@
             "Fly"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -223,7 +225,7 @@
             "FlyingSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_SpeedFlying",
@@ -255,7 +257,7 @@
             "Intangible"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -285,7 +287,7 @@
             "Set_Mode"
           ],
           "type": "Constant",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -306,8 +308,7 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance",
-            "DeepSleep"
+            "IgnoreResistance"
           ],
           "flags_raw": 3120,
           "mode_name": "ChainTeleport"
@@ -317,7 +318,7 @@
             "Execute_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -337,15 +338,17 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Redirects.Pool_Teleportation.Teleport_Hover"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "CopyBoosts"
           ],
-          "flags_raw": 1280
+          "flags_raw": 1280,
+          "flags2_raw": 4
         }
       ],
       "child_effects": [
@@ -366,7 +369,7 @@
                 "Untouchable"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Ranged_Ones",
@@ -393,19 +396,19 @@
                   "event": "Attacked",
                   "event_id": 2,
                   "duration": 10.0,
-                  "flag": 1
+                  "always": 1
                 },
                 {
                   "event": "HitByFoe",
                   "event_id": 17,
                   "duration": 10.0,
-                  "flag": 1
+                  "always": 1
                 },
                 {
                   "event": "MissionObjectClick",
                   "event_id": 37,
                   "duration": 10.0,
-                  "flag": 1
+                  "always": 1
                 }
               ],
               "flags": [
@@ -419,7 +422,7 @@
                 "Global_Chance_Mod"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Ranged_Ones",
@@ -438,6 +441,12 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "params": {
+                "tags": [
+                  "NoPhase"
+                ],
+                "type": "EffectFilter"
+              },
               "flags": [
                 "IgnoreStrength",
                 "IgnoreResistance",
@@ -450,7 +459,7 @@
                 "Translucency"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Ranged_Ones",
@@ -477,19 +486,19 @@
                   "event": "Attacked",
                   "event_id": 2,
                   "duration": 10.0,
-                  "flag": 1
+                  "always": 1
                 },
                 {
-                  "event": "Event_12",
+                  "event": "AttackedByOther",
                   "event_id": 12,
                   "duration": 10.0,
-                  "flag": 1
+                  "always": 1
                 },
                 {
                   "event": "HitByFoe",
                   "event_id": 17,
                   "duration": 10.0,
-                  "flag": 1
+                  "always": 1
                 }
               ],
               "flags": [
@@ -502,7 +511,7 @@
                 "Designer_Status"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "Self",
               "table": "Melee_Ones",
@@ -521,6 +530,13 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": null,
+                "display_victim_hit": "Untouchable",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "cancel_events": [
                 "Attacked",
                 "MissionObjectClick"
@@ -530,19 +546,19 @@
                   "event": "Attacked",
                   "event_id": 2,
                   "duration": 10.0,
-                  "flag": 1
+                  "always": 1
                 },
                 {
                   "event": "HitByFoe",
                   "event_id": 17,
                   "duration": 10.0,
-                  "flag": 1
+                  "always": 1
                 },
                 {
                   "event": "MissionObjectClick",
                   "event_id": 37,
                   "duration": 10.0,
-                  "flag": 1
+                  "always": 1
                 }
               ],
               "flags": [

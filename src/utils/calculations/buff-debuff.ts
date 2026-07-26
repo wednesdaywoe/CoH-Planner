@@ -38,21 +38,3 @@ export function calculateBuffDebuffFraction(
   return scale * base * modifier;
 }
 
-/**
- * Get the effective buff/debuff modifier for a powerset.
- * - Defender/Controller PRIMARY support: uses their full buffDebuffModifier
- * - Corruptor/Mastermind SECONDARY support: uses 1.0 (base rate, not their
- *   primary modifier — their stored buffDebuffModifier applies to primary blast)
- * - Pool powers and others: uses base rate (1.0)
- */
-export function getEffectiveBuffDebuffModifier(powerSet: string, archetypeModifier: number): number {
-  const powersetArchetype = powerSet.split('/')[0];
-
-  if (powersetArchetype === 'defender' || powersetArchetype === 'controller') {
-    return archetypeModifier;
-  }
-  if (powersetArchetype === 'corruptor' || powersetArchetype === 'mastermind') {
-    return 1.0;
-  }
-  return 1.0;
-}

@@ -18,6 +18,9 @@ export const GravityWell: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,
@@ -97,7 +100,7 @@ export const GravityWell: Power = {
     ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kWarshade_Tanker_Mode source.Mode? !"],
     ["Damage","Negative",1.56,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Smashing",0.33,1,2.75,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["Mez","Held",10,3,0,"Melee_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Movement","JumpHeight",0.3,1,10,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
     ["Movement","Jump",0.3,1,10,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -108,5 +111,80 @@ export const GravityWell: Power = {
     ["Damage","Negative",1.398672,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Smashing",0.295501,1,2.75,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Held",2,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
-  ]
+  ],
+  "modeVariants": {
+    "Warshade_Tanker_Mode": {
+      "internalName": "Black_Dwarf_Smite",
+      "stats": {
+        "accuracy": 1.2,
+        "range": 7,
+        "recharge": 8,
+        "endurance": 8.528,
+        "castTime": 1.5
+      },
+      "damage": [
+        {
+          "type": "Smashing",
+          "scale": 0.53,
+          "table": "Melee_SSDamage"
+        },
+        {
+          "type": "Negative",
+          "scale": 1.11,
+          "table": "Melee_SSDamage"
+        }
+      ],
+      "effects": {
+        "buffDuration": 10,
+        "durations": {
+          "rechargeDebuff": 10,
+          "slow": 10
+        },
+        "knockback": {
+          "scale": 0.67,
+          "table": "Melee_Ones"
+        },
+        "rechargeDebuff": {
+          "scale": 0.2,
+          "table": "Melee_Slow"
+        },
+        "slow": {
+          "fly": {
+            "scale": 1.6,
+            "table": "Melee_Ones"
+          },
+          "flySpeed": {
+            "scale": 0.2,
+            "table": "Melee_Slow"
+          },
+          "jumpHeight": {
+            "scale": 0.2,
+            "table": "Melee_Slow"
+          },
+          "jumpSpeed": {
+            "scale": 0.2,
+            "table": "Melee_Slow"
+          },
+          "runSpeed": {
+            "scale": 0.2,
+            "table": "Melee_Slow"
+          }
+        },
+        "stun": {
+          "mag": 2,
+          "scale": 6,
+          "table": "Melee_Immobilize"
+        },
+        "taunt": {
+          "scale": 1,
+          "table": "Melee_InherentTaunt"
+        }
+      },
+      "shortHelp": "Melee, Heavy DMG(Negative/Smash), Foe -Recharge, -SPD, -Fly, Disorient",
+      "description": "Black Dwarf Smite is powerful melee attack that can often Disorient or Knock Down opponents. Black Dwarf Smite can also bring down fliers, and slows a targets attack and movement speed. This power is only available while in Black Dwarf Form. Damage: Heavy, Recharge: Moderate",
+      "effectArea": "SingleTarget",
+      "targetType": "Foe",
+      "powerType": "Click"
+    }
+  }
 };

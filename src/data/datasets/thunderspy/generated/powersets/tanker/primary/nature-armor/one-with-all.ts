@@ -41,11 +41,6 @@ export const OneWithAll: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Special",
-    "scale": 3,
-    "table": "Melee_Damage"
-  },
   "effects": {
     "buffDuration": 30,
     "durations": {
@@ -54,50 +49,61 @@ export const OneWithAll: Power = {
     "resistance": {
       "cold": {
         "scale": 0.07,
-        "table": "Melee_Res_DMG"
+        "table": "Melee_Res_DMG",
+        "perTarget": 0.07
       },
       "energy": {
         "scale": 0.07,
-        "table": "Melee_Res_DMG"
+        "table": "Melee_Res_DMG",
+        "perTarget": 0.07
       },
       "fire": {
         "scale": 0.07,
-        "table": "Melee_Res_DMG"
+        "table": "Melee_Res_DMG",
+        "perTarget": 0.07
       },
       "lethal": {
         "scale": 0.07,
-        "table": "Melee_Res_DMG"
+        "table": "Melee_Res_DMG",
+        "perTarget": 0.07
       },
       "negative": {
         "scale": 0.07,
-        "table": "Melee_Res_DMG"
+        "table": "Melee_Res_DMG",
+        "perTarget": 0.07
       },
       "psionic": {
         "scale": 0.07,
-        "table": "Melee_Res_DMG"
+        "table": "Melee_Res_DMG",
+        "perTarget": 0.07
       },
       "smashing": {
         "scale": 0.07,
-        "table": "Melee_Res_DMG"
+        "table": "Melee_Res_DMG",
+        "perTarget": 0.07
       },
       "toxic": {
         "scale": 0.07,
-        "table": "Melee_Res_DMG"
+        "table": "Melee_Res_DMG",
+        "perTarget": 0.07
       }
     }
   },
   "atoms": [
-    ["Unmapped",null,3,1,0,"Melee_Damage","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq target.isFriend? ! &&"],
-    ["Unmapped",null,0,1,10,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Smashing",0.07,1,30,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Lethal",0.07,1,30,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Fire",0.07,1,30,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Cold",0.07,1,30,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Energy",0.07,1,30,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Negative",0.07,1,30,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Psionic",0.07,1,30,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Toxic",0.07,1,30,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1.54,1,0,"Melee_Damage","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq target.isFriend? ! &&",true],
-    ["Unmapped",null,3,1,0,"Ranged_Heal","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"target.isFriend?",true]
+    ["Damage","Fire",3,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq target.isFriend? ! &&"],
+    ["Meta",null,0,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Resistance","Smashing",0.07,1,30,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.07],
+    ["Resistance","Lethal",0.07,1,30,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.07],
+    ["Resistance","Fire",0.07,1,30,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.07],
+    ["Resistance","Cold",0.07,1,30,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.07],
+    ["Resistance","Energy",0.07,1,30,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.07],
+    ["Resistance","Negative",0.07,1,30,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.07],
+    ["Resistance","Psionic",0.07,1,30,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.07],
+    ["Resistance","Toxic",0.07,1,30,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.07],
+    ["Damage","Fire",1.54,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq target.isFriend? ! &&",true],
+    ["Heal",null,3,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"target.isFriend?",true]
+  ],
+  "damageTypes": [
+    "Fire"
   ]
 };

@@ -4,28 +4,17 @@
  */
 
 import { useState } from 'react';
-import type { PowerEffects, NumberOrScaled, SpecialEffect } from '@/types';
+import type { PowerEffects, SpecialEffect } from '@/types';
 import type { ExtraInstance } from './powerDisplayUtils';
-import { getScaleValue, isScaledEffect } from '@/types';
-import {
-  calculateResistancePercent,
-  calcThreeTier,
-  expandByTypeEntries,
-  expandProtectionEntries,
-  AT_INHERENT_CONDITIONAL_IDS,
-} from './powerDisplayUtils';
-import { calculateBuffDebuffFraction } from '@/utils/calculations';
+import { isScaledEffect } from '@/types';
+import { AT_INHERENT_CONDITIONAL_IDS } from './powerDisplayUtils';
+import { resolvePowerMagnitudes } from './resolvePowerMagnitudes';
 import type { ThreeTierValues } from './powerDisplayUtils';
 import { abbreviateDamageType, type PowerDamageResult } from '@/utils/calculations';
 import {
-  EFFECT_REGISTRY,
   CATEGORY_CONFIG,
   formatEffectValueForConfig,
-  groupEffectsByCategory,
   isMezEffect,
-  isByTypeObject,
-  getByTypeAbbreviations,
-  getByTypeFirstValue,
   type EffectCategory,
   type EffectDisplayConfig,
   type GroupedEffect,
@@ -588,8 +577,6 @@ interface RegistryEffectsDisplayProps {
   enhancementBonuses?: Record<string, number | undefined>;
   /** Global bonuses by aspect */
   globalBonuses?: Record<string, number | undefined>;
-  /** Buff/debuff modifier from archetype */
-  buffDebuffMod?: number;
   /** Archetype ID for AT-specific table lookups (resistance, etc.) */
   archetypeId?: string;
   /** Character level for AT-specific table lookups */
@@ -643,107 +630,6 @@ export function getConArrow(offset: number): { symbol: string; colorClass: strin
 }
 
 /**
- * Calculate three-tier values for an effect using its registry config.
- * Delegates to the shared calcThreeTier in powerDisplayUtils.
- */
-function calcEffectThreeTier(
-  config: EffectDisplayConfig,
-  baseValue: number,
-  enhancementBonuses: Record<string, number | undefined>,
-  globalBonuses: Record<string, number | undefined>
-): ThreeTierValues {
-  const aspect = config.enhancementAspect;
-  if (!aspect) return { base: baseValue, enhanced: baseValue, final: baseValue };
-  return calcThreeTier(aspect, baseValue, enhancementBonuses, globalBonuses);
-}
-
-/**
- * Get the base value from an effect, handling different value types
- */
-function getEffectBaseValue(
-  value: unknown,
-  config: EffectDisplayConfig,
-  buffDebuffMod: number,
-  archetypeId?: string
-): number | null {
-  // Handle by-type objects - get first value
-  if (config.canBeByType && isByTypeObject(value)) {
-    const firstVal = getByTypeFirstValue(value as Record<string, unknown>);
-    if (!firstVal) return null;
-    value = firstVal;
-  }
-
-  // Handle mez effects (magnitude)
-  if (config.format === 'mag') {
-    if (typeof value === 'number') return value;
-    if (isMezEffect(value)) {
-      // Mez protection effects use res_boolean tables — calculate from scale × tableValue
-      if (archetypeId && value.table.toLowerCase().includes('res_boolean')) {
-        const tableVal = getTableValue(archetypeId, value.table, 50);
-        if (tableVal !== undefined) return Math.abs(value.scale) * tableVal;
-      }
-      return value.mag;
-    }
-    // ScaledEffect without mag (knockback, knockup, repel) — resolve via table when available
-    if (archetypeId && typeof value === 'object' && value !== null && 'scale' in value && 'table' in value) {
-      const sv = value as { scale: number; table: string };
-      const tableVal = getTableValue(archetypeId, sv.table, 50);
-      if (tableVal !== undefined) return Math.abs(sv.scale * tableVal);
-    }
-    const scaled = getScaleValue(value as NumberOrScaled);
-    if (scaled !== undefined) return scaled;
-    return null;
-  }
-
-  // Handle buff/debuff calculation - returns decimal, multiply by 100 for percent display
-  if (config.calculation === 'buff' || config.calculation === 'debuff') {
-    const scaled = value as NumberOrScaled;
-    const scaleNum = typeof scaled === 'number'
-      ? scaled
-      : (scaled && typeof scaled === 'object' && 'scale' in scaled
-          ? (scaled as { scale: number }).scale
-          : undefined);
-    // Effects flagged as flat-percent-per-scale (e.g. maxHPBuff at 10%/scale)
-    // intentionally ignore the AT-table reference: the game stores a heal-table
-    // ref for bookkeeping but applies a fixed multiplier. See effect-registry.ts.
-    if (config.flatPercentPerScale !== undefined && scaleNum !== undefined) {
-      return Math.abs(scaleNum * config.flatPercentPerScale);
-    }
-    // Use AT table directly when available (accurate per-AT values)
-    if (archetypeId && typeof scaled === 'object' && scaled !== null && 'table' in scaled && 'scale' in scaled) {
-      const tableVal = getTableValue(archetypeId, (scaled as { scale: number; table: string }).table, 50);
-      if (tableVal !== undefined) {
-        return Math.abs((scaled as { scale: number; table: string }).scale * tableVal) * 100;
-      }
-    }
-    // Fallback to legacy formula for plain number scales
-    const result = calculateBuffDebuffFraction(scaled, buffDebuffMod, config.calculation);
-    return result * 100;
-  }
-
-  // Handle scaled values
-  const scaled = getScaleValue(value as NumberOrScaled);
-  if (scaled === undefined) return null;
-
-  // For percent format, multiply by baseMultiplier (default 100)
-  // Accuracy uses 75 (base to-hit rate), other percents use 100
-  if (config.format === 'percent') {
-    // Use AT table directly when available (accurate per-AT values)
-    if (archetypeId && typeof value === 'object' && value !== null && 'table' in value && 'scale' in value) {
-      const tableVal = getTableValue(archetypeId, (value as { scale: number; table: string }).table, 50);
-      if (tableVal !== undefined) {
-        return Math.abs((value as { scale: number; table: string }).scale * tableVal) * 100;
-      }
-    }
-    const multiplier = config.baseMultiplier ?? 100;
-    return scaled * multiplier * buffDebuffMod;
-  }
-
-  return scaled;
-}
-
-
-/**
  * Registry-driven power effects display using three-tier table format.
  * Replaces hardcoded effect checks with registry-based rendering.
  */
@@ -752,7 +638,6 @@ export function RegistryEffectsDisplay({
   allowedEnhancements = [],
   enhancementBonuses = {},
   globalBonuses = {},
-  buffDebuffMod = 1.0,
   archetypeId,
   level,
   categories = ['execution', 'buff', 'debuff'],
@@ -827,190 +712,36 @@ export function RegistryEffectsDisplay({
     return allowedSet.has(enhType);
   };
 
-  // Group effects by category
-  const groupedEffects = groupEffectsByCategory(effects as Record<string, unknown>);
+  // Resolve every row's numbers. The resolution itself lives in `resolvePowerMagnitudes`
+  // so the engine's `granted.rs` can be graded against the code path this component
+  // actually renders (PROD6B-2); everything below is display policy.
+  const resolved = resolvePowerMagnitudes({
+    effects,
+    archetypeId,
+    level,
+    enhancementBonuses,
+    globalBonuses,
+  });
 
-  // Filter to requested categories
-  const filteredGroups = groupedEffects.filter(g => categories.includes(g.category));
-
-  // Collect all displayable effects
   const displayableEffects: DisplayableEffect[] = [];
+  for (const row of resolved) {
+    if (!categories.includes(row.config.category as EffectCategory)) continue;
+    if (!shouldShowExecutionEffect(row.effectKey, row.config)) continue;
 
-  for (const group of filteredGroups) {
-    for (const effect of group.effects) {
-      const { key, value, config } = effect;
+    // The Domination bonus for this mez rides in as an `extraInstances` collision from the
+    // power's `domination` conditionalEffect (id 'domination'); surface it inline instead of
+    // as a generic "+…" row.
+    const domExtra = extraInstances?.[row.effectKey]?.find((e) => e.conditionalId === 'domination');
+    const dominationBonus = domExtra && isMezEffect(domExtra.value) ? domExtra.value : undefined;
 
-      // Check if this effect should be shown
-      if (!shouldShowExecutionEffect(key, config)) continue;
-
-      // Skip healing and absorb (handled separately with AT table resolution)
-      if (key === 'healing') continue;
-      if (key === 'absorb') continue;
-
-      // damageBuff was previously skipped here (the original comment said
-      // "handled by Defiance section for Blasters"). That blanket skip hid
-      // every click/toggle +Damage buff in Power Info — Aim, Build Up,
-      // Tactical Training: Assault, Leadership: Assault, Fortitude all
-      // displayed +ToHit but never +Damage even though both effects sit
-      // side-by-side in the power data. The Defiance-section concern no
-      // longer applies; let damageBuff render the same as tohitBuff so a
-      // power's own +Damage contribution is visible alongside its other
-      // buffs. The dashboard's global +Damage total still aggregates it
-      // separately, same as tohitBuff aggregates into global +ToHit.
-
-      // Handle expandByType effects (defense, resistance, elusivity, protection)
-      if (config.expandByType && typeof value === 'object' && value !== null) {
-        // Protection: expand mez magnitudes
-        if (key === 'protection') {
-          const protEntries = expandProtectionEntries(
-            value as Record<string, number>,
-            config.label
-          );
-          for (const entry of protEntries) {
-            displayableEffects.push({
-              effect: { key: `${key}_${entry.typeKey}`, value: entry.magnitude, config },
-              baseValue: entry.magnitude,
-              tiers: { base: entry.magnitude, enhanced: entry.magnitude, final: entry.magnitude },
-              expandedLabel: entry.typeLabel,
-            });
-          }
-          continue;
-        }
-
-        // Defense, resistance, elusivity: expand by damage/defense type
-        if (isByTypeObject(value)) {
-          const byTypeEntries = expandByTypeEntries(
-            value as Record<string, unknown>,
-            config.label,
-            archetypeId,
-            level
-          );
-          for (const entry of byTypeEntries) {
-            if (entry.basePercent === 0) continue;
-            const tiers = calcEffectThreeTier(config, entry.basePercent, enhancementBonuses, globalBonuses);
-            displayableEffects.push({
-              effect: { key: `${key}_${entry.typeKey}`, value: entry.basePercent, config },
-              baseValue: entry.basePercent,
-              tiers,
-              expandedLabel: entry.typeLabel,
-            });
-          }
-          continue;
-        }
-
-        // Scalar elusivity (not by-type)
-        if (key === 'elusivity') {
-          const pct = calculateResistancePercent(value as NumberOrScaled, archetypeId, level) * 100;
-          if (pct === 0) continue;
-          displayableEffects.push({
-            effect: { key, value, config },
-            baseValue: pct,
-            tiers: { base: pct, enhanced: pct, final: pct },
-            expandedLabel: 'DDR',
-          });
-          continue;
-        }
-      }
-
-      // Get base value
-      const baseValue = getEffectBaseValue(value, config, buffDebuffMod, archetypeId);
-      if (baseValue === null || baseValue === 0) continue;
-
-      // Special handling for range (skip if 0 or negative)
-      if (key === 'range' && baseValue <= 0) continue;
-
-      // Calculate three-tier values
-      const tiers = calcEffectThreeTier(config, baseValue, enhancementBonuses, globalBonuses);
-
-      // Get by-type label if applicable (abbreviated summary for buff/debuff by-type)
-      let byTypeLabel: string | undefined;
-      if (config.canBeByType && isByTypeObject(value)) {
-        byTypeLabel = getByTypeAbbreviations(value as Record<string, unknown>);
-      }
-
-      // The Domination bonus for this mez rides in as an `extraInstances`
-      // collision from the power's `domination` conditionalEffect (id
-      // 'domination'); surface it inline instead of as a generic "+…" row.
-      const domExtra = extraInstances?.[key]?.find((e) => e.conditionalId === 'domination');
-      const dominationBonus = domExtra && isMezEffect(domExtra.value) ? domExtra.value : undefined;
-      displayableEffects.push({ effect, baseValue, tiers, byTypeLabel, dominationBonus });
-    }
-  }
-
-  // Handle healing separately (resolve AT table for actual HP values)
-  const healing = effects?.healing;
-  if (healing && typeof healing === 'object' && 'scale' in healing && healing.scale != null) {
-    const healConfig = EFFECT_REGISTRY['healing'];
-    if (healConfig && categories.includes(healConfig.category as EffectCategory)) {
-      // Resolve AT table to get actual HP healed instead of raw scale
-      let baseHealHP = healing.scale;
-      if (healing.table && archetypeId) {
-        const tableVal = getTableValue(archetypeId, healing.table, level ?? 50);
-        if (tableVal !== undefined) {
-          baseHealHP = healing.scale * tableVal;
-        }
-      }
-      const tiers = calcEffectThreeTier(healConfig, baseHealHP, enhancementBonuses, globalBonuses);
-      displayableEffects.push({
-        effect: { key: 'healing', value: healing, config: healConfig },
-        baseValue: baseHealHP,
-        tiers,
-      });
-    }
-  }
-
-  // Handle absorb separately (resolve AT table for actual HP values, like healing)
-  const absorb = effects?.absorb;
-  const absorbFraction = absorb && typeof absorb === 'object' && 'maxHPFraction' in absorb
-    ? absorb.maxHPFraction
-    : undefined;
-  const absorbHasScale = absorb && typeof absorb === 'object' && 'scale' in absorb && absorb.scale != null;
-  if (absorb && typeof absorb === 'object' && (absorbHasScale || absorbFraction != null)) {
-    const baseAbsorbConfig = EFFECT_REGISTRY['absorb'];
-    if (baseAbsorbConfig && categories.includes(baseAbsorbConfig.category as EffectCategory)) {
-      // `*_Ones` tables (Melee_Ones, Ranged_Ones) are constant 1.0 across
-      // all ATs and levels — they signal "scale is a % of target Max HP",
-      // not an HP value to scale through a Heal table. Rebirth's Spirit
-      // Ward rework is the canonical case: scale 0.10 × Ranged_Ones means
-      // 10% of the target's Max HP, NOT 0.10 HP. Without the percent
-      // hint we'd display the bare scale and look broken.
-      //
-      // The recovered `maxHPFraction` form (Wild Bastion 0.25 = 25% of the
-      // caster's current Max HP, from an Expression magnitude) is shown the
-      // same "% Max HP" way — the actual HP depends on the build's Max HP,
-      // which the character-totals Absorb stat resolves.
-      const tableLower = (absorb.table?.toLowerCase()) ?? '';
-      const isOnesTable = tableLower.endsWith('_ones');
-      const isPercent = isOnesTable || absorbFraction != null;
-      const absorbConfig = isPercent
-        ? { ...baseAbsorbConfig, label: `${baseAbsorbConfig.label} (% Max HP)`, format: 'percent' as const }
-        : baseAbsorbConfig;
-      let baseAbsorbHP: number;
-      if (absorbFraction != null) {
-        // Fraction of Max HP (0.25 = 25%). 'percent' renderer prints verbatim.
-        baseAbsorbHP = absorbFraction * 100;
-      } else if (isOnesTable) {
-        // `*_Ones` table → scale is a FRACTION of Max HP (0.10 = 10%). The
-        // 'percent' renderer prints the value verbatim with a % suffix (it
-        // does NOT multiply by 100), so convert the fraction to percent units
-        // here — otherwise Spirit Ward reads "0.10%" instead of "10%".
-        baseAbsorbHP = (absorb as { scale: number }).scale * 100;
-      } else {
-        baseAbsorbHP = (absorb as { scale: number }).scale;
-        if (absorb.table && archetypeId) {
-          const tableVal = getTableValue(archetypeId, absorb.table, level ?? 50);
-          if (tableVal !== undefined) {
-            baseAbsorbHP = (absorb as { scale: number }).scale * tableVal;
-          }
-        }
-      }
-      const tiers = calcEffectThreeTier(absorbConfig, baseAbsorbHP, enhancementBonuses, globalBonuses);
-      displayableEffects.push({
-        effect: { key: 'absorb', value: absorb, config: absorbConfig },
-        baseValue: baseAbsorbHP,
-        tiers,
-      });
-    }
+    displayableEffects.push({
+      effect: { key: row.rowKey, value: row.rawValue, config: row.config },
+      baseValue: row.tiers.base,
+      tiers: row.tiers,
+      byTypeLabel: row.byTypeLabel,
+      expandedLabel: row.expandedLabel,
+      dominationBonus,
+    });
   }
 
   // Return null only if no effects AND no damage to display

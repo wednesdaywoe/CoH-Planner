@@ -44,12 +44,20 @@ export const TelekineticPulse: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 0.055,
-    "table": "Ranged_Damage",
-    "tickRate": 2
-  },
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 0.055,
+      "table": "Ranged_Damage",
+      "tickRate": 2
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.055,
+      "table": "Ranged_Damage",
+      "tickRate": 2
+    }
+  ],
   "effects": {
     "buffDuration": 5,
     "durations": {
@@ -60,6 +68,14 @@ export const TelekineticPulse: Power = {
       "table": "Ranged_Knockback"
     },
     "slow": {
+      "jumpHeight": {
+        "scale": 0.5,
+        "table": "Melee_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.5,
+        "table": "Melee_Slow"
+      },
       "runSpeed": {
         "scale": 1.5,
         "table": "Melee_SpeedRunning"
@@ -67,9 +83,16 @@ export const TelekineticPulse: Power = {
     }
   },
   "atoms": [
-    ["Mez","Knockback",0.01,0.20000000298023224,0,"Ranged_Knockback","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.055,1,0,"Ranged_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,2,1],
-    ["Unmapped",null,0.5,1,5,"Melee_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Movement","Run",-1.5,1,5,"Melee_SpeedRunning","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Mez","Knockback",0.01,0.20000000298023224,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Energy",0.055,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1],
+    ["Damage","Psionic",0.055,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1],
+    ["Movement","Run",0.5,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Movement","Jump",0.5,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Movement","JumpHeight",0.5,1,5,"Melee_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","Run",-1.5,1,5,"Melee_SpeedRunning","Max","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true]
+  ],
+  "damageTypes": [
+    "Energy",
+    "Psionic"
   ]
 };

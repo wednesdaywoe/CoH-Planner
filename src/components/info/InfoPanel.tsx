@@ -9,10 +9,10 @@ import { useUIStore, useBuildStore, useDominationActive, useScourgeActive, useFu
 import { getBaseToHit } from '@/data/purple-patch';
 import {
   lookupPower,
-  getArchetype,
   getIOSet,
   getPowerIconPath,
   getAlphaEffects,
+  getAlphaEdBypass,
   getDestinyEffects,
   getHybridEffects,
   getInterfaceEffects,
@@ -29,26 +29,20 @@ import {
   isDamageMainTargetOnlyPower,
   getActiveDamageConversion,
 } from '@/data';
-import { useGlobalBonuses } from '@/hooks/useCalculatedStats';
+import { useGlobalBonuses, usePowerProjection } from '@/hooks/useCalculatedStats';
 import { useBuildMaxAttackDamage } from '@/hooks/useBuildMaxAttackDamage';
-import { calculatePowerEnhancementBonuses, combineWithAlphaED, calculatePowerDamage, getAlphaEnhancementBonuses, abbreviateDamageType, calculateArcanaTime, dotTickCount, calculateDamageWithATTable, type EnhancementBonuses, type PowerDamageResult, isControllerPower, isCorruptorAttackPower, isBruteAttackPower, isScrapperAttackPower, isStalkerAttackPower, calculateFuryDamageBonus, calculateAssassinationDamageBonus, getContainmentInfo, getScourgeInfo, getCriticalHitInfo, getFuryInfo, getEffectiveLevel, areIncarnatesSuppressed } from '@/utils/calculations';
+import { calculatePowerEnhancementBonuses, combineWithAlphaED, calculatePowerDamage, getAlphaEnhancementBonuses, getAlphaEdBypassBonuses, abbreviateDamageType, calculateArcanaTime, dotTickCount, calculateDamageWithATTable, type EnhancementBonuses, type PowerDamageResult, isControllerPower, isCorruptorAttackPower, isBruteAttackPower, isScrapperAttackPower, isStalkerAttackPower, calculateFuryDamageBonus, calculateAssassinationDamageBonus, getContainmentInfo, getScourgeInfo, getCriticalHitInfo, getFuryInfo, getEffectiveLevel, areIncarnatesSuppressed } from '@/utils/calculations';
 import { resolveAtMechanic } from '@/utils/calculations/power-at-mechanics';
 import type { IOSetEnhancement } from '@/types';
-import { INCARNATE_TIER_REGISTRY } from '@/data/incarnate-registry';
-import { isPermaEligible, calculatePermaInfo } from '@/utils/calculations/perma';
-import { extractHealingFromDamage } from '@/utils/calculations/healing';
-import { calculatePetDamage, calculateResolvedPseudoPetDamage, shouldApplyEnhancements, synthesizePseudoPetEffects, resolveProcAreaGeometry, type PetDamageResult, type PetAbilityDamage, type PetEffectComputed } from '@/utils/calculations/pet-damage';
+import { isPermaEligible } from '@/utils/calculations/perma';
+import { buildDisplayEffects, getStackingInfo, withPseudoPetEffects, withTargetsHit } from './buildDisplayEffects';
+import { calculatePetDamage, calculateResolvedPseudoPetDamage, shouldApplyEnhancements, resolveProcAreaGeometry, type PetDamageResult, type PetAbilityDamage, type PetEffectComputed } from '@/utils/calculations/pet-damage';
 import { getPetEntity, type PetAbility } from '@/data/pet-entities';
 import { calculateIncarnateDamage } from '@/data/at-tables';
 import { getBaselineHealth } from '@/utils/calculations/stats';
 import type { GenesisExemplarEffect } from '@/data';
 import { getActiveIncarnateDamageProcs, computeIncarnateProcContributions } from '@/data/incarnate-procs';
 import { resolvePath } from '@/utils/paths';
-import { applyQuickSnipe } from '@/utils/quick-snipe';
-import { resolveKheldianRedirect } from '@/data/datasets/rebirth/kheldian-redirects';
-import { KHELDIAN_FORM_VARIANT_POWERS } from '@/data/datasets/rebirth/kheldian-form-variants';
-import { resolvePrimalistRedirect, PRIMALIST_FORM_VARIANT_POWERS } from '@/data/datasets/thunderspy/primalist-redirects';
-import { getPowerset, stanceAdjusterOverrides } from '@/data';
 import { useModeSuppression } from '@/hooks/useModeSuppression';
 import { modeLabel } from '@/utils/mode-suppression';
 import { EnhancementInfoContent } from './EnhancementInfoContent';
@@ -61,20 +55,18 @@ import { PowerMetaTags, AllowedEnhancementsBlock, GeneralStatsBlock } from './Po
 import type {
   ArchetypeId,
   Power,
-  PowerEffects,
   IncarnateSlotId,
   ToggleableIncarnateSlot,
   SummonEffect,
 } from '@/types';
 import { getSlotColor, getTierColor, getTierDisplayName } from '@/data';
 import {
-  getEffectiveBuffDebuffModifier,
   convertGlobalBonusesToAspects,
+  withStrengthBonuses,
   findSelectedPowerInBuild,
-  selectActiveConditionals,
-  applyActiveConditionals,
   calcThreeTier,
 } from './powerDisplayUtils';
+import { resolveEffectivePower, effectiveGlobalAdjusters, isCasterHidden } from './resolveEffectivePower';
 import {
   RegistryEffectsDisplay,
 } from './SharedPowerComponents';
@@ -146,137 +138,6 @@ export function InfoPanel() {
   );
 }
 
-/**
- * Check if a value (or by-type sub-values) has a perTarget field.
- */
-function hasPerTargetField(value: unknown): boolean {
-  if (typeof value !== 'object' || value === null) return false;
-  if ('perTarget' in value) return true;
-  // Check by-type sub-objects (defenseBuff, resistance, etc.)
-  for (const subVal of Object.values(value as Record<string, unknown>)) {
-    if (typeof subVal === 'object' && subVal !== null && 'perTarget' in subVal) return true;
-  }
-  return false;
-}
-
-/**
- * Data-driven detection: show stacking slider for either per-target AoE
- * scaling (perTarget metadata + maxTargets) or linear self-stacking
- * (`effects.maxStacks` set explicitly, e.g. Psychokinetic Barrier).
- */
-function getStackingInfo(power: Power): { maxStacks: number; label: string } | null {
-  if (!power.effects) return null;
-
-  // AoE per-target powers (Soul Drain, Eclipse, Power Sink, etc.) — when
-  // any effect carries a `perTarget` field, the slider's natural axis is
-  // "targets hit" with max from stats.maxTargets. Soul Drain in particular
-  // also has effects.maxStacks (self-stack on double-cast), but the
-  // per-target story is the dominant one for tooltip math, so check it
-  // first to prevent the smaller stack-2 cap from winning.
-  const hasPerTarget = Object.values(power.effects).some(v => hasPerTargetField(v));
-  if (hasPerTarget) {
-    const maxTargets = power.stats?.maxTargets;
-    if (maxTargets && maxTargets > 1 && maxTargets !== 255) {
-      return { maxStacks: maxTargets, label: 'Targets Hit' };
-    }
-  }
-
-  // Linear self-stacking — power declares maxStacks directly. Doesn't
-  // require perTarget metadata; the slider just multiplies scale of any
-  // effect listed in `effects.stacksLinear`. Falls through here when there
-  // is no per-target scaling (e.g. Siphon Speed's caster recharge buff).
-  if (power.effects.maxStacks) {
-    // Ramp-stacking powers (Spirit Ward → 1 stack per 3s within one cast)
-    // carry `stackInterval`; recast-stacking powers (Crab Spider Serum,
-    // Build Up, etc.) don't. Surface the cadence on the slider label only
-    // for the ramp case so we don't mislabel recast stacking as "every Xs".
-    const label = power.effects.stackInterval && power.effects.stackInterval > 0
-      ? `Stacks (every ${power.effects.stackInterval}s)`
-      : 'Stacks';
-    return { maxStacks: power.effects.maxStacks, label };
-  }
-
-  return null;
-}
-
-/**
- * Adjust ScaledEffect scale values for per-target stacking.
- * At N targets: effective_scale = scale + perTarget × (N - 1)
- * Recursively handles by-type objects (defenseBuff, resistance).
- */
-function adjustScaledValue(value: unknown, targetsHit: number): unknown {
-  if (typeof value !== 'object' || value === null) return value;
-  if ('scale' in value && 'perTarget' in value) {
-    const se = value as { scale: number; table: string; perTarget?: number };
-    if (se.perTarget && targetsHit > 1) {
-      return { ...se, scale: se.scale + se.perTarget * (targetsHit - 1) };
-    }
-    return value;
-  }
-  // By-type object — recurse into sub-entries
-  const result: Record<string, unknown> = {};
-  let changed = false;
-  for (const [k, v] of Object.entries(value as Record<string, unknown>)) {
-    const adjusted = adjustScaledValue(v, targetsHit);
-    result[k] = adjusted;
-    if (adjusted !== v) changed = true;
-  }
-  return changed ? result : value;
-}
-
-/**
- * Multiply the `scale` field of a ScaledEffect (or every leaf of a by-type
- * object) by `multiplier`. Used for linear self-stacking — every additional
- * stack just adds another instance of the base magnitude.
- */
-function multiplyScale(value: unknown, multiplier: number): unknown {
-  if (multiplier === 1) return value;
-  if (typeof value !== 'object' || value === null) return value;
-  if ('scale' in value && typeof (value as { scale: unknown }).scale === 'number') {
-    const se = value as { scale: number; [k: string]: unknown };
-    return { ...se, scale: se.scale * multiplier };
-  }
-  // By-type object — recurse
-  const result: Record<string, unknown> = {};
-  let changed = false;
-  for (const [k, v] of Object.entries(value as Record<string, unknown>)) {
-    const adj = multiplyScale(v, multiplier);
-    result[k] = adj;
-    if (adj !== v) changed = true;
-  }
-  return changed ? result : value;
-}
-
-/**
- * Create an adjusted copy of effects with per-target scale values multiplied
- * (perTarget AoE math) and/or stacks-linear effects multiplied by stack count.
- */
-function adjustEffectsForTargets(
-  effects: PowerEffects,
-  targetsHit: number
-): PowerEffects {
-  if (targetsHit <= 1) return effects;
-  const stacksLinear = new Set(effects.stacksLinear || []);
-  const adjusted: Record<string, unknown> = {};
-  let changed = false;
-  for (const [key, value] of Object.entries(effects)) {
-    let adj = adjustScaledValue(value, targetsHit);
-    // Linear self-stack multiply — but only for keys NOT already driven by
-    // perTarget (adjustScaledValue above handles those); applying both would
-    // double-scale. Honor a per-effect cap so a lower-cap key (Psychokinetic
-    // Barrier's absorb, cap 2) doesn't over-multiply when the slider (maxStacks
-    // 3) is dragged past its own limit.
-    if (stacksLinear.has(key) && !hasPerTargetField(value)) {
-      const cap = effects.stackCaps?.[key] ?? effects.maxStacks;
-      const n = cap ? Math.min(targetsHit, cap) : targetsHit;
-      adj = multiplyScale(adj, n);
-    }
-    adjusted[key] = adj;
-    if (adj !== value) changed = true;
-  }
-  return (changed ? adjusted : effects) as PowerEffects;
-}
-
 interface PowerInfoProps {
   powerName: string;
   powerSet: string;
@@ -304,9 +165,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   const stalkerTeamSize = useStalkerTeamSize();
   const stalkerCritActive = useStalkerCritActive();
   const sentinelCritActive = useSentinelCritActive();
-  // Alpha-strike scenario only applies if the build has the Hide power
-  const hasHide = build.secondary.powers.some((p) => p.internalName === 'Hide');
-  const effectiveHidden = stalkerHidden && hasHide;
+  const effectiveHidden = isCasterHidden(build, stalkerHidden);
   const procSettings = useUIStore((s) => s.procSettings);
   const includeProcDamageToggle = useUIStore((s) => s.includeProcDamageInDPS) && procSettings.damage;
   const useArcanaTimeToggle = useUIStore((s) => s.useArcanaTime);
@@ -333,6 +192,11 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   // Find the selected power from build to get its slots
   const selectedPower = findSelectedPowerInBuild(powerName, powerSet, build);
 
+  // The engine's resolved non-DPS values for this power — execution three-tiers, ArcanaTime,
+  // perma, and the magnitudes it grants (PROD6C). Covers a power the build has not picked too,
+  // which is what the panel shows while you browse the picker.
+  const projection = usePowerProjection(powerSet, powerName);
+
   // Get Alpha incarnate enhancement bonuses (apply to all powers)
   const alphaBonuses = useMemo<EnhancementBonuses>(() => {
     return getAlphaEnhancementBonuses(build.incarnates, incarnateActive);
@@ -346,19 +210,21 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   // the rest is added to raw IO bonuses before ED is applied.
   const enhancementBonuses = useMemo<EnhancementBonuses>(() => {
     const hasAlpha = Object.values(alphaBonuses).some((v) => v !== undefined && v !== 0);
-    const alphaTier = build.incarnates?.alpha?.tier;
-    const edBypassRatio = alphaTier
-      ? (INCARNATE_TIER_REGISTRY[alphaTier]?.edBypassRatio ?? 1 / 6)
-      : 1 / 6;
+    const alphaEdBypass = getAlphaEdBypassBonuses(build.incarnates, incarnateActive);
 
     if (hasAlpha && selectedPower?.slots) {
       // Use combined calculation that properly splits alpha through/around ED
       return combineWithAlphaED(
-        { name: selectedPower.name, slots: selectedPower.slots },
+        // `allowedEnhancements` gates Alpha to the aspects this power accepts — the game's own rule
+        // (an Alpha's +Damage does not boost a power that only takes EndRdx and Recharge), which
+        // `combineWithAlphaED` falls back to "apply everything" without. Omitting it here leaked
+        // Alpha onto every aspect on this surface while the totals path and the engine both filtered
+        // (PROD6C-3f).
+        { name: selectedPower.name, slots: selectedPower.slots, allowedEnhancements: selectedPower.allowedEnhancements },
         build.level,
         getIOSet,
         alphaBonuses,
-        edBypassRatio,
+        alphaEdBypass,
         exemplarMode ? exemplarLevel : undefined
       );
     }
@@ -374,7 +240,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     }
 
     return { ...alphaBonuses };
-  }, [selectedPower, build.level, alphaBonuses, exemplarMode, exemplarLevel, build.incarnates?.alpha?.tier]);
+  }, [selectedPower, build.level, alphaBonuses, exemplarMode, exemplarLevel, build.incarnates, incarnateActive]);
 
   // Convert global bonuses to enhancement-aspect-keyed decimals for three-tier display
   const globalBonusesForCalc = useMemo(
@@ -382,141 +248,32 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     [globalBonuses]
   );
 
-  // Augment the aspect-keyed bonuses with active +Strength self-buffs (Power
-  // Boost family). Strength is a non-ED multiplier on the caster's OWN matching
-  // output, so it lands in the Final column exactly like a global bonus
-  // (final = base × (1 + enh + global)). Defense and mez have no pre-existing
-  // global coupling here, and heal-strength is genuinely additive with the
-  // existing +Heal set-bonus strength — so strength is added for those.
-  // ToHit/damage are intentionally left to their existing handling: the
-  // dashboard totals already fold in ToHit strength, and Power Boost grants no
-  // damage strength at all. Stored on globalBonuses as fractions by
-  // calculateCharacterTotals (collectStrengthBuffs).
-  const globalBonusesWithStrength = useMemo(() => {
-    const out: Record<string, number> = { ...globalBonusesForCalc };
-    const add = (aspect: string, val: number) => {
-      if (val) out[aspect] = (out[aspect] || 0) + val;
-    };
-    add('defense', globalBonuses.strengthDefense);
-    add('heal', globalBonuses.strengthHeal);
-    const mezStr = globalBonuses.strengthMez;
-    if (mezStr) {
-      for (const k of ['hold', 'stun', 'sleep', 'confuse', 'fear', 'immobilize']) add(k, mezStr);
-    }
-    return out;
-  }, [globalBonusesForCalc, globalBonuses.strengthDefense, globalBonuses.strengthHeal, globalBonuses.strengthMez]);
-
-  // Kheldian form redirect (Rebirth only): for human-form base powers
-  // that PowerRedirector to a form-specific variant, swap the displayed
-  // power's effect data to the variant when the user has selected that
-  // form. Build state (slots, enhancements) is unaffected — slots stay
-  // on the human base.
-  const formRedirectedPower = useMemo(() => {
-    if (!power) return power;
-    // Thunderspy Primalist: Feral Might / Primal Howl attacks are empty shells
-    // whose real per-form effect data lives in <Power>_Primal/_Hunter/_Prowler
-    // variants. Every form (incl. the default Primal) redirects — overlay the
-    // resolved variant's stats/damage/effects onto the shell for display.
-    if (build.serverId === 'thunderspy' && build.archetype.id === 'primalist') {
-      const pForm = build.primalistForm ?? 'primal';
-      const targetName = resolvePrimalistRedirect(power.internalName ?? '', pForm);
-      if (targetName === power.internalName) return power; // not a form shell
-      const variant = PRIMALIST_FORM_VARIANT_POWERS[targetName];
-      if (!variant) return power;
-      return {
-        ...power,
-        stats: variant.stats ?? power.stats,
-        damage: variant.damage ?? power.damage,
-        effects: variant.effects ?? power.effects,
-        shortHelp: variant.shortHelp ?? power.shortHelp,
-        description: variant.description ?? power.description,
-        effectArea: variant.effectArea ?? power.effectArea,
-        targetType: variant.targetType ?? power.targetType,
-        powerType: variant.powerType ?? power.powerType,
-      } as Power;
-    }
-    if (build.serverId !== 'rebirth') return power;
-    if (build.archetype.id !== 'peacebringer' && build.archetype.id !== 'warshade') return power;
-    const form = build.kheldianForm ?? 'human';
-    if (form === 'human') return power;
-    const targetName = resolveKheldianRedirect(power.internalName ?? '', form);
-    if (targetName === power.internalName) return power;
-    // Find the variant. Some variants live as siblings of their human
-    // counterpart in the same powerset (e.g. Bright_Nova_Bolt under
-    // Luminous_Blast); others ONLY exist under Kheldian_Pets.<form>.* in
-    // the binary (e.g. White_Dwarf_Bolt — has no Luminous_Aura entry).
-    // The KHELDIAN_FORM_VARIANT_POWERS map contains the latter, fed by
-    // `scripts/generate-kheldian-variants.cjs`.
-    const set = getPowerset(powerSet);
-    const variant = set?.powers.find(p => p.internalName === targetName)
-      ?? KHELDIAN_FORM_VARIANT_POWERS[targetName];
-    if (!variant) return power;
-    // Merge: keep human-form identity (name, icon, allowedEnhancements,
-    // maxSlots) but display the variant's stats / damage / effects /
-    // shortHelp / description so the info panel reflects the current
-    // form.
-    return {
-      ...power,
-      stats: variant.stats ?? power.stats,
-      damage: variant.damage ?? power.damage,
-      effects: variant.effects ?? power.effects,
-      shortHelp: variant.shortHelp ?? power.shortHelp,
-      description: variant.description ?? power.description,
-      effectArea: variant.effectArea ?? power.effectArea,
-      targetType: variant.targetType ?? power.targetType,
-      powerType: variant.powerType ?? power.powerType,
-    } as Power;
-  }, [power, build.serverId, build.archetype.id, build.kheldianForm, build.primalistForm, powerSet]);
-
-  // When combatMode is active and power has quickSnipe, use Quick-cast stats/damage
-  const isQuickSnipe = combatMode && !!formRedirectedPower?.quickSnipe;
-  // Single-sourced with useBuildMaxAttackDamage (the damage-bar normalization
-  // reference) so the bar numerator and its reference apply the same snipe form.
-  const snipeAdjustedPower = useMemo(
-    () => (formRedirectedPower ? applyQuickSnipe(formRedirectedPower, combatMode) : formRedirectedPower),
-    [formRedirectedPower, combatMode],
+  const globalBonusesWithStrength = useMemo(
+    () => withStrengthBonuses(globalBonusesForCalc, globalBonuses),
+    [globalBonusesForCalc, globalBonuses]
   );
 
-  // Assassin's Strike fires its slow interruptible animation from Hide (the
-  // displayed base cast) but a much faster Quick animation mid-combat. Mirror
-  // the from-Hide toggle that already drives its damage so the cast time matches
-  // the state: not hidden → the fast mid-combat cast (uninterruptible).
-  const formAdjustedPower = useMemo(() => {
-    const p = snipeAdjustedPower;
-    if (!p || p.midCombatCast == null || effectiveHidden) return p;
-    return { ...p, stats: { ...p.stats, castTime: p.midCombatCast, interruptTime: undefined, timeToRoot: undefined } };
-  }, [snipeAdjustedPower, effectiveHidden]);
 
-  // Layer active Mechanic Adjuster contributions on top of the snipe-
-  // adjusted power so damage / effects display reflect toggle state
-  // (drowning bonus, Disintegrating, Bio Armor adaptation, etc.).
-  // AT-inherent ids (Domination etc.) read the existing Header state
-  // instead of the per-power adjuster maps so the dashboard toggle is
-  // the single source of truth.
+  // When combatMode is active and power has quickSnipe, use Quick-cast stats/damage
+  const isQuickSnipe = combatMode && !!power?.quickSnipe;
+
+  // The power this panel actually shows: the snipe's fast form, the mid-combat cast, and the
+  // active mode-gated contributions merged in (drowning bonus, Disintegrating, Bio Armor
+  // adaptation). Single-sourced as `resolveEffectivePower` so the picker tooltip and the engine
+  // gate resolve the same power, and mirrored in the engine's `effective.rs` (PROD6C-3k).
   const mechanicAdjusters = useUIStore((s) => s.mechanicAdjusters);
   const globalAdjusters = useUIStore((s) => s.globalAdjusters);
   const conditionalMerge = useMemo(() => {
-    if (!formAdjustedPower) return { power: formAdjustedPower, extraInstances: {} };
-    // Overlay the build's `activeSubPower`-derived stance state so the merge
-    // reflects the selected Bio Armor adaptation / Staff form (build-scoped),
-    // matching the dashboard calc. activeSubPower wins over stale UI toggles.
-    const stancePowers: { internalName: string; activeSubPower?: string }[] = [];
-    const addStance = (powers?: { internalName: string; activeSubPower?: string }[]) =>
-      powers?.forEach((p) => stancePowers.push({ internalName: p.internalName, activeSubPower: p.activeSubPower }));
-    addStance(build.primary?.powers);
-    addStance(build.secondary?.powers);
-    build.pools?.forEach((pool) => addStance(pool.powers));
-    addStance(build.epicPool?.powers);
-    const effectiveGlobalAdjusters = { ...globalAdjusters, ...stanceAdjusterOverrides(stancePowers) };
-    const active = selectActiveConditionals(
-      formAdjustedPower,
+    if (!power) return { power, extraInstances: {} };
+    return resolveEffectivePower(power, {
+      combatMode,
+      hidden: effectiveHidden,
+      globalAdjusters: effectiveGlobalAdjusters(build, globalAdjusters),
       mechanicAdjusters,
-      effectiveGlobalAdjusters,
-      { dominationActive },
-    );
-    if (active.length === 0) return { power: formAdjustedPower, extraInstances: {} };
-    return applyActiveConditionals(formAdjustedPower, active);
-  }, [formAdjustedPower, mechanicAdjusters, globalAdjusters, dominationActive, build.primary?.powers, build.secondary?.powers, build.pools, build.epicPool?.powers]);
+      atInherentState: { dominationActive },
+      activeModes: build.activeModes,
+    });
+  }, [power, combatMode, effectiveHidden, mechanicAdjusters, globalAdjusters, dominationActive, build]);
   const effectivePower = conditionalMerge.power;
   const extraInstances = conditionalMerge.extraInstances;
 
@@ -698,19 +455,6 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
 
   // Resolved damage shown in the Damage block — direct first, pseudo-pet fallback.
   const resolvedDamage = calculatedDamage ?? pseudoPetDamage;
-
-  // Pseudo-pet enhanceable EFFECTS (slow / -def / -tohit, …) surfaced into the
-  // Power Effects block — the analogue of pseudoPetDamage. Powers like Glue
-  // Arrow deliver their enhanceable debuffs through a non-commandable pseudo-pet
-  // and carry nothing on the parent, so the player's enhancements never showed
-  // on them. The pet inherits the summoner's enhancements (CopyBoosts), so
-  // merging these into the parent effects lets RegistryEffectsDisplay scale them
-  // correctly. The helper guards commandable pets and only maps enhanceable
-  // (non-IgnoreStrength) scalar debuffs.
-  const pseudoPetEffects = useMemo(
-    () => synthesizePseudoPetEffects(effectivePower?.effects?.summon),
-    [effectivePower],
-  );
 
   // Archetype hit-time damage multiplier (Containment, Scourge, crits, …).
   // ONLY hit-time multipliers that sit OUTSIDE the damage cap belong here.
@@ -967,65 +711,11 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     return <div className="text-slate-400 text-sm">Power not found</div>;
   }
 
-  const baseEffects = effectivePower.effects;
-
-  // Extract healing from damage field (e.g., Life Drain, Reconstruction)
-  // Handles both single object { type: "Heal", scale, table } and array entries
-  const healFromDamage = baseEffects?.healing
-    ? undefined
-    : extractHealingFromDamage(effectivePower.damage ?? effectivePower.effects?.damage);
-
-  // Use effective stats (quickSnipe-aware) for display
-  const effectiveStats = effectivePower.stats;
-
-  // Normalize arc to degrees once, regardless of source. Primary/secondary
-  // powers carry arc on `power.stats` and pool/epic powers carry it on
-  // `power.effects` (because `transformPoolPower` never builds a `stats`
-  // object) — both store the raw binary value in radians. The downstream
-  // contract (GeneralStatsBlock → ProcChanceRow) requires degrees; without
-  // this, cone pool powers like Wall of Force end up feeding ~1.57 into a
-  // formula that expects 90 and the displayed proc chance is wildly off.
-  const rawArc = effectiveStats?.arc ?? baseEffects?.arc;
-  const arcInDegrees = rawArc != null ? arcToDegrees(rawArc) : undefined;
-
-  // Merge power.stats into effects for registry-driven display
-  // Map stats field names to registry-expected names
-  const effects = {
-    ...baseEffects,
-    // Execution stats from power.stats
-    ...(effectiveStats?.endurance && { enduranceCost: effectivePower.powerType === 'Toggle' ? effectiveStats.endurance / (effectiveStats.activatePeriod ?? 0.5) : effectiveStats.endurance }),
-    ...(effectiveStats?.recharge && { recharge: effectiveStats.recharge }),
-    ...(effectiveStats?.accuracy && { accuracy: effectiveStats.accuracy }),
-    ...(effectiveStats?.range && { range: effectiveStats.range }),
-    ...(effectiveStats?.castTime && { castTime: effectiveStats.castTime }),
-    // AoE stats
-    ...(effectiveStats?.radius && { radius: effectiveStats.radius }),
-    ...(arcInDegrees != null && { arc: arcInDegrees }),
-    ...(effectiveStats?.maxTargets && { maxTargets: effectiveStats.maxTargets }),
-    // Healing from damage array
-    ...(healFromDamage && { healing: healFromDamage }),
-    // Surface summon duration as buffDuration when no explicit duration exists
-    ...(!baseEffects?.buffDuration && !baseEffects?.effectDuration && baseEffects?.summon?.duration && {
-      buffDuration: baseEffects.summon.duration,
-    }),
-    // Flatten nested movement object (e.g., Super Jump, Fly, Sprint)
-    ...(baseEffects?.movement && typeof baseEffects.movement === 'object' && (() => {
-      const mov = baseEffects.movement as Record<string, unknown>;
-      const flat: Record<string, unknown> = {};
-      if (mov.flySpeed) flat.fly = mov.flySpeed;
-      if (mov.runSpeed) flat.runSpeed = mov.runSpeed;
-      if (mov.jumpSpeed) flat.jumpSpeed = mov.jumpSpeed;
-      if (mov.jumpHeight) flat.jumpHeight = mov.jumpHeight;
-      return flat;
-    })()),
-  };
-
-  // Get archetype modifier for buff/debuff calculations
-  const archetype = archetypeId ? getArchetype(archetypeId as ArchetypeId) : null;
-  const buffDebuffMod = archetype?.stats?.buffDebuffModifier ?? 1.0;
-
-  // Get the effective buff/debuff modifier for this powerset
-  const effectiveMod = getEffectiveBuffDebuffModifier(powerSet, buffDebuffMod);
+  // The bag the registry display resolves — the merged stats, the heal extracted from the
+  // damage array, a summon's duration as the buff duration, and the flattened movement
+  // object. Shared with PowerInfoTooltip, and mirrored by the engine's `granted.rs`
+  // (PROD6C-3a).
+  const effects = buildDisplayEffects(effectivePower);
 
   // Check if power has any enhancements
   const hasEnhancements = selectedPower && selectedPower.slots.some(s => s !== null);
@@ -1152,14 +842,10 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
           (Glue Arrow's slow, etc.) are merged in — parent effects win on key
           collisions; the pet fills in keys the parent power doesn't carry. */}
       <RegistryEffectsDisplay
-        effects={(() => {
-          const e = stackingInfo && targetsHit > 1 ? adjustEffectsForTargets(effects, targetsHit) : effects;
-          return pseudoPetEffects ? { ...pseudoPetEffects, ...e } : e;
-        })()}
+        effects={withPseudoPetEffects(effectivePower, withTargetsHit(power, effects, targetsHit))}
         allowedEnhancements={power?.allowedEnhancements || []}
         enhancementBonuses={enhancementBonuses}
         globalBonuses={globalBonusesWithStrength}
-        buffDebuffMod={effectiveMod}
         archetypeId={archetypeId ?? undefined}
         level={build.level}
         categories={['execution', 'buff', 'debuff', 'control', 'protection', 'movement']}
@@ -1458,11 +1144,12 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         </>
       )}
 
-      {/* Perma Tracker */}
+      {/* Perma Tracker. The numbers come from the engine's projection for this power
+        * (PROD6C) — the same pass the totals ran, rather than a second TS calc. */}
       {isPermaEligible(power) && (() => {
         const permaTracked = useUIStore.getState().permaTrackedPowers.includes(power.internalName);
         const togglePerma = useUIStore.getState().togglePermaTracked;
-        const permaInfo = calculatePermaInfo(power, enhancementBonuses, (globalBonuses.recharge ?? 0) / 100);
+        const permaInfo = projection?.perma ?? null;
 
         return (
           <div className="border-t border-slate-700 pt-2 mt-2">
@@ -1534,7 +1221,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         power={power}
         effects={effects}
         enhancementBonuses={enhancementBonuses}
-        globalBonusesForCalc={globalBonusesForCalc}
+        projection={projection}
         damageType={calculatedDamage?.type}
         useArcanaTime={useArcanaTimeToggle}
         selectedPower={selectedPower}
@@ -1704,6 +1391,9 @@ function IncarnateInfo({ slotId, powerId }: IncarnateInfoProps) {
 
   // Get the effects based on slot type
   const alphaEffects = slotId === 'alpha' ? getAlphaEffects(powerId) : null;
+  // Per-aspect ED-bypass slice authored in the silent grant power (read via
+  // getAlphaEdBypass). Feeds the "ED Bypass" column beside each total.
+  const alphaEdBypass = slotId === 'alpha' ? getAlphaEdBypass(powerId) : null;
   const destinyEffects = slotId === 'destiny' ? getDestinyEffects(powerId) : null;
   const hybridEffects = slotId === 'hybrid' ? getHybridEffects(powerId) : null;
   const interfaceEffects = slotId === 'interface' ? getInterfaceEffects(powerId) : null;
@@ -1780,73 +1470,73 @@ function IncarnateInfo({ slotId, powerId }: IncarnateInfoProps) {
               <span>ED Bypass</span>
             </div>
             {alphaEffects.damage !== undefined && (
-              <AlphaEffectRow label="Damage" value={alphaEffects.damage} edBypass={alphaEffects.edBypass} colorClass="text-red-400" />
+              <AlphaEffectRow label="Damage" value={alphaEffects.damage} edBypass={alphaEdBypass?.damage} colorClass="text-red-400" />
             )}
             {alphaEffects.accuracy !== undefined && (
-              <AlphaEffectRow label="Accuracy" value={alphaEffects.accuracy} edBypass={alphaEffects.edBypass} colorClass="text-yellow-400" />
+              <AlphaEffectRow label="Accuracy" value={alphaEffects.accuracy} edBypass={alphaEdBypass?.accuracy} colorClass="text-yellow-400" />
             )}
             {alphaEffects.recharge !== undefined && (
-              <AlphaEffectRow label="Recharge" value={alphaEffects.recharge} edBypass={alphaEffects.edBypass} colorClass="text-cyan-400" />
+              <AlphaEffectRow label="Recharge" value={alphaEffects.recharge} edBypass={alphaEdBypass?.recharge} colorClass="text-cyan-400" />
             )}
             {alphaEffects.enduranceReduction !== undefined && (
-              <AlphaEffectRow label="End Reduc" value={alphaEffects.enduranceReduction} edBypass={alphaEffects.edBypass} colorClass="text-blue-400" />
+              <AlphaEffectRow label="End Reduc" value={alphaEffects.enduranceReduction} edBypass={alphaEdBypass?.enduranceReduction} colorClass="text-blue-400" />
             )}
             {alphaEffects.heal !== undefined && (
-              <AlphaEffectRow label="Heal" value={alphaEffects.heal} edBypass={alphaEffects.edBypass} colorClass="text-green-400" />
+              <AlphaEffectRow label="Heal" value={alphaEffects.heal} edBypass={alphaEdBypass?.heal} colorClass="text-green-400" />
             )}
             {alphaEffects.defense !== undefined && (
-              <AlphaEffectRow label="Defense" value={alphaEffects.defense} edBypass={alphaEffects.edBypass} colorClass="text-purple-400" />
+              <AlphaEffectRow label="Defense" value={alphaEffects.defense} edBypass={alphaEdBypass?.defense} colorClass="text-purple-400" />
             )}
             {alphaEffects.resistance !== undefined && (
-              <AlphaEffectRow label="Resistance" value={alphaEffects.resistance} edBypass={alphaEffects.edBypass} colorClass="text-orange-400" />
+              <AlphaEffectRow label="Resistance" value={alphaEffects.resistance} edBypass={alphaEdBypass?.resistance} colorClass="text-orange-400" />
             )}
             {alphaEffects.range !== undefined && (
-              <AlphaEffectRow label="Range" value={alphaEffects.range} edBypass={alphaEffects.edBypass} colorClass="text-slate-300" />
+              <AlphaEffectRow label="Range" value={alphaEffects.range} edBypass={alphaEdBypass?.range} colorClass="text-slate-300" />
             )}
             {alphaEffects.hold !== undefined && (
-              <AlphaEffectRow label="Hold" value={alphaEffects.hold} edBypass={alphaEffects.edBypass} colorClass="text-purple-400" />
+              <AlphaEffectRow label="Hold" value={alphaEffects.hold} edBypass={alphaEdBypass?.hold} colorClass="text-purple-400" />
             )}
             {alphaEffects.stun !== undefined && (
-              <AlphaEffectRow label="Stun" value={alphaEffects.stun} edBypass={alphaEffects.edBypass} colorClass="text-purple-400" />
+              <AlphaEffectRow label="Stun" value={alphaEffects.stun} edBypass={alphaEdBypass?.stun} colorClass="text-purple-400" />
             )}
             {alphaEffects.immobilize !== undefined && (
-              <AlphaEffectRow label="Immobilize" value={alphaEffects.immobilize} edBypass={alphaEffects.edBypass} colorClass="text-purple-400" />
+              <AlphaEffectRow label="Immobilize" value={alphaEffects.immobilize} edBypass={alphaEdBypass?.immobilize} colorClass="text-purple-400" />
             )}
             {alphaEffects.sleep !== undefined && (
-              <AlphaEffectRow label="Sleep" value={alphaEffects.sleep} edBypass={alphaEffects.edBypass} colorClass="text-purple-400" />
+              <AlphaEffectRow label="Sleep" value={alphaEffects.sleep} edBypass={alphaEdBypass?.sleep} colorClass="text-purple-400" />
             )}
             {alphaEffects.fear !== undefined && (
-              <AlphaEffectRow label="Fear" value={alphaEffects.fear} edBypass={alphaEffects.edBypass} colorClass="text-purple-400" />
+              <AlphaEffectRow label="Fear" value={alphaEffects.fear} edBypass={alphaEdBypass?.fear} colorClass="text-purple-400" />
             )}
             {alphaEffects.confuse !== undefined && (
-              <AlphaEffectRow label="Confuse" value={alphaEffects.confuse} edBypass={alphaEffects.edBypass} colorClass="text-purple-400" />
+              <AlphaEffectRow label="Confuse" value={alphaEffects.confuse} edBypass={alphaEdBypass?.confuse} colorClass="text-purple-400" />
             )}
             {alphaEffects.slow !== undefined && (
-              <AlphaEffectRow label="Slow" value={alphaEffects.slow} edBypass={alphaEffects.edBypass} colorClass="text-cyan-400" />
+              <AlphaEffectRow label="Slow" value={alphaEffects.slow} edBypass={alphaEdBypass?.slow} colorClass="text-cyan-400" />
             )}
             {alphaEffects.toHitBuff !== undefined && (
-              <AlphaEffectRow label="ToHit Buff" value={alphaEffects.toHitBuff} edBypass={alphaEffects.edBypass} colorClass="text-yellow-400" />
+              <AlphaEffectRow label="ToHit Buff" value={alphaEffects.toHitBuff} edBypass={alphaEdBypass?.toHitBuff} colorClass="text-yellow-400" />
             )}
             {alphaEffects.toHitDebuff !== undefined && (
-              <AlphaEffectRow label="ToHit Debuff" value={alphaEffects.toHitDebuff} edBypass={alphaEffects.edBypass} colorClass="text-yellow-400" />
+              <AlphaEffectRow label="ToHit Debuff" value={alphaEffects.toHitDebuff} edBypass={alphaEdBypass?.toHitDebuff} colorClass="text-yellow-400" />
             )}
             {alphaEffects.defenseDebuff !== undefined && (
-              <AlphaEffectRow label="Def Debuff" value={alphaEffects.defenseDebuff} edBypass={alphaEffects.edBypass} colorClass="text-purple-400" />
+              <AlphaEffectRow label="Def Debuff" value={alphaEffects.defenseDebuff} edBypass={alphaEdBypass?.defenseDebuff} colorClass="text-purple-400" />
             )}
             {alphaEffects.taunt !== undefined && (
-              <AlphaEffectRow label="Taunt" value={alphaEffects.taunt} edBypass={alphaEffects.edBypass} colorClass="text-slate-300" />
+              <AlphaEffectRow label="Taunt" value={alphaEffects.taunt} edBypass={alphaEdBypass?.taunt} colorClass="text-slate-300" />
             )}
             {alphaEffects.runSpeed !== undefined && (
-              <AlphaEffectRow label="Run Speed" value={alphaEffects.runSpeed} edBypass={alphaEffects.edBypass} colorClass="text-cyan-400" />
+              <AlphaEffectRow label="Run Speed" value={alphaEffects.runSpeed} edBypass={alphaEdBypass?.runSpeed} colorClass="text-cyan-400" />
             )}
             {alphaEffects.jumpSpeed !== undefined && (
-              <AlphaEffectRow label="Jump Speed" value={alphaEffects.jumpSpeed} edBypass={alphaEffects.edBypass} colorClass="text-cyan-400" />
+              <AlphaEffectRow label="Jump Speed" value={alphaEffects.jumpSpeed} edBypass={alphaEdBypass?.jumpSpeed} colorClass="text-cyan-400" />
             )}
             {alphaEffects.flySpeed !== undefined && (
-              <AlphaEffectRow label="Fly Speed" value={alphaEffects.flySpeed} edBypass={alphaEffects.edBypass} colorClass="text-cyan-400" />
+              <AlphaEffectRow label="Fly Speed" value={alphaEffects.flySpeed} edBypass={alphaEdBypass?.flySpeed} colorClass="text-cyan-400" />
             )}
             {alphaEffects.absorb !== undefined && (
-              <AlphaEffectRow label="Absorb" value={alphaEffects.absorb} edBypass={alphaEffects.edBypass} colorClass="text-blue-400" />
+              <AlphaEffectRow label="Absorb" value={alphaEffects.absorb} edBypass={alphaEdBypass?.absorb} colorClass="text-blue-400" />
             )}
           </div>
           {/* Level Shift and ED Bypass info */}
@@ -1855,11 +1545,6 @@ function IncarnateInfo({ slotId, powerId }: IncarnateInfoProps) {
               <div className="flex justify-between text-sm">
                 <span className="text-amber-400">Level Shift</span>
                 <span className="text-amber-400">+{alphaEffects.levelShift}</span>
-              </div>
-            )}
-            {alphaEffects.edBypass !== undefined && (
-              <div className="text-[11px] text-slate-400 mt-1">
-                ED Bypass: {(alphaEffects.edBypass * 100).toFixed(1)}% of bonuses ignore Enhancement Diversification
               </div>
             )}
           </div>
@@ -2298,16 +1983,16 @@ function AlphaEffectRow({
 }: {
   label: string;
   value: number;
+  /** Data-authored portion of `value` that bypasses ED (absent = none bypasses). */
   edBypass?: number;
   colorClass: string;
 }) {
-  const bypassValue = edBypass !== undefined ? value * edBypass : 0;
   return (
     <div className="grid grid-cols-[5rem_1fr_1fr] gap-1 items-baseline text-sm">
       <span className="text-slate-300">{label}</span>
       <span className={colorClass}>{formatEffectValue(value)}</span>
       <span className="text-green-400">
-        {edBypass !== undefined ? formatEffectValue(bypassValue) : '—'}
+        {edBypass !== undefined ? formatEffectValue(edBypass) : '—'}
       </span>
     </div>
   );

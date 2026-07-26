@@ -1,0 +1,19 @@
+{
+  "key": "Boosts.Crafted_Immobilize_10",
+  "display_name": "Crafted Immobilize 10",
+  "help": "Increases immobilization duration by {Boost.Attrib.immobilize.Scale}%.",
+  "short_help": "Invention",
+  "icon": "crafted_immobilize_10_set.ico",
+  "powers": [
+    "Boosts.Crafted_Immobilize_10.Crafted_Immobilize_10"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Invention: Immobilization Duration"
+  ],
+  "power_short_helps": [
+    "Enhances Immobilization Duration"
+  ]
+}

@@ -1,6 +1,7 @@
 import { describe, it, expect, beforeAll } from 'vitest';
 import { loadDataset } from '@/data/dataset';
 import { createEmptyBuild } from '@/types/build';
+import { ioSetSlot } from '@/test/build-fixtures';
 import {
   findIllegalSlots,
   powerIllegalSlotIndices,
@@ -28,17 +29,12 @@ describe('build enhancement legality', () => {
     await loadDataset('homecoming');
   });
 
+  // Built by the picker's own factory: a hand-rolled literal was missing `aspects` (and the
+  // piece's real name), which the engine's CharacterState rejects outright.
+  const LOTG_PIECE_NAMES = ['Defense/Endurance', 'Defense/Recharge', 'Endurance/Recharge',
+    'Defense/Endurance/Recharge', 'Defense', 'Defense/+Recharge'];
   const lotgPiece = (pieceNum: number): Enhancement =>
-    ({
-      type: 'io-set',
-      id: `luck_of_the_gambler-${pieceNum}`,
-      name: 'Luck of the Gambler',
-      icon: '',
-      setId: 'luck_of_the_gambler',
-      setName: 'Luck of the Gambler',
-      pieceNum,
-      level: 50,
-    }) as unknown as Enhancement;
+    ioSetSlot('luck_of_the_gambler', LOTG_PIECE_NAMES[pieceNum - 1]);
 
   const power = (base: typeof BattleAgility, slots: (Enhancement | null)[]): SelectedPower =>
     ({ ...base, powerSet: 'stalker/shield-defense', level: 10, slots }) as unknown as SelectedPower;
@@ -101,9 +97,9 @@ describe('build enhancement legality', () => {
             internalName: 'Battle_Agility',
             level: 10,
             slots: [
-              { type: 'io-set', setId: 'luck_of_the_gambler', pieceNum: 6, level: 50 },
-              { type: 'io-set', setId: 'luck_of_the_gambler', pieceNum: 2, level: 50 },
-              { type: 'io-set', setId: 'shield_wall', pieceNum: 6, level: 50 },
+              ioSetSlot('luck_of_the_gambler', 'Defense/+Recharge'),
+              ioSetSlot('luck_of_the_gambler', 'Defense/Recharge'),
+              ioSetSlot('shield_wall', 'Chance'),
             ],
           },
           {
@@ -131,11 +127,12 @@ describe('build enhancement legality', () => {
     const illegal = calculateCharacterTotals(illegalBuild);
     const legal = calculateCharacterTotals(legalBuild);
 
-    // The legal placement contributes Luck of the Gambler set bonuses; the
-    // illegal one contributes none.
-    const legalBonusCount = Object.values(legal.setBonuses).filter((v) => v !== 0).length;
-    const illegalBonusCount = Object.values(illegal.setBonuses).filter((v) => v !== 0).length;
-    expect(legalBonusCount).toBeGreaterThan(0);
-    expect(illegalBonusCount).toBe(0);
+    // The legal placement contributes Luck of the Gambler set bonuses; the illegal one
+    // contributes none. Counted off `bonusTracking` — the engine publishes set-bonus
+    // provenance there (and leaves the legacy `setBonuses` bag empty by design).
+    const bonusStats = (r: typeof legal) =>
+      Object.values(r.bonusTracking).reduce((n, byValue) => n + Object.keys(byValue).length, 0);
+    expect(bonusStats(legal)).toBeGreaterThan(0);
+    expect(bonusStats(illegal)).toBe(0);
   });
 });

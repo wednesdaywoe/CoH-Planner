@@ -1,10 +1,44 @@
 {
   "name": "Class_Mastermind",
-  "display_name": "P502137493",
+  "display_name": "Mastermind",
+  "display_help": "As a Mastermind, you excel at using others to do your dirty work. Perhaps you build killer robots, command deadly Ninja, order hardened soldiers, or summon the undead to do your bidding. Whatever your choice, you have an army of minions at your beck and call. You can summon them when needed, order them to work your will, and even use your own powers to enhance them or weaken your foes. The Mastermind is a difficult class to play, often demanding constant attention to control your minions and stave off the retribution of your enemies.",
+  "display_short_help": "Commands henchmen and Controls foes.",
   "icon": "v_archetypeicon_mastermind.tga",
   "primary_category": "Mastermind_Summon",
   "secondary_category": "Mastermind_Buff",
   "pool_category": "Pool",
+  "epic_pool_category": "",
+  "allowed_origins": [
+    "Science",
+    "Magic",
+    "Natural",
+    "Mutation",
+    "Technology"
+  ],
+  "special_restrictions": [
+    "Villain"
+  ],
+  "store_requires": "",
+  "locked_tooltip": "This Archetype is unlocked by becoming a VIP member or by purchasing the Master Mind Archetype in the Paragon Store.",
+  "product_code": "ctatmmnd",
+  "reduction_class": "",
+  "reduce_as_archvillain": false,
+  "level_up_respecs": [],
+  "archetype_shots": [
+    "archetypeshots_mastermind_0",
+    "archetypeshots_mastermind_1",
+    "archetypeshots_mastermind_2"
+  ],
+  "creation_stats": [
+    7,
+    3,
+    4,
+    3,
+    5,
+    10
+  ],
+  "playstyle_flags": 48,
+  "mechanic_tip": "",
   "named_tables": {
     "Melee_Damage": [
       -9.300000190734863,
@@ -4900,5 +4934,7 @@
     "resistance_cap": 0.75,
     "base_threat": 2.0,
     "damage_cap": 4.0
-  }
+  },
+  "mechanic_bar_raw": 0,
+  "mechanic_gap_raw": 0
 }

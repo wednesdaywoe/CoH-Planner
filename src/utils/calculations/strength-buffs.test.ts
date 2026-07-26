@@ -1,5 +1,6 @@
 import { describe, it, expect, beforeAll } from 'vitest';
-import { collectStrengthBuffs, calculateCharacterTotals } from './character-totals';
+import { collectStrengthBuffs } from './character-totals';
+import { legacyCalculateCharacterTotals as calculateCharacterTotals } from './legacy-totals.oracle';
 import { loadDataset } from '@/data/dataset';
 import { getEpicPool } from '@/data/epic-pools';
 import { createEmptyBuild } from '@/types/build';
@@ -34,6 +35,18 @@ const powerBoostSpecial = (scale: number) => ({
   tohit: s(scale), heal: s(scale), absorb: s(scale), endurance: s(scale), movement: s(scale),
 });
 
+/**
+ * Graded against the TS ORACLE, not the engine, deliberately.
+ *
+ * These cases feed the calc SYNTHETIC power definitions — hand-authored `atoms` tuples on a
+ * power the dataset does not contain — to pin one applier rule in isolation. The engine cannot
+ * consume that: it resolves a selected power's effects from its own contract bundle by
+ * (powerSet, internalName), so a fabricated def resolves to nothing and the case would grade an
+ * empty result rather than the rule it describes. `legacyCalculateCharacterTotals` is the same
+ * calculation over the build object, kept as the independent oracle `serverParity` diffs the
+ * engine against on all three datasets — so the rule stays graded, and the engine's own
+ * agreement with this calc stays graded there, on real powers.
+ */
 describe('collectStrengthBuffs', () => {
   it('returns zero when no strength powers are active', () => {
     const sb = collectStrengthBuffs([

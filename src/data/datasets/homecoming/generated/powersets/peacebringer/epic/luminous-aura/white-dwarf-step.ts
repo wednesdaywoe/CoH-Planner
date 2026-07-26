@@ -16,7 +16,7 @@ export const WhiteDwarfStep: Power = {
   "shortHelp": "Ranged (Location), Self Teleport",
   "icon": "luminousaura_teleportself.png",
   "powerType": "Click",
-  "targetType": "Dead Teammate",
+  "targetType": "Teleport",
   "effectArea": "Location",
   "stats": {
     "accuracy": 1,

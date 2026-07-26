@@ -12,6 +12,7 @@ import type {
   AttackChain,
   ProcOverride,
   SelectedPower,
+  Power,
   Accolade,
   ArchetypeId,
   ArchetypeBranchId,
@@ -69,6 +70,7 @@ import {
 import { findNextAvailableGrantLevel, backfillSlotOrderLevels, ensureSlotOrderPopulated, canMoveSlotLevel, applySlotLevelMove, canRelocateSlot, type SlotLevelRef, type PowerRef } from '@/utils/slot-levels';
 import { enhancementAllowedInPower } from '@/utils/enhancement-eligibility';
 import { dedupePools } from '@/utils/build-powers';
+import { selectableModes } from '@/utils/mode-suppression';
 import { useHistoryStore } from './historyStore';
 import { useUIStore } from './uiStore';
 
@@ -154,8 +156,7 @@ interface BuildActions {
   setLevel: (level: number) => void;
   setProgressionMode: (mode: ProgressionMode) => void;
   setOrigin: (origin: Origin) => void;
-  setKheldianForm: (form: 'human' | 'nova' | 'dwarf') => void;
-  setPrimalistForm: (form: 'primal' | 'hunter' | 'prowler') => void;
+  setActiveModes: (modes: string[]) => void;
 
   /**
    * Link the current in-memory build to a Build Library entry by id, so
@@ -619,6 +620,18 @@ function syncBuildDefinitions(build: Build): void {
  * ambiguous for a collided name and cannot be otherwise — the stored data
  * carries no powerSet to disambiguate with.
  */
+/**
+ * Power defs for the build's two archetype powersets — where every mode setter and every
+ * `modeVariants` table lives. Both the mode selector and the toggle sync read the def rather
+ * than the selected power, which carries only the pick.
+ */
+function archetypePowerDefs(build: Build): Power[] {
+  return [
+    ...(build.primary.id ? getPowerset(build.primary.id)?.powers ?? [] : []),
+    ...(build.secondary.id ? getPowerset(build.secondary.id)?.powers ?? [] : []),
+  ];
+}
+
 function findPower(
   build: Build,
   powerName: string,
@@ -1437,19 +1450,15 @@ export const useBuildStore = create<BuildStore>()(
             }
           }
 
-          // Kheldian form toggles: their initial isActive must match the
-          // current form selector. If the user is in human form (default),
-          // a freshly picked Bright_Nova should NOT auto-activate — that
-          // would silently apply its damage buff before they pick a form.
-          const novaToggles = new Set(['Bright_Nova', 'Dark_Nova']);
-          const dwarfToggles = new Set(['White_Dwarf', 'Black_Dwarf']);
-          if (power.internalName) {
-            const form = state.build.kheldianForm ?? 'human';
-            if (novaToggles.has(power.internalName)) {
-              power = { ...power, isActive: form === 'nova' };
-            } else if (dwarfToggles.has(power.internalName)) {
-              power = { ...power, isActive: form === 'dwarf' };
-            }
+          // A mode setter's initial isActive must match the mode selector. A freshly picked
+          // Bright_Nova with no form selected should NOT auto-activate — that would silently
+          // apply its damage buff before the user picks the form. `setsModes` identifies it.
+          const settableModes = power.setsModes ?? [];
+          if (settableModes.length) {
+            const activeModes = new Set(state.build.activeModes ?? []);
+            const selectable = new Set(selectableModes(archetypePowerDefs(state.build)));
+            const owned = settableModes.filter((m) => selectable.has(m));
+            if (owned.length) power = { ...power, isActive: owned.some((m) => activeModes.has(m)) };
           }
 
           // Enforce mutually exclusive powers (e.g., Slice vs Boomerang Slice)
@@ -1948,70 +1957,41 @@ export const useBuildStore = create<BuildStore>()(
         }));
       },
 
-      setKheldianForm: (form) => {
+      setActiveModes: (modes) => {
         historyCheckpoint();
-        // Switching forms also toggles the corresponding form-toggle power's
-        // isActive state so its persistent effects (Bright Nova's damageBuff,
-        // White Dwarf's resistance/mez-protection, etc.) flow into global
-        // bonuses. Forms are mutually exclusive in-game, so selecting one
-        // deactivates the other. If a form toggle isn't in the build, this
-        // is a no-op for that toggle.
-        const novaNames = new Set(['Bright_Nova', 'Dark_Nova']);
-        const dwarfNames = new Set(['White_Dwarf', 'Black_Dwarf']);
-        const targetActive = (internalName: string | undefined): boolean | undefined => {
-          if (!internalName) return undefined;
-          if (novaNames.has(internalName)) return form === 'nova';
-          if (dwarfNames.has(internalName)) return form === 'dwarf';
-          return undefined; // not a form toggle — leave alone
-        };
-        const syncPowerList = (powers: SelectedPower[]): SelectedPower[] => {
-          let changed = false;
-          const out = powers.map((p) => {
-            const desired = targetActive(p.internalName);
-            if (desired === undefined) return p;
-            if (p.isActive === desired) return p;
-            changed = true;
-            return { ...p, isActive: desired };
-          });
-          return changed ? out : powers;
-        };
-        set((state) => ({
-          build: {
-            ...state.build,
-            kheldianForm: form,
-            primary: { ...state.build.primary, powers: syncPowerList(state.build.primary.powers) },
-            secondary: { ...state.build.secondary, powers: syncPowerList(state.build.secondary.powers) },
-          },
-        }));
-      },
+        // Switching a mode on also activates the power that SETS it, so its persistent effects
+        // (Bright Nova's damageBuff, White Dwarf's resistance/mez-protection) flow into global
+        // bonuses — and deactivates the setter of any mode that just went off. The setter is
+        // whichever selected power carries the mode in `setsModes`, read from the power def, so
+        // no list of form-power names is needed here.
+        //
+        // Thunderspy exports no `Set_Mode` template at all (TSPY-3's excluded tail), so its
+        // Hunter/Prowler forms have no discoverable setter and stay pure display state.
+        const active = new Set(modes);
+        const build = get().build;
+        const defsFor = (setId: string | null | undefined) => (setId ? getPowerset(setId)?.powers ?? [] : []);
+        const selectable = new Set(selectableModes(archetypePowerDefs(build)));
 
-      setPrimalistForm: (form) => {
-        historyCheckpoint();
-        // Mirror setKheldianForm: selecting a form toggles the matching form
-        // power's isActive so its persistent effects apply, and deactivates the
-        // other. Primal (the default human form) leaves both toggles off.
-        const targetActive = (internalName: string | undefined): boolean | undefined => {
-          if (internalName === 'Hunter_Form') return form === 'hunter';
-          if (internalName === 'Prowler_Form') return form === 'prowler';
-          return undefined; // not a form toggle — leave alone
-        };
-        const syncPowerList = (powers: SelectedPower[]): SelectedPower[] => {
+        const syncPowerList = (powers: SelectedPower[], defs: Power[]): SelectedPower[] => {
           let changed = false;
           const out = powers.map((p) => {
-            const desired = targetActive(p.internalName);
-            if (desired === undefined) return p;
+            const owned = (defs.find((d) => d.internalName === p.internalName)?.setsModes ?? [])
+              .filter((m) => selectable.has(m));
+            if (!owned.length) return p;
+            const desired = owned.some((m) => active.has(m));
             if (p.isActive === desired) return p;
             changed = true;
             return { ...p, isActive: desired };
           });
           return changed ? out : powers;
         };
-        set((state) => ({
+
+        set((s) => ({
           build: {
-            ...state.build,
-            primalistForm: form,
-            primary: { ...state.build.primary, powers: syncPowerList(state.build.primary.powers) },
-            secondary: { ...state.build.secondary, powers: syncPowerList(state.build.secondary.powers) },
+            ...s.build,
+            activeModes: modes,
+            primary: { ...s.build.primary, powers: syncPowerList(s.build.primary.powers, defsFor(s.build.primary.id)) },
+            secondary: { ...s.build.secondary, powers: syncPowerList(s.build.secondary.powers, defsFor(s.build.secondary.id)) },
           },
         }));
       },
@@ -2396,9 +2376,9 @@ export const useBuildStore = create<BuildStore>()(
         historyCheckpoint();
 
         // Kheldian form toggles are mutually exclusive in-game: enabling
-        // Bright Nova auto-disables White Dwarf (and vice versa). Also
-        // sync `build.kheldianForm` so the header form selector stays
-        // consistent with the per-power toggle state.
+        // Bright Nova auto-disables White Dwarf (and vice versa). The mode
+        // selector is kept consistent with the toggle further down, off the
+        // power's own `setsModes`.
         const novaForms = new Set(['Bright_Nova', 'Dark_Nova']);
         const dwarfForms = new Set(['White_Dwarf', 'Black_Dwarf']);
         const isNovaToggle = novaForms.has(powerName);
@@ -2441,23 +2421,19 @@ export const useBuildStore = create<BuildStore>()(
 
         set((s) => {
           const updatedBuild = applyToAllPowers(s.build, transformPowers);
-          // Sync header form selector when a Kheldian form toggle changed
-          let nextForm = updatedBuild.kheldianForm;
-          if (isNovaToggle || isDwarfToggle) {
-            if (willBeActive) {
-              nextForm = isNovaToggle ? 'nova' : 'dwarf';
-            } else {
-              // Turned a form toggle off — drop to human if it matched the
-              // currently-displayed form; otherwise leave alone.
-              if ((isNovaToggle && updatedBuild.kheldianForm === 'nova') ||
-                  (isDwarfToggle && updatedBuild.kheldianForm === 'dwarf')) {
-                nextForm = 'human';
-              }
-            }
+          // Keep the mode selector consistent with the per-power toggle: a power that SETS a
+          // selectable mode makes that mode live when switched on, and drops it when switched off.
+          const defs = archetypePowerDefs(updatedBuild);
+          const selectable = new Set(selectableModes(defs));
+          const toggledModes = (defs.find((d) => d.internalName === powerName)?.setsModes ?? [])
+            .filter((m) => selectable.has(m));
+          if (!toggledModes.length) return { build: updatedBuild };
+          const nextModes = new Set(updatedBuild.activeModes ?? []);
+          for (const mode of toggledModes) {
+            if (willBeActive) nextModes.add(mode);
+            else nextModes.delete(mode);
           }
-          return {
-            build: { ...updatedBuild, kheldianForm: nextForm },
-          };
+          return { build: { ...updatedBuild, activeModes: [...nextModes] } };
         });
       },
 

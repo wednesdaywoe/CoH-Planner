@@ -10,7 +10,7 @@
 import { useState, useMemo, useEffect, useRef } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
 import {
-  getIOSetsForPower, lookupPower,
+  getIOSetsForPower, getIOSet, lookupPower,
   getCommonIOValueAtLevel, ORIGIN_TIERS,
   sortCategoriesByPriority,
   createIOSetEnhancement, createGenericIOEnhancement, createSpecialEnhancement, createOriginEnhancement, isInherentlyAttuned,
@@ -18,7 +18,7 @@ import {
   getRarityColor, getTierTextColor, getTierBorderColor,
   findProcData, resolveProcPieceName, procEffectSummary, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, interpolateProcDamage,
 } from '@/data';
-import { normalizeAspectName, getAspectSchedule, getIOValueAtLevel, getSetRarityMultiplier, getEffectiveAspectCount, getMultiAspectModifier, BOOST_MULTIPLIER_PER_LEVEL } from '@/utils/calculations';
+import { normalizeAspectName, getEffectiveAspectCount, calculateSingleEnhancementValues } from '@/utils/calculations';
 import { Modal, ModalBody } from '@/components/modals';
 import { Tooltip, Toggle, LevelSpinner } from '@/components/ui';
 import { IOSetIcon, GenericIOIcon, OriginEnhancementIcon, SpecialEnhancementIcon } from './EnhancementIcon';
@@ -1935,44 +1935,41 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
   const globalIOLevel = useUIStore((s) => s.globalIOLevel);
   const attunementEnabled = useUIStore((s) => s.attunementEnabled);
   const globalBoostLevel = useUIStore((s) => s.globalBoostLevel);
+  const exemplarMode = useUIStore((s) => s.exemplarMode);
+  const exemplarLevelSetting = useUIStore((s) => s.exemplarLevel);
   const build = useBuildStore((s) => s.build);
+  const exemplarLevel = exemplarMode ? exemplarLevelSetting : undefined;
 
-  // Calculate aspect values at the effective level.
-  // Both attuned and non-attuned cap at the set's maxLevel — only ATOs / event IOs
-  // (maxLevel <= 1) scale freely above their listed cap. Mirrors the calc engine
-  // in enhancement-values.ts to keep the picker preview consistent with the actual
-  // stat calculation (e.g. attuned Kinetic Combat caps at L35, not character level).
-  // ATO / event sets are always attuned (see isInherentlyAttuned) — preview them
-  // as attuned (character-level scaling, no boost) regardless of the slider.
+  // Preview the piece exactly as slotting it would land: build the enhancement the picker
+  // would store, then read what the dashboard would credit for it (PROD6E-2).
   const effectiveAttuned = attunementEnabled || isInherentlyAttuned(set);
-  const rawLevel = effectiveAttuned ? (build.level || 50) : globalIOLevel;
-  const cappedLevel = set.maxLevel > 1 ? Math.min(rawLevel, set.maxLevel) : rawLevel;
-  const effectiveLevel = Math.max(set.minLevel, cappedLevel);
-  const rawAspectCount = piece.aspects.filter(a => normalizeAspectName(a) !== null).length || piece.aspects.length;
-  // Use the shared classifier so the IO picker preview matches the InfoPanel,
-  // the hover tooltip, and the dashboard. Picks up special segments encoded
-  // only in the piece name (e.g. "EndMod/+Run Speed" → 2 effective aspects).
+  const effectiveLevel = Math.max(set.minLevel, Math.min(globalIOLevel, set.maxLevel));
+  const previewValues = useMemo(() => {
+    const slot = createIOSetEnhancement(set, piece, piece.num, {
+      attuned: attunementEnabled,
+      level: effectiveLevel,
+      boost: globalBoostLevel,
+    });
+    return calculateSingleEnhancementValues(slot, build.level, getIOSet, exemplarLevel);
+  }, [set, piece, attunementEnabled, effectiveLevel, globalBoostLevel, build.level, exemplarLevel]);
+
+  // The multi-aspect penalty note under the list. Picks up special segments encoded only in
+  // the piece name (e.g. "EndMod/+Run Speed" → 2 effective aspects), the same classifier the
+  // calculation applies.
+  const rawAspectCount = piece.aspects.filter((a) => normalizeAspectName(a) !== null).length || piece.aspects.length;
   const aspectCount = getEffectiveAspectCount(
     piece.aspects.slice(0, rawAspectCount),
     !!piece.proc,
     piece.totalAspects,
     piece.name,
   );
-  const aspectModifier = getMultiAspectModifier(aspectCount);
-
-  // Boost multiplier — pure procs (no aspects) can't be boosted, but hybrid procs can
-  const isPureProc = piece.proc && piece.aspects.length === 0;
-  const boostMultiplier = (!effectiveAttuned && !isPureProc && globalBoostLevel > 0) ? 1 + globalBoostLevel * BOOST_MULTIPLIER_PER_LEVEL : 1;
-
-  // Purple and Superior sets get 25% higher enhancement values
-  const rarityMultiplier = getSetRarityMultiplier(set.category, set.name);
 
   const calculateAspectValue = (aspect: string): number | null => {
     const normalized = normalizeAspectName(aspect);
-    if (!normalized) return null;
-    const schedule = getAspectSchedule(normalized);
-    const baseValue = getIOValueAtLevel(effectiveLevel, schedule);
-    return baseValue * aspectModifier * rarityMultiplier * boostMultiplier;
+    // `Mez` fans out into the six mez aspects rather than normalizing to one — read any of
+    // them, they carry the same value.
+    if (!normalized) return aspect.trim() === 'Mez' ? previewValues.hold ?? null : null;
+    return previewValues[normalized] ?? null;
   };
 
   return (

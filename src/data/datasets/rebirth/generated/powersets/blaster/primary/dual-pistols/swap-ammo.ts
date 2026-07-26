@@ -25,7 +25,10 @@ export const SwapAmmo: Power = {
   "allowedEnhancements": [],
   "maxSlots": 0,
   "atoms": [
-    ["EntCreate",null,1,73,2.25,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+    ["Meta",null,1,73,2.25,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+  ],
+  "setsModes": [
+    "LethalAmmo"
   ],
   "mechanicType": "parentMechanic"
 };

@@ -16,7 +16,7 @@ export const StarlessStep: Power = {
   "shortHelp": "Ranged (Location), Self Teleport, ToHit",
   "icon": "umbralblast_starlessstep.png",
   "powerType": "Click",
-  "targetType": "Dead Teammate",
+  "targetType": "Teleport",
   "effectArea": "Location",
   "globalStrengthsDisallowed": [
     "Range"

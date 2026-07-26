@@ -8,6 +8,7 @@
 export {
   useCalculatedStats,
   useCharacterCalculation,
+  useHypotheticalCalculation,
   useGlobalBonuses,
   useStatBreakdown,
   useStatBreakdowns,

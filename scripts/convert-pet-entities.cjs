@@ -31,6 +31,24 @@ if (!ROOT || !fs.existsSync(ROOT)) {
 const ENTITIES_PATH = path.join(ROOT, 'entities');
 const POWERS_PATH = ROOT;
 
+// Absent is a real state (entity power references can point at powers the
+// export doesn't carry); a corrupt file must surface, never read as "absent" —
+// that silently omits the pet or its power from the committed output.
+function readJsonFile(filePath) {
+  let text;
+  try {
+    text = fs.readFileSync(filePath, 'utf-8');
+  } catch (err) {
+    if (err.code === 'ENOENT') return null;
+    throw err;
+  }
+  try {
+    return JSON.parse(text);
+  } catch (err) {
+    throw new Error(`Corrupt JSON in ${filePath}: ${err.message}`);
+  }
+}
+
 // pet-entities was migrated into datasets/<id>/pet-entities.ts during the
 // first wave of Stage A. Both HC and Rebirth write through datasetPath().
 const OUTPUT_PATH = datasetPath(datasetId, 'pet-entities.ts');
@@ -76,7 +94,9 @@ const _DMG_TYPE_MAP = {
 // the scale/table drive the actual damage math).
 function _tspyDamageType(shortHelp) {
   if (!shortHelp) return null;
-  const m = shortHelp.match(/DMG\(([^)]+)\)/i);
+  // `DoT(...)` as well as `DMG(...)`: a pure damage-over-time pet attack carries
+  // its element only in the DoT clause, which the DMG-only match left `Special`.
+  const m = shortHelp.match(/D(?:MG|oT)\(([^)]+)\)/i);
   if (!m) return null;
   const first = m[1].split(/[/,]/)[0].trim().toLowerCase();
   return _DMG_TYPE_MAP[first] || null;
@@ -141,9 +161,19 @@ const DEBUFF_ATTRIBS = {
 //    while keeping the real-table debuffs (Res_DMG→ResistanceDebuff,
 //    EndDrain→EndDrain). -Regeneration is intentionally absent: the pet panel has
 //    no RegenDebuff display, so there's nothing to show.
+// The `debuff_*` keys are CATEGORY tokens — what a tspy effect element carries at its
+// front. Since the parser began reading each AttribMod's own index array (TSPY-4) most
+// of these arrive under their real HC attrib name instead (`Base_Defense`, `ToHit`, the
+// movement stats), so both spellings must map: the token for the elements that still
+// front one, the real name for the mods that now name themselves. Without the real
+// names every location/patch pseudo-pet lost the -Def half again — Sleet's
+// `Base_Defense 3.0 Melee_Debuff_Def` is byte-identical to its HC and Rebirth twins.
 const _TSPY_DEBUFF_NAMED = {
   'slow': 'Slow', 'speedrunning': 'Slow', 'speedflying': 'Slow', 'speedjumping': 'Slow',
   'debuff_def': 'DefenseDebuff', 'debuff_tohit': 'ToHitDebuff', 'debuff_dam': 'DamageDebuff',
+  'base_defense': 'DefenseDebuff', 'tohit': 'ToHitDebuff',
+  'runningspeed': 'Slow', 'flyingspeed': 'Slow', 'jumpingspeed': 'Slow',
+  'jumpheight': 'Slow', 'rechargetime': 'Slow',
 };
 const _TSPY_DEBUFF_SIGNED = {
   'res_dmg': 'ResistanceDebuff', 'recovery': 'RecoveryDebuff',
@@ -597,11 +627,8 @@ function extractEffects(powerData) {
  */
 function processPetPower(powerFilePath, powerData) {
   if (!powerData) {
-    try {
-      powerData = JSON.parse(fs.readFileSync(powerFilePath, 'utf-8'));
-    } catch {
-      return null;
-    }
+    powerData = readJsonFile(powerFilePath);
+    if (!powerData) return null;
   }
 
   // Skip utility powers
@@ -703,12 +730,8 @@ function findFilesRecursive(rootDir, basename) {
  * labels it `Ones` with empty target/stack — TSPY4, not handled here.)
  */
 function extractLifespan(powerFilePath) {
-  let data;
-  try {
-    data = JSON.parse(fs.readFileSync(powerFilePath, 'utf-8'));
-  } catch {
-    return null;
-  }
+  const data = readJsonFile(powerFilePath);
+  if (!data) return null;
   for (const effectGroup of (data.effects || [])) {
     for (const t of (effectGroup.templates || [])) {
       const attribs = t.attribs || [];
@@ -728,12 +751,8 @@ function extractLifespan(powerFilePath) {
  * Read an entity file and extract its powers
  */
 function processEntity(entityFilePath) {
-  let entityData;
-  try {
-    entityData = JSON.parse(fs.readFileSync(entityFilePath, 'utf-8'));
-  } catch {
-    return null;
-  }
+  const entityData = readJsonFile(entityFilePath);
+  if (!entityData) return null;
 
   const defaults = entityData.defaults || {};
   const powerFullNames = defaults.power_full_names || [];
@@ -880,13 +899,9 @@ function main() {
   for (const filePath of allSelfDestructFiles) {
     const delay = extractLifespan(filePath);
     if (delay === null) continue;
-    try {
-      const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
-      const fullName = data.full_name;
-      if (fullName) selfDestructDelays[fullName] = delay;
-    } catch {
-      // skip unparseable
-    }
+    const data = readJsonFile(filePath);
+    const fullName = data && data.full_name;
+    if (fullName) selfDestructDelays[fullName] = delay;
   }
   fs.writeFileSync(SIDECAR_SELF_DESTRUCT_PATH, JSON.stringify(selfDestructDelays, null, 2) + '\n');
   console.log(`Wrote ${SIDECAR_SELF_DESTRUCT_PATH} (${Object.keys(selfDestructDelays).length} entries)`);

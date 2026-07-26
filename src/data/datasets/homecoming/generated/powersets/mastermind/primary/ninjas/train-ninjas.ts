@@ -16,7 +16,7 @@ export const TrainNinjas: Power = {
   "shortHelp": "Ranged, Train Ninja Henchman",
   "icon": "ninjas_trainninjas.png",
   "powerType": "Click",
-  "targetType": "Self",
+  "targetType": "Own Pet (Alive)",
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "RechargeTime"

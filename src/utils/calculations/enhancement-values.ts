@@ -6,6 +6,7 @@
  */
 
 import type { Enhancement, EnhancementStatType } from '@/types';
+import { getEnhancementCurves } from '@/data/enhancement-curves';
 import { isCalcDebugEnabled, debugGroup, debugGroupEnd, debugFormula } from '@/utils/calc-debug';
 
 // ============================================
@@ -22,35 +23,35 @@ export const BASE_RECOVERY_RATE = 1.667;
 export const BASE_REGEN_RATE = 100 / 240;
 
 // ============================================
-// EXEMPLAR SCALING TABLE
+// EXEMPLAR MAGNITUDE HANDICAP
 // ============================================
 
 /**
- * Level-based scaling factors for exemplar system
- * When exemplared down, enhancement values are scaled by:
- *   scaledValue = rawValue × (TABLE[exemplarLevel] / TABLE[ioLevel])
- * Levels 32-50 are all 1.0 (no scaling at or above 32)
+ * curve[level - 1], top-clamped past the last entry — boost.c indexes the
+ * handicap curves by combat level with a size-1 clamp. Levels are integers
+ * in-game; a fractional level is a caller bug that must surface.
  */
-export const EXEMPLAR_SCALING_TABLE: Record<number, number> = {
-  1: 0.022, 2: 0.045, 3: 0.068, 4: 0.092, 5: 0.116,
-  6: 0.141, 7: 0.166, 8: 0.192, 9: 0.219, 10: 0.246,
-  11: 0.274, 12: 0.302, 13: 0.331, 14: 0.361, 15: 0.391,
-  16: 0.422, 17: 0.454, 18: 0.486, 19: 0.519, 20: 0.553,
-  21: 0.587, 22: 0.623, 23: 0.659, 24: 0.696, 25: 0.733,
-  26: 0.772, 27: 0.811, 28: 0.852, 29: 0.893, 30: 0.935,
-  31: 0.978,
-};
-// Levels 32-50 = 1.0
-for (let i = 32; i <= 50; i++) EXEMPLAR_SCALING_TABLE[i] = 1.0;
+function handicapCurveAt(curve: number[], level: number): number {
+  if (!Number.isInteger(level)) {
+    throw new Error(`Exemplar handicap curves are indexed by integer level, got ${level}`);
+  }
+  return curve[Math.min(Math.max(level, 1), curve.length) - 1];
+}
 
 /**
- * Apply exemplar scaling to an enhancement value.
+ * Apply the exemplar magnitude handicap to an enhancement value.
+ *
+ * Faithful boost.c `boost_HandicapExemplar` over the dataset's
+ * exemplar_handicaps.bin curves, in the game's order:
+ *   1. clamp to preClamp[exemplar] (0.4167 through level 45, then uncapped)
+ *   2. if the magnitude reaches limits[exemplar] — the minor-bonus floor
+ *      (5%/10%/20% by level band) — scale by weights[exemplar]/weights[ioLevel]
+ *   3. clamp to postClamp[exemplar] (1.0 at every level)
  *
  * @param rawValue - The unscaled enhancement value (decimal, e.g. 0.424)
  * @param ioLevel - The true IO level (the level the enhancement was created at)
  * @param exemplarLevel - The level the character is exemplared to
- * @param schedule - The ED schedule (used to skip procs which have schedule "None")
- * @returns The scaled value, respecting minor bonus thresholds and the 41.5% cap
+ * @param isProc - Procs are never scaled
  */
 export function applyExemplarScaling(
   rawValue: number,
@@ -64,26 +65,13 @@ export function applyExemplarScaling(
   // No scaling needed if at or above IO level
   if (exemplarLevel >= ioLevel) return rawValue;
 
-  const rawPercent = rawValue * 100;
+  const { limits, weights, preClamp, postClamp } = getEnhancementCurves().exemplarHandicaps;
 
-  // Minor Bonus Thresholds — exempt small bonuses from scaling
-  if (rawPercent <= 5) return rawValue; // ≤5% never reduced
-  if (rawPercent <= 10 && exemplarLevel >= 11) return rawValue; // ≤10% exempt if exemplar ≥ 11
-  if (rawPercent <= 20 && exemplarLevel >= 21) return rawValue; // ≤20% exempt if exemplar ≥ 21
-
-  // Calculate scaling factor
-  const exemplarFactor = EXEMPLAR_SCALING_TABLE[Math.max(1, Math.min(50, exemplarLevel))] ?? 1.0;
-  const ioFactor = EXEMPLAR_SCALING_TABLE[Math.max(1, Math.min(50, ioLevel))] ?? 1.0;
-  const scalingRatio = ioFactor > 0 ? exemplarFactor / ioFactor : 1.0;
-
-  let scaledValue = rawValue * scalingRatio;
-
-  // Maximum Bonus Cap: 41.5% if exemplar ≤ 45
-  if (exemplarLevel <= 45) {
-    scaledValue = Math.min(scaledValue, 0.415);
+  let magnitude = Math.min(rawValue, handicapCurveAt(preClamp, exemplarLevel));
+  if (magnitude >= handicapCurveAt(limits, exemplarLevel)) {
+    magnitude *= handicapCurveAt(weights, exemplarLevel) / handicapCurveAt(weights, ioLevel);
   }
-
-  return scaledValue;
+  return Math.min(magnitude, handicapCurveAt(postClamp, exemplarLevel));
 }
 
 // ============================================
@@ -604,6 +592,36 @@ export interface EnhancementBonuses {
 }
 
 /**
+ * What ONE enhancement contributes, under the exact rules the dashboard applies to a real
+ * slot — attunement, the set's level cap, exemplar scaling, boosters, the multi-aspect
+ * penalty, and the `Mez` fan-out into the six mez aspects.
+ *
+ * The per-piece display surfaces (picker preview, enhancement info panel) render this
+ * instead of re-deriving a level rule of their own. They each had one, and each contradicted
+ * the calculation on three counts: capping an attuned IO at the set's `maxLevel` (which the
+ * game does not do — see `ioLevel` below), ignoring exemplar, and dropping the `Mez` aspect
+ * because `normalizeAspectName` has no entry for it (PROD6E-2).
+ *
+ * ED is applied — this routes through the full calculation deliberately, so a preview cannot
+ * drift from the total it previews. At single-piece magnitudes it is a no-op: measured over
+ * all 1138 aspect-bearing Homecoming set pieces at +5 boost, no piece reaches its schedule's
+ * knee.
+ */
+export function calculateSingleEnhancementValues(
+  slot: Enhancement,
+  buildLevel: number,
+  getIOSet: Parameters<typeof calculatePowerEnhancementBonuses>[2],
+  exemplarLevel?: number
+): EnhancementBonuses {
+  return calculatePowerEnhancementBonuses(
+    { name: '', slots: [slot] },
+    buildLevel,
+    getIOSet,
+    exemplarLevel
+  );
+}
+
+/**
  * Calculate total enhancement bonuses from slotted enhancements
  * Applies Enhancement Diversification (ED) limits
  */
@@ -737,18 +755,21 @@ export function calculatePowerEnhancementBonuses(
  * Combine IO enhancement bonuses with Alpha incarnate bonuses, properly
  * handling the Alpha ED bypass mechanic.
  *
- * Alpha bonuses are split into two portions:
- * - ED-subject portion (1 - bypassRatio): added to raw IO totals BEFORE ED
- * - ED-bypass portion (bypassRatio): added AFTER ED
+ * Alpha bonuses are split into two portions per aspect:
+ * - ED-subject portion (total − bypass): added to raw IO totals BEFORE ED
+ * - ED-bypass portion (`alphaEdBypass[aspect]`): added AFTER ED
  *
- * Bypass ratios by tier: Common 1/6, Uncommon 1/3, Rare 1/2, Very Rare 2/3
+ * The bypass values come from the exported silent-grant data
+ * (`getAlphaEdBypassBonuses` — the BoostIgnoreDiminishing / `Ones`
+ * templates), not from a per-tier ratio: Thunderspy authors many aspects
+ * with a different split than the HC/Rebirth rarity pattern.
  */
 export function combineWithAlphaED(
   power: PowerWithSlots,
   globalIOLevel: number,
   getIOSet: Parameters<typeof calculatePowerEnhancementBonuses>[2],
   alphaBonuses: EnhancementBonuses,
-  edBypassRatio: number,
+  alphaEdBypass: EnhancementBonuses,
   exemplarLevel?: number
 ): EnhancementBonuses {
   if (!power?.slots) return { ...alphaBonuses };
@@ -829,10 +850,10 @@ export function combineWithAlphaED(
   const alphaAcceptsAspect = (aspect: string): boolean =>
     allowedAspectKeys === null || allowedAspectKeys.has(aspect);
 
-  // Step 2: Add ED-subject portion of alpha (1 - bypassRatio) to raw totals
+  // Step 2: Add ED-subject portion of alpha (total − bypass) to raw totals
   for (const [aspect, value] of Object.entries(alphaBonuses)) {
     if (value !== undefined && value !== 0 && alphaAcceptsAspect(aspect)) {
-      const edSubject = value * (1 - edBypassRatio);
+      const edSubject = value - (alphaEdBypass[aspect] ?? 0);
       rawBonuses[aspect] = (rawBonuses[aspect] || 0) + edSubject;
     }
   }
@@ -847,7 +868,7 @@ export function combineWithAlphaED(
   // Step 4: Add ED-bypass portion of alpha on top (same gate as Step 2)
   for (const [aspect, value] of Object.entries(alphaBonuses)) {
     if (value !== undefined && value !== 0 && alphaAcceptsAspect(aspect)) {
-      const bypass = value * edBypassRatio;
+      const bypass = alphaEdBypass[aspect] ?? 0;
       result[aspect] = (result[aspect] || 0) + bypass;
     }
   }

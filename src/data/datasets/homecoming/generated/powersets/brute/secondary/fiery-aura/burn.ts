@@ -18,9 +18,6 @@ export const Burn: Power = {
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
-  "strengthsDisallowed": [
-    "Radius"
-  ],
   "stats": {
     "accuracy": 1,
     "recharge": 25,
@@ -56,8 +53,7 @@ export const Burn: Power = {
       "copyBoosts": true,
       "displayName": "Burn Flames",
       "duration": 10,
-      "entity": "PL_StaticObject",
-      "isPseudoPet": false,
+      "isPseudoPet": true,
       "powers": [
         "Redirects.Fiery_Aura.FieryBurn",
         "Redirects.Fiery_Aura.FieryBurn_FrontDamage"
@@ -126,7 +122,8 @@ export const Burn: Power = {
             }
           ]
         }
-      ]
+      ],
+      "entity": "PL_StaticObject"
     }
   },
   "atoms": [

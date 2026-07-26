@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -57,7 +58,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -77,20 +78,22 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
-            "entity_def": "Nemesis_Nemesis_Sniper_noexp"
+            "entity_def": "Nemesis_Nemesis_Sniper_noexp",
+            "priority_list": "RUNOUTOFDOOR,COMBAT",
+            "type": "EntCreate"
           },
           "flags": [
             "CopyBoosts"
           ],
-          "flags_raw": 1280
+          "flags_raw": 1280,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -110,20 +113,22 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
-            "entity_def": "Nemesis_Nemesis_Lieutenant_noexp"
+            "entity_def": "Nemesis_Nemesis_Lieutenant_noexp",
+            "priority_list": "RUNOUTOFDOOR,COMBAT",
+            "type": "EntCreate"
           },
           "flags": [
             "CopyBoosts"
           ],
-          "flags_raw": 1280
+          "flags_raw": 1280,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -143,20 +148,22 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
-            "entity_def": "Nemesis_Nemesis_Sniper_GasMask_noexp"
+            "entity_def": "Nemesis_Nemesis_Sniper_GasMask_noexp",
+            "priority_list": "RUNOUTOFDOOR,COMBAT",
+            "type": "EntCreate"
           },
           "flags": [
             "CopyBoosts"
           ],
-          "flags_raw": 1280
+          "flags_raw": 1280,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -176,20 +183,22 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
-            "entity_def": "Nemesis_Nemesis_Lieutenant_GasMask_noexp"
+            "entity_def": "Nemesis_Nemesis_Lieutenant_GasMask_noexp",
+            "priority_list": "RUNOUTOFDOOR,COMBAT",
+            "type": "EntCreate"
           },
           "flags": [
             "CopyBoosts"
           ],
-          "flags_raw": 1280
+          "flags_raw": 1280,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -209,20 +218,22 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
-            "entity_def": "Nemesis_Nemesis_Warhulk_noexp"
+            "entity_def": "Nemesis_Nemesis_Warhulk_noexp",
+            "priority_list": "RUNOUTOFDOOR,COMBAT",
+            "type": "EntCreate"
           },
           "flags": [
             "CopyBoosts"
           ],
-          "flags_raw": 1280
+          "flags_raw": 1280,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -242,13 +253,15 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
-            "entity_def": "Nemesis_Fake_Nemesis_noexp"
+            "entity_def": "Nemesis_Fake_Nemesis_noexp",
+            "priority_list": "RUNOUTOFDOOR,COMBAT",
+            "type": "EntCreate"
           },
           "flags": [
             "CopyBoosts"
           ],
-          "flags_raw": 1280
+          "flags_raw": 1280,
+          "flags2_raw": 4
         }
       ]
     },
@@ -269,7 +282,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -289,13 +302,15 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
-            "entity_def": "Nemesis_Nemesis_Elite_noexp"
+            "entity_def": "Nemesis_Nemesis_Elite_noexp",
+            "priority_list": "RUNOUTOFDOOR,COMBAT",
+            "type": "EntCreate"
           },
           "flags": [
             "CopyBoosts"
           ],
-          "flags_raw": 1280
+          "flags_raw": 1280,
+          "flags2_raw": 4
         }
       ]
     },
@@ -316,7 +331,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -336,13 +351,15 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
-            "entity_def": "Nemesis_Nemesis_Elite_GasMask_noexp"
+            "entity_def": "Nemesis_Nemesis_Elite_GasMask_noexp",
+            "priority_list": "RUNOUTOFDOOR,COMBAT",
+            "type": "EntCreate"
           },
           "flags": [
             "CopyBoosts"
           ],
-          "flags_raw": 1280
+          "flags_raw": 1280,
+          "flags2_raw": 4
         }
       ]
     },
@@ -363,7 +380,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -383,13 +400,15 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
-            "entity_def": "Nemesis_Nemesis_Jaeger_noexp"
+            "entity_def": "Nemesis_Nemesis_Jaeger_noexp",
+            "priority_list": "RUNOUTOFDOOR,COMBAT",
+            "type": "EntCreate"
           },
           "flags": [
             "CopyBoosts"
           ],
-          "flags_raw": 1280
+          "flags_raw": 1280,
+          "flags2_raw": 4
         }
       ]
     },
@@ -410,7 +429,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -430,13 +449,15 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
-            "entity_def": "Nemesis_Nemesis_Jaeger_Slicer_noexp"
+            "entity_def": "Nemesis_Nemesis_Jaeger_Slicer_noexp",
+            "priority_list": "RUNOUTOFDOOR,COMBAT",
+            "type": "EntCreate"
           },
           "flags": [
             "CopyBoosts"
           ],
-          "flags_raw": 1280
+          "flags_raw": 1280,
+          "flags2_raw": 4
         }
       ]
     },
@@ -457,7 +478,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -477,13 +498,15 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
-            "entity_def": "Nemesis_Nemesis_Jaeger_Bomber_noexp"
+            "entity_def": "Nemesis_Nemesis_Jaeger_Bomber_noexp",
+            "priority_list": "RUNOUTOFDOOR,COMBAT",
+            "type": "EntCreate"
           },
           "flags": [
             "CopyBoosts"
           ],
-          "flags_raw": 1280
+          "flags_raw": 1280,
+          "flags2_raw": 4
         }
       ]
     }

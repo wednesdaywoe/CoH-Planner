@@ -39,11 +39,31 @@ export const Burn: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Fire",
     "scale": 1.6,
     "table": "Melee_Damage"
   },
   "effects": {
+    "buffDuration": 9.53,
+    "damageBuff": {
+      "scale": 0.061,
+      "table": "Melee_Ones",
+      "perTarget": 0.061
+    },
+    "durations": {
+      "damageBuff": 9.53
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 100,
+      "table": "Melee_Res_Boolean"
+    },
+    "mezResistance": {
+      "immobilize": {
+        "scale": 1,
+        "table": "Melee_Res_Boolean"
+      }
+    },
     "summon": {
       "duration": 10,
       "entity": "Pets_Burn",
@@ -51,9 +71,21 @@ export const Burn: Power = {
     }
   },
   "atoms": [
+    ["EntCreate",null,1,1,10,"Melee_Level","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1],
     ["EntCreate",null,1,1,10,"Melee_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,100,1,0,"Melee_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1.6,1,0,"Melee_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"@ToHitRoll @ToHit < @ForceHit || entref source> entref target> == ! &&"],
-    ["Unmapped",null,0.061,1,9.53,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Mez","Immobilized",100,1,0,"Melee_Res_Boolean","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["MezResist","Immobilized",1,1,0,"Melee_Res_Boolean","Res","Duration","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Damage","Fire",1.6,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"@ToHitRoll @ToHit < @ForceHit || entref source> entref target> == ! &&"],
+    ["DamageBuff","Smashing",0.061,1,9.53,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.061],
+    ["DamageBuff","Lethal",0.061,1,9.53,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.061],
+    ["DamageBuff","Fire",0.061,1,9.53,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.061],
+    ["DamageBuff","Cold",0.061,1,9.53,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.061],
+    ["DamageBuff","Energy",0.061,1,9.53,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.061],
+    ["DamageBuff","Negative",0.061,1,9.53,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.061],
+    ["DamageBuff","Toxic",0.061,1,9.53,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.061],
+    ["DamageBuff","Psionic",0.061,1,9.53,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.061]
+  ],
+  "damageTypes": [
+    "Fire"
   ]
 };

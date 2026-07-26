@@ -18,6 +18,9 @@ export const AssassinsBlades: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 7,
@@ -44,6 +47,7 @@ export const AssassinsBlades: Power = {
     "table": "Melee_Damage"
   },
   "fromHideBonus": 1.7999999999999998,
+  "midCombatCast": 1,
   "effects": {
     "buffDuration": 8,
     "durations": {
@@ -74,8 +78,12 @@ export const AssassinsBlades: Power = {
     ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kMeter source> .9 <",true],
     ["Damage","Lethal",4.5,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> 0 > &&",true],
     ["Damage","Lethal",4.5,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kMeter source> 0 > &&",true],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","PvE",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq kMeter source> 0 > &&",true],
-    ["EntCreate",null,1,48,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,5.25,1,null,true,null,null,null,null,"kDD_StatusMode_1 source.Mode?",true],
-    ["EntCreate",null,1,52,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,5.25,1,null,true,null,null,null,null,"kDD_BonusAoEMode_1 source.Mode?",true]
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","PvE",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq kMeter source> 0 > &&",true],
+    ["Meta",null,1,48,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,5.25,1,null,true,null,null,null,null,"kDD_StatusMode_1 source.Mode?",true],
+    ["Meta",null,1,52,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,5.25,1,null,true,null,null,null,null,"kDD_BonusAoEMode_1 source.Mode?",true]
+  ],
+  "setsModes": [
+    "DD_StatusMode_2",
+    "DD_BonusAoEMode_2"
   ]
 };

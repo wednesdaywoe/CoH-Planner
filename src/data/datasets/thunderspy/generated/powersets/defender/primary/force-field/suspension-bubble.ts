@@ -36,17 +36,43 @@ export const SuspensionBubble: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 1,
+    "durations": {
+      "movement": 1,
+      "slow": 1
+    },
     "knockback": {
       "scale": 0.1,
       "table": "Ranged_Ones"
+    },
+    "movement": {
+      "fly": {
+        "scale": 4,
+        "table": "Melee_Ones"
+      },
+      "movementControl": {
+        "scale": 25,
+        "table": "Melee_Control"
+      },
+      "movementFriction": {
+        "scale": 25,
+        "table": "Melee_Friction"
+      }
+    },
+    "slow": {
+      "flySpeed": {
+        "scale": 1.01,
+        "table": "Melee_Ones"
+      }
     }
   },
   "atoms": [
-    ["Mez","Knockback",0.1,0.10000000149011612,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,4,1,1,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Movement","Control",25,1,1,"Melee_Control","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Movement","Friction",25,1,1,"Melee_Friction","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Mez","Knockback",0.1,0.10000000149011612,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Mez","Knockback",0.1,0.10000000149011612,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Movement","FlyMode",4,1,1,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Movement","Fly",-1.01,1,1,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Movement","Control",25,1,1,"Melee_Control","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Movement","Friction",25,1,1,"Melee_Friction","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Mez","Knockback",0.1,0.10000000149011612,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
   ],
   "requires": "Defender_Buff.Force_Field.Force_Bubble !"
 };

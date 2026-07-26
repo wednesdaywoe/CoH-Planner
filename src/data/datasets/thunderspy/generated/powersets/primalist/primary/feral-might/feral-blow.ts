@@ -45,16 +45,111 @@ export const FeralBlow: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Special",
-    "scale": 0.84,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.84,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Heal",
+      "scale": 0.084,
+      "table": "Melee_HealSelf"
+    },
+    {
+      "type": "Heal",
+      "scale": 0.168,
+      "table": "Melee_HealSelf"
+    }
+  ],
   "atoms": [
-    ["Meta",null,0,1,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.84,1,0,"Melee_Damage","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.1,1,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.084,1,0,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.168,0,0,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Damage","Smashing",0.84,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Meta",null,0.1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true],
+    ["Heal",null,0.084,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Heal",null,0.168,0,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1]
+  ],
+  "modeVariants": {
+    "HunterMode": {
+      "internalName": "Feral_Blow_Hunter",
+      "stats": {
+        "accuracy": 1,
+        "range": 7,
+        "recharge": 2.5,
+        "endurance": 3.536,
+        "castTime": 1,
+        "maxTargets": 1
+      },
+      "damage": {
+        "type": "Lethal",
+        "scale": 0.84,
+        "table": "Melee_Damage"
+      },
+      "damageTypes": [
+        "Lethal"
+      ],
+      "effects": {
+        "buffDuration": 10,
+        "defenseDebuff": {
+          "scale": 1.5,
+          "table": "Melee_Debuff_Def"
+        },
+        "durations": {
+          "defenseDebuff": 10
+        }
+      },
+      "shortHelp": "Melee, Light DMG(Special), Special",
+      "description": "You lash out at a nearby foe dealing Light damage. In primal (human) form you will deal smashing damage and will heal yourself and up to 3 nearby allies for a tiny amount of health. In Hunter form you'll deal lethal damage and reduce the target's defense. In Prowler form you'll deal lethal damage, cause minor lethal damage over time and have a small chance to stun. This power builds 1 Primal Energy. Damage: Light, Recharge: Very Fast",
+      "effectArea": "SingleTarget",
+      "targetType": "Foe",
+      "powerType": "Click"
+    },
+    "ProwlerMode": {
+      "internalName": "Feral_Blow_Prowler",
+      "stats": {
+        "accuracy": 1,
+        "range": 7,
+        "recharge": 2.5,
+        "endurance": 3.536,
+        "castTime": 1,
+        "maxTargets": 1
+      },
+      "damage": [
+        {
+          "type": "Lethal",
+          "scale": 0.84,
+          "table": "Melee_Damage"
+        },
+        {
+          "type": "Lethal",
+          "scale": 0.42,
+          "table": "Melee_Damage"
+        },
+        {
+          "type": "Lethal",
+          "scale": 0.1,
+          "table": "Melee_Damage",
+          "duration": 4.1,
+          "tickRate": 1
+        },
+        {
+          "type": "Lethal",
+          "scale": 0.1,
+          "table": "Melee_Damage",
+          "duration": 4.1,
+          "tickRate": 1
+        }
+      ],
+      "damageTypes": [
+        "Lethal"
+      ],
+      "shortHelp": "Melee, Light DMG(Special), Special",
+      "description": "You lash out at a nearby foe dealing Light damage. In primal (human) form you will deal smashing damage and will heal yourself and up to 3 nearby allies for a tiny amount of health. In Hunter form you'll deal lethal damage and reduce the target's defense. In Prowler form you'll deal lethal damage, cause minor lethal damage over time and have a small chance to stun. This power builds 1 Primal Energy. Damage: Light, Recharge: Very Fast",
+      "effectArea": "SingleTarget",
+      "targetType": "Foe",
+      "powerType": "Click"
+    }
+  },
+  "damageTypes": [
+    "Smashing"
   ]
 };

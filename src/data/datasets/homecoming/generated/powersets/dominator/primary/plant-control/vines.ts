@@ -43,9 +43,9 @@ export const Vines: Power = {
   "effects": {
     "summon": {
       "copyBoosts": true,
+      "displayName": "Vines",
       "duration": 60,
-      "entity": "Vines",
-      "isPseudoPet": false,
+      "isPseudoPet": true,
       "powers": [
         "Villain_Pets.Vines.Self_Destruct",
         "Pets.ResistAll.ResistAll",
@@ -70,6 +70,7 @@ export const Vines: Power = {
                   "table": "Ranged_Damage"
                 }
               ],
+              "conditionalDamage": true,
               "effects": [
                 {
                   "type": "Hold",
@@ -107,7 +108,8 @@ export const Vines: Power = {
             }
           ]
         }
-      ]
+      ],
+      "entity": "PL_Untargetable_FightPreferRanged"
     }
   },
   "atoms": [

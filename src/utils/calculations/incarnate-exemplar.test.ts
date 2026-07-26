@@ -3,6 +3,9 @@ import { loadDataset } from '@/data/dataset';
 import { createEmptyBuild } from '@/types/build';
 import { calculateCharacterTotals, getAlphaEnhancementBonuses } from './character-totals';
 import { getEffectiveLevel, areIncarnatesSuppressed, INCARNATE_MIN_LEVEL } from './effective-level';
+import { getIncarnatePower, } from '@/data/incarnates';
+import { createDefaultIncarnateActiveState } from '@/types/incarnate';
+import type { IncarnateSlotId } from '@/types/incarnate';
 
 /**
  * All incarnate abilities function only at effective level 45+. Below 45 (when
@@ -31,9 +34,14 @@ describe('effective level + incarnate suppression helpers', () => {
   });
 });
 
+// `powerName` is the power's fullName — what the modal stores and the ONLY field the engine
+// resolves an incarnate selection by. A blank one resolves to nothing, so it is looked up here
+// rather than hand-written.
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function selected(slotId: string, powerId: string, displayName: string, treeId = '', treeName = ''): any {
-  return { slotId, powerId, powerName: '', displayName, icon: '', tier: 'veryrare', treeId, treeName };
+  const def = getIncarnatePower(slotId as IncarnateSlotId, powerId);
+  if (!def) throw new Error(`fixture: no incarnate power ${slotId}/${powerId}`);
+  return { slotId, powerId, powerName: def.fullName, displayName, icon: '', tier: 'veryrare', treeId, treeName };
 }
 
 describe('incarnate exemplar suppression — character totals (rebirth)', () => {
@@ -56,11 +64,19 @@ describe('incarnate exemplar suppression — character totals (rebirth)', () => 
     // Ageless Core Epiphany grants +40% recharge.
     b.incarnates.destiny = selected('destiny', 'ageless_core_epiphany', 'Ageless Core Epiphany');
 
-    const at50 = calculateCharacterTotals(b, false);
-    const at45 = calculateCharacterTotals(b, true, undefined, { exemplarLevel: 45 });
-    const at44 = calculateCharacterTotals(b, true, undefined, { exemplarLevel: 44 });
+    // The app defaults every incarnate slot to ACTIVE (createDefaultIncarnateActiveState);
+    // calculateCharacterTotals' own fallback is every slot OFF, so omitting it here would
+    // switch off the very incarnate under test.
+    const on = createDefaultIncarnateActiveState();
+    const at50 = calculateCharacterTotals(b, false, on);
+    const at45 = calculateCharacterTotals(b, true, on, { exemplarLevel: 45 });
+    const at44 = calculateCharacterTotals(b, true, on, { exemplarLevel: 44 });
 
-    expect(at50.globalBonuses.recharge).toBeCloseTo(40, 6);
+    // 10, not the 40 peak: Destiny buffs decay, and the shipping default resolves them at
+    // their SUSTAINED FLOOR (`destinyTime: null`). The dashboard has always shown the floor —
+    // `calculateCharacterTotals` collapses an omitted `destinyTime` to `null`, and the UI store's
+    // own default is `null` too, so the flat-peak reading is unreachable from the app.
+    expect(at50.globalBonuses.recharge).toBeCloseTo(10, 6);
     expect(at45.globalBonuses.recharge).toBeCloseTo(at50.globalBonuses.recharge, 6);
     expect(at44.globalBonuses.recharge).toBe(0); // suppressed below 45
   });
@@ -71,8 +87,9 @@ describe('incarnate exemplar suppression — character totals (rebirth)', () => 
     // amplifier needs a Destiny to act on (none slotted here), so recharge = 0.
     b.incarnates.genesis = selected('genesis', 'fate_genesis', 'Fate Genesis', 'fate', 'Fate');
 
-    const at45 = calculateCharacterTotals(b, true, undefined, { exemplarLevel: 45 });
-    const at44 = calculateCharacterTotals(b, true, undefined, { exemplarLevel: 44 });
+    const on = createDefaultIncarnateActiveState();
+    const at45 = calculateCharacterTotals(b, true, on, { exemplarLevel: 45 });
+    const at44 = calculateCharacterTotals(b, true, on, { exemplarLevel: 44 });
 
     expect(at45.globalBonuses.recharge).toBe(0);
     expect(at44.globalBonuses.recharge).toBeGreaterThan(0);

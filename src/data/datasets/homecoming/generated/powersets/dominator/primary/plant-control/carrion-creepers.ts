@@ -49,8 +49,7 @@ export const CarrionCreepers: Power = {
       "copyBoosts": true,
       "displayName": "Carrion Creeper",
       "duration": 120,
-      "entity": "PL_Untargetable_FightPreferRanged",
-      "isPseudoPet": false,
+      "isPseudoPet": true,
       "powers": [
         "Pets.ResistAll.ResistAll",
         "Villain_Pets.Creeper_Patch.Carrion_Creepers",
@@ -123,7 +122,8 @@ export const CarrionCreepers: Power = {
             }
           ]
         }
-      ]
+      ],
+      "entity": "PL_Untargetable_FightPreferRanged"
     }
   },
   "atoms": [

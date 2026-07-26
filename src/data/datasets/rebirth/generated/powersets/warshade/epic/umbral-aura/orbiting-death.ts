@@ -51,8 +51,5 @@ export const OrbitingDeath: Power = {
     ["Meta",null,1,1,2.5,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,2,1],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < && kWarshade_Tanker_Mode source.Mode? &&",true],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq && kWarshade_Tanker_Mode source.Mode? &&",true]
-  ],
-  "setsModes": [
-    "Peacebringer_Blaster_Mode"
   ]
 };

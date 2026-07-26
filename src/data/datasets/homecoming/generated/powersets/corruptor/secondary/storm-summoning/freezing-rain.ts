@@ -48,8 +48,7 @@ export const FreezingRain: Power = {
       "copyBoosts": true,
       "displayName": "Freezing Rain",
       "duration": 15,
-      "entity": "PL_StaticObject",
-      "isPseudoPet": false,
+      "isPseudoPet": true,
       "powers": [
         "Pets.Freezing_Rain.FreezingRain",
         "Pets.Freezing_Rain.Avoid"
@@ -112,7 +111,8 @@ export const FreezingRain: Power = {
             }
           ]
         }
-      ]
+      ],
+      "entity": "PL_StaticObject"
     }
   },
   "atoms": [

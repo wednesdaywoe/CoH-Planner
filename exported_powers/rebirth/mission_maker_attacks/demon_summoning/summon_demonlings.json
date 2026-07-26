@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -57,14 +58,14 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Levelminus",
           "scale": 1.0,
           "duration": "99999 seconds",
           "magnitude": 1.0,
-          "delay": 3.3299999237060547,
+          "delay": 3.33,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -84,7 +85,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -105,14 +107,14 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Levelminus",
           "scale": 1.0,
           "duration": "99999 seconds",
           "magnitude": 1.0,
-          "delay": 3.3299999237060547,
+          "delay": 3.33,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -132,7 +134,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -153,14 +156,14 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Levelminus",
           "scale": 1.0,
           "duration": "99999 seconds",
           "magnitude": 1.0,
-          "delay": 4.329999923706055,
+          "delay": 4.33,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -180,7 +183,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -201,14 +205,14 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Levelminus2",
           "scale": 1.0,
           "duration": "99999 seconds",
           "magnitude": 1.0,
-          "delay": 3.3299999237060547,
+          "delay": 3.33,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -228,7 +232,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -249,14 +254,14 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Levelminus2",
           "scale": 1.0,
           "duration": "99999 seconds",
           "magnitude": 1.0,
-          "delay": 3.8299999237060547,
+          "delay": 3.83,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -276,7 +281,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -297,14 +303,14 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Levelminus2",
           "scale": 1.0,
           "duration": "99999 seconds",
           "magnitude": 1.0,
-          "delay": 4.329999923706055,
+          "delay": 4.33,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -324,7 +330,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     }

@@ -1,0 +1,19 @@
+{
+  "key": "Boosts.Crafted_Detonation_B",
+  "display_name": "Crafted Detonation B",
+  "help": "Enhances the damage of a power by {Boost.Attrib.Damage.Scale}% and reduces endurance cost by {Boost.Attrib.Endurance.Scale}%",
+  "short_help": "Set: Detonation",
+  "icon": "crafted_detonation_b_set.ico",
+  "powers": [
+    "Boosts.Crafted_Detonation_B.Crafted_Detonation_B"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Detonation: Damage/Endurance"
+  ],
+  "power_short_helps": [
+    "Enhances Damage and Reduces Endurance Cost"
+  ]
+}

@@ -10,15 +10,15 @@ import React, { useState, useMemo, useCallback, useEffect } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
 import { getBaseToHit } from '@/data/purple-patch';
 import { lookupPower, getIOSet, getPowerIconPath } from '@/data';
-import { getArchetype } from '@/data';
 import { calculatePowerEnhancementBonuses } from '@/utils/calculations/enhancement-values';
 import { calculatePowerDamage } from '@/utils/calculations/damage';
-import { extractHealingFromDamage } from '@/utils/calculations/healing';
-import { getAlphaEnhancementBonuses, calculateCharacterTotals } from '@/utils/calculations/character-totals';
+import { getAlphaEnhancementBonuses } from '@/utils/calculations/character-totals';
 import { computeSetTracking } from '@/utils/calculations/set-tracking';
+import { projectionKey } from '@/engine/engineTotalsMap';
 import { getBaselineHealth } from '@/utils/calculations/stats';
-import { useGlobalBonuses, useCharacterCalculation, convertToLegacyStats } from '@/hooks';
-import { convertGlobalBonusesToAspects, getEffectiveBuffDebuffModifier, findSelectedPowerInBuild } from '@/components/info/powerDisplayUtils';
+import { useGlobalBonuses, useCharacterCalculation, useHypotheticalCalculation, convertToLegacyStats } from '@/hooks';
+import { convertGlobalBonusesToAspects, findSelectedPowerInBuild } from '@/components/info/powerDisplayUtils';
+import { buildDisplayEffects } from '@/components/info/buildDisplayEffects';
 import { STAT_DEFINITIONS } from '@/data/stat-definitions';
 import type { StatValue } from '@/data/stat-definitions';
 
@@ -132,32 +132,10 @@ export function CompareSlottingModal() {
   );
 
   const archetypeId = build.archetype.id;
-  const archetype = archetypeId ? getArchetype(archetypeId as ArchetypeId) : null;
-  const buffDebuffMod = archetype?.stats?.buffDebuffModifier ?? 1.0;
-  const effectiveMod = compareTarget
-    ? getEffectiveBuffDebuffModifier(compareTarget.powerSet, buffDebuffMod)
-    : 1.0;
-
-  // Build merged effects for RegistryEffectsDisplay
-  const mergedEffects = useMemo(() => {
-    if (!power || !compareTarget) return {};
-    const baseEffects = power.effects;
-
-    // Extract healing from damage field (e.g. Life Drain)
-    const healFromDamage = baseEffects?.healing
-      ? undefined
-      : extractHealingFromDamage(power.damage);
-
-    return {
-      ...baseEffects,
-      ...(power.stats?.endurance && { enduranceCost: power.powerType === 'Toggle' ? power.stats.endurance / (power.stats.activatePeriod ?? 0.5) : power.stats.endurance }),
-      ...(power.stats?.recharge && { recharge: power.stats.recharge }),
-      ...(power.stats?.accuracy && { accuracy: power.stats.accuracy }),
-      ...(power.stats?.range && { range: power.stats.range }),
-      ...(power.stats?.castTime && { castTime: power.stats.castTime }),
-      ...(healFromDamage && { healing: healFromDamage }),
-    };
-  }, [power, compareTarget]);
+  const mergedEffects = useMemo(
+    () => (power && compareTarget ? buildDisplayEffects(power) : {}),
+    [power, compareTarget]
+  );
 
   const exemplarMode = useUIStore((s) => s.exemplarMode);
   const exemplarLevel = useUIStore((s) => s.exemplarLevel);
@@ -203,9 +181,51 @@ export function CompareSlottingModal() {
     ? copies.find(c => c.id === hoveredCopyId) ?? copies[0]
     : copies[0];
 
+  // The build as it would be with the active copy's slots on the target power. Assembling it
+  // here rather than inside the calculation memo is what lets ONE engine run serve both the
+  // dashboard deltas below and the per-power numbers the effect rows read (PROD6D).
+  const hypotheticalBuild = useMemo(() => {
+    if (!activeCopy || !compareTarget) return null;
+
+    const replacePower = <T extends { name: string; internalName: string; slots: (Enhancement | null)[] }>(p: T): T =>
+      p.internalName === compareTarget.powerName ? { ...p, slots: [...activeCopy.slots] } : p;
+
+    const hypoBuild = {
+      ...build,
+      primary: { ...build.primary, powers: build.primary.powers.map(replacePower) },
+      secondary: { ...build.secondary, powers: build.secondary.powers.map(replacePower) },
+      pools: build.pools.map(pool => ({ ...pool, powers: pool.powers.map(replacePower) })),
+      epicPool: build.epicPool
+        ? { ...build.epicPool, powers: build.epicPool.powers.map(replacePower) }
+        : null,
+      inherents: build.inherents.map(replacePower),
+      sets: {} as typeof build.sets, // placeholder, computed below
+    };
+    hypoBuild.sets = computeSetTracking(hypoBuild);
+    return hypoBuild;
+  }, [activeCopy, compareTarget, build]);
+
+  // Run under the SAME context the current column came from — `useHypotheticalCalculation`
+  // reads it from the one place `useCharacterCalculation` does, so a delta can only report the
+  // slotting under test and never a difference in exemplar level, target level or combat mode.
+  const hypotheticalResult = useHypotheticalCalculation(hypotheticalBuild);
+
+  // The projection for the target power under the hypothetical slotting — the engine already
+  // resolved it while computing the dashboard deltas above, so nothing here recomputes it
+  // (PROD6D). `null` until the dataset is loaded; `computeBonuses` covers that boot window.
+  const activeProjection = useMemo(
+    () => (hypotheticalResult && compareTarget
+      ? hypotheticalResult.powerProjection.get(
+          projectionKey(compareTarget.powerSet, compareTarget.powerName)
+        ) ?? null
+      : null),
+    [hypotheticalResult, compareTarget]
+  );
+
   const activeEnhBonuses = useMemo(
-    () => activeCopy ? computeBonuses(activeCopy.slots) : {},
-    [activeCopy, computeBonuses]
+    () => activeProjection?.enhancementBonuses
+      ?? (activeCopy ? computeBonuses(activeCopy.slots) : {}),
+    [activeProjection, activeCopy, computeBonuses]
   );
 
   const activeDamage = useMemo(
@@ -259,10 +279,6 @@ export function CompareSlottingModal() {
   // DASHBOARD STATS: hypothetical build calculation
   // ============================================
   const statsConfig = useUIStore((s) => s.statsConfig);
-  const procSettings = useUIStore((s) => s.procSettings);
-  const targetsHitValues = useUIStore((s) => s.targetsHitValues);
-  const vigilanceTeamSize = useUIStore((s) => s.vigilanceTeamSize);
-  const furyLevel = useUIStore((s) => s.furyLevel);
 
   const currentCalcResult = useCharacterCalculation();
 
@@ -288,36 +304,13 @@ export function CompareSlottingModal() {
     [statsConfig]
   );
 
-  // Hypothetical stats: what happens if we apply activeCopy's slots to the build
-  const hypotheticalLegacyStats = useMemo(() => {
-    if (!activeCopy || !compareTarget || visibleStatIds.length === 0) return null;
 
-    // Clone the build with the target power's slots replaced
-    const replacePower = <T extends { name: string; internalName: string; slots: (Enhancement | null)[] }>(p: T): T =>
-      p.internalName === compareTarget.powerName ? { ...p, slots: [...activeCopy.slots] } : p;
-
-    const hypoBuild = {
-      ...build,
-      primary: { ...build.primary, powers: build.primary.powers.map(replacePower) },
-      secondary: { ...build.secondary, powers: build.secondary.powers.map(replacePower) },
-      pools: build.pools.map(pool => ({ ...pool, powers: pool.powers.map(replacePower) })),
-      epicPool: build.epicPool
-        ? { ...build.epicPool, powers: build.epicPool.powers.map(replacePower) }
-        : null,
-      inherents: build.inherents.map(replacePower),
-      sets: {} as typeof build.sets, // placeholder, computed below
-    };
-    hypoBuild.sets = computeSetTracking(hypoBuild);
-
-    const hypoResult = calculateCharacterTotals(hypoBuild, exemplarMode, incarnateActive, {
-      procSettings,
-      targetsHitValues,
-      vigilanceTeamSize,
-      furyLevel,
-    });
-
-    return convertToLegacyStats(hypoResult.stats, hypoResult);
-  }, [activeCopy, compareTarget, visibleStatIds.length, build, exemplarMode, incarnateActive, procSettings, targetsHitValues, vigilanceTeamSize, furyLevel]);
+  const hypotheticalLegacyStats = useMemo(
+    () => (hypotheticalResult && visibleStatIds.length > 0
+      ? convertToLegacyStats(hypotheticalResult.stats, hypotheticalResult)
+      : null),
+    [hypotheticalResult, visibleStatIds.length]
+  );
 
   // Helper: extract numeric value from a StatValue for delta computation
   const getNumericValue = useCallback((v: StatValue): number => {
@@ -479,7 +472,6 @@ export function CompareSlottingModal() {
               allowedEnhancements={power.allowedEnhancements}
               enhancementBonuses={activeEnhBonuses}
               globalBonuses={globalBonusesForCalc}
-              buffDebuffMod={effectiveMod}
               archetypeId={archetypeId ?? undefined}
               level={build.level}
               categories={['execution', 'buff', 'debuff', 'control', 'protection', 'movement']}

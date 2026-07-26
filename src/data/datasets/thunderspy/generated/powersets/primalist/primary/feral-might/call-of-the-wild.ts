@@ -33,7 +33,6 @@ export const CalloftheWild: Power = {
   ],
   "allowedSetCategories": [
     "Pet Damage",
-    "Primalist Archetype Sets",
     "Recharge Intensive Pets",
     "Universal Damage Sets"
   ],
@@ -47,7 +46,9 @@ export const CalloftheWild: Power = {
     }
   },
   "atoms": [
+    ["EntCreate",null,1,1,90,"Melee_Levelminus","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
     ["EntCreate",null,1,1,90,"Melee_Levelminus","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["EntCreate",null,1,1,90,"Melee_Levelminus","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["EntCreate",null,1,1,90,"Melee_Levelminus","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["EntCreate",null,1,1,90,"Melee_Levelminus","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true]
   ]
 };

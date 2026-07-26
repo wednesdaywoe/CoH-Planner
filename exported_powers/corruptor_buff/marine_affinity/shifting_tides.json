@@ -23,13 +23,13 @@
   "activate_period": 0.1,
   "endurance_cost": 0.078,
   "interrupt_time": 0.0,
-  "target_type": "DeadOrAliveMyPet",
+  "target_type": "DeadOrAliveAny",
   "target_type_secondary": "None",
   "targets_autohit": [
-    "DeadOrAliveMyPet"
+    "DeadOrAliveAny"
   ],
   "targets_affected": [
-    "DeadOrAliveMyPet"
+    "DeadOrAliveAny"
   ],
   "boosts_allowed": [
     "EnduranceDiscount",
@@ -53,6 +53,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -72,7 +73,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -92,16 +93,18 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Redirects.Marine_Affinity.Shifting_Tides"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "KeepThroughDeath",
             "CopyBoosts"
           ],
-          "flags_raw": 17664
+          "flags_raw": 17664,
+          "flags2_raw": 4
         }
       ]
     },
@@ -122,7 +125,7 @@
             "Null"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -141,6 +144,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "PFX2",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "NoHitDelay"
           ],
@@ -151,7 +160,7 @@
             "Cold_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
@@ -170,6 +179,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Cold damage.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Cold damage.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": "25% - 50% chance per attack on effected enemies."
+          },
           "flags_raw": 1280
         },
         {
@@ -184,7 +200,7 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Ranged_Buff_Dmg",
@@ -203,6 +219,13 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": "Stacks up to 10 times"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -214,7 +237,7 @@
             "ToHit"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Buff_ToHit",
@@ -233,6 +256,13 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": "Stacks up to 10 times"
+          },
           "flags": [
             "IgnoreResistance"
           ],
@@ -243,7 +273,7 @@
             "RechargeTime"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -262,6 +292,13 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": "Stacks up to 10 times"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -287,12 +324,12 @@
             "Null"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 1.0,
-          "duration": "0.20 seconds",
+          "duration": "0.2 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -306,6 +343,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "PFX4",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "NoHitDelay"
           ],
@@ -330,7 +373,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
@@ -350,10 +393,11 @@
           "stack_limit": 10,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Temporary_Powers.Temporary_Powers.Rising_Tide"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreResistance",
@@ -361,7 +405,8 @@
             "KeepThroughDeath",
             "CopyBoosts"
           ],
-          "flags_raw": 16480
+          "flags_raw": 16480,
+          "flags2_raw": 4
         }
       ],
       "child_effects": [
@@ -384,7 +429,7 @@
                 "Set_Mode"
               ],
               "type": "Constant",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
@@ -403,6 +448,13 @@
               "stack": "Refresh",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "Your {PowerName} has left {PlayerDest} wet.",
+                "display_victim_hit": null,
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags": [
                 "IgnoreStrength",
                 "IgnoreResistance",
@@ -432,7 +484,7 @@
                 "Cold_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Ranged_Damage",
@@ -451,6 +503,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Cold damage.",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Cold damage.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags_raw": 1280
             },
             {
@@ -458,7 +517,7 @@
                 "Grant_Power"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Strength",
               "target": "AnyAffected",
               "table": "Melee_Ones",
@@ -478,16 +537,19 @@
               "stack_limit": 2,
               "stack_key": null,
               "params": {
-                "type": "Power",
                 "power_names": [
                   "Redirects.Marine_Affinity.Shifting_Tides_FX"
-                ]
+                ],
+                "count": 1,
+                "type": "Power"
               },
               "flags": [
                 "KeepThroughDeath",
-                "CopyBoosts"
+                "CopyBoosts",
+                "CopyCreatorCostume"
               ],
-              "flags_raw": 17664
+              "flags_raw": 17664,
+              "flags2_raw": 260
             }
           ]
         }

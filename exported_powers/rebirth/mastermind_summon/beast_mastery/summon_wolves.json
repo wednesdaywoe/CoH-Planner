@@ -62,6 +62,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -81,7 +82,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Levelminus2",
@@ -102,12 +103,14 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "MastermindPets_Howler_Wolf"
+            "entity_def": "MastermindPets_Howler_Wolf",
+            "priority_list": "Pet"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -128,7 +131,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Levelminus2",
@@ -149,12 +152,14 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "MastermindPets_Howler_Wolf"
+            "entity_def": "MastermindPets_Howler_Wolf",
+            "priority_list": "Pet"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -175,7 +180,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Levelminus2",
@@ -196,12 +201,14 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "MastermindPets_Howler_Wolf_Alpha"
+            "entity_def": "MastermindPets_Howler_Wolf_Alpha",
+            "priority_list": "Pet"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     }

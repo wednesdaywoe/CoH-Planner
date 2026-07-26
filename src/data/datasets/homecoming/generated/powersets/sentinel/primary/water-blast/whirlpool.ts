@@ -47,17 +47,53 @@ export const Whirlpool: Power = {
     "summon": {
       "copyBoosts": true,
       "duration": 15,
-      "entities": [
+      "entity": "Pets_Whirlpool_Sentinel",
+      "isPseudoPet": false,
+      "resolvedEntities": [
         {
-          "count": 1,
-          "entity": "Pets_Whirlpool_Sentinel"
-        },
-        {
-          "count": 1,
-          "entity": "Whirlpool"
+          "displayName": "Whirlpool",
+          "duration": 15,
+          "copyCreatorMods": true,
+          "abilities": [
+            {
+              "name": "Whirlpool",
+              "displayName": "Whirlpool",
+              "type": "Auto",
+              "damage": [
+                {
+                  "damageType": "Cold",
+                  "scale": 0.0664,
+                  "table": "Melee_Damage"
+                },
+                {
+                  "damageType": "Cold",
+                  "scale": 0.0664,
+                  "table": "Melee_InherentDamage"
+                }
+              ],
+              "effects": [
+                {
+                  "type": "Slow",
+                  "scale": 0.4,
+                  "table": "Melee_Slow",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "DefenseDebuff",
+                  "scale": 1,
+                  "table": "Melee_Debuff_Def"
+                }
+              ],
+              "recharge": 0,
+              "castTime": 0,
+              "activatePeriod": 0.5,
+              "effectArea": "Sphere",
+              "radius": 25,
+              "maxTargets": 10
+            }
+          ]
         }
-      ],
-      "isPseudoPet": false
+      ]
     }
   },
   "atoms": [

@@ -47,8 +47,14 @@ export const FireImps: Power = {
     }
   },
   "atoms": [
+    ["EntCreate",null,1,1,99999,"Ranged_Levelminus","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1],
     ["EntCreate",null,1,1,99999,"Ranged_Levelminus","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["EntCreate",null,1,1,99999,"Ranged_Levelminus","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["EntCreate",null,1,1,99999,"Ranged_Levelminus","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["EntCreate",null,1,1,99999,"Ranged_Levelminus","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["EntCreate",null,1,1,99999,"Ranged_Levelminus","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1],
+    ["EntCreate",null,1,1,99999,"Ranged_Levelminus","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1]
+  ],
+  "damageTypes": [
+    "Fire"
   ]
 };

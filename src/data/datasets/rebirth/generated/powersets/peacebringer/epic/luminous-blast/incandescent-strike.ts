@@ -18,6 +18,9 @@ export const IncandescentStrike: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 7,
@@ -106,5 +109,64 @@ export const IncandescentStrike: Power = {
       "chance": 0.800000011920929,
       "label": "Knockback"
     }
-  ]
+  ],
+  "modeVariants": {
+    "Peacebringer_Tanker_Mode": {
+      "internalName": "White_Dwarf_Smite",
+      "stats": {
+        "accuracy": 1.2,
+        "range": 7,
+        "recharge": 8,
+        "endurance": 8.528,
+        "castTime": 1.5
+      },
+      "damage": [
+        {
+          "type": "Smashing",
+          "scale": 0.53,
+          "table": "Melee_SSDamage"
+        },
+        {
+          "type": "Energy",
+          "scale": 1.11,
+          "table": "Melee_SSDamage"
+        }
+      ],
+      "effects": {
+        "buffDuration": 30,
+        "defenseDebuff": {
+          "scale": 1,
+          "table": "Melee_Debuff_Def"
+        },
+        "durations": {
+          "defenseDebuff": 10,
+          "slow": 30
+        },
+        "knockback": {
+          "scale": 0.67,
+          "table": "Melee_Ones"
+        },
+        "slow": {
+          "fly": {
+            "scale": 1.6,
+            "table": "Melee_Ones"
+          }
+        },
+        "stun": {
+          "mag": 2,
+          "scale": 6,
+          "table": "Melee_Stun"
+        },
+        "taunt": {
+          "scale": 1,
+          "table": "Melee_InherentTaunt"
+        }
+      },
+      "shortHelp": "Melee, Heavy DMG(Energy/Smash), Foe -DEF, -Fly, Disorient",
+      "description": "White Dwarf Smite is powerful melee attack that can often Disorient or Knock Down opponents. White Dwarf Smite can also bring down fliers, and reduce their defense. This power is only available while in White Dwarf Form. Damage: Heavy, Recharge: Moderate",
+      "effectArea": "SingleTarget",
+      "targetType": "Foe",
+      "powerType": "Click"
+    }
+  }
 };

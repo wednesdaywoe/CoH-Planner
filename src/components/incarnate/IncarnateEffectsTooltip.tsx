@@ -171,7 +171,7 @@ export function getIncarnateEffectData(slotId: IncarnateSlotId, powerId: string,
       const fx = getAlphaEffects(powerId);
       if (!fx) return null;
       const entries: EffectEntry[] = (Object.entries(fx) as [string, number][])
-        .filter(([k]) => k !== 'levelShift' && k !== 'edBypass')
+        .filter(([k]) => k !== 'levelShift')
         .map(([k, v]) => ({ label: ALPHA_LABELS[k] || k, value: formatEffectValue(v) }));
       if (fx.levelShift !== undefined && fx.levelShift > 0)
         entries.push({ label: 'Level Shift', value: `+${fx.levelShift}` });
@@ -323,7 +323,7 @@ function EffectRow({ label, value }: { label: string; value: string }) {
 
 function AlphaTooltip({ fx }: { fx: AlphaEffects }) {
   const entries = Object.entries(fx).filter(
-    ([k]) => k !== 'levelShift' && k !== 'edBypass'
+    ([k]) => k !== 'levelShift'
   ) as [string, number][];
   if (entries.length === 0 && !fx.levelShift) return null;
 

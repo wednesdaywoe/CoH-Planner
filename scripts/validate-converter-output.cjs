@@ -259,9 +259,19 @@ function loadGeneratedPower(outputAbsPath) {
   return Object.values(mod).find((v) => v && typeof v === 'object' && v.effects) || null;
 }
 
-/** True if the power's input has a resistible+unresistable debuff twin. */
+/** True if the power's input has a resistible+unresistable debuff twin.
+ *
+ * PvP variants are NOT twins — they are the same effect on a different map, and
+ * the converter gates them rather than routing them to a base slot, so no
+ * `unresistable` stamp is owed. Both idioms must be excluded: Homecoming splits
+ * on `enttype target> player eq`, Thunderspy on `isPVPMap?`. Reading only the
+ * first made every tspy power whose PvP half carries IgnoreResistance (Unyielding's
+ * knockback/repel protection and 10 others) look like an unstamped twin. */
 function hasResistibleTwin(power) {
-  const templates = flattenTemplates(power.effects);
+  const templates = flattenTemplatesWithMeta(power.effects)
+    .filter(({ pvMode, requires }) => pvMode !== 'PVP_ONLY'
+      && !isPvpEnttypeVariant(requires) && !isPvpMapOnly(requires))
+    .map(({ t }) => t);
   const seen = {};
   for (const t of templates) {
     if (!t.attribs || t.attribs.length === 0 || !isTwinDebuff(t)) continue;

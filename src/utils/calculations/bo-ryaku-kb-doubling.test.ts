@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeAll } from 'vitest';
 import { loadDataset } from '@/data/dataset';
-import { calculateCharacterTotals } from '@/utils/calculations/character-totals';
+import { legacyCalculateCharacterTotals as calculateCharacterTotals } from '@/utils/calculations/legacy-totals.oracle';
 import { getTableValue } from '@/data/at-tables';
 import { createEmptyBuild } from '@/types/build';
 
@@ -68,6 +68,18 @@ function scrapperBuildWith(powers: unknown[]) {
   return b;
 }
 
+/**
+ * Graded against the TS ORACLE, not the engine, deliberately.
+ *
+ * These cases feed the calc SYNTHETIC power definitions — hand-authored `atoms` tuples on a
+ * power the dataset does not contain — to pin one applier rule in isolation. The engine cannot
+ * consume that: it resolves a selected power's effects from its own contract bundle by
+ * (powerSet, internalName), so a fabricated def resolves to nothing and the case would grade an
+ * empty result rather than the rule it describes. `legacyCalculateCharacterTotals` is the same
+ * calculation over the build object, kept as the independent oracle `serverParity` diffs the
+ * engine against on all three datasets — so the rule stays graded, and the engine's own
+ * agreement with this calc stays graded there, on real powers.
+ */
 describe('Bo Ryaku KB-protection doubling', () => {
   beforeAll(async () => {
     await loadDataset('homecoming');

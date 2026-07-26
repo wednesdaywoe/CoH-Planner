@@ -16,6 +16,7 @@ export const NoxiousGas: Power = {
   "shortHelp": "Ranged (Infect Henchman); Foe -RES, -DEF, -To Hit, -Res, +Special",
   "icon": "poison_noxiousgas.png",
   "powerType": "Click",
+  "targetType": "Own Pet (Alive)",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -31,6 +32,6 @@ export const NoxiousGas: Power = {
   ],
   "maxSlots": 6,
   "atoms": [
-    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"group target> MastermindPets eq",true]
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"group target> MastermindPets eq",true]
   ]
 };

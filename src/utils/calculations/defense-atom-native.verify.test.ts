@@ -1,7 +1,7 @@
 /**
  * Plan B Slice 4 — regression guard for the atom-native defense appliers.
  *
- * `character-totals.ts` now sources the always-on +Defense buff from
+ * `legacy-totals.oracle.ts` now sources the always-on +Defense buff from
  * `defenseBuffValue(power)` and the combat-suppressed half from
  * `defenseBuffSuppressibleValue(power)` (atoms) instead of `effects.defenseBuff` /
  * `effects.defenseBuffSuppressible`. This was the FIRST slice that needed a

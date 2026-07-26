@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -57,7 +58,7 @@
             "ToHit"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Buff_ToHit",
@@ -81,19 +82,19 @@
               "event": "Stunned",
               "event_id": 23,
               "duration": 15.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "Held",
               "event_id": 25,
               "duration": 15.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "Sleep",
               "event_id": 26,
               "duration": 15.0,
-              "flag": 1
+              "always": 1
             }
           ],
           "flags": [
@@ -106,7 +107,7 @@
             "ToHit"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "AnyAffected",
           "table": "Melee_Res_Boolean",
@@ -130,19 +131,19 @@
               "event": "Stunned",
               "event_id": 23,
               "duration": 15.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "Held",
               "event_id": 25,
               "duration": 15.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "Sleep",
               "event_id": 26,
               "duration": 15.0,
-              "flag": 1
+              "always": 1
             }
           ],
           "flags": [
@@ -156,7 +157,7 @@
             "PerceptionRadius"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "Self",
           "table": "Melee_Ones",
@@ -180,19 +181,19 @@
               "event": "Stunned",
               "event_id": 23,
               "duration": 15.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "Held",
               "event_id": 25,
               "duration": 15.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "Sleep",
               "event_id": 26,
               "duration": 15.0,
-              "flag": 1
+              "always": 1
             }
           ],
           "flags": [
@@ -206,7 +207,7 @@
             "PerceptionRadius"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -230,19 +231,19 @@
               "event": "Stunned",
               "event_id": 23,
               "duration": 15.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "Held",
               "event_id": 25,
               "duration": 15.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "Sleep",
               "event_id": 26,
               "duration": 15.0,
-              "flag": 1
+              "always": 1
             }
           ],
           "flags": [

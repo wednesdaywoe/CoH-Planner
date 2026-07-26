@@ -42,25 +42,52 @@ export const GeneticContamination: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Toxic",
     "scale": 0.15,
     "table": "Melee_Damage"
   },
+  "effects": {
+    "buffDuration": 5,
+    "damageDebuff": {
+      "scale": 1.5,
+      "table": "Melee_Debuff_Dam"
+    },
+    "durations": {
+      "damageDebuff": 5
+    },
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
+    }
+  },
   "atoms": [
-    ["Unmapped",null,0.15,1,0,"Melee_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Raid target.HasTag? ! &&"],
-    ["Unmapped",null,1.5,1,5,"Melee_Debuff_Dam","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kDefensiveAdaptation Source.Mode? !"],
-    ["Unmapped",null,0.05,1,6,"Melee_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,0.4000000059604645,1,null,null,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
-    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
-    ["Unmapped",null,1.995,1,5,"Melee_Debuff_Dam","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
-    ["Unmapped",null,1.995,1,5,"Melee_Debuff_Dam","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
-    ["Resistance","Smashing",-0.3,1,2,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
-    ["Resistance","Lethal",-0.3,1,2,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
-    ["Resistance","Fire",-0.3,1,2,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
-    ["Resistance","Cold",-0.3,1,2,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
-    ["Resistance","Energy",-0.3,1,2,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
-    ["Resistance","Negative",-0.3,1,2,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
-    ["Resistance","Psionic",-0.3,1,2,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true]
+    ["Damage","Toxic",0.15,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Mez","Taunt",1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Raid target.HasTag? ! &&"],
+    ["DamageBuff","Smashing",1.5,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode? !"],
+    ["DamageBuff","Lethal",1.5,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode? !"],
+    ["DamageBuff","Fire",1.5,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode? !"],
+    ["DamageBuff","Cold",1.5,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode? !"],
+    ["DamageBuff","Energy",1.5,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode? !"],
+    ["DamageBuff","Negative",1.5,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode? !"],
+    ["DamageBuff","Toxic",1.5,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode? !"],
+    ["DamageBuff","Psionic",1.5,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode? !"],
+    ["Damage","Toxic",0.05,1,6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
+    ["Mez","Taunt",1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
+    ["DamageBuff","Smashing",1.995,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
+    ["DamageBuff","Lethal",1.995,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
+    ["DamageBuff","Fire",1.995,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
+    ["DamageBuff","Cold",1.995,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
+    ["DamageBuff","Energy",1.995,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
+    ["DamageBuff","Negative",1.995,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
+    ["DamageBuff","Toxic",1.995,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
+    ["DamageBuff","Psionic",1.995,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
+    ["Resistance","Smashing",-0.3,1,2,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
+    ["Resistance","Lethal",-0.3,1,2,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
+    ["Resistance","Fire",-0.3,1,2,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
+    ["Resistance","Cold",-0.3,1,2,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
+    ["Resistance","Energy",-0.3,1,2,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
+    ["Resistance","Negative",-0.3,1,2,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
+    ["Resistance","Psionic",-0.3,1,2,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true]
   ],
   "conditionalEffects": [
     {
@@ -69,7 +96,7 @@ export const GeneticContamination: Power = {
       "scope": "global",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Toxic",
         "scale": 0.05,
         "table": "Melee_Damage",
         "duration": 6,
@@ -83,34 +110,62 @@ export const GeneticContamination: Power = {
         "resistanceDebuff": {
           "cold": {
             "scale": 0.3,
-            "table": "Melee_Res_DMG"
+            "table": "Melee_Res_DMG",
+            "toWho": "Self"
           },
           "energy": {
             "scale": 0.3,
-            "table": "Melee_Res_DMG"
+            "table": "Melee_Res_DMG",
+            "toWho": "Self"
           },
           "fire": {
             "scale": 0.3,
-            "table": "Melee_Res_DMG"
+            "table": "Melee_Res_DMG",
+            "toWho": "Self"
           },
           "lethal": {
             "scale": 0.3,
-            "table": "Melee_Res_DMG"
+            "table": "Melee_Res_DMG",
+            "toWho": "Self"
           },
           "negative": {
             "scale": 0.3,
-            "table": "Melee_Res_DMG"
+            "table": "Melee_Res_DMG",
+            "toWho": "Self"
           },
           "psionic": {
             "scale": 0.3,
-            "table": "Melee_Res_DMG"
+            "table": "Melee_Res_DMG",
+            "toWho": "Self"
           },
           "smashing": {
             "scale": 0.3,
-            "table": "Melee_Res_DMG"
+            "table": "Melee_Res_DMG",
+            "toWho": "Self"
           }
         }
-      }
+      },
+      "group": "adaptation"
+    },
+    {
+      "id": "defensiveadaptation",
+      "label": "Defensive Adaptation",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "buffDuration": 5,
+        "damageDebuff": {
+          "scale": 1.995,
+          "table": "Melee_Debuff_Dam"
+        },
+        "durations": {
+          "damageDebuff": 5
+        }
+      },
+      "group": "adaptation"
     }
+  ],
+  "damageTypes": [
+    "Toxic"
   ]
 };

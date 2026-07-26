@@ -2,17 +2,12 @@ import { beforeAll, describe, expect, it } from 'vitest';
 import { calculateCharacterTotals } from './character-totals';
 import { loadDataset } from '@/data/dataset';
 import { createEmptyBuild } from '@/types/build';
+import { ioSetSlot } from '@/test/build-fixtures';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function ioSlot(name: string, setName: string, isProc = true): any {
-  return {
-    type: 'io-set',
-    isProc,
-    name,
-    setName,
-    setId: setName.toLowerCase().replace(/\s+/g, '_'),
-    pieceNum: 6,
-  };
+// The picker's own factory, so the slot carries everything the engine's CharacterState
+// requires and the piece name is the real proc lookup key ("Chance", not a paraphrase).
+function ioSlot(setId: string, pieceName: string) {
+  return ioSetSlot(setId, pieceName);
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -27,6 +22,8 @@ function buildWithSlots(slots: any[]): any {
     powers: [{
       internalName: 'Health',
       name: 'Health',
+      powerSet: 'fitness',
+      level: 1,
       powerType: 'Auto',
       isActive: true,
       slots,
@@ -42,7 +39,7 @@ describe('Proc runtime allowlist coverage', () => {
 
   it('applies defense-all globals to all defense buckets and breakdown', () => {
     const t = calculateCharacterTotals(
-      buildWithSlots([ioSlot('+Def(All)', "Gladiator's Armor")]),
+      buildWithSlots([ioSlot('gladiators_armor', 'Chance')]),
       false,
       undefined,
       {}
@@ -56,7 +53,7 @@ describe('Proc runtime allowlist coverage', () => {
 
   it('applies always-on absorb globals to absorb totals and breakdown', () => {
     const t = calculateCharacterTotals(
-      buildWithSlots([ioSlot('Chance for +Absorb', 'Preventive Medicine')]),
+      buildWithSlots([ioSlot('preventive_medicine', 'Chance')]),
       false,
       undefined,
       {}
@@ -69,7 +66,7 @@ describe('Proc runtime allowlist coverage', () => {
 
   it('accepts legacy extracted proc slots with isProc=false when name still matches', () => {
     const t = calculateCharacterTotals(
-      buildWithSlots([ioSlot('Recharge/Resistance Bonus', "Kheldian's Grace", false)]),
+      buildWithSlots([ioSlot('kheldians_grace', 'Recharge/Resistance Bonus')]),
       false,
       undefined,
       {}

@@ -41,6 +41,12 @@ export const PrimalistsCloak: Power = {
   "maxSlots": 6,
   "effects": {
     "buffDuration": 1.25,
+    "debuffResistance": {
+      "defense": {
+        "scale": 0.3,
+        "table": "Melee_Res_Boolean"
+      }
+    },
     "defenseBuff": {
       "aoe": {
         "scale": 2,
@@ -48,15 +54,59 @@ export const PrimalistsCloak: Power = {
       }
     },
     "durations": {
-      "defenseBuff": 1.25
+      "debuffResistance": 1.25,
+      "defenseBuff": 1.25,
+      "stealth": 1.25
+    },
+    "stealth": {
+      "stealthPvE": {
+        "scale": 35,
+        "table": "Melee_Ones"
+      },
+      "stealthPvP": {
+        "scale": 350,
+        "table": "Melee_Ones"
+      }
     }
   },
   "atoms": [
-    ["Unmapped",null,35,1,1.25,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kProwlerMode Source.Mode? !"],
-    ["Defense","AoE",2,1,1.25,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["Unmapped",null,1,1,1.25,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.3,1,1.25,"Melee_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,45,1,1.25,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kProwlerMode Source.Mode?",true],
-    ["Defense","AoE",2,1,1.25,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
+    ["Stealth","RadiusPvE",35,1,1.25,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kProwlerMode Source.Mode? !"],
+    ["Stealth","RadiusPvP",350,1,1.25,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kProwlerMode Source.Mode? !"],
+    ["Defense","AoE",2,1,1.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
+    ["Defense","AoE",2,1,1.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
+    ["Meta",null,1,103,1.25,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["EntCreate",null,0.15,1,1.25,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Defense","All",0.3,1,1.25,"Melee_Res_Boolean","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Stealth","RadiusPvE",45,1,1.25,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kProwlerMode Source.Mode?",true],
+    ["Stealth","RadiusPvP",450,1,1.25,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kProwlerMode Source.Mode?",true],
+    ["Defense","AoE",2,1,1.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
+    ["Defense","AoE",2,1,1.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
+  ],
+  "conditionalEffects": [
+    {
+      "id": "prowlermode",
+      "label": "Prowler Mode",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "buffDuration": 1.25,
+        "durations": {
+          "stealth": 1.25
+        },
+        "stealth": {
+          "stealthPvE": {
+            "scale": 45,
+            "table": "Melee_Ones"
+          },
+          "stealthPvP": {
+            "scale": 450,
+            "table": "Melee_Ones"
+          }
+        }
+      }
+    }
+  ],
+  "setsModes": [
+    "ProwlerCloakMode"
   ]
 };

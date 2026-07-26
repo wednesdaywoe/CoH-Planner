@@ -12,6 +12,9 @@ import { Geyser } from './datasets/thunderspy/generated/powersets/blaster/primar
 import { PowerBoost } from './datasets/thunderspy/generated/powersets/blaster/secondary/energy-manipulation/power-boost';
 // Sign-rule negative case: a foe Hold carrying a negative-scale Stun debuff artifact.
 import { TimeStop } from './datasets/thunderspy/generated/powersets/defender/primary/time-manipulation/time-stop';
+// Protection carve-out: self armor and ally mez shield, both foe-less by nature.
+import { Fortification } from './datasets/thunderspy/generated/powersets/arachnos-soldier/epic/crab-spider-training/fortification';
+import { ClearMind } from './datasets/thunderspy/generated/powersets/defender/primary/empathy/clear-mind';
 
 /**
  * Thunderspy applied-mez & offensive-knockback recovery — the DATA-DRIVEN fix.
@@ -71,13 +74,17 @@ describe('Thunderspy applied-mez & knockback recovery (data-driven)', () => {
     expect(Geyser.effects?.knockup).toEqual({ scale: 1.5, table: 'Ranged_Ones' });
   });
 
-  // --- Target-trap veto: a Self-only +mez-strength buff gets NO applied mez ---
-  it('Power Boost (Self +mez-strength buff) does not gain a phantom Stun', () => {
-    // Its index names `Stunned`, but targets_affected=['Self'] → guardThunderspyAppliedMez
-    // drops it. The power has no other captured effect, so the hollow effects block is
-    // cleaned away entirely.
-    expect(PowerBoost.effects?.stun).toBeUndefined();
-    expect(PowerBoost.effects).toBeUndefined();
+  // --- Aspect distinguishes mez-STRENGTH from applied mez (TSPY-3) --------------
+  it('Power Boost gains its mez-STRENGTH buff (specialBuff.stun), not an applied Stun', () => {
+    // Power Boost is a +Strength self-buff (the Power Boost family): its `Stun` template is
+    // aspect=Strength, toWho=Self — a buff to the CASTER'S stun MAGNITUDE, not an applied
+    // Stun mez. Before TSPY-3 recovered the AttribMod aspect, the blank aspect (plus
+    // targets_affected=['Self']) made guardThunderspyAppliedMez drop the whole template, so
+    // the power carried nothing — while HC's Power Boost / Power Up carries exactly this
+    // specialBuff.stun. With the aspect now read from the binary, it routes correctly to
+    // specialBuff.stun (matching HC) and is STILL not an applied `effects.stun` mez.
+    expect(PowerBoost.effects?.stun).toBeUndefined(); // no applied Stun mez
+    expect(PowerBoost.effects?.specialBuff?.stun).toEqual({ scale: 0.75, table: 'Melee_Ones' });
   });
 
   // --- Sign rule: a negative-scale mez on a duration table is not applied --------
@@ -86,5 +93,24 @@ describe('Thunderspy applied-mez & knockback recovery (data-driven)', () => {
     // debuff/duration artifact, not applied mez). Only the Hold must survive.
     expect(TimeStop.effects?.hold).toEqual({ mag: 3, scale: 8, table: 'Ranged_Immobilize' });
     expect(TimeStop.effects?.stun).toBeUndefined();
+  });
+
+  // --- Mez PROTECTION shares the mez slots and is foe-less too ------------------
+  // The target-trap veto keys on "affects no foe", which is also true of every armor
+  // and ally mez shield. Negative magnitude at aspect=Current is the discriminator:
+  // applied control is always positive. Dropping these left the whole Thunderspy fork
+  // without status protection while its HC and Rebirth twins carried it.
+  it('Fortification keeps its self status protection (Rebirth twin carries the same −24)', () => {
+    const prot = { mag: 1, scale: 24, table: 'Melee_Res_Boolean' };
+    expect(Fortification.effects?.hold).toEqual(prot);
+    expect(Fortification.effects?.stun).toEqual(prot);
+    expect(Fortification.effects?.sleep).toEqual(prot);
+    expect(Fortification.effects?.immobilize).toEqual(prot);
+  });
+
+  it('Clear Mind keeps its ALLY-cast protection — recipient is not part of the test', () => {
+    // toWho `Target`, not `Self`: the protection rule is sign + aspect, nothing else.
+    expect(ClearMind.effects?.hold).toEqual({ mag: 1, scale: 30, table: 'Ranged_Res_Boolean' });
+    expect(ClearMind.effects?.fear).toEqual({ mag: 1, scale: 30, table: 'Ranged_Res_Boolean' });
   });
 });

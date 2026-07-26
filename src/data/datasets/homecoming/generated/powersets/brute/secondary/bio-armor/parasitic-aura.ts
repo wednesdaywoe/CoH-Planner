@@ -43,9 +43,10 @@ export const ParasiticAura: Power = {
   "maxSlots": 6,
   "effects": {
     "absorb": {
-      "scale": 0.1,
+      "appliesStrength": true,
+      "maxHPFraction": 0.1,
       "table": "Melee_Ones",
-      "perTarget": 0.1
+      "maxHPFractionPerTarget": 0.1
     },
     "buffDuration": 45,
     "damageDebuff": {
@@ -72,7 +73,7 @@ export const ParasiticAura: Power = {
   "atoms": [
     ["Recovery",null,0.3,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.3],
     ["Regeneration",null,0.5,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.5],
-    ["Absorb",null,1,1,45,"Melee_Ones","Max","Expression","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.1],
+    ["Absorb",null,1,1,45,"Melee_Ones","Max","Expression","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"Max.kHitPoints source> 0.1 * @Strength *"],
     ["DamageBuff","Smashing",2,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode? !"],
     ["DamageBuff","Lethal",2,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode? !"],
     ["DamageBuff","Fire",2,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode? !"],
@@ -83,7 +84,7 @@ export const ParasiticAura: Power = {
     ["DamageBuff","Toxic",2,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode? !"],
     ["Recovery",null,0.125,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kRestedAdaptation Source.Mode?",true],
     ["Regeneration",null,0.15,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kRestedAdaptation Source.Mode?",true],
-    ["Absorb",null,1,1,45,"Melee_Ones","Max","Expression","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
+    ["Absorb",null,1,1,45,"Melee_Ones","Max","Expression","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true,null,null,null,null,"Max.kHitPoints source> 0.033 * @Strength *"],
     ["DamageBuff","Smashing",2.6,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
     ["DamageBuff","Lethal",2.6,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
     ["DamageBuff","Fire",2.6,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
@@ -125,9 +126,9 @@ export const ParasiticAura: Power = {
       "defaultActive": false,
       "effects": {
         "absorb": {
-          "scale": 0.033,
+          "maxHPFraction": 0.033,
           "table": "Melee_Ones",
-          "perTarget": 0.033
+          "maxHPFractionPerTarget": 0.033
         },
         "buffDuration": 45,
         "damageDebuff": {

@@ -18,6 +18,9 @@ export const RadiantStrike: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,
@@ -94,5 +97,52 @@ export const RadiantStrike: Power = {
       "chance": 0.6000000238418579,
       "label": "Knockback"
     }
-  ]
+  ],
+  "modeVariants": {
+    "Peacebringer_Tanker_Mode": {
+      "internalName": "White_Dwarf_Strike",
+      "stats": {
+        "accuracy": 1,
+        "range": 7,
+        "recharge": 4,
+        "endurance": 5.2,
+        "castTime": 1.2
+      },
+      "damage": [
+        {
+          "type": "Smashing",
+          "scale": 0.4,
+          "table": "Melee_SSDamage"
+        },
+        {
+          "type": "Energy",
+          "scale": 0.6,
+          "table": "Melee_SSDamage"
+        }
+      ],
+      "effects": {
+        "buffDuration": 6,
+        "defenseDebuff": {
+          "scale": 1,
+          "table": "Melee_Debuff_Def"
+        },
+        "durations": {
+          "defenseDebuff": 6
+        },
+        "knockback": {
+          "scale": 0.67,
+          "table": "Melee_Ones"
+        },
+        "taunt": {
+          "scale": 1,
+          "table": "Melee_InherentTaunt"
+        }
+      },
+      "shortHelp": "Melee, Moderate DMG(Smash/Energy), Foe -DEF, Knockback",
+      "description": "The White Dwarf Strike is a moderate melee attack that releases Kheldian light on impact, which can Knock Down foes, and reduce a target's Defense. This power is only available while in White Dwarf Form. Damage: Moderate, Recharge: Fast",
+      "effectArea": "SingleTarget",
+      "targetType": "Foe",
+      "powerType": "Click"
+    }
+  }
 };

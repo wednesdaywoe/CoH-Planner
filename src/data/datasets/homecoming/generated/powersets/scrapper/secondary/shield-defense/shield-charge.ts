@@ -16,7 +16,7 @@ export const ShieldCharge: Power = {
   "shortHelp": "PBAoE Superior DMG(Smashing), Foe Knockdown; Self Teleport",
   "icon": "shielddefense_shieldcharge.png",
   "powerType": "Click",
-  "targetType": "Dead Teammate",
+  "targetType": "Teleport",
   "effectArea": "Location",
   "stats": {
     "accuracy": 1,
@@ -45,8 +45,7 @@ export const ShieldCharge: Power = {
       "copyBoosts": true,
       "displayName": "Shield Charge",
       "duration": 1,
-      "entity": "PL_StaticObject",
-      "isPseudoPet": false,
+      "isPseudoPet": true,
       "powers": [
         "Redirects.Shield_Defense.Shield_Charge_AoE"
       ],
@@ -90,7 +89,8 @@ export const ShieldCharge: Power = {
             }
           ]
         }
-      ]
+      ],
+      "entity": "PL_StaticObject"
     },
     "teleport": {
       "scale": 1,

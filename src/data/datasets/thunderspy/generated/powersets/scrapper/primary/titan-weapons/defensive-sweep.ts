@@ -64,10 +64,59 @@ export const DefensiveSweep: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,0.679,1,0,"Melee_Damage","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Defense","Melee",1.5,1,10,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Smashing",1.5,1,10,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.30555,0,0,"Melee_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Damage","Smashing",0.679,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Defense","Melee",1.5,1,10,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Defense","Smashing",1.5,1,10,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Damage","Fire",0.30555,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1]
   ],
-  "requires": "Scrapper_Defense.Shield_Defense !"
+  "modeVariants": {
+    "FastMode": {
+      "internalName": "Defensive_Sweep_Fast",
+      "stats": {
+        "accuracy": 1,
+        "range": 10,
+        "radius": 10,
+        "arc": 2.094395160675049,
+        "recharge": 4,
+        "endurance": 5.2,
+        "castTime": 1,
+        "maxTargets": 5
+      },
+      "damage": {
+        "type": "Smashing",
+        "scale": 0.679,
+        "table": "Melee_Damage"
+      },
+      "damageTypes": [
+        "Smashing"
+      ],
+      "effects": {
+        "buffDuration": 10,
+        "defenseBuff": {
+          "melee": {
+            "scale": 1.5,
+            "table": "Melee_Buff_Def",
+            "perTarget": 1.5
+          },
+          "smashing": {
+            "scale": 1.5,
+            "table": "Melee_Buff_Def",
+            "perTarget": 1.5
+          }
+        },
+        "durations": {
+          "defenseBuff": 10
+        }
+      },
+      "shortHelp": "Melee(Cone), Light DMG(Smashing), Self +DEF(Melee, Smash)",
+      "description": "You take a defensive stance and strike your opponents.  Successfully executing this attack will cause light smashing damage to nearby foes, while giving you increased defense against their melee and smashing attacks. Damage: Light, Recharge: Fast",
+      "effectArea": "Cone",
+      "targetType": "Foe",
+      "powerType": "Click"
+    }
+  },
+  "requires": "Scrapper_Defense.Shield_Defense !",
+  "damageTypes": [
+    "Smashing"
+  ]
 };

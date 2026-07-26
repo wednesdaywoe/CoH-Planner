@@ -47,6 +47,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -66,14 +67,14 @@
             "Stunned"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Res_Boolean",
           "scale": -30.0,
           "duration": "60 seconds",
           "magnitude": 1.0,
-          "delay": 2.1500000953674316,
+          "delay": 2.15,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -87,7 +88,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -108,14 +110,14 @@
             "Sleep"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Res_Boolean",
           "scale": -30.0,
           "duration": "60 seconds",
           "magnitude": 1.0,
-          "delay": 2.1500000953674316,
+          "delay": 2.15,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -129,7 +131,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -150,14 +153,14 @@
             "Immobilized"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Res_Boolean",
           "scale": -30.0,
           "duration": "60 seconds",
           "magnitude": 1.0,
-          "delay": 2.1500000953674316,
+          "delay": 2.15,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -171,7 +174,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -192,14 +196,14 @@
             "Held"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Res_Boolean",
           "scale": -30.0,
           "duration": "60 seconds",
           "magnitude": 1.0,
-          "delay": 2.1500000953674316,
+          "delay": 2.15,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -213,7 +217,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -234,14 +239,14 @@
             "Confused"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Res_Boolean",
           "scale": -30.0,
           "duration": "60 seconds",
           "magnitude": 1.0,
-          "delay": 2.1500000953674316,
+          "delay": 2.15,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -255,7 +260,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -276,14 +282,14 @@
             "Terrorized"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Res_Boolean",
           "scale": -30.0,
           "duration": "60 seconds",
           "magnitude": 1.0,
-          "delay": 2.1500000953674316,
+          "delay": 2.15,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -297,7 +303,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -318,14 +325,14 @@
             "Stunned"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "AnyAffected",
           "table": "Ranged_Res_Boolean",
           "scale": 3.0,
           "duration": "60 seconds",
           "magnitude": 1.0,
-          "delay": 2.1500000953674316,
+          "delay": 2.15,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -340,7 +347,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -361,14 +369,14 @@
             "Sleep"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "AnyAffected",
           "table": "Ranged_Res_Boolean",
           "scale": 3.0,
           "duration": "60 seconds",
           "magnitude": 1.0,
-          "delay": 2.1500000953674316,
+          "delay": 2.15,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -383,7 +391,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -404,14 +413,14 @@
             "Immobilized"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "AnyAffected",
           "table": "Ranged_Res_Boolean",
           "scale": 3.0,
           "duration": "60 seconds",
           "magnitude": 1.0,
-          "delay": 2.1500000953674316,
+          "delay": 2.15,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -426,7 +435,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -447,14 +457,14 @@
             "Held"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "AnyAffected",
           "table": "Ranged_Res_Boolean",
           "scale": 3.0,
           "duration": "60 seconds",
           "magnitude": 1.0,
-          "delay": 2.1500000953674316,
+          "delay": 2.15,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -469,7 +479,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -490,14 +501,14 @@
             "Confused"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "AnyAffected",
           "table": "Ranged_Res_Boolean",
           "scale": 3.0,
           "duration": "60 seconds",
           "magnitude": 1.0,
-          "delay": 2.1500000953674316,
+          "delay": 2.15,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -512,7 +523,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -533,14 +545,14 @@
             "Terrorized"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "AnyAffected",
           "table": "Ranged_Res_Boolean",
           "scale": 3.0,
           "duration": "60 seconds",
           "magnitude": 1.0,
-          "delay": 2.1500000953674316,
+          "delay": 2.15,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -555,7 +567,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -576,14 +589,14 @@
             "Regeneration"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 1.5,
           "duration": "60 seconds",
           "magnitude": 1.0,
-          "delay": 2.1500000953674316,
+          "delay": 2.15,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -597,7 +610,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -618,14 +632,14 @@
             "Recovery"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 0.75,
           "duration": "60 seconds",
           "magnitude": 1.0,
-          "delay": 2.1500000953674316,
+          "delay": 2.15,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -639,7 +653,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     }

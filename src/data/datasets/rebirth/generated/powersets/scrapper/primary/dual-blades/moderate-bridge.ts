@@ -18,6 +18,9 @@ export const ModerateBridge: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,
@@ -65,15 +68,15 @@ export const ModerateBridge: Power = {
     ["Meta",null,1,47,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true],
     ["Meta",null,1,51,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true],
     ["Meta",null,1,52,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true],
-    ["EntCreate",null,1,53,5,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Ignore",2,null,5.25,1,null,true,null,null,null,null,"kDD_StatusMode_1 source.Mode? ! kDD_DebuffMode_1 source.Mode? ! ||"],
+    ["Meta",null,1,53,5,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Ignore",2,null,5.25,1,null,true,null,null,null,null,"kDD_StatusMode_1 source.Mode? ! kDD_DebuffMode_1 source.Mode? ! ||"],
     ["Meta",null,1,54,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true],
     ["Damage","Fire",0.38829,1,1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.4000000059604645,1],
     ["Damage","Lethal",0.862866,1,0.6,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Lethal",1.725732,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Lethal",1.32,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
     ["Damage","Lethal",1.32,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true],
-    ["EntCreate",null,1,50,5,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Ignore",2,null,5.25,1,null,true,null,null,null,null,"kDD_DebuffMode_1 source.Mode?",true],
-    ["EntCreate",null,1,48,5,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Ignore",2,null,5.25,1,null,true,null,null,null,null,"kDD_StatusMode_1 source.Mode?",true]
+    ["Meta",null,1,50,5,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Ignore",2,null,5.25,1,null,true,null,null,null,null,"kDD_DebuffMode_1 source.Mode?",true],
+    ["Meta",null,1,48,5,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Ignore",2,null,5.25,1,null,true,null,null,null,null,"kDD_StatusMode_1 source.Mode?",true]
   ],
   "specialEffects": [
     {
@@ -81,5 +84,10 @@ export const ModerateBridge: Power = {
       "chance": 0.05000000074505806,
       "label": "Lethal_Dmg"
     }
+  ],
+  "setsModes": [
+    "DD_DebuffMode_2",
+    "DD_StatusMode_2",
+    "DD_BonusDoTMode_1"
   ]
 };

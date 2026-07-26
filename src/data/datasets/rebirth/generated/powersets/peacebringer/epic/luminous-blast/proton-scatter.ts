@@ -67,5 +67,40 @@ export const ProtonScatter: Power = {
     ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kPeacebringer_Blaster_Mode source.Mode?",true],
     ["Damage","Energy",1.20958,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
+  "modeVariants": {
+    "Peacebringer_Blaster_Mode": {
+      "internalName": "Bright_Nova_Scatter",
+      "stats": {
+        "accuracy": 1,
+        "range": 60,
+        "radius": 60,
+        "arc": 0.7853981852531433,
+        "recharge": 12,
+        "endurance": 11.856,
+        "castTime": 1.5,
+        "maxTargets": 10
+      },
+      "damage": {
+        "type": "Energy",
+        "scale": 0.99,
+        "table": "Ranged_SSDamage"
+      },
+      "effects": {
+        "buffDuration": 8,
+        "defenseDebuff": {
+          "scale": 1,
+          "table": "Ranged_Debuff_Def"
+        },
+        "durations": {
+          "defenseDebuff": 8
+        }
+      },
+      "shortHelp": "Ranged (Cone), Moderate DMG(Energy), Foe -DEF",
+      "description": "Bright Nova Scatter sends bolts of Kheldian light energy to multiple targets at once within a cone area in front of the caster.  Bright Nova Scatter deals moderate energy damage to each affected target and reduces their defense. This power is only available while in Bright Nova Form. Damage: Moderate. Recharge: Slow",
+      "effectArea": "Cone",
+      "targetType": "Foe",
+      "powerType": "Click"
+    }
+  },
   "requires": "Peacebringer_Offensive.Luminous_Blast.Bright_Nova Peacebringer_Offensive.Luminous_Blast.Bright_Nova_Scatter ! && Inherent.Inherent.Bright_Nova_Scatter ! &&"
 };

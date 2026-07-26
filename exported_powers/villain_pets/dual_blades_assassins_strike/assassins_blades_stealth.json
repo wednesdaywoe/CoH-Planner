@@ -48,6 +48,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     108,
     120
@@ -70,7 +71,7 @@
             "Revoke_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
@@ -90,16 +91,19 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Temporary_Powers.Temporary_Powers.Assassins_Focus"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance"
+            "IgnoreResistance",
+            "RevokeAll"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 1
         }
       ],
       "child_effects": [
@@ -121,7 +125,7 @@
                 "StealthRadius_PVP"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Strength",
               "target": "Self",
               "table": "Melee_Ones",
@@ -165,7 +169,7 @@
                     "Grant_Power"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Absolute",
                   "target": "AnyAffected",
                   "table": "Melee_Ones",
@@ -185,10 +189,11 @@
                   "stack_limit": 2,
                   "stack_key": null,
                   "params": {
-                    "type": "Power",
                     "power_names": [
                       "Temporary_Powers.Temporary_Powers.Demoralized"
-                    ]
+                    ],
+                    "count": 1,
+                    "type": "Power"
                   },
                   "flags": [
                     "IgnoreStrength",
@@ -202,7 +207,7 @@
                     "Lethal_Dmg"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Absolute",
                   "target": "AnyAffected",
                   "table": "Melee_Damage",
@@ -221,6 +226,13 @@
                   "stack": "Stack",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "messages": {
+                    "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Lethal damage.",
+                    "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Lethal damage.",
+                    "display_float": null,
+                    "display_attrib_defense_float": null,
+                    "display_info": null
+                  },
                   "flags_raw": 1280
                 },
                 {
@@ -228,7 +240,7 @@
                     "Lethal_Dmg"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Absolute",
                   "target": "AnyAffected",
                   "table": "Melee_InherentDamage",
@@ -247,6 +259,13 @@
                   "stack": "Stack",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "messages": {
+                    "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Lethal damage (ASSASSIN STRIKE).",
+                    "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Lethal damage (ASSASSIN STRIKE).",
+                    "display_float": "ASSASSIN STRIKE",
+                    "display_attrib_defense_float": null,
+                    "display_info": null
+                  },
                   "flags_raw": 1280
                 }
               ]
@@ -268,7 +287,7 @@
                     "Lethal_Dmg"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Absolute",
                   "target": "AnyAffected",
                   "table": "Melee_PvPDamage",
@@ -287,6 +306,13 @@
                   "stack": "Stack",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "messages": {
+                    "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Lethal damage.",
+                    "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Lethal damage.",
+                    "display_float": null,
+                    "display_attrib_defense_float": null,
+                    "display_info": null
+                  },
                   "flags_raw": 1280
                 },
                 {
@@ -294,7 +320,7 @@
                     "Lethal_Dmg"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Absolute",
                   "target": "AnyAffected",
                   "table": "Melee_PvPDamage",
@@ -313,6 +339,13 @@
                   "stack": "Stack",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "messages": {
+                    "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of unresistable Lethal damage (ASSASSIN STRIKE).",
+                    "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of unresistable Lethal damage (ASSASSIN STRIKE).",
+                    "display_float": "ASSASSIN STRIKE",
+                    "display_attrib_defense_float": null,
+                    "display_info": null
+                  },
                   "flags": [
                     "IgnoreResistance"
                   ],
@@ -365,7 +398,7 @@
                         "Lethal_Dmg"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Absolute",
                       "target": "AnyAffected",
                       "table": "Melee_Damage",
@@ -384,6 +417,13 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Lethal damage.",
+                        "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Lethal damage.",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
                       "flags_raw": 1280
                     }
                   ]
@@ -407,7 +447,7 @@
                         "Lethal_Dmg"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Absolute",
                       "target": "AnyAffected",
                       "table": "Melee_InherentDamage",
@@ -426,6 +466,13 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Lethal damage (CRITICAL).",
+                        "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Lethal damage (CRITICAL).",
+                        "display_float": "CRITICAL",
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
                       "flags_raw": 1280
                     }
                   ]
@@ -462,7 +509,7 @@
                         "Lethal_Dmg"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Absolute",
                       "target": "AnyAffected",
                       "table": "Melee_PvPDamage",
@@ -481,6 +528,13 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Lethal damage.",
+                        "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Lethal damage.",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
                       "flags_raw": 1280
                     }
                   ]
@@ -504,7 +558,7 @@
                         "Lethal_Dmg"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Absolute",
                       "target": "AnyAffected",
                       "table": "Melee_PvPDamage",
@@ -523,6 +577,13 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Lethal damage (CRITICAL).",
+                        "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Lethal damage (CRITICAL).",
+                        "display_float": "CRITICAL",
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
                       "flags_raw": 1280
                     }
                   ]
@@ -552,7 +613,7 @@
             "Cancel_Mods"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
@@ -571,6 +632,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "tags": [
+              "DB_Debuff1"
+            ],
+            "type": "EffectFilter"
+          },
           "flags_raw": 1280
         },
         {
@@ -578,7 +645,7 @@
             "Cancel_Mods"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
@@ -597,6 +664,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "tags": [
+              "DB_Debuff2"
+            ],
+            "type": "EffectFilter"
+          },
           "flags_raw": 1280
         },
         {
@@ -604,7 +677,7 @@
             "Cancel_Mods"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
@@ -623,6 +696,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "tags": [
+              "DB_BonusDoT1"
+            ],
+            "type": "EffectFilter"
+          },
           "flags_raw": 1280
         },
         {
@@ -630,7 +709,7 @@
             "Cancel_Mods"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
@@ -649,6 +728,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "tags": [
+              "DB_BonusDoT2"
+            ],
+            "type": "EffectFilter"
+          },
           "flags_raw": 1280
         }
       ],
@@ -672,7 +757,7 @@
                 "Set_Mode"
               ],
               "type": "Constant",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Melee_Ones",
@@ -704,7 +789,7 @@
                 "Cancel_Mods"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Strength",
               "target": "Self",
               "table": "Melee_Ones",
@@ -723,6 +808,12 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "params": {
+                "tags": [
+                  "DB_Status1"
+                ],
+                "type": "EffectFilter"
+              },
               "flags_raw": 1280
             }
           ]
@@ -746,7 +837,7 @@
                 "Set_Mode"
               ],
               "type": "Constant",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Melee_Ones",
@@ -778,7 +869,7 @@
                 "Cancel_Mods"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Strength",
               "target": "Self",
               "table": "Melee_Ones",
@@ -797,12 +888,21 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "params": {
+                "tags": [
+                  "DB_BonusAoE1"
+                ],
+                "type": "EffectFilter"
+              },
               "flags_raw": 1280
             }
           ]
         }
       ]
     }
+  ],
+  "strengths_disallowed": [
+    "Range"
   ],
   "modes_disallowed": [
     "Disable_All"

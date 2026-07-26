@@ -59,6 +59,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "kStealthRadius source> 36 < cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&",
+  "slot_requires": "",
   "attack_types": [
     112,
     132
@@ -83,7 +84,7 @@
             "JumpingSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Slow",
@@ -102,6 +103,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "PFX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags_raw": 1280
         },
         {
@@ -109,7 +116,7 @@
             "RechargeTime"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Melee_Slow",
@@ -138,7 +145,7 @@
             "JumpHeight"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Melee_Slow",
@@ -181,7 +188,7 @@
             "RunningSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Maximum",
           "target": "AnyAffected",
           "table": "Melee_SpeedRunning",
@@ -226,7 +233,7 @@
             "JumpingSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "OnActivate",
+          "application_type": "OnDeactivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Slow",
@@ -256,7 +263,7 @@
             "RechargeTime"
           ],
           "type": "Magnitude",
-          "application_type": "OnActivate",
+          "application_type": "OnDeactivate",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Slow",
@@ -286,7 +293,7 @@
             "RunningSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "OnActivate",
+          "application_type": "OnDeactivate",
           "aspect": "Maximum",
           "target": "Self",
           "table": "Melee_SpeedRunning",
@@ -316,7 +323,7 @@
             "JumpHeight"
           ],
           "type": "Magnitude",
-          "application_type": "OnActivate",
+          "application_type": "OnDeactivate",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Slow",
@@ -364,7 +371,7 @@
             "Recovery"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -407,7 +414,7 @@
                 "Absorb"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Maximum",
               "target": "Self",
               "table": "Melee_HealSelf",
@@ -426,6 +433,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": null,
+                "display_victim_hit": "You receive {Damage} points of absorption over time from your {PowerName}.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags": [
                 "NoFloaters",
                 "IgnoreCombatMods"
@@ -451,7 +465,7 @@
                 "Absorb"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Maximum",
               "target": "Self",
               "table": "Melee_HealSelf",
@@ -470,6 +484,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": null,
+                "display_victim_hit": "You receive {Damage} points of absorption over time from your {PowerName}.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags": [
                 "IgnoreCombatMods"
               ],
@@ -479,6 +500,9 @@
         }
       ]
     }
+  ],
+  "strengths_disallowed": [
+    "Range"
   ],
   "modes_disallowed": [
     "Disable_All"

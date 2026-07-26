@@ -34,10 +34,26 @@ export const PressOn: Power = {
     "To Hit Buff"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Heal",
+    "scale": 1,
+    "table": "Ranged_Ones",
+    "duration": 0.5,
+    "tickRate": 1
+  },
   "effects": {
     "buffDuration": 59,
+    "damageBuff": {
+      "scale": 4.5,
+      "table": "Ranged_Buff_Dmg"
+    },
     "durations": {
+      "damageBuff": 59,
       "tohitBuff": 59
+    },
+    "enduranceGain": {
+      "scale": 1,
+      "table": "Ranged_Ones"
     },
     "tohitBuff": {
       "scale": 2.5,
@@ -45,11 +61,30 @@ export const PressOn: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,1,1,0.5,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,1,1],
-    ["Unmapped",null,1,1,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,4.5,1,59,"Ranged_Buff_Dmg","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["ToHit",null,2.5,1,59,"Ranged_Buff_ToHit","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,4.5,1,59,"Ranged_Buff_Dmg","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["ToHit",null,2.5,1,59,"Ranged_Buff_ToHit","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Heal",null,1,1,0.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,1,1],
+    ["Endurance",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["Meta",null,1,1,65,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["DamageBuff","Smashing",4.5,1,59,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["DamageBuff","Lethal",4.5,1,59,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["DamageBuff","Fire",4.5,1,59,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["DamageBuff","Cold",4.5,1,59,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["DamageBuff","Energy",4.5,1,59,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["DamageBuff","Negative",4.5,1,59,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["DamageBuff","Toxic",4.5,1,59,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["DamageBuff","Psionic",4.5,1,59,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["ToHit",null,2.5,1,59,"Ranged_Buff_ToHit","Cur","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["DamageBuff","Smashing",4.5,1,59,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["DamageBuff","Lethal",4.5,1,59,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["DamageBuff","Fire",4.5,1,59,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["DamageBuff","Cold",4.5,1,59,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["DamageBuff","Energy",4.5,1,59,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["DamageBuff","Negative",4.5,1,59,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["DamageBuff","Toxic",4.5,1,59,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["DamageBuff","Psionic",4.5,1,59,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["ToHit",null,2.5,1,59,"Ranged_Buff_ToHit","Cur","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+  ],
+  "setsModes": [
+    "Peacebringer_Blaster_Mode"
   ]
 };

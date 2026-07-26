@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -57,7 +58,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -77,22 +78,23 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Arachnos_Bane_Spider_Minion_Pet",
-            "priority_list": "PL_FightPreferMelee"
+            "priority_list": "PL_FightPreferMelee",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreCombatMods",
             "CopyBoosts"
           ],
-          "flags_raw": 320
+          "flags_raw": 320,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -112,22 +114,23 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Arachnos_Bane_Spider_Minion_Pet",
-            "priority_list": "PL_FightPreferMelee"
+            "priority_list": "PL_FightPreferMelee",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreCombatMods",
             "CopyBoosts"
           ],
-          "flags_raw": 320
+          "flags_raw": 320,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -147,22 +150,23 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Arachnos_Bane_Spider_Minion_Pet",
-            "priority_list": "PL_FightPreferMelee"
+            "priority_list": "PL_FightPreferMelee",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreCombatMods",
             "CopyBoosts"
           ],
-          "flags_raw": 320
+          "flags_raw": 320,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -182,22 +186,23 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Arachnos_Bane_Spider_Minion_Pet",
-            "priority_list": "PL_FightPreferMelee"
+            "priority_list": "PL_FightPreferMelee",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreCombatMods",
             "CopyBoosts"
           ],
-          "flags_raw": 320
+          "flags_raw": 320,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -217,22 +222,23 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Arachnos_Bane_Spider_Minion_Pet",
-            "priority_list": "PL_FightPreferMelee"
+            "priority_list": "PL_FightPreferMelee",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreCombatMods",
             "CopyBoosts"
           ],
-          "flags_raw": 320
+          "flags_raw": 320,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -252,22 +258,23 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Arachnos_Bane_Spider_Minion_Pet",
-            "priority_list": "PL_FightPreferMelee"
+            "priority_list": "PL_FightPreferMelee",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreCombatMods",
             "CopyBoosts"
           ],
-          "flags_raw": 320
+          "flags_raw": 320,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -287,22 +294,23 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Arachnos_Bane_Spider_Minion_Pet",
-            "priority_list": "PL_FightPreferMelee"
+            "priority_list": "PL_FightPreferMelee",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreCombatMods",
             "CopyBoosts"
           ],
-          "flags_raw": 320
+          "flags_raw": 320,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -322,22 +330,23 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Arachnos_Bane_Spider_Minion_Pet",
-            "priority_list": "PL_FightPreferMelee"
+            "priority_list": "PL_FightPreferMelee",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreCombatMods",
             "CopyBoosts"
           ],
-          "flags_raw": 320
+          "flags_raw": 320,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Null"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -367,7 +376,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -387,22 +396,23 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Arachnos_Bane_Spider_Minion_Pet",
-            "priority_list": "PL_FightPreferMelee"
+            "priority_list": "PL_FightPreferMelee",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreCombatMods",
             "CopyBoosts"
           ],
-          "flags_raw": 320
+          "flags_raw": 320,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -422,22 +432,23 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Arachnos_Bane_Spider_Minion_Pet",
-            "priority_list": "PL_FightPreferMelee"
+            "priority_list": "PL_FightPreferMelee",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreCombatMods",
             "CopyBoosts"
           ],
-          "flags_raw": 320
+          "flags_raw": 320,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -457,22 +468,23 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Arachnos_Bane_Spider_Minion_Pet",
-            "priority_list": "PL_FightPreferMelee"
+            "priority_list": "PL_FightPreferMelee",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreCombatMods",
             "CopyBoosts"
           ],
-          "flags_raw": 320
+          "flags_raw": 320,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -492,22 +504,23 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Arachnos_Bane_Spider_Minion_Pet",
-            "priority_list": "PL_FightPreferMelee"
+            "priority_list": "PL_FightPreferMelee",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreCombatMods",
             "CopyBoosts"
           ],
-          "flags_raw": 320
+          "flags_raw": 320,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -527,22 +540,23 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Arachnos_Bane_Spider_Minion_Pet",
-            "priority_list": "PL_FightPreferMelee"
+            "priority_list": "PL_FightPreferMelee",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreCombatMods",
             "CopyBoosts"
           ],
-          "flags_raw": 320
+          "flags_raw": 320,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -562,22 +576,23 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Arachnos_Bane_Spider_Minion_Pet",
-            "priority_list": "PL_FightPreferMelee"
+            "priority_list": "PL_FightPreferMelee",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreCombatMods",
             "CopyBoosts"
           ],
-          "flags_raw": 320
+          "flags_raw": 320,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -597,22 +612,23 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Arachnos_Bane_Spider_Minion_Pet",
-            "priority_list": "PL_FightPreferMelee"
+            "priority_list": "PL_FightPreferMelee",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreCombatMods",
             "CopyBoosts"
           ],
-          "flags_raw": 320
+          "flags_raw": 320,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -632,15 +648,16 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Arachnos_Bane_Spider_Minion_Pet",
-            "priority_list": "PL_FightPreferMelee"
+            "priority_list": "PL_FightPreferMelee",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreCombatMods",
             "CopyBoosts"
           ],
-          "flags_raw": 320
+          "flags_raw": 320,
+          "flags2_raw": 4
         }
       ]
     },
@@ -661,7 +678,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -681,22 +698,23 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Arachnos_Bane_Spider_Lt_1_Pet",
-            "priority_list": "PL_FightPreferMelee"
+            "priority_list": "PL_FightPreferMelee",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreCombatMods",
             "CopyBoosts"
           ],
-          "flags_raw": 320
+          "flags_raw": 320,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -716,22 +734,23 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Arachnos_Bane_Spider_Lt_1_Pet",
-            "priority_list": "PL_FightPreferMelee"
+            "priority_list": "PL_FightPreferMelee",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreCombatMods",
             "CopyBoosts"
           ],
-          "flags_raw": 320
+          "flags_raw": 320,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -751,22 +770,23 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Arachnos_Bane_Spider_Lt_2_Pet",
-            "priority_list": "PL_FightPreferMelee"
+            "priority_list": "PL_FightPreferMelee",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreCombatMods",
             "CopyBoosts"
           ],
-          "flags_raw": 320
+          "flags_raw": 320,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -786,22 +806,23 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Arachnos_Bane_Spider_Lt_1_Pet",
-            "priority_list": "PL_FightPreferMelee"
+            "priority_list": "PL_FightPreferMelee",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreCombatMods",
             "CopyBoosts"
           ],
-          "flags_raw": 320
+          "flags_raw": 320,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -821,22 +842,23 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Arachnos_Bane_Spider_Lt_1_Pet",
-            "priority_list": "PL_FightPreferMelee"
+            "priority_list": "PL_FightPreferMelee",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreCombatMods",
             "CopyBoosts"
           ],
-          "flags_raw": 320
+          "flags_raw": 320,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -856,15 +878,16 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Arachnos_Bane_Spider_Lt_2_Pet",
-            "priority_list": "PL_FightPreferMelee"
+            "priority_list": "PL_FightPreferMelee",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreCombatMods",
             "CopyBoosts"
           ],
-          "flags_raw": 320
+          "flags_raw": 320,
+          "flags2_raw": 4
         }
       ]
     },
@@ -885,7 +908,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -905,22 +928,23 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Arachnos_Bane_Spider_Boss_Pet",
-            "priority_list": "PL_FightPreferMelee"
+            "priority_list": "PL_FightPreferMelee",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreCombatMods",
             "CopyBoosts"
           ],
-          "flags_raw": 320
+          "flags_raw": 320,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -940,22 +964,23 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Arachnos_Bane_Spider_Boss_Pet",
-            "priority_list": "PL_FightPreferMelee"
+            "priority_list": "PL_FightPreferMelee",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreCombatMods",
             "CopyBoosts"
           ],
-          "flags_raw": 320
+          "flags_raw": 320,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -975,22 +1000,23 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Arachnos_Bane_Spider_Boss_Pet",
-            "priority_list": "PL_FightPreferMelee"
+            "priority_list": "PL_FightPreferMelee",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreCombatMods",
             "CopyBoosts"
           ],
-          "flags_raw": 320
+          "flags_raw": 320,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -1010,15 +1036,16 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Arachnos_Bane_Spider_Boss_Pet",
-            "priority_list": "PL_FightPreferMelee"
+            "priority_list": "PL_FightPreferMelee",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreCombatMods",
             "CopyBoosts"
           ],
-          "flags_raw": 320
+          "flags_raw": 320,
+          "flags2_raw": 4
         }
       ]
     }

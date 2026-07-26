@@ -44,6 +44,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -63,7 +64,7 @@
             "Null"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -90,6 +91,10 @@
         }
       ]
     }
+  ],
+  "strengths_disallowed": [
+    "Range",
+    "RechargeTime"
   ],
   "available_level": 0,
   "powerset": "V_Arachnos.Arachnos_CHB_Mechanics"

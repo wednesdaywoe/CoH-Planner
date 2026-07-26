@@ -38,6 +38,7 @@
   "requires": "Pool.Leaping.Long_Jump",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -57,7 +58,7 @@
             "Jump Pack"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -110,7 +111,7 @@
             "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -130,26 +131,28 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Pool.Leaping.Double_Jump",
               "Prestige.Prestige_Travel.prestige_Jump_Pack_Temp",
               "Prestige.Prestige_Travel.Prestige_Steam_Jump"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
-            "CopyBoosts"
+            "Cooldown"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Set_Mode"
           ],
           "type": "Constant",
-          "application_type": "OnActivate",
+          "application_type": "OnDeactivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -170,8 +173,7 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance",
-            "DeepSleep"
+            "IgnoreResistance"
           ],
           "flags_raw": 3120,
           "mode_name": "Disable_JumpPack"
@@ -179,6 +181,7 @@
       ]
     }
   ],
+  "max_toggle_time": 30.0,
   "modes_required": [
     "SuperJumpOn"
   ],

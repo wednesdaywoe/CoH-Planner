@@ -16,7 +16,7 @@ export const Fallout: Power = {
   "shortHelp": "Post-Defeat: PBAoE, Foe -To Hit, -DEF, -DMG, -Res(All)",
   "icon": "radiationpoisoning_fallout.png",
   "powerType": "Click",
-  "targetType": "Location",
+  "targetType": "Dead Teammate",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,

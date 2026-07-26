@@ -35,7 +35,19 @@ export const ShiftersShield: Power = {
     "Healing"
   ],
   "maxSlots": 6,
+  "effects": {
+    "absorb": {
+      "scale": 0.25,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 60,
+    "durations": {
+      "absorb": 60
+    }
+  },
   "atoms": [
-    ["Unmapped",null,0.25,1,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Absorb",null,0.25,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Absorb",null,1,1,60,"Melee_Ones","Max","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"Max.kHitPoints source> 0.25 * @Strength *"],
+    ["Meta",null,-100,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
   ]
 };

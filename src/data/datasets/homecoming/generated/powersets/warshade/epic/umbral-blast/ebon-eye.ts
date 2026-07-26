@@ -81,5 +81,48 @@ export const EbonEye: Power = {
     ["Movement","Run",0.2,1,6,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","Fly",0.2,1,6,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","Jump",0.2,1,6,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
-  ]
+  ],
+  "modeVariants": {
+    "Warshade_Blaster_Mode": {
+      "internalName": "Nova_Ebon_Eye",
+      "stats": {
+        "accuracy": 1,
+        "range": 100,
+        "recharge": 5,
+        "endurance": 3.12,
+        "castTime": 1.5
+      },
+      "damage": {
+        "type": "Negative",
+        "scale": 1.16,
+        "table": "Ranged_InherentDamage"
+      },
+      "effects": {
+        "buffDuration": 4,
+        "durations": {
+          "rechargeDebuff": 4,
+          "slow": 4
+        },
+        "rechargeDebuff": {
+          "scale": 0.2,
+          "table": "Ranged_Slow"
+        },
+        "slow": {
+          "flySpeed": {
+            "scale": 0.2,
+            "table": "Ranged_Slow"
+          },
+          "runSpeed": {
+            "scale": 0.2,
+            "table": "Ranged_Slow"
+          }
+        }
+      },
+      "shortHelp": "Ranged, Minor DMG(Negative), Foe -Recharge, -SPD",
+      "description": "A very quick, but low damage attack that can lower your target's attack rate and movement speed. Damage: Minor",
+      "effectArea": "SingleTarget",
+      "targetType": "Foe",
+      "powerType": "Click"
+    }
+  }
 };

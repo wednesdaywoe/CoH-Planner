@@ -49,6 +49,7 @@
   "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Dominator_Soul_Mastery.Dark_Consumption Epic.Dominator_Soul_Mastery.Dark_Embrace && Epic.Dominator_Soul_Mastery.Dark_Consumption Epic.Dominator_Soul_Mastery.Dark_Obliteration && || Epic.Dominator_Soul_Mastery.Dark_Consumption Epic.Dominator_Soul_Mastery.Soul_Drain && || Epic.Dominator_Soul_Mastery.Dark_Embrace Epic.Dominator_Soul_Mastery.Dark_Obliteration && || Epic.Dominator_Soul_Mastery.Dark_Embrace Epic.Dominator_Soul_Mastery.Soul_Drain && || &&",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -68,7 +69,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -95,7 +96,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     }

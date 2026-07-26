@@ -43,8 +43,7 @@ export const RainofFire: Power = {
       "copyBoosts": true,
       "displayName": "Rain of Fire",
       "duration": 15,
-      "entity": "PL_StaticObject",
-      "isPseudoPet": false,
+      "isPseudoPet": true,
       "powers": [
         "Pets.RainofFire_Sentinel.Avoid",
         "Pets.RainofFire_Sentinel.RainofFire"
@@ -88,7 +87,8 @@ export const RainofFire: Power = {
             }
           ]
         }
-      ]
+      ],
+      "entity": "PL_StaticObject"
     }
   },
   "atoms": [

@@ -1,0 +1,19 @@
+{
+  "key": "Boosts.Crafted_Thrust_C",
+  "display_name": "Crafted Thrust C",
+  "help": "Reduces endurance cost by {Boost.Attrib.Endurance.Scale}%.",
+  "short_help": "Set: Thrust",
+  "icon": "e_icon_thrust",
+  "powers": [
+    "Boosts.Crafted_Thrust_C.Crafted_Thrust_C"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Thrust: Endurance"
+  ],
+  "power_short_helps": [
+    "-End Cost"
+  ]
+}

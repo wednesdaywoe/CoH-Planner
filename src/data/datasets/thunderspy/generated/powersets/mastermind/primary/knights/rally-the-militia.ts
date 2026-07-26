@@ -16,6 +16,7 @@ export const RallyTheMilitia: Power = {
   "shortHelp": "PBAoE,Self, Pets +Defense, +Regeneration",
   "icon": "knights_rallythemilitia.png",
   "powerType": "Click",
+  "targetType": "Own Pet (Alive)",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -46,21 +47,29 @@ export const RallyTheMilitia: Power = {
   "maxSlots": 6,
   "effects": {
     "buffDuration": 90,
+    "damageBuff": {
+      "scale": 5,
+      "table": "Ranged_Buff_Dmg"
+    },
     "defenseBuff": {
-      "cold": {
+      "aoe": {
         "scale": 1,
+        "table": "Ranged_Buff_Def"
+      },
+      "cold": {
+        "scale": 0.5,
         "table": "Ranged_Buff_Def"
       },
       "energy": {
-        "scale": 1,
+        "scale": 0.5,
         "table": "Ranged_Buff_Def"
       },
       "fire": {
-        "scale": 1,
+        "scale": 0.5,
         "table": "Ranged_Buff_Def"
       },
       "lethal": {
-        "scale": 1,
+        "scale": 0.5,
         "table": "Ranged_Buff_Def"
       },
       "melee": {
@@ -68,19 +77,24 @@ export const RallyTheMilitia: Power = {
         "table": "Ranged_Buff_Def"
       },
       "negative": {
-        "scale": 1,
+        "scale": 0.5,
         "table": "Ranged_Buff_Def"
       },
       "psionic": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "ranged": {
         "scale": 1,
         "table": "Ranged_Buff_Def"
       },
       "smashing": {
-        "scale": 1,
+        "scale": 0.5,
         "table": "Ranged_Buff_Def"
       }
     },
     "durations": {
+      "damageBuff": 90,
       "defenseBuff": 90,
       "regenBuff": 90
     },
@@ -89,6 +103,7 @@ export const RallyTheMilitia: Power = {
       "table": "Ranged_Ones"
     },
     "summon": {
+      "duration": 120,
       "entities": [
         {
           "count": 2,
@@ -111,21 +126,30 @@ export const RallyTheMilitia: Power = {
     }
   },
   "atoms": [
-    ["Defense","Melee",1,1,90,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Smashing",1,1,90,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Lethal",1,1,90,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Fire",1,1,90,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Cold",1,1,90,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Energy",1,1,90,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Negative",1,1,90,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Psionic",1,1,90,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Regeneration",null,0.5,1,90,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,5,1,90,"Ranged_Buff_Dmg","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Defense","Melee",1,1,90,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Ranged",1,1,90,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","AoE",1,1,90,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Smashing",0.5,1,90,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Lethal",0.5,1,90,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Fire",0.5,1,90,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Cold",0.5,1,90,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Energy",0.5,1,90,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Negative",0.5,1,90,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Psionic",0.5,1,90,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Regeneration",null,0.5,1,90,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["DamageBuff","Smashing",5,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",5,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["EntCreate",null,1,1,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["EntCreate",null,1,1,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["EntCreate",null,1,1,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["EntCreate",null,1,1,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["EntCreate",null,1,1,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["EntCreate",null,1,1,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["EntCreate",null,1,1,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
   ]
 };

@@ -48,10 +48,18 @@ export const Reactiontime: Power = {
   ],
   "maxSlots": 6,
   "atoms": [
-    ["Unmapped",null,0.7,1,5,"Melee_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq !"],
-    ["Movement","Run",-1,1,5,"Melee_SpeedRunning","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq entref target> entref source> eq ! &&"],
-    ["Unmapped",null,-0.7,1,10,"Melee_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Movement","Run",1,1,10,"Melee_SpeedRunning","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Movement","Run",0.7,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq !"],
+    ["RechargeTime",null,0.4,1,5,"Melee_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq !"],
+    ["Movement","Fly",0.7,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq !"],
+    ["Movement","Jump",0.7,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq !"],
+    ["Movement","JumpHeight",0.7,1,5,"Melee_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq !"],
+    ["Movement","Run",-1,1,5,"Melee_SpeedRunning","Max","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq entref target> entref source> eq ! &&"],
+    ["Movement","Run",-0.7,1,10,"Melee_Slow","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","Fly",-0.7,1,10,"Melee_Slow","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","Jump",-0.7,1,10,"Melee_Slow","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["RechargeTime",null,-0.4,1,10,"Melee_Slow","Str","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","JumpHeight",-0.7,1,10,"Melee_Slow","Str","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","Run",1,1,10,"Melee_SpeedRunning","Max","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true]
   ],
   "conditionalEffects": [
     {
@@ -61,17 +69,37 @@ export const Reactiontime: Power = {
       "defaultActive": false,
       "group": "swap-ammo",
       "effects": {
+        "rechargeDebuff": {
+          "scale": 0.4,
+          "table": "Melee_Slow"
+        },
         "slow": {
+          "flySpeed": {
+            "scale": 0.7,
+            "table": "Melee_Slow"
+          },
+          "jumpHeight": {
+            "scale": 0.7,
+            "table": "Melee_Slow"
+          },
+          "jumpSpeed": {
+            "scale": 0.7,
+            "table": "Melee_Slow"
+          },
           "runSpeed": {
             "scale": 1,
             "table": "Melee_SpeedRunning"
           }
         },
         "durations": {
+          "rechargeDebuff": 5,
           "slow": 5
         },
         "buffDuration": 5
       }
     }
+  ],
+  "damageTypes": [
+    "Energy"
   ]
 };

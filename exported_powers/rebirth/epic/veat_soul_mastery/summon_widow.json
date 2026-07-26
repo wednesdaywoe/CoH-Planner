@@ -48,6 +48,7 @@
   "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.VEAT_Soul_Mastery.Gloom Epic.VEAT_Soul_Mastery.Soul_Tentacles && Epic.VEAT_Soul_Mastery.Gloom Epic.VEAT_Soul_Mastery.Darkest_Night && || Epic.VEAT_Soul_Mastery.Gloom Epic.VEAT_Soul_Mastery.Dark_Obliteration && || Epic.VEAT_Soul_Mastery.Soul_Tentacles Epic.VEAT_Soul_Mastery.Darkest_Night && || Epic.VEAT_Soul_Mastery.Soul_Tentacles Epic.VEAT_Soul_Mastery.Dark_Obliteration && || &&",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -67,7 +68,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -94,7 +95,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     }

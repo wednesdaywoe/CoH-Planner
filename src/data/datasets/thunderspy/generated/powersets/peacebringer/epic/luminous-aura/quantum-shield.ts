@@ -48,10 +48,15 @@ export const QuantumShield: Power = {
       "energy": {
         "scale": 3,
         "table": "Melee_Res_DMG"
+      },
+      "negative": {
+        "scale": 3,
+        "table": "Melee_Res_DMG"
       }
     }
   },
   "atoms": [
-    ["Resistance","Energy",3,1,0.75,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kPeacebringer_Blaster_Mode Source.Mode? !"]
+    ["Resistance","Energy",3,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",17558,null,null,1,null,null,null,null,null,null,"kPeacebringer_Blaster_Mode Source.Mode? !"],
+    ["Resistance","Negative",3,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",17558,null,null,1,null,null,null,null,null,null,"kPeacebringer_Blaster_Mode Source.Mode? !"]
   ]
 };

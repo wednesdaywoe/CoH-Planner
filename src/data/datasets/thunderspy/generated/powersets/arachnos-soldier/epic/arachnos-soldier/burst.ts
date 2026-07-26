@@ -41,15 +41,38 @@ export const Burst: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 0.3826,
-    "table": "Ranged_Damage",
-    "duration": 0.7,
-    "tickRate": 0.30000001192092896
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.3826,
+      "table": "Ranged_Damage",
+      "duration": 0.7,
+      "tickRate": 0.30000001192092896
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.164,
+      "table": "Ranged_Damage",
+      "duration": 0.7,
+      "tickRate": 0.30000001192092896
+    }
+  ],
+  "effects": {
+    "buffDuration": 8,
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Ranged_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 8
+    }
   },
   "atoms": [
-    ["Unmapped",null,0.3826,1,0.7,"Ranged_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,0.30000001192092896,1],
-    ["Unmapped",null,1,1,8,"Ranged_Debuff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Damage","Lethal",0.3826,1,0.7,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1],
+    ["Damage","Toxic",0.164,1,0.7,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1],
+    ["Defense","All",1,1,8,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+  ],
+  "damageTypes": [
+    "Lethal"
   ]
 };

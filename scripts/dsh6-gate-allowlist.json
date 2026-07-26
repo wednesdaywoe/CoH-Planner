@@ -34,7 +34,9 @@
     "Mez|confuse|": "World of Confusion (Mental Manipulation) — conditional/contact-gated confuse; known gap."
   },
   "scalarCollapse": {},
-  "discriminatorCollapse": {},
+  "discriminatorCollapse": {
+    "self-penalty|Movement": "Reaction Time — by design. The power's −0.7 movement templates are OnDeactivate undo-mods (they fire only when the toggle drops, reversing the OnTick +0.7 sustain buffs; confirmed vs CoD2 field-for-field). The shifted ATTRIB_MOD_APPLICATION table (fixed 2026-07-20) had mislabeled them OnActivate, so the converter's OnDeactivate skip missed them and a phantom self-penalty atom shipped; with correct labels the skip drops them, collapsing the phantom."
+  },
   "discriminatorClassAbsent": {
     "twin-unenhanced|Regeneration": "Genetic Corruption (Stalker Bio Armor) — its IgnoreStrength +Regen is gated on `kRestedAdaptation Source.Mode?` (Efficient stance only) and wholly dropped from base output, exactly like its already-allowlisted Rested-stance +Res block (see classAbsent Genetic Corruption entries). Same self-conditional known gap; the real enhanceable/unenhanceable regen twins (Gamma Boost, Fast Healing, Obscure Sustenance) all correctly emit regenBuffUnenhanced and pass."
   },

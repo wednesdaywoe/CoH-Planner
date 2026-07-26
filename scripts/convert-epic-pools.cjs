@@ -119,17 +119,17 @@ function convertEpicPower(rawJson, rank, availableLevel) {
   power.name = rawJson.display_name || rawJson.name;
   power.fullName = rawJson.full_name;
 
-  // StrengthsDisallowed / GlobalStrengthsDisallowed from the `raw defs/`
-  // oracle (server-side data absent from the client bin; HC only — see
+  // StrengthsDisallowed from the bin export; GlobalStrengthsDisallowed from the
+  // `raw defs/` oracle, the only source for it (HC only — see
   // getStrengthsDisallowedIndex in convert-powerset.cjs). Recharge carriers
   // here: Rune of Protection, Afterburner-class travel boosts.
+  if (Array.isArray(rawJson.strengths_disallowed) && rawJson.strengths_disallowed.length) {
+    power.strengthsDisallowed = rawJson.strengths_disallowed;
+  }
   {
     const sd = rawJson.full_name
       && getStrengthsDisallowedIndex().get(rawJson.full_name.toLowerCase());
-    if (sd) {
-      if (sd.strengths.length) power.strengthsDisallowed = sd.strengths;
-      if (sd.global.length) power.globalStrengthsDisallowed = sd.global;
-    }
+    if (sd && sd.global.length) power.globalStrengthsDisallowed = sd.global;
   }
   power.rank = rank;
   power.available = availableLevel;
@@ -187,8 +187,6 @@ function convertEpicPower(rawJson, rank, availableLevel) {
     );
     power.allowedSetCategories = inferAllowedSetCategories(
       rawJson.boosts_allowed || [],
-      'epic',
-      'epic',
       EFFECT_AREA_MAP[rawJson.effect_area] ?? rawJson.effect_area,
       rawJson.range,
       rawJson.powerset || rawJson.full_name,
@@ -446,6 +444,8 @@ function convertEpicPool(poolId, existingPool) {
     // prerequisite tier level so it sorts into its true slot: a single-power
     // requirement (`||` only) is the level-41 tier (available 40); a compound
     // requirement (`&&`, i.e. own two others) is the level-44 capstone (43).
+    // The 35/40/43 ladder itself is game knowledge the export doesn't carry
+    // (DATA-GAP-REGISTER SOURCE-1).
     if (availableLevel === 0 && poolIndex.key
         && typeof rawJson.requires === 'string'
         && rawJson.requires.includes(poolIndex.key + '.')) {

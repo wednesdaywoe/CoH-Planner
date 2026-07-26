@@ -52,6 +52,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     112
   ],
@@ -70,17 +71,17 @@
       "templates": [
         {
           "attribs": [
-            "Create_Entity"
+            "Translucency"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 0.0,
-          "duration": "1.50 seconds",
+          "duration": "1.5 seconds",
           "magnitude": 1.0,
-          "delay": 1.399999976158142,
+          "delay": 1.4,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -94,7 +95,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -115,14 +117,14 @@
             "Teleport"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 4.1,
           "duration": "0 seconds",
           "magnitude": 3.0,
-          "delay": 2.5999999046325684,
+          "delay": 2.6,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -133,7 +135,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -154,14 +157,14 @@
             "Teleport"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 100.0,
           "duration": "15 seconds",
           "magnitude": 1.0,
-          "delay": 2.799999952316284,
+          "delay": 2.8,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -176,7 +179,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -197,14 +201,14 @@
             "Stunned"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Stun",
           "scale": 10.0,
           "duration": "0 seconds",
           "magnitude": 3.0,
-          "delay": 2.700000047683716,
+          "delay": 2.7,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -215,7 +219,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 2560
         }
       ]
     },
@@ -236,7 +241,7 @@
             "Stunned"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Stun",
@@ -257,7 +262,8 @@
           "stack_key": null,
           "flags": [
             "NearGround"
-          ]
+          ],
+          "flags_raw": 2568
         }
       ]
     },
@@ -278,14 +284,14 @@
             "Stunned"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 4.0,
           "duration": "0 seconds",
           "magnitude": 4.0,
-          "delay": 2.700000047683716,
+          "delay": 2.7,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -296,7 +302,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 2560
         }
       ]
     },
@@ -314,17 +321,17 @@
       "templates": [
         {
           "attribs": [
-            "Create_Entity"
+            "Translucency"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 0.3,
           "duration": "0.75 seconds",
           "magnitude": 1.0,
-          "delay": 2.700000047683716,
+          "delay": 2.7,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -337,13 +344,14 @@
           "stack_limit": 2,
           "stack_key": null,
           "cancel_events": [
-            "Damaged",
-            "Event_19",
-            "Event_22"
+            "Held",
+            "Stunned",
+            "Sleep"
           ],
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -364,14 +372,14 @@
             "StealthRadius_PVE"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 20.0,
           "duration": "0.75 seconds",
           "magnitude": 1.0,
-          "delay": 2.700000047683716,
+          "delay": 2.7,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -384,13 +392,14 @@
           "stack_limit": 2,
           "stack_key": null,
           "cancel_events": [
-            "Damaged",
-            "Event_19",
-            "Event_22"
+            "Held",
+            "Stunned",
+            "Sleep"
           ],
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -411,14 +420,14 @@
             "Intangible"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 0.75,
           "duration": "0 seconds",
           "magnitude": 3.0,
-          "delay": 2.700000047683716,
+          "delay": 2.7,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -431,13 +440,14 @@
           "stack_limit": 2,
           "stack_key": null,
           "cancel_events": [
-            "Damaged",
-            "Event_19",
-            "Event_22"
+            "Held",
+            "Stunned",
+            "Sleep"
           ],
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 2080
         }
       ]
     },
@@ -458,14 +468,14 @@
             "Untouchable"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 0.75,
           "duration": "0 seconds",
           "magnitude": 3.0,
-          "delay": 2.799999952316284,
+          "delay": 2.8,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -478,13 +488,14 @@
           "stack_limit": 2,
           "stack_key": null,
           "cancel_events": [
-            "Damaged",
-            "Event_19",
-            "Event_22"
+            "Held",
+            "Stunned",
+            "Sleep"
           ],
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 2080
         }
       ]
     },
@@ -505,14 +516,14 @@
             "ThreatLevel"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": -1.0,
           "duration": "0.75 seconds",
           "magnitude": 1.0,
-          "delay": 2.700000047683716,
+          "delay": 2.7,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -525,14 +536,15 @@
           "stack_limit": 2,
           "stack_key": null,
           "cancel_events": [
-            "Damaged",
-            "Event_19",
-            "Event_22"
+            "Held",
+            "Stunned",
+            "Sleep"
           ],
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -553,14 +565,14 @@
             "OnlyAffectsSelf"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 0.75,
           "duration": "0 seconds",
           "magnitude": 3.0,
-          "delay": 2.799999952316284,
+          "delay": 2.8,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -574,7 +586,8 @@
           "stack_key": null,
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 2080
         }
       ]
     },
@@ -595,14 +608,14 @@
             "Knockback"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Knockback",
           "scale": 7.0,
           "duration": "0 seconds",
           "magnitude": 1.0,
-          "delay": 2.700000047683716,
+          "delay": 2.7,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -613,7 +626,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     }

@@ -920,12 +920,11 @@ export function formatDamage(damage: number): string {
  * the archetype and converts fraction → percentage points (×100).
  *
  * NOTE: this path uses the archetype's *raw* buffDebuffModifier. The display
- * surfaces (powerDisplayUtils) instead pass the *effective* modifier
- * (getEffectiveBuffDebuffModifier zeroes Corruptor/Mastermind secondary support
- * to 1.0). For table-less buff/debuff effects on those ATs the two can differ —
- * a known semantic divergence flagged for in-game verification, NOT reconciled
- * here because it would change displayed game values. Accepts both number
- * (legacy) and ScaledEffect (new format) as input.
+ * surfaces apply no support modifier at all: the archetype-name rule that used to
+ * supply one there was measured dead and deleted (PROD6B-2b — every row that
+ * reaches a table-less fallback is a pool power, which the rule never matched;
+ * see supportModifierReach.test.ts). Accepts both number (legacy) and
+ * ScaledEffect (new format) as input.
  */
 export function calculateBuffDebuffPercent(
   scaleOrEffect: NumberOrScaled,

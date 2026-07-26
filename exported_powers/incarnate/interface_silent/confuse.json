@@ -45,6 +45,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -79,7 +80,7 @@
                 "Confused"
               ],
               "type": "Duration",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
@@ -94,13 +95,25 @@
               "tick_mag_multiplier": 1.0,
               "tick_mag_additive": 0.0,
               "jit_requires": "",
-              "caster_stack": "Unlimited",
+              "caster_stack": "Collective",
               "stack": "StackThenIgnore",
               "stack_limit": 4,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You Confuse {PlayerDest} with your {PowerName}.",
+                "display_victim_hit": "{PlayerSource} Confuses you with their {PowerName}.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "INCARNATEPOWERS/INTERFACE/COGNITIVE.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
-                "IgnoreStrength",
-                "DeepSleep"
+                "IgnoreStrength"
               ],
               "flags_raw": 2576
             }
@@ -123,7 +136,7 @@
                 "Confused"
               ],
               "type": "Duration",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_PvPMez",
@@ -138,21 +151,27 @@
               "tick_mag_multiplier": 1.0,
               "tick_mag_additive": 0.0,
               "jit_requires": "",
-              "caster_stack": "Unlimited",
+              "caster_stack": "Collective",
               "stack": "StackThenIgnore",
               "stack_limit": 4,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You Confuse {PlayerDest} with your {PowerName}.",
+                "display_victim_hit": "{PlayerSource} Confuses you with their {PowerName}.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "suppress_events": [
                 {
-                  "event": "Event_28",
+                  "event": "Confused",
                   "event_id": 28,
                   "duration": 15.0,
-                  "flag": 0
+                  "always": 0
                 }
               ],
               "flags": [
-                "IgnoreStrength",
-                "DeepSleep"
+                "IgnoreStrength"
               ],
               "flags_raw": 2576
             }
@@ -161,6 +180,7 @@
       ]
     }
   ],
+  "max_boosts": 0,
   "modes_disallowed": [
     "Disable_All",
     "Disable_Epic",

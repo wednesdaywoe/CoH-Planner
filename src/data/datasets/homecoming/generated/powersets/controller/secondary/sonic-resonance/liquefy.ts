@@ -48,13 +48,66 @@ export const Liquefy: Power = {
   "effects": {
     "summon": {
       "copyBoosts": true,
+      "displayName": "Liquefy",
       "duration": 30,
-      "entity": "Liquefy",
-      "isPseudoPet": false,
+      "isPseudoPet": true,
       "powers": [
         "Pets.ResistAll.ResistAll",
         "Pets.Liquefy.Liquefy"
-      ]
+      ],
+      "resolvedEntities": [
+        {
+          "displayName": "Liquefy",
+          "duration": 30,
+          "copyCreatorMods": true,
+          "abilities": [
+            {
+              "name": "Liquefy",
+              "displayName": "Liquefy",
+              "type": "Auto",
+              "damage": [],
+              "effects": [
+                {
+                  "type": "Knockback",
+                  "magnitude": 1,
+                  "scale": 0.67,
+                  "table": "Ranged_Ones",
+                  "chance": 0.03
+                },
+                {
+                  "type": "DefenseDebuff",
+                  "scale": 2.856,
+                  "table": "Ranged_Debuff_Def"
+                },
+                {
+                  "type": "ToHitDebuff",
+                  "scale": 2.856,
+                  "table": "Ranged_Debuff_ToHit"
+                },
+                {
+                  "type": "RechargeDebuff",
+                  "scale": 0.228,
+                  "table": "Ranged_Slow",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "Slow",
+                  "scale": 500,
+                  "table": "Ranged_Ones",
+                  "ignoreStrength": true
+                }
+              ],
+              "recharge": 0,
+              "castTime": 0,
+              "activatePeriod": 0.2,
+              "effectArea": "Sphere",
+              "radius": 25,
+              "maxTargets": 10
+            }
+          ]
+        }
+      ],
+      "entity": "PL_StaticObject"
     }
   },
   "atoms": [

@@ -48,6 +48,14 @@ export interface EffectDisplayConfig {
   format: EffectFormat;
   /** Enhancement aspect that modifies this (for three-tier display) */
   enhancementAspect?: string;
+  /**
+   * Build-wide global / +Strength key that scales this effect, when it differs from
+   * `enhancementAspect`. The server reads Strength at the attrib mod's OWN offset, while one
+   * boost template may enhance several attribs at once — a Healing IO lists `Heal_Dmg` AND
+   * `Absorb`, so absorb IS heal-enhanceable, but +Heal Strength and the +Heal set bonus target
+   * `Heal_Dmg` alone and never reach it. Absent = same key as the enhancement aspect.
+   */
+  strengthAspect?: string;
   /** Whether this is a buff or debuff for percentage calculation */
   calculation?: 'buff' | 'debuff';
   /** Priority for display order within category (lower = first) */
@@ -78,6 +86,22 @@ export interface EffectDisplayConfig {
    * absurd percentages.
    */
   flatPercentPerScale?: number;
+  /**
+   * A NON-by-type value on an `expandByType` effect resolves through the table-base
+   * resistance-percent path rather than the generic percent path. Declared as data so
+   * neither the component nor the engine branches on the effect NAME.
+   */
+  scalarFromTablePercent?: boolean;
+  /**
+   * A `value`-format effect whose scale resolves to an AMOUNT through its AT table at the
+   * build level (heal / absorb HP) rather than displaying the bare scale.
+   */
+  valueFromTable?: boolean;
+  /**
+   * An authored `maxHPFraction`, or a scale on a `*_Ones` table, means "this fraction of
+   * Max HP" and displays as a percent instead of an amount.
+   */
+  maxHpFractionPercentForm?: boolean;
 }
 
 // ============================================
@@ -562,7 +586,10 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     colorClass: STAT_COLORS.absorb,
     format: 'value',
     enhancementAspect: 'heal',
+    strengthAspect: 'absorb',
     priority: 15,
+    valueFromTable: true,
+    maxHpFractionPercentForm: true,
   },
   specialBuff: {
     label: '+Special',
@@ -654,6 +681,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     format: 'value',
     enhancementAspect: 'heal',
     priority: 2,
+    valueFromTable: true,
   },
 
   // === ARMOR & PROTECTION ===
@@ -682,6 +710,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     format: 'percent',
     expandByType: true,
     priority: 3,
+    scalarFromTablePercent: true,
   },
   protection: {
     label: 'Prot',

@@ -38,6 +38,7 @@
   "requires": "$archetype @Class_Peacebringer ==",
   "activate_requires": "$archetype @Class_Peacebringer ==",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -54,12 +55,13 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Energy_Dmg",
+            "Smashing_Dmg"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "Self",
           "table": "Melee_Ones",
           "scale": 0.2,
           "duration": "10 seconds",
@@ -73,9 +75,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "arch target> Class_Tanker eq arch target> Class_Defender eq || arch target> Class_Mastermind eq || arch target> Class_Corruptor eq ||",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 112
         }
       ]
     },
@@ -93,12 +101,19 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Smashing_Dmg",
+            "Lethal_Dmg",
+            "Fire_Dmg",
+            "Cold_Dmg",
+            "Energy_Dmg",
+            "Negative_Energy_Dmg",
+            "Toxic_Dmg",
+            "Psionic_Dmg"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Resistance",
+          "target": "Self",
           "table": "Melee_Ones",
           "scale": 0.1,
           "duration": "10 seconds",
@@ -112,9 +127,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "arch target> Class_Scrapper eq arch target> Class_Blaster eq || arch target> Class_Brute eq || arch target> Class_Stalker eq ||",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 112
         }
       ]
     },
@@ -132,12 +153,17 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Stunned",
+            "Held",
+            "Terrorized",
+            "Confused",
+            "Sleep",
+            "Immobilized"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Melee_Ones",
           "scale": -1.0,
           "duration": "10 seconds",
@@ -151,9 +177,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "arch target> Class_Controller eq arch target> Class_Dominator eq || isPVPMap? ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 112
         }
       ]
     },
@@ -171,12 +203,17 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Stunned",
+            "Held",
+            "Terrorized",
+            "Confused",
+            "Sleep",
+            "Immobilized"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Resistance",
+          "target": "Self",
           "table": "Melee_Ones",
           "scale": 0.1,
           "duration": "10 seconds",
@@ -190,9 +227,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "arch target> Class_Controller eq arch target> Class_Dominator eq || isPVPMap? &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 112
         }
       ]
     },
@@ -212,10 +255,10 @@
           "attribs": [
             "RechargeTime"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Resistance",
+          "target": "Self",
           "table": "Melee_Ones",
           "scale": 0.1,
           "duration": "10 seconds",
@@ -229,13 +272,20 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "arch target> Class_Arachnos_Soldier eq arch target> Class_Arachnos_Widow eq || arch target> Class_Peacebringer eq || arch target> Class_Warshade eq ||",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 112
         }
       ]
     }
   ],
+  "max_boosts": 0,
   "modes_disallowed": [
     "Disable_All"
   ],

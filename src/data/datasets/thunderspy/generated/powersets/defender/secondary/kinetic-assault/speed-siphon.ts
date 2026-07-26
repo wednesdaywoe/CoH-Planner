@@ -46,16 +46,39 @@ export const SpeedSiphon: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 0.11,
     "table": "Ranged_Damage"
   },
   "effects": {
-    "buffDuration": 5,
+    "buffDuration": 10,
     "durations": {
+      "movement": 10,
       "slow": 5
     },
+    "movement": {
+      "flySpeed": {
+        "scale": 0.05,
+        "table": "Melee_Ones"
+      },
+      "jumpSpeed": {
+        "scale": 0.05,
+        "table": "Melee_Ones"
+      },
+      "runSpeed": {
+        "scale": 0.05,
+        "table": "Melee_Ones"
+      }
+    },
     "slow": {
+      "jumpHeight": {
+        "scale": 0.5,
+        "table": "Melee_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.5,
+        "table": "Melee_Slow"
+      },
       "runSpeed": {
         "scale": 1.5,
         "table": "Melee_SpeedRunning"
@@ -63,11 +86,13 @@ export const SpeedSiphon: Power = {
     }
   },
   "atoms": [
-    ["Movement","Run",0.05,1,10,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Movement","Jump",0.05,1,10,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Movement","Fly",0.05,1,10,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.11,1,0,"Ranged_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref source> entref target> eq !"],
-    ["Unmapped",null,0.5,1,5,"Melee_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref source> entref target> eq !"],
-    ["Movement","Run",-1.5,1,5,"Melee_SpeedRunning","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref source> entref target> eq !"]
+    ["Movement","Run",0.05,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"No",10,null,null,1],
+    ["Movement","Jump",0.05,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"No",10,null,null,1],
+    ["Movement","Fly",0.05,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"No",10,null,null,1],
+    ["Damage","Energy",0.11,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"entref source> entref target> eq !"],
+    ["Movement","Run",0.5,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"entref source> entref target> eq !"],
+    ["Movement","JumpHeight",0.5,1,5,"Melee_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref source> entref target> eq !"],
+    ["Movement","Jump",0.5,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"entref source> entref target> eq !"],
+    ["Movement","Run",-1.5,1,5,"Melee_SpeedRunning","Max","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref source> entref target> eq !"]
   ]
 };

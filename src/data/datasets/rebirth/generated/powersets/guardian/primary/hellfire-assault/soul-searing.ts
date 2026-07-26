@@ -48,11 +48,22 @@ export const SoulSearing: Power = {
     ]
   },
   "atoms": [
-    ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["ToHit",null,0.12,1,40,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["Meta",null,1,1,40,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1]
   ],
-  "setsModes": [
-    "Peacebringer_Blaster_Mode"
+  "grantedDamageProcs": [
+    {
+      "name": "Envenomed_Blades",
+      "displayName": "Envenomed Blades",
+      "damage": [
+        {
+          "damageType": "Toxic",
+          "scale": 1,
+          "table": "Melee_Damage"
+        }
+      ],
+      "enhanceable": true
+    }
   ]
 };

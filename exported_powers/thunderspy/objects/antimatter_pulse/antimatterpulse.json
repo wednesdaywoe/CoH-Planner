@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "kTower_Protection target.mode? !",
+  "slot_requires": "",
   "attack_types": [
     132
   ],
@@ -56,12 +57,12 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Sonic_Dmg"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": -0.2,
           "duration": "0 seconds",
@@ -75,9 +76,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     }

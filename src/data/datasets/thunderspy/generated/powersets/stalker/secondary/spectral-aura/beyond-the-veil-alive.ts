@@ -32,9 +32,46 @@ export const BeyondTheVeilAlive: Power = {
     "Endurance Modification"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Heal",
+    "scale": 5,
+    "table": "Melee_HealSelf",
+    "duration": 0.5,
+    "tickRate": 1
+  },
+  "effects": {
+    "buffDuration": 15,
+    "durations": {
+      "recoveryBuff": 15,
+      "untouchable": 15
+    },
+    "enduranceDrain": {
+      "scale": 0.1,
+      "table": "Ranged_Ones"
+    },
+    "enduranceGain": {
+      "scale": 0.5,
+      "table": "Ranged_Ones"
+    },
+    "recoveryBuff": {
+      "scale": 2,
+      "table": "Ranged_Ones"
+    },
+    "untouchable": {
+      "scale": 10,
+      "table": "Ranged_Ones"
+    }
+  },
   "atoms": [
-    ["Unmapped",null,10,1,15,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,5,1,0.5,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,1,1],
-    ["Unmapped",null,1,1,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints source> 1 <",true]
+    ["Mez","Untouchable",10,1,15,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Recovery",null,2,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["Endurance",null,0.5,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["Endurance",null,-0.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["Meta",null,1,1,30,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Heal",null,5,1,0.5,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,1,1],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Cur.kHitPoints source> 1 <",true]
+  ],
+  "setsModes": [
+    "Peacebringer_Blaster_Mode"
   ]
 };

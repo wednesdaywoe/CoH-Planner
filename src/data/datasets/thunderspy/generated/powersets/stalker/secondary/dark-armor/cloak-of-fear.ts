@@ -41,15 +41,26 @@ export const CloakofFear: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 5,
+    "durations": {
+      "tohitDebuff": 5
+    },
     "fear": {
       "mag": 2,
       "scale": 5,
       "table": "Melee_Fear"
+    },
+    "tohitDebuff": {
+      "scale": 0.075,
+      "table": "Melee_Ones"
     }
   },
   "atoms": [
-    ["Mez","Terrorized",5,2,0,"Melee_Fear","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,-0.075,1,5,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Mez","Terrorized",3.3,2,0,"Melee_Fear","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Mez","Terrorized",5,2,0,"Melee_Fear","Cur","Duration","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["ToHit",null,-0.075,1,5,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Mez","Terrorized",3.3,2,0,"Melee_Fear","Cur","Duration","Target","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+  ],
+  "damageTypes": [
+    "Negative"
   ]
 };

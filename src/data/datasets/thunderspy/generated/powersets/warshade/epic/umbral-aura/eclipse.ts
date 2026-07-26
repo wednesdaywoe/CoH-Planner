@@ -40,56 +40,79 @@ export const Eclipse: Power = {
   "effects": {
     "buffDuration": 90,
     "durations": {
+      "recoveryDebuff": 10,
       "resistance": 90
     },
     "enduranceDrain": {
       "scale": 0.33,
       "table": "Melee_Ones"
     },
+    "enduranceGain": {
+      "scale": 25,
+      "table": "Melee_Ones",
+      "perTarget": 25
+    },
+    "recoveryDebuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
     "resistance": {
       "cold": {
         "scale": 1.5,
-        "table": "Melee_Res_DMG"
+        "table": "Melee_Res_DMG",
+        "perTarget": 1.5
       },
       "energy": {
         "scale": 1.5,
-        "table": "Melee_Res_DMG"
+        "table": "Melee_Res_DMG",
+        "perTarget": 1.5
       },
       "fire": {
         "scale": 1.5,
-        "table": "Melee_Res_DMG"
+        "table": "Melee_Res_DMG",
+        "perTarget": 1.5
       },
       "lethal": {
         "scale": 1.5,
-        "table": "Melee_Res_DMG"
+        "table": "Melee_Res_DMG",
+        "perTarget": 1.5
       },
       "negative": {
         "scale": 1.5,
-        "table": "Melee_Res_DMG"
+        "table": "Melee_Res_DMG",
+        "perTarget": 1.5
       },
       "psionic": {
         "scale": 1.5,
-        "table": "Melee_Res_DMG"
+        "table": "Melee_Res_DMG",
+        "perTarget": 1.5
       },
       "smashing": {
         "scale": 1.5,
-        "table": "Melee_Res_DMG"
+        "table": "Melee_Res_DMG",
+        "perTarget": 1.5
       },
       "toxic": {
         "scale": 1.5,
-        "table": "Melee_Res_DMG"
+        "table": "Melee_Res_DMG",
+        "perTarget": 1.5
       }
     }
   },
   "atoms": [
-    ["Endurance",null,-0.33,1,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Smashing",1.5,1,90,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Lethal",1.5,1,90,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Fire",1.5,1,90,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Cold",1.5,1,90,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Energy",1.5,1,90,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Negative",1.5,1,90,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Psionic",1.5,1,90,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Toxic",1.5,1,90,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Endurance",null,-0.33,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Recovery",null,-1,1,10,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Endurance",null,25,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,25],
+    ["Resistance","Smashing",1.5,1,90,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,1.5],
+    ["Resistance","Lethal",1.5,1,90,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,1.5],
+    ["Resistance","Fire",1.5,1,90,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,1.5],
+    ["Resistance","Cold",1.5,1,90,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,1.5],
+    ["Resistance","Energy",1.5,1,90,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,1.5],
+    ["Resistance","Negative",1.5,1,90,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,1.5],
+    ["Resistance","Psionic",1.5,1,90,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,1.5],
+    ["Resistance","Toxic",1.5,1,90,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,1.5]
+  ],
+  "damageTypes": [
+    "Negative"
   ]
 };

@@ -48,6 +48,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -89,7 +90,7 @@
                 "Toxic_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Strength",
               "target": "Self",
               "table": "Melee_Buff_Dmg",
@@ -108,6 +109,13 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": null,
+                "display_victim_hit": null,
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "Suppresses in combat."
+              },
               "cancel_events": [
                 "Stunned",
                 "Held",
@@ -118,25 +126,25 @@
                   "event": "Attacked",
                   "event_id": 2,
                   "duration": 8.0,
-                  "flag": 1
+                  "always": 1
                 },
                 {
                   "event": "Damaged",
                   "event_id": 21,
                   "duration": 8.0,
-                  "flag": 1
+                  "always": 1
                 },
                 {
                   "event": "MissionObjectClick",
                   "event_id": 37,
                   "duration": 8.0,
-                  "flag": 1
+                  "always": 1
                 },
                 {
                   "event": "PseudoPetAttacked",
                   "event_id": 47,
                   "duration": 8.0,
-                  "flag": 1
+                  "always": 1
                 }
               ],
               "flags": [
@@ -180,7 +188,7 @@
                     "Melee"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Current",
                   "target": "Self",
                   "table": "Melee_Buff_Def",
@@ -238,7 +246,7 @@
                     "Toxic"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Current",
                   "target": "Self",
                   "table": "Melee_Buff_Def",
@@ -257,6 +265,13 @@
                   "stack": "Suppress",
                   "stack_limit": 2,
                   "stack_key": "StealthToggle",
+                  "messages": {
+                    "display_attacker_hit": null,
+                    "display_victim_hit": null,
+                    "display_float": null,
+                    "display_attrib_defense_float": null,
+                    "display_info": "Suppresses in combat, does not stack with other sources of stealth"
+                  },
                   "cancel_events": [
                     "Attacked",
                     "Helped",
@@ -319,7 +334,7 @@
                     "Negative_Energy"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Current",
                   "target": "Self",
                   "table": "Melee_Buff_Def",
@@ -372,7 +387,7 @@
                     "Toxic"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Current",
                   "target": "Self",
                   "table": "Melee_Buff_Def",
@@ -391,6 +406,13 @@
                   "stack": "Suppress",
                   "stack_limit": 2,
                   "stack_key": "StealthToggle",
+                  "messages": {
+                    "display_attacker_hit": null,
+                    "display_victim_hit": null,
+                    "display_float": null,
+                    "display_attrib_defense_float": null,
+                    "display_info": "Suppresses in combat, does not stack with other sources of stealth"
+                  },
                   "cancel_events": [
                     "Attacked",
                     "Helped",
@@ -430,7 +452,7 @@
                 "StealthRadius_PVE"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
@@ -449,6 +471,13 @@
               "stack": "Suppress",
               "stack_limit": 2,
               "stack_key": "StealthToggle",
+              "messages": {
+                "display_attacker_hit": null,
+                "display_victim_hit": null,
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "Suppresses in combat."
+              },
               "cancel_events": [
                 "Attacked",
                 "HitByFoe",
@@ -482,7 +511,7 @@
                 "StealthRadius_PVP"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Melee_Ones",
@@ -501,6 +530,13 @@
               "stack": "Suppress",
               "stack_limit": 2,
               "stack_key": "StealthToggle",
+              "messages": {
+                "display_attacker_hit": null,
+                "display_victim_hit": null,
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "Suppresses in combat."
+              },
               "cancel_events": [
                 "Attacked",
                 "HitByFoe",
@@ -520,7 +556,7 @@
                 "Translucency"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Melee_Ones",
@@ -539,6 +575,13 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": null,
+                "display_victim_hit": null,
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "Suppresses in combat."
+              },
               "cancel_events": [
                 "Attacked",
                 "HitByFoe",
@@ -552,19 +595,19 @@
                   "event": "Attacked",
                   "event_id": 2,
                   "duration": 10.0,
-                  "flag": 1
+                  "always": 1
                 },
                 {
                   "event": "Damaged",
                   "event_id": 21,
                   "duration": 10.0,
-                  "flag": 1
+                  "always": 1
                 },
                 {
                   "event": "MissionObjectClick",
                   "event_id": 37,
                   "duration": 10.0,
-                  "flag": 1
+                  "always": 1
                 }
               ],
               "flags": [

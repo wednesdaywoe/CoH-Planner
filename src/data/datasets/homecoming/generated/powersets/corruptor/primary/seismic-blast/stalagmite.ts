@@ -55,5 +55,34 @@ export const Stalagmite: Power = {
   "atoms": [
     ["Mez","Stunned",6,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Smashing",0.75,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
-  ]
+  ],
+  "modeVariants": {
+    "SeismicPower": {
+      "internalName": "Corruptor_Stalagmite_Enhanced",
+      "stats": {
+        "accuracy": 1,
+        "range": 80,
+        "recharge": 16,
+        "endurance": 10.192,
+        "castTime": 1
+      },
+      "damage": {
+        "type": "Smashing",
+        "scale": 2.92,
+        "table": "Ranged_Damage"
+      },
+      "effects": {
+        "stun": {
+          "mag": 3,
+          "scale": 6,
+          "table": "Ranged_Stun"
+        }
+      },
+      "shortHelp": "Ranged, DMG(Smash), Foe Disorient, Special",
+      "description": "You can cause a Stalagmite to erupt under an enemy dealing minimal Lethal damage, and Disorienting them for a good while. You must be on the ground to activate this power.If affected by Seismic Shockwaves, this power will halt the shockwaves and deal extreme damage.Stalagmite grants one stack of Seismic Pressure.",
+      "effectArea": "SingleTarget",
+      "targetType": "Foe",
+      "powerType": "Click"
+    }
+  }
 };

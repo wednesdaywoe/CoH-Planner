@@ -1,10 +1,44 @@
 {
   "name": "Class_Tanker",
-  "display_name": "P3145047740",
+  "display_name": "Tanker",
+  "display_help": "The Tanker can take it and dish it out all at once. The Tanker primarily can absorb vast amounts of damage, and hold his own in a fist fight. But the Tanker lacks any long range punch. The Tanker would prefer just to charge straight ahead anyway.",
+  "display_short_help": "Excellent defense, good melee.",
   "icon": "archetypeicon_Tanker.tga",
   "primary_category": "Tanker_DEFENSE",
   "secondary_category": "Tanker_MELEE",
   "pool_category": "Pool",
+  "epic_pool_category": "",
+  "allowed_origins": [
+    "Science",
+    "Magic",
+    "Natural",
+    "Mutation",
+    "Technology"
+  ],
+  "special_restrictions": [
+    "Hero"
+  ],
+  "store_requires": "",
+  "locked_tooltip": "",
+  "product_code": "",
+  "reduction_class": "",
+  "reduce_as_archvillain": false,
+  "level_up_respecs": [],
+  "archetype_shots": [
+    "archetypeshots_tanker_0",
+    "archetypeshots_tanker_1",
+    "archetypeshots_tanker_2"
+  ],
+  "creation_stats": [
+    10,
+    7,
+    2,
+    4,
+    2,
+    2
+  ],
+  "playstyle_flags": 3,
+  "mechanic_tip": "",
   "named_tables": {
     "Melee_Damage": [
       -9.600000381469727,
@@ -4899,5 +4933,7 @@
     "resistance_cap": 0.8999999761581421,
     "base_threat": 4.0,
     "damage_cap": 4.0
-  }
+  },
+  "mechanic_bar_raw": 0,
+  "mechanic_gap_raw": 0
 }

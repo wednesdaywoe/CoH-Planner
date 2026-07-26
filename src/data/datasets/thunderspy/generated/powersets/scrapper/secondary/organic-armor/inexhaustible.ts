@@ -33,8 +33,38 @@ export const Inexhaustible: Power = {
   "maxSlots": 6,
   "effects": {
     "buffDuration": 5.25,
+    "debuffResistance": {
+      "endurance": {
+        "scale": 2,
+        "table": "Melee_Res_Boolean"
+      },
+      "movement": {
+        "scale": 0.3,
+        "table": "Melee_Ones"
+      },
+      "recharge": {
+        "scale": 0.3,
+        "table": "Melee_Ones"
+      }
+    },
     "durations": {
+      "debuffResistance": 5.25,
+      "maxHPBuff": 5.25,
+      "maxHPBuffUnenhanced": 5.25,
+      "recoveryBuff": 5.25,
       "regenBuff": 5.25
+    },
+    "maxHPBuff": {
+      "scale": 0.5,
+      "table": "Melee_HealSelf"
+    },
+    "maxHPBuffUnenhanced": {
+      "scale": 0.5,
+      "table": "Melee_HealSelf"
+    },
+    "recoveryBuff": {
+      "scale": 0.25,
+      "table": "Melee_Ones"
     },
     "regenBuff": {
       "scale": 0.5,
@@ -42,11 +72,112 @@ export const Inexhaustible: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,0.5,1,5.25,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Regeneration",null,0.5,1,5.25,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,2,1,5.25,"Melee_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.45,1,5.25,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
-    ["Unmapped",null,0.15,1,5.25,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kRestedAdaptation Source.Mode?",true]
+    ["MaxHP",null,0.5,1,5.25,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["MaxHP",null,0.5,1,5.25,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Regeneration",null,0.5,1,5.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Recovery",null,0.25,1,5.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Movement","Run",0.3,1,5.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["RechargeTime",null,0.3,1,5.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Movement","Fly",0.3,1,5.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Movement","JumpHeight",0.3,1,5.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Movement","Jump",0.3,1,5.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Endurance",null,2,1,5.25,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["MaxHP",null,0.45,1,5.25,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
+    ["Absorb",null,1,1,5.25,"Melee_Ones","Max","Expression","Self","Any",false,"Replace",2,null,0.5,1,null,null,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true,null,null,null,null,"Max.kHitPoints source> 0.01 * @Strength *"],
+    ["Defense","Lethal",-500,1,5.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
+    ["Defense","Smashing",-500,1,5.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
+    ["Defense","Fire",-500,1,5.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
+    ["Defense","Cold",-500,1,5.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
+    ["Defense","Energy",-500,1,5.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
+    ["Defense","Negative",-500,1,5.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
+    ["Defense","Psionic",-500,1,5.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
+    ["Regeneration",null,0.15,1,5.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kRestedAdaptation Source.Mode?",true],
+    ["Recovery",null,0.1,1,5.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kRestedAdaptation Source.Mode?",true]
+  ],
+  "conditionalEffects": [
+    {
+      "id": "defensiveadaptation",
+      "label": "Defensive Adaptation",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "absorb": {
+          "appliesStrength": true,
+          "maxHPFraction": 0.01,
+          "table": "Melee_Ones"
+        },
+        "buffDuration": 5.25,
+        "defenseDebuff": {
+          "cold": {
+            "scale": 500,
+            "table": "Melee_Buff_Def",
+            "toWho": "Self"
+          },
+          "energy": {
+            "scale": 500,
+            "table": "Melee_Buff_Def",
+            "toWho": "Self"
+          },
+          "fire": {
+            "scale": 500,
+            "table": "Melee_Buff_Def",
+            "toWho": "Self"
+          },
+          "lethal": {
+            "scale": 500,
+            "table": "Melee_Buff_Def",
+            "toWho": "Self"
+          },
+          "negative": {
+            "scale": 500,
+            "table": "Melee_Buff_Def",
+            "toWho": "Self"
+          },
+          "psionic": {
+            "scale": 500,
+            "table": "Melee_Buff_Def",
+            "toWho": "Self"
+          },
+          "smashing": {
+            "scale": 500,
+            "table": "Melee_Buff_Def",
+            "toWho": "Self"
+          }
+        },
+        "durations": {
+          "absorb": 5.25,
+          "defenseDebuff": 5.25,
+          "maxHPBuffUnenhanced": 5.25
+        },
+        "maxHPBuffUnenhanced": {
+          "scale": 0.45,
+          "table": "Melee_HealSelf"
+        }
+      },
+      "group": "adaptation"
+    },
+    {
+      "id": "restedadaptation",
+      "label": "Rested Adaptation",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "buffDuration": 5.25,
+        "durations": {
+          "recoveryBuffUnenhanced": 5.25,
+          "regenBuffUnenhanced": 5.25
+        },
+        "recoveryBuffUnenhanced": {
+          "scale": 0.1,
+          "table": "Melee_Ones"
+        },
+        "regenBuffUnenhanced": {
+          "scale": 0.15,
+          "table": "Melee_Ones"
+        }
+      },
+      "group": "adaptation"
+    }
   ],
   "requires": "accesslevel char> 0 >",
   "mechanicType": "parentMechanic"

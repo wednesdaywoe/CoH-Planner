@@ -38,6 +38,7 @@
   "requires": "$archetype @Class_Dominator ==",
   "activate_requires": "$archetype @Class_Dominator ==",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -57,12 +58,12 @@
             "Set_Mode"
           ],
           "type": "Constant",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": 1.0,
-          "duration": "0.80 seconds",
+          "duration": "0.8 seconds",
           "magnitude": 45.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -78,8 +79,7 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance",
-            "DeepSleep"
+            "IgnoreResistance"
           ],
           "flags_raw": 3120,
           "mode_name": "Domination"
@@ -89,7 +89,7 @@
             "Evade"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -108,6 +108,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "POWERS/ABILITY/DOMINATIONCONTINUING.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
@@ -118,6 +124,7 @@
       ]
     }
   ],
+  "max_boosts": 0,
   "modes_suspended": [
     "Domination_Active"
   ],

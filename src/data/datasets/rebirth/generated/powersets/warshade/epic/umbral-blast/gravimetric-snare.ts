@@ -116,5 +116,71 @@ export const GravimetricSnare: Power = {
     ["Damage","Smashing",0.20748,1,9.2,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Accuracy",null,2,1,2,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Immobilized",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
-  ]
+  ],
+  "modeVariants": {
+    "Warshade_Tanker_Mode": {
+      "internalName": "Black_Dwarf_Strike",
+      "stats": {
+        "accuracy": 1,
+        "range": 7,
+        "recharge": 4,
+        "endurance": 5.2,
+        "castTime": 1.2
+      },
+      "damage": [
+        {
+          "type": "Smashing",
+          "scale": 0.4,
+          "table": "Melee_SSDamage"
+        },
+        {
+          "type": "Negative",
+          "scale": 0.6,
+          "table": "Melee_SSDamage"
+        }
+      ],
+      "effects": {
+        "buffDuration": 6,
+        "durations": {
+          "rechargeDebuff": 6,
+          "slow": 6
+        },
+        "knockback": {
+          "scale": 0.67,
+          "table": "Melee_Ones"
+        },
+        "rechargeDebuff": {
+          "scale": 0.2,
+          "table": "Melee_Slow"
+        },
+        "slow": {
+          "flySpeed": {
+            "scale": 0.2,
+            "table": "Melee_Slow"
+          },
+          "jumpHeight": {
+            "scale": 0.2,
+            "table": "Melee_Slow"
+          },
+          "jumpSpeed": {
+            "scale": 0.2,
+            "table": "Melee_Slow"
+          },
+          "runSpeed": {
+            "scale": 0.2,
+            "table": "Melee_Slow"
+          }
+        },
+        "taunt": {
+          "scale": 1,
+          "table": "Melee_InherentTaunt"
+        }
+      },
+      "shortHelp": "Melee, Moderate DMG(Smash/Negative), Foe  -Recharge, -SPD, Knockback",
+      "description": "The Black Dwarf Strike is a moderate melee attack that releases Nictus Dark Energy on impact, which can Knock Down foes, and slows a targets attack and movement speed. This power is only available while in Black Dwarf Form. Damage: Moderate, Recharge: Fast",
+      "effectArea": "SingleTarget",
+      "targetType": "Foe",
+      "powerType": "Click"
+    }
+  }
 };

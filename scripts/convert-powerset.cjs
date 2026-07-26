@@ -335,65 +335,58 @@ const BOOST_TO_CATEGORY = {
   Endurance_Drain: 'Endurance Modification',
 };
 
-// "Damage ATO" — these archetypes' ATO sets attach to any damaging power.
-// Mastermind is included because "Command of the Mastermind" slots into MM
-// primary/secondary attacks and "Mark of Supremacy" slots into pet summons;
-// both live in the same "Mastermind Archetype Sets" category.
-const DAMAGE_ATO_BY_AT = {
-  blaster:    'Blaster Archetype Sets',
-  brute:      'Brute Archetype Sets',
-  corruptor:  'Corruptor Archetype Sets',
-  defender:   'Defender Archetype Sets',
-  mastermind: 'Mastermind Archetype Sets',
-  scrapper:   'Scrapper Archetype Sets',
-  sentinel:   'Sentinel Archetype Sets',
-  stalker:    'Stalker Archetype Sets',
-  tanker:     'Tanker Archetype Sets',
-  'arachnos-soldier': 'Soldiers of Arachnos Archetype Sets',
-  'arachnos-widow':   'Soldiers of Arachnos Archetype Sets',
-  peacebringer: 'Kheldian Archetype Sets',
-  warshade:     'Kheldian Archetype Sets',
-  // Guardian is a Rebirth-only AT; its ATOs (Guardian's Gift, Absolute
-  // Resolution) attach to any Guardian power. Without this, the per-power
-  // "Guardian Archetype Sets" category the export already carries gets
-  // stripped by the own-ATO filter below (ownAtos would be empty).
-  guardian:     'Guardian Archetype Sets',
-  // Primalist is a Thunderspy-only AT; its ATOs (Primalist's Nature) attach to
-  // any Primalist damaging power. Regenerate the Primalist powersets after
-  // adding this so the category lands in their allowedSetCategories.
-  primalist:    'Primalist Archetype Sets',
-};
-
-// "Control ATO" — Controller/Dominator ATOs attach to mez/control powers.
-const CONTROL_ATO_BY_AT = {
-  controller: 'Controller Archetype Sets',
-  dominator:  'Dominator Archetype Sets',
-};
-
 // Whether this dataset's boostsets.bin encodes ATO categories in the per-power
 // allowed_powers lists. Homecoming and Rebirth do (their export's
 // `allowed_set_categories` already carries e.g. "Controller Archetype Sets"),
 // so the preferred path below trusts them. Thunderspy's bin does NOT — ZERO of
-// its exported powers carry any "Archetype Sets" category — so for it we must
-// infer the AT's own ATO the same way the legacy path does, or no Thunderspy
+// its exported powers carry any "Archetype Sets" category — so for it the ATO
+// index below supplies each power's own ATO categories, or no Thunderspy
 // power would ever accept its ATOs (reported for Illusion Control's holds).
 const BINS_OMIT_PER_POWER_ATOS = datasetId === 'thunderspy';
 
-// Union of every archetype-specific ATO category name. Used to filter out
-// wrong-AT ATOs that the binary's per-power allowed_set_categories list
-// can erroneously include (notably Rebirth's boostsets.bin shows Blaster
-// ATOs on VEAT primary attacks). We retain only the AT's own ATO.
-const ALL_AT_ATO_CATEGORIES = new Set([
-  ...Object.values(DAMAGE_ATO_BY_AT),
-  ...Object.values(CONTROL_ATO_BY_AT),
-  // Guardian is Rebirth-only; its ATO category if/when it exists. Listing
-  // here defensively so a binary-leak from a Guardian set into a non-
-  // Guardian power gets filtered the same way.
-  'Guardian Archetype Sets',
-]);
-const MEZ_BOOSTS = new Set(['Hold', 'Stun', 'Confuse', 'Sleep', 'Fear', 'Immobilize']);
+// AT ATO categories, derived from the dataset's own export (SOURCE-1 item 4;
+// replaces the hand DAMAGE_ATO_BY_AT/CONTROL_ATO_BY_AT tables): an ATO set is
+// any boostsets.json record with an ATO rarity tier, its display category
+// comes from the dataset's io-sets extraction (io-sets-raw.ts `type`), and its
+// `allowed_powers` list is the game's own statement of which powers slot it —
+// the truer source the wrong-AT filter below has always deferred to. Complete
+// on every dataset (every ATO set carries a non-empty allowed_powers list,
+// Thunderspy and the Primalist form variants included).
+const ATO_RARITIES = new Set(['ECATO', 'ECSATO', 'ECATO2', 'ECSATO2']);
+let _atoIndexCache = null;
+function getAtoIndex() {
+  if (_atoIndexCache) return _atoIndexCache;
+  const boostsets = JSON.parse(fs.readFileSync(path.join(RAW_DATA_PATH, 'boostsets.json'), 'utf-8'));
+  const ioSetsText = fs.readFileSync(datasetPath(datasetId, 'io-sets-raw.ts'), 'utf-8');
+  const ioSets = JSON.parse(ioSetsText.slice(ioSetsText.indexOf('= {') + 2, ioSetsText.lastIndexOf(';')));
+  const categoriesByPower = new Map(); // lowercased full_name -> Set(category display name)
+  const allCategories = new Set();
+  for (const record of boostsets) {
+    if (!ATO_RARITIES.has(record.rarity)) continue;
+    const setId = record.name.toLowerCase().replace(/-/g, '').replace(/__/g, '_');
+    const category = ioSets[setId]?.type;
+    if (!category) {
+      throw new Error(`ATO set ${record.name}: no io-sets-raw entry/type — regenerate io-sets-raw.ts first`);
+    }
+    allCategories.add(category);
+    for (const powerName of record.allowed_powers) {
+      const key = powerName.toLowerCase();
+      if (!categoriesByPower.has(key)) categoriesByPower.set(key, new Set());
+      categoriesByPower.get(key).add(category);
+    }
+  }
+  if (allCategories.size === 0) throw new Error('No ATO sets found in boostsets.json');
+  _atoIndexCache = { categoriesByPower, allCategories };
+  return _atoIndexCache;
+}
 
-function inferAllowedSetCategories(boosts, archetypeId, powerType, effectArea, range, powersetHint, hasTeleportAttrib) {
+/** The AT ATO categories this power's own AT sets actually slot into it. */
+function ownAtoCategories(fullName) {
+  if (!fullName) return new Set();
+  return getAtoIndex().categoriesByPower.get(fullName.toLowerCase()) ?? new Set();
+}
+
+function inferAllowedSetCategories(boosts, effectArea, range, powersetHint, hasTeleportAttrib) {
   const cats = new Set();
   const boostSet = new Set(boosts || []);
 
@@ -472,19 +465,10 @@ function inferAllowedSetCategories(boosts, archetypeId, powerType, effectArea, r
         cats.add('Melee Damage');
       }
     }
-
-    // ATO category on any damaging power of the AT
-    const ato = DAMAGE_ATO_BY_AT[archetypeId];
-    if (ato) cats.add(ato);
   }
 
-  // Control ATO (Controller/Dominator) goes on any power with a mez boost —
-  // including hybrid attack/control powers like Cryo Freeze Ray (Damage + Hold).
-  const controlAto = CONTROL_ATO_BY_AT[archetypeId];
-  if (controlAto) {
-    const hasMez = [...boostSet].some(b => MEZ_BOOSTS.has(b));
-    if (hasMez) cats.add(controlAto);
-  }
+  // AT ATO categories are NOT inferred here: they come from the boostsets
+  // reverse index (`ownAtoCategories`) at both call paths.
 
   return [...cats].sort();
 }
@@ -763,6 +747,8 @@ function collectTemplatesDeep(effects, visited = new Set(), depth = 0, parentCom
             }
           }
         } else {
+          // Event-gated mods are conditional (see collectAllTemplates).
+          if (_hasRequiredEvents(template)) continue;
           if (combatGated) _tagCombatGated(template);
           _tagGroupContext(template, effect);
           templates.push(template);
@@ -825,6 +811,89 @@ function extractQuickSnipeData(powerJson) {
     stats,
     damage: Array.isArray(damage) ? damage : [damage],
   };
+}
+
+/** A redirect that fires while exactly one caster mode is live: `kNovaMode Source.Mode?`. */
+const MODE_REDIRECT_CONDITION = /^k(\w+)\s+[Ss]ource\.Mode\?$/;
+
+/**
+ * The same redirect negated, one or more times ANDed: the branch that fires while NONE of the
+ * power's modes is live. That is the power's own base record, so it needs no variant.
+ */
+const NO_MODE_REDIRECT_CONDITION =
+  /^k\w+\s+[Ss]ource\.Mode\?\s+!(\s+k\w+\s+[Ss]ource\.Mode\?\s+!)*(\s+&&)*$/;
+
+/**
+ * Classify one redirect entry's condition. `mode` names the mode that selects it, `default` is
+ * the no-mode branch, and `null` means this is not a mode-shaped condition at all.
+ */
+function classifyModeRedirect(conditionExpression) {
+  const expression = (conditionExpression || '').trim();
+  if (expression === 'Always') return { kind: 'default' };
+  const positive = expression.match(MODE_REDIRECT_CONDITION);
+  if (positive) return { kind: 'mode', mode: positive[1] };
+  if (NO_MODE_REDIRECT_CONDITION.test(expression)) return { kind: 'default' };
+  return null;
+}
+
+/**
+ * Display fields a mode variant replaces on the base power. The base keeps its identity (name,
+ * icon, allowedEnhancements, maxSlots) because the slots live there and every form shares them —
+ * only what the power DOES changes with the mode.
+ */
+const MODE_VARIANT_FIELDS = [
+  'stats', 'damage', 'damageTypes', 'effects',
+  'shortHelp', 'description', 'effectArea', 'targetType', 'powerType',
+];
+
+/**
+ * Mode-gated redirect variants: `power.modeVariants[<Mode>]` is what the power becomes while that
+ * caster mode is live. The game decides this at activation time through the PowerRedirector, and
+ * the binary carries the whole table — a Kheldian attack in Nova form, a Titan Weapons attack under
+ * Momentum, Seismic Blast under Seismic Power all read the same way.
+ *
+ * Each variant is converted by `convertPower`, so it carries the same atoms, bag and stat
+ * treatment as any other power rather than a parallel extraction.
+ *
+ * Returns null when the power has no mode-gated redirect. A power whose redirect set mixes mode
+ * conditions with ones this cannot read (a distance test, a target test, a second mode ANDed in)
+ * yields null WITH a warning: which branch is the default depends on conditions we cannot
+ * evaluate, so half a table would be worse than none.
+ */
+function extractModeVariants(powerJson, archetypeId, powerType) {
+  const entries = powerJson.redirect || [];
+  const classified = entries.map((entry) => ({ entry, kind: classifyModeRedirect(entry.condition_expression) }));
+  if (!classified.some((c) => c.kind?.kind === 'mode')) return null;
+
+  const unreadable = classified.filter((c) => !c.kind);
+  if (unreadable.length) {
+    console.warn(
+      `  [mode-variants] ${powerJson.name}: mode redirect skipped — unreadable condition(s): ` +
+        unreadable.map((c) => JSON.stringify(c.entry.condition_expression)).join(', '),
+    );
+    return null;
+  }
+
+  const variants = {};
+  for (const { entry, kind } of classified) {
+    if (kind.kind !== 'mode') continue;
+    const variantPath = resolveRedirectPath(entry.name);
+    if (!fs.existsSync(variantPath)) {
+      console.warn(`  [mode-variants] ${powerJson.name}: ${entry.name} has no exported record`);
+      continue;
+    }
+    const variantJson = JSON.parse(fs.readFileSync(variantPath, 'utf-8'));
+    // A variant record redirects no further (verified across all three forks); the guard keeps a
+    // future data drop from recursing rather than discovering it as a stack overflow.
+    if (variantJson.redirect?.length) delete variantJson.redirect;
+    const converted = convertPower(variantJson, 1, archetypeId, powerType);
+    const variant = { internalName: converted.internalName };
+    for (const field of MODE_VARIANT_FIELDS) {
+      if (converted[field] !== undefined) variant[field] = converted[field];
+    }
+    variants[kind.mode] = variant;
+  }
+  return Object.keys(variants).length ? variants : null;
 }
 
 /**
@@ -1352,7 +1421,10 @@ function collectTemplatesWithChance(effects, visited = new Set(), depth = 0, cum
           } catch { /* unreadable redirect — skip */ }
         }
       } else {
-        out.push({ template: t, chance: c, gated: childGated });
+        // Event-gated mods (RequiredEvents tail) are conditional like a
+        // chance:0 mode gate — kept in the list so the pseudo-pet path can
+        // surface them, but never counted as guaranteed.
+        out.push({ template: t, chance: c, gated: childGated || _hasRequiredEvents(t) });
       }
     }
     out.push(...collectTemplatesWithChance(effect.child_effects, visited, depth, c, childGated));
@@ -1608,10 +1680,11 @@ function _parseDurationSeconds(str) {
  * summon builder on two points it previously missed:
  *  - **activation_effects.** Some patches put the EntCreate there, not in
  *    `effects` (Burn's flame patch). Walk both arrays.
- *  - **P-hash entity_def.** When entity_def is an opaque P-hash (P1985334123),
- *    the real shell name lives in `priority_list` (Freezing Rain / Sentinel Rain
- *    of Fire → PL_StaticObject, Voltaic Sentinel → Pet_NoCollision). Resolve the
- *    effective entity the same way before testing it against the shell set.
+ *  - **Absent / P-hash entity_def.** When entity_def is null or an opaque
+ *    P-hash, the real shell name lives in `priority_list` (Freezing Rain /
+ *    Sleet / Sentinel Rain of Fire → PL_StaticObject, Voltaic Sentinel →
+ *    PL_Untargetable_FightPreferRanged). Resolve the effective entity the same
+ *    way before testing it against the shell set.
  *
  * Double-count-safe by construction: a shell is only resolved when the effective
  * entity is in PSEUDOPET_SHELL_ENTITIES, which are verified absent from
@@ -1910,9 +1983,13 @@ function attachResolvedPseudoPets(powerJson, effects) {
         if (!(t.attribs || []).includes('Create_Entity')) continue;
         const p = t.params || {};
         if (p.type !== 'EntCreate') continue;
-        // Effective shell name: priority_list when entity_def is an opaque P-hash,
-        // otherwise entity_def itself (mirrors the main summon builder).
-        const effectiveEntity = /^P\d+$/.test(p.entity_def || '') ? p.priority_list : p.entity_def;
+        // Effective shell name: priority_list when entity_def is absent or an
+        // opaque P-hash, otherwise entity_def itself. HC's shell summons carry
+        // entity_def:null + Pets.* redirects (Freezing Rain, Sleet, Voltaic
+        // Sentinel, Sentinel Rain of Fire — SHELL-1); rebirth/thunderspy name a
+        // real pet entity with no redirects and resolve on the pet-damage path.
+        const effectiveEntity = (!p.entity_def || /^P\d+$/.test(p.entity_def))
+          ? p.priority_list : p.entity_def;
         // Drop non-content redirects before signing: ResistAll (pet
         // survivability), *.Avoid (AI hint that makes foes path around the
         // patch), *_Info (tooltip-only). What's left is the real payload.
@@ -1948,6 +2025,7 @@ function attachResolvedPseudoPets(powerJson, effects) {
           redirects,
           chance,
           override,
+          shellName: isShell ? effectiveEntity : override.shell,
         });
       }
       walk(e.child_effects);
@@ -1971,9 +2049,11 @@ function attachResolvedPseudoPets(powerJson, effects) {
 
   const resolved = [];
   const overrides = []; // { chassis, shell } for pet-path normalization
+  const resolvedShellNames = [];
   for (const g of byKey.values()) {
     const abilities = resolveSummonRedirects(g.redirects);
     if (abilities.length === 0) continue;
+    if (g.shellName) resolvedShellNames.push(g.shellName);
     const count = g.occurrences.filter(o => o.chance > 0).length || 1;
     // Per-entity lifespan: prefer the EntCreate's own Duration (Category Five's
     // two shells have distinct 20s/17s windows); fall back to the summon-level
@@ -2013,6 +2093,13 @@ function attachResolvedPseudoPets(powerJson, effects) {
       else delete effects.summon.entity;
       delete effects.summon.entityCount;
     }
+    // A shell summon with an absent entity_def has no entity at all (the main
+    // builder had nothing to stamp). Surface the shell name so the runtime has
+    // a lookup key alongside the resolved abilities — it resolves to nothing in
+    // PET_ENTITIES, so the pet-damage path stays untouched (no double-count).
+    if (!effects.summon.entity && resolvedShellNames.length > 0) {
+      effects.summon.entity = resolvedShellNames[0];
+    }
   }
 }
 
@@ -2049,14 +2136,18 @@ const TARGET_TYPE_MAP = {
   'DeadPlayerFriend': 'Dead Teammate',        // resurrect-on-dead-ally powers
   'DeadMyPet': 'Dead Teammate',               // resurrect-on-dead-pet
   'DeadOrAliveMyPet': 'Ally',                 // pet manipulation, dead or alive
+  'MyPet': 'Own Pet (Alive)',                 // caster's own henchman (MM pet buffs)
+  'MyOwner': 'Ally',                          // pet power targeting its owner
   'MyCreator': 'Self',                        // pet powers referencing summoner
   'MyCreation': 'Ally',                       // pet's own pet/summon
   'Position': 'Location',                     // ground-targeted (caltrops, trip mine)
+  'DeadOrAliveAny': 'Any',                    // any entity, dead or alive (Defibrillate)
   'DeadOrAliveLeaguemate': 'Teammate',
   // Map invalid types to closest valid equivalent
   'Anything': 'Location',
   'Leaguemate': 'Teammate',
   'Leaguemate (Alive)': 'Teammate (Alive)',
+  'DeadLeaguemate': 'Dead Teammate',
   'Dead Leaguemate': 'Dead Teammate',
 };
 
@@ -3025,13 +3116,14 @@ function extractSpecialEffects(rawEffects, conditionalEffects) {
       } else if (attrib === 'Null') {
         // Implicit grant — Null-attrib chance template. Two paths:
         //
-        // 1. **Direct grant via params.power_names** (Parse6 + new tail
-        //    extraction): the binary stores a Null attrib with the
-        //    granted power name in the AttribMod tail. HC's Parse7
-        //    surfaces these as `Grant_Power` with explicit params, but
-        //    Parse6 lowers them to Null-with-params. When power_names
-        //    is present, label off the granted power name directly —
-        //    same path as Grant_Power.
+        // 1. **Direct grant via params.power_names**: a Null attrib
+        //    carrying a granted power name in the AttribMod tail —
+        //    label off the granted power name directly, same path as
+        //    Grant_Power. (Historically this also caught Parse6
+        //    Grant_Power templates that the collapsed special-attrib
+        //    misdecode labeled Null; those now arrive as real
+        //    Grant_Power via resolve_attrib_rebirth and hit the branch
+        //    above.)
         // 2. **Sibling-conditional pairing** (the original Null
         //    semantics): no params; the proc target is implied from a
         //    sibling conditionalEffects entry. Drowning, Insight,
@@ -3396,6 +3488,12 @@ function collectAllTemplates(effects, parentCombatGated = false) {
     // Collect templates from this level
     if (effect.templates && effect.templates.length > 0) {
       for (const t of effect.templates) {
+        // Event-gated mods (`RequiredEvents` tail — bonus damage vs Held/Slept
+        // targets, repel-while-Immobilized) fire only while the event is live,
+        // so they are conditional, not base. Template-level gate, unlike the
+        // group-level requires skips above. The atom keeps them (gated: true,
+        // requiredEvents on the wire).
+        if (_hasRequiredEvents(t)) continue;
         if (combatGated) _tagCombatGated(t);
         _tagGroupContext(t, effect);
         templates.push(t);
@@ -3409,6 +3507,13 @@ function collectAllTemplates(effects, parentCombatGated = false) {
   }
 
   return templates;
+}
+
+/** Template-level `RequiredEvents` gate (AttribMod tail): the mod applies only
+ *  while one of the listed events is live on the target/caster. Any carrier is
+ *  conditional — the base collectors skip it; atoms carry it gated. */
+function _hasRequiredEvents(t) {
+  return Array.isArray(t.required_events) && t.required_events.length > 0;
 }
 
 /**
@@ -3436,6 +3541,7 @@ function collectAllTemplates(effects, parentCombatGated = false) {
  *     rand(), dead-state,
  *     Containment
  *   out-of-combat           → specialCase: 'OutOfCombat'
+ *   RequiredEvents template → requiredEvents (comma-joined event names)
  *
  * Consequence, and the reason this exists: the conditional/stance bags
  * (`power.conditionalEffects` — Bio Armor's adaptations et al.) are built from
@@ -3531,15 +3637,35 @@ function extractDamage(templates) {
     if (!template.attribs || !template.scale) continue;
 
     const attrib = template.attribs[0]?.toLowerCase();
-    // Thunderspy stores damage with a single generic `Damage` attrib (the
-    // specific element — Fire/Smashing/… — lives only in the power's shortHelp),
-    // unlike HC/Rebirth which use per-type attribs (Smashing, Fire, …). Map the
-    // generic one to a typeless `Special` damage entry so the scale/table (the
-    // load-bearing damage magnitude) is captured. Element-type refinement from
-    // shortHelp is a tracked follow-up. HC/Rebirth never use a bare `damage`
-    // attrib, so this branch is Thunderspy-only and can't change their output.
+    // Thunderspy stores damage with a single generic `Damage` attrib (the specific
+    // element — Fire/Smashing/… — is NOT on the AttribMod at all; it lives only in the
+    // power's shortHelp `DMG(...)` clause and in the numeric power-level `attack_types`
+    // index array), unlike HC/Rebirth which use per-type attribs (Smashing, Fire, …).
+    // Map the generic one to a typeless `Special` damage entry so the scale/table (the
+    // load-bearing magnitude) is captured. HC/Rebirth never use a bare `damage` attrib,
+    // so this branch is Thunderspy-only and can't change their output.
+    //
+    // Element-type refinement for PLAYER powers is deliberately deferred, NOT a quick win
+    // (scoped 2026-07-19, see DATA-GAP-REGISTER.md TSPY-3 "damage-typing" note): nothing
+    // CONSUMES applied damage yet — coh_math has no damage-output/DPS calc, only the
+    // aspect=Str damageBuff and aspect=Res resistance faces (already typed for tspy via
+    // the bare-type@Res path), so typing these aspect=Absolute atoms would move zero
+    // totals. When a damage-output feature lands, recover the element the Rule-0 way — the
+    // pet path already does the shortHelp `DMG(...)` parse (convert-pet-entities.cjs
+    // `_tspyDamageType`); the more-upstream alternative is decoding `attack_types` at the
+    // parser via ATTRIB_NAME_THUNDERSPY (per-power/multi-type ambiguity to resolve).
     const damageType = DAMAGE_TYPES[attrib] ?? (attrib === 'damage' ? 'Special' : undefined);
     const aspect = template.aspect?.toLowerCase();
+
+    // A BARE by-type attrib (no `_dmg` suffix) at aspect Current is the DEFENSE
+    // characteristic, not damage — the damage face is always written `<type>_Dmg`, and
+    // every bare-by-type@Current template is defense (atomic-effect.ts classify, HC-wide
+    // verified 2026-07-05). extractEffects routes it to defenseBuff; skip it here so the
+    // accolade click buffs (Demonic Aura, Eye of the Magus) don't read a phantom damage entry.
+    if (damageType && attrib !== 'damage' && !attrib.endsWith('_dmg') &&
+        (aspect === 'current' || aspect === 'cur')) {
+      continue;
+    }
 
     // Only extract as "damage" if:
     // 1. It's a damage type attribute
@@ -3912,29 +4038,35 @@ function foldResourceSlot(entries) {
  *     template-owned (`extractSummon`) — `create_entity` atoms are skipped here.
  */
 /**
- * Parse a MaxHP-fraction absorb Expression (aspect=Maximum, type=Expression)
- * into its fraction of the caster's Max HP. Two shapes appear in HC bins:
- *   `Max.kHitPoints source> C * [@Strength *]`  — literal fraction C. The
- *      canonical form on Wild Bastion and Scrapper/Brute/Tanker/Stalker Ablative
- *      & Parasitic. `@Strength *` ⇒ +Absorb strength scales it.
- *   `Max.kHitPoints source> @StdResult *`        — the fraction is the template's
- *      OWN scale×table (`@StdResult`). On a `_ones` (MaxHP-fraction) table that
- *      is simply the scale. Sentinel Ablative uses this; strength applies
- *      (StdResult is the post-strength standard result), matching the literal
- *      form's `@Strength`.
- * Returns { fraction, appliesStrength } or null for a form the converter can't
- * evaluate (Master Brawler's `(100 - HP%)/200`, multi-token @StdResult chains) —
- * callers leave those absorbs duration-only, unchanged.
+ * Parse a MaxHP-fraction absorb Expression (aspect=Maximum, type=Expression) into its
+ * fraction of the caster's Max HP. Two shapes carry a recoverable fraction:
+ *   `Max.kHitPoints source> C * [@Strength *]` — the fraction is the literal `C`
+ *      (Wild Bastion, and Ablative/Parasitic on every melee AT).
+ *   `Max.kHitPoints source> @StdResult *`      — the fraction is the template's OWN
+ *      standard result. `@StdResult` is `table[level] × effectiveness × scale × strength`
+ *      (attribmod.c `mod_Fill`, stored by `combateval_StoreAttribCalcInfo`), so on a
+ *      `_ones` table it is just the scale; on any other table it is not a bare fraction
+ *      and stays unrecovered. Sentinel Ablative/Parasitic use this shape.
+ * Strength reaches either shape only when the template allows it: `fStr` stays 1.0 when
+ * AllowStrength is off (attribmod.c), which the export spells as the `IgnoreStrength`
+ * flag. That is why a Bio Armor adaptation bonus is unenhanceable, as its power text says.
+ * Returns { fraction, appliesStrength } or null for a form this cannot evaluate — Master
+ * Brawler's `(100 - HP% + End%) / 200 @StdResult *` reads live HP and endurance — and
+ * callers leave those absorbs duration-only.
  */
-function parseAbsorbMaxHPFraction(expr, templateScale) {
+function parseAbsorbMaxHPFraction(expr, scale, table, ignoresStrength) {
   const e = (expr || '').trim();
   if (!e) return null;
+  const strengthReaches = !ignoresStrength;
   const LITERAL = /^Max\.kHitPoints\s+source>\s+([\d.]+)\s+\*(?:\s+(@Strength)\s+\*)?\s*$/;
-  const m = LITERAL.exec(e);
-  if (m) return { fraction: parseFloat(m[1]), appliesStrength: !!m[2] };
-  const STDRESULT = /^Max\.kHitPoints\s+source>\s+@StdResult\s+\*\s*$/;
-  if (STDRESULT.test(e) && typeof templateScale === 'number' && templateScale > 0) {
-    return { fraction: templateScale, appliesStrength: true };
+  const literal = LITERAL.exec(e);
+  if (literal) {
+    return { fraction: parseFloat(literal[1]), appliesStrength: !!literal[2] && strengthReaches };
+  }
+  const STD_RESULT = /^Max\.kHitPoints\s+source>\s+@StdResult\s+\*\s*$/;
+  const onesTable = /_ones$/i.test(table || '');
+  if (STD_RESULT.test(e) && onesTable && typeof scale === 'number' && scale > 0) {
+    return { fraction: scale, appliesStrength: strengthReaches };
   }
   return null;
 }
@@ -3984,16 +4116,14 @@ function projectAtomsToEffects(atoms, powerName) {
   // The canonical case is Wild Bastion's `Max.kHitPoints source> 0.25 * @Strength *`
   // = 25% of the CASTER's current Max HP, boosted by +Absorb strength — which
   // is why it grows with +HP accolades but the old converter dropped its
-  // magnitude and kept only the duration. We recover the simple
-  // `Max.kHitPoints source> C * [@Strength *]` shape here as a MaxHP fraction.
+  // magnitude and kept only the duration. `parseAbsorbMaxHPFraction` recovers
+  // both the literal-fraction and the `@StdResult` shapes here.
   //
   // DEFERRED (left duration-only): powers with MULTIPLE distinct fractions in
-  // ONE (non-gated) scan — or a form parseAbsorbMaxHPFraction can't evaluate
-  // (Master Brawler's `(100 - HP%)/200`, multi-token @StdResult chains). The
-  // calc can't model those conditionals faithfully yet. Adaptation/mode-gated
-  // conditionals (Ablative 0.3/0.09, Parasitic 0.1/0.033) scan per gated group,
-  // so each group sees a single fraction. The `@StdResult` single-token form
-  // (Sentinel Ablative) IS now recovered — its fraction is the template scale.
+  // one scan, or a form `parseAbsorbMaxHPFraction` can't evaluate — Master
+  // Brawler's fraction reads live HP and endurance, which the calc can't model
+  // faithfully yet. Adaptation/mode-gated conditionals (Ablative 0.3 / 0.09,
+  // Parasitic 0.1 / 0.033) scan per gated group, so each sees one fraction.
   let absorbMaxHPFraction = null;
   let absorbFractionStrength = false;
   {
@@ -4006,7 +4136,9 @@ function projectAtomsToEffects(atoms, powerName) {
       if (a._type !== 'Expression') continue;
       const expr = (a._magExpr || '').trim();
       if (!expr) continue; // empty = placeholder/PvP variant — ignore
-      const parsed = parseAbsorbMaxHPFraction(expr, a._scale);
+      const parsed = parseAbsorbMaxHPFraction(
+        expr, a._scale, a._table, a._flags?.includes('IgnoreStrength')
+      );
       if (parsed) {
         fractions.add(parsed.fraction);
         if (parsed.appliesStrength) appliesStrength = true;
@@ -4141,7 +4273,7 @@ function projectAtomsToEffects(atoms, powerName) {
     // Byte-identical to legacy for single-duration buffs (the common case) and
     // for same-duration multi-type repeats (Build Up's damage types collapse to
     // one value): only a same-table, different-duration second instance mints a
-    // variant. See CONVERTER-ATOM-ARRAY-PLAN.md (Plan B Phase 2 Slice 1).
+    // variant. (Plan B Phase 2 Slice 1 — the tohit burst+tail shape.)
     //
     // Scoped to `tohitBuff` for Slice 1. `damageBuff` has the same burst+tail
     // shape (Inner Light, Moment of Glory, Fiery Embrace) but ALSO carries
@@ -4194,7 +4326,12 @@ function projectAtomsToEffects(atoms, powerName) {
     if (isDamageTypeAttrib(attrib)) {
       const dmgType = getDamageType(attrib);
       const tableLower = table?.toLowerCase() || '';
-      const isDefenseEffect = tableLower.includes('buff_def') || tableLower.includes('debuff_def');
+      // A bare by-type attrib (no `_dmg` suffix) at aspect Current IS the defense
+      // characteristic on ANY table (atomic-effect.ts classify) — the accolade click buffs
+      // carry +Def(type) on the generic Melee_Ones table, not a *Def* table. Mirror the atom
+      // classification so the bag matches defenseBuffValue (planb-shadow-defense parity).
+      const isDefenseEffect = tableLower.includes('buff_def') || tableLower.includes('debuff_def') ||
+        (aspect === 'current' && !attrib.endsWith('_dmg'));
 
       if (dmgType === 'Heal' && aspect === 'strength') {
         if (!effects.specialBuff) effects.specialBuff = {};
@@ -4567,7 +4704,7 @@ function projectAtomsToEffects(atoms, powerName) {
           // Skipping on the flag alone silently DELETED Icy Bastion's lingering +4
           // regen (`Replace`, 30s, stack_key=IcyBastion): a temp toggle
           // (`activate_period` 0.5) whose own effects carry the larger +6 @0.75s
-          // toggle-refreshed buff while an OnTick Execute_Power applies the +4 @30s
+          // toggle-refreshed buff while an OnActivate Execute_Power applies the +4 @30s
           // lingering half via Redirects.Ice_Armor.Icy_Bastion_NoCast — the flag being
           // exactly what lets 60 re-executions refresh one buff instead of stacking to
           // +24,000%. Both apply while the toggle is up, so the power is +10 regen /
@@ -5120,7 +5257,18 @@ function classifyTemplateForStacking(template, { treatAsCaster = false } = {}) {
       }
       if (resType === 'recovery') return [{ effectKey: 'recoveryBuff' }];
       if (resType === 'regeneration') return [{ effectKey: 'regenBuff' }];
-      if (resType === 'absorb') return [{ effectKey: 'absorb' }];
+      if (resType === 'absorb') {
+        // An aspect=Maximum Expression absorb is a MaxHP FRACTION (Wild Bastion /
+        // Parasitic Aura's `Max.kHitPoints source> C *`), recovered as `maxHPFraction`
+        // by projectAtomsToEffects' pre-scan — NOT a flat per-target absorb. Its
+        // placeholder scale (1.0 = @StdResult) must not join the AoE per-target sum: on
+        // Parasitic Aura (a PBAoE carrying BOTH a flat Current 0.1 and this Max/Expression
+        // template) it inflated the per-foe 10% to 110% (0.1 + 1.0). The resources loop
+        // routes these to `maxHPFraction` and `continue`s past addOrAccumulate; mirror
+        // that skip here so the stacking classification agrees.
+        if (aspect === 'maximum' && template.type === 'Expression') continue;
+        return [{ effectKey: 'absorb' }];
+      }
       continue;
     }
 
@@ -5331,29 +5479,9 @@ function computeAoePerTargetPatches(templatesWithMeta, aoeMeta) {
     if (classifications.length === 0) continue;
 
     for (const classification of classifications) {
-      // Absorb per-foe increment: an `Absorb` power grants absorb via a
-      // Current/Magnitude template (scale = the MaxHP fraction) AND raises the
-      // absorb cap via a twin Maximum/Expression template whose numeric `scale`
-      // is a 1.0 PLACEHOLDER — its real magnitude lives in the RPN
-      // (`Max.kHitPoints source> C * @Strength *`). The two encode ONE value, so
-      // summing them (Parasitic Aura: Current 0.1 + placeholder 1.0 = 1.1 ⇒ 110%
-      // MaxHP/foe) is wrong. Re-value the Maximum/Expression twin to its RPN
-      // fraction so `sumDistinctScale` DEDUPES it against the Current twin
-      // (0.1|table == 0.1|table → 0.1). ATs whose export ships only the Maximum
-      // twin (Brute Parasitic lacks the Current grant) still recover the 0.1/foe
-      // from the RPN. Unparseable RPN → skip the placeholder (leave the Current
-      // twin, or nothing, rather than inject a bogus 1.0).
-      let scale = Math.abs(template.scale || 0);
-      if (classification.effectKey === 'absorb'
-          && (template.aspect || '').toLowerCase() === 'maximum'
-          && template.type === 'Expression') {
-        const parsed = parseAbsorbMaxHPFraction(template.magnitude_expression, template.scale);
-        if (!parsed) continue;
-        scale = parsed.fraction;
-      }
       selfBuffs.push({
         ...classification,
-        scale,
+        scale: Math.abs(template.scale || 0),
         table: template.table,
         stack: template.stack,
         isDefiance,
@@ -5442,6 +5570,30 @@ function computeAoePerTargetPatches(templatesWithMeta, aoeMeta) {
     } else {
       patches[firstEntry.effectKey] = { scale: combinedScale, table, perTarget };
     }
+  }
+
+  // A MaxHP-fraction absorb grows per foe like any other Self/kStack mod in a foe-targeted
+  // block, but it has no scale to increment: its Scale is the 1.0 @StdResult placeholder the
+  // classifier above deliberately skips, and the magnitude rides an Expression. Each foe hit
+  // re-applies that same Expression, so the increment IS the recovered fraction, carried as a
+  // companion to `maxHPFraction` rather than as a `perTarget` on a scale that means nothing
+  // (PROD6C-3j). Only one distinct fraction ever reaches the bag — the pre-scan defers a group
+  // carrying more — so the first match is the whole increment.
+  for (const { template } of templatesWithMeta) {
+    if (template.target !== 'Self') continue;
+    if (template.stack !== 'Stack' && template.stack !== 'Continuous'
+        && template.stack !== 'RefreshToCount') continue;
+    if ((template.attribs?.[0] || '').toLowerCase() !== 'absorb') continue;
+    if (template.aspect !== 'Maximum' || template.type !== 'Expression') continue;
+    const parsed = parseAbsorbMaxHPFraction(
+      template.magnitude_expression,
+      template.scale,
+      template.table,
+      (template.flags || []).includes('IgnoreStrength'),
+    );
+    if (!parsed) continue;
+    patches.absorb = { ...(patches.absorb || {}), maxHPFractionPerTarget: parsed.fraction };
+    break;
   }
   return patches;
 }
@@ -5628,7 +5780,19 @@ function mergeStackingPatches(effects, stackingResult) {
     if (Object.keys(effects.stackCaps).length === 0) delete effects.stackCaps;
   }
 
-  for (const [key, patchValue] of Object.entries(patches)) {
+  for (let [key, patchValue] of Object.entries(patches)) {
+    // The MaxHP-fraction absorb increment (PROD6C-3j) is a companion to `maxHPFraction`, not a
+    // by-type sub-value — lift it off before the shape-based routing below sees a scale-less
+    // object and treats it as one. It only lands where the pre-scan actually recovered a
+    // fraction: a deferred (duration-only) absorb has no magnitude for an increment to grow.
+    if (key === 'absorb' && 'maxHPFractionPerTarget' in patchValue) {
+      const { maxHPFractionPerTarget, ...rest } = patchValue;
+      if (effects.absorb?.maxHPFraction != null) {
+        effects.absorb.maxHPFractionPerTarget = maxHPFractionPerTarget;
+      }
+      if (!('scale' in rest)) continue;
+      patchValue = rest;
+    }
     if (typeof patchValue === 'object' && !('scale' in patchValue)) {
       // By-type patch (e.g., resistance: { smashing: {...} })
       if (!effects[key] || typeof effects[key] !== 'object') {
@@ -5659,20 +5823,6 @@ function mergeStackingPatches(effects, stackingResult) {
       // collectStrengthBuffs doesn't read off specialBuff values anyway (it uses
       // stacksLinear/maxStacks), so skip it and keep extractEffects' keyed
       // container authoritative.
-      // A per-target absorb patch (real `scale` + `perTarget`) supersedes a flat
-      // `maxHPFraction`-form absorb the pre-scan recovered from the Maximum/
-      // Expression twin: Brute Parasitic ships ONLY that twin (no Current grant),
-      // so extractEffects set `{ maxHPFraction }` with no `scale`, which the
-      // generic guard below would (wrongly) shield from the per-foe scaling. The
-      // scale-form is numerically identical (`_ones` table ⇒ scale is the MaxHP
-      // fraction) and applies +Absorb strength (maxHPFraction absent), so replace
-      // it and keep the per-target increment. Only fires for absorb with a real
-      // per-target patch — every other maxHPFraction consumer is untouched.
-      if (key === 'absorb' && existing && typeof existing === 'object'
-          && !('scale' in existing) && patchValue && 'scale' in patchValue && patchValue.perTarget) {
-        effects[key] = { scale: patchValue.scale, table: patchValue.table || existing.table, perTarget: patchValue.perTarget };
-        continue;
-      }
       if (key === 'specialBuff' || key === 'specialDebuff'
           || (existing && typeof existing === 'object' && !('scale' in existing))) {
         continue;
@@ -5724,12 +5874,6 @@ function normalizeIconPath(icon) {
   return icon + '.png';
 }
 
-// Additional allowedEnhancements not present in boosts_allowed but confirmed in-game
-const ALLOWED_ENHANCEMENT_OVERRIDES = {
-  // Storm Blast: Cloudburst accepts Slow in-game despite missing from binary data
-  'Cloudburst': ['Slow'],
-};
-
 /**
  * Convert a single power file
  */
@@ -5747,10 +5891,47 @@ const _DMG_TYPE_MAP = {
 
 function _damageTypeFromShortHelp(shortHelp) {
   if (!shortHelp) return null;
-  const m = shortHelp.match(/DMG\(([^)]+)\)/i);
+  // `DoT(...)` as well as `DMG(...)`: a pure damage-over-time attack (e.g.
+  // "DoT(Fire)") carries its element only in the DoT clause, and the bag typer
+  // left those `Special`. First clause = primary element (this stays a single
+  // value; the per-template bag can't hold a set — see damageTypeSetFromPower).
+  const m = shortHelp.match(/D(?:MG|oT)\(([^)]+)\)/i);
   if (!m) return null;
   const first = m[1].split(/[/,]/)[0].trim().toLowerCase();
   return _DMG_TYPE_MAP[first] || null;
+}
+
+// The power's damage-type SET (chip source), sourced Rule-0-honestly from the two
+// structured fields the tspy binary carries — NEVER stamped onto individual atoms
+// (per-template element is genuinely absent, so per-atom typing would fabricate the
+// multi-component split). See the design spec + DATA-GAP-REGISTER#TSPY-3.
+//   - `attack_types`: raw ints already in the export; value ÷4 indexes ATTRIB_NAME,
+//     indices 29–36 being the damage elements (26/27/28 are Melee/Ranged/Area
+//     position, ignored). Power-level, lossy (undercounts secondaries), ~0 false types.
+//   - shortHelp `DMG()`/`DoT()` clauses: complementary — recovers DoT secondaries
+//     `attack_types` drops. Union ≈ 78% exact vs the HC oracle; errors are undercount
+//     only (never invents a type), residual = secondaries stated only in prose.
+// The JS ÷4 map mirrors the parser's ATTRIB_NAME[29..36]; the HC-oracle guard
+// (scripts/audit-damage-type-recovery.cjs) self-checks it (recovered ⊆ atom truth).
+const DAMAGE_ATTRIB_INDEX = {
+  29: 'Smashing', 30: 'Lethal', 31: 'Fire', 32: 'Cold',
+  33: 'Energy', 34: 'Negative', 35: 'Psionic', 36: 'Toxic',
+};
+function damageTypeSetFromPower(powerJson) {
+  const set = new Set();
+  for (const v of powerJson.attack_types || []) {
+    if (typeof v === 'number' && v % 4 === 0) {
+      const el = DAMAGE_ATTRIB_INDEX[v / 4];
+      if (el) set.add(el);
+    }
+  }
+  for (const m of (powerJson.display_short_help || '').matchAll(/D(?:MG|oT)\(([^)]+)\)/gi)) {
+    for (const part of m[1].split(/[/,]/)) {
+      const el = _DMG_TYPE_MAP[part.trim().toLowerCase()];
+      if (el && el !== 'Special') set.add(el);
+    }
+  }
+  return [...set].sort();
 }
 
 /** Re-type generic `Special` damage entries to the shortHelp's primary element.
@@ -5813,14 +5994,16 @@ const TSPY_APPLIED_MEZ_KEYS = ['hold', 'stun', 'immobilize', 'sleep', 'confuse',
  *    Every one carries an identical, unadvertised `Recovery` 0.15 / 240s template that,
  *    with its per-template target dropped, reads as a caster self-buff and leaks +15%
  *    Recovery into the MM's totals; Fortify Pack likewise leaks a pet +Defense/+Regen,
- *    and the `MyPet`-cast pet buffs (Repair, Serum) leak because `MyPet` has no targetType
- *    mapping so the totals' ally filter can't exclude them. When EVERY affected target is
+ *    and the `MyPet`-cast pet buffs (Repair, Serum) are excluded twice: the totals' ally
+ *    filter sees their mapped targetType, and this guard drops them. When EVERY affected target is
  *    a pet, drop the caster-facing recovery/regen/endurance/defense — BUT shortHelp-aware,
  *    because `targets_affected` under-reports: Rally the Militia is `['MyPet']` yet its
  *    shortHelp is "Self, Pets +Defense, +Regeneration" — it genuinely buffs the MM too, so
  *    a stat advertised for Self survives (mirrors the Touch-of-the-Beyond foe exception).
  *
- * Thunderspy-only; callers gate on datasetId. See parser_logs/THUNDERSPY_TODO.md item 1.
+ * Thunderspy-only; callers gate on datasetId. Part of the Thunderspy parser/converter
+ * recovery work tracked as TSPY-3 in docs/DATA-GAP-REGISTER.md (the referenced
+ * parser_logs/THUNDERSPY_TODO.md no longer exists in this repo).
  */
 
 /**
@@ -5936,8 +6119,35 @@ function guardThunderspyOnesBuffs(power, targetsAffected) {
  * Psychic Wail, EMP Pulse — lists `Foe`), while the self-buff traps affect only
  * `Self`/`Leaguemate`. Drop the recovered control keys when the power affects no foe.
  *
- * Thunderspy-only; caller gates on datasetId. See parser_logs/THUNDERSPY_TODO.md item 1.
+ * EXCEPT mez PROTECTION, which shares those bag keys and is also foe-less by
+ * definition. A NEGATIVE-magnitude mez at aspect=Current is a protection magnitude,
+ * not applied control (the same discriminator the ally-aura branch of
+ * `classifyPseudoPetTemplate` uses — applied control is always positive), so the
+ * recovered attrib IS the real one there and there is nothing to veto. Recipient is
+ * not part of the test: the ally-cast protections (Clear Mind, Thaw, Increase
+ * Density) carry `toWho: Target`, and a self armor carries `Self`. Blanket-dropping
+ * these cost every Thunderspy armor and ally mez-shield its status protection —
+ * Fortification's four −24 `Melee_Res_Boolean` mods are byte-identical to the
+ * Rebirth twin's, whose bag keeps hold/sleep/stun/immobilize.
+ * Reads `power.atoms`, already encoded by the time this runs.
+ *
+ * Thunderspy-only; caller gates on datasetId. Part of the Thunderspy parser/converter
+ * recovery work tracked as TSPY-3 in docs/DATA-GAP-REGISTER.md (the referenced
+ * parser_logs/THUNDERSPY_TODO.md no longer exists in this repo).
  */
+function protectionBackedMezKeys(atoms) {
+  const keys = new Set();
+  for (const t of atoms || []) {
+    if (t[0] !== 'Mez') continue;
+    if (!(t[2] < 0)) continue;
+    if ((t[6] || '').toLowerCase() !== 'cur') continue;
+    const sub = (t[1] || '').toLowerCase();
+    const key = MEZ_TYPES[sub] || KNOCKBACK_TYPES[sub];
+    if (key) keys.add(key);
+  }
+  return keys;
+}
+
 function guardThunderspyAppliedMez(power, targetsAffected) {
   const e = power.effects;
   if (!e) return;
@@ -5946,8 +6156,10 @@ function guardThunderspyAppliedMez(power, targetsAffected) {
   // only an explicit non-foe list marks a trap).
   if (ta.length === 0) return;
   if (ta.some((t) => TSPY_MEZ_FOE_TARGETS.has(t))) return;
+  const protection = protectionBackedMezKeys(power.atoms);
   let changed = false;
   for (const k of TSPY_APPLIED_MEZ_KEYS) {
+    if (protection.has(k)) continue;
     if (e[k] !== undefined) {
       delete e[k];
       if (e.durations) delete e.durations[k];
@@ -5965,13 +6177,15 @@ function guardThunderspyAppliedMez(power, targetsAffected) {
 }
 
 // ---------------------------------------------------------------------------
-// StrengthsDisallowed / GlobalStrengthsDisallowed enrichment (HC only).
+// GlobalStrengthsDisallowed enrichment (HC only).
 //
-// These fields are server-side only — verified 2026-07-07 by full byte-
-// accounting of Parse7 power records: they are NOT serialized into the client
-// powers.bin, so the bin parser can never capture them (see
-// tools/extraction-audit/audit.py SERVER_ONLY_FIELDS). The committed
-// `raw defs/` .powers oracle is the authoritative source instead.
+// The i24 parse table has no GlobalStrengthsDisallowed — it is an HC addition
+// with no counterpart in the client bin, so the `raw defs/` .powers oracle is
+// the only source. Its sibling StrengthsDisallowed IS serialized (the bin
+// parser reads it into `strengths_disallowed`, and 966 powers carry it in both
+// places with byte-identical values), so that half comes from the export
+// instead — which is what gives Rebirth its 1,970 entries and stays current
+// across HC reworks the dev drop predates.
 //
 // Semantics (calc-relevant, esp. kRechargeTime on T9 armors / Rune of
 // Protection / MM summons):
@@ -5979,12 +6193,6 @@ function guardThunderspyAppliedMez(power, targetsAffected) {
 //    neither slotted enhancement nor global buffs (Hasten, set bonuses).
 //  - GlobalStrengthsDisallowed: only GLOBAL strength is ignored; slotted
 //    enhancement still applies (Kuji-In Rin).
-//
-// HC-only by data availability: `raw defs/` is the HC dev source. Rebirth and
-// Thunderspy have no equivalent oracle, so their powers carry no flag (their
-// bins don't expose it either). Keyed by full_name; the oracle predates some
-// HC reworks, so a renamed/reworked power simply has stale-but-harmless flags —
-// the audit's drift caveat applies.
 let _strengthsDisallowedIndex = null;
 function getStrengthsDisallowedIndex() {
   if (_strengthsDisallowedIndex) return _strengthsDisallowedIndex;
@@ -6094,16 +6302,16 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
     power.toggleIgnoreMez = powerJson.toggle_ignore;
   }
 
-  // StrengthsDisallowed enrichment from the `raw defs/` oracle (HC only — see
-  // getStrengthsDisallowedIndex above). Sparse: ~800 player powers carry
-  // strengthsDisallowed (mostly Range on melee attacks + RechargeTime on
-  // fixed-cooldown powers); omit when absent.
+  // StrengthsDisallowed from the bin export (all forks); GlobalStrengthsDisallowed
+  // from the `raw defs/` oracle, which is the only source for it (see
+  // getStrengthsDisallowedIndex above). Sparse — mostly Range on melee attacks and
+  // RechargeTime on fixed-cooldown powers; omit when absent.
+  if (Array.isArray(powerJson.strengths_disallowed) && powerJson.strengths_disallowed.length) {
+    power.strengthsDisallowed = powerJson.strengths_disallowed;
+  }
   if (powerJson.full_name) {
     const sd = getStrengthsDisallowedIndex().get(powerJson.full_name.toLowerCase());
-    if (sd) {
-      if (sd.strengths.length) power.strengthsDisallowed = sd.strengths;
-      if (sd.global.length) power.globalStrengthsDisallowed = sd.global;
-    }
+    if (sd && sd.global.length) power.globalStrengthsDisallowed = sd.global;
   }
 
   // Chain / target-cap RPN expressions (bin fields 43b / 38 — Electrical Affinity
@@ -6187,31 +6395,21 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
       // power list is the truer source for the picker. Filter here so the
       // planner UI matches in-game slottability.
       //
-      // An AT can have multiple "own" ATO categories (Controllers and
-      // Dominators each have a control-ATO category; some ATs have a
-      // damage-ATO category; VEATs share a single "Soldiers of Arachnos"
-      // category). Build the set of own categories from both maps so we
-      // keep them and strip everything else.
-      const ownAtos = new Set();
-      if (DAMAGE_ATO_BY_AT[archetypeId]) ownAtos.add(DAMAGE_ATO_BY_AT[archetypeId]);
-      if (CONTROL_ATO_BY_AT[archetypeId]) ownAtos.add(CONTROL_ATO_BY_AT[archetypeId]);
+      // The own-category set comes straight from the ATO sets' own
+      // allowed_powers lists (multiple own categories are natural: control +
+      // damage ATOs, the shared VEAT/Kheldian categories).
+      const ownAtos = ownAtoCategories(powerJson.full_name);
+      const { allCategories } = getAtoIndex();
       const filtered = powerJson.allowed_set_categories.filter(cat => {
-        if (!ALL_AT_ATO_CATEGORIES.has(cat)) return true; // not an AT ATO at all — keep
-        return ownAtos.has(cat); // keep only own AT's ATOs
+        if (!allCategories.has(cat)) return true; // not an AT ATO at all — keep
+        return ownAtos.has(cat); // keep only ATOs whose set actually slots here
       });
-      // Datasets whose bin omits per-power ATOs (Thunderspy): infer the AT's own
-      // ATO for qualifying powers — damage ATO on damaging powers, control ATO
-      // on mez powers — exactly as the legacy inference path does. Without this,
-      // no Thunderspy power accepts its ATOs (e.g. Illusion Control's Blind/Flash
-      // holds → Controller ATOs). No-op for HC/Rebirth (flag off).
+      // Datasets whose bin omits per-power ATOs (Thunderspy): supply them from
+      // the ATO index. Without this, no Thunderspy power accepts its ATOs
+      // (reported for Illusion Control's holds). No-op for HC/Rebirth (flag
+      // off — their per-power lists already carry the categories).
       if (BINS_OMIT_PER_POWER_ATOS) {
-        const bs = new Set(powerJson.boosts_allowed || []);
-        if (DAMAGE_ATO_BY_AT[archetypeId] && bs.has('Damage')) {
-          filtered.push(DAMAGE_ATO_BY_AT[archetypeId]);
-        }
-        if (CONTROL_ATO_BY_AT[archetypeId] && [...bs].some(b => MEZ_BOOSTS.has(b))) {
-          filtered.push(CONTROL_ATO_BY_AT[archetypeId]);
-        }
+        filtered.push(...ownAtos);
         // Universal Damage sets slot into ANY damaging power. HC/Rebirth get
         // this from boostsets.bin's ECUniversalDamage set (Overwhelming Force,
         // 1627-power pool). Thunderspy's boostsets.bin ships that set as a
@@ -6219,7 +6417,7 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
         // so no Thunderspy power picks up "Universal Damage Sets" from the
         // per-power index. Infer it here from the Damage boost — matching the
         // legacy inference rule in inferAllowedSetCategories.
-        if (bs.has('Damage')) {
+        if ((powerJson.boosts_allowed || []).includes('Damage')) {
           filtered.push('Universal Damage Sets');
         }
       }
@@ -6246,15 +6444,15 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
       : (powerJson.boosts_allowed || []);
     const inferred = inferAllowedSetCategories(
       boostsForCategory,
-      archetypeId,
-      powerType,
       effectiveArea,
       powerJson.range,
       powerJson.powerset || powerJson.full_name,
       hasTeleportAttrib,
     );
+    // AT ATO categories come from the boostsets reverse index, not inference.
+    inferred.push(...ownAtoCategories(powerJson.full_name));
     if (inferred.length > 0) {
-      power.allowedSetCategories = inferred;
+      power.allowedSetCategories = [...new Set(inferred)].sort();
     }
   }
 
@@ -6262,16 +6460,6 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
   // The raw data's boosts_allowed is the authoritative source.
   // If boosts_allowed is empty, the power genuinely accepts no generic IOs.
   // allowedSetCategories only determines which IO SETS can be slotted.
-
-  // Apply manual overrides for powers where in-game allows enhancements not in binary data
-  const extraEnhancements = ALLOWED_ENHANCEMENT_OVERRIDES[powerJson.name];
-  if (extraEnhancements) {
-    for (const enh of extraEnhancements) {
-      if (!power.allowedEnhancements.includes(enh)) {
-        power.allowedEnhancements.push(enh);
-      }
-    }
-  }
 
   // Max slots — if allowedEnhancements is empty, the power accepts no enhancements
   power.maxSlots = (power.allowedEnhancements.length === 0) ? 0 : (powerJson.max_boosts || 6);
@@ -6373,6 +6561,12 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
     }
     const stackingResult = detectStackingEffects(stackingSource);
     if (stackingResult) {
+      // Same `*Unenhanced` remap the conditional path does: an IgnoreStrength
+      // template routes its base value to `<slot>Unenhanced`, so its per-target
+      // increment must land there too. Without it the patch MINTS an empty
+      // enhanceable twin and the one template reads as two buffs (Thunderspy
+      // Invincibility, whose +ToHit carries IgnoreStrength where HC's does not).
+      _remapUnenhancedPatchKeys(stackingResult.patches || {}, effects);
       mergeStackingPatches(effects, stackingResult);
       // Stamp the redirect-derived per-target increment onto the matching emitted
       // atoms (allTemplates). The redirect chain's own template objects (seen by
@@ -6571,6 +6765,13 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
     else delete power.stats.timeToRoot; // base overrides the shell's castTime; a stale root value from the (unread) shell would mismatch it
   }
 
+  // Mode-gated redirect variants (Kheldian forms, Primalist forms, Titan Momentum, Seismic
+  // Power): what this power becomes while a caster mode is live. See extractModeVariants.
+  const modeVariants = extractModeVariants(powerJson, archetypeId, powerType);
+  if (modeVariants) {
+    power.modeVariants = modeVariants;
+  }
+
   // Requirements
   if (powerJson.requires) {
     power.requires = powerJson.requires;
@@ -6635,6 +6836,11 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
     for (const ce of power.conditionalEffects || []) {
       if (ce.damage) ce.damage = applyThunderspyDamageType(ce.damage, power.shortHelp);
     }
+    // Chip source for Thunderspy only — its damage atoms are `Unmapped`, so the
+    // planner cannot derive the type set from them (HC/Rebirth do). Power-level
+    // set, never stamped onto atoms. Omit when empty (non-damage powers).
+    const damageTypes = damageTypeSetFromPower(powerJson);
+    if (damageTypes.length) power.damageTypes = damageTypes;
     guardThunderspyOnesBuffs(power, powerJson.targets_affected);
     guardThunderspyAppliedMez(power, powerJson.targets_affected);
   }
@@ -6712,7 +6918,16 @@ function convertPowerset(category, powersetName) {
       const leaf = n.split('.').pop().toLowerCase();
       return leaf === targetName;
     });
-    let availableLevel = powerIndex >= 0 ? indexJson.available_level[powerIndex] : 0;
+    // Corpus-unreachable (27,312/27,312 powers hit the index, censused 2026-07-19):
+    // a miss means a broken export or a name-matching regression, and the old
+    // silent fallback (availableLevel 0, sort key 999) shipped a plausible-wrong
+    // pick order as authoritative. Fail the conversion instead.
+    if (powerIndex < 0) {
+      throw new Error(
+        `${category}/${powersetName}: power ${powerJson.name} (${file}) is not in the powerset index's power_names — cannot derive available_level`,
+      );
+    }
+    let availableLevel = indexJson.available_level[powerIndex];
     // The bin/pigg source stores the "-1 = auto-granted, not player-pickable"
     // sentinel UNSIGNED, so it arrives as 0xFFFFFFFF (4294967295) — or another
     // high-bit value for -2, etc. Normalize back to a signed negative so the
@@ -6721,7 +6936,7 @@ function convertPowerset(category, powersetName) {
     if (availableLevel >= 0x80000000) availableLevel -= 0x100000000;
 
     const power = convertPower(powerJson, availableLevel, categoryInfo.archetype, categoryInfo.type);
-    powers.push({ power, powerIndex: powerIndex >= 0 ? powerIndex : 999, availableLevel, file });
+    powers.push({ power, powerIndex, availableLevel, file });
   }
 
   // Sort by available_level (game pick order). Ties broken by powerIndex so
@@ -6927,12 +7142,14 @@ function deriveDormant(powers) {
   return gated / powers.length > 0.5;
 }
 
-// Export for reuse by other scripts (e.g., audit-powerset-effects.cjs,
-// migrate-to-layered.cjs)
+// Export for reuse by other scripts (the batch orchestrator, pool/epic
+// converters, gates, and emitters all consume this module as a library).
 module.exports = {
   deriveDormant,
   getStrengthsDisallowedIndex,
   applyThunderspyDamageType,
+  damageTypeSetFromPower,
+  DAMAGE_ATTRIB_INDEX,
   guardThunderspyOnesBuffs,
   guardThunderspyAppliedMez,
   resolveThunderspyMovementTargets,
@@ -6966,6 +7183,9 @@ module.exports = {
   collectAtomTemplates,
   encodeAtomsForEmit,
   resolveRedirectPath,
+  convertPower,
+  classifyModeRedirect,
+  extractModeVariants,
   collectRedirectTemplates,
   collectBaseTemplates,
   _filterFieryEmbraceBonus,

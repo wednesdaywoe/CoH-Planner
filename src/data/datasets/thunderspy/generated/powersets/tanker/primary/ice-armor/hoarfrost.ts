@@ -34,16 +34,40 @@ export const Hoarfrost: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "absorb": {
+      "scale": 0.075,
+      "table": "Melee_Ones"
+    },
     "buffDuration": 30,
     "durations": {
+      "absorb": 5,
       "regenBuff": 30
     },
+    "maxStacks": 7,
     "regenBuff": {
       "scale": 1,
       "table": "Melee_Ones"
-    }
+    },
+    "stackInterval": 5,
+    "stacksLinear": [
+      "absorb"
+    ]
   },
   "atoms": [
-    ["Regeneration",null,1,1,30,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Regeneration",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Absorb",null,0.075,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Absorb",null,1,1,5,"Melee_Ones","Max","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"Max.kHitPoints target> 0.075 * @Strength *"],
+    ["Absorb",null,0.075,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Absorb",null,1,1,5,"Melee_Ones","Max","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"Max.kHitPoints target> 0.075 * @Strength *"],
+    ["Absorb",null,0.075,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Absorb",null,1,1,5,"Melee_Ones","Max","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"Max.kHitPoints target> 0.075 * @Strength *"],
+    ["Absorb",null,0.075,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Absorb",null,1,1,5,"Melee_Ones","Max","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"Max.kHitPoints target> 0.075 * @Strength *"],
+    ["Absorb",null,0.075,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Absorb",null,1,1,5,"Melee_Ones","Max","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"Max.kHitPoints target> 0.075 * @Strength *"],
+    ["Absorb",null,0.075,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Absorb",null,1,1,5,"Melee_Ones","Max","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"Max.kHitPoints target> 0.075 * @Strength *"],
+    ["Absorb",null,0.075,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Absorb",null,1,1,5,"Melee_Ones","Max","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"Max.kHitPoints target> 0.075 * @Strength *"]
   ]
 };

@@ -16,7 +16,7 @@ export const EquipMercenary: Power = {
   "shortHelp": "Ranged, Equip Mercenary Henchman",
   "icon": "paramilitary_equipsoldier.png",
   "powerType": "Click",
-  "targetType": "Self",
+  "targetType": "Own Pet (Alive)",
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "RechargeTime"

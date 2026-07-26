@@ -51,6 +51,7 @@
   "requires": "Arachnos_Soldiers.Crab_Spider_Soldier.CS_Frag_Grenade !",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     112,
     124

@@ -45,20 +45,48 @@ export const HotFeet: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Fire",
     "scale": 0.25,
     "table": "Ranged_Damage"
   },
   "effects": {
+    "buffDuration": 2.25,
+    "durations": {
+      "slow": 2.25
+    },
     "fear": {
       "mag": 3,
       "scale": 4,
       "table": "Ranged_Ones"
+    },
+    "slow": {
+      "fly": {
+        "scale": 10,
+        "table": "Ranged_Ones"
+      },
+      "jumpHeight": {
+        "scale": 0.7,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.7,
+        "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.7,
+        "table": "Ranged_Slow"
+      }
     }
   },
   "atoms": [
-    ["Unmapped",null,0.25,1,0,"Ranged_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Mez","Afraid",4,3,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.7,1,2.25,"Ranged_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Damage","Fire",0.25,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Mez","Afraid",4,3,0,"Ranged_Ones","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","FlyMode",-10,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["Movement","JumpHeight",0.7,1,2.25,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","Jump",0.7,1,2.25,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Movement","Run",0.7,1,2.25,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1]
+  ],
+  "damageTypes": [
+    "Fire"
   ]
 };

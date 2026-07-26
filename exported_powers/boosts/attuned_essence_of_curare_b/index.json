@@ -1,0 +1,19 @@
+{
+  "key": "Boosts.Attuned_Essence_of_Curare_B",
+  "display_name": "Attuned Essence of Curare B",
+  "help": "Enhances the hold duration of a power by {Boost.Attrib.Mez.Scale}% and reduces the endurance cost of a power by {Boost.Attrib.Endurance.Scale}%.",
+  "short_help": "Set: Essence of Curare",
+  "icon": "attuned_essence_of_curare_b_set.ico",
+  "powers": [
+    "Boosts.Attuned_Essence_of_Curare_B.Attuned_Essence_of_Curare_B"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Essence of Curare: Endurance/Hold"
+  ],
+  "power_short_helps": [
+    "+End, +Hold"
+  ]
+}

@@ -35,8 +35,27 @@ export const WildBastion: Power = {
     "Healing"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Heal",
+    "scale": 0.272727,
+    "table": "Ranged_Heal",
+    "duration": 10.1,
+    "tickRate": 1
+  },
+  "effects": {
+    "absorb": {
+      "scale": 0.25,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 60,
+    "durations": {
+      "absorb": 60
+    }
+  },
   "atoms": [
-    ["Unmapped",null,0.25,1,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.272727,1,10.1,"Ranged_Heal","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,1,1]
+    ["Absorb",null,0.25,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Absorb",null,1,1,60,"Ranged_Ones","Max","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"Max.kHitPoints source> 0.25 * @Strength *"],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["Heal",null,0.272727,1,10.1,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1]
   ]
 };

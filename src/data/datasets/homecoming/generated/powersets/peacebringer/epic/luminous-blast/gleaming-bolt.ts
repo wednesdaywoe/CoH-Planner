@@ -59,5 +59,42 @@ export const GleamingBolt: Power = {
   "atoms": [
     ["Damage","Energy",0.6,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Defense","All",1,1,3,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
-  ]
+  ],
+  "modeVariants": {
+    "Peacebringer_Tanker_Mode": {
+      "internalName": "Dwarf_Gleaming_Bolt",
+      "stats": {
+        "accuracy": 1,
+        "range": 20,
+        "recharge": 1.5,
+        "endurance": 3.12,
+        "castTime": 1
+      },
+      "damage": {
+        "type": "Energy",
+        "scale": 0.6,
+        "table": "Melee_InherentDamage"
+      },
+      "effects": {
+        "buffDuration": 4,
+        "defenseDebuff": {
+          "scale": 1.5,
+          "table": "Melee_Debuff_Def"
+        },
+        "durations": {
+          "defenseDebuff": 3,
+          "taunt": 4
+        },
+        "taunt": {
+          "scale": 1,
+          "table": "Melee_InherentTaunt"
+        }
+      },
+      "shortHelp": "Ranged, Minor DMG(Energy), Foe -DEF",
+      "description": "A very quick, but low damage bolt of Kheldian energy that can reduce a target's Defense. Note that Dwarf Gleaming Bolt is unaffected by Range changes. Damage: Minor",
+      "effectArea": "SingleTarget",
+      "targetType": "Foe",
+      "powerType": "Click"
+    }
+  }
 };

@@ -50,6 +50,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     108,
     132,
@@ -89,12 +90,12 @@
                 "Set_Mode"
               ],
               "type": "Constant",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
               "scale": 1.0,
-              "duration": "0.60 seconds",
+              "duration": "0.6 seconds",
               "magnitude": 201.0,
               "delay": 0.0,
               "duration_expression": "",
@@ -108,6 +109,12 @@
               "stack": "RefreshToCount",
               "stack_limit": 1,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "PFX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "IgnoreStrength",
                 "IgnoreResistance",
@@ -121,12 +128,12 @@
                 "Set_Mode"
               ],
               "type": "Constant",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Melee_Ones",
               "scale": 1.0,
-              "duration": "0.60 seconds",
+              "duration": "0.6 seconds",
               "magnitude": 206.0,
               "delay": 0.0,
               "duration_expression": "",
@@ -153,12 +160,12 @@
                 "Global_Chance_Mod"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Melee_Ones",
               "scale": 1.0,
-              "duration": "0.60 seconds",
+              "duration": "0.6 seconds",
               "magnitude": 1.0,
               "delay": 0.0,
               "duration_expression": "",
@@ -172,6 +179,12 @@
               "stack": "RefreshToCount",
               "stack_limit": 1,
               "stack_key": null,
+              "params": {
+                "tags": [
+                  "SMAttune"
+                ],
+                "type": "EffectFilter"
+              },
               "flags": [
                 "IgnoreStrength",
                 "IgnoreResistance"
@@ -197,12 +210,12 @@
                 "Set_Mode"
               ],
               "type": "Constant",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Melee_Ones",
               "scale": 1.0,
-              "duration": "0.60 seconds",
+              "duration": "0.6 seconds",
               "magnitude": 204.0,
               "delay": 0.0,
               "duration_expression": "",
@@ -243,12 +256,12 @@
                 "Set_Mode"
               ],
               "type": "Constant",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Melee_Ones",
               "scale": 1.0,
-              "duration": "0.60 seconds",
+              "duration": "0.6 seconds",
               "magnitude": 205.0,
               "delay": 0.0,
               "duration_expression": "",
@@ -302,7 +315,7 @@
                     "Energy_Dmg"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Absolute",
                   "target": "AnyAffected",
                   "table": "Melee_Damage",
@@ -321,6 +334,13 @@
                   "stack": "Ignore",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "messages": {
+                    "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage over time.",
+                    "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage over time.",
+                    "display_float": null,
+                    "display_attrib_defense_float": null,
+                    "display_info": "Requires target to be within 40ft."
+                  },
                   "flags_raw": 1280
                 }
               ]
@@ -342,7 +362,7 @@
                     "Energy_Dmg"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Absolute",
                   "target": "AnyAffected",
                   "table": "Melee_PvPDamage",
@@ -361,6 +381,13 @@
                   "stack": "Ignore",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "messages": {
+                    "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage over time.",
+                    "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage over time.",
+                    "display_float": null,
+                    "display_attrib_defense_float": null,
+                    "display_info": "Requires target to be within 40ft."
+                  },
                   "flags_raw": 1280
                 }
               ]
@@ -391,7 +418,7 @@
                     "Toxic_Dmg"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Resistance",
                   "target": "AnyAffected",
                   "table": "Melee_Debuff_Res_Dmg",
@@ -428,7 +455,7 @@
                     "RechargeTime"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Resistance",
                   "target": "AnyAffected",
                   "table": "Melee_Debuff_Res_Dmg",
@@ -458,6 +485,10 @@
         }
       ]
     }
+  ],
+  "strengths_disallowed": [
+    "RechargeTime",
+    "Range"
   ],
   "modes_disallowed": [
     "Disable_All"

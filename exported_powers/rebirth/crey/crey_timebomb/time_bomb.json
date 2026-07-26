@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -57,7 +58,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Level",
@@ -80,7 +81,8 @@
             "type": "EntCreate",
             "entity_def": "Crey_Bomb",
             "priority_list": "PL_FightPreferRanged"
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     }

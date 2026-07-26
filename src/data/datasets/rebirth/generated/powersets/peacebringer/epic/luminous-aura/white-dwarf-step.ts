@@ -37,7 +37,8 @@ export const WhiteDwarfStep: Power = {
     "buffDuration": 4,
     "durations": {
       "movement": 4,
-      "slow": 4
+      "slow": 4,
+      "stealth": 1.5
     },
     "movement": {
       "fly": {
@@ -62,6 +63,12 @@ export const WhiteDwarfStep: Power = {
         "toWho": "Self"
       }
     },
+    "stealth": {
+      "translucency": {
+        "scale": 0,
+        "table": "Ranged_Ones"
+      }
+    },
     "teleport": {
       "scale": 1,
       "table": "Ranged_Ones"
@@ -72,7 +79,7 @@ export const WhiteDwarfStep: Power = {
     ]
   },
   "atoms": [
-    ["EntCreate",null,0,1,1.5,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Stealth","Translucency",0,1,1.5,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["Movement","FlyMode",1,1,4,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["Movement","Fly",-1,1,4,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],

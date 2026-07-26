@@ -35,20 +35,41 @@ export const EarthsEmbrace: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Heal",
+    "scale": 4,
+    "table": "Melee_HealSelf"
+  },
   "effects": {
     "buffDuration": 120,
     "durations": {
+      "maxHPBuff": 120,
+      "maxHPBuffUnenhanced": 120,
       "resistance": 120
+    },
+    "maxHPBuff": {
+      "scale": 2,
+      "table": "Melee_HealSelf"
+    },
+    "maxHPBuffUnenhanced": {
+      "scale": 2,
+      "table": "Melee_HealSelf"
     },
     "resistance": {
       "toxic": {
         "scale": 2,
         "table": "Melee_Res_DMG"
       }
-    }
+    },
+    "maxStacks": 2,
+    "stacksLinear": [
+      "maxHPBuff"
+    ]
   },
   "atoms": [
-    ["Unmapped",null,2,1,120,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Toxic",2,1,120,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["MaxHP",null,2,1,120,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["MaxHP",null,2,1,120,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Heal",null,4,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Resistance","Toxic",2,1,120,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1]
   ]
 };

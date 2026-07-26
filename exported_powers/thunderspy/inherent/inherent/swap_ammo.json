@@ -38,6 +38,7 @@
   "requires": "Defender_Ranged.Dual_Pistols Blaster_Ranged.Dual_Pistols || Corruptor_Ranged.Dual_Pistols || Dominator_Assault.Dual_Pistols ||",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -54,16 +55,16 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Set_Mode"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Constant",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 1.0,
           "duration": "2.25 seconds",
-          "magnitude": 1.0,
+          "magnitude": 66.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -73,13 +74,21 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 112,
+          "mode_name": "LethalAmmo"
         }
       ]
     }
   ],
+  "max_boosts": 0,
   "modes_disallowed": [
     "Disable_All"
   ],

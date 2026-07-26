@@ -41,27 +41,77 @@ export const TarantulaConversion: Power = {
   "maxSlots": 6,
   "effects": {
     "buffDuration": 10.25,
+    "defenseDebuff": {
+      "scale": 1.35,
+      "table": "Ranged_Debuff_Def"
+    },
     "durations": {
+      "defenseDebuff": 10.25,
+      "maxHPBuff": 10.25,
+      "maxHPBuffUnenhanced": 10.25,
       "resistance": 10.25
     },
+    "maxHPBuff": {
+      "scale": 0.5,
+      "table": "Melee_HealSelf"
+    },
+    "maxHPBuffUnenhanced": {
+      "scale": 0.5,
+      "table": "Melee_HealSelf"
+    },
     "resistance": {
+      "cold": {
+        "scale": 0.75,
+        "table": "Melee_Res_DMG"
+      },
+      "energy": {
+        "scale": 0.75,
+        "table": "Melee_Res_DMG"
+      },
+      "fire": {
+        "scale": 0.75,
+        "table": "Melee_Res_DMG"
+      },
       "lethal": {
         "scale": 2,
+        "table": "Melee_Res_DMG"
+      },
+      "negative": {
+        "scale": 0.75,
+        "table": "Melee_Res_DMG"
+      },
+      "psionic": {
+        "scale": 1,
         "table": "Melee_Res_DMG"
       },
       "smashing": {
         "scale": 2,
         "table": "Melee_Res_DMG"
+      },
+      "toxic": {
+        "scale": 1,
+        "table": "Melee_Res_DMG"
       }
     }
   },
   "atoms": [
-    ["Resistance","Smashing",2,1,10.25,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Lethal",2,1,10.25,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.5,1,10.25,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,3,1,10.25,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,10.25,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,10.25,1,null,null,null,null,null,null,"@CustomFX FemaleTarantula eq !"],
-    ["Unmapped",null,1,1,10.25,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,10.25,1,null,null,null,null,null,null,"@CustomFX FemaleTarantula eq"],
-    ["Unmapped",null,1.35,1,10.25,"Ranged_Debuff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Resistance","Smashing",2,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Lethal",2,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Fire",0.75,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Cold",0.75,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Energy",0.75,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Negative",0.75,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Toxic",1,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Psionic",1,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["MaxHP",null,0.5,1,10.25,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["MaxHP",null,0.5,1,10.25,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Mez","Intangible",3,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,115,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,10.25,1,null,true],
+    ["Meta",null,1,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,10.25,1,null,true,null,null,null,null,"@CustomFX FemaleTarantula eq !"],
+    ["Meta",null,1,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,10.25,1,null,true,null,null,null,null,"@CustomFX FemaleTarantula eq"],
+    ["Defense","All",1.35,1,10.25,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true]
+  ],
+  "setsModes": [
+    "Widow_Tarantula_Mode"
   ]
 };

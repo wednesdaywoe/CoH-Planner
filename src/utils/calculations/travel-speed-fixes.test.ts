@@ -43,7 +43,9 @@ const poolPower = (poolId: string, internalName: string, active = true) => {
   const pool = getPowerPool(poolId);
   const def = pool?.powers.find((p) => p.internalName === internalName);
   if (!def) throw new Error(`pool power not found: ${poolId}/${internalName}`);
-  return { ...def, isActive: active, slots: [] };
+  // `powerSet` is what the build store stamps on every selection and what the engine's
+  // CharacterState requires — a fixture without it is not a build the app can produce.
+  return { ...def, powerSet: poolId, level: 1, isActive: active, slots: [] };
 };
 
 const makeBuild = (opts: {
@@ -73,7 +75,7 @@ describe('travel-speed fixes (HC)', () => {
   // ---- 1. Hurdle jump speed ------------------------------------------------
   it('Hurdle contributes BOTH jump height (+167%) and jump speed (+124.5%)', () => {
     const hurdle = getInherentPowerDef('Hurdle')!;
-    const b = makeBuild({ inherents: [{ ...hurdle, inherentCategory: 'fitness', isActive: true, slots: [] }] });
+    const b = makeBuild({ inherents: [{ ...hurdle, powerSet: 'Inherent', level: 1, inherentCategory: 'fitness', isActive: true, slots: [] }] });
     const g = totals(b);
     expect(g.jumpHeight).toBeCloseTo(166.8, 0); // 0.06 × 27.8
     expect(g.jumpSpeed).toBeCloseTo(124.5, 0);  // 0.5 × 2.49 — was 0
@@ -129,7 +131,7 @@ describe('travel-speed fixes (HC)', () => {
     const ninja = getInherentPowerDef('Ninja_Run')!;
     const b = makeBuild({
       pools: [{ id: 'speed', powers: [poolPower('speed', 'Super_Speed')] }],
-      inherents: [{ ...ninja, isActive: true, slots: [] }],
+      inherents: [{ ...ninja, powerSet: 'Inherent', level: 1, isActive: true, slots: [] }],
     });
     expect(totals(b).runSpeed).toBeCloseTo(350, 0);
   });
@@ -138,7 +140,7 @@ describe('travel-speed fixes (HC)', () => {
     const sprint = getInherentPowerDef('Sprint')!;
     const b = makeBuild({
       pools: [{ id: 'speed', powers: [poolPower('speed', 'Super_Speed')] }],
-      inherents: [{ ...sprint, isActive: true, slots: [] }],
+      inherents: [{ ...sprint, powerSet: 'Inherent', level: 1, isActive: true, slots: [] }],
     });
     // Sprint = 0.5 + 0.5 (unenhanceable half) × Melee_Ones = +100%.
     expect(totals(b).runSpeed).toBeCloseTo(450, 0);

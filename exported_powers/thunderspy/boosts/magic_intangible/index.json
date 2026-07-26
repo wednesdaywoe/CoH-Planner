@@ -1,0 +1,19 @@
+{
+  "key": "Boosts.Magic_Intangible",
+  "display_name": "Magic Intangible",
+  "help": "Increases the duration of an intangibility power.",
+  "short_help": "Dimensional Entities (Magic)",
+  "icon": "magic_intangible_set.ico",
+  "powers": [
+    "Boosts.Magic_Intangible.Magic_Intangible"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Phasing of Grey"
+  ],
+  "power_short_helps": [
+    "Enhances Intangibility Duration"
+  ]
+}

@@ -32,7 +32,10 @@ export const EfficientAdaptation: Power = {
   "allowedEnhancements": [],
   "maxSlots": 0,
   "atoms": [
-    ["Unmapped",null,1,1,1.1,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Meta",null,1,105,1.1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
   ],
-  "requires": "Tanker_Defense.Organic_Armor.Evolution"
+  "requires": "Tanker_Defense.Organic_Armor.Evolution",
+  "setsModes": [
+    "RestedAdaptation"
+  ]
 };

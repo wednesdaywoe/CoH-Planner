@@ -45,13 +45,28 @@ export const ConductiveShield: Power = {
       "resistance": 0.75
     },
     "resistance": {
+      "cold": {
+        "scale": 3.5,
+        "table": "Melee_Res_DMG"
+      },
+      "energy": {
+        "scale": 3.5,
+        "table": "Melee_Res_DMG"
+      },
       "fire": {
         "scale": 3.5,
+        "table": "Melee_Res_DMG"
+      },
+      "negative": {
+        "scale": 2,
         "table": "Melee_Res_DMG"
       }
     }
   },
   "atoms": [
-    ["Resistance","Fire",3.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Resistance","Fire",3.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Cold",3.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Energy",3.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Negative",2,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true]
   ]
 };

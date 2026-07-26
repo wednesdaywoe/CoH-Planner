@@ -16,7 +16,7 @@ export const BurstofSpeed: Power = {
   "shortHelp": "Location AoE Moderate DMG (Smash), Self Teleport",
   "icon": "martialmanipulation_burstofspeed.png",
   "powerType": "Click",
-  "targetType": "Dead Teammate",
+  "targetType": "Teleport",
   "effectArea": "Location",
   "stats": {
     "accuracy": 1,
@@ -76,6 +76,6 @@ export const BurstofSpeed: Power = {
     ["DamageBuff","Psionic",0.026,1,8.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Toxic",0.026,1,8.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["RechargePower",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,2,null,true],
-    ["GlobalChanceMod",null,-1,1,30,"Ranged_Ones","Cur","Expression","Self","Any",false,"Stack",2,null,null,2,null,true]
+    ["GlobalChanceMod",null,-1,1,30,"Ranged_Ones","Cur","Expression","Self","Any",false,"Stack",2,null,null,2,null,true,null,null,null,null,null,null,null,null,null,null,"-1"]
   ]
 };

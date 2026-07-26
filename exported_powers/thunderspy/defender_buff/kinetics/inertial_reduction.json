@@ -47,6 +47,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -63,12 +64,12 @@
       "templates": [
         {
           "attribs": [
-            "Leap"
+            "JumpHeight"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Melee_Leap",
           "scale": 1.0,
           "duration": "60 seconds",
@@ -82,9 +83,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Power_DisallowSpeedBoost target.TokenOwned? !",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -102,12 +107,12 @@
       "templates": [
         {
           "attribs": [
-            "SpeedJumping"
+            "JumpingSpeed"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Melee_SpeedJumping",
           "scale": 1.0,
           "duration": "60 seconds",
@@ -121,9 +126,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Power_DisallowSpeedBoost target.TokenOwned? !",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -141,12 +150,12 @@
       "templates": [
         {
           "attribs": [
-            "Control"
+            "MovementControl"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Melee_Control",
           "scale": 10.0,
           "duration": "60 seconds",
@@ -160,9 +169,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Power_DisallowSpeedBoost target.TokenOwned? !",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -180,12 +193,12 @@
       "templates": [
         {
           "attribs": [
-            "Friction"
+            "MovementFriction"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Melee_Friction",
           "scale": 10.0,
           "duration": "60 seconds",
@@ -199,9 +212,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Power_DisallowSpeedBoost target.TokenOwned? !",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     }

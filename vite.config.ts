@@ -86,7 +86,11 @@ function cspPlugin(): Plugin {
 
         const csp = [
           `default-src 'self'`,
-          `script-src 'self' ${scriptHashes.join(' ')}`.trim(),
+          // 'wasm-unsafe-eval' is what lets the calc engine run: Chrome governs
+          // WebAssembly.instantiate under script-src, and without this token it blocks the
+          // .wasm outright — the whole dashboard reads 0% with only a console error. It grants
+          // wasm compilation ONLY; it does not re-enable eval() or inline script.
+          `script-src 'self' 'wasm-unsafe-eval' ${scriptHashes.join(' ')}`.trim(),
           // Landing page + Tailwind use inline style="" attributes (un-hashable);
           // fonts.googleapis.com serves the SN Pro / Nunito stylesheet.
           `style-src 'self' 'unsafe-inline' https://fonts.googleapis.com`,
@@ -119,10 +123,38 @@ function cspPlugin(): Plugin {
 }
 
 // https://vite.dev/config/
+/**
+ * Vitest-only: swap the browser engine module for its Node twin.
+ *
+ * `src/engine/engine.ts` is browser-shaped (`__wbg_init` + `fetch` + a `?url` wasm import),
+ * so under vitest it can never load a dataset — `recalcJson` returned null and every test
+ * calling `calculateCharacterTotals` graded the all-zero fallback instead of the engine that
+ * ships. `engine.node.ts` is the same API over the wasm-node artifact.
+ *
+ * A plugin rather than `test.alias` because two different specifiers reach the module (the
+ * hook's `@/engine/engine`, engineTotals' relative `./engine`) and the relative one needs its
+ * importer to disambiguate. Inert outside vitest — `dev`/`build` never see it.
+ */
+const engineNodeSwapPlugin: Plugin = {
+  name: 'engine-node-swap',
+  enforce: 'pre',
+  resolveId(source, importer) {
+    if (!process.env.VITEST) return null
+    // `@/…` is rewritten to an absolute path by vite's own alias plugin before this runs,
+    // so match the resolved form as well as engineTotals' relative `./engine`.
+    const id = source.replace(/\\/g, '/')
+    const isEngine =
+      id.endsWith('/src/engine/engine') ||
+      (id === './engine' && !!importer && importer.replace(/\\/g, '/').includes('/src/engine/'))
+    return isEngine ? path.resolve(__dirname, 'src/engine/engine.node.ts') : null
+  },
+}
+
 export default defineConfig({
   // Base path — '/' for custom domain (coh-sidekick.com)
   base: '/',
   plugins: [
+    engineNodeSwapPlugin,
     react(),
     tailwindcss(),
     VitePWA({
@@ -136,11 +168,28 @@ export default defineConfig({
       manifest: false,
       injectRegister: null,
       workbox: {
-        // Precache the app shell only: JS, CSS, HTML. Deliberately NOT images —
-        // public/img holds hundreds of enhancement/archetype icons; precaching
-        // them would download the entire icon library on SW install. They are
-        // runtime-cached on demand below instead.
-        globPatterns: ['**/*.{js,css,html}'],
+        // Precache the app shell: JS, CSS, HTML, plus the calc engine (the .wasm and
+        // the three contract bundles). Deliberately NOT images — public/img holds
+        // hundreds of enhancement/archetype icons; precaching them would download the
+        // entire icon library on SW install. They are runtime-cached on demand below.
+        //
+        // The engine is in the shell because without it the app computes NOTHING: a
+        // cold load that can't reach the .wasm or its bundle renders the "engine failed"
+        // banner and zeros everywhere. It is shell, not data.
+        //
+        // Precache rather than runtime-cache, specifically because the bundles are NOT
+        // content-hashed (`homecoming.json.gz` keeps its name across rebuilds). A
+        // CacheFirst runtime rule would therefore pin the FIRST bundle a visitor ever
+        // fetched and happily feed it to a newer .wasm forever — a silently mismatched
+        // engine, which is worse than a slow one. Workbox revisions precached entries by
+        // content hash, so a changed bundle is re-fetched when the new SW installs, and
+        // the engine's two halves update together or not at all.
+        //
+        // Cost is ~5.8 MB on SW install (1.5 wasm + 1.9/1.2/1.2 bundles) and yes, two of
+        // the three bundles are for datasets a given visitor may never open — unlike the
+        // globIgnored dataset chunks below, they're small enough that splitting them
+        // would buy less than the mismatch risk it reintroduces.
+        globPatterns: ['**/*.{js,css,html,wasm}', 'engine/contract/*.json.gz'],
         // Exclude the per-dataset chunks (`dataset-<id>-*.js`, named via
         // build.rollupOptions.output.chunkFileNames). Each is 8-15 MB and only
         // ONE is ever loaded per visitor (the active server, chosen at boot),

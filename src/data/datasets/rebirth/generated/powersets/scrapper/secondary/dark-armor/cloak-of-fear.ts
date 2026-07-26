@@ -18,6 +18,9 @@ export const CloakofFear: Power = {
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "AoE",
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 0.67,
     "radius": 8,

@@ -40,20 +40,11 @@ export const ImpassionedSerenade: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Psionic",
-      "scale": 0.65,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 0.04,
-      "table": "Ranged_Damage",
-      "duration": 30,
-      "tickRate": 1
-    }
-  ],
+  "damage": {
+    "type": "Psionic",
+    "scale": 0.65,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "confuse": {
       "mag": 3,
@@ -63,9 +54,9 @@ export const ImpassionedSerenade: Power = {
   },
   "atoms": [
     ["Damage","Psionic",0.65,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Psionic",0.04,1,30,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Replace",2,null,1,1],
     ["Mez","Confused",20,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","All","Any",true,"Stack",2,null,null,1],
+    ["Damage","Psionic",0.04,1,30,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Replace",2,null,1,1,null,null,null,null,null,null,null,true,null,null,null,null,null,"Confused"],
     ["ExecutePower",null,0,0,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
   ]
 };

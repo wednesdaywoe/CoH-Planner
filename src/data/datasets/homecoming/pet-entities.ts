@@ -861,6 +861,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 40,
         maxTargets: 3,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -882,6 +883,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 40,
         maxTargets: 3,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -903,6 +905,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 40,
         maxTargets: 1,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -924,6 +927,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 40,
         maxTargets: 2,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -945,6 +949,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 40,
         maxTargets: 3,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -966,6 +971,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 40,
         maxTargets: 2,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -987,6 +993,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 40,
         maxTargets: 2,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -1008,6 +1015,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 40,
         maxTargets: 3,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -1029,6 +1037,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 40,
         maxTargets: 2,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -1050,6 +1059,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 40,
         maxTargets: 1,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -1072,6 +1082,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 40,
         maxTargets: 3,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -1094,6 +1105,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 40,
         maxTargets: 3,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -1116,6 +1128,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 40,
         maxTargets: 2,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -1138,6 +1151,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 40,
         maxTargets: 3,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -1160,6 +1174,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 40,
         maxTargets: 3,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -1182,6 +1197,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 40,
         maxTargets: 2,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -1204,6 +1220,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 40,
         maxTargets: 3,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -1226,6 +1243,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 40,
         maxTargets: 3,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -1248,6 +1266,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 40,
         maxTargets: 1,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -1270,6 +1289,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 40,
         maxTargets: 2,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -1292,6 +1312,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 40,
         maxTargets: 3,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -1314,6 +1335,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 40,
         maxTargets: 3,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -1336,6 +1358,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 40,
         maxTargets: 1,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -1358,6 +1381,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 40,
         maxTargets: 2,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -1380,6 +1404,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 40,
         maxTargets: 3,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -1402,6 +1427,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 40,
         maxTargets: 2,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -1424,6 +1450,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 40,
         maxTargets: 2,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -1445,6 +1472,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 40,
         maxTargets: 3,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -1466,6 +1494,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 40,
         maxTargets: 3,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -1487,6 +1516,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 40,
         maxTargets: 2,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -1508,6 +1538,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 40,
         maxTargets: 3,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -1529,6 +1560,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 40,
         maxTargets: 3,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -1550,6 +1582,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 40,
         maxTargets: 2,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -1572,6 +1605,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 40,
         maxTargets: 3,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -1594,6 +1628,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 40,
         maxTargets: 3,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -1616,6 +1651,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 40,
         maxTargets: 2,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -7631,6 +7667,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.83,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Smash",
@@ -7642,6 +7679,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.83,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
     ],
     upgradeTiers: [
@@ -7660,6 +7698,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             range: 80,
             radius: 5,
             maxTargets: 5,
+            rechargeUnaffected: true,
           },
           {
             name: "Flamethrower",
@@ -7672,6 +7711,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             range: 40,
             radius: 40,
             maxTargets: 10,
+            rechargeUnaffected: true,
           },
           {
             name: "Heavy_Plasma_Blast",
@@ -7683,6 +7723,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 1.83,
             effectArea: "SingleTarget",
             range: 80,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -7700,6 +7741,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             range: 80,
             radius: 10,
             maxTargets: 10,
+            rechargeUnaffected: true,
           },
           {
             name: "Overcharged_Blast",
@@ -7711,6 +7753,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 1.83,
             effectArea: "SingleTarget",
             range: 80,
+            rechargeUnaffected: true,
           },
           {
             name: "Swarm_Missiles",
@@ -7724,6 +7767,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             range: 80,
             radius: 20,
             maxTargets: 16,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -7746,6 +7790,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Claw_Rake",
@@ -7756,6 +7801,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.83,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
     ],
     upgradeTiers: [
@@ -7772,6 +7818,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 1,
             effectArea: "SingleTarget",
             range: 80,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -7790,6 +7837,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             range: 40,
             radius: 40,
             maxTargets: 10,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -7811,6 +7859,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.67,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Burst",
@@ -7822,6 +7871,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1,
         effectArea: "SingleTarget",
         range: 75,
+        rechargeUnaffected: true,
       },
       {
         name: "Slug",
@@ -7833,6 +7883,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.87,
         effectArea: "SingleTarget",
         range: 75,
+        rechargeUnaffected: true,
       },
     ],
     upgradeTiers: [
@@ -7851,6 +7902,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             range: 40,
             radius: 40,
             maxTargets: 10,
+            rechargeUnaffected: true,
           },
           {
             name: "Heavy_Burst",
@@ -7862,6 +7914,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 1.67,
             effectArea: "SingleTarget",
             range: 80,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -7878,6 +7931,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 1.67,
             effectArea: "SingleTarget",
             range: 80,
+            rechargeUnaffected: true,
           },
           {
             name: "Flamethrower",
@@ -7890,6 +7944,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             range: 40,
             radius: 40,
             maxTargets: 10,
+            rechargeUnaffected: true,
           },
           {
             name: "LRM_Rocket",
@@ -7903,6 +7958,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             range: 150,
             radius: 15,
             maxTargets: 16,
+            rechargeUnaffected: true,
           },
           {
             name: "M30_Grenade",
@@ -7916,6 +7972,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             range: 70,
             radius: 15,
             maxTargets: 16,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -7938,6 +7995,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Shiver",
@@ -7951,6 +8009,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 60,
         radius: 60,
         maxTargets: 16,
+        rechargeUnaffected: true,
       },
     ],
     upgradeTiers: [
@@ -7967,6 +8026,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 1.87,
             effectArea: "SingleTarget",
             range: 80,
+            rechargeUnaffected: true,
           },
           {
             name: "Chilling_Embrace",
@@ -7991,6 +8051,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 1.83,
             effectArea: "SingleTarget",
             range: 7,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -8008,6 +8069,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             effectArea: "Sphere",
             radius: 10,
             maxTargets: 10,
+            rechargeUnaffected: true,
           },
           {
             name: "Ice_Slash",
@@ -8019,6 +8081,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 1.83,
             effectArea: "SingleTarget",
             range: 7,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -8040,6 +8103,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.27,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Chilling_Howl",
@@ -8053,6 +8117,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 80,
         radius: 80,
         maxTargets: 3,
+        rechargeUnaffected: true,
       },
     ],
     upgradeTiers: [
@@ -8071,6 +8136,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             range: 50,
             radius: 50,
             maxTargets: 16,
+            rechargeUnaffected: true,
           },
           {
             name: "Maiming_Bite",
@@ -8082,6 +8148,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 1.9,
             effectArea: "SingleTarget",
             range: 7,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -8099,6 +8166,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             effectArea: "Sphere",
             radius: 15,
             maxTargets: 16,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -8120,6 +8188,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.83,
         effectArea: "SingleTarget",
         range: 90,
+        rechargeUnaffected: true,
       },
       {
         name: "Smash",
@@ -8130,6 +8199,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.67,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
     ],
     upgradeTiers: [
@@ -8146,6 +8216,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 2.17,
             effectArea: "SingleTarget",
             range: 90,
+            rechargeUnaffected: true,
           },
           {
             name: "Plasma_Blast",
@@ -8156,6 +8227,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 1.83,
             effectArea: "SingleTarget",
             range: 80,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -8173,6 +8245,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             range: 80,
             radius: 80,
             maxTargets: 10,
+            rechargeUnaffected: true,
           },
           {
             name: "Overcharged_Burst",
@@ -8184,6 +8257,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 2.17,
             effectArea: "SingleTarget",
             range: 90,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -8205,6 +8279,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.2,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Shield_of_Hellfire",
@@ -8261,6 +8336,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             range: 40,
             radius: 40,
             maxTargets: 10,
+            rechargeUnaffected: true,
           },
           {
             name: "Shield_of_Hellfire",
@@ -8290,6 +8366,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 2.27,
             effectArea: "SingleTarget",
             range: 80,
+            rechargeUnaffected: true,
           },
           {
             name: "Abyssal_Reconstruction",
@@ -8302,6 +8379,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             effectArea: "Sphere",
             radius: 15,
             maxTargets: 7,
+            rechargeUnaffected: true,
           },
           {
             name: "Fire_Ball",
@@ -8314,6 +8392,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             range: 80,
             radius: 15,
             maxTargets: 16,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -8335,6 +8414,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Claw_Rake",
@@ -8345,6 +8425,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.83,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
     ],
     upgradeTiers: [
@@ -8360,6 +8441,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 1.2,
             effectArea: "SingleTarget",
             range: 80,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -8377,6 +8459,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             range: 40,
             radius: 40,
             maxTargets: 10,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -8399,6 +8482,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.07,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Shuriken",
@@ -8409,6 +8493,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.07,
         effectArea: "SingleTarget",
         range: 70,
+        rechargeUnaffected: true,
       },
     ],
     upgradeTiers: [
@@ -8424,6 +8509,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 1.07,
             effectArea: "SingleTarget",
             range: 70,
+            rechargeUnaffected: true,
           },
           {
             name: "Storm_Kick",
@@ -8434,6 +8520,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 1,
             effectArea: "SingleTarget",
             range: 7,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -8451,6 +8538,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             range: 70,
             radius: 10,
             maxTargets: 10,
+            rechargeUnaffected: true,
           },
           {
             name: "Crane_Kick",
@@ -8462,6 +8550,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 2,
             effectArea: "SingleTarget",
             range: 7,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -8484,6 +8573,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         recharge: 60,
         castTime: 3,
         effectArea: "SingleTarget",
+        rechargeUnaffected: true,
       },
       {
         name: "Ghastly_Blast",
@@ -8495,6 +8585,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.67,
         effectArea: "SingleTarget",
         range: 310,
+        rechargeUnaffected: true,
       },
       {
         name: "Life_Drain",
@@ -8506,6 +8597,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.93,
         effectArea: "SingleTarget",
         range: 60,
+        rechargeUnaffected: true,
       },
       {
         name: "Necroplasmic_Grasp",
@@ -8517,6 +8609,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 2.07,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -8537,6 +8630,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         recharge: 60,
         castTime: 3,
         effectArea: "SingleTarget",
+        rechargeUnaffected: true,
       },
       {
         name: "Ghastly_Blast",
@@ -8548,6 +8642,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.67,
         effectArea: "SingleTarget",
         range: 310,
+        rechargeUnaffected: true,
       },
       {
         name: "Life_Drain",
@@ -8559,6 +8654,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.93,
         effectArea: "SingleTarget",
         range: 60,
+        rechargeUnaffected: true,
       },
       {
         name: "Necroplasmic_Grasp",
@@ -8570,6 +8666,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 2.07,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -8590,6 +8687,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         recharge: 60,
         castTime: 3,
         effectArea: "SingleTarget",
+        rechargeUnaffected: true,
       },
       {
         name: "Ghastly_Blast",
@@ -8601,6 +8699,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.67,
         effectArea: "SingleTarget",
         range: 310,
+        rechargeUnaffected: true,
       },
       {
         name: "Life_Drain",
@@ -8612,6 +8711,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.93,
         effectArea: "SingleTarget",
         range: 60,
+        rechargeUnaffected: true,
       },
       {
         name: "Necroplasmic_Grasp",
@@ -8623,6 +8723,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 2.07,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
     ],
     upgradeTiers: [
@@ -8639,6 +8740,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 1.67,
             effectArea: "SingleTarget",
             range: 310,
+            rechargeUnaffected: true,
           },
           {
             name: "Life_Drain",
@@ -8650,6 +8752,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 1.93,
             effectArea: "SingleTarget",
             range: 60,
+            rechargeUnaffected: true,
           },
           {
             name: "Necroplasmic_Grasp",
@@ -8661,6 +8764,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 2.07,
             effectArea: "SingleTarget",
             range: 7,
+            rechargeUnaffected: true,
           },
           {
             name: "Phase_Shift",
@@ -8671,6 +8775,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             recharge: 60,
             castTime: 3,
             effectArea: "SingleTarget",
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -8692,6 +8797,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Claw_Rake",
@@ -8702,6 +8808,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.83,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
     ],
     upgradeTiers: [
@@ -8717,6 +8824,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 2.03,
             effectArea: "SingleTarget",
             range: 80,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -8734,6 +8842,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             range: 40,
             radius: 40,
             maxTargets: 10,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -8755,6 +8864,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.83,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Claw_Slash",
@@ -8766,6 +8876,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.33,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Corruption",
@@ -8776,6 +8887,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
     ],
     upgradeTiers: [
@@ -8793,6 +8905,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             range: 15,
             radius: 15,
             maxTargets: 10,
+            rechargeUnaffected: true,
           },
           {
             name: "Hellfire_Aura",
@@ -8821,6 +8934,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             effectArea: "Sphere",
             radius: 15,
             maxTargets: 10,
+            rechargeUnaffected: true,
           },
           {
             name: "Hellfire_Smash",
@@ -8832,6 +8946,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 1.5,
             effectArea: "SingleTarget",
             range: 7,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -8853,6 +8968,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.27,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
     ],
     upgradeTiers: [
@@ -8870,6 +8986,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             effectArea: "Sphere",
             radius: 15,
             maxTargets: 255,
+            rechargeUnaffected: true,
           },
           {
             name: "Maiming_Bite",
@@ -8881,6 +8998,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 1.9,
             effectArea: "SingleTarget",
             range: 7,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -8896,6 +9014,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             recharge: 60,
             castTime: 1.6,
             effectArea: "SingleTarget",
+            rechargeUnaffected: true,
           },
           {
             name: "Throat_Bite",
@@ -8907,6 +9026,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 1.4,
             effectArea: "SingleTarget",
             range: 7,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -8928,6 +9048,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.27,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
     ],
     upgradeTiers: [
@@ -8945,6 +9066,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             effectArea: "Sphere",
             radius: 15,
             maxTargets: 255,
+            rechargeUnaffected: true,
           },
           {
             name: "Maiming_Bite",
@@ -8956,6 +9078,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 1.9,
             effectArea: "SingleTarget",
             range: 7,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -8973,6 +9096,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             effectArea: "Sphere",
             radius: 15,
             maxTargets: 16,
+            rechargeUnaffected: true,
           },
           {
             name: "Lick_Wounds",
@@ -8983,6 +9107,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             recharge: 60,
             castTime: 1.6,
             effectArea: "SingleTarget",
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -9005,6 +9130,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.67,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Slash",
@@ -9016,6 +9142,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.33,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
     ],
     upgradeTiers: [
@@ -9032,6 +9159,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 2,
             effectArea: "SingleTarget",
             range: 7,
+            rechargeUnaffected: true,
           },
           {
             name: "Poison_Dart",
@@ -9042,6 +9170,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 2,
             effectArea: "SingleTarget",
             range: 60,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -9060,6 +9189,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             range: 25,
             radius: 25,
             maxTargets: 10,
+            rechargeUnaffected: true,
           },
           {
             name: "Head_Splitter",
@@ -9073,6 +9203,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             range: 10,
             radius: 10,
             maxTargets: 10,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -9095,6 +9226,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Torrent",
@@ -9108,6 +9240,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 80,
         radius: 80,
         maxTargets: 10,
+        rechargeUnaffected: true,
       },
     ],
     upgradeTiers: [
@@ -9124,6 +9257,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 1.67,
             effectArea: "SingleTarget",
             range: 70,
+            rechargeUnaffected: true,
           },
           {
             name: "Tenebrous_Tentacles",
@@ -9137,6 +9271,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             range: 40,
             radius: 40,
             maxTargets: 10,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -9155,6 +9290,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             range: 70,
             radius: 70,
             maxTargets: 10,
+            rechargeUnaffected: true,
           },
           {
             name: "Life_Drain",
@@ -9166,6 +9302,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 1.93,
             effectArea: "SingleTarget",
             range: 60,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -9187,6 +9324,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.27,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Vicious_Bite",
@@ -9197,6 +9335,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.47,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
     ],
     upgradeTiers: [
@@ -9214,6 +9353,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             effectArea: "Sphere",
             radius: 15,
             maxTargets: 6,
+            rechargeUnaffected: true,
           },
           {
             name: "Lions_Roar",
@@ -9226,6 +9366,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             effectArea: "Sphere",
             radius: 15,
             maxTargets: 255,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -9243,6 +9384,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             range: 7,
             radius: 7,
             maxTargets: 16,
+            rechargeUnaffected: true,
           },
           {
             name: "Lick_Wounds",
@@ -9253,6 +9395,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             recharge: 60,
             castTime: 1.53,
             effectArea: "SingleTarget",
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -9275,6 +9418,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.67,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -9296,6 +9440,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         activatePeriod: 4,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Explode",
@@ -9308,6 +9453,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 12,
         maxTargets: 5,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -9327,6 +9473,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.67,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Med_Kit",
@@ -9338,6 +9485,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.9,
         effectArea: "SingleTarget",
         range: 25,
+        rechargeUnaffected: true,
       },
       {
         name: "SMG_Burst",
@@ -9349,6 +9497,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1,
         effectArea: "SingleTarget",
         range: 70,
+        rechargeUnaffected: true,
       },
     ],
     upgradeTiers: [
@@ -9365,6 +9514,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 1.67,
             effectArea: "SingleTarget",
             range: 70,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -9383,6 +9533,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             range: 80,
             radius: 15,
             maxTargets: 16,
+            rechargeUnaffected: true,
           },
           {
             name: "Stimulant",
@@ -9394,6 +9545,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 1.9,
             effectArea: "SingleTarget",
             range: 25,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -9415,6 +9567,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.67,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Fire_Blast",
@@ -9425,6 +9578,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.2,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
     ],
     upgradeTiers: [
@@ -9442,6 +9596,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             range: 40,
             radius: 40,
             maxTargets: 10,
+            rechargeUnaffected: true,
           },
           {
             name: "Fire_Sword_Hack",
@@ -9452,6 +9607,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 3,
             effectArea: "SingleTarget",
             range: 7,
+            rechargeUnaffected: true,
           },
           {
             name: "Ring_of_Fire",
@@ -9463,6 +9619,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 1.17,
             effectArea: "SingleTarget",
             range: 80,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -9479,6 +9636,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 1.07,
             effectArea: "SingleTarget",
             range: 80,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -9500,6 +9658,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.83,
         effectArea: "SingleTarget",
         range: 90,
+        rechargeUnaffected: true,
       },
       {
         name: "Force_Shield",
@@ -9511,6 +9670,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 2.07,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
     ],
     upgradeTiers: [
@@ -9527,6 +9687,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 1.83,
             effectArea: "SingleTarget",
             range: 90,
+            rechargeUnaffected: true,
           },
           {
             name: "Plasma_Cross",
@@ -9537,6 +9698,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 1.67,
             effectArea: "SingleTarget",
             range: 80,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -9553,6 +9715,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 1.83,
             effectArea: "SingleTarget",
             range: 90,
+            rechargeUnaffected: true,
           },
           {
             name: "Photon_Grenade",
@@ -9566,6 +9729,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             range: 80,
             radius: 15,
             maxTargets: 10,
+            rechargeUnaffected: true,
           },
           {
             name: "Repair",
@@ -9577,6 +9741,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 1.83,
             effectArea: "SingleTarget",
             range: 80,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -9599,6 +9764,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.83,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Slash",
@@ -9610,6 +9776,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.37,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Dark_Blast",
@@ -9621,6 +9788,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
     ],
     upgradeTiers: [
@@ -9637,6 +9805,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 2.87,
             effectArea: "SingleTarget",
             range: 7,
+            rechargeUnaffected: true,
           },
           {
             name: "Gloom",
@@ -9648,6 +9817,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 1.1,
             effectArea: "SingleTarget",
             range: 80,
+            rechargeUnaffected: true,
           },
           {
             name: "Hack",
@@ -9659,6 +9829,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 1.83,
             effectArea: "SingleTarget",
             range: 7,
+            rechargeUnaffected: true,
           },
           {
             name: "Slash",
@@ -9670,6 +9841,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 1.37,
             effectArea: "SingleTarget",
             range: 7,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -9698,6 +9870,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 2.87,
             effectArea: "SingleTarget",
             range: 7,
+            rechargeUnaffected: true,
           },
           {
             name: "Hack",
@@ -9709,6 +9882,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 1.83,
             effectArea: "SingleTarget",
             range: 7,
+            rechargeUnaffected: true,
           },
           {
             name: "Head_Splitter",
@@ -9722,6 +9896,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             range: 10,
             radius: 10,
             maxTargets: 5,
+            rechargeUnaffected: true,
           },
           {
             name: "Siphon_Life",
@@ -9735,6 +9910,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             range: 7,
             radius: 7,
             maxTargets: 5,
+            rechargeUnaffected: true,
           },
           {
             name: "Slash",
@@ -9746,6 +9922,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 1.37,
             effectArea: "SingleTarget",
             range: 7,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -9767,6 +9944,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.67,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "ASMG_Burst",
@@ -9778,6 +9956,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
     ],
     upgradeTiers: [
@@ -9794,6 +9973,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 1.67,
             effectArea: "SingleTarget",
             range: 80,
+            rechargeUnaffected: true,
           },
           {
             name: "Assault_Rifle_Quick_Burst",
@@ -9805,6 +9985,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 1.67,
             effectArea: "SingleTarget",
             range: 80,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -9823,6 +10004,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             range: 80,
             radius: 80,
             maxTargets: 10,
+            rechargeUnaffected: true,
           },
           {
             name: "Assault_Rifle_Burst",
@@ -9834,6 +10016,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 1,
             effectArea: "SingleTarget",
             range: 80,
+            rechargeUnaffected: true,
           },
           {
             name: "Assault_Rifle_Heavy_Burst",
@@ -9845,6 +10028,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 1.67,
             effectArea: "SingleTarget",
             range: 80,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -9866,6 +10050,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.67,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "SCAR_Burst",
@@ -9877,6 +10062,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1,
         effectArea: "SingleTarget",
         range: 100,
+        rechargeUnaffected: true,
       },
       {
         name: "SCAR_Heavy_Burst",
@@ -9888,6 +10074,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.67,
         effectArea: "SingleTarget",
         range: 100,
+        rechargeUnaffected: true,
       },
       {
         name: "Web_Grenade",
@@ -9899,6 +10086,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.87,
         effectArea: "SingleTarget",
         range: 70,
+        rechargeUnaffected: true,
       },
     ],
     upgradeTiers: [
@@ -9917,6 +10105,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             range: 70,
             radius: 15,
             maxTargets: 16,
+            rechargeUnaffected: true,
           },
           {
             name: "Rifle_Butt",
@@ -9928,6 +10117,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 1.17,
             effectArea: "SingleTarget",
             range: 5,
+            rechargeUnaffected: true,
           },
           {
             name: "SCAR_Full_Burst",
@@ -9939,6 +10129,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 1.67,
             effectArea: "SingleTarget",
             range: 100,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -9954,6 +10145,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 1.8,
             effectArea: "SingleTarget",
             range: 150,
+            rechargeUnaffected: true,
           },
           {
             name: "Tear_Gas",
@@ -9967,6 +10159,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             range: 70,
             radius: 15,
             maxTargets: 16,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -9988,6 +10181,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.67,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Pistol",
@@ -9998,6 +10192,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 2.33,
         effectArea: "SingleTarget",
         range: 70,
+        rechargeUnaffected: true,
       },
     ],
     upgradeTiers: [
@@ -10014,6 +10209,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 1.2,
             effectArea: "SingleTarget",
             range: 70,
+            rechargeUnaffected: true,
           },
           {
             name: "Pistols",
@@ -10024,6 +10220,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 1.2,
             effectArea: "SingleTarget",
             range: 70,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -10042,6 +10239,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             range: 50,
             radius: 50,
             maxTargets: 10,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -10063,6 +10261,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.67,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Molotov_Cocktail",
@@ -10075,6 +10274,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 70,
         radius: 5,
         maxTargets: 16,
+        rechargeUnaffected: true,
       },
     ],
     upgradeTiers: [
@@ -10092,6 +10292,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             range: 40,
             radius: 40,
             maxTargets: 10,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -10109,6 +10310,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             range: 70,
             radius: 15,
             maxTargets: 16,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -10131,6 +10333,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.07,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Punch",
@@ -10142,6 +10345,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.2,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
     ],
     upgradeTiers: [
@@ -10159,6 +10363,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             effectArea: "Sphere",
             radius: 15,
             maxTargets: 10,
+            rechargeUnaffected: true,
           },
           {
             name: "Haymaker",
@@ -10170,6 +10375,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 1.5,
             effectArea: "SingleTarget",
             range: 7,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -10187,6 +10393,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             effectArea: "Sphere",
             radius: 15,
             maxTargets: 10,
+            rechargeUnaffected: true,
           },
           {
             name: "Hurl",
@@ -10198,6 +10405,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 3.83,
             effectArea: "SingleTarget",
             range: 80,
+            rechargeUnaffected: true,
           },
           {
             name: "Knockout_Blow",
@@ -10209,6 +10417,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 2.23,
             effectArea: "SingleTarget",
             range: 13.199999809265137,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -10230,6 +10439,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.67,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Burst",
@@ -10241,6 +10451,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 2.2,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Heavy_Burst",
@@ -10252,6 +10463,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 2.67,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
     ],
     upgradeTiers: [
@@ -10281,6 +10493,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 1.53,
             effectArea: "SingleTarget",
             range: 80,
+            rechargeUnaffected: true,
           },
           {
             name: "UZI_Cone_Blast",
@@ -10294,6 +10507,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             range: 60,
             radius: 60,
             maxTargets: 10,
+            rechargeUnaffected: true,
           },
           {
             name: "UZI_Heavy_Burst",
@@ -10305,6 +10519,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 2.1,
             effectArea: "SingleTarget",
             range: 80,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -10322,6 +10537,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             range: 70,
             radius: 15,
             maxTargets: 16,
+            rechargeUnaffected: true,
           },
           {
             name: "Dual_UZIs",
@@ -10335,6 +10551,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             range: 50,
             radius: 50,
             maxTargets: 10,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -10356,6 +10573,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.67,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
     ],
     upgradeTiers: [
@@ -10373,6 +10591,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             range: 40,
             radius: 40,
             maxTargets: 16,
+            rechargeUnaffected: true,
           },
           {
             name: "Zombie_Vomit",
@@ -10385,6 +10604,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             range: 8,
             radius: 7,
             maxTargets: 5,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -10401,6 +10621,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 1.93,
             effectArea: "SingleTarget",
             range: 7,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -10445,6 +10666,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Longfang",
@@ -10456,6 +10678,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.33,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Channelgun",
@@ -10467,6 +10690,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Suppression",
@@ -10480,6 +10704,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 50,
         radius: 50,
         maxTargets: 10,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -11056,6 +11281,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 20,
         maxTargets: 16,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -11077,6 +11303,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 20,
         maxTargets: 16,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -11098,6 +11325,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 20,
         maxTargets: 16,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -11119,6 +11347,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 20,
         maxTargets: 16,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -11295,6 +11524,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 12,
         maxTargets: 10,
+        rechargeUnaffected: true,
       },
       {
         name: "CatherineWheel_TwinklingBlast",
@@ -11305,6 +11535,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.07,
         effectArea: "SingleTarget",
         range: 60,
+        rechargeUnaffected: true,
       },
       {
         name: "CatherineWheel_VibrantBolt",
@@ -11315,6 +11546,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.67,
         effectArea: "SingleTarget",
         range: 60,
+        rechargeUnaffected: true,
       },
       {
         name: "CatherineWheel_GlitterFlare",
@@ -11325,6 +11557,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.67,
         effectArea: "SingleTarget",
         range: 60,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -11345,6 +11578,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 12,
         maxTargets: 10,
+        rechargeUnaffected: true,
       },
       {
         name: "CatherineWheel_TwinklingBlast",
@@ -11355,6 +11589,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.07,
         effectArea: "SingleTarget",
         range: 60,
+        rechargeUnaffected: true,
       },
       {
         name: "CatherineWheel_VibrantBolt",
@@ -11365,6 +11600,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.67,
         effectArea: "SingleTarget",
         range: 60,
+        rechargeUnaffected: true,
       },
       {
         name: "CatherineWheel_GlitterFlare",
@@ -11375,6 +11611,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.67,
         effectArea: "SingleTarget",
         range: 60,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -12086,6 +12323,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 100,
         radius: 8,
         maxTargets: 5,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -12108,6 +12346,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 20,
         maxTargets: 16,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -12129,6 +12368,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.9,
         effectArea: "SingleTarget",
         range: 10,
+        rechargeUnaffected: true,
       },
       {
         name: "Vine_Thorns",
@@ -12140,6 +12380,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.83,
         effectArea: "SingleTarget",
         range: 60,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -12206,6 +12447,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 2.37,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Petrifying_Gaze",
@@ -12217,6 +12459,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.67,
         effectArea: "SingleTarget",
         range: 70,
+        rechargeUnaffected: true,
       },
       {
         name: "Darkest_Night",
@@ -12231,6 +12474,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 70,
         radius: 25,
         maxTargets: 10,
+        rechargeUnaffected: true,
       },
       {
         name: "Tenebrous_Tentacles",
@@ -12244,6 +12488,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 40,
         radius: 40,
         maxTargets: 10,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -12264,6 +12509,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.33,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Ice_Sword",
@@ -12275,6 +12521,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.33,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Punch",
@@ -12286,6 +12533,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.2,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Hurl",
@@ -12297,6 +12545,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 2.5,
         effectArea: "SingleTarget",
         range: 40,
+        rechargeUnaffected: true,
       },
       {
         name: "Power_Bolt",
@@ -12308,6 +12557,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Fire_Blast",
@@ -12319,6 +12569,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.67,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Ice_Blast",
@@ -12330,6 +12581,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.67,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Lightning_Bolt",
@@ -12341,6 +12593,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.67,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -12361,6 +12614,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 2.5,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Energy_Punch",
@@ -12372,6 +12626,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 2.5,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Ice_Sword",
@@ -12383,6 +12638,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 2.5,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Hurl",
@@ -12394,6 +12650,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 2.5,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Power_Bolt",
@@ -12405,6 +12662,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 2.5,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Ice_Blast",
@@ -12416,6 +12674,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 2.5,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Lightning_Bolt",
@@ -12427,6 +12686,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 2.5,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Hydro_Blast",
@@ -12438,6 +12698,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 2.5,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -12458,6 +12719,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1,
         effectArea: "SingleTarget",
         range: 70,
+        rechargeUnaffected: true,
       },
       {
         name: "Energy_Torrent",
@@ -12471,6 +12733,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 40,
         radius: 40,
         maxTargets: 10,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -12491,6 +12754,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1,
         effectArea: "SingleTarget",
         range: 70,
+        rechargeUnaffected: true,
       },
       {
         name: "Energy_Torrent",
@@ -12504,6 +12768,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 40,
         radius: 40,
         maxTargets: 10,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -12614,6 +12879,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 200,
         radius: 15,
         maxTargets: 3,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -12894,6 +13160,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.67,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "SummonArmor",
@@ -12925,6 +13192,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.67,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "SummonArmor",
@@ -12956,6 +13224,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.67,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "SummonArmor",
@@ -13214,6 +13483,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.67,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -13233,6 +13503,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.67,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -13252,6 +13523,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.67,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -13271,6 +13543,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.67,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -13293,6 +13566,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 60,
         radius: 10,
         maxTargets: 16,
+        rechargeUnaffected: true,
       },
       {
         name: "Thorny_Darts",
@@ -13304,6 +13578,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.2,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Fling_Thorns",
@@ -13317,6 +13592,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 30,
         radius: 30,
         maxTargets: 10,
+        rechargeUnaffected: true,
       },
       {
         name: "Bite",
@@ -13328,6 +13604,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.17,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -13350,6 +13627,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 60,
         radius: 10,
         maxTargets: 16,
+        rechargeUnaffected: true,
       },
       {
         name: "Thorny_Darts",
@@ -13361,6 +13639,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.2,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Fling_Thorns",
@@ -13374,6 +13653,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 30,
         radius: 30,
         maxTargets: 10,
+        rechargeUnaffected: true,
       },
       {
         name: "Bite",
@@ -13385,6 +13665,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.17,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -13571,6 +13852,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 80,
         radius: 15,
         maxTargets: 16,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -13591,6 +13873,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.83,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Charged_Brawl",
@@ -13602,6 +13885,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.83,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Jolting_Chain",
@@ -13615,6 +13899,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 40,
         radius: 8,
         maxTargets: 5,
+        rechargeUnaffected: true,
       },
       {
         name: "Shock",
@@ -13647,6 +13932,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.83,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Charged_Brawl",
@@ -13658,6 +13944,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.83,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Jolting_Chain",
@@ -13671,6 +13958,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 40,
         radius: 8,
         maxTargets: 5,
+        rechargeUnaffected: true,
       },
       {
         name: "Shock",
@@ -13703,6 +13991,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1,
         effectArea: "SingleTarget",
         range: 50,
+        rechargeUnaffected: true,
       },
       {
         name: "Explode",
@@ -13747,6 +14036,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1,
         effectArea: "SingleTarget",
         range: 50,
+        rechargeUnaffected: true,
       },
       {
         name: "Explode",
@@ -14004,6 +14294,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 12,
         maxTargets: 16,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -14025,6 +14316,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 12,
         maxTargets: 16,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -14356,6 +14648,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.33,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Ice_Bolt",
@@ -14367,6 +14660,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.17,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Freezing_Touch",
@@ -14378,6 +14672,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -14530,6 +14825,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.33,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Jacks_Ice_Bolt",
@@ -14541,6 +14837,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.17,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Jacks_Freezing_Touch",
@@ -14552,6 +14849,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Jacks_Greater_Ice_Sword",
@@ -14563,6 +14861,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 2.33,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Chilling_Embrace",
@@ -14596,6 +14895,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.33,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Jacks_Ice_Bolt",
@@ -14607,6 +14907,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.17,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Jacks_Freezing_Touch",
@@ -14618,6 +14919,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Jacks_Greater_Ice_Sword",
@@ -14629,6 +14931,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 2.33,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Chilling_Embrace",
@@ -14997,6 +15300,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 100,
         radius: 5,
         maxTargets: 5,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -15019,6 +15323,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 100,
         radius: 5,
         maxTargets: 5,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -15041,6 +15346,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 100,
         radius: 5,
         maxTargets: 5,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -15172,6 +15478,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.67,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -15192,6 +15499,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         activatePeriod: 0.5,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Grenade",
@@ -15205,6 +15513,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 70,
         radius: 15,
         maxTargets: 16,
+        rechargeUnaffected: true,
       },
       {
         name: "Plasma_Blast",
@@ -15216,6 +15525,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 4,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Energy_Barrage",
@@ -15229,6 +15539,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 30,
         radius: 30,
         maxTargets: 16,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -15299,6 +15610,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.83,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Scare",
@@ -15324,6 +15636,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 70,
         radius: 25,
         maxTargets: 10,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -15345,6 +15658,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.83,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Scare",
@@ -15390,6 +15704,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 12,
         maxTargets: 16,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -15775,6 +16090,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.7,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Energy_Blast",
@@ -15786,6 +16102,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.53,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Sweep_Area",
@@ -15798,6 +16115,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 40,
         radius: 40,
         maxTargets: 10,
+        rechargeUnaffected: true,
       },
       {
         name: "Claw",
@@ -15808,6 +16126,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.67,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Web",
@@ -15819,6 +16138,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.17,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -15839,6 +16159,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 2.2,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Disruptor_Blast",
@@ -15852,6 +16173,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 80,
         radius: 15,
         maxTargets: 16,
+        rechargeUnaffected: true,
       },
       {
         name: "Disruptor_Tesla",
@@ -15863,6 +16185,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 2.2,
         effectArea: "SingleTarget",
         range: 60,
+        rechargeUnaffected: true,
       },
       {
         name: "Claw",
@@ -15873,6 +16196,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.67,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Web_Spitter",
@@ -15886,6 +16210,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 80,
         radius: 10,
         maxTargets: 16,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -15906,6 +16231,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.7,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Claw",
@@ -15916,6 +16242,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.67,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -15935,6 +16262,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.5,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Lunge",
@@ -15946,6 +16274,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.83,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Swipe",
@@ -15957,6 +16286,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.83,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Strike",
@@ -15968,6 +16298,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.17,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Follow_Up",
@@ -15978,6 +16309,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.83,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Dart_Burst",
@@ -15990,6 +16322,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 50,
         radius: 50,
         maxTargets: 10,
+        rechargeUnaffected: true,
       },
       {
         name: "Spin",
@@ -16002,6 +16335,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 8,
         maxTargets: 10,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -16021,6 +16355,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.67,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Coral_Club",
@@ -16031,6 +16366,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.83,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Coral_Club_Slash",
@@ -16043,6 +16379,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 7,
         radius: 7,
         maxTargets: 16,
+        rechargeUnaffected: true,
       },
       {
         name: "Urchin_Spray",
@@ -16055,6 +16392,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 40,
         radius: 40,
         maxTargets: 16,
+        rechargeUnaffected: true,
       },
       {
         name: "Spiny_Urchins",
@@ -16065,6 +16403,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.07,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Wave_of_Cold",
@@ -16078,6 +16417,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 40,
         radius: 40,
         maxTargets: 16,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -16098,6 +16438,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.17,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Heavy_Stunning_Blow",
@@ -16109,6 +16450,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.17,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Coral_Dart",
@@ -16119,6 +16461,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.07,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Coral_Spray",
@@ -16131,6 +16474,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 60,
         radius: 60,
         maxTargets: 16,
+        rechargeUnaffected: true,
       },
       {
         name: "Water_Spray",
@@ -16144,6 +16488,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 40,
         radius: 40,
         maxTargets: 16,
+        rechargeUnaffected: true,
       },
       {
         name: "Stone_Prison",
@@ -16155,6 +16500,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.23,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -16175,6 +16521,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.17,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Stunning_Blow",
@@ -16186,6 +16533,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.17,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Coral_Dart",
@@ -16196,6 +16544,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.07,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Coral_Spray",
@@ -16208,6 +16557,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 60,
         radius: 60,
         maxTargets: 16,
+        rechargeUnaffected: true,
       },
       {
         name: "Water_Spray",
@@ -16221,6 +16571,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 40,
         radius: 40,
         maxTargets: 16,
+        rechargeUnaffected: true,
       },
       {
         name: "Fossilize",
@@ -16232,6 +16583,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 2.07,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -16252,6 +16604,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Subdue",
@@ -16263,6 +16616,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.67,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Dominate",
@@ -16274,6 +16628,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.1,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Scramble_Thoughts",
@@ -16285,6 +16640,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 2,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Psychic_Wail",
@@ -16297,6 +16653,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 25,
         maxTargets: 16,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -16330,6 +16687,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Psychic_Scream",
@@ -16343,6 +16701,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 60,
         radius: 60,
         maxTargets: 12,
+        rechargeUnaffected: true,
       },
       {
         name: "Mental_Blast",
@@ -16354,6 +16713,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.67,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Psionic_Lance",
@@ -16365,6 +16725,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Subdue",
@@ -16376,6 +16737,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.67,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -16396,6 +16758,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Lightning_Blast",
@@ -16407,6 +16770,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.33,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Cage_of_Lightning",
@@ -16418,6 +16782,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 2,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Shocking_Bolt",
@@ -16429,6 +16794,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.33,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "EM_Pulse",
@@ -16441,6 +16807,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 25,
         maxTargets: 16,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -16461,6 +16828,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Lightning_Blast",
@@ -16472,6 +16840,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.33,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Touch_of_the_Storm",
@@ -16483,6 +16852,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 2.27,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "EM_Pulse",
@@ -16495,6 +16865,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 25,
         maxTargets: 16,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -16515,6 +16886,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Lightning_Blast",
@@ -16526,6 +16898,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.33,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Static_Discharge",
@@ -16539,6 +16912,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 40,
         radius: 40,
         maxTargets: 16,
+        rechargeUnaffected: true,
       },
       {
         name: "Ball_Lightning",
@@ -16552,6 +16926,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 80,
         radius: 15,
         maxTargets: 16,
+        rechargeUnaffected: true,
       },
       {
         name: "EM_Pulse",
@@ -16564,6 +16939,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 25,
         maxTargets: 16,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -16586,6 +16962,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 110,
         radius: 35,
         maxTargets: 16,
+        rechargeUnaffected: true,
       },
       {
         name: "Mental_Blast",
@@ -16597,6 +16974,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.67,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Swipe",
@@ -16608,6 +16986,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.83,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Lunge",
@@ -16619,6 +16998,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.83,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Strike",
@@ -16630,6 +17010,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.17,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Slash",
@@ -16641,6 +17022,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.33,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -16661,6 +17043,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.2,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Haymaker",
@@ -16672,6 +17055,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.5,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Subdue",
@@ -16683,6 +17067,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.67,
         effectArea: "SingleTarget",
         range: 100,
+        rechargeUnaffected: true,
       },
       {
         name: "Scramble_Thoughts",
@@ -16694,6 +17079,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 3,
         effectArea: "SingleTarget",
         range: 100,
+        rechargeUnaffected: true,
       },
       {
         name: "Psychic_Coral_Blast",
@@ -16705,6 +17091,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.67,
         effectArea: "SingleTarget",
         range: 60,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -16724,6 +17111,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.53,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Venom_Burst",
@@ -16737,6 +17125,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 80,
         radius: 10,
         maxTargets: 16,
+        rechargeUnaffected: true,
       },
       {
         name: "Toxic_Claw_Pierce",
@@ -16747,6 +17136,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.67,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Toxic_Claw_Shred",
@@ -16759,6 +17149,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 10,
         radius: 10,
         maxTargets: 5,
+        rechargeUnaffected: true,
       },
       {
         name: "Web",
@@ -16770,6 +17161,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.17,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -16792,6 +17184,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 7,
         maxTargets: 5,
+        rechargeUnaffected: true,
       },
       {
         name: "Water_Spout_Fear",
@@ -16804,6 +17197,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         activatePeriod: 5,
         effectArea: "Sphere",
         maxTargets: 16,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -16826,6 +17220,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 10,
         maxTargets: 5,
+        rechargeUnaffected: true,
       },
       {
         name: "Water_Spout_Fear",
@@ -16838,6 +17233,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         activatePeriod: 5,
         effectArea: "Sphere",
         maxTargets: 16,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -16858,6 +17254,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1,
         effectArea: "SingleTarget",
         range: 70,
+        rechargeUnaffected: true,
       },
       {
         name: "Energy_Torrent",
@@ -16871,6 +17268,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 40,
         radius: 40,
         maxTargets: 10,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -16891,6 +17289,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1,
         effectArea: "SingleTarget",
         range: 70,
+        rechargeUnaffected: true,
       },
       {
         name: "Energy_Torrent",
@@ -16904,6 +17303,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 40,
         radius: 40,
         maxTargets: 10,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -17175,6 +17575,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.83,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Laser_Spray",
@@ -17187,6 +17588,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 40,
         radius: 40,
         maxTargets: 16,
+        rechargeUnaffected: true,
       },
       {
         name: "Energy_Punch",
@@ -17198,6 +17600,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.57,
         effectArea: "SingleTarget",
         range: 5,
+        rechargeUnaffected: true,
       },
       {
         name: "Bone_Smasher",
@@ -17209,6 +17612,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.5,
         effectArea: "SingleTarget",
         range: 5,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -17229,6 +17633,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.5,
         effectArea: "SingleTarget",
         range: 5,
+        rechargeUnaffected: true,
       },
       {
         name: "Force_Wave",
@@ -17242,6 +17647,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 5,
         radius: 5,
         maxTargets: 16,
+        rechargeUnaffected: true,
       },
       {
         name: "Force_Brawl",
@@ -17253,6 +17659,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.57,
         effectArea: "SingleTarget",
         range: 5,
+        rechargeUnaffected: true,
       },
       {
         name: "Force_Blast",
@@ -17264,6 +17671,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.67,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -17285,6 +17693,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 15,
         maxTargets: 10,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -17306,6 +17715,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 15,
         maxTargets: 10,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -17327,6 +17737,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 15,
         maxTargets: 10,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -17347,6 +17758,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1,
         effectArea: "SingleTarget",
         range: 100,
+        rechargeUnaffected: true,
       },
       {
         name: "Subdue",
@@ -17358,6 +17770,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1,
         effectArea: "SingleTarget",
         range: 100,
+        rechargeUnaffected: true,
       },
       {
         name: "Will_Domination",
@@ -17369,6 +17782,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1,
         effectArea: "SingleTarget",
         range: 100,
+        rechargeUnaffected: true,
       },
       {
         name: "Scramble_Thoughts",
@@ -17380,6 +17794,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 3,
         effectArea: "SingleTarget",
         range: 100,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -17711,6 +18126,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.83,
         effectArea: "SingleTarget",
         range: 5,
+        rechargeUnaffected: true,
       },
       {
         name: "Single_Shot",
@@ -17722,6 +18138,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.87,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Heavy_Burst",
@@ -17735,6 +18152,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 40,
         radius: 40,
         maxTargets: 16,
+        rechargeUnaffected: true,
       },
       {
         name: "Covering_Fire",
@@ -17746,6 +18164,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 2.2,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -17853,6 +18272,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.83,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Scare",
@@ -18936,6 +19356,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.33,
         effectArea: "SingleTarget",
         range: 60,
+        rechargeUnaffected: true,
       },
       {
         name: "Lift",
@@ -18947,6 +19368,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.03,
         effectArea: "SingleTarget",
         range: 60,
+        rechargeUnaffected: true,
       },
       {
         name: "Gravity_Distortion",
@@ -18958,6 +19380,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.83,
         effectArea: "SingleTarget",
         range: 60,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -18991,6 +19414,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.33,
         effectArea: "SingleTarget",
         range: 60,
+        rechargeUnaffected: true,
       },
       {
         name: "Lift",
@@ -19002,6 +19426,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.03,
         effectArea: "SingleTarget",
         range: 60,
+        rechargeUnaffected: true,
       },
       {
         name: "Gravity_Distortion",
@@ -19013,6 +19438,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.83,
         effectArea: "SingleTarget",
         range: 60,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -19320,6 +19746,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.57,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Seismic_Smash",
@@ -19331,6 +19758,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.5,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Hurl_Boulder",
@@ -19342,6 +19770,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.5,
         effectArea: "SingleTarget",
         range: 40,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -19362,6 +19791,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.57,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Seismic_Smash",
@@ -19373,6 +19803,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.5,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Hurl_Boulder",
@@ -19384,6 +19815,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.5,
         effectArea: "SingleTarget",
         range: 40,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -19702,6 +20134,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 2.03,
         effectArea: "SingleTarget",
         range: 50,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -20129,6 +20562,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.67,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -20150,6 +20584,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.37,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -20171,6 +20606,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 2.5,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -20192,6 +20628,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 2.17,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -20213,6 +20650,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.83,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -20234,6 +20672,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 2.33,
         effectArea: "SingleTarget",
         range: 60,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -20255,6 +20694,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 2.87,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -20276,6 +20716,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 3.33,
         effectArea: "SingleTarget",
         range: 40,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -20297,6 +20738,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 2.33,
         effectArea: "SingleTarget",
         range: 60,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -20442,6 +20884,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 100,
         radius: 8,
         maxTargets: 16,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -20464,6 +20907,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 100,
         radius: 8,
         maxTargets: 16,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -20486,6 +20930,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 100,
         radius: 8,
         maxTargets: 16,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -20686,6 +21131,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 15,
         maxTargets: 10,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -20707,6 +21153,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 15,
         maxTargets: 10,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -20728,6 +21175,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 15,
         maxTargets: 10,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -20749,6 +21197,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 15,
         maxTargets: 10,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -20770,6 +21219,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 15,
         maxTargets: 10,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -20791,6 +21241,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 15,
         maxTargets: 10,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -20812,6 +21263,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 15,
         maxTargets: 10,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -20833,6 +21285,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 15,
         maxTargets: 10,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -20854,6 +21307,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 25,
         maxTargets: 16,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -20876,6 +21330,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         effectArea: "Sphere",
         radius: 25,
         maxTargets: 16,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -21002,6 +21457,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1,
         effectArea: "SingleTarget",
         range: 100,
+        rechargeUnaffected: true,
       },
       {
         name: "Explode",
@@ -21100,6 +21556,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 2.83,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Terrifying_Roar",
@@ -21113,6 +21570,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 50,
         radius: 50,
         maxTargets: 10,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -21165,6 +21623,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 2.83,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Terrifying_Roar",
@@ -21178,6 +21637,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 50,
         radius: 50,
         maxTargets: 10,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -21211,6 +21671,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 2.37,
         effectArea: "SingleTarget",
         range: 80,
+        rechargeUnaffected: true,
       },
       {
         name: "Petrifying_Gaze",
@@ -21222,6 +21683,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1.67,
         effectArea: "SingleTarget",
         range: 70,
+        rechargeUnaffected: true,
       },
       {
         name: "Darkest_Night",
@@ -21236,6 +21698,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 70,
         radius: 25,
         maxTargets: 10,
+        rechargeUnaffected: true,
       },
       {
         name: "Tenebrous_Tentacles",
@@ -21249,6 +21712,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 40,
         radius: 40,
         maxTargets: 10,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -21510,6 +21974,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 30,
         radius: 10,
         maxTargets: 5,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -21530,6 +21995,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1,
         effectArea: "SingleTarget",
         range: 70,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -21550,6 +22016,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1,
         effectArea: "SingleTarget",
         range: 70,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -21570,6 +22037,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1,
         effectArea: "SingleTarget",
         range: 70,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -21590,6 +22058,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1,
         effectArea: "SingleTarget",
         range: 70,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -21610,6 +22079,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1,
         effectArea: "SingleTarget",
         range: 70,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -21630,6 +22100,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 1,
         effectArea: "SingleTarget",
         range: 70,
+        rechargeUnaffected: true,
       },
     ],
   },
@@ -22196,6 +22667,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         castTime: 0.67,
         effectArea: "SingleTarget",
         range: 7,
+        rechargeUnaffected: true,
       },
       {
         name: "Projectile_Vomit",
@@ -22208,6 +22680,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 40,
         radius: 40,
         maxTargets: 16,
+        rechargeUnaffected: true,
       },
       {
         name: "Zombie_Vomit",
@@ -22220,6 +22693,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         range: 8,
         radius: 7,
         maxTargets: 5,
+        rechargeUnaffected: true,
       },
     ],
     upgradeTiers: [
@@ -22237,6 +22711,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             range: 40,
             radius: 40,
             maxTargets: 16,
+            rechargeUnaffected: true,
           },
           {
             name: "Zombie_Vomit",
@@ -22249,6 +22724,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             range: 8,
             radius: 7,
             maxTargets: 5,
+            rechargeUnaffected: true,
           },
         ],
       },
@@ -22265,6 +22741,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             castTime: 1.93,
             effectArea: "SingleTarget",
             range: 7,
+            rechargeUnaffected: true,
           },
         ],
       },

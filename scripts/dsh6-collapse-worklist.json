@@ -21,8 +21,8 @@
     "scalarCollapses": 0,
     "scalarDistinctGroups": 0,
     "scalarClassAbsent": 87,
-    "discriminatorCollapses": 0,
-    "discriminatorGroups": 0,
+    "discriminatorCollapses": 1,
+    "discriminatorGroups": 1,
     "discriminatorClassAbsent": 1
   },
   "collapseGroups": [
@@ -246,7 +246,16 @@
     }
   ],
   "scalarCollapses": [],
-  "discriminatorCollapseGroups": [],
+  "discriminatorCollapseGroups": [
+    {
+      "kind": "self-penalty",
+      "et": "Movement",
+      "count": 1,
+      "powers": [
+        "Reaction Time"
+      ]
+    }
+  ],
   "discriminatorClassAbsentGroups": [
     {
       "kind": "twin-unenhanced",
@@ -257,5 +266,12 @@
       ]
     }
   ],
-  "discriminatorCollapses": []
+  "discriminatorCollapses": [
+    {
+      "power": "Reaction Time",
+      "source": "blaster_support/martial_manipulation/reaction_time.json",
+      "kind": "self-penalty",
+      "et": "Movement"
+    }
+  ]
 }

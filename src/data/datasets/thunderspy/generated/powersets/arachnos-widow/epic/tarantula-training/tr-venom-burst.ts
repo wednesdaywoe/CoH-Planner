@@ -40,11 +40,20 @@ export const TRVenomBurst: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Special",
-    "scale": 1.0923,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 1.0923,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.36962,
+      "table": "Ranged_Damage",
+      "duration": 3,
+      "tickRate": 0.6000000238418579
+    }
+  ],
   "effects": {
     "buffDuration": 30,
     "durations": {
@@ -56,10 +65,15 @@ export const TRVenomBurst: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,1.0923,1,0,"Ranged_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Regeneration",null,-2.5,1,30,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Damage","Energy",1.0923,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Toxic",0.36962,1,3,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.6000000238418579,1],
+    ["Regeneration",null,-2.5,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1]
   ],
   "modesRequired": [
     "Widow_Tarantula_Mode"
+  ],
+  "damageTypes": [
+    "Energy",
+    "Toxic"
   ]
 };

@@ -46,9 +46,18 @@ export const ShieldCharge: Power = {
     "summon": {
       "entity": "Pets_Shield_Charge_Tanker",
       "isPseudoPet": false
+    },
+    "teleport": {
+      "scale": 1,
+      "table": "Ranged_Ones"
     }
   },
   "atoms": [
-    ["EntCreate",null,1,1,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["EntCreate",null,1,1,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["EntCreate",null,-1,1,4,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true]
+  ],
+  "damageTypes": [
+    "Smashing"
   ]
 };

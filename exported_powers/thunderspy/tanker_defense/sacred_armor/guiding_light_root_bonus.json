@@ -38,6 +38,7 @@
   "requires": "Tanker_Defense.Sacred_Armor.Guiding_Light",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -54,12 +55,12 @@
       "templates": [
         {
           "attribs": [
-            "HealSelf"
+            "Heal_Dmg"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "Self",
           "table": "Melee_HealSelf",
           "scale": 0.03,
           "duration": "10.25 seconds",
@@ -73,9 +74,16 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "NoFloaters",
+            "NearGround",
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1081
         }
       ]
     },
@@ -93,12 +101,13 @@
       "templates": [
         {
           "attribs": [
-            "Res_Boolean"
+            "Recovery",
+            "Endurance"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Resistance",
+          "target": "Self",
           "table": "Melee_Res_Boolean",
           "scale": 1.5,
           "duration": "10.25 seconds",
@@ -112,13 +121,20 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "NearGround",
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1080
         }
       ]
     }
   ],
+  "max_boosts": 0,
   "available_level": 0,
   "powerset": "Tanker_Defense.Sacred_Armor"
 }

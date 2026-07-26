@@ -61,6 +61,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -80,7 +81,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -100,16 +101,18 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "MastermindPets_Howler_Wolf",
-            "priority_list": "Pet"
+            "priority_list": "Pet",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
+            "DoNotTintCostume",
             "CopyBoosts"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 6
         }
       ]
     },
@@ -130,7 +133,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -150,16 +153,18 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "MastermindPets_Howler_Wolf",
-            "priority_list": "Pet"
+            "priority_list": "Pet",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
+            "DoNotTintCostume",
             "CopyBoosts"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 6
         }
       ]
     },
@@ -180,7 +185,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -200,16 +205,18 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "MastermindPets_Howler_Wolf_Alpha",
-            "priority_list": "Pet"
+            "priority_list": "Pet",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
+            "DoNotTintCostume",
             "CopyBoosts"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 6
         }
       ]
     },
@@ -232,14 +239,14 @@
             "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
           "scale": 25.0,
           "duration": "0 seconds",
           "magnitude": 1.0,
-          "delay": 1.9700000286102295,
+          "delay": 1.97,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -252,15 +259,18 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Mastermind_Summon.Beast_Mastery.Summon_Wolves"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
-            "NoHitDelay"
+            "NoHitDelay",
+            "SetTimer"
           ],
-          "flags_raw": 66816
+          "flags_raw": 66816,
+          "flags2_raw": 1
         }
       ]
     },
@@ -283,7 +293,7 @@
             "Translucency"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "SelfAndPets",
           "table": "Ranged_Ones",
@@ -302,12 +312,25 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": "On henchmen further than 60ft that are not engaged in combat."
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "PFX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "suppress_events": [
             {
               "event": "Attacked",
               "event_id": 2,
               "duration": 8.0,
-              "flag": 1
+              "always": 1
             }
           ],
           "flags": [
@@ -321,7 +344,7 @@
             "Teleport"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "SelfAndPets",
           "table": "Ranged_Ones",
@@ -340,12 +363,19 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": "On henchmen further than 60ft that are not engaged in combat."
+          },
           "suppress_events": [
             {
               "event": "Attacked",
               "event_id": 2,
               "duration": 8.0,
-              "flag": 1
+              "always": 1
             }
           ],
           "flags": [
@@ -358,7 +388,7 @@
             "Immobilized"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "SelfAndPets",
           "table": "Melee_Ones",
@@ -377,18 +407,24 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": "On henchmen further than 60ft that are not engaged in combat."
+          },
           "suppress_events": [
             {
               "event": "Attacked",
               "event_id": 2,
               "duration": 8.0,
-              "flag": 1
+              "always": 1
             }
           ],
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
-            "DeepSleep",
             "KeepThroughDeath",
             "NoHitDelay"
           ],
@@ -397,6 +433,7 @@
       ]
     }
   ],
+  "procs_allowed": false,
   "modes_disallowed": [
     "Disable_All"
   ],

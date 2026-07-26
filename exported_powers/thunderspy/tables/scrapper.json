@@ -1,10 +1,44 @@
 {
   "name": "Class_Scrapper",
-  "display_name": "P2132985917",
+  "display_name": "Scrapper",
+  "display_help": "The Scrapper is a fierce melee combatant. In hand to hand, no other hero can compare. But the Scrapper is not as resilient as the Tanker, and might find himself in a little trouble if he heedlessly wades into combat. The Scrapper's aptitude for melee is countered by a total lack of long distance attacks. Scrapper's possess Critical strike capability. Their melee attacks have a chance to sometimes do double damage.",
+  "display_short_help": "Excellent Melee, good defense.",
   "icon": "archetypeicon_Scrapper.tga",
   "primary_category": "Scrapper_MELEE",
   "secondary_category": "Scrapper_DEFENSE",
   "pool_category": "Pool",
+  "epic_pool_category": "",
+  "allowed_origins": [
+    "Science",
+    "Magic",
+    "Natural",
+    "Mutation",
+    "Technology"
+  ],
+  "special_restrictions": [
+    "Hero"
+  ],
+  "store_requires": "",
+  "locked_tooltip": "",
+  "product_code": "",
+  "reduction_class": "",
+  "reduce_as_archvillain": false,
+  "level_up_respecs": [],
+  "archetype_shots": [
+    "archetypeshots_scrapper_0",
+    "archetypeshots_scrapper_1",
+    "archetypeshots_scrapper_2"
+  ],
+  "creation_stats": [
+    7,
+    10,
+    2,
+    4,
+    2,
+    2
+  ],
+  "playstyle_flags": 2,
+  "mechanic_tip": "",
   "named_tables": {
     "Melee_Damage": [
       -10.25,
@@ -4899,5 +4933,7 @@
     "resistance_cap": 0.75,
     "base_threat": 3.0,
     "damage_cap": 5.0
-  }
+  },
+  "mechanic_bar_raw": 0,
+  "mechanic_gap_raw": 0
 }

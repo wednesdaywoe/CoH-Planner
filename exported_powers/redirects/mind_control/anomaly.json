@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [],
   "activation_effects": [
@@ -58,7 +59,7 @@
             "Revoke_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -78,17 +79,20 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Temporary_Powers.Temporary_Powers.Mental_Superiority"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
-            "NoHitDelay"
+            "NoHitDelay",
+            "RevokeAll"
           ],
-          "flags_raw": 66608
+          "flags_raw": 66608,
+          "flags2_raw": 1
         }
       ],
       "child_effects": [
@@ -109,14 +113,14 @@
                 "Create_Entity"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_Level",
               "scale": 1.0,
               "duration": "99999 seconds",
               "magnitude": 1.0,
-              "delay": 0.8500000238418579,
+              "delay": 0.85,
               "duration_expression": "",
               "magnitude_expression": "",
               "application_period": 0.0,
@@ -129,14 +133,22 @@
               "stack_limit": 2,
               "stack_key": null,
               "params": {
-                "type": "EntCreate",
-                "entity_def": "NDNZFTFG8P9RWWVD74JVVDB2R2",
-                "priority_list": "CE65AHN963G7Y5LUK29EETFAMA"
+                "entity_def": "Pets_PsychicAnomaly_Controller",
+                "priority_list": "Pet",
+                "type": "EntCreate"
+              },
+              "messages": {
+                "display_attacker_hit": "A Psychic Anomaly has manifested!",
+                "display_victim_hit": null,
+                "display_float": "PSYCHIC ANOMALY!",
+                "display_attrib_defense_float": null,
+                "display_info": null
               },
               "flags": [
                 "CopyBoosts"
               ],
-              "flags_raw": 1280
+              "flags_raw": 1280,
+              "flags2_raw": 4
             }
           ]
         },
@@ -157,7 +169,7 @@
                 "Create_Entity"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_Level",
@@ -177,20 +189,29 @@
               "stack_limit": 2,
               "stack_key": null,
               "params": {
-                "type": "EntCreate",
-                "entity_def": "NDNZFTFG8P9RWWVD74JVVDB2R2",
-                "priority_list": "CE65AHN963G7Y5LUK29EETFAMA"
+                "entity_def": "Pets_PsychicAnomaly",
+                "priority_list": "Pet",
+                "type": "EntCreate"
+              },
+              "messages": {
+                "display_attacker_hit": "A Psychic Anomaly has manifested!",
+                "display_victim_hit": null,
+                "display_float": "PSYCHIC ANOMALY!",
+                "display_attrib_defense_float": null,
+                "display_info": null
               },
               "flags": [
                 "CopyBoosts"
               ],
-              "flags_raw": 1280
+              "flags_raw": 1280,
+              "flags2_raw": 4
             }
           ]
         }
       ]
     }
   ],
+  "procs_allowed": false,
   "modes_disallowed": [
     "Disable_All"
   ],

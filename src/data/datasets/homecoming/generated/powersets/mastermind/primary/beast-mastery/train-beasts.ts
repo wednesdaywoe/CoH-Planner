@@ -16,7 +16,7 @@ export const TrainBeasts: Power = {
   "shortHelp": "Ranged, Train Beast Henchmen",
   "icon": "beastmastery_trainbeasts.png",
   "powerType": "Click",
-  "targetType": "Self",
+  "targetType": "Own Pet (Alive)",
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "RechargeTime"

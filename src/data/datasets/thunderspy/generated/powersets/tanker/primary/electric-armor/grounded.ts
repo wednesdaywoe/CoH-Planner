@@ -32,22 +32,45 @@ export const Grounded: Power = {
   "maxSlots": 6,
   "effects": {
     "buffDuration": 10.25,
+    "debuffResistance": {
+      "endurance": {
+        "scale": 2,
+        "table": "Melee_Res_Boolean"
+      }
+    },
     "durations": {
+      "debuffResistance": 10.25,
+      "knockback": 10.25,
+      "knockup": 10.25,
       "resistance": 10.25
+    },
+    "knockback": {
+      "scale": 6,
+      "table": "Melee_Knockback"
+    },
+    "knockup": {
+      "scale": 6,
+      "table": "Melee_Knockback"
     },
     "resistance": {
       "energy": {
         "scale": 1.25,
         "table": "Melee_Res_DMG"
+      },
+      "negative": {
+        "scale": 1,
+        "table": "Melee_Res_DMG"
       }
     }
   },
   "atoms": [
-    ["Resistance","Energy",1.25,1,10.25,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,2,1,10.25,"Melee_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Mez","Knockback",-6,1,10.25,"Melee_Knockback","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,-6,1,10.25,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["Unmapped",null,6,1,10.25,"Melee_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
+    ["Resistance","Energy",1.25,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Negative",1,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Endurance",null,2,1,10.25,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Mez","Knockback",-6,1,10.25,"Melee_Knockback","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Mez","Knockup",-6,1,10.25,"Melee_Knockback","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Mez","Immobilized",-6,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["MezResist","Immobilized",6,1,10.25,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
   ],
   "mechanicType": "parentMechanic"
 };

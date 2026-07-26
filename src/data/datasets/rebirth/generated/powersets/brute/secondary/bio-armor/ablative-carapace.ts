@@ -50,10 +50,10 @@ export const AblativeCarapace: Power = {
   },
   "atoms": [
     ["Absorb",null,0.3,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Absorb",null,1,1,30,"Melee_Ones","Max","Expression","Self","Any",false,"Replace",2,null,null,1],
+    ["Absorb",null,1,1,30,"Melee_Ones","Max","Expression","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"Max.kHitPoints source> 0.3 * @Strength *"],
     ["Regeneration",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Absorb",null,0.09,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kDefensiveAdaptation source.Mode?",true],
-    ["Absorb",null,1,1,30,"Melee_Ones","Max","Expression","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kDefensiveAdaptation source.Mode?",true],
+    ["Absorb",null,1,1,30,"Melee_Ones","Max","Expression","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kDefensiveAdaptation source.Mode?",true,null,null,null,null,"Max.kHitPoints source> 0.09 * @Strength *"],
     ["Regeneration",null,0.3,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kRestedAdaptation source.Mode?",true]
   ],
   "conditionalEffects": [

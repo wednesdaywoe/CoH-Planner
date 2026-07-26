@@ -36,19 +36,39 @@ export const BackhandSlap: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
-    "Mastermind Archetype Sets",
     "Melee AoE Damage",
     "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Special",
-    "scale": 0.8,
-    "table": "Melee_Damage"
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.8,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1.8,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "buffDuration": 30,
+    "durations": {
+      "tohitDebuff": 30
+    },
+    "tohitDebuff": {
+      "scale": 1.75,
+      "table": "Melee_DeBuff_ToHit"
+    }
   },
   "atoms": [
-    ["Unmapped",null,0.8,1,0,"Melee_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1.75,1,30,"Melee_DeBuff_ToHit","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Damage","Smashing",0.8,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Psionic",1.8,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["ToHit",null,1.75,1,30,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+  ],
+  "damageTypes": [
+    "Psionic"
   ]
 };

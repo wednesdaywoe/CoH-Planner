@@ -33,6 +33,16 @@ export const CombatTrainingDefensive: Power = {
   "maxSlots": 6,
   "effects": {
     "buffDuration": 10.25,
+    "debuffResistance": {
+      "movement": {
+        "scale": 0.4,
+        "table": "Melee_Ones"
+      },
+      "recharge": {
+        "scale": 0.4,
+        "table": "Melee_Ones"
+      }
+    },
     "defenseBuff": {
       "ranged": {
         "scale": 0.75,
@@ -40,6 +50,7 @@ export const CombatTrainingDefensive: Power = {
       }
     },
     "durations": {
+      "debuffResistance": 10.25,
       "defenseBuff": 0.75,
       "movement": 10.25,
       "rechargeBuff": 10.25
@@ -60,10 +71,13 @@ export const CombatTrainingDefensive: Power = {
     }
   },
   "atoms": [
-    ["Defense","Ranged",0.75,1,0.75,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["RechargeTime",null,0.2,1,10.25,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Movement","Run",0.1,1,10.25,"Melee_SpeedRunning","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Movement","Fly",0.1,1,10.25,"Melee_SpeedFlying","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1]
+    ["Defense","Ranged",0.75,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["RechargeTime",null,0.2,1,10.25,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Movement","Run",0.4,1,10.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["RechargeTime",null,0.4,1,10.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Movement","Fly",0.4,1,10.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Movement","Run",0.1,1,10.25,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Movement","Fly",0.1,1,10.25,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1]
   ],
   "mechanicType": "parentMechanic"
 };

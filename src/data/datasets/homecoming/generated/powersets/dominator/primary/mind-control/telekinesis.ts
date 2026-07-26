@@ -46,19 +46,19 @@ export const Telekinesis: Power = {
   ],
   "maxSlots": 6,
   "atoms": [
-    ["MezResist","Knockup",100,1,1.5,"Ranged_Ones","Res","Magnitude","Target","Any",true,"No",2,null,null,1],
-    ["MezResist","Knockback",100,1,1.5,"Ranged_Ones","Res","Magnitude","Target","Any",true,"No",2,null,null,1],
     ["Meta",null,1,175,1.5,"Melee_Ones","Cur","Magnitude","Target","Any",false,"RefreshToCount",1,null,null,1,null,true],
     ["Mez","Immobilized",5,4,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kHitPoints% target> 0 > &&",true],
     ["Mez","Immobilized",7.5,4,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,0.25,null,null,null,null,null,null,null,true],
     ["Mez","Immobilized",1,4,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,"enttype target> player eq kHitPoints% target> 0 > &&",true],
-    ["Mez","Repel",1,1,0.5,"Melee_Ones","Cur","Expression","Target","Any",true,"No",2,null,null,1,null,null,null,null,null,null,"distance 40 < kHitPoints% target> 0 > &&",true],
+    ["MezResist","Knockup",100,1,1.5,"Ranged_Ones","Res","Magnitude","Target","Any",false,"No",2,null,null,1,null,true,null,null,null,null,null,true,null,null,null,null,null,"Immobilized"],
+    ["MezResist","Knockback",100,1,1.5,"Ranged_Ones","Res","Magnitude","Target","Any",false,"No",2,null,null,1,null,true,null,null,null,null,null,true,null,null,null,null,null,"Immobilized"],
+    ["Mez","Repel",1,1,0.5,"Melee_Ones","Cur","Expression","Target","Any",true,"No",2,null,null,1,null,null,null,null,null,null,"distance 40 < kHitPoints% target> 0 > &&",true,null,null,null,null,"40 distance -","Immobilized"],
     ["Mez","Intangible",4,1,0.5,"Melee_Ones","Cur","Magnitude","Target","Any",false,"No",2,null,null,1,null,true,null,null,null,null,"distance 40 < kHitPoints% target> 0 > &&",true,null,true],
-    ["Mez","Repel",1,1,0.5,"Melee_Ones","Cur","Expression","Target","Any",true,"No",2,null,null,1,null,null,null,null,null,null,"distance 60 > kHitPoints% target> 0 > &&",true],
+    ["Mez","Repel",1,1,0.5,"Melee_Ones","Cur","Expression","Target","Any",true,"No",2,null,null,1,null,null,null,null,null,null,"distance 60 > kHitPoints% target> 0 > &&",true,null,null,null,null,"distance 60 -","Immobilized"],
     ["Mez","Intangible",4,1,0.5,"Melee_Ones","Cur","Magnitude","Target","Any",false,"No",2,null,null,1,null,true,null,null,null,null,"distance 60 > kHitPoints% target> 0 > &&",true,null,true],
-    ["Mez","Repel",1,1,0.5,"Melee_Ones","Cur","Magnitude","Target","Any",true,"No",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 0 >",true],
-    ["Movement","FlyMode",1,1,1.5,"Melee_Ones","Cur","Magnitude","Target","Any",true,"RefreshToCount",1,null,null,1,null,true,null,null,null,null,"kHitPoints% target> 0 >",true],
-    ["Movement","Fly",1.1788,1,1.5,"Melee_SpeedFlying","Cur","Magnitude","Target","Any",true,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 0 >",true]
+    ["Mez","Repel",1,1,0.5,"Melee_Ones","Cur","Magnitude","Target","Any",true,"No",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 0 >",true,null,null,null,null,null,"Immobilized"],
+    ["Movement","FlyMode",1,1,1.5,"Melee_Ones","Cur","Magnitude","Target","Any",false,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 0 >",true,null,null,null,null,null,"Immobilized"],
+    ["Movement","Fly",1.1788,1,1.5,"Melee_SpeedFlying","Cur","Magnitude","Target","Any",false,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 0 >",true,null,null,null,null,null,"Immobilized"]
   ],
   "conditionalEffects": [
     {

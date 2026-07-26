@@ -25,10 +25,10 @@
   "target_type": "Self",
   "target_type_secondary": "None",
   "targets_autohit": [
-    "MyCreator"
+    "MyPet"
   ],
   "targets_affected": [
-    "MyCreator"
+    "MyPet"
   ],
   "boosts_allowed": [
     "EnduranceDiscount",
@@ -42,6 +42,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "MastermindPets_Genin target.VillainName> MastermindPets_Jonin target.VillainName> || MastermindPets_Oni target.VillainName> ||",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -61,14 +62,14 @@
             "StealthRadius_PVE"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffectedAndPets",
           "table": "Ranged_Ones",
           "scale": 54.0,
           "duration": "4 seconds",
           "magnitude": 1.0,
-          "delay": 1.1699999570846558,
+          "delay": 1.17,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -80,24 +81,30 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "V_COV/POWERS/NINJITSU/HIDE.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "suppress_events": [
             {
               "event": "Attacked",
               "event_id": 2,
               "duration": 15.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "Damaged",
               "event_id": 21,
               "duration": 15.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "MissionObjectClick",
               "event_id": 37,
               "duration": 15.0,
-              "flag": 1
+              "always": 1
             }
           ],
           "flags": [
@@ -110,14 +117,14 @@
             "StealthRadius_PVP"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffectedAndPets",
           "table": "Ranged_Ones",
           "scale": 500.0,
           "duration": "4 seconds",
           "magnitude": 1.0,
-          "delay": 1.1699999570846558,
+          "delay": 1.17,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -134,19 +141,19 @@
               "event": "Attacked",
               "event_id": 2,
               "duration": 15.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "Damaged",
               "event_id": 21,
               "duration": 15.0,
-              "flag": 1
+              "always": 1
             },
             {
               "event": "MissionObjectClick",
               "event_id": 37,
               "duration": 15.0,
-              "flag": 1
+              "always": 1
             }
           ],
           "flags": [
@@ -159,7 +166,7 @@
             "Translucency"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffectedAndPets",
           "table": "Ranged_Ones",
@@ -189,7 +196,7 @@
             "Global_Chance_Mod"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffectedAndPets",
           "table": "Melee_Ones",
@@ -208,6 +215,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "tags": [
+              "CriticalHit"
+            ],
+            "type": "EffectFilter"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -219,7 +232,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -239,10 +252,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Villain_Pets.Kuji_Kiri.Smoke_Bomb"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",

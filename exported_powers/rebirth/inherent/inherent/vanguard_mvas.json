@@ -42,6 +42,7 @@
   "requires": "VanguardPack auth> cucpvgpt productOwned? || Inherent.Inherent.Vanguard_MVAS ||",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -61,7 +62,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -82,17 +83,20 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "Pets_Vanguard_Mini_Pet"
+            "entity_def": "Pets_Vanguard_Mini_Pet",
+            "priority_list": "Pet"
           },
           "flags": [
             "NearGround",
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1080
         }
       ]
     }
   ],
+  "max_boosts": 0,
   "modes_disallowed": [
     "Disable_Walk"
   ],

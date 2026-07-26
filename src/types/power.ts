@@ -79,6 +79,12 @@ export interface MaxHPFractionAbsorb {
   maxHPFraction: number;
   appliesStrength?: boolean;
   table?: string;
+  /** Per-foe growth for an absorb inside a foe-targeted AoE (Parasitic Aura:
+   *  +10% Max HP per foe, up to 10). The companion to {@link ScaledEffect}'s
+   *  `perTarget`, which this form has no scale to carry: the magnitude is an
+   *  Expression the converter recovers as a fraction, and each foe hit
+   *  re-applies that same Expression. */
+  maxHPFractionPerTarget?: number;
 }
 
 /**
@@ -294,7 +300,7 @@ export interface StealthEffects {
    *  key mutually suppress — only the largest StealthRadius in the group
    *  applies (e.g. "NictusFX": Stealth, Super Speed, Shinobi-Iri, the cloak
    *  toggles). Null/absent means the radius stacks additively. Consumed by
-   *  resolveStealthRadius in character-totals. */
+   *  resolveStealthRadius in legacy-totals.oracle. */
   stackKey?: string | null;
 }
 
@@ -435,6 +441,8 @@ export interface DebuffResistance {
 export interface MovementEffect {
   scale: number;
   table?: string;
+  /** Per-stack scale increment — see {@link ScaledEffect.perTarget}. */
+  perTarget?: number;
   /** Binary suppress group — see {@link ScaledEffect.stackKey}. */
   stackKey?: string;
   /** Suppressed in combat — see {@link ScaledEffect.suppressible}. */
@@ -770,6 +778,15 @@ export interface Power {
   description: string;
   /** Short help text shown in UI */
   shortHelp?: string;
+  /**
+   * The power's damage-type SET, emitted only where the per-template element is
+   * genuinely absent from the export (Thunderspy, whose damage atoms arrive
+   * `Unmapped`). Recovered from `attack_types` ∪ the shortHelp `DMG()`/`DoT()`
+   * clauses, so it is power-level and undercounts rather than inventing a type —
+   * never stamped onto individual atoms, which would fabricate the multi-component
+   * split. Absent on HC/Rebirth, where the atoms carry the element themselves.
+   */
+  damageTypes?: DamageType[];
   /** Icon filename */
   icon?: string;
   /** Click, Toggle, Auto, or Passive */
@@ -835,6 +852,16 @@ export interface Power {
    * (`Disable_All`) stripped. Absent on the vast majority of powers.
    */
   setsModes?: string[];
+  /**
+   * What this power BECOMES while a mode is live, keyed by the mode id that selects it. The
+   * game's PowerRedirector fires a different record entirely at activation time — a Kheldian
+   * attack in Nova form, a Titan Weapons attack under Momentum, Seismic Blast under Seismic
+   * Power — and the binary carries the whole table on the base power's `Redirect` block.
+   *
+   * Only the display half is carried: the base keeps its identity, slots and enhancements
+   * because every mode shares them. Absent on all but ~30 powers per fork.
+   */
+  modeVariants?: Record<string, Partial<Power>>;
   /**
    * Modes that SUSPEND this power's own effect contribution while live. The
    * other Stone Armor toggles carry `['Granite_Mode']` (Granite suspends them);

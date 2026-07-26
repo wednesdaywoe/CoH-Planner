@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -54,12 +55,12 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Vision_Phase"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -73,9 +74,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "mapname> P_City_00_01 eq ArvinMoralComplete source.TokenOwned? ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -93,12 +99,12 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Vision_Phase"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -112,9 +118,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "mapname> P_City_00_06 eq KilledJackhammer source.TokenOwned? ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -132,12 +143,12 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Vision_Phase"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -151,9 +162,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "mapname> P_City_00_01 eq KilledCleo source.TokenOwned? ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -171,12 +187,12 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Vision_Phase"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -190,9 +206,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "mapname> P_City_00_01 eq ReeseMoralComplete source.TokenOwned? ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -210,12 +231,12 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Vision_Phase"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -229,9 +250,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "mapname> P_City_00_01 eq KilledWashington source.TokenOwned? ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -249,12 +275,12 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Vision_Phase"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -268,9 +294,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "mapname> P_City_00_02 eq SeerMoralChoiceComplete source.TokenOwned? ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -288,12 +319,12 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Vision_Phase"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -307,9 +338,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "mapname> P_City_00_07 eq WardogMoralComplete source.TokenOwned? ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -327,12 +363,12 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Vision_Phase"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -346,9 +382,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "mapname> P_City_00_06 eq CapturedRicochet source.TokenOwned? ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -366,12 +407,12 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Vision_Phase"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -385,9 +426,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "mapname> P_City_00_01 eq WarrantDead source.TokenOwned? ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -405,12 +451,12 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Vision_Phase"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -424,9 +470,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "mapname> P_City_00_01 eq PowersTeamDead source.TokenOwned? ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -444,12 +495,12 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Vision_Phase"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -463,9 +514,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "mapname> P_City_00_01 eq CapturedTunnelRat source.TokenOwned? ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -483,12 +539,12 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Vision_Phase"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -502,9 +558,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "mapname> P_City_00_02 eq CapturedSteffard source.TokenOwned? ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -522,12 +583,12 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Vision_Phase"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -541,9 +602,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "mapname> P_City_00_02 eq ChanceMcKnightDead source.TokenOwned? ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -561,12 +627,12 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Vision_Phase"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -580,9 +646,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "mapname> P_City_00_02 eq CapturedAlecParson source.TokenOwned? ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -600,12 +671,12 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Vision_Phase"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -619,9 +690,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "mapname> P_City_00_02 eq FloresEscaped source.TokenOwned? ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -639,12 +715,12 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Vision_Phase"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -658,9 +734,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "mapname> P_City_00_07 eq HatchetAndBeholderDead source.TokenOwned? ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -678,12 +759,12 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Vision_Phase"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -697,9 +778,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "mapname> P_City_00_03 eq IvyKidnapped source.TokenOwned? ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -717,12 +803,12 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Vision_Phase"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -736,9 +822,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "mapname> P_City_00_03 eq HetzfeldDead source.TokenOwned? ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -756,12 +847,12 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Vision_Phase"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -775,9 +866,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "mapname> P_City_00_08 eq CrowTraitor source.TokenOwned? ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -795,12 +891,12 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Vision_Phase"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -814,9 +910,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "mapname> P_City_00_08 eq HelixCaptured source.TokenOwned? ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -834,12 +935,12 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Vision_Phase"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -853,9 +954,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "mapname> P_City_00_02 eq KangDead source.TokenOwned? ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -873,12 +979,12 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Vision_Phase"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -892,9 +998,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "mapname> P_City_00_03 eq WalkerDead source.TokenOwned? ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -912,12 +1023,12 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Vision_Phase"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -931,9 +1042,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "mapname> P_City_00_08 eq CalvinScottBetrayed source.TokenOwned? ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -951,12 +1067,12 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Vision_Phase"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -970,9 +1086,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "mapname> N_City_00_01 eq NTutorialKilledHero source.TokenOwned? &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -990,12 +1111,12 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Vision_Phase"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "999999 seconds",
@@ -1009,13 +1130,19 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "mapname> N_City_00_01 eq NTutorialSavedHero source.TokenOwned? &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     }
   ],
+  "max_boosts": 0,
   "available_level": 0,
   "powerset": "Inherent.Inherent"
 }

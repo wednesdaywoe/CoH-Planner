@@ -1,7 +1,7 @@
 /**
  * Plan B Slice 5 — regression guard for the atom-native max-HP appliers.
  *
- * `character-totals.ts` now sources +MaxHP from `maxHPBuffValue(power)` and its
+ * `legacy-totals.oracle.ts` now sources +MaxHP from `maxHPBuffValue(power)` and its
  * IgnoreStrength twin from `maxHPBuffValue(power, {ignoreStrength:true})` (atoms)
  * instead of `effects.maxHPBuff` / `effects.maxHPBuffUnenhanced`. This asserts the
  * LIVE atom path returns the values the calc needs, on the real generated data, for

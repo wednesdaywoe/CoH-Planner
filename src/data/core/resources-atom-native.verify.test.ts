@@ -1,7 +1,7 @@
 /**
  * Plan B Slice 6 — regression guard for the atom-native regen/recovery appliers.
  *
- * `character-totals.ts` now sources +Regeneration/+Recovery and their two
+ * `legacy-totals.oracle.ts` now sources +Regeneration/+Recovery and their two
  * `*Unenhanced` twins from `regenBuffValue` / `recoveryBuffValue` (atoms) instead of
  * `effects.regenBuff` / `effects.regenBuffUnenhanced` / `effects.recoveryBuff` /
  * `effects.recoveryBuffUnenhanced` — the LAST two of the five parallel slots the bag

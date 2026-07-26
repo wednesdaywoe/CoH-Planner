@@ -1,10 +1,44 @@
 {
   "name": "Class_Brute",
-  "display_name": "P26613693",
+  "display_name": "Brute",
+  "display_help": "Brutes live to fight, and as a Brute you revel in hand-to-hand combat. With strong offensive power sets to inflict pain and impressive defenses to take it, you're the best there is in a straight fight. Protracted battles only makes you mad, and the madder you get, the more damaging your attacks become. You do lack ranged attacks, which could leave you vulnerable to hit and run tactics without some allies to cover you.",
+  "display_short_help": "Excellent melee, good defense.  Rage",
   "icon": "v_archetypeicon_brute.tga",
   "primary_category": "Brute_Melee",
   "secondary_category": "Brute_DEFENSE",
   "pool_category": "Pool",
+  "epic_pool_category": "",
+  "allowed_origins": [
+    "Science",
+    "Magic",
+    "Natural",
+    "Mutation",
+    "Technology"
+  ],
+  "special_restrictions": [
+    "Villain"
+  ],
+  "store_requires": "",
+  "locked_tooltip": "",
+  "product_code": "",
+  "reduction_class": "",
+  "reduce_as_archvillain": false,
+  "level_up_respecs": [],
+  "archetype_shots": [
+    "archetypeshots_brute_0",
+    "archetypeshots_brute_1",
+    "archetypeshots_brute_2"
+  ],
+  "creation_stats": [
+    8,
+    9,
+    2,
+    5,
+    2,
+    2
+  ],
+  "playstyle_flags": 3,
+  "mechanic_tip": "RageTip",
   "named_tables": {
     "Melee_Damage": [
       -9.5,
@@ -4900,5 +4934,7 @@
     "resistance_cap": 0.8999999761581421,
     "base_threat": 4.0,
     "damage_cap": 7.75
-  }
+  },
+  "mechanic_bar_raw": 2,
+  "mechanic_gap_raw": 0
 }

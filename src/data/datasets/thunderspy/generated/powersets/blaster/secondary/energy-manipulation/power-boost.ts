@@ -29,7 +29,129 @@ export const PowerBoost: Power = {
     "Recharge"
   ],
   "maxSlots": 6,
+  "effects": {
+    "buffDuration": 15,
+    "durations": {
+      "specialBuff": 15
+    },
+    "specialBuff": {
+      "absorb": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "aoe": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "cold": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "confuse": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "defense": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "endurance": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "energy": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "fear": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "fire": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "heal": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "hold": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "immobilize": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "lethal": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "melee": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "movement": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "negative": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "psionic": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "ranged": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "sleep": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "smashing": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "stun": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "tohit": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      }
+    },
+    "maxStacks": 2,
+    "stacksLinear": [
+      "specialBuff"
+    ]
+  },
   "atoms": [
-    ["Mez","Stunned",0.75,1,15,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Enhancement","Stunned",0.75,1,15,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Sleep",0.75,1,15,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Enhancement","Confused",0.75,1,15,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Enhancement","Terrorized",0.75,1,15,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Enhancement","Immobilized",0.75,1,15,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Enhancement","Held",0.75,1,15,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Movement","Run",0.75,1,15,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Movement","Fly",0.75,1,15,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Enhancement","All",0.75,1,15,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Enhancement","Melee",0.75,1,15,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Enhancement","Ranged",0.75,1,15,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Enhancement","AoE",0.75,1,15,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Enhancement","Smashing",0.75,1,15,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Enhancement","Lethal",0.75,1,15,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Enhancement","Fire",0.75,1,15,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Enhancement","Cold",0.75,1,15,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Enhancement","Energy",0.75,1,15,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Enhancement","Negative",0.75,1,15,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Enhancement","Psionic",0.75,1,15,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Heal",null,0.75,1,15,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Absorb",null,0.75,1,15,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["ToHit",null,0.75,1,15,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Endurance",null,0.75,1,15,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
   ]
 };

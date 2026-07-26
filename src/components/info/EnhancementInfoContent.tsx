@@ -3,20 +3,18 @@
  * Used by both PowerInfoTooltip (floating tooltip) and InfoPanel (side panel)
  */
 
-import { useBuildStore } from '@/stores';
+import { useBuildStore, useUIStore } from '@/stores';
 import { useBonusTracking } from '@/hooks';
 import { getIOSet, lookupPower, findProcData, resolveProcPieceName, procEffectSummary, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, interpolateProcDamage, calculateProcChance, calculateProcsPerMinute, calculateProcDPS, calculateAutoToggleProcChance, calculateAutoToggleProcsPerMinute, arcToDegrees } from '@/data';
 import {
   normalizeAspectName,
-  getAspectSchedule,
-  getIOValueAtLevel,
   normalizeStatName,
   getTotalBonusCount,
   isBonusCapped,
   BOOST_MULTIPLIER_PER_LEVEL,
   getMultiAspectModifier,
   getEffectiveAspectCount,
-  getSetRarityMultiplier,
+  calculateSingleEnhancementValues,
 } from '@/utils/calculations';
 import { formatBonusDesc } from '@/utils/set-bonus-format';
 import {
@@ -39,6 +37,9 @@ interface EnhancementInfoContentProps {
 
 export function EnhancementInfoContent({ powerName, powerSet, slotIndex }: EnhancementInfoContentProps) {
   const build = useBuildStore((s) => s.build);
+  const exemplarMode = useUIStore((s) => s.exemplarMode);
+  const exemplarLevelSetting = useUIStore((s) => s.exemplarLevel);
+  const exemplarLevel = exemplarMode ? exemplarLevelSetting : undefined;
   const bonusTracking = useBonusTracking();
 
   // The power this panel describes. Resolved ONCE via the shared, powerset-aware
@@ -75,22 +76,14 @@ export function EnhancementInfoContent({ powerName, powerSet, slotIndex }: Enhan
       ? rawIcon.split('/').pop() || 'Unknown.png'
       : rawIcon;
 
-    // Calculate enhancement values for each aspect.
-    // Both attuned and non-attuned cap at the set's maxLevel — only ATOs / event IOs
-    // (maxLevel <= 1) scale freely above their listed cap. Mirrors the calc engine
-    // in enhancement-values.ts so the displayed value matches the actual contribution
-    // (e.g. attuned Kinetic Combat caps at L35, not character level).
-    const setMax = ioSet?.maxLevel ?? 50;
-    const setMin = ioSet?.minLevel ?? 1;
-    const effectiveLevel = ioEnh.attuned
-      ? Math.max(setMin, setMax > 1 ? Math.min(build.level || 50, setMax) : (build.level || 50))
-      : (enhancement.level || 50);
-    // Proc DAMAGE is the exception: it scales with the CHARACTER's (combat) level,
-    // never the IO's crafted level (a level-21 and a level-50 proc deal identical
-    // damage on a level-50 char — "slot the cheapest proc"). `effectiveLevel` above
-    // is correct for enhancement VALUES (which do scale with IO level) but wrong for
-    // the proc payload. interpolateProcDamage clamps to the proc's own levelRange.
-    // (@Redlynne report, 2026-06-12.)
+    // What this slotted piece actually contributes, straight from the calculation that
+    // credits it on the dashboard (PROD6E-2).
+    const slottedValues = calculateSingleEnhancementValues(enhancement, build.level, getIOSet, exemplarLevel);
+    // Proc DAMAGE is the exception: it scales with the CHARACTER's (combat) level, never the
+    // IO's crafted level (a level-21 and a level-50 proc deal identical damage on a level-50
+    // char — "slot the cheapest proc"). Enhancement VALUES do scale with IO level, which is
+    // why the proc payload can't reuse them. interpolateProcDamage clamps to the proc's own
+    // levelRange. (@Redlynne report, 2026-06-12.)
     const procDamageLevel = build.level || 50;
     // Look up the piece data so we can use its display name as a fallback
     // signal for special segments (e.g. "/+Run Speed", "/Fast Snipe") that
@@ -107,17 +100,13 @@ export function EnhancementInfoContent({ powerName, powerSet, slotIndex }: Enhan
       pieceName,
     );
     const aspectModifier = getMultiAspectModifier(effectiveAspectCount);
-    // Purple and Superior sets get 25% higher enhancement values
-    const rarityMultiplier = getSetRarityMultiplier(ioSet?.category, ioSet?.name);
-
-    const boostMultiplier = 1 + (enhancement.boost || 0) * BOOST_MULTIPLIER_PER_LEVEL;
 
     const calculateAspectValue = (aspect: string): number | null => {
       const normalized = normalizeAspectName(aspect);
-      if (!normalized) return null;
-      const schedule = getAspectSchedule(normalized);
-      const baseValue = getIOValueAtLevel(effectiveLevel, schedule);
-      return baseValue * aspectModifier * rarityMultiplier * boostMultiplier;
+      // `Mez` fans out into the six mez aspects rather than normalizing to one — read any of
+      // them, they carry the same value.
+      if (!normalized) return aspect.trim() === 'Mez' ? slottedValues.hold ?? null : null;
+      return slottedValues[normalized] ?? null;
     };
 
     return (

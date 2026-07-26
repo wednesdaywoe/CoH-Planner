@@ -54,6 +54,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&",
+  "slot_requires": "",
   "attack_types": [
     140
   ],
@@ -75,7 +76,7 @@
             "Immobilized"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Immobilize",
@@ -94,9 +95,19 @@
           "stack": "RefreshToCount",
           "stack_limit": 1,
           "stack_key": null,
-          "flags": [
-            "DeepSleep"
-          ],
+          "messages": {
+            "display_attacker_hit": "You Immobilize {PlayerDest} with your {PowerName}.",
+            "display_victim_hit": "{PlayerSource} Immobilizes you with their {PowerName}.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "PFX"
+          },
           "flags_raw": 2560
         }
       ],
@@ -120,7 +131,7 @@
                 "Immobilized"
               ],
               "type": "Duration",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_Immobilize",
@@ -139,9 +150,13 @@
               "stack": "RefreshToCount",
               "stack_limit": 1,
               "stack_key": null,
-              "flags": [
-                "DeepSleep"
-              ],
+              "messages": {
+                "display_attacker_hit": "You Immobilize {PlayerDest} with your {PowerName} (OVERPOWER).",
+                "display_victim_hit": "{PlayerSource} Immobilizes you with their {PowerName} (OVERPOWER).",
+                "display_float": "Overpower",
+                "display_attrib_defense_float": null,
+                "display_info": "Overpower"
+              },
               "flags_raw": 2560
             }
           ]
@@ -165,7 +180,7 @@
             "Immobilized"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_PvPMez",
@@ -184,40 +199,50 @@
           "stack": "RefreshToCount",
           "stack_limit": 1,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You Immobilize {PlayerDest} with your {PowerName}.",
+            "display_victim_hit": "{PlayerSource} Immobilizes you with their {PowerName}.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "PFX"
+          },
           "suppress_events": [
             {
               "event": "Stunned",
               "event_id": 23,
               "duration": 15.0,
-              "flag": 0
+              "always": 0
             },
             {
-              "event": "Event_24",
+              "event": "Immobilized",
               "event_id": 24,
               "duration": 15.0,
-              "flag": 0
+              "always": 0
             },
             {
               "event": "Held",
               "event_id": 25,
               "duration": 15.0,
-              "flag": 0
+              "always": 0
             },
             {
               "event": "Sleep",
               "event_id": 26,
               "duration": 15.0,
-              "flag": 0
+              "always": 0
             },
             {
-              "event": "Confused",
+              "event": "Terrorized",
               "event_id": 27,
               "duration": 15.0,
-              "flag": 0
+              "always": 0
             }
-          ],
-          "flags": [
-            "DeepSleep"
           ],
           "flags_raw": 2560
         }
@@ -243,12 +268,12 @@
             "Knockback"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 100.0,
-          "duration": "1.50 seconds",
+          "duration": "1.5 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -262,14 +287,19 @@
           "stack": "Continuous",
           "stack_limit": 2,
           "stack_key": null,
-          "suppress_events": [
+          "required_events": [
             {
-              "event": "Event_1065353216",
-              "event_id": 1065353216,
-              "duration": 0.0,
-              "flag": 0
+              "event": "Immobilized",
+              "event_id": 24,
+              "duration": 1.0,
+              "always": 0
             }
-          ]
+          ],
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ],
       "child_effects": [
@@ -292,12 +322,12 @@
                 "Repel"
               ],
               "type": "Expression",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
               "scale": 1.0,
-              "duration": "0.50 seconds",
+              "duration": "0.5 seconds",
               "magnitude": 1.0,
               "delay": 0.0,
               "duration_expression": "",
@@ -311,31 +341,45 @@
               "stack": "Continuous",
               "stack_limit": 2,
               "stack_key": null,
-              "suppress_events": [
+              "params": {
+                "vec_start": "Source",
+                "vec_end": "Target",
+                "vec_adjust_pyr": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "priority": 0,
+                "vel": 1.0,
+                "vel_mag": 0.10000000149011612,
+                "height": -1.0,
+                "height_mag": -1.0,
+                "type": "Knock"
+              },
+              "required_events": [
                 {
-                  "event": "Event_1065353216",
-                  "event_id": 1065353216,
-                  "duration": 0.0,
-                  "flag": 0
+                  "event": "Immobilized",
+                  "event_id": 24,
+                  "duration": 1.0,
+                  "always": 0
                 }
               ],
               "flags": [
-                "NoFloaters",
-                "NearGround"
+                "IgnoreCombatMods"
               ],
-              "flags_raw": 11
+              "flags_raw": 320
             },
             {
               "attribs": [
                 "Intangible"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
               "scale": 4.0,
-              "duration": "0.50 seconds",
+              "duration": "0.5 seconds",
               "magnitude": 1.0,
               "delay": 0.0,
               "duration_expression": "",
@@ -349,30 +393,36 @@
               "stack": "Continuous",
               "stack_limit": 2,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "PFX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "suppress_events": [
                 {
                   "event": "Attacked",
                   "event_id": 2,
                   "duration": 4.0,
-                  "flag": 1
+                  "always": 1
                 },
                 {
-                  "event": "Event_12",
+                  "event": "AttackedByOther",
                   "event_id": 12,
                   "duration": 4.0,
-                  "flag": 1
+                  "always": 1
                 },
                 {
                   "event": "Damaged",
                   "event_id": 21,
                   "duration": 4.0,
-                  "flag": 1
+                  "always": 1
                 },
                 {
                   "event": "MissionObjectClick",
                   "event_id": 37,
                   "duration": 4.0,
-                  "flag": 1
+                  "always": 1
                 }
               ],
               "flags": [
@@ -402,12 +452,12 @@
                 "Repel"
               ],
               "type": "Expression",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
               "scale": 1.0,
-              "duration": "0.50 seconds",
+              "duration": "0.5 seconds",
               "magnitude": 1.0,
               "delay": 0.0,
               "duration_expression": "",
@@ -421,31 +471,45 @@
               "stack": "Continuous",
               "stack_limit": 2,
               "stack_key": null,
-              "suppress_events": [
+              "params": {
+                "vec_start": "Target",
+                "vec_end": "Source",
+                "vec_adjust_pyr": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "priority": 0,
+                "vel": 1.0,
+                "vel_mag": 0.10000000149011612,
+                "height": -1.0,
+                "height_mag": -1.0,
+                "type": "Knock"
+              },
+              "required_events": [
                 {
-                  "event": "Event_1065353216",
-                  "event_id": 1065353216,
-                  "duration": 0.0,
-                  "flag": 0
+                  "event": "Immobilized",
+                  "event_id": 24,
+                  "duration": 1.0,
+                  "always": 0
                 }
               ],
               "flags": [
-                "NoFloaters",
-                "NearGround"
+                "IgnoreCombatMods"
               ],
-              "flags_raw": 11
+              "flags_raw": 320
             },
             {
               "attribs": [
                 "Intangible"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
               "scale": 4.0,
-              "duration": "0.50 seconds",
+              "duration": "0.5 seconds",
               "magnitude": 1.0,
               "delay": 0.0,
               "duration_expression": "",
@@ -459,30 +523,36 @@
               "stack": "Continuous",
               "stack_limit": 2,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "PFX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "suppress_events": [
                 {
                   "event": "Attacked",
                   "event_id": 2,
                   "duration": 4.0,
-                  "flag": 1
+                  "always": 1
                 },
                 {
-                  "event": "Event_12",
+                  "event": "AttackedByOther",
                   "event_id": 12,
                   "duration": 4.0,
-                  "flag": 1
+                  "always": 1
                 },
                 {
                   "event": "Damaged",
                   "event_id": 21,
                   "duration": 4.0,
-                  "flag": 1
+                  "always": 1
                 },
                 {
                   "event": "MissionObjectClick",
                   "event_id": 37,
                   "duration": 4.0,
-                  "flag": 1
+                  "always": 1
                 }
               ],
               "flags": [
@@ -512,12 +582,12 @@
                 "Repel"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
               "scale": 1.0,
-              "duration": "0.50 seconds",
+              "duration": "0.5 seconds",
               "magnitude": 1.0,
               "delay": 0.0,
               "duration_expression": "",
@@ -531,19 +601,33 @@
               "stack": "Continuous",
               "stack_limit": 2,
               "stack_key": null,
-              "suppress_events": [
+              "params": {
+                "vec_start": "Target",
+                "vec_end": "MainTarget",
+                "vec_adjust_pyr": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "priority": 0,
+                "vel": 1.0,
+                "vel_mag": 1.0,
+                "height": -1.0,
+                "height_mag": -1.0,
+                "type": "Knock"
+              },
+              "required_events": [
                 {
-                  "event": "Event_1065353216",
-                  "event_id": 1065353216,
-                  "duration": 0.0,
-                  "flag": 0
+                  "event": "Immobilized",
+                  "event_id": 24,
+                  "duration": 1.0,
+                  "always": 0
                 }
               ],
               "flags": [
-                "NoFloaters",
-                "NearGround"
+                "IgnoreCombatMods"
               ],
-              "flags_raw": 11
+              "flags_raw": 320
             }
           ]
         },
@@ -566,12 +650,12 @@
                 "Fly"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
               "scale": 1.0,
-              "duration": "1.50 seconds",
+              "duration": "1.5 seconds",
               "magnitude": 1.0,
               "delay": 0.0,
               "duration_expression": "",
@@ -585,32 +669,39 @@
               "stack": "RefreshToCount",
               "stack_limit": 1,
               "stack_key": null,
-              "suppress_events": [
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": null,
+                "conditional_bits": [
+                  8
+                ],
+                "conditional_fx": null
+              },
+              "required_events": [
                 {
-                  "event": "Event_1065353216",
-                  "event_id": 1065353216,
-                  "duration": 0.0,
-                  "flag": 0
+                  "event": "Immobilized",
+                  "event_id": 24,
+                  "duration": 1.0,
+                  "always": 0
                 }
               ],
               "flags": [
-                "CancelOnMiss",
-                "IgnoreStrength"
+                "IgnoreResistance",
+                "IgnoreCombatMods"
               ],
-              "flags_raw": 20,
-              "boost_mod_allowed_id": 1
+              "flags_raw": 96
             },
             {
               "attribs": [
                 "FlyingSpeed"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_SpeedFlying",
               "scale": 1.1788,
-              "duration": "1.50 seconds",
+              "duration": "1.5 seconds",
               "magnitude": 1.0,
               "delay": 0.0,
               "duration_expression": "",
@@ -624,14 +715,19 @@
               "stack": "RefreshToCount",
               "stack_limit": 1,
               "stack_key": null,
-              "suppress_events": [
+              "required_events": [
                 {
-                  "event": "Event_1065353216",
-                  "event_id": 1065353216,
-                  "duration": 0.0,
-                  "flag": 0
+                  "event": "Immobilized",
+                  "event_id": 24,
+                  "duration": 1.0,
+                  "always": 0
                 }
-              ]
+              ],
+              "flags": [
+                "IgnoreResistance",
+                "IgnoreCombatMods"
+              ],
+              "flags_raw": 96
             }
           ]
         },
@@ -654,12 +750,12 @@
                 "Set_Mode"
               ],
               "type": "Constant",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
               "scale": 1.0,
-              "duration": "1.50 seconds",
+              "duration": "1.5 seconds",
               "magnitude": 175.0,
               "delay": 0.0,
               "duration_expression": "",
@@ -673,6 +769,12 @@
               "stack": "RefreshToCount",
               "stack_limit": 1,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "PFX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "IgnoreStrength",
                 "IgnoreResistance",
@@ -705,12 +807,12 @@
             "Global_Chance_Mod"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
           "scale": 1.0,
-          "duration": "1.50 seconds",
+          "duration": "1.5 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -724,6 +826,21 @@
           "stack": "Continuous",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "tags": [
+              "MassLevitate"
+            ],
+            "type": "EffectFilter"
+          },
+          "fx": {
+            "continuing_bits": [
+              97,
+              98
+            ],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -733,6 +850,7 @@
       ]
     }
   ],
+  "max_toggle_time": 20.0,
   "modes_disallowed": [
     "Disable_All"
   ],

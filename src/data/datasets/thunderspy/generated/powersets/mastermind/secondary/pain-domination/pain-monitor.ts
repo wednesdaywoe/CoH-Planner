@@ -26,14 +26,14 @@ export const PainMonitor: Power = {
   "allowedEnhancements": [],
   "maxSlots": 0,
   "atoms": [
-    ["Damage","Smashing",1,1,10,"Ranged_Buff_Dmg","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"AttackedByOtherClick target.EventCount> 0 >",true],
-    ["Damage","Lethal",1,1,10,"Ranged_Buff_Dmg","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"AttackedByOtherClick target.EventCount> 0 >",true],
-    ["Damage","Fire",1,1,10,"Ranged_Buff_Dmg","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"AttackedByOtherClick target.EventCount> 0 >",true],
-    ["Damage","Cold",1,1,10,"Ranged_Buff_Dmg","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"AttackedByOtherClick target.EventCount> 0 >",true],
-    ["Damage","Energy",1,1,10,"Ranged_Buff_Dmg","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"AttackedByOtherClick target.EventCount> 0 >",true],
-    ["Damage","Negative",1,1,10,"Ranged_Buff_Dmg","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"AttackedByOtherClick target.EventCount> 0 >",true],
-    ["Damage","Psionic",1,1,10,"Ranged_Buff_Dmg","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"AttackedByOtherClick target.EventCount> 0 >",true],
-    ["Damage","Toxic",1,1,10,"Ranged_Buff_Dmg","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"AttackedByOtherClick target.EventCount> 0 >",true]
+    ["DamageBuff","Smashing",1,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"No",8,null,null,1,null,true,null,null,null,null,"AttackedByOtherClick target.EventCount> 0 >",true],
+    ["DamageBuff","Lethal",1,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"No",8,null,null,1,null,true,null,null,null,null,"AttackedByOtherClick target.EventCount> 0 >",true],
+    ["DamageBuff","Fire",1,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"No",8,null,null,1,null,true,null,null,null,null,"AttackedByOtherClick target.EventCount> 0 >",true],
+    ["DamageBuff","Cold",1,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"No",8,null,null,1,null,true,null,null,null,null,"AttackedByOtherClick target.EventCount> 0 >",true],
+    ["DamageBuff","Energy",1,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"No",8,null,null,1,null,true,null,null,null,null,"AttackedByOtherClick target.EventCount> 0 >",true],
+    ["DamageBuff","Negative",1,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"No",8,null,null,1,null,true,null,null,null,null,"AttackedByOtherClick target.EventCount> 0 >",true],
+    ["DamageBuff","Psionic",1,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"No",8,null,null,1,null,true,null,null,null,null,"AttackedByOtherClick target.EventCount> 0 >",true],
+    ["DamageBuff","Toxic",1,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"No",8,null,null,1,null,true,null,null,null,null,"AttackedByOtherClick target.EventCount> 0 >",true]
   ],
   "requires": "Mastermind_Buff.Pain_Domination.Soothe Mastermind_Buff.Pain_Domination.Nullify_Pain ||"
 };

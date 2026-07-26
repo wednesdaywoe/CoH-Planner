@@ -36,21 +36,46 @@ export const PowerofthePhoenix: Power = {
   "allowedSetCategories": [
     "Endurance Modification",
     "Healing",
-    "Mastermind Archetype Sets",
     "Ranged AoE Damage",
     "Stuns",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Heal",
+    "scale": 7,
+    "table": "Ranged_HealSelf",
+    "duration": 0.5,
+    "tickRate": 1
+  },
   "effects": {
+    "buffDuration": 15,
+    "durations": {
+      "untouchable": 15
+    },
+    "enduranceGain": {
+      "scale": 70,
+      "table": "Ranged_Ones"
+    },
     "summon": {
       "duration": 5,
       "entity": "Pets_Phoenix",
       "isPseudoPet": false
+    },
+    "untouchable": {
+      "scale": 10,
+      "table": "Ranged_Ones"
     }
   },
   "atoms": [
-    ["Unmapped",null,7,1,0.5,"Ranged_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,1,1],
-    ["EntCreate",null,-1,1,5,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Heal",null,7,1,0.5,"Ranged_HealSelf","Abs","Magnitude","Target","Any",false,"Stack",2,null,1,1],
+    ["EntCreate",null,-1,1,5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["EntCreate",null,-1,1,5,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Mez","Untouchable",10,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,1,90,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Endurance",null,70,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1]
+  ],
+  "setsModes": [
+    "Peacebringer_Blaster_Mode"
   ]
 };

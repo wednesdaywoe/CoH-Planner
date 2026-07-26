@@ -23,6 +23,7 @@ from bin_crawler.parser._pigg import BinResolver
 from bin_crawler.parser._salvage import parse_salvage
 from bin_crawler.parser._messages import load_messages
 from bin_crawler.assets_dir import resolve_assets_dir
+from bin_crawler._export_fingerprint import salvage_fingerprint
 
 
 def main():
@@ -62,6 +63,29 @@ def main():
     out = {"salvage": [asdict(r) for r in records]}
     out_file.write_text(json.dumps(out, indent=2), encoding="utf-8")
     print(f"Wrote {out_file}")
+
+    # Stamp the export-staleness manifest, exactly as the powers/classes/entities
+    # exporters do. CI has neither the .pigg archives nor Python, so salvage.json
+    # can't be regenerate-and-diffed there; the fingerprint is the only cross-check
+    # that this file was produced by the currently-committed salvage exporter and
+    # not left stale after a parser edit (the INHERENT-3 residual after WS-ENT
+    # guarded `entities/`). Salvage is HC-only, so this runs only where salvage.bin
+    # exists — the early-return above skips it for Rebirth/Thunderspy, which carry
+    # no manifest. Guarded by src/data/export-staleness.test.ts. See
+    # _export_fingerprint.py.
+    manifest = {
+        "schema": "bin-crawler-export-manifest/1",
+        "note": ("salvage_fingerprint is the sha256 of the salvage exporter "
+                 "(bin_crawler/parser/**/*.py + export_salvage.py) at export "
+                 "time. If it disagrees with the current committed exporter "
+                 "source, THIS salvage.json is stale — re-run export_salvage and "
+                 "commit. Guarded by src/data/export-staleness.test.ts."),
+        "salvage_fingerprint": salvage_fingerprint(),
+        "salvage_records": len(records),
+    }
+    manifest_file = out_file.parent / "salvage_export_manifest.json"
+    manifest_file.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+    print(f"  Manifest: salvage_fingerprint={manifest['salvage_fingerprint'][:12]}…")
 
 
 if __name__ == "__main__":

@@ -47,8 +47,7 @@ export const VoltaicSentinel: Power = {
       "copyBoosts": true,
       "displayName": "Voltaic Sentinel",
       "duration": 99999,
-      "entity": "Pet_NoCollision",
-      "isPseudoPet": false,
+      "isPseudoPet": true,
       "powers": [
         "Pets.ResistAll_NoFly.ResistAll",
         "Pets.VoltaicSentinel_PseudoPet.Electrical_Bolt",
@@ -84,7 +83,8 @@ export const VoltaicSentinel: Power = {
             }
           ]
         }
-      ]
+      ],
+      "entity": "PL_Untargetable_FightPreferRanged"
     }
   },
   "atoms": [

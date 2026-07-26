@@ -53,6 +53,7 @@
   "requires": "Epic ownPowerNum? 0 >",
   "activate_requires": "",
   "target_requires": "Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&",
+  "slot_requires": "",
   "attack_types": [
     140
   ],
@@ -74,7 +75,7 @@
             "Psionic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
@@ -93,6 +94,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Psionic damage.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Psionic damage.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": "Requires a hit check and 8ft range"
+          },
           "flags_raw": 1280
         }
       ]
@@ -127,7 +135,7 @@
                 "Confused"
               ],
               "type": "Duration",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_Ones",
@@ -146,9 +154,19 @@
               "stack": "RefreshToCount",
               "stack_limit": 1,
               "stack_key": null,
-              "flags": [
-                "DeepSleep"
-              ],
+              "messages": {
+                "display_attacker_hit": "You Confuse {PlayerDest} with your {PowerName}.",
+                "display_victim_hit": "{PlayerSource} Confuses you with their {PowerName}.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": null,
+                "conditional_bits": [],
+                "conditional_fx": "GENERICCONTINUING/CONFUSECONTINUING.FX"
+              },
               "flags_raw": 2560
             }
           ],
@@ -172,7 +190,7 @@
                     "Confused"
                   ],
                   "type": "Duration",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Current",
                   "target": "AnyAffected",
                   "table": "Ranged_Ones",
@@ -191,9 +209,13 @@
                   "stack": "RefreshToCount",
                   "stack_limit": 1,
                   "stack_key": null,
-                  "flags": [
-                    "DeepSleep"
-                  ],
+                  "messages": {
+                    "display_attacker_hit": "You Confuse {PlayerDest} with your {PowerName} (DOMINATION).",
+                    "display_victim_hit": "{PlayerSource} Confuses you with their {PowerName} (DOMINATION).",
+                    "display_float": "DOMINATION",
+                    "display_attrib_defense_float": null,
+                    "display_info": "While under the effects of Domination"
+                  },
                   "flags_raw": 2560
                 }
               ]
@@ -232,7 +254,7 @@
                 "Confused"
               ],
               "type": "Duration",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_PvPMez",
@@ -251,16 +273,26 @@
               "stack": "RefreshToCount",
               "stack_limit": 1,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You Confuse {PlayerDest} with your {PowerName}.",
+                "display_victim_hit": "{PlayerSource} Confuses you with their {PowerName}.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": null,
+                "conditional_bits": [],
+                "conditional_fx": "GENERICCONTINUING/CONFUSECONTINUING.FX"
+              },
               "suppress_events": [
                 {
-                  "event": "Event_28",
+                  "event": "Confused",
                   "event_id": 28,
                   "duration": 15.0,
-                  "flag": 0
+                  "always": 0
                 }
-              ],
-              "flags": [
-                "DeepSleep"
               ],
               "flags_raw": 2560
             }
@@ -285,7 +317,7 @@
                     "Confused"
                   ],
                   "type": "Duration",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Current",
                   "target": "AnyAffected",
                   "table": "Ranged_PvPMez",
@@ -304,16 +336,20 @@
                   "stack": "RefreshToCount",
                   "stack_limit": 1,
                   "stack_key": null,
+                  "messages": {
+                    "display_attacker_hit": "You Confuse {PlayerDest} with your {PowerName} (DOMINATION).",
+                    "display_victim_hit": "{PlayerSource} Confuses you with their {PowerName} (DOMINATION).",
+                    "display_float": "DOMINATION",
+                    "display_attrib_defense_float": null,
+                    "display_info": "While under the effects of Domination"
+                  },
                   "suppress_events": [
                     {
-                      "event": "Event_28",
+                      "event": "Confused",
                       "event_id": 28,
                       "duration": 15.0,
-                      "flag": 0
+                      "always": 0
                     }
-                  ],
-                  "flags": [
-                    "DeepSleep"
                   ],
                   "flags_raw": 2560
                 }

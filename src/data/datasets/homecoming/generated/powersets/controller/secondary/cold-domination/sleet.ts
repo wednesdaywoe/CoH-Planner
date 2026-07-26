@@ -45,13 +45,73 @@ export const Sleet: Power = {
   "effects": {
     "summon": {
       "copyBoosts": true,
+      "displayName": "Sleet",
       "duration": 15,
-      "entity": "Sleet",
-      "isPseudoPet": false,
+      "isPseudoPet": true,
       "powers": [
         "Pets.Sleet.Sleet",
         "Pets.Sleet.Avoid"
-      ]
+      ],
+      "resolvedEntities": [
+        {
+          "displayName": "Sleet",
+          "duration": 15,
+          "copyCreatorMods": true,
+          "abilities": [
+            {
+              "name": "Sleet",
+              "displayName": "Sleet",
+              "type": "Auto",
+              "damage": [
+                {
+                  "damageType": "Cold",
+                  "scale": 0.009,
+                  "table": "Ranged_Damage"
+                }
+              ],
+              "effects": [
+                {
+                  "type": "Slow",
+                  "scale": 0.32,
+                  "table": "Ranged_Slow"
+                },
+                {
+                  "type": "RechargeDebuff",
+                  "scale": 0.32,
+                  "table": "Ranged_Slow",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "ResistanceDebuff",
+                  "scale": 3,
+                  "table": "Ranged_Debuff_Res_Dmg",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "DefenseDebuff",
+                  "scale": 2.4,
+                  "table": "Ranged_Debuff_Def"
+                },
+                {
+                  "type": "Knockback",
+                  "magnitude": 1,
+                  "scale": 0.1,
+                  "table": "Ranged_Ones",
+                  "ignoreStrength": true,
+                  "chance": 0.05
+                }
+              ],
+              "recharge": 0,
+              "castTime": 0,
+              "activatePeriod": 0.2,
+              "effectArea": "Sphere",
+              "radius": 20,
+              "maxTargets": 16
+            }
+          ]
+        }
+      ],
+      "entity": "PL_StaticObject"
     }
   },
   "atoms": [

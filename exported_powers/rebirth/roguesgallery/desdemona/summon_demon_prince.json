@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -57,14 +58,14 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": -1.0,
           "duration": "99999 seconds",
           "magnitude": 1.0,
-          "delay": 3.3299999237060547,
+          "delay": 3.33,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -78,12 +79,14 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "NPC_Pets_MA_Demon_Prince"
+            "entity_def": "NPC_Pets_MA_Demon_Prince",
+            "priority_list": "Pet"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "flags_raw": 1072
         }
       ]
     }

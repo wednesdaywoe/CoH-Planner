@@ -59,6 +59,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "TimeBombRestricted target.HasTag? !",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -78,7 +79,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
@@ -98,10 +99,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Temporary_Powers.Temporary_Powers.Time_Bomb"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -114,7 +116,7 @@
             "Script_Notify"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Damage",
@@ -133,9 +135,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "channel": "AttachedRemoteBomb",
+            "notify_event": [
+              "FirstTick"
+            ],
+            "type": "ScriptNotify"
+          },
           "flags": [
             "IgnoreStrength",
-            "KeepThroughDeath"
+            "KeepThroughDeath",
+            "AlwaysPersist"
           ],
           "flags_raw": 4211984
         }
@@ -158,7 +168,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Levels",
@@ -178,15 +188,23 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Pets_Bomb",
-            "priority_list": "PL_Untargetable_FightPreferRanged"
+            "priority_list": "PL_Untargetable_FightPreferRanged",
+            "type": "EntCreate"
+          },
+          "messages": {
+            "display_attacker_hit": "You set up a {PowerName}!",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
           },
           "flags": [
             "KeepThroughDeath",
             "CopyBoosts"
           ],
-          "flags_raw": 17664
+          "flags_raw": 17664,
+          "flags2_raw": 4
         }
       ],
       "child_effects": [
@@ -216,7 +234,7 @@
                 "Toxic_Dmg"
               ],
               "type": "Expression",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Strength",
               "target": "Self",
               "table": "Ranged_Ones",
@@ -263,7 +281,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Levels",
@@ -283,15 +301,23 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Pets_Bomb_Controller",
-            "priority_list": "PL_Untargetable_FightPreferRanged"
+            "priority_list": "PL_Untargetable_FightPreferRanged",
+            "type": "EntCreate"
+          },
+          "messages": {
+            "display_attacker_hit": "You set up a {PowerName}!",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
           },
           "flags": [
             "KeepThroughDeath",
             "CopyBoosts"
           ],
-          "flags_raw": 17664
+          "flags_raw": 17664,
+          "flags2_raw": 4
         }
       ]
     },
@@ -312,7 +338,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Levels",
@@ -332,22 +358,30 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Pets_Bomb_Corruptor",
-            "priority_list": "PL_Untargetable_FightPreferRanged"
+            "priority_list": "PL_Untargetable_FightPreferRanged",
+            "type": "EntCreate"
+          },
+          "messages": {
+            "display_attacker_hit": "You set up a {PowerName}!",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
           },
           "flags": [
             "KeepThroughDeath",
             "CopyBoosts"
           ],
-          "flags_raw": 17664
+          "flags_raw": 17664,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Levels",
@@ -367,15 +401,16 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Pets_Bomb_Temporal",
-            "priority_list": "PL_Untargetable_FightPreferRanged"
+            "priority_list": "PL_Untargetable_FightPreferRanged",
+            "type": "EntCreate"
           },
           "flags": [
             "KeepThroughDeath",
             "CopyBoosts"
           ],
-          "flags_raw": 17664
+          "flags_raw": 17664,
+          "flags2_raw": 4
         }
       ]
     },
@@ -396,7 +431,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Levels",
@@ -416,15 +451,16 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Pets_Bomb_Temporal_Defender",
-            "priority_list": "PL_Untargetable_FightPreferRanged"
+            "priority_list": "PL_Untargetable_FightPreferRanged",
+            "type": "EntCreate"
           },
           "flags": [
             "KeepThroughDeath",
             "CopyBoosts"
           ],
-          "flags_raw": 17664
+          "flags_raw": 17664,
+          "flags2_raw": 4
         }
       ]
     },
@@ -445,7 +481,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Levels",
@@ -465,19 +501,28 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Pets_Bomb_Defender",
-            "priority_list": "PL_Untargetable_FightPreferRanged"
+            "priority_list": "PL_Untargetable_FightPreferRanged",
+            "type": "EntCreate"
+          },
+          "messages": {
+            "display_attacker_hit": "You set up a {PowerName}!",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
           },
           "flags": [
             "KeepThroughDeath",
             "CopyBoosts"
           ],
-          "flags_raw": 17664
+          "flags_raw": 17664,
+          "flags2_raw": 4
         }
       ]
     }
   ],
+  "procs_allowed": false,
   "available_level": 0,
   "powerset": "Redirects.Gadgets"
 }

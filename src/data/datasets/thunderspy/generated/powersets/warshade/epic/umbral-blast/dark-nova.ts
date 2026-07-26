@@ -43,27 +43,71 @@ export const DarkNova: Power = {
   "maxSlots": 6,
   "effects": {
     "buffDuration": 2,
+    "damageBuff": {
+      "scale": 5,
+      "table": "Melee_Buff_Dmg"
+    },
     "durations": {
+      "damageBuff": 2,
       "movement": 2,
-      "tohitBuff": 2
+      "recoveryBuffUnenhanced": 2,
+      "resistance": 2,
+      "tohitBuffUnenhanced": 2
     },
     "movement": {
+      "fly": {
+        "scale": 4,
+        "table": "Melee_Ones"
+      },
       "flySpeed": {
         "scale": 1.5,
         "table": "Melee_SpeedFlying"
+      },
+      "movementControl": {
+        "scale": 2,
+        "table": "Melee_Control"
+      },
+      "movementFriction": {
+        "scale": 2,
+        "table": "Melee_Friction"
       }
     },
-    "tohitBuff": {
+    "recoveryBuffUnenhanced": {
+      "scale": 0.15,
+      "table": "Melee_Ones"
+    },
+    "resistance": {
+      "energy": {
+        "scale": 0.15,
+        "table": "Melee_Ones"
+      },
+      "negative": {
+        "scale": 0.15,
+        "table": "Melee_Ones"
+      }
+    },
+    "tohitBuffUnenhanced": {
       "scale": 1,
       "table": "Melee_Buff_ToHit"
     }
   },
   "atoms": [
-    ["Unmapped",null,4,1,2,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Movement","Fly",1.5,1,2,"Melee_SpeedFlying","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Movement","Control",2,1,2,"Melee_Control","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Movement","Friction",2,1,2,"Melee_Friction","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["ToHit",null,1,1,2,"Melee_Buff_ToHit","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,5,1,2,"Melee_Buff_Dmg","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Movement","FlyMode",4,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Recovery",null,0.15,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Energy",0.15,1,2,"Melee_Ones","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Negative",0.15,1,2,"Melee_Ones","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,9,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true],
+    ["Meta",null,1,4,1.5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Refresh",2,null,null,1,null,true],
+    ["Meta",null,1,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,3,1,null,true],
+    ["Movement","Fly",1.5,1,2,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","Control",2,1,2,"Melee_Control","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","Friction",2,1,2,"Melee_Friction","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["ToHit",null,1,1,2,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Smashing",5,1,2,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Negative",5,1,2,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true]
+  ],
+  "setsModes": [
+    "Disable_Temp",
+    "Warshade_Blaster_Mode"
   ]
 };

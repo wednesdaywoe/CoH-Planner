@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "enttype char> critter eq",
   "target_requires": "enttype target> critter eq",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -64,7 +65,7 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
@@ -94,7 +95,7 @@
             "HitPoints"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Maximum",
           "target": "Self",
           "table": "Melee_Ones",

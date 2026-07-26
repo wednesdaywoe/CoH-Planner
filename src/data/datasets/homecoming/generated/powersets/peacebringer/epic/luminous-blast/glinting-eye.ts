@@ -59,5 +59,37 @@ export const GlintingEye: Power = {
   "atoms": [
     ["Damage","Energy",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Defense","All",2,1,6,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
-  ]
+  ],
+  "modeVariants": {
+    "Peacebringer_Blaster_Mode": {
+      "internalName": "Nova_Glinting_Eye",
+      "stats": {
+        "accuracy": 1,
+        "range": 80,
+        "recharge": 5,
+        "endurance": 5.2,
+        "castTime": 1.5
+      },
+      "damage": {
+        "type": "Energy",
+        "scale": 1.16,
+        "table": "Ranged_InherentDamage"
+      },
+      "effects": {
+        "buffDuration": 6,
+        "defenseDebuff": {
+          "scale": 2,
+          "table": "Ranged_Debuff_Def"
+        },
+        "durations": {
+          "defenseDebuff": 6
+        }
+      },
+      "shortHelp": "Ranged, Moderate DMG(Energy), Foe -DEF",
+      "description": "You can emit a beam of Kheldian energy from your eyes, dealing moderate Energy damage and reducing a target's Defense. Damage: Moderate",
+      "effectArea": "SingleTarget",
+      "targetType": "Foe",
+      "powerType": "Click"
+    }
+  }
 };

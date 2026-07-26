@@ -2,10 +2,11 @@ import { describe, it, expect, beforeAll } from 'vitest';
 import { calculateCharacterTotals } from './character-totals';
 import { loadDataset } from '@/data/dataset';
 import { createEmptyBuild } from '@/types/build';
+import { ioSetSlot } from '@/test/build-fixtures';
 import type { Build, ProcOverride } from '@/types';
 
 /**
- * Calc integration for variable procs (character-totals `applyVariableProcBonuses`).
+ * Calc integration for variable procs (`applyVariableProcBonuses`, legacy-totals.oracle).
  * Might of the Tanker is a "By the Slotted Power" +Res(All) stacking buff — 5% per
  * stack on a Tanker (generated 50 × 0.10 Melee_Res_Dmg) — and Reactive Defenses is
  * an HP-scaling +Res(All) global (3% floor → 12.9% cap). Both were previously
@@ -13,12 +14,12 @@ import type { Build, ProcOverride } from '@/types';
  */
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function motSlot(): any {
-  return { type: 'io-set', isProc: true, name: 'Chance for +RES(ALL)', setName: 'Might of the Tanker', setId: 'might_of_the_tanker', pieceNum: 6 };
+function motSlot() {
+  return ioSetSlot('might_of_the_tanker', 'Recharge/Chance');
 }
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function reactiveSlot(): any {
-  return { type: 'io-set', isProc: true, name: 'Scaling +Res(All)', setName: 'Reactive Defenses', setId: 'reactive_defenses', pieceNum: 6 };
+function reactiveSlot() {
+  return ioSetSlot('reactive_defenses', '+Res(All)');
 }
 
 function tankerBuild(
@@ -38,7 +39,7 @@ function tankerBuild(
   b.archetype = { id: 'tanker', name: 'Tanker', stats: null, inherent: null } as any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   b.primary = { id: 'super_strength', name: 'Super Strength', powers: [{
-    internalName: powerName, name: powerName, powerType: power.powerType, isActive: power.isActive,
+    internalName: powerName, name: powerName, powerSet: 'super_strength', level: 1, powerType: power.powerType, isActive: power.isActive,
     stats: { recharge: 8, castTime: 1.5, radius: 0 },
     slots: [slot],
   }] } as any;
@@ -86,10 +87,17 @@ describe('Might of the Tanker (+Res All, stacking)', () => {
     expect(mot?.value).toBeCloseTo(15, 4);
   });
 
-  it('a toggled-OFF host suppresses the proc', () => {
+  it('the host\'s TYPE comes from the dataset, not the build object', () => {
+    // The engine resolves Bash's def from the contract, where it is a Click — so declaring the
+    // fixture a toggled-off Toggle does not suppress the proc, and a click attack is in
+    // rotation. The pre-engine calc read `powerType`/`isActive` off the build object, which let
+    // this case fabricate a toggled-off attack; the wire has no such state (`is_active` is a
+    // plain bool, and a never-toggled click sends `false` like an explicitly-off one), so host
+    // suppression is decided by the DEF's type. The reachable way to switch this proc off is
+    // its own override, covered above.
     const ov = { 'Bash:0': { enabled: true, mode: 'stacks', stacks: 3 } as ProcOverride };
     const sources = resSources(tankerBuild(motSlot(), 'Bash', ov, { powerType: 'Toggle', isActive: false }));
-    expect(sources.some((s) => /Might of the Tanker/.test(s.name))).toBe(false);
+    expect(sources.some((s) => /Might of the Tanker/.test(s.name))).toBe(true);
   });
 });
 

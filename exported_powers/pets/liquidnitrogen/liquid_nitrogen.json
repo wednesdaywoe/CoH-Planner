@@ -42,6 +42,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     112,
     128
@@ -64,12 +65,12 @@
             "RunningSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Slow",
           "scale": 0.9,
-          "duration": "0.50 seconds",
+          "duration": "0.5 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -90,7 +91,7 @@
             "JumpHeight"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -120,7 +121,7 @@
             "Null"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -164,7 +165,7 @@
             "RunningSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Maximum",
           "target": "AnyAffected",
           "table": "Melee_SpeedRunning",
@@ -207,12 +208,12 @@
             "Knockback"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 0.5,
-          "duration": "4.50 seconds",
+          "duration": "4.5 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -226,6 +227,13 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You knock {PlayerDest} off their feet with your {PowerName}!",
+            "display_victim_hit": "{PlayerSource} knocks you off your feet with their {PowerName}!",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags": [
             "NearGround",
             "IgnoreStrength",
@@ -238,7 +246,7 @@
         {
           "chance": 1.0,
           "ppm": 0.0,
-          "delay": 0.10000000149011612,
+          "delay": 0.1,
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "entref target> entref source> eq ! cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&",
@@ -252,12 +260,12 @@
                 "Cold_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Melee_Damage",
               "scale": 0.2,
-              "duration": "4.50 seconds",
+              "duration": "4.5 seconds",
               "magnitude": 1.0,
               "delay": 0.0,
               "duration_expression": "",
@@ -271,20 +279,22 @@
               "stack": "Ignore",
               "stack_limit": 2,
               "stack_key": null,
-              "suppress_events": [
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Cold damage over time.",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Cold damage over time.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "When target falls down"
+              },
+              "required_events": [
                 {
-                  "event": "Event_1056964608",
-                  "event_id": 1056964608,
-                  "duration": 0.0,
-                  "flag": 0
-                },
-                {
-                  "event": "Event_31",
-                  "event_id": 31,
-                  "duration": 0.0,
-                  "flag": 3120562176
+                  "event": "Knocked",
+                  "event_id": 33,
+                  "duration": 0.5,
+                  "always": 0
                 }
-              ]
+              ],
+              "flags_raw": 1280
             }
           ],
           "child_effects": [
@@ -307,12 +317,12 @@
                     "Cold_Dmg"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Absolute",
                   "target": "AnyAffected",
                   "table": "Melee_InherentDamage",
                   "scale": 0.2,
-                  "duration": "4.50 seconds",
+                  "duration": "4.5 seconds",
                   "magnitude": 1.0,
                   "delay": 0.0,
                   "duration_expression": "",
@@ -326,20 +336,22 @@
                   "stack": "Ignore",
                   "stack_limit": 2,
                   "stack_key": null,
-                  "suppress_events": [
+                  "messages": {
+                    "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Cold damage over time (CONTAINMENT).",
+                    "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Cold damage over time (CONTAINMENT).",
+                    "display_float": "Containment",
+                    "display_attrib_defense_float": null,
+                    "display_info": "When target falls down"
+                  },
+                  "required_events": [
                     {
-                      "event": "Event_1056964608",
-                      "event_id": 1056964608,
-                      "duration": 0.0,
-                      "flag": 0
-                    },
-                    {
-                      "event": "Event_939528670",
-                      "event_id": 939528670,
-                      "duration": 5.942906787201549e-42,
-                      "flag": 3120562176
+                      "event": "Knocked",
+                      "event_id": 33,
+                      "duration": 0.5,
+                      "always": 0
                     }
-                  ]
+                  ],
+                  "flags_raw": 1280
                 }
               ]
             }
@@ -364,7 +376,7 @@
             "Knockback"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -383,12 +395,19 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You knock {PlayerDest} off their feet with your {PowerName}!",
+            "display_victim_hit": "{PlayerSource} knocks you off your feet with their {PowerName}!",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "suppress_events": [
             {
-              "event": "MissionObjectInteract",
+              "event": "Knocked",
               "event_id": 33,
               "duration": 10.0,
-              "flag": 0
+              "always": 0
             }
           ],
           "flags": [
@@ -402,7 +421,7 @@
         {
           "chance": 1.0,
           "ppm": 0.0,
-          "delay": 0.10000000149011612,
+          "delay": 0.1,
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "entref target> entref source> eq ! cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&",
@@ -416,7 +435,7 @@
                 "Cold_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Melee_PvPDamage",
@@ -435,20 +454,22 @@
               "stack": "Ignore",
               "stack_limit": 2,
               "stack_key": null,
-              "suppress_events": [
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Cold damage over time.",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Cold damage over time.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "When target falls down"
+              },
+              "required_events": [
                 {
-                  "event": "Event_1056964608",
-                  "event_id": 1056964608,
-                  "duration": 0.0,
-                  "flag": 0
-                },
-                {
-                  "event": "Event_31",
-                  "event_id": 31,
-                  "duration": 0.0,
-                  "flag": 3120562176
+                  "event": "Knocked",
+                  "event_id": 33,
+                  "duration": 0.5,
+                  "always": 0
                 }
-              ]
+              ],
+              "flags_raw": 1280
             }
           ],
           "child_effects": [
@@ -471,7 +492,7 @@
                     "Cold_Dmg"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Absolute",
                   "target": "AnyAffected",
                   "table": "Melee_PvPDamage",
@@ -490,20 +511,22 @@
                   "stack": "Ignore",
                   "stack_limit": 2,
                   "stack_key": null,
-                  "suppress_events": [
+                  "messages": {
+                    "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Cold damage over time (CONTAINMENT).",
+                    "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Cold damage over time (CONTAINMENT).",
+                    "display_float": "Containment",
+                    "display_attrib_defense_float": null,
+                    "display_info": "When target falls down"
+                  },
+                  "required_events": [
                     {
-                      "event": "Event_1056964608",
-                      "event_id": 1056964608,
-                      "duration": 0.0,
-                      "flag": 0
-                    },
-                    {
-                      "event": "Event_939528670",
-                      "event_id": 939528670,
-                      "duration": 5.942906787201549e-42,
-                      "flag": 3120562176
+                      "event": "Knocked",
+                      "event_id": 33,
+                      "duration": 0.5,
+                      "always": 0
                     }
-                  ]
+                  ],
+                  "flags_raw": 1280
                 }
               ]
             }

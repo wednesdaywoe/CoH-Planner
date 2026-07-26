@@ -36,7 +36,6 @@ export const SummonSpiderlings: Power = {
   "allowedSetCategories": [
     "Pet Damage",
     "Recharge Intensive Pets",
-    "Soldiers of Arachnos Archetype Sets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
@@ -49,8 +48,14 @@ export const SummonSpiderlings: Power = {
     }
   },
   "atoms": [
+    ["EntCreate",null,1,1,240,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
     ["EntCreate",null,1,1,240,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["EntCreate",null,1,1,240,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["EntCreate",null,1,1,240,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["EntCreate",null,1,1,240,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["EntCreate",null,1,1,240,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
+    ["EntCreate",null,1,1,240,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true]
+  ],
+  "damageTypes": [
+    "Lethal"
   ]
 };

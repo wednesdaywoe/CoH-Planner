@@ -16,7 +16,7 @@ export const ShiftingTides: Power = {
   "shortHelp": "Toggle: Ranged (Targeted AoE), Team +DMG, +ToHit, +Recharge, Special Damage",
   "icon": "marineaffinity_shiftingtides.png",
   "powerType": "Toggle",
-  "targetType": "Ally",
+  "targetType": "Any",
   "effectArea": "AoE",
   "toggleIgnoreMez": [
     "hold",

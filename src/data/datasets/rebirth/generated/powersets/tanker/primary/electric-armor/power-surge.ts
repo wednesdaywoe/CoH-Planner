@@ -68,6 +68,7 @@ export const PowerSurge: Power = {
       "repel": 90,
       "resistance": 90,
       "sleep": 90,
+      "stealth": 89,
       "stun": 90
     },
     "effectDuration": 90,
@@ -154,6 +155,12 @@ export const PowerSurge: Power = {
       "scale": 50,
       "table": "Melee_Res_Boolean"
     },
+    "stealth": {
+      "translucency": {
+        "scale": 0,
+        "table": "Melee_Ones"
+      }
+    },
     "stun": {
       "mag": 1,
       "scale": 50,
@@ -188,7 +195,7 @@ export const PowerSurge: Power = {
     ["MezResist","Teleport",1,1,90,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Recovery",null,4,1,90,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Endurance",null,4,1,90,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["EntCreate",null,0,1,89,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Stealth","Translucency",0,1,89,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["EntCreate",null,-1,1,4,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["MezResist","Stunned",5,1,90,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
     ["MezResist","Held",5,1,90,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],

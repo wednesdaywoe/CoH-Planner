@@ -106,5 +106,59 @@ export const GraviticEmanation: Power = {
     ["Accuracy",null,2,1,2,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Stunned",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
+  "modeVariants": {
+    "Warshade_Blaster_Mode": {
+      "internalName": "Dark_Nova_Emanation",
+      "stats": {
+        "accuracy": 1,
+        "range": 60,
+        "radius": 60,
+        "arc": 0.7853981852531433,
+        "recharge": 12,
+        "endurance": 11.856,
+        "castTime": 1.5,
+        "maxTargets": 10
+      },
+      "damage": {
+        "type": "Negative",
+        "scale": 0.99,
+        "table": "Ranged_SSDamage"
+      },
+      "effects": {
+        "buffDuration": 8,
+        "durations": {
+          "rechargeDebuff": 8,
+          "slow": 8
+        },
+        "rechargeDebuff": {
+          "scale": 0.2,
+          "table": "Ranged_Slow"
+        },
+        "slow": {
+          "flySpeed": {
+            "scale": 0.2,
+            "table": "Ranged_Slow"
+          },
+          "jumpHeight": {
+            "scale": 0.2,
+            "table": "Ranged_Slow"
+          },
+          "jumpSpeed": {
+            "scale": 0.2,
+            "table": "Ranged_Slow"
+          },
+          "runSpeed": {
+            "scale": 0.2,
+            "table": "Ranged_Slow"
+          }
+        }
+      },
+      "shortHelp": "Ranged (Cone), Moderate DMG(Negative), Foe -Recharge, -SPD, Knockback",
+      "description": "Sends bolts of Nictus dark energy to multiple targets at once within a cone area in front of the caster.  Deals moderate negative energy damage to each affected foe and reduces their attack rate and movement speed. This power is only available while in Dark Nova Form. Damage: Moderate. Recharge: Slow",
+      "effectArea": "Cone",
+      "targetType": "Foe",
+      "powerType": "Click"
+    }
+  },
   "requires": "Warshade_Offensive.Umbral_Blast.Dark_Nova Warshade_Offensive.Umbral_Blast.Dark_Nova_Emanation ! && Inherent.Inherent.Dark_Nova_Emanation ! &&"
 };

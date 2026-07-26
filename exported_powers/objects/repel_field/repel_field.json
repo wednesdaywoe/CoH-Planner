@@ -22,7 +22,7 @@
   "activate_period": 3.0,
   "endurance_cost": 0.0,
   "interrupt_time": 0.0,
-  "target_type": "DeadMyPet",
+  "target_type": "Teleport",
   "target_type_secondary": "None",
   "targets_autohit": [
     "Foe"
@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -57,7 +58,7 @@
             "Translucency"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -86,12 +87,12 @@
             "Held"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 10000.0,
-          "duration": "1.50 seconds",
+          "duration": "1.5 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -105,6 +106,15 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [
+              387,
+              691
+            ],
+            "continuing_fx": "POWERS/ILLUSIONS/ILLUSINVISIBILITYCONTINUING.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods",
@@ -117,14 +127,14 @@
             "Teleport"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 99999.0,
           "duration": "0 seconds",
           "magnitude": 1.0,
-          "delay": 2.6700000762939453,
+          "delay": 2.67,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -136,6 +146,10 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "destination": "85.RiktiTeleport4",
+            "type": "Teleport"
+          },
           "flags": [
             "IgnoreResistance"
           ],
@@ -160,14 +174,14 @@
             "Teleport"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 99999.0,
           "duration": "0 seconds",
           "magnitude": 1.0,
-          "delay": 1.1699999570846558,
+          "delay": 1.17,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -179,6 +193,10 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "destination": "85.RiktiTeleport1",
+            "type": "Teleport"
+          },
           "flags": [
             "IgnoreResistance"
           ],
@@ -189,14 +207,14 @@
             "Teleport"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 99999.0,
           "duration": "0 seconds",
           "magnitude": 1.0,
-          "delay": 1.6699999570846558,
+          "delay": 1.67,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -208,6 +226,10 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "destination": "85.RiktiTeleport2",
+            "type": "Teleport"
+          },
           "flags": [
             "IgnoreResistance"
           ],
@@ -218,14 +240,14 @@
             "Teleport"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 99999.0,
           "duration": "0 seconds",
           "magnitude": 1.0,
-          "delay": 2.1700000762939453,
+          "delay": 2.17,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -237,6 +259,10 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "destination": "85.RiktiTeleport3",
+            "type": "Teleport"
+          },
           "flags": [
             "IgnoreResistance"
           ],

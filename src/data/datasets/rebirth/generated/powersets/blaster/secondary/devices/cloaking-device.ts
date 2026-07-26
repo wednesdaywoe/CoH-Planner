@@ -112,6 +112,10 @@ export const CloakingDevice: Power = {
       "stealthPvP": {
         "scale": 389,
         "table": "Melee_Ones"
+      },
+      "translucency": {
+        "scale": 0.3,
+        "table": "Melee_Ones"
       }
     }
   },
@@ -142,7 +146,7 @@ export const CloakingDevice: Power = {
     ["Regeneration",null,1.125,1,0.75,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
     ["Regeneration",null,1.125,1,0.75,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["Recovery",null,0.5,1,0.75,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
-    ["EntCreate",null,0.1,1,0.75,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
-    ["EntCreate",null,0.3,1,0.75,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1]
+    ["Stealth","Translucency",0.1,1,0.75,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Stealth","Translucency",0.3,1,0.75,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1]
   ]
 };

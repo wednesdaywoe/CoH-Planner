@@ -42,12 +42,48 @@ export const Bonfire: Power = {
   "effects": {
     "summon": {
       "copyBoosts": true,
+      "displayName": "Bonfire",
       "duration": 45,
-      "entity": "Bonfire",
-      "isPseudoPet": false,
+      "isPseudoPet": true,
       "powers": [
         "Pets.Bonfire.Bonfire"
-      ]
+      ],
+      "resolvedEntities": [
+        {
+          "displayName": "Bonfire",
+          "duration": 45,
+          "copyCreatorMods": true,
+          "abilities": [
+            {
+              "name": "Bonfire",
+              "displayName": "Bonfire",
+              "type": "Auto",
+              "damage": [
+                {
+                  "damageType": "Fire",
+                  "scale": 0.055,
+                  "table": "Ranged_Damage"
+                }
+              ],
+              "effects": [
+                {
+                  "type": "Knockback",
+                  "magnitude": 1,
+                  "scale": 3,
+                  "table": "Melee_Knockback"
+                }
+              ],
+              "recharge": 0,
+              "castTime": 0,
+              "activatePeriod": 1,
+              "effectArea": "Sphere",
+              "radius": 25,
+              "maxTargets": 16
+            }
+          ]
+        }
+      ],
+      "entity": "PL_StaticObject"
     }
   },
   "atoms": [

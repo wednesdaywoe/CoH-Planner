@@ -36,13 +36,99 @@ export const IncreaseDensity: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
+  "effects": {
+    "buffDuration": 240,
+    "durations": {
+      "hold": 240,
+      "immobilize": 240,
+      "mezResistance": 240,
+      "resistance": 240,
+      "slow": 240,
+      "specialBuff": 240,
+      "stun": 240
+    },
+    "effectDuration": 240,
+    "hold": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Ranged_Res_Boolean"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Ranged_Res_Boolean"
+    },
+    "mezResistance": {
+      "teleport": {
+        "scale": 1,
+        "table": "Ranged_Ones"
+      }
+    },
+    "resistance": {
+      "energy": {
+        "scale": 1.25,
+        "table": "Ranged_Res_Dmg"
+      },
+      "smashing": {
+        "scale": 1.25,
+        "table": "Ranged_Res_Dmg"
+      }
+    },
+    "slow": {
+      "flySpeed": {
+        "scale": 0.05,
+        "table": "Ranged_Slow",
+        "toWho": "Self"
+      },
+      "jumpHeight": {
+        "scale": 0.1,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.05,
+        "table": "Ranged_Slow",
+        "toWho": "Self"
+      },
+      "runSpeed": {
+        "scale": 0.05,
+        "table": "Ranged_Slow",
+        "toWho": "Self"
+      }
+    },
+    "specialBuff": {
+      "movement": {
+        "scale": 0.05,
+        "table": "Ranged_Slow"
+      }
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Ranged_Res_Boolean"
+    }
+  },
   "atoms": [
-    ["Unmapped",null,2.5,1,240,"Ranged_Res_Dmg","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,-30,1,240,"Ranged_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["Unmapped",null,-10,1,240,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.1,1,240,"Ranged_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"],
-    ["Unmapped",null,1.25,1,240,"Ranged_Res_Dmg","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.05,1,240,"Ranged_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"],
-    ["Unmapped",null,3,1,240,"Ranged_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
+    ["Resistance","Smashing",2.5,1,240,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Energy",2.5,1,240,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Mez","Stunned",-30,1,240,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Held",-30,1,240,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Immobilized",-30,1,240,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Knockback",-10,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["Mez","Knockup",-10,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["Mez","Repel",-10,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["MezResist","Teleport",1,1,240,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["Movement","JumpHeight",0.1,1,240,"Ranged_Slow","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"],
+    ["Movement","Jump",0.1,1,240,"Ranged_Slow","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"],
+    ["Movement","Fly",0.1,1,240,"Ranged_Slow","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"],
+    ["Movement","Run",0.1,1,240,"Ranged_Slow","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"],
+    ["Resistance","Smashing",1.25,1,240,"Ranged_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Energy",1.25,1,240,"Ranged_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Movement","JumpHeight",0.05,1,240,"Ranged_Slow","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"],
+    ["Movement","Jump",0.05,1,240,"Ranged_Slow","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"],
+    ["Movement","Fly",0.05,1,240,"Ranged_Slow","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"],
+    ["Movement","Run",0.05,1,240,"Ranged_Slow","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"],
+    ["MezResist","Stunned",3,1,240,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
+    ["MezResist","Held",3,1,240,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
+    ["MezResist","Immobilized",3,1,240,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
   ]
 };

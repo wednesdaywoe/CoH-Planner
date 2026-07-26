@@ -45,6 +45,14 @@ export const ChargedArmor: Power = {
       "resistance": 0.75
     },
     "resistance": {
+      "energy": {
+        "scale": 3.5,
+        "table": "Melee_Res_DMG"
+      },
+      "lethal": {
+        "scale": 3.5,
+        "table": "Melee_Res_DMG"
+      },
       "smashing": {
         "scale": 3.5,
         "table": "Melee_Res_DMG"
@@ -52,6 +60,8 @@ export const ChargedArmor: Power = {
     }
   },
   "atoms": [
-    ["Resistance","Smashing",3.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Resistance","Smashing",3.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Lethal",3.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Energy",3.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true]
   ]
 };

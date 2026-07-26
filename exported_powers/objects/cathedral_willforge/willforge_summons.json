@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -57,14 +58,14 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": -1.0,
           "duration": "9999 seconds",
           "magnitude": 1.0,
-          "delay": 3.6600000858306885,
+          "delay": 3.66,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -77,30 +78,31 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "StormElementals_Cathedral_Storm_Elemental_Lt",
-            "priority_list": "PL_FightRangedToDeath"
+            "priority_list": "PL_FightRangedToDeath",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "CopyBoosts"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": -1.0,
           "duration": "9999 seconds",
           "magnitude": 1.0,
-          "delay": 2.6600000858306885,
+          "delay": 2.66,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -113,30 +115,31 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "StormElementals_Cathedral_Storm_Elemental_Lt",
-            "priority_list": "PL_FightRangedToDeath"
+            "priority_list": "PL_FightRangedToDeath",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "CopyBoosts"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": -1.0,
           "duration": "9999 seconds",
           "magnitude": 1.0,
-          "delay": 4.329999923706055,
+          "delay": 4.33,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -149,23 +152,24 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "StormElementals_Cathedral_Storm_Elemental_Lt",
-            "priority_list": "PL_FightRangedToDeath"
+            "priority_list": "PL_FightRangedToDeath",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "CopyBoosts"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -185,23 +189,24 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "StormElementals_Cathedral_Storm_Elemental_Boss",
-            "priority_list": "PL_FightRangedToDeath"
+            "priority_list": "PL_FightRangedToDeath",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "CopyBoosts"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -221,23 +226,24 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "StormElementals_Cathedral_Storm_Elemental",
-            "priority_list": "PL_FightRangedToDeath"
+            "priority_list": "PL_FightRangedToDeath",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "CopyBoosts"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -257,30 +263,31 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Rularuu_Cathedral_Wisps_Lt",
-            "priority_list": "PL_FightRangedToDeath"
+            "priority_list": "PL_FightRangedToDeath",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "CopyBoosts"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": -1.0,
           "duration": "9999 seconds",
           "magnitude": 1.0,
-          "delay": 1.659999966621399,
+          "delay": 1.66,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -293,23 +300,24 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Rularuu_Cathedral_Wisps_Boss",
-            "priority_list": "PL_FightRangedToDeath"
+            "priority_list": "PL_FightRangedToDeath",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "CopyBoosts"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -329,30 +337,31 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Rularuu_Cathedral_Wisp",
-            "priority_list": "PL_FightRangedToDeath"
+            "priority_list": "PL_FightRangedToDeath",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "CopyBoosts"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": -1.0,
           "duration": "9999 seconds",
           "magnitude": 1.0,
-          "delay": 5.659999847412109,
+          "delay": 5.66,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -365,30 +374,31 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Rularuu_Cathedral_Sentry_Lt",
-            "priority_list": "PL_FightRangedToDeath"
+            "priority_list": "PL_FightRangedToDeath",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "CopyBoosts"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": -1.0,
           "duration": "9999 seconds",
           "magnitude": 1.0,
-          "delay": 2.3299999237060547,
+          "delay": 2.33,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -401,30 +411,31 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Rularuu_Cathedral_Sentry_Boss",
-            "priority_list": "PL_FightRangedToDeath"
+            "priority_list": "PL_FightRangedToDeath",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "CopyBoosts"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": -1.0,
           "duration": "9999 seconds",
           "magnitude": 1.0,
-          "delay": 0.6600000262260437,
+          "delay": 0.66,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -437,16 +448,17 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Rularuu_Cathedral_Sentry",
-            "priority_list": "PL_FightRangedToDeath"
+            "priority_list": "PL_FightRangedToDeath",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "CopyBoosts"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 4
         }
       ]
     }

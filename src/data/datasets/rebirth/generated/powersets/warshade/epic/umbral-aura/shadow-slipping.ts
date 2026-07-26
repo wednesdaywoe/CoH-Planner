@@ -28,18 +28,32 @@ export const ShadowSlipping: Power = {
   "allowedEnhancements": [],
   "maxSlots": 0,
   "effects": {
+    "buffDuration": 5,
+    "durations": {
+      "stealth": 5
+    },
+    "stealth": {
+      "translucency": {
+        "scale": 0,
+        "table": "Melee_Ones"
+      }
+    },
     "teleport": {
       "scale": 1,
       "table": "Melee_Ones"
     }
   },
   "atoms": [
-    ["EntCreate",null,1,8,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true],
-    ["EntCreate",null,1,9,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true],
-    ["EntCreate",null,0,1,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Meta",null,1,8,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true],
+    ["Meta",null,1,9,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true],
+    ["Stealth","Translucency",0,1,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["Mez","Teleport",1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"allyID source> hero eq praetorianprogress source> normal eq praetorianprogress source> earth eq || && praetoria source.MapTeamArea> eq ! &&"],
     ["Mez","Teleport",1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"allyID source> villain eq praetorianprogress source> normal eq praetorianprogress source> earth eq || && praetoria source.MapTeamArea> eq ! &&"],
     ["Mez","Teleport",1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"praetorianprogress source> praetoria eq praetoria source.MapTeamArea> eq ||",true]
   ],
-  "requires": "Warshade_Defensive.Umbral_Aura.Shadow_Slip"
+  "requires": "Warshade_Defensive.Umbral_Aura.Shadow_Slip",
+  "setsModes": [
+    "Warshade_Human_Mode",
+    "Warshade_Human_Mode2"
+  ]
 };

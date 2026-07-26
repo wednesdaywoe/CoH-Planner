@@ -56,6 +56,12 @@ export const SynapticOverload: Power = {
     "recoveryDebuff": {
       "scale": 1,
       "table": "Ranged_Ones"
+    },
+    "summon": {
+      "duration": 2.1,
+      "entity": "Pets_Chain_Confuse_Controller_Jump1",
+      "entityCount": 2,
+      "isPseudoPet": false
     }
   },
   "atoms": [
@@ -64,7 +70,7 @@ export const SynapticOverload: Power = {
     ["Mez","Confused",10,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq"],
     ["EntCreate",null,-1,1,2.1,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["EntCreate",null,-1,1,4.1,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["EntCreate",null,1,62,8,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,4.25,1,null,true],
+    ["Meta",null,1,62,8,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,4.25,1,null,true],
     ["Recovery",null,-1,1,8,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Endurance",null,-2,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Confused",4,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
@@ -75,5 +81,8 @@ export const SynapticOverload: Power = {
       "chance": 0.20000000298023224,
       "label": "Confuse"
     }
+  ],
+  "setsModes": [
+    "Chain_Confuse_Mode"
   ]
 };

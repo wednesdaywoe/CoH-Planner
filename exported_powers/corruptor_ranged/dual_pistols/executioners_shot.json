@@ -56,6 +56,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     104,
     120
@@ -121,7 +122,7 @@
                         "Lethal_Dmg"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Absolute",
                       "target": "AnyAffected",
                       "table": "Ranged_Damage",
@@ -140,6 +141,13 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Lethal damage.",
+                        "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Lethal damage.",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
                       "flags_raw": 1280
                     },
                     {
@@ -147,7 +155,7 @@
                         "Base_Defense"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Current",
                       "target": "AnyAffected",
                       "table": "Ranged_Debuff_Def",
@@ -166,6 +174,12 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "fx": {
+                        "continuing_bits": [],
+                        "continuing_fx": "GENERICCONTINUING/DEBUFFDEFCONTINUING.FX",
+                        "conditional_bits": [],
+                        "conditional_fx": null
+                      },
                       "flags_raw": 1280
                     }
                   ]
@@ -189,7 +203,7 @@
                         "Knockback"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Current",
                       "target": "AnyAffected",
                       "table": "Ranged_Knockback",
@@ -208,6 +222,13 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You knock {PlayerDest} off their feet with your {PowerName}!",
+                        "display_victim_hit": "{PlayerSource} knocks you off your feet with their {PowerName}!",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
                       "flags_raw": 1280
                     }
                   ]
@@ -231,7 +252,7 @@
                         "Lethal_Dmg"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Absolute",
                       "target": "AnyAffected",
                       "table": "Ranged_InherentDamage",
@@ -250,6 +271,13 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Lethal damage (SCOURGE).",
+                        "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Lethal damage (SCOURGE).",
+                        "display_float": "Scourge",
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
                       "flags_raw": 1280
                     }
                   ]
@@ -290,7 +318,7 @@
                         "Fire_Dmg"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Absolute",
                       "target": "AnyAffected",
                       "table": "Ranged_Damage",
@@ -309,6 +337,13 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Fire damage.",
+                        "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Fire damage.",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
                       "flags_raw": 1280
                     }
                   ]
@@ -332,12 +367,12 @@
                         "Fire_Dmg"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Absolute",
                       "target": "AnyAffected",
                       "table": "Ranged_Damage",
                       "scale": 0.169,
-                      "duration": "3.10 seconds",
+                      "duration": "3.1 seconds",
                       "magnitude": 1.0,
                       "delay": 0.5,
                       "duration_expression": "",
@@ -351,6 +386,19 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Fire damage over time.",
+                        "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Fire damage over time.",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
+                      "fx": {
+                        "continuing_bits": [],
+                        "continuing_fx": "POWERS/FIRECONTROL/CINDERSHIT.FX",
+                        "conditional_bits": [],
+                        "conditional_fx": null
+                      },
                       "flags": [
                         "CancelOnMiss"
                       ],
@@ -377,7 +425,7 @@
                         "Fire_Dmg"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Absolute",
                       "target": "AnyAffected",
                       "table": "Ranged_InherentDamage",
@@ -396,6 +444,13 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Fire damage (SCOURGE).",
+                        "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Fire damage (SCOURGE).",
+                        "display_float": "Scourge",
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
                       "flags_raw": 1280
                     }
                   ]
@@ -436,7 +491,7 @@
                         "Cold_Dmg"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Absolute",
                       "target": "AnyAffected",
                       "table": "Ranged_Damage",
@@ -455,6 +510,13 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Cold damage.",
+                        "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Cold damage.",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
                       "flags_raw": 1280
                     },
                     {
@@ -464,7 +526,7 @@
                         "JumpingSpeed"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Current",
                       "target": "AnyAffected",
                       "table": "Ranged_Slow",
@@ -491,7 +553,7 @@
                         "RechargeTime"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Strength",
                       "target": "AnyAffected",
                       "table": "Ranged_Slow",
@@ -536,7 +598,7 @@
                         "Cold_Dmg"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Absolute",
                       "target": "AnyAffected",
                       "table": "Ranged_InherentDamage",
@@ -555,6 +617,13 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Cold damage (SCOURGE).",
+                        "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Cold damage (SCOURGE).",
+                        "display_float": "Scourge",
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
                       "flags_raw": 1280
                     }
                   ]
@@ -595,7 +664,7 @@
                         "Toxic_Dmg"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Absolute",
                       "target": "AnyAffected",
                       "table": "Ranged_Damage",
@@ -614,6 +683,13 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Toxic damage.",
+                        "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Toxic damage.",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
                       "flags_raw": 1280
                     },
                     {
@@ -628,7 +704,7 @@
                         "Toxic_Dmg"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Strength",
                       "target": "AnyAffected",
                       "table": "Ranged_Debuff_Dam",
@@ -647,6 +723,12 @@
                       "stack": "Replace",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "fx": {
+                        "continuing_bits": [],
+                        "continuing_fx": "GENERICCONTINUING/DEBUFFDAMAGECONTINUING.FX",
+                        "conditional_bits": [],
+                        "conditional_fx": null
+                      },
                       "flags": [
                         "IgnoreStrength"
                       ],
@@ -673,7 +755,7 @@
                         "Toxic_Dmg"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Absolute",
                       "target": "AnyAffected",
                       "table": "Ranged_InherentDamage",
@@ -692,6 +774,13 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Toxic damage (SCOURGE).",
+                        "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Toxic damage (SCOURGE).",
+                        "display_float": "Scourge",
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
                       "flags_raw": 1280
                     }
                   ]
@@ -747,7 +836,7 @@
                         "Lethal_Dmg"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Absolute",
                       "target": "AnyAffected",
                       "table": "Ranged_PvPDamage",
@@ -766,6 +855,13 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Lethal damage.",
+                        "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Lethal damage.",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
                       "flags_raw": 1280
                     },
                     {
@@ -773,7 +869,7 @@
                         "Base_Defense"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Current",
                       "target": "AnyAffected",
                       "table": "Ranged_Debuff_Def",
@@ -792,6 +888,12 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "fx": {
+                        "continuing_bits": [],
+                        "continuing_fx": "GENERICCONTINUING/DEBUFFDEFCONTINUING.FX",
+                        "conditional_bits": [],
+                        "conditional_fx": null
+                      },
                       "flags_raw": 1280
                     }
                   ]
@@ -815,7 +917,7 @@
                         "Knockback"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Current",
                       "target": "AnyAffected",
                       "table": "Ranged_Knockback",
@@ -834,12 +936,19 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You knock {PlayerDest} off their feet with your {PowerName}!",
+                        "display_victim_hit": "{PlayerSource} knocks you off your feet with their {PowerName}!",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
                       "suppress_events": [
                         {
-                          "event": "MissionObjectInteract",
+                          "event": "Knocked",
                           "event_id": 33,
                           "duration": 10.0,
-                          "flag": 0
+                          "always": 0
                         }
                       ],
                       "flags_raw": 1280
@@ -865,7 +974,7 @@
                         "Lethal_Dmg"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Absolute",
                       "target": "AnyAffected",
                       "table": "Ranged_PvPDamage",
@@ -884,6 +993,13 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Lethal damage (SCOURGE).",
+                        "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Lethal damage (SCOURGE).",
+                        "display_float": "Scourge",
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
                       "flags_raw": 1280
                     }
                   ]
@@ -924,7 +1040,7 @@
                         "Fire_Dmg"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Absolute",
                       "target": "AnyAffected",
                       "table": "Ranged_PvPDamage",
@@ -943,6 +1059,13 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Fire damage.",
+                        "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Fire damage.",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
                       "flags_raw": 1280
                     }
                   ]
@@ -966,12 +1089,12 @@
                         "Fire_Dmg"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Absolute",
                       "target": "AnyAffected",
                       "table": "Ranged_PvPDamage",
                       "scale": 0.1375,
-                      "duration": "3.10 seconds",
+                      "duration": "3.1 seconds",
                       "magnitude": 1.0,
                       "delay": 0.5,
                       "duration_expression": "",
@@ -985,6 +1108,19 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Fire damage over time.",
+                        "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Fire damage over time.",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
+                      "fx": {
+                        "continuing_bits": [],
+                        "continuing_fx": "POWERS/FIRECONTROL/CINDERSHIT.FX",
+                        "conditional_bits": [],
+                        "conditional_fx": null
+                      },
                       "flags": [
                         "CancelOnMiss"
                       ],
@@ -1011,7 +1147,7 @@
                         "Fire_Dmg"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Absolute",
                       "target": "AnyAffected",
                       "table": "Ranged_PvPDamage",
@@ -1030,6 +1166,13 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Fire damage (SCOURGE).",
+                        "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Fire damage (SCOURGE).",
+                        "display_float": "Scourge",
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
                       "flags_raw": 1280
                     }
                   ]
@@ -1070,7 +1213,7 @@
                         "Cold_Dmg"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Absolute",
                       "target": "AnyAffected",
                       "table": "Ranged_PvPDamage",
@@ -1089,6 +1232,13 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Cold damage.",
+                        "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Cold damage.",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
                       "flags_raw": 1280
                     },
                     {
@@ -1098,7 +1248,7 @@
                         "JumpingSpeed"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Current",
                       "target": "AnyAffected",
                       "table": "Ranged_Slow",
@@ -1125,7 +1275,7 @@
                         "RechargeTime"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Strength",
                       "target": "AnyAffected",
                       "table": "Ranged_Slow",
@@ -1170,7 +1320,7 @@
                         "Cold_Dmg"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Absolute",
                       "target": "AnyAffected",
                       "table": "Ranged_PvPDamage",
@@ -1189,6 +1339,13 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Cold damage (SCOURGE).",
+                        "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Cold damage (SCOURGE).",
+                        "display_float": "Scourge",
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
                       "flags_raw": 1280
                     }
                   ]
@@ -1229,7 +1386,7 @@
                         "Toxic_Dmg"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Absolute",
                       "target": "AnyAffected",
                       "table": "Ranged_PvPDamage",
@@ -1248,6 +1405,13 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Toxic damage.",
+                        "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Toxic damage.",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
                       "flags_raw": 1280
                     },
                     {
@@ -1262,7 +1426,7 @@
                         "Toxic_Dmg"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Strength",
                       "target": "AnyAffected",
                       "table": "Ranged_Debuff_Dam",
@@ -1281,6 +1445,12 @@
                       "stack": "Replace",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "fx": {
+                        "continuing_bits": [],
+                        "continuing_fx": "GENERICCONTINUING/DEBUFFDAMAGECONTINUING.FX",
+                        "conditional_bits": [],
+                        "conditional_fx": null
+                      },
                       "flags": [
                         "IgnoreStrength"
                       ],
@@ -1307,7 +1477,7 @@
                         "Toxic_Dmg"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Absolute",
                       "target": "AnyAffected",
                       "table": "Ranged_PvPDamage",
@@ -1326,6 +1496,13 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Toxic damage (SCOURGE).",
+                        "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Toxic damage (SCOURGE).",
+                        "display_float": "Scourge",
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
                       "flags_raw": 1280
                     }
                   ]

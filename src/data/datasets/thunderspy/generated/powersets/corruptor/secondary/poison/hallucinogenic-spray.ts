@@ -44,6 +44,7 @@ export const HallucinogenicSpray: Power = {
   "effects": {
     "buffDuration": 20,
     "durations": {
+      "rechargeDebuff": 20,
       "slow": 20
     },
     "fear": {
@@ -51,7 +52,23 @@ export const HallucinogenicSpray: Power = {
       "scale": 15,
       "table": "Ranged_Fear"
     },
+    "rechargeDebuff": {
+      "scale": 0.65,
+      "table": "Ranged_Slow"
+    },
     "slow": {
+      "flySpeed": {
+        "scale": 0.65,
+        "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.65,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.65,
+        "table": "Ranged_Slow"
+      },
       "runSpeed": {
         "scale": 1.5,
         "table": "Ranged_SpeedRunning"
@@ -59,10 +76,14 @@ export const HallucinogenicSpray: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,0.65,1,20,"Ranged_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Mez","Terrorized",15,3,0,"Ranged_Fear","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Movement","Run",-1.5,1,20,"Ranged_SpeedRunning","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Terrorized",2,3,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["RechargeTime",null,0.65,1,20,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","JumpHeight",0.65,1,20,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","Jump",0.65,1,20,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Movement","Run",0.65,1,20,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Movement","Fly",0.65,1,20,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Mez","Terrorized",15,3,0,"Ranged_Fear","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Movement","Run",-1.5,1,20,"Ranged_SpeedRunning","Max","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Terrorized",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "requires": "Corruptor_Buff.Poison.Neurotoxic_Breath !"
 };

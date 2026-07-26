@@ -71,5 +71,53 @@ export const ShadowBolt: Power = {
     ["Movement","Run",0.2,1,4,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
     ["Movement","Fly",0.2,1,4,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
     ["RechargeTime",null,0.2,1,4,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true]
-  ]
+  ],
+  "modeVariants": {
+    "Warshade_Tanker_Mode": {
+      "internalName": "Dwarf_Shadow_Bolt",
+      "stats": {
+        "accuracy": 1,
+        "range": 20,
+        "recharge": 1.5,
+        "endurance": 3.12,
+        "castTime": 1
+      },
+      "damage": {
+        "type": "Negative",
+        "scale": 0.6,
+        "table": "Melee_InherentDamage"
+      },
+      "effects": {
+        "buffDuration": 4,
+        "durations": {
+          "rechargeDebuff": 4,
+          "slow": 4,
+          "taunt": 4
+        },
+        "rechargeDebuff": {
+          "scale": 0.3,
+          "table": "Melee_Slow"
+        },
+        "slow": {
+          "flySpeed": {
+            "scale": 0.3,
+            "table": "Melee_Slow"
+          },
+          "runSpeed": {
+            "scale": 0.3,
+            "table": "Melee_Slow"
+          }
+        },
+        "taunt": {
+          "scale": 1,
+          "table": "Melee_InherentTaunt"
+        }
+      },
+      "shortHelp": "Ranged, Minor DMG(Negative), Foe -Recharge, -SPD",
+      "description": "A very quick, but low damage attack that can lower your target's attack rate and movement speed. Damage: Minor",
+      "effectArea": "SingleTarget",
+      "targetType": "Foe",
+      "powerType": "Click"
+    }
+  }
 };

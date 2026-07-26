@@ -16,7 +16,7 @@ export const Whitecap: Power = {
   "shortHelp": "Ranged (Targeted AoE), DMG(Cold), Foe Knockdown, -Resist(All), Self Teleport, Special",
   "icon": "marineaffinity_whitecap.png",
   "powerType": "Click",
-  "targetType": "Dead Teammate",
+  "targetType": "Teleport",
   "effectArea": "Location",
   "stats": {
     "accuracy": 1,

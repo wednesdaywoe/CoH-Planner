@@ -46,6 +46,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     112,
     132
@@ -83,12 +84,12 @@
                 "Energy_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Melee_Damage",
               "scale": 0.1,
-              "duration": "15.80 seconds",
+              "duration": "15.8 seconds",
               "magnitude": 1.0,
               "delay": 0.0,
               "duration_expression": "",
@@ -102,6 +103,13 @@
               "stack": "Suppress",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage over time.",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage over time.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "On a 8ft radius around an attuned target."
+              },
               "flags_raw": 1280
             }
           ]
@@ -140,12 +148,12 @@
                     "Energy_Dmg"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Absolute",
                   "target": "AnyAffected",
                   "table": "Melee_InherentDamage",
                   "scale": 0.1,
-                  "duration": "15.80 seconds",
+                  "duration": "15.8 seconds",
                   "magnitude": 1.0,
                   "delay": 0.0,
                   "duration_expression": "",
@@ -159,6 +167,13 @@
                   "stack": "Suppress",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "messages": {
+                    "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage over time (CRITICAL).",
+                    "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage over time (CRITICAL).",
+                    "display_float": "CRITICAL",
+                    "display_attrib_defense_float": null,
+                    "display_info": "On a 8ft radius around an attuned target."
+                  },
                   "flags_raw": 1280
                 }
               ]
@@ -182,12 +197,12 @@
                     "Energy_Dmg"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Absolute",
                   "target": "AnyAffected",
                   "table": "Melee_PvPDamage",
                   "scale": 0.1,
-                  "duration": "15.80 seconds",
+                  "duration": "15.8 seconds",
                   "magnitude": 1.0,
                   "delay": 0.0,
                   "duration_expression": "",
@@ -201,19 +216,28 @@
                   "stack": "Suppress",
                   "stack_limit": 2,
                   "stack_key": null,
-                  "suppress_events": [
+                  "messages": {
+                    "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage over time (CRITICAL).",
+                    "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage over time (CRITICAL).",
+                    "display_float": "CRITICAL",
+                    "display_attrib_defense_float": null,
+                    "display_info": "On a 8ft radius around an attuned target."
+                  },
+                  "required_events": [
                     {
-                      "event": "Event_0",
-                      "event_id": 0,
+                      "event": "Held",
+                      "event_id": 25,
                       "duration": 0.0,
-                      "flag": 12
+                      "always": 0
+                    },
+                    {
+                      "event": "Sleep",
+                      "event_id": 26,
+                      "duration": 0.0,
+                      "always": 0
                     }
                   ],
-                  "flags": [
-                    "NoFloaters",
-                    "CancelOnMiss"
-                  ],
-                  "flags_raw": 5
+                  "flags_raw": 1280
                 }
               ]
             }
@@ -251,12 +275,12 @@
                     "Energy_Dmg"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Absolute",
                   "target": "AnyAffected",
                   "table": "Melee_InherentDamage",
                   "scale": 0.1,
-                  "duration": "15.80 seconds",
+                  "duration": "15.8 seconds",
                   "magnitude": 1.0,
                   "delay": 0.0,
                   "duration_expression": "",
@@ -270,6 +294,13 @@
                   "stack": "Suppress",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "messages": {
+                    "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage over time (CRITICAL).",
+                    "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage over time (CRITICAL).",
+                    "display_float": "CRITICAL",
+                    "display_attrib_defense_float": null,
+                    "display_info": "On a 8ft radius around an attuned target."
+                  },
                   "flags_raw": 1280
                 }
               ]
@@ -293,12 +324,12 @@
                     "Energy_Dmg"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Absolute",
                   "target": "AnyAffected",
                   "table": "Melee_InherentDamage",
                   "scale": 0.1,
-                  "duration": "15.80 seconds",
+                  "duration": "15.8 seconds",
                   "magnitude": 1.0,
                   "delay": 0.0,
                   "duration_expression": "",
@@ -312,6 +343,13 @@
                   "stack": "Suppress",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "messages": {
+                    "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage over time (CRITICAL).",
+                    "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage over time (CRITICAL).",
+                    "display_float": "CRITICAL",
+                    "display_attrib_defense_float": null,
+                    "display_info": "On a 8ft radius around an attuned target."
+                  },
                   "flags_raw": 1280
                 }
               ]
@@ -335,12 +373,12 @@
                     "Energy_Dmg"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Absolute",
                   "target": "AnyAffected",
                   "table": "Melee_PvPDamage",
                   "scale": 0.1,
-                  "duration": "15.80 seconds",
+                  "duration": "15.8 seconds",
                   "magnitude": 1.0,
                   "delay": 0.0,
                   "duration_expression": "",
@@ -354,6 +392,13 @@
                   "stack": "Suppress",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "messages": {
+                    "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage over time (CRITICAL).",
+                    "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage over time (CRITICAL).",
+                    "display_float": "CRITICAL",
+                    "display_attrib_defense_float": null,
+                    "display_info": "On a 8ft radius around an attuned target."
+                  },
                   "flags_raw": 1280
                 }
               ]
@@ -379,7 +424,7 @@
                 "Set_Mode"
               ],
               "type": "Constant",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Melee_Ones",
@@ -410,6 +455,10 @@
         }
       ]
     }
+  ],
+  "procs_allowed": false,
+  "strengths_disallowed": [
+    "Range"
   ],
   "modes_disallowed": [
     "Disable_All"

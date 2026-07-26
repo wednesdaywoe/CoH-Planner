@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -57,7 +58,7 @@
             "Taunt"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Melee_InherentTaunt",
@@ -82,8 +83,7 @@
             "Sleep"
           ],
           "flags": [
-            "CancelOnMiss",
-            "DeepSleep"
+            "CancelOnMiss"
           ],
           "flags_raw": 2564
         },
@@ -99,12 +99,12 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": 0.02,
-          "duration": "0.10 seconds",
+          "duration": "0.1 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -123,6 +123,7 @@
       ]
     }
   ],
+  "max_toggle_time": 30.0,
   "available_level": 0,
   "powerset": "Redirects.Stone_Armor"
 }

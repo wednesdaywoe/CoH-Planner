@@ -36,10 +36,34 @@ export const InertialReduction: Power = {
     "Universal Travel"
   ],
   "maxSlots": 6,
+  "effects": {
+    "buffDuration": 60,
+    "durations": {
+      "movement": 60
+    },
+    "movement": {
+      "jumpHeight": {
+        "scale": 1,
+        "table": "Melee_Leap"
+      },
+      "jumpSpeed": {
+        "scale": 1,
+        "table": "Melee_SpeedJumping"
+      },
+      "movementControl": {
+        "scale": 10,
+        "table": "Melee_Control"
+      },
+      "movementFriction": {
+        "scale": 10,
+        "table": "Melee_Friction"
+      }
+    }
+  },
   "atoms": [
-    ["Unmapped",null,1,1,60,"Melee_Leap","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"],
-    ["Movement","Jump",1,1,60,"Melee_SpeedJumping","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"],
-    ["Movement","Control",10,1,60,"Melee_Control","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"],
-    ["Movement","Friction",10,1,60,"Melee_Friction","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"]
+    ["Movement","JumpHeight",1,1,60,"Melee_Leap","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"],
+    ["Movement","Jump",1,1,60,"Melee_SpeedJumping","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"],
+    ["Movement","Control",10,1,60,"Melee_Control","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"],
+    ["Movement","Friction",10,1,60,"Melee_Friction","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"]
   ]
 };

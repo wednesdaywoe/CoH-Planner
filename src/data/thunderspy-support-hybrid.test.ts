@@ -76,9 +76,15 @@ describe('Thunderspy Support Hybrid generic-attrib map', () => {
   it('drops the "+Special" tokens — no heal/mez-strength keys leak into the buff', () => {
     for (const id of Object.keys(SUPPORT_TIERS)) {
       const fl = TSPY_HYBRID[id].frontLoaded as Record<string, number>;
-      // Ones (heal + non-stun mez strength) and Stunned map to nothing.
+      // Ones (heal + non-stun mez strength) and Stunned map to nothing. Defense
+      // POSITIONS and TYPES are not leaks — Rebirth's Support Genome tiers carry the
+      // same Melee/Area/Smashing/Lethal/Energy/Negative rows one per AttribMod, where
+      // tspy packs them into one multi-attrib mod that was unreachable until the
+      // parser walked every sub-record (TSPY-4). What this guards is that no heal or
+      // mez-strength key appears.
+      const allowed = /^(damage|accuracy|def[A-Z]\w*)$/;
       for (const k of Object.keys(fl)) {
-        expect(['damage', 'accuracy', 'defMelee'], `${id} unexpected key ${k}`).toContain(k);
+        expect(allowed.test(k), `${id} unexpected key ${k}`).toBe(true);
       }
     }
   });

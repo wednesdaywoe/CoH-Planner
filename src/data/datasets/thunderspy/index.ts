@@ -27,6 +27,7 @@ import {
 } from './at-tables';
 import { getBaseToHit, getCombatModifier, getDefenseSoftcap } from './purple-patch';
 import { GRANTED_POWER_GROUPS } from './granted-powers';
+import { ENHANCEMENT_CURVES } from './generated/enhancement-curves';
 import { PET_ENTITIES } from './pet-entities';
 import { MODULAR_POWERSETS } from './powersets/index';
 import { IO_SETS_RAW } from './io-sets-raw';
@@ -68,12 +69,14 @@ const dataset: Dataset = {
   },
 
   petEntities: PET_ENTITIES,
+  enhancementCurves: ENHANCEMENT_CURVES,
 
   powersetsRaw: MODULAR_POWERSETS,
   ioSetsRaw: IO_SETS_RAW,
   epicPoolsRaw: EPIC_POOLS_RAW as unknown as LegacyEpicPoolRegistry,
   incarnateEffectsRaw: {
     alpha: IncarnateGen.GENERATED_ALPHA_EFFECTS,
+    alphaEdBypass: IncarnateGen.GENERATED_ALPHA_ED_BYPASS,
     destiny: IncarnateGen.GENERATED_DESTINY_EFFECTS,
     destinyTimeline: IncarnateGen.GENERATED_DESTINY_TIMELINE,
     destinyBoosts: IncarnateGen.GENERATED_DESTINY_BOOSTS,

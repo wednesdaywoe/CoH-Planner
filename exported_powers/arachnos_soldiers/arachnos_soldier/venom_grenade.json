@@ -49,6 +49,7 @@
   "requires": "Arachnos_Soldiers.Crab_Spider_Soldier.CS_Venom_Grenade !",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     112,
     144

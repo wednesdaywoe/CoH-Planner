@@ -39,6 +39,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -58,7 +59,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Level",
@@ -78,25 +79,28 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
-            "entity_def": "PL_StaticObject",
             "display_name": "Category Five",
+            "priority_list": "PL_StaticObject",
             "redirects": [
               "Pets.ResistAll_NoFly.ResistAll",
               "Redirects.Storm_Blast.Category_Five"
-            ]
+            ],
+            "type": "EntCreate"
           },
           "flags": [
-            "CopyBoosts"
+            "CopyBoosts",
+            "CopyCreatorMods",
+            "PseudoPet"
           ],
-          "flags_raw": 1280
+          "flags_raw": 1280,
+          "flags2_raw": 44
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Level",
@@ -116,20 +120,23 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
-            "entity_def": "PL_StaticObject",
             "display_name": "Category Five Eye",
+            "priority_list": "PL_StaticObject",
             "redirects": [
               "Pets.ResistAll_NoFly.ResistAll",
               "Redirects.Storm_Blast.Nukenado_Skin",
               "Redirects.Storm_Blast.Nukenado_Pulse",
               "Redirects.Storm_Blast.Nukenado_SelfDestruct"
-            ]
+            ],
+            "type": "EntCreate"
           },
           "flags": [
-            "CopyBoosts"
+            "CopyBoosts",
+            "CopyCreatorMods",
+            "PseudoPet"
           ],
-          "flags_raw": 1280
+          "flags_raw": 1280,
+          "flags2_raw": 44
         }
       ]
     }
@@ -154,7 +161,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "SelfAndPets",
           "table": "Melee_Ones",
@@ -174,10 +181,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Redirects.Storm_Blast.StormCell_WindSpeed"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags_raw": 1280
         }
@@ -215,7 +223,7 @@
                 "Grant_Power"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "SelfAndPets",
               "table": "Melee_Ones",
@@ -235,10 +243,11 @@
               "stack_limit": 2,
               "stack_key": null,
               "params": {
-                "type": "Power",
                 "power_names": [
                   "Redirects.Storm_Blast.StormCell_LightningAura2"
-                ]
+                ],
+                "count": 1,
+                "type": "Power"
               },
               "flags_raw": 1280
             }
@@ -274,7 +283,7 @@
                     "Grant_Power"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Current",
                   "target": "SelfAndPets",
                   "table": "Melee_Ones",
@@ -294,10 +303,11 @@
                   "stack_limit": 2,
                   "stack_key": null,
                   "params": {
-                    "type": "Power",
                     "power_names": [
                       "Redirects.Storm_Blast.StormCell_LightningAura"
-                    ]
+                    ],
+                    "count": 1,
+                    "type": "Power"
                   },
                   "flags_raw": 1280
                 }
@@ -320,7 +330,7 @@
                     "Grant_Power"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Current",
                   "target": "SelfAndPets",
                   "table": "Melee_Ones",
@@ -340,10 +350,11 @@
                   "stack_limit": 2,
                   "stack_key": null,
                   "params": {
-                    "type": "Power",
                     "power_names": [
                       "Redirects.Storm_Blast.StormCell_LightningAura4"
-                    ]
+                    ],
+                    "count": 1,
+                    "type": "Power"
                   },
                   "flags_raw": 1280
                 }
@@ -372,7 +383,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "SelfAndPets",
           "table": "Melee_Ones",
@@ -392,10 +403,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Redirects.Storm_Blast.Category_Five_Lightning"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "NoHitDelay"

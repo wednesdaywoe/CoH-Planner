@@ -50,21 +50,21 @@ const datasets = (() => {
 //   convert-pool-powers    -> generated/power-pools.ts
 //   convert-epic-pools     -> generated/epic-pools.ts
 //   convert-incarnate      -> generated/incarnate-effects.ts
+//   convert-enhancement-curves -> generated/enhancement-curves.ts (ED/schedules/exemplar)
 //   convert-salvage        -> generated/invention-salvage.generated.ts (salvage.bin)
 //   extract-at-tables      -> at-tables.ts            (layered, not generated/)
 //   convert-archetypes     -> generated/archetype-stats.generated.ts (HP/cap/resCap)
 //   generate-powerset-index-> powersets/index.ts      (needs powersets first)
-//   generate-kheldian      -> kheldian-form-variants.ts
 //   convert-pet-entities   -> pet-entities.ts (+ sidecars)
 const STEPS = [
   { script: 'extract-at-tables.cjs',          args: [],          generated: false },
   { script: 'convert-archetypes.cjs',         args: [],          generated: true },
   { script: 'convert-all-powersets.cjs',      args: ['--force'], generated: true },
   { script: 'generate-powerset-index.cjs',    args: [],          generated: false },
-  { script: 'generate-kheldian-variants.cjs', args: [],          generated: false },
   { script: 'convert-pool-powers.cjs',        args: ['--apply'], generated: true },
   { script: 'convert-epic-pools.cjs',         args: ['--apply'], generated: true },
   { script: 'convert-incarnate-effects.cjs',  args: [],          generated: true },
+  { script: 'convert-enhancement-curves.cjs', args: [],          generated: true },
   { script: 'convert-salvage.cjs',            args: [],          generated: true },
   { script: 'convert-pet-entities.cjs',       args: [],          generated: false },
   // Guard: fail the regen if a malformed boostset poisoned a whole IO-set

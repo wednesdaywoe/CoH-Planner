@@ -16,7 +16,7 @@ export const Defibrillate: Power = {
   "shortHelp": "Melee (Targeted AoE), Ally Rez, Foe Sleep, -End, -Recovery",
   "icon": "shocktherapy_defibrillate.png",
   "powerType": "Click",
-  "targetType": "Ally",
+  "targetType": "Any",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
@@ -83,7 +83,7 @@ export const Defibrillate: Power = {
     ["Meta",null,1,1,90,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["Stealth","RadiusPvE",300,1,15,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
     ["Mez","Sleep",30,3,0,"Ranged_Sleep","Cur","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Endurance",null,-0.3,0,0,"Ranged_EndDrain","Cur","Expression","Target","Any",true,"Ignore",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Endurance",null,-0.3,0,0,"Ranged_EndDrain","Cur","Expression","Target","Any",true,"Ignore",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"Redirects.Shock_Therapy.Shock_Therapy_Static source.ownPowerNum? 0 20 minmax 5 / 0.8 * 0.2 + @StdResult *"],
     ["Recovery",null,30,-0.5,0,"Ranged_Ones","Cur","Expression","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
     ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],

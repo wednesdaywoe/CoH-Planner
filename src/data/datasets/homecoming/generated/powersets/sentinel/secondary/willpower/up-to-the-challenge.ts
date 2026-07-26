@@ -40,7 +40,7 @@ export const UptotheChallenge: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "buffDuration": 1.12,
+    "buffDuration": 1.125,
     "debuffResistance": {
       "regeneration": {
         "scale": 0.15,
@@ -48,8 +48,8 @@ export const UptotheChallenge: Power = {
       }
     },
     "durations": {
-      "debuffResistance": 1.12,
-      "regenBuff": 1.12
+      "debuffResistance": 1.125,
+      "regenBuff": 1.125
     },
     "regenBuff": {
       "scale": 2,
@@ -57,9 +57,9 @@ export const UptotheChallenge: Power = {
     }
   },
   "atoms": [
-    ["Regeneration",null,2,1,1.12,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
-    ["Regeneration",null,0.15,1,1.12,"Melee_Ones","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
-    ["Regeneration",null,2,1,1.12,"Melee_Ones","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
-    ["Regeneration",null,0.15,1,1.12,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true]
+    ["Regeneration",null,2,1,1.125,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Regeneration",null,0.15,1,1.125,"Melee_Ones","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
+    ["Regeneration",null,2,1,1.125,"Melee_Ones","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Regeneration",null,0.15,1,1.125,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true]
   ]
 };

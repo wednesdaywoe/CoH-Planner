@@ -80,8 +80,8 @@ export const OffensiveAdaptation: Power = {
     }
   },
   "atoms": [
-    ["EntCreate",null,1,114,1.1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,114,1.1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Resistance","Smashing",-0.075,1,1.1,"Melee_Ones","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
     ["Resistance","Lethal",-0.075,1,1.1,"Melee_Ones","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
@@ -92,5 +92,22 @@ export const OffensiveAdaptation: Power = {
     ["Resistance","Psionic",-0.075,1,1.1,"Melee_Ones","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
     ["Resistance","Toxic",-0.075,1,1.1,"Melee_Ones","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true]
   ],
-  "requires": "Stalker_Defense.Bio_Organic_Armor.Adaptation"
+  "grantedDamageProcs": [
+    {
+      "name": "Offensive_Adaptation_Proc",
+      "displayName": "Offensive Adaptation",
+      "damage": [
+        {
+          "damageType": "Toxic",
+          "scale": 1,
+          "table": "Melee_Damage"
+        }
+      ],
+      "enhanceable": false
+    }
+  ],
+  "requires": "Stalker_Defense.Bio_Organic_Armor.Adaptation",
+  "setsModes": [
+    "OffensiveAdaptation"
+  ]
 };

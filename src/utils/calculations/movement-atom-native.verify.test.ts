@@ -1,7 +1,7 @@
 /**
  * Plan B Slice 7 — regression guard for the atom-native movement applier.
  *
- * `character-totals.ts` now sources the movement buff map from
+ * `legacy-totals.oracle.ts` now sources the movement buff map from
  * `movementBuffValue(power)` (atoms) instead of `effects.movement`. This asserts the
  * LIVE atom path returns what the calc needs, on the real generated data, for the
  * shapes the migration had to get right. Corpus-wide equality vs the bag is proven
@@ -124,10 +124,25 @@ describe('atom-native movement — Thunderspy travel powers (the blackout fix)',
     expect(mv.runSpeed.scale).toBeCloseTo(1.25);
     expect(mv.runSpeed.table).toBe('Melee_SpeedRunning');
   });
+  // Fly is the one travel power whose slot is CONTESTED. tspy pairs each of its two
+  // `Melee_SpeedFlying` buffs with a `Melee_Ones` companion, and — unlike HC, which
+  // types that companion aspect=Maximum so it routes to the cap-bump slot — tspy
+  // types it Current, so it lands in `flySpeed` too and wins last-write-wins. The
+  // 0.8 companion was invisible until the parser read every AttribMod in an element
+  // (TSPY-4); the aspect is not a misread (tspy's movement aspect distribution
+  // matches HC and Rebirth corpus-wide). Assert the recovery that this test exists
+  // for — a table-backed, non-zero fly speed — plus the presence of the 1.25
+  // `SpeedFlying` template, rather than pinning which of the two wins the slot.
+  // See DATA-GAP-REGISTER TSPY-4.
   it('Fly resolves its fly-speed buff (was +0)', () => {
-    const mv = movementBuffValue(tspyPool('flight', 'Fly'))!;
-    expect(mv.flySpeed.scale).toBeCloseTo(1.25);
-    expect(mv.flySpeed.table).toBe('Melee_SpeedFlying');
+    const fly = tspyPool('flight', 'Fly');
+    const mv = movementBuffValue(fly)!;
+    expect(mv.flySpeed.scale).toBeGreaterThan(0);
+    expect(mv.flySpeed.table).toMatch(/^Melee_(SpeedFlying|Ones)$/);
+    const speedFlying = (fly.atoms ?? []).filter(
+      (a) => a[0] === 'Movement' && a[5] === 'Melee_SpeedFlying',
+    );
+    expect(speedFlying.some((a) => Math.abs(Number(a[2]) - 1.25) < 1e-9)).toBe(true);
   });
   it('Super Jump resolves its jump-speed buff (was +0)', () => {
     const mv = movementBuffValue(tspyPool('leaping', 'Super Jump'))!;

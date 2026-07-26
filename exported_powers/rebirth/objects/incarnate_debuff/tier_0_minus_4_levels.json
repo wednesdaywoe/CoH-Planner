@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "kIncarnate_Equipped target.Mode? !",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -54,15 +55,15 @@
       "templates": [
         {
           "attribs": [
-            "Combat_Phase"
+            "Combat_Mod_Shift"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffectedAndPets",
           "table": "Ranged_Ones",
           "scale": -4.0,
-          "duration": "0.30 seconds",
+          "duration": "0.3 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -80,7 +81,8 @@
             "IgnoreStrength",
             "IgnoreResistance",
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 112
         }
       ]
     }

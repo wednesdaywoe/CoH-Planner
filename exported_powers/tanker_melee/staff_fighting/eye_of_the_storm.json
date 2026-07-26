@@ -52,6 +52,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     112,
     116
@@ -87,12 +88,12 @@
                 "Smashing_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Melee_Damage",
               "scale": 0.205,
-              "duration": "2.30 seconds",
+              "duration": "2.3 seconds",
               "magnitude": 1.0,
               "delay": 0.0,
               "duration_expression": "",
@@ -106,6 +107,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Smashing damage over time.",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Smashing damage over time.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags_raw": 1280
             }
           ]
@@ -129,7 +137,7 @@
                 "Smashing_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Melee_Damage",
@@ -148,6 +156,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Smashing damage.",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Smashing damage.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "<color #FFF200>Requires Body Perfection Level 3</color>"
+              },
               "flags_raw": 1280
             },
             {
@@ -162,7 +177,7 @@
                 "Toxic_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Resistance",
               "target": "AnyAffected",
               "table": "Melee_Res_Dmg",
@@ -181,6 +196,19 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": null,
+                "display_victim_hit": null,
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "<color #FFF200>Requires Body Perfection Level 3</color>"
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "GENERICCONTINUING/DAMAGERESISTANCE/DEBUFFDAMRESCONTINUING.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "IgnoreStrength"
               ],
@@ -191,12 +219,12 @@
                 "Null"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
               "scale": 1.0,
-              "duration": "0.50 seconds",
+              "duration": "0.5 seconds",
               "magnitude": 1.0,
               "delay": 1.0,
               "duration_expression": "",
@@ -210,6 +238,12 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "CUSTOMIZEABLEPOWERS/STAFFFIGHTING/HIT_BODY.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "IgnoreStrength",
                 "IgnoreResistance"
@@ -221,7 +255,7 @@
                 "Null"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Melee_Ones",
@@ -240,6 +274,12 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "CUSTOMIZEABLEPOWERS/STAFFFIGHTING/CHILD_EYEOFTHESTORM_BODY.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "IgnoreStrength",
                 "IgnoreResistance"
@@ -265,7 +305,7 @@
                     "Revoke_Power"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Absolute",
                   "target": "Self",
                   "table": "Melee_Ones",
@@ -285,12 +325,13 @@
                   "stack_limit": 2,
                   "stack_key": null,
                   "params": {
-                    "type": "Power",
                     "power_names": [
                       "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3",
                       "Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_3",
                       "Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_3"
-                    ]
+                    ],
+                    "count": 1,
+                    "type": "Power"
                   },
                   "flags": [
                     "IgnoreStrength",
@@ -321,7 +362,7 @@
                 "Psionic_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Melee_Damage",
@@ -340,6 +381,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Psionic damage.",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Psionic damage.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "<color #F389DE>Requires Mind Perfection Level 3</color>"
+              },
               "flags_raw": 1280
             },
             {
@@ -347,12 +395,12 @@
                 "Null"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
               "scale": 1.0,
-              "duration": "0.50 seconds",
+              "duration": "0.5 seconds",
               "magnitude": 1.0,
               "delay": 1.0,
               "duration_expression": "",
@@ -366,6 +414,12 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "CUSTOMIZEABLEPOWERS/STAFFFIGHTING/HIT_MIND.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "IgnoreStrength",
                 "IgnoreResistance"
@@ -377,7 +431,7 @@
                 "Null"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Melee_Ones",
@@ -396,6 +450,12 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "CUSTOMIZEABLEPOWERS/STAFFFIGHTING/CHILD_EYEOFTHESTORM_MIND.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "IgnoreStrength",
                 "IgnoreResistance"
@@ -408,7 +468,7 @@
                 "RechargeTime"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Strength",
               "target": "AnyAffected",
               "table": "Melee_Slow",
@@ -427,6 +487,13 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": null,
+                "display_victim_hit": null,
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "<color #F389DE>Requires Mind Perfection Level 3</color>"
+              },
               "flags": [
                 "IgnoreStrength"
               ],
@@ -439,7 +506,7 @@
                 "JumpingSpeed"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Slow",
@@ -458,6 +525,19 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": null,
+                "display_victim_hit": null,
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "<color #F389DE>Requires Mind Perfection Level 3</color>"
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "GENERICCONTINUING/DEBUFFSPEEDFEET.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "IgnoreStrength"
               ],
@@ -482,7 +562,7 @@
                     "Revoke_Power"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Absolute",
                   "target": "Self",
                   "table": "Melee_Ones",
@@ -502,12 +582,13 @@
                   "stack_limit": 2,
                   "stack_key": null,
                   "params": {
-                    "type": "Power",
                     "power_names": [
                       "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3",
                       "Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_3",
                       "Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_3"
-                    ]
+                    ],
+                    "count": 1,
+                    "type": "Power"
                   },
                   "flags": [
                     "IgnoreStrength",
@@ -538,7 +619,7 @@
                 "Energy_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Melee_Damage",
@@ -557,6 +638,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage.",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "<color #82B2CF>Requires Soul Perfection Level</color>"
+              },
               "flags_raw": 1280
             },
             {
@@ -564,12 +652,12 @@
                 "Null"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
               "scale": 1.0,
-              "duration": "0.50 seconds",
+              "duration": "0.5 seconds",
               "magnitude": 1.0,
               "delay": 1.0,
               "duration_expression": "",
@@ -583,6 +671,12 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "CUSTOMIZEABLEPOWERS/STAFFFIGHTING/HIT_SOUL.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "IgnoreStrength",
                 "IgnoreResistance"
@@ -594,7 +688,7 @@
                 "Null"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Melee_Ones",
@@ -613,6 +707,12 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "CUSTOMIZEABLEPOWERS/STAFFFIGHTING/CHILD_EYEOFTHESTORM_SOUL.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "IgnoreStrength",
                 "IgnoreResistance"
@@ -624,7 +724,7 @@
                 "Base_Defense"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Debuff_Def",
@@ -643,6 +743,19 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": null,
+                "display_victim_hit": null,
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "<color #82B2CF>Requires Soul Perfection Level</color>"
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "GENERICCONTINUING/DEBUFFDEFCONTINUING.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "CancelOnMiss",
                 "IgnoreStrength"
@@ -668,7 +781,7 @@
                     "Revoke_Power"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Absolute",
                   "target": "Self",
                   "table": "Melee_Ones",
@@ -688,12 +801,13 @@
                   "stack_limit": 2,
                   "stack_key": null,
                   "params": {
-                    "type": "Power",
                     "power_names": [
                       "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3",
                       "Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_3",
                       "Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_3"
-                    ]
+                    ],
+                    "count": 1,
+                    "type": "Power"
                   },
                   "flags": [
                     "IgnoreStrength",
@@ -722,7 +836,7 @@
                 "Knockback"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
@@ -741,6 +855,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You knock {PlayerDest} off their feet with your {PowerName}!",
+                "display_victim_hit": "{PlayerSource} knocks you off your feet with their {PowerName}!",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags_raw": 1280
             }
           ]
@@ -764,12 +885,12 @@
                 "Fire_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Melee_Damage",
               "scale": 0.0923,
-              "duration": "2.30 seconds",
+              "duration": "2.3 seconds",
               "magnitude": 1.0,
               "delay": 0.0,
               "duration_expression": "",
@@ -783,6 +904,19 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Fire damage over time.",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Fire damage over time.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "POWERS/FIRECONTROL/CINDERSHIT.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags_raw": 1280
             }
           ]
@@ -819,12 +953,12 @@
                 "Smashing_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Melee_PvPDamage",
               "scale": 0.1678,
-              "duration": "2.30 seconds",
+              "duration": "2.3 seconds",
               "magnitude": 1.0,
               "delay": 0.0,
               "duration_expression": "",
@@ -838,6 +972,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Smashing damage over time.",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Smashing damage over time.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags_raw": 1280
             }
           ]
@@ -861,7 +1002,7 @@
                 "Smashing_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Melee_PvPDamage",
@@ -880,6 +1021,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Smashing damage.",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Smashing damage.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "<color #FFF200>Requires Body Perfection Level 3</color>"
+              },
               "flags_raw": 1280
             },
             {
@@ -894,7 +1042,7 @@
                 "Toxic_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Resistance",
               "target": "AnyAffected",
               "table": "Melee_Res_Dmg",
@@ -913,6 +1061,13 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": null,
+                "display_victim_hit": null,
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "<color #FFF200>Requires Body Perfection Level 3</color>"
+              },
               "flags": [
                 "IgnoreStrength"
               ],
@@ -923,12 +1078,12 @@
                 "Null"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
               "scale": 1.0,
-              "duration": "0.50 seconds",
+              "duration": "0.5 seconds",
               "magnitude": 1.0,
               "delay": 1.0,
               "duration_expression": "",
@@ -942,6 +1097,12 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "CUSTOMIZEABLEPOWERS/STAFFFIGHTING/HIT_BODY.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "IgnoreStrength",
                 "IgnoreResistance"
@@ -953,7 +1114,7 @@
                 "Null"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Melee_Ones",
@@ -972,6 +1133,12 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "CUSTOMIZEABLEPOWERS/STAFFFIGHTING/CHILD_EYEOFTHESTORM_BODY.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "IgnoreStrength",
                 "IgnoreResistance"
@@ -997,7 +1164,7 @@
                     "Revoke_Power"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Absolute",
                   "target": "Self",
                   "table": "Melee_Ones",
@@ -1017,12 +1184,13 @@
                   "stack_limit": 2,
                   "stack_key": null,
                   "params": {
-                    "type": "Power",
                     "power_names": [
                       "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3",
                       "Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_3",
                       "Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_3"
-                    ]
+                    ],
+                    "count": 1,
+                    "type": "Power"
                   },
                   "flags": [
                     "IgnoreStrength",
@@ -1053,7 +1221,7 @@
                 "Psionic_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Melee_PvPDamage",
@@ -1072,6 +1240,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Psionic damage.",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Psionic damage.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "<color #F389DE>Requires Mind Perfection Level 3</color>"
+              },
               "flags_raw": 1280
             },
             {
@@ -1079,12 +1254,12 @@
                 "Null"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
               "scale": 1.0,
-              "duration": "0.50 seconds",
+              "duration": "0.5 seconds",
               "magnitude": 1.0,
               "delay": 1.0,
               "duration_expression": "",
@@ -1098,6 +1273,12 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "CUSTOMIZEABLEPOWERS/STAFFFIGHTING/HIT_MIND.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "IgnoreStrength",
                 "IgnoreResistance"
@@ -1109,7 +1290,7 @@
                 "Null"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Melee_Ones",
@@ -1128,6 +1309,12 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "CUSTOMIZEABLEPOWERS/STAFFFIGHTING/CHILD_EYEOFTHESTORM_MIND.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "IgnoreStrength",
                 "IgnoreResistance"
@@ -1140,7 +1327,7 @@
                 "RechargeTime"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Strength",
               "target": "AnyAffected",
               "table": "Melee_Slow",
@@ -1159,6 +1346,13 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": null,
+                "display_victim_hit": null,
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "<color #F389DE>Requires Mind Perfection Level 3</color>"
+              },
               "flags": [
                 "IgnoreStrength"
               ],
@@ -1171,7 +1365,7 @@
                 "JumpingSpeed"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Slow",
@@ -1190,6 +1384,19 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": null,
+                "display_victim_hit": null,
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "<color #F389DE>Requires Mind Perfection Level 3</color>"
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "GENERICCONTINUING/DEBUFFSPEEDFEET.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "IgnoreStrength"
               ],
@@ -1214,7 +1421,7 @@
                     "Revoke_Power"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Absolute",
                   "target": "Self",
                   "table": "Melee_Ones",
@@ -1234,12 +1441,13 @@
                   "stack_limit": 2,
                   "stack_key": null,
                   "params": {
-                    "type": "Power",
                     "power_names": [
                       "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3",
                       "Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_3",
                       "Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_3"
-                    ]
+                    ],
+                    "count": 1,
+                    "type": "Power"
                   },
                   "flags": [
                     "IgnoreStrength",
@@ -1270,7 +1478,7 @@
                 "Energy_Dmg"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Melee_PvPDamage",
@@ -1289,6 +1497,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage.",
+                "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "<color #82B2CF>Requires Soul Perfection Level</color>"
+              },
               "flags_raw": 1280
             },
             {
@@ -1296,12 +1511,12 @@
                 "Null"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
               "scale": 1.0,
-              "duration": "0.50 seconds",
+              "duration": "0.5 seconds",
               "magnitude": 1.0,
               "delay": 1.0,
               "duration_expression": "",
@@ -1315,6 +1530,12 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "CUSTOMIZEABLEPOWERS/STAFFFIGHTING/HIT_SOUL.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "IgnoreStrength",
                 "IgnoreResistance"
@@ -1326,7 +1547,7 @@
                 "Null"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Melee_Ones",
@@ -1345,6 +1566,12 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "CUSTOMIZEABLEPOWERS/STAFFFIGHTING/CHILD_EYEOFTHESTORM_SOUL.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "IgnoreStrength",
                 "IgnoreResistance"
@@ -1356,7 +1583,7 @@
                 "Base_Defense"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Debuff_Def",
@@ -1375,6 +1602,19 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": null,
+                "display_victim_hit": null,
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "<color #82B2CF>Requires Soul Perfection Level</color>"
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "GENERICCONTINUING/DEBUFFDEFCONTINUING.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "CancelOnMiss",
                 "IgnoreStrength"
@@ -1400,7 +1640,7 @@
                     "Revoke_Power"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Absolute",
                   "target": "Self",
                   "table": "Melee_Ones",
@@ -1420,12 +1660,13 @@
                   "stack_limit": 2,
                   "stack_key": null,
                   "params": {
-                    "type": "Power",
                     "power_names": [
                       "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3",
                       "Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_3",
                       "Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_3"
-                    ]
+                    ],
+                    "count": 1,
+                    "type": "Power"
                   },
                   "flags": [
                     "IgnoreStrength",
@@ -1454,7 +1695,7 @@
                 "Knockback"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
@@ -1473,12 +1714,19 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You knock {PlayerDest} off their feet with your {PowerName}!",
+                "display_victim_hit": "{PlayerSource} knocks you off your feet with their {PowerName}!",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "suppress_events": [
                 {
-                  "event": "MissionObjectInteract",
+                  "event": "Knocked",
                   "event_id": 33,
                   "duration": 10.0,
-                  "flag": 0
+                  "always": 0
                 }
               ],
               "flags_raw": 1280
@@ -1506,7 +1754,7 @@
             "Execute_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -1526,10 +1774,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Redirects.Staff_Melee.Perfection_Level"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "NoHitDelay",
@@ -1541,6 +1790,12 @@
     }
   ],
   "max_targets_expression": "16 kDisable_GauntletTargetCap Source.Mode? 6 * -",
+  "over_cap_trigger": 10,
+  "over_cap_multiplier": 0.3333,
+  "over_cap_exponential": false,
+  "strengths_disallowed": [
+    "Range"
+  ],
   "modes_disallowed": [
     "Disable_All"
   ],

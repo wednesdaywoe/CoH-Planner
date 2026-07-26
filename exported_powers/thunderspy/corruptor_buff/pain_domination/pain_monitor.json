@@ -38,6 +38,7 @@
   "requires": "Corruptor_Buff.Pain_Domination.Soothe Corruptor_Buff.Pain_Domination.Nullify_Pain ||",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -63,10 +64,10 @@
             "Psionic_Dmg",
             "Toxic_Dmg"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "Self",
           "table": "Ranged_Buff_Dmg",
           "scale": 0.5,
           "duration": "10 seconds",
@@ -80,9 +81,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "AttackedByOtherClick target.EventCount> 0 >",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "StackThenIgnore",
+          "stack_limit": 8,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 112
         }
       ]
     }

@@ -9,11 +9,14 @@
  * - Stat breakdown tracking for tooltips
  */
 
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
+import { loadDataset, projectPowerJson, type ServerId } from '@/engine/engine';
+import { useEngineStore } from '@/engine/engineStore';
+import { mapOnePowerProjection, projectionKey, type EnginePowerProjection, type PowerProjection } from '@/engine/engineTotalsMap';
 import { getIOSet } from '@/data';
 import { computeOffendingPowerReasons, type CappedBonusReason } from '@/utils/over-cap-mute';
-import type { SetBonus } from '@/types';
+import type { Build, SetBonus } from '@/types';
 import type { ProcSettings } from '@/stores/uiStore';
 import type { BonusTracking } from '@/utils/calculations';
 import {
@@ -296,10 +299,18 @@ export function getSharedCharacterCalculation(
 // ============================================
 
 /**
- * Full calculation result with breakdown data
+ * Every non-build input `calculateCharacterTotals` takes, read from the stores once.
+ *
+ * Extracted so a surface that calculates a HYPOTHETICAL build — `CompareSlottingModal`, which
+ * re-slots one power and shows the deltas — runs it under the *identical* context the current
+ * numbers came from. Assembling that context a second time is how a delta ends up reporting a
+ * difference in exemplar level or combat mode rather than in the slotting under test.
  */
-export function useCharacterCalculation(): CharacterCalculationResult {
-  const build = useBuildStore((state) => state.build);
+export function useCalculationContext(): {
+  exemplarMode: Parameters<typeof calculateCharacterTotals>[1];
+  incarnateActive: Parameters<typeof calculateCharacterTotals>[2];
+  options: Parameters<typeof calculateCharacterTotals>[3];
+} {
   const exemplarMode = useUIStore((state) => state.exemplarMode);
   const exemplarLevel = useUIStore((state) => state.exemplarLevel);
   const incarnateActive = useUIStore((state) => state.incarnateActive);
@@ -314,17 +325,18 @@ export function useCharacterCalculation(): CharacterCalculationResult {
   const globalAdjusters = useUIStore((state) => state.globalAdjusters);
   const mechanicAdjusters = useUIStore((state) => state.mechanicAdjusters);
   const destinyTime = useUIStore((state) => state.destinyTime);
+  // Display-only projection inputs (PROD6C-3k): they resolve each power's effective form.
+  const dominationActive = useUIStore((state) => state.dominationActive);
+  const stalkerHidden = useUIStore((state) => state.stalkerHidden);
 
   // When master Proc toggle is off, disable all proc categories
   const effectiveProcSettings = procsEnabled ? procSettings : ALL_PROCS_DISABLED;
 
-  // The per-instance useMemo skips work when THIS component re-renders with
-  // unchanged deps; the shared cache (keyed on the same dep tuple) skips the
-  // redundant recompute ACROSS the ~150 other instances in the same render pass.
-  return useMemo(() => {
-    const deps = [build, exemplarMode, exemplarLevel, incarnateActive, incarnateLevelShiftActive, effectiveProcSettings, targetsHitValues, targetLevelOffset, vigilanceTeamSize, furyLevel, combatMode, globalAdjusters, mechanicAdjusters, destinyTime] as const;
-    return getSharedCharacterCalculation(deps, () =>
-      calculateCharacterTotals(build, exemplarMode, incarnateActive, {
+  return useMemo(
+    () => ({
+      exemplarMode,
+      incarnateActive,
+      options: {
         procSettings: effectiveProcSettings,
         targetsHitValues,
         exemplarLevel: exemplarMode ? exemplarLevel : undefined,
@@ -336,9 +348,59 @@ export function useCharacterCalculation(): CharacterCalculationResult {
         globalAdjusters,
         mechanicAdjusters,
         destinyTime,
-      })
+        dominationActive,
+        stalkerHidden,
+      },
+    }),
+    [exemplarMode, exemplarLevel, incarnateActive, incarnateLevelShiftActive, effectiveProcSettings, targetsHitValues, targetLevelOffset, vigilanceTeamSize, furyLevel, combatMode, globalAdjusters, mechanicAdjusters, destinyTime, dominationActive, stalkerHidden]
+  );
+}
+
+/**
+ * Full calculation result with breakdown data
+ */
+export function useCharacterCalculation(): CharacterCalculationResult {
+  const build = useBuildStore((state) => state.build);
+  const { exemplarMode, incarnateActive, options } = useCalculationContext();
+
+  // SPIKE5 — load the engine dataset for this build's server once; `engineLoaded` flips the
+  // memo below from boot-time empty totals to real engine numbers when the wasm handle is ready.
+  const engineLoaded = useEngineStore((state) => state.loaded[build.serverId] ?? false);
+  useEffect(() => {
+    loadDataset(build.serverId as ServerId)
+      .then(() => useEngineStore.getState().markLoaded(build.serverId))
+      .catch((e) => useEngineStore.getState().setError(String(e)));
+  }, [build.serverId]);
+
+  // The per-instance useMemo skips work when THIS component re-renders with
+  // unchanged deps; the shared cache (keyed on the same dep tuple) skips the
+  // redundant recompute ACROSS the ~150 other instances in the same render pass.
+  return useMemo(() => {
+    const deps = [build, exemplarMode, incarnateActive, options, engineLoaded] as const;
+    return getSharedCharacterCalculation(deps, () =>
+      calculateCharacterTotals(build, exemplarMode, incarnateActive, options)
     );
-  }, [build, exemplarMode, exemplarLevel, incarnateActive, incarnateLevelShiftActive, effectiveProcSettings, targetsHitValues, targetLevelOffset, vigilanceTeamSize, furyLevel, combatMode, globalAdjusters, mechanicAdjusters, destinyTime]);
+  }, [build, exemplarMode, incarnateActive, options, engineLoaded]);
+}
+
+/**
+ * The same calculation over a build the user has not committed — "what would this slotting do".
+ *
+ * Deliberately outside the shared cache: the cache is keyed on the store state every other
+ * consumer shares, and a hypothetical build is by definition not that. `null` for no override,
+ * so a caller can hold the hook unconditionally and pay nothing when no comparison is open.
+ */
+export function useHypotheticalCalculation(
+  hypotheticalBuild: Build | null,
+): CharacterCalculationResult | null {
+  const serverId = useBuildStore((state) => state.build.serverId);
+  const engineLoaded = useEngineStore((state) => state.loaded[serverId] ?? false);
+  const { exemplarMode, incarnateActive, options } = useCalculationContext();
+
+  return useMemo(() => {
+    if (!hypotheticalBuild) return null;
+    return calculateCharacterTotals(hypotheticalBuild, exemplarMode, incarnateActive, options);
+  }, [hypotheticalBuild, exemplarMode, incarnateActive, options, engineLoaded]);
 }
 
 /**
@@ -380,6 +442,43 @@ export function useStatBreakdown(stat: string): DashboardStatBreakdown | undefin
 export function useStatBreakdowns(): Map<string, DashboardStatBreakdown> {
   const result = useCharacterCalculation();
   return result.breakdown;
+}
+
+/**
+ * One power's engine-resolved non-DPS values — the execution three-tiers, ArcanaTime, perma
+ * tracking, and the buff/debuff magnitudes it grants (PROD6C).
+ *
+ * A power the build HOLDS comes out of the calculation's own projection at no extra cost. A
+ * power it does not — the info surfaces render whatever you hover in the picker — is projected
+ * on demand against the exact `CharacterState` those totals ran on, so a hovered power's
+ * numbers come from the same engine pass as a picked one's rather than from a second
+ * calculator. The on-demand call costs one engine run per distinct power, memoized here.
+ *
+ * `null` while the dataset is still loading, and for a ref the dataset has no power for — the
+ * caller renders the row as unavailable rather than substituting a fabricated value (Rule 1).
+ */
+export function usePowerProjection(
+  powerSet: string | undefined,
+  internalName: string | undefined,
+): PowerProjection | null {
+  const result = useCharacterCalculation();
+  const serverId = useBuildStore((state) => state.build.serverId);
+  // The slider value the display bag's per-target transform reads (PROD6C-3b). A HELD power
+  // carries it on its own selection, so only the on-demand call below needs it passed.
+  const targetsHit = useUIStore((state) => (internalName ? state.targetsHitValues[internalName] : undefined));
+  const { powerProjection, engineStateJson } = result;
+
+  return useMemo(() => {
+    if (!powerSet || !internalName) return null;
+    const held = powerProjection.get(projectionKey(powerSet, internalName));
+    if (held) return held;
+    if (engineStateJson === null) return null;
+
+    const json = projectPowerJson(serverId as ServerId, engineStateJson, powerSet, internalName, targetsHit);
+    if (json === null) return null;
+    const projected = JSON.parse(json) as EnginePowerProjection | null;
+    return projected ? mapOnePowerProjection(projected) : null;
+  }, [powerSet, internalName, powerProjection, engineStateJson, serverId, targetsHit]);
 }
 
 // ============================================

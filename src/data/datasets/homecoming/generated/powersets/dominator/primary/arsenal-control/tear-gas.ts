@@ -46,8 +46,7 @@ export const TearGas: Power = {
       "copyBoosts": true,
       "displayName": "Tear Gas",
       "duration": 60,
-      "entity": "PL_StaticObject",
-      "isPseudoPet": false,
+      "isPseudoPet": true,
       "powers": [
         "Redirects.Assault_Rifle.Tear_Gas",
         "Redirects.Assault_Rifle.Tear_Gas_Debuff",
@@ -71,6 +70,7 @@ export const TearGas: Power = {
                   "table": "Ranged_Damage"
                 }
               ],
+              "conditionalDamage": true,
               "effects": [
                 {
                   "type": "Hold",
@@ -108,7 +108,8 @@ export const TearGas: Power = {
             }
           ]
         }
-      ]
+      ],
+      "entity": "PL_StaticObject"
     }
   },
   "atoms": [

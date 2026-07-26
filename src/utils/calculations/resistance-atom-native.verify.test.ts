@@ -1,7 +1,7 @@
 /**
  * Plan B Slice 3 — regression guard for the atom-native resistance appliers.
  *
- * `character-totals.ts` now sources +Resistance from `resistanceBuffValue(power)`
+ * `legacy-totals.oracle.ts` now sources +Resistance from `resistanceBuffValue(power)`
  * and the self-directed −Res penalty from `resistanceSelfDebuffValue(power)`
  * (atoms) instead of `effects.resistance` / the `toWho:'Self'` entries of
  * `effects.resistanceDebuff`. This asserts the LIVE atom path returns the per-type

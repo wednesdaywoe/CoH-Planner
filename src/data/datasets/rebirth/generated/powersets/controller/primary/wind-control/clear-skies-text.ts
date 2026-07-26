@@ -31,8 +31,8 @@ export const ClearSkiesText: Power = {
   "allowedEnhancements": [],
   "maxSlots": 0,
   "atoms": [
-    ["RechargePower",null,-1,1,2.1,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Replace",1,null,null,1,null,true,null,null,null,null,"kClearSkies source.mode?",true],
-    ["RechargePower",null,-1,1,2.1,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Replace",1,null,null,1,null,true,null,null,null,null,"kClearSkies source.mode? ! kCloudedSkies source.mode? &&",true]
+    ["Meta",null,-1,1,2.1,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Replace",1,null,null,1,null,true,null,null,null,null,"kClearSkies source.mode?",true],
+    ["Meta",null,-1,1,2.1,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Replace",1,null,null,1,null,true,null,null,null,null,"kClearSkies source.mode? ! kCloudedSkies source.mode? &&",true]
   ],
   "requires": "Controller_Control.Wind_Control.Vortex Controller_Control.Wind_Control.Vacuum &&",
   "mechanicType": "parentMechanic"

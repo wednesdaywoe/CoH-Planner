@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -57,7 +58,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -80,7 +81,8 @@
             "type": "EntCreate",
             "entity_def": "Clockwork_Summoned_Sprocket",
             "priority_list": "PL_FightPreferRanged"
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     },
@@ -101,7 +103,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -124,7 +126,8 @@
             "type": "EntCreate",
             "entity_def": "Clockwork_Summoned_Sprocket",
             "priority_list": "PL_FightPreferRanged"
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     },
@@ -142,10 +145,10 @@
       "templates": [
         {
           "attribs": [
-            "Set_Mode"
+            "Null"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -168,7 +171,7 @@
             "IgnoreStrength",
             "IgnoreResistance"
           ],
-          "mode_name": "Peacebringer_Blaster_Mode"
+          "flags_raw": 1072
         }
       ]
     }

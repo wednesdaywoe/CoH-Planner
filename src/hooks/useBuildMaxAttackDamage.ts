@@ -16,10 +16,10 @@ import { useMemo } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
 import { useGlobalBonuses } from './useCalculatedStats';
 import { getIOSet } from '@/data';
-import { INCARNATE_TIER_REGISTRY } from '@/data/incarnate-registry';
 import {
   calculatePowerEnhancementBonuses,
   combineWithAlphaED,
+  getAlphaEdBypassBonuses,
   calculatePowerDamage,
   getAlphaEnhancementBonuses,
   type EnhancementBonuses,
@@ -35,7 +35,7 @@ export function useBuildMaxAttackDamage(): number {
   const exemplarLevel = useUIStore((s) => s.exemplarLevel);
   const incarnateActive = useUIStore((s) => s.incarnateActive);
   // Combat mode swaps snipe powers to their quick-cast (higher-damage) form.
-  // The InfoPanel damage bars apply this too (snipeAdjustedPower), so the
+  // The InfoPanel damage bars apply this too (`resolveEffectivePower`), so the
   // normalization reference must as well or fast snipes self-clamp at 100%.
   const combatMode = useUIStore((s) => s.combatMode);
 
@@ -48,10 +48,7 @@ export function useBuildMaxAttackDamage(): number {
   return useMemo(() => {
     const alphaBonuses: EnhancementBonuses = getAlphaEnhancementBonuses(build.incarnates, incarnateActive);
     const hasAlpha = Object.values(alphaBonuses).some((v) => v !== undefined && v !== 0);
-    const alphaTier = build.incarnates?.alpha?.tier;
-    const edBypassRatio = alphaTier
-      ? (INCARNATE_TIER_REGISTRY[alphaTier]?.edBypassRatio ?? 1 / 6)
-      : 1 / 6;
+    const alphaEdBypass: EnhancementBonuses = getAlphaEdBypassBonuses(build.incarnates, incarnateActive);
     const exLevel = exemplarMode ? exemplarLevel : undefined;
 
     const powers: SelectedPower[] = [
@@ -79,7 +76,9 @@ export function useBuildMaxAttackDamage(): number {
       let enhDamage = alphaBonuses.damage ?? 0;
       if (power.slots) {
         const bonuses = hasAlpha
-          ? combineWithAlphaED({ name: power.name, slots: power.slots }, build.level, getIOSet, alphaBonuses, edBypassRatio, exLevel)
+          // Alpha applies only to the aspects the power accepts; without this list
+          // `combineWithAlphaED` applies it to all of them (PROD6C-3f).
+          ? combineWithAlphaED({ name: power.name, slots: power.slots, allowedEnhancements: power.allowedEnhancements }, build.level, getIOSet, alphaBonuses, alphaEdBypass, exLevel)
           : calculatePowerEnhancementBonuses({ name: power.name, slots: power.slots }, build.level, getIOSet, exLevel);
         enhDamage = bonuses.damage ?? 0;
       }

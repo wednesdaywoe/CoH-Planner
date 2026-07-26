@@ -39,8 +39,7 @@ export const ForceBubble: Power = {
       "copyBoosts": true,
       "displayName": "Dampening Bubble",
       "duration": 45,
-      "entity": "PL_StaticObject",
-      "isPseudoPet": false,
+      "isPseudoPet": true,
       "powers": [
         "Redirects.Force_Field.Dampening_Bubble",
         "Redirects.Force_Field.Dampening_Bubble_Debuff",
@@ -111,7 +110,8 @@ export const ForceBubble: Power = {
             }
           ]
         }
-      ]
+      ],
+      "entity": "PL_StaticObject"
     }
   },
   "atoms": [

@@ -57,25 +57,16 @@ export const ReactionTime: Power = {
       "scale": 0.15,
       "table": "Melee_HealSelf"
     },
-    "buffDuration": 10,
+    "buffDuration": 5,
     "durations": {
       "absorb": 12,
-      "movementCapBump": 10,
-      "rechargeDebuff": 10,
+      "rechargeDebuff": 5,
       "recoveryBuff": 1.25,
-      "slow": 10,
-      "specialBuff": 10
-    },
-    "movementCapBump": {
-      "runSpeed": {
-        "scale": 1,
-        "table": "Melee_SpeedRunning"
-      }
+      "slow": 5
     },
     "rechargeDebuff": {
       "scale": 0.4,
-      "table": "Melee_Slow",
-      "toWho": "Self"
+      "table": "Melee_Slow"
     },
     "recoveryBuff": {
       "scale": 0.5,
@@ -84,8 +75,7 @@ export const ReactionTime: Power = {
     "slow": {
       "flySpeed": {
         "scale": 0.7,
-        "table": "Melee_Slow",
-        "toWho": "Self"
+        "table": "Melee_Slow"
       },
       "jumpHeight": {
         "scale": 0.7,
@@ -93,19 +83,11 @@ export const ReactionTime: Power = {
       },
       "jumpSpeed": {
         "scale": 0.7,
-        "table": "Melee_Slow",
-        "toWho": "Self"
+        "table": "Melee_Slow"
       },
       "runSpeed": {
-        "scale": 0.7,
-        "table": "Melee_Slow",
-        "toWho": "Self"
-      }
-    },
-    "specialBuff": {
-      "movement": {
-        "scale": 0.7,
-        "table": "Melee_Slow"
+        "scale": 1,
+        "table": "Melee_SpeedRunning"
       }
     }
   },

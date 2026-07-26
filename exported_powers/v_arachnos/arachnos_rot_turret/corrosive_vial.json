@@ -39,6 +39,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "Arachnos_Weaver1 target.VillainName> ! SecretModeTurrets arcvar> 2 == ! &&",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -58,7 +59,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -78,20 +79,23 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Pets_Arachnos_Corrosive_Blast",
             "display_name": "Corrosive Blast",
+            "priority_list": "Gang(3),PL_StaticObject",
             "redirects": [
               "Pets.Experimentation_Corrosive_Vial_Arachnos.Corrosive_Vial_Splat"
-            ]
+            ],
+            "type": "EntCreate"
           },
           "flags": [
             "NearGround",
             "IgnoreResistance",
             "KeepThroughDeath",
-            "CopyBoosts"
+            "CopyBoosts",
+            "PseudoPet"
           ],
-          "flags_raw": 17448
+          "flags_raw": 17448,
+          "flags2_raw": 36
         }
       ]
     }

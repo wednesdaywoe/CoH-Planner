@@ -44,39 +44,208 @@ export const DNASiphon: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 0.2,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.2,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.1,
+      "table": "Melee_Damage",
+      "duration": 2,
+      "tickRate": 1
+    },
+    {
+      "type": "Heal",
+      "scale": 1.25,
+      "table": "Melee_HealSelf"
+    }
+  ],
   "effects": {
     "buffDuration": 30,
     "durations": {
-      "regenBuff": 30
+      "recoveryBuff": 30,
+      "regenBuff": 30,
+      "regenDebuff": 30
     },
     "enduranceGain": {
       "scale": 5,
-      "table": "Melee_Ones"
+      "table": "Melee_Ones",
+      "perTarget": 5
+    },
+    "recoveryBuff": {
+      "scale": 0.125,
+      "table": "Melee_Ones",
+      "perTarget": 0.125
     },
     "regenBuff": {
       "scale": 0.2,
+      "table": "Melee_Ones",
+      "perTarget": 0.2
+    },
+    "regenDebuff": {
+      "scale": 1,
       "table": "Melee_Ones"
+    },
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     }
   },
   "atoms": [
-    ["Unmapped",null,0.2,1,0,"Melee_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 >"],
-    ["Unmapped",null,1.25,1,0,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 >"],
-    ["Endurance",null,5,1,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 >"],
-    ["Regeneration",null,0.2,1,30,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 =="],
-    ["Unmapped",null,-1,1,30,"Melee_Ones","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kOffensiveAdaptation Source.Mode? ! &&"],
-    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Raid target.HasTag? ! &&"],
-    ["Unmapped",null,0.375,1,0,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 > kDefensiveAdaptation Source.Mode? &&",true],
-    ["Unmapped",null,0.06,1,30,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 == kRestedAdaptation Source.Mode? &&",true],
-    ["Unmapped",null,0.05,1,10,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kRestedAdaptation Source.Mode?",true],
-    ["Unmapped",null,-2,1,30,"Melee_Res_Boolean","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq kOffensiveAdaptation Source.Mode? ! &&",true],
-    ["Unmapped",null,1,1,10,"Melee_Buff_Dmg","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
-    ["Unmapped",null,-1.33,1,30,"Melee_Ones","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kOffensiveAdaptation Source.Mode? &&",true],
-    ["Unmapped",null,-2.66,1,30,"Melee_Res_Boolean","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq kOffensiveAdaptation Source.Mode? &&",true],
-    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true]
+    ["Damage","Lethal",0.2,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 >"],
+    ["Damage","Toxic",0.1,1,2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 >"],
+    ["Heal",null,1.25,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 >"],
+    ["Endurance",null,5,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 >",null,5],
+    ["Regeneration",null,0.2,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 ==",null,0.2],
+    ["Recovery",null,0.125,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 ==",null,0.125],
+    ["Regeneration",null,-1,1,30,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq kOffensiveAdaptation Source.Mode? ! &&"],
+    ["Mez","Taunt",1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Raid target.HasTag? ! &&"],
+    ["Heal",null,0.375,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Cur.kHitPoints target> 0 > kDefensiveAdaptation Source.Mode? &&",true],
+    ["Heal",null,0.05,1,10,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,1,1,null,true,null,null,null,null,"Cur.kHitPoints target> 0 > kDefensiveAdaptation Source.Mode? &&",true],
+    ["Regeneration",null,0.06,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Cur.kHitPoints target> 0 == kRestedAdaptation Source.Mode? &&",true],
+    ["Recovery",null,0.09375,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Cur.kHitPoints target> 0 == kRestedAdaptation Source.Mode? &&",true],
+    ["RechargeTime",null,0.05,1,10,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kRestedAdaptation Source.Mode?",true],
+    ["Regeneration",null,-2,1,30,"Melee_Res_Boolean","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq kOffensiveAdaptation Source.Mode? ! &&",true],
+    ["DamageBuff","Smashing",1,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
+    ["DamageBuff","Lethal",1,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
+    ["DamageBuff","Fire",1,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
+    ["DamageBuff","Cold",1,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
+    ["DamageBuff","Energy",1,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
+    ["DamageBuff","Negative",1,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
+    ["DamageBuff","Toxic",1,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
+    ["DamageBuff","Psionic",1,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
+    ["Defense","Lethal",-0.5,1,10,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
+    ["Defense","Smashing",-0.5,1,10,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
+    ["Defense","Fire",-0.5,1,10,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
+    ["Defense","Cold",-0.5,1,10,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
+    ["Defense","Energy",-0.5,1,10,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
+    ["Defense","Negative",-0.5,1,10,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
+    ["Defense","Psionic",-0.5,1,10,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
+    ["Regeneration",null,-1.33,1,30,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq kOffensiveAdaptation Source.Mode? &&",true],
+    ["Regeneration",null,-2.66,1,30,"Melee_Res_Boolean","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq kOffensiveAdaptation Source.Mode? &&",true],
+    ["Mez","Taunt",1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true]
+  ],
+  "conditionalEffects": [
+    {
+      "id": "defensiveadaptation",
+      "label": "Defensive Adaptation",
+      "scope": "global",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Heal",
+          "scale": 0.375,
+          "table": "Melee_HealSelf",
+          "ignoreStrength": true
+        },
+        {
+          "type": "Heal",
+          "scale": 0.05,
+          "table": "Melee_HealSelf",
+          "ignoreStrength": true,
+          "duration": 10,
+          "tickRate": 1
+        }
+      ],
+      "group": "adaptation"
+    },
+    {
+      "id": "restedadaptation",
+      "label": "Rested Adaptation",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "buffDuration": 30,
+        "durations": {
+          "rechargeBuff": 10,
+          "recoveryBuffUnenhanced": 30,
+          "regenBuffUnenhanced": 30
+        },
+        "rechargeBuff": {
+          "scale": 0.05,
+          "table": "Melee_Ones",
+          "perTarget": 0.05
+        },
+        "recoveryBuffUnenhanced": {
+          "scale": 0.09375,
+          "table": "Melee_Ones",
+          "perTarget": 0.09375
+        },
+        "regenBuffUnenhanced": {
+          "scale": 0.06,
+          "table": "Melee_Ones",
+          "perTarget": 0.06
+        }
+      },
+      "group": "adaptation"
+    },
+    {
+      "id": "offensiveadaptation",
+      "label": "Offensive Adaptation",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "buffDuration": 10,
+        "damageBuff": {
+          "scale": 1,
+          "table": "Melee_Buff_Dmg",
+          "perTarget": 1
+        },
+        "defenseDebuff": {
+          "cold": {
+            "scale": 0.5,
+            "table": "Melee_Buff_Def",
+            "toWho": "Self"
+          },
+          "energy": {
+            "scale": 0.5,
+            "table": "Melee_Buff_Def",
+            "toWho": "Self"
+          },
+          "fire": {
+            "scale": 0.5,
+            "table": "Melee_Buff_Def",
+            "toWho": "Self"
+          },
+          "lethal": {
+            "scale": 0.5,
+            "table": "Melee_Buff_Def",
+            "toWho": "Self"
+          },
+          "negative": {
+            "scale": 0.5,
+            "table": "Melee_Buff_Def",
+            "toWho": "Self"
+          },
+          "psionic": {
+            "scale": 0.5,
+            "table": "Melee_Buff_Def",
+            "toWho": "Self"
+          },
+          "smashing": {
+            "scale": 0.5,
+            "table": "Melee_Buff_Def",
+            "toWho": "Self"
+          }
+        },
+        "durations": {
+          "damageBuff": 10,
+          "defenseDebuff": 10,
+          "regenDebuff": 30
+        },
+        "regenDebuff": {
+          "scale": 1.33,
+          "table": "Melee_Ones"
+        }
+      },
+      "group": "adaptation"
+    }
+  ],
+  "damageTypes": [
+    "Lethal",
+    "Toxic"
   ]
 };

@@ -53,8 +53,7 @@ export const PoisonGasArrow: Power = {
       "copyBoosts": true,
       "displayName": "Poison Gas Arrow",
       "duration": 20,
-      "entity": "PL_StaticObject",
-      "isPseudoPet": false,
+      "isPseudoPet": true,
       "powers": [
         "Redirects.Trick_Arrow.PoisonGasArrow"
       ],
@@ -86,7 +85,8 @@ export const PoisonGasArrow: Power = {
             }
           ]
         }
-      ]
+      ],
+      "entity": "PL_StaticObject"
     }
   },
   "atoms": [

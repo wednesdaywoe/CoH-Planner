@@ -1,10 +1,42 @@
 {
   "name": "Class_Warshade",
-  "display_name": "P1683362237",
+  "display_name": "Warshade",
+  "display_help": "Warshades are former Nictus who have left that dark path behind and reformed, joining with a willing host. While Warshades take more damage from most attacks, they make up for this weakness with solid hit points, a good variety of dark energy attack powers and strong defensive powers, inherent teleport, and eventually even gain access to two shape-shift forms. Warshades become stronger when teamed with non-Kheldian Heroes, gaining bonuses to their own powers based on the archetypes of their team mates.",
+  "display_short_help": "Ranged attacks, Defensive Powers and ShapeShifting.",
   "icon": "archetypeicon_Warshade.tga",
   "primary_category": "Warshade_Offensive",
   "secondary_category": "Warshade_Defensive",
   "pool_category": "Pool",
+  "epic_pool_category": "",
+  "allowed_origins": [
+    "Science"
+  ],
+  "special_restrictions": [
+    "Kheldian",
+    "Hero",
+    "OriginLocked"
+  ],
+  "store_requires": "",
+  "locked_tooltip": "This is an Epic Archetype. This Archetype is unlocked by VIP subscribers by getting one character to level 20 and is unlocked by free players by purchasing the Kheldian Archetype Pack.",
+  "product_code": "ctatwars",
+  "reduction_class": "",
+  "reduce_as_archvillain": false,
+  "level_up_respecs": [],
+  "archetype_shots": [
+    "archetypeshots_warshade_0",
+    "archetypeshots_warshade_1",
+    "archetypeshots_warshade_2"
+  ],
+  "creation_stats": [
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1
+  ],
+  "playstyle_flags": 5,
+  "mechanic_tip": "",
   "named_tables": {
     "Melee_Damage": [
       -9.800000190734863,
@@ -5003,5 +5035,7 @@
     "resistance_cap": 0.8500000238418579,
     "base_threat": 2.0,
     "damage_cap": 4.449999809265137
-  }
+  },
+  "mechanic_bar_raw": 0,
+  "mechanic_gap_raw": 74
 }

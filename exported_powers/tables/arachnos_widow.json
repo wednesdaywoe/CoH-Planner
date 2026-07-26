@@ -1,10 +1,42 @@
 {
   "name": "Class_Arachnos_Widow",
-  "display_name": "P2278903469",
+  "display_name": "Arachnos Widow",
+  "display_help": "<color white>Not recommended for new players. Can't access the tutorial. Must start as a Villain.</color><br><br>Begin your career as a Blood Widow with modest melee, ranged and buff skills. Beginning at level 24, you may chose to switch to the \"Fortunata\" path or remain on the \"Widow\" path and become \"Night Widows.\" Night Widows gain considerably stronger melee capabilities, and only have modest ranged abilities, while those who go with the Fortunata path learn stronger ranged attack abilities and control abilities.",
+  "display_short_help": "Ranged attacks, Defensive Powers and Ally buffs.",
   "icon": "v_archetypeicon_arachnos_widow.tga",
   "primary_category": "Widow_Training",
   "secondary_category": "Teamwork",
   "pool_category": "Pool",
+  "epic_pool_category": "",
+  "allowed_origins": [],
+  "special_restrictions": [
+    "NoPraetoria",
+    "NoTutorial",
+    "Villain"
+  ],
+  "store_requires": "",
+  "locked_tooltip": "",
+  "product_code": "",
+  "reduction_class": "",
+  "reduce_as_archvillain": false,
+  "level_up_respecs": [
+    24
+  ],
+  "archetype_shots": [
+    "archetypeshots_arachnos_widow_0",
+    "archetypeshots_arachnos_widow_1",
+    "archetypeshots_arachnos_widow_2"
+  ],
+  "creation_stats": [
+    7,
+    8,
+    5,
+    2,
+    5,
+    2
+  ],
+  "playstyle_flags": 22,
+  "mechanic_tip": "",
   "named_tables": {
     "Melee_Damage": [
       -10.0,
@@ -11992,5 +12024,7 @@
     "resistance_cap": 0.8500000238418579,
     "base_threat": 2.0,
     "damage_cap": 4.0
-  }
+  },
+  "villain_rank": 0,
+  "tail_scalar_raw": 0.1
 }

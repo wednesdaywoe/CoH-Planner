@@ -81,5 +81,50 @@ export const LuminousDetonation: Power = {
       "label": "Knockback"
     }
   ],
+  "modeVariants": {
+    "Peacebringer_Blaster_Mode": {
+      "internalName": "Bright_Nova_Detonation",
+      "stats": {
+        "accuracy": 1,
+        "range": 100,
+        "radius": 15,
+        "recharge": 16,
+        "endurance": 15.184,
+        "castTime": 2.5,
+        "maxTargets": 16
+      },
+      "damage": [
+        {
+          "type": "Energy",
+          "scale": 0.6,
+          "table": "Ranged_SSDamage"
+        },
+        {
+          "type": "Smashing",
+          "scale": 0.3,
+          "table": "Ranged_SSDamage"
+        }
+      ],
+      "effects": {
+        "buffDuration": 10,
+        "defenseDebuff": {
+          "scale": 1,
+          "table": "Ranged_Debuff_Def"
+        },
+        "durations": {
+          "defenseDebuff": 10
+        },
+        "knockback": {
+          "scale": 2,
+          "table": "Ranged_Knockback"
+        }
+      },
+      "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Smash/Energy), Foe -DEF, Knockback",
+      "description": "You hurl a large blast of Kheldian light energy that violently explodes on impact, damaging all foes near the target, reducing their defense. Some affected targets may get knocked back. This power is only available while in Bright Nova Form. Damage: Moderate, Recharge: Slow",
+      "effectArea": "AoE",
+      "targetType": "Foe",
+      "powerType": "Click"
+    }
+  },
   "requires": "Peacebringer_Offensive.Luminous_Blast.Bright_Nova Peacebringer_Offensive.Luminous_Blast.Bright_Nova_Detonation ! && Inherent.Inherent.Bright_Nova_Detonation ! &&"
 };

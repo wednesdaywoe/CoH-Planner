@@ -39,15 +39,43 @@ export const AdrenalinBoost: Power = {
   "maxSlots": 6,
   "effects": {
     "buffDuration": 60,
+    "debuffResistance": {
+      "movement": {
+        "scale": 0.8,
+        "table": "Ranged_Ones"
+      },
+      "recharge": {
+        "scale": 0.8,
+        "table": "Ranged_Ones"
+      }
+    },
     "durations": {
-      "recoveryBuff": 60
+      "debuffResistance": 60,
+      "rechargeBuff": 60,
+      "recoveryBuff": 60,
+      "regenBuff": 60
+    },
+    "rechargeBuff": {
+      "scale": 1,
+      "table": "Ranged_Ones"
     },
     "recoveryBuff": {
       "scale": 8,
       "table": "Ranged_Ones"
+    },
+    "regenBuff": {
+      "scale": 5,
+      "table": "Ranged_Ones"
     }
   },
   "atoms": [
-    ["Recovery",null,8,1,60,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Recovery",null,8,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Regeneration",null,5,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["RechargeTime",null,1,1,60,"Ranged_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Movement","JumpHeight",0.8,1,60,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Movement","Jump",0.8,1,60,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Movement","Run",0.8,1,60,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["RechargeTime",null,0.8,1,60,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Movement","Fly",0.8,1,60,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true]
   ]
 };

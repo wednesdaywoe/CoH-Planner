@@ -28,14 +28,48 @@ export const ElectricFence: Power = {
     "EnduranceModification"
   ],
   "allowedSetCategories": [
+    "Dominator Archetype Sets",
     "Endurance Modification",
     "Ranged Damage"
   ],
   "maxSlots": 6,
-  "effects": {},
+  "effects": {
+    "buffDuration": 10.25,
+    "debuffResistance": {
+      "endurance": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Boolean"
+      },
+      "movement": {
+        "scale": 0.4,
+        "table": "Melee_Ones"
+      },
+      "recharge": {
+        "scale": 0.4,
+        "table": "Melee_Ones"
+      },
+      "recovery": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Boolean"
+      }
+    },
+    "durations": {
+      "debuffResistance": 10.25,
+      "recoveryBuff": 10.25
+    },
+    "recoveryBuff": {
+      "scale": 0.2,
+      "table": "Ranged_Ones"
+    }
+  },
   "atoms": [
-    ["RechargeTime",null,0.2,1,10.25,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1.5,1,10.25,"Ranged_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["RechargeTime",null,0.2,1,10.25,"Ranged_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Recovery",null,0.2,1,10.25,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["RechargeTime",null,0.4,1,10.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Movement","Run",0.4,1,10.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Movement","Fly",0.4,1,10.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Recovery",null,1.5,1,10.25,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Endurance",null,1.5,1,10.25,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true]
   ],
   "mechanicType": "parentMechanic"
 };

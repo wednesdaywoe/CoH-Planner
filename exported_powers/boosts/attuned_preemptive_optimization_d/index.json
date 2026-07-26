@@ -1,0 +1,19 @@
+{
+  "key": "Boosts.Attuned_Preemptive_Optimization_D",
+  "display_name": "Attuned Preemptive Optimization D",
+  "help": "Enhances the Endurance Modification potential of a power by {Boost.Attrib.Endurance.Scale}%. Enhances accuracy by {Boost.Attrib.Accuracy.Scale}%. Reduces endurance cost by {Boost.Attrib.Endurance.Scale}%.",
+  "short_help": "Set: Preemptive Optimization",
+  "icon": "e_icon_preemptive_optimization",
+  "powers": [
+    "Boosts.Attuned_Preemptive_Optimization_D.Attuned_Preemptive_Optimization_D"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Preemptive Optimization: Endurance Modification/Accuracy/Endurance"
+  ],
+  "power_short_helps": [
+    "+EndMod, +ACC, -End Cost"
+  ]
+}

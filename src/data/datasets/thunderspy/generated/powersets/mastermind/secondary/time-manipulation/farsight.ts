@@ -39,6 +39,12 @@ export const Farsight: Power = {
   "maxSlots": 6,
   "effects": {
     "buffDuration": 120,
+    "debuffResistance": {
+      "perception": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Boolean"
+      }
+    },
     "defenseBuff": {
       "aoe": {
         "scale": 1.25,
@@ -68,14 +74,28 @@ export const Farsight: Power = {
         "scale": 1.25,
         "table": "Ranged_Buff_Def"
       },
+      "psionic": {
+        "scale": 1.25,
+        "table": "Ranged_Buff_Def"
+      },
+      "ranged": {
+        "scale": 1.25,
+        "table": "Ranged_Buff_Def"
+      },
       "smashing": {
         "scale": 1.25,
         "table": "Ranged_Buff_Def"
       }
     },
     "durations": {
+      "debuffResistance": 120,
       "defenseBuff": 120,
+      "perceptionBuff": 120,
       "tohitBuff": 120
+    },
+    "perceptionBuff": {
+      "scale": 2,
+      "table": "Ranged_Res_Boolean"
     },
     "tohitBuff": {
       "scale": 1,
@@ -83,15 +103,18 @@ export const Farsight: Power = {
     }
   },
   "atoms": [
-    ["Defense","Melee",1.25,1,120,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","AoE",1.25,1,120,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Smashing",1.25,1,120,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Lethal",1.25,1,120,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Fire",1.25,1,120,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Cold",1.25,1,120,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Energy",1.25,1,120,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Negative",1.25,1,120,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["ToHit",null,1,1,120,"Ranged_Buff_ToHit","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1.5,1,120,"Ranged_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Defense","Melee",1.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Ranged",1.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","AoE",1.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Smashing",1.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Lethal",1.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Fire",1.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Cold",1.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Energy",1.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Negative",1.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Psionic",1.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["ToHit",null,1,1,120,"Ranged_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Perception",null,1.5,1,120,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Perception",null,2,1,120,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true]
   ]
 };

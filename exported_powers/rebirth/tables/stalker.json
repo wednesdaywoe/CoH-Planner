@@ -1,10 +1,44 @@
 {
   "name": "Class_Stalker",
-  "display_name": "P675536630",
+  "display_name": "Stalker",
+  "display_help": "Skill can divert clumsy raw power, and precisely applied force can solve many problems. As a Stalker, this is the core of your specialty. You do your best work when attacking from ambush, and can even hide in plain sight to escape foes. Deadly attacks and good defenses make you a dangerous combatant and assassin, but you can be overwhelmed if you're not careful.",
+  "display_short_help": "Excellent Melee, guile and stealth.",
   "icon": "v_archetypeicon_stalker.tga",
   "primary_category": "Stalker_Melee",
   "secondary_category": "Stalker_Defense",
   "pool_category": "Pool",
+  "epic_pool_category": "",
+  "allowed_origins": [
+    "Science",
+    "Magic",
+    "Natural",
+    "Mutation",
+    "Technology"
+  ],
+  "special_restrictions": [
+    "Villain"
+  ],
+  "store_requires": "",
+  "locked_tooltip": "",
+  "product_code": "",
+  "reduction_class": "",
+  "reduce_as_archvillain": false,
+  "level_up_respecs": [],
+  "archetype_shots": [
+    "archetypeshots_stalker_0",
+    "archetypeshots_stalker_1",
+    "archetypeshots_stalker_2"
+  ],
+  "creation_stats": [
+    7,
+    10,
+    2,
+    4,
+    2,
+    2
+  ],
+  "playstyle_flags": 2,
+  "mechanic_tip": "",
   "named_tables": {
     "Melee_Damage": [
       -10.0,
@@ -4899,5 +4933,7 @@
     "resistance_cap": 0.75,
     "base_threat": 2.0,
     "damage_cap": 5.0
-  }
+  },
+  "mechanic_bar_raw": 0,
+  "mechanic_gap_raw": 0
 }

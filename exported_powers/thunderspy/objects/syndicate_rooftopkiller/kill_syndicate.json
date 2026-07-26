@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "Syndicate_Suit_Event target.VillainName> Syndicate_Tub_Ci_Event target.VillainName> || !",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -54,12 +55,13 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Clear_Damagers",
+            "Silent_Kill"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Constant",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 1.0,
           "duration": "0 seconds",
@@ -73,9 +75,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "group target> Syndicate eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 3120
         }
       ]
     }

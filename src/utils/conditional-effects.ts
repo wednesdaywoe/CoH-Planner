@@ -1,7 +1,7 @@
 /**
  * Conditional-effect selection — shared between the power-display layer
  * (`powerDisplayUtils`, InfoPanel, MechanicAdjusters) and the dashboard calc
- * (`character-totals`).
+ * (`legacy-totals.oracle`).
  *
  * A power's `conditionalEffects` are contributions gated on a caster/target
  * state (Bio Armor adaptation modes, Hide, Domination, drowning, …). This

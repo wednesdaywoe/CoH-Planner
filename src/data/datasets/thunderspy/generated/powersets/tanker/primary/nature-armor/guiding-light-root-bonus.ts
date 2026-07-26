@@ -24,9 +24,34 @@ export const GuidingLightRootBonus: Power = {
   },
   "allowedEnhancements": [],
   "maxSlots": 0,
+  "damage": {
+    "type": "Heal",
+    "scale": 0.03,
+    "table": "Melee_HealSelf",
+    "ignoreStrength": true,
+    "duration": 10.25,
+    "tickRate": 0.5
+  },
+  "effects": {
+    "buffDuration": 10.25,
+    "debuffResistance": {
+      "endurance": {
+        "scale": 1.5,
+        "table": "Melee_Res_Boolean"
+      },
+      "recovery": {
+        "scale": 1.5,
+        "table": "Melee_Res_Boolean"
+      }
+    },
+    "durations": {
+      "debuffResistance": 10.25
+    }
+  },
   "atoms": [
-    ["Unmapped",null,0.03,1,10.25,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,0.5,1],
-    ["Unmapped",null,1.5,1,10.25,"Melee_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Heal",null,0.03,1,10.25,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,0.5,1,null,true],
+    ["Recovery",null,1.5,1,10.25,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Endurance",null,1.5,1,10.25,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
   ],
   "requires": "Tanker_Defense.Sacred_Armor.Guiding_Light",
   "mechanicType": "parentMechanic"

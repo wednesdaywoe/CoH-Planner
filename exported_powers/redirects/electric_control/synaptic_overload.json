@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -57,7 +58,7 @@
             "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
@@ -77,18 +78,21 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Controller_Control.Electric_Control.Synaptic_Overload",
               "Dominator_Control.Electric_Control.Synaptic_Overload"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreCombatMods",
             "NoHitDelay",
-            "NoProjectileDelay"
+            "NoProjectileDelay",
+            "AdjustTimer"
           ],
-          "flags_raw": 196928
+          "flags_raw": 196928,
+          "flags2_raw": 2
         }
       ]
     }

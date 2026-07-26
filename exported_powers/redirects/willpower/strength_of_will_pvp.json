@@ -54,6 +54,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -102,7 +103,7 @@
                     "Lethal_Dmg"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Resistance",
                   "target": "Self",
                   "table": "Melee_Res_Dmg",
@@ -136,7 +137,7 @@
                     "Toxic_Dmg"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Resistance",
                   "target": "Self",
                   "table": "Melee_Res_Dmg",
@@ -174,7 +175,7 @@
                     "RechargeTime"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Resistance",
                   "target": "Self",
                   "table": "Melee_Ones",
@@ -208,7 +209,7 @@
                     "Sleep"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Current",
                   "target": "Self",
                   "table": "Melee_Res_Boolean",
@@ -227,6 +228,12 @@
                   "stack": "Replace",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "fx": {
+                    "continuing_bits": [],
+                    "continuing_fx": "PFX",
+                    "conditional_bits": [],
+                    "conditional_fx": null
+                  },
                   "flags": [
                     "IgnoreResistance"
                   ],
@@ -239,7 +246,7 @@
                     "Repel"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Current",
                   "target": "Self",
                   "table": "Melee_Ones",
@@ -258,6 +265,12 @@
                   "stack": "Replace",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "fx": {
+                    "continuing_bits": [],
+                    "continuing_fx": "PFX",
+                    "conditional_bits": [],
+                    "conditional_fx": null
+                  },
                   "flags": [
                     "IgnoreStrength",
                     "IgnoreResistance"
@@ -271,7 +284,7 @@
                     "Repel"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Resistance",
                   "target": "Self",
                   "table": "Melee_Ones",
@@ -290,6 +303,12 @@
                   "stack": "Replace",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "fx": {
+                    "continuing_bits": [],
+                    "continuing_fx": "PFX2",
+                    "conditional_bits": [],
+                    "conditional_fx": null
+                  },
                   "flags": [
                     "IgnoreStrength",
                     "IgnoreResistance"
@@ -301,7 +320,7 @@
                     "Recovery"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Current",
                   "target": "Self",
                   "table": "Melee_Ones",
@@ -320,6 +339,12 @@
                   "stack": "Replace",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "fx": {
+                    "continuing_bits": [],
+                    "continuing_fx": "GENERICCONTINUING/BUFFENDCONTINUING.FX",
+                    "conditional_bits": [],
+                    "conditional_fx": null
+                  },
                   "flags": [
                     "IgnoreResistance"
                   ],
@@ -342,7 +367,7 @@
                     "Special_Dmg"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Strength",
                   "target": "Self",
                   "table": "Ranged_Buff_Dmg",
@@ -361,6 +386,19 @@
                   "stack": "Stack",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "messages": {
+                    "display_attacker_hit": null,
+                    "display_victim_hit": null,
+                    "display_float": null,
+                    "display_attrib_defense_float": null,
+                    "display_info": "On Deactivation"
+                  },
+                  "fx": {
+                    "continuing_bits": [],
+                    "continuing_fx": "GENERICCONTINUING/BUFFDAMAGECONTINUING.FX",
+                    "conditional_bits": [],
+                    "conditional_fx": null
+                  },
                   "flags": [
                     "IgnoreStrength",
                     "IgnoreResistance"
@@ -404,7 +442,7 @@
                     "Lethal_Dmg"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Resistance",
                   "target": "Self",
                   "table": "Melee_Res_Dmg",
@@ -438,7 +476,7 @@
                     "Toxic_Dmg"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Resistance",
                   "target": "Self",
                   "table": "Melee_Res_Dmg",
@@ -476,7 +514,7 @@
                     "RechargeTime"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Resistance",
                   "target": "Self",
                   "table": "Melee_Ones",
@@ -510,7 +548,7 @@
                     "Sleep"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Resistance",
                   "target": "Self",
                   "table": "Melee_Res_Boolean",
@@ -542,7 +580,7 @@
                     "Repel"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Current",
                   "target": "Self",
                   "table": "Melee_Ones",
@@ -561,6 +599,12 @@
                   "stack": "Replace",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "fx": {
+                    "continuing_bits": [],
+                    "continuing_fx": "PFX3",
+                    "conditional_bits": [],
+                    "conditional_fx": null
+                  },
                   "flags": [
                     "IgnoreStrength",
                     "IgnoreResistance"
@@ -574,7 +618,7 @@
                     "Repel"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Resistance",
                   "target": "Self",
                   "table": "Melee_Ones",
@@ -593,6 +637,12 @@
                   "stack": "Replace",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "fx": {
+                    "continuing_bits": [],
+                    "continuing_fx": "PFX4",
+                    "conditional_bits": [],
+                    "conditional_fx": null
+                  },
                   "flags": [
                     "IgnoreStrength",
                     "IgnoreResistance"
@@ -604,7 +654,7 @@
                     "Recovery"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Current",
                   "target": "Self",
                   "table": "Melee_Ones",
@@ -623,6 +673,12 @@
                   "stack": "Replace",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "fx": {
+                    "continuing_bits": [],
+                    "continuing_fx": "GENERICCONTINUING/BUFFENDCONTINUING.FX",
+                    "conditional_bits": [],
+                    "conditional_fx": null
+                  },
                   "flags": [
                     "IgnoreResistance"
                   ],
@@ -645,7 +701,7 @@
                     "Special_Dmg"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Strength",
                   "target": "Self",
                   "table": "Ranged_Buff_Dmg",
@@ -664,6 +720,19 @@
                   "stack": "Stack",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "messages": {
+                    "display_attacker_hit": null,
+                    "display_victim_hit": null,
+                    "display_float": null,
+                    "display_attrib_defense_float": null,
+                    "display_info": "On Deactivation"
+                  },
+                  "fx": {
+                    "continuing_bits": [],
+                    "continuing_fx": "GENERICCONTINUING/BUFFDAMAGECONTINUING.FX",
+                    "conditional_bits": [],
+                    "conditional_fx": null
+                  },
                   "flags": [
                     "IgnoreStrength",
                     "IgnoreResistance"
@@ -691,7 +760,7 @@
                     "Designer_Status"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Absolute",
                   "target": "Self",
                   "table": "Melee_Ones",
@@ -710,6 +779,19 @@
                   "stack": "Replace",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "messages": {
+                    "display_attacker_hit": null,
+                    "display_victim_hit": "Winding down!",
+                    "display_float": "Winding down!",
+                    "display_attrib_defense_float": null,
+                    "display_info": null
+                  },
+                  "fx": {
+                    "continuing_bits": [],
+                    "continuing_fx": "PFX2",
+                    "conditional_bits": [],
+                    "conditional_fx": null
+                  },
                   "flags": [
                     "IgnoreStrength",
                     "IgnoreResistance",
@@ -722,7 +804,7 @@
                     "Endurance"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Current",
                   "target": "Self",
                   "table": "Melee_Ones",
@@ -741,6 +823,13 @@
                   "stack": "Replace",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "messages": {
+                    "display_attacker_hit": null,
+                    "display_victim_hit": "Your {PowerName} drains {Damage} points of your endurance.",
+                    "display_float": null,
+                    "display_attrib_defense_float": null,
+                    "display_info": "On Deactivation"
+                  },
                   "flags": [
                     "IgnoreStrength",
                     "IgnoreResistance"
@@ -753,6 +842,9 @@
         }
       ]
     }
+  ],
+  "strengths_disallowed": [
+    "RechargeTime"
   ],
   "modes_disallowed": [
     "Disable_All"

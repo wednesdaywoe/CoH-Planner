@@ -23,13 +23,13 @@
   "activate_period": 0.0,
   "endurance_cost": 20.8,
   "interrupt_time": 0.0,
-  "target_type": "Position",
+  "target_type": "DeadLeaguemate",
   "target_type_secondary": "None",
   "targets_autohit": [
-    "Position"
+    "DeadLeaguemate"
   ],
   "targets_affected": [
-    "Position"
+    "DeadLeaguemate"
   ],
   "boosts_allowed": [
     "EnduranceDiscount",
@@ -55,6 +55,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -74,7 +75,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -94,9 +95,16 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Pets_Fallout",
-            "priority_list": "PL_StaticObject"
+            "priority_list": "PL_StaticObject",
+            "type": "EntCreate"
+          },
+          "messages": {
+            "display_attacker_hit": "You use the energy of {PlayerDest} to unleash a massive {PowerName}!",
+            "display_victim_hit": "{PlayerSource} uses your energy to unleash a massive {PowerName}!",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
           },
           "flags": [
             "IgnoreStrength",
@@ -104,19 +112,20 @@
             "IgnoreCombatMods",
             "CopyBoosts"
           ],
-          "flags_raw": 112
+          "flags_raw": 112,
+          "flags2_raw": 4
         },
         {
           "attribs": [
             "Null"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 1.0,
-          "duration": "0.50 seconds",
+          "duration": "0.5 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -130,6 +139,15 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [
+              331,
+              691
+            ],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"

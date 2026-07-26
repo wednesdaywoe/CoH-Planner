@@ -119,8 +119,6 @@ export interface IncarnateTierConfig {
   color: string;
   /** Level shift granted at this tier */
   levelShift: number;
-  /** ED bypass ratio for Alpha slot at this tier */
-  edBypassRatio: number;
 }
 
 export const INCARNATE_TIER_REGISTRY: Record<IncarnateTier, IncarnateTierConfig> = {
@@ -129,28 +127,24 @@ export const INCARNATE_TIER_REGISTRY: Record<IncarnateTier, IncarnateTierConfig>
     displayName: 'Common',
     color: '#FFFFFF',
     levelShift: 0,
-    edBypassRatio: 1 / 6,
   },
   uncommon: {
     id: 'uncommon',
     displayName: 'Uncommon',
     color: '#FBBF24',
     levelShift: 0,
-    edBypassRatio: 1 / 3,
   },
   rare: {
     id: 'rare',
     displayName: 'Rare',
     color: '#F97316',
     levelShift: 1,
-    edBypassRatio: 1 / 2,
   },
   veryrare: {
     id: 'veryrare',
     displayName: 'Very Rare',
     color: '#A855F7',
     levelShift: 1,
-    edBypassRatio: 2 / 3,
   },
 };
 

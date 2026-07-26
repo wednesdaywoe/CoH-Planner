@@ -1,0 +1,19 @@
+{
+  "key": "Boosts.Mutation_ToHit_DeBuff",
+  "display_name": "Mutation ToHit DeBuff",
+  "help": "Enhances the effectiveness of accuracy debuffs.",
+  "short_help": "Secondary Mutation (Mutation)",
+  "icon": "mutation_tohit_debuff_set.ico",
+  "powers": [
+    "Boosts.Mutation_ToHit_DeBuff.Mutation_ToHit_DeBuff"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Evolution: Accuracy Degradation (ToHit DeBuff)"
+  ],
+  "power_short_helps": [
+    "Enhances To Hit DeBuffs"
+  ]
+}

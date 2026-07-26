@@ -56,6 +56,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     104,
     128
@@ -80,14 +81,14 @@
             "Cold_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 0.64,
           "duration": "0 seconds",
           "magnitude": 1.0,
-          "delay": 0.6000000238418579,
+          "delay": 0.6,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -99,6 +100,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Cold damage.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Cold damage.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": "30% chance of Lightning"
+          },
           "flags_raw": 1280
         },
         {
@@ -106,7 +114,7 @@
             "Cold_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
@@ -125,6 +133,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Cold damage over time.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Cold damage over time.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags": [
             "NoHitDelay"
           ],
@@ -149,14 +164,14 @@
                 "Knockback"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_Ones",
               "scale": 0.67,
               "duration": "0 seconds",
               "magnitude": 1.0,
-              "delay": 0.30000001192092896,
+              "delay": 0.3,
               "duration_expression": "",
               "magnitude_expression": "",
               "application_period": 0.0,
@@ -168,6 +183,28 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "params": {
+                "vec_start": "Target",
+                "vec_end": "Down",
+                "vec_adjust_pyr": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "priority": 5,
+                "vel": -1.0,
+                "vel_mag": -1.0,
+                "height": -1.0,
+                "height_mag": -1.0,
+                "type": "Knock"
+              },
+              "messages": {
+                "display_attacker_hit": "You knock {PlayerDest} off their feet with your {PowerName}!",
+                "display_victim_hit": "{PlayerSource} knocks you off your feet with their {PowerName}!",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags": [
                 "IgnoreCombatMods"
               ],
@@ -178,12 +215,12 @@
                 "Null"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_Ones",
               "scale": 1.0,
-              "duration": "1.50 seconds",
+              "duration": "1.5 seconds",
               "magnitude": 1.0,
               "delay": 0.0,
               "duration_expression": "",
@@ -197,6 +234,12 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "PFX2",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "NoHitDelay"
               ],
@@ -221,14 +264,14 @@
                 "Knockback"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_Ones",
               "scale": 0.67,
               "duration": "0 seconds",
               "magnitude": 1.0,
-              "delay": 0.30000001192092896,
+              "delay": 0.3,
               "duration_expression": "",
               "magnitude_expression": "",
               "application_period": 0.0,
@@ -240,6 +283,28 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "params": {
+                "vec_start": "Target",
+                "vec_end": "Down",
+                "vec_adjust_pyr": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "priority": 5,
+                "vel": -1.0,
+                "vel_mag": -1.0,
+                "height": -1.0,
+                "height_mag": -1.0,
+                "type": "Knock"
+              },
+              "messages": {
+                "display_attacker_hit": "You knock {PlayerDest} off their feet with your {PowerName}!",
+                "display_victim_hit": "{PlayerSource} knocks you off your feet with their {PowerName}!",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "If target is in a Storm Cell"
+              },
               "flags": [
                 "IgnoreCombatMods"
               ],
@@ -250,12 +315,12 @@
                 "Null"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_Ones",
               "scale": 1.0,
-              "duration": "1.50 seconds",
+              "duration": "1.5 seconds",
               "magnitude": 1.0,
               "delay": 0.0,
               "duration_expression": "",
@@ -269,6 +334,12 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "PFX2",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "NoHitDelay"
               ],
@@ -297,7 +368,7 @@
             "Cold_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_PvPDamage",
@@ -316,6 +387,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Cold damage.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Cold damage.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": "30% chance of Lightning"
+          },
           "flags_raw": 1280
         }
       ],
@@ -337,12 +415,12 @@
                 "Null"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_Ones",
               "scale": 1.0,
-              "duration": "7.10 seconds",
+              "duration": "7.1 seconds",
               "magnitude": 1.0,
               "delay": 0.0,
               "duration_expression": "",
@@ -356,6 +434,12 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "PFX2",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "NoHitDelay"
               ],
@@ -366,14 +450,14 @@
                 "Knockback"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_Knockback",
               "scale": 1.0,
               "duration": "0 seconds",
               "magnitude": 1.0,
-              "delay": 0.30000001192092896,
+              "delay": 0.3,
               "duration_expression": "",
               "magnitude_expression": "",
               "application_period": 0.0,
@@ -385,12 +469,34 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "params": {
+                "vec_start": "Target",
+                "vec_end": "Down",
+                "vec_adjust_pyr": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "priority": 0,
+                "vel": -1.0,
+                "vel_mag": -1.0,
+                "height": -1.0,
+                "height_mag": -1.0,
+                "type": "Knock"
+              },
+              "messages": {
+                "display_attacker_hit": "You knock {PlayerDest} off their feet with your {PowerName}!",
+                "display_victim_hit": "{PlayerSource} knocks you off your feet with their {PowerName}!",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "suppress_events": [
                 {
-                  "event": "MissionObjectInteract",
+                  "event": "Knocked",
                   "event_id": 33,
                   "duration": 10.0,
-                  "flag": 0
+                  "always": 0
                 }
               ],
               "flags_raw": 1280
@@ -414,12 +520,12 @@
                 "Null"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_Ones",
               "scale": 1.0,
-              "duration": "7.10 seconds",
+              "duration": "7.1 seconds",
               "magnitude": 1.0,
               "delay": 0.0,
               "duration_expression": "",
@@ -433,6 +539,12 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "PFX2",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags": [
                 "NoHitDelay"
               ],
@@ -443,14 +555,14 @@
                 "Knockback"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Ranged_Knockback",
               "scale": 1.0,
               "duration": "0 seconds",
               "magnitude": 1.0,
-              "delay": 0.30000001192092896,
+              "delay": 0.3,
               "duration_expression": "",
               "magnitude_expression": "",
               "application_period": 0.0,
@@ -462,12 +574,34 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "params": {
+                "vec_start": "Target",
+                "vec_end": "Down",
+                "vec_adjust_pyr": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "priority": 0,
+                "vel": -1.0,
+                "vel_mag": -1.0,
+                "height": -1.0,
+                "height_mag": -1.0,
+                "type": "Knock"
+              },
+              "messages": {
+                "display_attacker_hit": "You knock {PlayerDest} off their feet with your {PowerName}!",
+                "display_victim_hit": "{PlayerSource} knocks you off your feet with their {PowerName}!",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": "If target is in a Storm Cell"
+              },
               "suppress_events": [
                 {
-                  "event": "MissionObjectInteract",
+                  "event": "Knocked",
                   "event_id": 33,
                   "duration": 10.0,
-                  "flag": 0
+                  "always": 0
                 }
               ],
               "flags_raw": 1280
@@ -504,7 +638,7 @@
             "Toxic_Dmg"
           ],
           "type": "Expression",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -551,7 +685,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "SelfAndPets",
           "table": "Melee_Ones",
@@ -571,10 +705,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Redirects.Storm_Blast.StormCell_LightningAura"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags_raw": 1280
         },
@@ -583,7 +718,7 @@
             "Set_Mode"
           ],
           "type": "Constant",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -629,7 +764,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -649,10 +784,11 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "Power",
             "power_names": [
               "Temporary_Powers.Temporary_Powers.StormBlast_StormBrewing"
-            ]
+            ],
+            "count": 1,
+            "type": "Power"
           },
           "flags": [
             "IgnoreStrength",
@@ -696,7 +832,7 @@
                     "Grant_Power"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Current",
                   "target": "SelfAndPets",
                   "table": "Melee_Ones",
@@ -716,10 +852,11 @@
                   "stack_limit": 2,
                   "stack_key": null,
                   "params": {
-                    "type": "Power",
                     "power_names": [
                       "Redirects.Storm_Blast.StormCell_WindSpeed"
-                    ]
+                    ],
+                    "count": 1,
+                    "type": "Power"
                   },
                   "flags_raw": 1280
                 }

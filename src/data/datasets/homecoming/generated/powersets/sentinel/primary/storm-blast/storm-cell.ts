@@ -48,8 +48,7 @@ export const StormCell: Power = {
       "copyBoosts": true,
       "displayName": "Storm Cell",
       "duration": 60,
-      "entity": "PL_StaticObject",
-      "isPseudoPet": false,
+      "isPseudoPet": true,
       "powers": [
         "Pets.ResistAll_NoFly.ResistAll",
         "Redirects.Storm_Blast.StormCell_Tempest_Sentinel",
@@ -162,7 +161,8 @@ export const StormCell: Power = {
             }
           ]
         }
-      ]
+      ],
+      "entity": "PL_StaticObject"
     }
   },
   "atoms": [

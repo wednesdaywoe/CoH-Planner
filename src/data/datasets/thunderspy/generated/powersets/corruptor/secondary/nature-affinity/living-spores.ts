@@ -50,6 +50,7 @@ export const LivingSpores: Power = {
     }
   },
   "atoms": [
+    ["EntCreate",null,-1,1,5,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1],
     ["EntCreate",null,-1,1,5,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
   ],
   "requires": "Corruptor_Buff.Nature_Affinity.Lifegiving_Spores !"

@@ -33,20 +33,35 @@ export const ConserveEnergy: Power = {
     "Healing"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Heal",
+    "scale": 1,
+    "table": "Melee_HealSelf"
+  },
   "effects": {
     "buffDuration": 60,
     "durations": {
-      "regenBuff": 60
+      "enduranceDiscount": 60,
+      "regenBuff": 60,
+      "regenBuffUnenhanced": 60
     },
-    "effectDuration": 60,
+    "enduranceDiscount": {
+      "scale": 1,
+      "table": "Melee_Stun"
+    },
     "regenBuff": {
+      "scale": 1.125,
+      "table": "Melee_Ones"
+    },
+    "regenBuffUnenhanced": {
       "scale": 1.125,
       "table": "Melee_Ones"
     }
   },
   "atoms": [
-    ["Mez","Stunned",1,1,60,"Melee_Stun","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Regeneration",null,1.125,1,60,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,0,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["EnduranceDiscount",null,1,1,60,"Melee_Stun","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Regeneration",null,1.125,1,60,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Regeneration",null,1.125,1,60,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Heal",null,1,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1]
   ]
 };

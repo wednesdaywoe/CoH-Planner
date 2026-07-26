@@ -18,6 +18,9 @@ export const Quills: Power = {
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "AoE",
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 8,
@@ -102,8 +105,5 @@ export const Quills: Power = {
       "chance": 0.05000000074505806,
       "label": "Lethal_Dmg"
     }
-  ],
-  "setsModes": [
-    "Peacebringer_Blaster_Mode"
   ]
 };

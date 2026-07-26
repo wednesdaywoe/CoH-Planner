@@ -107,5 +107,72 @@ export const ShatterArmor: Power = {
     ["Resistance","Toxic",-1,1,8,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Damage","Smashing",2.92,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Fire",1.314,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0]
-  ]
+  ],
+  "modeVariants": {
+    "FastMode": {
+      "internalName": "Shatter_Armor_Fast",
+      "stats": {
+        "accuracy": 1,
+        "range": 9,
+        "recharge": 12,
+        "endurance": 9.1588,
+        "castTime": 1.3
+      },
+      "damage": {
+        "type": "Smashing",
+        "scale": 2.28,
+        "table": "Melee_Damage"
+      },
+      "effects": {
+        "buffDuration": 10,
+        "defenseDebuff": {
+          "scale": 1,
+          "table": "Melee_Debuff_Def"
+        },
+        "durations": {
+          "defenseDebuff": 10,
+          "resistanceDebuff": 8
+        },
+        "resistanceDebuff": {
+          "cold": {
+            "scale": 1,
+            "table": "Melee_Debuff_Res_Dmg"
+          },
+          "energy": {
+            "scale": 1,
+            "table": "Melee_Debuff_Res_Dmg"
+          },
+          "fire": {
+            "scale": 1,
+            "table": "Melee_Debuff_Res_Dmg"
+          },
+          "lethal": {
+            "scale": 1,
+            "table": "Melee_Debuff_Res_Dmg"
+          },
+          "negative": {
+            "scale": 1,
+            "table": "Melee_Debuff_Res_Dmg"
+          },
+          "psionic": {
+            "scale": 1,
+            "table": "Melee_Debuff_Res_Dmg"
+          },
+          "smashing": {
+            "scale": 1,
+            "table": "Melee_Debuff_Res_Dmg"
+          },
+          "toxic": {
+            "scale": 1,
+            "table": "Melee_Debuff_Res_Dmg"
+          }
+        }
+      },
+      "shortHelp": "Melee, DMG(Smashing), Foe -Def(All), -Res(All)",
+      "description": "You batter your enemy with your mighty weapon dealing Extreme Smashing damage and reducing their resistance to damage as well as their defense to all types of attacks for a short time.",
+      "effectArea": "SingleTarget",
+      "targetType": "Foe",
+      "powerType": "Click"
+    }
+  }
 };

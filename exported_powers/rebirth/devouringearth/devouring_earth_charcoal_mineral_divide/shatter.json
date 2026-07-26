@@ -38,6 +38,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -57,7 +58,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Levelminus",
@@ -80,7 +81,8 @@
             "type": "EntCreate",
             "entity_def": "DevouringEarth_Black_Crystal_Beast_Shard",
             "priority_list": "PL_FightPreferMelee"
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     },
@@ -101,7 +103,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Levelminus",
@@ -124,7 +126,8 @@
             "type": "EntCreate",
             "entity_def": "DevouringEarth_Black_Crystal_Beast_Shard",
             "priority_list": "PL_FightPreferMelee"
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     },
@@ -145,7 +148,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Levelminus",
@@ -168,11 +171,13 @@
             "type": "EntCreate",
             "entity_def": "DevouringEarth_Black_Crystal_Beast_Shard",
             "priority_list": "PL_FightPreferMelee"
-          }
+          },
+          "flags_raw": 1280
         }
       ]
     }
   ],
+  "castable_after_death": "DeadOnly",
   "available_level": 0,
   "powerset": "DevouringEarth.Devouring_Earth_Charcoal_Mineral_Divide"
 }

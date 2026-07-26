@@ -8,6 +8,7 @@ import { Header } from './Header';
 import { StatsDashboard } from './StatsDashboard';
 import { UpdateBanner } from './UpdateBanner';
 import { StatusBanner } from './StatusBanner';
+import { EngineErrorBanner } from './EngineErrorBanner';
 import { RuleOf5Banner } from './RuleOf5Banner';
 import { ExemplarModeBanner } from './ExemplarModeBanner';
 import { MobileBottomNav } from './MobileBottomNav';
@@ -78,6 +79,7 @@ export function MainLayout({ children }: MainLayoutProps) {
       className="min-h-screen bg-gray-950 text-gray-100 flex flex-col"
       style={applyZoom ? { zoom: uiScale, overflowX: 'clip' as const } : undefined}
     >
+      <EngineErrorBanner />
       <StatusBanner active={activeStatus} />
       <UpdateBanner />
       <Header />

@@ -63,5 +63,36 @@ export const SweepingStrike: Power = {
     ["Damage","Smashing",1.3102,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.6600000262260437,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Fire",0.5896,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0]
-  ]
+  ],
+  "modeVariants": {
+    "FastMode": {
+      "internalName": "Sweeping_Strike_Fast",
+      "stats": {
+        "accuracy": 1,
+        "range": 10,
+        "radius": 10,
+        "arc": 2.094395160675049,
+        "recharge": 7.5,
+        "endurance": 6.2665,
+        "castTime": 1.1,
+        "maxTargets": 5
+      },
+      "damage": {
+        "type": "Smashing",
+        "scale": 1.0428,
+        "table": "Melee_Damage"
+      },
+      "effects": {
+        "knockback": {
+          "scale": 0.67,
+          "table": "Melee_Ones"
+        }
+      },
+      "shortHelp": "Melee (Cone), DMG(Smashing), Foe Knockdown",
+      "description": "You make a sweeping slash with your weapon, causing high damage and possibly knocking your opponent down.",
+      "effectArea": "Cone",
+      "targetType": "Foe",
+      "powerType": "Click"
+    }
+  }
 };

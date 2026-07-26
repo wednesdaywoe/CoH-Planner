@@ -74,5 +74,44 @@ export const RockShards: Power = {
     ["Damage","Lethal",0.7593,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Lethal",0.0759,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Defense","All",0.5,1,8,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
-  ]
+  ],
+  "modeVariants": {
+    "SeismicPower": {
+      "internalName": "Defender_Rock_Shards_Large",
+      "stats": {
+        "accuracy": 1,
+        "range": 60,
+        "radius": 60,
+        "arc": 0.6981317400932312,
+        "recharge": 8,
+        "endurance": 8.528,
+        "castTime": 1.07,
+        "maxTargets": 10
+      },
+      "damage": {
+        "type": "Smashing",
+        "scale": 1.2,
+        "table": "Ranged_Damage"
+      },
+      "effects": {
+        "buffDuration": 8,
+        "defenseDebuff": {
+          "scale": 0.5,
+          "table": "Ranged_Debuff_Def"
+        },
+        "durations": {
+          "defenseDebuff": 8
+        },
+        "knockback": {
+          "scale": 0.67,
+          "table": "Melee_Ones"
+        }
+      },
+      "shortHelp": "Ranged Cone, DMG(Smash), -Defense, Special",
+      "description": "You launch a volley of stone shards at your target in a sweeping cone. These shards stab into the target, causing lethal damage. They will also continue to suffer aditional lethal damage over time.If affected by Seismic Shockwaves, this power will halt the shockwaves, the up front damage will be increased and damage over time accelerated, foes will be knocked down, range will be increased to 60ft and arc to 40 degrees.Rock Shards grants one stack of Seismic Pressure.",
+      "effectArea": "Cone",
+      "targetType": "Foe",
+      "powerType": "Click"
+    }
+  }
 };

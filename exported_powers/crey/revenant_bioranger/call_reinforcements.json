@@ -39,6 +39,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -58,7 +59,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -78,24 +79,26 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Crey_Hero_BioRanger_BackupA_NoSpawn",
-            "priority_list": "PL_FightPreferMelee"
+            "priority_list": "PL_FightPreferMelee",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "KeepThroughDeath",
+            "DoNotTintCostume",
             "CopyBoosts"
           ],
-          "flags_raw": 17456
+          "flags_raw": 17456,
+          "flags2_raw": 6
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -115,17 +118,19 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Crey_Hero_BioRanger_BackupB_NoSpawn",
-            "priority_list": "PL_FightPreferRanged"
+            "priority_list": "PL_FightPreferRanged",
+            "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "KeepThroughDeath",
+            "DoNotTintCostume",
             "CopyBoosts"
           ],
-          "flags_raw": 17456
+          "flags_raw": 17456,
+          "flags2_raw": 6
         }
       ]
     }

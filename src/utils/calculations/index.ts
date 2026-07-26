@@ -42,6 +42,7 @@ export {
   type SlotWithEnhancement,
   type PowerWithSlots,
   type EnhancementBonuses,
+  calculateSingleEnhancementValues,
 } from './enhancement-values';
 
 // Set bonuses (Rule of 5)
@@ -83,6 +84,7 @@ export {
   getBreakdownForStat,
   hasStatBonuses,
   getAlphaEnhancementBonuses,
+  getAlphaEdBypassBonuses,
   type GlobalBonuses as CharacterGlobalBonuses,
   type StatSource,
   type DashboardStatBreakdown,
@@ -178,7 +180,6 @@ export {
 // Buff/debuff base-rate rule (single source of truth)
 export {
   calculateBuffDebuffFraction,
-  getEffectiveBuffDebuffModifier,
   BASE_BUFF,
   BASE_DEBUFF,
   type BuffDebuffCategory,

@@ -47,6 +47,7 @@
   "requires": "Pool.Gadgetry.Nano_Net Pool.Gadgetry.Wrist_Blaster && Pool.Gadgetry.Nano_Net Pool.Gadgetry.Jetpack && || Pool.Gadgetry.Wrist_Blaster Pool.Gadgetry.Jetpack && ||",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     112,
     132
@@ -62,14 +63,14 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
-      "eval_flags": 0,
+      "eval_flags": 8,
       "templates": [
         {
           "attribs": [
-            "Add_Behavior"
+            "Power_Redirect"
           ],
           "type": "Constant",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -88,11 +89,18 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Pets.GadgetryAlt.Blaster_Barrage_Laser"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 112
         }
       ]
     },
@@ -106,14 +114,14 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
-      "eval_flags": 0,
+      "eval_flags": 8,
       "templates": [
         {
           "attribs": [
-            "Add_Behavior"
+            "Power_Redirect"
           ],
           "type": "Constant",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -132,11 +140,18 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Pets.GadgetryAlt.Blaster_Barrage_Normal"
+            ]
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
             "IgnoreCombatMods"
-          ]
+          ],
+          "flags_raw": 112
         }
       ]
     },
@@ -157,14 +172,14 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 0.29,
           "duration": "1.75 seconds",
           "magnitude": 1.0,
-          "delay": 0.4000000059604645,
+          "delay": 0.4,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.8299999833106995,
@@ -175,7 +190,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -196,14 +212,14 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 0.420218,
           "duration": "1.75 seconds",
           "magnitude": 1.0,
-          "delay": 0.4000000059604645,
+          "delay": 0.4,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.8299999833106995,
@@ -214,7 +230,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -235,14 +252,14 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 0.380318,
           "duration": "1.75 seconds",
           "magnitude": 1.0,
-          "delay": 0.4000000059604645,
+          "delay": 0.4,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.8299999833106995,
@@ -253,7 +270,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -274,14 +292,14 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 0.407484,
           "duration": "1.75 seconds",
           "magnitude": 1.0,
-          "delay": 0.4000000059604645,
+          "delay": 0.4,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.8299999833106995,
@@ -292,7 +310,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -313,14 +332,14 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 0.517191,
           "duration": "1.75 seconds",
           "magnitude": 1.0,
-          "delay": 0.4000000059604645,
+          "delay": 0.4,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.8299999833106995,
@@ -331,7 +350,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -352,14 +372,14 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 0.499084,
           "duration": "1.75 seconds",
           "magnitude": 1.0,
-          "delay": 0.4000000059604645,
+          "delay": 0.4,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.8299999833106995,
@@ -370,7 +390,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -391,14 +412,14 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 0.448232,
           "duration": "1.75 seconds",
           "magnitude": 1.0,
-          "delay": 0.4000000059604645,
+          "delay": 0.4,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.8299999833106995,
@@ -409,7 +430,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -430,14 +452,14 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 0.336174,
           "duration": "1.75 seconds",
           "magnitude": 1.0,
-          "delay": 0.4000000059604645,
+          "delay": 0.4,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.8299999833106995,
@@ -448,7 +470,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -469,14 +492,14 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 0.448232,
           "duration": "1.75 seconds",
           "magnitude": 1.0,
-          "delay": 0.4000000059604645,
+          "delay": 0.4,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.8299999833106995,
@@ -487,7 +510,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -508,14 +532,14 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 0.463967,
           "duration": "1.75 seconds",
           "magnitude": 1.0,
-          "delay": 0.4000000059604645,
+          "delay": 0.4,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.8299999833106995,
@@ -526,7 +550,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -547,14 +572,14 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 0.463967,
           "duration": "1.75 seconds",
           "magnitude": 1.0,
-          "delay": 0.4000000059604645,
+          "delay": 0.4,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.8299999833106995,
@@ -565,7 +590,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -586,14 +612,14 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 0.500094,
           "duration": "1.75 seconds",
           "magnitude": 1.0,
-          "delay": 0.4000000059604645,
+          "delay": 0.4,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.8299999833106995,
@@ -604,7 +630,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -625,14 +652,14 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 0.397686,
           "duration": "1.75 seconds",
           "magnitude": 1.0,
-          "delay": 0.4000000059604645,
+          "delay": 0.4,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.8299999833106995,
@@ -643,7 +670,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -664,14 +692,14 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 0.336174,
           "duration": "1.75 seconds",
           "magnitude": 1.0,
-          "delay": 0.4000000059604645,
+          "delay": 0.4,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.8299999833106995,
@@ -682,7 +710,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -703,14 +732,14 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 0.87,
           "duration": "0 seconds",
           "magnitude": 1.0,
-          "delay": 0.4000000059604645,
+          "delay": 0.4,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -721,7 +750,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -742,14 +772,14 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 0.87,
           "duration": "0 seconds",
           "magnitude": 1.0,
-          "delay": 0.4000000059604645,
+          "delay": 0.4,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -760,7 +790,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -781,14 +812,14 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 0.87,
           "duration": "0 seconds",
           "magnitude": 1.0,
-          "delay": 0.4000000059604645,
+          "delay": 0.4,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -799,7 +830,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -820,14 +852,14 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 0.87,
           "duration": "0 seconds",
           "magnitude": 1.0,
-          "delay": 0.4000000059604645,
+          "delay": 0.4,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -838,7 +870,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -859,14 +892,14 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 0.87,
           "duration": "0 seconds",
           "magnitude": 1.0,
-          "delay": 0.4000000059604645,
+          "delay": 0.4,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -877,7 +910,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -898,14 +932,14 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 1.141,
           "duration": "0 seconds",
           "magnitude": 1.0,
-          "delay": 0.4000000059604645,
+          "delay": 0.4,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -916,7 +950,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -937,14 +972,14 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 1.497251,
           "duration": "0 seconds",
           "magnitude": 1.0,
-          "delay": 0.4000000059604645,
+          "delay": 0.4,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -955,7 +990,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -976,14 +1012,14 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 1.008523,
           "duration": "0 seconds",
           "magnitude": 1.0,
-          "delay": 0.4000000059604645,
+          "delay": 0.4,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -994,7 +1030,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -1015,14 +1052,14 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 1.008523,
           "duration": "0 seconds",
           "magnitude": 1.0,
-          "delay": 0.4000000059604645,
+          "delay": 0.4,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -1033,7 +1070,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -1054,14 +1092,14 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 1.344697,
           "duration": "0 seconds",
           "magnitude": 1.0,
-          "delay": 0.4000000059604645,
+          "delay": 0.4,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -1072,7 +1110,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -1093,7 +1132,7 @@
             "Taunt"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_InherentTaunt",
@@ -1111,7 +1150,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 2560
         }
       ]
     },
@@ -1132,7 +1172,7 @@
             "Taunt"
           ],
           "type": "Duration",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_InherentTaunt",
@@ -1150,7 +1190,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 2560
         }
       ]
     },
@@ -1171,7 +1212,7 @@
             "Knockback"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -1189,7 +1230,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -1210,7 +1252,7 @@
             "Knockback"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -1228,7 +1270,8 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -1249,7 +1292,7 @@
             "Regeneration"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -1267,7 +1310,8 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -1288,7 +1332,7 @@
             "Regeneration"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -1306,9 +1350,20 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
+    }
+  ],
+  "redirect": [
+    {
+      "name": "Pets.GadgetryAlt.Blaster_Barrage_Laser",
+      "condition_expression": "@customFX WristBlaster eq"
+    },
+    {
+      "name": "Pets.GadgetryAlt.Blaster_Barrage_Normal",
+      "condition_expression": "@customFX WristBlaster eq !"
     }
   ],
   "modes_disallowed": [

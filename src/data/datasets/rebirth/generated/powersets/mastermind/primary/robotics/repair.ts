@@ -16,6 +16,7 @@ export const Repair: Power = {
   "shortHelp": "Heal Robot",
   "icon": "robotics_repair.png",
   "powerType": "Click",
+  "targetType": "Own Pet (Alive)",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,

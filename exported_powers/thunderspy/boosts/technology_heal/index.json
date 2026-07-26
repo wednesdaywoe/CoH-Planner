@@ -1,0 +1,19 @@
+{
+  "key": "Boosts.Technology_Heal",
+  "display_name": "Technology Heal",
+  "help": "Enhances the healing ability of a power.",
+  "short_help": "Cybernetics (Technology)",
+  "icon": "technology_heal_set.ico",
+  "powers": [
+    "Boosts.Technology_Heal.Technology_Heal"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Portacio Ind Nanodoctors"
+  ],
+  "power_short_helps": [
+    "Enhances Heal and Absorb"
+  ]
+}

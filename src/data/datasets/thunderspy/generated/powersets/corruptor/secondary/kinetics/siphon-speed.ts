@@ -41,14 +41,42 @@ export const SiphonSpeed: Power = {
   "effects": {
     "buffDuration": 60,
     "durations": {
+      "movement": 60,
+      "rechargeBuff": 60,
       "rechargeDebuff": 60,
       "slow": 60
+    },
+    "movement": {
+      "flySpeed": {
+        "scale": 0.85,
+        "table": "Melee_SpeedFlying"
+      },
+      "runSpeed": {
+        "scale": 0.85,
+        "table": "Melee_SpeedRunning"
+      }
+    },
+    "rechargeBuff": {
+      "scale": 0.2,
+      "table": "Melee_Ones"
     },
     "rechargeDebuff": {
       "scale": 0.2,
       "table": "Melee_Ones"
     },
     "slow": {
+      "flySpeed": {
+        "scale": 0.5,
+        "table": "Melee_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.5,
+        "table": "Melee_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.5,
+        "table": "Melee_Slow"
+      },
       "runSpeed": {
         "scale": 1,
         "table": "Melee_SpeedRunning"
@@ -56,10 +84,14 @@ export const SiphonSpeed: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,0.5,1,60,"Melee_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["RechargeTime",null,-0.2,1,60,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Movement","Run",-1,1,60,"Melee_SpeedRunning","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Movement","Run",0.85,1,60,"Melee_SpeedRunning","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Movement","Fly",0.85,1,60,"Melee_SpeedFlying","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Movement","Run",0.5,1,60,"Melee_Slow","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["Movement","Fly",0.5,1,60,"Melee_Slow","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["Movement","Jump",0.5,1,60,"Melee_Slow","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["Movement","JumpHeight",0.5,1,60,"Melee_Slow","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["RechargeTime",null,-0.2,1,60,"Melee_Ones","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["RechargeTime",null,0.2,1,60,"Melee_Ones","Str","Magnitude","Self","Any",false,"No",3,null,null,1,null,true],
+    ["Movement","Run",-1,1,60,"Melee_SpeedRunning","Max","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Movement","Run",0.85,1,60,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"No",4,null,null,1],
+    ["Movement","Fly",0.85,1,60,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"No",3,null,null,1]
   ]
 };

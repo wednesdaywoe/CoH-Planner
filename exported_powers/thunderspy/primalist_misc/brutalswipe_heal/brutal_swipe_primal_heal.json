@@ -40,6 +40,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "entref source.owner> entref target> eq !",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -56,12 +57,12 @@
       "templates": [
         {
           "attribs": [
-            "NBInactive"
+            "Heal_Dmg"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Melee_Heal",
           "scale": 0.195,
           "duration": "1 seconds",
@@ -75,9 +76,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -95,12 +97,12 @@
       "templates": [
         {
           "attribs": [
-            "NBActive"
+            "Heal_Dmg"
           ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
           "table": "Melee_Heal",
           "scale": 0.39,
           "duration": "1 seconds",
@@ -114,9 +116,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     }

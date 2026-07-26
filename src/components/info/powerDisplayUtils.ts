@@ -57,12 +57,6 @@ export const TABLE_BASE_VALUES: Record<string, number> = {
   'default': 0.10,
 };
 
-// The 10%/5%-per-scale buff/debuff rule and the effective-modifier logic are
-// single-sourced in calculations/buff-debuff.ts. Re-exported here for the UI
-// surfaces that import from this module (InfoPanel, PowerInfoTooltip,
-// CompareSlottingModal).
-export { getEffectiveBuffDebuffModifier } from '@/utils/calculations/buff-debuff';
-
 export type EffectCategory = 'buff' | 'debuff';
 
 /**
@@ -201,15 +195,20 @@ export interface ThreeTierValues {
  * Formulas by aspect type:
  * - Reductions (endurance, recharge): base / (1 + bonus) — lower is better
  * - Multiplicative (everything else): base * (1 + bonus) — higher is better
+ *
+ * `strengthAspect` splits the two lookups where one boost enhances several attribs: the
+ * slotted bonus is keyed by `aspect`, the build-wide global and +Strength by `strengthAspect`.
+ * Defaults to `aspect`, which is every effect but absorb.
  */
 export function calcThreeTier(
   aspect: string,
   baseValue: number,
   enhancementBonuses: Record<string, number | undefined>,
-  globalBonuses: Record<string, number | undefined>
+  globalBonuses: Record<string, number | undefined>,
+  strengthAspect: string = aspect
 ): ThreeTierValues {
   const enhBonus = enhancementBonuses[aspect] || 0;
-  const globalBonus = globalBonuses[aspect] || 0;
+  const globalBonus = globalBonuses[strengthAspect] || 0;
 
   let enhanced: number;
   let final: number;
@@ -284,6 +283,45 @@ export function convertGlobalBonusesToAspects(
 }
 
 /**
+ * The mez effect keys a single `strengthMez` fraction feeds — the same six the
+ * mez-duration rows read their global from (`GLOBAL_BONUS_ASPECT_MAP` above).
+ */
+const STRENGTH_MEZ_ASPECTS = ['immobilize', 'hold', 'stun', 'sleep', 'confuse', 'fear'];
+
+/**
+ * Augment aspect-keyed globals with the active +Strength self-buffs (Power Boost family).
+ *
+ * Strength is a non-ED multiplier on the caster's OWN matching output, so it lands in the
+ * Final column exactly like a global bonus (`final = base × (1 + enh + global)`). Only
+ * the families with no other global coupling are folded: defense, absorb and mez have no
+ * entry in `GLOBAL_BONUS_ASPECT_MAP` at all, and heal-strength is genuinely additive with the
+ * +Heal set bonus already there. Absorb is keyed apart from heal because the server reads
+ * Strength at the mod's own attrib offset, and every +Heal set bonus targets `Heal_Dmg`
+ * alone — the absorb rows reach `absorb` through the registry's `strengthAspect`.
+ * ToHit and damage are deliberately left out — the dashboard totals
+ * have already folded ToHit strength into the field those rows read, and the family grants
+ * no damage strength, so either would double-count. The fields are stored as FRACTIONS by
+ * `calculateCharacterTotals` (`collectStrengthBuffs`), so they add without the /100.
+ *
+ * The engine owns this rule (`granted.rs` `STRENGTH_ASPECTS`); this is its beta twin, kept
+ * as the reference `powerProjectionParity.test.ts` grades the engine against.
+ */
+export function withStrengthBonuses(
+  aspectBonuses: Record<string, number>,
+  globalBonuses: CharacterGlobalBonuses
+): Record<string, number> {
+  const out: Record<string, number> = { ...aspectBonuses };
+  const add = (aspect: string, value: number | undefined) => {
+    if (value) out[aspect] = (out[aspect] || 0) + value;
+  };
+  add('defense', globalBonuses.strengthDefense);
+  add('heal', globalBonuses.strengthHeal);
+  add('absorb', globalBonuses.strengthAbsorb);
+  for (const aspect of STRENGTH_MEZ_ASPECTS) add(aspect, globalBonuses.strengthMez);
+  return out;
+}
+
+/**
  * Find a selected power in the build.
  *
  * **A power's identity is `(powerSet, internalName)` — never `internalName`
@@ -351,6 +389,10 @@ const MEZ_LABELS: Record<string, string> = {
   stun: 'Stun', hold: 'Hold', immobilize: 'Immob',
   sleep: 'Sleep', confuse: 'Confuse', fear: 'Fear', knockback: 'KB',
 };
+
+/** Exported for the PROD6B-2 drift gate only — this vocabulary is shared with the engine via
+ *  `contract/effect-registry.json`, so the gate must be able to read it. */
+export const MEZ_LABELS_FOR_DRIFT_GATE = MEZ_LABELS;
 
 /**
  * Expand a by-type object (DefenseByType, ResistanceByType, ElusivityByType)

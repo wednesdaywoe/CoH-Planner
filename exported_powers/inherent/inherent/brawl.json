@@ -46,6 +46,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [
     108,
     116
@@ -68,7 +69,7 @@
             "Smashing_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Melee_Damage",
@@ -87,6 +88,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Smashing damage.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Smashing damage.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -110,7 +118,7 @@
             "Smashing_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Melee_InherentDamage",
@@ -129,6 +137,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Smashing damage (CONTAINMENT).",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Smashing damage (CONTAINMENT).",
+            "display_float": "Containment",
+            "display_attrib_defense_float": null,
+            "display_info": "Only against immobilized, held, sleeping, terrified or stunned targets"
+          },
           "flags_raw": 1280
         }
       ]
@@ -150,7 +165,7 @@
             "RechargeTime"
           ],
           "type": "Expression",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -180,7 +195,7 @@
             "ToHit"
           ],
           "type": "Expression",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -199,6 +214,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "GENERICCONTINUING/DEBUFFTOHITCONTINUING.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "CancelOnMiss",
             "IgnoreStrength"
@@ -224,7 +245,7 @@
             "Regeneration"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -243,6 +264,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "GENERICCONTINUING/DEBUFFMAXHPCONTINUING.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "CancelOnMiss",
             "IgnoreStrength"
@@ -254,7 +281,7 @@
             "Recovery"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
@@ -273,6 +300,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "GENERICCONTINUING/DEBUFFEND2CONTINUING.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "CancelOnMiss",
             "IgnoreStrength"
@@ -350,7 +383,7 @@
                         "Knockback"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Current",
                       "target": "AnyAffected",
                       "table": "Melee_Ones",
@@ -369,12 +402,34 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "params": {
+                        "vec_start": "Source",
+                        "vec_end": "Source",
+                        "vec_adjust_pyr": [
+                          0.0,
+                          0.0,
+                          0.0
+                        ],
+                        "priority": 0,
+                        "vel": 1.0,
+                        "vel_mag": 0.0,
+                        "height": 10.0,
+                        "height_mag": 0.0,
+                        "type": "Knock"
+                      },
+                      "messages": {
+                        "display_attacker_hit": "You knock {PlayerDest} off their feet with your {PowerName}!",
+                        "display_victim_hit": "{PlayerSource} knocks you off your feet with their {PowerName}!",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
                       "suppress_events": [
                         {
-                          "event": "MissionObjectInteract",
+                          "event": "Knocked",
                           "event_id": 33,
                           "duration": 10.0,
-                          "flag": 0
+                          "always": 0
                         }
                       ],
                       "flags": [
@@ -401,7 +456,7 @@
                         "Knockback"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Current",
                       "target": "AnyAffected",
                       "table": "Melee_Ones",
@@ -420,6 +475,28 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "params": {
+                        "vec_start": "Source",
+                        "vec_end": "Source",
+                        "vec_adjust_pyr": [
+                          0.0,
+                          0.0,
+                          0.0
+                        ],
+                        "priority": 0,
+                        "vel": 1.0,
+                        "vel_mag": 0.0,
+                        "height": 10.0,
+                        "height_mag": 0.0,
+                        "type": "Knock"
+                      },
+                      "messages": {
+                        "display_attacker_hit": "You knock {PlayerDest} off their feet with your {PowerName}!",
+                        "display_victim_hit": "{PlayerSource} knocks you off your feet with their {PowerName}!",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
                       "flags": [
                         "IgnoreStrength"
                       ],
@@ -444,7 +521,7 @@
                         "Knockback"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Current",
                       "target": "AnyAffected",
                       "table": "Melee_Ones",
@@ -463,6 +540,28 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "params": {
+                        "vec_start": "Source",
+                        "vec_end": "Source",
+                        "vec_adjust_pyr": [
+                          0.0,
+                          0.0,
+                          0.0
+                        ],
+                        "priority": 1,
+                        "vel": 3.0,
+                        "vel_mag": 0.0,
+                        "height": 20.0,
+                        "height_mag": 0.0,
+                        "type": "Knock"
+                      },
+                      "messages": {
+                        "display_attacker_hit": "You knock {PlayerDest} off their feet with your {PowerName}!",
+                        "display_victim_hit": "{PlayerSource} knocks you off your feet with their {PowerName}!",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
                       "flags_raw": 1280
                     }
                   ]
@@ -484,7 +583,7 @@
                         "Knockback"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Current",
                       "target": "AnyAffected",
                       "table": "Melee_Ones",
@@ -503,6 +602,28 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "params": {
+                        "vec_start": "Target",
+                        "vec_end": "Source",
+                        "vec_adjust_pyr": [
+                          0.0,
+                          0.0,
+                          0.0
+                        ],
+                        "priority": 1,
+                        "vel": 3.0,
+                        "vel_mag": 0.0,
+                        "height": 20.0,
+                        "height_mag": 0.0,
+                        "type": "Knock"
+                      },
+                      "messages": {
+                        "display_attacker_hit": "You knock {PlayerDest} off their feet with your {PowerName}!",
+                        "display_victim_hit": "{PlayerSource} knocks you off your feet with their {PowerName}!",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
                       "flags_raw": 1280
                     }
                   ]
@@ -524,7 +645,7 @@
                         "Knockback"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Current",
                       "target": "AnyAffected",
                       "table": "Melee_Ones",
@@ -543,6 +664,28 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "params": {
+                        "vec_start": "Source",
+                        "vec_end": "Up",
+                        "vec_adjust_pyr": [
+                          0.0,
+                          0.0,
+                          0.0
+                        ],
+                        "priority": 1,
+                        "vel": 0.10000000149011612,
+                        "vel_mag": 0.0,
+                        "height": 20.0,
+                        "height_mag": 0.0,
+                        "type": "Knock"
+                      },
+                      "messages": {
+                        "display_attacker_hit": "You knock {PlayerDest} off their feet with your {PowerName}!",
+                        "display_victim_hit": "{PlayerSource} knocks you off your feet with their {PowerName}!",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
                       "flags_raw": 1280
                     }
                   ]
@@ -564,7 +707,7 @@
                         "Knockback"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Current",
                       "target": "AnyAffected",
                       "table": "Melee_Ones",
@@ -583,6 +726,28 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "params": {
+                        "vec_start": "Target",
+                        "vec_end": "Facing",
+                        "vec_adjust_pyr": [
+                          0.0,
+                          0.0,
+                          0.0
+                        ],
+                        "priority": 1,
+                        "vel": 2.0,
+                        "vel_mag": 0.0,
+                        "height": 10.0,
+                        "height_mag": 0.0,
+                        "type": "Knock"
+                      },
+                      "messages": {
+                        "display_attacker_hit": "You knock {PlayerDest} off their feet with your {PowerName}!",
+                        "display_victim_hit": "{PlayerSource} knocks you off your feet with their {PowerName}!",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
                       "flags_raw": 1280
                     }
                   ]
@@ -604,7 +769,7 @@
                         "Knockback"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Current",
                       "target": "AnyAffected",
                       "table": "Melee_Ones",
@@ -623,6 +788,28 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "params": {
+                        "vec_start": "Source",
+                        "vec_end": "Facing",
+                        "vec_adjust_pyr": [
+                          0.0,
+                          0.7853981852531433,
+                          0.0
+                        ],
+                        "priority": 1,
+                        "vel": 1.5,
+                        "vel_mag": 0.0,
+                        "height": 20.0,
+                        "height_mag": 0.0,
+                        "type": "Knock"
+                      },
+                      "messages": {
+                        "display_attacker_hit": "You knock {PlayerDest} off their feet with your {PowerName}!",
+                        "display_victim_hit": "{PlayerSource} knocks you off your feet with their {PowerName}!",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
                       "flags_raw": 1280
                     }
                   ]
@@ -644,7 +831,7 @@
                         "Knockback"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Current",
                       "target": "AnyAffected",
                       "table": "Melee_Ones",
@@ -663,6 +850,28 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "params": {
+                        "vec_start": "Source",
+                        "vec_end": "Facing",
+                        "vec_adjust_pyr": [
+                          0.0,
+                          5.4977874755859375,
+                          0.0
+                        ],
+                        "priority": 1,
+                        "vel": 1.5,
+                        "vel_mag": 0.0,
+                        "height": 20.0,
+                        "height_mag": 0.0,
+                        "type": "Knock"
+                      },
+                      "messages": {
+                        "display_attacker_hit": "You knock {PlayerDest} off their feet with your {PowerName}!",
+                        "display_victim_hit": "{PlayerSource} knocks you off your feet with their {PowerName}!",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
                       "flags_raw": 1280
                     }
                   ]
@@ -684,7 +893,7 @@
                         "Knockback"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Current",
                       "target": "AnyAffected",
                       "table": "Melee_Ones",
@@ -703,6 +912,28 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "params": {
+                        "vec_start": "Source",
+                        "vec_end": "Facing",
+                        "vec_adjust_pyr": [
+                          0.0,
+                          1.5707963705062866,
+                          0.0
+                        ],
+                        "priority": 1,
+                        "vel": 3.0,
+                        "vel_mag": 0.0,
+                        "height": 20.0,
+                        "height_mag": 0.0,
+                        "type": "Knock"
+                      },
+                      "messages": {
+                        "display_attacker_hit": "You knock {PlayerDest} off their feet with your {PowerName}!",
+                        "display_victim_hit": "{PlayerSource} knocks you off your feet with their {PowerName}!",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
                       "flags_raw": 1280
                     }
                   ]
@@ -724,7 +955,7 @@
                         "Knockback"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Current",
                       "target": "AnyAffected",
                       "table": "Melee_Ones",
@@ -743,6 +974,28 @@
                       "stack": "Stack",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "params": {
+                        "vec_start": "Source",
+                        "vec_end": "Facing",
+                        "vec_adjust_pyr": [
+                          0.0,
+                          4.71238899230957,
+                          0.0
+                        ],
+                        "priority": 1,
+                        "vel": 3.0,
+                        "vel_mag": 0.0,
+                        "height": 20.0,
+                        "height_mag": 0.0,
+                        "type": "Knock"
+                      },
+                      "messages": {
+                        "display_attacker_hit": "You knock {PlayerDest} off their feet with your {PowerName}!",
+                        "display_victim_hit": "{PlayerSource} knocks you off your feet with their {PowerName}!",
+                        "display_float": null,
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
                       "flags_raw": 1280
                     }
                   ]
@@ -779,7 +1032,7 @@
                         "Null"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Current",
                       "target": "Self",
                       "table": "Melee_Ones",
@@ -798,6 +1051,13 @@
                       "stack": "Replace",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": null,
+                        "display_victim_hit": null,
+                        "display_float": "BOOM!",
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
                       "flags": [
                         "IgnoreStrength",
                         "IgnoreResistance"
@@ -823,7 +1083,7 @@
                         "Null"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Current",
                       "target": "Self",
                       "table": "Melee_Ones",
@@ -842,6 +1102,13 @@
                       "stack": "Replace",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": null,
+                        "display_victim_hit": null,
+                        "display_float": "POW!",
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
                       "flags": [
                         "IgnoreStrength",
                         "IgnoreResistance"
@@ -882,7 +1149,7 @@
                         "Execute_Power"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Strength",
                       "target": "AnyAffected",
                       "table": "Melee_Ones",
@@ -902,22 +1169,24 @@
                       "stack_limit": 2,
                       "stack_key": null,
                       "params": {
-                        "type": "Power",
                         "power_names": [
                           "Temporary_Powers.Temporary_Powers.Invention_Plasmatic_Taser"
-                        ]
+                        ],
+                        "count": 1,
+                        "type": "Power"
                       },
                       "flags": [
                         "CopyBoosts"
                       ],
-                      "flags_raw": 1280
+                      "flags_raw": 1280,
+                      "flags2_raw": 4
                     },
                     {
                       "attribs": [
                         "Null"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Current",
                       "target": "Self",
                       "table": "Melee_Ones",
@@ -936,6 +1205,13 @@
                       "stack": "Replace",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": null,
+                        "display_victim_hit": null,
+                        "display_float": "Freeeem!",
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
                       "flags": [
                         "IgnoreStrength",
                         "IgnoreResistance"
@@ -974,14 +1250,14 @@
                             "Knockback"
                           ],
                           "type": "Magnitude",
-                          "application_type": "Immediate",
+                          "application_type": "OnTick",
                           "aspect": "Current",
                           "target": "Self",
                           "table": "Melee_Ones",
                           "scale": 100.0,
                           "duration": "0 seconds",
                           "magnitude": 0.0,
-                          "delay": 0.009999999776482582,
+                          "delay": 0.01,
                           "duration_expression": "",
                           "magnitude_expression": "",
                           "application_period": 0.0,
@@ -993,6 +1269,28 @@
                           "stack": "Stack",
                           "stack_limit": 2,
                           "stack_key": null,
+                          "params": {
+                            "vec_start": "MainTarget",
+                            "vec_end": "Source",
+                            "vec_adjust_pyr": [
+                              0.0,
+                              0.0,
+                              0.0
+                            ],
+                            "priority": 1,
+                            "vel": 3.0,
+                            "vel_mag": 0.0,
+                            "height": 3.0,
+                            "height_mag": 0.0,
+                            "type": "Knock"
+                          },
+                          "messages": {
+                            "display_attacker_hit": "You knock {PlayerDest} off their feet with your {PowerName}!",
+                            "display_victim_hit": "{PlayerSource} knocks you off your feet with their {PowerName}!",
+                            "display_float": null,
+                            "display_attrib_defense_float": null,
+                            "display_info": null
+                          },
                           "flags": [
                             "IgnoreStrength",
                             "IgnoreResistance"
@@ -1004,7 +1302,7 @@
                             "Null"
                           ],
                           "type": "Magnitude",
-                          "application_type": "Immediate",
+                          "application_type": "OnTick",
                           "aspect": "Current",
                           "target": "Self",
                           "table": "Melee_Ones",
@@ -1023,6 +1321,13 @@
                           "stack": "Replace",
                           "stack_limit": 2,
                           "stack_key": null,
+                          "messages": {
+                            "display_attacker_hit": null,
+                            "display_victim_hit": null,
+                            "display_float": "Oops!",
+                            "display_attrib_defense_float": null,
+                            "display_info": null
+                          },
                           "flags": [
                             "IgnoreStrength",
                             "IgnoreResistance"
@@ -1048,7 +1353,7 @@
                             "Execute_Power"
                           ],
                           "type": "Magnitude",
-                          "application_type": "Immediate",
+                          "application_type": "OnTick",
                           "aspect": "Strength",
                           "target": "AnyAffected",
                           "table": "Melee_Ones",
@@ -1068,29 +1373,31 @@
                           "stack_limit": 2,
                           "stack_key": null,
                           "params": {
-                            "type": "Power",
                             "power_names": [
                               "Temporary_Powers.Temporary_Powers.Friendly_Fireworks"
-                            ]
+                            ],
+                            "count": 1,
+                            "type": "Power"
                           },
                           "flags": [
                             "CopyBoosts"
                           ],
-                          "flags_raw": 1280
+                          "flags_raw": 1280,
+                          "flags2_raw": 4
                         },
                         {
                           "attribs": [
                             "Null"
                           ],
                           "type": "Magnitude",
-                          "application_type": "Immediate",
+                          "application_type": "OnTick",
                           "aspect": "Current",
                           "target": "Self",
                           "table": "Melee_Ones",
                           "scale": 0.0,
                           "duration": "1 seconds",
                           "magnitude": 1.0,
-                          "delay": 0.699999988079071,
+                          "delay": 0.7,
                           "duration_expression": "",
                           "magnitude_expression": "",
                           "application_period": 0.0,
@@ -1102,6 +1409,13 @@
                           "stack": "Replace",
                           "stack_limit": 2,
                           "stack_key": null,
+                          "messages": {
+                            "display_attacker_hit": null,
+                            "display_victim_hit": null,
+                            "display_float": "Surprise!",
+                            "display_attrib_defense_float": null,
+                            "display_info": null
+                          },
                           "flags": [
                             "IgnoreStrength",
                             "IgnoreResistance"
@@ -1133,7 +1447,7 @@
                 "Repel"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
@@ -1152,6 +1466,21 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "params": {
+                "vec_start": "Source",
+                "vec_end": "Up",
+                "vec_adjust_pyr": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "priority": 2,
+                "vel": 1.5,
+                "vel_mag": 0.0,
+                "height": 0.0,
+                "height_mag": 0.0,
+                "type": "Knock"
+              },
               "flags_raw": 1280
             },
             {
@@ -1159,7 +1488,7 @@
                 "Null"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
@@ -1178,6 +1507,15 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [
+                  47,
+                  66
+                ],
+                "continuing_fx": null,
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags_raw": 1280
             },
             {
@@ -1185,14 +1523,14 @@
                 "Null"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
               "scale": 0.0,
-              "duration": "0.40 seconds",
+              "duration": "0.4 seconds",
               "magnitude": 0.0,
-              "delay": 0.8999999761581421,
+              "delay": 0.9,
               "duration_expression": "",
               "magnitude_expression": "",
               "application_period": 0.0,
@@ -1204,6 +1542,12 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "POWERS/MARTIALARTS/MARTIALARTSHITS.FX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
               "flags_raw": 1280
             },
             {
@@ -1211,7 +1555,7 @@
                 "Null"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "Self",
               "table": "Melee_Ones",
@@ -1230,6 +1574,13 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "messages": {
+                "display_attacker_hit": null,
+                "display_victim_hit": null,
+                "display_float": "2-HIT COMBO!",
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags_raw": 1280
             }
           ],
@@ -1264,7 +1615,7 @@
                         "Null"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Current",
                       "target": "Self",
                       "table": "Melee_Ones",
@@ -1283,6 +1634,13 @@
                       "stack": "Replace",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": null,
+                        "display_victim_hit": null,
+                        "display_float": "BOOM!",
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
                       "flags": [
                         "IgnoreStrength",
                         "IgnoreResistance"
@@ -1308,7 +1666,7 @@
                         "Null"
                       ],
                       "type": "Magnitude",
-                      "application_type": "Immediate",
+                      "application_type": "OnTick",
                       "aspect": "Current",
                       "target": "Self",
                       "table": "Melee_Ones",
@@ -1327,6 +1685,13 @@
                       "stack": "Replace",
                       "stack_limit": 2,
                       "stack_key": null,
+                      "messages": {
+                        "display_attacker_hit": null,
+                        "display_victim_hit": null,
+                        "display_float": "POW!",
+                        "display_attrib_defense_float": null,
+                        "display_info": null
+                      },
                       "flags": [
                         "IgnoreStrength",
                         "IgnoreResistance"
@@ -1354,7 +1719,7 @@
                     "Execute_Power"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Strength",
                   "target": "AnyAffected",
                   "table": "Melee_Ones",
@@ -1374,29 +1739,31 @@
                   "stack_limit": 2,
                   "stack_key": null,
                   "params": {
-                    "type": "Power",
                     "power_names": [
                       "Temporary_Powers.Temporary_Powers.Friendly_Fireworks"
-                    ]
+                    ],
+                    "count": 1,
+                    "type": "Power"
                   },
                   "flags": [
                     "CopyBoosts"
                   ],
-                  "flags_raw": 1280
+                  "flags_raw": 1280,
+                  "flags2_raw": 4
                 },
                 {
                   "attribs": [
                     "Null"
                   ],
                   "type": "Magnitude",
-                  "application_type": "Immediate",
+                  "application_type": "OnTick",
                   "aspect": "Current",
                   "target": "Self",
                   "table": "Melee_Ones",
                   "scale": 0.0,
                   "duration": "1 seconds",
                   "magnitude": 1.0,
-                  "delay": 0.44999998807907104,
+                  "delay": 0.45,
                   "duration_expression": "",
                   "magnitude_expression": "",
                   "application_period": 0.0,
@@ -1408,6 +1775,13 @@
                   "stack": "Replace",
                   "stack_limit": 2,
                   "stack_key": null,
+                  "messages": {
+                    "display_attacker_hit": null,
+                    "display_victim_hit": null,
+                    "display_float": "Surprise!",
+                    "display_attrib_defense_float": null,
+                    "display_info": null
+                  },
                   "flags": [
                     "IgnoreStrength",
                     "IgnoreResistance"
@@ -1435,7 +1809,7 @@
                 "Knockback"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
@@ -1454,12 +1828,34 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "params": {
+                "vec_start": "Source",
+                "vec_end": "Down",
+                "vec_adjust_pyr": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "priority": 2,
+                "vel": 3.0,
+                "vel_mag": 0.0,
+                "height": 0.0,
+                "height_mag": 0.0,
+                "type": "Knock"
+              },
+              "messages": {
+                "display_attacker_hit": "You knock {PlayerDest} off their feet with your {PowerName}!",
+                "display_victim_hit": "{PlayerSource} knocks you off your feet with their {PowerName}!",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "suppress_events": [
                 {
-                  "event": "MissionObjectInteract",
+                  "event": "Knocked",
                   "event_id": 33,
                   "duration": 10.0,
-                  "flag": 0
+                  "always": 0
                 }
               ],
               "flags": [
@@ -1486,7 +1882,7 @@
                 "Knockback"
               ],
               "type": "Magnitude",
-              "application_type": "Immediate",
+              "application_type": "OnTick",
               "aspect": "Current",
               "target": "AnyAffected",
               "table": "Melee_Ones",
@@ -1505,6 +1901,28 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
+              "params": {
+                "vec_start": "Source",
+                "vec_end": "Down",
+                "vec_adjust_pyr": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "priority": 2,
+                "vel": 3.0,
+                "vel_mag": 0.0,
+                "height": 0.0,
+                "height_mag": 0.0,
+                "type": "Knock"
+              },
+              "messages": {
+                "display_attacker_hit": "You knock {PlayerDest} off their feet with your {PowerName}!",
+                "display_victim_hit": "{PlayerSource} knocks you off your feet with their {PowerName}!",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
               "flags": [
                 "IgnoreStrength"
               ],
@@ -1514,6 +1932,9 @@
         }
       ]
     }
+  ],
+  "strengths_disallowed": [
+    "Range"
   ],
   "modes_disallowed": [
     "Disable_All",

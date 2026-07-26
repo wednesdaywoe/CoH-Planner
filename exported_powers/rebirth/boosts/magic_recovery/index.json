@@ -1,0 +1,19 @@
+{
+  "key": "Boosts.Magic_Recovery",
+  "display_name": "Magic Endurance",
+  "help": "Increases the endurance modification ability of a power.",
+  "short_help": "Dimensional Entities (Magic)",
+  "icon": "magic_recovery_set.ico",
+  "powers": [
+    "Boosts.Magic_Recovery.Magic_Recovery"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Resolution of Grey (End Mod)"
+  ],
+  "power_short_helps": [
+    "Enhances Endurance Modification"
+  ]
+}

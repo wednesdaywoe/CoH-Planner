@@ -39,11 +39,67 @@ const DRY_RUN = process.argv.includes('--dry-run');
 // ============================================
 
 function readJson(filePath) {
+  let text;
   try {
-    return JSON.parse(fs.readFileSync(filePath, 'utf8'));
-  } catch {
-    return null;
+    text = fs.readFileSync(filePath, 'utf8');
+  } catch (err) {
+    // Absent is a real state — the HC-reference recovery probes ask for files
+    // that legitimately don't exist. Anything else must surface.
+    if (err.code === 'ENOENT') return null;
+    throw err;
   }
+  try {
+    return JSON.parse(text);
+  } catch (err) {
+    throw new Error(`Corrupt JSON in ${filePath}: ${err.message}`);
+  }
+}
+
+// Every judgement/lore/verdict/data main file in all three exports carries a
+// non-zero recharge_time (censused 2026-07-20); a missing one is a broken
+// export, not a cooldown to guess at.
+function requireRechargeTime(data, sourceName) {
+  if (!data.recharge_time) {
+    throw new Error(`${sourceName}: missing recharge_time — refusing to fabricate a cooldown`);
+  }
+  return data.recharge_time;
+}
+
+/** Template table name across export shapes: the alpha-tree tables are objects
+ *  ({ column_name }), the power trees carry plain strings. */
+function templateTableName(t) {
+  if (t.table && typeof t.table === 'object') return t.table.column_name || '';
+  return typeof t.table === 'string' ? t.table : '';
+}
+
+// Every damage/DoT template in all three exports names its table (censused
+// 2026-07-21, DOT-TABLE-1); a blank one is a misparse to surface, never a
+// table to guess at.
+function requireTemplateTable(t, sourceName) {
+  const name = templateTableName(t);
+  if (!name) {
+    throw new Error(`${sourceName}: damage template carries no table name — refusing to guess one`);
+  }
+  return name;
+}
+
+/** Iterate templates depth-first through nested child_effects — HC hides its
+ *  interface DoT templates one child level down (an incarnate-content-gated /
+ *  default table pair), where a top-level walk never sees them. */
+function* walkTemplates(effects) {
+  for (const eff of effects || []) {
+    yield* eff.templates || [];
+    yield* walkTemplates(eff.child_effects);
+  }
+}
+
+/** Thunderspy names every judgement/verdict damage attrib with its own generic
+ *  `Tempdamage` enum entry; the damage TYPE lives only in the authored short
+ *  help — "Extreme DMG (Cold)". Null when the help names none, which keeps the
+ *  visible 'Unknown' marker rather than guessing a type. */
+function damageTypeFromShortHelp(shortHelp) {
+  const match = /DMG\s*\(([^)]+)\)/i.exec(shortHelp || '');
+  return match ? match[1].trim() : null;
 }
 
 function readDir(dirPath) {
@@ -60,28 +116,42 @@ function readDir(dirPath) {
   }
 }
 
-/** T3+ alpha and destiny tiers grant +1 level shift. Since the special-attrib
- *  sub-index fix the export DOES carry a distinct `Level_Shift` attrib, but
- *  only on the granted `*_silent/level_shift.json` powers (Destiny/Lore);
- *  Alpha's shift lives on the enhancement boost itself, outside this tree,
- *  so attrib-based detection still can't cover it. Filename inference per
- *  the documented CoH naming convention is reliable:
- *    Alpha T3+:   *_core_paragon, *_radial_paragon,
- *                 *_partial_{core,radial}_revamp, *_total_{core,radial}_revamp
- *    Destiny T3+: *_core_epiphany, *_radial_epiphany,
- *                 *_partial_{core,radial}_invocation, *_total_{core,radial}_invocation
- */
-function inferLevelShiftFromFilename(powerId) {
-  const id = powerId.toLowerCase();
-  // T3 paragon/epiphany — unique suffixes, safe to match by endsWith.
-  if (id.endsWith('_paragon') || id.endsWith('_epiphany')) return 1;
-  // Alpha _revamp only appears on T3.5/T4 (partial_/total_*_revamp).
-  if (id.endsWith('_revamp')) return 1;
-  // Destiny _invocation is ambiguous: alone it's T1, with `_core_`/`_radial_`
-  // it's T2 (none of these grant shift). Only the partial_/total_ variants
-  // (T3.5/T4) shift.
-  if (/_(partial|total)_(core|radial)_invocation$/.test(id)) return 1;
-  return 0;
+/** T3+ alpha and destiny tiers grant +1 level shift, and since the
+ *  special-attrib sub-index fix the export states it outright: Alpha T3+
+ *  mains carry a `Combat_Mod_Shift` template directly; Destiny T3+ mains
+ *  Grant_Power a `*_Silent.Level_Shift` power whose own template carries the
+ *  shift (the same grant shape Lore uses). The magnitude is the template's
+ *  scale, never assumed. A level-shift grant whose silent file can't produce
+ *  a readable `Combat_Mod_Shift` is a misparse signal, not a zero.
+ *  `resolveSilent` maps a silent filename base (e.g. "level_shift") to its
+ *  parsed JSON, or null when the file doesn't exist. */
+function extractLevelShift(data, resolveSilent, sourceName) {
+  let shift = 0;
+  for (const t of walkTemplates(data.effects || [])) {
+    if ((t.attribs || []).includes('Combat_Mod_Shift')) {
+      shift = Math.max(shift, t.scale || 0);
+    }
+  }
+  if (shift > 0) return shift;
+
+  for (const ref of extractGrantedPowers(data)) {
+    if (ref.split('.').pop().toLowerCase() !== 'level_shift') continue;
+    const silent = resolveSilent(silentRefToFilename(ref));
+    if (!silent) {
+      throw new Error(`${sourceName}: grants ${ref} but the silent file is missing — refusing to guess the level shift`);
+    }
+    let silentShift = 0;
+    for (const t of walkTemplates(silent.effects || [])) {
+      if ((t.attribs || []).includes('Combat_Mod_Shift')) {
+        silentShift = Math.max(silentShift, t.scale || 0);
+      }
+    }
+    if (silentShift === 0) {
+      throw new Error(`${sourceName}: grants ${ref} but its silent file carries no Combat_Mod_Shift template — refusing to guess the level shift`);
+    }
+    shift = Math.max(shift, silentShift);
+  }
+  return shift;
 }
 
 /** True if a template represents a Grant_Power, across both Parse7 (HC) and
@@ -199,12 +269,16 @@ const TSPY_GENERIC_HYBRID_MAP = {
  * Thunderspy Parse6 omits Grant_Power linkage for Hybrid passives (the main
  * power carries only an `Ones` marker with no power_names). Recover the boost
  * linkage from the parallel Homecoming hybrid power of the same id — the same
- * reference-recovery pattern as inferAlphaSilentFromReference — and resolve it
+ * reference-recovery pattern as readAlphaReference — and resolve it
  * against tspy's OWN silent-file scales. Returns [] when no HC parallel exists.
  */
-const HC_HYBRID_REF_DIR = fs.existsSync(path.join(RAW_DATA_BASE, 'homecoming', 'incarnate'))
-  ? path.join(RAW_DATA_BASE, 'homecoming', 'incarnate', 'hybrid')
-  : path.join(RAW_DATA_BASE, 'incarnate', 'hybrid');
+// Homecoming incarnate export root, used by every HC-reference recovery
+// (HC keeps the legacy flat layout when no namespaced copy exists).
+const HC_REFERENCE_BASE = fs.existsSync(path.join(RAW_DATA_BASE, 'homecoming', 'incarnate'))
+  ? path.join(RAW_DATA_BASE, 'homecoming', 'incarnate')
+  : path.join(RAW_DATA_BASE, 'incarnate');
+
+const HC_HYBRID_REF_DIR = path.join(HC_REFERENCE_BASE, 'hybrid');
 
 function inferHybridPassiveFromReference(powerId) {
   if (datasetId === 'homecoming') return [];
@@ -304,17 +378,17 @@ function round(n, decimals = 6) {
 // is a standard CoH incarnate (Agility/Cardiac/…) shared with Homecoming, and
 // every silent file HC references exists in the tspy export, so recover the
 // linkage from the parallel HC alpha power of the same id and resolve it against
-// tspy's OWN silent-file scales. Returns [] (current behavior — the slot stays
-// empty and a WARN is logged) if the HC reference is unavailable; no regression.
-const HC_ALPHA_REF_DIR = fs.existsSync(path.join(RAW_DATA_BASE, 'homecoming', 'incarnate'))
-  ? path.join(RAW_DATA_BASE, 'homecoming', 'incarnate', 'alpha')
-  : path.join(RAW_DATA_BASE, 'incarnate', 'alpha');
+// tspy's OWN silent-file scales. The `Combat_Mod_Shift` template rides the same
+// collapsed main (tspy's display_help still names the shift), so the reference
+// power is also the level-shift source. Returns null (current behavior — the
+// slot stays empty and a WARN is logged) if the HC reference is unavailable.
+const HC_ALPHA_REF_DIR = path.join(HC_REFERENCE_BASE, 'alpha');
+const HC_DESTINY_REF_DIR = path.join(HC_REFERENCE_BASE, 'destiny');
+const HC_DESTINY_SILENT_REF_DIR = path.join(HC_REFERENCE_BASE, 'destiny_silent');
 
-function inferAlphaSilentFromReference(powerId) {
-  if (datasetId === 'homecoming') return [];
-  const ref = readJson(path.join(HC_ALPHA_REF_DIR, `${powerId}.json`));
-  if (!ref) return [];
-  return extractGrantedPowers(ref);
+function readAlphaReference(powerId) {
+  if (datasetId === 'homecoming') return null;
+  return readJson(path.join(HC_ALPHA_REF_DIR, `${powerId}.json`));
 }
 
 // ============================================
@@ -341,18 +415,32 @@ function extractAlpha() {
     const powerId = f.replace('.json', '');
     const displayName = data.display_name || powerId;
     let grantedRefs = extractGrantedPowers(data);
+    let levelShiftSource = data;
     if (grantedRefs.length === 0) {
-      // Parse6 (thunderspy) omits the silent-power linkage; recover it from the
-      // parallel Homecoming alpha power (see inferAlphaSilentFromReference).
-      grantedRefs = inferAlphaSilentFromReference(powerId);
+      // Parse6 (thunderspy) omits the silent-power linkage; recover it — and
+      // the Combat_Mod_Shift template, which rides the same collapsed main —
+      // from the parallel Homecoming alpha power (see readAlphaReference).
+      const reference = readAlphaReference(powerId);
+      if (reference) {
+        grantedRefs = extractGrantedPowers(reference);
+        levelShiftSource = reference;
+      }
     }
 
-    // T3+ alphas grant +1 level shift; see inferLevelShiftFromFilename for why
-    // we read this from the filename rather than the binary.
-    const levelShift = inferLevelShiftFromFilename(powerId);
+    // T3+ alpha mains carry their shift as a Combat_Mod_Shift template; the
+    // granted-silent path in extractLevelShift never fires here (alpha grants
+    // are the enhancement boosts, none named Level_Shift).
+    const levelShift = extractLevelShift(
+      levelShiftSource,
+      (name) => silentCache[name] || null,
+      `alpha/${powerId}`,
+    );
 
     // Resolve silent power references to get enhancement bonuses
     const enhancements = {};
+    // Per-aspect portion of `enhancements` that bypasses ED (see the
+    // BoostIgnoreDiminishing comment below). Always <= the aspect's total.
+    const edBypass = {};
     for (const ref of grantedRefs) {
       const silentName = silentRefToFilename(ref);
       const silentData = silentCache[silentName];
@@ -379,7 +467,16 @@ function extractAlpha() {
       // Thunderspy (Parse6) instead splits the ED-bypass onto a generic `Ones`
       // template (aspect=''), so fold every `Ones` template into the total too
       // (a no-op for HC/Rebirth, which have zero `Ones` templates here).
+      //
+      // The ED-bypass portion is authored per SILENT FILE, not per tier: the
+      // BoostIgnoreDiminishing-flagged template (HC/Rebirth) or the `Ones`
+      // template (Thunderspy) IS the portion added after Enhancement
+      // Diversification, and secondary aspects of a boost can carry a
+      // different split than the headline aspect (e.g. `_half` files are 1/2
+      // even on a Very Rare boost). Summed separately so the calc reads the
+      // split from data instead of a per-tier ratio.
       let totalScale = 0;
+      let bypassScale = 0;
       let firstAttrib = null;
       for (const eff of silentData.effects || []) {
         // Alpha silent files are never PvP-gated (all groups export as EITHER);
@@ -388,16 +485,27 @@ function extractAlpha() {
         for (const t of eff.templates || []) {
           const attrib = (t.attribs || [])[0];
           if (!attrib || attrib === 'Set_Mode') continue;
-          if (attrib === 'Ones') { totalScale += (t.scale || 0); continue; }
+          if (attrib === 'Ones') {
+            totalScale += (t.scale || 0);
+            bypassScale += (t.scale || 0);
+            continue;
+          }
           // Only process the first unique attrib (others are duplicates for different damage types)
           if (firstAttrib === null) firstAttrib = attrib;
           if (attrib !== firstAttrib) continue;
           totalScale += (t.scale || 0);
+          if ((t.flags || []).includes('BoostIgnoreDiminishing')) {
+            bypassScale += (t.scale || 0);
+          }
         }
       }
       if (totalScale > 0) {
         if (!enhancements[aspectKey]) enhancements[aspectKey] = 0;
         enhancements[aspectKey] = round(enhancements[aspectKey] + totalScale);
+      }
+      if (bypassScale > 0) {
+        if (!edBypass[aspectKey]) edBypass[aspectKey] = 0;
+        edBypass[aspectKey] = round(edBypass[aspectKey] + bypassScale);
       }
     }
 
@@ -405,6 +513,7 @@ function extractAlpha() {
       displayName,
       levelShift,
       enhancements,
+      edBypass,
     };
 
     const enhStr = Object.entries(enhancements)
@@ -441,10 +550,27 @@ function extractDestiny() {
     const powerId = f.replace('.json', '');
     const displayName = data.display_name || powerId;
 
-    // T3+ destinies grant +1 level shift; same filename rule as alpha. The
-    // attrib-based detection that used to live here never fired (silent
-    // files don't carry a Level_Shift attrib in either Parse7 or Parse6).
-    const levelShift = inferLevelShiftFromFilename(powerId);
+    // T3+ destinies Grant_Power a Destiny_Silent.Level_Shift whose template
+    // carries the shift. Thunderspy mains omit Grant_Power linkage entirely
+    // (bare front-collapsed shells), so — same HC-reference recovery as Alpha —
+    // read the shift from the parallel Homecoming destiny power, resolved
+    // against HC's own silent files (tspy's level_shift silent is itself a
+    // collapsed `Ones` shell its own export can't decide from).
+    let levelShift = extractLevelShift(
+      data,
+      (name) => silentCache[name] || null,
+      `destiny/${powerId}`,
+    );
+    if (levelShift === 0 && datasetId !== 'homecoming' && extractGrantedPowers(data).length === 0) {
+      const reference = readJson(path.join(HC_DESTINY_REF_DIR, `${powerId}.json`));
+      if (reference) {
+        levelShift = extractLevelShift(
+          reference,
+          (name) => readJson(path.join(HC_DESTINY_SILENT_REF_DIR, `${name}.json`)),
+          `destiny/${powerId} (HC reference)`,
+        );
+      }
+    }
 
     // Extract diminishing buff effects from main power
     // Destiny powers have multiple copies of the same effect at different durations
@@ -863,25 +989,19 @@ function extractHybrid() {
             // (index 92), not 'Endurance' (index 22). The earlier name was wrong
             // and made the +10% T4 Support passive vanish from `global.enduranceDiscount`.
             statKey = 'enduranceDiscount';
-          } else if (
-            datasetId === 'thunderspy' &&
-            silentName.startsWith('support_boost_') &&
-            attrib === 'Ones' &&
-            aspect === ''
-          ) {
-            // Parse6/Thunderspy collapses this passive to a generic `Ones` token
-            // with empty aspect; the value is the intended endurance discount.
-            statKey = 'enduranceDiscount';
-          } else if (datasetId === 'thunderspy' && aspect === '') {
-            // Parse6/Thunderspy drops the aspect on the other trees' silent
-            // boosts too; recover by silent-file family (tier scales match the
-            // HC parallels exactly: melee regen 0.075/0.15/0.225/0.3, assault
-            // damage 0.025/0.05/0.075/0.1, control status-res 0.1/0.15/0.2/0.25).
-            if (silentName.startsWith('melee_boost_') && attrib === 'Regeneration') {
-              statKey = 'regeneration';
-            } else if (silentName.startsWith('assault_boost_') && attrib === 'Ones') {
+          } else if (datasetId === 'thunderspy' && attrib === 'Ones') {
+            // Parse6/Thunderspy collapses these passives to a generic `Ones`
+            // token; the silent-file family names the stat and the recovered
+            // aspect (TSPY-3 typing — the fronts used to be empty, which an
+            // older aspect === '' gate here matched and silently stopped
+            // matching, HYBRID-1) discriminates: support/assault carry
+            // Strength, control carries Resistance. Values are tspy's own
+            // (it rebalances — control res is 0.1..0.4 vs HC's 0.1..0.25).
+            if (silentName.startsWith('support_boost_') && aspect === 'Strength') {
+              statKey = 'enduranceDiscount';
+            } else if (silentName.startsWith('assault_boost_') && aspect === 'Strength') {
               statKey = 'damage';
-            } else if (silentName.startsWith('control_boost_') && attrib === 'Ones') {
+            } else if (silentName.startsWith('control_boost_') && aspect === 'Resistance') {
               statKey = 'statusResistance';
             }
           } else if (aspect === 'Resistance') {
@@ -972,11 +1092,9 @@ function extractInterface() {
     // The grants and chances pair up in order: first grant → first chance, etc.
     const grantedRefs = extractGrantedPowers(data);
     const chances = [];
-    for (const eff of data.effects || []) {
-      for (const t of eff.templates || []) {
-        if ((t.attribs || []).includes('Global_Chance_Mod')) {
-          chances.push(t.scale || 0);
-        }
+    for (const t of walkTemplates(data.effects)) {
+      if ((t.attribs || []).includes('Global_Chance_Mod')) {
+        chances.push(t.scale || 0);
       }
     }
 
@@ -996,41 +1114,38 @@ function extractInterface() {
       if (!silentData) continue;
       const chance = chances[i] || 0;
 
-      for (const eff of silentData.effects || []) {
-        for (const t of eff.templates || []) {
-          const attrib = (t.attribs || [])[0];
-          const scale = t.scale || 0;
-          const aspect = t.aspect || '';
-          const duration = t.duration || '';
-          if (!attrib || scale === 0) continue;
+      for (const t of walkTemplates(silentData.effects)) {
+        const attrib = (t.attribs || [])[0];
+        const scale = t.scale || 0;
+        const aspect = t.aspect || '';
+        const duration = t.duration || '';
+        if (!attrib || scale === 0) continue;
 
-          const durMatch = duration.match(/([\d.]+)\s*seconds?/i);
-          const durSec = durMatch ? parseFloat(durMatch[1]) : 0;
-          const tname = (t.table && typeof t.table === 'object') ? (t.table.column_name || '') : '';
+        const durMatch = duration.match(/([\d.]+)\s*seconds?/i);
+        const durSec = durMatch ? parseFloat(durMatch[1]) : 0;
 
-          // Classify as debuff or DoT
-          if (aspect === 'Absolute' && attrib in INTERFACE_DOT_MAP) {
-            // DoT damage
-            if (!dotType || Math.abs(scale) > Math.abs(dotDamage)) {
-              dotType = INTERFACE_DOT_MAP[attrib];
-              dotDamage = round(Math.abs(scale));
-              dotDuration = durSec;
-              dotTableName = tname || 'Ranged_Tempdamage';
-            }
-          } else if (attrib in INTERFACE_DEBUFF_MAP) {
-            // Debuff effect
-            if (!debuffType || Math.abs(scale) > Math.abs(debuffMagnitude)) {
-              debuffType = INTERFACE_DEBUFF_MAP[attrib];
-              // Aspect=Strength means it's a strength debuff (percentage)
-              // Aspect=Current means direct stat modification
-              debuffMagnitude = round(Math.abs(scale));
-              debuffDuration = durSec;
-            }
+        // Classify as debuff or DoT
+        if (aspect === 'Absolute' && attrib in INTERFACE_DOT_MAP) {
+          // DoT damage
+          if (!dotType || Math.abs(scale) > Math.abs(dotDamage)) {
+            dotType = INTERFACE_DOT_MAP[attrib];
+            dotDamage = round(Math.abs(scale));
+            dotDuration = durSec;
+            dotTableName = requireTemplateTable(t, `interface_silent/${silentName}`);
           }
-
-          // Use the highest proc chance
-          if (chance > procChance) procChance = chance;
+        } else if (attrib in INTERFACE_DEBUFF_MAP) {
+          // Debuff effect
+          if (!debuffType || Math.abs(scale) > Math.abs(debuffMagnitude)) {
+            debuffType = INTERFACE_DEBUFF_MAP[attrib];
+            // Aspect=Strength means it's a strength debuff (percentage)
+            // Aspect=Current means direct stat modification
+            debuffMagnitude = round(Math.abs(scale));
+            debuffDuration = durSec;
+          }
         }
+
+        // Use the highest proc chance
+        if (chance > procChance) procChance = chance;
       }
     }
 
@@ -1087,45 +1202,53 @@ function extractJudgement() {
     const arc = data.arc || 0;
     const maxTargets = data.max_targets_hit || 0;
     const activationTime = data.activation_time || 0;
-    const rechargeTime = data.recharge_time || 90;
+    const rechargeTime = requireRechargeTime(data, `judgement/${f}`);
 
     // Extract damage effects
     let primaryDamageType = null;
     let damageScale = 0;
+    let tableName = '';
     const secondaryEffects = [];
+    const shortHelpDamageType = damageTypeFromShortHelp(data.display_short_help);
 
-    for (const eff of data.effects || []) {
-      for (const t of eff.templates || []) {
-        const attrib = (t.attribs || [])[0];
-        const scale = t.scale || 0;
-        const duration = t.duration || '';
-        const aspect = t.aspect || '';
+    for (const t of walkTemplates(data.effects)) {
+      const attrib = (t.attribs || [])[0];
+      const scale = t.scale || 0;
+      const duration = t.duration || '';
+      const aspect = t.aspect || '';
 
-        if (attrib in DAMAGE_TYPE_MAP && aspect === 'Absolute') {
-          const durMatch = duration.match(/([\d.]+)\s*seconds?/i);
-          const durSec = durMatch ? parseFloat(durMatch[1]) : 0;
+      const damageType = attrib in DAMAGE_TYPE_MAP
+        ? DAMAGE_TYPE_MAP[attrib]
+        : (attrib === 'Tempdamage' ? shortHelpDamageType : null);
+      if (damageType && aspect === 'Absolute') {
+        const durMatch = duration.match(/([\d.]+)\s*seconds?/i);
+        const durSec = durMatch ? parseFloat(durMatch[1]) : 0;
 
-          if (durSec === 0 && scale > damageScale) {
-            // Direct damage (no duration = instant)
-            primaryDamageType = DAMAGE_TYPE_MAP[attrib];
-            damageScale = scale;
-          } else if (durSec > 0) {
-            // DoT
-            secondaryEffects.push(`DoT(${DAMAGE_TYPE_MAP[attrib]}) ${round(scale, 2)} scale/${round(durSec, 1)}s`);
-          }
-        } else if (attrib === 'Held' || attrib === 'Stunned' || attrib === 'Immobilized' ||
-                   attrib === 'Knocked' || attrib === 'Sleep') {
-          // Mez Magnitude rides the `magnitude` field; `scale` is the DURATION
-          // multiplier (scale × table = seconds). Using scale here mislabeled every
-          // incarnate hold (Cryonic/Ion "Held Mag 12" for a real Mag 4) across all
-          // three datasets. `scale > 0` still gates out zero-scale metadata rows.
-          if (scale > 0) {
-            secondaryEffects.push(`${attrib} Mag ${round(t.magnitude || scale, 1)}`);
-          }
-        } else if ((attrib === 'JumpHeight' || attrib === 'RunningSpeed') && scale < 0) {
-          secondaryEffects.push('Slow');
+        if (durSec === 0 && scale > damageScale) {
+          // Direct damage (no duration = instant)
+          primaryDamageType = damageType;
+          damageScale = scale;
+          tableName = requireTemplateTable(t, `judgement/${f}`);
+        } else if (durSec > 0) {
+          // DoT
+          secondaryEffects.push(`DoT(${damageType}) ${round(scale, 2)} scale/${round(durSec, 1)}s`);
         }
+      } else if (attrib === 'Held' || attrib === 'Stunned' || attrib === 'Immobilized' ||
+                 attrib === 'Knocked' || attrib === 'Sleep') {
+        // Mez Magnitude rides the `magnitude` field; `scale` is the DURATION
+        // multiplier (scale × table = seconds). Using scale here mislabeled every
+        // incarnate hold (Cryonic/Ion "Held Mag 12" for a real Mag 4) across all
+        // three datasets. `scale > 0` still gates out zero-scale metadata rows.
+        if (scale > 0) {
+          secondaryEffects.push(`${attrib} Mag ${round(t.magnitude || scale, 1)}`);
+        }
+      } else if ((attrib === 'JumpHeight' || attrib === 'RunningSpeed') && scale < 0) {
+        secondaryEffects.push('Slow');
       }
+    }
+
+    if (!tableName) {
+      throw new Error(`judgement/${f}: no direct-damage template found — cannot derive the damage table`);
     }
 
     // Determine effect area type from help text for better display
@@ -1147,7 +1270,7 @@ function extractJudgement() {
       activationTime: round(activationTime, 2),
       rechargeTime: round(rechargeTime, 1),
       damageScale: round(damageScale, 2),
-      tableName: 'Ranged_Tempdamage',
+      tableName,
       secondaryEffects: [...new Set(secondaryEffects)],
     };
 
@@ -1199,7 +1322,7 @@ function extractLore() {
 
     const powerId = f.replace('.json', '');
     const displayName = data.display_name || powerId;
-    const rechargeTime = data.recharge_time || 900;
+    const rechargeTime = requireRechargeTime(data, `lore/${f}`);
 
     // Extract pets from Create_Entity templates and check for level shift grants
     const pets = [];
@@ -1270,23 +1393,32 @@ function genesisExemplarPath(ref) {
 /** Verdict: an AoE damage attack (mirrors Judgement). */
 function parseExemplarAttack(data) {
   const helpText = data.display_help || '';
-  let damageType = null, damageScale = 0;
+  const sourceName = data.full_name || 'verdict exemplar';
+  let damageType = null, damageScale = 0, tableName = '';
   const secondaryEffects = [];
-  for (const eff of data.effects || []) {
-    for (const t of eff.templates || []) {
-      const attrib = (t.attribs || [])[0];
-      const scale = t.scale || 0;
-      const aspect = t.aspect || '';
-      if (attrib in DAMAGE_TYPE_MAP && aspect === 'Absolute') {
-        const dm = (t.duration || '').match(/([\d.]+)\s*seconds?/i);
-        const durSec = dm ? parseFloat(dm[1]) : 0;
-        if (durSec === 0 && scale > damageScale) { damageType = DAMAGE_TYPE_MAP[attrib]; damageScale = scale; }
-        else if (durSec > 0) secondaryEffects.push(`DoT(${DAMAGE_TYPE_MAP[attrib]}) ${round(scale, 2)} scale/${round(durSec, 1)}s`);
-      } else if (['Held', 'Stunned', 'Immobilized', 'Knocked', 'Sleep'].includes(attrib) && scale > 0) {
-        // Mag rides `magnitude`; `scale` is the duration multiplier (see parseJudgement).
-        secondaryEffects.push(`${attrib} Mag ${round(t.magnitude || scale, 1)}`);
+  const shortHelpDamageType = damageTypeFromShortHelp(data.display_short_help);
+  for (const t of walkTemplates(data.effects)) {
+    const attrib = (t.attribs || [])[0];
+    const scale = t.scale || 0;
+    const aspect = t.aspect || '';
+    const templateDamageType = attrib in DAMAGE_TYPE_MAP
+      ? DAMAGE_TYPE_MAP[attrib]
+      : (attrib === 'Tempdamage' ? shortHelpDamageType : null);
+    if (templateDamageType && aspect === 'Absolute') {
+      const dm = (t.duration || '').match(/([\d.]+)\s*seconds?/i);
+      const durSec = dm ? parseFloat(dm[1]) : 0;
+      if (durSec === 0 && scale > damageScale) {
+        damageType = templateDamageType; damageScale = scale;
+        tableName = requireTemplateTable(t, sourceName);
       }
+      else if (durSec > 0) secondaryEffects.push(`DoT(${templateDamageType}) ${round(scale, 2)} scale/${round(durSec, 1)}s`);
+    } else if (['Held', 'Stunned', 'Immobilized', 'Knocked', 'Sleep'].includes(attrib) && scale > 0) {
+      // Mag rides `magnitude`; `scale` is the duration multiplier (see parseJudgement).
+      secondaryEffects.push(`${attrib} Mag ${round(t.magnitude || scale, 1)}`);
     }
+  }
+  if (!tableName) {
+    throw new Error(`${sourceName}: no direct-damage template found — cannot derive the damage table`);
   }
   let area = data.effect_area || 'Unknown';
   if (helpText.includes('Cone')) area = 'Cone';
@@ -1297,8 +1429,8 @@ function parseExemplarAttack(data) {
     damageType: damageType || 'Unknown', effectArea: area,
     range: round(data.range || 0, 1), radius: round(data.radius || 0, 1), arc: round(data.arc || 0, 1),
     maxTargets: data.max_targets_hit || 0, activationTime: round(data.activation_time || 0, 2),
-    recharge: round(data.recharge_time || 180, 1), damageScale: round(damageScale, 2),
-    tableName: 'Ranged_Tempdamage', secondaryEffects: [...new Set(secondaryEffects)],
+    recharge: round(requireRechargeTime(data, sourceName), 1), damageScale: round(damageScale, 2),
+    tableName, secondaryEffects: [...new Set(secondaryEffects)],
   };
 }
 
@@ -1306,25 +1438,22 @@ function parseExemplarAttack(data) {
 function parseExemplarProc(data) {
   const label = data.display_short_help || data.display_name || '';
   let magnitude = 0, duration = 0, dotType = null, dotDamage = 0, dotTableName = '';
-  for (const eff of data.effects || []) {
-    for (const t of eff.templates || []) {
-      const attrib = (t.attribs || [])[0];
-      const scale = t.scale || 0;
-      const aspect = t.aspect || '';
-      if (!attrib || scale === 0) continue;
-      const dm = (t.duration || '').match(/([\d.]+)\s*seconds?/i);
-      const durSec = dm ? parseFloat(dm[1]) : 0;
-      const tname = (t.table && typeof t.table === 'object') ? (t.table.column_name || '')
-        : (typeof t.table === 'string' ? t.table : '');
-      if (aspect === 'Absolute' && attrib in INTERFACE_DOT_MAP) {
-        if (Math.abs(scale) > Math.abs(dotDamage)) {
-          dotType = INTERFACE_DOT_MAP[attrib]; dotDamage = round(Math.abs(scale));
-          dotTableName = tname || 'Ranged_Tempdamage'; duration = durSec;
-        }
-      } else if (Math.abs(scale) > Math.abs(magnitude)) {
-        magnitude = round(Math.abs(scale));
-        if (durSec) duration = durSec;
+  for (const t of walkTemplates(data.effects)) {
+    const attrib = (t.attribs || [])[0];
+    const scale = t.scale || 0;
+    const aspect = t.aspect || '';
+    if (!attrib || scale === 0) continue;
+    const dm = (t.duration || '').match(/([\d.]+)\s*seconds?/i);
+    const durSec = dm ? parseFloat(dm[1]) : 0;
+    if (aspect === 'Absolute' && attrib in INTERFACE_DOT_MAP) {
+      if (Math.abs(scale) > Math.abs(dotDamage)) {
+        dotType = INTERFACE_DOT_MAP[attrib]; dotDamage = round(Math.abs(scale));
+        dotTableName = requireTemplateTable(t, data.full_name || 'socket exemplar');
+        duration = durSec;
       }
+    } else if (Math.abs(scale) > Math.abs(magnitude)) {
+      magnitude = round(Math.abs(scale));
+      if (durSec) duration = durSec;
     }
   }
   const out = { label, duration: round(duration, 2), procPeriod: round(data.activate_period || 0, 1) };
@@ -1350,7 +1479,7 @@ function parseExemplarSummon(data) {
   return {
     faction: factionFromPowerId((data.name || '').toLowerCase()),
     pets: pets.length ? pets : ['Pet'],
-    duration: round(duration, 1), recharge: round(data.recharge_time || 900, 1),
+    duration: round(duration, 1), recharge: round(requireRechargeTime(data, data.full_name || 'data exemplar'), 1),
   };
 }
 
@@ -1394,9 +1523,12 @@ function resolveGenesisExemplar(ref) {
 }
 
 // ============================================
-// GENESIS EXTRACTION (Rebirth-only)
+// GENESIS EXTRACTION (all datasets; only Rebirth is released)
 // ============================================
-// Rebirth finished the Genesis slot. Each ability GRANTS two things: a
+// All three exports carry a genesis dir, so this extracts everywhere — but only
+// Rebirth authored real powers; HC and tspy carry placeholder help/icons and no
+// exemplar linkage. The app serves Genesis for Rebirth alone (GENESIS-1). Each
+// ability GRANTS two things: a
 // Genesis_Silent "boost" power that buffs its partner incarnate slot (the
 // "level 45+" effect, active when incarnates aren't exemplar-suppressed), and
 // an exemplar-only power usable only below level 45 (the "44-" effect).
@@ -1586,6 +1718,21 @@ function generateTypeScript(alpha, destiny, hybrid, iface, judgement, lore, gene
   }
   lines.push('};');
   lines.push('');
+  lines.push('// Per-aspect portion of each GENERATED_ALPHA_EFFECTS bonus that bypasses');
+  lines.push('// Enhancement Diversification — the BoostIgnoreDiminishing-flagged template');
+  lines.push('// (HC/Rebirth) or the generic `Ones` template (Thunderspy) in the silent');
+  lines.push('// grant power. Authored per silent FILE, so secondary aspects can carry a');
+  lines.push('// different split than the headline aspect. Absent aspect = no bypass');
+  lines.push('// (the whole bonus is subject to ED).');
+  lines.push('');
+  lines.push('export const GENERATED_ALPHA_ED_BYPASS: Record<string, Record<string, number>> = {');
+  for (const [id, data] of Object.entries(alpha)) {
+    if (!data.edBypass || Object.keys(data.edBypass).length === 0) continue;
+    lines.push(`  // ${data.displayName}`);
+    lines.push(`  '${id}': ${JSON.stringify(data.edBypass)},`);
+  }
+  lines.push('};');
+  lines.push('');
 
   // ---- DESTINY ----
   lines.push('// ============================================');
@@ -1759,10 +1906,11 @@ function generateTypeScript(alpha, destiny, hybrid, iface, judgement, lore, gene
   lines.push('};');
   lines.push('');
 
-  // ---- GENESIS (Rebirth-only) ----
-  // Emitted only when the slot exists (Rebirth) so the Homecoming file is
-  // unchanged. `effects` are the level-45+ partner-slot buffs; `exemplarPower`
-  // is the level-44- exemplar-only grant (display/reference for now).
+  // ---- GENESIS ----
+  // Emitted for every dataset whose export carries the slot (all three do). Only
+  // Rebirth's table is served by the app; HC/tspy emit dormant placeholders that
+  // the incarnate layer ignores (GENESIS-1). `effects` are the level-45+
+  // partner-slot buffs; `exemplarPower` is the level-44- exemplar-only grant.
   if (genesis && Object.keys(genesis).length > 0) {
     lines.push('// ============================================');
     lines.push('// GENESIS EFFECTS (Rebirth)');

@@ -16,7 +16,7 @@ export const TameBeasts: Power = {
   "shortHelp": "Ranged, Upgrade Beast Henchmen",
   "icon": "beastmastery_tamebeasts.png",
   "powerType": "Click",
-  "targetType": "Self",
+  "targetType": "Own Pet (Alive)",
   "effectArea": "AoE",
   "strengthsDisallowed": [
     "RechargeTime"

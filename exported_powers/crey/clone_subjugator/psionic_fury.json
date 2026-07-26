@@ -39,6 +39,7 @@
   "requires": "",
   "activate_requires": "",
   "target_requires": "",
+  "slot_requires": "",
   "attack_types": [],
   "effects": [
     {
@@ -58,7 +59,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "Immediate",
+          "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
@@ -78,19 +79,22 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
-            "entity_def": "PL_StaticObject",
             "display_name": "Psionic Fury",
+            "priority_list": "PL_StaticObject",
             "redirects": [
               "Crey.PsionicFury.Psionic_Fury",
               "Pets.ResistAll.ResistAll"
-            ]
+            ],
+            "type": "EntCreate"
           },
           "flags": [
             "KeepThroughDeath",
-            "CopyBoosts"
+            "CopyBoosts",
+            "CopyCreatorMods",
+            "PseudoPet"
           ],
-          "flags_raw": 17664
+          "flags_raw": 17664,
+          "flags2_raw": 44
         }
       ]
     }

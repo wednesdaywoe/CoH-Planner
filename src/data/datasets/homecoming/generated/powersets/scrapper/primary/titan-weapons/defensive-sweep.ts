@@ -73,5 +73,48 @@ export const DefensiveSweep: Power = {
     ["Damage","Smashing",0.6684,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Fire",0.3008,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0]
   ],
+  "modeVariants": {
+    "FastMode": {
+      "internalName": "Defensive_Sweep_Fast",
+      "stats": {
+        "accuracy": 1,
+        "range": 10,
+        "radius": 10,
+        "arc": 2.094395160675049,
+        "recharge": 3,
+        "endurance": 3.375,
+        "castTime": 1,
+        "maxTargets": 5
+      },
+      "damage": {
+        "type": "Smashing",
+        "scale": 0.5615,
+        "table": "Melee_Damage"
+      },
+      "effects": {
+        "buffDuration": 7.5,
+        "defenseBuff": {
+          "melee": {
+            "scale": 1.5,
+            "table": "Melee_Buff_Def",
+            "perTarget": 1.5
+          },
+          "smashing": {
+            "scale": 1.5,
+            "table": "Melee_Buff_Def",
+            "perTarget": 1.5
+          }
+        },
+        "durations": {
+          "defenseBuff": 7.5
+        }
+      },
+      "shortHelp": "Melee(Cone), DMG(Smashing), Self +DEF(Melee, Smash)",
+      "description": "You take a defensive stance and strike your opponents. Successfully executing this attack will cause light smashing damage to nearby foes, while giving you increased defense against their melee and smashing attacks.Notes: Defensive Sweep (Fast) is unaffected by Arc changes.",
+      "effectArea": "Cone",
+      "targetType": "Foe",
+      "powerType": "Click"
+    }
+  },
   "requires": "Scrapper_Defense.Shield_Defense !"
 };
