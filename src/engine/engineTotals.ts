@@ -25,6 +25,8 @@ import {
   mapBonusTracking,
   mapSetBonusBreakdown,
   addProcBreakdown,
+  addBuffPetBreakdown,
+  addMovementBreakdown,
   mapPowerProjection,
   type EngineTotals,
   type PowerProjection,
@@ -71,6 +73,8 @@ export function engineCalculate(build: Build, ctx: AdapterCalcContext): Characte
   const resolveName = powerNameResolver(build);
   const breakdown = mapSetBonusBreakdown(totals.set_bonus_tracking, resolveName);
   addProcBreakdown(breakdown, totals.proc_breakdown, resolveName);
+  addBuffPetBreakdown(breakdown, totals.buff_pet_breakdown, resolveName);
+  addMovementBreakdown(breakdown, totals.movement_breakdown);
   return {
     stats: mapStats(totals.stats, totals.bonuses),
     globalBonuses: mapGlobal(totals.bonuses),

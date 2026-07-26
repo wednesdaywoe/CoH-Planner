@@ -150,11 +150,33 @@ export interface EnginePowerProjection {
   enhancement_bonuses: Record<string, number>;
 }
 
+/** One buff-pet aura contribution — the engine's per-(pet, stat) row. The label is the
+ *  SUMMONING power's display name, resolved here from the build, which is how the beta's own
+ *  synthetic per-pet power labelled it. */
+export interface EngineBuffPetBreakdownSource {
+  breakdown_key: string;
+  value: number;
+  power_internal_name: string;
+  power_set: string;
+}
+
+/** One travel-buff contribution — `suppressed` when it lost its suppress group (Combat Jumping
+ *  beside Super Jump) or combat mode dropped it. Never `capped`: suppression is game mechanics,
+ *  not a Rule-of-5 violation, so it must not feed the over-cap warning. */
+export interface EngineMovementBreakdownSource {
+  breakdown_key: string;
+  value: number;
+  suppressed: boolean;
+  power_name: string;
+}
+
 export interface EngineTotals {
   stats: EngineStats;
   bonuses: EngineBonuses;
   set_bonus_tracking: EngineSetBonusTracking[];
   proc_breakdown: EngineProcBreakdownSource[];
+  buff_pet_breakdown: EngineBuffPetBreakdownSource[];
+  movement_breakdown: EngineMovementBreakdownSource[];
   power_projection: EnginePowerProjection[];
 }
 
@@ -332,6 +354,71 @@ export function addProcBreakdown(
         base: 0,
         sources: [source],
         cappedSources: src.capped ? 1 : 0,
+      });
+    }
+  }
+}
+
+/**
+ * Fold the engine's buff-pet aura rows into the breakdown map — one `active-power` source per
+ * (pet aura, stat), named after the summoning power (Force Field Generator, Triage Beacon).
+ * Mirrors {@link addProcBreakdown}; the fold is opt-in per pet, so this is a no-op on a build
+ * that has enabled none.
+ */
+export function addBuffPetBreakdown(
+  breakdown: Map<string, DashboardStatBreakdown>,
+  sources: EngineBuffPetBreakdownSource[],
+  resolveName: PowerNameResolver,
+): void {
+  for (const src of sources) {
+    const source: StatSource = {
+      name: resolveName({ power_internal_name: src.power_internal_name, power_set: src.power_set }),
+      value: src.value,
+      type: 'active-power',
+    };
+    const entry = breakdown.get(src.breakdown_key);
+    if (entry) {
+      entry.sources.push(source);
+      entry.total += src.value;
+    } else {
+      breakdown.set(src.breakdown_key, {
+        total: src.value,
+        base: 0,
+        sources: [source],
+        cappedSources: 0,
+      });
+    }
+  }
+}
+
+/**
+ * Fold the engine's travel-buff rows into the breakdown map. Each source keeps its own value
+ * and carries `suppressed`, so the tooltip can show a suppress-group loser dimmed with what it
+ * would have contributed; the entry TOTAL counts only the surviving ones, matching the number
+ * the dashboard shows.
+ */
+export function addMovementBreakdown(
+  breakdown: Map<string, DashboardStatBreakdown>,
+  sources: EngineMovementBreakdownSource[],
+): void {
+  for (const src of sources) {
+    const source: StatSource = {
+      name: src.power_name,
+      value: src.value,
+      type: 'active-power',
+      ...(src.suppressed ? { suppressed: true } : {}),
+    };
+    const contributed = src.suppressed ? 0 : src.value;
+    const entry = breakdown.get(src.breakdown_key);
+    if (entry) {
+      entry.sources.push(source);
+      entry.total += contributed;
+    } else {
+      breakdown.set(src.breakdown_key, {
+        total: contributed,
+        base: 0,
+        sources: [source],
+        cappedSources: 0,
       });
     }
   }

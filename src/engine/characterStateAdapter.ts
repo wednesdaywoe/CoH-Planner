@@ -24,7 +24,7 @@
  * the rebuild exists to kill.
  */
 
-import type { Build, PowersetSelection, PoolSelection } from '@/types/build';
+import type { Build, PowersetSelection, PoolSelection, ProcOverride } from '@/types/build';
 import type { SelectedPower, ConditionalEffect } from '@/types/power';
 import type { Enhancement } from '@/types/enhancement';
 import type { IncarnateActiveState } from '@/types/incarnate';
@@ -126,6 +126,10 @@ export interface CharacterState {
   inherents: CharacterStateSelectedPower[];
   accolades: string[];
   incarnates: CharacterStateIncarnateLoadout;
+  /** Per-slotted-proc control overrides, keyed `"<power display name>:<slot index>"` — the
+   *  build's own `procOverrides`, passed through so the engine's proc pass honours the
+   *  "Slotted Procs" enable / stacks / %HP controls instead of always running the defaults. */
+  proc_overrides: Record<string, ProcOverride>;
   slot_order: CharacterStateSlotOrderEntry[];
   combat: CharacterStateCombatContext;
 }
@@ -366,6 +370,7 @@ export function toCharacterState(build: Build, ctx: AdapterCalcContext): Charact
     inherents: build.inherents.map((p) => mapPower(p, ctx.targetsHitValues)),
     accolades: build.accolades.map((a) => a.id.toLowerCase()),
     incarnates: mapIncarnates(build, ctx.incarnateActive),
+    proc_overrides: build.procOverrides ?? {},
     slot_order: build.slotOrder.map((s) => ({
       power_name: s.powerName,
       slot_index: s.slotIndex,
