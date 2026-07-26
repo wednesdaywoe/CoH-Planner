@@ -40,15 +40,24 @@ export const Transfusion: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 20,
+    "durations": {
+      "regenDebuff": 20
+    },
     "enduranceDrain": {
       "scale": 0.12,
+      "table": "Ranged_Ones"
+    },
+    "regenDebuff": {
+      "scale": 0.5,
       "table": "Ranged_Ones"
     }
   },
   "atoms": [
-    ["Meta",null,0,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Endurance",null,-0.12,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,-3.33,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,-11.5,1,20,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Endurance",null,-0.12,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Regeneration",null,-0.5,1,20,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["ExecutePower",null,0,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Endurance",null,-3.33,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Regeneration",null,-11.5,1,20,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
   ]
 };

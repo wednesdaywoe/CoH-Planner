@@ -41,25 +41,133 @@ export const StrengthofWill: Power = {
   "effects": {
     "buffDuration": 120,
     "durations": {
-      "resistance": 120
+      "hold": 120,
+      "immobilize": 120,
+      "knockback": 120,
+      "knockup": 120,
+      "mezResistance": 120,
+      "recoveryBuff": 120,
+      "repel": 120,
+      "resistance": 120,
+      "sleep": 120,
+      "stun": 120
+    },
+    "effectDuration": 120,
+    "enduranceDrain": {
+      "scale": 0.5,
+      "table": "Melee_Ones"
+    },
+    "hold": {
+      "mag": 1,
+      "scale": 50,
+      "table": "Melee_Res_Boolean"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 50,
+      "table": "Melee_Res_Boolean"
+    },
+    "knockback": {
+      "scale": 100,
+      "table": "Melee_Ones"
+    },
+    "knockup": {
+      "scale": 100,
+      "table": "Melee_Ones"
+    },
+    "mezResistance": {
+      "knockback": {
+        "scale": 10,
+        "table": "Melee_Ones"
+      },
+      "knockup": {
+        "scale": 10,
+        "table": "Melee_Ones"
+      },
+      "repel": {
+        "scale": 10,
+        "table": "Melee_Ones"
+      }
+    },
+    "recoveryBuff": {
+      "scale": 0.3,
+      "table": "Melee_Ones"
+    },
+    "repel": {
+      "scale": 10,
+      "table": "Melee_Ones"
     },
     "resistance": {
+      "cold": {
+        "scale": 1.25,
+        "table": "Melee_Res_DMG"
+      },
+      "energy": {
+        "scale": 1.25,
+        "table": "Melee_Res_DMG"
+      },
+      "fire": {
+        "scale": 1.25,
+        "table": "Melee_Res_DMG"
+      },
       "lethal": {
         "scale": 2.5,
+        "table": "Melee_Res_DMG"
+      },
+      "negative": {
+        "scale": 1.25,
+        "table": "Melee_Res_DMG"
+      },
+      "psionic": {
+        "scale": 1.25,
         "table": "Melee_Res_DMG"
       },
       "smashing": {
         "scale": 2.5,
         "table": "Melee_Res_DMG"
+      },
+      "toxic": {
+        "scale": 1.25,
+        "table": "Melee_Res_DMG"
       }
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 50,
+      "table": "Melee_Res_Boolean"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 50,
+      "table": "Melee_Res_Boolean"
     }
   },
   "atoms": [
-    ["Resistance","Smashing",2.5,1,120,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Resistance","Lethal",2.5,1,120,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,-100,1,120,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,-50,1,120,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["Unmapped",null,-0.5,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,5,1,120,"Melee_Res_Boolean","Res","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
+    ["Resistance","Smashing",2.5,1,120,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Lethal",2.5,1,120,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Fire",1.25,1,120,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Cold",1.25,1,120,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Energy",1.25,1,120,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Negative",1.25,1,120,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Psionic",1.25,1,120,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Toxic",1.25,1,120,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Mez","Knockup",-100,1,120,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["MezResist","Knockup",10,1,120,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Mez","Knockback",-100,1,120,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["MezResist","Knockback",10,1,120,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Mez","Repel",-10,1,120,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["MezResist","Repel",10,1,120,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Recovery",null,0.3,1,120,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["GlobalChanceMod",null,-1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["GlobalChanceMod",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Mez","Stunned",-50,1,120,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Held",-50,1,120,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Sleep",-50,1,120,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Immobilized",-50,1,120,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Endurance",null,-0.5,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["MezResist","Stunned",5,1,120,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
+    ["MezResist","Held",5,1,120,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
+    ["MezResist","Sleep",5,1,120,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
+    ["MezResist","Immobilized",5,1,120,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
   ]
 };

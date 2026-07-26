@@ -41,15 +41,34 @@ export const Blackstar: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Negative",
-    "scale": 1.23,
-    "table": "Ranged_Damage"
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1.23,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Negative",
+      "scale": 3.73,
+      "table": "Ranged_Damage"
+    }
+  ],
+  "effects": {
+    "buffDuration": 20,
+    "durations": {
+      "tohitDebuff": 20
+    },
+    "tohitDebuff": {
+      "scale": 5,
+      "table": "Ranged_DeBuff_ToHit"
+    }
   },
   "atoms": [
-    ["Unmapped",null,1.23,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,5,1,20,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.899892,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Smashing",1.23,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Negative",3.73,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["ToHit",null,5,1,20,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Smashing",0.899892,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Negative",1.827053,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "damageTypes": [
     "Negative",

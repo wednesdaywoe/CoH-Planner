@@ -66,7 +66,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Negative_Energy_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -85,9 +85,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -124,9 +125,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 96
         }
       ]
     },
@@ -144,7 +150,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Negative_Energy_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -163,9 +169,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "kMeter source> 0 > enttype target> player eq &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -183,7 +190,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Negative_Energy_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -202,9 +209,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -222,7 +230,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Negative_Energy_Dmg"
           ],
           "type": "Expression",
           "application_type": "OnTick",
@@ -241,9 +249,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> critter eq kMeter source> .9 < &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "HideZero"
+          ],
+          "flags_raw": 9472
         }
       ]
     },
@@ -261,7 +273,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Negative_Energy_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -280,9 +292,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "kMeter source> 0 > enttype target> critter eq &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -300,7 +313,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Grant_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -319,9 +332,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     }

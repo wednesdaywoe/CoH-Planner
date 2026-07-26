@@ -45,23 +45,50 @@ export const Hypothermia: Power = {
   "effects": {
     "buffDuration": 15.1,
     "durations": {
-      "sleep": 15.1
+      "sleep": 15.1,
+      "slow": 15
     },
     "effectDuration": 15.1,
     "sleep": {
       "mag": 3,
       "scale": 4,
       "table": "Ranged_Sleep"
+    },
+    "slow": {
+      "flySpeed": {
+        "scale": 0.35,
+        "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.35,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.35,
+        "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.35,
+        "table": "Ranged_Slow"
+      }
     }
   },
   "atoms": [
-    ["Mez","Sleep",4,3,15.1,"Ranged_Sleep","Cur","Duration","Target","PvE",true,"No",null,null,3,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? ! &&"],
-    ["Unmapped",null,0.35,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? !"],
-    ["Unmapped",null,1,0.32465052604675293,0,"Ranged_Ones","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Mez","Sleep",3,4,15.1,"Ranged_Ones","Cur","Duration","Target","PvP",true,"No",null,null,3,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? ! &&",true],
-    ["Mez","Sleep",4,3,15.1,"Ranged_Sleep","Cur","Duration","Target","PvE",true,"No",null,null,3,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? &&",true],
-    ["Mez","Sleep",3,4,15.1,"Ranged_Ones","Cur","Duration","Target","PvP",true,"No",null,null,3,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? &&",true],
-    ["Unmapped",null,0.4375,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower?",true]
+    ["Mez","Sleep",4,3,15.1,"Ranged_Sleep","Cur","Duration","Target","PvE",true,"Stack",2,null,3,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? ! &&"],
+    ["Mez","Sleep",3,1,15.1,"Ranged_Sleep","Cur","Duration","Target","PvE",true,"Stack",2,null,3,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? ! &&"],
+    ["Movement","Run",0.35,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? !"],
+    ["Movement","Fly",0.35,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? !"],
+    ["Movement","Jump",0.35,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? !"],
+    ["Movement","JumpHeight",0.35,1,15,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? !"],
+    ["GrantPower",null,1,0.32465052604675293,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Mez","Sleep",3,4,15.1,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,3,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? ! &&",true],
+    ["Mez","Sleep",4,3,15.1,"Ranged_Sleep","Cur","Duration","Target","PvE",true,"Stack",2,null,3,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? &&",true],
+    ["Mez","Sleep",3,1,15.1,"Ranged_Sleep","Cur","Duration","Target","PvE",true,"Stack",2,null,3,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? &&",true],
+    ["Mez","Sleep",3,4,15.1,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,3,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? &&",true],
+    ["Movement","Run",0.4375,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower?",true],
+    ["Movement","Fly",0.4375,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower?",true],
+    ["Movement","Jump",0.4375,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower?",true],
+    ["Movement","JumpHeight",0.4375,1,15,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower?",true]
   ],
   "conditionalEffects": [
     {
@@ -73,13 +100,32 @@ export const Hypothermia: Power = {
       "effects": {
         "buffDuration": 15.1,
         "durations": {
-          "sleep": 15.1
+          "sleep": 15.1,
+          "slow": 15
         },
         "effectDuration": 15.1,
         "sleep": {
           "mag": 3,
           "scale": 4,
           "table": "Ranged_Sleep"
+        },
+        "slow": {
+          "flySpeed": {
+            "scale": 0.4375,
+            "table": "Ranged_Slow"
+          },
+          "jumpHeight": {
+            "scale": 0.4375,
+            "table": "Ranged_Slow"
+          },
+          "jumpSpeed": {
+            "scale": 0.4375,
+            "table": "Ranged_Slow"
+          },
+          "runSpeed": {
+            "scale": 0.4375,
+            "table": "Ranged_Slow"
+          }
         }
       }
     }

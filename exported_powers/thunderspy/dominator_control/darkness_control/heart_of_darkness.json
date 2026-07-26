@@ -70,7 +70,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Negative_Energy_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -89,9 +89,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> critter eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "NearGround"
+          ],
+          "flags_raw": 1288
         }
       ]
     },
@@ -109,7 +113,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Negative_Energy_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -128,9 +132,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> player eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "NearGround"
+          ],
+          "flags_raw": 1288
         }
       ]
     },
@@ -148,7 +156,7 @@
       "templates": [
         {
           "attribs": [
-            "DeBuff_ToHit"
+            "ToHit"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -167,9 +175,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -206,9 +215,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> critter eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "NearGround"
+          ],
+          "flags_raw": 2568
         }
       ]
     },
@@ -245,9 +258,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> player eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "NearGround"
+          ],
+          "flags_raw": 2568
         }
       ]
     },
@@ -284,9 +301,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> critter eq kStealth source> 0.5 > &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "NearGround"
+          ],
+          "flags_raw": 2568
         }
       ]
     },
@@ -323,9 +344,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> player eq kStealth source> 0.5 > &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "NearGround",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 2088
         }
       ]
     }

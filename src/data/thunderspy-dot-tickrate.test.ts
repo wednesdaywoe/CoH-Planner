@@ -23,8 +23,21 @@ import { TenebrousTentacles } from './datasets/thunderspy/generated/powersets/bl
  * is asserted at the Thunderspy-native value, not the HC one.
  */
 describe('Thunderspy DoT tickRate', () => {
-  const single = (p: { damage?: unknown }) =>
-    p.damage as { duration: number; tickRate: number } | undefined;
+  // `damage` is a single entry for a one-component attack and an ARRAY once a power
+  // carries more than one damage type. Tenebrous Tentacles became the latter under
+  // TSPY-4 (its Negative burst rides a sibling AttribMod of the same element as the
+  // Smashing DoT, so only one of the two was reachable before) — take the ticking
+  // component either way, which is what this file is about.
+  const single = (p: { damage?: unknown }) => {
+    const d = p.damage as
+      | { duration?: number; tickRate?: number }
+      | { duration?: number; tickRate?: number }[]
+      | undefined;
+    const entries = Array.isArray(d) ? d : d ? [d] : [];
+    return (entries.find((e) => (e.tickRate ?? 0) > 0) ?? entries[0]) as
+      | { duration: number; tickRate: number }
+      | undefined;
+  };
 
   // ticks fire at 0, period, 2·period, …, duration ⇒ floor(duration/period)+1
   const ticks = (d: number, p: number) => Math.floor(d / p + 1e-4) + 1;

@@ -40,20 +40,39 @@ export const ShadowPunch: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Special",
-    "scale": 0.25,
-    "table": "Melee_Damage"
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.25,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Negative",
+      "scale": 0.59,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "buffDuration": 6,
+    "durations": {
+      "tohitDebuff": 6
+    },
+    "tohitDebuff": {
+      "scale": 0.75,
+      "table": "Melee_DeBuff_ToHit"
+    }
   },
   "atoms": [
-    ["Unmapped",null,0.25,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.75,1,6,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,0.6499999761581421,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.44,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,1.116844,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true],
-    ["Unmapped",null,1.116844,0.20000000298023224,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
-    ["Unmapped",null,0.84,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
-    ["Unmapped",null,0.84,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true]
+    ["Damage","Smashing",0.25,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Negative",0.59,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["ToHit",null,0.75,1,6,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["GrantPower",null,1,0.6499999761581421,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
+    ["Damage","Smashing",0.44,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Negative",1.04,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Negative",1.116844,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true],
+    ["Damage","Negative",1.116844,0.20000000298023224,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
+    ["Damage","Negative",0.84,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
+    ["Damage","Negative",0.84,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true]
   ],
   "damageTypes": [
     "Negative",

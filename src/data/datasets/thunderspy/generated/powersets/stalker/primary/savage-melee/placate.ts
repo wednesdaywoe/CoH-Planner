@@ -38,14 +38,24 @@ export const Placate: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 1,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 1,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.0944,
+      "table": "Melee_Damage",
+      "duration": 3.1,
+      "tickRate": 1
+    }
+  ],
   "atoms": [
-    ["Unmapped",null,1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy source.ownPowerNum? .06 * 1.18 + @StdResult *"],
-    ["Unmapped",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1]
+    ["Damage","Lethal",1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy source.ownPowerNum? .06 * 1.18 + @StdResult *"],
+    ["Damage","Lethal",0.0944,1,3.1,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true]
   ],
   "damageTypes": [
     "Lethal"

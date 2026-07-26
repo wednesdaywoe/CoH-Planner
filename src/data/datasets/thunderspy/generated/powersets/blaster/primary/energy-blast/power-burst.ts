@@ -40,23 +40,51 @@ export const PowerBurst: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 0.636,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.636,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.484,
+      "table": "Ranged_Damage"
+    }
+  ],
   "effects": {
+    "buffDuration": 9.5,
+    "damageBuff": {
+      "scale": 0.132,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 9.5
+    },
     "knockback": {
       "scale": 2,
       "table": "Ranged_Knockback"
-    }
+    },
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   },
   "atoms": [
-    ["Unmapped",null,0.636,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Knockback",2,0.6000000238418579,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.132,1,9.5,"Ranged_Ones","Str","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Mez","Knockback",2,0.6000000238418579,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,1.03,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Smashing",0.636,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Energy",1.484,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",2,0.6000000238418579,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["DamageBuff","Smashing",0.132,1,9.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",0.132,1,9.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Fire",0.132,1,9.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Cold",0.132,1,9.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Energy",0.132,1,9.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Negative",0.132,1,9.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",0.132,1,9.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",0.132,1,9.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Mez","Knockback",2,0.6000000238418579,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Smashing",1.03,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Energy",2.403,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "damageTypes": [
     "Energy",

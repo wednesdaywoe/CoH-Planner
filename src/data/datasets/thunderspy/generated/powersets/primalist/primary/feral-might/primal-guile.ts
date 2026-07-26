@@ -38,7 +38,7 @@ export const PrimalGuile: Power = {
     }
   },
   "atoms": [
-    ["Mez","Placate",8,1,0,"Melee_Taunt","Abs","Duration","Target","Any",true,"No",null,null,null,1],
-    ["Mez","Placate",6,1,0,"Melee_Taunt","Abs","Duration","Target","Any",true,"No",null,null,null,1]
+    ["Mez","Placate",8,1,0,"Melee_Taunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1],
+    ["Mez","Placate",6,1,0,"Melee_Taunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1]
   ]
 };

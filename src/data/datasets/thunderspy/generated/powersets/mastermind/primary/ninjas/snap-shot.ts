@@ -43,8 +43,8 @@ export const SnapShot: Power = {
     "table": "Ranged_Damage"
   },
   "atoms": [
-    ["Unmapped",null,1.32,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1.780633,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Lethal",1.32,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Lethal",1.780633,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "damageTypes": [
     "Lethal"

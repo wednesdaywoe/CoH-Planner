@@ -39,9 +39,61 @@ export const MeltArmor: Power = {
     "Defense Debuff"
   ],
   "maxSlots": 6,
+  "effects": {
+    "buffDuration": 40,
+    "defenseDebuff": {
+      "scale": 2,
+      "table": "Ranged_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 40,
+      "resistanceDebuff": 40
+    },
+    "resistanceDebuff": {
+      "cold": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      },
+      "energy": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      },
+      "fire": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      },
+      "negative": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      },
+      "psionic": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      },
+      "smashing": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      }
+    }
+  },
   "atoms": [
-    ["Unmapped",null,2,1,40,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,-3,1,40,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1]
+    ["Defense","All",2,1,40,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Resistance","Smashing",-3,1,40,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Lethal",-3,1,40,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Fire",-3,1,40,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Cold",-3,1,40,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Energy",-3,1,40,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Negative",-3,1,40,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Toxic",-3,1,40,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Psionic",-3,1,40,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true]
   ],
   "damageTypes": [
     "Energy"

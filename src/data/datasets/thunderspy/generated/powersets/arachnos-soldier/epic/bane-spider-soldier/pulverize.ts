@@ -47,7 +47,12 @@ export const Pulverize: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Smashing",
+      "type": "Toxic",
+      "scale": 0.492,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Toxic",
       "scale": 0.1,
       "table": "Melee_Damage",
       "duration": 4.1,
@@ -62,13 +67,15 @@ export const Pulverize: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,1.148,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Stunned",5,2,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.1,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,1,1],
-    ["Unmapped",null,1.256,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,1.197579,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true],
-    ["Mez","Stunned",5,2,0,"Melee_Stun","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,1.093333,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true]
+    ["Damage","Smashing",1.148,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Toxic",0.492,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Stunned",5,2,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Toxic",0.1,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["Damage","Smashing",1.256,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Toxic",0.538,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Toxic",1.197579,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true],
+    ["Mez","Stunned",5,2,0,"Melee_Stun","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Toxic",1.093333,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true]
   ],
   "damageTypes": [
     "Smashing",

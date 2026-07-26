@@ -68,9 +68,14 @@ describe('Thunderspy resistance / ToHit vocabulary surfacing (TSPY11)', () => {
     const tohit = asScaled(Aim.effects?.tohitBuff, 'tohitBuff');
     expect(tohit.scale).toBeCloseTo(5, 5);
     expect(tohit.table).toMatch(/buff_tohit/i);
-    // A ToHit buff must NOT be mislabeled as a resistance debuff or a damage buff.
+    // A ToHit buff must NOT be mislabeled as a resistance debuff.
     expect(Aim.effects?.tohitDebuff).toBeUndefined();
-    expect(Aim.effects?.damageBuff).toBeUndefined();
+    // Aim's OTHER half is a real +Damage buff, on its own `Melee_Buff_Dmg` template.
+    // It was invisible until the parser walked every AttribMod in an element (TSPY-4);
+    // tspy now carries the same two templates Homecoming does.
+    const damage = asScaled(Aim.effects?.damageBuff, 'damageBuff');
+    expect(damage.scale).toBeCloseTo(5, 5);
+    expect(damage.table).toMatch(/buff_dmg/i);
   });
 });
 

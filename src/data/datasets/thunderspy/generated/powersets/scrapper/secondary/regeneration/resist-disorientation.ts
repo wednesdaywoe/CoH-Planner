@@ -32,7 +32,16 @@ export const ResistDisorientation: Power = {
   "effects": {
     "buffDuration": 10.25,
     "durations": {
-      "resistance": 10.25
+      "mezResistance": 10.25,
+      "resistance": 10.25,
+      "stun": 10.25
+    },
+    "effectDuration": 10.25,
+    "mezResistance": {
+      "stun": {
+        "scale": 5,
+        "table": "Melee_Res_Boolean"
+      }
     },
     "resistance": {
       "cold": {
@@ -67,19 +76,25 @@ export const ResistDisorientation: Power = {
         "scale": 1.25,
         "table": "Melee_Res_DMG"
       }
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 15,
+      "table": "Melee_Res_Boolean"
     }
   },
   "atoms": [
-    ["Unmapped",null,5,1,10.25,"Melee_Res_Boolean","Res","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["Resistance","Smashing",1.25,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Resistance","Lethal",1.25,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Resistance","Toxic",1.25,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Resistance","Fire",1.25,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Resistance","Cold",1.25,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Resistance","Energy",1.25,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Resistance","Negative",1.25,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Resistance","Psionic",1.25,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,6.5,1,10.25,"Melee_Res_Boolean","Res","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
+    ["MezResist","Stunned",5,1,10.25,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Stunned",-15,1,10.25,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Resistance","Smashing",1.25,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Lethal",1.25,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Toxic",1.25,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Fire",1.25,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Cold",1.25,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Energy",1.25,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Negative",1.25,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Psionic",1.25,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["MezResist","Stunned",6.5,1,10.25,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
   ],
   "mechanicType": "parentMechanic"
 };

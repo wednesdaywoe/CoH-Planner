@@ -47,6 +47,8 @@ export const DarkExtraction: Power = {
     }
   },
   "atoms": [
-    ["EntCreate",null,-1,1,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["EntCreate",null,-1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["EntCreate",null,-1,1,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Heal",null,0,1,0.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,1,1,null,true]
   ]
 };

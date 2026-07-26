@@ -42,7 +42,7 @@ export const Lash: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 0.1,
     "table": "Melee_Damage",
     "duration": 0.5,
@@ -56,22 +56,29 @@ export const Lash: Power = {
     "regenDebuff": {
       "scale": 0.2,
       "table": "Ranged_Ones"
+    },
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     }
   },
   "atoms": [
-    ["Unmapped",null,0.1,1,0.5,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,0.33000001311302185,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,0.20000000298023224,0,"Ranged_Ones","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Regeneration",null,-0.2,1,15,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
-    ["Unmapped",null,0.189,1,0.5,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,0.33000001311302185,1],
-    ["Unmapped",null,0.3,1,0.5,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,0.33000001311302185,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer source.ownPower?",true],
-    ["Unmapped",null,0,1,3,"Ranged_Ones","Abs","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer source.ownPower?",true],
-    ["Regeneration",null,-0.5,1,15,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
-    ["Unmapped",null,6,0.08399999886751175,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,0.786787,1,0.5,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Lethal",0.1,1,0.5,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.33000001311302185,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
+    ["GrantPower",null,1,0.20000000298023224,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Regeneration",null,-0.2,1,15,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Taunt",1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
+    ["Damage","Fire",0.189,1,0.5,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.33000001311302185,1],
+    ["Damage","Toxic",0.3,1,0.5,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.33000001311302185,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer source.ownPower?",true],
+    ["Damage","Cold",0.1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer source.ownPower?",true],
+    ["Meta",null,0,1,3,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer source.ownPower?",true],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer source.ownPower?",true],
+    ["Regeneration",null,-0.5,1,15,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Taunt",1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
+    ["Mez","Taunt",6,0.08399999886751175,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Lethal",0.786787,1,0.5,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "conditionalEffects": [
     {
@@ -79,13 +86,20 @@ export const Lash: Power = {
       "label": "Pale Self Buff Plaguebearer",
       "scope": "global",
       "defaultActive": false,
-      "damage": {
-        "type": "Special",
-        "scale": 0.3,
-        "table": "Melee_Damage",
-        "duration": 0.5,
-        "tickRate": 0.33000001311302185
-      }
+      "damage": [
+        {
+          "type": "Toxic",
+          "scale": 0.3,
+          "table": "Melee_Damage",
+          "duration": 0.5,
+          "tickRate": 0.33000001311302185
+        },
+        {
+          "type": "Cold",
+          "scale": 0.1,
+          "table": "Melee_Damage"
+        }
+      ]
     }
   ],
   "requires": "Tanker_Defense.Shield_Defense !",

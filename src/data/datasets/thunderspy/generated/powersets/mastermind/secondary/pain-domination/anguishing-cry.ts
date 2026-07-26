@@ -49,12 +49,55 @@ export const AnguishingCry: Power = {
       "table": "Ranged_Debuff_Def"
     },
     "durations": {
-      "defenseDebuff": 30
+      "defenseDebuff": 30,
+      "resistanceDebuff": 30
+    },
+    "resistanceDebuff": {
+      "cold": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      },
+      "energy": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      },
+      "fire": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      },
+      "negative": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      },
+      "psionic": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      },
+      "smashing": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      }
     }
   },
   "atoms": [
-    ["Damage","Psionic",0.05,1,0,"Melee_Ones","Abs","Expression","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"arch target> Class_Boss_Monster eq arch target> Class_Boss_Reichsman eq || arch target> Class_Boss_Monster_Flying eq || arch target> Class_Boss_Archvillain_Flying eq || arch target> Class_Boss_Archvillain eq || arch target> Class_Boss_PraetorianArchvillain eq || arch target> Class_Boss_Mito eq || arch target> Class_Boss_Hamidon eq || arch target> Class_Boss_RularuuFM eq || arch target> Class_Boss_RularuuCoP eq || arch target> Class_Boss_Rularuu eq || arch target> Class_Boss_PraetorianAVLowPerception eq || ! target.isFriend? ! &&",null,null,null,null,null,"@Scale Max.kHitPoints target> * negate"],
-    ["Defense","All",3,1,30,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"target.isFriend? !"],
-    ["Damage","Psionic",0.05,1,0,"Melee_Ones","Abs","Expression","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Max.kHitPoints target> 0.5 * Cur.kHitPoints target> > ! target.isFriend? &&",true,null,null,null,null,"@Scale Max.kHitPoints target> * negate"]
+    ["Damage","Psionic",0.05,1,0,"Melee_Ones","Abs","Expression","Target","Any",false,"No",2,null,null,1,null,true,null,null,null,null,"arch target> Class_Boss_Monster eq arch target> Class_Boss_Reichsman eq || arch target> Class_Boss_Monster_Flying eq || arch target> Class_Boss_Archvillain_Flying eq || arch target> Class_Boss_Archvillain eq || arch target> Class_Boss_PraetorianArchvillain eq || arch target> Class_Boss_Mito eq || arch target> Class_Boss_Hamidon eq || arch target> Class_Boss_RularuuFM eq || arch target> Class_Boss_RularuuCoP eq || arch target> Class_Boss_Rularuu eq || arch target> Class_Boss_PraetorianAVLowPerception eq || ! target.isFriend? ! &&",null,null,null,null,null,"@Scale Max.kHitPoints target> * negate"],
+    ["Defense","All",3,1,30,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"target.isFriend? !"],
+    ["Resistance","Smashing",-3,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"target.isFriend? !"],
+    ["Resistance","Lethal",-3,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"target.isFriend? !"],
+    ["Resistance","Fire",-3,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"target.isFriend? !"],
+    ["Resistance","Cold",-3,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"target.isFriend? !"],
+    ["Resistance","Energy",-3,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"target.isFriend? !"],
+    ["Resistance","Negative",-3,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"target.isFriend? !"],
+    ["Resistance","Psionic",-3,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"target.isFriend? !"],
+    ["Resistance","Toxic",-3,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"target.isFriend? !"],
+    ["Damage","Psionic",0.05,1,0,"Melee_Ones","Abs","Expression","Target","Any",false,"No",2,null,null,1,null,true,null,null,null,null,"Max.kHitPoints target> 0.5 * Cur.kHitPoints target> > ! target.isFriend? &&",true,null,null,null,null,"@Scale Max.kHitPoints target> * negate"]
   ]
 };

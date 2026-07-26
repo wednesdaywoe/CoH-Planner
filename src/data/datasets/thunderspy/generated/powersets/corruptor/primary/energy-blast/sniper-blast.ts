@@ -43,11 +43,18 @@ export const SniperBlast: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 0.828,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.828,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.932,
+      "table": "Ranged_Damage"
+    }
+  ],
   "effects": {
     "knockback": {
       "scale": 0.7,
@@ -55,12 +62,14 @@ export const SniperBlast: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,0.828,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Knockback",0.7,0.5,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1.62,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Knockback",0.7,0.5,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,2.76,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> critter eq &&",true],
-    ["Unmapped",null,4.030512,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> player eq &&",true]
+    ["Damage","Smashing",0.828,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Energy",1.932,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",0.7,0.5,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Smashing",1.62,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Energy",3.78,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Knockback",0.7,0.5,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Energy",2.76,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> critter eq &&",true],
+    ["Damage","Energy",4.030512,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> player eq &&",true]
   ],
   "damageTypes": [
     "Energy",

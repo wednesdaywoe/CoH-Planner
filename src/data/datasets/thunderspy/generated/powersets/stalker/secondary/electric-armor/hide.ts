@@ -39,26 +39,44 @@ export const Hide: Power = {
   "effects": {
     "buffDuration": 15,
     "durations": {
-      "regenDebuff": 15
+      "regenDebuff": 15,
+      "stealth": 10
+    },
+    "enduranceDrain": {
+      "scale": 50,
+      "table": "Ranged_EndDrain"
+    },
+    "placate": {
+      "scale": 8,
+      "table": "Melee_Taunt"
     },
     "regenDebuff": {
       "scale": 10,
       "table": "Ranged_Ones"
     },
-    "taunt": {
-      "scale": 8,
-      "table": "Melee_Taunt"
+    "stealth": {
+      "stealthPvE": {
+        "scale": 150,
+        "table": "Melee_Ones"
+      },
+      "stealthPvP": {
+        "scale": 380,
+        "table": "Melee_Ones"
+      }
     }
   },
   "atoms": [
-    ["Unmapped",null,-50,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Regeneration",null,-10,1,15,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Taunt",8,1,0,"Melee_Taunt","Abs","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,150,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,-16.67,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,-30,1,15,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,1.64,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Electronic target.HasTag?",true],
-    ["Mez","Taunt",6,1,0,"Melee_Taunt","Abs","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Endurance",null,-50,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Regeneration",null,-10,1,15,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Placate",8,1,0,"Melee_Taunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Stealth","RadiusPvE",150,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Stealth","RadiusPvP",380,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["EntCreate",null,0.2,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Endurance",null,-16.67,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Regeneration",null,-30,1,15,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Energy",1.64,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Electronic target.HasTag?",true],
+    ["Mez","Placate",6,1,0,"Melee_Taunt","Abs","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "conditionalEffects": [
     {
@@ -67,7 +85,7 @@ export const Hide: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Energy",
         "scale": 1.64,
         "table": "Ranged_Damage"
       }

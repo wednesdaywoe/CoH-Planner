@@ -40,44 +40,103 @@ export const ThroatStrike: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 1.32,
     "table": "Melee_Damage"
   },
   "effects": {
     "buffDuration": 5,
+    "damageDebuff": {
+      "scale": 1.5,
+      "table": "Melee_Debuff_Dam"
+    },
     "durations": {
+      "damageDebuff": 5,
       "resistanceDebuff": 5
     },
     "resistanceDebuff": {
+      "cold": {
+        "scale": 1,
+        "table": "Melee_Res_DMG"
+      },
+      "energy": {
+        "scale": 1,
+        "table": "Melee_Res_DMG"
+      },
+      "fire": {
+        "scale": 1,
+        "table": "Melee_Res_DMG"
+      },
+      "lethal": {
+        "scale": 1,
+        "table": "Melee_Res_DMG"
+      },
+      "negative": {
+        "scale": 1,
+        "table": "Melee_Res_DMG"
+      },
+      "psionic": {
+        "scale": 1,
+        "table": "Melee_Res_DMG"
+      },
       "smashing": {
         "scale": 1,
         "table": "Melee_Res_DMG"
+      },
+      "toxic": {
+        "scale": 1,
+        "table": "Melee_Res_DMG"
       }
+    },
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     }
   },
   "atoms": [
-    ["Unmapped",null,1.32,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.594,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1.5,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Resistance","Smashing",-1,1,5,"Melee_Res_DMG","Res","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
-    ["Unmapped",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Combo_Level_1 source.ownPower? ! Temporary_Powers.Temporary_Powers.Combo_Level_2 source.ownPower? ! && Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower? ! &&"],
-    ["Unmapped",null,2.12481,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,2,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Resistance","Smashing",-1,1,5,"Melee_Res_DMG","Res","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Resistance","Lethal",-1,1,5,"Melee_Res_DMG","Res","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Resistance","Fire",-1,1,5,"Melee_Res_DMG","Res","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Resistance","Cold",-1,1,5,"Melee_Res_DMG","Res","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Resistance","Energy",-1,1,5,"Melee_Res_DMG","Res","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Resistance","Negative",-1,1,5,"Melee_Res_DMG","Res","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Resistance","Psionic",-1,1,5,"Melee_Res_DMG","Res","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Resistance","Toxic",-1,1,5,"Melee_Res_DMG","Res","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
-    ["Unmapped",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? enttype target> player eq || kRage source> 70 < &&",true],
-    ["Unmapped",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Combo_Level_1 source.ownPower?",true],
-    ["Unmapped",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Combo_Level_2 source.ownPower? Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower? ||",true],
-    ["Unmapped",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Combo_Level_2 source.ownPower?",true]
+    ["Damage","Smashing",1.32,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Fire",0.594,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["DamageBuff","Smashing",1.5,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["DamageBuff","Lethal",1.5,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["DamageBuff","Fire",1.5,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["DamageBuff","Cold",1.5,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["DamageBuff","Energy",1.5,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["DamageBuff","Negative",1.5,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["DamageBuff","Toxic",1.5,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["DamageBuff","Psionic",1.5,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Resistance","Smashing",-1,1,5,"Melee_Res_DMG","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Resistance","Lethal",-1,1,5,"Melee_Res_DMG","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Resistance","Fire",-1,1,5,"Melee_Res_DMG","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Resistance","Cold",-1,1,5,"Melee_Res_DMG","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Resistance","Energy",-1,1,5,"Melee_Res_DMG","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Resistance","Negative",-1,1,5,"Melee_Res_DMG","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Resistance","Psionic",-1,1,5,"Melee_Res_DMG","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Resistance","Toxic",-1,1,5,"Melee_Res_DMG","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Taunt",1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Combo_Level_1 source.ownPower? ! Temporary_Powers.Temporary_Powers.Combo_Level_2 source.ownPower? ! && Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower? ! &&"],
+    ["Damage","Smashing",2.12481,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["DamageBuff","Smashing",2,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["DamageBuff","Lethal",2,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["DamageBuff","Fire",2,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["DamageBuff","Cold",2,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["DamageBuff","Energy",2,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["DamageBuff","Negative",2,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["DamageBuff","Toxic",2,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["DamageBuff","Psionic",2,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["Resistance","Smashing",-1,1,5,"Melee_Res_DMG","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["Resistance","Lethal",-1,1,5,"Melee_Res_DMG","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["Resistance","Fire",-1,1,5,"Melee_Res_DMG","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["Resistance","Cold",-1,1,5,"Melee_Res_DMG","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["Resistance","Energy",-1,1,5,"Melee_Res_DMG","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["Resistance","Negative",-1,1,5,"Melee_Res_DMG","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["Resistance","Psionic",-1,1,5,"Melee_Res_DMG","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["Resistance","Toxic",-1,1,5,"Melee_Res_DMG","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Taunt",1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
+    ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? enttype target> player eq || kRage source> 70 < &&",true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Combo_Level_1 source.ownPower?",true],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Combo_Level_1 source.ownPower?",true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Combo_Level_2 source.ownPower? Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower? ||",true],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Combo_Level_2 source.ownPower?",true]
   ],
   "damageTypes": [
     "Smashing"

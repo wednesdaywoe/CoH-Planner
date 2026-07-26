@@ -55,7 +55,8 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Energy_Dmg",
+            "Smashing_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -74,9 +75,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "arch target> Class_Tanker eq arch target> Class_Defender eq || arch target> Class_Mastermind eq || arch target> Class_Corruptor eq ||",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 112
         }
       ]
     },
@@ -94,7 +101,14 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Smashing_Dmg",
+            "Lethal_Dmg",
+            "Fire_Dmg",
+            "Cold_Dmg",
+            "Energy_Dmg",
+            "Negative_Energy_Dmg",
+            "Toxic_Dmg",
+            "Psionic_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -113,9 +127,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "arch target> Class_Scrapper eq arch target> Class_Blaster eq || arch target> Class_Brute eq || arch target> Class_Stalker eq ||",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 112
         }
       ]
     },
@@ -133,7 +153,12 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Stunned",
+            "Held",
+            "Terrorized",
+            "Confused",
+            "Sleep",
+            "Immobilized"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -152,9 +177,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "arch target> Class_Controller eq arch target> Class_Dominator eq || isPVPMap? ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 112
         }
       ]
     },
@@ -172,7 +203,12 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Stunned",
+            "Held",
+            "Terrorized",
+            "Confused",
+            "Sleep",
+            "Immobilized"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -191,9 +227,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "arch target> Class_Controller eq arch target> Class_Dominator eq || isPVPMap? &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 112
         }
       ]
     },
@@ -230,9 +272,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "arch target> Class_Arachnos_Soldier eq arch target> Class_Arachnos_Widow eq || arch target> Class_Peacebringer eq || arch target> Class_Warshade eq ||",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 112
         }
       ]
     }

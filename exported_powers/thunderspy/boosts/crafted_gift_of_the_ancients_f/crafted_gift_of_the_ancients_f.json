@@ -62,7 +62,7 @@
       "templates": [
         {
           "attribs": [
-            "Run"
+            "Null"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -81,9 +81,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "isPVPMap? !",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -101,7 +106,7 @@
       "templates": [
         {
           "attribs": [
-            "Defense"
+            "Base_Defense"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -120,9 +125,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "Boost"
+          ],
+          "flags_raw": 5168
         }
       ]
     },
@@ -140,7 +151,16 @@
       "templates": [
         {
           "attribs": [
-            "Boosts_20"
+            "Melee",
+            "Ranged",
+            "Area",
+            "Smashing",
+            "Lethal",
+            "Fire",
+            "Cold",
+            "Energy",
+            "Negative_Energy",
+            "Psionic"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -159,9 +179,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "Boost"
+          ],
+          "flags_raw": 5168
         }
       ]
     }

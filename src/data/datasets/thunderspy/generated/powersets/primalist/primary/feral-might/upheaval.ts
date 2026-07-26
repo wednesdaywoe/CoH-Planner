@@ -44,11 +44,23 @@ export const Upheaval: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Special",
-    "scale": 1,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Heal",
+      "scale": 0.2,
+      "table": "Melee_HealSelf"
+    },
+    {
+      "type": "Heal",
+      "scale": 0.4,
+      "table": "Melee_HealSelf"
+    }
+  ],
   "effects": {
     "knockback": {
       "scale": 0.67,
@@ -56,12 +68,11 @@ export const Upheaval: Power = {
     }
   },
   "atoms": [
-    ["Meta",null,0,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"cur.kMeter source> 1 * 1.3 + @StdResult *"],
-    ["Mez","Knockback",0.67,0.800000011920929,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,-100,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.2,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.4,0,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"No",null,null,null,1]
+    ["Damage","Smashing",1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"cur.kMeter source> 1 * 1.3 + @StdResult *"],
+    ["Mez","Knockback",0.67,0.800000011920929,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Meta",null,-100,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Heal",null,0.2,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Heal",null,0.4,0,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1]
   ],
   "modeVariants": {
     "HunterMode": {
@@ -75,7 +86,7 @@ export const Upheaval: Power = {
         "maxTargets": 10
       },
       "damage": {
-        "type": "Special",
+        "type": "Lethal",
         "scale": 1,
         "table": "Melee_Damage"
       },
@@ -83,9 +94,47 @@ export const Upheaval: Power = {
         "Lethal"
       ],
       "effects": {
+        "buffDuration": 8,
+        "durations": {
+          "resistanceDebuff": 8
+        },
         "knockback": {
           "scale": 0.67,
           "table": "Melee_Ones"
+        },
+        "resistanceDebuff": {
+          "cold": {
+            "scale": 1.5,
+            "table": "Melee_Res_DMG"
+          },
+          "energy": {
+            "scale": 1.5,
+            "table": "Melee_Res_DMG"
+          },
+          "fire": {
+            "scale": 1.5,
+            "table": "Melee_Res_DMG"
+          },
+          "lethal": {
+            "scale": 1.5,
+            "table": "Melee_Res_DMG"
+          },
+          "negative": {
+            "scale": 1.5,
+            "table": "Melee_Res_DMG"
+          },
+          "psionic": {
+            "scale": 1.5,
+            "table": "Melee_Res_DMG"
+          },
+          "smashing": {
+            "scale": 1.5,
+            "table": "Melee_Res_DMG"
+          },
+          "toxic": {
+            "scale": 1.5,
+            "table": "Melee_Res_DMG"
+          }
         }
       },
       "shortHelp": "PBAoE, Special DMG, Foe Knockdown, -All Primal Energy",
@@ -106,12 +155,24 @@ export const Upheaval: Power = {
       },
       "damage": [
         {
-          "type": "Special",
+          "type": "Lethal",
           "scale": 1,
           "table": "Melee_Damage"
         },
         {
-          "type": "Special",
+          "type": "Lethal",
+          "scale": 0.65,
+          "table": "Melee_Damage"
+        },
+        {
+          "type": "Lethal",
+          "scale": 0.1,
+          "table": "Melee_Damage",
+          "duration": 4.1,
+          "tickRate": 1
+        },
+        {
+          "type": "Lethal",
           "scale": 0.1,
           "table": "Melee_Damage",
           "duration": 4.1,

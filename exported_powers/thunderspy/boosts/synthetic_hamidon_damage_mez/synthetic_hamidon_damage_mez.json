@@ -70,7 +70,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Smashing_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -89,9 +89,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "Boost"
+          ],
+          "flags_raw": 5168
         }
       ]
     },
@@ -109,7 +115,13 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Lethal_Dmg",
+            "Fire_Dmg",
+            "Cold_Dmg",
+            "Energy_Dmg",
+            "Negative_Energy_Dmg",
+            "Toxic_Dmg",
+            "Psionic_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -128,9 +140,106 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "Boost"
+          ],
+          "flags_raw": 5168
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Terrorized"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 0.3333,
+          "duration": "10.25 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "Boost"
+          ],
+          "flags_raw": 5168
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "OnlyAffectsSelf",
+            "Untouchable"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 0.3333,
+          "duration": "10.25 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "Boost"
+          ],
+          "flags_raw": 5168
         }
       ]
     },
@@ -167,9 +276,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "Boost"
+          ],
+          "flags_raw": 5168
         }
       ]
     },
@@ -206,9 +321,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "Boost"
+          ],
+          "flags_raw": 5168
         }
       ]
     },
@@ -245,9 +366,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "Boost"
+          ],
+          "flags_raw": 5168
         }
       ]
     },
@@ -284,9 +411,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "Boost"
+          ],
+          "flags_raw": 5168
         }
       ]
     },
@@ -323,9 +456,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "Boost"
+          ],
+          "flags_raw": 5168
         }
       ]
     },
@@ -362,9 +501,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "Boost"
+          ],
+          "flags_raw": 5168
         }
       ]
     },
@@ -401,9 +546,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "Boost"
+          ],
+          "flags_raw": 5168
         }
       ]
     }

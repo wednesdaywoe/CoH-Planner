@@ -37,7 +37,103 @@ export const InnerWill: Power = {
     "Healing"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Heal",
+      "scale": 0.075,
+      "table": "Melee_Ones",
+      "ignoreStrength": true
+    },
+    {
+      "type": "Heal",
+      "scale": 0.075,
+      "table": "Melee_Ones"
+    }
+  ],
+  "effects": {
+    "buffDuration": 30,
+    "durations": {
+      "mezResistance": 30,
+      "specialBuff": 30
+    },
+    "effectDuration": 30,
+    "mezResistance": {
+      "confuse": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      },
+      "fear": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      },
+      "hold": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      },
+      "immobilize": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      },
+      "sleep": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      },
+      "stun": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      }
+    },
+    "specialBuff": {
+      "confuse": {
+        "scale": 0.5,
+        "table": "Melee_Ones"
+      },
+      "fear": {
+        "scale": 0.5,
+        "table": "Melee_Ones"
+      },
+      "hold": {
+        "scale": 0.5,
+        "table": "Melee_Ones"
+      },
+      "immobilize": {
+        "scale": 0.5,
+        "table": "Melee_Ones"
+      },
+      "sleep": {
+        "scale": 0.5,
+        "table": "Melee_Ones"
+      },
+      "stun": {
+        "scale": 0.5,
+        "table": "Melee_Ones"
+      }
+    },
+    "maxStacks": 2,
+    "stacksLinear": [
+      "specialBuff"
+    ]
+  },
   "atoms": [
-    ["Mez","Stunned",1,1,30,"Melee_Ones","Cur","Expression","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"mod.kStun source> 1 + 2 30 minmax negate"]
+    ["Mez","Stunned",1,1,30,"Melee_Ones","Cur","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"mod.kStun source> 1 + 2 30 minmax negate"],
+    ["Mez","Sleep",1,1,30,"Melee_Ones","Cur","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"mod.kSleep source> 1 + 2 30 minmax negate"],
+    ["Mez","Immobilized",1,1,30,"Melee_Ones","Cur","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"mod.kImmobilize source> 1 + 2 30 minmax negate"],
+    ["Mez","Held",1,1,30,"Melee_Ones","Cur","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"mod.kHeld source> 1 + 2 30 minmax negate"],
+    ["Mez","Confused",1,1,30,"Melee_Ones","Cur","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"mod.kConfused source> 1 + 2 30 minmax negate"],
+    ["Mez","Terrorized",1,1,30,"Melee_Ones","Cur","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"mod.kTerrorized source> 1 + 2 30 minmax negate"],
+    ["MezResist","Stunned",1,1,30,"Melee_Ones","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["MezResist","Sleep",1,1,30,"Melee_Ones","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["MezResist","Immobilized",1,1,30,"Melee_Ones","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["MezResist","Held",1,1,30,"Melee_Ones","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["MezResist","Confused",1,1,30,"Melee_Ones","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["MezResist","Terrorized",1,1,30,"Melee_Ones","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Enhancement","Stunned",0.5,1,30,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Enhancement","Sleep",0.5,1,30,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Enhancement","Immobilized",0.5,1,30,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Enhancement","Held",0.5,1,30,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Enhancement","Confused",0.5,1,30,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Enhancement","Terrorized",0.5,1,30,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Heal",null,0.075,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Heal",null,0.075,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1]
   ]
 };

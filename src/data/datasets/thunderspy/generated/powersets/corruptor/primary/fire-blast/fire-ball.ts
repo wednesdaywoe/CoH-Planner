@@ -42,8 +42,13 @@ export const FireBall: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Fire",
+      "type": "Smashing",
       "scale": 0.2,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.7,
       "table": "Ranged_Damage"
     },
     {
@@ -55,11 +60,13 @@ export const FireBall: Power = {
     }
   ],
   "atoms": [
-    ["Unmapped",null,0.2,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.15,1,2.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,1,1],
-    ["Unmapped",null,0.160754,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,0.9,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> critter eq &&",true],
-    ["Unmapped",null,0.724119,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> player eq &&",true]
+    ["Damage","Smashing",0.2,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Fire",0.7,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Fire",0.15,1,2.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["Damage","Smashing",0.160754,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Fire",0.563364,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Fire",0.9,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> critter eq &&",true],
+    ["Damage","Fire",0.724119,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> player eq &&",true]
   ],
   "damageTypes": [
     "Fire",

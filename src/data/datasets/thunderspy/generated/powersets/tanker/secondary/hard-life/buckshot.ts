@@ -43,7 +43,7 @@ export const Buckshot: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 0.7,
     "table": "Melee_Damage"
   },
@@ -54,10 +54,10 @@ export const Buckshot: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,0.7,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.297,1,0.3,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,0.25,1],
-    ["Unmapped",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Mez","Knockback",0.67,0.4000000059604645,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+    ["Damage","Lethal",0.7,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Fire",0.297,1,0.3,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Mez","Knockback",0.67,0.4000000059604645,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
   ],
   "damageTypes": [
     "Lethal"

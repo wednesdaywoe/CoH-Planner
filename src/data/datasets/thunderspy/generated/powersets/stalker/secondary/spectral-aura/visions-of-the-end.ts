@@ -43,8 +43,10 @@ export const VisionsOfTheEnd: Power = {
     }
   },
   "atoms": [
-    ["Mez","Terrorized",10,1,0,"Melee_Fear","Cur","Duration","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1]
+    ["Mez","Terrorized",10,1,0,"Melee_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,1],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Meta",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1]
   ],
   "damageTypes": [
     "Psionic"

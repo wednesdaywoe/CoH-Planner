@@ -30,19 +30,60 @@ export const NuclearMutation: Power = {
     "Recharge"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Heal",
+    "scale": 1,
+    "table": "Ranged_Ones",
+    "duration": 0.5,
+    "tickRate": 1
+  },
   "effects": {
     "buffDuration": 90,
-    "durations": {
-      "tohitBuff": 90
+    "damageBuff": {
+      "scale": 4,
+      "table": "Ranged_Buff_Dmg"
     },
-    "tohitBuff": {
+    "durations": {
+      "damageBuff": 90,
+      "recoveryBuff": 90,
+      "tohitBuffUnenhanced": 90,
+      "untouchable": 10
+    },
+    "enduranceGain": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
+    "recoveryBuff": {
+      "scale": 2,
+      "table": "Ranged_Ones"
+    },
+    "tohitBuffUnenhanced": {
       "scale": 2,
       "table": "Ranged_Buff_ToHit"
+    },
+    "untouchable": {
+      "scale": 10,
+      "table": "Ranged_Ones"
     }
   },
   "atoms": [
-    ["Unmapped",null,1,1,0.5,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,1,1],
-    ["Unmapped",null,4,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["ToHit",null,2,1,90,"Ranged_Buff_ToHit","Cur","Magnitude","Target","Any",true,"No",null,null,null,1]
+    ["Heal",null,1,1,0.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,1,1],
+    ["Endurance",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["Recovery",null,2,1,90,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["RechargeTime",null,1,1,90,"Ranged_Ones","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["Mez","Untouchable",10,1,10,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,1,90,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Smashing",4,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",4,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Fire",4,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Cold",4,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Energy",4,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Negative",4,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",4,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",4,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["ToHit",null,2,1,90,"Ranged_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true]
+  ],
+  "setsModes": [
+    "Peacebringer_Blaster_Mode"
   ]
 };

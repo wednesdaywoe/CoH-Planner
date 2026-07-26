@@ -55,10 +55,24 @@ export const HailofBullets: Power = {
       "table": "Melee_Damage",
       "duration": 3.5,
       "tickRate": 0.30000001192092896
+    },
+    {
+      "type": "Cold",
+      "scale": 0.059,
+      "table": "Melee_Damage",
+      "duration": 3.5,
+      "tickRate": 0.30000001192092896
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.059,
+      "table": "Melee_Damage",
+      "duration": 3.5,
+      "tickRate": 0.30000001192092896
     }
   ],
   "effects": {
-    "buffDuration": 5,
+    "buffDuration": 10,
     "defenseBuff": {
       "aoe": {
         "scale": 1,
@@ -74,49 +88,109 @@ export const HailofBullets: Power = {
       }
     },
     "durations": {
-      "defenseBuff": 5
+      "defenseBuff": 5,
+      "knockback": 3.5
     },
     "immobilize": {
       "mag": 1,
       "scale": 10.1,
       "table": "Ranged_Immobilize"
+    },
+    "knockback": {
+      "scale": 0.8,
+      "table": "Ranged_Ones"
     }
   },
   "atoms": [
-    ["Unmapped",null,0.059,1,3.5,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.059,1,3.5,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.4,1,3.5,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"No",null,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.4,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.059,1,3.5,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.113,1,2.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,1,1],
-    ["Unmapped",null,0.059,1,3.5,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.2,0,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.2,0,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.2,0,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.2,0,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.2,0,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Mez","Immobilized",10.1,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.059,1,3.5,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1,0,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,0,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,0,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,0,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,0,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,0,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,0,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,0,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Defense","Melee",1,1,5,"Ranged_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Defense","Ranged",1,1,5,"Ranged_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Defense","AoE",1,1,5,"Ranged_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.059,1,3.5,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,0.059,1,3.5,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,0.4,1,3.5,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"No",null,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,0.4,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,0.059,1,3.5,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,0.059,1,3.5,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Immobilized",2,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,0.059,1,3.5,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Lethal",0.059,1,3.5,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Lethal",0.059,1,3.5,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",0.4,1,3.5,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",0.4,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Fire",0.059,1,3.5,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Fire",0.113,1,2.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["Damage","Cold",0.059,1,3.5,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Movement","Run",0.2,0,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","Fly",0.2,0,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","JumpHeight",0.2,0,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Movement","Jump",0.2,0,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["RechargeTime",null,0.2,0,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Mez","Immobilized",10.1,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Toxic",0.059,1,3.5,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["DamageBuff","Lethal",1,0,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Smashing",1,0,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Fire",1,0,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Cold",1,0,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Energy",1,0,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Negative",1,0,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",1,0,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",1,0,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Defense","Melee",1,1,5,"Ranged_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Defense","Ranged",1,1,5,"Ranged_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Defense","AoE",1,1,5,"Ranged_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Damage","Lethal",0.059,1,3.5,"Melee_Damage","Abs","Magnitude","Target","PvP",false,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Lethal",0.059,1,3.5,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Knockback",0.4,1,3.5,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Knockback",0.4,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Fire",0.059,1,3.5,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Cold",0.059,1,3.5,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Immobilized",2,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Toxic",0.059,1,3.5,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+  ],
+  "conditionalEffects": [
+    {
+      "id": "cryoammunition",
+      "label": "Cryo Ammo",
+      "scope": "global",
+      "defaultActive": false,
+      "group": "swap-ammo",
+      "effects": {
+        "rechargeDebuff": {
+          "scale": 0.2,
+          "table": "Ranged_Slow"
+        },
+        "slow": {
+          "flySpeed": {
+            "scale": 0.2,
+            "table": "Ranged_Slow"
+          },
+          "jumpHeight": {
+            "scale": 0.2,
+            "table": "Ranged_Slow"
+          },
+          "jumpSpeed": {
+            "scale": 0.2,
+            "table": "Ranged_Slow"
+          },
+          "runSpeed": {
+            "scale": 0.2,
+            "table": "Ranged_Slow"
+          }
+        },
+        "durations": {
+          "rechargeDebuff": 10,
+          "slow": 10
+        },
+        "buffDuration": 10
+      }
+    },
+    {
+      "id": "chemicalammunition",
+      "label": "Chemical Ammo",
+      "scope": "global",
+      "defaultActive": false,
+      "group": "swap-ammo",
+      "effects": {
+        "damageDebuff": {
+          "scale": 1,
+          "table": "Ranged_Debuff_Dam"
+        },
+        "durations": {
+          "damageDebuff": 10
+        },
+        "buffDuration": 10
+      }
+    }
   ],
   "damageTypes": [
     "Lethal"

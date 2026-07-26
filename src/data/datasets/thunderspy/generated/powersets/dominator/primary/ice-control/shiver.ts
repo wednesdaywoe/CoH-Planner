@@ -45,9 +45,26 @@ export const Shiver: Power = {
   "effects": {
     "buffDuration": 60,
     "durations": {
+      "rechargeDebuff": 60,
       "slow": 60
     },
+    "rechargeDebuff": {
+      "scale": 0.65,
+      "table": "Ranged_Slow"
+    },
     "slow": {
+      "flySpeed": {
+        "scale": 0.65,
+        "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.65,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.65,
+        "table": "Ranged_Slow"
+      },
       "runSpeed": {
         "scale": 1,
         "table": "Ranged_SpeedRunning"
@@ -60,12 +77,16 @@ export const Shiver: Power = {
     }
   },
   "atoms": [
-    ["Mez","Stunned",15,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.65,1,60,"Ranged_Slow","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Movement","Run",-1,1,60,"Ranged_SpeedRunning","Max","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Stunned",22,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kStealth source> 0.5 > &&",true],
-    ["Mez","Stunned",4,4,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Stunned",4,1,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq kStealth source> 0.5 > &&",true]
+    ["Mez","Stunned",15,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["RechargeTime",null,0.65,1,60,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Movement","JumpHeight",0.65,1,60,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Movement","Jump",0.65,1,60,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","Run",0.65,1,60,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","Fly",0.65,1,60,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","Run",-1,1,60,"Ranged_SpeedRunning","Max","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Stunned",22,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kStealth source> 0.5 > &&",true],
+    ["Mez","Stunned",4,4,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Stunned",4,1,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kStealth source> 0.5 > &&",true]
   ],
   "conditionalEffects": [
     {

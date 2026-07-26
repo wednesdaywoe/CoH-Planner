@@ -60,7 +60,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Teleport"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -79,9 +79,363 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Heal_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Resistance",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": -0.6,
+          "duration": "120 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 0.8,
+          "duration": "120 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "StealthRadius_PVE"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 35.0,
+          "duration": "120 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "BoostIgnoreDiminishing"
+          ],
+          "flags_raw": 2
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "StealthRadius_PVP"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 389.0,
+          "duration": "120 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "BoostIgnoreDiminishing"
+          ],
+          "flags_raw": 2
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "RunningSpeed",
+            "FlyingSpeed",
+            "JumpHeight"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 0.35,
+          "duration": "120 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength"
+          ],
+          "flags_raw": 1296
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Grant_Power"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnEnable",
+          "aspect": "Absolute",
+          "target": "Self",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Revoke_Power"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnDisable",
+          "aspect": "Absolute",
+          "target": "Self",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Ranged_Level",
+          "scale": 1.0,
+          "duration": "5 seconds",
+          "magnitude": 1.0,
+          "delay": 1.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -143,7 +497,7 @@
       "templates": [
         {
           "attribs": [
-            "Res_Boolean"
+            "PerceptionRadius"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -162,9 +516,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     }

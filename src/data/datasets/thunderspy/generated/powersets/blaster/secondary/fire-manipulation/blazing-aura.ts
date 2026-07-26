@@ -58,10 +58,10 @@ export const BlazingAura: Power = {
     "table": "Melee_Damage"
   },
   "atoms": [
-    ["Unmapped",null,0.2,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq entref source> entref target> eq ! && cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&"],
-    ["Unmapped",null,0.2,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq entref source> entref target> eq ! && cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&",true],
-    ["Unmapped",null,0.15,1,0,"Melee_HealSelf","Abs","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref source> entref target> eq",true],
-    ["Recovery",null,0.5,1,2.1,"Melee_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref source> entref target> eq",true]
+    ["Damage","Fire",0.2,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq entref source> entref target> eq ! && cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&"],
+    ["Damage","Fire",0.2,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq entref source> entref target> eq ! && cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&",true],
+    ["Heal",null,0.15,1,0,"Melee_HealSelf","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"entref source> entref target> eq",true],
+    ["Recovery",null,0.5,1,2.1,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"entref source> entref target> eq",true]
   ],
   "damageTypes": [
     "Fire"

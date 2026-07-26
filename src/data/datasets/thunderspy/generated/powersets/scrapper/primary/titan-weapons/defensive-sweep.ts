@@ -64,10 +64,10 @@ export const DefensiveSweep: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,0.679,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Defense","Melee",1.5,1,10,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Defense","Smashing",1.5,1,10,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.30555,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1]
+    ["Damage","Smashing",0.679,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Defense","Melee",1.5,1,10,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Defense","Smashing",1.5,1,10,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Damage","Fire",0.30555,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1]
   ],
   "modeVariants": {
     "FastMode": {
@@ -95,11 +95,13 @@ export const DefensiveSweep: Power = {
         "defenseBuff": {
           "melee": {
             "scale": 1.5,
-            "table": "Melee_Buff_Def"
+            "table": "Melee_Buff_Def",
+            "perTarget": 1.5
           },
           "smashing": {
             "scale": 1.5,
-            "table": "Melee_Buff_Def"
+            "table": "Melee_Buff_Def",
+            "perTarget": 1.5
           }
         },
         "durations": {

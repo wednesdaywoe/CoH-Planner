@@ -94,8 +94,13 @@ describe('Thunderspy pet / pseudo-pet summon recovery (data-driven)', () => {
     const bite = wolf.abilities.find(a => a.name === 'Vicious_Bite');
     expect(bite).toBeDefined();
     // Element resolved from the shortHelp DMG(Lethal), scale/table from the binary.
+    // Three Lethal components, matching its Rebirth twin byte for byte (Homecoming
+    // carries the same three, its 0.42 on Melee_InherentDamage). Only the 0.84 was
+    // reachable before the parser walked every AttribMod in an element (TSPY-4).
     expect(bite!.damage).toEqual([
       { damageType: 'Lethal', scale: 0.84, table: 'Melee_Damage' },
+      { damageType: 'Lethal', scale: 0.1, table: 'Melee_Damage' },
+      { damageType: 'Lethal', scale: 0.42, table: 'Melee_Damage' },
     ]);
   });
 });

@@ -37,15 +37,43 @@ export const NWSmokeGrenade: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "taunt": {
+    "buffDuration": 60,
+    "durations": {
+      "perceptionDebuff": 60,
+      "stealth": 10,
+      "tohitDebuff": 60
+    },
+    "perceptionDebuff": {
+      "scale": 0.9,
+      "table": "Melee_Ones"
+    },
+    "placate": {
       "scale": 10,
       "table": "Melee_Taunt"
+    },
+    "stealth": {
+      "stealthPvE": {
+        "scale": 150,
+        "table": "Melee_Ones"
+      },
+      "stealthPvP": {
+        "scale": 380,
+        "table": "Melee_Ones"
+      }
+    },
+    "tohitDebuff": {
+      "scale": 0.5,
+      "table": "Melee_DeBuff_ToHit"
     }
   },
   "atoms": [
-    ["Unmapped",null,-0.9,1,60,"Melee_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.5,1,60,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Mez","Taunt",10,1,0,"Melee_Taunt","Abs","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Taunt",6,1,0,"Melee_Taunt","Abs","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Perception",null,-0.9,1,60,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Stealth","RadiusPvE",150,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Stealth","RadiusPvP",380,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["EntCreate",null,0.2,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["ToHit",null,0.5,1,60,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Mez","Placate",10,1,0,"Melee_Taunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Placate",6,1,0,"Melee_Taunt","Abs","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ]
 };

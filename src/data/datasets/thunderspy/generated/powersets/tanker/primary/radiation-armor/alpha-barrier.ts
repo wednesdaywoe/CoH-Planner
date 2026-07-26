@@ -45,13 +45,23 @@ export const AlphaBarrier: Power = {
       "resistance": 0.75
     },
     "resistance": {
+      "lethal": {
+        "scale": 3,
+        "table": "Melee_Res_DMG"
+      },
       "smashing": {
         "scale": 3,
+        "table": "Melee_Res_DMG"
+      },
+      "toxic": {
+        "scale": 3.5,
         "table": "Melee_Res_DMG"
       }
     }
   },
   "atoms": [
-    ["Resistance","Smashing",3,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1]
+    ["Resistance","Smashing",3,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Lethal",3,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Toxic",3.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true]
   ]
 };

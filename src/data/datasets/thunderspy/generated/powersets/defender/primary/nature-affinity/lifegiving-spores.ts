@@ -46,6 +46,7 @@ export const LifegivingSpores: Power = {
     }
   },
   "atoms": [
+    ["EntCreate",null,-1,1,99999,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
     ["EntCreate",null,-1,1,99999,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
   ],
   "requires": "Defender_Buff.Nature_Affinity.Living_Spores !"

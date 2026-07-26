@@ -44,13 +44,14 @@ export const Placate: Power = {
     "table": "Melee_Damage"
   },
   "atoms": [
-    ["Unmapped",null,1.58,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1.824454,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,1.58,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
-    ["Unmapped",null,1.824454,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true],
-    ["Unmapped",null,1.824454,0.20000000298023224,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
-    ["Unmapped",null,1.58,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true]
+    ["Damage","Lethal",1.58,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
+    ["Damage","Lethal",1.824454,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Lethal",1.58,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
+    ["Damage","Lethal",1.58,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
+    ["Damage","Lethal",1.824454,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true],
+    ["Damage","Lethal",1.824454,0.20000000298023224,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
+    ["Damage","Lethal",1.58,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true]
   ],
   "damageTypes": [
     "Lethal"

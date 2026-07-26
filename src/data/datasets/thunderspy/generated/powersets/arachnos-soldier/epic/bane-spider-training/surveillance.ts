@@ -37,19 +37,59 @@ export const Surveillance: Power = {
   "maxSlots": 6,
   "effects": {
     "buffDuration": 20,
+    "defenseDebuff": {
+      "scale": 2,
+      "table": "Melee_Debuff_Def"
+    },
     "durations": {
+      "defenseDebuff": 20,
       "resistanceDebuff": 20
     },
     "resistanceDebuff": {
+      "cold": {
+        "scale": 2,
+        "table": "Melee_Res_DMG"
+      },
+      "energy": {
+        "scale": 2,
+        "table": "Melee_Res_DMG"
+      },
+      "fire": {
+        "scale": 2,
+        "table": "Melee_Res_DMG"
+      },
+      "lethal": {
+        "scale": 2,
+        "table": "Melee_Res_DMG"
+      },
+      "negative": {
+        "scale": 2,
+        "table": "Melee_Res_DMG"
+      },
+      "psionic": {
+        "scale": 2,
+        "table": "Melee_Res_DMG"
+      },
       "smashing": {
+        "scale": 2,
+        "table": "Melee_Res_DMG"
+      },
+      "toxic": {
         "scale": 2,
         "table": "Melee_Res_DMG"
       }
     }
   },
   "atoms": [
-    ["Unmapped",null,54,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Resistance","Smashing",-2,1,20,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,2,1,20,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1]
+    ["Meta",null,54,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Smashing",-2,1,20,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Lethal",-2,1,20,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Fire",-2,1,20,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Cold",-2,1,20,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Energy",-2,1,20,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Negative",-2,1,20,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Psionic",-2,1,20,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Toxic",-2,1,20,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Defense","All",2,1,20,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1]
   ]
 };

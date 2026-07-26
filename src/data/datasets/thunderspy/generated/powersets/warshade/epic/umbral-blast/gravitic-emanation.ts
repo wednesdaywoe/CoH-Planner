@@ -53,9 +53,36 @@ export const GraviticEmanation: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "buffDuration": 10,
+    "durations": {
+      "rechargeDebuff": 10,
+      "slow": 10
+    },
     "knockback": {
       "scale": 5,
       "table": "Ranged_Knockback"
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
+    },
+    "slow": {
+      "flySpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      }
     },
     "stun": {
       "mag": 3,
@@ -64,13 +91,17 @@ export const GraviticEmanation: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,0.4,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Knockback",5,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Stunned",10,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.2,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1.462185,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Knockback",5,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Stunned",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Negative",0.4,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",5,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Stunned",10,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Movement","JumpHeight",0.2,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Movement","Jump",0.2,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","Run",0.2,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","Fly",0.2,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["RechargeTime",null,0.2,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Damage","Negative",1.462185,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Knockback",5,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Stunned",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "damageTypes": [
     "Negative"

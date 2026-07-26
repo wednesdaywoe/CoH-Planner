@@ -36,8 +36,13 @@ export const PowerSink: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "buffDuration": 4,
+    "buffDuration": 9.53,
+    "damageBuff": {
+      "scale": 0.048,
+      "table": "Melee_Ones"
+    },
     "durations": {
+      "damageBuff": 9.53,
       "recoveryDebuff": 4
     },
     "enduranceDrain": {
@@ -46,7 +51,8 @@ export const PowerSink: Power = {
     },
     "enduranceGain": {
       "scale": 25,
-      "table": "Melee_Ones"
+      "table": "Melee_Ones",
+      "perTarget": 25
     },
     "recoveryDebuff": {
       "scale": 1,
@@ -54,10 +60,18 @@ export const PowerSink: Power = {
     }
   },
   "atoms": [
-    ["Endurance",null,-0.35,1,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Recovery",null,-1,0.30000001192092896,4,"Melee_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Endurance",null,25,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,-10,1,0,"Melee_EndDrain","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Endurance",null,-0.35,1,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Recovery",null,-1,0.30000001192092896,4,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Endurance",null,25,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,25],
+    ["DamageBuff","Smashing",0.048,1,9.53,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",0.048,1,9.53,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Fire",0.048,1,9.53,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Cold",0.048,1,9.53,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Energy",0.048,1,9.53,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Negative",0.048,1,9.53,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",0.048,1,9.53,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",0.048,1,9.53,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Endurance",null,-10,1,0,"Melee_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "damageTypes": [
     "Energy"

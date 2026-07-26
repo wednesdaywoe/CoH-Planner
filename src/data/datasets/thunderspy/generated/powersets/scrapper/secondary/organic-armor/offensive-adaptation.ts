@@ -31,8 +31,69 @@ export const OffensiveAdaptation: Power = {
   },
   "allowedEnhancements": [],
   "maxSlots": 0,
+  "effects": {
+    "buffDuration": 1.1,
+    "durations": {
+      "resistanceDebuff": 1.1
+    },
+    "resistanceDebuff": {
+      "cold": {
+        "scale": 0.075,
+        "table": "Melee_Ones",
+        "toWho": "Self"
+      },
+      "energy": {
+        "scale": 0.075,
+        "table": "Melee_Ones",
+        "toWho": "Self"
+      },
+      "fire": {
+        "scale": 0.075,
+        "table": "Melee_Ones",
+        "toWho": "Self"
+      },
+      "lethal": {
+        "scale": 0.075,
+        "table": "Melee_Ones",
+        "toWho": "Self"
+      },
+      "negative": {
+        "scale": 0.075,
+        "table": "Melee_Ones",
+        "toWho": "Self"
+      },
+      "psionic": {
+        "scale": 0.075,
+        "table": "Melee_Ones",
+        "toWho": "Self"
+      },
+      "smashing": {
+        "scale": 0.075,
+        "table": "Melee_Ones",
+        "toWho": "Self"
+      },
+      "toxic": {
+        "scale": 0.075,
+        "table": "Melee_Ones",
+        "toWho": "Self"
+      }
+    }
+  },
   "atoms": [
-    ["Unmapped",null,1,1,1.1,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1]
+    ["Meta",null,1,107,1.1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Resistance","Smashing",-0.075,1,1.1,"Melee_Ones","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Lethal",-0.075,1,1.1,"Melee_Ones","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Fire",-0.075,1,1.1,"Melee_Ones","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Cold",-0.075,1,1.1,"Melee_Ones","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Energy",-0.075,1,1.1,"Melee_Ones","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Negative",-0.075,1,1.1,"Melee_Ones","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Psionic",-0.075,1,1.1,"Melee_Ones","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Toxic",-0.075,1,1.1,"Melee_Ones","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true]
   ],
-  "requires": "Scrapper_Defense.Organic_Armor.Evolution"
+  "requires": "Scrapper_Defense.Organic_Armor.Evolution",
+  "setsModes": [
+    "OffensiveAdaptation"
+  ]
 };

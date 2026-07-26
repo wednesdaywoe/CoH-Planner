@@ -33,6 +33,12 @@ export const Foresight: Power = {
   "maxSlots": 6,
   "effects": {
     "buffDuration": 0.75,
+    "debuffResistance": {
+      "defense": {
+        "scale": 0.5,
+        "table": "Melee_Res_Boolean"
+      }
+    },
     "defenseBuff": {
       "aoe": {
         "scale": 0.75,
@@ -48,16 +54,89 @@ export const Foresight: Power = {
       }
     },
     "durations": {
-      "defenseBuff": 0.75
+      "debuffResistance": 0.75,
+      "defenseBuff": 0.75,
+      "mezResistance": 0.75,
+      "resistance": 0.75
+    },
+    "mezResistance": {
+      "confuse": {
+        "scale": 0.25,
+        "table": "Melee_Ones"
+      },
+      "fear": {
+        "scale": 0.25,
+        "table": "Melee_Ones"
+      },
+      "hold": {
+        "scale": 0.25,
+        "table": "Melee_Ones"
+      },
+      "immobilize": {
+        "scale": 0.25,
+        "table": "Melee_Ones"
+      },
+      "sleep": {
+        "scale": 0.25,
+        "table": "Melee_Ones"
+      },
+      "stun": {
+        "scale": 0.25,
+        "table": "Melee_Ones"
+      }
+    },
+    "resistance": {
+      "cold": {
+        "scale": 0,
+        "table": "Melee_Ones"
+      },
+      "energy": {
+        "scale": 0,
+        "table": "Melee_Ones"
+      },
+      "fire": {
+        "scale": 0,
+        "table": "Melee_Ones"
+      },
+      "lethal": {
+        "scale": 0,
+        "table": "Melee_Ones"
+      },
+      "negative": {
+        "scale": 0,
+        "table": "Melee_Ones"
+      },
+      "psionic": {
+        "scale": 0.2,
+        "table": "Melee_Ones"
+      },
+      "smashing": {
+        "scale": 0,
+        "table": "Melee_Ones"
+      }
     }
   },
   "atoms": [
-    ["Unmapped",null,0.2,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.5,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Defense","AoE",0.75,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Defense","Ranged",0.75,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Defense","Melee",0.75,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
+    ["Resistance","Psionic",0.2,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["MezResist","Stunned",0.25,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["MezResist","Sleep",0.25,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["MezResist","Immobilized",0.25,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["MezResist","Held",0.25,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["MezResist","Terrorized",0.25,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["MezResist","Confused",0.25,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Smashing",0,1,0.75,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"75 kHitPoints% source> - 0 100 minmax 60 / 0.25 *"],
+    ["Resistance","Lethal",0,1,0.75,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"75 kHitPoints% source> - 0 100 minmax 60 / 0.25 *"],
+    ["Resistance","Fire",0,1,0.75,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"75 kHitPoints% source> - 0 100 minmax 60 / 0.25 *"],
+    ["Resistance","Cold",0,1,0.75,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"75 kHitPoints% source> - 0 100 minmax 60 / 0.25 *"],
+    ["Resistance","Energy",0,1,0.75,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"75 kHitPoints% source> - 0 100 minmax 60 / 0.25 *"],
+    ["Resistance","Negative",0,1,0.75,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"75 kHitPoints% source> - 0 100 minmax 60 / 0.25 *"],
+    ["Defense","All",0.5,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Defense","AoE",0.75,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Defense","Ranged",0.75,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Defense","Melee",0.75,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Elusivity","Melee",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
+    ["Elusivity","Ranged",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
+    ["Elusivity","AoE",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
   ],
   "mechanicType": "parentMechanic"
 };

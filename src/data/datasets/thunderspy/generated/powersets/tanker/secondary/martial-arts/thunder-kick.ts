@@ -56,12 +56,12 @@ export const ThunderKick: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Stunned",6,2,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.378,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Mez","Stunned",2,2,0,"Melee_Stun","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,1.396055,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Smashing",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Stunned",6,2,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Fire",0.378,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
+    ["Mez","Stunned",2,2,0,"Melee_Stun","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Smashing",1.396055,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "damageTypes": [
     "Smashing"

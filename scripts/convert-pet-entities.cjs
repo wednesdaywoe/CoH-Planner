@@ -161,9 +161,19 @@ const DEBUFF_ATTRIBS = {
 //    while keeping the real-table debuffs (Res_DMG→ResistanceDebuff,
 //    EndDrain→EndDrain). -Regeneration is intentionally absent: the pet panel has
 //    no RegenDebuff display, so there's nothing to show.
+// The `debuff_*` keys are CATEGORY tokens — what a tspy effect element carries at its
+// front. Since the parser began reading each AttribMod's own index array (TSPY-4) most
+// of these arrive under their real HC attrib name instead (`Base_Defense`, `ToHit`, the
+// movement stats), so both spellings must map: the token for the elements that still
+// front one, the real name for the mods that now name themselves. Without the real
+// names every location/patch pseudo-pet lost the -Def half again — Sleet's
+// `Base_Defense 3.0 Melee_Debuff_Def` is byte-identical to its HC and Rebirth twins.
 const _TSPY_DEBUFF_NAMED = {
   'slow': 'Slow', 'speedrunning': 'Slow', 'speedflying': 'Slow', 'speedjumping': 'Slow',
   'debuff_def': 'DefenseDebuff', 'debuff_tohit': 'ToHitDebuff', 'debuff_dam': 'DamageDebuff',
+  'base_defense': 'DefenseDebuff', 'tohit': 'ToHitDebuff',
+  'runningspeed': 'Slow', 'flyingspeed': 'Slow', 'jumpingspeed': 'Slow',
+  'jumpheight': 'Slow', 'rechargetime': 'Slow',
 };
 const _TSPY_DEBUFF_SIGNED = {
   'res_dmg': 'ResistanceDebuff', 'recovery': 'RecoveryDebuff',

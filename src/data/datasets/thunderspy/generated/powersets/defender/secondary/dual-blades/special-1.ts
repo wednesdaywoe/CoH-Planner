@@ -39,11 +39,28 @@ export const Special1: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 0.41,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.41,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.41,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.41,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.41,
+      "table": "Melee_Damage"
+    }
+  ],
   "effects": {
     "knockback": {
       "scale": 0.67,
@@ -51,14 +68,21 @@ export const Special1: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,0.41,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade1 source.ownPower? ! Temporary_Powers.Temporary_Powers.ComboBlade2 source.ownPower? ! && Temporary_Powers.Temporary_Powers.ComboBlade3 source.ownPower? ! &&"],
-    ["Unmapped",null,0.818613,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade1 source.ownPower?",true],
-    ["Unmapped",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade2 source.ownPower? Temporary_Powers.Temporary_Powers.ComboBlade3 source.ownPower? ||",true],
-    ["Unmapped",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade2 source.ownPower?",true]
+    ["Damage","Lethal",0.41,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Lethal",0.41,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Lethal",0.41,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Lethal",0.41,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade1 source.ownPower? ! Temporary_Powers.Temporary_Powers.ComboBlade2 source.ownPower? ! && Temporary_Powers.Temporary_Powers.ComboBlade3 source.ownPower? ! &&"],
+    ["Damage","Lethal",0.818613,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Lethal",0.818613,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Lethal",0.818613,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Lethal",0.818613,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade1 source.ownPower?",true],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade1 source.ownPower?",true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade2 source.ownPower? Temporary_Powers.Temporary_Powers.ComboBlade3 source.ownPower? ||",true],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade2 source.ownPower?",true]
   ],
   "damageTypes": [
     "Lethal"

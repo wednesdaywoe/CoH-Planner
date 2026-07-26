@@ -45,11 +45,18 @@ export const ChargedBrawl: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.252,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.252,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.588,
+      "table": "Melee_Damage"
+    }
+  ],
   "effects": {
     "buffDuration": 2,
     "durations": {
@@ -61,7 +68,8 @@ export const ChargedBrawl: Power = {
     },
     "enduranceGain": {
       "scale": 2.184,
-      "table": "Melee_Ones"
+      "table": "Melee_Ones",
+      "perTarget": 2.184
     },
     "recoveryDebuff": {
       "scale": 1,
@@ -71,22 +79,28 @@ export const ChargedBrawl: Power = {
       "mag": 2,
       "scale": 6,
       "table": "Melee_Sleep"
+    },
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     }
   },
   "atoms": [
-    ["Unmapped",null,0.252,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Sleep",6,2,0,"Melee_Sleep","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Endurance",null,-0.14,1,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Recovery",null,-1,0.20000000298023224,2,"Melee_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Endurance",null,2.184,0.20000000298023224,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
-    ["Unmapped",null,0.378,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.419,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Sleep",0.3,2,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,-1.5,1,0,"Melee_EndDrain","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
-    ["Unmapped",null,6,0.08399999886751175,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Smashing",0.252,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Energy",0.588,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Sleep",6,2,0,"Melee_Sleep","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Endurance",null,-0.14,1,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Recovery",null,-1,0.20000000298023224,2,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Endurance",null,2.184,0.20000000298023224,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,2.184],
+    ["Mez","Taunt",1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
+    ["Damage","Fire",0.378,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
+    ["Damage","Smashing",0.419,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Energy",0.977,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Sleep",0.3,2,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["Endurance",null,-1.5,1,0,"Melee_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Taunt",1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
+    ["Mez","Taunt",6,0.08399999886751175,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "damageTypes": [
     "Energy",

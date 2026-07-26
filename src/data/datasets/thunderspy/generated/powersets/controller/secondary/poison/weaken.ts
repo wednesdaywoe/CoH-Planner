@@ -39,9 +39,152 @@ export const Weaken: Power = {
     "To Hit Debuff"
   ],
   "maxSlots": 6,
+  "effects": {
+    "buffDuration": 30,
+    "damageDebuff": {
+      "scale": 3,
+      "table": "Ranged_Debuff_Dam"
+    },
+    "durations": {
+      "damageDebuff": 30,
+      "slow": 30,
+      "specialBuff": 30,
+      "specialDebuff": 30,
+      "tohitDebuff": 30
+    },
+    "slow": {
+      "flySpeed": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "runSpeed": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      }
+    },
+    "specialBuff": {
+      "confuse": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "endurance": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "fear": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "heal": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "hold": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "immobilize": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "sleep": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "stun": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "tohit": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      }
+    },
+    "specialDebuff": {
+      "aoe": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "cold": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "defense": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "energy": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "fire": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "lethal": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "melee": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "negative": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "psionic": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "ranged": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "smashing": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      }
+    },
+    "tohitDebuff": {
+      "scale": 1.5,
+      "table": "Ranged_DeBuff_ToHit"
+    }
+  },
   "atoms": [
-    ["Unmapped",null,3,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1.5,1,30,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"No",null,null,null,1]
+    ["DamageBuff","Smashing",3,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",3,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Fire",3,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Cold",3,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Energy",3,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Negative",3,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",3,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",3,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["ToHit",null,1.5,1,30,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Enhancement","Stunned",-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Sleep",-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Confused",-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Terrorized",-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Immobilized",-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Held",-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","Run",-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","Fly",-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","All",-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Melee",-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Ranged",-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","AoE",-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Smashing",-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Lethal",-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Fire",-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Cold",-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Energy",-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Negative",-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Psionic",-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Heal",null,-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["ToHit",null,-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Endurance",null,-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Knockback",-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Knockup",-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Repel",-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true]
   ]
 };

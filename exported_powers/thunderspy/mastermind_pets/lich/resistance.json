@@ -55,7 +55,9 @@
       "templates": [
         {
           "attribs": [
-            "SpeedJumping"
+            "Negative_Energy_Dmg",
+            "Toxic_Dmg",
+            "Cold_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -74,9 +76,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -94,7 +101,8 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Sleep",
+            "Terrorized"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -113,9 +121,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     }

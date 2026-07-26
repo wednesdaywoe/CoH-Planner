@@ -55,7 +55,7 @@
       "templates": [
         {
           "attribs": [
-            "PreventiveMedicine"
+            "Grant_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -74,9 +74,16 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "kHitPoints% source> 31 >= kHitPoints% source> 75 <= &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods",
+            "StackExactPower"
+          ],
+          "flags_raw": 524400
         }
       ]
     },
@@ -94,7 +101,7 @@
       "templates": [
         {
           "attribs": [
-            "PreventiveMedicine"
+            "Grant_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -113,9 +120,16 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "kHitPoints% source> 31 <",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods",
+            "StackExactPower"
+          ],
+          "flags_raw": 524400
         }
       ]
     }

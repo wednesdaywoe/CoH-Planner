@@ -58,7 +58,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Create_Entity"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -77,9 +77,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -97,7 +101,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Teleport"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -116,9 +120,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "AllyID source> hero eq praetorianprogress source> normal eq praetorianprogress source> Earth eq || && praetoria source.MapTeamArea> eq ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -136,7 +144,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Teleport"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -155,9 +163,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "AllyID source> villain eq praetorianprogress source> normal eq praetorianprogress source> Earth eq || && praetoria source.MapTeamArea> eq ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -175,7 +187,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Teleport"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -194,9 +206,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "praetorianprogress source> praetoria eq praetoria source.MapTeamArea> eq ||",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     }

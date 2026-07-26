@@ -40,15 +40,62 @@ export const WaterJet: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Cold",
-    "scale": 0.49,
-    "table": "Ranged_Damage"
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.49,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.47,
+      "table": "Ranged_Damage"
+    }
+  ],
+  "effects": {
+    "buffDuration": 8.93,
+    "damageBuff": {
+      "scale": 0.094,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 8.93,
+      "slow": 8
+    },
+    "slow": {
+      "flySpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      }
+    }
   },
   "atoms": [
-    ["Unmapped",null,0.49,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.2,1,8,"Ranged_Slow","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.094,1,8.93,"Ranged_Ones","Str","Magnitude","Self","Any",true,"No",null,null,null,1]
+    ["Damage","Smashing",0.49,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Cold",1.47,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Movement","JumpHeight",0.2,1,8,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Movement","Jump",0.2,1,8,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","Run",0.2,1,8,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","Fly",0.2,1,8,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["DamageBuff","Smashing",0.094,1,8.93,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",0.094,1,8.93,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Fire",0.094,1,8.93,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Cold",0.094,1,8.93,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Energy",0.094,1,8.93,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Negative",0.094,1,8.93,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",0.094,1,8.93,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",0.094,1,8.93,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
   ],
   "damageTypes": [
     "Cold",

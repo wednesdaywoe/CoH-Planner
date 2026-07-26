@@ -48,8 +48,13 @@ export const Dehydrate: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Cold",
+      "type": "Smashing",
       "scale": 0.25,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 0.75,
       "table": "Ranged_Damage"
     },
     {
@@ -60,18 +65,52 @@ export const Dehydrate: Power = {
       "tickRate": 1
     }
   ],
+  "effects": {
+    "buffDuration": 8,
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Ranged_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 8,
+      "slow": 8
+    },
+    "slow": {
+      "flySpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      }
+    }
+  },
   "atoms": [
-    ["Unmapped",null,0.25,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.1488,1,4.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,1,1],
-    ["Unmapped",null,0.2,1,8,"Ranged_Slow","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,8,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.686066,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,1.64,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> critter eq &&",true],
-    ["Unmapped",null,2.744264,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> player eq &&",true],
-    ["Unmapped",null,0.275,1,3.1,"Ranged_HealSelf","Abs","Magnitude","Self","Any",true,"No",null,null,1,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 2 <=",true],
-    ["Unmapped",null,0.4125,1,3.1,"Ranged_HealSelf","Abs","Magnitude","Self","Any",true,"No",null,null,1,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 3 ==",true],
-    ["Unmapped",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 2 <=",true],
-    ["Unmapped",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 3 ==",true]
+    ["Damage","Smashing",0.25,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Cold",0.75,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Cold",0.1488,1,4.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["Movement","JumpHeight",0.2,1,8,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Movement","Jump",0.2,1,8,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","Run",0.2,1,8,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","Fly",0.2,1,8,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Defense","All",1,1,8,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Smashing",0.686066,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Cold",2.058198,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Cold",1.64,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> critter eq &&",true],
+    ["Damage","Cold",2.744264,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> player eq &&",true],
+    ["Heal",null,0.275,1,3.1,"Ranged_HealSelf","Abs","Magnitude","Self","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 2 <=",true],
+    ["Heal",null,0.4125,1,3.1,"Ranged_HealSelf","Abs","Magnitude","Self","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 3 ==",true],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 2 <=",true],
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 3 ==",true]
   ],
   "conditionalEffects": [
     {
@@ -79,15 +118,12 @@ export const Dehydrate: Power = {
       "label": "Tidal Power",
       "scope": "global",
       "defaultActive": false,
-      "effects": {
-        "buffDuration": 3.1,
-        "durations": {
-          "healing": 3.1
-        },
-        "healing": {
-          "scale": 0.275,
-          "table": "Ranged_HealSelf"
-        }
+      "damage": {
+        "type": "Heal",
+        "scale": 0.275,
+        "table": "Ranged_HealSelf",
+        "duration": 3.1,
+        "tickRate": 1
       }
     },
     {
@@ -95,15 +131,12 @@ export const Dehydrate: Power = {
       "label": "Tidal Power (3 stacks)",
       "scope": "global",
       "defaultActive": false,
-      "effects": {
-        "buffDuration": 3.1,
-        "durations": {
-          "healing": 3.1
-        },
-        "healing": {
-          "scale": 0.4125,
-          "table": "Ranged_HealSelf"
-        }
+      "damage": {
+        "type": "Heal",
+        "scale": 0.4125,
+        "table": "Ranged_HealSelf",
+        "duration": 3.1,
+        "tickRate": 1
       }
     }
   ],

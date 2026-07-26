@@ -63,7 +63,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Energy_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -82,9 +82,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -102,7 +103,7 @@
       "templates": [
         {
           "attribs": [
-            "DeBuff_ToHit"
+            "ToHit"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -121,9 +122,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -141,7 +143,7 @@
       "templates": [
         {
           "attribs": [
-            "Debuff_Def"
+            "Base_Defense"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -160,9 +162,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -180,7 +183,14 @@
       "templates": [
         {
           "attribs": [
-            "Debuff_Dam"
+            "Smashing_Dmg",
+            "Lethal_Dmg",
+            "Fire_Dmg",
+            "Cold_Dmg",
+            "Energy_Dmg",
+            "Negative_Energy_Dmg",
+            "Toxic_Dmg",
+            "Psionic_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -199,9 +209,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength"
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -219,7 +233,7 @@
       "templates": [
         {
           "attribs": [
-            "Res_DMG"
+            "Smashing_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -238,9 +252,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength"
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -258,7 +276,7 @@
       "templates": [
         {
           "attribs": [
-            "Res_DMG"
+            "Lethal_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -277,9 +295,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength"
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -297,7 +319,7 @@
       "templates": [
         {
           "attribs": [
-            "Res_DMG"
+            "Fire_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -316,9 +338,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength"
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -336,7 +362,7 @@
       "templates": [
         {
           "attribs": [
-            "Res_DMG"
+            "Cold_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -355,9 +381,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength"
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -375,7 +405,7 @@
       "templates": [
         {
           "attribs": [
-            "Res_DMG"
+            "Energy_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -394,9 +424,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength"
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -414,7 +448,7 @@
       "templates": [
         {
           "attribs": [
-            "Res_DMG"
+            "Negative_Energy_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -433,9 +467,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength"
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -453,7 +491,7 @@
       "templates": [
         {
           "attribs": [
-            "Res_DMG"
+            "Toxic_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -472,9 +510,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength"
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -492,7 +534,7 @@
       "templates": [
         {
           "attribs": [
-            "Res_DMG"
+            "Psionic_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -511,9 +553,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength"
+          ],
+          "flags_raw": 1296
         }
       ]
     }

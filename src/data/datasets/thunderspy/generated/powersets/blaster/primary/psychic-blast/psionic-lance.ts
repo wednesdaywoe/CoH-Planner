@@ -46,10 +46,32 @@ export const PsionicLance: Power = {
     "scale": 2.76,
     "table": "Ranged_Damage"
   },
+  "effects": {
+    "buffDuration": 10,
+    "damageBuff": {
+      "scale": 0.044,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 8.5,
+      "rechargeDebuff": 10
+    },
+    "rechargeDebuff": {
+      "scale": 0.15,
+      "table": "Ranged_Slow"
+    }
+  },
   "atoms": [
-    ["Unmapped",null,2.76,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.15,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.044,1,8.5,"Ranged_Ones","Str","Magnitude","Self","Any",true,"No",null,null,null,1]
+    ["Damage","Psionic",2.76,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["RechargeTime",null,0.15,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Smashing",0.044,1,8.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",0.044,1,8.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Fire",0.044,1,8.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Cold",0.044,1,8.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Energy",0.044,1,8.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Negative",0.044,1,8.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",0.044,1,8.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",0.044,1,8.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
   ],
   "damageTypes": [
     "Psionic"

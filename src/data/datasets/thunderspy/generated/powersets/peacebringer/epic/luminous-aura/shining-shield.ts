@@ -45,6 +45,10 @@ export const ShiningShield: Power = {
       "resistance": 0.75
     },
     "resistance": {
+      "lethal": {
+        "scale": 3,
+        "table": "Melee_Res_DMG"
+      },
       "smashing": {
         "scale": 3,
         "table": "Melee_Res_DMG"
@@ -52,6 +56,7 @@ export const ShiningShield: Power = {
     }
   },
   "atoms": [
-    ["Resistance","Smashing",3,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kPeacebringer_Blaster_Mode Source.Mode? !"]
+    ["Resistance","Smashing",3,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kPeacebringer_Blaster_Mode Source.Mode? !"],
+    ["Resistance","Lethal",3,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kPeacebringer_Blaster_Mode Source.Mode? !"]
   ]
 };

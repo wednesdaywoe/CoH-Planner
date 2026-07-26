@@ -98,9 +98,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "BoostIgnoreDiminishing",
+            "CancelOnMiss",
+            "IgnoreStrength"
+          ],
+          "flags_raw": 22
         }
       ]
     },
@@ -118,7 +124,7 @@
       "templates": [
         {
           "attribs": [
-            "HealSelf"
+            "HitPoints"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -137,9 +143,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "BoostIgnoreDiminishing",
+            "CancelOnMiss",
+            "IgnoreStrength"
+          ],
+          "flags_raw": 22
         }
       ]
     },
@@ -176,9 +188,418 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "BoostIgnoreDiminishing",
+            "CancelOnMiss",
+            "IgnoreStrength"
+          ],
+          "flags_raw": 22
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "JumpHeight"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 2.0,
+          "duration": "2 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "BoostIgnoreDiminishing",
+            "CancelOnMiss",
+            "IgnoreStrength"
+          ],
+          "flags_raw": 22
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "JumpingSpeed"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 0.01,
+          "duration": "2 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "BoostIgnoreDiminishing",
+            "CancelOnMiss",
+            "IgnoreStrength"
+          ],
+          "flags_raw": 22
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "MovementFriction"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 0.2,
+          "duration": "2 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "BoostIgnoreDiminishing",
+            "CancelOnMiss",
+            "IgnoreStrength"
+          ],
+          "flags_raw": 22
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Knockback"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": -10.0,
+          "duration": "2 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "BoostIgnoreDiminishing",
+            "CancelOnMiss",
+            "IgnoreStrength"
+          ],
+          "flags_raw": 22
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Knockup"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": -10.0,
+          "duration": "2 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "BoostIgnoreDiminishing",
+            "CancelOnMiss",
+            "IgnoreStrength"
+          ],
+          "flags_raw": 22
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "ThreatLevel"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 1.0,
+          "duration": "2 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Set_Mode"
+          ],
+          "type": "Constant",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 1.0,
+          "duration": "2 seconds",
+          "magnitude": 9.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 3.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 3120,
+          "mode_name": "Disable_Temp"
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Set_Mode"
+          ],
+          "type": "Constant",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 1.0,
+          "duration": "1.5 seconds",
+          "magnitude": 2.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 3120,
+          "mode_name": "Peacebringer_Tanker_Mode"
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Set_Costume"
+          ],
+          "type": "Constant",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 1.0,
+          "duration": "1.5 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "",
+          "stack": "Extend",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 3120
         }
       ]
     },
@@ -215,9 +636,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "BoostIgnoreDiminishing",
+            "CancelOnMiss",
+            "IgnoreStrength"
+          ],
+          "flags_raw": 22
         }
       ]
     },
@@ -235,7 +662,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Knockback"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -254,9 +681,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "isPVPMap? !",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "BoostIgnoreDiminishing",
+            "CancelOnMiss",
+            "IgnoreStrength"
+          ],
+          "flags_raw": 22
         }
       ]
     },
@@ -274,7 +707,54 @@
       "templates": [
         {
           "attribs": [
-            "Res_Boolean"
+            "Knockup"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Resistance",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 100.0,
+          "duration": "2 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "isPVPMap? !",
+          "caster_stack": "",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "BoostIgnoreDiminishing",
+            "CancelOnMiss",
+            "IgnoreStrength"
+          ],
+          "flags_raw": 22
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "isPVPMap? !",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Stunned",
+            "Held",
+            "Sleep"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -293,9 +773,56 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "isPVPMap? !",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "isPVPMap? !",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Immobilized"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Melee_Res_Boolean",
+          "scale": -60.0,
+          "duration": "2.03 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "isPVPMap? !",
+          "caster_stack": "",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -313,7 +840,9 @@
       "templates": [
         {
           "attribs": [
-            "Res_Boolean"
+            "Stunned",
+            "Held",
+            "Sleep"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -332,9 +861,58 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "isPVPMap?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "isPVPMap?",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Immobilized"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Resistance",
+          "target": "Self",
+          "table": "Melee_Res_Boolean",
+          "scale": 6.0,
+          "duration": "2 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "isPVPMap?",
+          "caster_stack": "",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     }

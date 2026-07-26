@@ -41,22 +41,67 @@ export const StaticShield: Power = {
   "maxSlots": 6,
   "effects": {
     "buffDuration": 0.75,
+    "debuffResistance": {
+      "endurance": {
+        "scale": 3,
+        "table": "Melee_Res_Boolean"
+      },
+      "recovery": {
+        "scale": 3,
+        "table": "Melee_Res_Boolean"
+      }
+    },
     "durations": {
-      "resistance": 0.75
+      "debuffResistance": 0.75,
+      "hold": 0.75,
+      "mezResistance": 0.75,
+      "resistance": 0.75,
+      "sleep": 0.75,
+      "stun": 0.75
+    },
+    "effectDuration": 0.75,
+    "hold": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "mezResistance": {
+      "teleport": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      }
     },
     "resistance": {
       "psionic": {
         "scale": 3.5,
         "table": "Melee_Res_DMG"
       }
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
     }
   },
   "atoms": [
-    ["Unmapped",null,-30,1,0.75,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["Resistance","Psionic",3.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,0.75,"Melee_Ones","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,3,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,3,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
-    ["Unmapped",null,0.5,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
+    ["Mez","Stunned",-30,1,0.75,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Held",-30,1,0.75,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Sleep",-30,1,0.75,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Resistance","Psionic",3.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["MezResist","Teleport",1,1,0.75,"Melee_Ones","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Recovery",null,3,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Endurance",null,3,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["MezResist","Stunned",3,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
+    ["MezResist","Sleep",3,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
+    ["MezResist","Held",3,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
+    ["Movement","Run",0.5,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
+    ["Movement","Fly",0.5,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
+    ["Movement","JumpHeight",0.5,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
+    ["Movement","Jump",0.5,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
   ]
 };

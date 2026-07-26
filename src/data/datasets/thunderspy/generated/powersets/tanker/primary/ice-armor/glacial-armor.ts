@@ -43,6 +43,16 @@ export const GlacialArmor: Power = {
   "maxSlots": 6,
   "effects": {
     "buffDuration": 0.75,
+    "debuffResistance": {
+      "defense": {
+        "scale": 0.4,
+        "table": "Melee_Res_Boolean"
+      },
+      "perception": {
+        "scale": 0.6,
+        "table": "Melee_Ones"
+      }
+    },
     "defenseBuff": {
       "energy": {
         "scale": 1.7,
@@ -54,8 +64,14 @@ export const GlacialArmor: Power = {
       }
     },
     "durations": {
+      "debuffResistance": 0.75,
       "defenseBuff": 0.75,
+      "perceptionBuff": 0.75,
       "resistance": 0.75
+    },
+    "perceptionBuff": {
+      "scale": 0.6,
+      "table": "Melee_Ones"
     },
     "resistance": {
       "cold": {
@@ -65,11 +81,13 @@ export const GlacialArmor: Power = {
     }
   },
   "atoms": [
-    ["Defense","Energy",1.7,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Defense","Negative",1.7,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Resistance","Cold",3,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.6,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.4,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
+    ["Defense","Energy",1.7,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Defense","Negative",1.7,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Cold",3,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Perception",null,0.6,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Perception",null,0.6,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Defense","All",0.4,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Elusivity","Energy",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
+    ["Elusivity","Negative",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
   ]
 };

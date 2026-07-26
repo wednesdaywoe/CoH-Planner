@@ -50,18 +50,26 @@ export const PsionicTornado: Power = {
     "tickRate": 0.5
   },
   "effects": {
+    "buffDuration": 10,
+    "durations": {
+      "rechargeDebuff": 10
+    },
     "knockup": {
       "scale": 1.4,
       "table": "Ranged_Ones"
+    },
+    "rechargeDebuff": {
+      "scale": 0.3,
+      "table": "Ranged_Slow"
     }
   },
   "atoms": [
-    ["Unmapped",null,0.178,1,2.05,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.3,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Mez","Knockup",1.4,0.5,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.193343,1,2.05,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,0.5,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,0.89,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> critter eq &&",true],
-    ["Unmapped",null,0.966714,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> player eq &&",true]
+    ["Damage","Psionic",0.178,1,2.05,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["RechargeTime",null,0.3,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Mez","Knockup",1.4,0.5,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Psionic",0.193343,1,2.05,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Psionic",0.89,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> critter eq &&",true],
+    ["Damage","Psionic",0.966714,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> player eq &&",true]
   ],
   "damageTypes": [
     "Psionic"

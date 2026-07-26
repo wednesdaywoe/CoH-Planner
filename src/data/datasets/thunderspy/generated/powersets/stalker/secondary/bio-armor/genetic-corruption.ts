@@ -38,6 +38,14 @@ export const GeneticCorruption: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 5,
+    "damageDebuff": {
+      "scale": 1.5,
+      "table": "Melee_Debuff_Dam"
+    },
+    "durations": {
+      "damageDebuff": 5
+    },
     "sleep": {
       "mag": 2,
       "scale": 6,
@@ -45,13 +53,34 @@ export const GeneticCorruption: Power = {
     }
   },
   "atoms": [
-    ["Mez","Sleep",6,2,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq entref target> entref source> eq ! && kOffensiveAdaptation Source.Mode? ! &&"],
-    ["Unmapped",null,1.5,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! kDefensiveAdaptation Source.Mode? ! &&"],
-    ["Mez","Sleep",2,2,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq entref target> entref source> eq ! && kOffensiveAdaptation Source.Mode? ! &&",true],
-    ["Mez","Sleep",6,2,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq entref target> entref source> eq ! && kOffensiveAdaptation Source.Mode? &&",true],
-    ["Mez","Sleep",2,2,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq entref target> entref source> eq ! && kOffensiveAdaptation Source.Mode? &&",true],
-    ["Unmapped",null,0.3,1,4.25,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq kRestedAdaptation Source.Mode? &&",true],
-    ["Unmapped",null,0.75,1,4.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq kDefensiveAdaptation Source.Mode? &&",true],
-    ["Unmapped",null,1.995,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! kDefensiveAdaptation Source.Mode? &&",true]
+    ["Mez","Sleep",6,2,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq entref target> entref source> eq ! && kOffensiveAdaptation Source.Mode? ! &&"],
+    ["DamageBuff","Smashing",1.5,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq ! kDefensiveAdaptation Source.Mode? ! &&"],
+    ["DamageBuff","Lethal",1.5,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq ! kDefensiveAdaptation Source.Mode? ! &&"],
+    ["DamageBuff","Fire",1.5,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq ! kDefensiveAdaptation Source.Mode? ! &&"],
+    ["DamageBuff","Cold",1.5,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq ! kDefensiveAdaptation Source.Mode? ! &&"],
+    ["DamageBuff","Energy",1.5,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq ! kDefensiveAdaptation Source.Mode? ! &&"],
+    ["DamageBuff","Negative",1.5,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq ! kDefensiveAdaptation Source.Mode? ! &&"],
+    ["DamageBuff","Toxic",1.5,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq ! kDefensiveAdaptation Source.Mode? ! &&"],
+    ["DamageBuff","Psionic",1.5,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq ! kDefensiveAdaptation Source.Mode? ! &&"],
+    ["Mez","Sleep",2,2,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq entref target> entref source> eq ! && kOffensiveAdaptation Source.Mode? ! &&",true],
+    ["Mez","Sleep",6,2,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq entref target> entref source> eq ! && kOffensiveAdaptation Source.Mode? &&",true],
+    ["Mez","Sleep",2,2,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq entref target> entref source> eq ! && kOffensiveAdaptation Source.Mode? &&",true],
+    ["Regeneration",null,0.3,1,4.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq kRestedAdaptation Source.Mode? &&",true],
+    ["Resistance","Smashing",0.75,1,4.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq kDefensiveAdaptation Source.Mode? &&",true],
+    ["Resistance","Lethal",0.75,1,4.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq kDefensiveAdaptation Source.Mode? &&",true],
+    ["Resistance","Toxic",0.75,1,4.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq kDefensiveAdaptation Source.Mode? &&",true],
+    ["Resistance","Fire",1,1,4.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq kDefensiveAdaptation Source.Mode? &&",true],
+    ["Resistance","Cold",1,1,4.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq kDefensiveAdaptation Source.Mode? &&",true],
+    ["Resistance","Energy",1,1,4.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq kDefensiveAdaptation Source.Mode? &&",true],
+    ["Resistance","Negative",1,1,4.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq kDefensiveAdaptation Source.Mode? &&",true],
+    ["Resistance","Psionic",1,1,4.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq kDefensiveAdaptation Source.Mode? &&",true],
+    ["DamageBuff","Smashing",1.995,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq ! kDefensiveAdaptation Source.Mode? &&",true],
+    ["DamageBuff","Lethal",1.995,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq ! kDefensiveAdaptation Source.Mode? &&",true],
+    ["DamageBuff","Fire",1.995,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq ! kDefensiveAdaptation Source.Mode? &&",true],
+    ["DamageBuff","Cold",1.995,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq ! kDefensiveAdaptation Source.Mode? &&",true],
+    ["DamageBuff","Energy",1.995,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq ! kDefensiveAdaptation Source.Mode? &&",true],
+    ["DamageBuff","Negative",1.995,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq ! kDefensiveAdaptation Source.Mode? &&",true],
+    ["DamageBuff","Toxic",1.995,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq ! kDefensiveAdaptation Source.Mode? &&",true],
+    ["DamageBuff","Psionic",1.995,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq ! kDefensiveAdaptation Source.Mode? &&",true]
   ]
 };

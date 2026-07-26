@@ -89,9 +89,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> player eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 5,
+          "stack_key": "HybridSupport",
+          "flags": [
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 96
         }
       ]
     },
@@ -134,9 +139,64 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> player eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 5,
+          "stack_key": "HybridSupport",
+          "flags": [
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 96
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "enttype target> player eq",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "PVP_ONLY",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Area",
+            "Smashing",
+            "Lethal",
+            "Energy",
+            "Negative_Energy",
+            "Fire",
+            "Cold"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Melee_Ones",
+          "scale": 0.04,
+          "duration": "10 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "enttype target> player eq",
+          "caster_stack": "",
+          "stack": "Stack",
+          "stack_limit": 5,
+          "stack_key": "HybridDefense",
+          "flags": [
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 96
         }
       ]
     },
@@ -173,9 +233,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> player eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 5,
+          "stack_key": "HybridDefense",
+          "flags": [
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 96
         }
       ]
     },
@@ -212,9 +277,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> player eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 5,
+          "stack_key": "HybridSupport",
+          "flags": [
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 96
         }
       ]
     },
@@ -251,9 +321,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> critter eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 5,
+          "stack_key": "HybridSupport",
+          "flags": [
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 96
         }
       ]
     },
@@ -296,9 +371,64 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> critter eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 5,
+          "stack_key": "HybridSupport",
+          "flags": [
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 96
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "enttype target> critter eq",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "PVE_ONLY",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Area",
+            "Smashing",
+            "Lethal",
+            "Energy",
+            "Negative_Energy",
+            "Fire",
+            "Cold"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Melee_Ones",
+          "scale": 0.08,
+          "duration": "10 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "enttype target> critter eq",
+          "caster_stack": "",
+          "stack": "Stack",
+          "stack_limit": 5,
+          "stack_key": "HybridDefense",
+          "flags": [
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 96
         }
       ]
     },
@@ -335,9 +465,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> critter eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 5,
+          "stack_key": "HybridDefense",
+          "flags": [
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 96
         }
       ]
     },
@@ -374,9 +509,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> critter eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 5,
+          "stack_key": "HybridSupport",
+          "flags": [
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 96
         }
       ]
     },
@@ -394,7 +534,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Grant_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -413,9 +553,102 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Grant_Power"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnEnable",
+          "aspect": "Absolute",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.5,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Revoke_Power"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnDisable",
+          "aspect": "Absolute",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     }

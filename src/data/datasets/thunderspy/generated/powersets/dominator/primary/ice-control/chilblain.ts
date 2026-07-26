@@ -44,6 +44,7 @@ export const Chilblain: Power = {
   "effects": {
     "buffDuration": 5,
     "durations": {
+      "rechargeDebuff": 5,
       "slow": 5
     },
     "immobilize": {
@@ -51,7 +52,27 @@ export const Chilblain: Power = {
       "scale": 2,
       "table": "Ranged_Immobilize"
     },
+    "rechargeDebuff": {
+      "scale": 0.5,
+      "table": "Ranged_Slow"
+    },
     "slow": {
+      "fly": {
+        "scale": 10,
+        "table": "Ranged_Ones"
+      },
+      "flySpeed": {
+        "scale": 0.5,
+        "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.5,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.5,
+        "table": "Ranged_Slow"
+      },
       "runSpeed": {
         "scale": 1,
         "table": "Ranged_SpeedRunning"
@@ -59,10 +80,14 @@ export const Chilblain: Power = {
     }
   },
   "atoms": [
-    ["Mez","Immobilized",2,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.5,1,5,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Movement","Run",-1,1,5,"Ranged_SpeedRunning","Max","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,-10,1,5,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1]
+    ["Mez","Immobilized",2,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Movement","Run",0.5,1,5,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Movement","Jump",0.5,1,5,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Movement","Fly",0.5,1,5,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["RechargeTime",null,0.5,1,5,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","JumpHeight",0.5,1,5,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","Run",-1,1,5,"Ranged_SpeedRunning","Max","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Movement","FlyMode",-10,1,5,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1]
   ],
   "damageTypes": [
     "Cold"

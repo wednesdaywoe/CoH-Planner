@@ -55,7 +55,13 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Smashing_Dmg",
+            "Lethal_Dmg",
+            "Fire_Dmg",
+            "Cold_Dmg",
+            "Energy_Dmg",
+            "Negative_Energy_Dmg",
+            "Psionic_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -74,9 +80,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "group target> DevouringEarth eq DevouringEarth_Cairin target.VillainName> ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     }

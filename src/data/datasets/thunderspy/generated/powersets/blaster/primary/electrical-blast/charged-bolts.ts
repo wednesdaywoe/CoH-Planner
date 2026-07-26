@@ -52,8 +52,13 @@ export const ChargedBolts: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "buffDuration": 2,
+    "buffDuration": 8.5,
+    "damageBuff": {
+      "scale": 0.066,
+      "table": "Ranged_Ones"
+    },
     "durations": {
+      "damageBuff": 8.5,
       "recoveryDebuff": 2
     },
     "enduranceDrain": {
@@ -67,16 +72,28 @@ export const ChargedBolts: Power = {
     "recoveryDebuff": {
       "scale": 1,
       "table": "Ranged_Ones"
-    }
+    },
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff",
+      "enduranceGain"
+    ]
   },
   "atoms": [
-    ["Unmapped",null,1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Endurance",null,-0.07,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Recovery",null,-1,0.20000000298023224,2,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Endurance",null,2.6,0.30000001192092896,0,"Ranged_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.066,1,8.5,"Ranged_Ones","Str","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1.549251,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,-1.25,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Energy",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Endurance",null,-0.07,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Recovery",null,-1,0.20000000298023224,2,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Endurance",null,2.6,0.30000001192092896,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["DamageBuff","Smashing",0.066,1,8.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",0.066,1,8.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Fire",0.066,1,8.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Cold",0.066,1,8.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Energy",0.066,1,8.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Negative",0.066,1,8.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",0.066,1,8.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",0.066,1,8.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Damage","Energy",1.549251,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Endurance",null,-1.25,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "damageTypes": [
     "Energy"

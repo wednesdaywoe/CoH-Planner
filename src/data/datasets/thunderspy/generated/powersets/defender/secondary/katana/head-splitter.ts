@@ -51,18 +51,26 @@ export const HeadSplitter: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
+    "buffDuration": 10,
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Melee_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 10
+    },
     "knockback": {
       "scale": 0.67,
       "table": "Melee_Ones"
     }
   },
   "atoms": [
-    ["Unmapped",null,2.28,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Knockback",0.67,0.6000000238418579,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,0.10000000149011612,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.BulletCut source.ownPower? !"],
-    ["Unmapped",null,2.922797,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Defense","Ranged",2,1,5,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.BulletCut source.ownPower?",true]
+    ["Damage","Lethal",2.28,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",0.67,0.6000000238418579,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Defense","All",1,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["GrantPower",null,1,0.10000000149011612,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.BulletCut source.ownPower? !"],
+    ["Damage","Lethal",2.922797,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Defense","Ranged",2,1,5,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.BulletCut source.ownPower?",true]
   ],
   "conditionalEffects": [
     {

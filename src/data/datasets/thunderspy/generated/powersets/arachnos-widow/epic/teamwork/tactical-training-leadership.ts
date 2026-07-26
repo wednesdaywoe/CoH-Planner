@@ -47,25 +47,38 @@ export const TacticalTrainingLeadership: Power = {
       "scale": 1.5,
       "table": "Ranged_Buff_Dmg"
     },
+    "debuffResistance": {
+      "perception": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Boolean"
+      }
+    },
     "durations": {
       "damageBuff": 2.25,
-      "tohitBuff": 2.25
+      "debuffResistance": 2.25,
+      "perceptionBuff": 2.25,
+      "tohitBuffUnenhanced": 2.25
     },
-    "tohitBuff": {
+    "perceptionBuff": {
+      "scale": 2,
+      "table": "Ranged_Res_Boolean"
+    },
+    "tohitBuffUnenhanced": {
       "scale": 1,
       "table": "Ranged_Buff_ToHit"
     }
   },
   "atoms": [
-    ["DamageBuff","Smashing",1.5,1,2.25,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["DamageBuff","Lethal",1.5,1,2.25,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["DamageBuff","Fire",1.5,1,2.25,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["DamageBuff","Cold",1.5,1,2.25,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["DamageBuff","Energy",1.5,1,2.25,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["DamageBuff","Negative",1.5,1,2.25,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["DamageBuff","Toxic",1.5,1,2.25,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["DamageBuff","Psionic",1.5,1,2.25,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["ToHit",null,1,1,2.25,"Ranged_Buff_ToHit","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1.5,1,2.25,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",true,"No",null,null,null,1]
+    ["DamageBuff","Smashing",1.5,1,2.25,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",1.5,1,2.25,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Fire",1.5,1,2.25,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Cold",1.5,1,2.25,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Energy",1.5,1,2.25,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Negative",1.5,1,2.25,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",1.5,1,2.25,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",1.5,1,2.25,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["ToHit",null,1,1,2.25,"Ranged_Buff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Perception",null,1.5,1,2.25,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Perception",null,2,1,2.25,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true]
   ]
 };

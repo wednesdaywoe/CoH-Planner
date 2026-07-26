@@ -25,7 +25,7 @@ export const SiphonPower: Power = {
   "allowedEnhancements": [],
   "maxSlots": 0,
   "atoms": [
-    ["Unmapped",null,1,1,10.25,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1]
+    ["Meta",null,1,1,10.25,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
   ],
   "mechanicType": "parentMechanic"
 };

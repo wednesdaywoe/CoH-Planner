@@ -24,8 +24,25 @@ export const GeomancyRootBonus: Power = {
   },
   "allowedEnhancements": [],
   "maxSlots": 0,
+  "effects": {
+    "buffDuration": 10.75,
+    "durations": {
+      "mezResistance": 10.75
+    },
+    "mezResistance": {
+      "knockback": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      },
+      "knockup": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      }
+    }
+  },
   "atoms": [
-    ["Unmapped",null,100,1,10.75,"Melee_Ones","Res","Magnitude","Self","Any",true,"No",null,null,null,1]
+    ["MezResist","Knockback",100,1,10.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["MezResist","Knockup",100,1,10.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
   ],
   "requires": "Tanker_Defense.Sacred_Armor.Geomancy",
   "mechanicType": "parentMechanic"

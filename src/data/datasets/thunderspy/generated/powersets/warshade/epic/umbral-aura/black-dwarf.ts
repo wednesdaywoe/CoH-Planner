@@ -50,22 +50,71 @@ export const BlackDwarf: Power = {
   "effects": {
     "buffDuration": 2,
     "durations": {
-      "maxHPBuff": 2,
+      "hold": 2.03,
+      "immobilize": 2.03,
+      "knockback": 2,
+      "knockup": 2,
+      "maxHPBuffUnenhanced": 2,
+      "mezResistance": 2,
       "movement": 2,
-      "recoveryBuff": 2,
-      "resistance": 2
+      "recoveryBuffUnenhanced": 2,
+      "resistance": 2,
+      "sleep": 2.03,
+      "stun": 2.03,
+      "threatBuff": 2
     },
-    "maxHPBuff": {
+    "effectDuration": 2.03,
+    "hold": {
+      "mag": 1,
+      "scale": 50,
+      "table": "Melee_Res_Boolean"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 60,
+      "table": "Melee_Res_Boolean"
+    },
+    "knockback": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "knockup": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "maxHPBuffUnenhanced": {
       "scale": 7.5,
       "table": "Melee_HealSelf"
     },
+    "mezResistance": {
+      "knockback": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      },
+      "knockup": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      }
+    },
     "movement": {
+      "jumpHeight": {
+        "scale": 2,
+        "table": "Melee_Ones"
+      },
+      "jumpSpeed": {
+        "scale": 0.01,
+        "table": "Melee_Ones"
+      },
       "movementControl": {
         "scale": 10,
         "table": "Melee_Control"
+      },
+      "movementFriction": {
+        "scale": 0.2,
+        "table": "Melee_Ones"
       }
     },
-    "recoveryBuff": {
+    "recoveryBuffUnenhanced": {
       "scale": 0.15,
       "table": "Melee_Ones"
     },
@@ -98,21 +147,55 @@ export const BlackDwarf: Power = {
         "scale": 3,
         "table": "Melee_Res_DMG"
       }
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 50,
+      "table": "Melee_Res_Boolean"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 50,
+      "table": "Melee_Res_Boolean"
+    },
+    "threatBuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
     }
   },
   "atoms": [
-    ["Resistance","Smashing",3,1,2,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Resistance","Lethal",3,1,2,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Resistance","Fire",3,1,2,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Resistance","Cold",3,1,2,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Resistance","Energy",3,1,2,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Resistance","Negative",3,1,2,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Resistance","Toxic",3,1,2,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["MaxHP",null,7.5,1,2,"Melee_HealSelf","Max","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Recovery",null,0.15,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Movement","Control",10,1,2,"Melee_Control","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,100,1,2,"Melee_Ones","Res","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["Unmapped",null,-50,1,2.03,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["Unmapped",null,5,1,2,"Melee_Res_Boolean","Res","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
+    ["Resistance","Smashing",3,1,2,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Lethal",3,1,2,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Fire",3,1,2,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Cold",3,1,2,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Energy",3,1,2,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Negative",3,1,2,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Toxic",3,1,2,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["MaxHP",null,7.5,1,2,"Melee_HealSelf","Max","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Recovery",null,0.15,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","JumpHeight",2,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","Jump",0.01,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","Friction",0.2,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Mez","Knockback",-10,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Mez","Knockup",-10,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["ThreatLevel",null,1,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,9,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true],
+    ["Meta",null,1,5,1.5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,3,1,null,true],
+    ["Movement","Control",10,1,2,"Melee_Control","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["MezResist","Knockback",100,1,2,"Melee_Ones","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
+    ["MezResist","Knockup",100,1,2,"Melee_Ones","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Stunned",-50,1,2.03,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Held",-50,1,2.03,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Sleep",-50,1,2.03,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Immobilized",-60,1,2.03,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["MezResist","Stunned",5,1,2,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
+    ["MezResist","Held",5,1,2,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
+    ["MezResist","Sleep",5,1,2,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
+    ["MezResist","Immobilized",6,1,2,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
+  ],
+  "setsModes": [
+    "Disable_Temp",
+    "Warshade_Tanker_Mode"
   ]
 };

@@ -45,6 +45,12 @@ export const ApparitionalAvoidance: Power = {
   "maxSlots": 6,
   "effects": {
     "buffDuration": 0.75,
+    "debuffResistance": {
+      "defense": {
+        "scale": 0.5,
+        "table": "Melee_Res_Boolean"
+      }
+    },
     "defenseBuff": {
       "melee": {
         "scale": 2,
@@ -52,6 +58,7 @@ export const ApparitionalAvoidance: Power = {
       }
     },
     "durations": {
+      "debuffResistance": 0.75,
       "defenseBuff": 0.75,
       "movement": 0.75,
       "resistance": 0.75
@@ -70,10 +77,10 @@ export const ApparitionalAvoidance: Power = {
     }
   },
   "atoms": [
-    ["Defense","Melee",2,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.5,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Resistance","Negative",2,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Movement","Run",0.1,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
+    ["Defense","Melee",2,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Defense","All",0.5,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Negative",2,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","Run",0.1,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Elusivity","Melee",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
   ]
 };

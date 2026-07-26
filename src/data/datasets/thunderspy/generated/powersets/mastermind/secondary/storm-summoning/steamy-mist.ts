@@ -45,6 +45,11 @@ export const SteamyMist: Power = {
   "maxSlots": 6,
   "effects": {
     "buffDuration": 2.25,
+    "confuse": {
+      "mag": 1,
+      "scale": 20,
+      "table": "Ranged_Res_Boolean"
+    },
     "defenseBuff": {
       "aoe": {
         "scale": 0.5,
@@ -88,23 +93,63 @@ export const SteamyMist: Power = {
       }
     },
     "durations": {
-      "defenseBuff": 2.25
+      "confuse": 2.25,
+      "defenseBuff": 2.25,
+      "mezResistance": 2.25,
+      "resistance": 2.25,
+      "stealth": 2.25
+    },
+    "effectDuration": 2.25,
+    "mezResistance": {
+      "confuse": {
+        "scale": 5,
+        "table": "Ranged_Res_Boolean"
+      }
+    },
+    "resistance": {
+      "cold": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "energy": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "fire": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      }
+    },
+    "stealth": {
+      "stealthPvE": {
+        "scale": 35,
+        "table": "Ranged_Ones"
+      },
+      "stealthPvP": {
+        "scale": 389,
+        "table": "Ranged_Ones"
+      }
     }
   },
   "atoms": [
-    ["Unmapped",null,35,1,2.25,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Defense","Melee",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Defense","Ranged",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Defense","AoE",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Defense","Smashing",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Defense","Lethal",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Defense","Fire",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Defense","Cold",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Defense","Energy",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Defense","Negative",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Defense","Psionic",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,2,1,2.25,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,5,1,2.25,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["Unmapped",null,7,1,2.25,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
+    ["Stealth","RadiusPvE",35,1,2.25,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Stealth","RadiusPvP",389,1,2.25,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["EntCreate",null,0.7,1,2.25,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Defense","Melee",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Defense","Ranged",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Defense","AoE",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Defense","Smashing",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Defense","Lethal",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Defense","Fire",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Defense","Cold",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Defense","Energy",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Defense","Negative",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Defense","Psionic",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Fire",2,1,2.25,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Cold",2,1,2.25,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Energy",2,1,2.25,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["MezResist","Confused",5,1,2.25,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Confused",-20,1,2.25,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["MezResist","Confused",7,1,2.25,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
   ]
 };

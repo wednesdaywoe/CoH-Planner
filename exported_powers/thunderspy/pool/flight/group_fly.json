@@ -67,7 +67,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Fly"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -86,9 +86,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Power_DisallowGroupFly target.TokenOwned? !",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 96
         }
       ]
     },
@@ -125,9 +130,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Power_DisallowGroupFly target.TokenOwned? !",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "BoostIgnoreDiminishing",
+            "CancelOnMiss",
+            "IgnoreStrength"
+          ],
+          "flags_raw": 22
         }
       ]
     },
@@ -145,7 +156,7 @@
       "templates": [
         {
           "attribs": [
-            "SpeedFlying"
+            "FlyingSpeed"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -164,9 +175,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Power_DisallowGroupFly target.TokenOwned? !",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "BoostIgnoreDiminishing",
+            "CancelOnMiss",
+            "IgnoreStrength"
+          ],
+          "flags_raw": 22
         }
       ]
     },
@@ -184,7 +201,7 @@
       "templates": [
         {
           "attribs": [
-            "Friction"
+            "MovementFriction"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -203,9 +220,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Power_DisallowGroupFly target.TokenOwned? !",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "BoostIgnoreDiminishing",
+            "CancelOnMiss",
+            "IgnoreStrength"
+          ],
+          "flags_raw": 22
         }
       ]
     },
@@ -223,7 +246,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Global_Chance_Mod"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -242,9 +265,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     }

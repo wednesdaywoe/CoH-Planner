@@ -44,14 +44,14 @@ export const SonicRepulsion: Power = {
   "effects": {
     "buffDuration": 10,
     "durations": {
-      "regenBuff": 10
+      "regenBuffUnenhanced": 10
     },
-    "regenBuff": {
+    "regenBuffUnenhanced": {
       "scale": 2,
       "table": "Ranged_Ones"
     }
   },
   "atoms": [
-    ["Regeneration",null,2,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1]
+    ["Regeneration",null,2,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true]
   ]
 };

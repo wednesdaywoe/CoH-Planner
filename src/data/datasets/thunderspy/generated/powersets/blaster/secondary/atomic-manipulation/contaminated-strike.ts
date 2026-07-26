@@ -40,19 +40,54 @@ export const ContaminatedStrike: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 0.21,
-    "table": "Melee_Damage"
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.21,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.63,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "buffDuration": 10,
+    "damageBuff": {
+      "scale": 0.066,
+      "table": "Ranged_Ones"
+    },
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Melee_Debuff_Def"
+    },
+    "durations": {
+      "damageBuff": 8.5,
+      "defenseDebuff": 10
+    },
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   },
   "atoms": [
-    ["Unmapped",null,0.21,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,0.11999999731779099,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.066,1,8.5,"Ranged_Ones","Str","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Meta",null,0,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated target.ownPower?",true],
-    ["Unmapped",null,0.315875,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated target.ownPower?",true]
+    ["Damage","Smashing",0.21,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Energy",0.63,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Defense","All",1,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["GrantPower",null,1,0.11999999731779099,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Smashing",0.066,1,8.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",0.066,1,8.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Fire",0.066,1,8.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Cold",0.066,1,8.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Energy",0.066,1,8.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Negative",0.066,1,8.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",0.066,1,8.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",0.066,1,8.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["ExecutePower",null,0,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated target.ownPower?",true],
+    ["Damage","Smashing",0.315875,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Energy",0.947625,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated target.ownPower?",true]
   ],
   "damageTypes": [
     "Energy",

@@ -40,15 +40,58 @@ export const WildGrowth: Power = {
   "effects": {
     "buffDuration": 90,
     "durations": {
-      "regenBuff": 90
+      "regenBuff": 90,
+      "resistance": 90
     },
     "regenBuff": {
       "scale": 1,
       "table": "Ranged_Ones"
+    },
+    "resistance": {
+      "cold": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "energy": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "fire": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "negative": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "psionic": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "smashing": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Dmg"
+      }
     }
   },
   "atoms": [
-    ["Unmapped",null,1.5,1,90,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Regeneration",null,1,1,90,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1]
+    ["Resistance","Smashing",1.5,1,90,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Resistance","Lethal",1.5,1,90,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Resistance","Fire",1.5,1,90,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Resistance","Cold",1.5,1,90,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Resistance","Energy",1.5,1,90,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Resistance","Negative",1.5,1,90,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Resistance","Psionic",1.5,1,90,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Resistance","Toxic",1.5,1,90,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Regeneration",null,1,1,90,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true]
   ]
 };

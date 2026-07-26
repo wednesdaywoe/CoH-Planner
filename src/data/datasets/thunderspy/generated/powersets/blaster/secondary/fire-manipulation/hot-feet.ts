@@ -42,17 +42,32 @@ export const HotFeet: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 2.3,
+    "durations": {
+      "slow": 2.3
+    },
     "fear": {
       "mag": 3,
       "scale": 4,
       "table": "Melee_Ones"
+    },
+    "slow": {
+      "fly": {
+        "scale": 10,
+        "table": "Melee_Ones"
+      },
+      "runSpeed": {
+        "scale": 0.7,
+        "table": "Melee_Slow"
+      }
     }
   },
   "atoms": [
-    ["Mez","Afraid",4,3,0,"Melee_Ones","Cur","Duration","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.7,1,2.3,"Melee_Slow","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.25,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq @ToHitRoll @ToHit < @ForceHit || &&",true],
-    ["Unmapped",null,0.25,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll @ToHit < @ForceHit || &&",true]
+    ["Mez","Afraid",4,3,0,"Melee_Ones","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","FlyMode",-10,1,15,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["Movement","Run",0.7,1,2.3,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Damage","Fire",0.25,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq @ToHitRoll @ToHit < @ForceHit || &&",true],
+    ["Damage","Fire",0.25,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll @ToHit < @ForceHit || &&",true]
   ],
   "damageTypes": [
     "Fire"

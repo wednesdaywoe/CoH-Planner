@@ -65,7 +65,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Smashing_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -84,9 +84,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> critter eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -104,7 +105,7 @@
       "templates": [
         {
           "attribs": [
-            "ASCrit"
+            "Smashing_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -123,9 +124,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> critter eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -143,7 +145,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Smashing_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -162,9 +164,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> player eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -182,7 +185,7 @@
       "templates": [
         {
           "attribs": [
-            "ASCrit"
+            "Smashing_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -201,9 +204,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> player eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -221,7 +225,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Revoke_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -240,9 +244,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -260,7 +269,7 @@
       "templates": [
         {
           "attribs": [
-            "PerfectionofBody"
+            "Grant_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -279,9 +288,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_1 source.ownPower? ! Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_2 source.ownPower? ! && Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3 source.ownPower? ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -299,7 +313,7 @@
       "templates": [
         {
           "attribs": [
-            "PerfectionofBody"
+            "Grant_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -318,9 +332,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_1 source.ownPower?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -338,7 +357,7 @@
       "templates": [
         {
           "attribs": [
-            "PerfectionofBody"
+            "Revoke_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -357,9 +376,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_1 source.ownPower?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -377,7 +401,7 @@
       "templates": [
         {
           "attribs": [
-            "PerfectionofBody"
+            "Grant_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -396,9 +420,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_2 source.ownPower? Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3 source.ownPower? ||",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -416,7 +445,7 @@
       "templates": [
         {
           "attribs": [
-            "PerfectionofBody"
+            "Revoke_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -435,9 +464,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_2 source.ownPower?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -455,7 +489,7 @@
       "templates": [
         {
           "attribs": [
-            "PerfectionofMind"
+            "Grant_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -474,9 +508,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_1 source.ownPower? ! Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_2 source.ownPower? ! && Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_3 source.ownPower? ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -494,7 +533,7 @@
       "templates": [
         {
           "attribs": [
-            "PerfectionofMind"
+            "Grant_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -513,9 +552,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_1 source.ownPower?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -533,7 +577,7 @@
       "templates": [
         {
           "attribs": [
-            "PerfectionofMind"
+            "Revoke_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -552,9 +596,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_1 source.ownPower?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -572,7 +621,7 @@
       "templates": [
         {
           "attribs": [
-            "PerfectionofMind"
+            "Grant_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -591,9 +640,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_2 source.ownPower? Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_3 source.ownPower? ||",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -611,7 +665,7 @@
       "templates": [
         {
           "attribs": [
-            "PerfectionofMind"
+            "Revoke_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -630,9 +684,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_2 source.ownPower?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -650,7 +709,7 @@
       "templates": [
         {
           "attribs": [
-            "PerfectionofSoul"
+            "Grant_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -669,9 +728,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_1 source.ownPower? ! Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_2 source.ownPower? ! && Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_3 source.ownPower? ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -689,7 +753,7 @@
       "templates": [
         {
           "attribs": [
-            "PerfectionofSoul"
+            "Grant_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -708,9 +772,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_1 source.ownPower?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -728,7 +797,7 @@
       "templates": [
         {
           "attribs": [
-            "PerfectionofSoul"
+            "Revoke_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -747,9 +816,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_1 source.ownPower?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -767,7 +841,7 @@
       "templates": [
         {
           "attribs": [
-            "PerfectionofSoul"
+            "Grant_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -786,9 +860,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_2 source.ownPower? Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_3 source.ownPower? ||",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -806,7 +885,7 @@
       "templates": [
         {
           "attribs": [
-            "PerfectionofSoul"
+            "Revoke_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -825,9 +904,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_2 source.ownPower?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     }

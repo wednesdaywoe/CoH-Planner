@@ -31,6 +31,12 @@ export const Dodge: Power = {
   "maxSlots": 6,
   "effects": {
     "buffDuration": 2.5,
+    "debuffResistance": {
+      "defense": {
+        "scale": 0.6,
+        "table": "Melee_Res_Boolean"
+      }
+    },
     "defenseBuff": {
       "aoe": {
         "scale": 0.75,
@@ -46,15 +52,48 @@ export const Dodge: Power = {
       }
     },
     "durations": {
-      "defenseBuff": 2.5
+      "debuffResistance": 2.5,
+      "defenseBuff": 2.5,
+      "resistance": 2.5
+    },
+    "resistance": {
+      "cold": {
+        "scale": 0,
+        "table": "Melee_Ones"
+      },
+      "energy": {
+        "scale": 0,
+        "table": "Melee_Ones"
+      },
+      "fire": {
+        "scale": 0,
+        "table": "Melee_Ones"
+      },
+      "lethal": {
+        "scale": 0,
+        "table": "Melee_Ones"
+      },
+      "negative": {
+        "scale": 0,
+        "table": "Melee_Ones"
+      },
+      "smashing": {
+        "scale": 0,
+        "table": "Melee_Ones"
+      }
     }
   },
   "atoms": [
-    ["Defense","Melee",0.75,1,2.5,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Defense","Ranged",0.75,1,2.5,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Defense","AoE",0.75,1,2.5,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.6,1,2.5,"Melee_Res_Boolean","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0,1,2.5,"Melee_Ones","Res","Expression","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"75 kHitPoints% source> - 0 100 minmax 75 / 0.45 *"]
+    ["Defense","Melee",0.75,1,2.5,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Defense","Ranged",0.75,1,2.5,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Defense","AoE",0.75,1,2.5,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Defense","All",0.6,1,2.5,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Smashing",0,1,2.5,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"75 kHitPoints% source> - 0 100 minmax 75 / 0.45 *"],
+    ["Resistance","Lethal",0,1,2.5,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"75 kHitPoints% source> - 0 100 minmax 75 / 0.45 *"],
+    ["Resistance","Fire",0,1,2.5,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"75 kHitPoints% source> - 0 100 minmax 75 / 0.45 *"],
+    ["Resistance","Cold",0,1,2.5,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"75 kHitPoints% source> - 0 100 minmax 75 / 0.45 *"],
+    ["Resistance","Energy",0,1,2.5,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"75 kHitPoints% source> - 0 100 minmax 75 / 0.45 *"],
+    ["Resistance","Negative",0,1,2.5,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"75 kHitPoints% source> - 0 100 minmax 75 / 0.45 *"]
   ],
   "mechanicType": "parentMechanic"
 };

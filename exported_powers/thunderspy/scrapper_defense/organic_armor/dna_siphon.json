@@ -70,7 +70,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Lethal_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -89,9 +89,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Cur.kHitPoints target> 0 >",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -109,7 +110,50 @@
       "templates": [
         {
           "attribs": [
-            "HealSelf"
+            "Toxic_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Melee_Damage",
+          "scale": 0.1,
+          "duration": "2 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 1.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "Cur.kHitPoints target> 0 >",
+          "caster_stack": "",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "CancelOnMiss"
+          ],
+          "flags_raw": 1284
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "Cur.kHitPoints target> 0 >",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Heal_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -128,9 +172,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Cur.kHitPoints target> 0 >",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 96
         }
       ]
     },
@@ -148,7 +197,7 @@
       "templates": [
         {
           "attribs": [
-            "DefensiveAdaptation"
+            "Heal_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -167,9 +216,60 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Cur.kHitPoints target> 0 > kDefensiveAdaptation Source.Mode? &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 112
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "Cur.kHitPoints target> 0 > kDefensiveAdaptation Source.Mode? &&",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Heal_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "Self",
+          "table": "Melee_HealSelf",
+          "scale": 0.05,
+          "duration": "10 seconds",
+          "magnitude": 1.0,
+          "delay": 0.25,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 1.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "Cur.kHitPoints target> 0 > kDefensiveAdaptation Source.Mode? &&",
+          "caster_stack": "",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 112
         }
       ]
     },
@@ -206,9 +306,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Cur.kHitPoints target> 0 >",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 96
         }
       ]
     },
@@ -245,9 +350,57 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Cur.kHitPoints target> 0 ==",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "Cur.kHitPoints target> 0 ==",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Recovery"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 0.125,
+          "duration": "30 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "Cur.kHitPoints target> 0 ==",
+          "caster_stack": "",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 96
         }
       ]
     },
@@ -265,7 +418,7 @@
       "templates": [
         {
           "attribs": [
-            "EfficientAdaptation"
+            "Regeneration"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -284,9 +437,59 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Cur.kHitPoints target> 0 == kRestedAdaptation Source.Mode? &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "Cur.kHitPoints target> 0 == kRestedAdaptation Source.Mode? &&",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Recovery"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 0.09375,
+          "duration": "30 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "Cur.kHitPoints target> 0 == kRestedAdaptation Source.Mode? &&",
+          "caster_stack": "",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 112
         }
       ]
     },
@@ -304,7 +507,7 @@
       "templates": [
         {
           "attribs": [
-            "EfficientAdaptation"
+            "RechargeTime"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -323,9 +526,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "kRestedAdaptation Source.Mode?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 112
         }
       ]
     },
@@ -343,7 +552,7 @@
       "templates": [
         {
           "attribs": [
-            "NormalDebuff"
+            "Regeneration"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -362,9 +571,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> critter eq kOffensiveAdaptation Source.Mode? ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 336
         }
       ]
     },
@@ -382,7 +596,7 @@
       "templates": [
         {
           "attribs": [
-            "NormalDebuff"
+            "Regeneration"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -401,9 +615,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> player eq kOffensiveAdaptation Source.Mode? ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 336
         }
       ]
     },
@@ -421,7 +640,14 @@
       "templates": [
         {
           "attribs": [
-            "OffensiveAdaptation"
+            "Smashing_Dmg",
+            "Lethal_Dmg",
+            "Fire_Dmg",
+            "Cold_Dmg",
+            "Energy_Dmg",
+            "Negative_Energy_Dmg",
+            "Toxic_Dmg",
+            "Psionic_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -440,9 +666,66 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "kOffensiveAdaptation Source.Mode?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "BoostIgnoreDiminishing",
+            "CancelOnMiss",
+            "IgnoreStrength"
+          ],
+          "flags_raw": 22
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "kOffensiveAdaptation Source.Mode?",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Lethal",
+            "Smashing",
+            "Fire",
+            "Cold",
+            "Energy",
+            "Negative_Energy",
+            "Psionic"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Melee_Buff_Def",
+          "scale": -0.5,
+          "duration": "10 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "kOffensiveAdaptation Source.Mode?",
+          "caster_stack": "",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "BoostIgnoreDiminishing",
+            "CancelOnMiss",
+            "IgnoreStrength"
+          ],
+          "flags_raw": 22
         }
       ]
     },
@@ -460,7 +743,7 @@
       "templates": [
         {
           "attribs": [
-            "OffensiveAdaptation"
+            "Regeneration"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -479,9 +762,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> critter eq kOffensiveAdaptation Source.Mode? &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength"
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -499,7 +786,7 @@
       "templates": [
         {
           "attribs": [
-            "OffensiveAdaptation"
+            "Regeneration"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -518,9 +805,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> player eq kOffensiveAdaptation Source.Mode? &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength"
+          ],
+          "flags_raw": 1296
         }
       ]
     }

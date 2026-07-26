@@ -67,7 +67,7 @@
       "templates": [
         {
           "attribs": [
-            "Debuff_Def"
+            "Base_Defense"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -86,9 +86,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -106,7 +107,7 @@
       "templates": [
         {
           "attribs": [
-            "Res_DMG"
+            "Smashing_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -125,9 +126,62 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength"
+          ],
+          "flags_raw": 1296
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Lethal_Dmg",
+            "Fire_Dmg",
+            "Cold_Dmg",
+            "Energy_Dmg",
+            "Negative_Energy_Dmg",
+            "Toxic_Dmg",
+            "Psionic_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Resistance",
+          "target": "AnyAffected",
+          "table": "Ranged_Res_Dmg",
+          "scale": -1.5,
+          "duration": "40 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength"
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -145,7 +199,7 @@
       "templates": [
         {
           "attribs": [
-            "InherentTaunt"
+            "Taunt"
           ],
           "type": "Duration",
           "application_type": "OnTick",
@@ -164,9 +218,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "arch target> Class_Boss_Archvillain eq arch target> Class_Boss_Archvillain2 eq || arch target> Class_Boss_Monster eq || arch target> Class_Boss_Rularuu eq || arch target> Class_Boss_RularuuFM eq || @ToHitRoll 0.2 + @ToHit < && arch source> Class_Tanker == &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "CancelOnMiss"
+          ],
+          "flags_raw": 2564
         }
       ]
     },
@@ -184,7 +242,7 @@
       "templates": [
         {
           "attribs": [
-            "InherentTaunt"
+            "Taunt"
           ],
           "type": "Duration",
           "application_type": "OnTick",
@@ -203,9 +261,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || arch source> Class_Tanker == &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "CancelOnMiss"
+          ],
+          "flags_raw": 2564
         }
       ]
     },
@@ -223,7 +285,7 @@
       "templates": [
         {
           "attribs": [
-            "FieryEmbrace"
+            "Fire_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -242,9 +304,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     }

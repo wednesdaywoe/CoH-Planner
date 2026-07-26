@@ -43,17 +43,73 @@ export const PracticedBrawler: Power = {
   "effects": {
     "buffDuration": 120,
     "durations": {
-      "regenBuff": 120
+      "hold": 120,
+      "immobilize": 120,
+      "knockback": 120,
+      "knockup": 120,
+      "regenBuff": 120,
+      "regenBuffUnenhanced": 120,
+      "sleep": 120,
+      "stun": 120
+    },
+    "effectDuration": 120,
+    "hold": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "knockback": {
+      "scale": 12,
+      "table": "Melee_Ones"
+    },
+    "knockup": {
+      "scale": 12,
+      "table": "Melee_Ones"
     },
     "regenBuff": {
+      "scale": 0.25,
+      "table": "Melee_Ones"
+    },
+    "regenBuffUnenhanced": {
       "scale": 1,
       "table": "Melee_Ones"
-    }
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "maxStacks": 2,
+    "stacksLinear": [
+      "regenBuff"
+    ]
   },
   "atoms": [
-    ["Regeneration",null,1,1,120,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,-30,1,120,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["Unmapped",null,3,1,120,"Melee_Res_Boolean","Res","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
-    ["Unmapped",null,0.5,1,120,"Melee_Ones","Res","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
+    ["Regeneration",null,1,1,120,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Regeneration",null,0.25,1,120,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Mez","Knockback",-12,1,120,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Mez","Knockup",-12,1,120,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Mez","Stunned",-30,1,120,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Held",-30,1,120,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Sleep",-30,1,120,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Immobilized",-30,1,120,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["MezResist","Stunned",3,1,120,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
+    ["MezResist","Held",3,1,120,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
+    ["MezResist","Sleep",3,1,120,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
+    ["MezResist","Immobilized",3,1,120,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
+    ["Movement","Run",0.5,1,120,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
+    ["Movement","Fly",0.5,1,120,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
+    ["Movement","JumpHeight",0.5,1,120,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
+    ["Movement","Jump",0.5,1,120,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
   ]
 };

@@ -37,17 +37,36 @@ export const Scare: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 10.17,
+    "damageBuff": {
+      "scale": 0.176,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "damageBuff": 10.17
+    },
     "fear": {
       "mag": 3,
       "scale": 10,
       "table": "Melee_Fear"
-    }
+    },
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   },
   "atoms": [
-    ["Mez","Terrorized",10,3,0,"Melee_Fear","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Terrorized",7,1,0,"Melee_Fear","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.176,1,10.17,"Melee_Ones","Str","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Mez","Terrorized",2,2,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Mez","Terrorized",10,3,0,"Melee_Fear","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Terrorized",7,1,0,"Melee_Fear","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["DamageBuff","Smashing",0.176,1,10.17,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",0.176,1,10.17,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Fire",0.176,1,10.17,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Cold",0.176,1,10.17,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Energy",0.176,1,10.17,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Negative",0.176,1,10.17,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",0.176,1,10.17,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",0.176,1,10.17,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Mez","Terrorized",2,2,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "damageTypes": [
     "Psionic"

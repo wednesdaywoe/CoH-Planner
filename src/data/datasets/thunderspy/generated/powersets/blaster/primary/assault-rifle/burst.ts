@@ -54,11 +54,37 @@ export const Burst: Power = {
     "duration": 0.7,
     "tickRate": 0.30000001192092896
   },
+  "effects": {
+    "buffDuration": 8.5,
+    "damageBuff": {
+      "scale": 0.066,
+      "table": "Ranged_Ones"
+    },
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Ranged_Debuff_Def"
+    },
+    "durations": {
+      "damageBuff": 8.5,
+      "defenseDebuff": 8
+    },
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
+  },
   "atoms": [
-    ["Unmapped",null,0.546667,1,0.7,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1,1,8,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.066,1,8.5,"Ranged_Ones","Str","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.546667,1,0.7,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Lethal",0.546667,1,0.7,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Defense","All",1,1,8,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["DamageBuff","Smashing",0.066,1,8.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",0.066,1,8.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Fire",0.066,1,8.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Cold",0.066,1,8.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Energy",0.066,1,8.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Negative",0.066,1,8.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",0.066,1,8.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",0.066,1,8.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Damage","Lethal",0.546667,1,0.7,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "damageTypes": [
     "Lethal"

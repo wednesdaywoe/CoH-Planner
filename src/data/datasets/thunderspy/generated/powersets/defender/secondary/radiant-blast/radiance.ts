@@ -34,17 +34,55 @@ export const Radiance: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "buffDuration": 10,
+    "buffDuration": 30,
+    "damageBuff": {
+      "durationVariants": [
+        {
+          "duration": 10,
+          "scale": 8
+        }
+      ],
+      "scale": 3.2,
+      "table": "Melee_Buff_Dmg"
+    },
     "durations": {
-      "tohitBuff": 10
+      "damageBuff": 30,
+      "tohitBuff": 30
     },
     "tohitBuff": {
-      "scale": 2,
+      "durationVariants": [
+        {
+          "duration": 10,
+          "scale": 2
+        }
+      ],
+      "scale": 0.77,
       "table": "Melee_Buff_ToHit"
-    }
+    },
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff",
+      "tohitBuff"
+    ]
   },
   "atoms": [
-    ["ToHit",null,2,1,10,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,8,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",true,"No",null,null,null,1]
+    ["ToHit",null,2,1,10,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["ToHit",null,0.77,1,30,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["DamageBuff","Smashing",8,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",8,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Fire",8,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Cold",8,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Energy",8,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Negative",8,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",8,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",8,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Smashing",3.2,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",3.2,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Fire",3.2,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Cold",3.2,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Energy",3.2,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Negative",3.2,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",3.2,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",3.2,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
   ]
 };

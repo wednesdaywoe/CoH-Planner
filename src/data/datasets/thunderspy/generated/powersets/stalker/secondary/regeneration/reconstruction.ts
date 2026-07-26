@@ -35,24 +35,29 @@ export const Reconstruction: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Heal",
+    "scale": 2.5,
+    "table": "Melee_HealSelf"
+  },
   "effects": {
     "buffDuration": 60,
     "durations": {
       "resistance": 60
-    },
-    "healing": {
-      "scale": 2.5,
-      "table": "Melee_HealSelf"
     },
     "resistance": {
       "toxic": {
         "scale": 2,
         "table": "Melee_Res_DMG"
       }
-    }
+    },
+    "maxStacks": 2,
+    "stacksLinear": [
+      "resistance"
+    ]
   },
   "atoms": [
-    ["Unmapped",null,2.5,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Resistance","Toxic",2,1,60,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1]
+    ["Heal",null,2.5,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Resistance","Toxic",2,1,60,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1]
   ]
 };

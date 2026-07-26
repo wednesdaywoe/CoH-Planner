@@ -45,18 +45,33 @@ export const EtherealElusion: Power = {
   "maxSlots": 6,
   "effects": {
     "buffDuration": 0.75,
+    "debuffResistance": {
+      "defense": {
+        "scale": 0.5,
+        "table": "Melee_Res_Boolean"
+      }
+    },
     "defenseBuff": {
+      "aoe": {
+        "scale": 2,
+        "table": "Melee_Buff_Def"
+      },
       "ranged": {
         "scale": 2,
         "table": "Melee_Buff_Def"
       }
     },
     "durations": {
+      "debuffResistance": 0.75,
       "defenseBuff": 0.75,
       "movement": 0.75,
       "resistance": 0.75
     },
     "movement": {
+      "jumpHeight": {
+        "scale": 2,
+        "table": "Melee_Ones"
+      },
       "jumpSpeed": {
         "scale": 0.01,
         "table": "Melee_Ones"
@@ -64,6 +79,10 @@ export const EtherealElusion: Power = {
       "movementControl": {
         "scale": 10,
         "table": "Melee_Control"
+      },
+      "movementFriction": {
+        "scale": 0.2,
+        "table": "Melee_Ones"
       }
     },
     "resistance": {
@@ -74,11 +93,15 @@ export const EtherealElusion: Power = {
     }
   },
   "atoms": [
-    ["Defense","Ranged",2,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Resistance","Negative",2,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.5,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Movement","Jump",0.01,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Movement","Control",10,1,0.75,"Melee_Control","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
+    ["Defense","Ranged",2,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Defense","AoE",2,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Negative",2,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Defense","All",0.5,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","Jump",0.01,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","Friction",0.2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","JumpHeight",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","Control",10,1,0.75,"Melee_Control","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Elusivity","Ranged",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
+    ["Elusivity","AoE",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
   ]
 };

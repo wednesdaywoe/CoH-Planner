@@ -39,23 +39,50 @@ export const Stun: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 0.075,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.075,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.175,
+      "table": "Melee_Damage"
+    }
+  ],
   "effects": {
+    "buffDuration": 9.3,
+    "damageBuff": {
+      "scale": 0.119,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "damageBuff": 9.3
+    },
     "stun": {
       "mag": 3,
       "scale": 10,
       "table": "Melee_Stun"
-    }
+    },
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   },
   "atoms": [
-    ["Unmapped",null,0.075,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Mez","Stunned",10,3,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.119,1,9.3,"Melee_Ones","Str","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Mez","Stunned",2,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Smashing",0.075,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Energy",0.175,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Mez","Stunned",10,3,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["DamageBuff","Smashing",0.119,1,9.3,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",0.119,1,9.3,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Fire",0.119,1,9.3,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Cold",0.119,1,9.3,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Energy",0.119,1,9.3,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Negative",0.119,1,9.3,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",0.119,1,9.3,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",0.119,1,9.3,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Mez","Stunned",2,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "damageTypes": [
     "Energy",

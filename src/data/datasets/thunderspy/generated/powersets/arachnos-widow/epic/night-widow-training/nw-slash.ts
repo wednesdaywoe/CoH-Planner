@@ -39,8 +39,15 @@ export const NWSlash: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Toxic",
+      "type": "Lethal",
       "scale": 0.96,
+      "table": "Melee_Damage",
+      "duration": 0.6,
+      "tickRate": 0.4000000059604645
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.411689,
       "table": "Melee_Damage",
       "duration": 0.6,
       "tickRate": 0.4000000059604645
@@ -54,23 +61,53 @@ export const NWSlash: Power = {
     }
   ],
   "effects": {
-    "buffDuration": 15,
+    "buffDuration": 10,
     "durations": {
-      "regenDebuff": 15
+      "rechargeDebuff": 10,
+      "regenDebuff": 15,
+      "slow": 10
+    },
+    "rechargeDebuff": {
+      "scale": 0.4,
+      "table": "Melee_Slow"
     },
     "regenDebuff": {
       "scale": 0.25,
       "table": "Ranged_Ones"
+    },
+    "slow": {
+      "flySpeed": {
+        "scale": 0.4,
+        "table": "Melee_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.4,
+        "table": "Melee_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.4,
+        "table": "Melee_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.4,
+        "table": "Melee_Slow"
+      }
     }
   },
   "atoms": [
-    ["Unmapped",null,0.96,1,0.6,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,0.4000000059604645,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.1,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,1,1],
-    ["Regeneration",null,-0.25,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.4,1,10,"Melee_Slow","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.699777,1,0.6,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,0.4000000059604645,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,1.829729,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true],
-    ["Unmapped",null,2.667151,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true]
+    ["Damage","Lethal",0.96,1,0.6,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Toxic",0.411689,1,0.6,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Toxic",0.1,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["Regeneration",null,-0.25,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","Run",0.4,1,10,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","Fly",0.4,1,10,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","Jump",0.4,1,10,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["RechargeTime",null,0.4,1,10,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Movement","JumpHeight",0.4,1,10,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Damage","Lethal",0.699777,1,0.6,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Toxic",0.2999,1,0.6,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Toxic",1.829729,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true],
+    ["Damage","Toxic",2.667151,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true]
   ],
   "damageTypes": [
     "Lethal",

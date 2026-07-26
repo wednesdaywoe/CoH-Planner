@@ -80,19 +80,33 @@ export const EnergyCloak: Power = {
       }
     },
     "durations": {
-      "defenseBuff": 0.75
+      "defenseBuff": 0.75,
+      "stealth": 0.75
+    },
+    "stealth": {
+      "stealthPvE": {
+        "scale": 35,
+        "table": "Melee_Ones"
+      },
+      "stealthPvP": {
+        "scale": 389,
+        "table": "Melee_Ones"
+      }
     }
   },
   "atoms": [
-    ["Unmapped",null,35,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Defense","Ranged",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Defense","Melee",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Defense","AoE",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Defense","Smashing",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Defense","Lethal",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Defense","Fire",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Defense","Cold",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Defense","Energy",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Defense","Negative",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1]
+    ["Stealth","RadiusPvE",35,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Stealth","RadiusPvP",389,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["GlobalChanceMod",null,-1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1],
+    ["EntCreate",null,0.8,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Defense","Melee",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Defense","Ranged",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Defense","AoE",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Defense","Smashing",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Defense","Lethal",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Defense","Fire",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Defense","Cold",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Defense","Energy",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Defense","Negative",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true]
   ]
 };

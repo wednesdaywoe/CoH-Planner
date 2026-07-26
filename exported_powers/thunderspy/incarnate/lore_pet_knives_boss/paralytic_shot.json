@@ -81,9 +81,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 2560
         }
       ]
     },
@@ -101,7 +102,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Toxic_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -120,9 +121,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -140,7 +142,8 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Recovery",
+            "Regeneration"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -159,9 +162,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength"
+          ],
+          "flags_raw": 1296
         }
       ]
     }

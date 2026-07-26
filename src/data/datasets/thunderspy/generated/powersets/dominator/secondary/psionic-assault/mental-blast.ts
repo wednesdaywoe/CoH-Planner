@@ -38,24 +38,42 @@ export const MentalBlast: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.82,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.82,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.82,
+      "table": "Ranged_Damage"
+    }
+  ],
   "effects": {
+    "buffDuration": 6,
+    "durations": {
+      "resistanceDebuff": 6
+    },
     "knockback": {
       "scale": 4,
       "table": "Ranged_Knockback"
+    },
+    "resistanceDebuff": {
+      "psionic": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      }
     }
   },
   "atoms": [
-    ["Unmapped",null,0.82,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Knockback",4,0.6000000238418579,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,-2,1,6,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1.844346,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Knockback",4,0.6000000238418579,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Smashing",0.82,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Psionic",0.82,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",4,0.6000000238418579,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Resistance","Psionic",-2,1,6,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Damage","Psionic",1.844346,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Knockback",4,0.6000000238418579,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
   ],
   "damageTypes": [
     "Psionic",

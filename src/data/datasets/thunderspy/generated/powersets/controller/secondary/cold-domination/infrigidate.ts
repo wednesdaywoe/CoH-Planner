@@ -41,10 +41,37 @@ export const Infrigidate: Power = {
   "maxSlots": 6,
   "effects": {
     "buffDuration": 20,
+    "damageDebuff": {
+      "scale": 3,
+      "table": "Ranged_Debuff_Dam"
+    },
+    "defenseDebuff": {
+      "scale": 2.5,
+      "table": "Ranged_Debuff_Def"
+    },
     "durations": {
+      "damageDebuff": 20,
+      "defenseDebuff": 20,
+      "rechargeDebuff": 20,
       "slow": 20
     },
+    "rechargeDebuff": {
+      "scale": 0.7,
+      "table": "Ranged_Slow"
+    },
     "slow": {
+      "flySpeed": {
+        "scale": 0.7,
+        "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.7,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.7,
+        "table": "Ranged_Slow"
+      },
       "runSpeed": {
         "scale": 1,
         "table": "Ranged_SpeedRunning"
@@ -52,10 +79,14 @@ export const Infrigidate: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,0.7,1,20,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Movement","Run",-1,1,20,"Ranged_SpeedRunning","Max","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,2.5,1,20,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,3,1,20,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1]
+    ["Movement","Run",0.7,1,20,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["RechargeTime",null,0.7,1,20,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","JumpHeight",0.7,1,20,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","Jump",0.7,1,20,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Movement","Fly",0.7,1,20,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Movement","Run",-1,1,20,"Ranged_SpeedRunning","Max","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Defense","All",2.5,1,20,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["DamageBuff","Fire",3,1,20,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true]
   ],
   "damageTypes": [
     "Cold"

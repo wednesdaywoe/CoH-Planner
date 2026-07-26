@@ -46,6 +46,14 @@ export const FRTPsychicWail: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "buffDuration": 20,
+    "durations": {
+      "rechargeDebuff": 20
+    },
+    "rechargeDebuff": {
+      "scale": 0.7,
+      "table": "Ranged_Slow"
+    },
     "stun": {
       "mag": 3,
       "scale": 10,
@@ -53,11 +61,11 @@ export const FRTPsychicWail: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,4,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Mez","Stunned",10,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.7,1,20,"Ranged_Slow","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1.61854,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Stunned",2,4,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Psionic",4,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Mez","Stunned",10,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["RechargeTime",null,0.7,1,20,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Damage","Psionic",1.61854,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Stunned",2,4,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "damageTypes": [
     "Psionic"

@@ -44,7 +44,7 @@ export const MightyShockwave: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Psionic",
+    "type": "Smashing",
     "scale": 0.876923,
     "table": "Melee_Damage"
   },
@@ -52,14 +52,19 @@ export const MightyShockwave: Power = {
     "knockback": {
       "scale": 0.67,
       "table": "Ranged_Ones"
+    },
+    "taunt": {
+      "scale": 1,
+      "table": "Ranged_InherentTaunt"
     }
   },
   "atoms": [
-    ["Unmapped",null,0.876923,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1,1,0,"Ranged_InherentTaunt","Abs","Duration","Target","Any",true,"No",null,null,null,1],
-    ["Mez","Knockback",0.67,0.33000001311302185,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1.181818,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Knockback",0.67,0.33000001311302185,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Smashing",0.876923,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Taunt",1,1,0,"Ranged_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1],
+    ["Mez","Taunt",1,1,0,"Ranged_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1],
+    ["Mez","Knockback",0.67,0.33000001311302185,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Smashing",1.181818,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Knockback",0.67,0.33000001311302185,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "requires": "Tanker_Melee.Super_Strength.Hand_Clap !",
   "damageTypes": [

@@ -63,14 +63,18 @@ export const DefensiveSweep: Power = {
     },
     "durations": {
       "defenseBuff": 10
+    },
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     }
   },
   "atoms": [
-    ["Unmapped",null,0.679,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Defense","Melee",1.5,1,10,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Defense","Smashing",1.5,1,10,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.30555,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"]
+    ["Damage","Smashing",0.679,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Defense","Melee",1.5,1,10,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Defense","Smashing",1.5,1,10,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Damage","Fire",0.30555,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Mez","Taunt",1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"]
   ],
   "modeVariants": {
     "FastMode": {
@@ -98,15 +102,21 @@ export const DefensiveSweep: Power = {
         "defenseBuff": {
           "melee": {
             "scale": 1.5,
-            "table": "Melee_Buff_Def"
+            "table": "Melee_Buff_Def",
+            "perTarget": 1.5
           },
           "smashing": {
             "scale": 1.5,
-            "table": "Melee_Buff_Def"
+            "table": "Melee_Buff_Def",
+            "perTarget": 1.5
           }
         },
         "durations": {
           "defenseBuff": 10
+        },
+        "taunt": {
+          "scale": 1,
+          "table": "Melee_InherentTaunt"
         }
       },
       "shortHelp": "Melee(Cone), Light DMG(Smashing), Self +DEF(Melee, Smash)",

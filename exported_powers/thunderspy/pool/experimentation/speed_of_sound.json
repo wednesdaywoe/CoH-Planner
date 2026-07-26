@@ -65,7 +65,7 @@
       "templates": [
         {
           "attribs": [
-            "SpeedRunning"
+            "RunningSpeed"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -84,9 +84,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "isPVPMap? !",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "BoostIgnoreDiminishing",
+            "CancelOnMiss",
+            "IgnoreStrength"
+          ],
+          "flags_raw": 22
         }
       ]
     },
@@ -104,7 +110,7 @@
       "templates": [
         {
           "attribs": [
-            "SpeedRunning"
+            "RunningSpeed"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -123,9 +129,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "isPVPMap?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "BoostIgnoreDiminishing",
+            "CancelOnMiss",
+            "IgnoreStrength"
+          ],
+          "flags_raw": 22
         }
       ]
     },
@@ -143,7 +155,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Set_Mode"
           ],
           "type": "Constant",
           "application_type": "OnTick",
@@ -152,7 +164,7 @@
           "table": "Melee_Ones",
           "scale": 1.0,
           "duration": "0.75 seconds",
-          "magnitude": 1.0,
+          "magnitude": 110.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -162,9 +174,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 3120,
+          "mode_name": "SpeedofSoundOn"
         }
       ]
     }

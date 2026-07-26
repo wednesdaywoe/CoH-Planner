@@ -54,10 +54,10 @@ export const MasterfulThrow: Power = {
     }
   ],
   "atoms": [
-    ["Unmapped",null,2.6,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.1,1,10,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,2,1],
-    ["Unmapped",null,2.814,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Lethal",2.6,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Lethal",0.1,1,10,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1],
+    ["Damage","Lethal",2.814,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
   ],
   "damageTypes": [
     "Lethal"

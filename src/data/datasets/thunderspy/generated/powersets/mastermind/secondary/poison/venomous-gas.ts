@@ -39,11 +39,80 @@ export const VenomousGas: Power = {
     "To Hit Debuff"
   ],
   "maxSlots": 6,
+  "effects": {
+    "buffDuration": 0.75,
+    "damageDebuff": {
+      "scale": 1.5,
+      "table": "Ranged_Debuff_Dam"
+    },
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Ranged_Debuff_Def"
+    },
+    "durations": {
+      "damageDebuff": 0.75,
+      "defenseDebuff": 0.75,
+      "resistanceDebuff": 0.75,
+      "tohitDebuff": 0.75
+    },
+    "resistanceDebuff": {
+      "cold": {
+        "scale": 2.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "energy": {
+        "scale": 2.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "fire": {
+        "scale": 2.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 2.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "negative": {
+        "scale": 2.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "psionic": {
+        "scale": 2.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "smashing": {
+        "scale": 2.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 2.5,
+        "table": "Ranged_Res_Dmg"
+      }
+    },
+    "tohitDebuff": {
+      "scale": 1.5,
+      "table": "Ranged_DeBuff_ToHit"
+    }
+  },
   "atoms": [
-    ["Unmapped",null,-2.5,1,0.75,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1.5,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,0.75,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1.5,1,0.75,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"No",null,null,null,1]
+    ["Resistance","Smashing",-2.5,1,0.75,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Lethal",-2.5,1,0.75,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Fire",-2.5,1,0.75,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Cold",-2.5,1,0.75,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Energy",-2.5,1,0.75,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Negative",-2.5,1,0.75,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Psionic",-2.5,1,0.75,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Toxic",-2.5,1,0.75,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Smashing",1.5,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",1.5,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Fire",1.5,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Cold",1.5,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Energy",1.5,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Negative",1.5,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",1.5,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",1.5,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Defense","All",1,1,0.75,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["ToHit",null,1.5,1,0.75,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1]
   ],
   "requires": "Mastermind_Buff.Poison.Noxious_Gas !"
 };

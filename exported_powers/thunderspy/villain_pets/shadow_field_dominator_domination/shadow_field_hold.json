@@ -79,9 +79,50 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> critter eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 2560
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "enttype target> critter eq",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "PVE_ONLY",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Held"
+          ],
+          "type": "Duration",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Melee_Ones",
+          "scale": 12.0,
+          "duration": "0 seconds",
+          "magnitude": 3.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "enttype target> critter eq",
+          "caster_stack": "",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 2560
         }
       ]
     },
@@ -118,9 +159,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> player eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "NoFloaters",
+            "CancelOnMiss",
+            "IgnoreStrength"
+          ],
+          "flags_raw": 21
         }
       ]
     }

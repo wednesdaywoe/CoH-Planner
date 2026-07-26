@@ -42,12 +42,29 @@ export const PsionicDart: Power = {
     "scale": 0.84,
     "table": "Ranged_Damage"
   },
+  "effects": {
+    "buffDuration": 5,
+    "durations": {
+      "rechargeDebuff": 5,
+      "resistanceDebuff": 5
+    },
+    "rechargeDebuff": {
+      "scale": 0.3,
+      "table": "Ranged_Slow"
+    },
+    "resistanceDebuff": {
+      "psionic": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      }
+    }
+  },
   "atoms": [
-    ["Unmapped",null,0.84,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.3,1,5,"Ranged_Slow","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,-2,1,5,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,2.0314,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Psionic",0.84,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["RechargeTime",null,0.3,1,5,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Resistance","Psionic",-2,1,5,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Damage","Psionic",2.0314,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
   ],
   "damageTypes": [
     "Psionic"

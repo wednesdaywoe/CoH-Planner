@@ -73,7 +73,7 @@
       "templates": [
         {
           "attribs": [
-            "Slow"
+            "RunningSpeed"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -92,9 +92,137 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "entref target> entref source> eq ! cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "entref target> entref source> eq ! cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "RechargeTime"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "AnyAffected",
+          "table": "Melee_Slow",
+          "scale": 0.4,
+          "duration": "5 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "entref target> entref source> eq ! cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&",
+          "caster_stack": "",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength"
+          ],
+          "flags_raw": 1296
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "entref target> entref source> eq ! cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "FlyingSpeed",
+            "JumpingSpeed"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Melee_Slow",
+          "scale": 0.7,
+          "duration": "5 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "entref target> entref source> eq ! cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&",
+          "caster_stack": "",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "entref target> entref source> eq ! cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "JumpHeight"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "AnyAffected",
+          "table": "Melee_Slow",
+          "scale": 0.7,
+          "duration": "5 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "entref target> entref source> eq ! cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&",
+          "caster_stack": "",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength"
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -112,7 +240,7 @@
       "templates": [
         {
           "attribs": [
-            "SpeedRunning"
+            "RunningSpeed"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -131,9 +259,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> critter eq entref target> entref source> eq ! && cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength"
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -151,7 +283,14 @@
       "templates": [
         {
           "attribs": [
-            "Debuff_Dam"
+            "Smashing_Dmg",
+            "Lethal_Dmg",
+            "Fire_Dmg",
+            "Cold_Dmg",
+            "Energy_Dmg",
+            "Negative_Energy_Dmg",
+            "Toxic_Dmg",
+            "Psionic_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -170,9 +309,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "entref target> entref source> eq ! cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 336
         }
       ]
     },
@@ -190,7 +334,7 @@
       "templates": [
         {
           "attribs": [
-            "HealSelf"
+            "Absorb"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -209,9 +353,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "entref target> entref source> eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 96
         }
       ]
     },
@@ -248,9 +397,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "entref target> entref source> eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     }

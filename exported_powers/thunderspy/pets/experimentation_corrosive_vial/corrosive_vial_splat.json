@@ -60,7 +60,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Toxic_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -79,9 +79,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "arch source.owner> Class_Blaster eq arch source.owner> Class_Scrapper eq ||",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -99,7 +100,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Toxic_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -118,9 +119,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "arch source.owner> Class_Controller eq arch source.owner> Class_Mastermind eq ||",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -138,7 +140,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Toxic_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -157,9 +159,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "arch source.owner> Class_Defender eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -177,7 +180,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Toxic_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -196,9 +199,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "arch source.owner> Class_Tanker eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -216,7 +220,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Toxic_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -235,9 +239,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "arch source.owner> Class_Peacebringer eq arch source.owner> Class_Warshade eq ||",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -255,7 +260,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Toxic_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -274,9 +279,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "arch source.owner> Class_Brute eq arch source.owner> Class_Corruptor eq ||",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -294,7 +300,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Toxic_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -313,9 +319,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "arch source.owner> Class_Stalker eq arch source.owner> Class_Arachnos_Widow eq || arch source.owner> Class_Arachnos_Soldier eq ||",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -333,7 +340,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Toxic_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -352,9 +359,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "arch source.owner> Class_Dominator eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -372,7 +380,7 @@
       "templates": [
         {
           "attribs": [
-            "Debuff_Def"
+            "Base_Defense"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -391,9 +399,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -430,9 +439,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> critter eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "NearGround",
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1080
         }
       ]
     }

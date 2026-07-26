@@ -39,9 +39,19 @@ export const CorrosiveSap: Power = {
   "maxSlots": 6,
   "effects": {
     "buffDuration": 30,
+    "damageDebuff": {
+      "scale": 2.5,
+      "table": "Ranged_Debuff_Dam"
+    },
     "durations": {
+      "damageDebuff": 30,
+      "rechargeDebuff": 30,
       "resistanceDebuff": 30,
       "slow": 30
+    },
+    "rechargeDebuff": {
+      "scale": 0.6,
+      "table": "Ranged_Slow"
     },
     "resistanceDebuff": {
       "cold": {
@@ -78,6 +88,18 @@ export const CorrosiveSap: Power = {
       }
     },
     "slow": {
+      "flySpeed": {
+        "scale": 0.6,
+        "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.6,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.6,
+        "table": "Ranged_Slow"
+      },
       "runSpeed": {
         "scale": 1,
         "table": "Ranged_SpeedRunning"
@@ -85,15 +107,27 @@ export const CorrosiveSap: Power = {
     }
   },
   "atoms": [
-    ["Resistance","Smashing",-2.5,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Resistance","Lethal",-2.5,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Resistance","Fire",-2.5,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Resistance","Cold",-2.5,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Resistance","Energy",-2.5,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Resistance","Negative",-2.5,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Resistance","Psionic",-2.5,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Resistance","Toxic",-2.5,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.6,1,30,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Movement","Run",-1,1,30,"Ranged_SpeedRunning","Max","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+    ["Resistance","Smashing",-2.5,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Lethal",-2.5,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Fire",-2.5,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Cold",-2.5,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Energy",-2.5,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Negative",-2.5,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Psionic",-2.5,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Toxic",-2.5,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Smashing",2.5,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",2.5,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Fire",2.5,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Cold",2.5,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Energy",2.5,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Negative",2.5,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",2.5,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",2.5,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","Run",0.6,1,30,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","Jump",0.6,1,30,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","Fly",0.6,1,30,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["RechargeTime",null,0.6,1,30,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Movement","JumpHeight",0.6,1,30,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Movement","Run",-1,1,30,"Ranged_SpeedRunning","Max","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"]
   ]
 };

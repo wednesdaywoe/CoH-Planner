@@ -49,20 +49,62 @@ export const SunlessMire: Power = {
   },
   "effects": {
     "buffDuration": 30,
+    "damageBuff": {
+      "scale": 1.25,
+      "table": "Melee_Buff_Dmg",
+      "perTarget": 1.25
+    },
     "durations": {
+      "damageBuff": 30,
+      "rechargeDebuff": 6,
+      "slow": 6,
       "tohitBuff": 30
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Melee_Slow"
+    },
+    "slow": {
+      "flySpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      }
     },
     "tohitBuff": {
       "scale": 0.5,
-      "table": "Melee_Buff_ToHit"
+      "table": "Melee_Buff_ToHit",
+      "perTarget": 0.5
     }
   },
   "atoms": [
-    ["Unmapped",null,1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.2,1,6,"Melee_Slow","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["ToHit",null,0.5,1,30,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1.25,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,2.532554,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Movement","JumpHeight",0.2,1,6,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Movement","Jump",0.2,1,6,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","Run",0.2,1,6,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","Fly",0.2,1,6,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["RechargeTime",null,0.2,1,6,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["ToHit",null,0.5,1,30,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.5],
+    ["DamageBuff","Smashing",1.25,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,1.25],
+    ["DamageBuff","Lethal",1.25,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,1.25],
+    ["DamageBuff","Fire",1.25,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,1.25],
+    ["DamageBuff","Cold",1.25,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,1.25],
+    ["DamageBuff","Energy",1.25,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,1.25],
+    ["DamageBuff","Negative",1.25,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,1.25],
+    ["DamageBuff","Toxic",1.25,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,1.25],
+    ["DamageBuff","Psionic",1.25,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,1.25],
+    ["Damage","Negative",2.532554,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "damageTypes": [
     "Negative"

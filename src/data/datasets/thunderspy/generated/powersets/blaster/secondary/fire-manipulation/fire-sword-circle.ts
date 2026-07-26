@@ -40,6 +40,11 @@ export const FireSwordCircle: Power = {
   "maxSlots": 6,
   "damage": [
     {
+      "type": "Lethal",
+      "scale": 0.775,
+      "table": "Melee_Damage"
+    },
+    {
       "type": "Fire",
       "scale": 0.775,
       "table": "Melee_Damage"
@@ -52,14 +57,32 @@ export const FireSwordCircle: Power = {
       "tickRate": 0.75
     }
   ],
+  "effects": {
+    "buffDuration": 10.17,
+    "damageBuff": {
+      "scale": 0.07,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "damageBuff": 10.17
+    }
+  },
   "atoms": [
-    ["Unmapped",null,0.775,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.1,1,2.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,0.75,1],
-    ["Unmapped",null,0.07,1,10.17,"Melee_Ones","Str","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,2.156304,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,1,0,0,"Melee_Ones","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,1,0,0,"Melee_Ones","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,1,0,0,"Melee_Ones","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Lethal",0.775,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Fire",0.775,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Fire",0.1,1,2.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.75,1],
+    ["DamageBuff","Smashing",0.07,1,10.17,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",0.07,1,10.17,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Fire",0.07,1,10.17,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Cold",0.07,1,10.17,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Energy",0.07,1,10.17,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Negative",0.07,1,10.17,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",0.07,1,10.17,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",0.07,1,10.17,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Damage","Fire",2.156304,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["GrantPower",null,1,0,0,"Melee_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["GrantPower",null,1,0,0,"Melee_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["GrantPower",null,1,0,0,"Melee_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
   ],
   "damageTypes": [
     "Fire",

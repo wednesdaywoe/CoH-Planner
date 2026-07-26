@@ -49,9 +49,30 @@ export const SnowField: Power = {
     },
     "durations": {
       "damageDebuff": 0.75,
+      "rechargeDebuff": 0.75,
       "slow": 0.75
     },
+    "rechargeDebuff": {
+      "scale": 0.5,
+      "table": "Ranged_Slow"
+    },
     "slow": {
+      "fly": {
+        "scale": 10,
+        "table": "Ranged_Ones"
+      },
+      "flySpeed": {
+        "scale": 0.5,
+        "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.5,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.5,
+        "table": "Ranged_Slow"
+      },
       "runSpeed": {
         "scale": 1,
         "table": "Ranged_SpeedRunning"
@@ -59,17 +80,21 @@ export const SnowField: Power = {
     }
   },
   "atoms": [
-    ["DamageBuff","Smashing",3,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["DamageBuff","Lethal",3,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["DamageBuff","Fire",3,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["DamageBuff","Cold",3,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["DamageBuff","Energy",3,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["DamageBuff","Negative",3,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["DamageBuff","Psionic",3,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["DamageBuff","Toxic",3,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.5,1,0.75,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Movement","Run",-1,1,0.75,"Ranged_SpeedRunning","Max","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,-10,1,0.75,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1]
+    ["DamageBuff","Smashing",3,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",3,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Fire",3,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Cold",3,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Energy",3,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Negative",3,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",3,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",3,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","Run",0.5,1,0.75,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Movement","Jump",0.5,1,0.75,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Movement","Fly",0.5,1,0.75,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["RechargeTime",null,0.5,1,0.75,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","JumpHeight",0.5,1,0.75,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","Run",-1,1,0.75,"Ranged_SpeedRunning","Max","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Movement","FlyMode",-10,1,0.75,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1]
   ],
   "requires": "Controller_Buff.Cold_Domination.Snow_Storm !",
   "damageTypes": [

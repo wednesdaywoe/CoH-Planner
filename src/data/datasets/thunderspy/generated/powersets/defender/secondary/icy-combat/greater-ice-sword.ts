@@ -33,18 +33,60 @@ export const GreaterIceSword: Power = {
     "Accuracy"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Cold",
-    "scale": 0.96,
-    "table": "Melee_Damage"
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.96,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "buffDuration": 10,
+    "durations": {
+      "rechargeDebuff": 10,
+      "slow": 10
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Melee_Slow"
+    },
+    "slow": {
+      "flySpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      }
+    }
   },
   "atoms": [
-    ["Unmapped",null,0.96,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.2,1,10,"Melee_Slow","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1.4567,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,1,0,0,"Melee_Ones","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,1,0,0,"Melee_Ones","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Lethal",0.96,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Cold",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["RechargeTime",null,0.2,1,10,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Movement","Run",0.2,1,10,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","Fly",0.2,1,10,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","Jump",0.2,1,10,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","JumpHeight",0.2,1,10,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Damage","Lethal",1.4567,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Cold",1.4567,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["GrantPower",null,1,0,0,"Melee_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["GrantPower",null,1,0,0,"Melee_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
   ],
   "requires": "Defender_Ranged.Ice_Blast.Bitter_Ice_Blast !",
   "damageTypes": [

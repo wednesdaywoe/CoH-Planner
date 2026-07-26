@@ -52,10 +52,10 @@ export const Combustion: Power = {
     }
   ],
   "atoms": [
-    ["Unmapped",null,0.5,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.1,1,2.25,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,0.25,1],
-    ["Unmapped",null,1.344,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Fire",0.5,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Fire",0.1,1,2.25,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1],
+    ["Damage","Fire",1.344,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
   ],
   "damageTypes": [
     "Fire"

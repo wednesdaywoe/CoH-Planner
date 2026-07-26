@@ -35,8 +35,25 @@ export const SonicHaven: Power = {
     "Healing"
   ],
   "maxSlots": 6,
+  "effects": {
+    "absorb": {
+      "scale": 0.25,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 60,
+    "durations": {
+      "absorb": 60
+    },
+    "maxStacks": 2,
+    "stackInterval": 60,
+    "stacksLinear": [
+      "absorb"
+    ]
+  },
   "atoms": [
-    ["Unmapped",null,0.25,1,1,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.25,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1]
+    ["Absorb",null,0.25,1,1,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Absorb",null,1,1,60,"Ranged_Ones","Max","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"Max.kHitPoints source> 0.25 * @Strength *"],
+    ["Absorb",null,0.25,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Absorb",null,1,1,60,"Ranged_Ones","Max","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"Max.kHitPoints source> 0.25 * @Strength *"]
   ]
 };

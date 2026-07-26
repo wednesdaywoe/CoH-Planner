@@ -39,8 +39,13 @@ export const Lunge: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Toxic",
+      "type": "Lethal",
       "scale": 1,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.437303,
       "table": "Melee_Damage"
     },
     {
@@ -52,23 +57,53 @@ export const Lunge: Power = {
     }
   ],
   "effects": {
-    "buffDuration": 15,
+    "buffDuration": 6,
     "durations": {
-      "regenDebuff": 15
+      "rechargeDebuff": 6,
+      "regenDebuff": 15,
+      "slow": 6
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Melee_Slow"
     },
     "regenDebuff": {
       "scale": 0.25,
       "table": "Ranged_Ones"
+    },
+    "slow": {
+      "flySpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      }
     }
   },
   "atoms": [
-    ["Unmapped",null,1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.07,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,1,1],
-    ["Regeneration",null,-0.25,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.2,1,6,"Melee_Slow","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,0.958202,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true],
-    ["Unmapped",null,1.041285,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true]
+    ["Damage","Lethal",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Toxic",0.437303,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Toxic",0.07,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["Regeneration",null,-0.25,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","Run",0.2,1,6,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","Fly",0.2,1,6,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","Jump",0.2,1,6,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["RechargeTime",null,0.2,1,6,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Movement","JumpHeight",0.2,1,6,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Damage","Lethal",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Toxic",0.561,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Toxic",0.958202,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true],
+    ["Damage","Toxic",1.041285,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true]
   ],
   "damageTypes": [
     "Lethal",

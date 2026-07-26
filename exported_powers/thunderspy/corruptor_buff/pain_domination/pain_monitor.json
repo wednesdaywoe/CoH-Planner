@@ -81,9 +81,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "AttackedByOtherClick target.EventCount> 0 >",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "StackThenIgnore",
+          "stack_limit": 8,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 112
         }
       ]
     }

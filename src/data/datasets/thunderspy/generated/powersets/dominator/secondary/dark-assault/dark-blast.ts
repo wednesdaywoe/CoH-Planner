@@ -45,11 +45,21 @@ export const DarkBlast: Power = {
     "scale": 1,
     "table": "Ranged_Damage"
   },
+  "effects": {
+    "buffDuration": 6,
+    "durations": {
+      "tohitDebuff": 6
+    },
+    "tohitDebuff": {
+      "scale": 0.75,
+      "table": "Ranged_DeBuff_ToHit"
+    }
+  },
   "atoms": [
-    ["Unmapped",null,1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.75,1,6,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1.764,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Negative",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["ToHit",null,0.75,1,6,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Negative",1.764,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
   ],
   "damageTypes": [
     "Negative"

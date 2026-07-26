@@ -46,7 +46,8 @@ export const PowerSink: Power = {
     },
     "enduranceGain": {
       "scale": 25,
-      "table": "Melee_Ones"
+      "table": "Melee_Ones",
+      "perTarget": 25
     },
     "recoveryDebuff": {
       "scale": 1,
@@ -54,10 +55,10 @@ export const PowerSink: Power = {
     }
   },
   "atoms": [
-    ["Endurance",null,-0.4,1,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Recovery",null,-1,0.30000001192092896,4,"Melee_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Endurance",null,25,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,-10,1,0,"Melee_EndDrain","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Endurance",null,-0.4,1,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Recovery",null,-1,0.30000001192092896,4,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Endurance",null,25,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,25],
+    ["Endurance",null,-10,1,0,"Melee_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "damageTypes": [
     "Energy"

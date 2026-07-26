@@ -46,10 +46,27 @@ export const FistfulofArrows: Power = {
     "scale": 0.91,
     "table": "Ranged_Damage"
   },
+  "effects": {
+    "buffDuration": 8.67,
+    "damageBuff": {
+      "scale": 0.032,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 8.67
+    }
+  },
   "atoms": [
-    ["Unmapped",null,0.91,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.032,1,8.67,"Ranged_Ones","Str","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.772367,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Lethal",0.91,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["DamageBuff","Smashing",0.032,1,8.67,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",0.032,1,8.67,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Fire",0.032,1,8.67,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Cold",0.032,1,8.67,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Energy",0.032,1,8.67,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Negative",0.032,1,8.67,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",0.032,1,8.67,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",0.032,1,8.67,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Damage","Lethal",0.772367,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "damageTypes": [
     "Lethal"

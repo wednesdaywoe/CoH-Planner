@@ -39,19 +39,38 @@ export const DeflectionShield: Power = {
   "effects": {
     "buffDuration": 240,
     "defenseBuff": {
+      "lethal": {
+        "scale": 0.75,
+        "table": "Ranged_Buff_Def"
+      },
+      "melee": {
+        "scale": 0.75,
+        "table": "Ranged_Buff_Def"
+      },
       "smashing": {
         "scale": 0.75,
         "table": "Ranged_Buff_Def"
       }
     },
     "durations": {
-      "defenseBuff": 240
+      "defenseBuff": 240,
+      "resistance": 240
+    },
+    "resistance": {
+      "toxic": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      }
     }
   },
   "atoms": [
-    ["Defense","Smashing",1.5,1,240,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,4,1,240,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Defense","Smashing",0.75,1,240,"Ranged_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,2,1,240,"Ranged_Res_Dmg","Res","Magnitude","Self","Any",true,"No",null,null,null,1]
+    ["Defense","Smashing",1.5,1,240,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Lethal",1.5,1,240,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Melee",1.5,1,240,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Toxic",4,1,240,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Defense","Smashing",0.75,1,240,"Ranged_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Defense","Lethal",0.75,1,240,"Ranged_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Defense","Melee",0.75,1,240,"Ranged_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Toxic",2,1,240,"Ranged_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
   ]
 };

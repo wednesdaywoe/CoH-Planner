@@ -37,7 +37,12 @@ export const Forge: Power = {
   "maxSlots": 6,
   "effects": {
     "buffDuration": 120,
+    "damageBuff": {
+      "scale": 4,
+      "table": "Ranged_Buff_Dmg"
+    },
     "durations": {
+      "damageBuff": 120,
       "tohitBuff": 120
     },
     "tohitBuff": {
@@ -46,7 +51,14 @@ export const Forge: Power = {
     }
   },
   "atoms": [
-    ["ToHit",null,2,1,120,"Ranged_Buff_ToHit","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,4,1,120,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"No",null,null,null,1]
+    ["ToHit",null,2,1,120,"Ranged_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["DamageBuff","Smashing",4,1,120,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",4,1,120,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Fire",4,1,120,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Cold",4,1,120,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Energy",4,1,120,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Negative",4,1,120,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",4,1,120,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",4,1,120,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true]
   ]
 };

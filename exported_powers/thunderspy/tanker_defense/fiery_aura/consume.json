@@ -69,7 +69,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Fire_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -88,9 +88,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "@ToHitRoll @ToHit < @ForceHit ||",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -127,9 +128,56 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "@ToHitRoll @ToHit < @ForceHit ||",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "@ToHitRoll @ToHit < @ForceHit ||",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Recovery"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 0.05,
+          "duration": "30 seconds",
+          "magnitude": 1.0,
+          "delay": 0.25,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "@ToHitRoll @ToHit < @ForceHit ||",
+          "caster_stack": "",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -166,9 +214,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -186,7 +238,7 @@
       "templates": [
         {
           "attribs": [
-            "InherentTaunt"
+            "Taunt"
           ],
           "type": "Duration",
           "application_type": "OnTick",
@@ -205,9 +257,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "CancelOnMiss"
+          ],
+          "flags_raw": 2564
         }
       ]
     },
@@ -225,7 +281,7 @@
       "templates": [
         {
           "attribs": [
-            "InherentTaunt"
+            "Taunt"
           ],
           "type": "Duration",
           "application_type": "OnTick",
@@ -244,9 +300,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> critter eq Raid target.HasTag? ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "CancelOnMiss"
+          ],
+          "flags_raw": 2564
         }
       ]
     },
@@ -264,7 +324,7 @@
       "templates": [
         {
           "attribs": [
-            "FieryEmbrace"
+            "Fire_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -283,9 +343,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     }

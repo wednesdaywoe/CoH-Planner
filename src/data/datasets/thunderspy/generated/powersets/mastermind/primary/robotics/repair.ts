@@ -38,7 +38,7 @@ export const Repair: Power = {
   "maxSlots": 6,
   "effects": {},
   "atoms": [
-    ["Endurance",null,0.25,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"MastermindPets_Droid target.VillainName> MastermindPets_Protector_Bot target.VillainName> || MastermindPets_Assault_Bot target.VillainName> ||",true]
+    ["Endurance",null,0.25,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["Heal",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"MastermindPets_Droid target.VillainName> MastermindPets_Protector_Bot target.VillainName> || MastermindPets_Assault_Bot target.VillainName> ||",true]
   ]
 };

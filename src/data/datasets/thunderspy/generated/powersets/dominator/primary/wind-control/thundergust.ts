@@ -49,18 +49,34 @@ export const Thundergust: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "buffDuration": 12,
+    "durations": {
+      "slow": 12,
+      "tohitDebuff": 12
+    },
     "knockback": {
       "scale": 0.67,
       "table": "Ranged_Ones"
+    },
+    "slow": {
+      "fly": {
+        "scale": 3,
+        "table": "Ranged_Ones"
+      }
+    },
+    "tohitDebuff": {
+      "scale": 1.5,
+      "table": "Ranged_DeBuff_ToHit"
     }
   },
   "atoms": [
-    ["Unmapped",null,0.24,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1,1,0,"Ranged_Ones","Abs","Magnitude","All","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1.5,1,12,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.816,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Smashing",0.24,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true],
+    ["Movement","FlyMode",-3,1,12,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["ToHit",null,1.5,1,12,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Smashing",0.816,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "damageTypes": [
     "Smashing"

@@ -42,21 +42,55 @@ export const EssenceDrain: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Negative",
-    "scale": 1,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "healing": {
+  "damage": [
+    {
+      "type": "Negative",
+      "scale": 1,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Heal",
       "scale": 1,
       "table": "Melee_HealSelf"
     }
+  ],
+  "effects": {
+    "buffDuration": 6,
+    "durations": {
+      "rechargeDebuff": 6,
+      "slow": 6
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Melee_Slow"
+    },
+    "slow": {
+      "flySpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      }
+    }
   },
   "atoms": [
-    ["Unmapped",null,1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.2,1,6,"Melee_Slow","Str","Magnitude","Target","Any",true,"No",null,null,null,1]
+    ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Heal",null,1,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1],
+    ["Movement","JumpHeight",0.2,1,6,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Movement","Jump",0.2,1,6,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","Run",0.2,1,6,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","Fly",0.2,1,6,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["RechargeTime",null,0.2,1,6,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true]
   ],
   "damageTypes": [
     "Negative"

@@ -51,14 +51,15 @@ export const Strike: Power = {
     }
   ],
   "atoms": [
-    ["Unmapped",null,0.76,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.3,0,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.342,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.135,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.944385,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,1.33012,0.05000000074505806,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,0.76,0.05000000074505806,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
-    ["Unmapped",null,0.76,0.10000000149011612,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true]
+    ["Damage","Lethal",0.76,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Lethal",0.3,0,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Fire",0.342,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Fire",0.135,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Lethal",0.944385,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Lethal",0.385735,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Lethal",1.33012,0.05000000074505806,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Lethal",0.76,0.05000000074505806,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
+    ["Damage","Lethal",0.76,0.10000000149011612,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true]
   ],
   "requires": "Scrapper_Defense.Shield_Defense !",
   "damageTypes": [

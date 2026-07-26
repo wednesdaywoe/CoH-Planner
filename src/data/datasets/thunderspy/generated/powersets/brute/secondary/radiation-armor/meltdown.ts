@@ -37,11 +37,21 @@ export const Meltdown: Power = {
   "maxSlots": 6,
   "effects": {
     "buffDuration": 60,
+    "damageBuff": {
+      "scale": 3.3,
+      "table": "Melee_Buff_Dmg"
+    },
     "durations": {
-      "recoveryBuff": 60,
+      "damageBuff": 60,
+      "maxEndBuff": 15,
+      "recoveryBuffUnenhanced": 60,
       "resistance": 60
     },
-    "recoveryBuff": {
+    "maxEndBuff": {
+      "scale": 15,
+      "table": "Melee_Ones"
+    },
+    "recoveryBuffUnenhanced": {
       "scale": 0.3,
       "table": "Melee_Ones"
     },
@@ -81,15 +91,25 @@ export const Meltdown: Power = {
     }
   },
   "atoms": [
-    ["Resistance","Smashing",2,1,60,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Resistance","Lethal",2,1,60,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Resistance","Fire",2,1,60,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Resistance","Cold",2,1,60,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Resistance","Energy",2,1,60,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Resistance","Negative",2,1,60,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Resistance","Psionic",2,1,60,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Resistance","Toxic",2,1,60,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Recovery",null,0.3,1,60,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,3.3,1,60,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",true,"No",null,null,null,1]
+    ["Resistance","Smashing",2,1,60,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Lethal",2,1,60,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Fire",2,1,60,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Cold",2,1,60,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Energy",2,1,60,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Negative",2,1,60,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Psionic",2,1,60,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Toxic",2,1,60,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Recovery",null,0.3,1,60,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["MaxEndurance",null,-15,1,15,"Melee_Ones","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["GlobalChanceMod",null,-1,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["GlobalChanceMod",null,1,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Smashing",3.3,1,60,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",3.3,1,60,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Fire",3.3,1,60,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Cold",3.3,1,60,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Energy",3.3,1,60,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Negative",3.3,1,60,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",3.3,1,60,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",3.3,1,60,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
   ]
 };

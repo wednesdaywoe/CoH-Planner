@@ -49,15 +49,17 @@ export const Gale: Power = {
   },
   "effects": {
     "knockback": {
-      "scale": 5,
+      "scale": 10,
       "table": "Ranged_Knockback"
     }
   },
   "atoms": [
-    ["Unmapped",null,0.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Mez","Knockback",5,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > ||",true],
-    ["Mez","Knockback",5,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Smashing",0.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Mez","Knockback",5,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Mez","Knockback",5,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Smashing",0.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > ||",true],
+    ["Mez","Knockback",5,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Knockback",5,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "damageTypes": [
     "Smashing"

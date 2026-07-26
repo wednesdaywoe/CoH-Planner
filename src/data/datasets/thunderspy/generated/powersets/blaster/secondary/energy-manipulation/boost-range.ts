@@ -32,16 +32,14 @@ export const BoostRange: Power = {
   "effects": {
     "buffDuration": 30,
     "durations": {
-      "specialBuff": 30
+      "rangeBuff": 30
     },
-    "specialBuff": {
-      "stun": {
-        "scale": 0.5,
-        "table": "Melee_Stun"
-      }
+    "rangeBuff": {
+      "scale": 0.5,
+      "table": "Melee_Stun"
     }
   },
   "atoms": [
-    ["Enhancement","Stunned",0.5,1,30,"Melee_Stun","Str","Magnitude","Self","Any",true,"No",null,null,null,1]
+    ["Range",null,0.5,1,30,"Melee_Stun","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
   ]
 };

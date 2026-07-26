@@ -37,20 +37,61 @@ export const ChronoShift: Power = {
     "Healing"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Heal",
+      "scale": 1.2,
+      "table": "Ranged_Heal"
+    },
+    {
+      "type": "Heal",
+      "scale": 0.2,
+      "table": "Ranged_Heal",
+      "duration": 30,
+      "tickRate": 3
+    },
+    {
+      "type": "Heal",
+      "scale": 1.8,
+      "table": "Ranged_Heal"
+    },
+    {
+      "type": "Heal",
+      "scale": 0.3,
+      "table": "Ranged_Heal",
+      "duration": 30,
+      "tickRate": 3
+    }
+  ],
   "effects": {
+    "buffDuration": 90,
+    "durations": {
+      "rechargeBuff": 90,
+      "recoveryBuff": 30
+    },
     "enduranceGain": {
       "scale": 0.15,
       "table": "Ranged_Ones"
     },
-    "healing": {
-      "scale": 3,
-      "table": "Ranged_Heal"
+    "rechargeBuff": {
+      "scale": 0.5,
+      "table": "Ranged_Ones"
+    },
+    "recoveryBuff": {
+      "scale": 0.3,
+      "table": "Ranged_Ones"
     }
   },
   "atoms": [
-    ["Unmapped",null,1.2,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower? ! isPVPMap? ! &&"],
-    ["Unmapped",null,1.8,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower? isPVPMap? ! &&"],
-    ["Endurance",null,0.15,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Regeneration",null,1.066,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
+    ["Heal",null,1.2,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower? ! isPVPMap? ! &&"],
+    ["Heal",null,0.2,1,30,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,3,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower? ! isPVPMap? ! &&"],
+    ["Heal",null,1.8,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower? isPVPMap? ! &&"],
+    ["Heal",null,0.3,1,30,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,3,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower? isPVPMap? ! &&"],
+    ["Endurance",null,0.15,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["Recovery",null,0.3,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Meta",null,1,1,90,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["RechargeTime",null,0.5,1,90,"Ranged_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Regeneration",null,1.066,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
+    ["Regeneration",null,1.599,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
   ]
 };

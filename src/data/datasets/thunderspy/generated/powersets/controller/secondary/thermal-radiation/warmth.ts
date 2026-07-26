@@ -35,13 +35,12 @@ export const Warmth: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "healing": {
-      "scale": 1,
-      "table": "Ranged_Heal"
-    }
+  "damage": {
+    "type": "Heal",
+    "scale": 1,
+    "table": "Ranged_Heal"
   },
   "atoms": [
-    ["Unmapped",null,1,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"No",null,null,null,1]
+    ["Heal",null,1,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1]
   ]
 };

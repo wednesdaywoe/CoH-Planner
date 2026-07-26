@@ -49,20 +49,28 @@ export const DarkGrasp: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "buffDuration": 10,
+    "durations": {
+      "tohitDebuff": 10
+    },
     "hold": {
       "mag": 3,
       "scale": 12,
       "table": "Ranged_Immobilize"
+    },
+    "tohitDebuff": {
+      "scale": 0.75,
+      "table": "Ranged_DeBuff_ToHit"
     }
   },
   "atoms": [
-    ["Mez","Held",12,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.75,1,10,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Mez","Held",4,4,0,"Ranged_Immobilize","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Held",18,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kStealth source> 0.5 > &&",true],
-    ["Mez","Held",4,1,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq kStealth source> 0.5 > &&",true],
-    ["Unmapped",null,2.6446,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Mez","Held",12,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Negative",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["ToHit",null,0.75,1,10,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Mez","Held",4,4,0,"Ranged_Immobilize","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Held",18,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kStealth source> 0.5 > &&",true],
+    ["Mez","Held",4,1,0,"Ranged_Ones","Cur","Duration","Target","PvP",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kStealth source> 0.5 > &&",true],
+    ["Damage","Negative",2.6446,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "conditionalEffects": [
     {

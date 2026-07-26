@@ -41,17 +41,28 @@ export const PrimalStrike: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Special",
-    "scale": 2.78,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 2.78,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Heal",
+      "scale": 0.278,
+      "table": "Melee_HealSelf"
+    },
+    {
+      "type": "Heal",
+      "scale": 0.556,
+      "table": "Melee_HealSelf"
+    }
+  ],
   "atoms": [
-    ["Meta",null,0,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,2.78,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.278,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.556,0,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"No",null,null,null,1]
+    ["Damage","Smashing",2.78,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Meta",null,0.1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true],
+    ["Heal",null,0.278,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Heal",null,0.556,0,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1]
   ],
   "modeVariants": {
     "HunterMode": {
@@ -64,13 +75,23 @@ export const PrimalStrike: Power = {
         "castTime": 1.4
       },
       "damage": {
-        "type": "Special",
+        "type": "Lethal",
         "scale": 2.78,
         "table": "Melee_Damage"
       },
       "damageTypes": [
         "Lethal"
       ],
+      "effects": {
+        "buffDuration": 6,
+        "damageDebuff": {
+          "scale": 2.25,
+          "table": "Melee_Debuff_Dam"
+        },
+        "durations": {
+          "damageDebuff": 6
+        }
+      },
       "shortHelp": "Melee, Superior DMG(Special), Special",
       "description": "You strike your foe will the primal forces of nature to deal Superior damage. In primal (human) form you will deal smashing damage and will heal yourself and up to 3 nearby allies for a good amount of health. In Hunter form you'll deal lethal damage and reduce the target's damage slightly. In Prowler form you'll deal lethal damage, cause minor lethal damage over time and have a high chance to stun. This power builds 1 primal energy. Damage: Superior, Recharge: Slow",
       "effectArea": "SingleTarget",
@@ -88,12 +109,24 @@ export const PrimalStrike: Power = {
       },
       "damage": [
         {
-          "type": "Special",
+          "type": "Lethal",
           "scale": 2.78,
           "table": "Melee_Damage"
         },
         {
-          "type": "Special",
+          "type": "Lethal",
+          "scale": 1.39,
+          "table": "Melee_Damage"
+        },
+        {
+          "type": "Lethal",
+          "scale": 0.1,
+          "table": "Melee_Damage",
+          "duration": 4.1,
+          "tickRate": 1
+        },
+        {
+          "type": "Lethal",
           "scale": 0.1,
           "table": "Melee_Damage",
           "duration": 4.1,

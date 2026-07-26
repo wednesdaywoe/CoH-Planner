@@ -66,6 +66,50 @@
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Melee_Level",
+          "scale": 1.0,
+          "duration": "1 seconds",
+          "magnitude": 0.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 1.5,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "enttype source> player eq isPVPMap? ! &&",
+          "caster_stack": "",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "enttype source> player eq isPVPMap? ! &&",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
           "aspect": "",
           "target": "",
           "table": "Melee_Level",
@@ -106,7 +150,7 @@
       "templates": [
         {
           "attribs": [
-            "Recharge"
+            "RechargeTime"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -125,9 +169,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "Boost"
+          ],
+          "flags_raw": 5168
         }
       ]
     }

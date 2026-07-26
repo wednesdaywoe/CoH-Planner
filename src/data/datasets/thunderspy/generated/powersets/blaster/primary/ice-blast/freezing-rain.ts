@@ -41,6 +41,14 @@ export const FreezingRain: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 9.53,
+    "damageBuff": {
+      "scale": 0.033,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 9.53
+    },
     "summon": {
       "duration": 15,
       "entity": "Pets_IceStorm",
@@ -48,8 +56,16 @@ export const FreezingRain: Power = {
     }
   },
   "atoms": [
+    ["EntCreate",null,1,1,15,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["EntCreate",null,1,1,15,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.033,1,9.53,"Ranged_Ones","Str","Magnitude","Self","Any",true,"No",null,null,null,1]
+    ["DamageBuff","Smashing",0.033,1,9.53,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",0.033,1,9.53,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Fire",0.033,1,9.53,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Cold",0.033,1,9.53,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Energy",0.033,1,9.53,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Negative",0.033,1,9.53,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",0.033,1,9.53,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",0.033,1,9.53,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
   ],
   "damageTypes": [
     "Cold",

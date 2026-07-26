@@ -45,10 +45,43 @@ export const EbonEye: Power = {
     "scale": 1,
     "table": "Ranged_Damage"
   },
+  "effects": {
+    "buffDuration": 6,
+    "durations": {
+      "rechargeDebuff": 6,
+      "slow": 6
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
+    },
+    "slow": {
+      "flySpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      }
+    }
+  },
   "atoms": [
-    ["Unmapped",null,1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.2,1,6,"Ranged_Slow","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,2.0748,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Negative",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Movement","JumpHeight",0.2,1,6,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Movement","Jump",0.2,1,6,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","Run",0.2,1,6,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","Fly",0.2,1,6,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["RechargeTime",null,0.2,1,6,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Damage","Negative",2.0748,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "damageTypes": [
     "Negative"

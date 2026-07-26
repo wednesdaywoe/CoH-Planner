@@ -59,6 +59,46 @@
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Levelminus",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 0.33000001311302185,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "rank target> Class_Minion_PraetorianGrunt eq rank target> Class_Lt_PraetorianGrunt eq || rank target> Class_Boss_PraetorianGrunt eq || rank target> Class_Boss_PraetorianElite eq || rank target> Class_Boss_PraetorianArchvillain eq ||",
+          "caster_stack": "",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "rank target> Class_Minion_PraetorianGrunt eq rank target> Class_Lt_PraetorianGrunt eq || rank target> Class_Boss_PraetorianGrunt eq || rank target> Class_Boss_PraetorianElite eq || rank target> Class_Boss_PraetorianArchvillain eq ||",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
           "aspect": "",
           "target": "",
           "table": "Ranged_Levelminus",
@@ -82,6 +122,46 @@
             "entity_def": "DevouringEarth_Endgame_Purple_Crystal_Beast_Shard",
             "priority_list": "PL_FightPreferMelee"
           }
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "rank target> Class_Minion_PraetorianGrunt eq rank target> Class_Lt_PraetorianGrunt eq || rank target> Class_Boss_PraetorianGrunt eq || rank target> Class_Boss_PraetorianElite eq || rank target> Class_Boss_PraetorianArchvillain eq ||",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Levelminus",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 0.25,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "rank target> Class_Minion_PraetorianGrunt eq rank target> Class_Lt_PraetorianGrunt eq || rank target> Class_Boss_PraetorianGrunt eq || rank target> Class_Boss_PraetorianElite eq || rank target> Class_Boss_PraetorianArchvillain eq ||",
+          "caster_stack": "",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -147,6 +227,46 @@
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Levelminus",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 0.25,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "rank target> Class_Minion_PraetorianGrunt eq rank target> Class_Lt_PraetorianGrunt eq || rank target> Class_Boss_PraetorianGrunt eq || rank target> Class_Boss_PraetorianElite eq || rank target> Class_Boss_PraetorianArchvillain eq ||",
+          "caster_stack": "",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "rank target> Class_Minion_PraetorianGrunt eq rank target> Class_Lt_PraetorianGrunt eq || rank target> Class_Boss_PraetorianGrunt eq || rank target> Class_Boss_PraetorianElite eq || rank target> Class_Boss_PraetorianArchvillain eq ||",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
           "aspect": "",
           "target": "",
           "table": "Ranged_Levelminus",
@@ -170,6 +290,46 @@
             "entity_def": "DevouringEarth_Endgame_Purple_Crystal_Beast_Shard",
             "priority_list": "PL_FightPreferMelee"
           }
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "rank target> Class_Minion_Grunt eq rank target> Class_Lt_Grunt eq || rank target> Class_Boss_Grunt eq || rank target> Class_Boss_Elite eq || rank target> Class_Boss_Archvillain eq ||",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Levelminus",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 0.33000001311302185,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "rank target> Class_Minion_Grunt eq rank target> Class_Lt_Grunt eq || rank target> Class_Boss_Grunt eq || rank target> Class_Boss_Elite eq || rank target> Class_Boss_Archvillain eq ||",
+          "caster_stack": "",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -235,6 +395,46 @@
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Levelminus",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 0.25,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "rank target> Class_Minion_Grunt eq rank target> Class_Lt_Grunt eq || rank target> Class_Boss_Grunt eq || rank target> Class_Boss_Elite eq || rank target> Class_Boss_Archvillain eq ||",
+          "caster_stack": "",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "rank target> Class_Minion_Grunt eq rank target> Class_Lt_Grunt eq || rank target> Class_Boss_Grunt eq || rank target> Class_Boss_Elite eq || rank target> Class_Boss_Archvillain eq ||",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
           "aspect": "",
           "target": "",
           "table": "Ranged_Levelminus",
@@ -258,6 +458,46 @@
             "entity_def": "DevouringEarthInfestedLow_Purple_Crystal_Beast_Shard",
             "priority_list": "PL_FightPreferMelee"
           }
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "rank target> Class_Minion_Grunt eq rank target> Class_Lt_Grunt eq || rank target> Class_Boss_Grunt eq || rank target> Class_Boss_Elite eq || rank target> Class_Boss_Archvillain eq ||",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Levelminus",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 0.25,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "rank target> Class_Minion_Grunt eq rank target> Class_Lt_Grunt eq || rank target> Class_Boss_Grunt eq || rank target> Class_Boss_Elite eq || rank target> Class_Boss_Archvillain eq ||",
+          "caster_stack": "",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },

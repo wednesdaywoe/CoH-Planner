@@ -48,6 +48,7 @@ export const ShadowField: Power = {
     }
   },
   "atoms": [
+    ["EntCreate",null,1,1,45,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["EntCreate",null,1,1,45,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
   ]
 };

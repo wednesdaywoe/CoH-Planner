@@ -67,7 +67,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Lethal_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -86,9 +86,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> critter eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -106,7 +107,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Toxic_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -125,9 +126,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Lash source.ownPower?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -164,9 +166,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> critter eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -203,9 +206,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> player eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -223,7 +227,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Null"
           ],
           "type": "Constant",
           "application_type": "OnTick",
@@ -242,9 +246,58 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Lash source.ownPower?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 3120
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Lash source.ownPower?",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Revoke_Power"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Lash source.ownPower?",
+          "caster_stack": "",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -262,7 +315,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Toxic_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -281,9 +334,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Flay source.ownPower?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -301,7 +355,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Null"
           ],
           "type": "Constant",
           "application_type": "OnTick",
@@ -320,9 +374,58 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Flay source.ownPower?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 3120
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Flay source.ownPower?",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Revoke_Power"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Flay source.ownPower?",
+          "caster_stack": "",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -340,7 +443,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Grant_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -359,9 +462,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -379,7 +487,51 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Grant_Power"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "Self",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Grant_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -398,9 +550,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -418,7 +575,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Lethal_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -437,9 +594,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> player eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -457,7 +615,7 @@
       "templates": [
         {
           "attribs": [
-            "InherentTaunt"
+            "Taunt"
           ],
           "type": "Duration",
           "application_type": "OnTick",
@@ -476,9 +634,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "CancelOnMiss"
+          ],
+          "flags_raw": 2564
         }
       ]
     },
@@ -496,7 +658,7 @@
       "templates": [
         {
           "attribs": [
-            "InherentTaunt"
+            "Taunt"
           ],
           "type": "Duration",
           "application_type": "OnTick",
@@ -515,9 +677,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Raid target.HasTag? ! enttype target> critter eq &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "CancelOnMiss"
+          ],
+          "flags_raw": 2564
         }
       ]
     },
@@ -535,7 +701,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Taunt"
           ],
           "type": "Duration",
           "application_type": "OnTick",
@@ -554,9 +720,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> player eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 2560
         }
       ]
     },
@@ -574,7 +741,7 @@
       "templates": [
         {
           "attribs": [
-            "FieryEmbrace"
+            "Fire_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -593,9 +760,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -613,7 +781,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Cold_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -632,9 +800,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer source.ownPower?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -652,7 +821,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Null"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -671,9 +840,58 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer source.ownPower?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer source.ownPower?",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Grant_Power"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer source.ownPower?",
+          "caster_stack": "",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     }

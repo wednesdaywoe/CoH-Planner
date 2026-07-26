@@ -40,8 +40,14 @@ export const ReinforcedExoskeleton: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "absorb": {
+      "appliesStrength": true,
+      "maxHPFraction": 0.015,
+      "table": "Melee_Ones"
+    },
     "buffDuration": 0.75,
     "durations": {
+      "absorb": 0.75,
       "resistance": 0.75
     },
     "resistance": {
@@ -76,14 +82,14 @@ export const ReinforcedExoskeleton: Power = {
     }
   },
   "atoms": [
-    ["Resistance","Smashing",2,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Resistance","Lethal",2,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Resistance","Fire",2,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Resistance","Cold",2,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Resistance","Energy",2,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Resistance","Negative",2,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Resistance","Toxic",2,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,0.75,"Melee_Ones","Max","Expression","Self","Any",true,"No",null,null,0.25,1,null,null,null,null,null,null,null,null,null,null,null,null,"Max.kHitPoints source> .015 * @Strength *"]
+    ["Resistance","Smashing",2,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Lethal",2,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Fire",2,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Cold",2,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Energy",2,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Negative",2,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Toxic",2,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Absorb",null,1,1,0.75,"Melee_Ones","Max","Expression","Self","Any",false,"Replace",2,null,0.25,1,null,null,null,null,null,null,null,null,null,null,null,null,"Max.kHitPoints source> .015 * @Strength *"]
   ],
   "modesRequired": [
     "Widow_Tarantula_Mode"

@@ -58,15 +58,23 @@ describe('Thunderspy Ones-attrib buff recovery (data-driven)', () => {
 
   it('Speed Boost recovers BOTH +recharge and +recovery (multi-stat ally buff the shortHelp hack could not)', () => {
     expect(SpeedBoost.effects?.rechargeBuff).toEqual({ scale: 0.5, table: 'Melee_Ones' });
-    expect(SpeedBoost.effects?.recoveryBuff).toEqual({ scale: 0.25, table: 'Melee_Ones' });
+    // 0.75 = 0.5 + 0.25. Thunderspy authors a SECOND, smaller tier of the same
+    // stats in its own ungated effect group; nothing in the data separates the two,
+    // so the resource slot's documented same-table SUM applies (HC and Rebirth carry
+    // only the 0.5 tier — a fork rebalance, not a misread). The 0.25 half became
+    // visible when the parser started reading every AttribMod in an element (TSPY-4).
+    expect(SpeedBoost.effects?.recoveryBuff).toEqual({ scale: 0.75, table: 'Melee_Ones' });
     expect(SpeedBoost.effects?.buffDuration).toBe(240);
   });
 
   it('Siphon Speed routes its negative-scale Ones template to a recharge DEBUFF', () => {
-    // -0.2 RechargeTime → rechargeDebuff (sign discriminates buff vs debuff),
-    // never a bogus +recharge buff.
+    // -0.2 RechargeTime → rechargeDebuff (sign discriminates buff vs debuff).
     expect(SiphonSpeed.effects?.rechargeDebuff).toEqual({ scale: 0.2, table: 'Melee_Ones' });
-    expect(SiphonSpeed.effects?.rechargeBuff).toBeUndefined();
+    // Siphon Speed STEALS recharge: the same +0.2 self-buff its HC and Rebirth twins
+    // both carry rides alongside the debuff. tspy shipped without it until TSPY-4 —
+    // its absence was the parser reading one AttribMod per element, not a fork
+    // difference, so this is no longer a bogus-buff guard.
+    expect(SiphonSpeed.effects?.rechargeBuff).toEqual({ scale: 0.2, table: 'Melee_Ones' });
   });
 
   it('Burnout (instant power-reset, not a +recharge buff) stays ineligible', () => {
@@ -75,7 +83,11 @@ describe('Thunderspy Ones-attrib buff recovery (data-driven)', () => {
     const burnout = getPowerPool('speed')?.powers.find((p) => p.internalName === 'Burnout');
     expect(burnout).toBeDefined();
     expect(burnout!.effects?.rechargeBuff).toBeUndefined();
-    expect(burnout!.effects?.buffDuration).toBeUndefined();
+    // `buffDuration` is now 60 — not a recharge buff, but Burnout's endurance crash
+    // (`Endurance -25 @maximum, 60s`), an AttribMod the parser only reached once it
+    // walked every sub-record of an element (TSPY-4). Perma-eligibility is what this
+    // test guards, and it still turns on the absent rechargeBuff.
+    expect(burnout!.effects?.buffDuration).toBe(60);
     expect(isPermaEligible(burnout!)).toBe(false);
   });
 

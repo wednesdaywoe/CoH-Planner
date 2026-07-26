@@ -31,7 +31,22 @@ export const Inexhaustible: Power = {
   "maxSlots": 6,
   "effects": {
     "buffDuration": 10.25,
+    "debuffResistance": {
+      "endurance": {
+        "scale": 2,
+        "table": "Melee_Res_Boolean"
+      },
+      "movement": {
+        "scale": 0.3,
+        "table": "Melee_Ones"
+      },
+      "recharge": {
+        "scale": 0.3,
+        "table": "Melee_Ones"
+      }
+    },
     "durations": {
+      "debuffResistance": 10.25,
       "recoveryBuff": 10.25
     },
     "recoveryBuff": {
@@ -40,8 +55,13 @@ export const Inexhaustible: Power = {
     }
   },
   "atoms": [
-    ["Recovery",null,0.3,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,2,1,10.25,"Melee_Res_Boolean","Res","Magnitude","Self","Any",true,"No",null,null,null,1]
+    ["Recovery",null,0.3,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Movement","Run",0.3,1,10.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["RechargeTime",null,0.3,1,10.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Movement","Fly",0.3,1,10.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Movement","JumpHeight",0.3,1,10.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Movement","Jump",0.3,1,10.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Endurance",null,2,1,10.25,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
   ],
   "mechanicType": "parentMechanic"
 };

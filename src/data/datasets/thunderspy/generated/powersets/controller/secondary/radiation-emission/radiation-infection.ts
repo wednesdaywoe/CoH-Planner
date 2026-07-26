@@ -40,9 +40,24 @@ export const RadiationInfection: Power = {
     "To Hit Debuff"
   ],
   "maxSlots": 6,
+  "effects": {
+    "buffDuration": 5,
+    "defenseDebuff": {
+      "scale": 2.5,
+      "table": "Ranged_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 5,
+      "tohitDebuff": 5
+    },
+    "tohitDebuff": {
+      "scale": 2.5,
+      "table": "Ranged_DeBuff_ToHit"
+    }
+  },
   "atoms": [
-    ["Unmapped",null,2.5,1,5,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,2.5,1,5,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1]
+    ["ToHit",null,2.5,1,5,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Defense","All",2.5,1,5,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1]
   ],
   "damageTypes": [
     "Energy"

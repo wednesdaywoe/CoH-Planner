@@ -76,6 +76,50 @@
           "attribs": [
             "Create_Entity"
           ],
+          "type": "Expression",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": -1.0,
+          "duration": "8 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "8 Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPowerNum? 2 * +",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "entref target.owner> entref source> eq !",
+          "caster_stack": "",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 2096
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "entref target.owner> entref source> eq !",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
           "type": "Magnitude",
           "application_type": "OnTick",
           "aspect": "",
@@ -140,9 +184,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "entref target.owner> entref source> eq ! target.isFriend? ! && enttype target> critter eq &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 2560
         }
       ]
     },
@@ -179,9 +224,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "entref target.owner> entref source> eq ! target.isFriend? ! && enttype target> player eq &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 2560
         }
       ]
     },
@@ -218,9 +264,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "entref target.owner> entref source> eq ! target.isFriend? ! && enttype target> critter eq && kStealth source> 0.5 > &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 2560
         }
       ]
     },
@@ -257,9 +304,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "entref target.owner> entref source> eq ! target.isFriend? ! && enttype target> player eq && kStealth source> 0.5 > &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 2080
         }
       ]
     },
@@ -277,7 +328,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Lethal_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -296,9 +347,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> critter eq entref target.owner> entref source> eq ! && target.isFriend? ! && Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPowerNum? 6 == &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -316,7 +368,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Lethal_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -335,9 +387,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> player eq entref target.owner> entref source> eq ! && target.isFriend? ! && Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPowerNum? 6 == &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -355,7 +408,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Set_Mode"
           ],
           "type": "Expression",
           "application_type": "OnTick",
@@ -364,7 +417,7 @@
           "table": "Ranged_Ones",
           "scale": 1.0,
           "duration": "0 seconds",
-          "magnitude": 1.0,
+          "magnitude": 108.0,
           "delay": 0.0,
           "duration_expression": "Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPowerNum? 5 * 30 +",
           "magnitude_expression": "",
@@ -374,9 +427,16 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "kCloudedSkies Source.Mode? ! entref target.owner> entref source> eq &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 112,
+          "mode_name": "ClearSkies"
         }
       ]
     },
@@ -394,7 +454,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Set_Mode"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -403,7 +463,7 @@
           "table": "Ranged_Ones",
           "scale": 1.0,
           "duration": "239 seconds",
-          "magnitude": 1.0,
+          "magnitude": 109.0,
           "delay": 0.5,
           "duration_expression": "Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPowerNum? 5 * 30 +",
           "magnitude_expression": "",
@@ -413,9 +473,16 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "entref target.owner> entref source> eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 112,
+          "mode_name": "CloudedSkies"
         }
       ]
     },
@@ -433,7 +500,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Revoke_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -452,9 +519,58 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPower?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPower?",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Null"
+          ],
+          "type": "Constant",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "Self",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPower?",
+          "caster_stack": "",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 3120
         }
       ]
     }

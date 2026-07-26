@@ -66,7 +66,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Fire_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -85,9 +85,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> critter eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -105,7 +106,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Fire_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -124,9 +125,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "CancelOnMiss"
+          ],
+          "flags_raw": 1284
         }
       ]
     },
@@ -144,7 +149,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Fire_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -163,9 +168,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> player eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -183,7 +189,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Fire_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -202,9 +208,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> critter eq kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || IncarnateBoss target.HasTag? || && arch source> Class_Controller == &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -222,7 +229,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Fire_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -241,9 +248,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> player eq kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || && arch source> Class_Controller == &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     }

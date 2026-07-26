@@ -41,6 +41,12 @@ export const Deflection: Power = {
   "maxSlots": 6,
   "effects": {
     "buffDuration": 0.75,
+    "debuffResistance": {
+      "defense": {
+        "scale": 0.4,
+        "table": "Melee_Res_Boolean"
+      }
+    },
     "defenseBuff": {
       "aoe": {
         "scale": 1.65,
@@ -52,14 +58,16 @@ export const Deflection: Power = {
       }
     },
     "durations": {
+      "debuffResistance": 0.75,
       "defenseBuff": 0.75
     }
   },
   "atoms": [
-    ["Defense","Ranged",1.65,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Defense","AoE",1.65,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.4,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
+    ["Defense","Ranged",1.65,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Defense","AoE",1.65,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Defense","All",0.4,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Elusivity","Ranged",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
+    ["Elusivity","AoE",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
   ],
   "requires": "Brute_Melee.Dual_Blades Brute_Melee.Claws || Brute_Melee.Staff_Fighting || Brute_Melee.Katana || Brute_Melee.Titan_Weapons || !"
 };

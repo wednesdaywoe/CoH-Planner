@@ -62,7 +62,7 @@
       "templates": [
         {
           "attribs": [
-            "GenesisMaxHp"
+            "HitPoints"
           ],
           "type": "Expression",
           "application_type": "OnTick",
@@ -81,9 +81,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "arch target> Class_Boss_Monster eq arch target> Class_Boss_Reichsman eq || arch target> Class_Boss_Monster_Flying eq || arch target> Class_Boss_Archvillain_Flying eq || arch target> Class_Boss_Archvillain eq || arch target> Class_Boss_PraetorianArchvillain eq || arch target> Class_Boss_Mito eq || arch target> Class_Boss_Hamidon eq || arch target> Class_Boss_RularuuFM eq || arch target> Class_Boss_RularuuCoP eq || arch target> Class_Boss_Rularuu eq || arch target> Class_Boss_PraetorianAVLowPerception eq || ! enttype target> player eq || target.isFriend? ! && @ToHitRoll @ToHit / @ChanceMods < && combatlevel source> 45 < &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "StackThenIgnore",
+          "stack_limit": 4,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength"
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -101,7 +105,7 @@
       "templates": [
         {
           "attribs": [
-            "GenesisMaxHp"
+            "HitPoints"
           ],
           "type": "Expression",
           "application_type": "OnTick",
@@ -120,9 +124,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "arch target> Class_Boss_Monster eq arch target> Class_Boss_Reichsman eq || arch target> Class_Boss_Monster_Flying eq || arch target> Class_Boss_Archvillain_Flying eq || arch target> Class_Boss_Archvillain eq || arch target> Class_Boss_PraetorianArchvillain eq || arch target> Class_Boss_Mito eq || arch target> Class_Boss_Hamidon eq || arch target> Class_Boss_RularuuFM eq || arch target> Class_Boss_RularuuCoP eq || arch target> Class_Boss_Rularuu eq || arch target> Class_Boss_PraetorianAVLowPerception eq || enttype target> player eq ! && target.isFriend? ! && @ToHitRoll @ToHit / @ChanceMods < && combatlevel source> 45 < &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "StackThenIgnore",
+          "stack_limit": 4,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength"
+          ],
+          "flags_raw": 1296
         }
       ]
     }

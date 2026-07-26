@@ -46,28 +46,47 @@ export const TenebrousTentacles: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Negative",
-    "scale": 0.07235,
-    "table": "Ranged_Damage",
-    "duration": 6.1,
-    "tickRate": 1
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.07235,
+      "table": "Ranged_Damage",
+      "duration": 6.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Negative",
+      "scale": 0.135,
+      "table": "Ranged_Damage"
+    }
+  ],
   "effects": {
+    "buffDuration": 8,
+    "durations": {
+      "tohitDebuff": 8
+    },
     "immobilize": {
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"
+    },
+    "tohitDebuff": {
+      "scale": 0.75,
+      "table": "Ranged_DeBuff_ToHit"
     }
   },
   "atoms": [
-    ["Unmapped",null,0.07235,1,6.1,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.75,1,8,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.060525,1,7.1,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,0.118,1,6.1,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,1,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> critter eq &&",true],
-    ["Unmapped",null,0.060525,1,7.1,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,1,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> player eq &&",true],
-    ["Mez","Immobilized",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Smashing",0.07235,1,6.1,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Negative",0.135,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["ToHit",null,0.75,1,8,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Smashing",0.060525,1,7.1,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Negative",0.083583,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Smashing",0.118,1,6.1,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> critter eq &&",true],
+    ["Damage","Negative",0.135,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> critter eq &&",true],
+    ["Damage","Smashing",0.060525,1,7.1,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> player eq &&",true],
+    ["Damage","Negative",0.083583,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> player eq &&",true],
+    ["Mez","Immobilized",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "damageTypes": [
     "Negative",

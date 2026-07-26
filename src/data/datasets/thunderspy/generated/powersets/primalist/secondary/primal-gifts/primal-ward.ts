@@ -41,10 +41,25 @@ export const PrimalWard: Power = {
   "maxSlots": 6,
   "effects": {
     "buffDuration": 0.75,
+    "debuffResistance": {
+      "endurance": {
+        "scale": 0.4,
+        "table": "Melee_Res_Boolean"
+      },
+      "recovery": {
+        "scale": 0.4,
+        "table": "Melee_Res_Boolean"
+      }
+    },
     "durations": {
+      "debuffResistance": 0.75,
       "resistance": 0.75
     },
     "resistance": {
+      "cold": {
+        "scale": 1,
+        "table": "Melee_Res_DMG"
+      },
       "energy": {
         "scale": 2.5,
         "table": "Melee_Res_DMG"
@@ -60,12 +75,15 @@ export const PrimalWard: Power = {
     }
   },
   "atoms": [
-    ["Resistance","Energy",2.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["Resistance","Negative",2.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["Resistance","Fire",2.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["Unmapped",null,0.4,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Resistance","Energy",2.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
-    ["Resistance","Negative",2.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
-    ["Resistance","Fire",2.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
+    ["Resistance","Energy",2.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
+    ["Resistance","Negative",2.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
+    ["Resistance","Fire",2.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
+    ["Resistance","Cold",1,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
+    ["Recovery",null,0.4,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Endurance",null,0.4,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Energy",2.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
+    ["Resistance","Negative",2.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
+    ["Resistance","Fire",2.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
+    ["Resistance","Cold",1,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
   ]
 };

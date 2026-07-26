@@ -46,6 +46,14 @@ export const Fossilize: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "buffDuration": 12,
+    "defenseDebuff": {
+      "scale": 2,
+      "table": "Ranged_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 12
+    },
     "hold": {
       "mag": 3,
       "scale": 12,
@@ -53,15 +61,18 @@ export const Fossilize: Power = {
     }
   },
   "atoms": [
-    ["Mez","Held",12,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Held",9,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,2,1,12,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,100,1,12,"Ranged_Ones","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Held",4,4,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || IncarnateBoss target.HasTag? || &&",true],
-    ["Unmapped",null,3.636716,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,1.818358,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || &&",true]
+    ["Mez","Held",12,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Held",9,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Defense","All",2,1,12,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["MezResist","Knockback",100,1,12,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["MezResist","Knockup",100,1,12,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["Mez","Knockback",-100,1,12,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["Mez","Knockup",-100,1,12,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["Damage","Smashing",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Held",4,4,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Smashing",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || IncarnateBoss target.HasTag? || &&",true],
+    ["Damage","Smashing",3.636716,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Smashing",1.818358,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || &&",true]
   ],
   "damageTypes": [
     "Smashing"

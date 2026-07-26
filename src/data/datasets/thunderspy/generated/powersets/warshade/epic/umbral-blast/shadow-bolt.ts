@@ -45,10 +45,33 @@ export const ShadowBolt: Power = {
     "scale": 0.6,
     "table": "Ranged_Damage"
   },
+  "effects": {
+    "buffDuration": 4,
+    "durations": {
+      "rechargeDebuff": 4,
+      "slow": 4
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
+    },
+    "slow": {
+      "flySpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      }
+    }
+  },
   "atoms": [
-    ["Unmapped",null,0.6,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.2,1,4,"Ranged_Slow","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1.392,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Negative",0.6,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Movement","Run",0.2,1,4,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Movement","Fly",0.2,1,4,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["RechargeTime",null,0.2,1,4,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Damage","Negative",1.392,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "damageTypes": [
     "Negative"

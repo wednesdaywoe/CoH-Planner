@@ -43,7 +43,7 @@ export const SweepingCross: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 1.5,
     "table": "Melee_Damage"
   },
@@ -55,30 +55,32 @@ export const SweepingCross: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,1.5,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Combo_Level_1 source.ownPower? ! Temporary_Powers.Temporary_Powers.Combo_Level_2 source.ownPower? ! && Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower? ! && enttype target> critter eq &&"],
-    ["Mez","Stunned",6,3,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Combo_Level_1 source.ownPower? ! && Temporary_Powers.Temporary_Powers.Combo_Level_2 source.ownPower? ! && Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower? ! &&"],
-    ["Unmapped",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,0.8999999761581421,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1.575,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Combo_Level_1 source.ownPower? enttype target> critter eq &&",true],
-    ["Unmapped",null,1.68,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Combo_Level_2 source.ownPower? enttype target> critter eq &&",true],
-    ["Unmapped",null,1.875,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower? enttype target> critter eq &&",true],
-    ["Unmapped",null,1.532947,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Combo_Level_1 source.ownPower? ! Temporary_Powers.Temporary_Powers.Combo_Level_2 source.ownPower? ! && Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower? ! && enttype target> player eq &&",true],
-    ["Unmapped",null,1.609594,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Combo_Level_1 source.ownPower? enttype target> player eq &&",true],
-    ["Unmapped",null,1.716901,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Combo_Level_2 source.ownPower? enttype target> player eq &&",true],
-    ["Unmapped",null,1.916184,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower? enttype target> player eq &&",true],
-    ["Unmapped",null,1.532947,0.5,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true],
-    ["Unmapped",null,1.532947,0.05000000074505806,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
-    ["Unmapped",null,1.5,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
-    ["Unmapped",null,1.5,0.5,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true],
-    ["Mez","Stunned",6,3,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Combo_Level_1 source.ownPower? &&",true],
-    ["Mez","Stunned",6,3,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Combo_Level_2 source.ownPower? &&",true],
-    ["Mez","Stunned",6,3,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower? &&",true],
-    ["Mez","Stunned",2,3,0,"Melee_Stun","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Combo_Level_1 source.ownPower? ! && Temporary_Powers.Temporary_Powers.Combo_Level_2 source.ownPower? ! && Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower? ! &&",true],
-    ["Mez","Stunned",2,3,0,"Melee_Stun","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Combo_Level_1 source.ownPower? &&",true],
-    ["Mez","Stunned",2,3,0,"Melee_Stun","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Combo_Level_2 source.ownPower? &&",true],
-    ["Mez","Stunned",2,3,0,"Melee_Stun","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower? &&",true],
-    ["Mez","Knockback",0.67,0.4000000059604645,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower? enttype target> critter eq &&",true],
-    ["Mez","Knockback",0.67,0.4000000059604645,0,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower? enttype target> player eq &&",true]
+    ["Damage","Smashing",1.5,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Combo_Level_1 source.ownPower? ! Temporary_Powers.Temporary_Powers.Combo_Level_2 source.ownPower? ! && Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower? ! && enttype target> critter eq &&"],
+    ["Mez","Stunned",6,3,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Combo_Level_1 source.ownPower? ! && Temporary_Powers.Temporary_Powers.Combo_Level_2 source.ownPower? ! && Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower? ! &&"],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
+    ["GrantPower",null,1,0.8999999761581421,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
+    ["Damage","Smashing",1.575,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Combo_Level_1 source.ownPower? enttype target> critter eq &&",true],
+    ["Damage","Smashing",1.68,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Combo_Level_2 source.ownPower? enttype target> critter eq &&",true],
+    ["Damage","Smashing",1.875,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower? enttype target> critter eq &&",true],
+    ["Damage","Smashing",1.532947,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Combo_Level_1 source.ownPower? ! Temporary_Powers.Temporary_Powers.Combo_Level_2 source.ownPower? ! && Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower? ! && enttype target> player eq &&",true],
+    ["Damage","Smashing",1.609594,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Combo_Level_1 source.ownPower? enttype target> player eq &&",true],
+    ["Damage","Smashing",1.716901,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Combo_Level_2 source.ownPower? enttype target> player eq &&",true],
+    ["Damage","Smashing",1.916184,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower? enttype target> player eq &&",true],
+    ["Damage","Smashing",1.532947,0.5,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true],
+    ["Damage","Smashing",1.532947,0.05000000074505806,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
+    ["Damage","Smashing",1.5,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
+    ["Damage","Smashing",1.5,0.5,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true],
+    ["Mez","Stunned",6,3,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Combo_Level_1 source.ownPower? &&",true],
+    ["Mez","Stunned",6,3,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Combo_Level_2 source.ownPower? &&",true],
+    ["Mez","Stunned",6,3,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower? &&",true],
+    ["Mez","Stunned",2,3,0,"Melee_Stun","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Combo_Level_1 source.ownPower? ! && Temporary_Powers.Temporary_Powers.Combo_Level_2 source.ownPower? ! && Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower? ! &&",true],
+    ["Mez","Stunned",2,3,0,"Melee_Stun","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Combo_Level_1 source.ownPower? &&",true],
+    ["Mez","Stunned",2,3,0,"Melee_Stun","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Combo_Level_2 source.ownPower? &&",true],
+    ["Mez","Stunned",2,3,0,"Melee_Stun","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower? &&",true],
+    ["Mez","Knockback",0.67,0.4000000059604645,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower? enttype target> critter eq &&",true],
+    ["Mez","Knockback",0.67,0.4000000059604645,0,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower? enttype target> player eq &&",true]
   ],
   "conditionalEffects": [
     {
@@ -88,7 +90,7 @@ export const SweepingCross: Power = {
       "defaultActive": false,
       "mode": "replace",
       "damage": {
-        "type": "Special",
+        "type": "Smashing",
         "scale": 1.575,
         "table": "Melee_Damage"
       },
@@ -108,7 +110,7 @@ export const SweepingCross: Power = {
       "defaultActive": false,
       "mode": "replace",
       "damage": {
-        "type": "Special",
+        "type": "Smashing",
         "scale": 1.68,
         "table": "Melee_Damage"
       },
@@ -128,7 +130,7 @@ export const SweepingCross: Power = {
       "defaultActive": false,
       "mode": "replace",
       "damage": {
-        "type": "Special",
+        "type": "Smashing",
         "scale": 1.875,
         "table": "Melee_Damage"
       },

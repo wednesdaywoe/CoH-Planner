@@ -38,20 +38,24 @@ export const Regrowth: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 4.1,
-    "durations": {
-      "healing": 4.1
-    },
-    "healing": {
-      "scale": 0.9,
+  "damage": [
+    {
+      "type": "Heal",
+      "scale": 0.75,
       "table": "Ranged_Heal"
+    },
+    {
+      "type": "Heal",
+      "scale": 0.15,
+      "table": "Ranged_Heal",
+      "duration": 4.1,
+      "tickRate": 1
     }
-  },
+  ],
   "atoms": [
-    ["Unmapped",null,0.75,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.15,1,4.1,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"No",null,null,1,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["Unmapped",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Regeneration",null,0.75,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
+    ["Heal",null,0.75,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Heal",null,0.15,1,4.1,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["Regeneration",null,0.75,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
   ]
 };

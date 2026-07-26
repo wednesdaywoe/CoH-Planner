@@ -37,12 +37,20 @@ export const StygianCircle: Power = {
     "Healing"
   ],
   "maxSlots": 6,
+  "effects": {
+    "enduranceGain": {
+      "scale": 20,
+      "table": "Melee_Ones",
+      "perTarget": 20
+    }
+  },
   "atoms": [
-    ["Unmapped",null,1,1,5,"Melee_Ones","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,2,1,0,"Melee_HealSelf","Abs","Magnitude","Self","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"arch target> Class_Lt_Grunt eq ! arch target> Class_Lt_Sniper eq ! && arch target> Class_Boss_Grunt eq ! && arch target> Class_Boss_Elite eq ! && arch target> Class_Boss_Archvillain eq ! && arch target> Class_Boss_Monster eq ! && enttype target> player eq ! &&",true],
-    ["Unmapped",null,3,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"arch target> Class_Lt_Grunt eq arch target> Class_Lt_Sniper eq ||",true],
-    ["Unmapped",null,4,1,0,"Melee_HealSelf","Abs","Magnitude","Self","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"arch target> Class_Boss_Grunt eq arch target> Class_Boss_Elite eq || enttype target> player eq ||",true],
-    ["Unmapped",null,5,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"arch target> Class_Boss_Archvillain eq arch target> Class_Boss_Monster eq ||",true]
+    ["Meta",null,1,1,5,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Endurance",null,20,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,20],
+    ["Heal",null,2,1,0,"Melee_HealSelf","Abs","Magnitude","Self","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch target> Class_Lt_Grunt eq ! arch target> Class_Lt_Sniper eq ! && arch target> Class_Boss_Grunt eq ! && arch target> Class_Boss_Elite eq ! && arch target> Class_Boss_Archvillain eq ! && arch target> Class_Boss_Monster eq ! && enttype target> player eq ! &&",true],
+    ["Heal",null,3,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch target> Class_Lt_Grunt eq arch target> Class_Lt_Sniper eq ||",true],
+    ["Heal",null,4,1,0,"Melee_HealSelf","Abs","Magnitude","Self","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch target> Class_Boss_Grunt eq arch target> Class_Boss_Elite eq || enttype target> player eq ||",true],
+    ["Heal",null,5,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch target> Class_Boss_Archvillain eq arch target> Class_Boss_Monster eq ||",true]
   ],
   "damageTypes": [
     "Negative"

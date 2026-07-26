@@ -70,7 +70,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Lethal_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -89,9 +89,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> critter eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -109,7 +110,7 @@
       "templates": [
         {
           "attribs": [
-            "NBProwlerCloakCritActive"
+            "Lethal_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -128,9 +129,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> critter eq kProwlerCloakMode Source.Mode? &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -148,7 +150,7 @@
       "templates": [
         {
           "attribs": [
-            "NBProwlerCritActive"
+            "Lethal_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -167,9 +169,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> critter eq kProwlerCloakMode Source.Mode? ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -187,7 +190,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Lethal_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -206,9 +209,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> player eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -226,7 +230,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Lethal_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -245,9 +249,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> player eq kProwlerMode Source.Mode? &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -265,7 +270,7 @@
       "templates": [
         {
           "attribs": [
-            "NBProwlerCritActive"
+            "Lethal_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -284,9 +289,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> player eq kProwlerCloakMode Source.Mode? ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -304,7 +310,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Rage"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -323,9 +329,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 336
         }
       ]
     },
@@ -343,7 +354,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Lethal_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -362,9 +373,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "kProwlerCloakMode Source.Mode? !",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "CancelOnMiss"
+          ],
+          "flags_raw": 1284
         }
       ]
     },
@@ -382,7 +397,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Lethal_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -401,9 +416,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "kProwlerCloakMode Source.Mode?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -421,7 +437,7 @@
       "templates": [
         {
           "attribs": [
-            "NBActive"
+            "Lethal_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -440,9 +456,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "CancelOnMiss"
+          ],
+          "flags_raw": 1284
         }
       ]
     },
@@ -479,9 +499,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> critter eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 2560
         }
       ]
     },
@@ -518,9 +539,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> player eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "NoFloaters",
+            "CancelOnMiss",
+            "IgnoreStrength"
+          ],
+          "flags_raw": 21
         }
       ]
     }

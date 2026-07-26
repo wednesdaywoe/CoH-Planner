@@ -62,7 +62,7 @@
       "templates": [
         {
           "attribs": [
-            "EndMod"
+            "Recovery"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -81,9 +81,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "Boost"
+          ],
+          "flags_raw": 5168
         }
       ]
     },
@@ -101,6 +107,7 @@
       "templates": [
         {
           "attribs": [
+            "EnduranceDiscount",
             "Endurance"
           ],
           "type": "Magnitude",
@@ -120,9 +127,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "Boost"
+          ],
+          "flags_raw": 5168
         }
       ]
     }

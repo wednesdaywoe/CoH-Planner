@@ -45,23 +45,54 @@ export const RadiationSiphon: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 0.49,
-    "table": "Melee_Damage"
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.49,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.47,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.298,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.429473,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "buffDuration": 10,
+    "defenseDebuff": {
+      "scale": 1.5,
+      "table": "Melee_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 10
+    }
   },
   "atoms": [
-    ["Unmapped",null,0.49,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1.5,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.298,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,0.3199999928474426,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated target.ownPower? !"],
-    ["Unmapped",null,0.882,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.677367,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,2.709468,0.05000000074505806,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,1.96,0.05000000074505806,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
-    ["Unmapped",null,1.96,0.10000000149011612,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true],
-    ["Unmapped",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated target.ownPower?",true],
-    ["Unmapped",null,0.666667,1,2.1,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"No",null,null,1,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated target.ownPower?",true]
+    ["Damage","Smashing",0.49,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Energy",1.47,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Defense","All",1.5,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Toxic",0.298,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",56750,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"Key427"],
+    ["Damage","Toxic",0.429473,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",18112,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"Key427"],
+    ["GrantPower",null,1,0.3199999928474426,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated target.ownPower? !"],
+    ["Damage","Fire",0.882,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Smashing",0.677367,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Energy",2.032101,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Energy",2.709468,0.05000000074505806,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Energy",1.96,0.05000000074505806,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
+    ["Damage","Energy",1.96,0.10000000149011612,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated target.ownPower?",true],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated target.ownPower?",true],
+    ["Heal",null,0.666667,1,2.1,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,1,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated target.ownPower?",true]
   ],
   "conditionalEffects": [
     {
@@ -70,15 +101,12 @@ export const RadiationSiphon: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "mode": "replace",
-      "effects": {
-        "buffDuration": 2.1,
-        "durations": {
-          "healing": 2.1
-        },
-        "healing": {
-          "scale": 0.666667,
-          "table": "Melee_HealSelf"
-        }
+      "damage": {
+        "type": "Heal",
+        "scale": 0.666667,
+        "table": "Melee_HealSelf",
+        "duration": 2.1,
+        "tickRate": 1
       }
     }
   ],

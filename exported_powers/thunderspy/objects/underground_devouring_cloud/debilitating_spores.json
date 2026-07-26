@@ -55,7 +55,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Base_Defense"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -74,9 +74,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "@ToHitRoll 0.00 >= @ToHitRoll 0.20 < &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -94,7 +99,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "ToHit"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -113,9 +118,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "@ToHitRoll 0.21 >= @ToHitRoll 0.40 < &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -133,7 +143,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Accuracy"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -152,9 +162,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "@ToHitRoll 0.41 >= @ToHitRoll 0.60 < &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -191,9 +206,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "@ToHitRoll 0.61 >= @ToHitRoll 0.80 < &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -211,7 +231,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Range"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -230,9 +250,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "@ToHitRoll 0.81 >= @ToHitRoll 1.00 <= &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     }

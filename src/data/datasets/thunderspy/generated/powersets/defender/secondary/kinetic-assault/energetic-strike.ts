@@ -39,11 +39,18 @@ export const EnergeticStrike: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Special",
-    "scale": 2.314,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 2.314,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.246,
+      "table": "Melee_Damage"
+    }
+  ],
   "effects": {
     "buffDuration": 10,
     "damageDebuff": {
@@ -55,25 +62,27 @@ export const EnergeticStrike: Power = {
     }
   },
   "atoms": [
-    ["DamageBuff","Smashing",1,1,10,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? .15 * 1.5 + @StdResult *"],
-    ["DamageBuff","Lethal",1,1,10,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? .15 * 1.5 + @StdResult *"],
-    ["DamageBuff","Energy",1,1,10,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? .15 * 1.5 + @StdResult *"],
-    ["DamageBuff","Negative",1,1,10,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? .15 * 1.5 + @StdResult *"],
-    ["DamageBuff","Fire",1,1,10,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? .15 * 1.5 + @StdResult *"],
-    ["DamageBuff","Cold",1,1,10,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? .15 * 1.5 + @StdResult *"],
-    ["DamageBuff","Toxic",1,1,10,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? .15 * 1.5 + @StdResult *"],
-    ["DamageBuff","Psionic",1,1,10,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? .15 * 1.5 + @StdResult *"],
-    ["Unmapped",null,2.314,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? 1 >= &&",true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? .178 * @StdResult *"],
-    ["Unmapped",null,2.89471,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,1,1,0,"Melee_Damage","Abs","Expression","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? 1 >= &&",true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? .2267 * @StdResult *"],
-    ["Mez","Stunned",10,3,0,"Melee_Immobilize","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? 5 < &&",true],
-    ["Mez","Stunned",3,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? 5 < &&",true],
-    ["Mez","Stunned",14,3,0,"Melee_Immobilize","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? 5 >= &&",true],
-    ["Mez","Stunned",4,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? 5 >= &&",true],
-    ["Unmapped",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? 5 <",true],
-    ["Unmapped",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? 5 >=",true],
-    ["Unmapped",null,1,0.20000000298023224,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? 5 >= Defender_Ranged.Kinetic_Assault.Coalescence source.ownPower? &&",true]
+    ["DamageBuff","Smashing",1,1,10,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? .15 * 1.5 + @StdResult *"],
+    ["DamageBuff","Lethal",1,1,10,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? .15 * 1.5 + @StdResult *"],
+    ["DamageBuff","Energy",1,1,10,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? .15 * 1.5 + @StdResult *"],
+    ["DamageBuff","Negative",1,1,10,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? .15 * 1.5 + @StdResult *"],
+    ["DamageBuff","Fire",1,1,10,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? .15 * 1.5 + @StdResult *"],
+    ["DamageBuff","Cold",1,1,10,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? .15 * 1.5 + @StdResult *"],
+    ["DamageBuff","Toxic",1,1,10,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? .15 * 1.5 + @StdResult *"],
+    ["DamageBuff","Psionic",1,1,10,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? .15 * 1.5 + @StdResult *"],
+    ["Damage","Smashing",2.314,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Energy",1.246,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? 1 >= &&",true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? .178 * @StdResult *"],
+    ["Damage","Smashing",2.89471,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Energy",1.55869,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Expression","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? 1 >= &&",true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? .2267 * @StdResult *"],
+    ["Mez","Stunned",10,3,0,"Melee_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? 5 < &&",true],
+    ["Mez","Stunned",3,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? 5 < &&",true],
+    ["Mez","Stunned",14,3,0,"Melee_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? 5 >= &&",true],
+    ["Mez","Stunned",4,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? 5 >= &&",true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? 5 <",true],
+    ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? 5 >=",true],
+    ["RechargePower",null,1,0.20000000298023224,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? 5 >= Defender_Ranged.Kinetic_Assault.Coalescence source.ownPower? &&",true]
   ],
   "conditionalEffects": [
     {
@@ -82,7 +91,7 @@ export const EnergeticStrike: Power = {
       "scope": "global",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Energy",
         "scale": 1,
         "table": "Melee_Damage"
       },

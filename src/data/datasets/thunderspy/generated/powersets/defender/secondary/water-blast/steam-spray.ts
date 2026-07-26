@@ -60,12 +60,22 @@ export const SteamSpray: Power = {
       "tickRate": 1
     }
   ],
+  "effects": {
+    "buffDuration": 8,
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Ranged_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 8
+    }
+  },
   "atoms": [
-    ["Unmapped",null,0.835,1,0.6,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.1,1,3.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,1,1],
-    ["Unmapped",null,1,1,8,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1.086351,1,0.6,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,0.5,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Fire",0.835,1,0.6,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Fire",0.1,1,3.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["Defense","All",1,1,8,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
+    ["Damage","Fire",1.086351,1,0.6,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "damageTypes": [
     "Fire"

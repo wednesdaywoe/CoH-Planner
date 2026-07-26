@@ -35,24 +35,60 @@ export const TemporalMending: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 6,
-    "durations": {
-      "healing": 6
-    },
-    "healing": {
-      "scale": 1.25,
+  "damage": [
+    {
+      "type": "Heal",
+      "scale": 0.75,
       "table": "Ranged_Heal"
+    },
+    {
+      "type": "Heal",
+      "scale": 0.2,
+      "table": "Ranged_Heal",
+      "duration": 6,
+      "tickRate": 1.5
+    },
+    {
+      "type": "Heal",
+      "scale": 0.3,
+      "table": "Ranged_Heal",
+      "duration": 6,
+      "tickRate": 1.5
+    }
+  ],
+  "effects": {
+    "buffDuration": 30,
+    "debuffResistance": {
+      "movement": {
+        "scale": 0.2,
+        "table": "Ranged_Ones"
+      },
+      "recharge": {
+        "scale": 0.2,
+        "table": "Ranged_Ones"
+      },
+      "regeneration": {
+        "scale": 1,
+        "table": "Ranged_Res_Boolean"
+      }
+    },
+    "durations": {
+      "debuffResistance": 30
     }
   },
   "atoms": [
-    ["Unmapped",null,0.75,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower? !"],
-    ["Unmapped",null,0.2,1,6,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"No",null,null,1.5,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower? ! isPVPMap? ! &&"],
-    ["Unmapped",null,0.3,1,6,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"No",null,null,1.5,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower? isPVPMap? ! &&"],
-    ["Unmapped",null,0.2,1,30,"Ranged_Ones","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,30,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1.125,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower?",true],
-    ["Regeneration",null,0.94,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
+    ["Heal",null,0.75,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower? !"],
+    ["Heal",null,0.2,1,6,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.5,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower? ! isPVPMap? ! &&"],
+    ["Heal",null,0.3,1,6,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.5,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower? isPVPMap? ! &&"],
+    ["Movement","Run",0.2,1,30,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["RechargeTime",null,0.2,1,30,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Movement","Fly",0.2,1,30,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Movement","JumpHeight",0.2,1,30,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Movement","Jump",0.2,1,30,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Regeneration",null,1,1,30,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Heal",null,1.125,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower?",true],
+    ["Regeneration",null,0.94,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
+    ["Regeneration",null,1.41,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
   ],
   "conditionalEffects": [
     {
@@ -61,11 +97,10 @@ export const TemporalMending: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "mode": "replace",
-      "effects": {
-        "healing": {
-          "scale": 1.125,
-          "table": "Ranged_Heal"
-        }
+      "damage": {
+        "type": "Heal",
+        "scale": 1.125,
+        "table": "Ranged_Heal"
       }
     }
   ]

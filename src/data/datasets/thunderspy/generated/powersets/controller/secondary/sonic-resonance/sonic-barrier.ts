@@ -36,8 +36,56 @@ export const SonicBarrier: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
+  "effects": {
+    "buffDuration": 240,
+    "durations": {
+      "resistance": 240
+    },
+    "resistance": {
+      "cold": {
+        "scale": 1,
+        "table": "Ranged_Res_Dmg"
+      },
+      "energy": {
+        "scale": 1,
+        "table": "Ranged_Res_Dmg"
+      },
+      "fire": {
+        "scale": 1,
+        "table": "Ranged_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 1,
+        "table": "Ranged_Res_Dmg"
+      },
+      "negative": {
+        "scale": 1,
+        "table": "Ranged_Res_Dmg"
+      },
+      "smashing": {
+        "scale": 1,
+        "table": "Ranged_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 1,
+        "table": "Ranged_Res_Dmg"
+      }
+    }
+  },
   "atoms": [
-    ["Unmapped",null,2,1,240,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,240,"Ranged_Res_Dmg","Res","Magnitude","Self","Any",true,"No",null,null,null,1]
+    ["Resistance","Smashing",2,1,240,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Fire",2,1,240,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Lethal",2,1,240,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Toxic",2,1,240,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Cold",2,1,240,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Energy",2,1,240,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Negative",2,1,240,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Smashing",1,1,240,"Ranged_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Fire",1,1,240,"Ranged_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Lethal",1,1,240,"Ranged_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Toxic",1,1,240,"Ranged_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Cold",1,1,240,"Ranged_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Energy",1,1,240,"Ranged_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Negative",1,1,240,"Ranged_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1]
   ]
 };

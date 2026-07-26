@@ -45,6 +45,18 @@ export const Repulse: Power = {
       "slow": 5
     },
     "slow": {
+      "flySpeed": {
+        "scale": 0.7,
+        "table": "Melee_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.7,
+        "table": "Melee_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.7,
+        "table": "Melee_Slow"
+      },
       "runSpeed": {
         "scale": 1,
         "table": "Melee_SpeedRunning"
@@ -57,11 +69,14 @@ export const Repulse: Power = {
     }
   },
   "atoms": [
-    ["Mez","Stunned",4,2,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.7,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Movement","Run",-1,1,5,"Melee_SpeedRunning","Max","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Mez","Stunned",2,2,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Endurance",null,-0.25,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kStunned target> 0 >",true]
+    ["Mez","Stunned",4,2,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Movement","Run",0.7,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Movement","Fly",0.7,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Movement","Jump",0.7,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Movement","JumpHeight",0.7,1,5,"Melee_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","Run",-1,1,5,"Melee_SpeedRunning","Max","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Mez","Stunned",2,2,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Endurance",null,-0.25,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kStunned target> 0 >",true]
   ],
   "damageTypes": [
     "Energy"

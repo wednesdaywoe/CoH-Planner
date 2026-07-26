@@ -52,23 +52,52 @@ export const Agile: Power = {
   "effects": {
     "buffDuration": 5,
     "durations": {
+      "rechargeDebuff": 5,
       "slow": 5
     },
+    "rechargeDebuff": {
+      "scale": 0.4,
+      "table": "Melee_Slow"
+    },
     "slow": {
+      "flySpeed": {
+        "scale": 0.7,
+        "table": "Melee_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.7,
+        "table": "Melee_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.7,
+        "table": "Melee_Slow"
+      },
       "runSpeed": {
         "scale": 1,
         "table": "Melee_SpeedRunning"
       }
+    },
+    "taunt": {
+      "scale": 2.25,
+      "table": "Melee_InherentTaunt"
     }
   },
   "atoms": [
-    ["Unmapped",null,0.7,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&"],
-    ["Movement","Run",-1,1,5,"Melee_SpeedRunning","Max","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq entref target> entref source> eq ! && cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&"],
-    ["Unmapped",null,-0.7,1,10,"Melee_Slow","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Movement","Run",1,1,10,"Melee_SpeedRunning","Max","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,2.25,1,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
-    ["MaxHP",null,0.8,1,10,"Melee_HealSelf","Max","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq",true],
-    ["Unmapped",null,2.25,1,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true]
+    ["Movement","Run",0.7,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&"],
+    ["RechargeTime",null,0.4,1,5,"Melee_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq ! cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&"],
+    ["Movement","Fly",0.7,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&"],
+    ["Movement","Jump",0.7,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&"],
+    ["Movement","JumpHeight",0.7,1,5,"Melee_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq ! cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&"],
+    ["Movement","Run",-1,1,5,"Melee_SpeedRunning","Max","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq entref target> entref source> eq ! && cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&"],
+    ["Movement","Run",-0.7,1,10,"Melee_Slow","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","Fly",-0.7,1,10,"Melee_Slow","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","Jump",-0.7,1,10,"Melee_Slow","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["RechargeTime",null,-0.4,1,10,"Melee_Slow","Str","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","JumpHeight",-0.7,1,10,"Melee_Slow","Str","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","Run",1,1,10,"Melee_SpeedRunning","Max","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Mez","Taunt",2.25,1,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
+    ["Absorb",null,0.8,1,10,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq",true],
+    ["Mez","Taunt",2.25,1,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true]
   ],
   "damageTypes": [
     "Energy"

@@ -62,7 +62,7 @@
       "templates": [
         {
           "attribs": [
-            "Heal"
+            "HitPoints"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -81,9 +81,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -120,9 +124,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "kHitPoints% target> 1 - 30 < enttype target> critter eq &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -159,9 +167,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "kHitPoints% target> 1 - 30 < enttype target> player eq &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     }

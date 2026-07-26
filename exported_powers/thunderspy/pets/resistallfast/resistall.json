@@ -55,7 +55,8 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Untouchable",
+            "Fly"
           ],
           "type": "Magnitude",
           "application_type": "OnActivate",
@@ -74,9 +75,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -94,7 +100,7 @@
       "templates": [
         {
           "attribs": [
-            "SpeedFlying"
+            "FlyingSpeed"
           ],
           "type": "Magnitude",
           "application_type": "OnActivate",
@@ -113,9 +119,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -133,7 +144,7 @@
       "templates": [
         {
           "attribs": [
-            "SpeedRunning"
+            "RunningSpeed"
           ],
           "type": "Magnitude",
           "application_type": "OnActivate",
@@ -152,9 +163,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     }

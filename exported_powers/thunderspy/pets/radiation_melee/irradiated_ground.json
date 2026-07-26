@@ -59,7 +59,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Fire_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -78,9 +78,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "arch source.owner> Class_Blaster eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -98,7 +99,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Fire_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -117,9 +118,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "arch source.owner> Class_Scrapper eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -137,7 +139,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Fire_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -156,9 +158,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "arch source.owner> Class_Scrapper eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -176,7 +179,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Fire_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -195,9 +198,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "arch source.owner> Class_Tanker eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -215,7 +219,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Fire_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -234,9 +238,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "arch source.owner> Class_Brute eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -254,7 +259,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Fire_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -273,9 +278,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "arch source.owner> Class_Mastermind eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -293,7 +299,7 @@
       "templates": [
         {
           "attribs": [
-            "Debuff_Def"
+            "Base_Defense"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -312,9 +318,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "CancelOnMiss"
+          ],
+          "flags_raw": 1284
         }
       ]
     },
@@ -332,7 +342,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Grant_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -351,9 +361,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated target.ownPower? !",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     }

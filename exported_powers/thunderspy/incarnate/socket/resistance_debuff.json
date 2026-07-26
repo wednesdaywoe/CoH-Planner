@@ -62,7 +62,7 @@
       "templates": [
         {
           "attribs": [
-            "GenesisResistance"
+            "Smashing_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -81,9 +81,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "target.isFriend? ! @ToHitRoll @ToHit / @ChanceMods < && combatlevel source> 45 < &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "StackThenIgnore",
+          "stack_limit": 4,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength"
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -101,7 +105,7 @@
       "templates": [
         {
           "attribs": [
-            "GenesisResistance"
+            "Lethal_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -120,9 +124,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "target.isFriend? ! @ToHitRoll @ToHit / @ChanceMods < && combatlevel source> 45 < &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "StackThenIgnore",
+          "stack_limit": 4,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength"
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -140,7 +148,7 @@
       "templates": [
         {
           "attribs": [
-            "GenesisResistance"
+            "Fire_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -159,9 +167,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "target.isFriend? ! @ToHitRoll @ToHit / @ChanceMods < && combatlevel source> 45 < &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "StackThenIgnore",
+          "stack_limit": 4,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength"
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -179,7 +191,7 @@
       "templates": [
         {
           "attribs": [
-            "GenesisResistance"
+            "Cold_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -198,9 +210,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "target.isFriend? ! @ToHitRoll @ToHit / @ChanceMods < && combatlevel source> 45 < &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "StackThenIgnore",
+          "stack_limit": 4,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength"
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -218,7 +234,7 @@
       "templates": [
         {
           "attribs": [
-            "GenesisResistance"
+            "Energy_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -237,9 +253,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "target.isFriend? ! @ToHitRoll @ToHit / @ChanceMods < && combatlevel source> 45 < &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "StackThenIgnore",
+          "stack_limit": 4,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength"
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -257,7 +277,7 @@
       "templates": [
         {
           "attribs": [
-            "GenesisResistance"
+            "Negative_Energy_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -276,9 +296,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "target.isFriend? ! @ToHitRoll @ToHit / @ChanceMods < && combatlevel source> 45 < &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "StackThenIgnore",
+          "stack_limit": 4,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength"
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -296,7 +320,7 @@
       "templates": [
         {
           "attribs": [
-            "GenesisResistance"
+            "Toxic_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -315,9 +339,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "target.isFriend? ! @ToHitRoll @ToHit / @ChanceMods < && combatlevel source> 45 < &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "StackThenIgnore",
+          "stack_limit": 4,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength"
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -335,7 +363,7 @@
       "templates": [
         {
           "attribs": [
-            "GenesisResistance"
+            "Psionic_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -354,9 +382,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "target.isFriend? ! @ToHitRoll @ToHit / @ChanceMods < && combatlevel source> 45 < &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "StackThenIgnore",
+          "stack_limit": 4,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength"
+          ],
+          "flags_raw": 1296
         }
       ]
     }

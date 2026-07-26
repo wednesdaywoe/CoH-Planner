@@ -49,15 +49,30 @@ export const SniperRifle: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "buffDuration": 8.17,
+    "damageBuff": {
+      "scale": 0.044,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 8.17
+    },
     "knockback": {
       "scale": 0.7,
       "table": "Ranged_Knockback"
     }
   },
   "atoms": [
-    ["Unmapped",null,2.76,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Knockback",0.7,0.5,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.044,1,8.17,"Ranged_Ones","Str","Magnitude","Self","Any",true,"No",null,null,null,1]
+    ["Damage","Lethal",2.76,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",0.7,0.5,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["DamageBuff","Smashing",0.044,1,8.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",0.044,1,8.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Fire",0.044,1,8.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Cold",0.044,1,8.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Energy",0.044,1,8.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Negative",0.044,1,8.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",0.044,1,8.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",0.044,1,8.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
   ],
   "damageTypes": [
     "Lethal"

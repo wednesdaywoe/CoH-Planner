@@ -47,19 +47,47 @@ export const SoulDrain: Power = {
   },
   "effects": {
     "buffDuration": 30,
+    "damageBuff": {
+      "scale": 4.8,
+      "table": "Melee_Buff_Dmg",
+      "perTarget": 0.8
+    },
     "durations": {
+      "damageBuff": 9.87,
       "tohitBuff": 30
     },
     "tohitBuff": {
-      "scale": 0.2,
-      "table": "Melee_Buff_ToHit"
+      "scale": 1.2,
+      "table": "Melee_Buff_ToHit",
+      "perTarget": 0.2
     }
   },
   "atoms": [
-    ["Unmapped",null,1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["ToHit",null,0.2,1,30,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.8,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.063,1,9.87,"Melee_Ones","Str","Magnitude","Self","Any",true,"No",null,null,null,1]
+    ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["ToHit",null,0.2,1,30,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.2],
+    ["ToHit",null,1,1,30,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["DamageBuff","Smashing",0.8,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.8],
+    ["DamageBuff","Lethal",0.8,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.8],
+    ["DamageBuff","Fire",0.8,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.8],
+    ["DamageBuff","Cold",0.8,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.8],
+    ["DamageBuff","Energy",0.8,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.8],
+    ["DamageBuff","Negative",0.8,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.8],
+    ["DamageBuff","Psionic",0.8,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.8],
+    ["DamageBuff","Smashing",4,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",4,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Fire",4,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Cold",4,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Energy",4,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Negative",4,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",4,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Smashing",0.063,1,9.87,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",0.063,1,9.87,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Fire",0.063,1,9.87,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Cold",0.063,1,9.87,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Energy",0.063,1,9.87,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Negative",0.063,1,9.87,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",0.063,1,9.87,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",0.063,1,9.87,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
   ],
   "damageTypes": [
     "Negative"

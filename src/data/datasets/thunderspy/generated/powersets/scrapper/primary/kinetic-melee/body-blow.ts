@@ -39,12 +39,27 @@ export const BodyBlow: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.87,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.87,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.29,
+      "table": "Melee_Damage"
+    }
+  ],
   "effects": {
+    "buffDuration": 5,
+    "damageDebuff": {
+      "scale": 0.75,
+      "table": "Melee_Debuff_Dam"
+    },
+    "durations": {
+      "damageDebuff": 5
+    },
     "stun": {
       "mag": 3,
       "scale": 6,
@@ -52,16 +67,23 @@ export const BodyBlow: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,0.87,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Stunned",6,3,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.75,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.522,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Mez","Stunned",2,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,1.161077,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,1.548103,0.05000000074505806,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,1.16,0.05000000074505806,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
-    ["Unmapped",null,1.16,0.10000000149011612,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true],
-    ["Unmapped",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kSiphonMode Source.Mode?",true]
+    ["Damage","Smashing",0.87,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Energy",0.29,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Stunned",6,3,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["DamageBuff","Smashing",0.75,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",0.75,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Fire",0.75,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Cold",0.75,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Energy",0.75,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Negative",0.75,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Damage","Fire",0.522,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Mez","Stunned",2,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Smashing",1.161077,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Energy",0.387026,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Energy",1.548103,0.05000000074505806,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Energy",1.16,0.05000000074505806,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
+    ["Damage","Energy",1.16,0.10000000149011612,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"kSiphonMode Source.Mode?",true]
   ],
   "damageTypes": [
     "Energy",

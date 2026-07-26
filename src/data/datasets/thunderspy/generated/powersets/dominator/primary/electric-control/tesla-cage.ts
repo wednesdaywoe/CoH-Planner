@@ -68,19 +68,23 @@ export const TeslaCage: Power = {
     "recoveryDebuff": {
       "scale": 1,
       "table": "Ranged_Ones"
-    }
+    },
+    "maxStacks": 2,
+    "stacksLinear": [
+      "enduranceGain"
+    ]
   },
   "atoms": [
-    ["Mez","Held",12,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Endurance",null,-0.07,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Recovery",null,-1,1,8,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Endurance",null,3.43,0.30000001192092896,0,"Ranged_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Mez","Held",18,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kStealth source> 0.5 > &&",true],
-    ["Mez","Held",4,4,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Held",4,1,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq kStealth source> 0.5 > &&",true],
-    ["Unmapped",null,3.1346,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,-1.25,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Mez","Held",12,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Energy",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Endurance",null,-0.07,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Recovery",null,-1,1,8,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Endurance",null,3.43,0.30000001192092896,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Mez","Held",18,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kStealth source> 0.5 > &&",true],
+    ["Mez","Held",4,4,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Held",4,1,0,"Ranged_Ones","Cur","Duration","Target","PvP",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kStealth source> 0.5 > &&",true],
+    ["Damage","Energy",3.1346,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Endurance",null,-1.25,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "conditionalEffects": [
     {

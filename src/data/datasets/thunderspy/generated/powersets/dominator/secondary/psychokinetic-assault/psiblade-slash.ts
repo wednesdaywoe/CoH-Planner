@@ -38,12 +38,12 @@ export const PsiBladeSlash: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Energy",
       "scale": 0.98,
       "table": "Melee_Damage"
     },
     {
-      "type": "Special",
+      "type": "Psionic",
       "scale": 0.98,
       "table": "Melee_Damage",
       "tickRate": 1
@@ -57,12 +57,14 @@ export const PsiBladeSlash: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,0.98,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.98,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,1,1],
+    ["Damage","Energy",0.98,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Psionic",0.98,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["EntCreate",null,-1,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["EntCreate",null,-1,1,15,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,1,0,0,"Melee_Ones","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Psionic",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["GrantPower",null,1,0,0,"Melee_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
   ],
   "damageTypes": [
     "Energy",

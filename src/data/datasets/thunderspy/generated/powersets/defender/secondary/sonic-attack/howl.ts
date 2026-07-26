@@ -41,15 +41,71 @@ export const Howl: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.405,
-    "table": "Ranged_Damage"
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.405,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.405,
+      "table": "Ranged_Damage"
+    }
+  ],
+  "effects": {
+    "buffDuration": 8,
+    "durations": {
+      "resistanceDebuff": 8
+    },
+    "resistanceDebuff": {
+      "cold": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "energy": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "fire": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "negative": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "psionic": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "smashing": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      }
+    }
   },
   "atoms": [
-    ["Unmapped",null,0.405,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,-2,1,8,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1.548498,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Smashing",0.405,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Energy",0.405,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Resistance","Smashing",-2,1,8,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Resistance","Lethal",-2,1,8,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Resistance","Fire",-2,1,8,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Resistance","Cold",-2,1,8,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Resistance","Energy",-2,1,8,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Resistance","Negative",-2,1,8,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Resistance","Psionic",-2,1,8,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Resistance","Toxic",-2,1,8,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Damage","Smashing",1.548498,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Energy",1.548498,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "damageTypes": [
     "Energy",

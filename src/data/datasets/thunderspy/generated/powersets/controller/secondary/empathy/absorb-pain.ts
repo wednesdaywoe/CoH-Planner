@@ -35,30 +35,56 @@ export const AbsorbPain: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Special",
-    "scale": 3,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Heal",
+      "scale": 5,
+      "table": "Ranged_Heal"
+    },
+    {
+      "type": "Special",
+      "scale": 3,
+      "table": "Ranged_Damage"
+    }
+  ],
   "effects": {
     "buffDuration": 20,
     "durations": {
-      "regenDebuff": 20
-    },
-    "healing": {
-      "scale": 5,
-      "table": "Ranged_Heal"
+      "regenDebuff": 20,
+      "resistance": 20
     },
     "regenDebuff": {
       "scale": 1,
       "table": "Ranged_Ones"
-    }
+    },
+    "resistance": {
+      "heal": {
+        "scale": 1,
+        "table": "Ranged_Ones"
+      }
+    },
+    "maxStacks": 2,
+    "stacksLinear": [
+      "resistance"
+    ]
   },
   "atoms": [
-    ["Unmapped",null,5,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,3,1,0,"Ranged_Damage","Abs","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Regeneration",null,-1,1,20,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,-30,1,5,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? ! Defender_Buff.Empathy.Clear_Mind source.ownPower? Controller_Buff.Empathy.Clear_Mind source.ownPower? || &&",true],
-    ["Unmapped",null,3,1,5,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? Defender_Buff.Empathy.Clear_Mind source.ownPower? Controller_Buff.Empathy.Clear_Mind source.ownPower? || &&",true]
+    ["Heal",null,5,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Special",3,1,0,"Ranged_Damage","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Regeneration",null,-1,1,20,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["HealResistance",null,1,1,20,"Ranged_Ones","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Mez","Stunned",-30,1,5,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"isPVPMap? ! Defender_Buff.Empathy.Clear_Mind source.ownPower? Controller_Buff.Empathy.Clear_Mind source.ownPower? || &&",true],
+    ["MezResist","Sleep",5,1,5,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"isPVPMap? ! Defender_Buff.Empathy.Clear_Mind source.ownPower? Controller_Buff.Empathy.Clear_Mind source.ownPower? || &&",true],
+    ["Mez","Sleep",-30,1,5,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"isPVPMap? ! Defender_Buff.Empathy.Clear_Mind source.ownPower? Controller_Buff.Empathy.Clear_Mind source.ownPower? || &&",true],
+    ["Mez","Immobilized",-30,1,5,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"isPVPMap? ! Defender_Buff.Empathy.Clear_Mind source.ownPower? Controller_Buff.Empathy.Clear_Mind source.ownPower? || &&",true],
+    ["Mez","Held",-30,1,5,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"isPVPMap? ! Defender_Buff.Empathy.Clear_Mind source.ownPower? Controller_Buff.Empathy.Clear_Mind source.ownPower? || &&",true],
+    ["Mez","Confused",-30,1,5,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"isPVPMap? ! Defender_Buff.Empathy.Clear_Mind source.ownPower? Controller_Buff.Empathy.Clear_Mind source.ownPower? || &&",true],
+    ["Mez","Terrorized",-30,1,5,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"isPVPMap? ! Defender_Buff.Empathy.Clear_Mind source.ownPower? Controller_Buff.Empathy.Clear_Mind source.ownPower? || &&",true],
+    ["MezResist","Stunned",3,1,5,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap? Defender_Buff.Empathy.Clear_Mind source.ownPower? Controller_Buff.Empathy.Clear_Mind source.ownPower? || &&",true],
+    ["MezResist","Immobilized",3,1,5,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap? Defender_Buff.Empathy.Clear_Mind source.ownPower? Controller_Buff.Empathy.Clear_Mind source.ownPower? || &&",true],
+    ["MezResist","Held",3,1,5,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap? Defender_Buff.Empathy.Clear_Mind source.ownPower? Controller_Buff.Empathy.Clear_Mind source.ownPower? || &&",true],
+    ["MezResist","Confused",3,1,5,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap? Defender_Buff.Empathy.Clear_Mind source.ownPower? Controller_Buff.Empathy.Clear_Mind source.ownPower? || &&",true],
+    ["MezResist","Terrorized",3,1,5,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap? Defender_Buff.Empathy.Clear_Mind source.ownPower? Controller_Buff.Empathy.Clear_Mind source.ownPower? || &&",true],
+    ["MezResist","Sleep",8,1,5,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap? Defender_Buff.Empathy.Clear_Mind source.ownPower? Controller_Buff.Empathy.Clear_Mind source.ownPower? || &&",true]
   ]
 };

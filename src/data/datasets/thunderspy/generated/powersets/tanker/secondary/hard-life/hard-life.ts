@@ -35,7 +35,12 @@ export const HardLife: Power = {
   "maxSlots": 6,
   "effects": {
     "buffDuration": 30,
+    "damageBuff": {
+      "scale": 5,
+      "table": "Melee_Buff_Dmg"
+    },
     "durations": {
+      "damageBuff": 30,
       "rechargeBuff": 30,
       "tohitBuff": 30
     },
@@ -46,11 +51,24 @@ export const HardLife: Power = {
     "tohitBuff": {
       "scale": 1,
       "table": "Melee_Buff_ToHit"
-    }
+    },
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff",
+      "tohitBuff"
+    ]
   },
   "atoms": [
-    ["ToHit",null,1,1,30,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,5,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["RechargeTime",null,0.3,1,30,"Melee_Ones","Str","Magnitude","Self","Any",true,"No",null,null,null,1]
+    ["ToHit",null,1,1,30,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["DamageBuff","Smashing",5,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",5,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Fire",5,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Cold",5,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Energy",5,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Negative",5,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",5,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",5,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["RechargeTime",null,0.3,1,30,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
   ]
 };

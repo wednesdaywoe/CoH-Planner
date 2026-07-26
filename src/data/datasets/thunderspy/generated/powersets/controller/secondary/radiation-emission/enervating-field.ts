@@ -36,7 +36,12 @@ export const EnervatingField: Power = {
   "maxSlots": 6,
   "effects": {
     "buffDuration": 5,
+    "damageDebuff": {
+      "scale": 2,
+      "table": "Ranged_Debuff_Dam"
+    },
     "durations": {
+      "damageDebuff": 5,
       "resistanceDebuff": 5
     },
     "resistanceDebuff": {
@@ -75,14 +80,22 @@ export const EnervatingField: Power = {
     }
   },
   "atoms": [
-    ["Resistance","Smashing",-3,1,5,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Resistance","Lethal",-3,1,5,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Resistance","Fire",-3,1,5,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Resistance","Cold",-3,1,5,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Resistance","Energy",-3,1,5,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Resistance","Negative",-3,1,5,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Resistance","Psionic",-3,1,5,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Resistance","Toxic",-3,1,5,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1]
+    ["Resistance","Smashing",-3,1,5,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Lethal",-3,1,5,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Fire",-3,1,5,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Cold",-3,1,5,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Energy",-3,1,5,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Negative",-3,1,5,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Psionic",-3,1,5,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Toxic",-3,1,5,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Smashing",2,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",2,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Fire",2,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Cold",2,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Energy",2,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Negative",2,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",2,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",2,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true]
   ],
   "damageTypes": [
     "Energy"

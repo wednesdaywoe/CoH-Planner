@@ -62,16 +62,16 @@ export const Soothe: Power = {
     }
   },
   "atoms": [
-    ["Damage","Psionic",1.32,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"target.isFriend? !"],
-    ["Damage","Psionic",0.1,1,0,"Melee_Ones","Abs","Expression","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"@Scale Max.kHitPoints source> * negate"],
-    ["DamageBuff","Smashing",1,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["DamageBuff","Lethal",1,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["DamageBuff","Fire",1,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["DamageBuff","Cold",1,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["DamageBuff","Energy",1,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["DamageBuff","Negative",1,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["DamageBuff","Psionic",1,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["DamageBuff","Toxic",1,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Heal",null,1.96,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"target.isFriend?",true]
+    ["Damage","Psionic",1.32,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"target.isFriend? !"],
+    ["Damage","Psionic",0.1,1,0,"Melee_Ones","Abs","Expression","Self","Any",false,"No",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"@Scale Max.kHitPoints source> * negate"],
+    ["DamageBuff","Smashing",1,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"No",3,null,null,1,null,true],
+    ["DamageBuff","Lethal",1,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"No",3,null,null,1,null,true],
+    ["DamageBuff","Fire",1,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"No",3,null,null,1,null,true],
+    ["DamageBuff","Cold",1,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"No",3,null,null,1,null,true],
+    ["DamageBuff","Energy",1,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"No",3,null,null,1,null,true],
+    ["DamageBuff","Negative",1,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"No",3,null,null,1,null,true],
+    ["DamageBuff","Psionic",1,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"No",3,null,null,1,null,true],
+    ["DamageBuff","Toxic",1,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"No",3,null,null,1,null,true],
+    ["Heal",null,1.96,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"target.isFriend?",true]
   ]
 };

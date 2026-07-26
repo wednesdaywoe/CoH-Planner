@@ -42,7 +42,17 @@ export const KujiInRetsu: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "absorb": {
+      "scale": 4,
+      "table": "Melee_HealSelf"
+    },
     "buffDuration": 90,
+    "debuffResistance": {
+      "defense": {
+        "scale": 1,
+        "table": "Melee_Res_Boolean"
+      }
+    },
     "defenseBuff": {
       "aoe": {
         "scale": 6,
@@ -58,16 +68,17 @@ export const KujiInRetsu: Power = {
       }
     },
     "durations": {
+      "absorb": 60,
+      "debuffResistance": 90,
       "defenseBuff": 90,
-      "maxHPBuff": 60,
       "movement": 90,
       "recoveryBuff": 90
     },
-    "maxHPBuff": {
-      "scale": 4,
-      "table": "Melee_HealSelf"
-    },
     "movement": {
+      "jumpHeight": {
+        "scale": 2,
+        "table": "Melee_Ones"
+      },
       "runSpeed": {
         "scale": 0.5,
         "table": "Melee_SpeedRunning"
@@ -79,12 +90,13 @@ export const KujiInRetsu: Power = {
     }
   },
   "atoms": [
-    ["Defense","Melee",6,1,90,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Defense","Ranged",6,1,90,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Defense","AoE",6,1,90,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Recovery",null,1,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Movement","Run",0.5,1,90,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,90,"Melee_Res_Boolean","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["MaxHP",null,4,1,60,"Melee_HealSelf","Max","Magnitude","Target","Any",true,"No",null,null,null,1]
+    ["Defense","Melee",6,1,90,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Defense","Ranged",6,1,90,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Defense","AoE",6,1,90,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Recovery",null,1,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Movement","JumpHeight",2,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Movement","Run",0.5,1,90,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Defense","All",1,1,90,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Absorb",null,4,1,60,"Melee_HealSelf","Max","Magnitude","Target","Any",false,"Ignore",2,null,null,1]
   ]
 };

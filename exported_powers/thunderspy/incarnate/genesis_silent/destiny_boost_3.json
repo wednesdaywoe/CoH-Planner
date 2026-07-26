@@ -62,7 +62,28 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Melee",
+            "Ranged",
+            "Area",
+            "Smashing",
+            "Lethal",
+            "Fire",
+            "Cold",
+            "Energy",
+            "Negative_Energy",
+            "Psionic",
+            "HitPoints",
+            "Heal_Dmg",
+            "Endurance",
+            "Stunned",
+            "Sleep",
+            "Confused",
+            "Taunt",
+            "Placate",
+            "Afraid",
+            "Terrorized",
+            "Immobilized",
+            "Held"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -81,9 +102,16 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods",
+            "Boost"
+          ],
+          "flags_raw": 4208
         }
       ]
     }

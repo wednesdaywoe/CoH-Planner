@@ -41,23 +41,11 @@ export const Purify: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Fire",
-      "scale": 1,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.5,
-      "table": "Melee_Damage"
-    }
-  ],
   "atoms": [
-    ["Unmapped",null,1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq target.isFriend? ! &&"],
-    ["Unmapped",null,0.5,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Ghost target.HasTag? Demon target.HasTag? || Undead target.HasTag? || target.isFriend? ! &&"],
-    ["Unmapped",null,1.20958,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq target.isFriend? ! &&",true],
-    ["Unmapped",null,1,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"target.isFriend?",true]
+    ["Damage","Fire",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq target.isFriend? ! &&"],
+    ["Damage","Fire",0.5,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Ghost target.HasTag? Demon target.HasTag? || Undead target.HasTag? || target.isFriend? ! &&"],
+    ["Damage","Fire",1.20958,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq target.isFriend? ! &&",true],
+    ["Heal",null,1,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"target.isFriend?",true]
   ],
   "damageTypes": [
     "Fire"

@@ -43,32 +43,63 @@ export const Painbringer: Power = {
       "scale": 5,
       "table": "Ranged_Buff_Dmg"
     },
+    "damageDebuff": {
+      "scale": 5,
+      "table": "Ranged_Buff_Dmg"
+    },
     "durations": {
       "damageBuff": 60,
+      "damageDebuff": 60,
+      "recoveryBuff": 60,
+      "regenBuff": 60,
       "regenDebuff": 60
+    },
+    "recoveryBuff": {
+      "scale": 4,
+      "table": "Ranged_Ones"
+    },
+    "regenBuff": {
+      "scale": 2.5,
+      "table": "Ranged_Ones"
     },
     "regenDebuff": {
       "scale": 5,
       "table": "Ranged_Ones"
-    }
+    },
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   },
   "atoms": [
-    ["DamageBuff","Smashing",5,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["DamageBuff","Lethal",5,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["DamageBuff","Fire",5,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["DamageBuff","Cold",5,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["DamageBuff","Energy",5,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["DamageBuff","Negative",5,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["DamageBuff","Psionic",5,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["DamageBuff","Toxic",5,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Regeneration",null,-5,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"target.isFriend? !"],
-    ["DamageBuff","Smashing",5,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"target.isFriend?",true],
-    ["DamageBuff","Lethal",5,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"target.isFriend?",true],
-    ["DamageBuff","Fire",5,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"target.isFriend?",true],
-    ["DamageBuff","Cold",5,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"target.isFriend?",true],
-    ["DamageBuff","Energy",5,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"target.isFriend?",true],
-    ["DamageBuff","Negative",5,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"target.isFriend?",true],
-    ["DamageBuff","Psionic",5,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"target.isFriend?",true],
-    ["DamageBuff","Toxic",5,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"target.isFriend?",true]
+    ["DamageBuff","Smashing",5,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",5,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Fire",5,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Cold",5,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Energy",5,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Negative",5,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",5,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",5,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Recovery",null,4,1,60,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Regeneration",null,2.5,1,60,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Regeneration",null,-5,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"target.isFriend? !"],
+    ["DamageBuff","Smashing",-5,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"target.isFriend? !"],
+    ["DamageBuff","Lethal",-5,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"target.isFriend? !"],
+    ["DamageBuff","Fire",-5,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"target.isFriend? !"],
+    ["DamageBuff","Cold",-5,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"target.isFriend? !"],
+    ["DamageBuff","Energy",-5,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"target.isFriend? !"],
+    ["DamageBuff","Negative",-5,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"target.isFriend? !"],
+    ["DamageBuff","Psionic",-5,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"target.isFriend? !"],
+    ["DamageBuff","Toxic",-5,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"target.isFriend? !"],
+    ["DamageBuff","Smashing",5,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"target.isFriend?",true],
+    ["DamageBuff","Lethal",5,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"target.isFriend?",true],
+    ["DamageBuff","Fire",5,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"target.isFriend?",true],
+    ["DamageBuff","Cold",5,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"target.isFriend?",true],
+    ["DamageBuff","Energy",5,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"target.isFriend?",true],
+    ["DamageBuff","Negative",5,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"target.isFriend?",true],
+    ["DamageBuff","Psionic",5,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"target.isFriend?",true],
+    ["DamageBuff","Toxic",5,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"target.isFriend?",true],
+    ["Recovery",null,8,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"target.isFriend?",true],
+    ["Regeneration",null,5,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"target.isFriend?",true]
   ]
 };

@@ -55,7 +55,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Rage"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -74,9 +74,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || !",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 112
         }
       ]
     },
@@ -94,7 +100,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Rage"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -113,9 +119,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> player eq arch target> Class_Boss_Archvillain eq || arch target> Class_Boss_Monster eq || arch target> Class_Boss_Rularuu eq || arch target> Class_Boss_RularuuFM eq ||",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 112
         }
       ]
     }

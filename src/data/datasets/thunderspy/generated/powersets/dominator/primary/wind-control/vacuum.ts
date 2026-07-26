@@ -61,16 +61,22 @@ export const Vacuum: Power = {
     }
   },
   "atoms": [
+    ["EntCreate",null,-1,1,8,"Ranged_Ones","Cur","Expression","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target.owner> entref source> eq !"],
     ["EntCreate",null,-1,1,8,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target.owner> entref source> eq !"],
-    ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target.owner> entref source> eq ! target.isFriend? ! && enttype target> critter eq &&"],
-    ["Mez","Held",4,4,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target.owner> entref source> eq ! target.isFriend? ! && enttype target> player eq &&",true],
-    ["Mez","Held",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target.owner> entref source> eq ! target.isFriend? ! && enttype target> critter eq && kStealth source> 0.5 > &&",true],
-    ["Mez","Held",4,1,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target.owner> entref source> eq ! target.isFriend? ! && enttype target> player eq && kStealth source> 0.5 > &&",true],
-    ["Unmapped",null,0.15,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq entref target.owner> entref source> eq ! && target.isFriend? ! && Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPowerNum? 6 == &&",true],
-    ["Unmapped",null,0.27,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq entref target.owner> entref source> eq ! && target.isFriend? ! && Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPowerNum? 6 == &&",true],
-    ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Expression","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kCloudedSkies Source.Mode? ! entref target.owner> entref source> eq &&",true],
-    ["Unmapped",null,1,1,239,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target.owner> entref source> eq",true],
-    ["Unmapped",null,1,1,1.1,"Ranged_Ones","Abs","Magnitude","All","Any",true,"No",null,null,0.20000000298023224,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPower?",true]
+    ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"entref target.owner> entref source> eq ! target.isFriend? ! && enttype target> critter eq &&"],
+    ["Mez","Held",4,4,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"entref target.owner> entref source> eq ! target.isFriend? ! && enttype target> player eq &&",true],
+    ["Mez","Held",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"entref target.owner> entref source> eq ! target.isFriend? ! && enttype target> critter eq && kStealth source> 0.5 > &&",true],
+    ["Mez","Held",4,1,0,"Ranged_Ones","Cur","Duration","Target","PvP",false,"Stack",2,null,null,1,null,null,null,null,null,null,"entref target.owner> entref source> eq ! target.isFriend? ! && enttype target> player eq && kStealth source> 0.5 > &&",true],
+    ["Damage","Lethal",0.15,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq entref target.owner> entref source> eq ! && target.isFriend? ! && Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPowerNum? 6 == &&",true],
+    ["Damage","Lethal",0.27,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq entref target.owner> entref source> eq ! && target.isFriend? ! && Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPowerNum? 6 == &&",true],
+    ["Meta",null,1,108,0,"Ranged_Ones","Cur","Expression","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"kCloudedSkies Source.Mode? ! entref target.owner> entref source> eq &&",true],
+    ["Meta",null,1,109,239,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"entref target.owner> entref source> eq",true],
+    ["Meta",null,1,1,1.1,"Ranged_Ones","Abs","Magnitude","All","Any",false,"Stack",2,null,0.20000000298023224,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPower?",true],
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPower?",true]
+  ],
+  "setsModes": [
+    "ClearSkies",
+    "CloudedSkies"
   ],
   "damageTypes": [
     "Lethal"

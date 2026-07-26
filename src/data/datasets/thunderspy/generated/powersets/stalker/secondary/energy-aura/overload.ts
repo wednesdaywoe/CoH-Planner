@@ -40,6 +40,12 @@ export const Overload: Power = {
   "maxSlots": 6,
   "effects": {
     "buffDuration": 90,
+    "debuffResistance": {
+      "defense": {
+        "scale": 1,
+        "table": "Melee_Res_Boolean"
+      }
+    },
     "defenseBuff": {
       "cold": {
         "scale": 6,
@@ -67,6 +73,7 @@ export const Overload: Power = {
       }
     },
     "durations": {
+      "debuffResistance": 90,
       "defenseBuff": 90,
       "maxHPBuff": 90,
       "recoveryBuff": 90
@@ -81,15 +88,20 @@ export const Overload: Power = {
     }
   },
   "atoms": [
-    ["Defense","Smashing",6,1,90,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Defense","Lethal",6,1,90,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Defense","Fire",6,1,90,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Defense","Cold",6,1,90,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Defense","Energy",6,1,90,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Defense","Negative",6,1,90,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Recovery",null,1,1,90,"Melee_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["MaxHP",null,4,1,90,"Melee_HealSelf","Max","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,90,"Melee_Res_Boolean","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.2,1,90,"Melee_Ones","Str","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
+    ["Defense","Smashing",6,1,90,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Defense","Lethal",6,1,90,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Defense","Fire",6,1,90,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Defense","Cold",6,1,90,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Defense","Energy",6,1,90,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Defense","Negative",6,1,90,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Recovery",null,1,1,90,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["MaxHP",null,4,1,90,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Defense","All",1,1,90,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Elusivity","Smashing",0.2,1,90,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
+    ["Elusivity","Lethal",0.2,1,90,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
+    ["Elusivity","Cold",0.2,1,90,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
+    ["Elusivity","Fire",0.2,1,90,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
+    ["Elusivity","Energy",0.2,1,90,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
+    ["Elusivity","Negative",0.2,1,90,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
   ]
 };

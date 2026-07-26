@@ -30,14 +30,34 @@ export const IcePatch: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 10.97,
+    "damageBuff": {
+      "scale": 0.229,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "damageBuff": 10.97
+    },
     "summon": {
       "duration": 30,
       "entity": "Pets_IcePatch",
       "isPseudoPet": false
-    }
+    },
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   },
   "atoms": [
+    ["EntCreate",null,1,1,30,"Melee_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["EntCreate",null,1,1,30,"Melee_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.229,1,10.97,"Melee_Ones","Str","Magnitude","Self","Any",true,"No",null,null,null,1]
+    ["DamageBuff","Smashing",0.229,1,10.97,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",0.229,1,10.97,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Fire",0.229,1,10.97,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Cold",0.229,1,10.97,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Energy",0.229,1,10.97,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Negative",0.229,1,10.97,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",0.229,1,10.97,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",0.229,1,10.97,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
   ]
 };

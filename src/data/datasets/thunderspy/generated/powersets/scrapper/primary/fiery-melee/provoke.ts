@@ -41,9 +41,9 @@ export const Provoke: Power = {
     }
   },
   "atoms": [
-    ["Mez","Taunt",20,1,0,"Melee_Taunt","Abs","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,-0.75,1,12,"Melee_Ones","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Mez","Taunt",5,1,0,"Melee_Taunt","Abs","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll @ToHit < @ForceHit || &&",true],
-    ["Unmapped",null,1,1,0,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll @ToHit >= @ForceHit || &&",true]
+    ["Mez","Taunt",20,1,0,"Melee_Taunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Range",null,-0.75,1,12,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Mez","Taunt",5,1,0,"Melee_Taunt","Abs","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll @ToHit < @ForceHit || &&",true],
+    ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll @ToHit >= @ForceHit || &&",true]
   ]
 };

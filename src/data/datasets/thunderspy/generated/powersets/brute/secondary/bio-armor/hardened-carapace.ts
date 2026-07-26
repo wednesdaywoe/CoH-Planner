@@ -42,8 +42,11 @@ export const HardenedCarapace: Power = {
   "effects": {
     "buffDuration": 0.75,
     "durations": {
-      "resistance": 0.75
+      "resistance": 0.75,
+      "sleep": 0.75,
+      "stun": 0.75
     },
+    "effectDuration": 0.75,
     "resistance": {
       "lethal": {
         "scale": 2.5,
@@ -57,16 +60,100 @@ export const HardenedCarapace: Power = {
         "scale": 2.5,
         "table": "Melee_Res_DMG"
       }
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
     }
   },
   "atoms": [
-    ["Resistance","Smashing",2.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Resistance","Lethal",2.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Resistance","Toxic",2.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,-30,1,0.75,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["Unmapped",null,0.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
-    ["Unmapped",null,2.5,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
-    ["Unmapped",null,0.25,1,0.75,"Melee_Stun","Str","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kRestedAdaptation Source.Mode?",true],
-    ["Unmapped",null,3,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
+    ["Resistance","Smashing",2.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Lethal",2.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Toxic",2.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Mez","Stunned",-30,1,0.75,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Sleep",-30,1,0.75,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
+    ["Resistance","Smashing",0.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
+    ["Resistance","Lethal",0.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
+    ["Resistance","Toxic",0.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
+    ["DamageBuff","Smashing",2.5,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
+    ["DamageBuff","Lethal",2.5,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
+    ["DamageBuff","Fire",2.5,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
+    ["DamageBuff","Cold",2.5,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
+    ["DamageBuff","Energy",2.5,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
+    ["DamageBuff","Negative",2.5,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
+    ["DamageBuff","Toxic",2.5,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
+    ["DamageBuff","Psionic",2.5,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
+    ["EnduranceDiscount",null,0.25,1,0.75,"Melee_Stun","Str","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kRestedAdaptation Source.Mode?",true],
+    ["MezResist","Stunned",3,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
+    ["MezResist","Sleep",3,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
+  ],
+  "conditionalEffects": [
+    {
+      "id": "defensiveadaptation",
+      "label": "Defensive Adaptation",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "buffDuration": 0.75,
+        "durations": {
+          "resistance": 0.75
+        },
+        "resistance": {
+          "lethal": {
+            "scale": 0.75,
+            "table": "Melee_Res_DMG"
+          },
+          "smashing": {
+            "scale": 0.75,
+            "table": "Melee_Res_DMG"
+          },
+          "toxic": {
+            "scale": 0.75,
+            "table": "Melee_Res_DMG"
+          }
+        }
+      },
+      "group": "adaptation"
+    },
+    {
+      "id": "offensiveadaptation",
+      "label": "Offensive Adaptation",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "buffDuration": 0.75,
+        "damageBuff": {
+          "scale": 2.5,
+          "table": "Melee_Buff_Dmg"
+        },
+        "durations": {
+          "damageBuff": 0.75
+        }
+      },
+      "group": "adaptation"
+    },
+    {
+      "id": "restedadaptation",
+      "label": "Rested Adaptation",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "buffDuration": 0.75,
+        "durations": {
+          "enduranceDiscount": 0.75
+        },
+        "enduranceDiscount": {
+          "scale": 0.25,
+          "table": "Melee_Stun"
+        }
+      },
+      "group": "adaptation"
+    }
   ]
 };

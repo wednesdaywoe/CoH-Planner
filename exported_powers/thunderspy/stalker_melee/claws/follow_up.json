@@ -62,7 +62,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Fire_Dmg"
           ],
           "type": "Expression",
           "application_type": "OnTick",
@@ -81,9 +81,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "CategoryName power.base> Pets eq ! CategoryName power.base> Villain_Pets eq ! && CategoryName power.base> Mastermind_Pets eq ! && CategoryName power.base> Judgement eq ! && target.isFriend? ! && activateperiod power.base> 0 == &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "CancelOnMiss",
+            "IgnoreStrength"
+          ],
+          "flags_raw": 1300
         }
       ]
     },
@@ -101,7 +106,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Fire_Dmg"
           ],
           "type": "Expression",
           "application_type": "OnTick",
@@ -120,9 +125,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "CategoryName power.base> Pets eq ! CategoryName power.base> Villain_Pets eq ! && CategoryName power.base> Mastermind_Pets eq ! && CategoryName power.base> Judgement eq ! && target.isFriend? ! && activateperiod power.base> 0 == ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "CancelOnMiss",
+            "IgnoreStrength"
+          ],
+          "flags_raw": 1300
         }
       ]
     }

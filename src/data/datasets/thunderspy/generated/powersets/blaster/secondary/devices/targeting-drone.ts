@@ -41,17 +41,38 @@ export const TargetingDrone: Power = {
   "maxSlots": 6,
   "effects": {
     "buffDuration": 0.75,
-    "durations": {
-      "tohitBuff": 0.75
+    "debuffResistance": {
+      "perception": {
+        "scale": 0.6,
+        "table": "Melee_Ones"
+      },
+      "tohit": {
+        "scale": 2,
+        "table": "Melee_Res_Boolean"
+      }
     },
-    "tohitBuff": {
+    "durations": {
+      "debuffResistance": 0.75,
+      "perceptionBuff": 0.75,
+      "tohitBuffUnenhanced": 0.75
+    },
+    "perceptionBuff": {
+      "scale": 0.6,
+      "table": "Melee_Ones"
+    },
+    "tohitBuffUnenhanced": {
       "scale": 1.85,
       "table": "Melee_Buff_ToHit"
     }
   },
   "atoms": [
-    ["ToHit",null,1.85,1,0.75,"Melee_Buff_ToHit","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,2,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.6,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",true,"No",null,null,null,1]
+    ["ToHit",null,1.85,1,0.75,"Melee_Buff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["ToHit",null,2,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Perception",null,0.6,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Perception",null,0.6,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,38,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Extend",2,null,null,1,null,true]
+  ],
+  "setsModes": [
+    "Range_Finder_Mode"
   ]
 };

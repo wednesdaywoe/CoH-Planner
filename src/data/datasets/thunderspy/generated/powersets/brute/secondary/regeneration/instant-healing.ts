@@ -36,16 +36,22 @@ export const InstantHealing: Power = {
   "effects": {
     "buffDuration": 90,
     "durations": {
-      "regenBuff": 90
+      "regenBuff": 90,
+      "regenBuffUnenhanced": 90
     },
     "regenBuff": {
+      "scale": 2,
+      "table": "Melee_Ones"
+    },
+    "regenBuffUnenhanced": {
       "scale": 6,
       "table": "Melee_Ones"
     }
   },
   "atoms": [
-    ["Regeneration",null,6,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,90,"Melee_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["Unmapped",null,1,1,90,"Melee_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
+    ["Regeneration",null,6,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Regeneration",null,2,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Meta",null,1,1,90,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
+    ["Meta",null,1,1,90,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
   ]
 };

@@ -41,20 +41,13 @@ export const CrackWhip: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Fire",
-      "scale": 1.13,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.222,
-      "table": "Melee_Damage",
-      "duration": 1.05,
-      "tickRate": 1
-    }
-  ],
+  "damage": {
+    "type": "Toxic",
+    "scale": 0.222,
+    "table": "Melee_Damage",
+    "duration": 1.05,
+    "tickRate": 1
+  },
   "effects": {
     "buffDuration": 10,
     "durations": {
@@ -100,19 +93,19 @@ export const CrackWhip: Power = {
     }
   },
   "atoms": [
-    ["Resistance","Smashing",-1.25,1,10,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Resistance","Lethal",-1.25,1,10,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Resistance","Fire",-1.25,1,10,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Resistance","Cold",-1.25,1,10,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Resistance","Energy",-1.25,1,10,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Resistance","Negative",-1.25,1,10,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Resistance","Psionic",-1.25,1,10,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Resistance","Toxic",-1.25,1,10,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1.13,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.222,1,1.05,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,1,1],
-    ["Mez","Knockback",0.64,0.25,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,2.123105,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Knockback",0.64,0.25,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Resistance","Smashing",-1.25,1,10,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Resistance","Lethal",-1.25,1,10,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Resistance","Fire",-1.25,1,10,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Resistance","Cold",-1.25,1,10,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Resistance","Energy",-1.25,1,10,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Resistance","Negative",-1.25,1,10,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Resistance","Psionic",-1.25,1,10,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Resistance","Toxic",-1.25,1,10,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Damage","Fire",1.13,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Toxic",0.222,1,1.05,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["Mez","Knockback",0.64,0.25,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Fire",2.123105,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Knockback",0.64,0.25,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
   ],
   "damageTypes": [
     "Fire",

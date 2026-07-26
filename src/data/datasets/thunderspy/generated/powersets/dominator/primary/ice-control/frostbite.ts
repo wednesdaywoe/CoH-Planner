@@ -52,27 +52,61 @@ export const Frostbite: Power = {
     "tickRate": 2
   },
   "effects": {
-    "buffDuration": 1,
+    "buffDuration": 12,
     "durations": {
-      "immobilize": 1
+      "immobilize": 1,
+      "rechargeDebuff": 12,
+      "slow": 12
     },
     "effectDuration": 1,
     "immobilize": {
       "mag": 4,
       "scale": 15,
       "table": "Ranged_Immobilize"
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
+    },
+    "slow": {
+      "fly": {
+        "scale": 1.6,
+        "table": "Ranged_Ones"
+      },
+      "flySpeed": {
+        "scale": 0.3,
+        "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.3,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.3,
+        "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.3,
+        "table": "Ranged_Slow"
+      }
     }
   },
   "atoms": [
-    ["Unmapped",null,0.1,1,5.2,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,2,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Immobilized",15,4,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Immobilized",15,3,1,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.3,1,12,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.99,1,12,"Ranged_Ones","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.182196,1,5.2,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,2,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Immobilized",4,5,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Immobilized",22.5,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kStealth source> 0.5 > &&",true],
-    ["Mez","Immobilized",4,1,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq kStealth source> 0.5 > &&",true]
+    ["Damage","Cold",0.1,1,5.2,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Immobilized",15,4,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Immobilized",15,3,1,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Movement","Run",0.3,1,12,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","Fly",0.3,1,12,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","Jump",0.3,1,12,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","JumpHeight",0.3,1,12,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["RechargeTime",null,0.2,1,12,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["MezResist","Knockback",0.99,1,12,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["MezResist","Knockup",0.99,1,12,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["Movement","FlyMode",-1.6,1,12,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["Damage","Cold",0.182196,1,5.2,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Immobilized",4,5,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Immobilized",22.5,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kStealth source> 0.5 > &&",true],
+    ["Mez","Immobilized",4,1,0,"Ranged_Ones","Cur","Duration","Target","PvP",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kStealth source> 0.5 > &&",true]
   ],
   "conditionalEffects": [
     {

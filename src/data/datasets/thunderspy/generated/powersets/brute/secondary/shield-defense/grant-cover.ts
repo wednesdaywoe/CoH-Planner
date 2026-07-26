@@ -44,6 +44,10 @@ export const GrantCover: Power = {
   "effects": {
     "buffDuration": 2.25,
     "debuffResistance": {
+      "defense": {
+        "scale": 0.4,
+        "table": "Melee_Res_Boolean"
+      },
       "recharge": {
         "scale": 0.3,
         "table": "Melee_Ones"
@@ -93,16 +97,16 @@ export const GrantCover: Power = {
     }
   },
   "atoms": [
-    ["Defense","Ranged",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq !"],
-    ["Defense","Melee",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq !"],
-    ["Defense","AoE",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq !"],
-    ["Defense","Smashing",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq !"],
-    ["Defense","Lethal",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq !"],
-    ["Defense","Fire",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq !"],
-    ["Defense","Cold",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq !"],
-    ["Defense","Energy",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq !"],
-    ["Defense","Negative",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq !"],
-    ["Unmapped",null,0.4,1,2.25,"Melee_Res_Boolean","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["RechargeTime",null,0.3,1,2.25,"Melee_Ones","Res","Magnitude","Target","Any",true,"No",null,null,null,1]
+    ["Defense","Melee",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq !"],
+    ["Defense","Ranged",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq !"],
+    ["Defense","AoE",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq !"],
+    ["Defense","Smashing",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq !"],
+    ["Defense","Lethal",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq !"],
+    ["Defense","Fire",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq !"],
+    ["Defense","Cold",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq !"],
+    ["Defense","Energy",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq !"],
+    ["Defense","Negative",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq !"],
+    ["Defense","All",0.4,1,2.25,"Melee_Res_Boolean","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["RechargeTime",null,0.3,1,2.25,"Melee_Ones","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true]
   ]
 };

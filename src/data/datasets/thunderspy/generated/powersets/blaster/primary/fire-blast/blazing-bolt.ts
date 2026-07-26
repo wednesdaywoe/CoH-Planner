@@ -55,10 +55,27 @@ export const BlazingBolt: Power = {
       "tickRate": 1
     }
   ],
+  "effects": {
+    "buffDuration": 9.17,
+    "damageBuff": {
+      "scale": 0.044,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 9.17
+    }
+  },
   "atoms": [
-    ["Unmapped",null,2.76,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.225,1,3.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,1,1],
-    ["Unmapped",null,0.044,1,9.17,"Ranged_Ones","Str","Magnitude","Self","Any",true,"No",null,null,null,1]
+    ["Damage","Fire",2.76,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Fire",0.225,1,3.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["DamageBuff","Smashing",0.044,1,9.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",0.044,1,9.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Fire",0.044,1,9.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Cold",0.044,1,9.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Energy",0.044,1,9.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Negative",0.044,1,9.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",0.044,1,9.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",0.044,1,9.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
   ],
   "damageTypes": [
     "Fire"

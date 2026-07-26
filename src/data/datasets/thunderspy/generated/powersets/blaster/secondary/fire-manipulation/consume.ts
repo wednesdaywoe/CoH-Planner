@@ -47,6 +47,10 @@ export const Consume: Power = {
   },
   "effects": {
     "buffDuration": 120,
+    "damageBuff": {
+      "scale": 0.033,
+      "table": "Melee_Ones"
+    },
     "debuffResistance": {
       "endurance": {
         "scale": 0.5,
@@ -54,14 +58,34 @@ export const Consume: Power = {
       }
     },
     "durations": {
+      "damageBuff": 9.53,
       "debuffResistance": 120
+    },
+    "enduranceGain": {
+      "scale": 20,
+      "table": "Melee_Ones",
+      "perTarget": 20
+    },
+    "recoveryBuff": {
+      "scale": 0.05,
+      "table": "Melee_Ones",
+      "perTarget": 0.05
     }
   },
   "atoms": [
-    ["Endurance",null,0.5,1,120,"Melee_Ones","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.4,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.4,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"@ToHitRoll @ToHit < @ForceHit ||",true],
-    ["Endurance",null,20,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"@ToHitRoll @ToHit < @ForceHit ||",true]
+    ["Endurance",null,0.5,1,120,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["DamageBuff","Cold",0.033,1,9.53,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Energy",0.033,1,9.53,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Negative",0.033,1,9.53,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",0.033,1,9.53,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",0.033,1,9.53,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Damage","Fire",0.4,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Fire",0.4,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"@ToHitRoll @ToHit < @ForceHit ||",true],
+    ["Endurance",null,20,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"@ToHitRoll @ToHit < @ForceHit ||",true,20],
+    ["Recovery",null,0.05,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"@ToHitRoll @ToHit < @ForceHit ||",true,0.05],
+    ["DamageBuff","Smashing",0.033,1,9.53,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"@ToHitRoll @ToHit < @ForceHit ||",true],
+    ["DamageBuff","Lethal",0.033,1,9.53,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"@ToHitRoll @ToHit < @ForceHit ||",true],
+    ["DamageBuff","Fire",0.033,1,9.53,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"@ToHitRoll @ToHit < @ForceHit ||",true]
   ],
   "damageTypes": [
     "Fire"

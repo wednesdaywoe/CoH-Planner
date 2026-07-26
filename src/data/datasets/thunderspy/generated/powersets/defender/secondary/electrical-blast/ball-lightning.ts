@@ -71,12 +71,12 @@ export const BallLightning: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,0.3,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.27,1,2,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Endurance",null,-0.07,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Recovery",null,-1,0.30000001192092896,4,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.888,1,2,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,-1.25,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Energy",0.3,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Energy",0.27,1,2,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Endurance",null,-0.07,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Recovery",null,-1,0.30000001192092896,4,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Energy",0.888,1,2,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Endurance",null,-1.25,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "damageTypes": [
     "Energy"

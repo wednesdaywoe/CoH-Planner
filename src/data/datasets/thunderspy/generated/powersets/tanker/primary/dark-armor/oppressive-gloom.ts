@@ -47,14 +47,18 @@ export const OppressiveGloom: Power = {
       "mag": 2,
       "scale": 6,
       "table": "Melee_Stun"
+    },
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     }
   },
   "atoms": [
-    ["Mez","Stunned",6,2,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.1,1,0,"Melee_Damage","Abs","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Raid target.HasTag? ! &&"],
-    ["Mez","Stunned",2,2,0,"Melee_Stun","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true]
+    ["Mez","Stunned",6,2,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Special",0.1,1,0,"Melee_Damage","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Mez","Taunt",1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Raid target.HasTag? ! &&"],
+    ["Mez","Stunned",2,2,0,"Melee_Stun","Cur","Duration","Target","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Taunt",1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true]
   ],
   "damageTypes": [
     "Negative"

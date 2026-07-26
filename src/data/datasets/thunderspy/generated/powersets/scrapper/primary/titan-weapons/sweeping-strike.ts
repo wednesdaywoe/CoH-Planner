@@ -54,9 +54,9 @@ export const SweepingStrike: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,1.3309,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Knockback",0.67,0.6600000262260437,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.598905,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1]
+    ["Damage","Smashing",1.3309,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",0.67,0.6600000262260437,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Fire",0.598905,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1]
   ],
   "modeVariants": {
     "FastMode": {

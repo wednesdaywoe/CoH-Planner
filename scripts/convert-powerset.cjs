@@ -6119,10 +6119,35 @@ function guardThunderspyOnesBuffs(power, targetsAffected) {
  * Psychic Wail, EMP Pulse — lists `Foe`), while the self-buff traps affect only
  * `Self`/`Leaguemate`. Drop the recovered control keys when the power affects no foe.
  *
+ * EXCEPT mez PROTECTION, which shares those bag keys and is also foe-less by
+ * definition. A NEGATIVE-magnitude mez at aspect=Current is a protection magnitude,
+ * not applied control (the same discriminator the ally-aura branch of
+ * `classifyPseudoPetTemplate` uses — applied control is always positive), so the
+ * recovered attrib IS the real one there and there is nothing to veto. Recipient is
+ * not part of the test: the ally-cast protections (Clear Mind, Thaw, Increase
+ * Density) carry `toWho: Target`, and a self armor carries `Self`. Blanket-dropping
+ * these cost every Thunderspy armor and ally mez-shield its status protection —
+ * Fortification's four −24 `Melee_Res_Boolean` mods are byte-identical to the
+ * Rebirth twin's, whose bag keeps hold/sleep/stun/immobilize.
+ * Reads `power.atoms`, already encoded by the time this runs.
+ *
  * Thunderspy-only; caller gates on datasetId. Part of the Thunderspy parser/converter
  * recovery work tracked as TSPY-3 in docs/DATA-GAP-REGISTER.md (the referenced
  * parser_logs/THUNDERSPY_TODO.md no longer exists in this repo).
  */
+function protectionBackedMezKeys(atoms) {
+  const keys = new Set();
+  for (const t of atoms || []) {
+    if (t[0] !== 'Mez') continue;
+    if (!(t[2] < 0)) continue;
+    if ((t[6] || '').toLowerCase() !== 'cur') continue;
+    const sub = (t[1] || '').toLowerCase();
+    const key = MEZ_TYPES[sub] || KNOCKBACK_TYPES[sub];
+    if (key) keys.add(key);
+  }
+  return keys;
+}
+
 function guardThunderspyAppliedMez(power, targetsAffected) {
   const e = power.effects;
   if (!e) return;
@@ -6131,8 +6156,10 @@ function guardThunderspyAppliedMez(power, targetsAffected) {
   // only an explicit non-foe list marks a trap).
   if (ta.length === 0) return;
   if (ta.some((t) => TSPY_MEZ_FOE_TARGETS.has(t))) return;
+  const protection = protectionBackedMezKeys(power.atoms);
   let changed = false;
   for (const k of TSPY_APPLIED_MEZ_KEYS) {
+    if (protection.has(k)) continue;
     if (e[k] !== undefined) {
       delete e[k];
       if (e.durations) delete e.durations[k];
@@ -6538,6 +6565,12 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
     }
     const stackingResult = detectStackingEffects(stackingSource);
     if (stackingResult) {
+      // Same `*Unenhanced` remap the conditional path does: an IgnoreStrength
+      // template routes its base value to `<slot>Unenhanced`, so its per-target
+      // increment must land there too. Without it the patch MINTS an empty
+      // enhanceable twin and the one template reads as two buffs (Thunderspy
+      // Invincibility, whose +ToHit carries IgnoreStrength where HC's does not).
+      _remapUnenhancedPatchKeys(stackingResult.patches || {}, effects);
       mergeStackingPatches(effects, stackingResult);
       // Stamp the redirect-derived per-target increment onto the matching emitted
       // atoms (allTemplates). The redirect chain's own template objects (seen by

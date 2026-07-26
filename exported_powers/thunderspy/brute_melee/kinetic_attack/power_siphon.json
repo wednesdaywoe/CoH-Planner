@@ -61,7 +61,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Set_Mode"
           ],
           "type": "Constant",
           "application_type": "OnTick",
@@ -70,7 +70,7 @@
           "table": "Melee_Ones",
           "scale": 1.0,
           "duration": "20 seconds",
-          "magnitude": 1.0,
+          "magnitude": 79.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -80,9 +80,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 3120,
+          "mode_name": "SiphonMode"
         }
       ]
     },
@@ -119,9 +125,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     }

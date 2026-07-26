@@ -60,7 +60,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Set_Mode"
           ],
           "type": "Constant",
           "application_type": "OnTick",
@@ -69,7 +69,7 @@
           "table": "Ranged_Ones",
           "scale": 1.0,
           "duration": "2.5 seconds",
-          "magnitude": 1.0,
+          "magnitude": 63.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -79,9 +79,16 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "50plusUnderground.Eval.DesdemonaShieldActive ZoneEvent> 1 >=",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 112,
+          "mode_name": "Tower_Protection"
         }
       ]
     },
@@ -99,7 +106,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Meter"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -118,9 +125,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> player eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 112
         }
       ]
     }

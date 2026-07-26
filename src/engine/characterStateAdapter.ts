@@ -252,11 +252,15 @@ const SELF_TOTAL_EFFECT_KEYS: ReadonlySet<string> = new Set([
  *  - the Bio Armor adaptation stances flow via `active_sub_power`, and the engine re-admits their
  *    `Source.Mode?`-gated atoms (PROD3 increment 1);
  *  - out-of-combat rides `combatMode` → `in_combat` — the engine binds `kOutOfCombat` to `!in_combat`,
- *    the same signal that governs the suppressible out-of-combat defense.
+ *    the same signal that governs the suppressible out-of-combat defense;
+ *  - the Primalist form stances ride the toggled form power's own `setsModes`, which is what
+ *    `collect_source_modes` binds `kHunterMode` / `kProwlerMode` from. Thunderspy published no mode
+ *    at all until TSPY-4 fixed the parser, which is why these two used to fail loud here.
  */
 const ENGINE_MODELED_ADJUSTERS: ReadonlySet<string> = new Set([
   'defensiveadaptation', 'offensiveadaptation', 'restedadaptation',
   'outofcombat',
+  'huntermode', 'prowlermode',
 ]);
 
 /**
@@ -265,10 +269,15 @@ const ENGINE_MODELED_ADJUSTERS: ReadonlySet<string> = new Set([
  * in-cell): a mid-combo pulse, not a sustained total. The engine leaves them Indeterminate and omits
  * them, so the dashboard shows the sustained value and the toggle is a no-op — the deliberate reading
  * of a totals dashboard, not a silent drop of a persistent buff.
+ *
+ * The last two are thunderspy's, and their data says the same thing in a different idiom: both gate
+ * on `Temporary_Powers.… source.ownPower?` — a temp power a prior attack grants and the next
+ * consumes — rather than on a mode. A build does not hold that temp, so it is rotation state.
  */
 const TRANSIENT_UNMODELED_ADJUSTERS: ReadonlySet<string> = new Set([
   'clearskies', 'cryoammunition', 'dd_statusmode_2',
   'perfection_of_body_level_3', 'perfection_of_mind_level_3', 'stormblast_instormcell',
+  'bulletcut', 'pale_self_buff_plaguebearer',
 ]);
 
 /** Every `conditionalEffects` entry the build's selected powers carry, indexed by conditional id. */

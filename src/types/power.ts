@@ -441,6 +441,8 @@ export interface DebuffResistance {
 export interface MovementEffect {
   scale: number;
   table?: string;
+  /** Per-stack scale increment — see {@link ScaledEffect.perTarget}. */
+  perTarget?: number;
   /** Binary suppress group — see {@link ScaledEffect.stackKey}. */
   stackKey?: string;
   /** Suppressed in combat — see {@link ScaledEffect.suppressible}. */

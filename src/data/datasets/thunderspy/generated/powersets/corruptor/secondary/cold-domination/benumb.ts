@@ -34,20 +34,165 @@ export const Benumb: Power = {
   "maxSlots": 6,
   "effects": {
     "buffDuration": 30,
+    "damageDebuff": {
+      "scale": 5,
+      "table": "Ranged_Debuff_Dam"
+    },
     "durations": {
-      "regenDebuff": 30
+      "damageDebuff": 30,
+      "regenDebuff": 30,
+      "slow": 30,
+      "specialBuff": 30,
+      "specialDebuff": 30
+    },
+    "enduranceDrain": {
+      "scale": 0.05,
+      "table": "Ranged_Ones"
     },
     "regenDebuff": {
       "scale": 5,
       "table": "Ranged_Ones"
+    },
+    "slow": {
+      "flySpeed": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "runSpeed": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      }
+    },
+    "specialBuff": {
+      "confuse": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "endurance": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "fear": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "heal": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "hold": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "immobilize": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "sleep": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "stun": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "tohit": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      }
+    },
+    "specialDebuff": {
+      "aoe": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "cold": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "defense": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "energy": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "fire": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "lethal": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "melee": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "negative": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "psionic": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "ranged": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      },
+      "smashing": {
+        "scale": 0.75,
+        "table": "Melee_Ones"
+      }
     }
   },
   "atoms": [
-    ["Unmapped",null,5,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Regeneration",null,-5,1,30,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,5,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,-20,1,30,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["DamageBuff","Smashing",5,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["DamageBuff","Lethal",5,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["DamageBuff","Fire",5,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["DamageBuff","Cold",5,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["DamageBuff","Energy",5,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["DamageBuff","Negative",5,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["DamageBuff","Toxic",5,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["DamageBuff","Psionic",5,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Regeneration",null,-5,1,30,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Endurance",null,-0.05,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Enhancement","Stunned",-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Sleep",-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Confused",-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Terrorized",-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Immobilized",-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Held",-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","Run",-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","Fly",-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","All",-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Melee",-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Ranged",-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","AoE",-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Smashing",-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Lethal",-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Fire",-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Cold",-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Energy",-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Negative",-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Psionic",-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Heal",null,-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["ToHit",null,-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Endurance",null,-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Knockback",-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Knockup",-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Repel",-0.75,1,30,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Smashing",5,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["DamageBuff","Lethal",5,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["DamageBuff","Fire",5,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["DamageBuff","Cold",5,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["DamageBuff","Energy",5,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["DamageBuff","Negative",5,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["DamageBuff","Toxic",5,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["DamageBuff","Psionic",5,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["Regeneration",null,-20,1,30,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
   ],
   "damageTypes": [
     "Cold"

@@ -62,7 +62,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Smashing_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -81,9 +81,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "Boost"
+          ],
+          "flags_raw": 5168
         }
       ]
     },
@@ -101,7 +107,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Lethal_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -120,9 +126,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "Boost"
+          ],
+          "flags_raw": 5168
         }
       ]
     },
@@ -140,7 +152,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Fire_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -159,9 +171,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "Boost"
+          ],
+          "flags_raw": 5168
         }
       ]
     },
@@ -179,7 +197,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Cold_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -198,9 +216,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "Boost"
+          ],
+          "flags_raw": 5168
         }
       ]
     },
@@ -218,7 +242,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Energy_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -237,9 +261,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "Boost"
+          ],
+          "flags_raw": 5168
         }
       ]
     },
@@ -257,7 +287,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Negative_Energy_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -276,9 +306,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "Boost"
+          ],
+          "flags_raw": 5168
         }
       ]
     },
@@ -296,7 +332,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Toxic_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -315,9 +351,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "Boost"
+          ],
+          "flags_raw": 5168
         }
       ]
     },
@@ -335,7 +377,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Psionic_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -354,9 +396,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "Boost"
+          ],
+          "flags_raw": 5168
         }
       ]
     },
@@ -374,7 +422,7 @@
       "templates": [
         {
           "attribs": [
-            "Recharge"
+            "RechargeTime"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -393,9 +441,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "Boost"
+          ],
+          "flags_raw": 5168
         }
       ]
     },
@@ -413,7 +467,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Smashing_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -432,9 +486,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> critter eq target.isFriend? ! && Level source> 20 <= &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "CancelOnMiss",
+            "IgnoreStrength"
+          ],
+          "flags_raw": 1300
         }
       ]
     },
@@ -452,7 +511,7 @@
       "templates": [
         {
           "attribs": [
-            "Tempdamage"
+            "Smashing_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -471,9 +530,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> player eq target.isFriend? ! && Level source> 20 <= &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "CancelOnMiss",
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1076
         }
       ]
     }

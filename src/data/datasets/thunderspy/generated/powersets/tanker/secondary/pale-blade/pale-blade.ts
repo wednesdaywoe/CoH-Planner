@@ -43,7 +43,7 @@ export const PaleBlade: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 0.5,
     "table": "Melee_Damage",
     "duration": 1,
@@ -57,28 +57,43 @@ export const PaleBlade: Power = {
     "regenDebuff": {
       "scale": 0.5,
       "table": "Ranged_Ones"
+    },
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     }
   },
   "atoms": [
-    ["Regeneration",null,-0.5,1,15,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.5,1,1,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,0.4000000059604645,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,0.20000000298023224,0,"Ranged_Ones","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
-    ["Unmapped",null,0.174015,1,1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,0.4000000059604645,1],
-    ["Regeneration",null,-1,1,15,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,0.5,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Lash source.ownPower?",true],
-    ["Unmapped",null,1,1,2,"Melee_Ones","Abs","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Lash source.ownPower?",true],
-    ["Unmapped",null,0.5,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Flay source.ownPower?",true],
-    ["Unmapped",null,1,1,2,"Melee_Ones","Abs","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Flay source.ownPower?",true],
-    ["Unmapped",null,1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_RendFlesh source.ownPower?",true],
-    ["Unmapped",null,1,1,2,"Melee_Ones","Abs","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_RendFlesh source.ownPower?",true],
-    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
-    ["Unmapped",null,6,0.11599999666213989,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,0.667139,1,1,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,0.4000000059604645,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,0.45,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer source.ownPower?",true],
-    ["Unmapped",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer source.ownPower?",true],
-    ["Unmapped",null,1,1,60,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer source.ownPower?",true]
+    ["Regeneration",null,-0.5,1,15,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Lethal",0.5,1,1,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["GrantPower",null,1,0.20000000298023224,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Mez","Taunt",1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
+    ["Damage","Fire",0.174015,1,1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.4000000059604645,1],
+    ["Regeneration",null,-1,1,15,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Toxic",0.5,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Lash source.ownPower?",true],
+    ["Meta",null,1,1,2,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Lash source.ownPower?",true],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Lash source.ownPower?",true],
+    ["Damage","Toxic",0.5,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Flay source.ownPower?",true],
+    ["Meta",null,1,1,2,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Flay source.ownPower?",true],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Flay source.ownPower?",true],
+    ["Damage","Toxic",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_RendFlesh source.ownPower?",true],
+    ["Meta",null,1,1,2,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_RendFlesh source.ownPower?",true],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_RendFlesh source.ownPower?",true],
+    ["Mez","Taunt",1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
+    ["Mez","Taunt",6,0.11599999666213989,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Lethal",0.667139,1,1,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Cold",0.45,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer source.ownPower?",true],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer source.ownPower?",true],
+    ["Meta",null,0,1,3,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer source.ownPower?",true],
+    ["DamageBuff","Smashing",1,1,60,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer source.ownPower?",true],
+    ["DamageBuff","Lethal",1,1,60,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer source.ownPower?",true],
+    ["DamageBuff","Fire",1,1,60,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer source.ownPower?",true],
+    ["DamageBuff","Cold",1,1,60,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer source.ownPower?",true],
+    ["DamageBuff","Energy",1,1,60,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer source.ownPower?",true],
+    ["DamageBuff","Negative",1,1,60,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer source.ownPower?",true],
+    ["DamageBuff","Toxic",1,1,60,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer source.ownPower?",true],
+    ["DamageBuff","Psionic",1,1,60,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer source.ownPower?",true]
   ],
   "conditionalEffects": [
     {
@@ -87,7 +102,7 @@ export const PaleBlade: Power = {
       "scope": "global",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Toxic",
         "scale": 0.5,
         "table": "Melee_Damage"
       }
@@ -98,7 +113,7 @@ export const PaleBlade: Power = {
       "scope": "global",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Toxic",
         "scale": 0.5,
         "table": "Melee_Damage"
       }
@@ -109,7 +124,7 @@ export const PaleBlade: Power = {
       "scope": "global",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Toxic",
         "scale": 1,
         "table": "Melee_Damage"
       }
@@ -120,9 +135,20 @@ export const PaleBlade: Power = {
       "scope": "global",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Cold",
         "scale": 0.45,
         "table": "Melee_Damage"
+      },
+      "effects": {
+        "buffDuration": 60,
+        "damageBuff": {
+          "scale": 1,
+          "table": "Melee_Buff_Dmg",
+          "perTarget": 1
+        },
+        "durations": {
+          "damageBuff": 60
+        }
       }
     }
   ],

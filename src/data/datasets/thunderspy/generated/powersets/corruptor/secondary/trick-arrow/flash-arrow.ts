@@ -39,15 +39,31 @@ export const FlashArrow: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 0.15,
     "table": "Ranged_Damage"
   },
+  "effects": {
+    "buffDuration": 60,
+    "durations": {
+      "perceptionDebuff": 60,
+      "tohitDebuff": 5
+    },
+    "perceptionDebuff": {
+      "scale": 0.9,
+      "table": "Ranged_Ones"
+    },
+    "tohitDebuff": {
+      "scale": 3.5,
+      "table": "Ranged_DeBuff_ToHit"
+    }
+  },
   "atoms": [
-    ["Unmapped",null,-0.9,1,60,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1.5,1,60,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.15,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1.5,1,20,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll @ToHit < @ForceHit || &&",true],
-    ["Unmapped",null,-0.9,1,20,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll @ToHit < @ForceHit || &&",true]
+    ["Perception",null,-0.9,1,60,"Ranged_Ones","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["ToHit",null,1.5,1,60,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["ToHit",null,3.5,1,5,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Energy",0.15,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["ToHit",null,1.5,1,20,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll @ToHit < @ForceHit || &&",true],
+    ["Perception",null,-0.9,1,20,"Ranged_Ones","Cur","Magnitude","Target","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll @ToHit < @ForceHit || &&",true]
   ]
 };

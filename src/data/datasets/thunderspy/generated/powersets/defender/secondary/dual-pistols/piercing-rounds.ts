@@ -54,45 +54,166 @@ export const PiercingRounds: Power = {
       "type": "Lethal",
       "scale": 1.055,
       "table": "Ranged_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 1.055,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.169,
+      "table": "Ranged_Damage",
+      "duration": 2.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Cold",
+      "scale": 1.055,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 1.055,
+      "table": "Ranged_Damage"
     }
   ],
   "effects": {
+    "buffDuration": 10,
+    "durations": {
+      "resistanceDebuff": 10
+    },
     "immobilize": {
       "mag": 0.75,
       "scale": 10.1,
       "table": "Ranged_Immobilize"
+    },
+    "knockback": {
+      "scale": 1,
+      "table": "Ranged_Knockback"
+    },
+    "resistanceDebuff": {
+      "cold": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "energy": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "fire": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "negative": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "psionic": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "smashing": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      }
     }
   },
   "atoms": [
-    ["Unmapped",null,1.055,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,-2,1,10,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1.055,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1,0.699999988079071,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1.055,0,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.169,1,2.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,1,1],
-    ["Unmapped",null,1.055,0,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.15,0,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.15,0,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.15,0,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.15,0,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.15,0,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Mez","Immobilized",10.1,0.75,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1.055,0,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1,0,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,0,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,0,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,0,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,0,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,0,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,0,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,0,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1.26,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,1.26,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,1,0.699999988079071,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,1.26,0,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,1.45,0,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Immobilized",2,0.75,0,"Ranged_Immobilize","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,1.26,0,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Lethal",1.055,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Resistance","Smashing",-2,1,10,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Resistance","Lethal",-2,1,10,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Resistance","Fire",-2,1,10,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Resistance","Cold",-2,1,10,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Resistance","Energy",-2,1,10,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Resistance","Negative",-2,1,10,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Resistance","Psionic",-2,1,10,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Damage","Lethal",1.055,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",1,0.699999988079071,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Fire",1.055,0,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Fire",0.169,1,2.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["Damage","Cold",1.055,0,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Movement","Run",0.15,0,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","Fly",0.15,0,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","JumpHeight",0.15,0,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Movement","Jump",0.15,0,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["RechargeTime",null,0.15,0,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Mez","Immobilized",10.1,0.75,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Toxic",1.055,0,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["DamageBuff","Smashing",1,0,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",1,0,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Fire",1,0,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Cold",1,0,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Energy",1,0,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Negative",1,0,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",1,0,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",1,0,10,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Damage","Lethal",1.26,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Lethal",1.26,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Knockback",1,0.699999988079071,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Fire",1.26,0,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Cold",1.45,0,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Immobilized",2,0.75,0,"Ranged_Immobilize","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Toxic",1.26,0,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+  ],
+  "conditionalEffects": [
+    {
+      "id": "cryoammunition",
+      "label": "Cryo Ammo",
+      "scope": "global",
+      "defaultActive": false,
+      "group": "swap-ammo",
+      "effects": {
+        "rechargeDebuff": {
+          "scale": 0.15,
+          "table": "Ranged_Slow"
+        },
+        "slow": {
+          "flySpeed": {
+            "scale": 0.15,
+            "table": "Ranged_Slow"
+          },
+          "jumpHeight": {
+            "scale": 0.15,
+            "table": "Ranged_Slow"
+          },
+          "jumpSpeed": {
+            "scale": 0.15,
+            "table": "Ranged_Slow"
+          },
+          "runSpeed": {
+            "scale": 0.15,
+            "table": "Ranged_Slow"
+          }
+        },
+        "durations": {
+          "rechargeDebuff": 10,
+          "slow": 10
+        },
+        "buffDuration": 10
+      }
+    },
+    {
+      "id": "chemicalammunition",
+      "label": "Chemical Ammo",
+      "scope": "global",
+      "defaultActive": false,
+      "group": "swap-ammo",
+      "effects": {
+        "damageDebuff": {
+          "scale": 1,
+          "table": "Ranged_Debuff_Dam"
+        },
+        "durations": {
+          "damageDebuff": 10
+        },
+        "buffDuration": 10
+      }
+    }
   ],
   "damageTypes": [
     "Lethal"

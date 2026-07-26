@@ -65,7 +65,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Fly"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -84,9 +84,147 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "FlyingSpeed"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0.75 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "BoostIgnoreDiminishing",
+            "CancelOnMiss",
+            "IgnoreStrength"
+          ],
+          "flags_raw": 22
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "FlyingSpeed"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Ranged_Ones",
+          "scale": -1.01,
+          "duration": "0.75 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Set_Mode"
+          ],
+          "type": "Constant",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0.75 seconds",
+          "magnitude": 112.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 3120,
+          "mode_name": "JetpackOn"
         }
       ]
     },
@@ -104,7 +242,7 @@
       "templates": [
         {
           "attribs": [
-            "SpeedFlying"
+            "FlyingSpeed"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -123,9 +261,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "isPVPMap? !",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "BoostIgnoreDiminishing",
+            "CancelOnMiss",
+            "IgnoreStrength"
+          ],
+          "flags_raw": 22
         }
       ]
     },
@@ -143,7 +287,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "FlyingSpeed"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -162,9 +306,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "isPVPMap? !",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "BoostIgnoreDiminishing",
+            "CancelOnMiss",
+            "IgnoreStrength"
+          ],
+          "flags_raw": 22
         }
       ]
     },
@@ -182,7 +332,7 @@
       "templates": [
         {
           "attribs": [
-            "SpeedFlying"
+            "FlyingSpeed"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -201,9 +351,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "isPVPMap?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "BoostIgnoreDiminishing",
+            "CancelOnMiss",
+            "IgnoreStrength"
+          ],
+          "flags_raw": 22
         }
       ]
     },
@@ -221,7 +377,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "FlyingSpeed"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -240,9 +396,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "isPVPMap?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "BoostIgnoreDiminishing",
+            "CancelOnMiss",
+            "IgnoreStrength"
+          ],
+          "flags_raw": 22
         }
       ]
     },
@@ -279,9 +441,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "BoostIgnoreDiminishing",
+            "CancelOnMiss",
+            "IgnoreStrength"
+          ],
+          "flags_raw": 22
         }
       ]
     },
@@ -299,7 +467,7 @@
       "templates": [
         {
           "attribs": [
-            "Friction"
+            "MovementFriction"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -318,9 +486,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "BoostIgnoreDiminishing",
+            "CancelOnMiss",
+            "IgnoreStrength"
+          ],
+          "flags_raw": 22
         }
       ]
     }

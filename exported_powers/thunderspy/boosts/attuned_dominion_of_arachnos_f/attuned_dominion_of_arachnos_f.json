@@ -88,9 +88,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "target.isFriend? !",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Maximize",
+          "stack_limit": 2,
+          "stack_key": "DominionArachnosProc",
+          "flags": [
+            "IgnoreStrength",
+            "StackByAttribAndKey"
+          ],
+          "flags_raw": 263440
         }
       ]
     },
@@ -108,7 +113,7 @@
       "templates": [
         {
           "attribs": [
-            "Recharge"
+            "RechargeTime"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -127,9 +132,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "Boost"
+          ],
+          "flags_raw": 5168
         }
       ]
     }

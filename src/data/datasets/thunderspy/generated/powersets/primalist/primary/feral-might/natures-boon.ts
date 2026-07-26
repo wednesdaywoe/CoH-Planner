@@ -32,17 +32,22 @@ export const NaturesBoon: Power = {
   "effects": {
     "buffDuration": 30,
     "durations": {
-      "specialBuff": 30
+      "enduranceDiscount": 30
     },
-    "specialBuff": {
-      "stun": {
-        "scale": 0.5,
-        "table": "Melee_Stun"
-      }
+    "enduranceDiscount": {
+      "scale": 0.5,
+      "table": "Melee_Stun"
     }
   },
   "atoms": [
-    ["Unmapped",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Enhancement","Stunned",0.5,1,30,"Melee_Stun","Str","Magnitude","Self","Any",true,"No",null,null,null,1]
+    ["GlobalChanceMod",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["GlobalChanceMod",null,-1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["GlobalChanceMod",null,0.1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["GlobalChanceMod",null,0.5,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["GlobalChanceMod",null,0.25,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["GlobalChanceMod",null,0.15,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["GlobalChanceMod",null,0.3,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["GlobalChanceMod",null,0.15,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["EnduranceDiscount",null,0.5,1,30,"Melee_Stun","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
   ]
 };

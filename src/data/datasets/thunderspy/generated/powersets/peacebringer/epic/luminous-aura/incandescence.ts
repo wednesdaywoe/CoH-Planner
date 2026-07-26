@@ -53,9 +53,9 @@ export const Incandescence: Power = {
     }
   },
   "atoms": [
-    ["Resistance","Energy",1.5,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Resistance","Negative",1.5,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["RechargeTime",null,0.3,1,10.25,"Melee_Ones","Res","Magnitude","Self","Any",true,"No",null,null,null,1]
+    ["Resistance","Energy",1.5,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Negative",1.5,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["RechargeTime",null,0.3,1,10.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
   ],
   "mechanicType": "parentMechanic"
 };

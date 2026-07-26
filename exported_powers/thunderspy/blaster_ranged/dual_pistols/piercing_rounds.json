@@ -68,7 +68,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Lethal_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -87,9 +87,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> critter eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -107,7 +108,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Lethal_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -126,9 +127,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> player eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -146,7 +148,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Smashing_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -165,243 +167,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
-        }
-      ]
-    },
-    {
-      "chance": 1.0,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": "enttype target> critter eq",
-      "tags": [],
-      "flags": [],
-      "is_pvp": "PVE_ONLY",
-      "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "Lethal"
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength"
           ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "Absolute",
-          "target": "AnyAffected",
-          "table": "Ranged_Damage",
-          "scale": 1.055,
-          "duration": "0 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "enttype target> critter eq",
-          "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
-        }
-      ]
-    },
-    {
-      "chance": 1.0,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": "enttype target> player eq",
-      "tags": [],
-      "flags": [],
-      "is_pvp": "PVP_ONLY",
-      "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "Lethal"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "Absolute",
-          "target": "AnyAffected",
-          "table": "Ranged_Damage",
-          "scale": 1.26,
-          "duration": "0 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "enttype target> player eq",
-          "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
-        }
-      ]
-    },
-    {
-      "chance": 1.0,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": "enttype target> critter eq",
-      "tags": [],
-      "flags": [],
-      "is_pvp": "PVE_ONLY",
-      "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "LethalKB70"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "Current",
-          "target": "AnyAffected",
-          "table": "Ranged_Knockback",
-          "scale": 1.0,
-          "duration": "0 seconds",
-          "magnitude": 0.699999988079071,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "enttype target> critter eq",
-          "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
-        }
-      ]
-    },
-    {
-      "chance": 1.0,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": "enttype target> player eq",
-      "tags": [],
-      "flags": [],
-      "is_pvp": "PVP_ONLY",
-      "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "LethalKB70"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "Current",
-          "target": "AnyAffected",
-          "table": "Ranged_Knockback",
-          "scale": 1.0,
-          "duration": "0 seconds",
-          "magnitude": 0.699999988079071,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "enttype target> player eq",
-          "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
-        }
-      ]
-    },
-    {
-      "chance": 1.0,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": "enttype target> critter eq",
-      "tags": [],
-      "flags": [],
-      "is_pvp": "PVE_ONLY",
-      "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "FireDamage"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "Absolute",
-          "target": "AnyAffected",
-          "table": "Ranged_Damage",
-          "scale": 1.055,
-          "duration": "0 seconds",
-          "magnitude": 0.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "enttype target> critter eq",
-          "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
-        }
-      ]
-    },
-    {
-      "chance": 1.0,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": "enttype target> player eq",
-      "tags": [],
-      "flags": [],
-      "is_pvp": "PVP_ONLY",
-      "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "FireDamage"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "Absolute",
-          "target": "AnyAffected",
-          "table": "Ranged_Damage",
-          "scale": 1.26,
-          "duration": "0 seconds",
-          "magnitude": 0.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "enttype target> player eq",
-          "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "flags_raw": 1296
         }
       ]
     },
@@ -419,7 +191,347 @@
       "templates": [
         {
           "attribs": [
-            "FireDamageDoT"
+            "Lethal_Dmg",
+            "Fire_Dmg",
+            "Cold_Dmg",
+            "Energy_Dmg",
+            "Negative_Energy_Dmg",
+            "Psionic_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Resistance",
+          "target": "AnyAffected",
+          "table": "Ranged_Res_Dmg",
+          "scale": -2.0,
+          "duration": "10 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength"
+          ],
+          "flags_raw": 1296
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Smashing_Dmg",
+            "Lethal_Dmg",
+            "Fire_Dmg",
+            "Cold_Dmg",
+            "Energy_Dmg",
+            "Negative_Energy_Dmg",
+            "Toxic_Dmg",
+            "Psionic_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "Self",
+          "table": "Ranged_Ones",
+          "scale": 0.064,
+          "duration": "10 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 112
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "enttype target> critter eq",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "PVE_ONLY",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Lethal_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Damage",
+          "scale": 1.055,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "enttype target> critter eq",
+          "caster_stack": "",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "enttype target> player eq",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "PVP_ONLY",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Lethal_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Damage",
+          "scale": 1.26,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "enttype target> player eq",
+          "caster_stack": "",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "enttype target> critter eq",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "PVE_ONLY",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Knockback"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Knockback",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 0.699999988079071,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "enttype target> critter eq",
+          "caster_stack": "",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "enttype target> player eq",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "PVP_ONLY",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Knockback"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Knockback",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 0.699999988079071,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "enttype target> player eq",
+          "caster_stack": "",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "enttype target> critter eq",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "PVE_ONLY",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Fire_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Damage",
+          "scale": 1.055,
+          "duration": "0 seconds",
+          "magnitude": 0.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "enttype target> critter eq",
+          "caster_stack": "",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "enttype target> player eq",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "PVP_ONLY",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Fire_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Damage",
+          "scale": 1.26,
+          "duration": "0 seconds",
+          "magnitude": 0.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "enttype target> player eq",
+          "caster_stack": "",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Fire_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -438,9 +550,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "CancelOnMiss"
+          ],
+          "flags_raw": 1284
         }
       ]
     },
@@ -458,7 +574,7 @@
       "templates": [
         {
           "attribs": [
-            "ColdDamage"
+            "Cold_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -477,9 +593,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> critter eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -497,7 +614,7 @@
       "templates": [
         {
           "attribs": [
-            "ColdDamage"
+            "Cold_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -516,9 +633,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> player eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -536,7 +654,7 @@
       "templates": [
         {
           "attribs": [
-            "ColdDamage"
+            "RunningSpeed"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -555,9 +673,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -575,7 +694,7 @@
       "templates": [
         {
           "attribs": [
-            "ColdDamage"
+            "FlyingSpeed"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -594,9 +713,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -614,7 +734,7 @@
       "templates": [
         {
           "attribs": [
-            "ColdDamage"
+            "JumpHeight"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -633,9 +753,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength"
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -653,7 +777,7 @@
       "templates": [
         {
           "attribs": [
-            "ColdDamage"
+            "JumpingSpeed"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -672,9 +796,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -692,7 +817,7 @@
       "templates": [
         {
           "attribs": [
-            "ColdDamage"
+            "RechargeTime"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -711,9 +836,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength"
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -750,9 +879,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> critter eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 2560
         }
       ]
     },
@@ -789,9 +919,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> player eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 2560
         }
       ]
     },
@@ -809,7 +940,7 @@
       "templates": [
         {
           "attribs": [
-            "ToxicDamage"
+            "Toxic_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -828,9 +959,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> critter eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -848,7 +980,7 @@
       "templates": [
         {
           "attribs": [
-            "ToxicDamage"
+            "Toxic_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -867,9 +999,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> player eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -887,7 +1020,7 @@
       "templates": [
         {
           "attribs": [
-            "ToxicDamage"
+            "Smashing_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -906,9 +1039,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength"
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -926,7 +1063,7 @@
       "templates": [
         {
           "attribs": [
-            "ToxicDamage"
+            "Lethal_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -945,9 +1082,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength"
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -965,7 +1106,7 @@
       "templates": [
         {
           "attribs": [
-            "ToxicDamage"
+            "Fire_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -984,9 +1125,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength"
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -1004,7 +1149,7 @@
       "templates": [
         {
           "attribs": [
-            "ToxicDamage"
+            "Cold_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -1023,9 +1168,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength"
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -1043,7 +1192,7 @@
       "templates": [
         {
           "attribs": [
-            "ToxicDamage"
+            "Energy_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -1062,9 +1211,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength"
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -1082,7 +1235,7 @@
       "templates": [
         {
           "attribs": [
-            "ToxicDamage"
+            "Negative_Energy_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -1101,9 +1254,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength"
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -1121,7 +1278,7 @@
       "templates": [
         {
           "attribs": [
-            "ToxicDamage"
+            "Toxic_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -1140,9 +1297,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength"
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -1160,7 +1321,7 @@
       "templates": [
         {
           "attribs": [
-            "ToxicDamage"
+            "Psionic_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -1179,9 +1340,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength"
+          ],
+          "flags_raw": 1296
         }
       ]
     }

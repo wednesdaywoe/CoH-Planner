@@ -33,7 +33,18 @@ export const Permafrost: Power = {
   "maxSlots": 6,
   "effects": {
     "buffDuration": 10.25,
+    "debuffResistance": {
+      "movement": {
+        "scale": 0.2,
+        "table": "Melee_Ones"
+      },
+      "recharge": {
+        "scale": 0.2,
+        "table": "Melee_Ones"
+      }
+    },
     "durations": {
+      "debuffResistance": 10.25,
       "maxHPBuff": 10.25,
       "resistance": 10.25
     },
@@ -45,13 +56,27 @@ export const Permafrost: Power = {
       "cold": {
         "scale": 3,
         "table": "Melee_Res_DMG"
+      },
+      "fire": {
+        "scale": 1.25,
+        "table": "Melee_Res_DMG"
+      },
+      "toxic": {
+        "scale": 1.5,
+        "table": "Melee_Res_DMG"
       }
     }
   },
   "atoms": [
-    ["MaxHP",null,1,1,10.25,"Melee_HealSelf","Max","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Resistance","Cold",3,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.2,1,10.25,"Melee_Ones","Res","Magnitude","Self","Any",true,"No",null,null,null,1]
+    ["MaxHP",null,1,1,10.25,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Cold",3,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Fire",1.25,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Toxic",1.5,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Movement","Run",0.2,1,10.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["RechargeTime",null,0.2,1,10.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Movement","Fly",0.2,1,10.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Movement","JumpHeight",0.2,1,10.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Movement","Jump",0.2,1,10.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
   ],
   "mechanicType": "parentMechanic"
 };

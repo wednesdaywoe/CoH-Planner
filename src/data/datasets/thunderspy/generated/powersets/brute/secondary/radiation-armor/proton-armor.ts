@@ -45,13 +45,28 @@ export const ProtonArmor: Power = {
       "resistance": 0.75
     },
     "resistance": {
+      "cold": {
+        "scale": 2,
+        "table": "Melee_Res_DMG"
+      },
       "energy": {
         "scale": 4,
+        "table": "Melee_Res_DMG"
+      },
+      "fire": {
+        "scale": 3,
+        "table": "Melee_Res_DMG"
+      },
+      "negative": {
+        "scale": 2,
         "table": "Melee_Res_DMG"
       }
     }
   },
   "atoms": [
-    ["Resistance","Energy",4,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1]
+    ["Resistance","Energy",4,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Fire",3,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Negative",2,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Cold",2,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true]
   ]
 };

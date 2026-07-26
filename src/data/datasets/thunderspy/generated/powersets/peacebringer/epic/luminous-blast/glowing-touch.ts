@@ -37,18 +37,21 @@ export const GlowingTouch: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 1,
-    "durations": {
-      "healing": 1
-    },
-    "healing": {
-      "scale": 3,
+  "damage": [
+    {
+      "type": "Heal",
+      "scale": 2,
       "table": "Ranged_Heal"
+    },
+    {
+      "type": "Heal",
+      "scale": 1,
+      "table": "Ranged_Heal",
+      "duration": 1
     }
-  },
+  ],
   "atoms": [
-    ["Unmapped",null,2,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,1,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"No",null,null,null,1]
+    ["Heal",null,2,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Heal",null,1,1,1,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1]
   ]
 };

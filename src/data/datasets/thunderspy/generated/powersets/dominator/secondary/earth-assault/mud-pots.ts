@@ -45,11 +45,6 @@ export const MudPots: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Fire",
-    "scale": 0.18,
-    "table": "Melee_Damage"
-  },
   "effects": {
     "buffDuration": 5,
     "durations": {
@@ -61,6 +56,14 @@ export const MudPots: Power = {
       "table": "Melee_Ones"
     },
     "slow": {
+      "jumpHeight": {
+        "scale": 0.5,
+        "table": "Melee_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.5,
+        "table": "Melee_Slow"
+      },
       "runSpeed": {
         "scale": 1.5,
         "table": "Melee_SpeedRunning"
@@ -68,11 +71,14 @@ export const MudPots: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,0.5,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Movement","Run",-1.5,1,5,"Melee_SpeedRunning","Max","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Mez","Immobilized",2.25,2,0,"Melee_Ones","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.18,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Mez","Immobilized",2.25,2,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Movement","Run",0.5,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Movement","Jump",0.5,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Movement","JumpHeight",0.5,1,5,"Melee_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","Run",-1.5,1,5,"Melee_SpeedRunning","Max","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Mez","Immobilized",2.25,2,0,"Melee_Ones","Cur","Duration","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Fire",0.18,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Mez","Immobilized",2.25,2,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
   ],
   "damageTypes": [
     "Fire"

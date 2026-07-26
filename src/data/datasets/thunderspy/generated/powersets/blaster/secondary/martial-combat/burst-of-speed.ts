@@ -41,14 +41,40 @@ export const BurstofSpeed: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 7.5,
+    "damageBuff": {
+      "scale": 0.068,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 7.5
+    },
     "summon": {
       "entity": "Pets_Burst_of_Speed",
       "isPseudoPet": false
-    }
+    },
+    "teleport": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   },
   "atoms": [
+    ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["EntCreate",null,1,1,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,2,0,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,-1,2,30,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1]
+    ["EntCreate",null,-1,1,2,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Smashing",0.068,1,7.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",0.068,1,7.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Fire",0.068,1,7.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Cold",0.068,1,7.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Energy",0.068,1,7.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Negative",0.068,1,7.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",0.068,1,7.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",0.068,1,7.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["RechargePower",null,1,2,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["GlobalChanceMod",null,-1,2,30,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
   ]
 };

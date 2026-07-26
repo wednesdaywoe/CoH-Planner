@@ -33,9 +33,63 @@ export const AblativeCarapace: Power = {
     "Healing"
   ],
   "maxSlots": 6,
+  "effects": {
+    "absorb": {
+      "scale": 0.3,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 30,
+    "durations": {
+      "absorb": 30,
+      "regenBuff": 30
+    },
+    "regenBuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    }
+  },
   "atoms": [
-    ["Unmapped",null,0.3,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.09,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
-    ["Unmapped",null,0.3,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kRestedAdaptation Source.Mode?",true]
+    ["Absorb",null,0.3,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Absorb",null,1,1,30,"Melee_Ones","Max","Expression","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"Max.kHitPoints source> 0.3 * @Strength *"],
+    ["Regeneration",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Absorb",null,0.09,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
+    ["Absorb",null,1,1,30,"Melee_Ones","Max","Expression","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true,null,null,null,null,"Max.kHitPoints source> 0.09 * @Strength *"],
+    ["Regeneration",null,0.3,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kRestedAdaptation Source.Mode?",true]
+  ],
+  "conditionalEffects": [
+    {
+      "id": "defensiveadaptation",
+      "label": "Defensive Adaptation",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "absorb": {
+          "scale": 0.09,
+          "table": "Melee_Ones"
+        },
+        "buffDuration": 30,
+        "durations": {
+          "absorb": 30
+        }
+      },
+      "group": "adaptation"
+    },
+    {
+      "id": "restedadaptation",
+      "label": "Rested Adaptation",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "buffDuration": 30,
+        "durations": {
+          "regenBuff": 30
+        },
+        "regenBuff": {
+          "scale": 0.3,
+          "table": "Melee_Ones"
+        }
+      },
+      "group": "adaptation"
+    }
   ]
 };

@@ -36,22 +36,62 @@ export const ConduitofPain: Power = {
   "maxSlots": 6,
   "effects": {
     "buffDuration": 60,
+    "damageBuff": {
+      "scale": 3,
+      "table": "Ranged_Buff_Dmg"
+    },
     "durations": {
+      "damageBuff": 60,
+      "rechargeBuff": 60,
       "tohitBuff": 60
     },
     "enduranceGain": {
       "scale": 4,
       "table": "Ranged_Ones"
     },
+    "rechargeBuff": {
+      "scale": 0.5,
+      "table": "Ranged_Ones"
+    },
     "tohitBuff": {
       "scale": 1.5,
       "table": "Ranged_Buff_ToHit"
-    }
+    },
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff",
+      "rechargeBuff",
+      "tohitBuff"
+    ]
   },
   "atoms": [
-    ["Endurance",null,4,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["ToHit",null,1.5,1,60,"Ranged_Buff_ToHit","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,3,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,4,1,0.5,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"No",null,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Endurance",null,4,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["Meta",null,1,1,60,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["RechargeTime",null,0.5,1,60,"Ranged_Ones","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["RechargeTime",null,0.5,1,60,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["ToHit",null,1.5,1,60,"Ranged_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["ToHit",null,1.5,1,60,"Ranged_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["DamageBuff","Smashing",3,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",3,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Fire",3,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Cold",3,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Energy",3,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Negative",3,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",3,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",3,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Smashing",3,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",3,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Fire",3,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Cold",3,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Energy",3,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Negative",3,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",3,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",3,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Heal",null,4,1,0.5,"Ranged_Ones","Cur","Magnitude","Target","PvP",false,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true]
+  ],
+  "setsModes": [
+    "Peacebringer_Blaster_Mode"
   ]
 };

@@ -42,31 +42,64 @@ export const RadiationSiphon: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 0.78,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "buffDuration": 2.1,
-    "durations": {
-      "healing": 2.1
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.78,
+      "table": "Melee_Damage"
     },
-    "healing": {
+    {
+      "type": "Energy",
+      "scale": 1.82,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Heal",
       "scale": 0.5,
-      "table": "Melee_HealSelf"
+      "table": "Melee_HealSelf",
+      "duration": 2.1,
+      "tickRate": 1
     }
+  ],
+  "effects": {
+    "buffDuration": 10,
+    "damageBuff": {
+      "scale": 0.129,
+      "table": "Ranged_Ones"
+    },
+    "defenseDebuff": {
+      "scale": 1.5,
+      "table": "Melee_Debuff_Def"
+    },
+    "durations": {
+      "damageBuff": 9.17,
+      "defenseDebuff": 10
+    },
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   },
   "atoms": [
-    ["Unmapped",null,0.78,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1.5,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.5,1,2.1,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"No",null,null,1,1],
-    ["Unmapped",null,1,0.3199999928474426,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated target.ownPower? !"],
-    ["Unmapped",null,0.129,1,9.17,"Ranged_Ones","Str","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Meta",null,0,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated target.ownPower?",true],
-    ["Unmapped",null,0.87,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,0.25,1,2.1,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"No",null,null,1,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated target.ownPower?",true],
-    ["Unmapped",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated target.ownPower?",true]
+    ["Damage","Smashing",0.78,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Energy",1.82,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Defense","All",1.5,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Heal",null,0.5,1,2.1,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,1,1],
+    ["GrantPower",null,1,0.3199999928474426,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated target.ownPower? !"],
+    ["DamageBuff","Smashing",0.129,1,9.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",0.129,1,9.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Fire",0.129,1,9.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Cold",0.129,1,9.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Energy",0.129,1,9.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Negative",0.129,1,9.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",0.129,1,9.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",0.129,1,9.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["ExecutePower",null,0,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated target.ownPower?",true],
+    ["Damage","Smashing",0.87,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Energy",2.03,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Heal",null,0.25,1,2.1,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,1,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated target.ownPower?",true],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated target.ownPower?",true],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated target.ownPower?",true]
   ],
   "conditionalEffects": [
     {
@@ -75,15 +108,12 @@ export const RadiationSiphon: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "mode": "replace",
-      "effects": {
-        "buffDuration": 2.1,
-        "durations": {
-          "healing": 2.1
-        },
-        "healing": {
-          "scale": 0.25,
-          "table": "Melee_HealSelf"
-        }
+      "damage": {
+        "type": "Heal",
+        "scale": 0.25,
+        "table": "Melee_HealSelf",
+        "duration": 2.1,
+        "tickRate": 1
       }
     }
   ],

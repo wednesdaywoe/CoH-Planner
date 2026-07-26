@@ -48,22 +48,54 @@ export const BlockofIce: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "buffDuration": 12,
+    "durations": {
+      "rechargeDebuff": 12,
+      "slow": 12
+    },
     "hold": {
       "mag": 3,
       "scale": 12,
       "table": "Ranged_Immobilize"
+    },
+    "rechargeDebuff": {
+      "scale": 0.3,
+      "table": "Ranged_Slow"
+    },
+    "slow": {
+      "flySpeed": {
+        "scale": 0.3,
+        "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.3,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.3,
+        "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.3,
+        "table": "Ranged_Slow"
+      }
     }
   },
   "atoms": [
-    ["Mez","Held",12,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Held",9,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.3,1,12,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.99,1,12,"Ranged_Ones","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Mez","Held",4,4,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || IncarnateBoss target.HasTag? || &&",true],
-    ["Unmapped",null,3.401981,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,1.70099,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || &&",true]
+    ["Mez","Held",12,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Held",9,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Cold",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Movement","Run",0.3,1,12,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","Fly",0.3,1,12,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","Jump",0.3,1,12,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","JumpHeight",0.3,1,12,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["RechargeTime",null,0.3,1,12,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["MezResist","Knockback",0.99,1,12,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["MezResist","Knockup",0.99,1,12,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["Mez","Held",4,4,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Cold",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || IncarnateBoss target.HasTag? || &&",true],
+    ["Damage","Cold",3.401981,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Cold",1.70099,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || &&",true]
   ],
   "damageTypes": [
     "Cold"

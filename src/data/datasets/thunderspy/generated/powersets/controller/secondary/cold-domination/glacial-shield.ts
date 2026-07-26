@@ -44,12 +44,22 @@ export const GlacialShield: Power = {
       "cold": {
         "scale": 3.25,
         "table": "Ranged_Res_Dmg"
+      },
+      "energy": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "fire": {
+        "scale": 2.5,
+        "table": "Ranged_Res_Dmg"
       }
     }
   },
   "atoms": [
-    ["Resistance","Cold",4.5,1,240,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Resistance","Cold",3.25,1,240,"Ranged_Res_Dmg","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,2,1,240,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1]
+    ["Resistance","Cold",4.5,1,240,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Fire",3,1,240,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Cold",3.25,1,240,"Ranged_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Fire",2.5,1,240,"Ranged_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Energy",2,1,240,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1]
   ]
 };

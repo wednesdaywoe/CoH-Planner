@@ -88,9 +88,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> critter eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 2560
         }
       ]
     },
@@ -127,9 +128,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> critter eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 2560
         }
       ]
     },
@@ -166,9 +168,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> player eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "NoFloaters",
+            "CancelOnMiss",
+            "IgnoreStrength"
+          ],
+          "flags_raw": 21
         }
       ]
     },
@@ -205,9 +213,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> critter eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -244,9 +253,16 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> player eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "NoFloaters",
+            "CancelOnMiss",
+            "NearGround",
+            "IgnoreStrength"
+          ],
+          "flags_raw": 29
         }
       ]
     },
@@ -264,7 +280,7 @@
       "templates": [
         {
           "attribs": [
-            "InherentTaunt"
+            "Taunt"
           ],
           "type": "Duration",
           "application_type": "OnTick",
@@ -283,9 +299,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "CancelOnMiss",
+            "Boost"
+          ],
+          "flags_raw": 6660
         }
       ]
     },
@@ -303,7 +324,7 @@
       "templates": [
         {
           "attribs": [
-            "InherentTaunt"
+            "Taunt"
           ],
           "type": "Duration",
           "application_type": "OnTick",
@@ -322,9 +343,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Raid target.HasTag? ! enttype target> critter eq &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "CancelOnMiss",
+            "Boost"
+          ],
+          "flags_raw": 6660
         }
       ]
     },
@@ -342,7 +368,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Taunt"
           ],
           "type": "Duration",
           "application_type": "OnTick",
@@ -361,9 +387,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> player eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 2560
         }
       ]
     },
@@ -381,7 +408,7 @@
       "templates": [
         {
           "attribs": [
-            "FieryEmbrace"
+            "Fire_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -400,9 +427,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     }

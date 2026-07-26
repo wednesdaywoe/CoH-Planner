@@ -60,8 +60,8 @@ export const WorldofConfusion: Power = {
     }
   },
   "atoms": [
-    ["Mez","Confused",1.5,2,0,"Ranged_Ones","Cur","Duration","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.12,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,2,1]
+    ["Mez","Confused",1.5,2,0,"Ranged_Ones","Cur","Duration","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Psionic",0.12,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1]
   ],
   "damageTypes": [
     "Psionic"

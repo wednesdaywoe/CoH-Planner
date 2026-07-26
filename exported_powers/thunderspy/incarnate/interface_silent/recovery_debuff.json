@@ -62,7 +62,7 @@
       "templates": [
         {
           "attribs": [
-            "InterfaceRecovery"
+            "Recovery"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -81,9 +81,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "target.isFriend? !",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "StackThenIgnore",
+          "stack_limit": 4,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength"
+          ],
+          "flags_raw": 1296
         }
       ]
     }

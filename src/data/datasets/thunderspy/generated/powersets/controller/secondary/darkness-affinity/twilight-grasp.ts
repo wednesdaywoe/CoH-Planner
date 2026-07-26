@@ -42,20 +42,37 @@ export const TwilightGrasp: Power = {
   "maxSlots": 6,
   "effects": {
     "buffDuration": 20,
+    "damageDebuff": {
+      "scale": 1,
+      "table": "Ranged_Debuff_Dam"
+    },
     "durations": {
-      "regenDebuff": 20
+      "damageDebuff": 20,
+      "regenDebuff": 20,
+      "tohitDebuff": 20
     },
     "regenDebuff": {
       "scale": 0.5,
       "table": "Ranged_Ones"
+    },
+    "tohitDebuff": {
+      "scale": 0.5,
+      "table": "Ranged_DeBuff_ToHit"
     }
   },
   "atoms": [
-    ["Meta",null,0,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.5,1,20,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,20,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Regeneration",null,-0.5,1,20,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,-11.5,1,20,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["ToHit",null,0.5,1,20,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["DamageBuff","Smashing",1,1,20,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",1,1,20,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Fire",1,1,20,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Cold",1,1,20,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Energy",1,1,20,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Negative",1,1,20,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",1,1,20,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",1,1,20,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Regeneration",null,-0.5,1,20,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["ExecutePower",null,0,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Regeneration",null,-11.5,1,20,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
   ],
   "damageTypes": [
     "Negative"

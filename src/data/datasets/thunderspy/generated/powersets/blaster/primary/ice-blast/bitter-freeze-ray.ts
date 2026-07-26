@@ -51,27 +51,74 @@ export const BitterFreezeRay: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "buffDuration": 18,
+    "damageBuff": {
+      "scale": 0.165,
+      "table": "Ranged_Ones",
+      "perTarget": 0.165
+    },
+    "durations": {
+      "damageBuff": 10,
+      "rechargeDebuff": 18,
+      "slow": 18
+    },
     "hold": {
       "mag": 3,
       "scale": 8,
       "table": "Ranged_Immobilize"
     },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
+    },
     "sleep": {
       "mag": 3,
       "scale": 30,
       "table": "Ranged_Sleep"
+    },
+    "slow": {
+      "flySpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      }
     }
   },
   "atoms": [
-    ["Unmapped",null,1.32,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Held",8,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Sleep",30,3,0,"Ranged_Sleep","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.2,1,18,"Ranged_Slow","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.165,1,10,"Ranged_Ones","Str","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1.32,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Held",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Sleep",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,100,1,10,"Ranged_Ones","Res","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kHeld target> 0 >",true]
+    ["Damage","Cold",1.32,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Held",8,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Sleep",30,3,0,"Ranged_Sleep","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["RechargeTime",null,0.2,1,18,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Movement","Run",0.2,1,18,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","Fly",0.2,1,18,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","Jump",0.2,1,18,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","JumpHeight",0.2,1,18,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Smashing",0.165,1,10,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.165],
+    ["DamageBuff","Lethal",0.165,1,10,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.165],
+    ["DamageBuff","Fire",0.165,1,10,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.165],
+    ["DamageBuff","Cold",0.165,1,10,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.165],
+    ["DamageBuff","Energy",0.165,1,10,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.165],
+    ["DamageBuff","Negative",0.165,1,10,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.165],
+    ["DamageBuff","Toxic",0.165,1,10,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.165],
+    ["DamageBuff","Psionic",0.165,1,10,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.165],
+    ["Damage","Cold",1.32,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Held",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Sleep",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["MezResist","Knockback",100,1,10,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kHeld target> 0 >",true],
+    ["MezResist","Knockup",100,1,10,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kHeld target> 0 >",true],
+    ["Mez","Knockback",-100,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"kHeld target> 0 >",true],
+    ["Mez","Knockup",-100,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"kHeld target> 0 >",true]
   ],
   "damageTypes": [
     "Cold"

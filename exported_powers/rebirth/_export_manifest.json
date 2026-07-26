@@ -1,7 +1,7 @@
 {
   "schema": "bin-crawler-export-manifest/1",
   "note": "parser_fingerprint is the sha256 of the powers exporter (bin_crawler/parser/**/*.py + export_powers.py) at export time. If it disagrees with the current committed exporter source, THIS tree is stale \u2014 re-run export_powers for this dataset and commit. Guarded by src/data/export-staleness.test.ts.",
-  "parser_fingerprint": "53b617080a5e6d980cfd6325f1d74cdaddf841e360283fbabd89da2360c4f89b",
+  "parser_fingerprint": "5f7da54637c45b474968f0ed0e5bac8f8add5502f0d2a851ec36a3976271c00d",
   "categories": 58,
   "power_files": 10644
 }

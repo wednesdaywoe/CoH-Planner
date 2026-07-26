@@ -39,10 +39,138 @@ export const Rooted: Power = {
     "Healing"
   ],
   "maxSlots": 6,
+  "effects": {
+    "buffDuration": 0.75,
+    "debuffResistance": {
+      "defense": {
+        "scale": 0.4,
+        "table": "Melee_Res_Boolean"
+      },
+      "endurance": {
+        "scale": 2,
+        "table": "Melee_Res_Boolean"
+      },
+      "movement": {
+        "scale": 0.5,
+        "table": "Melee_Ones"
+      },
+      "recovery": {
+        "scale": 2,
+        "table": "Melee_Res_Boolean"
+      }
+    },
+    "durations": {
+      "debuffResistance": 0.75,
+      "hold": 0.75,
+      "immobilize": 0.75,
+      "knockback": 0.75,
+      "knockup": 0.75,
+      "mezResistance": 0.75,
+      "movement": 0.75,
+      "regenBuffUnenhanced": 0.75,
+      "repel": 0.75,
+      "sleep": 0.75,
+      "slow": 0.75,
+      "stun": 0.75
+    },
+    "effectDuration": 0.75,
+    "hold": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "knockback": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "knockup": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "mezResistance": {
+      "knockback": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      },
+      "knockup": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      },
+      "repel": {
+        "scale": 10,
+        "table": "Melee_Ones"
+      }
+    },
+    "movement": {
+      "jumpSpeed": {
+        "scale": 0.5,
+        "table": "Melee_Ones"
+      }
+    },
+    "regenBuffUnenhanced": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "repel": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "slow": {
+      "fly": {
+        "scale": 10,
+        "table": "Melee_Ones",
+        "toWho": "Self"
+      },
+      "jumpHeight": {
+        "scale": 500,
+        "table": "Melee_Ones"
+      },
+      "runSpeed": {
+        "scale": 0.9,
+        "table": "Melee_Ones",
+        "toWho": "Self"
+      }
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    }
+  },
   "atoms": [
-    ["Unmapped",null,100,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,-30,1,0.75,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["Unmapped",null,2,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,3,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
+    ["MezResist","Knockback",100,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["MezResist","Knockup",100,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Mez","Knockback",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Mez","Knockup",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["MezResist","Repel",10,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Mez","Repel",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Regeneration",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","JumpHeight",-500,1,0.75,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","Jump",0.5,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","Run",-0.9,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","FlyMode",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","Run",0.5,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Movement","Jump",0.5,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Mez","Stunned",-30,1,0.75,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Held",-30,1,0.75,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Sleep",-30,1,0.75,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Immobilized",-30,1,0.75,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
+    ["Recovery",null,2,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Endurance",null,2,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Defense","All",0.4,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["MezResist","Stunned",3,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
+    ["MezResist","Held",3,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
+    ["MezResist","Sleep",3,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
+    ["MezResist","Immobilized",3,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
   ]
 };

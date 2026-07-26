@@ -37,15 +37,18 @@ export const Overgrowth: Power = {
   "maxSlots": 6,
   "effects": {
     "buffDuration": 60,
+    "damageBuff": {
+      "scale": 6.6,
+      "table": "Ranged_Buff_Dmg"
+    },
     "durations": {
-      "specialBuff": 60,
+      "damageBuff": 60,
+      "enduranceDiscount": 60,
       "tohitBuff": 60
     },
-    "specialBuff": {
-      "stun": {
-        "scale": 0.5,
-        "table": "Ranged_Stun"
-      }
+    "enduranceDiscount": {
+      "scale": 0.5,
+      "table": "Ranged_Stun"
     },
     "tohitBuff": {
       "scale": 1,
@@ -53,9 +56,16 @@ export const Overgrowth: Power = {
     }
   },
   "atoms": [
-    ["ToHit",null,1,1,60,"Ranged_Buff_ToHit","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,6.6,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Enhancement","Stunned",0.5,1,60,"Ranged_Stun","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",true,"No",null,null,null,1]
+    ["ToHit",null,1,1,60,"Ranged_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["DamageBuff","Smashing",6.6,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",6.6,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Fire",6.6,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Cold",6.6,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Energy",6.6,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Negative",6.6,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",6.6,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",6.6,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["EnduranceDiscount",null,0.5,1,60,"Ranged_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true]
   ]
 };

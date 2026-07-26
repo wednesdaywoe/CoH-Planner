@@ -41,23 +41,46 @@ export const MentalStrike: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 0.21,
-    "table": "Melee_Damage"
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.21,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.63,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "buffDuration": 6,
+    "durations": {
+      "rechargeDebuff": 6
+    },
+    "rechargeDebuff": {
+      "scale": 0.1,
+      "table": "Melee_Slow"
+    },
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
+    }
   },
   "atoms": [
-    ["Unmapped",null,1,0.08888889104127884,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower? ! Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight_Lockout source.ownPower? ! && Temporary_Powers.Temporary_Powers.Boggled target.ownPower? ! &&"],
-    ["Unmapped",null,0.21,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.1,1,6,"Melee_Slow","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
-    ["Unmapped",null,0.378,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,0.17777778208255768,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower? ! Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight_Lockout source.ownPower? ! && Temporary_Powers.Temporary_Powers.Boggled target.ownPower? &&",true],
-    ["Unmapped",null,0.386736,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,0.084,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,1,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower?",true],
-    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
-    ["Unmapped",null,6,0.08399999886751175,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["GrantPower",null,1,0.08888889104127884,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower? ! Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight_Lockout source.ownPower? ! && Temporary_Powers.Temporary_Powers.Boggled target.ownPower? ! &&"],
+    ["Damage","Smashing",0.21,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Psionic",0.63,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["RechargeTime",null,0.1,1,6,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Mez","Taunt",1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
+    ["Damage","Fire",0.378,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
+    ["GrantPower",null,1,0.17777778208255768,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower? ! Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight_Lockout source.ownPower? ! && Temporary_Powers.Temporary_Powers.Boggled target.ownPower? &&",true],
+    ["Damage","Smashing",0.386736,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Psionic",1.160209,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Psionic",0.084,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower?",true],
+    ["Mez","Taunt",1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
+    ["Mez","Taunt",6,0.08399999886751175,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "conditionalEffects": [
     {

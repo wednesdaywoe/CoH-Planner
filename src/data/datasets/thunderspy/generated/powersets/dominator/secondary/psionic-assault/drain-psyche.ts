@@ -42,12 +42,24 @@ export const DrainPsyche: Power = {
   "effects": {
     "buffDuration": 30,
     "durations": {
+      "recoveryBuff": 30,
+      "recoveryDebuff": 30,
       "regenBuff": 30,
       "regenDebuff": 30
     },
+    "recoveryBuff": {
+      "scale": 1,
+      "table": "Melee_Ones",
+      "perTarget": 1
+    },
+    "recoveryDebuff": {
+      "scale": 5,
+      "table": "Melee_Ones"
+    },
     "regenBuff": {
       "scale": 1,
-      "table": "Melee_Ones"
+      "table": "Melee_Ones",
+      "perTarget": 1
     },
     "regenDebuff": {
       "scale": 5,
@@ -55,9 +67,13 @@ export const DrainPsyche: Power = {
     }
   },
   "atoms": [
-    ["Regeneration",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Regeneration",null,-5,1,30,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Regeneration",null,-30,1,30,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Regeneration",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,1],
+    ["Recovery",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,1],
+    ["Regeneration",null,-5,1,30,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Recovery",null,-5,1,30,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Regeneration",null,-30,1,30,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["Recovery",null,-0.8,1,30,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
   ],
   "damageTypes": [
     "Psionic"

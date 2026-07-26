@@ -44,7 +44,8 @@ export const WilloftheWild: Power = {
     "buffDuration": 120,
     "durations": {
       "regenBuff": 120,
-      "resistance": 120
+      "resistance": 120,
+      "specialBuff": 120
     },
     "regenBuff": {
       "scale": 1,
@@ -83,19 +84,51 @@ export const WilloftheWild: Power = {
         "scale": 2.5,
         "table": "Melee_Res_DMG"
       }
+    },
+    "specialBuff": {
+      "heal": {
+        "scale": 0.5,
+        "table": "Melee_Ones"
+      }
     }
   },
   "atoms": [
-    ["Resistance","Smashing",2.5,1,120,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Resistance","Lethal",2.5,1,120,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Resistance","Fire",2.5,1,120,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Resistance","Cold",2.5,1,120,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Resistance","Energy",2.5,1,120,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Resistance","Negative",2.5,1,120,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Resistance","Psionic",2.5,1,120,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Resistance","Toxic",2.5,1,120,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Regeneration",null,1,1,120,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.5,1,120,"Melee_Ones","Str","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! &&"],
-    ["Unmapped",null,0.5,1,120,"Melee_Ones","Str","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kHunterMode Source.Mode? kProwlerMode Source.Mode? ||",true]
+    ["Resistance","Smashing",2.5,1,120,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Lethal",2.5,1,120,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Fire",2.5,1,120,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Cold",2.5,1,120,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Energy",2.5,1,120,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Negative",2.5,1,120,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Psionic",2.5,1,120,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Toxic",2.5,1,120,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Regeneration",null,1,1,120,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true],
+    ["Heal",null,0.5,1,120,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! &&"],
+    ["DamageBuff","Smashing",0.5,1,120,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode? kProwlerMode Source.Mode? ||",true],
+    ["DamageBuff","Lethal",0.5,1,120,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode? kProwlerMode Source.Mode? ||",true],
+    ["DamageBuff","Fire",0.5,1,120,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode? kProwlerMode Source.Mode? ||",true],
+    ["DamageBuff","Cold",0.5,1,120,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode? kProwlerMode Source.Mode? ||",true],
+    ["DamageBuff","Energy",0.5,1,120,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode? kProwlerMode Source.Mode? ||",true],
+    ["DamageBuff","Negative",0.5,1,120,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode? kProwlerMode Source.Mode? ||",true],
+    ["DamageBuff","Toxic",0.5,1,120,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode? kProwlerMode Source.Mode? ||",true],
+    ["DamageBuff","Psionic",0.5,1,120,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode? kProwlerMode Source.Mode? ||",true]
+  ],
+  "conditionalEffects": [
+    {
+      "id": "huntermode",
+      "label": "Hunter Mode",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "buffDuration": 120,
+        "damageBuff": {
+          "scale": 0.5,
+          "table": "Melee_Ones"
+        },
+        "durations": {
+          "damageBuff": 120
+        }
+      }
+    }
   ]
 };

@@ -37,15 +37,37 @@ export const Hide: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "taunt": {
+    "buffDuration": 20,
+    "durations": {
+      "stealth": 10,
+      "tohitDebuff": 20
+    },
+    "placate": {
       "scale": 8,
       "table": "Melee_Taunt"
+    },
+    "stealth": {
+      "stealthPvE": {
+        "scale": 150,
+        "table": "Melee_Ones"
+      },
+      "stealthPvP": {
+        "scale": 380,
+        "table": "Melee_Ones"
+      }
+    },
+    "tohitDebuff": {
+      "scale": 1,
+      "table": "Melee_DeBuff_ToHit"
     }
   },
   "atoms": [
-    ["Unmapped",null,1,1,20,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Mez","Taunt",8,1,0,"Melee_Taunt","Abs","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,150,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Mez","Taunt",6,1,0,"Melee_Taunt","Abs","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["ToHit",null,1,1,20,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Mez","Placate",8,1,0,"Melee_Taunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Stealth","RadiusPvE",150,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Stealth","RadiusPvP",380,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["EntCreate",null,0.2,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Mez","Placate",6,1,0,"Melee_Taunt","Abs","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ]
 };

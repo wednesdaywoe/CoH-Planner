@@ -39,6 +39,11 @@ export const TRWebSpitter: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 15,
+    "durations": {
+      "rechargeDebuff": 15,
+      "slow": 15
+    },
     "hold": {
       "mag": 3,
       "scale": 10,
@@ -48,16 +53,45 @@ export const TRWebSpitter: Power = {
       "mag": 2,
       "scale": 15,
       "table": "Ranged_Immobilize"
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
+    },
+    "slow": {
+      "fly": {
+        "scale": 10,
+        "table": "Ranged_Ones"
+      },
+      "flySpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
+        "scale": 500,
+        "table": "Ranged_Ones"
+      },
+      "runSpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      }
     }
   },
   "atoms": [
-    ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Immobilized",15,2,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Immobilized",15,2,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.2,1,15,"Ranged_Slow","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Mez","Held",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Immobilized",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Immobilized",15,2,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Immobilized",15,2,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["RechargeTime",null,0.2,1,15,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","Run",0.2,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Movement","Fly",0.2,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["MezResist","Knockback",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["MezResist","Knockup",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["Mez","Knockback",-100,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["Mez","Knockup",-100,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["Movement","JumpHeight",-500,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["Movement","FlyMode",-10,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["Mez","Held",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Immobilized",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
   ],
   "modesRequired": [
     "Widow_Tarantula_Mode"

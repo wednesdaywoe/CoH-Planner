@@ -55,7 +55,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -74,9 +74,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Stalker_Melee.Broad_Sword.Build_Up source.ownPower?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -94,7 +99,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -113,9 +118,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Stalker_Melee.Claws.Build_Up source.ownPower?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -133,7 +143,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -152,9 +162,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Stalker_Melee.Dark_Melee.Build_Up source.ownPower?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -172,7 +187,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -191,9 +206,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Stalker_Melee.Dual_Blades.Build_Up source.ownPower?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -211,7 +231,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -230,9 +250,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Stalker_Melee.Electrical_Melee.Build_Up source.ownPower?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -250,7 +275,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -269,9 +294,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Stalker_Melee.Energy_Melee.Build_Up source.ownPower?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -289,7 +319,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -308,9 +338,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Stalker_Melee.Kinetic_Attack.Build_Up source.ownPower?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -328,7 +363,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -347,9 +382,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Stalker_Melee.Martial_Arts.Focus_Chi source.ownPower?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -367,7 +407,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -386,9 +426,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Stalker_Melee.Ninja_Sword.Build_Up source.ownPower?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -406,7 +451,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -425,9 +470,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Stalker_Melee.Psionic_Melee.Concentration source.ownPower?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -445,7 +495,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -464,9 +514,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Stalker_Melee.Spines.Build_Up source.ownPower?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -484,7 +539,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -503,9 +558,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Stalker_Melee.Brawling.Build_Up source.ownPower?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -523,7 +583,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -542,9 +602,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Stalker_Melee.Staff_Fighting.Build_Up source.ownPower?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -562,7 +627,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -581,9 +646,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Stalker_Melee.Savage_Melee.Build_Up source.ownPower?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -601,7 +671,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -620,9 +690,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Stalker_Melee.Radiation_Melee.Build_Up source.ownPower?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -640,7 +715,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Recharge_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -659,9 +734,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "Stalker_Melee.Spectral_Melee.Build_Up source.ownPower?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     }

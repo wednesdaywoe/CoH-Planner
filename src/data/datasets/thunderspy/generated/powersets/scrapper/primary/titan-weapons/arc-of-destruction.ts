@@ -42,11 +42,18 @@ export const ArcofDestruction: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 2.41728,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 2.41728,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 2.41728,
+      "table": "Melee_Damage"
+    }
+  ],
   "effects": {
     "knockback": {
       "scale": 0.67,
@@ -54,10 +61,10 @@ export const ArcofDestruction: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,2.41728,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,2.41728,0.15000000596046448,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Knockback",0.67,0.75,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1.087776,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1]
+    ["Damage","Smashing",2.41728,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Smashing",2.41728,0.15000000596046448,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",0.67,0.75,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Fire",1.087776,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1]
   ],
   "modeVariants": {
     "FastMode": {
@@ -72,11 +79,18 @@ export const ArcofDestruction: Power = {
         "castTime": 1.5,
         "maxTargets": 5
       },
-      "damage": {
-        "type": "Smashing",
-        "scale": 2.41728,
-        "table": "Melee_Damage"
-      },
+      "damage": [
+        {
+          "type": "Smashing",
+          "scale": 2.41728,
+          "table": "Melee_Damage"
+        },
+        {
+          "type": "Smashing",
+          "scale": 2.41728,
+          "table": "Melee_Damage"
+        }
+      ],
       "damageTypes": [
         "Smashing"
       ],

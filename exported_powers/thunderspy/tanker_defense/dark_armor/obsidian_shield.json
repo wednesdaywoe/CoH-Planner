@@ -84,9 +84,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "BoostIgnoreDiminishing",
+            "CancelOnMiss",
+            "IgnoreStrength"
+          ],
+          "flags_raw": 22
         }
       ]
     },
@@ -104,7 +110,10 @@
       "templates": [
         {
           "attribs": [
-            "Res_Boolean"
+            "Stunned",
+            "Held",
+            "Sleep",
+            "Terrorized"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -123,9 +132,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "isPVPMap? !",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -143,7 +156,10 @@
       "templates": [
         {
           "attribs": [
-            "Res_Boolean"
+            "Stunned",
+            "Held",
+            "Sleep",
+            "Terrorized"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -162,9 +178,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "isPVPMap?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -182,7 +203,10 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "RunningSpeed",
+            "FlyingSpeed",
+            "JumpHeight",
+            "JumpingSpeed"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -201,9 +225,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "isPVPMap?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     }

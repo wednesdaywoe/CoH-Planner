@@ -75,6 +75,51 @@
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Levelminus2",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 1.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "rank target> Class_Minion_PraetorianGrunt eq rank target> Class_Minion_Grunt eq || rank target> Class_Lt_PraetorianGrunt eq || rank target> Class_Lt_Grunt eq || rank target> Class_Lt_Sniper eq || rank target> Class_Lt_Henchman eq || rank target> Class_Lt_LongRangeDrone eq || rank target> Class_Lt_Turret eq ||",
+          "caster_stack": "",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 112
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "rank target> Class_Minion_PraetorianGrunt eq rank target> Class_Minion_Grunt eq || rank target> Class_Lt_PraetorianGrunt eq || rank target> Class_Lt_Grunt eq || rank target> Class_Lt_Sniper eq || rank target> Class_Lt_Henchman eq || rank target> Class_Lt_LongRangeDrone eq || rank target> Class_Lt_Turret eq ||",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
           "aspect": "",
           "target": "",
           "table": "Ranged_Levelminus2",
@@ -98,6 +143,51 @@
             "entity_def": "MastermindPets_Zombie_Extraction",
             "priority_list": "Pet"
           }
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "enttype target> player eq rank target> Class_Boss_PraetorianGrunt eq || rank target> Class_Boss_Grunt eq || rank target> Class_Boss_HeavyPet eq || rank target> Class_Boss_Shield eq || rank target> Class_Boss_Grunt eq || rank target> Class_Boss_Mito eq || rank target> Class_Boss_Guard eq || rank target> Class_Boss_Henchman eq || rank target> Class_Boss_Signature_Pets eq || rank target> Class_Boss_HugeDevice eq || rank target> Class_Boss_Archvillain eq ||",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "PVP_ONLY",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Levelminus2",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 1.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "enttype target> player eq rank target> Class_Boss_PraetorianGrunt eq || rank target> Class_Boss_Grunt eq || rank target> Class_Boss_HeavyPet eq || rank target> Class_Boss_Shield eq || rank target> Class_Boss_Grunt eq || rank target> Class_Boss_Mito eq || rank target> Class_Boss_Guard eq || rank target> Class_Boss_Henchman eq || rank target> Class_Boss_Signature_Pets eq || rank target> Class_Boss_HugeDevice eq || rank target> Class_Boss_Archvillain eq ||",
+          "caster_stack": "",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 112
         }
       ]
     },
@@ -159,7 +249,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Null"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -178,9 +268,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     }

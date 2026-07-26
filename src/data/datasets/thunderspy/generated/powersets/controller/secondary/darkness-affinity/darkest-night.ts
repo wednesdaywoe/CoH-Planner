@@ -45,19 +45,24 @@ export const DarkestNight: Power = {
       "table": "Ranged_Debuff_Dam"
     },
     "durations": {
-      "damageDebuff": 5
+      "damageDebuff": 5,
+      "tohitDebuff": 5
+    },
+    "tohitDebuff": {
+      "scale": 1.5,
+      "table": "Ranged_DeBuff_ToHit"
     }
   },
   "atoms": [
-    ["DamageBuff","Smashing",3,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["DamageBuff","Lethal",3,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["DamageBuff","Fire",3,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["DamageBuff","Cold",3,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["DamageBuff","Energy",3,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["DamageBuff","Negative",3,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["DamageBuff","Psionic",3,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["DamageBuff","Toxic",3,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1.5,1,5,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"No",null,null,null,1]
+    ["DamageBuff","Smashing",3,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",3,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Fire",3,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Cold",3,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Energy",3,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Negative",3,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",3,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",3,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["ToHit",null,1.5,1,5,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1]
   ],
   "requires": "Controller_Buff.Darkness_Affinity.Chill_of_the_night !",
   "damageTypes": [

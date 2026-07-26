@@ -43,6 +43,14 @@ export const DrowningPool: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 15,
+    "defenseDebuff": {
+      "scale": 2,
+      "table": "Ranged_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 15
+    },
     "hold": {
       "mag": 3,
       "scale": 10,
@@ -50,13 +58,13 @@ export const DrowningPool: Power = {
     }
   },
   "atoms": [
-    ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,2,1,15,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? !"],
-    ["Unmapped",null,1,0.6077499985694885,0,"Ranged_Ones","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Mez","Held",4,4,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Held",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kStealth source> 0.5 > &&",true],
-    ["Mez","Held",4,1,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq kStealth source> 0.5 > &&",true],
-    ["Unmapped",null,2.5,1,15,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower?",true]
+    ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Defense","All",2,1,15,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? !"],
+    ["GrantPower",null,1,0.6077499985694885,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Mez","Held",4,4,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Held",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kStealth source> 0.5 > &&",true],
+    ["Mez","Held",4,1,0,"Ranged_Ones","Cur","Duration","Target","PvP",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kStealth source> 0.5 > &&",true],
+    ["Defense","All",2.5,1,15,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower?",true]
   ],
   "conditionalEffects": [
     {
@@ -69,6 +77,23 @@ export const DrowningPool: Power = {
           "mag": 3,
           "scale": 15,
           "table": "Ranged_Immobilize"
+        }
+      }
+    },
+    {
+      "id": "water_control_drowning",
+      "label": "Drowning",
+      "scope": "per-power",
+      "defaultActive": false,
+      "mode": "replace",
+      "effects": {
+        "buffDuration": 15,
+        "defenseDebuff": {
+          "scale": 2.5,
+          "table": "Ranged_Debuff_Def"
+        },
+        "durations": {
+          "defenseDebuff": 15
         }
       }
     }

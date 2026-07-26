@@ -54,18 +54,49 @@ export const RingofFire: Power = {
     "tickRate": 1.5
   },
   "effects": {
+    "buffDuration": 10,
+    "damageBuff": {
+      "scale": 0.077,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 8.67,
+      "slow": 10
+    },
     "immobilize": {
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"
-    }
+    },
+    "slow": {
+      "fly": {
+        "scale": 1.6,
+        "table": "Ranged_Ones"
+      }
+    },
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   },
   "atoms": [
-    ["Unmapped",null,0.22,1,9.2,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,1.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.298989,1,9.2,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,1.5,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Immobilized",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Fire",0.22,1,9.2,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["MezResist","Knockback",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["MezResist","Knockup",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["Mez","Knockback",-100,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["Mez","Knockup",-100,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["DamageBuff","Smashing",0.077,1,8.67,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",0.077,1,8.67,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Fire",0.077,1,8.67,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Cold",0.077,1,8.67,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Energy",0.077,1,8.67,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Negative",0.077,1,8.67,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",0.077,1,8.67,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",0.077,1,8.67,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Movement","FlyMode",-1.6,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["Damage","Fire",0.298989,1,9.2,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1.5,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Immobilized",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "damageTypes": [
     "Fire"

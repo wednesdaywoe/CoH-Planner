@@ -40,20 +40,27 @@ export const Special2: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 1.7,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 1.7,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.7,
+      "table": "Melee_Damage"
+    }
+  ],
   "atoms": [
-    ["Unmapped",null,1.7,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1.7,0.15000000596046448,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.765,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1.725478,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,1.725478,0.15000000596046448,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,0.27,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,1,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade3 source.ownPower?",true],
-    ["Unmapped",null,0.09,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,1,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade3 source.ownPower?",true]
+    ["Damage","Lethal",1.7,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Lethal",1.7,0.15000000596046448,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
+    ["Damage","Fire",0.765,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Lethal",1.725478,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Lethal",1.725478,0.15000000596046448,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Lethal",0.27,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade3 source.ownPower?",true],
+    ["Damage","Fire",0.09,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade3 source.ownPower?",true]
   ],
   "conditionalEffects": [
     {
@@ -61,13 +68,22 @@ export const Special2: Power = {
       "label": "ComboBlade3",
       "scope": "global",
       "defaultActive": false,
-      "damage": {
-        "type": "Lethal",
-        "scale": 0.27,
-        "table": "Melee_Damage",
-        "duration": 3.1,
-        "tickRate": 1
-      }
+      "damage": [
+        {
+          "type": "Lethal",
+          "scale": 0.27,
+          "table": "Melee_Damage",
+          "duration": 3.1,
+          "tickRate": 1
+        },
+        {
+          "type": "Fire",
+          "scale": 0.09,
+          "table": "Melee_Damage",
+          "duration": 4.1,
+          "tickRate": 1
+        }
+      ]
     }
   ],
   "damageTypes": [

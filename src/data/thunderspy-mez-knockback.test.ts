@@ -12,6 +12,9 @@ import { Geyser } from './datasets/thunderspy/generated/powersets/blaster/primar
 import { PowerBoost } from './datasets/thunderspy/generated/powersets/blaster/secondary/energy-manipulation/power-boost';
 // Sign-rule negative case: a foe Hold carrying a negative-scale Stun debuff artifact.
 import { TimeStop } from './datasets/thunderspy/generated/powersets/defender/primary/time-manipulation/time-stop';
+// Protection carve-out: self armor and ally mez shield, both foe-less by nature.
+import { Fortification } from './datasets/thunderspy/generated/powersets/arachnos-soldier/epic/crab-spider-training/fortification';
+import { ClearMind } from './datasets/thunderspy/generated/powersets/defender/primary/empathy/clear-mind';
 
 /**
  * Thunderspy applied-mez & offensive-knockback recovery — the DATA-DRIVEN fix.
@@ -90,5 +93,24 @@ describe('Thunderspy applied-mez & knockback recovery (data-driven)', () => {
     // debuff/duration artifact, not applied mez). Only the Hold must survive.
     expect(TimeStop.effects?.hold).toEqual({ mag: 3, scale: 8, table: 'Ranged_Immobilize' });
     expect(TimeStop.effects?.stun).toBeUndefined();
+  });
+
+  // --- Mez PROTECTION shares the mez slots and is foe-less too ------------------
+  // The target-trap veto keys on "affects no foe", which is also true of every armor
+  // and ally mez shield. Negative magnitude at aspect=Current is the discriminator:
+  // applied control is always positive. Dropping these left the whole Thunderspy fork
+  // without status protection while its HC and Rebirth twins carried it.
+  it('Fortification keeps its self status protection (Rebirth twin carries the same −24)', () => {
+    const prot = { mag: 1, scale: 24, table: 'Melee_Res_Boolean' };
+    expect(Fortification.effects?.hold).toEqual(prot);
+    expect(Fortification.effects?.stun).toEqual(prot);
+    expect(Fortification.effects?.sleep).toEqual(prot);
+    expect(Fortification.effects?.immobilize).toEqual(prot);
+  });
+
+  it('Clear Mind keeps its ALLY-cast protection — recipient is not part of the test', () => {
+    // toWho `Target`, not `Self`: the protection rule is sign + aspect, nothing else.
+    expect(ClearMind.effects?.hold).toEqual({ mag: 1, scale: 30, table: 'Ranged_Res_Boolean' });
+    expect(ClearMind.effects?.fear).toEqual({ mag: 1, scale: 30, table: 'Ranged_Res_Boolean' });
   });
 });

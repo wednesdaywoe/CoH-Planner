@@ -35,17 +35,31 @@ export const RefractionShield: Power = {
   "effects": {
     "buffDuration": 30,
     "durations": {
-      "immobilize": 30
+      "immobilize": 30,
+      "onlyAffectsSelf": 30,
+      "untouchable": 30
     },
     "effectDuration": 30,
     "immobilize": {
       "mag": 1,
       "scale": 4,
       "table": "Ranged_Immobilize"
+    },
+    "onlyAffectsSelf": {
+      "scale": 4,
+      "table": "Ranged_Immobilize"
+    },
+    "untouchable": {
+      "scale": 4,
+      "table": "Ranged_Immobilize"
     }
   },
   "atoms": [
-    ["Mez","Immobilized",4,1,30,"Ranged_Immobilize","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,4,1,8,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Mez","Untouchable",4,1,30,"Ranged_Immobilize","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","OnlyAffectsSelf",4,1,30,"Ranged_Immobilize","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Immobilized",4,1,30,"Ranged_Immobilize","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Untouchable",4,1,8,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","OnlyAffectsSelf",4,1,8,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Immobilized",4,1,8,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
   ]
 };

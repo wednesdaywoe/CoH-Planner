@@ -39,15 +39,35 @@ export const TimeBomb: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 15.5,
+    "damageBuff": {
+      "scale": 0.528,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 15.5
+    },
     "summon": {
       "duration": 21,
       "entity": "Pets_Bomb",
       "isPseudoPet": false
-    }
+    },
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   },
   "atoms": [
+    ["EntCreate",null,1,1,21,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["EntCreate",null,1,1,21,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.528,1,15.5,"Ranged_Ones","Str","Magnitude","Self","Any",true,"No",null,null,null,1]
+    ["DamageBuff","Smashing",0.528,1,15.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",0.528,1,15.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Fire",0.528,1,15.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Cold",0.528,1,15.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Energy",0.528,1,15.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Negative",0.528,1,15.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",0.528,1,15.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",0.528,1,15.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
   ],
   "damageTypes": [
     "Fire",

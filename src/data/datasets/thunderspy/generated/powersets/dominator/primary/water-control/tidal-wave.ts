@@ -47,15 +47,44 @@ export const TidalWave: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Cold",
-    "scale": 0.2,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.2,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 0.6,
+      "table": "Ranged_Damage"
+    }
+  ],
   "effects": {
+    "buffDuration": 15,
+    "durations": {
+      "slow": 15
+    },
     "knockup": {
       "scale": 3,
       "table": "Ranged_Ones"
+    },
+    "slow": {
+      "flySpeed": {
+        "scale": 0.35,
+        "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.35,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.35,
+        "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.35,
+        "table": "Ranged_Slow"
+      }
     },
     "stun": {
       "mag": 3,
@@ -64,21 +93,83 @@ export const TidalWave: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,0.2,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Stunned",15,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? ! &&"],
-    ["Unmapped",null,0.35,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? !"],
-    ["Mez","Knockup",3,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1,0.27067646384239197,0,"Ranged_Ones","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.066667,1,1.1,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? &&",true],
-    ["Unmapped",null,0.558044,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,0.148812,1,1.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,0.5,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower?",true],
-    ["Mez","Stunned",4,4,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? ! &&",true],
-    ["Mez","Stunned",5,4,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? &&",true],
-    ["Mez","Stunned",20,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kStealth source> 0.5 > &&",true],
-    ["Mez","Stunned",4,1,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq kStealth source> 0.5 > &&",true],
-    ["Mez","Knockup",3,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Smashing",0.2,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Cold",0.6,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Stunned",15,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? ! &&"],
+    ["Movement","Run",0.35,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? !"],
+    ["Movement","Fly",0.35,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? !"],
+    ["Movement","Jump",0.35,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? !"],
+    ["Movement","JumpHeight",0.35,1,15,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? !"],
+    ["Mez","Knockup",3,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["GrantPower",null,1,0.27067646384239197,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Damage","Cold",0.066667,1,1.1,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? &&",true],
+    ["Mez","Stunned",20,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? &&",true],
+    ["Damage","Smashing",0.558044,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Cold",1.674132,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Cold",0.148812,1,1.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower?",true],
+    ["Movement","Run",0.4375,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower?",true],
+    ["Movement","Fly",0.4375,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower?",true],
+    ["Movement","Jump",0.4375,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower?",true],
+    ["Movement","JumpHeight",0.4375,1,15,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower?",true],
+    ["Mez","Stunned",4,4,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? ! &&",true],
+    ["Mez","Stunned",5,4,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? &&",true],
+    ["Mez","Stunned",20,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kStealth source> 0.5 > &&",true],
+    ["Mez","Stunned",4,1,0,"Ranged_Ones","Cur","Duration","Target","PvP",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kStealth source> 0.5 > &&",true],
+    ["Mez","Knockup",3,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
   ],
   "conditionalEffects": [
+    {
+      "id": "water_control_drowning",
+      "label": "Drowning",
+      "scope": "per-power",
+      "defaultActive": false,
+      "mode": "replace",
+      "damage": [
+        {
+          "type": "Cold",
+          "scale": 0.066667,
+          "table": "Ranged_Damage",
+          "duration": 1.1,
+          "tickRate": 0.5
+        },
+        {
+          "type": "Cold",
+          "scale": 0.148812,
+          "table": "Ranged_Damage",
+          "duration": 1.1,
+          "tickRate": 0.5
+        }
+      ],
+      "effects": {
+        "buffDuration": 15,
+        "durations": {
+          "slow": 15
+        },
+        "slow": {
+          "flySpeed": {
+            "scale": 0.4375,
+            "table": "Ranged_Slow"
+          },
+          "jumpHeight": {
+            "scale": 0.4375,
+            "table": "Ranged_Slow"
+          },
+          "jumpSpeed": {
+            "scale": 0.4375,
+            "table": "Ranged_Slow"
+          },
+          "runSpeed": {
+            "scale": 0.4375,
+            "table": "Ranged_Slow"
+          }
+        },
+        "stun": {
+          "mag": 3,
+          "scale": 20,
+          "table": "Ranged_Stun"
+        }
+      }
+    },
     {
       "id": "domination",
       "label": "Domination Active",

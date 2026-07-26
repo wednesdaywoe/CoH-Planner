@@ -65,7 +65,7 @@
       "templates": [
         {
           "attribs": [
-            "Cancel_Effects"
+            "Execute_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -84,9 +84,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -123,9 +124,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> critter eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -143,7 +145,7 @@
       "templates": [
         {
           "attribs": [
-            "EndDrain"
+            "Endurance"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -162,9 +164,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> player eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     }

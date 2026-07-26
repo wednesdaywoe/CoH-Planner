@@ -40,7 +40,12 @@ export const RegenerationAura: Power = {
   "effects": {
     "buffDuration": 60,
     "durations": {
+      "recoveryBuff": 60,
       "regenBuff": 60
+    },
+    "recoveryBuff": {
+      "scale": 2,
+      "table": "Ranged_Ones"
     },
     "regenBuff": {
       "scale": 5,
@@ -48,6 +53,7 @@ export const RegenerationAura: Power = {
     }
   },
   "atoms": [
-    ["Regeneration",null,5,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1]
+    ["Regeneration",null,5,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Recovery",null,2,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1]
   ]
 };

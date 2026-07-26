@@ -32,7 +32,14 @@ export const WolfSpiderArmor: Power = {
   "effects": {
     "buffDuration": 10.25,
     "durations": {
+      "mezResistance": 10.25,
       "resistance": 10.25
+    },
+    "mezResistance": {
+      "sleep": {
+        "scale": 5,
+        "table": "Melee_Ones"
+      }
     },
     "resistance": {
       "lethal": {
@@ -54,21 +61,30 @@ export const WolfSpiderArmor: Power = {
     }
   },
   "atoms": [
-    ["Resistance","Smashing",0.3,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Resistance","Lethal",0.3,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Resistance","Toxic",0.3,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Resistance","Psionic",0.3,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Mez","Stunned",-2,1,10.25,"Melee_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["Mez","Sleep",-2,1,10.25,"Melee_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["Mez","Immobilized",-2,1,10.25,"Melee_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["Mez","Held",-2,1,10.25,"Melee_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["Mez","Confused",-2,1,10.25,"Melee_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["Mez","Terrorized",-2,1,10.25,"Melee_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["MezResist","Stunned",0.2,1,10.25,"Melee_Ones","Res","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
-    ["MezResist","Immobilized",0.2,1,10.25,"Melee_Ones","Res","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
-    ["MezResist","Held",0.2,1,10.25,"Melee_Ones","Res","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
-    ["MezResist","Confused",0.2,1,10.25,"Melee_Ones","Res","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
-    ["MezResist","Terrorized",0.2,1,10.25,"Melee_Ones","Res","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
+    ["Resistance","Smashing",0.3,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Lethal",0.3,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Toxic",0.3,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Psionic",0.3,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Mez","Stunned",-2,1,10.25,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Sleep",-2,1,10.25,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Immobilized",-2,1,10.25,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Held",-2,1,10.25,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Confused",-2,1,10.25,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Terrorized",-2,1,10.25,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["MezResist","Sleep",5,1,10.25,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["MezResist","Stunned",0.2,1,10.25,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
+    ["MezResist","Immobilized",0.2,1,10.25,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
+    ["MezResist","Held",0.2,1,10.25,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
+    ["MezResist","Confused",0.2,1,10.25,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
+    ["MezResist","Terrorized",0.2,1,10.25,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
+    ["MezResist","Sleep",5.2,1,10.25,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
+    ["Defense","All",0.3,1,10.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
+    ["ToHit",null,0.3,1,10.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
+    ["RechargeTime",null,0.3,1,10.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
+    ["Movement","Run",0.3,1,10.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
+    ["Movement","Fly",0.3,1,10.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
+    ["Movement","JumpHeight",0.3,1,10.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
+    ["Movement","Jump",0.3,1,10.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
   ],
   "mechanicType": "parentMechanic"
 };

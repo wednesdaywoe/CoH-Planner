@@ -45,9 +45,26 @@ export const AssassinsBlow: Power = {
   },
   "fromHideBonus": 0.3999999999999999,
   "midCombatCast": 1,
+  "effects": {
+    "buffDuration": 8,
+    "durations": {
+      "stealth": 8
+    },
+    "stealth": {
+      "stealthPvE": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      },
+      "stealthPvP": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      }
+    }
+  },
   "atoms": [
-    ["Unmapped",null,2.5,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,-1,1,8,"Melee_Ones","Str","Magnitude","Self","Any",true,"No",null,null,null,1]
+    ["Damage","Smashing",2.5,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Stealth","RadiusPvE",-1,1,8,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Stealth","RadiusPvP",-1,1,8,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
   ],
   "damageTypes": [
     "Smashing"

@@ -38,25 +38,131 @@ export const LightForm: Power = {
   "effects": {
     "buffDuration": 90,
     "durations": {
+      "hold": 90,
+      "immobilize": 90,
+      "knockback": 90,
+      "knockup": 90,
+      "mezResistance": 90,
       "recoveryBuff": 90,
-      "resistance": 90
+      "repel": 90,
+      "resistance": 90,
+      "sleep": 90,
+      "stun": 90
+    },
+    "effectDuration": 90,
+    "hold": {
+      "mag": 1,
+      "scale": 10,
+      "table": "Melee_Res_Boolean"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 10,
+      "table": "Melee_Res_Boolean"
+    },
+    "knockback": {
+      "scale": 100,
+      "table": "Melee_Ones"
+    },
+    "knockup": {
+      "scale": 100,
+      "table": "Melee_Ones"
+    },
+    "mezResistance": {
+      "knockback": {
+        "scale": 10,
+        "table": "Melee_Ones"
+      },
+      "knockup": {
+        "scale": 10,
+        "table": "Melee_Ones"
+      },
+      "repel": {
+        "scale": 10,
+        "table": "Melee_Ones"
+      }
     },
     "recoveryBuff": {
       "scale": 0.3,
       "table": "Melee_Ones"
     },
+    "repel": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
     "resistance": {
+      "cold": {
+        "scale": 7,
+        "table": "Melee_Res_DMG"
+      },
+      "energy": {
+        "scale": 7,
+        "table": "Melee_Res_DMG"
+      },
+      "fire": {
+        "scale": 7,
+        "table": "Melee_Res_DMG"
+      },
+      "lethal": {
+        "scale": 7,
+        "table": "Melee_Res_DMG"
+      },
+      "negative": {
+        "scale": 7,
+        "table": "Melee_Res_DMG"
+      },
       "smashing": {
         "scale": 7,
         "table": "Melee_Res_DMG"
+      },
+      "toxic": {
+        "scale": 7,
+        "table": "Melee_Res_DMG"
       }
-    }
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 10,
+      "table": "Melee_Res_Boolean"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 10,
+      "table": "Melee_Res_Boolean"
+    },
+    "maxStacks": 2,
+    "stacksLinear": [
+      "recoveryBuff",
+      "resistance"
+    ]
   },
   "atoms": [
-    ["Resistance","Smashing",7,1,90,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Recovery",null,0.3,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"@CustomFX Wispy eq @CustomFX WispyTintable eq ||"],
-    ["Unmapped",null,-10,1,90,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["Unmapped",null,5,1,90,"Melee_Res_Boolean","Res","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
+    ["Resistance","Smashing",7,1,90,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Resistance","Lethal",7,1,90,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Resistance","Fire",7,1,90,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Resistance","Cold",7,1,90,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Resistance","Energy",7,1,90,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Resistance","Negative",7,1,90,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Resistance","Toxic",7,1,90,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Recovery",null,0.3,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["MezResist","Knockback",10,1,90,"Melee_Ones","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["MezResist","Knockup",10,1,90,"Melee_Ones","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Mez","Knockback",-100,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Mez","Knockup",-100,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["MezResist","Repel",10,1,90,"Melee_Ones","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Mez","Repel",-10,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Meta",null,1,3,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,130,1,null,true],
+    ["Meta",null,1,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"@CustomFX Wispy eq @CustomFX WispyTintable eq ||"],
+    ["Mez","Stunned",-10,1,90,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Held",-10,1,90,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Sleep",-10,1,90,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Immobilized",-10,1,90,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["MezResist","Stunned",5,1,90,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
+    ["MezResist","Held",5,1,90,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
+    ["MezResist","Sleep",5,1,90,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
+    ["MezResist","Immobilized",6,1,90,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
+  ],
+  "setsModes": [
+    "Peacebringer_Light_Mode"
   ]
 };

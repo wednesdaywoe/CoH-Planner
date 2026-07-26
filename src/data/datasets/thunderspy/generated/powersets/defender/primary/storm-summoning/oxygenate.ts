@@ -36,15 +36,44 @@ export const Oxygenate: Power = {
     "Healing"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Heal",
+    "scale": 1,
+    "table": "Ranged_Heal"
+  },
   "effects": {
-    "healing": {
-      "scale": 1,
-      "table": "Ranged_Heal"
+    "buffDuration": 60,
+    "debuffResistance": {
+      "endurance": {
+        "scale": 2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "recovery": {
+        "scale": 2,
+        "table": "Ranged_Res_Boolean"
+      }
+    },
+    "durations": {
+      "debuffResistance": 60,
+      "mezResistance": 60
+    },
+    "mezResistance": {
+      "sleep": {
+        "scale": 2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "stun": {
+        "scale": 2,
+        "table": "Ranged_Res_Boolean"
+      }
     }
   },
   "atoms": [
-    ["Unmapped",null,1,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,2,1,60,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",true,"No",null,null,null,1]
+    ["Heal",null,1,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["MezResist","Stunned",2,1,60,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["MezResist","Sleep",2,1,60,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["Recovery",null,2,1,60,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["Endurance",null,2,1,60,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true]
   ],
   "requires": "Defender_Buff.Storm_Summoning.O2_Boost !"
 };

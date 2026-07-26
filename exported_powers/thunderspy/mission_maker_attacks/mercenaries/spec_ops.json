@@ -59,6 +59,50 @@
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Melee_Levelminus",
+          "scale": 1.0,
+          "duration": "99999 seconds",
+          "magnitude": 1.0,
+          "delay": 2.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "kHeld source> 0 <= kStun source> 0 <= && kSleep source> 0 <= && kTerrorize source> 0 <= &&",
+          "caster_stack": "",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "kHeld source> 0 <= kStun source> 0 <= && kSleep source> 0 <= && kTerrorize source> 0 <= &&",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
           "aspect": "",
           "target": "",
           "table": "Melee_Levelminus",
@@ -81,6 +125,50 @@
             "type": "EntCreate",
             "entity_def": "NPC_Pets_MA_Spec_Ops"
           }
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "combatlevel source> 23 > arch source> Class_Boss_Grunt eq arch source> Class_Boss_Elite eq || arch source> Class_Boss_Archvillain eq || && kHeld source> 0 <= kStun source> 0 <= && kSleep source> 0 <= && kTerrorize source> 0 <= && &&",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Melee_Levelminus",
+          "scale": 1.0,
+          "duration": "99999 seconds",
+          "magnitude": 1.0,
+          "delay": 3.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "combatlevel source> 23 > arch source> Class_Boss_Grunt eq arch source> Class_Boss_Elite eq || arch source> Class_Boss_Archvillain eq || && kHeld source> 0 <= kStun source> 0 <= && kSleep source> 0 <= && kTerrorize source> 0 <= && &&",
+          "caster_stack": "",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },

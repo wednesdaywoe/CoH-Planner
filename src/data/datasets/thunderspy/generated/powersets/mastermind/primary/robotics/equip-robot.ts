@@ -39,11 +39,16 @@ export const EquipRobot: Power = {
   "maxSlots": 6,
   "effects": {},
   "atoms": [
-    ["Recovery",null,0.15,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,null,null,null,null,true],
-    ["Unmapped",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"MastermindPets_Droid target.VillainName>",true],
-    ["Unmapped",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"MastermindPets_Protector_Bot target.VillainName>",true],
-    ["Unmapped",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"MastermindPets_Assault_Bot target.VillainName>",true],
-    ["Unmapped",null,100,0,5.6,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"MastermindPets_Droid target.VillainName> MastermindPets_Protector_Bot target.VillainName> || MastermindPets_Assault_Bot target.VillainName> ||",true]
+    ["Recovery",null,0.15,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,true],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Droid target.VillainName>",true],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Droid target.VillainName>",true],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Protector_Bot target.VillainName>",true],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Protector_Bot target.VillainName>",true],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Protector_Bot target.VillainName>",true],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Assault_Bot target.VillainName>",true],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Assault_Bot target.VillainName>",true],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Assault_Bot target.VillainName>",true],
+    ["Mez","Evade",100,0,5.6,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Droid target.VillainName> MastermindPets_Protector_Bot target.VillainName> || MastermindPets_Assault_Bot target.VillainName> ||",true]
   ],
   "mechanicType": "parentMechanic"
 };

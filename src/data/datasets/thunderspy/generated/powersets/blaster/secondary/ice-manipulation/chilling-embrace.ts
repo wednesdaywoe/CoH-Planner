@@ -45,10 +45,32 @@ export const ChillingEmbrace: Power = {
   "maxSlots": 6,
   "effects": {
     "buffDuration": 5,
+    "damageDebuff": {
+      "scale": 2,
+      "table": "Melee_Debuff_Dam"
+    },
     "durations": {
+      "damageDebuff": 5,
+      "rechargeDebuff": 5,
       "slow": 5
     },
+    "rechargeDebuff": {
+      "scale": 0.4,
+      "table": "Melee_Slow"
+    },
     "slow": {
+      "flySpeed": {
+        "scale": 0.7,
+        "table": "Melee_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.7,
+        "table": "Melee_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.7,
+        "table": "Melee_Slow"
+      },
       "runSpeed": {
         "scale": 1,
         "table": "Melee_SpeedRunning"
@@ -56,11 +78,22 @@ export const ChillingEmbrace: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,0.7,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&"],
-    ["Movement","Run",-1,1,5,"Melee_SpeedRunning","Max","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq entref target> entref source> eq ! && cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&"],
-    ["Unmapped",null,2,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&"],
-    ["MaxHP",null,0.5,1,3,"Melee_HealSelf","Max","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq",true],
-    ["Recovery",null,0.5,1,3,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq",true]
+    ["Movement","Run",0.7,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&"],
+    ["RechargeTime",null,0.4,1,5,"Melee_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq ! cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&"],
+    ["Movement","Fly",0.7,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&"],
+    ["Movement","Jump",0.7,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&"],
+    ["Movement","JumpHeight",0.7,1,5,"Melee_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq ! cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&"],
+    ["Movement","Run",-1,1,5,"Melee_SpeedRunning","Max","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq entref target> entref source> eq ! && cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&"],
+    ["DamageBuff","Smashing",2,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq ! cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&"],
+    ["DamageBuff","Lethal",2,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq ! cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&"],
+    ["DamageBuff","Fire",2,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq ! cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&"],
+    ["DamageBuff","Cold",2,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq ! cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&"],
+    ["DamageBuff","Energy",2,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq ! cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&"],
+    ["DamageBuff","Negative",2,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq ! cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&"],
+    ["DamageBuff","Toxic",2,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq ! cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&"],
+    ["DamageBuff","Psionic",2,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq ! cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&"],
+    ["Absorb",null,0.5,1,3,"Melee_HealSelf","Max","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq",true],
+    ["Recovery",null,0.5,1,3,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq",true]
   ],
   "damageTypes": [
     "Cold"

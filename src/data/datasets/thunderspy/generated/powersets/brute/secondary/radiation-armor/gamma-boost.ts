@@ -33,8 +33,28 @@ export const GammaBoost: Power = {
   "maxSlots": 6,
   "effects": {
     "buffDuration": 1.25,
+    "debuffResistance": {
+      "endurance": {
+        "scale": 2,
+        "table": "Melee_Res_Boolean"
+      },
+      "recovery": {
+        "scale": 2,
+        "table": "Melee_Res_Boolean"
+      },
+      "regeneration": {
+        "scale": 0.5,
+        "table": "Melee_Res_Boolean"
+      }
+    },
     "durations": {
+      "debuffResistance": 1.25,
+      "recoveryBuff": 1.25,
       "regenBuff": 1.25
+    },
+    "recoveryBuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
     },
     "regenBuff": {
       "scale": 1,
@@ -42,8 +62,11 @@ export const GammaBoost: Power = {
     }
   },
   "atoms": [
-    ["Regeneration",null,1,1,1.25,"Melee_Ones","Cur","Expression","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"75 kHitPoints% source> - 30 + 100 / @StdResult *"],
-    ["Unmapped",null,0.5,1,1.25,"Melee_Res_Boolean","Res","Magnitude","Self","Any",true,"No",null,null,null,1]
+    ["Regeneration",null,1,1,1.25,"Melee_Ones","Cur","Expression","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"75 kHitPoints% source> - 30 + 100 / @StdResult *"],
+    ["Recovery",null,1,1,1.25,"Melee_Ones","Cur","Expression","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"1.2 kHitPoints% source> * 100 / .3 * @StdResult *"],
+    ["Regeneration",null,0.5,1,1.25,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Recovery",null,2,1,1.25,"Melee_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Endurance",null,2,1,1.25,"Melee_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true]
   ],
   "mechanicType": "parentMechanic"
 };

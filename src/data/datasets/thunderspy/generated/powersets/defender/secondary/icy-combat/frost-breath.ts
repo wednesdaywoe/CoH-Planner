@@ -50,10 +50,43 @@ export const FrostBreath: Power = {
     "duration": 0.6,
     "tickRate": 0.5
   },
+  "effects": {
+    "buffDuration": 10,
+    "durations": {
+      "rechargeDebuff": 10,
+      "slow": 10
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
+    },
+    "slow": {
+      "flySpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      }
+    }
+  },
   "atoms": [
-    ["Unmapped",null,0.7,1,0.6,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.2,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1.050877,1,0.6,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,0.5,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Cold",0.7,1,0.6,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Movement","JumpHeight",0.2,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Movement","Jump",0.2,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","Run",0.2,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","Fly",0.2,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["RechargeTime",null,0.2,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Damage","Cold",1.050877,1,0.6,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "requires": "Defender_Ranged.Ice_Blast.Ice_Sword_Circle !",
   "damageTypes": [

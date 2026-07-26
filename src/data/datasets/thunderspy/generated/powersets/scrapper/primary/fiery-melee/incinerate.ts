@@ -37,20 +37,29 @@ export const Incinerate: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Fire",
-    "scale": 0.25,
-    "table": "Melee_Damage",
-    "duration": 2.25,
-    "tickRate": 0.25
-  },
+  "damage": [
+    {
+      "type": "Fire",
+      "scale": 0.25,
+      "table": "Melee_Damage",
+      "duration": 2.25,
+      "tickRate": 0.25
+    },
+    {
+      "type": "Fire",
+      "scale": 0.1125,
+      "table": "Melee_Damage",
+      "duration": 4.6,
+      "tickRate": 0.5
+    }
+  ],
   "atoms": [
-    ["Unmapped",null,0.25,1,2.25,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,0.25,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.1125,1,4.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,0.5,1],
-    ["Unmapped",null,2.496669,0.05000000074505806,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,0.25,1,2.25,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,0.25,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,2.5,0.05000000074505806,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
-    ["Unmapped",null,2.5,0.10000000149011612,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true]
+    ["Damage","Fire",0.25,1,2.25,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Fire",0.1125,1,4.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1],
+    ["Damage","Fire",2.496669,0.05000000074505806,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Fire",0.25,1,2.25,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Fire",2.5,0.05000000074505806,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
+    ["Damage","Fire",2.5,0.10000000149011612,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true]
   ],
   "damageTypes": [
     "Fire"

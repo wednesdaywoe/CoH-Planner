@@ -58,7 +58,7 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Smashing_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -77,9 +77,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -97,7 +98,7 @@
       "templates": [
         {
           "attribs": [
-            "Debuff_Def"
+            "Base_Defense"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -116,9 +117,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -136,7 +138,7 @@
       "templates": [
         {
           "attribs": [
-            "Knockback"
+            "Knockup"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -155,9 +157,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> critter eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -175,7 +178,7 @@
       "templates": [
         {
           "attribs": [
-            "Knockback"
+            "Knockup"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -194,9 +197,16 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "enttype target> player eq",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "NoFloaters",
+            "CancelOnMiss",
+            "NearGround",
+            "IgnoreStrength"
+          ],
+          "flags_raw": 29
         }
       ]
     },
@@ -214,7 +224,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Fly"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -233,9 +243,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength"
+          ],
+          "flags_raw": 1296
         }
       ]
     },
@@ -272,9 +286,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "@ToHitRoll @ToHit / 0.35 <= enttype target> critter eq &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 2560
         }
       ]
     },
@@ -311,9 +326,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "@ToHitRoll @ToHit / 0.35 <= enttype target> player eq &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "NearGround",
+            "IgnoreStrength"
+          ],
+          "flags_raw": 24
         }
       ]
     },
@@ -350,9 +370,10 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "@ToHitRoll @ToHit / 0.35 > @ToHitRoll @ToHit / 0.70 <= && enttype target> critter eq &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 2560
         }
       ]
     },
@@ -389,9 +410,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "@ToHitRoll @ToHit / 0.35 > @ToHitRoll @ToHit / 0.70 <= && enttype target> player eq &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "NoFloaters",
+            "BoostIgnoreDiminishing",
+            "IgnoreStrength"
+          ],
+          "flags_raw": 19
         }
       ]
     }

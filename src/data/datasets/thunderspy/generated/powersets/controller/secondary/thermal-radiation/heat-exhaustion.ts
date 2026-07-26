@@ -34,8 +34,22 @@ export const HeatExhaustion: Power = {
   "maxSlots": 6,
   "effects": {
     "buffDuration": 40,
+    "damageDebuff": {
+      "scale": 5,
+      "table": "Ranged_Debuff_Dam"
+    },
     "durations": {
+      "damageDebuff": 40,
+      "recoveryDebuff": 40,
       "regenDebuff": 40
+    },
+    "enduranceDrain": {
+      "scale": 0.13,
+      "table": "Ranged_EndDrain"
+    },
+    "recoveryDebuff": {
+      "scale": 2,
+      "table": "Ranged_Ones"
     },
     "regenDebuff": {
       "scale": 5,
@@ -43,12 +57,21 @@ export const HeatExhaustion: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,5,1,40,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Regeneration",null,-5,1,40,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,-0.13,1,0,"Ranged_EndDrain","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,-20,1,40,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,-0.13,1,0,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"arch target> Class_Boss_Archvillain eq arch target> Class_Boss_BigMonster eq ||",true],
-    ["Unmapped",null,-3.33,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["DamageBuff","Smashing",5,1,40,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",5,1,40,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Fire",5,1,40,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Cold",5,1,40,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Energy",5,1,40,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Negative",5,1,40,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",5,1,40,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",5,1,40,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Regeneration",null,-5,1,40,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Recovery",null,-2,1,40,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Endurance",null,-0.13,1,0,"Ranged_EndDrain","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Regeneration",null,-20,1,40,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["Recovery",null,-8,1,40,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["Endurance",null,-0.13,1,0,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch target> Class_Boss_Archvillain eq arch target> Class_Boss_BigMonster eq ||",true],
+    ["Endurance",null,-3.33,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "damageTypes": [
     "Energy"

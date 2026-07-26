@@ -39,7 +39,7 @@ export const TrickShot: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 1.64,
     "table": "Ranged_Damage"
   },
@@ -51,10 +51,16 @@ export const TrickShot: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,1.64,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Lethal",1.64,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Meta",null,1,1,2,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["EntCreate",null,1,1,2,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1.964114,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["EntCreate",null,-1,1,1,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Meta",null,1,52,4,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,4.300000190734863,1,null,true],
+    ["Damage","Lethal",1.964114,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+  ],
+  "setsModes": [
+    "Chain_Induction"
   ],
   "damageTypes": [
     "Energy",

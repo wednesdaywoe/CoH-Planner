@@ -46,40 +46,87 @@ export const Geyser: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Fire",
-    "scale": 0.5,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.5,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 1.5,
+      "table": "Ranged_Damage"
+    }
+  ],
   "effects": {
+    "buffDuration": 10.43,
+    "damageBuff": {
+      "scale": 0.041,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 10.43,
+      "slow": 10
+    },
     "knockup": {
       "scale": 1.5,
       "table": "Ranged_Ones"
+    },
+    "slow": {
+      "flySpeed": {
+        "scale": 0.33,
+        "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.33,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.33,
+        "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.33,
+        "table": "Ranged_Slow"
+      }
     }
   },
   "atoms": [
-    ["Unmapped",null,0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.33,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Mez","Knockup",1.5,0.6700000166893005,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.482183,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,0.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 1 == &&",true],
-    ["Unmapped",null,0.24,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 2 == &&",true],
-    ["Unmapped",null,0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 3 == &&",true],
-    ["Unmapped",null,0.096437,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 1 == &&",true],
-    ["Unmapped",null,0.231448,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 2 == &&",true],
-    ["Unmapped",null,0.482183,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 3 == &&",true],
-    ["Unmapped",null,0.136364,1,5.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,0.5,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 0 ==",true],
-    ["Unmapped",null,0.143182,1,5.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,0.5,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 1 ==",true],
-    ["Unmapped",null,0.152727,1,5.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,0.5,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 2 ==",true],
-    ["Unmapped",null,0.170455,1,5.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,0.5,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 3 ==",true],
-    ["Mez","Knockup",1.5,0.6700000166893005,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Stunned",5,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 1 == &&",true],
-    ["Mez","Stunned",5,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 2 == &&",true],
-    ["Mez","Stunned",5,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 3 == &&",true],
-    ["Mez","Stunned",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 1 == &&",true],
-    ["Mez","Stunned",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 1 == &&",true],
-    ["Mez","Stunned",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 1 == &&",true]
+    ["Damage","Smashing",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Fire",1.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Movement","JumpHeight",0.33,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Movement","Jump",0.33,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","Run",0.33,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","Fly",0.33,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Mez","Knockup",1.5,0.6700000166893005,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
+    ["DamageBuff","Smashing",0.041,1,10.43,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",0.041,1,10.43,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Fire",0.041,1,10.43,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Cold",0.041,1,10.43,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Energy",0.041,1,10.43,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Negative",0.041,1,10.43,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",0.041,1,10.43,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",0.041,1,10.43,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Damage","Smashing",0.482183,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Fire",1.44655,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Fire",0.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 1 == &&",true],
+    ["Damage","Fire",0.24,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 2 == &&",true],
+    ["Damage","Fire",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 3 == &&",true],
+    ["Damage","Fire",0.096437,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 1 == &&",true],
+    ["Damage","Fire",0.231448,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 2 == &&",true],
+    ["Damage","Fire",0.482183,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 3 == &&",true],
+    ["Damage","Fire",0.136364,1,5.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 0 ==",true],
+    ["Damage","Fire",0.143182,1,5.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 1 ==",true],
+    ["Damage","Fire",0.152727,1,5.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 2 ==",true],
+    ["Damage","Fire",0.170455,1,5.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 3 ==",true],
+    ["Mez","Knockup",1.5,0.6700000166893005,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Stunned",5,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 1 == &&",true],
+    ["Mez","Stunned",5,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 2 == &&",true],
+    ["Mez","Stunned",5,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 3 == &&",true],
+    ["Mez","Stunned",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 1 == &&",true],
+    ["Mez","Stunned",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 1 == &&",true],
+    ["Mez","Stunned",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 1 == &&",true]
   ],
   "conditionalEffects": [
     {

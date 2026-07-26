@@ -41,8 +41,41 @@ export const ChillingEmbrace: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
+  "effects": {
+    "buffDuration": 5,
+    "durations": {
+      "rechargeDebuff": 5,
+      "slow": 5
+    },
+    "rechargeDebuff": {
+      "scale": 0.5,
+      "table": "Melee_Slow"
+    },
+    "slow": {
+      "flySpeed": {
+        "scale": 0.7,
+        "table": "Melee_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.7,
+        "table": "Melee_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.7,
+        "table": "Melee_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.7,
+        "table": "Melee_Slow"
+      }
+    }
+  },
   "atoms": [
-    ["Unmapped",null,0.7,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"No",null,null,null,1]
+    ["Movement","Run",0.7,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["RechargeTime",null,0.5,1,5,"Melee_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","Fly",0.7,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Movement","Jump",0.7,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Movement","JumpHeight",0.7,1,5,"Melee_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true]
   ],
   "damageTypes": [
     "Cold"

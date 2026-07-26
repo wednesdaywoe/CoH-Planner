@@ -39,24 +39,41 @@ export const RiseofthePhoenix: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Heal",
+    "scale": 5,
+    "table": "Melee_HealSelf",
+    "duration": 0.5,
+    "tickRate": 1
+  },
   "effects": {
-    "buffDuration": 0.5,
-    "durations": {
-      "healing": 0.5
-    },
-    "healing": {
-      "scale": 5,
-      "table": "Melee_HealSelf"
+    "enduranceGain": {
+      "scale": 50,
+      "table": "Melee_Ones"
     },
     "summon": {
       "duration": 5,
       "entity": "Pets_Phoenix",
       "isPseudoPet": false
-    }
+    },
+    "untouchable": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "maxStacks": 2,
+    "stacksLinear": [
+      "enduranceGain"
+    ]
   },
   "atoms": [
-    ["Unmapped",null,5,1,0.5,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"No",null,null,1,1],
+    ["Heal",null,5,1,0.5,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,1,1],
+    ["EntCreate",null,1,1,5,"Melee_Level","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["EntCreate",null,1,1,5,"Melee_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,10,1,0,"Melee_Ones","Cur","Duration","Self","Any",true,"No",null,null,null,1]
+    ["Mez","Untouchable",10,1,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Endurance",null,50,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Meta",null,1,1,90,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+  ],
+  "setsModes": [
+    "Peacebringer_Blaster_Mode"
   ]
 };

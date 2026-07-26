@@ -297,8 +297,24 @@ export function perTargetValueOf(
   if (pt) return pt;
   // No per-target increment: the sustained value is the longest-lived instance
   // (a burst+tail power's primary bucket), never the overlap sum.
-  const primary = durationBuckets(atoms)[0];
-  return { scale: Math.abs(primary.atoms[0].scale), table };
+  const buckets = durationBuckets(atoms);
+  // Buckets tied at the longest duration are ordered by their identity key, so
+  // which one wins depends on how the scale happens to SPELL. That only matters
+  // when the tie is between genuine same-slot DUPLICATES — same recipient, all
+  // `Replace` — which is the shape the bag collapses by `Math.max`
+  // (`foldResourceSlot`). Thunderspy Grace is the first fork to ship one (a 1.0
+  // base beside a 0.5 NearGround variant). A tie across different recipients is
+  // not a duplicate at all (Thermal Radiation's Fire Shield buffs the target at 2
+  // and the caster at 1), so it keeps the bucket-order pick.
+  const tied = buckets.filter((b) => b.duration === buckets[0].duration);
+  const atomsTied = tied.flatMap((b) => b.atoms);
+  const duplicates = atomsTied.every(
+    (a) => a.stacking === 'Replace' && a.toWho === atomsTied[0].toWho,
+  );
+  const scale = duplicates
+    ? Math.max(...atomsTied.map((a) => Math.abs(a.scale)))
+    : Math.abs(buckets[0].atoms[0].scale);
+  return { scale, table };
 }
 
 /**
@@ -778,20 +794,32 @@ function resourceBuffValue(
   const increments = atoms.filter((a) => a.perTarget);
   const flat = atoms.filter((a) => !a.perTarget);
 
-  // Per-target increments belong to the ENHANCEABLE slot whatever their own
-  // `ignoreStrength` — the twin never receives one.
-  if (!wantIgnoreStrength && increments.length) {
+  // Per-target increments follow the FLAT BASE's slot, not their own
+  // `ignoreStrength` — the converter patches whichever slot the base occupies
+  // (`_remapUnenhancedPatchKeys`). That is the enhanceable one for every HC and
+  // Rebirth power, and for a base-less increment; Thunderspy's Rise to the
+  // Challenge is the first with an IgnoreStrength base, so its increment belongs
+  // to the twin (bag: `regenBuffUnenhanced` 1.25 +0.25/foe, no `regenBuff`).
+  const baseIsUnenhanced = flat.length > 0 && flat.every((a) => a.ignoreStrength);
+  if (wantIgnoreStrength === baseIsUnenhanced && increments.length) {
     const table = (increments.find((a) => a.modifierTable) ?? flat.find((a) => a.modifierTable))
       ?.modifierTable ?? '';
     const perTarget = sumDistinctAbs(increments, (a) => a.perTarget ?? 0);
-    // At one target: the flat base, plus only those self-increments that are NOT
-    // IgnoreStrength (Consume Psyche counts, Reactive Regeneration does not).
+    // At one target: the flat base, plus only those self-increments belonging to
+    // THIS slot. What disqualifies Reactive Regeneration's increment is not that it
+    // is IgnoreStrength but that its base is not — it is a pseudo-pet buff riding an
+    // enhanceable base, so it does not count at one target. Consume Psyche's matches
+    // its base and counts; so does Thunderspy Rise to the Challenge's, where base and
+    // increment are BOTH IgnoreStrength.
     const selfIncrements = increments.filter(
-      (a) => (a.toWho === 'Self' || a.toWho === 'All') && !a.ignoreStrength,
+      (a) => (a.toWho === 'Self' || a.toWho === 'All')
+        && !!a.ignoreStrength === wantIgnoreStrength,
     );
     const scale =
-      sumDistinctAbs(flat.filter((a) => !a.ignoreStrength), (a) => a.scale) +
-      sumDistinctAbs(selfIncrements, (a) => a.scale);
+      sumDistinctAbs(
+        flat.filter((a) => !!a.ignoreStrength === wantIgnoreStrength),
+        (a) => a.scale,
+      ) + sumDistinctAbs(selfIncrements, (a) => a.scale);
     return { scale, table, perTarget };
   }
 

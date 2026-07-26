@@ -43,20 +43,21 @@ export const DarkRegeneration: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Negative",
-    "scale": 0.2,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "healing": {
+  "damage": [
+    {
+      "type": "Negative",
+      "scale": 0.2,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Heal",
       "scale": 3,
       "table": "Melee_HealSelf"
     }
-  },
+  ],
   "atoms": [
-    ["Unmapped",null,0.2,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,3,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"No",null,null,null,1]
+    ["Damage","Negative",0.2,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Heal",null,3,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1]
   ],
   "damageTypes": [
     "Negative"

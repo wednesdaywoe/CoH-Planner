@@ -52,27 +52,95 @@ export const AcidArrow: Power = {
   },
   "effects": {
     "buffDuration": 20,
+    "defenseDebuff": {
+      "scale": 2,
+      "table": "Ranged_Debuff_Def"
+    },
     "durations": {
-      "regenDebuff": 20
+      "defenseDebuff": 20,
+      "regenDebuff": 20,
+      "resistanceDebuff": 20
     },
     "regenDebuff": {
       "scale": 1,
       "table": "Ranged_Ones"
+    },
+    "resistanceDebuff": {
+      "cold": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "energy": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "fire": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "negative": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "psionic": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "smashing": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      }
     }
   },
   "atoms": [
-    ["Unmapped",null,0.01,1,20,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,1,1],
-    ["Unmapped",null,-2,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,2,1,20,"Ranged_Debuff_Def","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Regeneration",null,-1,1,20,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,-3,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,2,1,20,"Ranged_Debuff_Def","Cur","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,-2,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kImmobilized target> 0 >",true],
-    ["Unmapped",null,2,1,20,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kImmobilized target> 0 >",true],
-    ["Unmapped",null,-3,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kHeld target> 0 >",true],
-    ["Unmapped",null,3,1,20,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kHeld target> 0 >",true],
-    ["Regeneration",null,-1,1,20,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kImmobilized target> 0 >",true],
-    ["Regeneration",null,-1,1,20,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kHeld target> 0 >",true]
+    ["Damage","Toxic",0.01,1,20,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["Resistance","Smashing",-2,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Resistance","Lethal",-2,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Resistance","Fire",-2,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Resistance","Cold",-2,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Resistance","Energy",-2,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Resistance","Negative",-2,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Resistance","Psionic",-2,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Resistance","Toxic",-2,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Defense","All",2,1,20,"Ranged_Debuff_Def","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Regeneration",null,-1,1,20,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Resistance","Smashing",-3,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["Resistance","Lethal",-3,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["Resistance","Fire",-3,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["Resistance","Cold",-3,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["Resistance","Energy",-3,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["Resistance","Negative",-3,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["Resistance","Psionic",-3,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["Resistance","Toxic",-3,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["Defense","All",2,1,20,"Ranged_Debuff_Def","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Resistance","Smashing",-2,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kImmobilized target> 0 >",true],
+    ["Resistance","Lethal",-2,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kImmobilized target> 0 >",true],
+    ["Resistance","Fire",-2,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kImmobilized target> 0 >",true],
+    ["Resistance","Cold",-2,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kImmobilized target> 0 >",true],
+    ["Resistance","Energy",-2,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kImmobilized target> 0 >",true],
+    ["Resistance","Negative",-2,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kImmobilized target> 0 >",true],
+    ["Resistance","Psionic",-2,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kImmobilized target> 0 >",true],
+    ["Resistance","Toxic",-2,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kImmobilized target> 0 >",true],
+    ["Defense","All",2,1,20,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"kImmobilized target> 0 >",true],
+    ["Resistance","Smashing",-3,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kHeld target> 0 >",true],
+    ["Resistance","Lethal",-3,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kHeld target> 0 >",true],
+    ["Resistance","Fire",-3,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kHeld target> 0 >",true],
+    ["Resistance","Cold",-3,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kHeld target> 0 >",true],
+    ["Resistance","Energy",-3,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kHeld target> 0 >",true],
+    ["Resistance","Negative",-3,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kHeld target> 0 >",true],
+    ["Resistance","Psionic",-3,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kHeld target> 0 >",true],
+    ["Resistance","Toxic",-3,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kHeld target> 0 >",true],
+    ["Defense","All",3,1,20,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"kHeld target> 0 >",true],
+    ["Regeneration",null,-1,1,20,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"kImmobilized target> 0 >",true],
+    ["Regeneration",null,-1,1,20,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"kHeld target> 0 >",true]
   ],
   "damageTypes": [
     "Toxic"

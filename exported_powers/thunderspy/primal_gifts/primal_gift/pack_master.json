@@ -61,7 +61,7 @@
       "templates": [
         {
           "attribs": [
-            "NBInactive"
+            "Heal_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -80,9 +80,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -100,7 +105,50 @@
       "templates": [
         {
           "attribs": [
-            "NBActive"
+            "Regeneration"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 0.6,
+          "duration": "10.25 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! &&",
+          "caster_stack": "",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! &&",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Heal_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -119,9 +167,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -139,7 +192,7 @@
       "templates": [
         {
           "attribs": [
-            "NBActive"
+            "Regeneration"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -158,9 +211,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -178,7 +235,7 @@
       "templates": [
         {
           "attribs": [
-            "NBInactive"
+            "Regeneration"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -197,9 +254,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! && entref target> entref source> eq ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -217,7 +278,7 @@
       "templates": [
         {
           "attribs": [
-            "NBActive"
+            "Regeneration"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -236,9 +297,13 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! && entref target> entref source> eq ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -256,7 +321,14 @@
       "templates": [
         {
           "attribs": [
-            "NBInactive"
+            "Smashing_Dmg",
+            "Lethal_Dmg",
+            "Fire_Dmg",
+            "Cold_Dmg",
+            "Energy_Dmg",
+            "Negative_Energy_Dmg",
+            "Toxic_Dmg",
+            "Psionic_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -275,9 +347,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "kHunterMode Source.Mode?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -295,7 +372,14 @@
       "templates": [
         {
           "attribs": [
-            "NBInactive"
+            "Smashing_Dmg",
+            "Lethal_Dmg",
+            "Fire_Dmg",
+            "Cold_Dmg",
+            "Energy_Dmg",
+            "Negative_Energy_Dmg",
+            "Toxic_Dmg",
+            "Psionic_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -314,9 +398,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "kHunterMode Source.Mode? entref target> entref source> eq ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -334,7 +423,7 @@
       "templates": [
         {
           "attribs": [
-            "NBActive"
+            "Smashing_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -353,9 +442,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "kHunterMode Source.Mode?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -373,7 +467,7 @@
       "templates": [
         {
           "attribs": [
-            "NBActive"
+            "Lethal_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -392,9 +486,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "kHunterMode Source.Mode?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -412,7 +511,7 @@
       "templates": [
         {
           "attribs": [
-            "NBActive"
+            "Fire_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -431,9 +530,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "kHunterMode Source.Mode?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -451,7 +555,7 @@
       "templates": [
         {
           "attribs": [
-            "NBActive"
+            "Cold_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -470,9 +574,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "kHunterMode Source.Mode?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -490,7 +599,7 @@
       "templates": [
         {
           "attribs": [
-            "NBActive"
+            "Energy_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -509,9 +618,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "kHunterMode Source.Mode?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -529,7 +643,7 @@
       "templates": [
         {
           "attribs": [
-            "NBActive"
+            "Negative_Energy_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -548,9 +662,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "kHunterMode Source.Mode?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -568,7 +687,7 @@
       "templates": [
         {
           "attribs": [
-            "NBActive"
+            "Toxic_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -587,9 +706,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "kHunterMode Source.Mode?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -607,7 +731,7 @@
       "templates": [
         {
           "attribs": [
-            "NBActive"
+            "Psionic_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -626,9 +750,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "kHunterMode Source.Mode?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -646,7 +775,7 @@
       "templates": [
         {
           "attribs": [
-            "NBActive"
+            "Smashing_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -665,9 +794,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "kHunterMode Source.Mode? entref target> entref source> eq ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -685,7 +819,7 @@
       "templates": [
         {
           "attribs": [
-            "NBActive"
+            "Lethal_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -704,9 +838,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "kHunterMode Source.Mode? entref target> entref source> eq ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -724,7 +863,7 @@
       "templates": [
         {
           "attribs": [
-            "NBActive"
+            "Fire_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -743,9 +882,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "kHunterMode Source.Mode? entref target> entref source> eq ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -763,7 +907,7 @@
       "templates": [
         {
           "attribs": [
-            "NBActive"
+            "Cold_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -782,9 +926,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "kHunterMode Source.Mode? entref target> entref source> eq ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -802,7 +951,7 @@
       "templates": [
         {
           "attribs": [
-            "NBActive"
+            "Energy_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -821,9 +970,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "kHunterMode Source.Mode? entref target> entref source> eq ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -841,7 +995,7 @@
       "templates": [
         {
           "attribs": [
-            "NBActive"
+            "Negative_Energy_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -860,9 +1014,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "kHunterMode Source.Mode? entref target> entref source> eq ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -880,7 +1039,7 @@
       "templates": [
         {
           "attribs": [
-            "NBActive"
+            "Toxic_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -899,9 +1058,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "kHunterMode Source.Mode? entref target> entref source> eq ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -919,7 +1083,7 @@
       "templates": [
         {
           "attribs": [
-            "NBActive"
+            "Psionic_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -938,9 +1102,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "kHunterMode Source.Mode? entref target> entref source> eq ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -958,7 +1127,7 @@
       "templates": [
         {
           "attribs": [
-            "NBInactive"
+            "RechargeTime"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -977,9 +1146,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "kProwlerMode Source.Mode?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -997,7 +1171,7 @@
       "templates": [
         {
           "attribs": [
-            "NBInactive"
+            "RechargeTime"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -1016,9 +1190,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "kProwlerMode Source.Mode? entref target> entref source> eq ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -1036,7 +1215,7 @@
       "templates": [
         {
           "attribs": [
-            "NBActive"
+            "RechargeTime"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -1055,9 +1234,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "kProwlerMode Source.Mode?",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -1075,7 +1259,7 @@
       "templates": [
         {
           "attribs": [
-            "NBActive"
+            "RechargeTime"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -1094,9 +1278,14 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "kProwlerMode Source.Mode? entref target> entref source> eq ! &&",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     }

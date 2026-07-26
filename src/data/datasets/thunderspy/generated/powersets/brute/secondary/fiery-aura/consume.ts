@@ -42,6 +42,11 @@ export const Consume: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Fire",
+    "scale": 0.48708,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "buffDuration": 120,
     "debuffResistance": {
@@ -52,16 +57,31 @@ export const Consume: Power = {
     },
     "durations": {
       "debuffResistance": 120
+    },
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
+    },
+    "enduranceGain": {
+      "scale": 20,
+      "table": "Melee_Ones",
+      "perTarget": 20
+    },
+    "recoveryBuff": {
+      "scale": 0.05,
+      "table": "Melee_Ones",
+      "perTarget": 0.05
     }
   },
   "atoms": [
-    ["Endurance",null,0.5,1,120,"Melee_Ones","Res","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
-    ["Unmapped",null,0.48708,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.4,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"@ToHitRoll @ToHit < @ForceHit ||",true],
-    ["Endurance",null,20,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"@ToHitRoll @ToHit < @ForceHit ||",true],
-    ["Unmapped",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? enttype target> player eq || @ToHitRoll @ToHit < @ForceHit || &&",true],
-    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true]
+    ["Endurance",null,0.5,1,120,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Mez","Taunt",1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
+    ["Damage","Fire",0.48708,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Fire",0.4,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"@ToHitRoll @ToHit < @ForceHit ||",true],
+    ["Endurance",null,20,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"@ToHitRoll @ToHit < @ForceHit ||",true,20],
+    ["Recovery",null,0.05,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"@ToHitRoll @ToHit < @ForceHit ||",true,0.05],
+    ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? enttype target> player eq || @ToHitRoll @ToHit < @ForceHit || &&",true],
+    ["Mez","Taunt",1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true]
   ],
   "damageTypes": [
     "Fire"

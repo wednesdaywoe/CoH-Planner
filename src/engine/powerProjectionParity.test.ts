@@ -1489,11 +1489,9 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
       const engaged = ctxWith({ combatMode: true, dominationActive: true, globalAdjusters, mechanicAdjusters });
       const hidden = ctxWith({ ...engaged, stalkerHidden: true });
       // The adapter's PROD3 guard refuses a toggle whose conditional carries a caster dashboard
-      // buff the engine's TOTALS do not model, and driving every id reaches such a toggle
-      // (thunderspy's two Primalist form modes — recorded in the plan, not classified here: they
-      // belong to the form-redirect transform this slice defers). Recorded rather than caught
-      // silently, and the reach counters below still have to be non-zero, so a fork cannot pass
-      // this test by refusing every state.
+      // buff the engine's TOTALS do not model, and driving every id is how an unclassified one
+      // surfaces. Recorded rather than caught silently, and the reach counters below still have to
+      // be non-zero, so a fork cannot pass this test by refusing every state.
       let runs;
       try {
         runs = [engaged, hidden].map((ctx) => {
@@ -1681,6 +1679,80 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
     expect(modedPowers, `${server}: no power/mode pair reached — the fixture grades no redirect`).toBeGreaterThan(0);
     expect(movedPowers, `${server}: ${modedPowers} pairs reached and not one value moved`).toBeGreaterThan(0);
     expect(deltas).toEqual([]);
+  }, 300000);
+
+  // TSPY-4. The TOTALS half of the mode story 6C-3l covered on the display side. A power's
+  // `setsModes` is the ONLY thing that binds a `Source.Mode?` gate for the totals pass, so a fork
+  // whose parser resolved those templates to a placeholder published no mode, every mode-gated
+  // atom stayed dark, and nothing here could see it — the beta drove the same conditionals from
+  // default-off toggles, so both sides agreed on the wrong answer.
+  //
+  // Deactivating the mode-SETTING power is not on its own evidence: that also removes the setter's
+  // own ungated effects. So this measures the CONSUMERS' contribution twice — once with the mode
+  // live, once with it dark — and holds that the two differ. Only a bound gate can do that.
+  it.each(SERVERS)('%s: a mode-setting toggle binds its Source.Mode? gates in the totals', async (server) => {
+    await loadDataset(server);
+
+    let carriers = 0;
+    let graded = 0;
+    const bound: string[] = [];
+
+    for (const atId of STANDARD_ARCHETYPE_IDS) {
+      const base = buildFor(server, atId, 50, false);
+      const powers = [...base.primary.powers, ...base.secondary.powers];
+
+      // The modes this build both PUBLISHES (some power's `setsModes`) and CONSUMES (some OTHER
+      // power's atom gated on it). Discovered from the powers' own fields — a published mode
+      // nothing reads would grade nothing, and a consumed mode nothing publishes cannot bind.
+      const modesOf = (p: SelectedPower) => (p as unknown as { setsModes?: string[] }).setsModes ?? [];
+      const gatesOf = (p: SelectedPower) => {
+        const found = new Set<string>();
+        for (const [, token] of JSON.stringify(p).matchAll(/"(\w+) [Ss]ource\.Mode\?/g)) {
+          found.add(token);
+          found.add(token.replace(/^k/, ''));
+        }
+        return found;
+      };
+      const setters = powers.filter((p) => p.isActive && modesOf(p).length > 0);
+      const live = new Set(setters.flatMap(modesOf));
+      const consumers = powers.filter((p) => !setters.includes(p) && [...gatesOf(p)].some((m) => live.has(m)));
+      if (setters.length === 0 || consumers.length === 0) continue;
+      carriers += 1;
+
+      const without = (drop: SelectedPower[]) => {
+        const keep = (list: SelectedPower[]) => list.filter((p) => !drop.includes(p));
+        return { ...base, primary: { ...base.primary, powers: keep(base.primary.powers) }, secondary: { ...base.secondary, powers: keep(base.secondary.powers) } };
+      };
+      const deactivated = (build: Build) => {
+        const off = (list: SelectedPower[]) => list.map((p) => (setters.includes(p) ? { ...p, isActive: false } : p));
+        return { ...build, primary: { ...build.primary, powers: off(build.primary.powers) }, secondary: { ...build.secondary, powers: off(build.secondary.powers) } };
+      };
+      const globals = (build: Build) => mapGlobal(engineTotals(server, build).bonuses) as unknown as Record<string, number>;
+
+      const withConsumersLive = globals(base);
+      const withoutConsumersLive = globals(without(consumers));
+      const withConsumersDark = globals(deactivated(base));
+      const withoutConsumersDark = globals(deactivated(without(consumers)));
+
+      const moved = Object.keys(withConsumersLive).filter((key) => {
+        const contributionLive = (withConsumersLive[key] ?? 0) - (withoutConsumersLive[key] ?? 0);
+        const contributionDark = (withConsumersDark[key] ?? 0) - (withoutConsumersDark[key] ?? 0);
+        return Math.abs(contributionLive - contributionDark) > TOLERANCE;
+      });
+      if (moved.length > 0) {
+        graded += 1;
+        bound.push(`${atId}: ${[...live].join('/')} moves ${moved.slice(0, 6).join(', ')}`);
+      }
+    }
+
+    if (carriers === 0) {
+      // eslint-disable-next-line no-console
+      console.warn(`[TSPY-4 mode totals] ${server}: no build both publishes and consumes a mode — this fork cannot grade the binding`);
+      return;
+    }
+    // eslint-disable-next-line no-console
+    console.warn(`[TSPY-4 mode totals] ${server}: ${graded}/${carriers} archetype(s) bind a published mode\n    ${bound.join('\n    ')}`);
+    expect(graded, `${server}: ${carriers} archetype(s) publish a mode their own powers gate on, and not one gate bound — the parser resolved those Set_Mode templates to a placeholder`).toBeGreaterThan(0);
   }, 300000);
 
   // PROD6B-2c. Every fixture above builds at 50, which is precisely the level the retired pin

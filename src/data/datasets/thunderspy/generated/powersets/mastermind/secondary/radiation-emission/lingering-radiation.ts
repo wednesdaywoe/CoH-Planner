@@ -41,14 +41,31 @@ export const LingeringRadiation: Power = {
   "effects": {
     "buffDuration": 30,
     "durations": {
+      "rechargeDebuff": 30,
       "regenDebuff": 30,
       "slow": 30
+    },
+    "rechargeDebuff": {
+      "scale": 0.6,
+      "table": "Ranged_Slow"
     },
     "regenDebuff": {
       "scale": 5,
       "table": "Ranged_Ones"
     },
     "slow": {
+      "flySpeed": {
+        "scale": 0.6,
+        "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.6,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.6,
+        "table": "Ranged_Slow"
+      },
       "runSpeed": {
         "scale": 1,
         "table": "Ranged_SpeedRunning"
@@ -56,10 +73,14 @@ export const LingeringRadiation: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,0.6,1,30,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Movement","Run",-1,1,30,"Ranged_SpeedRunning","Max","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Regeneration",null,-5,1,30,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,-20,1,30,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Movement","Run",0.6,1,30,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["RechargeTime",null,0.6,1,30,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Movement","JumpHeight",0.6,1,30,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Movement","Jump",0.6,1,30,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","Fly",0.6,1,30,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","Run",-1,1,30,"Ranged_SpeedRunning","Max","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Regeneration",null,-5,1,30,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Regeneration",null,-20,1,30,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
   ],
   "damageTypes": [
     "Energy"

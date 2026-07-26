@@ -39,17 +39,25 @@ export const TouchofFear: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 20,
+    "durations": {
+      "tohitDebuff": 20
+    },
     "fear": {
       "mag": 3,
       "scale": 15,
       "table": "Melee_Fear"
+    },
+    "tohitDebuff": {
+      "scale": 1.5,
+      "table": "Melee_DeBuff_ToHit"
     }
   },
   "atoms": [
-    ["Mez","Terrorized",15,3,0,"Melee_Fear","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Terrorized",7,1,0,"Melee_Fear","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1.5,1,20,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Mez","Terrorized",2,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Mez","Terrorized",15,3,0,"Melee_Fear","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Terrorized",7,1,0,"Melee_Fear","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["ToHit",null,1.5,1,20,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Mez","Terrorized",2,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
   ],
   "damageTypes": [
     "Negative"

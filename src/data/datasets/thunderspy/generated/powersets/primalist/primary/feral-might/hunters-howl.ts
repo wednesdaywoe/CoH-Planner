@@ -39,10 +39,54 @@ export const HuntersHowl: Power = {
     "To Hit Debuff"
   ],
   "maxSlots": 6,
+  "effects": {
+    "buffDuration": 30,
+    "durations": {
+      "rechargeDebuff": 30,
+      "slow": 30,
+      "tohitDebuff": 30
+    },
+    "rechargeDebuff": {
+      "scale": 1,
+      "table": "Melee_Slow"
+    },
+    "slow": {
+      "flySpeed": {
+        "scale": 1,
+        "table": "Melee_Slow"
+      },
+      "jumpHeight": {
+        "scale": 1,
+        "table": "Melee_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 1,
+        "table": "Melee_Slow"
+      },
+      "runSpeed": {
+        "scale": 1,
+        "table": "Melee_Slow"
+      }
+    },
+    "tohitDebuff": {
+      "scale": 1,
+      "table": "Melee_DeBuff_ToHit"
+    }
+  },
   "atoms": [
-    ["Unmapped",null,1,1,30,"Melee_Slow","Cur","Expression","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"cur.kMeter source> .3 * .3 + @StdResult *"],
-    ["Unmapped",null,1,0,30,"Melee_Slow","Cur","Expression","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"cur.kMeter source> .45 * .45 + @StdResult *"],
-    ["Unmapped",null,-100,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1]
+    ["Movement","Run",1,1,30,"Melee_Slow","Cur","Expression","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"cur.kMeter source> .3 * .3 + @StdResult *"],
+    ["RechargeTime",null,1,1,30,"Melee_Slow","Str","Expression","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"cur.kMeter source> .3 * .3 + @StdResult *"],
+    ["Movement","Fly",1,1,30,"Melee_Slow","Cur","Expression","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"cur.kMeter source> .3 * .3 + @StdResult *"],
+    ["Movement","JumpHeight",1,1,30,"Melee_Slow","Str","Expression","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"cur.kMeter source> .3 * .3 + @StdResult *"],
+    ["Movement","Jump",1,1,30,"Melee_Slow","Cur","Expression","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"cur.kMeter source> .3 * .3 + @StdResult *"],
+    ["ToHit",null,1,1,30,"Melee_DeBuff_ToHit","Cur","Expression","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"cur.kMeter source> 1 * 1 + @StdResult *"],
+    ["Movement","Run",1,0,30,"Melee_Slow","Cur","Expression","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"cur.kMeter source> .45 * .45 + @StdResult *"],
+    ["RechargeTime",null,1,0,30,"Melee_Slow","Str","Expression","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"cur.kMeter source> .45 * .45 + @StdResult *"],
+    ["Movement","Fly",1,0,30,"Melee_Slow","Cur","Expression","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"cur.kMeter source> .45 * .45 + @StdResult *"],
+    ["Movement","JumpHeight",1,0,30,"Melee_Slow","Str","Expression","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"cur.kMeter source> .45 * .45 + @StdResult *"],
+    ["Movement","Jump",1,0,30,"Melee_Slow","Cur","Expression","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"cur.kMeter source> .45 * .45 + @StdResult *"],
+    ["ToHit",null,1,0,30,"Melee_DeBuff_ToHit","Cur","Expression","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,"cur.kMeter source> 1.5 * 1.5 + @StdResult *"],
+    ["Meta",null,-100,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
   ],
   "requires": "Feral_Might.Feral_Might.Hunter_Form",
   "modesRequired": [

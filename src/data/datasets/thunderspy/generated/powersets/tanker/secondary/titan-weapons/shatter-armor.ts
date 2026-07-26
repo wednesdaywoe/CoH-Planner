@@ -50,23 +50,67 @@ export const ShatterArmor: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
-    "buffDuration": 8,
+    "buffDuration": 10,
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Melee_Debuff_Def"
+    },
     "durations": {
+      "defenseDebuff": 10,
       "resistanceDebuff": 8
     },
     "resistanceDebuff": {
+      "cold": {
+        "scale": 1,
+        "table": "Melee_Res_DMG"
+      },
+      "energy": {
+        "scale": 1,
+        "table": "Melee_Res_DMG"
+      },
+      "fire": {
+        "scale": 1,
+        "table": "Melee_Res_DMG"
+      },
+      "lethal": {
+        "scale": 1,
+        "table": "Melee_Res_DMG"
+      },
+      "negative": {
+        "scale": 1,
+        "table": "Melee_Res_DMG"
+      },
+      "psionic": {
+        "scale": 1,
+        "table": "Melee_Res_DMG"
+      },
       "smashing": {
         "scale": 1,
         "table": "Melee_Res_DMG"
+      },
+      "toxic": {
+        "scale": 1,
+        "table": "Melee_Res_DMG"
       }
+    },
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     }
   },
   "atoms": [
-    ["Unmapped",null,3.212,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Resistance","Smashing",-1,1,8,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1.4454,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"]
+    ["Damage","Smashing",3.212,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Defense","All",1,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Resistance","Smashing",-1,1,8,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Lethal",-1,1,8,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Fire",-1,1,8,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Cold",-1,1,8,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Energy",-1,1,8,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Negative",-1,1,8,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Psionic",-1,1,8,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Toxic",-1,1,8,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Damage","Fire",1.4454,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Mez","Taunt",1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"]
   ],
   "modeVariants": {
     "FastMode": {
@@ -89,15 +133,52 @@ export const ShatterArmor: Power = {
         "Smashing"
       ],
       "effects": {
-        "buffDuration": 8,
+        "buffDuration": 10,
+        "defenseDebuff": {
+          "scale": 1,
+          "table": "Melee_Debuff_Def"
+        },
         "durations": {
+          "defenseDebuff": 10,
           "resistanceDebuff": 8
         },
         "resistanceDebuff": {
+          "cold": {
+            "scale": 1,
+            "table": "Melee_Res_DMG"
+          },
+          "energy": {
+            "scale": 1,
+            "table": "Melee_Res_DMG"
+          },
+          "fire": {
+            "scale": 1,
+            "table": "Melee_Res_DMG"
+          },
+          "lethal": {
+            "scale": 1,
+            "table": "Melee_Res_DMG"
+          },
+          "negative": {
+            "scale": 1,
+            "table": "Melee_Res_DMG"
+          },
+          "psionic": {
+            "scale": 1,
+            "table": "Melee_Res_DMG"
+          },
           "smashing": {
             "scale": 1,
             "table": "Melee_Res_DMG"
+          },
+          "toxic": {
+            "scale": 1,
+            "table": "Melee_Res_DMG"
           }
+        },
+        "taunt": {
+          "scale": 1,
+          "table": "Melee_InherentTaunt"
         }
       },
       "shortHelp": "Melee, Extreme DMG(Smashing), Foe -Def(All), -Res(All)",

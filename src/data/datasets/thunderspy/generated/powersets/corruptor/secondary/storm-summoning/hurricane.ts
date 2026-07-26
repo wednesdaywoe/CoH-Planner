@@ -44,19 +44,32 @@ export const Hurricane: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 10,
+    "durations": {
+      "repel": 1.05,
+      "tohitDebuff": 10
+    },
     "knockback": {
       "scale": 4,
       "table": "Ranged_Knockback"
+    },
+    "repel": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
+    "tohitDebuff": {
+      "scale": 3,
+      "table": "Ranged_DeBuff_ToHit"
     }
   },
   "atoms": [
-    ["Unmapped",null,-0.6,1,10,"Ranged_Ones","Str","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,3,1,10,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,1.05,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Knockback",4,0.05000000074505806,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1,1,0.75,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"No",null,null,1,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll .10 + @ToHit < &&",true],
-    ["Mez","Knockback",4,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll .10 + @ToHit < &&",true],
-    ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll .10 + @ToHit >= &&",true]
+    ["Range",null,-0.6,1,10,"Ranged_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["ToHit",null,3,1,10,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Mez","Repel",1,1,1.05,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",4,0.05000000074505806,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Repel",1,1,0.75,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Replace",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll .10 + @ToHit < &&",true],
+    ["Mez","Knockback",4,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll .10 + @ToHit < &&",true],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq @ToHitRoll .10 + @ToHit >= &&",true]
   ],
   "requires": "Corruptor_Buff.Storm_Summoning.Typhoon !"
 };

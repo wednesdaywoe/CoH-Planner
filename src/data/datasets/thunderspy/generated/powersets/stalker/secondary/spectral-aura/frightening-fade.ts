@@ -37,17 +37,88 @@ export const FrighteningFade: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "taunt": {
+    "buffDuration": 20,
+    "durations": {
+      "resistanceDebuff": 20,
+      "stealth": 10,
+      "tohitDebuff": 20
+    },
+    "placate": {
       "scale": 8,
       "table": "Melee_Taunt"
+    },
+    "resistanceDebuff": {
+      "cold": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "energy": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "fire": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "negative": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "psionic": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "smashing": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Dmg"
+      }
+    },
+    "stealth": {
+      "stealthPvE": {
+        "scale": 150,
+        "table": "Melee_Ones"
+      },
+      "stealthPvP": {
+        "scale": 380,
+        "table": "Melee_Ones"
+      }
+    },
+    "tohitDebuff": {
+      "scale": 1,
+      "table": "Melee_DeBuff_ToHit"
     }
   },
   "atoms": [
-    ["Unmapped",null,1,1,20,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,-1.5,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Mez","Taunt",8,1,0,"Melee_Taunt","Abs","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,150,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,-1.5,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kTerrorized target> 0 >",true],
-    ["Mez","Taunt",6,1,0,"Melee_Taunt","Abs","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["ToHit",null,1,1,20,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Resistance","Smashing",-1.5,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Lethal",-1.5,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Fire",-1.5,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Cold",-1.5,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Energy",-1.5,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Negative",-1.5,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Toxic",-1.5,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Psionic",-1.5,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Mez","Placate",8,1,0,"Melee_Taunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Stealth","RadiusPvE",150,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Stealth","RadiusPvP",380,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["EntCreate",null,0.2,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Smashing",-1.5,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kTerrorized target> 0 >",true],
+    ["Resistance","Lethal",-1.5,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kTerrorized target> 0 >",true],
+    ["Resistance","Fire",-1.5,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kTerrorized target> 0 >",true],
+    ["Resistance","Cold",-1.5,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kTerrorized target> 0 >",true],
+    ["Resistance","Energy",-1.5,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kTerrorized target> 0 >",true],
+    ["Resistance","Negative",-1.5,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kTerrorized target> 0 >",true],
+    ["Resistance","Toxic",-1.5,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kTerrorized target> 0 >",true],
+    ["Resistance","Psionic",-1.5,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kTerrorized target> 0 >",true],
+    ["Mez","Placate",6,1,0,"Melee_Taunt","Abs","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ]
 };

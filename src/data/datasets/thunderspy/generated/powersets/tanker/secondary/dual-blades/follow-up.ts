@@ -50,26 +50,51 @@ export const FollowUp: Power = {
   },
   "effects": {
     "buffDuration": 15,
+    "damageBuff": {
+      "scale": 3,
+      "table": "Melee_Buff_Dmg",
+      "perTarget": 3
+    },
     "durations": {
+      "damageBuff": 15,
       "tohitBuff": 15
+    },
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     },
     "tohitBuff": {
       "scale": 1,
-      "table": "Melee_Buff_ToHit"
+      "table": "Melee_Buff_ToHit",
+      "perTarget": 1
     }
   },
   "atoms": [
-    ["Unmapped",null,0.8,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
-    ["ToHit",null,1,1,15,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,3,1,15,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.36,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
-    ["Unmapped",null,6,0.07999999821186066,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,2.18094,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["ToHit",null,0.5,1,20,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade3 source.ownPower?",true],
-    ["Unmapped",null,1.5,1,20,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade3 source.ownPower?",true]
+    ["Damage","Lethal",0.8,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Taunt",1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
+    ["ToHit",null,1,1,15,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,1],
+    ["DamageBuff","Smashing",3,1,15,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,3],
+    ["DamageBuff","Lethal",3,1,15,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,3],
+    ["DamageBuff","Fire",3,1,15,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,3],
+    ["DamageBuff","Cold",3,1,15,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,3],
+    ["DamageBuff","Energy",3,1,15,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,3],
+    ["DamageBuff","Negative",3,1,15,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,3],
+    ["DamageBuff","Toxic",3,1,15,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,3],
+    ["DamageBuff","Psionic",3,1,15,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,3],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
+    ["Damage","Fire",0.36,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Mez","Taunt",1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
+    ["Mez","Taunt",6,0.07999999821186066,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Lethal",2.18094,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["ToHit",null,0.5,1,20,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade3 source.ownPower?",true],
+    ["DamageBuff","Smashing",1.5,1,20,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade3 source.ownPower?",true],
+    ["DamageBuff","Lethal",1.5,1,20,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade3 source.ownPower?",true],
+    ["DamageBuff","Fire",1.5,1,20,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade3 source.ownPower?",true],
+    ["DamageBuff","Cold",1.5,1,20,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade3 source.ownPower?",true],
+    ["DamageBuff","Energy",1.5,1,20,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade3 source.ownPower?",true],
+    ["DamageBuff","Negative",1.5,1,20,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade3 source.ownPower?",true],
+    ["DamageBuff","Toxic",1.5,1,20,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade3 source.ownPower?",true],
+    ["DamageBuff","Psionic",1.5,1,20,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade3 source.ownPower?",true]
   ],
   "conditionalEffects": [
     {
@@ -79,7 +104,12 @@ export const FollowUp: Power = {
       "defaultActive": false,
       "effects": {
         "buffDuration": 20,
+        "damageBuff": {
+          "scale": 1.5,
+          "table": "Melee_Buff_Dmg"
+        },
         "durations": {
+          "damageBuff": 20,
           "tohitBuff": 20
         },
         "tohitBuff": {

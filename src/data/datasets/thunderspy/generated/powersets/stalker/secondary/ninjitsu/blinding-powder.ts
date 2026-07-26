@@ -42,22 +42,37 @@ export const BlindingPowder: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 20,
     "confuse": {
       "mag": 2,
       "scale": 20,
       "table": "Melee_Immobilize"
     },
+    "durations": {
+      "perceptionDebuff": 20,
+      "tohitDebuff": 20
+    },
+    "perceptionDebuff": {
+      "scale": 0.9,
+      "table": "Melee_Ones"
+    },
     "sleep": {
       "mag": 4,
       "scale": 10,
       "table": "Melee_Sleep"
+    },
+    "tohitDebuff": {
+      "scale": 1,
+      "table": "Melee_DeBuff_ToHit"
     }
   },
   "atoms": [
-    ["Mez","Sleep",10,4,0,"Melee_Sleep","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1,1,20,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"No",null,null,null,1],
-    ["Mez","Confused",20,2,0,"Melee_Immobilize","Cur","Duration","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,-0.9,1,20,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Sleep",2,4,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Mez","Sleep",10,4,0,"Melee_Sleep","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["ToHit",null,1,1,20,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Mez","Confused",20,2,0,"Melee_Immobilize","Cur","Duration","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Perception",null,-0.9,1,20,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Sleep",2,4,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Confused",2,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Perception",null,-0.9,1,20,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ]
 };

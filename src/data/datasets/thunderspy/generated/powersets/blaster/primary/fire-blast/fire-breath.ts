@@ -48,10 +48,27 @@ export const FireBreath: Power = {
     "duration": 2.1,
     "tickRate": 1
   },
+  "effects": {
+    "buffDuration": 10.17,
+    "damageBuff": {
+      "scale": 0.082,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 10.17
+    }
+  },
   "atoms": [
-    ["Unmapped",null,0.585,1,2.1,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"No",null,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.082,1,10.17,"Ranged_Ones","Str","Magnitude","Self","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.551976,1,2.1,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"No",null,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Fire",0.585,1,2.1,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["DamageBuff","Smashing",0.082,1,10.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",0.082,1,10.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Fire",0.082,1,10.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Cold",0.082,1,10.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Energy",0.082,1,10.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Negative",0.082,1,10.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",0.082,1,10.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",0.082,1,10.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Damage","Fire",0.551976,1,2.1,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "damageTypes": [
     "Fire"
