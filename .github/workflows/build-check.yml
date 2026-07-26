@@ -1,0 +1,84 @@
+# Production build, WITHOUT deploying — the dry run for a Pages deploy.
+#
+# deploy.yml has no safe dry run: its `deploy` job publishes to the `github-pages`
+# environment regardless of which branch dispatched it, and that environment IS the
+# live site. Running it to "just check" ships to users. This workflow is the same
+# build with the deploy half removed, so a branch can be proven before it reaches main.
+#
+# What it actually proves: that a stock GitHub-hosted runner — Node and nothing else —
+# can build the app. That was false until the engine artifacts were committed
+# (build:engine needs the private rebuild repo, a Rust toolchain, and a pinned
+# wasm-bindgen CLI, none of which a hosted runner has). `ubuntu-latest` is therefore
+# load-bearing: run this on the self-hosted box and it proves nothing, because that box
+# has the rebuild checkout sitting next to it.
+#
+# Triggered by branch push, NOT workflow_dispatch alone — GitHub only offers the "Run
+# workflow" button for workflows already on the default branch, so a dispatch-only
+# version of this file would be undispatchable from the very branch it exists to
+# vet. `workflow_dispatch` is kept for after it reaches main, where it becomes the
+# better trigger (this build is heavy — ~10GB heap, sourcemaps for three datasets — and
+# Actions minutes are a shared account pool). main and rebuild are excluded because a
+# push to either already runs the real deploy; markdown-only commits are excluded
+# because they cannot change the bundle.
+#
+# Then: download the `dist` artifact from the run summary and `npx serve dist`. Those
+# are the exact bytes a deploy would publish, the CSP <meta> is enforced the same, and
+# localhost counts as a secure origin so the service worker registers for real.
+name: Build check (no deploy)
+
+on:
+  workflow_dispatch:
+  push:
+    branches-ignore: [main, rebuild]
+    paths-ignore: ['**.md']
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+        env:
+          # Mirrors deploy.yml — the 3-dataset bundle OOMs Node's default heap.
+          NODE_OPTIONS: --max-old-space-size=10240
+          # Baked into the bundle, so the artifact is actually runnable in step 2.
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+          VITE_SENTRY_DSN: ${{ secrets.VITE_SENTRY_DSN }}
+          # SENTRY_AUTH_TOKEN deliberately omitted: it only gates source-map UPLOAD, and
+          # a test build should not create Sentry releases. The emitted bundle is the same.
+
+      # A successful `vite build` does NOT imply a working engine — re-ignoring the
+      # artifacts, or a stale/absent contract bundle, still produces a clean build that
+      # renders 0% everywhere at runtime. Assert the engine actually landed in dist.
+      - name: Assert the engine shipped
+        run: |
+          set -e
+          ls dist/assets/*.wasm > /dev/null || { echo "::error::no .wasm in dist/assets — engine glue did not emit"; exit 1; }
+          for ds in homecoming rebirth thunderspy; do
+            test -s "dist/engine/contract/$ds.json.gz" || { echo "::error::missing dist/engine/contract/$ds.json.gz"; exit 1; }
+          done
+          grep -q "wasm-unsafe-eval" dist/index.html || { echo "::error::CSP lacks 'wasm-unsafe-eval' — Chrome will block the engine"; exit 1; }
+          echo "engine present: $(ls dist/assets/*.wasm) + 3 contract bundles, CSP ok"
+
+      - name: Upload dist
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+          retention-days: 7
