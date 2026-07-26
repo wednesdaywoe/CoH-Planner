@@ -21,6 +21,7 @@
 import { execFileSync } from 'node:child_process';
 import { existsSync, mkdirSync, copyFileSync, readdirSync, readFileSync, renameSync, statSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
+import { fingerprintRebuild } from './engine-fingerprint.mjs';
 import { fileURLToPath } from 'node:url';
 
 const betaRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -152,5 +153,14 @@ const registryModule =
 const registryOut = join(betaRoot, 'src', 'data', 'generated', 'effect-registry.generated.ts');
 writeFileSync(registryOut, registryModule);
 console.log(`[build-engine] effect registry -> src/data/generated/effect-registry.generated.ts`);
+
+// --- 6. stamp the fingerprint of the rebuild sources these artifacts were built FROM ---
+// The beta cannot detect its own engine going stale — it cannot see the rebuild. The rebuild's
+// CI can: the beta is public, so it checks the beta out with no secret and re-runs
+// engine-fingerprint.mjs against its own tree. This file is the thing it compares to, and it is
+// written HERE because this is the one moment both trees are in hand. See engine-fingerprint.mjs.
+const manifestOut = join(betaRoot, 'src', 'engine', '_engine_manifest.json');
+writeFileSync(manifestOut, `${JSON.stringify(fingerprintRebuild(rebuildDir), null, 2)}\n`);
+console.log(`[build-engine] fingerprint -> src/engine/_engine_manifest.json`);
 
 console.log(`\n[build-engine] done — ${datasets.length} dataset(s): ${datasets.join(', ')}`);
