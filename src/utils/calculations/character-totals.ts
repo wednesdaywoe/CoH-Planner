@@ -22,6 +22,7 @@ import { type EnhancementBonuses } from './enhancement-values';
 import type { EncodedAtom } from '@/data/core/atomic-effect';
 import { warnFallback } from '@/utils/fallback-warnings';
 import { engineCalculate } from '@/engine/engineTotals';
+import { useEngineStore } from '@/engine/engineStore';
 import type { AdapterCalcContext } from '@/engine/characterStateAdapter';
 
 // ============================================
@@ -808,6 +809,10 @@ export function calculateCharacterTotals(
     if (result) return result;
   } catch (err) {
     console.error('[engine] calculateCharacterTotals fell back to empty totals:', err);
+    // The user must SEE this: the fallback below renders a full planner reading 0% with no
+    // other signal. Deferred out of the render pass this runs inside (it is called from a
+    // useMemo) — a zustand write during render warns; a microtask lands after it.
+    queueMicrotask(() => useEngineStore.getState().setError(String(err)));
   }
   return {
     stats: createEmptyStats(),
