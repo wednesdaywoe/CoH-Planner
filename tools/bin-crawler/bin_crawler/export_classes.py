@@ -28,6 +28,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from bin_crawler.parser._pigg import BinResolver
 from bin_crawler.assets_dir import resolve_assets_dir
 from bin_crawler.parser._classes import parse_classes
+from bin_crawler.parser._messages import load_messages
+from bin_crawler._export_fingerprint import classes_fingerprint
 
 
 def _normalize_class_name(name: str) -> str:
@@ -61,7 +63,16 @@ def main():
     print(f"Source: {resolver.source_description}", flush=True)
     print(f"Output: {output_dir}", flush=True)
 
+    msgs = load_messages(resolver.read("clientmessages-en.bin")) if resolver.has("clientmessages-en.bin") else None
+
     written = 0
+    # Guard the normalize-to-filename step against a silent last-write-wins drop.
+    # The forks' villain_classes.bin ships two `Class_Minion_Henchman` records
+    # that both normalize to `minion_henchman.json`; without this, the second
+    # `write_text` overwrites the first with no trace. Per the fail-loud mandate a
+    # dropped record must never vanish silently: an identical twin is a benign,
+    # announced skip; a *differing* collision aborts the export.
+    written_payloads: dict[str, str] = {}  # key -> serialized JSON already written
 
     for bin_name in ("classes.bin", "villain_classes.bin"):
         if not resolver.has(bin_name):
@@ -76,20 +87,92 @@ def main():
             if not key:
                 continue
             out_file = output_dir / f"{key}.json"
+            display_name = msgs.resolve(c.display_name) if msgs else c.display_name
+            display_help = msgs.resolve(c.display_help) if msgs else c.display_help
+            display_short_help = msgs.resolve(c.display_short_help) if msgs else c.display_short_help
             out = {
                 "name": c.name,
-                "display_name": c.display_name,
+                "display_name": display_name,
+                "display_help": display_help,
+                "display_short_help": display_short_help,
                 "icon": c.icon,
                 "primary_category": c.primary_category,
                 "secondary_category": c.secondary_category,
                 "pool_category": c.pool_category,
+                "epic_pool_category": c.epic_pool_category,
+                "allowed_origins": c.allowed_origins,
+                "special_restrictions": c.special_restrictions,
+                "store_requires": c.store_requires,
+                "locked_tooltip": msgs.resolve(c.locked_tooltip) if msgs else c.locked_tooltip,
+                "product_code": c.product_code,
+                "reduction_class": c.reduction_class,
+                "reduce_as_archvillain": c.reduce_as_archvillain,
+                "level_up_respecs": c.level_up_respecs,
+                "archetype_shots": c.archetype_shots,
+                "creation_stats": c.creation_stats,
+                "playstyle_flags": c.playstyle_flags,
+                "mechanic_tip": c.mechanic_tip,
                 "named_tables": c.named_tables,
                 "attribs": c.attribs,
             }
-            out_file.write_text(json.dumps(out, indent=2), encoding="utf-8")
+            # Schema-dependent fields: present only on datasets that
+            # serialize them (see _classes.py module docstring).
+            if c.villain_rank is not None:
+                out["villain_rank"] = c.villain_rank
+            if c.mechanic_bar_raw is not None:
+                out["mechanic_bar_raw"] = c.mechanic_bar_raw
+            if c.mechanic_gap_raw is not None:
+                out["mechanic_gap_raw"] = c.mechanic_gap_raw
+            if c.tail_scalar_raw is not None:
+                out["tail_scalar_raw"] = round(c.tail_scalar_raw, 6)
+            # Defaults everywhere today; exported only when they deviate so a
+            # future data change surfaces instead of vanishing.
+            if c.connect_hp_and_status:
+                out["connect_hp_and_status"] = True
+            if c.defiant_scale != 1.0:
+                out["defiant_scale"] = c.defiant_scale
+            if c.extra_raw:
+                out["extra_raw"] = c.extra_raw
+            payload = json.dumps(out, indent=2)
+            prior = written_payloads.get(key)
+            if prior is not None:
+                if prior == payload:
+                    print(f"  NOTE: '{c.name}' -> {key}.json duplicates an "
+                          f"earlier byte-identical record; skipped (no data lost)")
+                    continue
+                raise SystemExit(
+                    f"Class-name collision: '{c.name}' normalizes to "
+                    f"'{key}.json', already written by a DIFFERENT record. "
+                    f"Last-write-wins would silently drop one — resolve the "
+                    f"source bin or the normalization before exporting."
+                )
+            written_payloads[key] = payload
+            out_file.write_text(payload, encoding="utf-8")
             written += 1
 
+    # Stamp the export-staleness manifest, exactly as export_powers.py does for
+    # the powers tree. CI has neither the .pigg archives nor Python, so the
+    # `tables/` tree can't be regenerate-and-diffed there; the fingerprint is the
+    # only cross-check that this tree was produced by the currently-committed
+    # classes exporter and not left stale after a parser edit (the WS3 gap).
+    # Guarded by src/data/export-staleness.test.ts. See _export_fingerprint.py.
+    manifest = {
+        'schema': 'bin-crawler-export-manifest/1',
+        'note': ('classes_fingerprint is the sha256 of the classes exporter '
+                 '(bin_crawler/parser/**/*.py + export_classes.py) at export '
+                 'time. If it disagrees with the current committed exporter '
+                 'source, THIS tables/ tree is stale — re-run export_classes for '
+                 'this dataset and commit. Guarded by '
+                 'src/data/export-staleness.test.ts.'),
+        'classes_fingerprint': classes_fingerprint(),
+        'class_files': written,
+    }
+    with open(output_dir / '_export_manifest.json', 'w') as f:
+        json.dump(manifest, f, indent=2)
+        f.write('\n')
+
     print(f"Wrote {written} class JSON files to {output_dir}")
+    print(f"  Manifest: classes_fingerprint={manifest['classes_fingerprint'][:12]}…")
 
 
 if __name__ == "__main__":

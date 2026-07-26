@@ -14,6 +14,14 @@ EFFECT_AREA: dict[int, str] = {
     10: "Box",
 }
 
+# eDeathCastableSetting (cast_flags third word) — values per the i24 header,
+# census-verified against the `.powers` oracle 2026-07-21.
+CASTABLE_AFTER_DEATH: dict[int, str] = {
+    0: "AliveOnly",
+    1: "DeadOnly",
+    2: "DeadOrAlive",
+}
+
 POWER_TYPE: dict[int, str] = {
     0: "Click",
     1: "Auto",
@@ -134,23 +142,38 @@ BOOST_TYPE_REBIRTH: dict[int, str] = {
     42: "Incarnate_Destiny",
 }
 
-# Event IDs used in AttribMod CancelEvents and Suppress arrays.
-# Mapped by cross-referencing parsed IDs against .def file event names
-# (see: Pool/Invisibility/Stealth, Stalker_Defense/Ninjitsu/Hide, etc.).
+# Event IDs used in AttribMod CancelEvents / RequiredEvents / Suppress arrays.
+# Named by a positional def↔binary census (2026-07-20): raw-defs Suppress /
+# CancelEvents keyword lines aligned element-wise against the exported record
+# ids over 1,053 suppress / 437 cancel powers — every id below is unanimous.
+# The mez block is consecutive (23..28 Stunned→Confused); an earlier partial
+# table skipped 24 and drifted afterwards (27 was mislabeled Confused — it's
+# Terrorized — and 33 "MissionObjectInteract" is Knocked).
+# NB: CoD2's per-record event names are shifted one enum slot (its name for
+# id N is the authored keyword for N+1), so CoD2 is NOT a valid oracle for
+# this table — the authored .powers text is.
 # Mapping is partial — IDs we haven't confirmed yet are passed through as ints.
 EVENT_NAME: dict[int, str] = {
     1: "ActivateAttackClick",
     2: "Attacked",
     4: "Helped",
+    12: "AttackedByOther",
+    15: "HitByOther",
     17: "HitByFoe",
     21: "Damaged",
     23: "Stunned",
+    24: "Immobilized",
     25: "Held",
     26: "Sleep",
-    27: "Confused",
-    33: "MissionObjectInteract",
+    27: "Terrorized",
+    28: "Confused",
+    29: "Untouchable",
+    33: "Knocked",
+    34: "Repelled",
+    35: "Teleported",
     37: "MissionObjectClick",
     41: "CommandedPet",
+    42: "PetAttacked",
     47: "PseudoPetAttacked",
     48: "PseudoPetHelped",
 }
@@ -177,6 +200,9 @@ ATTRIB_NAME: dict[int, str] = {
     13: "Quantum_Dmg",
     14: "Unique1_Dmg",
     15: "Unique2_Dmg",
+    # CoD2 names 16 Unique3_Dmg (DevouringEarth Avatar Corruption/Grasp_of_Gaea,
+    # Divine_Core_Oscillation are the only users).
+    16: "Unique3_Dmg",
 
     # Core character attribs (20-36)
     20: "HitPoints",
@@ -240,8 +266,18 @@ ATTRIB_NAME: dict[int, str] = {
     82: "Knockback",
     83: "Repel",
     84: "Accuracy",
+    # 85/86 proven via StrengthsDisallowed against the `.powers` oracle
+    # (Fiery Aura Burn `kRadius` → offset 340, Energy Melee Stun `kArc` →
+    # offset 344); matches the CharacterAttributes struct order
+    # (fAccuracy, fRadius, fArc, fRange).
+    85: "Radius",
+    86: "Arc",
     87: "Range",
     90: "RechargeTime",
+    # 91 sits between RechargeTime and EnduranceDiscount in the character-attrib
+    # struct; CoD2 names it InterruptTime and its only users are the incarnate
+    # alpha interrupt-reduction boosts (identical index on Rebirth).
+    91: "InterruptTime",
     92: "EnduranceDiscount",
 
     # Meter & Elusivity (94-115)
@@ -347,16 +383,17 @@ def resolve_attrib(raw: int) -> str:
     return ATTRIB_NAME.get(raw // 4, f"Unknown({raw // 4})")
 
 
-# Rebirth (Parse6) keeps a slightly different attrib index layout. Empirically,
-# the only divergence that affects player-visible data is the meta/scripting
-# block being shifted -1 relative to HC: Rebirth puts Create_Entity at 116 vs
-# HC's 117. Confirmed by matching template shape against HC Create_Entity
-# (scale=-1, duration ~3-5s, aspect=Current, large entity-spawn powers like
-# Omega_Maneuver, Dive_Attack pet-spawners). Without this map, Rebirth pool
-# attack powers (Dive Attack, Blink Blitz) and pet summons surface as
-# `Unknown(116)` and lose their `Pets_X` summon wiring downstream.
+# Rebirth (Parse6) keeps a slightly different attrib index layout: its normal
+# attribs shift where HC inserted struct members, and its meta/scripting block
+# starts at index 116 (raw 464) vs HC's 117 (raw 468). Template attribs
+# resolve through `resolve_attrib_rebirth` below, which routes the special
+# window (raw 464-507) through the byte-granular SPECIAL_ATTRIB_BY_RAW_REBIRTH
+# map — the `116: "Create_Entity"` entry here is the collapsed view of that
+# window's first slots, kept for non-template consumers that look up 4-aligned
+# indices directly (boost/dim_returns tables never carry specials, so the
+# collapse is unreachable there in practice).
 #
-# Other Rebirth indices (91, ...) still report as Unknown until a player-
+# Other unmapped Rebirth indices still report as Unknown until a player-
 # visible bug surfaces; the unknown name reaches the converter as-is and is
 # filtered out by attrib-type detection rather than producing wrong data.
 ATTRIB_NAME_REBIRTH: dict[int, str] = {
@@ -385,22 +422,93 @@ ATTRIB_NAME_REBIRTH: dict[int, str] = {
 }
 
 
+# ---------------------------------------------------------------------------
+# Special-attrib region — byte-granular sub-index (Rebirth / Parse6)
+# ---------------------------------------------------------------------------
+# Rebirth's special block sits at base 464 (= sizeof(CharacterAttributes) in
+# the released i24 source, whose ESpecialAttrib enum this table transcribes
+# verbatim), one word below HC's 468 — HC added one attrib to the struct.
+# Unlike HC's map (oracle-derived, with holes where the `.powers` defs lack
+# coverage), this one is complete: the released-source enum is the definitive
+# structure oracle for a fork that tracks stock i24, and the assignment is
+# pinned by three independent anchors (2026-07-21 census, 122,156 templates):
+#   - payload contents: raw 500's PrimaryStringList is always a power
+#     full-name (277 redirect templates: quick-snipe variants, Nature
+#     Affinity pet delegates), raw 499's is AI behavior scripts
+#     ("Invincible(1),DoNotDrawAggro(1),…"), raw 498's is script keys
+#     ("ZoneEvent>…") — exactly PowerRedirect / AddBehavior / SetSZEValue;
+#   - HC-twin agreement: for every raw with same-named HC powers, the
+#     base-464 name matches the HC twin's (oracle-verified) attrib far more
+#     often than the collapsed //4 label (Grant_Power 1485 vs 83, Null 460
+#     vs 76, Set_Mode 312 vs 63, Translucency 218 vs 20, …);
+#   - the i24 header enum order itself.
+# The old collapsed `raw // 4` lookup mislabeled the ENTIRE band (Set_Mode
+# surfaced as Create_Entity, Null as Set_Mode, Grant_Power as Null,
+# Power_Redirect as Add_Behavior — the root of the "Parse6 lowers Grant_Power
+# to Null" workaround in _parse6_tail_params and of Rebirth's missing
+# redirects, WS7).
+SPECIAL_ATTRIB_BY_RAW_REBIRTH: dict[int, str] = {
+    464 + k: name for k, name in enumerate([
+        "Translucency", "Create_Entity", "Clear_Damagers", "Silent_Kill",
+        "XPDebtProtection", "Set_Mode", "Set_Costume", "Glide",
+        "Null", "Avoid", "Reward", "XPDebt",
+        "Drop_Toggles", "Grant_Power", "Revoke_Power", "Unset_Mode",
+        "Global_Chance_Mod", "Power_Chance_Mod", "Grant_Boosted_Power",
+        "View_Attributes", "Reward_Source", "Reward_Source_Team",
+        "Clear_Fog", "Combat_Phase", "Combat_Mod_Shift", "Recharge_Power",
+        "Vision_Phase", "Ninja_Run", "Walk", "Beast_Run",
+        "Steam_Jump", "Designer_Status", "Exclusive_Vision_Phase",
+        "Hover_Board", "Set_Script_Value", "Add_Behavior", "Power_Redirect",
+        "Magic_Carpet", "Token_Add", "Token_Set", "Token_Clear",
+        "Lua_Exec", "Force_Move", "Parkour_Run",
+    ])
+}
+
+SPECIAL_ATTRIB_MIN_REBIRTH = 464
+SPECIAL_ATTRIB_MAX_REBIRTH = 507
+
+
+def resolve_attrib_rebirth(raw: int) -> str:
+    """Resolve a raw Rebirth (Parse6) attrib value (u4) to its attrib name.
+
+    Same convention as `resolve_attrib`, with Rebirth's base-464 special
+    window and its shifted normal-attrib table. The special map has no holes
+    (source-enum-derived), so a special raw outside it means a new fork
+    addition — surfaced as ``Special(<raw>)``, never a sibling's name.
+    """
+    if SPECIAL_ATTRIB_MIN_REBIRTH <= raw <= SPECIAL_ATTRIB_MAX_REBIRTH:
+        return SPECIAL_ATTRIB_BY_RAW_REBIRTH.get(raw, f"Special({raw})")
+    return ATTRIB_NAME_REBIRTH.get(raw // 4, f"Unknown({raw // 4})")
+
+
 # Thunderspy (Parse6-derived schema, Parse7 frame) keeps yet another attrib-index
 # layout in its upper band. Its front string-attribs are decoded directly, but the
 # post-`requires` affected-attribute INDEX array (see _parse_effect_template_thunderspy)
-# is decoded via this map. The one player-visible divergence proven so far is
-# **RechargeTime at 89** (HC/Rebirth: 90). Empirically confirmed: 837 index-array
-# entries resolve to 89 and EVERY power carrying it is recharge-related — +recharge
-# buffs (Hasten 0.7, Quickness/Lightning Reflexes 0.2, Accelerate Metabolism 0.3,
-# Speed Boost 0.5, the Recharge_* temp powers) and -recharge slows (Siphon Speed,
-# Cryonic Judgement, Liquefy). Without this, those all decoded as `Unknown(89)` and
-# their recharge effect was silently dropped. Everything else matches HC's ATTRIB_NAME
-# (defense positions, damage types, mez, Recovery/Regeneration/Endurance all verified
-# to land on their HC indices), so we only override the single confirmed divergence
-# rather than guess the rest of the band.
+# is decoded via this map.
+#
+# The divergence is a WHOLE-BAND −1 SHIFT, not a handful of entries: Thunderspy's
+# CharacterAttributes struct is one field short of HC's somewhere at index 88/89
+# (both unnamed in ATTRIB_NAME), so every attrib from there up sits one slot lower.
+# The same fork trait shows in its AttribMod flags word, which likewise omits one bit
+# (see `_parse_effect_template_thunderspy`).
+#
+# Measured against the Rebirth export as an oracle by matching single-attrib templates
+# on (power, scale, table, aspect) — 19,527 pairs: indices 0-87 agree exactly, and
+# every off-by-one with volume sits at 89 and above (89→90 RechargeTime ×574, 91→92
+# EnduranceDiscount ×157, 93→94 Meter ×34, 118→119 Null ×297, 120→121 Global_Chance_Mod
+# ×222, plus the Elusivity band). RechargeTime and InterruptTime were patched
+# individually before the band was measured; the shift subsumes both, and the
+# dim_returns evidence for InterruptTime (the Interrupt boost-type's ED record stores
+# offset 360 where HC stores 364) is the same fact seen from the other side.
+#
+# NB the byte-granular special/scripting band (`SPECIAL_ATTRIB_BY_RAW_REBIRTH`, raw
+# 464+) is NOT shifted — it is read from raw values on its own path and was validated
+# separately against Rebirth (64/64 on raw 469 = Set_Mode).
+_TSPY_ATTRIB_SHIFT_FROM = 89
+
 ATTRIB_NAME_THUNDERSPY: dict[int, str] = {
-    **ATTRIB_NAME,
-    89: "RechargeTime",
+    **{i: n for i, n in ATTRIB_NAME.items() if i < _TSPY_ATTRIB_SHIFT_FROM},
+    **{i - 1: n for i, n in ATTRIB_NAME.items() if i > _TSPY_ATTRIB_SHIFT_FROM},
 }
 
 ATTRIB_MOD_TYPE: dict[int, str] = {
@@ -424,14 +532,21 @@ ATTRIB_MOD_ASPECT: dict[int, str] = {
     4: "Absolute",
 }
 
+# ModApplicationType. The enum starts at kModApplicationType_OnTick — there is
+# no "Immediate" value. An earlier table invented one at 0 and pushed
+# OnTick/OnActivate/OnDeactivate down a slot (parking OnExpire at a
+# nonexistent 6), soft-wronging ~44k exported templates. Pinned by pairwise
+# CoD2 comparison over 10,198 aligned powers (45k templates): raw 0→OnTick,
+# 1→OnActivate, 2→OnDeactivate, 3→OnExpire with zero systematic
+# counterexamples, and raw 4/5 (OnEnable/OnDisable, already correct) matching
+# CoD2 exactly at 606/606 apiece.
 ATTRIB_MOD_APPLICATION: dict[int, str] = {
-    0: "Immediate",
-    1: "OnTick",
-    2: "OnActivate",
-    3: "OnDeactivate",
+    0: "OnTick",
+    1: "OnActivate",
+    2: "OnDeactivate",
+    3: "OnExpire",
     4: "OnEnable",
     5: "OnDisable",
-    6: "OnExpire",
 }
 
 ATTRIB_MOD_TARGET: dict[int, str] = {
@@ -440,7 +555,13 @@ ATTRIB_MOD_TARGET: dict[int, str] = {
     2: "TargetOnly",
     4: "AnyAffected",
     5: "AnyAffectedAndPets",
-    6: "Caster",
+    # Marker-targeted mods spawn/apply at named map markers laid down by a
+    # companion Locator power; the marker names live in the template's
+    # TargetInfo record (see _read_target_info). Verified against CoD2's
+    # per-template `target` corpus-wide: all 53 raw-6 templates are "Marker"
+    # and CoD2 shows no "Caster" target anywhere. (The old "Caster" label was
+    # never exercised — no raw-6 template had ever parsed successfully.)
+    6: "Marker",
 }
 
 ATTRIB_MOD_STACK: dict[int, str] = {
@@ -461,10 +582,17 @@ ATTRIB_MOD_STACK: dict[int, str] = {
     # kCollective is NOT in this enum — it belongs to ATTRIB_MOD_CASTER_STACK.
 }
 
+# CasterStackType. Two values only — the authored `.powers` vocabulary is
+# kIndividual (unwritten default) / kCollective, and nothing else. Round-trip
+# proven on Grant_Cover: its 3 authored `CasterStackType kCollective`
+# templates are exactly the raw-1 templates (matching CoD2's Collective for
+# all 420 raw-1 player templates). An earlier table invented "Unlimited" at 1
+# and parked Collective at an unattested 2 (zero occurrences across all three
+# datasets) — raw 2 is left unmapped so it surfaces as Unknown(2) if it ever
+# appears.
 ATTRIB_MOD_CASTER_STACK: dict[int, str] = {
     0: "Individual",
-    1: "Unlimited",
-    2: "Collective",
+    1: "Collective",
 }
 
 PVP_FLAG: dict[int, str] = {
@@ -473,7 +601,16 @@ PVP_FLAG: dict[int, str] = {
     2: "PVP_ONLY",
 }
 
-TARGET_TYPE: dict[int, str] = {
+# Target-type enum layouts diverge by server family. Homecoming inserted
+# DeadAny/DeadOrAliveAny after Any(21), shifting everything that was 22-34 in
+# the i25 enum by +2 (proof in TARGET_TYPE_HC below). Rebirth, Thunderspy and
+# Veracity keep the i25 layout — proven by round-trip: their raw 22 decodes
+# teleport-location powers (Lightning_Rod, Pool Teleport), raw 24 decodes
+# Soul_Extraction's dead-pet target, raw 33 decodes league rezzes — all
+# nonsense under the HC layout, all exact under i25. Rebirth additionally
+# appends values past Position(34) (raw 35 on its league-recall powers) that
+# stay honestly Unknown until a Rebirth-side oracle names them.
+TARGET_TYPE_HC: dict[int, str] = {
     0: "None",
     1: "Self",
     2: "Player",
@@ -496,6 +633,37 @@ TARGET_TYPE: dict[int, str] = {
     19: "Foe",
     20: "Location",
     21: "Any",
+    # HC inserted DeadAny/DeadOrAliveAny after Any, completing the alive/dead/
+    # dead-or-alive triple every other target family has; everything that was
+    # 22-34 in the i25 enum shifts +2. Proven by round-tripping authored defs:
+    # `Target kTeleport` (Pool.Teleportation.Teleport) stores 24,
+    # `kDeadOrAliveAny` (Shock_Therapy.Defibrillate) stores 23,
+    # `kDeadOrAliveLeaguemate` (Recall_Friend EntsAffected) stores 35 — and by
+    # a corpus join of 12k CoD2 powers (60x raw 24 = "Location (Teleport)",
+    # 88x raw 27 = "Own Pet (Alive)", 42x raw 35 = "Leaguemate", ...).
+    # 22 is unobserved in any export; DeadAny is the family-pattern inference.
+    22: "DeadAny",
+    23: "DeadOrAliveAny",
+    24: "Teleport",
+    25: "DeadOrAliveMyPet",
+    26: "DeadMyPet",
+    27: "MyPet",
+    28: "MyOwner",
+    29: "MyCreator",
+    30: "MyCreation",
+    31: "DeadMyCreation",
+    32: "DeadOrAliveMyCreation",
+    33: "Leaguemate",
+    34: "DeadLeaguemate",
+    35: "DeadOrAliveLeaguemate",
+    36: "Position",
+    # Post-Position addition; CoD2 renders raw 37 as "Anything" (17 users,
+    # e.g. Traps Time_Bomb target_type). No authored token observed yet.
+    37: "Anything",
+}
+
+TARGET_TYPE_CLASSIC: dict[int, str] = {
+    **{k: v for k, v in TARGET_TYPE_HC.items() if k <= 21},
     22: "Teleport",
     23: "DeadOrAliveMyPet",
     24: "DeadMyPet",
@@ -509,4 +677,49 @@ TARGET_TYPE: dict[int, str] = {
     32: "DeadLeaguemate",
     33: "DeadOrAliveLeaguemate",
     34: "Position",
+}
+
+# Parse6 (Rebirth/i24-era) power-event enum, for CancelEvents and the tail
+# Suppress records. NOT the same numbering as HC's EVENT_NAME: pairing every
+# Rebirth suppress record against the same power's HC template (2026-07-20,
+# position-paired where counts and durations agree) shows identical ids only
+# at the bottom of the table (1 ActivateAttackClick, 2 Attacked), a +4 shift
+# through the mez/damage band (13→17 HitByFoe … 29→33 Knocked: HC inserted
+# four events below 13), and +6 at 31→37 MissionObjectClick. Only the ids
+# observed in the Rebirth corpus are named — per fail-loud, everything else
+# renders as Event_<id> rather than borrowing a possibly-shifted HC name.
+EVENT_NAME_PARSE6: dict[int, str] = {
+    1: "ActivateAttackClick",
+    2: "Attacked",
+    13: "HitByFoe",
+    17: "Damaged",
+    19: "Stunned",
+    20: "Immobilized",
+    21: "Held",
+    22: "Sleep",
+    23: "Terrorized",
+    29: "Knocked",
+    31: "MissionObjectClick",
+}
+
+# AttribModParam Knock vec_start/vec_end reference points. Derived by pairing
+# every live Knock params record against the CoD2 oracle (2026-07-20, 165
+# paired templates): each observed index voted unanimously for one kKnock_*
+# name (the two single stray votes were sequence-pairing artifacts on powers
+# CoD2 lacks). Indices 0 and 4 are unobserved in the corpus and stay unnamed.
+KNOCK_VEC_POSITION: dict[int, str] = {
+    1: "Source",
+    2: "Target",
+    3: "MainTarget",
+    5: "Up",
+    6: "Down",
+    7: "Facing",
+    8: "Back",
+}
+
+# AttribModParam ScriptNotify event ids, from the same CoD2 pairing (84
+# paired templates, unanimous). Authored defs write `Event FirstTick`.
+NOTIFY_EVENT: dict[int, str] = {
+    1: "Apply",
+    2: "FirstTick",
 }

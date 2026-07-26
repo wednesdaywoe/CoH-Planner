@@ -35,6 +35,7 @@ from bin_crawler.assets_dir import resolve_assets_dir
 from bin_crawler.parser._entities import parse_entities, EntityRecord
 from bin_crawler.parser._powersets import parse_powersets
 from bin_crawler.parser._messages import load_messages
+from bin_crawler._export_fingerprint import entities_fingerprint
 # Reuse the powers exporter's source-aware Primalist gating so the two export
 # paths stay in lockstep. Importing is side-effect-free (export_powers guards
 # its CLI behind `if __name__ == '__main__'`).
@@ -232,6 +233,30 @@ def main():
 
     print(f"\nWrote {written} pet entity files (skipped {skipped_no_powers} with "
           f"no powers, {skipped_primalist} orphan Primalist).")
+
+    # Stamp the export-staleness manifest, exactly as export_powers.py /
+    # export_classes.py do for their trees. CI has neither the .pigg archives nor
+    # Python, so the `entities/` tree can't be regenerate-and-diffed there; the
+    # fingerprint is the only cross-check that this tree was produced by the
+    # currently-committed entities exporter and not left stale after a parser edit
+    # (the INHERENT-3 residual after WS3 guarded `tables/`). Guarded by
+    # src/data/export-staleness.test.ts. See _export_fingerprint.py.
+    manifest = {
+        'schema': 'bin-crawler-export-manifest/1',
+        'note': ('entities_fingerprint is the sha256 of the entities exporter '
+                 '(bin_crawler/parser/**/*.py + export_entities.py) at export '
+                 'time. If it disagrees with the current committed exporter '
+                 'source, THIS entities/ tree is stale — re-run export_entities '
+                 'for this dataset and commit. Guarded by '
+                 'src/data/export-staleness.test.ts.'),
+        'entities_fingerprint': entities_fingerprint(),
+        'entity_files': written,
+    }
+    with open(output_dir / '_export_manifest.json', 'w') as f:
+        json.dump(manifest, f, indent=2)
+        f.write('\n')
+
+    print(f"  Manifest: entities_fingerprint={manifest['entities_fingerprint'][:12]}…")
 
 
 if __name__ == "__main__":
