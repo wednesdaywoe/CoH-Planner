@@ -194,10 +194,18 @@ export default defineConfig({
         // build.rollupOptions.output.chunkFileNames). Each is 8-15 MB and only
         // ONE is ever loaded per visitor (the active server, chosen at boot),
         // so precaching all three would download ~34 MB of data on SW install —
-        // ~2/3 of it for datasets that visitor never opens. Instead boot loads
-        // the active dataset's chunk over the network (content-hashed →
-        // immutable → HTTP-cached for repeat loads). Offline dataset switching
-        // isn't a goal (no distributable; effectively all use is online).
+        // ~2/3 of it for datasets that visitor never opens.
+        //
+        // They are NOT left to the network, though — see the dataset runtimeCaching
+        // rule below. Excluding them from precache while the precached shell hard-
+        // references them by hash is what caused the "Taking a while to load?" boot
+        // failures: a tab controlled by deploy N's SW serves deploy N's shell from
+        // precache, but that shell imports `dataset-homecoming-<N-hash>.js`, which
+        // deploy N+1 deleted. Boot 404s before React mounts, so neither the update
+        // prompt nor the recovery toast can render, and the auto-reload re-serves the
+        // same stale shell. Only a hard refresh escapes. Verified in production
+        // 2026-07-26: two deploys 7 min apart left the older shell pointing at three
+        // dataset chunks that were already 404 at origin.
         globIgnores: ['assets/dataset-*.js'],
         // Precache is now the app shell only (~1.7 MB entry + CSS). This low cap
         // is a regression tripwire: a globbed file over the limit is a hard
@@ -214,6 +222,32 @@ export default defineConfig({
         // rather than NetworkFirst. See "Sidekick reliability plan.md".
         navigateFallback: '/index.html',
         runtimeCaching: [
+          {
+            // The per-dataset chunks that globIgnores keeps out of precache.
+            // Runtime-cached so a shell frozen at deploy N can still resolve the
+            // deploy-N dataset chunk after deploy N+1 has removed it from origin —
+            // restoring the "a controlled tab keeps serving the old chunks" premise
+            // that chunk-error-reload.ts is written against.
+            //
+            // CacheFirst is safe here in a way it explicitly is NOT for the contract
+            // bundles above: those keep a fixed name across rebuilds, so a pinned
+            // copy can be fed to a newer .wasm. Dataset chunks are content-hashed, so
+            // a cached entry is byte-identical to what its URL means forever, and can
+            // only ever be served to the shell that asked for that exact hash.
+            //
+            // Only chunks actually fetched are stored, so the ~34 MB precache-all
+            // objection doesn't apply — a typical visitor holds one. Capped by entry
+            // count (≈2 deploys × 3 datasets) and deliberately given NO maxAgeSeconds:
+            // a TTL would expire the very chunk a stale shell still needs.
+            urlPattern: ({ url, sameOrigin }) =>
+              sameOrigin && /^\/assets\/dataset-[a-z]+-[\w-]+\.js$/.test(url.pathname),
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'sidekick-datasets',
+              expiration: { maxEntries: 6 },
+              cacheableResponse: { statuses: [0, 200] },
+            },
+          },
           {
             // Same-origin images (the /img icon library). CacheFirst with an
             // entry cap + TTL so the cache can't grow unbounded.

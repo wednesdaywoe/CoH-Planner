@@ -39,7 +39,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
     items: [
       { id: 'rust-calc-engine', message: 'New calculation engine: Replaced the TypeScript math Sidekick has used until now. Despite being (hopefully) invisible to users, this is kind of a big deal, for reasons below...', type: 'update' },
       { id: 'parser-data-resync', message: 'This is the bigger part: Every power was re-read with a substantially corrected parser and re-converted: of the ~19,200 data modules, 3,956 were wrong in some way and 24 remain. Recovered along the way were seven power-header fields, Rebirth\'s special-attrib band, accolade and inherent data, and a one-field misalignment that mislabelled when an effect applies. So unlike the engine swap, this part you will (hopefully) see: powers whose effects were dropped or collapsed together, should now read correctly. I\'ve done everything I can on my end to get this working right, but because of how many powers and attributes there are, I can\'t personally verify every number.', type: 'fix' },
-      { id: 'engine-offline-cache', message: 'The calculation engine and its game data are now cached, so a lost connection won\'t kill the calculations.', type: 'feat' },
+      { id: 'engine-offline-cache', message: 'The calculation engine and its game data are now cached, so going offline won\'t kill the calculations.', type: 'feat' },
       { id: 'engine-failure-visible', message: 'If the calculation engine fails to load, you get a red banner telling you so.', type: 'fix' },
     ]
   },
