@@ -39,6 +39,8 @@ import-output/
 nul
 
 # Data
+.impeccable/
+streams/
 raw_data_homecoming-raw_data_homecoming-20251209_7415/
 # exported_powers/ (repo root) is now COMMITTED — it's the converter input, so a fresh
 # clone / CI can regenerate generated/ from it without the gitignored .pigg source.

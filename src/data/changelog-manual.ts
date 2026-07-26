@@ -37,16 +37,10 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
     date: '2026-07-26',
 
     items: [
-      { id: 'rust-calc-engine', message: 'Every number on the dashboard is now computed by a new calculation engine, written in Rust and compiled to WebAssembly, replacing the TypeScript math Sidekick has used until now. The best possible outcome here is that you notice nothing at all — the old and new engines were run side by side across Homecoming, Rebirth and Thunderspy until they agreed on every stat, and the gate that proves it runs on every change from here on. What it buys is what comes next: the new engine reads the game\'s own data losslessly, which is the groundwork for per-power damage, attack chains and proc DPS.', type: 'update' },
+      { id: 'rust-calc-engine', message: 'New calculation engine: Replaced the TypeScript math Sidekick has used until now. The swap itself is meant to be invisible — the old and new engines were run side by side on identical builds across Homecoming, Rebirth and Thunderspy until they agreed on every stat, and the gate that proves it now runs on every change. What it buys is what comes next: the new engine reads the game\'s own data losslessly, which is the groundwork for per-power damage, attack chains and proc DPS.', type: 'update' },
+      { id: 'parser-data-resync', message: 'The bigger half of that work is underneath it. Every power was re-read with a substantially corrected parser and re-converted: of the ~19,200 data modules the planner ships, 3,956 were wrong in some way and 24 remain. Recovered along the way were seven power-header fields, Rebirth\'s special-attrib band, accolade and inherent data, and a one-field misalignment that had been mislabelling WHEN an effect applies — reading "once, immediately" where the game means "on every tick". So unlike the engine swap, this part you will see: powers whose effects were dropped, collapsed together or mistimed should now read correctly. A new engine is only as good as what it reads, and what it read was also wrong in places.', type: 'fix' },
       { id: 'engine-offline-cache', message: 'The calculation engine and its game data are now cached for offline use, so a flaky connection no longer leaves you with a planner full of zeros.', type: 'feat' },
       { id: 'engine-failure-visible', message: 'If the calculation engine ever fails to load, you now get a red banner telling you so. Previously it quietly showed 0% for everything, which looks like a broken build rather than a broken Sidekick.', type: 'fix' },
-    ]
-  },
-  {
-    date: '2026-07-14',
-
-    items: [
-      { id: 'login-feedback-response', message: 'Dear writer who wrote this gem: "Change how people log in. Your system of logging in sucks." Here is my sincere response: 🖕', type: 'feat' },
     ]
   },
   {
