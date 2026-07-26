@@ -168,11 +168,28 @@ export default defineConfig({
       manifest: false,
       injectRegister: null,
       workbox: {
-        // Precache the app shell only: JS, CSS, HTML. Deliberately NOT images —
-        // public/img holds hundreds of enhancement/archetype icons; precaching
-        // them would download the entire icon library on SW install. They are
-        // runtime-cached on demand below instead.
-        globPatterns: ['**/*.{js,css,html}'],
+        // Precache the app shell: JS, CSS, HTML, plus the calc engine (the .wasm and
+        // the three contract bundles). Deliberately NOT images — public/img holds
+        // hundreds of enhancement/archetype icons; precaching them would download the
+        // entire icon library on SW install. They are runtime-cached on demand below.
+        //
+        // The engine is in the shell because without it the app computes NOTHING: a
+        // cold load that can't reach the .wasm or its bundle renders the "engine failed"
+        // banner and zeros everywhere. It is shell, not data.
+        //
+        // Precache rather than runtime-cache, specifically because the bundles are NOT
+        // content-hashed (`homecoming.json.gz` keeps its name across rebuilds). A
+        // CacheFirst runtime rule would therefore pin the FIRST bundle a visitor ever
+        // fetched and happily feed it to a newer .wasm forever — a silently mismatched
+        // engine, which is worse than a slow one. Workbox revisions precached entries by
+        // content hash, so a changed bundle is re-fetched when the new SW installs, and
+        // the engine's two halves update together or not at all.
+        //
+        // Cost is ~5.8 MB on SW install (1.5 wasm + 1.9/1.2/1.2 bundles) and yes, two of
+        // the three bundles are for datasets a given visitor may never open — unlike the
+        // globIgnored dataset chunks below, they're small enough that splitting them
+        // would buy less than the mismatch risk it reintroduces.
+        globPatterns: ['**/*.{js,css,html,wasm}', 'engine/contract/*.json.gz'],
         // Exclude the per-dataset chunks (`dataset-<id>-*.js`, named via
         // build.rollupOptions.output.chunkFileNames). Each is 8-15 MB and only
         // ONE is ever loaded per visitor (the active server, chosen at boot),
