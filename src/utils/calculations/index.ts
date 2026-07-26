@@ -42,6 +42,7 @@ export {
   type SlotWithEnhancement,
   type PowerWithSlots,
   type EnhancementBonuses,
+  calculateSingleEnhancementValues,
 } from './enhancement-values';
 
 // Set bonuses (Rule of 5)

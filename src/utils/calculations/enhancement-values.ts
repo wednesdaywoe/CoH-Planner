@@ -592,6 +592,36 @@ export interface EnhancementBonuses {
 }
 
 /**
+ * What ONE enhancement contributes, under the exact rules the dashboard applies to a real
+ * slot — attunement, the set's level cap, exemplar scaling, boosters, the multi-aspect
+ * penalty, and the `Mez` fan-out into the six mez aspects.
+ *
+ * The per-piece display surfaces (picker preview, enhancement info panel) render this
+ * instead of re-deriving a level rule of their own. They each had one, and each contradicted
+ * the calculation on three counts: capping an attuned IO at the set's `maxLevel` (which the
+ * game does not do — see `ioLevel` below), ignoring exemplar, and dropping the `Mez` aspect
+ * because `normalizeAspectName` has no entry for it (PROD6E-2).
+ *
+ * ED is applied — this routes through the full calculation deliberately, so a preview cannot
+ * drift from the total it previews. At single-piece magnitudes it is a no-op: measured over
+ * all 1138 aspect-bearing Homecoming set pieces at +5 boost, no piece reaches its schedule's
+ * knee.
+ */
+export function calculateSingleEnhancementValues(
+  slot: Enhancement,
+  buildLevel: number,
+  getIOSet: Parameters<typeof calculatePowerEnhancementBonuses>[2],
+  exemplarLevel?: number
+): EnhancementBonuses {
+  return calculatePowerEnhancementBonuses(
+    { name: '', slots: [slot] },
+    buildLevel,
+    getIOSet,
+    exemplarLevel
+  );
+}
+
+/**
  * Calculate total enhancement bonuses from slotted enhancements
  * Applies Enhancement Diversification (ED) limits
  */

@@ -6,12 +6,8 @@
  * Color transitions: red (0%) → yellow (50%) → green (100%).
  */
 
-import { useMemo } from 'react';
-import { useUIStore, useBuildStore } from '@/stores';
-import { useGlobalBonuses } from '@/hooks/useCalculatedStats';
-import { calculatePowerEnhancementBonuses, combineWithAlphaED, getAlphaEnhancementBonuses, getAlphaEdBypassBonuses, type EnhancementBonuses } from '@/utils/calculations';
-import { calculatePermaInfo, type PermaInfo } from '@/utils/calculations/perma';
-import { getIOSet } from '@/data';
+import { useUIStore } from '@/stores';
+import { usePowerProjection } from '@/hooks/useCalculatedStats';
 import { Tooltip } from '@/components/ui/Tooltip';
 import type { SelectedPower } from '@/types';
 
@@ -26,43 +22,7 @@ interface PermaRingProps {
 
 export function PermaRing({ power, size, children }: PermaRingProps) {
   const permaTracked = useUIStore((s) => s.permaTrackedPowers.includes(power.internalName));
-  const globalBonuses = useGlobalBonuses();
-  const globalIOLevel = useUIStore((s) => s.globalIOLevel);
-  const exemplarMode = useUIStore((s) => s.exemplarMode);
-  const exemplarLevel = useUIStore((s) => s.exemplarLevel);
-  const build = useBuildStore((s) => s.build);
-  const incarnateActive = useUIStore((s) => s.incarnateActive);
-
-  const permaInfo = useMemo<PermaInfo | null>(() => {
-    if (!permaTracked) return null;
-
-    const alphaBonuses = getAlphaEnhancementBonuses(build.incarnates, incarnateActive);
-    const hasAlpha = Object.values(alphaBonuses).some((v) => v !== undefined && v !== 0);
-    const alphaEdBypass = getAlphaEdBypassBonuses(build.incarnates, incarnateActive);
-
-    let enhBonuses: EnhancementBonuses;
-    if (hasAlpha) {
-      enhBonuses = combineWithAlphaED(
-        // Alpha applies only to the aspects the power accepts; without this list
-        // `combineWithAlphaED` applies it to all of them (PROD6C-3f).
-        { name: power.name, slots: power.slots, allowedEnhancements: power.allowedEnhancements },
-        globalIOLevel,
-        getIOSet,
-        alphaBonuses,
-        alphaEdBypass,
-        exemplarMode ? exemplarLevel : undefined,
-      );
-    } else {
-      enhBonuses = calculatePowerEnhancementBonuses(
-        { name: power.name, slots: power.slots },
-        globalIOLevel,
-        getIOSet,
-        exemplarMode ? exemplarLevel : undefined,
-      );
-    }
-
-    return calculatePermaInfo(power, enhBonuses, (globalBonuses.recharge ?? 0) / 100);
-  }, [permaTracked, power, globalIOLevel, globalBonuses.recharge, exemplarMode, exemplarLevel, build.level, build.incarnates, incarnateActive]);
+  const permaInfo = usePowerProjection(power.powerSet, power.internalName)?.perma ?? null;
 
   if (!permaTracked || !permaInfo) {
     return <>{children}</>;
