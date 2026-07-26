@@ -50,7 +50,7 @@ describe('Assault +Damage buff is flat (not enhanced by damage strength)', () =>
     b.level = 50;
     b.archetype = { id: 'mastermind', name: 'Mastermind', stats: null, inherent: null };
     b.pools = [{ id: 'leadership', name: 'Leadership', powers: [
-      { internalName: 'Assault', name: 'Assault', powerType: 'Toggle', isActive: true, slots: [] },
+      { internalName: 'Assault', name: 'Assault', powerSet: 'leadership', level: 1, powerType: 'Toggle', isActive: true, slots: [] },
     ] }];
 
     const t = calculateCharacterTotals(b, false, undefined, { combatMode: false });

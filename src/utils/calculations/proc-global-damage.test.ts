@@ -2,6 +2,7 @@ import { describe, it, expect, beforeAll } from 'vitest';
 import { calculateCharacterTotals } from './character-totals';
 import { loadDataset } from '@/data/dataset';
 import { createEmptyBuild } from '@/types/build';
+import { ioSetSlot } from '@/test/build-fixtures';
 
 /**
  * Liberty's Belt: Resistance/Global Damage Bonus (Rebirth) — a standalone
@@ -23,11 +24,8 @@ import { createEmptyBuild } from '@/types/build';
 // A Liberty's Belt +Damage global, slotted as Rebirth names it. Global procs
 // collect regardless of the host power's type.
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function libertysBeltSlot(): any {
-  return {
-    type: 'io-set', isProc: true, name: 'Resistance/Global Damage Bonus',
-    setName: "Liberty's Belt", setId: 'libertys_belt', pieceNum: 6,
-  };
+function libertysBeltSlot() {
+  return ioSetSlot('libertys_belt', 'Resistance/Global Damage Bonus');
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -36,8 +34,15 @@ function buildWithLibertysBelt(count: number): any {
   b.serverId = 'rebirth';
   b.level = 50;
   b.archetype = { id: 'mastermind', name: 'Mastermind', stats: null, inherent: null } as any;
-  b.pools = [{ id: 'concealment', name: 'Concealment', powers: Array.from({ length: count }, (_, i) => ({
-    internalName: `Stealth_${i}`, name: `Stealth Power ${i}`, powerType: 'Toggle', isActive: true,
+  // Real pool powers, one host per copy: a synthetic internalName is not in the dataset, and a
+  // power the engine can't resolve takes its slotted global proc down with it. Rule-of-5 cases
+  // need 6 distinct hosts, so this spans two pools.
+  const HOSTS: Array<[string, string]> = [
+    ['invisibility', 'Stealth'], ['invisibility', 'Grant_Invisibility'], ['invisibility', 'Invisibility'],
+    ['invisibility', 'Phase_Shift'], ['invisibility', 'Misdirection'], ['leadership', 'Defense'],
+  ];
+  b.pools = [{ id: 'invisibility', name: 'Invisibility', powers: Array.from({ length: count }, (_, i) => ({
+    internalName: HOSTS[i][1], name: HOSTS[i][1], powerSet: HOSTS[i][0], level: 1, powerType: 'Toggle', isActive: true,
     slots: [libertysBeltSlot()],
   })) }] as any;
   return b;

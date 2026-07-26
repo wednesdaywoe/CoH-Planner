@@ -37,11 +37,11 @@ describe('Bio Armor Adaptation modes on the dashboard (homecoming)', () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     b.archetype = { id: 'tanker', name: 'Tanker', stats: null, inherent: null } as any;
     const powers = [
-      { internalName: 'Environmental_Adaptation', name: 'Environmental Modification', isActive: true, slots: [] },
+      { internalName: 'Environmental_Adaptation', name: 'Environmental Modification', powerSet: 'tanker/bio-armor', level: 1, isActive: true, slots: [] },
       // The Adaptation parent (taken) holds the active stance in `activeSubPower`.
       // Without it in the build, the stance mechanic is unavailable.
       ...(withEnabler
-        ? [{ internalName: 'Adaptation', name: 'Evolving Armor', isActive: false, slots: [], activeSubPower }]
+        ? [{ internalName: 'Adaptation', name: 'Evolving Armor', powerSet: 'tanker/bio-armor', level: 1, isActive: false, slots: [], activeSubPower }]
         : []),
     ];
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

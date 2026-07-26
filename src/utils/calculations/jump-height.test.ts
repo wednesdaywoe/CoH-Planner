@@ -27,7 +27,7 @@ describe('jump height (table-aware Melee_Leap)', () => {
     b.level = 50;
     b.archetype = { id: 'mastermind', name: 'Mastermind', stats: null, inherent: null };
     const ninja = getInherentPowerDef('Ninja_Run')!;
-    b.inherents = [{ ...ninja, isActive: active, slots: [] }];
+    b.inherents = [{ ...ninja, powerSet: 'Inherent', level: 1, isActive: active, slots: [] }];
     return b;
   };
 

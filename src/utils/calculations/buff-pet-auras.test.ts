@@ -51,7 +51,7 @@ describe('Buff-pet auras (homecoming)', () => {
   });
 
   it('Force Field Generator adds +Defense to totals only when toggled on', () => {
-    const powers = [{ ...ForceFieldGenerator, isActive: true, slots: [] }];
+    const powers = [{ ...ForceFieldGenerator, powerSet: 'defender/traps', level: 1, isActive: true, slots: [] }];
 
     const off = calculateCharacterTotals(build(powers), false, undefined, {}).globalBonuses;
     expect(off.defMelee).toBe(0); // opt-in: nothing until the toggle is flipped
@@ -70,7 +70,7 @@ describe('Buff-pet auras (homecoming)', () => {
   });
 
   it('Barrier Reef adds +Defense and Absorb when toggled on', () => {
-    const powers = [{ ...Wellspring, isActive: true, slots: [] }];
+    const powers = [{ ...Wellspring, powerSet: 'defender/marine_affinity', level: 1, isActive: true, slots: [] }];
     const off = calculateCharacterTotals(build(powers), false, undefined, {}).globalBonuses;
     expect(off.defMelee).toBe(0);
     expect(off.absorb).toBe(0);
@@ -81,7 +81,7 @@ describe('Buff-pet auras (homecoming)', () => {
   });
 
   it('Triage Beacon adds +Regeneration when toggled on', () => {
-    const powers = [{ ...TriageBeacon, isActive: true, slots: [] }];
+    const powers = [{ ...TriageBeacon, powerSet: 'defender/traps', level: 1, isActive: true, slots: [] }];
     const off = calculateCharacterTotals(build(powers), false, undefined, {}).globalBonuses;
     const on = calculateCharacterTotals(build(powers), false, undefined, key('Triage_Beacon')).globalBonuses;
     expect(off.regeneration).toBe(0);
@@ -89,7 +89,7 @@ describe('Buff-pet auras (homecoming)', () => {
   });
 
   it('records a per-pet breakdown row for the folded aura', () => {
-    const powers = [{ ...ForceFieldGenerator, isActive: true, slots: [] }];
+    const powers = [{ ...ForceFieldGenerator, powerSet: 'defender/traps', level: 1, isActive: true, slots: [] }];
     const { breakdown } = calculateCharacterTotals(build(powers), false, undefined, key('Force_Field_Generator'));
     const defMelee = breakdown.get('defMelee');
     expect(defMelee?.sources.some((c) => c.name === 'Force Field Generator')).toBe(true);

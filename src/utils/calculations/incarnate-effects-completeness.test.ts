@@ -3,6 +3,7 @@ import { loadDataset } from '@/data/dataset';
 import { getDestinyEffects, getHybridEffects, getAlphaEffects } from '@/data';
 import { calculateCharacterTotals } from '@/utils/calculations/character-totals';
 import { createEmptyBuild } from '@/types/build';
+import { createDefaultIncarnateActiveState } from '@/types/incarnate';
 import type { SelectedIncarnatePower } from '@/types/incarnate';
 
 /**
@@ -115,9 +116,9 @@ describe('Homecoming Destiny — dropped effects are now exposed', () => {
   });
 
   it('Clarion mez + KB protection feed the status-protection totals (was display-only)', () => {
-    const base = calculateCharacterTotals(scrapperBuild(null), false, undefined, { combatMode: false });
+    const base = calculateCharacterTotals(scrapperBuild(null), false, createDefaultIncarnateActiveState(), { combatMode: false });
     const withClarion = calculateCharacterTotals(
-      scrapperBuild(destinySlot('clarion_core_epiphany')), false, undefined, { combatMode: false },
+      scrapperBuild(destinySlot('clarion_core_epiphany')), false, createDefaultIncarnateActiveState(), { combatMode: false },
     );
     const g = withClarion.globalBonuses;
     // A flat magnitude to all six control types...

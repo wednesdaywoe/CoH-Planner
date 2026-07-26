@@ -3,6 +3,7 @@ import { loadDataset } from '@/data/dataset';
 import { getDestinyEffects } from '@/data';
 import { calculateCharacterTotals } from '@/utils/calculations/character-totals';
 import { createEmptyBuild } from '@/types/build';
+import { createDefaultIncarnateActiveState } from '@/types/incarnate';
 import type { SelectedIncarnatePower } from '@/types/incarnate';
 
 /**
@@ -79,13 +80,13 @@ describe('Incandescence Destiny — Healing Received (not −Resistance)', () =>
   });
 
   it('does NOT subtract from any damage resistance total (the "-res(all)" bug)', () => {
-    const base = calculateCharacterTotals(scrapperBuild(null), false, undefined, {
+    const base = calculateCharacterTotals(scrapperBuild(null), false, createDefaultIncarnateActiveState(), {
       combatMode: false,
     });
     const withIncand = calculateCharacterTotals(
       scrapperBuild(incandescenceSlot('incandescence_core_invocation')),
       false,
-      undefined,
+      createDefaultIncarnateActiveState(),
       { combatMode: false },
     );
 
@@ -100,7 +101,7 @@ describe('Incandescence Destiny — Healing Received (not −Resistance)', () =>
     const withIncand = calculateCharacterTotals(
       scrapperBuild(incandescenceSlot('incandescence_core_invocation')),
       false,
-      undefined,
+      createDefaultIncarnateActiveState(),
       { combatMode: false },
     );
 

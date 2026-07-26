@@ -2,6 +2,7 @@ import { describe, it, expect, beforeAll } from 'vitest';
 import { calculateCharacterTotals } from './character-totals';
 import { loadDataset } from '@/data/dataset';
 import { createEmptyBuild } from '@/types/build';
+import { ioSetSlot } from '@/test/build-fixtures';
 
 /**
  * Regression: stealth IO procs (Celerity +Stealth, Unbounded Leap +Stealth,
@@ -20,12 +21,12 @@ import { createEmptyBuild } from '@/types/build';
  * different stealth IOs stack with each other.
  */
 
-// A slotted always-on stealth proc. collectAlwaysOnProcs reads the raw build
-// power, so `powerType: 'Toggle'` + `isActive` must be set explicitly for the
-// Proc120s to count as always-on.
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function stealthProcSlot(setName: string, name: string): any {
-  return { type: 'io-set', isProc: true, name, setName, setId: setName.toLowerCase(), pieceNum: 1 };
+// A slotted always-on stealth proc, built by the picker's own factory so the slot carries
+// everything the engine's CharacterState requires (id, aspects, level, …) and the piece name
+// is the real proc lookup key. The host power must be `powerType: 'Toggle'` + `isActive` for
+// the Proc120s to count as always-on.
+function stealthProcSlot(setId: string, name: string) {
+  return ioSetSlot(setId, name);
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -37,7 +38,7 @@ function buildWithStealthProcs(procs: Array<{ setName: string; name: string }>):
   // Combat Jumping is a real Toggle that grants NO stealth of its own, so the
   // only stealth source in the build is the proc(s) we slot into it.
   b.pools = [{ id: 'leaping', name: 'Leaping', powers: [
-    { internalName: 'Combat_Jumping', name: 'Combat Jumping', powerType: 'Toggle', isActive: true,
+    { internalName: 'Combat_Jumping', name: 'Combat Jumping', powerSet: 'leaping', level: 1, powerType: 'Toggle', isActive: true,
       slots: procs.map(p => stealthProcSlot(p.setName, p.name)) },
   ] }] as any;
   return b;
@@ -50,7 +51,7 @@ describe('stealth IO procs contribute to stealth radius (homecoming)', () => {
 
   it('Celerity +Stealth adds 30 ft PvE / 300 ft PvP', () => {
     const t = calculateCharacterTotals(
-      buildWithStealthProcs([{ setName: 'Celerity', name: 'Buff Stealth' }]),
+      buildWithStealthProcs([{ setName: 'celerity', name: '+Stealth' }]),
       false, undefined, { combatMode: true },
     );
     expect(t.globalBonuses.stealthRadiusPvE).toBeCloseTo(30, 4);
@@ -59,7 +60,7 @@ describe('stealth IO procs contribute to stealth radius (homecoming)', () => {
 
   it('Unbounded Leap +Stealth contributes the same radius', () => {
     const t = calculateCharacterTotals(
-      buildWithStealthProcs([{ setName: 'Unbounded Leap', name: 'Unbounded Leap: +Stealth' }]),
+      buildWithStealthProcs([{ setName: 'unbounded_leap', name: '+Stealth' }]),
       false, undefined, { combatMode: true },
     );
     expect(t.globalBonuses.stealthRadiusPvE).toBeCloseTo(30, 4);
@@ -69,8 +70,8 @@ describe('stealth IO procs contribute to stealth radius (homecoming)', () => {
   it('two different stealth IOs stack additively', () => {
     const t = calculateCharacterTotals(
       buildWithStealthProcs([
-        { setName: 'Celerity', name: 'Buff Stealth' },
-        { setName: 'Unbounded Leap', name: 'Unbounded Leap: +Stealth' },
+        { setName: 'celerity', name: '+Stealth' },
+        { setName: 'unbounded_leap', name: '+Stealth' },
       ]),
       false, undefined, { combatMode: true },
     );
@@ -107,8 +108,8 @@ describe('stealth power + stealth IO stack additively (homecoming, Sentinel Ninj
     b.level = 50;
     b.archetype = { id: 'sentinel', name: 'Sentinel', stats: null, inherent: null } as any;
     b.secondary = { id: 'sentinel/ninjitsu', name: 'Ninjitsu', powers: [
-      { internalName: 'Shinobi-Iri', name: 'Shinobi-Iri', powerType: 'Toggle', isActive: true,
-        slots: withProc ? [stealthProcSlot('Celerity', 'Buff Stealth')] : [] },
+      { internalName: 'Shinobi-Iri', name: 'Shinobi-Iri', powerSet: 'sentinel/ninjitsu', level: 1, powerType: 'Toggle', isActive: true,
+        slots: withProc ? [stealthProcSlot('celerity', '+Stealth')] : [] },
     ] } as any;
     return b;
   }
@@ -146,13 +147,13 @@ describe('suppress-group stealth powers do NOT stack (homecoming)', () => {
     b.archetype = { id: 'sentinel', name: 'Sentinel', stats: null, inherent: null } as any;
     if (opts.shinobi) {
       b.secondary = { id: 'sentinel/ninjitsu', name: 'Ninjitsu', powers: [
-        { internalName: 'Shinobi-Iri', name: 'Shinobi-Iri', powerType: 'Toggle', isActive: true,
-          slots: opts.celerity ? [stealthProcSlot('Celerity', 'Buff Stealth')] : [] },
+        { internalName: 'Shinobi-Iri', name: 'Shinobi-Iri', powerSet: 'sentinel/ninjitsu', level: 1, powerType: 'Toggle', isActive: true,
+          slots: opts.celerity ? [stealthProcSlot('celerity', '+Stealth')] : [] },
       ] } as any;
     }
     if (opts.superSpeed) {
       b.pools = [{ id: 'speed', name: 'Speed', powers: [
-        { internalName: 'Super_Speed', name: 'Super Speed', powerType: 'Toggle', isActive: true, slots: [] },
+        { internalName: 'Super_Speed', name: 'Super Speed', powerSet: 'speed', level: 1, powerType: 'Toggle', isActive: true, slots: [] },
       ] }] as any;
     }
     return b;

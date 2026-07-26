@@ -44,7 +44,7 @@ describe('Absorb character total (homecoming)', () => {
 
   it('Wild Bastion active contributes 25% of the build Max HP as absorb', () => {
     const b = build('corruptor', 'Corruptor', 'corruptor/nature-affinity', 'Nature Affinity', [
-      { internalName: 'Wild_Bastion', name: 'Wild Bastion', isActive: true, slots: [] },
+      { internalName: 'Wild_Bastion', name: 'Wild Bastion', powerSet: 'corruptor/nature-affinity', level: 1, isActive: true, slots: [] },
     ]);
     const { globalBonuses } = calculateCharacterTotals(b, false, undefined, {});
     // No slotting / no +MaxHP buffs → actualHP == base HP, strength mult == 1.
@@ -54,7 +54,7 @@ describe('Absorb character total (homecoming)', () => {
 
   it('is zero when the absorb power is inactive', () => {
     const b = build('corruptor', 'Corruptor', 'corruptor/nature-affinity', 'Nature Affinity', [
-      { internalName: 'Wild_Bastion', name: 'Wild Bastion', isActive: false, slots: [] },
+      { internalName: 'Wild_Bastion', name: 'Wild Bastion', powerSet: 'corruptor/nature-affinity', level: 1, isActive: false, slots: [] },
     ]);
     expect(calculateCharacterTotals(b, false, undefined, {}).globalBonuses.absorb).toBe(0);
   });
@@ -62,7 +62,7 @@ describe('Absorb character total (homecoming)', () => {
   it('Psychokinetic Barrier contributes a flat HP absorb (does not scale with Max HP)', () => {
     // Brute secondary Psionic Armor. Fortify_Mind = Psychokinetic Barrier.
     const b = build('brute', 'Brute', 'brute/psionic-armor', 'Psionic Armor', [
-      { internalName: 'Fortify_Mind', name: 'Psychokinetic Barrier', isActive: true, slots: [] },
+      { internalName: 'Fortify_Mind', name: 'Psychokinetic Barrier', powerSet: 'brute/psionic-armor', level: 1, isActive: true, slots: [] },
     ]);
     const absorb = calculateCharacterTotals(b, false, undefined, {}).globalBonuses.absorb;
     // scale 3 × Melee_HealSelf (~baseHP/10) ≈ 30% of base HP, as absolute HP.
