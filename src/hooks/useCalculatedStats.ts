@@ -247,51 +247,70 @@ export function convertToLegacyStats(
 // ============================================
 
 /**
- * Cross-instance memo for the full character calculation.
- *
- * `useCharacterCalculation` is consumed by many *per-instance* components —
- * every PowerRow (Bonus Cap rings), every PowerSlot (Rule-of-5 tracking), every
- * PermaRing / PowerInfoTooltip — so a full build mounts ~150+ callers. React's
- * `useMemo` is scoped to a single component instance and is NOT shared, so
- * without this cache each of those instances would run the entire
- * `calculateCharacterTotals` pipeline independently on every state change that
- * touches a calc input (combat mode, procs, exemplar, adjuster sliders, a power
- * toggle, an incarnate toggle). That N× redundant recompute is what produced
- * the ~0.5-1s click stall (worse in Chrome, whose constant factor on this
- * allocation-heavy path is higher).
+ * Cross-instance memo. React's `useMemo` is scoped to one component instance and
+ * is NOT shared, but the calc hooks below are consumed by many *per-instance*
+ * components — every PowerRow (Bonus Cap rings), every PowerSlot (Rule-of-5
+ * tracking), every PermaRing / PowerInfoTooltip / picker row (power projection)
+ * — so a full build mounts ~150+ callers. Without a shared cache each instance
+ * runs the entire (now engine-backed) `calculateCharacterTotals` on every state
+ * change that touches a calc input, and that N× redundant recompute is the
+ * ~0.5-1s click stall.
  *
  * All mounted consumers read the same store values within one render pass, so a
  * single-entry cache keyed on the exact dependency tuple collapses those N runs
  * into one: the first caller computes, every other caller in the same pass (and
- * until an input actually changes) reuses the result. Reference/`Object.is`
- * equality on each dep — identical to what the per-instance `useMemo` compared —
- * keeps it correct: any real input change misses the cache and recomputes once.
+ * until an input actually changes) reuses the result. `Object.is` per dep —
+ * identical to what the per-instance `useMemo` compares — keeps it correct: any
+ * real input change misses the cache and recomputes once.
+ *
+ * The KEY REQUIREMENT is that the dep tuple compares equal *across instances*.
+ * Store values (Zustand refs, primitives) satisfy this; a value each instance
+ * builds itself in its own `useMemo` (e.g. an `options` object) does NOT — it is
+ * a fresh reference per instance and silently defeats the cache. `useCalculationContext`
+ * is therefore itself routed through one of these shared memos so the `options`
+ * object handed to the calc cache is one shared reference, not 150 equal-but-distinct ones.
  */
-let sharedCalcDeps: readonly unknown[] | null = null;
-let sharedCalcResult: CharacterCalculationResult | null = null;
+export function createSharedSingleEntryMemo<T>() {
+  let cachedDeps: readonly unknown[] | null = null;
+  let cachedResult: T | null = null;
+  let filled = false;
+  const get = (deps: readonly unknown[], compute: () => T): T => {
+    if (
+      filled &&
+      cachedDeps !== null &&
+      cachedDeps.length === deps.length &&
+      cachedDeps.every((d, i) => Object.is(d, deps[i]))
+    ) {
+      return cachedResult as T;
+    }
+    const result = compute();
+    cachedDeps = deps;
+    cachedResult = result;
+    filled = true;
+    return result;
+  };
+  const reset = () => {
+    cachedDeps = null;
+    cachedResult = null;
+    filled = false;
+  };
+  return { get, reset };
+}
 
-/** Test-only: clear the shared calc cache so cases don't leak into each other. */
+const sharedCalcMemo = createSharedSingleEntryMemo<CharacterCalculationResult>();
+const sharedContextMemo = createSharedSingleEntryMemo<CalculationContext>();
+
+/** Test-only: clear the shared caches so cases don't leak into each other. */
 export function _resetSharedCalcCache(): void {
-  sharedCalcDeps = null;
-  sharedCalcResult = null;
+  sharedCalcMemo.reset();
+  sharedContextMemo.reset();
 }
 
 export function getSharedCharacterCalculation(
   deps: readonly unknown[],
   compute: () => CharacterCalculationResult
 ): CharacterCalculationResult {
-  if (
-    sharedCalcResult !== null &&
-    sharedCalcDeps !== null &&
-    sharedCalcDeps.length === deps.length &&
-    sharedCalcDeps.every((d, i) => Object.is(d, deps[i]))
-  ) {
-    return sharedCalcResult;
-  }
-  const result = compute();
-  sharedCalcDeps = deps;
-  sharedCalcResult = result;
-  return result;
+  return sharedCalcMemo.get(deps, compute);
 }
 
 // ============================================
@@ -306,11 +325,13 @@ export function getSharedCharacterCalculation(
  * numbers came from. Assembling that context a second time is how a delta ends up reporting a
  * difference in exemplar level or combat mode rather than in the slotting under test.
  */
-export function useCalculationContext(): {
+export interface CalculationContext {
   exemplarMode: Parameters<typeof calculateCharacterTotals>[1];
   incarnateActive: Parameters<typeof calculateCharacterTotals>[2];
   options: Parameters<typeof calculateCharacterTotals>[3];
-} {
+}
+
+export function useCalculationContext(): CalculationContext {
   const exemplarMode = useUIStore((state) => state.exemplarMode);
   const exemplarLevel = useUIStore((state) => state.exemplarLevel);
   const incarnateActive = useUIStore((state) => state.incarnateActive);
@@ -332,8 +353,15 @@ export function useCalculationContext(): {
   // When master Proc toggle is off, disable all proc categories
   const effectiveProcSettings = procsEnabled ? procSettings : ALL_PROCS_DISABLED;
 
-  return useMemo(
-    () => ({
+  // Route through a shared single-entry memo so ALL instances get the SAME
+  // context object reference (every dep here is a store value — a Zustand ref or
+  // a primitive — so the tuple compares equal across instances). This is what
+  // keeps the downstream `getSharedCharacterCalculation` cache effective: if each
+  // instance built its own `options` object (a fresh ref per `useMemo`), the calc
+  // cache would miss on every instance and every consumer would re-run the engine.
+  return useMemo(() => {
+    const deps = [exemplarMode, exemplarLevel, incarnateActive, incarnateLevelShiftActive, effectiveProcSettings, targetsHitValues, targetLevelOffset, vigilanceTeamSize, furyLevel, combatMode, globalAdjusters, mechanicAdjusters, destinyTime, dominationActive, stalkerHidden] as const;
+    return sharedContextMemo.get(deps, () => ({
       exemplarMode,
       incarnateActive,
       options: {
@@ -351,9 +379,8 @@ export function useCalculationContext(): {
         dominationActive,
         stalkerHidden,
       },
-    }),
-    [exemplarMode, exemplarLevel, incarnateActive, incarnateLevelShiftActive, effectiveProcSettings, targetsHitValues, targetLevelOffset, vigilanceTeamSize, furyLevel, combatMode, globalAdjusters, mechanicAdjusters, destinyTime, dominationActive, stalkerHidden]
-  );
+    }));
+  }, [exemplarMode, exemplarLevel, incarnateActive, incarnateLevelShiftActive, effectiveProcSettings, targetsHitValues, targetLevelOffset, vigilanceTeamSize, furyLevel, combatMode, globalAdjusters, mechanicAdjusters, destinyTime, dominationActive, stalkerHidden]);
 }
 
 /**
