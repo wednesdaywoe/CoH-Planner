@@ -10,6 +10,7 @@ import type { CharacterStats, BonusTracking, ValueTracking, StatSource, Dashboar
 import type { GlobalBonuses } from '@/utils/calculations/character-totals';
 import type { ThreeTierValues } from '@/components/info/powerDisplayUtils';
 import type { PermaInfo } from '@/utils/calculations/perma';
+import type { EnhancementBonuses } from '@/utils/calculations/enhancement-values';
 
 export interface EngineStats {
   damage: number; accuracy: number; to_hit: number; recharge: number; endurance_reduction: number;
@@ -146,6 +147,7 @@ export interface EnginePowerProjection {
   range: EngineThreeTier | null;
   perma: EnginePerma | null;
   granted_magnitudes: EngineGrantedMagnitude[];
+  enhancement_bonuses: Record<string, number>;
 }
 
 export interface EngineTotals {
@@ -187,6 +189,11 @@ export interface PowerProjection {
   /** The magnitudes this power GRANTS, each already resolved and three-tiered. One entry per
    *  display row, so a by-type effect contributes one per type (PROD6B-2). */
   grantedMagnitudes: GrantedMagnitude[];
+  /** This power's post-ED slotted bonuses, aspect → fraction, with Alpha folded in — the same
+   *  input every tier above was built from (PROD6D). A surface driving rows the projection does
+   *  not itself resolve reads these instead of running `calculatePowerEnhancementBonuses`
+   *  beside the engine. */
+  enhancementBonuses: EnhancementBonuses;
 }
 
 /** The minimal power identity every engine source ref carries — resolved to a display name. */
@@ -438,6 +445,7 @@ export function mapOnePowerProjection(p: EnginePowerProjection): PowerProjection
     range: mapTier(p.range),
     perma: mapPerma(p.perma),
     grantedMagnitudes: p.granted_magnitudes.map(mapGrantedMagnitude),
+    enhancementBonuses: p.enhancement_bonuses,
   };
 }
 

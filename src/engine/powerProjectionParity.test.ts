@@ -540,12 +540,10 @@ function betaReference(
       accuracy: accBase !== null ? calcThreeTier('accuracy', accBase, enh, global) : null,
       castTime: castBase !== null ? calcThreeTier('castTime', castBase, enh, global) : null,
       arcanaTime: castBase !== null ? calculateArcanaTime(castBase) : null,
-      // A global +Range reaches a power only when it accepts Range enhancement (`GeneralStatsBlock`,
-      // engine `reachable_global_range`). The corpus carries no set bonuses, so the global is zero
-      // and gated and ungated agree here — the rule itself is pinned by the engine's own unit test.
-      // The tri-state follows the ENGINE (absent list ⇒ every type), which is how
-      // `calculatePowerEnhancementBonuses` reads it; the beta's display rule treats absent as
-      // accepting nothing, an unresolved divergence noted in the PROD6C plan entry.
+      // A global +Range is blocked only by the power's own `StrengthsDisallowed` (engine
+      // `reachable_global_range`; `boostsAllowed` governs slotting, not strength). The corpus
+      // carries no set bonuses, so the global is zero and gated and ungated agree here — the rule
+      // itself is graded on real bundle data by the engine's `global_range_gate`.
       range:
         rangeBase !== null
           ? rangeEnhanceable(shown)
@@ -553,6 +551,9 @@ function betaReference(
             : calcThreeTier('range', rangeBase, enh, {})
           : null,
       perma: calculatePermaInfo(power, enh, (rawGlobal.recharge ?? 0) / 100),
+      // PROD6D — the fractions every tier above was built from, now carried on the projection so
+      // a re-slotting surface reads them instead of running this same calculator beside it.
+      enhancementBonuses: enh,
     },
     // The magnitude rows read the +Strength-augmented globals — the surfaces' own input
     // (PROD6C). The execution half above deliberately does not: Strength carries no
@@ -853,6 +854,25 @@ function projectedValuesMoved(a: PowerProjection, b: PowerProjection): boolean {
   return false;
 }
 
+/** PROD6D — the projection's own enhancement fractions against `calculatePowerEnhancementBonuses`.
+ *  Compared over the UNION of both key sets, so an aspect the engine invents (or drops) is a delta
+ *  rather than an absence nobody looks at. */
+function enhancementBonusDeltas(
+  powerName: string,
+  engine: EnhancementBonuses,
+  beta: EnhancementBonuses,
+): string[] {
+  const deltas: string[] = [];
+  for (const aspect of new Set([...Object.keys(engine), ...Object.keys(beta)])) {
+    const left = engine[aspect] ?? 0;
+    const right = beta[aspect] ?? 0;
+    if (!withinTolerance(left, right)) {
+      deltas.push(`${powerName}.enhancementBonuses.${aspect}: engine ${left} vs beta ${right}`);
+    }
+  }
+  return deltas;
+}
+
 /** Diff every power of one fixture: the execution three-tiers, ArcanaTime, perma and granted
  *  magnitudes, against the beta calculators run in the same `state`. The 6B-1 walk inlines this
  *  same body; it is factored out here because PROD6C-3f re-runs the WHOLE diff under two new
@@ -889,6 +909,7 @@ function diffProjection(
       ...tierDelta(`${power.internalName}.accuracy`, engine.accuracy, beta.accuracy),
       ...tierDelta(`${power.internalName}.castTime`, engine.castTime, beta.castTime),
       ...tierDelta(`${power.internalName}.range`, engine.range, beta.range),
+      ...enhancementBonusDeltas(power.internalName, engine.enhancementBonuses, beta.enhancementBonuses),
       ...perma.real.map((d) => `${power.internalName}.${d}`),
       ...mags.real,
     );
