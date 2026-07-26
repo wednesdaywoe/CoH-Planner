@@ -245,7 +245,7 @@ export function mapBonusTracking(
 /**
  * Reshape the engine's set-bonus tracking into the dashboard `breakdown` map's set-bonus sources
  * — the per-stat tooltip rows, the over-cap ring (`powerName` + `capped`), and the Rule-of-5
- * banner. A faithful port of the beta's Step 3 (`character-totals.ts:4280`) + `buildStatBreakdown`:
+ * banner. A faithful port of the beta's Step 3 + `buildStatBreakdown` (`legacy-totals.oracle.ts`):
  * each accepted instance is a `capped:false` source, each rejected instance a `capped:true` one,
  * the bucket total is `value × count`, and a stat fans out to every `breakdown_keys` entry
  * (`+Res(Recharge Debuff)` → both recharge and slow).

@@ -125,7 +125,7 @@ describe('over-cap mute canonicalization', () => {
 
   it('agrees on write (tracking) vs read (breakdown global) key for divergent-global set bonuses', () => {
     // These three set-bonus stats have breakdown/global keys renamed beyond case
-    // (STAT_TO_GLOBAL in character-totals.ts). Muting from the popup (tracking key)
+    // (STAT_TO_GLOBAL in legacy-totals.oracle.ts). Muting from the popup (tracking key)
     // must suppress the ring/banner (breakdown global key).
     expect(toCanonicalStatKey('maxEndurance')).toBe(toCanonicalStatKey('maxend'));
     expect(toCanonicalStatKey('endurance')).toBe(toCanonicalStatKey('endrdx'));

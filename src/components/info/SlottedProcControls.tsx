@@ -13,7 +13,7 @@
  * (a proc in a toggled-off damage aura contributes nothing) — the block is shown
  * inactive and reports 0, mirroring the calc.
  *
- * Contribution readouts mirror the calc exactly (character-totals.ts
+ * Contribution readouts mirror the calc exactly (legacy-totals.oracle.ts
  * `applyVariableProcBonuses`): magnitude for a "By the Slotted Power" effect is
  * `value × getTableValue(archetype, scaleTable, level)`.
  */

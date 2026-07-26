@@ -1,7 +1,7 @@
 /**
  * Plan B Slices 1-2 — regression guard for the atom-native ToHit + Damage appliers.
  *
- * `character-totals.ts` now sources +ToHit / +Damage from `toHitBuffValue(power)`
+ * `legacy-totals.oracle.ts` now sources +ToHit / +Damage from `toHitBuffValue(power)`
  * / `damageBuffValue(power)` (atoms) instead of the `effects.*` bag. This asserts
  * the LIVE atom path returns the value the calc needs, on the real generated data,
  * for the shapes the migration had to get right:

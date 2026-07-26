@@ -5,7 +5,7 @@ import { createEmptyBuild } from '@/types/build';
 import type { Build, ProcOverride } from '@/types';
 
 /**
- * Calc integration for variable procs (character-totals `applyVariableProcBonuses`).
+ * Calc integration for variable procs (`applyVariableProcBonuses`, legacy-totals.oracle).
  * Might of the Tanker is a "By the Slotted Power" +Res(All) stacking buff — 5% per
  * stack on a Tanker (generated 50 × 0.10 Melee_Res_Dmg) — and Reactive Defenses is
  * an HP-scaling +Res(All) global (3% floor → 12.9% cap). Both were previously

@@ -5,7 +5,7 @@ import { findProcData, getProcEffects } from './proc-data';
  * Five ATO sets have a 6th-piece special that's an always-on global (or pet
  * proc) rather than a self chance-proc. The binary tagged them proc:false, so
  * the special was dropped from BOTH the slot UI and the character totals
- * (enhancement-outline + character-totals both gate on the piece `proc` flag).
+ * (enhancement-outline + the totals calc both gate on the piece `proc` flag).
  * The extractor now flips proc:true and proc-data carries each global; these
  * lock the display resolution + the one SELF global's calc values.
  *

@@ -27,7 +27,7 @@ import {
 import { getAvailableGenericIOs, createGenericIOEnhancement } from '@/data/enhancement-registry';
 import { withoutIllegalSlots } from '@/utils/build-enhancement-validation';
 import { createEmptyBuild } from '@/types/build';
-import { legacyCalculateCharacterTotals } from '@/utils/calculations/character-totals';
+import { legacyCalculateCharacterTotals } from '@/utils/calculations/legacy-totals.oracle';
 import { toCharacterStateJson, type AdapterCalcContext } from './characterStateAdapter';
 import { mapStats, mapGlobal, type EngineTotals } from './engineTotalsMap';
 import type { Build } from '@/types/build';

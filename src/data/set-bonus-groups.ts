@@ -151,7 +151,7 @@ export function statKeyToLabel(breakdownKey: string): string {
  * are intentionally absent from PROC_BREAKDOWN_KEY_TO_GROUP_KEY). Kept separate
  * from that map so the popup's proc-fold contract ("exactly proc keys") is
  * unchanged. Source of truth for the rename: STAT_TO_GLOBAL in
- * src/utils/calculations/character-totals.ts — when an engine stat's global key
+ * src/utils/calculations/legacy-totals.oracle.ts — when an engine stat's global key
  * diverges from its normalized name, add the reverse here so the over-cap mute
  * (written from the popup, read against the breakdown) still round-trips.
  */

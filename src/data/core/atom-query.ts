@@ -481,7 +481,7 @@ function isDebuffAtom(a: AtomicEffect): boolean {
 
 /**
  * The atom-native `effects.resistance` — the per-damage-type +resistance BUFF the
- * calc reads today (line ~1258 of character-totals.ts), reconstructed from atoms.
+ * calc reads today (`legacy-totals.oracle.ts`), reconstructed from atoms.
  * Returns an object keyed by lowercase damage type (`{ smashing: { scale, table,
  * perTarget? }, … }`), the SAME shape the applier already iterates, so the applier
  * body is unchanged — only its source swaps to `resistanceBuffValue(power) ??
@@ -655,7 +655,7 @@ function defenseBuffByType(
 
 /**
  * The atom-native `effects.defenseBuff` — the always-on per-type +defense buff the
- * calc reads today (line ~1220 of character-totals.ts, alongside the pet-aura/override
+ * calc reads today (`legacy-totals.oracle.ts`, alongside the pet-aura/override
  * `effects.defense`). Keyed by lowercase position/type (`{ melee: {scale,table,
  * perTarget?}, … }`) — the SAME shape the applier iterates. Returns `undefined` when
  * the power has no always-on standard-type defense atom (→ bag fallback; see
@@ -888,7 +888,7 @@ export function recoveryBuffValue(
  * `movementFriction`, and the applier's own `movementKeyMap` ignores all three, so they
  * add zero on both sides — the "compare only what survives to a total" doctrine from
  * Slice 3. `fly` matters most: it is the kFly flight-MODE grant, and reading its mode
- * magnitude as a speed buff double-counts Fly by +200% (see character-totals.ts). It is
+ * magnitude as a speed buff double-counts Fly by +200% (see legacy-totals.oracle.ts). It is
  * excluded here structurally rather than by a scale/table guess, because the atom now
  * carries it as its own `FlyMode` axis — before that split, kFly and FlyingSpeed shared
  * subType `Fly` and Hover's pair (kFly 2.0 / FlyingSpeed 0, both `Melee_Ones`) was
@@ -905,7 +905,7 @@ function isSlowAtom(a: AtomicEffect): boolean {
 
 /**
  * The atom-native `effects.movement` — the self/current movement BUFF map the calc
- * reads today (line ~1483 of character-totals.ts), keyed exactly as the applier
+ * reads today (`legacy-totals.oracle.ts`), keyed exactly as the applier
  * iterates it (`{ runSpeed: {scale,table,stackKey?,suppressible?}, … }`). Returns
  * `undefined` when the power has no contributing movement atom (→ bag fallback).
  *

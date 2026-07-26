@@ -1,7 +1,7 @@
 /**
  * Plan B Slice 7 — regression guard for the atom-native movement applier.
  *
- * `character-totals.ts` now sources the movement buff map from
+ * `legacy-totals.oracle.ts` now sources the movement buff map from
  * `movementBuffValue(power)` (atoms) instead of `effects.movement`. This asserts the
  * LIVE atom path returns what the calc needs, on the real generated data, for the
  * shapes the migration had to get right. Corpus-wide equality vs the bag is proven

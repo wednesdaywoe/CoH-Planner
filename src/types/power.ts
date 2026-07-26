@@ -300,7 +300,7 @@ export interface StealthEffects {
    *  key mutually suppress — only the largest StealthRadius in the group
    *  applies (e.g. "NictusFX": Stealth, Super Speed, Shinobi-Iri, the cloak
    *  toggles). Null/absent means the radius stacks additively. Consumed by
-   *  resolveStealthRadius in character-totals. */
+   *  resolveStealthRadius in legacy-totals.oracle. */
   stackKey?: string | null;
 }
 
