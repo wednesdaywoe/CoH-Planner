@@ -80,5 +80,11 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: dist
-          path: dist/
+          # Sourcemaps are 92 of dist's 155 MB and useless here — `sourcemap: 'hidden'`
+          # emits no sourceMappingURL, so a browser never fetches them. Excluding them
+          # halves every upload and download. (They still ship on a real deploy, where
+          # Sentry needs them.)
+          path: |
+            dist/
+            !dist/**/*.map
           retention-days: 7
