@@ -18,6 +18,9 @@ export const DevastatingBlow: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 7,

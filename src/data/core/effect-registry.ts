@@ -48,6 +48,14 @@ export interface EffectDisplayConfig {
   format: EffectFormat;
   /** Enhancement aspect that modifies this (for three-tier display) */
   enhancementAspect?: string;
+  /**
+   * Build-wide global / +Strength key that scales this effect, when it differs from
+   * `enhancementAspect`. The server reads Strength at the attrib mod's OWN offset, while one
+   * boost template may enhance several attribs at once — a Healing IO lists `Heal_Dmg` AND
+   * `Absorb`, so absorb IS heal-enhanceable, but +Heal Strength and the +Heal set bonus target
+   * `Heal_Dmg` alone and never reach it. Absent = same key as the enhancement aspect.
+   */
+  strengthAspect?: string;
   /** Whether this is a buff or debuff for percentage calculation */
   calculation?: 'buff' | 'debuff';
   /** Priority for display order within category (lower = first) */
@@ -578,6 +586,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     colorClass: STAT_COLORS.absorb,
     format: 'value',
     enhancementAspect: 'heal',
+    strengthAspect: 'absorb',
     priority: 15,
     valueFromTable: true,
     maxHpFractionPercentForm: true,

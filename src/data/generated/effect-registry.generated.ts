@@ -360,6 +360,7 @@ export const EFFECT_RESOLUTION: Record<string, Record<string, unknown>> =
       "category": "buff",
       "format": "value",
       "enhancementAspect": "heal",
+      "strengthAspect": "absorb",
       "priority": 15,
       "valueFromTable": true,
       "maxHpFractionPercentForm": true

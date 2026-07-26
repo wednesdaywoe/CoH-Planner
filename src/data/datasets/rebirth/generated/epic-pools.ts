@@ -3797,6 +3797,9 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Thunder Strike",
         "fullName": "Epic.Charge_Mastery.Thunder_Strike",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 3,
         "available": 40,
         "description": "A massive attack. You smash your foes with all the power of a lightning bolt. The pummeled victim takes tremendous damage and may be Disoriented. Any nearby foes may be knocked down and take some damage from the shockwave, as well as have some endurance drained. You must be level 41 and have Static Discharge or Electric Shackles before selecting this power. Damage: High, Recharge: Slow",
@@ -12757,6 +12760,9 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Greater Fire Sword",
         "fullName": "Epic.Guardian_Fire_Mastery.Greater_Fire_Sword",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 5,
         "available": 43,
         "description": "Your mastery of fire allows you to create an enhanced Sword of Fire that can set foes ablaze. Successful attacks from the Greater Fire Sword will ignite your target, dealing damage over time. You must be level 44 and have two other Fire Mastery Powers before selecting this power. Damage: Superior, Recharge: Slow",
@@ -12926,6 +12932,9 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Frozen Aura",
         "fullName": "Epic.Guardian_Ice_Mastery.Frozen_Aura",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 2,
         "available": 34,
         "description": "Your mastery of cold enables you to dramatically lower the temperature immediately around you. When you perform a Frozen Aura, nearby foes will be frozen within a fragile casing of ice and suffer a moderate amount of cold damage. These frozen foes will break free if attacked. Frozen Aura deals moderate damage. Damage: Moderate Recharge: Slow",
@@ -12978,6 +12987,9 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Freezing Touch",
         "fullName": "Epic.Guardian_Ice_Mastery.Freezing_Touch",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 3,
         "available": 40,
         "description": "This Freezing Touch will encase a single foe in a block of ice. This will deal high damage over time, as well as freezing him in his tracks, leaving him cold and helpless. You must be level 41 and have Chilblain or Frozen Aura before selecting this power. Damage:High(DoT), Recharge: Slow",
@@ -14047,6 +14059,9 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Thunder Strike",
         "fullName": "Epic.Guardian_Mu_Mastery.Thunder_Strike",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 3,
         "available": 40,
         "description": "A massive attack. You smash your foes with all the power of a lightning bolt. The pummeled victim takes tremendous damage and may be Disoriented. Any nearby foes may be knocked down and take some damage from the shockwave, as well as have some endurance drained. You must be level 41 and have Electric Shackles or Ball Lightning before selecting this power. Damage: High, Recharge: Slow",
@@ -14544,6 +14559,9 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Energy Transfer",
         "fullName": "Epic.Guardian_Primal_Forces_Mastery.Energy_Transfer",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 1,
         "available": 34,
         "description": "Mastery of Energy Melee begins with the ability to transfer your own Hit Points into a punch that deals extreme damage. Energy Transfer has a good chance of Disorienting the target. Damage: Extreme, Recharge: Slow",
@@ -14893,6 +14911,9 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Greater Psi Blade",
         "fullName": "Epic.Guardian_Psionic_Mastery.Greater_Psi_Blade",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 2,
         "available": 34,
         "description": "You focus and create a more powerful Psi Blade projection before slashing at your foe to deal superior Psionic and Lethal damage. The affected foe will have their recharge reduced moderately and be left held for a short time. Damage: Superior, Recharge: Long",
@@ -15024,6 +15045,9 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Mass Levitate",
         "fullName": "Epic.Guardian_Psionic_Mastery.Mass_Levitate",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 4,
         "available": 40,
         "description": "You build up a large amount of telekinetic energy and release it causing nearby foes to be flung into the air. Affected foes will suffer high Smashing damage. You must be level 41 and have Boggle or Greater Psi Blade before selecting this power. Damage: High, Recharge: Long",
@@ -19001,6 +19025,9 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Thunder Strike",
         "fullName": "Epic.Mastermind_Mu_Mastery.Thunder_Strike",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 3,
         "available": 40,
         "description": "A massive attack. You smash your foes with all the power of a lightning bolt. The pummeled victim takes tremendous damage and may be Disoriented. Any nearby foes may be knocked down and take some damage from the shockwave, as well as have some endurance drained. You must be level 41 and have Thunder Strike or Charged Armor before selecting this power. Damage: High, Recharge: Slow",
@@ -20677,6 +20704,9 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Energy Transfer",
         "fullName": "Epic.Primal_Forces_Mastery_Dominator.Energy_Transfer",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 1,
         "available": 34,
         "description": "Mastery of Energy Melee begins with the ability to transfer your own Hit Points into a punch that deals extreme damage. Energy Transfer has a good chance of Disorienting the target. Damage: Extreme, Recharge: Slow",
@@ -23863,6 +23893,9 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Seismic Smash",
         "fullName": "Epic.Stone_Mastery.Seismic_Smash",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 4,
         "available": 40,
         "description": "This massive attack hits with all the force of the Earth itself. It deals tremendous amounts of damage, and may Hold the target if they are not defeated outright. You must be level 41 and have Hurl Boulder or Fissure before selecting this power. Damage: Extreme, Recharge: Slow",

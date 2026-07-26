@@ -18,9 +18,6 @@ export const Burn: Power = {
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
-  "strengthsDisallowed": [
-    "Radius"
-  ],
   "stats": {
     "accuracy": 1,
     "recharge": 25,

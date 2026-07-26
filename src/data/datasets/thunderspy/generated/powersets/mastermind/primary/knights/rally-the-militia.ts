@@ -103,6 +103,7 @@ export const RallyTheMilitia: Power = {
       "table": "Ranged_Ones"
     },
     "summon": {
+      "duration": 120,
       "entities": [
         {
           "count": 2,

@@ -5,13 +5,13 @@ import { calculatePermaInfo } from '@/utils/calculations/perma';
 import type { Power } from '@/types';
 
 /**
- * StrengthsDisallowed / GlobalStrengthsDisallowed — server-side power flags
- * that block recharge (and other) strength from applying to specific powers.
+ * StrengthsDisallowed / GlobalStrengthsDisallowed — power flags that block
+ * recharge (and other) strength from applying to specific powers.
  *
- * The flags are NOT in the client powers.bin (verified 2026-07-07 by full
- * byte-accounting of Parse7 records — see tools/extraction-audit/audit.py
- * SERVER_ONLY_FIELDS); the converter sources them from the committed
- * `raw defs/` .powers oracle, HC only. These tests pin:
+ * StrengthsDisallowed IS serialized into powers.bin, so it comes from the
+ * export on every fork. GlobalStrengthsDisallowed is an HC addition with no
+ * i24 parse-table entry and no bin field, so it alone still comes from the
+ * committed `raw defs/` .powers oracle. These tests pin:
  *   1. the dataset emission on known carriers (armor T9s, Rune of Protection,
  *      melee Range locks, Kuji-In Rin's global-only variant), and
  *   2. the perma calc honoring them (Hasten/set bonuses must not perma a
@@ -59,15 +59,21 @@ describe('strengthsDisallowed dataset emission — homecoming', () => {
   });
 });
 
-describe('strengthsDisallowed absent on rebirth (no oracle — no flags)', () => {
+describe('strengthsDisallowed on rebirth — its own bin, not the HC oracle', () => {
   beforeAll(async () => {
     await loadDataset('rebirth');
   });
 
-  it('Rebirth Strength of Will carries no flag', () => {
+  it('Rebirth Strength of Will locks RechargeTime like its HC twin', () => {
     const p = powerBy('brute/willpower', 'Strength_of_Will');
     expect(p).toBeTruthy();
-    expect(p!.strengthsDisallowed).toBeUndefined();
+    expect(p!.strengthsDisallowed).toContain('RechargeTime');
+  });
+
+  it('a Rebirth melee attack locks Range', () => {
+    const swoop = powerBy('tanker/battle-axe', 'Swoop');
+    expect(swoop, 'tanker/battle-axe Swoop').toBeTruthy();
+    expect(swoop!.strengthsDisallowed).toContain('Range');
   });
 });
 

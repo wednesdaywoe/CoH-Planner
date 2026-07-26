@@ -195,15 +195,20 @@ export interface ThreeTierValues {
  * Formulas by aspect type:
  * - Reductions (endurance, recharge): base / (1 + bonus) — lower is better
  * - Multiplicative (everything else): base * (1 + bonus) — higher is better
+ *
+ * `strengthAspect` splits the two lookups where one boost enhances several attribs: the
+ * slotted bonus is keyed by `aspect`, the build-wide global and +Strength by `strengthAspect`.
+ * Defaults to `aspect`, which is every effect but absorb.
  */
 export function calcThreeTier(
   aspect: string,
   baseValue: number,
   enhancementBonuses: Record<string, number | undefined>,
-  globalBonuses: Record<string, number | undefined>
+  globalBonuses: Record<string, number | undefined>,
+  strengthAspect: string = aspect
 ): ThreeTierValues {
   const enhBonus = enhancementBonuses[aspect] || 0;
-  const globalBonus = globalBonuses[aspect] || 0;
+  const globalBonus = globalBonuses[strengthAspect] || 0;
 
   let enhanced: number;
   let final: number;
@@ -288,9 +293,12 @@ const STRENGTH_MEZ_ASPECTS = ['immobilize', 'hold', 'stun', 'sleep', 'confuse', 
  *
  * Strength is a non-ED multiplier on the caster's OWN matching output, so it lands in the
  * Final column exactly like a global bonus (`final = base × (1 + enh + global)`). Only
- * three families are folded: defense and mez have no pre-existing global coupling in
- * `GLOBAL_BONUS_ASPECT_MAP`, and heal-strength is genuinely additive with the +Heal set
- * bonus already there. ToHit and damage are deliberately left out — the dashboard totals
+ * the families with no other global coupling are folded: defense, absorb and mez have no
+ * entry in `GLOBAL_BONUS_ASPECT_MAP` at all, and heal-strength is genuinely additive with the
+ * +Heal set bonus already there. Absorb is keyed apart from heal because the server reads
+ * Strength at the mod's own attrib offset, and every +Heal set bonus targets `Heal_Dmg`
+ * alone — the absorb rows reach `absorb` through the registry's `strengthAspect`.
+ * ToHit and damage are deliberately left out — the dashboard totals
  * have already folded ToHit strength into the field those rows read, and the family grants
  * no damage strength, so either would double-count. The fields are stored as FRACTIONS by
  * `calculateCharacterTotals` (`collectStrengthBuffs`), so they add without the /100.
@@ -308,6 +316,7 @@ export function withStrengthBonuses(
   };
   add('defense', globalBonuses.strengthDefense);
   add('heal', globalBonuses.strengthHeal);
+  add('absorb', globalBonuses.strengthAbsorb);
   for (const aspect of STRENGTH_MEZ_ASPECTS) add(aspect, globalBonuses.strengthMez);
   return out;
 }

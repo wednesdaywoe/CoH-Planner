@@ -113,7 +113,13 @@ function calcEffectThreeTier(
 ): ThreeTierValues {
   const aspect = config.enhancementAspect;
   if (!aspect) return { base: baseValue, enhanced: baseValue, final: baseValue };
-  return calcThreeTier(aspect, baseValue, enhancementBonuses, globalBonuses);
+  return calcThreeTier(
+    aspect,
+    baseValue,
+    enhancementBonuses,
+    globalBonuses,
+    config.strengthAspect ?? aspect
+  );
 }
 
 /**

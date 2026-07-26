@@ -14535,6 +14535,7 @@ export const EPIC_POOLS_RAW = {
           "activatePeriod": 1,
           "effectArea": "SingleTarget",
           "summon": {
+            "duration": 2,
             "entity": "Pets_Radiation_Melee_Irradiated_Ground_Pet",
             "isPseudoPet": false
           }

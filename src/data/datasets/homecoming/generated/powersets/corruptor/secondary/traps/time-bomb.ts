@@ -18,6 +18,9 @@ export const TimeBomb: Power = {
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "SingleTarget",
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 2
   },

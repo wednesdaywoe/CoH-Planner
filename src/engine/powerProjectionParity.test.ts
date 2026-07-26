@@ -336,12 +336,21 @@ function truthyStat(power: SelectedPower, statKey: string, effectsKey: string): 
   return e || null;
 }
 
-/** Does a build-wide +Range reach this power? Its `boostsAllowed` must list Range; an ABSENT
- *  list accepts every type (the export's tri-state, which `calculatePowerEnhancementBonuses`
- *  reads the same way). */
+/** Does a build-wide +Range reach this power? The server copies the character's whole Strength
+ *  set onto every power and then zeroes only what `StrengthsDisallowed` names, so the gate is the
+ *  disallow list — NOT `boostsAllowed`, which governs slotting alone (Snow Storm takes no Range
+ *  IO yet a global still extends it). `GlobalStrengthsDisallowed` is the HC narrower form that
+ *  blocks the global while leaving slotting alone. Mirrors `projection.rs`
+ *  `reachable_global_range`. */
 function rangeEnhanceable(power: SelectedPower): boolean {
-  const allowed = power.allowedEnhancements;
-  return allowed == null || allowed.includes('Range');
+  const disallowed = power as unknown as {
+    strengthsDisallowed?: string[];
+    globalStrengthsDisallowed?: string[];
+  };
+  return !(
+    disallowed.strengthsDisallowed?.includes('Range')
+    || disallowed.globalStrengthsDisallowed?.includes('Range')
+  );
 }
 
 function baseEnduranceCost(power: SelectedPower): number | null {

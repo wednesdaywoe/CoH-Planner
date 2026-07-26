@@ -18,6 +18,9 @@ export const WindShear: Power = {
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "AoE",
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 20,

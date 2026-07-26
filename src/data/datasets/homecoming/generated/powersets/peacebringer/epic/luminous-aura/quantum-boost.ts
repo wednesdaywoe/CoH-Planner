@@ -18,6 +18,9 @@ export const QuantumBoost: Power = {
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "strengthsDisallowed": [
+    "RechargeTime"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 60,

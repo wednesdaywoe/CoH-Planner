@@ -6177,13 +6177,15 @@ function guardThunderspyAppliedMez(power, targetsAffected) {
 }
 
 // ---------------------------------------------------------------------------
-// StrengthsDisallowed / GlobalStrengthsDisallowed enrichment (HC only).
+// GlobalStrengthsDisallowed enrichment (HC only).
 //
-// These fields are server-side only — verified 2026-07-07 by full byte-
-// accounting of Parse7 power records: they are NOT serialized into the client
-// powers.bin, so the bin parser can never capture them (see
-// tools/extraction-audit/audit.py SERVER_ONLY_FIELDS). The committed
-// `raw defs/` .powers oracle is the authoritative source instead.
+// The i24 parse table has no GlobalStrengthsDisallowed — it is an HC addition
+// with no counterpart in the client bin, so the `raw defs/` .powers oracle is
+// the only source. Its sibling StrengthsDisallowed IS serialized (the bin
+// parser reads it into `strengths_disallowed`, and 966 powers carry it in both
+// places with byte-identical values), so that half comes from the export
+// instead — which is what gives Rebirth its 1,970 entries and stays current
+// across HC reworks the dev drop predates.
 //
 // Semantics (calc-relevant, esp. kRechargeTime on T9 armors / Rune of
 // Protection / MM summons):
@@ -6191,12 +6193,6 @@ function guardThunderspyAppliedMez(power, targetsAffected) {
 //    neither slotted enhancement nor global buffs (Hasten, set bonuses).
 //  - GlobalStrengthsDisallowed: only GLOBAL strength is ignored; slotted
 //    enhancement still applies (Kuji-In Rin).
-//
-// HC-only by data availability: `raw defs/` is the HC dev source. Rebirth and
-// Thunderspy have no equivalent oracle, so their powers carry no flag (their
-// bins don't expose it either). Keyed by full_name; the oracle predates some
-// HC reworks, so a renamed/reworked power simply has stale-but-harmless flags —
-// the audit's drift caveat applies.
 let _strengthsDisallowedIndex = null;
 function getStrengthsDisallowedIndex() {
   if (_strengthsDisallowedIndex) return _strengthsDisallowedIndex;
@@ -6306,16 +6302,16 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
     power.toggleIgnoreMez = powerJson.toggle_ignore;
   }
 
-  // StrengthsDisallowed enrichment from the `raw defs/` oracle (HC only — see
-  // getStrengthsDisallowedIndex above). Sparse: ~800 player powers carry
-  // strengthsDisallowed (mostly Range on melee attacks + RechargeTime on
-  // fixed-cooldown powers); omit when absent.
+  // StrengthsDisallowed from the bin export (all forks); GlobalStrengthsDisallowed
+  // from the `raw defs/` oracle, which is the only source for it (see
+  // getStrengthsDisallowedIndex above). Sparse — mostly Range on melee attacks and
+  // RechargeTime on fixed-cooldown powers; omit when absent.
+  if (Array.isArray(powerJson.strengths_disallowed) && powerJson.strengths_disallowed.length) {
+    power.strengthsDisallowed = powerJson.strengths_disallowed;
+  }
   if (powerJson.full_name) {
     const sd = getStrengthsDisallowedIndex().get(powerJson.full_name.toLowerCase());
-    if (sd) {
-      if (sd.strengths.length) power.strengthsDisallowed = sd.strengths;
-      if (sd.global.length) power.globalStrengthsDisallowed = sd.global;
-    }
+    if (sd && sd.global.length) power.globalStrengthsDisallowed = sd.global;
   }
 
   // Chain / target-cap RPN expressions (bin fields 43b / 38 — Electrical Affinity

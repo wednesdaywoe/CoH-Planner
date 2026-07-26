@@ -24,6 +24,9 @@ export const InnerWill: Power = {
     "stun",
     "terror"
   ],
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 180,

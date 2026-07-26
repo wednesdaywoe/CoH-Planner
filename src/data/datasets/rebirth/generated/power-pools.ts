@@ -419,6 +419,9 @@ export const POWER_POOLS_RAW = {
       {
         "name": "Boxing",
         "fullName": "Pool.Fighting.Boxing",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 1,
         "available": 0,
         "description": "You strike your opponent with a strong punch that causes light smashing damage and has a small chance to stun foes. If you have also trained Kick, this power's damage is increased by 15% and your chance to stun increases. If you have also trained Cross Punch, this power's damage is increased by 15% and will fatigue the target, draining some endurance and lowering recovery slightly. The synergy with Kick and Cross Punch stacks.  Damage: Light, Recharge: Very Fast",
@@ -499,6 +502,9 @@ export const POWER_POOLS_RAW = {
       {
         "name": "Kick",
         "fullName": "Pool.Fighting.Kick",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 2,
         "available": 0,
         "description": "You strike your opponent with a forceful kick that causes moderate smashing damage and has a small chance to knock opponents down. If you have also trained Boxing, this power's damage is increased by 15% and your chance to knockdown increases. If you have also trained Cross Punch, this power's damage is increased by 15% and will fatigue the target, draining some endurance and lowering recovery slightly. The synergy with Boxing and Cross Punch stacks.  Damage: Moderate, Recharge: Very Fast",
@@ -766,6 +772,9 @@ export const POWER_POOLS_RAW = {
       {
         "name": "Cross Punch",
         "fullName": "Pool.Fighting.Cross_Punch",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 5,
         "available": 13,
         "description": "You execute a sweeping right hook that can strike multiple targets in your frontal arc. This attack causes moderate smashing damage and has a chance to both knock down and stun foes. If you have also trained Boxing, this power's damage is increased by 15% and will improve your recharge and accuracy briefly. If you have also trained Kick, this power's damage is increased by 15% and will improve your recharge and accuracy briefly. The synergy with Boxing and Kick stacks.  Damage: Moderate, Recharge: Moderate",
@@ -1191,6 +1200,9 @@ export const POWER_POOLS_RAW = {
       {
         "name": "Air Superiority",
         "fullName": "Pool.Flight.Air_Superiority",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 2,
         "available": 0,
         "description": "This two-handed overhead melee attack can knock a flying target to the ground.",
@@ -3610,6 +3622,9 @@ export const POWER_POOLS_RAW = {
       {
         "name": "Victory Rush",
         "fullName": "Pool.Leadership.Victory_Rush",
+        "strengthsDisallowed": [
+          "RechargeTime"
+        ],
         "rank": 5,
         "available": 13,
         "description": "The defeat of an opponent gives your team a rush of adrenaline. The excitement of your victory increases the recovery and reduces the endurance cost of your powers. This effect extends to your teammates as well. The total strength of this bonus is dependent upon the rank of the enemy on which this is cast, with Archvillains and Giant Monsters providing the greatest benefit. This power does not stack with multiple castings. You must be level 14 and have trained at least two other Leadership powers before you can train Victory Rush. This power's Recharge Time cannot be reduced.  Recharge: Very Long",
@@ -3658,6 +3673,9 @@ export const POWER_POOLS_RAW = {
       {
         "name": "Jump Kick",
         "fullName": "Pool.Leaping.Jump_Kick",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 1,
         "available": 0,
         "description": "A good jumping-kick attack that may knock foes down or stun them. Using this power allows you to jump to a nearby foe to deal heavy smashing damage.",
@@ -5208,6 +5226,9 @@ export const POWER_POOLS_RAW = {
       {
         "name": "Flurry",
         "fullName": "Pool.Speed.Flurry",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 1,
         "available": 0,
         "description": "You unleash a super fast Flurry of punches to pummel your foe, moving so quickly that you can dodge incoming melee attacks, thus boosting your Melee and Lethal defense briefly. Note: Activating Burnout will cause Flurry to instantly recharge for a brief time while Burnout Acceleration is in effect.  Damage: High(DoT), Recharge: Moderate",

@@ -18,6 +18,9 @@ export const Thundergust: Power = {
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "Cone",
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 60,

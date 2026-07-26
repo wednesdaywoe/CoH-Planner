@@ -25,6 +25,7 @@ const RESOLUTION_FIELDS = [
   'category',
   'format',
   'enhancementAspect',
+  'strengthAspect',
   'calculation',
   'priority',
   'canBeByType',
