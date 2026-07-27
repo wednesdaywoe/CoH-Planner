@@ -14,7 +14,6 @@ import type { Power } from '@/types';
 export const overrides: Partial<Power> = {
   "description": "The Black Dwarf Strike is a moderate melee attack that releases Nictus Dark Energy on impact, which can Knock Down foes, and slows a targets attack and movement speed. This power is only available while in Black Dwarf Form.  Damage: Light. Recharge: Very Fast.",
   "targetType": "Foe (Alive)",
-  "requires": "Black Dwarf",
   "effects": {
     "movement": {
       "jumpHeight": {

@@ -13,7 +13,6 @@ import type { Power } from '@/types';
 
 export const overrides: Partial<Power> = {
   "description": "Black Dwarf Mire can drain the essence of all nearby foes, thus increasing your own strength. Each affected foe will lose some Hit Points and add to your Damage and Accuracy.  Damage: Light. Recharge: Slow.",
-  "requires": "Black Dwarf",
   "effects": {
     "movement": {
       "jumpHeight": {

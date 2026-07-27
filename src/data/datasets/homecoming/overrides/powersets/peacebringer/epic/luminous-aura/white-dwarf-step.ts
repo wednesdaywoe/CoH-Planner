@@ -12,6 +12,5 @@
 import type { Power } from '@/types';
 
 export const overrides: Partial<Power> = {
-  "targetType": "Location (Teleport)",
-  "requires": "White Dwarf"
+  "targetType": "Location (Teleport)"
 };

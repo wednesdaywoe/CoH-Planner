@@ -14,7 +14,6 @@ import type { Power } from '@/types';
 export const overrides: Partial<Power> = {
   "description": "Sends bolts of Nictus dark energy to multiple targets at once within a cone area in front of the caster. Deals moderate negative energy damage to each affected foe and reduces their attack rate and movement speed. This power is only available while in Dark Nova Form.  Damage: Light. Recharge: Slow.",
   "targetType": "Foe (Alive)",
-  "requires": "Dark Nova",
   "effects": {
     "movement": {
       "jumpHeight": {

@@ -14,7 +14,6 @@ import type { Power } from '@/types';
 export const overrides: Partial<Power> = {
   "description": "A very quick, but low damage attack that lowers your target's attack and movement speed. This power is only available while in Dark Nova Form.  Damage: Minor. Recharge: Very Fast.",
   "targetType": "Foe (Alive)",
-  "requires": "Dark Nova",
   "effects": {
     "movement": {
       "jumpHeight": {

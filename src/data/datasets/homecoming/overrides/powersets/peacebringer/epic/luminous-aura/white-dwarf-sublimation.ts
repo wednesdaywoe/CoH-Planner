@@ -12,6 +12,5 @@
 import type { Power } from '@/types';
 
 export const overrides: Partial<Power> = {
-  "description": "Through perfect control of your body and energy, you can concentrate for a few moments and heal yourself. This power is only available while in White Dwarf Form.  Recharge: Slow.",
-  "requires": "White Dwarf"
+  "description": "Through perfect control of your body and energy, you can concentrate for a few moments and heal yourself. This power is only available while in White Dwarf Form.  Recharge: Slow."
 };
