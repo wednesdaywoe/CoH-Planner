@@ -522,6 +522,16 @@ export interface ApplyConditionalsResult {
   extraInstances: Record<string, ExtraInstance[]>;
 }
 
+/**
+ * Bag keys that are per-effect METADATA rather than effects in their own right.
+ * A conditional carrying one of these has not added an effect the user can be
+ * told about, and colliding on one is not a second simultaneous instance.
+ * Shared by the merger and the contribution description so the two cannot drift.
+ */
+export const METADATA_EFFECT_KEYS: ReadonlySet<string> = new Set([
+  'durations', 'buffDuration', 'effectDuration',
+]);
+
 export function applyActiveConditionals(
   power: Power,
   active: ConditionalEffect[],
@@ -565,7 +575,7 @@ export function applyActiveConditionals(
         for (const [k, v] of Object.entries(c.effects)) {
           if (!(k in nextEffects)) {
             (nextEffects as Record<string, unknown>)[k] = v;
-          } else if (k !== 'durations' && k !== 'buffDuration' && k !== 'effectDuration') {
+          } else if (!METADATA_EFFECT_KEYS.has(k)) {
             // `durations` is a metadata bag (per-effect duration overrides)
             // and the `*Duration` metadata fields aren't independent
             // instances — skip them as collision sources.
@@ -617,9 +627,13 @@ export function describeAdjusterContribution(
   if (c.mode !== 'replace' && c.effects) {
     const baseEffects = (power.effects ?? {}) as Record<string, unknown>;
     for (const k of Object.keys(c.effects)) {
-      // `durations` is a metadata bag (per-effect duration overrides), not
-      // a primary effect — skip so we don't surface it as a collision.
-      if (k === 'durations') continue;
+      // Per-effect metadata, not a primary effect — skip so we don't surface it
+      // as a collision. This used to skip only `durations`, while the merger
+      // above skipped all three, so the hint advertised an "extra Buff Duration
+      // instance" that `applyActiveConditionals` never actually records (visible
+      // on every Bio Armor stance row — screenshot 2026-07-26). Both now read the
+      // same set, so the hint cannot claim a duplicate the merger dropped.
+      if (METADATA_EFFECT_KEYS.has(k)) continue;
       if (k in baseEffects) collisionKeys.push(k);
       else newKeys.push(k);
     }

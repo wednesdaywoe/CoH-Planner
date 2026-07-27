@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeAll } from 'vitest';
 import { loadDataset } from '@/data/dataset';
-import { getPowerset, findStanceParent, toStancePowers, STANCE_GROUPS } from '@/data';
+import { getPowerset, findStanceParent, toStancePowers, activeStanceOptionId, STANCE_GROUPS } from '@/data';
 import { useBuildStore } from '@/stores/buildStore';
 import type { Power, SelectedPower } from '@/types';
 
@@ -90,6 +90,28 @@ describe('Adaptation stance parent resolution (HC scrapper)', () => {
     const powers = useBuildStore.getState().build.secondary.powers;
     expect(powers.map((p) => p.internalName).sort()).toEqual(['Adaptation', 'Evolution']);
     expect(findStanceParent(powers, GROUP)?.internalName).toBe('Evolution');
+  });
+
+  // The reported failure state (screenshot 2026-07-26): the header chip and the
+  // power-list stance chips both read Offensive while the picker inside Evolving
+  // Armor's own Power Info reads Efficient. That is two different powers holding
+  // two different `activeSubPower` values — the switcher (`Evolution`) and the
+  // impostor (`Adaptation`) — with each surface bound to a different one.
+  //
+  // All three surfaces resolve through the same helper, so pinning the helper on
+  // the divergent state pins all three: the switcher's value is the answer, and
+  // the impostor's stale value is ignored no matter what order they were picked.
+  it('every surface reads the switcher when the impostor holds a stale stance', () => {
+    const switcher = { ...pick('Evolution'), activeSubPower: 'Offensive_Adaptation' };
+    const impostor = { ...pick('Adaptation'), activeSubPower: 'Efficient_Adaptation' };
+    for (const powers of [[switcher, impostor], [impostor, switcher]]) {
+      // Header / mids-import surface: real SelectedPower objects.
+      expect(activeStanceOptionId(powers, GROUP)).toBe('offensiveadaptation');
+      // Power-info picker surface: the same build through the stance projection.
+      const parent = findStanceParent(toStancePowers(powers), GROUP)!;
+      expect(parent.internalName).toBe('Evolution');
+      expect(activeStanceOptionId([parent], GROUP)).toBe('offensiveadaptation');
+    }
   });
 
   // A build corrupted by the old picker carries `activeSubPower` on the impostor.

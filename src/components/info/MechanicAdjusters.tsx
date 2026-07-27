@@ -34,11 +34,12 @@ import {
   stanceGroupForConditionalId,
   toStancePowers,
 } from '@/data';
-import type { StanceGroup, StancePowerLike } from '@/data';
+import type { StanceGroup, StanceOption, StancePowerLike } from '@/data';
 import {
   AT_INHERENT_CONDITIONAL_IDS,
   describeAdjusterContribution,
   prettifyEffectKey,
+  METADATA_EFFECT_KEYS,
 } from './powerDisplayUtils';
 
 interface MechanicAdjustersProps {
@@ -177,12 +178,15 @@ function StanceModeGroup({
 
   return (
     <div className="space-y-0.5">
-      <GroupHeader label={group.headerLabel} isGlobal />
+      {/* The group's own description — the same copy the Header's stance picker
+          shows. The InfoPanel picker had none. */}
+      <GroupHeader label={group.headerLabel} isGlobal title={group.tooltip} />
       {group.options.map((option) => {
         // Use this power's real conditional entry when it carries this stance
         // (so the contribution hint reflects what THIS power grants); otherwise
         // a minimal placeholder so the row still renders.
-        const entry = byId.get(option.id) ?? {
+        const carried = byId.get(option.id);
+        const entry = carried ?? {
           id: option.id,
           label: option.label,
           scope: 'global' as const,
@@ -196,6 +200,7 @@ function StanceModeGroup({
             entry={entry}
             labelOverride={option.label}
             checked={active}
+            title={describeStanceOption(group, option, carried, active)}
             onSelect={() => setActiveSubPower(parent.internalName, active ? null : (option.subPower ?? null))}
           />
         );
@@ -373,6 +378,10 @@ interface RadioRowProps {
    *  in-game stance name ("Efficient Adaptation") rather than the data's
    *  internal "Rested Adaptation". */
   labelOverride?: string;
+  /** Row tooltip override. The stance picker always supplies one; without it the
+   *  row falls back to `describeContribution`, which is undefined for a power
+   *  that contributes nothing to that conditional. */
+  title?: string;
 }
 
 // NOTE: intentionally NO native `name` group on the radios. `checked` is a fully
@@ -383,11 +392,11 @@ interface RadioRowProps {
 // visually unfilled until a second click (the "needs a double-click" bug). The
 // Header's stance picker avoids this by using <button>s; the row-level clear is
 // handled by the sibling ClearButton, so we don't rely on re-clicking a radio.
-function RadioRow({ power, entry, checked, onSelect, labelOverride }: RadioRowProps) {
+function RadioRow({ power, entry, checked, onSelect, labelOverride, title }: RadioRowProps) {
   return (
     <div className="flex flex-col">
       <label
-        title={describeContribution(entry)}
+        title={title ?? describeContribution(entry)}
         className="flex items-center gap-2 text-xs cursor-pointer hover:bg-slate-700/30 rounded px-1 py-0.5 ml-3"
       >
         <input
@@ -418,9 +427,9 @@ function GlobalBadge() {
   );
 }
 
-function GroupHeader({ label, isGlobal }: { label: string; isGlobal?: boolean }) {
+function GroupHeader({ label, isGlobal, title }: { label: string; isGlobal?: boolean; title?: string }) {
   return (
-    <div className="flex items-center justify-between text-xs px-1">
+    <div className="flex items-center justify-between text-xs px-1" title={title}>
       <span className="text-slate-300 font-medium">{label}</span>
       {isGlobal && <GlobalBadge />}
     </div>
@@ -468,13 +477,51 @@ function ContributionHint({
 // Helpers.
 // ----------------------------------------------------------------------
 
-function describeContribution(entry: ConditionalEffect): string | undefined {
+/** The effect names a conditional contributes, prettified. Empty when it adds nothing. */
+function contributionNames(entry: ConditionalEffect): string[] {
   const parts: string[] = [];
-  if (entry.damage) parts.push('damage');
-  if (entry.effects) parts.push(...Object.keys(entry.effects).slice(0, 3));
+  if (entry.damage) parts.push('Damage');
+  for (const k of Object.keys(entry.effects ?? {})) {
+    if (METADATA_EFFECT_KEYS.has(k)) continue;
+    parts.push(prettifyEffectKey(k));
+  }
+  return parts;
+}
+
+function describeContribution(entry: ConditionalEffect): string | undefined {
+  const parts = contributionNames(entry);
   return parts.length > 0
-    ? `When active, adds: ${parts.join(', ')}`
+    ? `When active, adds: ${parts.slice(0, 4).join(', ')}`
     : undefined;
+}
+
+/**
+ * Tooltip for one stance row.
+ *
+ * Every row gets one. Previously the row title came straight from
+ * `describeContribution`, which returned `undefined` for any stance THIS power
+ * doesn't contribute to — and the stance picker deliberately renders all of a
+ * group's options on every power that carries any of them, so most rows had no
+ * tooltip at all (report 2026-07-26: "the stances have no tooltip information").
+ * The rows that did have one listed raw bag keys, metadata included
+ * ("buffDuration, durations, resistance").
+ *
+ * `carried` is this power's own conditional entry for the option, or undefined
+ * when the power grants nothing in that stance — which is worth saying plainly,
+ * since the stance still applies build-wide through the other powers.
+ */
+function describeStanceOption(
+  group: StanceGroup,
+  option: StanceOption,
+  carried: ConditionalEffect | undefined,
+  isActive: boolean,
+): string {
+  const state = isActive ? 'Active' : 'Not active';
+  const parts = carried ? contributionNames(carried) : [];
+  const contribution = parts.length > 0
+    ? `This power adds ${parts.slice(0, 4).join(', ')} while it is selected.`
+    : `This power grants nothing extra in this ${group.headerLabel.toLowerCase()} — other powers in the set may.`;
+  return `${option.label} — ${state}. ${contribution} Only one ${group.headerLabel.toLowerCase()} applies at a time; it affects the whole build.`;
 }
 
 function prettifyGroupId(groupId: string): string {
