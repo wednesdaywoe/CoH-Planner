@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Corruption: Power = {
   "name": "Corruption",
   "internalName": "Corruption",
-  "available": 0,
+  "available": 5,
   "description": "You lash out with your whip, firing a bolt of hellfire and corrupting your victim's very living essence. This attack deals minor fire damage, causes minor toxic damage over time, and reduces their damage resistance for a short time. Damage: Minor, Recharge: Very Fast",
   "shortHelp": "Ranged, Minor DMG(Fire), Foe Minor DoT (Toxic), -Res",
   "icon": "hellfireassault_corruption.png",

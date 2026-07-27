@@ -1,9 +1,9 @@
 {
   "key": "Objects.money_Bag_Auto",
-  "display_name": "money_Bag_Auto",
-  "help": "",
-  "short_help": "",
-  "icon": "",
+  "display_name": "Money_Bag_Auto",
+  "help": "Money_Bag",
+  "short_help": "Money_Bag",
+  "icon": "money_bag_auto_set.ico",
   "powers": [
     "Objects.money_Bag_Auto.Loot_Bag"
   ],

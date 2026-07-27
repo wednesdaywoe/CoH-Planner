@@ -1,13 +1,13 @@
 {
   "key": "temporary_powers.temporary_powers",
-  "display_name": "temporary_powers",
+  "display_name": "Temporary Powers",
   "help": "",
-  "short_help": "",
-  "icon": "",
+  "short_help": "Temporary Powers",
+  "icon": "temporary_powers_set.ico",
   "powers": [
+    "temporary_powers.temporary_powers.tidal_power",
     "temporary_powers.temporary_powers.enhanced_water_jet_lock",
-    "temporary_powers.temporary_powers.StormBlast_InStormCell",
-    "temporary_powers.temporary_powers.tidal_power"
+    "temporary_powers.temporary_powers.StormBlast_InStormCell"
   ],
   "available_level": [
     0,
@@ -15,13 +15,13 @@
     0
   ],
   "power_display_names": [
+    "Tidal Power",
     "Enhanced Water Jet Lock",
-    "In Storm Cell",
-    "Tidal Power"
+    "In Storm Cell"
   ],
   "power_short_helps": [
+    "+Tidal Power",
     "Enhanced Water Jet Lock",
-    "Special",
-    "+Tidal Power"
+    "Special"
   ]
 }

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Lash: Power = {
   "name": "Lash",
   "internalName": "Lash",
-  "available": 0,
+  "available": 17,
   "description": "You channel unholy energies into your whip and Lash out at your foe dealing high fire damage causing toxic damage over time. Lash has longer range than most melee attacks will reduce the target's damage resistance and also has a chance to knockdown your target. Damage: High, Recharge: Moderate",
   "shortHelp": "Close, High DMG(Fire), Foe -Res, Knockdown, Minor DoT(Toxic)",
   "icon": "hellfireassault_lash.png",

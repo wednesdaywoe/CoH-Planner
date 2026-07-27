@@ -429,28 +429,16 @@ function convertEpicPool(poolId, existingPool) {
     }
 
     const rawJson = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
-    let availableLevel = availableLevels[i] !== undefined ? availableLevels[i] : 34;
+    if (availableLevels[i] === undefined) {
+      throw new Error(
+        `No available_level entry for ${fullName} in ${poolPath} index.json — `
+        + `malformed export, refusing to fabricate an unlock level`);
+    }
+    let availableLevel = availableLevels[i];
     // Normalize the unsigned "-1 = auto-granted" sentinel (0xFFFFFFFF) back to
     // a signed negative, matching the pool/powerset converters, so granted
     // sub-powers stay out of the picker.
     if (availableLevel >= 0x80000000) availableLevel -= 0x100000000;
-    // Prerequisite-gated sentinel: some servers (e.g. Rebirth) leave
-    // available_level = 0 on a prereq-gated epic power and gate it purely via
-    // the `requires` clause + description ("You must be level 41 and own ...").
-    // A raw 0 makes the level-sort float it to the front as a level-35 tier-1
-    // pick — this is exactly why Rebirth Tanker Martial Prowess listed "Art of
-    // War" ahead of Throwing Dagger / Battle Hardened. When the power's requires
-    // names sibling powers in this same pool, treat 0 as "unset" and assign the
-    // prerequisite tier level so it sorts into its true slot: a single-power
-    // requirement (`||` only) is the level-41 tier (available 40); a compound
-    // requirement (`&&`, i.e. own two others) is the level-44 capstone (43).
-    // The 35/40/43 ladder itself is game knowledge the export doesn't carry
-    // (DATA-GAP-REGISTER SOURCE-1).
-    if (availableLevel === 0 && poolIndex.key
-        && typeof rawJson.requires === 'string'
-        && rawJson.requires.includes(poolIndex.key + '.')) {
-      availableLevel = /(^|\s)&&(\s|$)/.test(rawJson.requires) ? 43 : 40;
-    }
     collected.push({ rawJson, availableLevel, originalIndex: i });
   }
 

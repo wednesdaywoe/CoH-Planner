@@ -1,6 +1,6 @@
 /**
- * Hellfire_Assault Powerset
- * undefined
+ * Hellfire Assault Powerset
+ * Your powers are conjured from the depths of the netherworld and beyond.  You wield demonic hellfires that serve as your tools of destruction.  You are capable of manifesting infernal powers that act as long extensions of hellfire.  These powers can tear down even the toughest foes.
  *
  * Archetype: guardian
  * Category: primary
@@ -21,9 +21,9 @@ import { WrathOfHell as WrathOfHell } from './wrath-of-hell';
 
 export const powerset: Powerset = {
   id: 'guardian/hellfire-assault',
-  name: 'Hellfire_Assault',
-  description: 'undefined',
-  icon: '',
+  name: 'Hellfire Assault',
+  description: 'Your powers are conjured from the depths of the netherworld and beyond.  You wield demonic hellfires that serve as your tools of destruction.  You are capable of manifesting infernal powers that act as long extensions of hellfire.  These powers can tear down even the toughest foes.',
+  icon: 'demon_summoning_set.ico',
   archetype: 'guardian',
   category: 'primary',
   powers: [

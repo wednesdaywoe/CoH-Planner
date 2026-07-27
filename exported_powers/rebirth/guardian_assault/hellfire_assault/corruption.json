@@ -572,6 +572,6 @@
   "modes_disallowed": [
     "Disable_All"
   ],
-  "available_level": 0,
+  "available_level": 5,
   "powerset": "Guardian_Assault.Hellfire_Assault"
 }

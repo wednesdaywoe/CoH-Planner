@@ -598,6 +598,14 @@ def _write_power_tree(powers, ps_records, ps_available, msgs, set_cats_index,
     for pw in powers:
         grouped.setdefault(pw.category, {}).setdefault(pw.powerset, []).append(pw)
 
+    # The game engine matches power/powerset names case-insensitively, and the
+    # binaries exploit that: powers.bin and powersets.bin legitimately disagree
+    # on case for the same power (Rebirth `Art_of_War` vs `Art_Of_War`, its
+    # `Hellfire_Assault` set vs the record's `HellFire_Assault`, Thunderspy
+    # `Tough_Hide` vs `Tough_hide`). Every lookup between the two files must
+    # therefore fold case, or real available levels silently default to 0.
+    availability_misses = 0
+
     total_files = 0
     for cat in sorted(grouped):
         for ps in sorted(grouped[cat]):
@@ -609,7 +617,8 @@ def _write_power_tree(powers, ps_records, ps_available, msgs, set_cats_index,
             # Write index.json for the powerset
             # Find matching powerset record
             ps_key = f"{cat}.{ps}"
-            ps_rec = next((r for r in ps_records if r.key == ps_key), None)
+            ps_rec = next(
+                (r for r in ps_records if r.key.lower() == ps_key.lower()), None)
 
             # Sort powers by their position in the powerset's power list (game order).
             # ps_rec.powers items are full dotted names (Cat.Powerset.Power), so key
@@ -618,8 +627,9 @@ def _write_power_tree(powers, ps_records, ps_available, msgs, set_cats_index,
             # powers.bin natural (alphabetical) order and breaking same-level ties
             # like Single_Shot/Charged_Shot in HC blast sets.
             if ps_rec and ps_rec.powers:
-                ps_order = {name: i for i, name in enumerate(ps_rec.powers)}
-                powers_in_set.sort(key=lambda pw: ps_order.get(pw.full_name, 999))
+                ps_order = {name.lower(): i for i, name in enumerate(ps_rec.powers)}
+                powers_in_set.sort(
+                    key=lambda pw: ps_order.get(pw.full_name.lower(), 999))
 
             index_data = {
                 'key': ps_key,
@@ -631,7 +641,8 @@ def _write_power_tree(powers, ps_records, ps_available, msgs, set_cats_index,
                 # consumers (e.g. the planner converter) can use suffix-match
                 # against the per-power short name.
                 'powers': [pw.full_name for pw in powers_in_set],
-                'available_level': [ps_available.get(pw.full_name, 0) for pw in powers_in_set],
+                'available_level': [ps_available.get(pw.full_name.lower(), 0)
+                                    for pw in powers_in_set],
                 # Parallel arrays of per-power display info — convenience for
                 # consumers that don't want to load every power file just to
                 # build a slot index (e.g. src/data/incarnates.ts).
@@ -654,7 +665,9 @@ def _write_power_tree(powers, ps_records, ps_available, msgs, set_cats_index,
                                         mode_table=mode_table,
                                         stack_key_table=stack_key_table,
                                         dataset_flavor=dataset_flavor)
-                pw_dict['available_level'] = ps_available.get(pw.full_name, 0)
+                if pw.full_name.lower() not in ps_available:
+                    availability_misses += 1
+                pw_dict['available_level'] = ps_available.get(pw.full_name.lower(), 0)
                 pw_dict['powerset'] = ps_key
 
                 # Power names containing characters invalid in Windows
@@ -670,6 +683,12 @@ def _write_power_tree(powers, ps_records, ps_available, msgs, set_cats_index,
                 with open(ps_dir / fname, 'w') as f:
                     json.dump(pw_dict, f, indent=2)
                 total_files += 1
+
+    if availability_misses:
+        print(f"  Warning: {availability_misses} exported power(s) appear in no "
+              f"powerset record's available table (even case-folded) — "
+              f"available_level defaulted to 0 (see GAME-DATA-PRINCIPLES §5)",
+              file=sys.stderr)
 
     return total_files, grouped
 
@@ -756,9 +775,11 @@ def main():
         ps_records = parse_powersets(resolver.read('powersets.bin'))
         for ps in ps_records:
             # ps.powers contains full dotted names (Cat.Powerset.Power),
-            # not just short names. Use them as the lookup keys directly.
+            # not just short names. Keys are folded to lower case because
+            # powers.bin and powersets.bin disagree on case for some powers
+            # (see _write_power_tree) and the game matches case-insensitively.
             for pw_name, avail in zip(ps.powers, ps.available):
-                ps_available[pw_name] = avail
+                ps_available[pw_name.lower()] = avail
         print(f'  {len(ps_records)} powersets loaded.', flush=True)
 
     # Parse boostsets.bin — the authoritative per-IO-set list of powers each

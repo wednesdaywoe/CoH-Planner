@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const HellfireBurst: Power = {
   "name": "Hellfire Burst",
   "internalName": "Hellfire_Burst",
-  "available": 0,
+  "available": 11,
   "description": "Your mastery of hellfire allows you to conjure up this unholy flame at will blasting any nearby foes and set them ablaze, dealing damage over time. Damage: Moderate(DoT), Recharge: Slow",
   "shortHelp": "PBAoE, Moderate DoT(Toxic)",
   "icon": "hellfireassault_hellfireburst.png",

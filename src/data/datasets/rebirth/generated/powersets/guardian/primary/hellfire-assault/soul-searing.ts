@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SoulSearing: Power = {
   "name": "Soul Searing",
   "internalName": "Soul_Searing",
-  "available": 0,
+  "available": 7,
   "description": "Using this power causes your attacks to twist the essence of your foes' souls adding toxic damage to all of your attacks for a moderate duration.  All damaging powers gain bonus Toxic damage. You also gain a moderate bonus to your chance to hit.  Recharge: Long",
   "shortHelp": "Self +Toxic Damage on all attacks, +ToHit",
   "icon": "hellfireassault_soulsearing.png",

@@ -1,9 +1,9 @@
 {
   "key": "Guardian_Assault.Hellfire_Assault",
-  "display_name": "Hellfire_Assault",
-  "help": "",
-  "short_help": "",
-  "icon": "",
+  "display_name": "Hellfire Assault",
+  "help": "Your powers are conjured from the depths of the netherworld and beyond.  You wield demonic hellfires that serve as your tools of destruction.  You are capable of manifesting infernal powers that act as long extensions of hellfire.  These powers can tear down even the toughest foes.",
+  "short_help": "Hellfire Assault",
+  "icon": "demon_summoning_set.ico",
   "powers": [
     "Guardian_Assault.Hellfire_Assault.Hellfire_Flares",
     "Guardian_Assault.Hellfire_Assault.Hellfire_Smash",
@@ -18,13 +18,13 @@
   "available_level": [
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    1,
+    5,
+    7,
+    11,
+    17,
+    25,
+    31
   ],
   "power_display_names": [
     "Hellfire Flares",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const HellfireBlaze: Power = {
   "name": "Hellfire Blaze",
   "internalName": "Hellfire_Blaze",
-  "available": 0,
+  "available": 25,
   "description": "Sends a Blast of Hellfire at a targeted foe dealing both Fire and Toxic damage as well as reducing their damage resistance. Damage: Moderate, Recharge: Fast",
   "shortHelp": "Ranged, High DMG(Fire/Toxic), Foe -Res",
   "icon": "hellfireassault_hellfireblaze.png",

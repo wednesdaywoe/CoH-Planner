@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const WrathOfHell: Power = {
   "name": "Wrath of Hell",
   "internalName": "Wrath_Of_Hell",
-  "available": 0,
+  "available": 31,
   "description": "You can unleash the wrath of hell onto your foe ensnaring them in your whip, leaving them helpless.  You then channel hellfire into your whip and use it to bombard your foe with waves of extreme fire damage. The burns they leave are so powerful that the foe will suffer more damage from attacks for a short time. Damage: Extreme(DoT), Recharge: Long",
   "shortHelp": "Ranged, Extreme DoT(Fire), Short Foe Hold, Foe -Res",
   "icon": "hellfireassault_wrathofhell.png",
