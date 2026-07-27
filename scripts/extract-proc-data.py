@@ -128,7 +128,26 @@ def _proc_effect_from_bridge(attrib: str, aspect: str, table: str = '') -> tuple
     if et == 'Perception':
         return ('Special', 100.0, None)
     if et == 'Movement':
-        return ('RunSpeed', 100.0, None)
+        # Each movement axis maps to its OWN proc stat. Collapsing them all onto
+        # RunSpeed read Launch's +Jump Height as +Run Speed.
+        #
+        # Only the aspect=Current *buff* templates count. These globals pair the
+        # buff with an aspect=Maximum template that raises the axis CAP (Launch's
+        # +Max Jump Height = 10.0 x Melee_Ones = +1000%), which the planner models
+        # as a power's movementCapBump, not as a buff — emitting it here would read
+        # Launch as +1200% jump height. (The AT-table factor is applied by the
+        # single-attrib caller, which is the only one that knows the table.)
+        if aspect != 'Current':
+            return None
+        if attrib == 'RunningSpeed':
+            return ('RunSpeed', 100.0, None)
+        if attrib == 'JumpingSpeed':
+            return ('JumpSpeed', 100.0, None)
+        if attrib == 'FlyingSpeed':
+            return ('FlySpeed', 100.0, None)
+        if attrib == 'JumpHeight':
+            return ('JumpHeight', 100.0, None)
+        return None
     if et == 'Resistance' and attrib.endswith('_Dmg'):
         return ('Resistance', 100.0, attrib.replace('_Dmg', ''))
 
@@ -176,13 +195,35 @@ def _effect_type_for_defense(attribs: set[str]) -> str:
         '/'.join(sorted(attribs & DEF_ATTRIBS))
 
 
+# Movement modifier tables for a PLAYER archetype are AT- and level-invariant
+# constants (run 3.5, fly 1.365, jump 2.49, leap 27.8; the PET tables differ, but
+# pets don't slot player IOs). The single-attrib mapping below turns a global's
+# binary scale into a displayed value with a plain x100, which silently ASSUMES the
+# template's table is Melee_Ones (value 1.0). That under-counts every movement global
+# whose real table is a speed table: Thrust's "+Run Speed" is 0.1 x Melee_SpeedRunning
+# = 35%, not the 10% a bare x100 yields. (Swift is the same 0.1 x Melee_SpeedRunning
+# structure and reads 35% in game.) Multiplying by the table factor fixes those and is
+# a no-op for a genuinely flat Melee_Ones global.
+_MOVEMENT_TABLE_FACTOR = {
+    'melee_speedrunning': 3.5,
+    'melee_speedflying': 1.365,
+    'melee_speedjumping': 2.49,
+    'melee_leap': 27.8,
+}
+
+
 def _group_effects(eg) -> list[dict]:
     """Structured effects for ONE effect group (target/chance stamped by caller)."""
     out: list[dict] = []
     attset = set()
+    # Table per (attrib, aspect, scale), captured alongside attset so the single-attrib
+    # mapping below can resolve the real AT-table factor instead of assuming Melee_Ones.
+    tbl_of: dict[tuple, str] = {}
     for t in eg.templates:
         for a in (t.attribs or []):
-            attset.add((a, t.aspect, round(t.scale, 5)))
+            key = (a, t.aspect, round(t.scale, 5))
+            attset.add(key)
+            tbl_of[key] = t.table or ''
     if not attset:
         return out
     attribs = {a for a, _, _ in attset}
@@ -224,7 +265,11 @@ def _group_effects(eg) -> list[dict]:
             continue
         cat, mult, eff_type = mapped
         if cat not in seen_cats:
-            eff = {'category': cat, 'value': round(abs(sc) * mult, 4)}
+            # Resolve the movement AT-table factor (a no-op for Melee_Ones and for
+            # every non-speed table) so e.g. Thrust's +Run Speed lands at 35%, not 10%.
+            tfac = _MOVEMENT_TABLE_FACTOR.get(
+                tbl_of.get((a, asp, round(sc, 5)), '').lower(), 1.0)
+            eff = {'category': cat, 'value': round(abs(sc) * mult * tfac, 4)}
             if eff_type:
                 eff['effectType'] = eff_type
             out.append(eff)

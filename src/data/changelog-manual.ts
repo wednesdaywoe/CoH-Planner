@@ -42,13 +42,13 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
       { id: 'engine-offline-cache', message: 'The calculation engine and its game data are now cached, so going offline won\'t kill the calculations.', type: 'feat' },
       { id: 'engine-failure-visible', message: 'If the calculation engine fails to load, you get a red banner telling you so.', type: 'fix' },
       { id: 'jump-speed-base-mph', message: 'Jump speed was reading about 1.47x too fast due to a units mismatch.', type: 'fix' },
-      { id: 'adaptation-stance-parent-desync', message: 'Bio Armor: fixed the Adaptation stance desyncing between the power-info picker and the header. On Scrapper/Brute/Tanker two powers share the internal name the stance binds to, and the picker was choosing between them by pick order — so taking Evolving Armor before Adaptation bound it to the wrong one.', type: 'fix' },
-      { id: 'trip-mine-multi-detonation', message: 'Trip Mine on Blaster and Defender was reading roughly 13x too high 😅. Time Bomb, Seeker Drones, High Explosives and Photon Seekers had the issue.', type: 'fix' },
+      { id: 'adaptation-stance-parent-desync', message: 'Bio Armor: fixed the Adaptation stance desyncing between the power-info picker and the header. On Scrapper/Brute/Tanker two powers share the internal name the stance binds to, and the picker was choosing between them by pick order...soooo taking Evolving Armor before Adaptation bound it to the wrong one. Look, I didn\'t name these.', type: 'fix' },
+      { id: 'trip-mine-multi-detonation', message: 'Trip Mine on Blaster and Defender was reading roughly 13x too high 😅. Time Bomb, Seeker Drones, High Explosives and Photon Seekers had same issue.', type: 'fix' },
       { id: 'trip-mine-chance-weighting', message: 'Summoned-pet damage now weights partial-chance hits. Trip Mine\'s third Fire hit only lands half the time and was being counted in full.', type: 'fix' },
-      { id: 'dominator-trip-mine-no-damage', message: 'Dominator Trip Mine showed no damage at all. Its built differently from the other ATs: the damage is only reachable through an "Info" power, which the converter was discarding as tooltip-only.', type: 'fix' },
-      { id: 'adaptation-stance-tooltips', message: 'The Adaptation and Staff Form stance pickers in a power\'s info now have tooltips, saying what the stance does and what that particular power contributes to it (or that it contributes nothing).', type: 'fix' },
+      { id: 'dominator-trip-mine-no-damage', message: 'Dominator Trip Mine showed no damage at all. Its built differently from the other ATs... the damage is only reachable through an "Info" power, which the converter discarded as tooltip-only.', type: 'fix' },
+      { id: 'adaptation-stance-tooltips', message: 'The Adaptation and Staff Form stance pickers in a power\'s info now have tooltips, saying what the stance does and what that particular power contributes to it (or doesn\'t).', type: 'fix' },
       { id: 'fly-speed-base-mph', message: 'Fly speed had the same units mistake, plus one of its own.', type: 'fix' },
-      { id: 'accolade-values-corrected', message: 'Removed hardcoded values for Accolades, Sidekick now reads all of them from the game data. This also fixes the hero/villain pairing.', type: 'fix' },
+      { id: 'accolade-values-corrected', message: 'Fixed the new calc ignoring accolades. Also removed hardcoded values for Accolades, Sidekick now reads all of them from the game data. This also fixes the hero/villain pairing.', type: 'fix' },
     ]
   },
   {

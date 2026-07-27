@@ -25,6 +25,9 @@ export type ProcEffectCategory =
   | 'Recovery'
   | 'Recharge'
   | 'RunSpeed'
+  | 'JumpSpeed'
+  | 'FlySpeed'
+  | 'JumpHeight'
   | 'MaxHP'
   | 'KnockbackProtection'
   | 'MezResist'
@@ -2578,6 +2581,9 @@ export function getProcEffectLabel(category: ProcEffectCategory): string {
     case 'Recovery': return '+Recovery';
     case 'Recharge': return '+Recharge';
     case 'RunSpeed': return '+Run Speed';
+    case 'JumpSpeed': return '+Jump Speed';
+    case 'FlySpeed': return '+Fly Speed';
+    case 'JumpHeight': return '+Jump Height';
     case 'MaxHP': return '+Max HP';
     case 'KnockbackProtection': return 'KB Protection';
     case 'MezResist': return '+Mez Resist';
@@ -2607,6 +2613,9 @@ export function getProcEffectColor(category: ProcEffectCategory): string {
     case 'Recovery': return 'text-blue-300';
     case 'Recharge': return 'text-amber-400';
     case 'RunSpeed': return 'text-teal-400';
+    case 'JumpSpeed': return 'text-teal-400';
+    case 'FlySpeed': return 'text-teal-400';
+    case 'JumpHeight': return 'text-teal-400';
     case 'MaxHP': return 'text-pink-400';
     case 'KnockbackProtection': return 'text-slate-300';
     case 'MezResist': return 'text-violet-400';
