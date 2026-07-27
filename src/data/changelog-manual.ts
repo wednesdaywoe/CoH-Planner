@@ -49,6 +49,8 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
       { id: 'adaptation-stance-tooltips', message: 'The Adaptation and Staff Form stance pickers in a power\'s info now have tooltips, saying what the stance does and what that particular power contributes to it (or doesn\'t).', type: 'fix' },
       { id: 'fly-speed-base-mph', message: 'Fly speed had the same units mistake, plus one of its own.', type: 'fix' },
       { id: 'accolade-values-corrected', message: 'Fixed the new calc ignoring accolades. Also removed hardcoded values for Accolades, Sidekick now reads all of them from the game data. This also fixes the hero/villain pairing.', type: 'fix' },
+      { id: 'thrust-run-speed-global', message: 'Thrust\'s +Run Speed was showing 10% and ignoring the enhancement in its own power. It reads its real speed table now, so it\'s 35% base — and it\'s enhanceable, so with 26.5% Run slotted in the same power it comes to 44.28%.', type: 'fix' },
+      { id: 'launch-jump-height-global', message: 'Launch\'s +Jump Height global was doing nothing. It was being read as +Run Speed, so it had to be switched off entirely; jump and fly globals now have their own stats. Its separate +Max Jump Height is a cap raise, not a buff, and is deliberately left out of the total.', type: 'fix' },
     ]
   },
   {
