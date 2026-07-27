@@ -1991,10 +1991,27 @@ function attachResolvedPseudoPets(powerJson, effects) {
         const effectiveEntity = (!p.entity_def || /^P\d+$/.test(p.entity_def))
           ? p.priority_list : p.entity_def;
         // Drop non-content redirects before signing: ResistAll (pet
-        // survivability), *.Avoid (AI hint that makes foes path around the
-        // patch), *_Info (tooltip-only). What's left is the real payload.
+        // survivability) and *.Avoid (an AI hint that makes foes path around the
+        // patch). Neither is ever the payload.
+        //
+        // *_Info is dropped too, but kept ASIDE rather than discarded. An Info
+        // redirect normally mirrors a sibling's numbers for the tooltip, so
+        // resolving it alongside that sibling double-counts. It is not always
+        // redundant though: the Dominator/Epic Trip Mine redirects ONLY to
+        // `TripMine_Resistance` (a survivability buff — real, but no payload) and
+        // `TripMine_Info`. The actual `TripMine` is never redirected at all; the
+        // pet's Self_Destruct executes it via `Execute_Power`. Dropping Info there
+        // left nothing that resolves to an ability, so the planner showed the
+        // Dominator's Trip Mine doing NO damage (report 2026-07-26).
+        //
+        // A name test can't tell the two cases apart — `TripMine_Resistance` reads
+        // like a payload and isn't one — so the fallback is decided on CONTENT
+        // below: `infoRedirects` is consulted only when the primary set resolves
+        // to zero abilities, which an Info mirroring a live sibling never does.
         const redirects = (p.redirects || []).filter(r => !/(resistall|\.avoid$|_info$)/i.test(r));
-        if (redirects.length === 0) continue;
+        const infoRedirects = (p.redirects || [])
+          .filter(r => /_info$/i.test(r) && !/(resistall|\.avoid$)/i.test(r));
+        if (redirects.length === 0 && infoRedirects.length === 0) continue;
         const isShell = PSEUDOPET_SHELL_ENTITIES.has(effectiveEntity);
         // Override case: a NAMED pet chassis (entity_def resolves to a real
         // PET_ENTITIES pet) whose content is delivered by an EXTERNAL Redirects.*
@@ -2023,6 +2040,7 @@ function attachResolvedPseudoPets(powerJson, effects) {
           displayName: p.display_name,
           duration: _parseDurationSeconds(t.duration),
           redirects,
+          infoRedirects,
           chance,
           override,
           shellName: isShell ? effectiveEntity : override.shell,
@@ -2051,7 +2069,13 @@ function attachResolvedPseudoPets(powerJson, effects) {
   const overrides = []; // { chassis, shell } for pet-path normalization
   const resolvedShellNames = [];
   for (const g of byKey.values()) {
-    const abilities = resolveSummonRedirects(g.redirects);
+    // Content-decided Info fallback (see the redirect filter above): a summon
+    // whose only payload-bearing redirect is `*_Info` resolves off that, and
+    // nothing else does — so this can never double-count a live sibling.
+    let abilities = resolveSummonRedirects(g.redirects);
+    if (abilities.length === 0 && g.infoRedirects?.length) {
+      abilities = resolveSummonRedirects(g.infoRedirects);
+    }
     if (abilities.length === 0) continue;
     if (g.shellName) resolvedShellNames.push(g.shellName);
     const count = g.occurrences.filter(o => o.chance > 0).length || 1;

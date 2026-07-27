@@ -10,6 +10,10 @@ export interface PetDamageEntry {
   damageType: string;
   scale: number;
   table: string;
+  /** Sub-1.0 hit chance from the effect group (Trip Mine's third Fire
+   *  template lands 50% of the time). Absent = guaranteed. Damage layers
+   *  must weight by this; summing at face value overstates the power. */
+  chance?: number;
 }
 
 export interface PetEffect {
@@ -62,6 +66,12 @@ export interface PetEntity {
    *  when killed or unsummoned. Used by convert-powerset to populate
    *  `summon.duration` for summoning powers whose EntCreate Duration is 0. */
   lifespan?: number;
+  /** This pet detonates ONCE: it is destroyed by its own bundled
+   *  Self_Destruct the moment it fires (trip mines, time bombs, seeker
+   *  drones, high explosives). Its attack's recharge is therefore not a
+   *  repeat cadence — damage layers must cap fires-per-spawn at 1 rather
+   *  than dividing the summon window by the cycle time. */
+  oneShot?: boolean;
   upgradeTiers?: PetUpgradeTier[];
 }
 
@@ -12325,6 +12335,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "minion_pets",
     commandable: false,
     copyCreatorMods: true,
+    oneShot: true,
     abilities: [
       {
         name: "High_Explosives",
@@ -12346,6 +12357,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "minion_pets",
     commandable: false,
     copyCreatorMods: true,
+    oneShot: true,
     abilities: [
       {
         name: "High_Explosives",
@@ -12914,6 +12926,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "minion_pets",
     commandable: false,
     copyCreatorMods: false,
+    oneShot: true,
     abilities: [
       {
         name: "Impact",
@@ -12935,6 +12948,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "minion_pets",
     commandable: false,
     copyCreatorMods: false,
+    oneShot: true,
     abilities: [
       {
         name: "Impact",
@@ -12956,6 +12970,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "minion_pets",
     commandable: false,
     copyCreatorMods: false,
+    oneShot: true,
     abilities: [
       {
         name: "Impact",
@@ -13408,6 +13423,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "minion_pets",
     commandable: false,
     copyCreatorMods: false,
+    oneShot: true,
     abilities: [
       {
         name: "Trip_Mine",
@@ -15250,6 +15266,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "minion_pets",
     commandable: false,
     copyCreatorMods: false,
+    oneShot: true,
     abilities: [
       {
         name: "FlashPulse",
@@ -15271,6 +15288,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "minion_pets",
     commandable: false,
     copyCreatorMods: false,
+    oneShot: true,
     abilities: [
       {
         name: "FlashPulse",
@@ -15292,6 +15310,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "minion_pets",
     commandable: false,
     copyCreatorMods: false,
+    oneShot: true,
     abilities: [
       {
         name: "FlashPulse",
@@ -18089,6 +18108,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "minion_pets",
     commandable: false,
     copyCreatorMods: false,
+    oneShot: true,
     abilities: [
       {
         name: "Trip_Mine",
@@ -18110,6 +18130,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "minion_pets",
     commandable: false,
     copyCreatorMods: false,
+    oneShot: true,
     abilities: [
       {
         name: "Trip_Mine",
@@ -18203,6 +18224,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "minion_pets",
     commandable: false,
     copyCreatorMods: false,
+    oneShot: true,
     abilities: [
       {
         name: "FlashPulse",
@@ -18224,6 +18246,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "minion_pets",
     commandable: false,
     copyCreatorMods: false,
+    oneShot: true,
     abilities: [
       {
         name: "FlashPulse",
@@ -18245,6 +18268,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "minion_pets",
     commandable: false,
     copyCreatorMods: false,
+    oneShot: true,
     abilities: [
       {
         name: "FlashPulse",
@@ -18266,6 +18290,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "minion_pets",
     commandable: false,
     copyCreatorMods: false,
+    oneShot: true,
     abilities: [
       {
         name: "FlashPulse",
@@ -18287,6 +18312,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "minion_pets",
     commandable: false,
     copyCreatorMods: false,
+    oneShot: true,
     abilities: [
       {
         name: "FlashPulse",
@@ -18308,6 +18334,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "minion_pets",
     commandable: false,
     copyCreatorMods: false,
+    oneShot: true,
     abilities: [
       {
         name: "FlashPulse",

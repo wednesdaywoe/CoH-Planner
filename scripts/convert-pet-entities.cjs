@@ -421,6 +421,14 @@ function extractDamage(powerData) {
 
     for (const template of (effectGroup.templates || [])) {
       if (isPvEDamageTemplate(template, effectGroup)) {
+        // A sub-1.0 group chance is a probabilistic hit, not a guaranteed one
+        // (Trip Mine's third Fire template lands 50% of the time). `extractEffects`
+        // has always carried this through; damage silently did not, so every such
+        // entry was summed at face value — Trip Mine read ~14% high before the
+        // fires-per-spawn bug even entered into it.
+        const chance = typeof effectGroup.chance === 'number' && effectGroup.chance < 1
+          ? effectGroup.chance
+          : undefined;
         for (const attrib of template.attribs) {
           const attribLower = attrib.toLowerCase();
           if (DAMAGE_ATTRIBS.has(attribLower)) {
@@ -430,6 +438,7 @@ function extractDamage(powerData) {
               damageType,
               scale: template.scale,
               table: template.table || 'Melee_Damage',
+              ...(chance !== undefined ? { chance } : {}),
             });
           } else if (_TSPY && attribLower === 'damage') {
             // Generic tspy Damage — element from the shortHelp (falls back to
@@ -438,6 +447,7 @@ function extractDamage(powerData) {
               damageType: tspyType,
               scale: template.scale,
               table: template.table || 'Melee_Damage',
+              ...(chance !== undefined ? { chance } : {}),
             });
           }
         }
@@ -748,6 +758,65 @@ function extractLifespan(powerFilePath) {
 }
 
 /**
+ * The delay on a pet's bundled Self_Destruct `Silent_Kill`, or null when it has
+ * none. Unlike `extractLifespan` this KEEPS a zero delay: an immediate self-kill
+ * is exactly the case that matters for `oneShot` below, and it is the case
+ * `extractLifespan` deliberately discards (0 means "no finite lifespan").
+ *
+ * Accepts the same Parse7 `Silent_Kill` / Parse6 `Create_Entity` aliasing as
+ * `extractLifespan`, disambiguated the same way (target=Self, no EntCreate params).
+ */
+function extractSelfDestructDelay(powerFilePath) {
+  const data = readJsonFile(powerFilePath);
+  if (!data) return null;
+  for (const effectGroup of (data.effects || [])) {
+    for (const t of (effectGroup.templates || [])) {
+      const attribs = t.attribs || [];
+      if (!attribs.includes('Silent_Kill') && !attribs.includes('Create_Entity')) continue;
+      if (t.target !== 'Self') continue;
+      if (t.params) continue; // real Create_Entity has EntCreate params
+      return typeof t.delay === 'number' ? t.delay : 0;
+    }
+  }
+  return null;
+}
+
+/**
+ * Does this pet detonate exactly once?
+ *
+ * Trip Mine, Time Bomb, Seeker Drone and High Explosives are bombs: they sit
+ * armed for the whole summon window, fire once when triggered, and are destroyed
+ * by their own bundled Self_Destruct. The damage layer otherwise models fires
+ * -per-spawn as `summonDuration / (castTime + recharge)`, which for a Blaster's
+ * Trip Mine (260s window, 20s attack recharge) says the mine detonates THIRTEEN
+ * times (report 2026-07-26: "the damage is incorrectly very high"). Only the
+ * Controller/Corruptor/Mastermind mine escaped, because its shared entity carries
+ * a 1000s recharge that happens to round the same formula down to one.
+ *
+ * The recharge is the wrong basis either way — a destroyed pet cannot recharge —
+ * so mark the shape and let the damage layer cap it at one.
+ *
+ * Two conditions, both required, because neither alone is safe:
+ *   • an IMMEDIATE self-targeted Silent_Kill (delay ≤ 1s), i.e. the pet dies with
+ *     its detonation rather than living out a lifespan (Enflame's is 5s, Oil
+ *     Slick's 15s — those really do tick for their whole delay); and
+ *   • its whole offensive kit is ONE damaging Click and no damaging Auto/Toggle.
+ *     Mastermind henchmen and VEAT pets also carry a delay-0 Self_Destruct — it
+ *     is their *dismiss* power, not a detonation — but they field several attacks
+ *     and an AI that keeps using them, so the ability-count test excludes them.
+ *
+ * Verified against the whole pet corpus: flags 18 entities — the trip mines, time
+ * bombs, Seeker Drone flashpulses and High Explosives — and no repeat attacker
+ * (arachnobots, widows, Mu pets, coral guardians, psionic nexus all excluded).
+ */
+function detectOneShot(abilities, selfDestructDelay) {
+  if (selfDestructDelay === null || selfDestructDelay > 1) return false;
+  const damaging = abilities.filter(a => a.damage.length > 0);
+  if (damaging.length !== 1) return false;
+  return damaging[0].type === 'Click';
+}
+
+/**
  * Read an entity file and extract its powers
  */
 function processEntity(entityFilePath) {
@@ -768,6 +837,7 @@ function processEntity(entityFilePath) {
   const abilities = [];
   const powersetPaths = new Set(); // Track unique powerset directories
   let lifespan = null;
+  let selfDestructDelay = null;
 
   for (let i = 0; i < powerFullNames.length; i++) {
     const fullName = powerFullNames[i]; // e.g., "Pets.Tornado.Tornado_Attack"
@@ -796,6 +866,13 @@ function processEntity(entityFilePath) {
     // have no Self_Destruct or its delay is 0 — leave `lifespan` null.
     if (power === 'self_destruct' && lifespan === null) {
       lifespan = extractLifespan(powerFilePath);
+    }
+    // Same power, different question: `oneShot` needs the raw delay including
+    // zero, which `extractLifespan` throws away. Matched on the power NAME
+    // ending in self_destruct so the Dominator/Epic mines' `TripMine_SelfDestruct`
+    // is seen too (they prefix the powerset onto every power name).
+    if (/self_?destruct$/.test(power) && selfDestructDelay === null) {
+      selfDestructDelay = extractSelfDestructDelay(powerFilePath);
     }
 
     const ability = processPetPower(powerFilePath);
@@ -829,6 +906,7 @@ function processEntity(entityFilePath) {
     copyCreatorMods: entityData.copy_creator_mods === true,
     abilities,
     lifespan: lifespan ?? undefined,
+    oneShot: detectOneShot(abilities, selfDestructDelay) || undefined,
     upgradeTiers: upgradeTiers.length > 0 ? upgradeTiers : undefined,
   };
 }
@@ -940,6 +1018,10 @@ function generateTypeScript(entities) {
   lines.push(`  damageType: string;`);
   lines.push(`  scale: number;`);
   lines.push(`  table: string;`);
+  lines.push(`  /** Sub-1.0 hit chance from the effect group (Trip Mine's third Fire`);
+  lines.push(`   *  template lands 50% of the time). Absent = guaranteed. Damage layers`);
+  lines.push(`   *  must weight by this; summing at face value overstates the power. */`);
+  lines.push(`  chance?: number;`);
   lines.push(`}`);
   lines.push(``);
   lines.push(`export interface PetEffect {`);
@@ -992,6 +1074,12 @@ function generateTypeScript(entities) {
   lines.push(`   *  when killed or unsummoned. Used by convert-powerset to populate`);
   lines.push(`   *  \`summon.duration\` for summoning powers whose EntCreate Duration is 0. */`);
   lines.push(`  lifespan?: number;`);
+  lines.push(`  /** This pet detonates ONCE: it is destroyed by its own bundled`);
+  lines.push(`   *  Self_Destruct the moment it fires (trip mines, time bombs, seeker`);
+  lines.push(`   *  drones, high explosives). Its attack's recharge is therefore not a`);
+  lines.push(`   *  repeat cadence — damage layers must cap fires-per-spawn at 1 rather`);
+  lines.push(`   *  than dividing the summon window by the cycle time. */`);
+  lines.push(`  oneShot?: boolean;`);
   lines.push(`  upgradeTiers?: PetUpgradeTier[];`);
   lines.push(`}`);
   lines.push(``);
@@ -1007,6 +1095,7 @@ function generateTypeScript(entities) {
     if (typeof entity.lifespan === 'number' && entity.lifespan > 0) {
       lines.push(`    lifespan: ${entity.lifespan},`);
     }
+    if (entity.oneShot) lines.push(`    oneShot: true,`);
     lines.push(`    abilities: [`);
 
     for (const ability of entity.abilities) {

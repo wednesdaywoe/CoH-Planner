@@ -46,7 +46,44 @@ export const TripMine: Power = {
       "powers": [
         "Pets.Trip_Mine_Dominator.TripMine_Resistance",
         "Pets.Trip_Mine_Dominator.TripMine_Info"
-      ]
+      ],
+      "resolvedEntities": [
+        {
+          "displayName": "Mine",
+          "duration": 170,
+          "copyCreatorMods": true,
+          "abilities": [
+            {
+              "name": "TripMine_Info",
+              "displayName": "Trip Mine",
+              "type": "Auto",
+              "damage": [
+                {
+                  "damageType": "Fire",
+                  "scale": 1.0954,
+                  "table": "Melee_Damage"
+                }
+              ],
+              "effects": [
+                {
+                  "type": "Knockback",
+                  "magnitude": 1,
+                  "scale": 0.75,
+                  "table": "Melee_Ones",
+                  "chance": 0.5
+                }
+              ],
+              "recharge": 20,
+              "castTime": 0,
+              "activatePeriod": 1000,
+              "effectArea": "Sphere",
+              "radius": 15,
+              "maxTargets": 10
+            }
+          ]
+        }
+      ],
+      "entity": "PL_Untargetable_FightPreferRanged"
     }
   },
   "atoms": [

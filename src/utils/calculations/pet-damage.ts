@@ -66,6 +66,11 @@ export interface PetDamageResult {
   aggregateDpsBase: number;
   aggregateDpsEnhanced: number;
   aggregateDpsFinal: number;
+  /** This pet detonates once and is destroyed (`PetEntity.oneShot`): trip mines,
+   *  time bombs, seeker drones, Photon Seekers. Carried through so the per-cast
+   *  accounting can cap fires-per-spawn at 1 — its attack's recharge is not a
+   *  repeat cadence, because the pet does not survive to use it again. */
+  oneShot?: boolean;
 }
 
 // ============================================
@@ -94,7 +99,12 @@ function calculateAbilityBaseDamage(
     const tableValue = getPetTableValue(characterClass, dmg.table, level);
     if (tableValue === undefined) continue;
 
-    const base = Math.abs(tableValue) * Math.abs(dmg.scale);
+    // Weight a probabilistic template by its hit chance — the expected damage,
+    // matching how the player-power path treats a sub-1.0 damage roll. Trip
+    // Mine's third Fire template only lands half the time; counting it in full
+    // overstated every mine by ~14%.
+    const chance = dmg.chance ?? 1;
+    const base = Math.abs(tableValue) * Math.abs(dmg.scale) * chance;
     results.push({ type: dmg.damageType, base });
   }
 
@@ -240,6 +250,7 @@ export function calculatePetDamage(
     displayName: entity.displayName,
     entityCount,
     duration,
+    oneShot: entity.oneShot,
     abilities,
     effectOnlyAbilities,
     allEffects: Array.from(allEffectsMap.values()),

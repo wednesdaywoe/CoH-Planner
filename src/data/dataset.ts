@@ -62,6 +62,10 @@ export interface PetDamageEntry {
   damageType: string;
   scale: number;
   table: string;
+  /** Sub-1.0 hit chance from the effect group (Trip Mine's third Fire template
+   *  lands 50% of the time). Absent = guaranteed. Damage layers weight by this;
+   *  summing at face value overstates the power. */
+  chance?: number;
 }
 
 export interface PetEffect {
@@ -109,6 +113,12 @@ export interface PetEntity {
   commandable: boolean;
   copyCreatorMods: boolean;
   abilities: PetAbility[];
+  /** This pet detonates ONCE: its own bundled Self_Destruct destroys it the
+   *  moment it fires (trip mines, time bombs, seeker drones, Photon Seekers).
+   *  Its attack's recharge is therefore not a repeat cadence — damage layers cap
+   *  fires-per-spawn at 1 rather than dividing the summon window by cycle time.
+   *  Stamped by `scripts/convert-pet-entities.cjs`. */
+  oneShot?: boolean;
   upgradeTiers?: PetUpgradeTier[];
 }
 

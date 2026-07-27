@@ -417,6 +417,16 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         let firesPerSpawn: number;
         if (perActivation) {
           firesPerSpawn = 1;
+        } else if (result.oneShot) {
+          // A bomb detonates once and is destroyed by its own Self_Destruct
+          // (trip mines, time bombs, seeker drones, Photon Seekers). Its
+          // attack's recharge is not a repeat cadence — the pet is gone — so
+          // the duration/cycleTime formula below is meaningless here: it read a
+          // Blaster's Trip Mine as THIRTEEN detonations over the 260s the mine
+          // merely sits armed (2894 damage instead of 195). Only the
+          // Controller/Corruptor/MM mine escaped, because its shared entity's
+          // 1000s attack recharge happened to round the same formula down to 1.
+          firesPerSpawn = 1;
         } else if (isAuto && period > 0) {
           // Auto abilities fire immediately on spawn, then every `period`
           // seconds. dotTickCount counts the initial tick at t=0 (and is robust
