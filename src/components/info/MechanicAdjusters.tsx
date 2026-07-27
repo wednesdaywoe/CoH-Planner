@@ -32,6 +32,7 @@ import {
   findStanceParent,
   activeStanceOptionId,
   stanceGroupForConditionalId,
+  toStancePowers,
 } from '@/data';
 import type { StanceGroup, StancePowerLike } from '@/data';
 import {
@@ -49,16 +50,20 @@ export function MechanicAdjusters({ power }: MechanicAdjustersProps) {
   // Staff Mastery) and read its `activeSubPower`, the single source of truth
   // for which stance is active.
   const build = useBuildStore((s) => s.build);
-  const buildPowers = useMemo(() => {
-    const out: StancePowerLike[] = [];
-    const add = (powers?: { internalName: string; activeSubPower?: string }[]) =>
-      powers?.forEach((p) => out.push({ internalName: p.internalName, activeSubPower: p.activeSubPower }));
-    add(build.primary?.powers);
-    add(build.secondary?.powers);
-    build.pools?.forEach((pool) => add(pool.powers));
-    add(build.epicPool?.powers);
-    return out;
-  }, [build.primary?.powers, build.secondary?.powers, build.pools, build.epicPool?.powers]);
+  // `toStancePowers` (not a local projection) so `mechanicType` rides along — it
+  // is the discriminator `findStanceParent` uses to tell the stance switcher from
+  // a same-internalName impostor (Bio Armor's switcher is internal "Evolution";
+  // the unrelated "Evolving Armor" +Res toggle is internal "Adaptation", and BOTH
+  // match the group's `parents`). Narrowing it away left the helper falling back
+  // to `candidates[0]` — first in PICK order — so taking Evolving Armor before
+  // Adaptation bound this picker to the wrong power while the Header and the calc
+  // bound to the right one, and the stance desynced (report 2026-07-26).
+  const buildPowers = useMemo(() => toStancePowers(
+    build.primary?.powers,
+    build.secondary?.powers,
+    ...(build.pools ?? []).map((pool) => pool.powers),
+    build.epicPool?.powers,
+  ), [build.primary?.powers, build.secondary?.powers, build.pools, build.epicPool?.powers]);
 
   const conditional = power.conditionalEffects;
   if (!conditional || conditional.length === 0) return null;

@@ -119,6 +119,32 @@ export interface StancePowerLike {
   mechanicType?: string;
 }
 
+/**
+ * Flatten a build's powers into the shape the stance helpers need.
+ *
+ * Exists so callers can't hand-roll the projection and quietly drop
+ * `mechanicType` — which is exactly what defeated `findStanceParent`'s
+ * disambiguation once (the InfoPanel picker narrowed each power to
+ * `{ internalName, activeSubPower }`, so the helper fell back to pick order and
+ * bound Bio Armor's stance to "Evolving Armor" instead of the real switcher).
+ * Every field the helpers read is copied here, in one place.
+ */
+export function toStancePowers(
+  ...groups: (readonly StancePowerLike[] | undefined)[]
+): StancePowerLike[] {
+  const out: StancePowerLike[] = [];
+  for (const g of groups) {
+    for (const p of g ?? []) {
+      out.push({
+        internalName: p.internalName,
+        activeSubPower: p.activeSubPower,
+        mechanicType: p.mechanicType,
+      });
+    }
+  }
+  return out;
+}
+
 /** The stance group a conditional `id` belongs to, or undefined if the id isn't
  *  a gated stance option. Lets consumers treat stance conditionals specially. */
 export function stanceGroupForConditionalId(id: string): StanceGroup | undefined {

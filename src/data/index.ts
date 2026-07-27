@@ -370,6 +370,7 @@ export { STAT_COLORS } from './stat-colors';
 export {
   STANCE_GROUPS,
   stanceGroupForConditionalId,
+  toStancePowers,
   findStanceParent,
   activeStanceOptionId,
   stanceAdjusterOverrides,

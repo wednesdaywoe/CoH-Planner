@@ -561,7 +561,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
       return `${value.toFixed(2)} mph${capped ? ' *' : ''}`;
     },
     color: STAT_COLORS.jumpSpeed,
-    tooltip: 'Jump speed (base 21.00 mph, cap 78.18 mph)',
+    tooltip: 'Jump speed (base 14.32 mph — the same 1-unit base as running, cap 78.18 mph)',
     showWhenZero: true,
     breakdownKey: 'jumpSpeed',
   },

@@ -46,6 +46,7 @@ import {
   getAllPowerPools,
   getInherentAvailabilityOverride,
   getInherentAutoGrantedSlotCount,
+  STANCE_GROUPS,
 } from '@/data';
 import type { InherentPowerDef } from '@/data';
 import { computeSetTracking } from '@/utils/calculations/set-tracking';
@@ -2437,16 +2438,36 @@ export const useBuildStore = create<BuildStore>()(
         });
       },
 
-      // Set active sub-power for powers with mutually exclusive stances
+      // Set active sub-power for powers with mutually exclusive stances.
+      //
+      // The write is AUTHORITATIVE for its stance group: every other power that
+      // could be mistaken for the group's parent gets its `activeSubPower`
+      // cleared. `internalName` is not unique — Bio Armor's switcher is internal
+      // "Evolution" while the unrelated "Evolving Armor" toggle is internal
+      // "Adaptation", and both match the adaptation group's `parents`. A build
+      // that picked up a stray selection on the impostor (the pre-fix picker
+      // could bind to it, and the engine reads `activeSubPower` per power) would
+      // otherwise keep the stance stuck on even after clearing it here.
       setActiveSubPower: (parentPowerName, subPowerName) => {
         historyCheckpoint();
+        // Sibling internalNames in the same stance group as the target, if any.
+        const siblings = new Set(
+          STANCE_GROUPS
+            .filter((g) => g.parents.includes(parentPowerName))
+            .flatMap((g) => g.parents)
+            .filter((n) => n !== parentPowerName),
+        );
         set((state) => ({
           build: applyToAllPowers(state.build, (powers) =>
-            powers.map((p) =>
-              p.internalName === parentPowerName
-                ? { ...p, activeSubPower: subPowerName ?? undefined }
-                : p
-            )
+            powers.map((p) => {
+              if (p.internalName === parentPowerName) {
+                return { ...p, activeSubPower: subPowerName ?? undefined };
+              }
+              if (siblings.has(p.internalName) && p.activeSubPower !== undefined) {
+                return { ...p, activeSubPower: undefined };
+              }
+              return p;
+            })
           ),
         }));
       },

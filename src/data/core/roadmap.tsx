@@ -146,7 +146,6 @@ export const ROADMAP_GROUPS: RoadmapGroup[] = [
       { label: 'Movement', state: 'done' },
       { label: 'Enhancements & ED', state: 'done' },
       { label: 'Build-wide totals', state: 'in-progress' },
-      { label: 'Accuracy check', state: 'in-progress' },
     ],
   },
   {
@@ -161,8 +160,7 @@ export const ROADMAP_GROUPS: RoadmapGroup[] = [
       { label: 'Whole-build verification', state: 'done' },
       { label: 'Save & restore', state: 'planned' },
       { label: 'Undo / redo', state: 'planned' },
-      { label: 'Data double-check', state: 'planned' },
-      { label: 'Power picker & slotting UI', state: 'planned' },
+      { label: 'Power picker & slotting UI', state: 'done' },
       { label: 'Level-difference modifiers', state: 'done' },
 
     ],
@@ -172,14 +170,14 @@ export const ROADMAP_GROUPS: RoadmapGroup[] = [
     title: 'Sets, Procs & Incarnates and Services',
     items: [
       { label: 'Formula engine', state: 'done' },
-      { label: 'Set bonuses', state: 'planned' },
-      { label: 'Incarnate data prep', state: 'planned' },
+      { label: 'Set bonuses', state: 'in-progress' },
+      { label: 'Incarnate data prep', state: 'in-progress' },
       { label: 'Procs & incarnates', state: 'planned' },
-      { label: 'Travel powers', state: 'planned' },
+      { label: 'Travel powers', state: 'done' },
       { label: 'Server wiring, Auth', state: 'planned' },
-      { label: 'Native desktop app', state: 'planned' },
-      { label: 'Stats dashboard', state: 'planned' },
-      { label: 'Reimplementation of all helper modals', state: 'planned' },
+      { label: 'Native desktop app', state: 'in-progress' },
+      { label: 'Stats dashboard', state: 'done' },
+      { label: 'Reimplementation of all helper modals', state: 'in-progress' },
     ],
   },
   {

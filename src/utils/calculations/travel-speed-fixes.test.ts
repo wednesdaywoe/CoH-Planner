@@ -5,7 +5,9 @@ import { getInherentPowerDef } from '@/data';
 import { getPowerPool } from '@/data/power-pools';
 import { loadDataset } from '@/data/dataset';
 import {
+  applyMovementBuff,
   getEffectiveMovementCaps,
+  MOVEMENT_BASES,
   MOVEMENT_CAPS,
   MPH_PER_SCALE,
 } from '@/data/core/movement-constants';
@@ -249,5 +251,36 @@ describe('travel-speed fixes (HC)', () => {
     expect(bd?.sources.some((s) => s.capped)).toBeFalsy();
     expect(bd?.sources.some((s) => s.suppressed)).toBe(true);
     expect(bd?.total).toBeCloseTo(0, 5);
+  });
+
+  // ---- mph projection: the bases the % buffs land on (report 2026-07-13) ----
+  // Every movement buff is really a count of scale units (1 unit = 21 ft/s =
+  // 14.32 mph); the mph readout is base + 14.32 × units. The bug was in the
+  // BASES, not the percentages: jumpSpeed carried 21.0 — the ft/s figure
+  // mislabeled as mph — and fly carried 31.5 the same way, then multiplied the
+  // buff onto it instead of onto the 1-unit base.
+
+  it('jump-speed base equals the run-speed base (14.32 mph = 1 scale unit)', () => {
+    expect(MOVEMENT_BASES.jumpSpeed).toBeCloseTo(MOVEMENT_BASES.runSpeed, 5);
+    expect(MOVEMENT_BASES.jumpSpeed).toBeCloseTo(MPH_PER_SCALE, 1);
+  });
+
+  it("a +190.485% jump buff reads 41.59 mph, not the old 61 mph", () => {
+    // The reported build: Hurdle slotted to 0.765 × Melee_SpeedJumping (2.49).
+    // In-game reading: base 14.32 + 27.27 = 41.59 mph. The planner read 61.00
+    // (= 21.0 × 2.90485), the 1.47× the mislabeled base introduces.
+    expect(applyMovementBuff('jumpSpeed', 190.485).value).toBeCloseTo(41.59, 1);
+    // Run and jump must agree at the same buff % — they share one base.
+    expect(applyMovementBuff('jumpSpeed', 100).value)
+      .toBeCloseTo(applyMovementBuff('runSpeed', 100).value, 5);
+  });
+
+  // Fly: base is 1.5 units (21.48 mph) but buffs still land at 1 unit each, so
+  // an unslotted Swift (+13.62% fly) is worth 1.95 mph — not 2.93 (= 21.48 ×
+  // 13.62%, what multiplying onto fly's own base would give).
+  it('a fly buff is worth 14.32 mph per 100%, not 21.48', () => {
+    const flyMph = (p: number) => 1.5 * MPH_PER_SCALE + MPH_PER_SCALE * (p / 100);
+    expect(flyMph(0)).toBeCloseTo(21.48, 2);
+    expect(flyMph(13.62) - flyMph(0)).toBeCloseTo(1.95, 2);
   });
 });

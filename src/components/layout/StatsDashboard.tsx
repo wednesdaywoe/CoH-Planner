@@ -23,7 +23,7 @@ import type { IncarnateSlotId, ToggleableIncarnateSlot, SelectedPower } from '@/
 import type { DashboardStatBreakdown } from '@/hooks/useCalculatedStats';
 import { STAT_DEFINITIONS, resolveStatValue, STAT_CATEGORY } from '@/data/stat-definitions';
 import type { StatDefinition, StatValue, CompoundStatValue, MezStatValue, StatCategory } from '@/data/stat-definitions';
-import { applyMovementBuff, getEffectiveMovementCaps, type MovementCapBump, type MovementStat } from '@/data/core/movement-constants';
+import { applyMovementBuff, getEffectiveMovementCaps, MPH_PER_SCALE, type MovementCapBump, type MovementStat } from '@/data/core/movement-constants';
 import type { GlobalBonuses } from '@/utils/calculations/character-totals';
 
 // Re-export for any consumers that imported from here
@@ -311,25 +311,27 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
             return `${a.toFixed(2)} ${unit}${c ? ' *' : ''}`;
           };
         } else if (config.stat === 'flyspeed') {
-          // Display fly speed in mph for parity with run/jump speeds (user
-          // ask 2026-05-30). MOVEMENT_BASES.flySpeed is 0 by design — the
-          // game requires an active fly power for the character to fly at
-          // all — so the dashboard math assumes a standard Fly / Mystic
-          // Flight base of 31.5 mph as the most likely active power. Other
-          // fly powers (Group Fly @ 21 mph, etc.) won't match the displayed
-          // value perfectly; the tooltip notes the assumption so the user
-          // knows what they're looking at.
-          const STANDARD_FLY_BASE_MPH = 31.5;
+          // Fly is modeled the way the game breaks it down:
+          //   flySpeed = FLY_BASE + UNIT × Σ(FlyingSpeed buff %)
+          // Flying has its OWN intrinsic base — 1.5 scale units = 31.5 ft/s =
+          // 21.48 mph — but the buffs on top are still scaled by the ONE-unit
+          // base (21 ft/s = 14.32 mph), not by fly's 1.5-unit base. So an
+          // unslotted Swift (+13.6% fly) is worth 1.95 mph, not 2.93 (user
+          // report 2026-07-13). The previous code used 31.5 — the ft/s figure
+          // mislabeled as mph, the same units bug as jump speed — AND applied
+          // the buff multiplicatively onto it, overstating both terms.
+          const FLY_BASE_MPH = 1.5 * MPH_PER_SCALE;  // 31.5 ft/s = 21.48 mph
+          const UNIT_MPH = MPH_PER_SCALE;            // buffs scale off the 1-unit base
           const cap = effectiveMovementCaps.flySpeed;
           const pct = Number(value);
           const sign = pct >= 0 ? '+' : '';
           const computeMph = (p: number) => {
-            const raw = STANDARD_FLY_BASE_MPH * (1 + p / 100);
+            const raw = FLY_BASE_MPH + UNIT_MPH * (p / 100);
             const capped = raw >= cap;
             return { value: capped ? cap : raw, capped };
           };
           const { value: mph, capped } = computeMph(pct);
-          tooltip = `${sign}${pct.toFixed(2)}% buff → ${mph.toFixed(2)} mph${capped ? ` (capped at ${cap.toFixed(2)})` : ''}. Assumes standard Fly / Mystic Flight base (31.5 mph). Actual base depends on which fly power is active.`;
+          tooltip = `${sign}${pct.toFixed(2)}% buff → ${mph.toFixed(2)} mph${capped ? ` (capped at ${cap.toFixed(2)})` : ''}. Fly base 21.48 mph + 14.32 mph × buff%; the % already includes the active fly power's own buff. Assumes a standard Fly / Mystic Flight base — Group Fly and the like start lower.`;
           format = (v) => {
             const { value: m, capped: c } = computeMph(Number(v));
             return `${m.toFixed(2)} mph${c ? ' *' : ''}`;

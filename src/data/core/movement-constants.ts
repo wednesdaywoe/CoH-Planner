@@ -7,19 +7,26 @@
  * automatically — the dashboard uses the standard cap because it doesn't
  * detect which travel toggles are currently "on".
  *
- * Base fly speed is 0 because characters cannot fly without a power; the %
- * fly buff displayed in the dashboard is a multiplier on whatever fly speed
- * the active fly power supplies in-game (which the planner doesn't model
- * separately yet).
+ * Base fly speed is 0 here because characters cannot fly without a power. The
+ * dashboard projects fly separately (StatsDashboard, `flyspeed`): a fly power
+ * supplies its own base — 1.5 units = 21.48 mph for Fly / Mystic Flight — and
+ * buffs ADD onto it at the ONE-unit rate (14.32 mph per 100%), which is why
+ * fly's higher base does not scale its buffs.
  */
 
 export const MPH_PER_SCALE = 14.3181818;
 
-/** Base (unbuffed) movement speeds for a level-50 character. */
+/** Base (unbuffed) movement speeds for a level-50 character.
+ *
+ * Running and JUMPING share the same 1-unit base — 21 ft/s = 14.32 mph. The
+ * jump-speed value was previously 21.0, which mislabeled the *ft/s* figure as
+ * mph and inflated every jump-speed readout by 21/14.32 ≈ 1.47× (e.g. Hurdle's
+ * +190.485% read 61 mph instead of the in-game 41.59 mph). See MPH_PER_SCALE —
+ * one scale unit is exactly 21 fps = 14.3181818 mph. */
 export const MOVEMENT_BASES = {
-  runSpeed: 14.32,   // mph
+  runSpeed: 14.32,   // mph (21 ft/s)
   flySpeed: 0.0,     // mph — characters cannot fly without a power
-  jumpSpeed: 21.0,   // mph
+  jumpSpeed: 14.32,  // mph (21 ft/s) — same 1-unit base as running
   jumpHeight: 4.0,   // feet (jump height is a distance, not a speed)
 } as const;
 
