@@ -1,8 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { PET_ENTITIES as HC_PETS } from './datasets/homecoming/pet-entities';
 import { PET_ENTITIES as REBIRTH_PETS } from './datasets/rebirth/pet-entities';
-import { PET_ENTITIES as TSPY_PETS } from './datasets/thunderspy/pet-entities';
-import type { PetEntity } from '@/types';
+import { PET_ENTITIES as TSPY_PETS, type PetEntity } from './datasets/thunderspy/pet-entities';
 
 /**
  * PvE/PvP twin drop in the pet-entity converter.
@@ -31,9 +30,11 @@ const DATASETS: [string, Record<string, PetEntity>][] = [
 function* allAbilities(pets: Record<string, PetEntity>) {
   for (const [petName, pet] of Object.entries(pets)) {
     for (const ability of pet.abilities ?? []) yield { petName, ability };
-    // Upgrade tiers carry their own ability lists on some entities.
-    for (const tier of Object.values((pet as { upgrades?: Record<string, { abilities?: unknown[] }> }).upgrades ?? {})) {
-      for (const ability of (tier?.abilities ?? []) as PetEntity['abilities']) yield { petName, ability };
+    // Mastermind henchmen carry their Equip/Upgrade abilities on `upgradeTiers`,
+    // NOT on `abilities` — a walk that reads only `abilities` silently covers a
+    // fraction of the corpus while reporting a healthy scanned count.
+    for (const tier of pet.upgradeTiers ?? []) {
+      for (const ability of tier.abilities ?? []) yield { petName: `${petName}#t${tier.tier}`, ability };
     }
   }
 }
