@@ -89,7 +89,6 @@ export const DispersionBubble: Power = {
       "defenseBuff": 2.25,
       "hold": 2.25,
       "immobilize": 2.25,
-      "mezResistance": 2.25,
       "stun": 2.25
     },
     "effectDuration": 2.25,
@@ -102,20 +101,6 @@ export const DispersionBubble: Power = {
       "mag": 1,
       "scale": 20,
       "table": "Ranged_Res_Boolean"
-    },
-    "mezResistance": {
-      "hold": {
-        "scale": 2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "immobilize": {
-        "scale": 2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "stun": {
-        "scale": 2,
-        "table": "Ranged_Res_Boolean"
-      }
     },
     "stun": {
       "mag": 1,
@@ -137,9 +122,9 @@ export const DispersionBubble: Power = {
     ["Mez","Held",-20,1,2.25,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? ! entref target> entref source> eq ! &&"],
     ["Mez","Stunned",-20,1,2.25,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? ! entref target> entref source> eq ! &&"],
     ["Mez","Immobilized",-20,1,2.25,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? ! entref target> entref source> eq ! &&"],
-    ["MezResist","Held",2,1,2.25,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? entref target> entref source> eq ! &&"],
-    ["MezResist","Stunned",2,1,2.25,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? entref target> entref source> eq ! &&"],
-    ["MezResist","Immobilized",2,1,2.25,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? entref target> entref source> eq ! &&"],
+    ["MezResist","Held",2,1,2.25,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? entref target> entref source> eq ! &&",true],
+    ["MezResist","Stunned",2,1,2.25,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? entref target> entref source> eq ! &&",true],
+    ["MezResist","Immobilized",2,1,2.25,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? entref target> entref source> eq ! &&",true],
     ["MezResist","Knockback",100,1,2.25,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? ! entref target> entref source> eq &&",true],
     ["MezResist","Knockup",100,1,2.25,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? ! entref target> entref source> eq &&",true],
     ["Mez","Knockback",-10,1,2.25,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? ! entref target> entref source> eq &&",true],

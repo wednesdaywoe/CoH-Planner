@@ -2729,6 +2729,21 @@ function _isConditionalGate(req) {
     .replace(/\s*(&&|\|\|)\s*$/, '')
     .trim();
   if (!stripped) return false;
+  // A POSITIVE `isPVPMap?` conjunct is never the base case — this is a PvE
+  // planner, so PvP-map content is conditional by definition (the PvE twin is
+  // the one that applies). Checked BEFORE the trailing-`!` shortcut below,
+  // which reads the LAST token of the `&&`-flattened expression as if it were
+  // the top-level operator. That holds for a conjunction of negations
+  // ("no combo level active", "not in a raid" — genuinely the default state)
+  // but not when the `!` negates only ONE conjunct of a `&&`: Rebirth
+  // Guardian's Dispersion Bubble carries `isPVPMap? entref target> entref
+  // source> eq ! &&` ("on a PvP map AND target is not self"), where the `!`
+  // belongs to the entref clause and the real top-level operator is `&&`.
+  // `_stripIgnoredClauses` has already trimmed that trailing `&&`, so the
+  // shortcut saw `… eq !` and folded a PvP-only ally mez-duration resistance
+  // (2.0/Ranged_Res_Boolean) into the base bag, displacing nothing but adding
+  // a stat the power never grants in PvE.
+  if (/\bisPVPMap\?(?!\s+!)/i.test(stripped)) return true;
   // RPN top-level NOT → the requires reduces to "state is absent" which is
   // the base case for state-gated mechanics (e.g. Suffocate's -11.25% def
   // when target is NOT drowning is the default; the larger -14% applies as

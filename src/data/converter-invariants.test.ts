@@ -105,6 +105,49 @@ describe('generated-data invariants (committed; CI-runnable, no raw data)', () =
     expect(offenders).toEqual([]);
   });
 
+  // A PvP-map value must never reach the BASE atom set. The planner is PvE-only,
+  // so `isPVPMap?` content is conditional by definition and its `isPVPMap? !` twin
+  // is the one that applies. `_isConditionalGate`'s trailing-`!` shortcut reads the
+  // last token of the `&&`-flattened requires as if it were the top-level operator;
+  // that holds for a conjunction of negations ("no combo level active" — genuinely
+  // the default) but not when the `!` negates only ONE conjunct. Rebirth's Weave,
+  // Hover and Guardian Dispersion Bubble all carry `isPVPMap? … eq ! &&`, and all
+  // 24 of their PvP atoms were landing ungated (Dispersion Bubble's and Hover's
+  // also reached the bag as a phantom `mezResistance`). Scans EVERY atom tuple at
+  // any indent depth, so the nested power-pools / epic-pools structures are covered
+  // — a powersets-only walk misses exactly where this bit.
+  it('no PvP-map value reaches the base atom set (gated, never base)', () => {
+    const ATOM_LINE = /^[ \t]*(\[".*?\])[ \t]*,?[ \t]*$/gm;
+    const I_REQUIRES = 22;
+    const I_GATED = 23;
+    const BARE_PVP = /\bisPVPMap\?(?!\s+!)/i;
+
+    const offenders: string[] = [];
+    let scanned = 0;
+    let pvp = 0;
+
+    for (const ds of ['homecoming', 'rebirth', 'thunderspy']) {
+      for (const f of walkTs(path.join(DATASETS_DIR, ds, 'generated'))) {
+        for (const m of read(f).matchAll(ATOM_LINE)) {
+          let atom: unknown[];
+          try { atom = JSON.parse(m[1]) as unknown[]; } catch { continue; }
+          if (typeof atom[0] !== 'string') continue;
+          scanned++;
+          const requires = atom[I_REQUIRES];
+          if (typeof requires !== 'string' || !BARE_PVP.test(requires)) continue;
+          pvp++;
+          if (atom[I_GATED] !== true) offenders.push(`${rel(f)}: ${atom[0]}/${atom[1]} scale ${atom[2]} — ${requires}`);
+        }
+      }
+    }
+
+    // Guard the guard: print-and-assert the counts so a regex that stops matching
+    // (indent change, encoder reorder) fails loudly instead of passing vacuously.
+    expect(scanned).toBeGreaterThan(50_000);
+    expect(pvp).toBeGreaterThan(1_000);
+    expect(offenders).toEqual([]);
+  });
+
   // Every toggle with an endurance cost must carry its `activatePeriod` (tick
   // period). End/sec = endurance / activatePeriod; when the field is missing the
   // runtime transform falls back to 0.5s, overcounting any toggle whose real

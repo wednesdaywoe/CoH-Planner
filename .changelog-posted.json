@@ -255,6 +255,56 @@
       "id": "engine-failure-visible",
       "date": "2026-07-26",
       "preview": "If the calculation engine fails to load, you get a red banner telling you so."
+    },
+    {
+      "id": "jump-speed-base-mph",
+      "date": "2026-07-26",
+      "preview": "Jump speed was reading about 1.47x too fast due to a units mismatch."
+    },
+    {
+      "id": "adaptation-stance-parent-desync",
+      "date": "2026-07-26",
+      "preview": "Bio Armor: fixed the Adaptation stance desyncing between the power-info picker a"
+    },
+    {
+      "id": "trip-mine-multi-detonation",
+      "date": "2026-07-26",
+      "preview": "Trip Mine on Blaster and Defender was reading roughly 13x too high 😅. Time Bomb"
+    },
+    {
+      "id": "trip-mine-chance-weighting",
+      "date": "2026-07-26",
+      "preview": "Summoned-pet damage now weights partial-chance hits. Trip Mine's third Fire hit "
+    },
+    {
+      "id": "dominator-trip-mine-no-damage",
+      "date": "2026-07-26",
+      "preview": "Dominator Trip Mine showed no damage at all. Its built differently from the othe"
+    },
+    {
+      "id": "adaptation-stance-tooltips",
+      "date": "2026-07-26",
+      "preview": "The Adaptation and Staff Form stance pickers in a power's info now have tooltips"
+    },
+    {
+      "id": "fly-speed-base-mph",
+      "date": "2026-07-26",
+      "preview": "Fly speed had the same units mistake, plus one of its own."
+    },
+    {
+      "id": "accolade-values-corrected",
+      "date": "2026-07-26",
+      "preview": "Fixed the new calc ignoring accolades. Also removed hardcoded values for Accolad"
+    },
+    {
+      "id": "thrust-run-speed-global",
+      "date": "2026-07-26",
+      "preview": "Thrust's +Run Speed was showing 10% and ignoring the enhancement in its own powe"
+    },
+    {
+      "id": "launch-jump-height-global",
+      "date": "2026-07-26",
+      "preview": "Launch's +Jump Height global was doing nothing. It was being read as +Run Speed,"
     }
   ]
 }

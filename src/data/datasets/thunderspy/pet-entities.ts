@@ -17913,7 +17913,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
         displayName: "Temporal Mending",
         type: "Click",
         damage: [],
-        effects: [{"type":"RegenBuff","scale":0.44,"table":"Ranged_Ones"},{"type":"Slow","scale":0.2,"table":"Ranged_Ones"}],
+        effects: [{"type":"Slow","scale":0.2,"table":"Ranged_Ones"}],
         recharge: 20,
         castTime: 2.03,
         effectArea: "Sphere",

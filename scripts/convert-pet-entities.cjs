@@ -375,6 +375,37 @@ function isUtilityPower(powerData) {
   return false;
 }
 
+// A PvE/PvP `enttype` pair is split into `enttype target> critter eq` (PvE) and
+// `enttype target> player eq` (PvP) groups, BOTH tagged is_pvp='EITHER', so the
+// PVP_ONLY flag never catches the PvP half — this requires clause does. Same
+// helper (and same RPN spelling) as convert-powerset.cjs `isPvpEnttypeVariant`
+// and validate-converter-output.cjs. This converter previously matched the
+// CoD2 *infix* spelling `target>enttype eq 'player'`, which the parser never
+// emits, so the guard was dead: every summoned rain/storm pet kept BOTH halves
+// of its damage pair. Blizzard read four sources (Lethal 0.05 + PvE Cold 0.05 +
+// PvP Cold 0.01 + PvP Cold 0.09) instead of two; Ice Storm and Rain of Fire
+// read three instead of one.
+function isPvpEnttypeVariant(requiresExpression) {
+  return /\benttype\s+target>\s+player\s+eq/i.test(requiresExpression || '');
+}
+
+// Thunderspy spells the same split as an `isPVPMap?` check (negated for the PvE
+// half), so read both idioms — reading only one leaves tspy pets double-counted.
+function isPvpMapOnly(requiresExpression) {
+  return /\bisPVPMap\?(?!\s+!)/i.test(requiresExpression || '');
+}
+
+/** True for any effect group that only applies on a PvP map / to a player
+ *  target. The planner has no PvP mode, so the PvE twin is always preferred
+ *  (GAME-DATA-PRINCIPLES §3). Dropping the whole group also drops its
+ *  child_effects subtree, matching convert-powerset.cjs `collectTemplatesDeep`. */
+function isPvpOnlyGroup(effectGroup) {
+  if (!effectGroup) return false;
+  if (effectGroup.is_pvp === 'PVP_ONLY') return true;
+  const req = effectGroup.requires_expression || '';
+  return isPvpEnttypeVariant(req) || isPvpMapOnly(req);
+}
+
 /**
  * Check if an effect template is PvE-relevant damage
  */
@@ -387,7 +418,7 @@ function isPvEDamageTemplate(template, effectGroup) {
   // and the `CritActive` crit rider (not a `damage` attrib). Element is resolved
   // from the shortHelp at extract time.
   if (_TSPY && attribs.includes('damage')) {
-    if (effectGroup.is_pvp === 'PVP_ONLY') return false;
+    if (isPvpOnlyGroup(effectGroup)) return false;
     return /_damage$/i.test(template.table || '') && template.scale > 0;
   }
 
@@ -397,12 +428,8 @@ function isPvEDamageTemplate(template, effectGroup) {
   // Must be absolute aspect (actual damage, not resistance/strength)
   if (template.aspect !== 'Absolute') return false;
 
-  // Skip PvP-only effects
-  if (effectGroup.is_pvp === 'PVP_ONLY') return false;
-
-  // Skip PvP-specific requires
-  const req = effectGroup.requires_expression || '';
-  if (req.includes("target>enttype eq 'player'")) return false;
+  // Skip PvP-only effects and the PvP half of a PvE/PvP pair
+  if (isPvpOnlyGroup(effectGroup)) return false;
 
   return true;
 }
@@ -416,8 +443,8 @@ function extractDamage(powerData) {
   const tspyType = _TSPY ? (_tspyDamageType(powerData.display_short_help) || 'Special') : null;
 
   for (const effectGroup of (powerData.effects || [])) {
-    // Skip PvP-only effect groups
-    if (effectGroup.is_pvp === 'PVP_ONLY') continue;
+    // Skip PvP-only effect groups (and the `player eq` half of a PvE/PvP pair)
+    if (isPvpOnlyGroup(effectGroup)) continue;
 
     for (const template of (effectGroup.templates || [])) {
       if (isPvEDamageTemplate(template, effectGroup)) {
@@ -465,10 +492,8 @@ function extractDamage(powerData) {
  * Check if a template applies a debuff (negative value on target)
  */
 function isDebuffTemplate(template, effectGroup) {
-  // Skip PvP-only effects
-  if (effectGroup.is_pvp === 'PVP_ONLY') return false;
-  const req = effectGroup.requires_expression || '';
-  if (req.includes("target>enttype eq 'player'")) return false;
+  // Skip PvP-only effects and the PvP half of a PvE/PvP pair
+  if (isPvpOnlyGroup(effectGroup)) return false;
 
   // Must target foes (not self buffs)
   if (template.target === 'Self') return false;
@@ -484,7 +509,7 @@ function extractEffects(powerData) {
   const seenTypes = new Set(); // Avoid duplicate effect types per power
 
   for (const effectGroup of (powerData.effects || [])) {
-    if (effectGroup.is_pvp === 'PVP_ONLY') continue;
+    if (isPvpOnlyGroup(effectGroup)) continue;
 
     const processTemplates = (templates, chance) => {
       for (const template of (templates || [])) {
@@ -624,7 +649,7 @@ function extractEffects(powerData) {
 
     // Process child effects
     for (const child of (effectGroup.child_effects || [])) {
-      if (child.is_pvp === 'PVP_ONLY') continue;
+      if (isPvpOnlyGroup(child)) continue;
       processTemplates(child.templates, effectGroup.chance * child.chance);
     }
   }
