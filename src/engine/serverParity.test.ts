@@ -153,7 +153,12 @@ const SWEEP_LEVEL = 25;
 // GlobalBonuses fields `mapGlobal` deliberately hardcodes to 0 — they have no engine source and
 // feed no dashboard total (see engineTotalsMap.ts). The legacy calc still fills them, so a
 // difference here is expected and off-scope for parity.
-const UNMAPPED = new Set(['threatLevel', 'protRepel', 'protTeleport', 'toggleEndCost', 'enduranceDiscount', 'netEndPerSec']);
+//
+// `toggleEndCost`/`netEndPerSec` were here too, and should never have been: they feed the
+// dashboard's END COST and NET END, so excusing them hid a live 0 on every build from the
+// engine swap (2026-07-23) until the engine grew them. They are graded now — this list is for
+// fields with no consumer, not for fields with no implementation.
+const UNMAPPED = new Set(['threatLevel', 'protRepel', 'protTeleport', 'enduranceDiscount']);
 
 // Stats (lowercased key) where the engine intentionally supersedes the legacy calc — the engine
 // reads a faithful effect the beta's older converter drops. These are validated, not defects:

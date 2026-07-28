@@ -5,8 +5,10 @@
  * The engine owns the numbers; this only reshapes keys. Movement lives in the engine's
  * `GlobalBonuses` (not its `CharacterStats`), so the beta `stats.runspeed…` fields are
  * pulled from `bonuses`. A handful of beta fields have no engine source (`threatLevel`,
- * `protRepel`/`protTeleport`, `toggleEndCost`/`enduranceDiscount`/`netEndPerSec`) and are
- * left 0 — none feed the totals dashboard. `bonusTracking` and `breakdown` are populated from
+ * `protRepel`/`protTeleport`, `enduranceDiscount`) and are left 0 — none feed the totals
+ * dashboard. `toggleEndCost`/`netEndPerSec` DID feed it (the Survival & Mobility card's END
+ * COST and NET END) and were wrongly in that list: they read 0 for every build from the
+ * engine swap until the engine grew them (Step 9.7, `projection::toggle_endurance_total`). `bonusTracking` and `breakdown` are populated from
  * the engine's own tracking (PROD2): set-bonus Rule-of-5 provenance (the `(x/5)` counters,
  * capped rings/banner, per-stat tooltip set-bonus rows) plus the always-on proc `type:'proc'`
  * sources (LotG +Rech etc.). Active-power / inherent rows, and stealth-radius proc rows, are

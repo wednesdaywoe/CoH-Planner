@@ -26,6 +26,7 @@ export interface EngineStats {
 
 export interface EngineBonuses {
   damage: number; accuracy: number; to_hit: number; recharge: number; endurance: number; range: number;
+  toggle_end_cost: number; net_end_per_sec: number;
   defense_melee: number; defense_ranged: number; defense_aoe: number;
   defense_smashing: number; defense_lethal: number; defense_fire: number; defense_cold: number;
   defense_energy: number; defense_negative: number; defense_psionic: number; defense_toxic: number;
@@ -474,7 +475,9 @@ export function mapGlobal(b: EngineBonuses, s: EngineStats): GlobalBonuses {
     protRepel: 0, protTeleport: 0,
     mezResistTaunt: b.mez_resist_taunt, mezResistPlacate: b.mez_resist_placate,
     levelShift: b.level_shift,
-    toggleEndCost: 0, enduranceDiscount: 0, netEndPerSec: 0,
+    // `enduranceDiscount` stays 0 on BOTH sides: the beta field of that name is vestigial and
+    // never accumulated — `endurance` is the EndDisc sum the toggle math and the dashboard read.
+    toggleEndCost: b.toggle_end_cost, enduranceDiscount: 0, netEndPerSec: b.net_end_per_sec,
     baseToHit: b.base_to_hit, hitChance: b.hit_chance, combatModifier: b.combat_modifier,
     strengthDefense: b.strength_defense, strengthToHit: b.strength_to_hit, strengthHeal: b.strength_heal,
     strengthAbsorb: b.strength_absorb, strengthEndMod: b.strength_end_mod, strengthMovement: b.strength_movement,
