@@ -37,6 +37,8 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
     date: '2026-07-27',
 
     items: [
+      { id: 'end-cost-net-end', message: 'Fix for END COST and NET END not reading from the calculation path', type: 'fix'},
+      { id: 'cache-bust-stamp', message: 'Added a build-engine stamp to help with calculator load issues', type: 'fix' },
       { id: 'missing-absorb-boost', message: 'Fix for Cardiac and Resilient Alpha missing absorb boost', type: 'fix' },
       { id: 'fly-speed-1.5-scale', message: 'Fly speed, once more: a fly buff is worth 21.48 mph per 100%, not 14.32. Flying has its own 1.5x base and its buffs scale off that', type: 'fix' },
       { id: 'sj-cj-jump-suppression', message: 'Known issue: with both Super Jump and Combat Jumping, in-combat jump speed reads about 0.14 mph high. In game, Super Jump\'s jump buff is suppressed rather than switched off in combat, but Sidekick drops it and lets Combat Jumping through instead.', type: 'known-issue' },

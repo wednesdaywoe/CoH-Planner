@@ -207,6 +207,14 @@ export default defineConfig({
         // 2026-07-26: two deploys 7 min apart left the older shell pointing at three
         // dataset chunks that were already 404 at origin.
         globIgnores: ['assets/dataset-*.js'],
+        // engine.ts fetches each contract bundle as `<server>.json.gz?v=<content hash>` so an
+        // HTTP cache can't hand a stale bundle to a newer .wasm (see engine.ts). Precache keys
+        // carry no query, so `v` must be ignored here or every bundle fetch would MISS the
+        // precache and go to network — losing offline support for the engine's data half.
+        // Ignoring it is safe precisely because precache already pairs the halves by revision:
+        // for an SW-controlled load the parameter has nothing left to do. The two defaults
+        // (`utm_*`, `fbclid`) are restated because setting this replaces them.
+        ignoreURLParametersMatching: [/^utm_/, /^fbclid$/, /^v$/],
         // Precache is now the app shell only (~1.7 MB entry + CSS). This low cap
         // is a regression tripwire: a globbed file over the limit is a hard
         // build error, so if a future change re-leaks a whole dataset (8 MB+)

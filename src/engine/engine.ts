@@ -16,6 +16,7 @@
 
 import __wbg_init, { load_dataset, type DatasetHandle } from './wasm/coh_wasm';
 import wasmUrl from './wasm/coh_wasm_bg.wasm?url';
+import { ENGINE_BUNDLE_VERSIONS } from './bundleVersions.generated';
 
 export type ServerId = 'homecoming' | 'rebirth' | 'thunderspy';
 
@@ -43,7 +44,17 @@ export async function loadDataset(server: ServerId): Promise<void> {
     await ensureWasm();
     // The bundle is served as raw gzip bytes; `load_dataset` gz-sniffs (a static host may
     // also transparently gunzip, which the sniff likewise handles).
-    const url = `${import.meta.env.BASE_URL}engine/contract/${server}.json.gz`;
+    //
+    // `?v=` is the bundle's content hash (stamped by scripts/build-engine.mjs). The filename
+    // is not hashed, so without it an HTTP cache can hand a stale bundle to a .wasm built
+    // against a newer schema — which does not degrade, it fails the load outright ("missing
+    // field `absorbCap`", reported 2026-07-28, cleared only by a hard refresh). The service
+    // worker already pairs the two halves for SW-controlled loads; this covers every other
+    // load. Workbox is told to ignore the `v` parameter, so the precached entry still matches.
+    const version = ENGINE_BUNDLE_VERSIONS[server];
+    const url =
+      `${import.meta.env.BASE_URL}engine/contract/${server}.json.gz` +
+      (version ? `?v=${version}` : '');
     const resp = await fetch(url);
     if (!resp.ok) throw new Error(`engine bundle fetch ${server}: HTTP ${resp.status}`);
     const bytes = new Uint8Array(await resp.arrayBuffer());
