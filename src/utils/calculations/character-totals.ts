@@ -696,40 +696,49 @@ function activeAlphaEffects(
   return lookup(incarnates.alpha.powerId);
 }
 
+/**
+ * Alpha data key → enhancement-aspect key. The two vocabularies genuinely
+ * differ (`enduranceReduction`/`endurance`, `toHitBuff`/`tohit`), so the
+ * translation is a table, not identity — and an alpha key MISSING from it is
+ * a boost that vanishes with nothing to notice, which is how both the
+ * `enduranceModification` long form and the `intangible`→Absorb slot-reuse
+ * silently dropped whole bonuses. `alpha-aspect-coverage.test.ts` gates every
+ * generated dataset's keys against this map, so a new one has to be mapped.
+ * `levelShift` is deliberately absent: it isn't an enhancement aspect.
+ */
+export const ALPHA_KEY_TO_ENH_ASPECT: Record<string, string> = {
+  damage: 'damage',
+  accuracy: 'accuracy',
+  recharge: 'recharge',
+  enduranceReduction: 'endurance',
+  enduranceModification: 'enduranceMod',
+  range: 'range',
+  heal: 'heal',
+  defense: 'defense',
+  resistance: 'resistance',
+  hold: 'hold',
+  stun: 'stun',
+  immobilize: 'immobilize',
+  sleep: 'sleep',
+  fear: 'fear',
+  confuse: 'confuse',
+  slow: 'slow',
+  toHitDebuff: 'tohitDebuff',
+  defenseDebuff: 'defenseDebuff',
+  toHitBuff: 'tohit',
+  taunt: 'taunt',
+  runSpeed: 'runSpeed',
+  jumpSpeed: 'jumpSpeed',
+  flySpeed: 'flySpeed',
+  absorb: 'absorb',
+};
+
 function mapAlphaEffectsToEnhancementBonuses(alphaEffects: AlphaEffects): EnhancementBonuses {
-  // Convert AlphaEffects to EnhancementBonuses format
   const bonuses: EnhancementBonuses = {};
-
-  // Map alpha effect keys to enhancement bonus keys
-  if (alphaEffects.damage !== undefined) bonuses.damage = alphaEffects.damage;
-  if (alphaEffects.accuracy !== undefined) bonuses.accuracy = alphaEffects.accuracy;
-  if (alphaEffects.recharge !== undefined) bonuses.recharge = alphaEffects.recharge;
-  if (alphaEffects.enduranceReduction !== undefined) bonuses.endurance = alphaEffects.enduranceReduction;
-  // Musculature / Agility carry `enduranceModification` in the alpha data
-  // but every downstream gate in enhancement-values keys this aspect as
-  // `enduranceMod`. Writing the long form here used to drop the bonus
-  // silently in filterAlphaByAllowedEnhancements.
-  if (alphaEffects.enduranceModification !== undefined) bonuses.enduranceMod = alphaEffects.enduranceModification;
-  if (alphaEffects.range !== undefined) bonuses.range = alphaEffects.range;
-  if (alphaEffects.heal !== undefined) bonuses.heal = alphaEffects.heal;
-  if (alphaEffects.defense !== undefined) bonuses.defense = alphaEffects.defense;
-  if (alphaEffects.resistance !== undefined) bonuses.resistance = alphaEffects.resistance;
-  if (alphaEffects.hold !== undefined) bonuses.hold = alphaEffects.hold;
-  if (alphaEffects.stun !== undefined) bonuses.stun = alphaEffects.stun;
-  if (alphaEffects.immobilize !== undefined) bonuses.immobilize = alphaEffects.immobilize;
-  if (alphaEffects.sleep !== undefined) bonuses.sleep = alphaEffects.sleep;
-  if (alphaEffects.fear !== undefined) bonuses.fear = alphaEffects.fear;
-  if (alphaEffects.confuse !== undefined) bonuses.confuse = alphaEffects.confuse;
-  if (alphaEffects.slow !== undefined) bonuses.slow = alphaEffects.slow;
-  if (alphaEffects.toHitDebuff !== undefined) bonuses.tohitDebuff = alphaEffects.toHitDebuff;
-  if (alphaEffects.defenseDebuff !== undefined) bonuses.defenseDebuff = alphaEffects.defenseDebuff;
-  if (alphaEffects.toHitBuff !== undefined) bonuses.tohit = alphaEffects.toHitBuff;
-  if (alphaEffects.taunt !== undefined) bonuses.taunt = alphaEffects.taunt;
-  if (alphaEffects.runSpeed !== undefined) bonuses.runSpeed = alphaEffects.runSpeed;
-  if (alphaEffects.jumpSpeed !== undefined) bonuses.jumpSpeed = alphaEffects.jumpSpeed;
-  if (alphaEffects.flySpeed !== undefined) bonuses.flySpeed = alphaEffects.flySpeed;
-  if (alphaEffects.absorb !== undefined) bonuses.absorb = alphaEffects.absorb;
-
+  for (const [alphaKey, value] of Object.entries(alphaEffects) as [string, number | undefined][]) {
+    const aspect = ALPHA_KEY_TO_ENH_ASPECT[alphaKey];
+    if (aspect !== undefined && value !== undefined) bonuses[aspect] = value;
+  }
   return bonuses;
 }
 

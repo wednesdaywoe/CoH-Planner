@@ -457,6 +457,41 @@ export function getEffectiveAspectCount(
 const UNIVERSAL_MEZ_KEYS = ['hold', 'stun', 'immobilize', 'sleep', 'confuse', 'fear'] as const;
 
 /**
+ * Every Heal-boosting enhancement boosts Absorb by the same amount — ONE boost
+ * applied to two attribs, not two boosts. Verified in powers.bin: the generic
+ * Healing IO `Boosts.Crafted_Heal_50` is a single `['Heal_Dmg','Absorb']`
+ * @Strength template (its sibling template is `['HitPoints','Regeneration']`).
+ *
+ * IO-set pieces and most HOs list `Absorb` explicitly (see io-sets-heal-absorb
+ * .test.ts); generic IOs, origin enhancements, and a few specials (Titan
+ * Kyanite Shard, Positron Exposure) carry only "Healing". Mirror it in ONE
+ * place per enhancement rather than patching every data source — and per
+ * enhancement, so a piece that already lists Absorb is never counted twice.
+ *
+ * `absorb` is the aspect the absorb magnitude reads, which is what lets an
+ * Absorb-ONLY boost (the Cardiac/Resilient Radial Alpha) land without also
+ * inflating heals. Mutates and returns `bonuses`.
+ */
+function mirrorHealToAbsorb<T extends Record<string, number>>(bonuses: T): T {
+  if (bonuses.heal !== undefined && bonuses.absorb === undefined) {
+    (bonuses as Record<string, number>).absorb = bonuses.heal;
+  }
+  return bonuses;
+}
+
+/**
+ * Merge ONE enhancement's per-aspect contribution into a power's running raw
+ * totals, Heal→Absorb mirrored for that enhancement first. IO-set pieces come
+ * pre-mirrored out of {@link parseIOSetPieceValues}; this is the seam for the
+ * branches that build their aspects inline (generic IO, special, origin).
+ */
+function addEnhancementBonuses(raw: Record<string, number>, slotBonuses: Record<string, number>): void {
+  for (const [aspect, value] of Object.entries(mirrorHealToAbsorb(slotBonuses))) {
+    raw[aspect] = (raw[aspect] || 0) + value;
+  }
+}
+
+/**
  * Parse IO set piece aspects into enhancement bonuses
  */
 export function parseIOSetPieceValues(
@@ -494,7 +529,7 @@ export function parseIOSetPieceValues(
     }
   });
 
-  return bonuses;
+  return mirrorHealToAbsorb(bonuses);
 }
 
 // ============================================
@@ -569,7 +604,12 @@ const ASPECT_TO_ENH_TYPE: Record<string, EnhancementStatType> = {
   slow: 'Slow',
   taunt: 'Taunt',
   interrupt: 'Interrupt',
-  absorb: 'Absorb',
+  // Absorb has no enhancement category of its own — it is the second attrib of
+  // the HEALING boost (see mirrorHealToAbsorb), so a power that accepts Healing
+  // is exactly the power an Absorb buff reaches. Keying this to a nonexistent
+  // "Absorb" category filtered the Cardiac/Resilient Radial Alpha's +33% Absorb
+  // out of every power in the build.
+  absorb: 'Healing',
   intangible: 'Intangible',
   mezDuration: 'Mez Duration',
   run: 'Run Speed',
@@ -701,24 +741,26 @@ export function calculatePowerEnhancementBonuses(
         if (exemplarLevel !== undefined) {
           value = applyExemplarScaling(value, genericIOLevel, exemplarLevel);
         }
-        rawBonuses[normalized] = (rawBonuses[normalized] || 0) + value;
+        addEnhancementBonuses(rawBonuses, { [normalized]: value });
       }
     } else if (slot.type === 'special') {
       // Special enhancements (Hamidon, Titan, etc.) - each aspect has its own value
       if (slot.aspects) {
+        const slotBonuses: Record<string, number> = {};
         slot.aspects.forEach((aspect: { stat: string; value: number }) => {
           const normalized = normalizeAspectName(aspect.stat);
           if (normalized) {
-            rawBonuses[normalized] = (rawBonuses[normalized] || 0) + (aspect.value / 100) * boostMultiplier;
+            slotBonuses[normalized] = (slotBonuses[normalized] || 0) + (aspect.value / 100) * boostMultiplier;
           }
         });
+        addEnhancementBonuses(rawBonuses, slotBonuses);
       }
     } else if (slot.type === 'origin') {
       // TO/DO/SO
       const aspect = slot.stat as string;
       const normalized = normalizeAspectName(aspect);
       if (normalized && slot.value) {
-        rawBonuses[normalized] = (rawBonuses[normalized] || 0) + (slot.value / 100) * boostMultiplier;
+        addEnhancementBonuses(rawBonuses, { [normalized]: (slot.value / 100) * boostMultiplier });
       }
     }
   });
@@ -814,22 +856,24 @@ export function combineWithAlphaED(
         if (exemplarLevel !== undefined) {
           value = applyExemplarScaling(value, genericIOLevel, exemplarLevel);
         }
-        rawBonuses[normalized] = (rawBonuses[normalized] || 0) + value;
+        addEnhancementBonuses(rawBonuses, { [normalized]: value });
       }
     } else if (slot.type === 'special') {
       if (slot.aspects) {
+        const slotBonuses: Record<string, number> = {};
         slot.aspects.forEach((aspect: { stat: string; value: number }) => {
           const normalized = normalizeAspectName(aspect.stat);
           if (normalized) {
-            rawBonuses[normalized] = (rawBonuses[normalized] || 0) + (aspect.value / 100) * boostMultiplier;
+            slotBonuses[normalized] = (slotBonuses[normalized] || 0) + (aspect.value / 100) * boostMultiplier;
           }
         });
+        addEnhancementBonuses(rawBonuses, slotBonuses);
       }
     } else if (slot.type === 'origin') {
       const aspect = slot.stat as string;
       const normalized = normalizeAspectName(aspect);
       if (normalized && slot.value) {
-        rawBonuses[normalized] = (rawBonuses[normalized] || 0) + (slot.value / 100) * boostMultiplier;
+        addEnhancementBonuses(rawBonuses, { [normalized]: (slot.value / 100) * boostMultiplier });
       }
     }
   });

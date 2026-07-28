@@ -46,7 +46,7 @@ export const GENERATED_ALPHA_EFFECTS: Record<string, Record<string, number>> = {
   // Cardiac Radial Boost
   'cardiac_radial_boost': {"enduranceReduction":0.33,"resistance":0.2},
   // Cardiac Radial Paragon
-  'cardiac_radial_paragon': {"levelShift":1,"enduranceReduction":0.33,"range":0.2,"resistance":0.2,"sleep":0.33,"fear":0.33,"intangible":0.33},
+  'cardiac_radial_paragon': {"levelShift":1,"enduranceReduction":0.33,"range":0.2,"resistance":0.2,"sleep":0.33,"fear":0.33,"absorb":0.33},
   // Cardiac Total Core Revamp
   'cardiac_total_core_revamp': {"levelShift":1,"enduranceReduction":0.45,"range":0.2},
   // Cardiac Total Radial Revamp
@@ -118,11 +118,11 @@ export const GENERATED_ALPHA_EFFECTS: Record<string, Record<string, number>> = {
   // Resilient Radial Boost
   'resilient_radial_boost': {"resistance":0.2,"immobilize":0.33},
   // Resilient Radial Paragon
-  'resilient_radial_paragon': {"levelShift":1,"resistance":0.2,"toHitBuff":0.2,"immobilize":0.33,"intangible":0.33,"stun":0.33,"taunt":0.33},
+  'resilient_radial_paragon': {"levelShift":1,"resistance":0.2,"toHitBuff":0.2,"immobilize":0.33,"absorb":0.33,"stun":0.33,"taunt":0.33},
   // Resilient Total Core Revamp
   'resilient_total_core_revamp': {"levelShift":1,"resistance":0.33,"toHitBuff":0.2},
   // Resilient Total Radial Revamp
-  'resilient_total_radial_revamp': {"levelShift":1,"resistance":0.2,"toHitBuff":0.1,"immobilize":0.33,"intangible":0.33},
+  'resilient_total_radial_revamp': {"levelShift":1,"resistance":0.2,"toHitBuff":0.1,"immobilize":0.33,"absorb":0.33},
   // Spiritual Boost
   'spiritual_boost': {"recharge":0.33},
   // Spiritual Core Boost
@@ -200,7 +200,7 @@ export const GENERATED_ALPHA_ED_BYPASS: Record<string, Record<string, number>> =
   // Cardiac Radial Boost
   'cardiac_radial_boost': {"enduranceReduction":0.11,"resistance":0.0667},
   // Cardiac Radial Paragon
-  'cardiac_radial_paragon': {"enduranceReduction":0.22,"range":0.1333,"resistance":0.1333,"sleep":0.22,"fear":0.22,"intangible":0.22},
+  'cardiac_radial_paragon': {"enduranceReduction":0.22,"range":0.1333,"resistance":0.1333,"sleep":0.22,"fear":0.22,"absorb":0.22},
   // Cardiac Total Core Revamp
   'cardiac_total_core_revamp': {"enduranceReduction":0.225,"range":0.1},
   // Cardiac Total Radial Revamp
@@ -272,11 +272,11 @@ export const GENERATED_ALPHA_ED_BYPASS: Record<string, Record<string, number>> =
   // Resilient Radial Boost
   'resilient_radial_boost': {"resistance":0.0667,"immobilize":0.11},
   // Resilient Radial Paragon
-  'resilient_radial_paragon': {"resistance":0.1333,"toHitBuff":0.1333,"immobilize":0.22,"intangible":0.22,"stun":0.22,"taunt":0.22},
+  'resilient_radial_paragon': {"resistance":0.1333,"toHitBuff":0.1333,"immobilize":0.22,"absorb":0.22,"stun":0.22,"taunt":0.22},
   // Resilient Total Core Revamp
   'resilient_total_core_revamp': {"resistance":0.165,"toHitBuff":0.1},
   // Resilient Total Radial Revamp
-  'resilient_total_radial_revamp': {"resistance":0.1,"toHitBuff":0.05,"immobilize":0.165,"intangible":0.165},
+  'resilient_total_radial_revamp': {"resistance":0.1,"toHitBuff":0.05,"immobilize":0.165,"absorb":0.165},
   // Spiritual Boost
   'spiritual_boost': {"recharge":0.055},
   // Spiritual Core Boost

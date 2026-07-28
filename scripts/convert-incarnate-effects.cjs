@@ -363,9 +363,59 @@ const ALPHA_FILENAME_MAP = {
   'run': 'runSpeed',
   'fly': 'flySpeed',
   'jump': 'jumpSpeed',
-  'intangible': 'intangible',
+  // `intangible_*` is an HC slot REUSE, not an Intangible boost: the file kept
+  // the old name while its content became Absorb (display_name "Absorb Very
+  // Rare", one `Absorb`@Strength template pair, and the granting alphas' help
+  // reads "…and Absorb by 33%"). Verified identical on all three datasets.
+  // Reading the filename literally emitted an `intangible` key that no
+  // AlphaEffects field and no aspect map knew, so Cardiac Radial Paragon /
+  // Resilient Radial Paragon / Resilient Total Radial Revamp silently lost
+  // their whole Absorb boost. The attribs are the truth; ALPHA_ASPECT_ATTRIBS
+  // below is the tripwire for the next rename.
+  'intangible': 'absorb',
   'recovery': 'enduranceModification',
   'recovery_plus': 'enduranceModification',
+};
+
+/**
+ * The attrib an alpha aspect key is expected to boost — the tripwire for the
+ * slot-reuse class above. Alpha aspect keys come from the silent FILENAME (it
+ * is the only thing that separates `damage` from `res_damage`, or `tohit_buff`
+ * from `tohit_debuff` — both pairs share an attrib), so a repurposed slot
+ * retargets or drops a boost with nothing to notice it. The template attribs
+ * cannot lie, so cross-check them and say so when the two stop agreeing.
+ *
+ * One entry per aspect, listing every dataset spelling of the FIRST attrib
+ * (HC/Rebirth/Thunderspy diverge on which sibling leads the multi-attrib
+ * templates). Aspects whose silent file collapses to a bare `Ones` template
+ * carry no attrib to check and are skipped.
+ */
+const ALPHA_ASPECT_ATTRIBS = {
+  damage: ['Smashing_Dmg'],
+  accuracy: ['Accuracy'],
+  recharge: ['RechargeTime'],
+  enduranceReduction: ['EnduranceDiscount'],
+  enduranceModification: ['Endurance', 'Recovery'],
+  range: ['Range'],
+  heal: ['Heal_Dmg'],
+  defense: ['Ranged', 'Base_Defense'],
+  resistance: ['Smashing_Dmg'],
+  toHitBuff: ['ToHit'],
+  toHitDebuff: ['ToHit'],
+  defenseDebuff: ['Ranged', 'Base_Defense'],
+  hold: ['Held'],
+  stun: ['Stunned'],
+  immobilize: ['Immobilized'],
+  sleep: ['Sleep'],
+  fear: ['Afraid', 'Terrorized'],
+  confuse: ['Confused'],
+  knockback: ['Knockup', 'Knockback'],
+  slow: ['RunningSpeed'],
+  taunt: ['Taunt'],
+  runSpeed: ['RunningSpeed'],
+  flySpeed: ['FlyingSpeed'],
+  jumpSpeed: ['JumpingSpeed'],
+  absorb: ['Absorb'],
 };
 
 function round(n, decimals = 6) {
@@ -499,6 +549,17 @@ function extractAlpha() {
           }
         }
       }
+      // Filename says one aspect, the templates say another → the silent slot
+      // was repurposed (see ALPHA_ASPECT_ATTRIBS). Loud, not fatal: HC has done
+      // this once already and the export must still produce a dataset.
+      const expectedAttribs = ALPHA_ASPECT_ATTRIBS[aspectKey];
+      if (expectedAttribs && firstAttrib && !expectedAttribs.includes(firstAttrib)) {
+        console.warn(
+          `  WARN: ${silentName} maps to aspect '${aspectKey}' but boosts '${firstAttrib}' ` +
+            `(expected ${expectedAttribs.join('/')}) — alpha_silent slot repurposed?`,
+        );
+      }
+
       if (totalScale > 0) {
         if (!enhancements[aspectKey]) enhancements[aspectKey] = 0;
         enhancements[aspectKey] = round(enhancements[aspectKey] + totalScale);
