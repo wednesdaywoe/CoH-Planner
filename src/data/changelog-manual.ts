@@ -37,8 +37,8 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
     date: '2026-07-27',
 
     items: [
-      { id: 'fly-speed-1.5-scale', message: 'Fly speed, once more: a fly buff is worth 21.48 mph per 100%, not 14.32. Flying has its own 1.5x base and its buffs scale off that, the same way run buffs scale off running\'s 1x base. The in-game Combat Attributes window is what threw this off — it reports fly buffs at the 1x rate even though your total moves by the 1.5x amount. An unslotted Swift reads "+1.95 mph" there but actually adds +2.93; a Small Longbow Jetpack reads "+21.50" and adds +32.25.', type: 'fix' },
-      { id: 'sj-cj-jump-suppression', message: 'Known issue: with both Super Jump and Combat Jumping, in-combat jump speed reads about 0.14 mph high. In game, Super Jump\'s jump buff is suppressed rather than switched off in combat, so it keeps shadowing Combat Jumping\'s; Sidekick drops it and lets Combat Jumping through instead.', type: 'known-issue' },
+      { id: 'fly-speed-1.5-scale', message: 'Fly speed, once more: a fly buff is worth 21.48 mph per 100%, not 14.32. Flying has its own 1.5x base and its buffs scale off that, the same way run buffs scale off running\'s 1x base. The in-game Combat Attributes window is what threw this off.', type: 'fix' },
+      { id: 'sj-cj-jump-suppression', message: 'Known issue: with both Super Jump and Combat Jumping, in-combat jump speed reads about 0.14 mph high. In game, Super Jump\'s jump buff is suppressed rather than switched off in combat, but Sidekick drops it and lets Combat Jumping through instead.', type: 'known-issue' },
     ]
   },
   {
