@@ -275,12 +275,31 @@ describe('travel-speed fixes (HC)', () => {
       .toBeCloseTo(applyMovementBuff('runSpeed', 100).value, 5);
   });
 
-  // Fly: base is 1.5 units (21.48 mph) but buffs still land at 1 unit each, so
-  // an unslotted Swift (+13.62% fly) is worth 1.95 mph — not 2.93 (= 21.48 ×
-  // 13.62%, what multiplying onto fly's own base would give).
-  it('a fly buff is worth 14.32 mph per 100%, not 21.48', () => {
-    const flyMph = (p: number) => 1.5 * MPH_PER_SCALE + MPH_PER_SCALE * (p / 100);
-    expect(flyMph(0)).toBeCloseTo(21.48, 2);
-    expect(flyMph(13.62) - flyMph(0)).toBeCloseTo(1.95, 2);
+  // Fly's base is 1.5 units (21.48 mph) and — the correction of 2026-07-27 —
+  // its buffs multiply THAT base, not the 1-unit run base. The in-game Combat
+  // Attributes window reports fly buffs normalized to the 1-unit rate, which is
+  // what sent the 2026-07-13 pass the wrong way; the character's actual total
+  // moves by the 1.5-unit figure.
+  it('fly buffs scale off fly\'s own 1.5-unit base (21.48 mph per 100%)', () => {
+    expect(MOVEMENT_BASES.flySpeed).toBeCloseTo(1.5 * MPH_PER_SCALE, 5);
+    expect(MOVEMENT_BASES.flySpeed).toBeCloseTo(21.48, 2);
+
+    const flyMph = (p: number) => applyMovementBuff('flySpeed', p).value;
+    // Unslotted Swift, +13.62% fly: Combat Attributes says +1.95 mph, the total
+    // actually moves +2.93 mph.
+    expect(flyMph(13.62) - flyMph(0)).toBeCloseTo(2.93, 2);
+    expect(flyMph(13.62) - flyMph(0)).not.toBeCloseTo(1.95, 2);
+    // Small Longbow Jetpack, +150.15% fly: reads "+21.50 mph", adds +32.25.
+    expect(flyMph(150.15) - flyMph(0)).toBeCloseTo(32.25, 1);
+    // 100% of the 1-unit run base is the number Combat Attributes would show —
+    // the buff must NOT land there.
+    expect(flyMph(100) - flyMph(0)).not.toBeCloseTo(MPH_PER_SCALE, 2);
+  });
+
+  it('every movement stat uses the same base × (1 + buff%) projection', () => {
+    for (const stat of ['runSpeed', 'flySpeed', 'jumpSpeed', 'jumpHeight'] as const) {
+      expect(applyMovementBuff(stat, 100).value)
+        .toBeCloseTo(MOVEMENT_BASES[stat] * 2, 5);
+    }
   });
 });

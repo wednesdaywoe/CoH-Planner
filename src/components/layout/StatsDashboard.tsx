@@ -23,7 +23,7 @@ import type { IncarnateSlotId, ToggleableIncarnateSlot, SelectedPower } from '@/
 import type { DashboardStatBreakdown } from '@/hooks/useCalculatedStats';
 import { STAT_DEFINITIONS, resolveStatValue, STAT_CATEGORY } from '@/data/stat-definitions';
 import type { StatDefinition, StatValue, CompoundStatValue, MezStatValue, StatCategory } from '@/data/stat-definitions';
-import { applyMovementBuff, getEffectiveMovementCaps, MPH_PER_SCALE, type MovementCapBump, type MovementStat } from '@/data/core/movement-constants';
+import { applyMovementBuff, getEffectiveMovementCaps, MOVEMENT_BASES, type MovementCapBump, type MovementStat } from '@/data/core/movement-constants';
 import type { GlobalBonuses } from '@/utils/calculations/character-totals';
 
 // Re-export for any consumers that imported from here
@@ -46,6 +46,16 @@ const DASHBOARD_SECTIONS: { name: string; categories: StatCategory[] }[] = [
   { name: 'Debuff Resistance', categories: ['debuff-resistance'] },
 ];
 export type { StatDefinition, StatValue, CompoundStatValue, MezStatValue };
+
+// Dashboard stat id → movement base/cap key. These four render as mph (or feet)
+// rather than a raw %, projected through applyMovementBuff so the active
+// travel-toggle cap applies.
+const MOVEMENT_STAT_IDS: Record<string, MovementStat> = {
+  runspeed: 'runSpeed',
+  flyspeed: 'flySpeed',
+  jumpspeed: 'jumpSpeed',
+  jumpheight: 'jumpHeight',
+};
 
 interface StatsDashboardProps {
   /** Skip rendering the co-located modals. Use when the dashboard is mounted
@@ -297,44 +307,27 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
           tooltip = 'Global recharge from set bonuses';
           totalBaseOffset = undefined;
         }
-        if (config.stat === 'runspeed' || config.stat === 'jumpspeed' || config.stat === 'jumpheight') {
-          const movementStat = config.stat === 'runspeed' ? 'runSpeed'
-            : config.stat === 'jumpspeed' ? 'jumpSpeed'
-            : 'jumpHeight';
+        // All four movement stats share one projection: base × (1 + buff%),
+        // clamped to the travel-toggle-adjusted cap. Fly is NOT a special case
+        // — its 1.5-unit base (21.48 mph) scales its buffs just like running's
+        // 1-unit base scales run buffs. See movement-constants for why the
+        // in-game Combat Attributes reading suggests otherwise.
+        const movementStat = MOVEMENT_STAT_IDS[config.stat];
+        if (movementStat) {
           const unit = config.stat === 'jumpheight' ? 'ft' : 'mph';
           const pct = Number(value);
           const sign = pct >= 0 ? '+' : '';
           const { value: abs, capped } = applyMovementBuff(movementStat, pct, effectiveMovementCaps);
-          tooltip = `${sign}${pct.toFixed(2)}% buff → ${abs.toFixed(2)} ${unit}${capped ? ` (capped at ${effectiveMovementCaps[movementStat].toFixed(2)})` : ''}`;
+          const capNote = capped ? ` (capped at ${effectiveMovementCaps[movementStat].toFixed(2)})` : '';
+          // Fly's base only exists while a fly power is active, and the % already
+          // folds that power's own buff in — worth spelling out on hover.
+          const flyNote = config.stat === 'flyspeed'
+            ? ` Fly base ${MOVEMENT_BASES.flySpeed.toFixed(2)} mph × (1 + buff%); the % already includes the active fly power's own buff. Assumes a standard Fly / Mystic Flight base — Group Fly and the like start lower.`
+            : '';
+          tooltip = `${sign}${pct.toFixed(2)}% buff → ${abs.toFixed(2)} ${unit}${capNote}.${flyNote}`;
           format = (v) => {
             const { value: a, capped: c } = applyMovementBuff(movementStat, Number(v), effectiveMovementCaps);
             return `${a.toFixed(2)} ${unit}${c ? ' *' : ''}`;
-          };
-        } else if (config.stat === 'flyspeed') {
-          // Fly is modeled the way the game breaks it down:
-          //   flySpeed = FLY_BASE + UNIT × Σ(FlyingSpeed buff %)
-          // Flying has its OWN intrinsic base — 1.5 scale units = 31.5 ft/s =
-          // 21.48 mph — but the buffs on top are still scaled by the ONE-unit
-          // base (21 ft/s = 14.32 mph), not by fly's 1.5-unit base. So an
-          // unslotted Swift (+13.6% fly) is worth 1.95 mph, not 2.93 (user
-          // report 2026-07-13). The previous code used 31.5 — the ft/s figure
-          // mislabeled as mph, the same units bug as jump speed — AND applied
-          // the buff multiplicatively onto it, overstating both terms.
-          const FLY_BASE_MPH = 1.5 * MPH_PER_SCALE;  // 31.5 ft/s = 21.48 mph
-          const UNIT_MPH = MPH_PER_SCALE;            // buffs scale off the 1-unit base
-          const cap = effectiveMovementCaps.flySpeed;
-          const pct = Number(value);
-          const sign = pct >= 0 ? '+' : '';
-          const computeMph = (p: number) => {
-            const raw = FLY_BASE_MPH + UNIT_MPH * (p / 100);
-            const capped = raw >= cap;
-            return { value: capped ? cap : raw, capped };
-          };
-          const { value: mph, capped } = computeMph(pct);
-          tooltip = `${sign}${pct.toFixed(2)}% buff → ${mph.toFixed(2)} mph${capped ? ` (capped at ${cap.toFixed(2)})` : ''}. Fly base 21.48 mph + 14.32 mph × buff%; the % already includes the active fly power's own buff. Assumes a standard Fly / Mystic Flight base — Group Fly and the like start lower.`;
-          format = (v) => {
-            const { value: m, capped: c } = computeMph(Number(v));
-            return `${m.toFixed(2)} mph${c ? ' *' : ''}`;
           };
         }
 

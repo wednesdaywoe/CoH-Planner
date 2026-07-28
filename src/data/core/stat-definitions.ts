@@ -544,11 +544,13 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'flyspeed',
     label: 'Fly',
     getValue: (stats) => stats.flySpeed,
-    // Fly base is 0 (no flight without a power), so the % buff doesn't translate
-    // to mph in isolation. Display the raw % until per-power fly speed is wired in.
+    // Raw % here rather than mph: fly's 21.48 mph base only exists while a fly
+    // power is active, and this shared definition has no way to know whether one
+    // is. The dashboard, which does track the active travel toggles (and their
+    // cap bumps), overrides `format` to project mph via applyMovementBuff.
     format: (v) => { const n = Number(v); return `${n >= 0 ? '+' : ''}${pct2(n)}%`; },
     color: STAT_COLORS.flySpeed,
-    tooltip: 'Fly speed buff (cap 58.63 mph; +50% with Fly/Mystic Flight, +25% Afterburner)',
+    tooltip: 'Fly speed buff (base 21.48 mph — 1.5 scale units, so +100% is worth 21.48 mph, not 14.32; cap 58.63 mph, +50% with Fly/Mystic Flight, +25% Afterburner)',
     showWhenZero: true,
     breakdownKey: 'flySpeed',
   },

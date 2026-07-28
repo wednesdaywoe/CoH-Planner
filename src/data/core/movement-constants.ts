@@ -7,11 +7,15 @@
  * automatically — the dashboard uses the standard cap because it doesn't
  * detect which travel toggles are currently "on".
  *
- * Base fly speed is 0 here because characters cannot fly without a power. The
- * dashboard projects fly separately (StatsDashboard, `flyspeed`): a fly power
- * supplies its own base — 1.5 units = 21.48 mph for Fly / Mystic Flight — and
- * buffs ADD onto it at the ONE-unit rate (14.32 mph per 100%), which is why
- * fly's higher base does not scale its buffs.
+ * Flying has its own 1.5-unit base (31.5 fps = 21.48 mph) rather than running's
+ * 1 unit, and — like every other movement stat — its buffs multiply THAT base:
+ * +100% fly is worth 21.48 mph, not 14.32. The in-game Combat Attributes window
+ * is the trap here; it reports a fly buff normalized to the 1-unit rate (an
+ * unslotted Swift reads "+1.95 mph") while the total moves by the 1.5-unit
+ * figure (+2.93 mph). Verified with a Small Longbow Jetpack: +150.15% fly reads
+ * "+21.50 mph" in Combat Attributes and adds +32.25 mph (= 21.48 × 1.5015) to
+ * the total (user report 2026-07-27, superseding the 2026-07-13 reading that
+ * took the Combat Attributes number at face value).
  */
 
 export const MPH_PER_SCALE = 14.3181818;
@@ -25,7 +29,10 @@ export const MPH_PER_SCALE = 14.3181818;
  * one scale unit is exactly 21 fps = 14.3181818 mph. */
 export const MOVEMENT_BASES = {
   runSpeed: 14.32,   // mph (21 ft/s)
-  flySpeed: 0.0,     // mph — characters cannot fly without a power
+  // Flying's base is 1.5 units (31.5 ft/s = 21.48 mph) — the base a fly power
+  // grants; a character with no fly power never displays it. Buffs multiply it
+  // like any other movement base (see the header note on Combat Attributes).
+  flySpeed: 1.5 * MPH_PER_SCALE,
   jumpSpeed: 14.32,  // mph (21 ft/s) — same 1-unit base as running
   jumpHeight: 4.0,   // feet (jump height is a distance, not a speed)
 } as const;
