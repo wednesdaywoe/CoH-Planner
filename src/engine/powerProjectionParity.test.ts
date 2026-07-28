@@ -947,7 +947,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
 
     const totals = engineTotals(server, build);
     const projection = mapPowerProjection(totals.power_projection);
-    const rawGlobal = mapGlobal(totals.bonuses);
+    const rawGlobal = mapGlobal(totals.bonuses, totals.stats);
 
     // Guard the fixture: at least one power must actually project (else a trivial all-null match).
     expect(projection.size, `${server}: engine projected nothing`).toBeGreaterThan(0);
@@ -1003,7 +1003,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
 
       const totals = engineTotals(server, build);
       const projection = mapPowerProjection(totals.power_projection);
-      const rawGlobal = mapGlobal(totals.bonuses);
+      const rawGlobal = mapGlobal(totals.bonuses, totals.stats);
 
       for (const power of powers) {
         const engine = projection.get(projectionKey(power.powerSet, power.internalName));
@@ -1082,7 +1082,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
 
       const stateJson = toCharacterStateJson(withoutIllegalSlots(build), CTX);
       const totals = engineTotals(server, build);
-      const rawGlobal = mapGlobal(totals.bonuses);
+      const rawGlobal = mapGlobal(totals.bonuses, totals.stats);
 
       for (const power of (unheldSet.powers ?? []).filter(pickable)) {
         expect(held.has(projectionKey(unheldSet.id, power.internalName)), `${server}: ${power.internalName} is not actually unheld`).toBe(false);
@@ -1160,7 +1160,8 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
     const build = buildFor(server);
     const atId = build.archetype.id as string;
     const stateJson = toCharacterStateJson(withoutIllegalSlots(build), CTX);
-    const rawGlobal = mapGlobal(engineTotals(server, build).bonuses);
+    const totals = engineTotals(server, build);
+    const rawGlobal = mapGlobal(totals.bonuses, totals.stats);
     const engineBundle = bundlePowers(server);
 
     const partitions: { label: string; sets: { id: string; powers: Power[] }[] }[] = [
@@ -1278,14 +1279,14 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
     const foldable = (g: ReturnType<typeof mapGlobal>) => g.strengthDefense + g.strengthHeal + g.strengthMez;
     const chosen = candidates
       .map((c) => ({ ...c, totals: engineTotals(server, c.build) }))
-      .find((c) => foldable(mapGlobal(c.totals.bonuses)) > 0);
+      .find((c) => foldable(mapGlobal(c.totals.bonuses, c.totals.stats)) > 0);
     expect(chosen, `${server}: none of ${candidates.length} +Strength candidate builds produced a foldable defense/heal/mez fraction`).toBeDefined();
     if (!chosen) return;
 
     const { build, atId, carriers, totals } = chosen;
     const powers = [...build.primary.powers, ...build.secondary.powers];
     const projection = mapPowerProjection(totals.power_projection);
-    const rawGlobal = mapGlobal(totals.bonuses);
+    const rawGlobal = mapGlobal(totals.bonuses, totals.stats);
 
     // (2) …and some displayed row must move when it is folded in, or parity is blind to it.
     const plain = convertGlobalBonusesToAspects(rawGlobal);
@@ -1388,10 +1389,10 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
         targetsHitValues: Object.fromEntries([...sliderMax.keys()].map((name) => [name, 0])),
       }));
       const zeroed = mapPowerProjection(zeroedTotals.power_projection);
-      const rawGlobal = mapGlobal(totals.bonuses);
+      const rawGlobal = mapGlobal(totals.bonuses, totals.stats);
       // The accumulator sees the slider too, so a stacked self-buff moves the build-wide bonus
       // every row's "final" tier reads. Each comparison below takes the globals from its OWN run.
-      const rawGlobalZero = mapGlobal(zeroedTotals.bonuses);
+      const rawGlobalZero = mapGlobal(zeroedTotals.bonuses, zeroedTotals.stats);
 
       for (const power of powers) {
         const targetsHit = sliderMax.get(power.internalName);
@@ -1526,7 +1527,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
       try {
         runs = [engaged, hidden].map((ctx) => {
           const totals = engineTotals(server, build, ctx);
-          return { ctx, projection: mapPowerProjection(totals.power_projection), rawGlobal: mapGlobal(totals.bonuses) };
+          return { ctx, projection: mapPowerProjection(totals.power_projection), rawGlobal: mapGlobal(totals.bonuses, totals.stats) };
         });
       } catch (err) {
         refused.push(`${atId}: ${String(err).split(' — ')[0]}`);
@@ -1653,7 +1654,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
         const build = { ...base, activeModes: [mode] };
         const totals = engineTotals(server, build);
         const projection = mapPowerProjection(totals.power_projection);
-        const rawGlobal = mapGlobal(totals.bonuses);
+        const rawGlobal = mapGlobal(totals.bonuses, totals.stats);
 
         for (const power of powers) {
           if (!carriesModeVariant(power as Power)) continue;
@@ -1757,7 +1758,10 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
         const off = (list: SelectedPower[]) => list.map((p) => (setters.includes(p) ? { ...p, isActive: false } : p));
         return { ...build, primary: { ...build.primary, powers: off(build.primary.powers) }, secondary: { ...build.secondary, powers: off(build.secondary.powers) } };
       };
-      const globals = (build: Build) => mapGlobal(engineTotals(server, build).bonuses) as unknown as Record<string, number>;
+      const globals = (build: Build) => {
+        const totals = engineTotals(server, build);
+        return mapGlobal(totals.bonuses, totals.stats) as unknown as Record<string, number>;
+      };
 
       const withConsumersLive = globals(base);
       const withoutConsumersLive = globals(without(consumers));
@@ -1810,7 +1814,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
         const powers = [...build.primary.powers, ...build.secondary.powers];
         const totals = engineTotals(server, build);
         const projection = mapPowerProjection(totals.power_projection);
-        const rawGlobal = mapGlobal(totals.bonuses);
+        const rawGlobal = mapGlobal(totals.bonuses, totals.stats);
         return { build, powers, projection, rawGlobal };
       };
 
@@ -1891,8 +1895,9 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
     // split rather than only Alpha's presence.
     const probeFixture = (alpha: AlphaFixture, build: Build) => {
       const powers = [...build.primary.powers, ...build.secondary.powers];
-      const projection = mapPowerProjection(engineTotals(server, build, ctx).power_projection);
-      const rawGlobal = mapGlobal(engineTotals(server, build, ctx).bonuses);
+      const totals = engineTotals(server, build, ctx);
+      const projection = mapPowerProjection(totals.power_projection);
+      const rawGlobal = mapGlobal(totals.bonuses, totals.stats);
       const probe = diffProjection(server, powers, build, archetypeId, projection, rawGlobal, {
         alpha: { ...alpha, bypass: probeBypass(alpha) },
       });
@@ -1997,7 +2002,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
       });
       const totals = engineTotals(server, build, ctx);
       const projection = mapPowerProjection(totals.power_projection);
-      const rawGlobal = mapGlobal(totals.bonuses);
+      const rawGlobal = mapGlobal(totals.bonuses, totals.stats);
 
       // Below the floor the incarnate is gone, so the beta reference drops Alpha too. That the
       // ENGINE also drops it is asserted rather than assumed: its exemplared projection must equal

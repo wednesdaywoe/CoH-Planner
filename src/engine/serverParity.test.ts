@@ -138,7 +138,7 @@ function buildFor(
 function engineResult(server: Server, build: Build, ctx: AdapterCalcContext = CTX) {
   const json = engineHandle(server).recalculate(toCharacterStateJson(withoutIllegalSlots(build), ctx));
   const totals = JSON.parse(json) as EngineTotals;
-  return { stats: mapStats(totals.stats, totals.bonuses), global: mapGlobal(totals.bonuses), errors: totals.bonuses.errors ?? [] };
+  return { stats: mapStats(totals.stats, totals.bonuses), global: mapGlobal(totals.bonuses, totals.stats), errors: totals.bonuses.errors ?? [] };
 }
 
 // The engine computes in f32; the legacy calc in f64 JS numbers. Widening a summed f32 total back
@@ -162,6 +162,12 @@ const UNMAPPED = new Set(['threatLevel', 'protRepel', 'protTeleport', 'toggleEnd
 //   - thunderspy `maxhp`: Metabolic_Aura's `maxHPBuff{scale:0.333, Melee_HealSelf}` (+3.33). The
 //     rebuild export carries it; the beta `effects` for the same toggle has no maxHP key at all.
 // (See PROD5 in docs/SIDEKICK-PRODUCTIONIZE-PLAN.md for the adjudication.)
+//
+// `absorb` is deliberately NOT listed. The engine clamps it to the archetype's per-level ceiling
+// and the legacy calc has no ceiling at all, so the two part company the moment the cap binds —
+// but no single-powerset fixture here comes close to it (the biggest is roughly a third of the
+// smallest ceiling), so the comparison stays honest. A fixture that stacks absorb hard enough to
+// bind would surface here, and the engine value is the right one.
 const ADJUDICATED: Record<Server, Set<string>> = {
   homecoming: new Set(['recharge']),
   rebirth: new Set(),

@@ -2,7 +2,10 @@ import { describe, it, expect } from 'vitest';
 import {
   mapBonusTracking,
   mapSetBonusBreakdown,
+  mapGlobal,
   addProcBreakdown,
+  type EngineStats,
+  type EngineBonuses,
   type EngineSetBonusTracking,
   type EngineBonusSourceRef,
   type EngineProcBreakdownSource,
@@ -148,5 +151,27 @@ describe('mapSetBonusBreakdown', () => {
     const melee = mapSetBonusBreakdown([a, b], resolver).get('defMelee')!;
     expect(melee.total).toBeCloseTo(3.75 * 2 + 1.88);
     expect(melee.sources).toHaveLength(3);
+  });
+});
+
+describe('mapGlobal absorb', () => {
+  // The dashboard surfaces absorb through globalBonuses (GLOBAL_BONUS_OVERRIDES), but the
+  // engine keeps two absorbs: `bonuses.absorb` is the raw accumulated sum and `stats.absorb`
+  // is that sum clamped to the archetype's per-level ceiling. The beta shipped the raw one,
+  // so a stacked build's absorb grew without limit. Only the mapping is under test here —
+  // the clamp itself lives in the engine (coh_math finalize.rs) and is gated there.
+  const engineTotals = (rawAbsorb: number, clampedAbsorb: number) => ({
+    stats: { absorb: clampedAbsorb } as EngineStats,
+    bonuses: { absorb: rawAbsorb } as EngineBonuses,
+  });
+
+  it('reads the clamped stats value, not the raw accumulator', () => {
+    const { stats, bonuses } = engineTotals(2400, 1874);
+    expect(mapGlobal(bonuses, stats).absorb).toBe(1874);
+  });
+
+  it('is the untouched sum when the ceiling does not bind', () => {
+    const { stats, bonuses } = engineTotals(669, 669);
+    expect(mapGlobal(bonuses, stats).absorb).toBe(669);
   });
 });

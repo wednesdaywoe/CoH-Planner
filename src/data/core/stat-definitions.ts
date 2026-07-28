@@ -518,10 +518,13 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     label: 'Absorb',
     // Value comes from globalBonuses.absorb (absolute HP), populated by active
     // absorb powers + set-bonus/proc absorb; handled via GLOBAL_BONUS_OVERRIDES.
+    // That field carries the engine's CLAMPED absorb (see mapGlobal), so the
+    // headline can read lower than the breakdown rows sum to once the archetype's
+    // ceiling binds — the rows are each source's own contribution, uncapped.
     getValue: () => 0,
     format: (v) => `${Math.round(Number(v))}`,
     color: STAT_COLORS.absorb,
-    tooltip: 'Absorb shield — a temporary pool that soaks damage before your HP. Shields that scale with Max HP (e.g. Wild Bastion) grow with +HP accolades and +Absorb strength (Power Boost, Clarion). Only self-affecting absorb from active powers is counted.',
+    tooltip: 'Absorb shield — a temporary pool that soaks damage before your HP. Shields that scale with Max HP (e.g. Wild Bastion) grow with +HP accolades and +Absorb strength (Power Boost, Clarion). Capped per archetype and level at roughly your unbuffed Max HP; +MaxHP buffs raise your HP but not this ceiling. Only self-affecting absorb from active powers is counted.',
     breakdownKey: 'absorb',
   },
 

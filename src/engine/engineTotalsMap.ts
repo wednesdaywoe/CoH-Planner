@@ -18,6 +18,8 @@ export interface EngineStats {
   def_sl: number; def_fc: number; def_en: number; def_psionic: number; def_toxic: number;
   res_sl: number; res_fc: number; res_en: number; res_psionic: number; res_toxic: number;
   recovery: number; regeneration: number; max_hp: number; max_end: number;
+  /** Absorb in absolute HP, already clamped to the archetype's per-level AttribMaxMax ceiling. */
+  absorb: number;
   debuff_resist_slow: number; debuff_resist_defense: number; debuff_resist_recharge: number; debuff_resist_endurance: number;
   debuff_resist_recovery: number; debuff_resist_to_hit: number; debuff_resist_regeneration: number; debuff_resist_perception: number;
 }
@@ -440,7 +442,13 @@ export function mapStats(s: EngineStats, b: EngineBonuses): CharacterStats {
   };
 }
 
-export function mapGlobal(b: EngineBonuses): GlobalBonuses {
+/**
+ * The mirror of the movement note in {@link mapStats}: absorb is a `CharacterStats` field in the
+ * engine but a `GlobalBonuses` field here, so it crosses the other way. The engine's `bonuses.absorb`
+ * is the RAW accumulator; `stats.absorb` is that sum clamped to the archetype's per-level absorb
+ * ceiling, which is what the game shows and therefore what the dashboard reads.
+ */
+export function mapGlobal(b: EngineBonuses, s: EngineStats): GlobalBonuses {
   return {
     damage: b.damage, accuracy: b.accuracy, toHit: b.to_hit, recharge: b.recharge, endurance: b.endurance, range: b.range,
     defMelee: b.defense_melee, defRanged: b.defense_ranged, defAoE: b.defense_aoe,
@@ -448,7 +456,7 @@ export function mapGlobal(b: EngineBonuses): GlobalBonuses {
     defEnergy: b.defense_energy, defNegative: b.defense_negative, defPsionic: b.defense_psionic, defToxic: b.defense_toxic,
     resSmashing: b.resistance_smashing, resLethal: b.resistance_lethal, resFire: b.resistance_fire, resCold: b.resistance_cold,
     resEnergy: b.resistance_energy, resNegative: b.resistance_negative, resPsionic: b.resistance_psionic, resToxic: b.resistance_toxic,
-    maxHP: b.max_hp, maxEndurance: b.max_endurance, absorb: b.absorb, regeneration: b.regeneration, recovery: b.recovery,
+    maxHP: b.max_hp, maxEndurance: b.max_endurance, absorb: s.absorb, regeneration: b.regeneration, recovery: b.recovery,
     runSpeed: b.run_speed, jumpHeight: b.jump_height, jumpSpeed: b.jump_speed, flySpeed: b.fly_speed,
     mezResist: b.mez_resist,
     mezResistHold: b.mez_resist_hold, mezResistStun: b.mez_resist_stun, mezResistImmobilize: b.mez_resist_immobilize,

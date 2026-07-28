@@ -77,7 +77,7 @@ export function engineCalculate(build: Build, ctx: AdapterCalcContext): Characte
   addMovementBreakdown(breakdown, totals.movement_breakdown);
   return {
     stats: mapStats(totals.stats, totals.bonuses),
-    globalBonuses: mapGlobal(totals.bonuses),
+    globalBonuses: mapGlobal(totals.bonuses, totals.stats),
     breakdown,
     setBonuses: {},
     bonusTracking: mapBonusTracking(totals.set_bonus_tracking, resolveName),
