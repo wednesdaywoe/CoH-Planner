@@ -65,7 +65,7 @@ export const MassLevitate: Power = {
     ["Damage","Smashing",1.42,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Knockup",2,1,0,"Melee_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
-    ["Damage","Fire",0.639,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Fire",0.639,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.4000000059604645,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower? ! Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight_Lockout source.ownPower? ! && Temporary_Powers.Temporary_Powers.Boggled target.ownPower? &&",true],
     ["Damage","Smashing",1.496226,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Knockup",2,1,0,"Melee_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],

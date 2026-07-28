@@ -89,10 +89,10 @@ export const ChargedBrawl: Power = {
   "atoms": [
     ["Damage","Smashing",0.588,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Energy",1.372,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Sleep",10,3,0,"Melee_Sleep","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Sleep",10,3,0,"Melee_Sleep","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Endurance",null,-0.07,1,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Recovery",null,-1,0.20000000298023224,2,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Endurance",null,5.095,0.30000001192092896,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Recovery",null,-1,1,2,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224],
+    ["Endurance",null,5.095,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,0.30000001192092896],
     ["DamageBuff","Smashing",0.055,1,8.33,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Lethal",0.055,1,8.33,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Fire",0.055,1,8.33,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
@@ -102,10 +102,27 @@ export const ChargedBrawl: Power = {
     ["DamageBuff","Toxic",0.055,1,8.33,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Psionic",0.055,1,8.33,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["Damage","Energy",1.698028,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Sleep",2,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Sleep",2,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Endurance",null,-2.5,1,0,"Melee_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["GrantPower",null,1,0,0,"Melee_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
-    ["GrantPower",null,1,0,0,"Melee_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,0,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,0,null,true,null,null,null,null,"enttype target> player eq",true]
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Sleep"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Recovery"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.30000001192092896,
+      "label": "Endurance"
+    }
   ],
   "damageTypes": [
     "Energy",

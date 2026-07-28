@@ -54,7 +54,9 @@ export const QuillThrowing: Power = {
       "scale": 0.1,
       "table": "Melee_Damage",
       "duration": 4.1,
-      "tickRate": 1
+      "tickRate": 1,
+      "chance": 0.8,
+      "cancelOnMiss": true
     }
   ],
   "effects": {
@@ -99,13 +101,25 @@ export const QuillThrowing: Power = {
     ["RechargeTime",null,0.2,1,10,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
     ["Movement","JumpHeight",0.5,1,15,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
     ["Damage","Toxic",0.1,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
-    ["Mez","Immobilized",10,0.6700000166893005,0,"Melee_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Fire",0.4905,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Mez","Immobilized",2,0.6700000166893005,0,"Melee_Immobilize","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Immobilized",10,0.6700000166893005,0,"Melee_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Fire",0.4905,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+    ["Mez","Immobilized",2,0.6700000166893005,0,"Melee_Immobilize","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Lethal",1.260529,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Lethal",1.260529,0.05000000074505806,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Lethal",1.09,0.05000000074505806,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
-    ["Damage","Lethal",1.09,0.10000000149011612,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true]
+    ["Damage","Lethal",1.260529,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Lethal",1.09,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
+    ["Damage","Lethal",1.09,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true]
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Immobilized"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.05000000074505806,
+      "label": "Lethal_Dmg"
+    }
   ],
   "damageTypes": [
     "Lethal",

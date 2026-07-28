@@ -57,7 +57,7 @@ export const Scare: Power = {
   },
   "atoms": [
     ["Mez","Terrorized",10,3,0,"Melee_Fear","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Terrorized",7,1,0,"Melee_Fear","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Terrorized",7,1,0,"Melee_Fear","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,"enttype target> critter eq"],
     ["DamageBuff","Smashing",0.176,1,10.17,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Lethal",0.176,1,10.17,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Fire",0.176,1,10.17,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
@@ -67,6 +67,13 @@ export const Scare: Power = {
     ["DamageBuff","Toxic",0.176,1,10.17,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Psionic",0.176,1,10.17,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["Mez","Terrorized",2,2,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.30000001192092896,
+      "label": "Fear"
+    }
   ],
   "damageTypes": [
     "Psionic"

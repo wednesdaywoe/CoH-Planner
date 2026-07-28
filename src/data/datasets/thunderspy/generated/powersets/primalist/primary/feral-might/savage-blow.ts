@@ -62,7 +62,7 @@ export const SavageBlow: Power = {
     ["Damage","Smashing",3.56,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Meta",null,0.2,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true],
     ["Heal",null,0.712,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
-    ["Heal",null,1.424,0,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1]
+    ["Heal",null,1.424,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,0]
   ],
   "modeVariants": {
     "HunterMode": {

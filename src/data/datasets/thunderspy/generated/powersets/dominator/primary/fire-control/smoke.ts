@@ -62,10 +62,10 @@ export const Smoke: Power = {
   "atoms": [
     ["Perception",null,-0.9,1,60,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["ToHit",null,1,1,60,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Confused",10,2,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Confused",10,2,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,"enttype target> critter eq"],
     ["ToHit",null,1,1,20,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll @ToHit < @ForceHit || &&",true],
     ["Perception",null,-0.9,1,20,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll @ToHit < @ForceHit || &&",true],
-    ["Mez","Confused",20,2,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kStealth source> 0.5 > &&",true]
+    ["Mez","Confused",20,2,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,"enttype target> critter eq kStealth source> 0.5 > &&",true]
   ],
   "conditionalEffects": [
     {
@@ -80,6 +80,13 @@ export const Smoke: Power = {
           "table": "Ranged_Immobilize"
         }
       }
+    }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.30000001192092896,
+      "label": "Confuse"
     }
   ]
 };

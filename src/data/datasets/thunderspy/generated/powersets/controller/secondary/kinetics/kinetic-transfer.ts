@@ -42,6 +42,6 @@ export const KineticTransfer: Power = {
   "atoms": [
     ["EntCreate",null,-1,1,1,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["EntCreate",null,-1,1,1,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["ExecutePower",null,0,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,true]
+    ["ExecutePower",null,0,0,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,true]
   ]
 };

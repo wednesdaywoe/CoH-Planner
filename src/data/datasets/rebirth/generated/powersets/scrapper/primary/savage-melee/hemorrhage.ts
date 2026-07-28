@@ -48,8 +48,8 @@ export const Hemorrhage: Power = {
   "atoms": [
     ["Damage","Lethal",0.76,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
-    ["Damage","Fire",0.342,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Fire",0.1485,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["Damage","Fire",0.342,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+    ["Damage","Fire",0.1485,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0],
     ["Damage","Lethal",1,1,4.1,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy source.ownPowerNum? 5 < &&",true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy source.ownPowerNum? .04 * .33 + @StdResult *"],
     ["Damage","Lethal",1,1,5.1,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy source.ownPowerNum? 4 > &&",true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy source.ownPowerNum? .04 * .33 + @StdResult *"],
     ["Damage","Lethal",0.812496,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],

@@ -82,7 +82,7 @@ export const EnergeticStrike: Power = {
     ["Mez","Stunned",4,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? 5 >= &&",true],
     ["GrantPower",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? 5 <",true],
     ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? 5 >=",true],
-    ["RechargePower",null,1,0.20000000298023224,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? 5 >= Defender_Ranged.Kinetic_Assault.Coalescence source.ownPower? &&",true]
+    ["RechargePower",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,null,0.20000000298023224,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? 5 >= Defender_Ranged.Kinetic_Assault.Coalescence source.ownPower? &&",true]
   ],
   "conditionalEffects": [
     {
@@ -102,6 +102,13 @@ export const EnergeticStrike: Power = {
           "table": "Melee_Immobilize"
         }
       }
+    }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Recharge_Power"
     }
   ],
   "damageTypes": [

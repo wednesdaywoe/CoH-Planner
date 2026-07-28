@@ -68,19 +68,19 @@ export const PsiBlade: Power = {
     }
   },
   "atoms": [
-    ["GrantPower",null,1,0.140666663646698,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower? ! Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight_Lockout source.ownPower? ! && Temporary_Powers.Temporary_Powers.Boggled target.ownPower? ! &&"],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.140666663646698,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower? ! Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight_Lockout source.ownPower? ! && Temporary_Powers.Temporary_Powers.Boggled target.ownPower? ! &&"],
     ["Damage","Lethal",0.285,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Psionic",0.855,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["RechargeTime",null,0.12,1,6,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
-    ["Mez","Taunt",1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
-    ["Damage","Fire",0.513,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
+    ["Damage","Fire",0.513,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
-    ["GrantPower",null,1,0.281333327293396,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower? ! Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight_Lockout source.ownPower? ! && Temporary_Powers.Temporary_Powers.Boggled target.ownPower? &&",true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.281333327293396,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower? ! Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight_Lockout source.ownPower? ! && Temporary_Powers.Temporary_Powers.Boggled target.ownPower? &&",true],
     ["Damage","Lethal",0.485322,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Psionic",1.455967,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Psionic",0.2285,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower?",true],
-    ["Mez","Taunt",1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
-    ["Mez","Taunt",6,0.11599999666213989,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
+    ["Mez","Taunt",6,4,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,0.11599999666213989,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "conditionalEffects": [
     {
@@ -94,8 +94,22 @@ export const PsiBlade: Power = {
         "scale": 0.2285,
         "table": "Melee_Damage",
         "duration": 3.1,
-        "tickRate": 1
+        "tickRate": 1,
+        "chance": 0.8,
+        "cancelOnMiss": true
       }
+    }
+  ],
+  "specialEffects": [
+    {
+      "kind": "grant",
+      "chance": 0.140666663646698,
+      "label": "state"
+    },
+    {
+      "kind": "grant",
+      "chance": 0.281333327293396,
+      "label": "state"
     }
   ],
   "damageTypes": [

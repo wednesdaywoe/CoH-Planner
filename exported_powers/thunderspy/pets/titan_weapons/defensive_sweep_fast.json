@@ -97,8 +97,8 @@
       "chance": 1.0,
       "ppm": 0.0,
       "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_inner": 0.0,
+      "radius_outer": 0.0,
       "requires_expression": "",
       "tags": [],
       "flags": [],
@@ -179,7 +179,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.05000000074505806,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -201,7 +201,7 @@
           "table": "Melee_Damage",
           "scale": 1.032834,
           "duration": "0 seconds",
-          "magnitude": 0.05000000074505806,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -219,7 +219,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.05000000074505806,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -241,7 +241,7 @@
           "table": "Melee_Damage",
           "scale": 0.679,
           "duration": "0 seconds",
-          "magnitude": 0.05000000074505806,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -259,7 +259,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.10000000149011612,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -281,7 +281,7 @@
           "table": "Melee_Damage",
           "scale": 0.679,
           "duration": "0 seconds",
-          "magnitude": 0.10000000149011612,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -299,7 +299,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -321,7 +321,7 @@
           "table": "Melee_Damage",
           "scale": 0.30555,
           "duration": "0 seconds",
-          "magnitude": 0.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",

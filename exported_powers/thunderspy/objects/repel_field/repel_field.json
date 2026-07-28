@@ -173,7 +173,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.25,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -195,7 +195,7 @@
           "table": "Ranged_Ones",
           "scale": 99999.0,
           "duration": "0 seconds",
-          "magnitude": 0.25,
+          "magnitude": 1.0,
           "delay": 1.17,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -216,7 +216,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.25,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -238,7 +238,7 @@
           "table": "Ranged_Ones",
           "scale": 99999.0,
           "duration": "0 seconds",
-          "magnitude": 0.25,
+          "magnitude": 1.0,
           "delay": 1.67,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -259,7 +259,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.25,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -281,7 +281,7 @@
           "table": "Ranged_Ones",
           "scale": 99999.0,
           "duration": "0 seconds",
-          "magnitude": 0.25,
+          "magnitude": 1.0,
           "delay": 2.17,
           "duration_expression": "",
           "magnitude_expression": "",

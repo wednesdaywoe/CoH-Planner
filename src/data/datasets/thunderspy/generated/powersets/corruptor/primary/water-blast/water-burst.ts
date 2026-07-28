@@ -98,13 +98,13 @@ export const WaterBurst: Power = {
     ["Damage","Cold",0.046839,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 1 == &&",true],
     ["Damage","Cold",0.112413,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 2 == &&",true],
     ["Damage","Cold",0.234194,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 3 == &&",true],
-    ["Mez","Knockback",0.67,0.33000001311302185,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 0 == &&",true],
-    ["Mez","Knockback",0.67,0.33000001311302185,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 0 == &&",true],
-    ["Mez","Knockback",0.67,0.44999998807907104,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 1 == &&",true],
-    ["Mez","Knockback",0.67,0.699999988079071,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 2 == &&",true],
+    ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.33000001311302185,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 0 == &&",true],
+    ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.33000001311302185,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 0 == &&",true],
+    ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.44999998807907104,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 1 == &&",true],
+    ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.699999988079071,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 2 == &&",true],
     ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 3 == &&",true],
-    ["Mez","Knockback",0.67,0.44999998807907104,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 1 == &&",true],
-    ["Mez","Knockback",0.67,0.699999988079071,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 2 == &&",true],
+    ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.44999998807907104,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 1 == &&",true],
+    ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.699999988079071,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 2 == &&",true],
     ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 3 == &&",true]
   ],
   "conditionalEffects": [
@@ -174,6 +174,23 @@ export const WaterBurst: Power = {
         }
       },
       "group": "tidal_power-stacks"
+    }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.33000001311302185,
+      "label": "Knockback"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.44999998807907104,
+      "label": "Knockback"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.699999988079071,
+      "label": "Knockback"
     }
   ],
   "damageTypes": [

@@ -350,7 +350,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.3199999928474426,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -372,7 +372,7 @@
           "table": "Melee_Ones",
           "scale": 1.0,
           "duration": "0 seconds",
-          "magnitude": 0.3199999928474426,
+          "magnitude": 1.0,
           "delay": 0.3,
           "duration_expression": "",
           "magnitude_expression": "",

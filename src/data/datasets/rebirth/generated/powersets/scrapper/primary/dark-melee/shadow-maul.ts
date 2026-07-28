@@ -77,7 +77,7 @@ export const ShadowMaul: Power = {
     ["Damage","Smashing",0.2695,1,2,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.625,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Negative",0.2695,1,2,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.625,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["ToHit",null,0.75,1,10,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Fire",0.24255,1,2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.625,1],
+    ["Damage","Fire",0.24255,1,2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.625,0],
     ["Damage","Smashing",0.454732,1,2,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.625,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Negative",0.454732,1,2,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.625,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Negative",3.637858,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq",true],

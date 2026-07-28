@@ -53,7 +53,7 @@
   ],
   "effects": [
     {
-      "chance": 1.0,
+      "chance": 0.6600000262260437,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -96,7 +96,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.6600000262260437,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -141,7 +141,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.8500000238418579,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -184,7 +184,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.8500000238418579,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,

@@ -325,7 +325,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.6600000262260437,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -370,7 +370,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.6600000262260437,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -415,7 +415,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.15000000596046448,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -437,7 +437,7 @@
           "table": "Melee_Ones",
           "scale": 2.0,
           "duration": "0 seconds",
-          "magnitude": 0.15000000596046448,
+          "magnitude": 3.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",

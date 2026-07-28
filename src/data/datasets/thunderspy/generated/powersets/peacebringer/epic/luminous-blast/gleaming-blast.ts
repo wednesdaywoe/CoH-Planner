@@ -64,10 +64,17 @@ export const GleamingBlast: Power = {
   },
   "atoms": [
     ["Damage","Energy",1.64,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Knockback",1,0.10000000149011612,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Defense","All",2,1,6,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Damage","Energy",2.2668,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Knockback",1,0.10000000149011612,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.10000000149011612,null,true,null,null,null,null,"enttype target> player eq",true]
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.10000000149011612,
+      "label": "Knockback"
+    }
   ],
   "damageTypes": [
     "Energy"

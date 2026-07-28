@@ -53,8 +53,8 @@ export const Hemorrhage: Power = {
   "atoms": [
     ["Damage","Lethal",0.81,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
-    ["Mez","Taunt",1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
-    ["Damage","Fire",0.342,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
+    ["Damage","Fire",0.342,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
     ["Damage","Fire",0.1485,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
     ["Damage","Lethal",1.11,1,4.1,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy source.ownPowerNum? 5 < &&",true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy source.ownPowerNum? .04 * .33 + @StdResult *"],
     ["Damage","Lethal",1.35,1,5.1,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy source.ownPowerNum? 4 > &&",true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy source.ownPowerNum? .04 * .33 + @StdResult *"],
@@ -62,7 +62,7 @@ export const Hemorrhage: Power = {
     ["Damage","Lethal",1,1,4.1,"Melee_Damage","Abs","Expression","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy source.ownPowerNum? 5 < &&",true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy source.ownPowerNum? .04 * .34 + @StdResult *"],
     ["Damage","Lethal",1.35,1,5.1,"Melee_Damage","Abs","Expression","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy source.ownPowerNum? 4 > &&",true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy source.ownPowerNum? .04 * .34 + @StdResult *"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted source.ownPower? ! Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy source.ownPowerNum? 4 > &&",true],
-    ["Mez","Taunt",1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
+    ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
     ["Heal",null,1,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Replace",2,null,1,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.BloodDrink source.ownPower?",true]
   ],
   "conditionalEffects": [

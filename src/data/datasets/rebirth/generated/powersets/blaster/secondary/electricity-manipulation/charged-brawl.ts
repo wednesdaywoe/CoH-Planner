@@ -108,8 +108,8 @@ export const ChargedBrawl: Power = {
     ["Damage","Energy",1.698028,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Sleep",2,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Endurance",null,-2.5,1,0,"Melee_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,0,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,0,null,true,null,null,null,null,"enttype target> player eq",true]
   ],
   "specialEffects": [
     {

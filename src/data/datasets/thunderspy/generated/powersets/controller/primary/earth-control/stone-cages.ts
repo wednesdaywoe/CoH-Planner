@@ -57,10 +57,8 @@ export const StoneCages: Power = {
     },
     "durations": {
       "defenseDebuff": 12,
-      "immobilize": 1,
       "slow": 12
     },
-    "effectDuration": 1,
     "immobilize": {
       "mag": 3,
       "scale": 15,
@@ -76,8 +74,8 @@ export const StoneCages: Power = {
   "atoms": [
     ["Damage","Smashing",0.1,1,5.2,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Immobilized",15,3,1,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Immobilized",10,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Immobilized",10,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"],
     ["MezResist","Knockback",0.99,1,12,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["MezResist","Knockup",0.99,1,12,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["Movement","FlyMode",-1.6,1,12,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
@@ -86,6 +84,13 @@ export const StoneCages: Power = {
     ["Damage","Smashing",0.154824,1,5.2,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> player eq kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || &&",true],
     ["Damage","Smashing",0.077412,1,5.2,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> player eq kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || &&",true],
     ["Mez","Immobilized",4,4,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Immobilized"
+    }
   ],
   "damageTypes": [
     "Smashing"

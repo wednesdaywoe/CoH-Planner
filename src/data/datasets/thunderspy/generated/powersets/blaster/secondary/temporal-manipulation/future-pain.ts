@@ -85,7 +85,7 @@ export const FuturePain: Power = {
   },
   "atoms": [
     ["EntCreate",null,0,1,1.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
-    ["Mez","Teleport",10,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Mez","Teleport",10,10,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["RechargeTime",null,0.2,1,10,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Mez","Stunned",8,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Knockback",0.4,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],

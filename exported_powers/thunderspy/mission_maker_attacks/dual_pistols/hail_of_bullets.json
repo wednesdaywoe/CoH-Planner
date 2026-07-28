@@ -72,7 +72,7 @@
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.30000001192092896,
-          "tick_chance": 1.0,
+          "tick_chance": 0.5,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "",
@@ -112,7 +112,7 @@
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.30000001192092896,
-          "tick_chance": 1.0,
+          "tick_chance": 0.5,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "",
@@ -152,7 +152,7 @@
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.30000001192092896,
-          "tick_chance": 1.0,
+          "tick_chance": 0.10000000149011612,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "",
@@ -232,7 +232,7 @@
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.30000001192092896,
-          "tick_chance": 1.0,
+          "tick_chance": 0.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "",
@@ -272,7 +272,7 @@
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 1.0,
-          "tick_chance": 1.0,
+          "tick_chance": 0.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "",
@@ -315,7 +315,7 @@
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.30000001192092896,
-          "tick_chance": 1.0,
+          "tick_chance": 0.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "",
@@ -328,7 +328,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -350,7 +350,7 @@
           "table": "Ranged_Slow",
           "scale": 0.2,
           "duration": "5 seconds",
-          "magnitude": 0.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -368,7 +368,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -390,7 +390,7 @@
           "table": "Ranged_Slow",
           "scale": 0.2,
           "duration": "5 seconds",
-          "magnitude": 0.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -408,7 +408,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -430,7 +430,7 @@
           "table": "Ranged_Slow",
           "scale": 0.2,
           "duration": "5 seconds",
-          "magnitude": 0.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -451,7 +451,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -473,7 +473,7 @@
           "table": "Ranged_Slow",
           "scale": 0.2,
           "duration": "5 seconds",
-          "magnitude": 0.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -491,7 +491,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -513,7 +513,7 @@
           "table": "Ranged_Slow",
           "scale": 0.2,
           "duration": "5 seconds",
-          "magnitude": 0.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -561,7 +561,7 @@
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.30000001192092896,
-          "tick_chance": 1.0,
+          "tick_chance": 0.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "",
@@ -574,7 +574,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -596,7 +596,7 @@
           "table": "Ranged_Debuff_Dam",
           "scale": 2.0,
           "duration": "6 seconds",
-          "magnitude": 0.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -617,7 +617,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -639,7 +639,7 @@
           "table": "Ranged_Debuff_Dam",
           "scale": 2.0,
           "duration": "6 seconds",
-          "magnitude": 0.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -660,7 +660,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -682,7 +682,7 @@
           "table": "Ranged_Debuff_Dam",
           "scale": 2.0,
           "duration": "6 seconds",
-          "magnitude": 0.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -703,7 +703,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -725,7 +725,7 @@
           "table": "Ranged_Debuff_Dam",
           "scale": 2.0,
           "duration": "6 seconds",
-          "magnitude": 0.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -746,7 +746,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -768,7 +768,7 @@
           "table": "Ranged_Debuff_Dam",
           "scale": 2.0,
           "duration": "6 seconds",
-          "magnitude": 0.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -789,7 +789,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -811,7 +811,7 @@
           "table": "Ranged_Debuff_Dam",
           "scale": 2.0,
           "duration": "6 seconds",
-          "magnitude": 0.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -832,7 +832,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -854,7 +854,7 @@
           "table": "Ranged_Debuff_Dam",
           "scale": 2.0,
           "duration": "6 seconds",
-          "magnitude": 0.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -875,7 +875,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -897,7 +897,7 @@
           "table": "Ranged_Debuff_Dam",
           "scale": 2.0,
           "duration": "6 seconds",
-          "magnitude": 0.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",

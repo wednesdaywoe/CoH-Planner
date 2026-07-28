@@ -98,7 +98,7 @@ export const Geyser: Power = {
     ["Movement","Jump",0.33,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","Run",0.33,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","Fly",0.33,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Mez","Knockup",1.5,0.6700000166893005,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockup",1.5,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.6700000166893005,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
     ["DamageBuff","Smashing",0.041,1,10.43,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Lethal",0.041,1,10.43,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
@@ -120,12 +120,12 @@ export const Geyser: Power = {
     ["Damage","Fire",0.143182,1,5.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 1 ==",true],
     ["Damage","Fire",0.152727,1,5.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 2 ==",true],
     ["Damage","Fire",0.170455,1,5.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 3 ==",true],
-    ["Mez","Knockup",1.5,0.6700000166893005,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Stunned",5,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 1 == &&",true],
-    ["Mez","Stunned",5,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 2 == &&",true],
+    ["Mez","Knockup",1.5,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.6700000166893005,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Stunned",5,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.33000001311302185,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 1 == &&",true],
+    ["Mez","Stunned",5,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.6000000238418579,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 2 == &&",true],
     ["Mez","Stunned",5,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 3 == &&",true],
-    ["Mez","Stunned",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 1 == &&",true],
-    ["Mez","Stunned",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 1 == &&",true],
+    ["Mez","Stunned",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.33000001311302185,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 1 == &&",true],
+    ["Mez","Stunned",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.6000000238418579,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 1 == &&",true],
     ["Mez","Stunned",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 1 == &&",true]
   ],
   "conditionalEffects": [
@@ -226,6 +226,23 @@ export const Geyser: Power = {
         "tickRate": 0.5
       },
       "group": "tidal_power-stacks"
+    }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.6700000166893005,
+      "label": "Knock Up"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.33000001311302185,
+      "label": "Stun"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.6000000238418579,
+      "label": "Stun"
     }
   ],
   "damageTypes": [

@@ -77,7 +77,7 @@ export const Barrage: Power = {
     ["Damage","Energy",0.16,1,0.3,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Stunned",6,2,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
-    ["Damage","Fire",0.297,1,0.3,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1],
+    ["Damage","Fire",0.297,1,0.3,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,0],
     ["Damage","Smashing",0.796804,1,0.3,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Energy",0.265601,1,0.3,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Stunned",2,2,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> player eq",true],

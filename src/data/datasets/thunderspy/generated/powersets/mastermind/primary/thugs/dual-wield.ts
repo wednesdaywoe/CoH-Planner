@@ -54,9 +54,16 @@ export const DualWield: Power = {
   },
   "atoms": [
     ["Damage","Lethal",0.98,1,0.3,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Knockback",0.64,0.25,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",0.64,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Lethal",0.98,1,0.3,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Knockback",0.64,0.25,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["Mez","Knockback",0.64,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.25,null,true,null,null,null,null,"enttype target> player eq",true]
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.25,
+      "label": "Knockback"
+    }
   ],
   "damageTypes": [
     "Lethal"

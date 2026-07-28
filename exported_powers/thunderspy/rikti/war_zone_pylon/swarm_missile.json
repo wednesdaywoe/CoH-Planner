@@ -89,7 +89,7 @@
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_outer": 5.0,
       "requires_expression": "",
       "tags": [],
       "flags": [],
@@ -125,7 +125,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.4000000059604645,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -147,7 +147,7 @@
           "table": "Ranged_Knockback",
           "scale": 2.0,
           "duration": "0 seconds",
-          "magnitude": 0.4000000059604645,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",

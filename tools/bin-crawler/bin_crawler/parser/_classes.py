@@ -80,6 +80,13 @@ from ._dataclasses import ClassRecord
 _IDX_TABLE_HITPOINTS = 20
 _IDX_TABLE_DAMAGE = 0
 _IDX_SCALAR_THREAT = 61
+# Absorb is serialized LAST in the i24 table order, one slot past ElusivityBase
+# (`ParseCharacterAttributesTable`), which puts it at 115 on the forks (116-row
+# tables) — and also at 115 on Homecoming, whose 117-row table inserts one
+# attrib before Absorb and appends one after it. Landing on the same index in
+# all three datasets is a property, not an assumption: `_absorb_cap` re-proves
+# it per record against the signature below before reading a value.
+_IDX_TABLE_ABSORB = 115
 _PLAYER_LEVELS = 50             # planner uses levels 1-50
 
 
@@ -135,14 +142,47 @@ def _read_named_tables(r) -> dict[str, list[float]]:
     return tables
 
 
-def _extract_attribs(attrib_base, attrib_max, attrib_max_max,
+def _absorb_cap(name: str, attrib_max, attrib_max_max) -> list[float] | None:
+    """The per-level Absorb ceiling — AttribMaxMaxTable's Absorb row.
+
+    This is the value `ClampMax` clamps `attrMax.fAbsorb` against
+    (`Common/entity/character_attribs.c`: `CLAMP_MAX(fAbsorb)` against
+    `pclass->pattrMaxMax[iCombatLevel]`), so an absorb shield can never exceed
+    it. It runs close to the class's base max HP but is authored separately and
+    genuinely diverges — Homecoming's Brute caps 20 points under its base HP at
+    level 1, and every dataset caps the Dominator on the 100→1070.9 curve while
+    its HP runs 99→1017.4. Deriving it from the HP table would ship those as
+    wrong numbers, so it is read as its own row.
+
+    Absorb's identity at [`_IDX_TABLE_ABSORB`] is re-proven per record rather
+    than trusted: AttribMaxTable's row must be all zero (a character starts with
+    no absorb) while AttribMaxMaxTable's carries a curve. A slide onto either
+    neighbour breaks that — HitPoints and the Homecoming-appended tail attrib
+    both start non-zero, ElusivityBase caps at zero.
+    """
+    if len(attrib_max_max[0]) <= _IDX_TABLE_ABSORB:
+        return None
+    cap = attrib_max_max[0][_IDX_TABLE_ABSORB]
+    base = attrib_max[0][_IDX_TABLE_ABSORB] if len(attrib_max[0]) > _IDX_TABLE_ABSORB else []
+    if len(cap) < _PLAYER_LEVELS:
+        raise ValueError(f"{name}: Absorb cap row has {len(cap)} levels, "
+                         f"expected at least {_PLAYER_LEVELS} — table drift")
+    if any(v != 0.0 for v in base) or not any(v != 0.0 for v in cap):
+        raise ValueError(f"{name}: attrib table index {_IDX_TABLE_ABSORB} does "
+                         f"not carry Absorb (base row must be all zero over a "
+                         f"non-zero cap row) — table drift")
+    return cap[:_PLAYER_LEVELS]
+
+
+def _extract_attribs(name, attrib_base, attrib_max, attrib_max_max,
                      strength_max, resistance_max) -> dict:
-    """The planner's five attrib values, addressed structurally.
+    """The planner's six attrib values, addressed structurally.
 
     hit_points / hp_cap: the HitPoints per-level rows of AttribMaxTable /
     AttribMaxMaxTable. NB hp_cap must come from the HitPoints row, not the
     (usually identical) damage-type rows — Rebirth raised only the real
     HitPoints row for Kheldians, which the old fixed-delta read missed.
+    absorb_cap: AttribMaxMaxTable Absorb row (see [`_absorb_cap`]).
     resistance_cap: ResistanceMaxTable DamageType00 (flat per-level run).
     base_threat: AttribBase ThreatLevel scalar.
     damage_cap: StrengthMaxTable DamageType00 at level 50.
@@ -156,6 +196,10 @@ def _extract_attribs(attrib_base, attrib_max, attrib_max_max,
         cap = attrib_max_max[0][_IDX_TABLE_HITPOINTS]
         if len(cap) >= _PLAYER_LEVELS:
             out["hp_cap"] = cap[:_PLAYER_LEVELS]
+    if attrib_max and attrib_max_max:
+        absorb_cap = _absorb_cap(name, attrib_max, attrib_max_max)
+        if absorb_cap is not None:
+            out["absorb_cap"] = absorb_cap
     if resistance_max and resistance_max[0] and resistance_max[0][_IDX_TABLE_DAMAGE]:
         out["resistance_cap"] = resistance_max[0][_IDX_TABLE_DAMAGE][0]
     if attrib_base and len(attrib_base[0]) > _IDX_SCALAR_THREAT:
@@ -224,8 +268,9 @@ def _read_class_record(r, flavor: str) -> ClassRecord:
     resistance_max = _read_attrib_table_array(r)
 
     rec["named_tables"] = _read_named_tables(r)
-    rec["attribs"] = _extract_attribs(attrib_base, attrib_max, attrib_max_max,
-                                      strength_max, resistance_max)
+    rec["attribs"] = _extract_attribs(rec["name"], attrib_base, attrib_max,
+                                      attrib_max_max, strength_max,
+                                      resistance_max)
 
     rec["connect_hp_and_status"] = bool(r.read_u4())
     if flavor == "hc":

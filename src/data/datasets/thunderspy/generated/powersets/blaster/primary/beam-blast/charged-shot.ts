@@ -71,7 +71,7 @@ export const ChargedShot: Power = {
   },
   "atoms": [
     ["Damage","Energy",1.64,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Knockback",0.67,0.25,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,"enttype target> critter eq"],
     ["DamageBuff","Smashing",0.11,1,9.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Lethal",0.11,1,9.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Fire",0.11,1,9.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
@@ -80,7 +80,7 @@ export const ChargedShot: Power = {
     ["DamageBuff","Negative",0.11,1,9.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Toxic",0.11,1,9.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Psionic",0.11,1,9.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["Mez","Knockback",0.67,0.25,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Energy",2.322647,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["EntCreate",null,-1,1,6,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,6.25,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Beam_Rifle_Debuff target.ownPower?",true],
     ["EntCreate",null,-1,1,6,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Beam_Rifle_Debuff target.ownPower?",true]
@@ -98,6 +98,13 @@ export const ChargedShot: Power = {
           "isPseudoPet": false
         }
       }
+    }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.25,
+      "label": "Knockback"
     }
   ],
   "damageTypes": [

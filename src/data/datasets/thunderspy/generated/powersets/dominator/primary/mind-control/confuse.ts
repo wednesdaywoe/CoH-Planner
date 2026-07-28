@@ -41,21 +41,16 @@ export const Confuse: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "buffDuration": 1,
     "confuse": {
       "mag": 4,
       "scale": 4,
       "table": "Ranged_Immobilize"
-    },
-    "durations": {
-      "confuse": 1
-    },
-    "effectDuration": 1
+    }
   },
   "atoms": [
     ["Mez","Confused",4,4,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Confused",4,2,1,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Confused",4,2,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Confused",4,2,0,"Ranged_Immobilize","Cur","Duration","Target","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Confused",4,3,1,"Ranged_Immobilize","Cur","Duration","Target","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Mez","Confused",4,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ]
 };

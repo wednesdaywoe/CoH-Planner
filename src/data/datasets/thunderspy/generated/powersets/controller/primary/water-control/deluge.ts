@@ -57,8 +57,7 @@ export const Deluge: Power = {
     {
       "type": "Cold",
       "scale": 0.5,
-      "table": "Ranged_Damage",
-      "duration": 1
+      "table": "Ranged_Damage"
     }
   ],
   "effects": {
@@ -92,7 +91,7 @@ export const Deluge: Power = {
   "atoms": [
     ["Damage","Smashing",0.33,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Cold",0.99,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Cold",0.5,1,1,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Cold",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Movement","Run",0.35,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? !"],
     ["Movement","Fly",0.35,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? !"],
     ["Movement","Jump",0.35,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? !"],

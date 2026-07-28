@@ -52,7 +52,7 @@
   "attack_types": [],
   "effects": [
     {
-      "chance": 1.0,
+      "chance": 1.100000023841858,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -74,7 +74,7 @@
           "table": "Ranged_Knockback",
           "scale": 3.0,
           "duration": "0 seconds",
-          "magnitude": 1.100000023841858,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -95,7 +95,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.27000001072883606,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -117,7 +117,7 @@
           "table": "Ranged_Knockback",
           "scale": 3.0,
           "duration": "0 seconds",
-          "magnitude": 0.27000001072883606,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -141,7 +141,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -163,7 +163,7 @@
           "table": "Ranged_Ones",
           "scale": 1.0,
           "duration": "0 seconds",
-          "magnitude": 0.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -185,7 +185,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -207,7 +207,7 @@
           "table": "Ranged_Ones",
           "scale": 1.0,
           "duration": "0 seconds",
-          "magnitude": 0.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",

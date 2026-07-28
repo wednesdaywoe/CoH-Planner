@@ -112,7 +112,7 @@ export const Ripper: Power = {
     ["Movement","Jump",0.2,1,15,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Damage","Toxic",0.2,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0.800000011920929],
     ["Mez","Immobilized",10,0.6700000166893005,0,"Melee_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Fire",0.765,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Fire",0.765,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
     ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.6000000238418579,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Immobilized",2,0.6700000166893005,0,"Melee_Immobilize","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Lethal",1.561053,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],

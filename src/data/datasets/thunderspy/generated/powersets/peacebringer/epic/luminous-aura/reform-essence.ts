@@ -45,12 +45,11 @@ export const ReformEssence: Power = {
     {
       "type": "Heal",
       "scale": 2.25,
-      "table": "Ranged_Heal",
-      "duration": 1
+      "table": "Ranged_Heal"
     }
   ],
   "atoms": [
     ["Heal",null,4,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
-    ["Heal",null,2.25,1,1,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+    ["Heal",null,2.25,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1]
   ]
 };

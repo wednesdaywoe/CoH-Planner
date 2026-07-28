@@ -43,7 +43,7 @@ export const GangWar: Power = {
       "duration": 120,
       "isPseudoPet": false,
       "entity": "Pets_Thug_Pose_01",
-      "entityCount": 13
+      "entityCount": 10
     }
   },
   "atoms": [
@@ -65,13 +65,30 @@ export const GangWar: Power = {
     ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["EntCreate",null,1,0.5,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["EntCreate",null,1,0.5,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["EntCreate",null,1,0.25,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["EntCreate",null,1,0.25,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["EntCreate",null,1,0.10000000149011612,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["EntCreate",null,1,0.10000000149011612,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["EntCreate",null,1,0.10000000149011612,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["EntCreate",null,1,0.10000000149011612,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,0.5,null,true],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,0.5],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,0.25,null,true],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,0.25],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,0.10000000149011612,null,true],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,0.10000000149011612],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,0.10000000149011612,null,true],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,0.10000000149011612]
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Create_Entity"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.25,
+      "label": "Create_Entity"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.10000000149011612,
+      "label": "Create_Entity"
+    }
   ]
 };

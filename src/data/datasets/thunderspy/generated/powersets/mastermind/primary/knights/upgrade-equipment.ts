@@ -45,13 +45,13 @@ export const UpgradeEquipment: Power = {
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Knight_Minion target.VillainName>",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"costume target> Mastermind_Knight_Minion_01_01 eq group target> MastermindPets eq &&",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"costume target> Mastermind_Knight_Minion_01_01 eq kMastermind_Upgrade_1 target.mode? && group target> MastermindPets eq &&",true],
-    ["Meta",null,1,0,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"costume target> Mastermind_Knight_Minion_01_01 eq kMastermind_Upgrade_1 target.mode? && group target> MastermindPets eq &&",true],
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,0,null,true,null,null,null,null,"costume target> Mastermind_Knight_Minion_01_01 eq kMastermind_Upgrade_1 target.mode? && group target> MastermindPets eq &&",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"costume target> Mastermind_Knight_Minion_02_01 eq group target> MastermindPets eq &&",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"costume target> Mastermind_Knight_Minion_02_01 eq kMastermind_Upgrade_1 target.mode? && group target> MastermindPets eq &&",true],
-    ["Meta",null,1,0,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"costume target> Mastermind_Knight_Minion_02_01 eq kMastermind_Upgrade_1 target.mode? && group target> MastermindPets eq &&",true],
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,0,null,true,null,null,null,null,"costume target> Mastermind_Knight_Minion_02_01 eq kMastermind_Upgrade_1 target.mode? && group target> MastermindPets eq &&",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"costume target> Mastermind_Knight_Minion_03_01 eq group target> MastermindPets eq &&",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"costume target> Mastermind_Knight_Minion_03_01 eq kMastermind_Upgrade_1 target.mode? && group target> MastermindPets eq &&",true],
-    ["Meta",null,1,0,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"costume target> Mastermind_Knight_Minion_03_01 eq kMastermind_Upgrade_1 target.mode? && group target> MastermindPets eq &&",true],
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,0,null,true,null,null,null,null,"costume target> Mastermind_Knight_Minion_03_01 eq kMastermind_Upgrade_1 target.mode? && group target> MastermindPets eq &&",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Knight_Lt target.VillainName>",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Knight_Lt target.VillainName>",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Knight_Lt target.VillainName>",true],
@@ -80,7 +80,7 @@ export const UpgradeEquipment: Power = {
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Knight_Boss target.VillainName>",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"costume target> Mastermind_Knight_Boss_01_01 eq",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"costume target> Mastermind_Knight_Boss_01_01 eq kMastermind_Upgrade_1 target.mode? &&",true],
-    ["Meta",null,1,0,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"costume target> Mastermind_Knight_Boss_01_01 eq kMastermind_Upgrade_1 target.mode? &&",true]
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,0,null,true,null,null,null,null,"costume target> Mastermind_Knight_Boss_01_01 eq kMastermind_Upgrade_1 target.mode? &&",true]
   ],
   "mechanicType": "parentMechanic"
 };

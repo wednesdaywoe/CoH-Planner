@@ -54,7 +54,9 @@ export const FireSwordCircle: Power = {
       "scale": 0.1,
       "table": "Melee_Damage",
       "duration": 2.1,
-      "tickRate": 0.75
+      "tickRate": 0.75,
+      "chance": 0.8,
+      "cancelOnMiss": true
     }
   ],
   "effects": {
@@ -80,9 +82,9 @@ export const FireSwordCircle: Power = {
     ["DamageBuff","Toxic",0.07,1,10.17,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Psionic",0.07,1,10.17,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Damage","Fire",2.156304,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["GrantPower",null,1,0,0,"Melee_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
-    ["GrantPower",null,1,0,0,"Melee_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
-    ["GrantPower",null,1,0,0,"Melee_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,0,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,0,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,0,null,true,null,null,null,null,"enttype target> player eq",true]
   ],
   "damageTypes": [
     "Fire",

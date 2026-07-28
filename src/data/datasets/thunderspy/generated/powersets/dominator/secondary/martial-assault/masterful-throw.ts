@@ -50,7 +50,9 @@ export const MasterfulThrow: Power = {
       "scale": 0.1,
       "table": "Ranged_Damage",
       "duration": 10,
-      "tickRate": 2
+      "tickRate": 2,
+      "chance": 0.8,
+      "cancelOnMiss": true
     }
   ],
   "atoms": [

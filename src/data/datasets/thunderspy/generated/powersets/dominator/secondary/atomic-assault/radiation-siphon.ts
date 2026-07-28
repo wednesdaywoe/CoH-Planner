@@ -76,7 +76,7 @@ export const RadiationSiphon: Power = {
     ["Damage","Energy",1.82,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Defense","All",1.5,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Heal",null,0.5,1,2.1,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,1,1],
-    ["GrantPower",null,1,0.3199999928474426,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated target.ownPower? !"],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,0.3199999928474426,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated target.ownPower? !"],
     ["Damage","Smashing",0.87,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Energy",2.03,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Heal",null,0.25,1,2.1,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,1,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated target.ownPower?",true],
@@ -98,6 +98,13 @@ export const RadiationSiphon: Power = {
         "duration": 2.1,
         "tickRate": 1
       }
+    }
+  ],
+  "specialEffects": [
+    {
+      "kind": "grant",
+      "chance": 0.3199999928474426,
+      "label": "state"
     }
   ],
   "damageTypes": [

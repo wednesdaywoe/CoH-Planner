@@ -65,7 +65,7 @@ export const AssassinsBlade: Power = {
     ["Damage","Lethal",2.5,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Stealth","RadiusPvE",-1,1,8,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Stealth","RadiusPvP",-1,1,8,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["GrantPower",null,1,0.10000000149011612,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.BulletCut source.ownPower? !"]
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.10000000149011612,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.BulletCut source.ownPower? !"]
   ],
   "damageTypes": [
     "Lethal"

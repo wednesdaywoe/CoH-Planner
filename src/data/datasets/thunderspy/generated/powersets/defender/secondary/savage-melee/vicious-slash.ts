@@ -50,7 +50,9 @@ export const ViciousSlash: Power = {
       "scale": 0.254,
       "table": "Melee_Damage",
       "duration": 3.1,
-      "tickRate": 1
+      "tickRate": 1,
+      "chance": 0.8,
+      "cancelOnMiss": true
     }
   ],
   "effects": {
@@ -62,12 +64,12 @@ export const ViciousSlash: Power = {
   "atoms": [
     ["Damage","Lethal",1.8,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Lethal",0.254,1,3.1,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Knockback",0.67,0.6700000166893005,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.6700000166893005,null,null,null,null,null,null,"enttype target> critter eq"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted source.ownPower? !"],
     ["Heal",null,1,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Replace",2,null,1,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.BloodDrink source.ownPower?",true],
     ["Damage","Lethal",2.609012,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Lethal",0.208721,1,3.1,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Knockback",0.67,0.6700000166893005,0,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.6700000166893005,null,true,null,null,null,null,"enttype target> player eq",true]
   ],
   "conditionalEffects": [
     {
@@ -81,6 +83,13 @@ export const ViciousSlash: Power = {
         "table": "Melee_HealSelf",
         "tickRate": 1
       }
+    }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.6700000166893005,
+      "label": "Knockback"
     }
   ],
   "damageTypes": [

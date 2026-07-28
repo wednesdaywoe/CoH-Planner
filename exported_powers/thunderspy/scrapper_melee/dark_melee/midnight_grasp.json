@@ -297,7 +297,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.05000000074505806,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -319,7 +319,7 @@
           "table": "Melee_Damage",
           "scale": 3.105303,
           "duration": "0 seconds",
-          "magnitude": 0.05000000074505806,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -337,7 +337,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.05000000074505806,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -359,7 +359,7 @@
           "table": "Melee_Damage",
           "scale": 2.76,
           "duration": "0 seconds",
-          "magnitude": 0.05000000074505806,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -377,7 +377,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.10000000149011612,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -399,7 +399,7 @@
           "table": "Melee_Damage",
           "scale": 2.76,
           "duration": "0 seconds",
-          "magnitude": 0.10000000149011612,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -417,7 +417,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -439,7 +439,7 @@
           "table": "Melee_Damage",
           "scale": 0.9945,
           "duration": "0 seconds",
-          "magnitude": 0.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -484,7 +484,7 @@
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.75,
-          "tick_chance": 1.0,
+          "tick_chance": 0.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "",

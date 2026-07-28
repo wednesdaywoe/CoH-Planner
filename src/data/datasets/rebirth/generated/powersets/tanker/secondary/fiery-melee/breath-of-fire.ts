@@ -85,8 +85,8 @@ export const BreathofFire: Power = {
     ["Damage","Fire",0.68,1,0.6,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Fire",0.1,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0.800000011920929],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
-    ["Damage","Fire",0.306,1,0.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1],
-    ["Damage","Fire",0.045,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["Damage","Fire",0.306,1,0.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,0],
+    ["Damage","Fire",0.045,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,-0.20000000298023224],
     ["Damage","Fire",0.966932,1,0.6,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
     ["Mez","Taunt",6,4,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,0.13699999451637268,null,null,null,null,null,null,"enttype target> player eq",true]
@@ -95,6 +95,11 @@ export const BreathofFire: Power = {
     {
       "kind": "effect-proc",
       "chance": 0.800000011920929,
+      "label": "Fire_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": -0.20000000298023224,
       "label": "Fire_Dmg"
     }
   ]

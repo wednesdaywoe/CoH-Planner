@@ -94,7 +94,7 @@ export const PersonalForceField: Power = {
     }
   },
   "atoms": [
-    ["Mez","OnlyAffectsSelf",0.75,1,0,"Melee_Ones","Cur","Duration","Self","Any",true,"Replace",2,null,null,1,null,true],
+    ["Mez","OnlyAffectsSelf",0.75,100,0,"Melee_Ones","Cur","Duration","Self","Any",true,"Replace",2,null,null,1,null,true],
     ["MezResist","Teleport",1,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
     ["Defense","All",7.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
     ["Resistance","Smashing",4,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],

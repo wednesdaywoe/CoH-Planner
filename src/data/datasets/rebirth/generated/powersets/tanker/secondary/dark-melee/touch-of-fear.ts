@@ -71,7 +71,7 @@ export const TouchofFear: Power = {
     ["Mez","Terrorized",7,1,0,"Melee_Fear","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,"enttype target> critter eq"],
     ["ToHit",null,1.5,1,20,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
-    ["Damage","Fire",0.48708,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Fire",0.48708,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
     ["Mez","Terrorized",2,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
     ["Mez","Taunt",6,4,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,0.164000004529953,null,null,null,null,null,null,"enttype target> player eq",true]

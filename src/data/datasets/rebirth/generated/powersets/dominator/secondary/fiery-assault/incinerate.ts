@@ -48,7 +48,7 @@ export const Incinerate: Power = {
   },
   "atoms": [
     ["Damage","Fire",0.212,1,4.6,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,0,null,true],
     ["Damage","Fire",0.27566,1,4.6,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
   ]

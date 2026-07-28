@@ -76,17 +76,17 @@ export const Flay: Power = {
     ["Damage","Toxic",0.12,1,0.6,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Regeneration",null,-0.2,1,15,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["GrantPower",null,1,0.20000000298023224,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,0.20000000298023224,null,true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Mez","Taunt",1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
+    ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
     ["Damage","Fire",0.297,1,0.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.4000000059604645,1],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
     ["Regeneration",null,-0.5,1,15,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Toxic",0.1,1,3,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Enemy_Fester target.ownPower?",true],
     ["Meta",null,0,1,3,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer source.ownPower?",true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer source.ownPower?",true],
-    ["Mez","Taunt",1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
-    ["Mez","Taunt",6,0.13199999928474426,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
+    ["Mez","Taunt",6,4,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,0.13199999928474426,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Lethal",0.862866,1,0.6,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Cold",0.2,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer source.ownPower?",true]
   ],
@@ -114,6 +114,13 @@ export const Flay: Power = {
         "scale": 0.2,
         "table": "Melee_Damage"
       }
+    }
+  ],
+  "specialEffects": [
+    {
+      "kind": "grant",
+      "chance": 0.20000000298023224,
+      "label": "state"
     }
   ],
   "requires": "Tanker_Defense.Shield_Defense !",

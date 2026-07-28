@@ -82,11 +82,23 @@ export const ThunderStrike: Power = {
     ["Damage","Energy",0.25,1,2,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Energy",0.225,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Endurance",null,-0.07,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Recovery",null,-1,0.30000001192092896,4,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Endurance",null,4.29,0.10000000149011612,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Recovery",null,-1,1,4,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896],
+    ["Endurance",null,4.29,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,0.10000000149011612],
     ["Damage","Energy",0.225,1,2,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Endurance",null,-1.25,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.30000001192092896,
+      "label": "Recovery"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.10000000149011612,
+      "label": "Endurance"
+    }
   ],
   "damageTypes": [
     "Energy"

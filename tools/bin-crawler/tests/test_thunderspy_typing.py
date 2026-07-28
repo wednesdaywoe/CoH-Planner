@@ -4,8 +4,8 @@ Thunderspy's AttribMod carries the canonical typing block — aspect / applicati
 type / target — in HC's Parse7 field order, at fixed offsets immediately BEFORE the
 modifier-table string the parser locates by scanning (aspect ÷8 at table−20,
 application at −16, type at −12, target at −8). This was long thought to be "left
-all-zero" only because the earlier parser looked at the two header u4s after
-`magnitude` (a float + a zero pad), never at the pre-table block. `_parse_effect_
+all-zero" only because the earlier parser looked at the element-header words after
+the chance (the group's PPM + Delay), never at the pre-table block. `_parse_effect_
 template_thunderspy` now reads it (see `parser/_powers.py`), so ~95% of tspy
 templates carry a real aspect/target/type instead of blank — which is what lets the
 atom-native calc stop falling back to the transitional bag for Thunderspy.
@@ -39,11 +39,16 @@ def _templates(power: dict):
 def test_foe_attack_damage_is_typed():
     """A foe attack's damage template types as aspect=Absolute (base damage),
     type=Magnitude, target=AnyAffected — the HC/Rebirth shape for any damage row.
-    Hail of Bullets (Blaster / Dual Pistols) is the stable example."""
+    Hail of Bullets (Blaster / Dual Pistols) is the stable example.
+
+    The selector reads the real per-type damage attrib rather than the generic
+    `Damage` category token: TSPY-4 established that the token is the ELEMENT's
+    front, and that each AttribMod's own attrib comes from its index array."""
     hob = _load(os.path.join("blaster_ranged", "dual_pistols", "hail_of_bullets.json"))
     dmg = [t for t in _templates(hob)
-           if t["attribs"] == ["Damage"] and t["table"] == "Ranged_Damage"]
-    assert dmg, "Hail of Bullets has no Damage/Ranged_Damage template"
+           if len(t["attribs"]) == 1 and t["attribs"][0].endswith("_Dmg")
+           and t["table"] == "Ranged_Damage"]
+    assert dmg, "Hail of Bullets has no per-type damage template on Ranged_Damage"
     t = dmg[0]
     assert t["aspect"] == "Absolute", t["aspect"]
     assert t["type"] == "Magnitude", t["type"]

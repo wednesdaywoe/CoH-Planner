@@ -114,7 +114,7 @@ export const ShatterArmor: Power = {
     ["Resistance","Negative",-1,1,8,"Melee_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Resistance","Psionic",-1,1,8,"Melee_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Resistance","Toxic",-1,1,8,"Melee_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Damage","Fire",1.4454,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Fire",1.4454,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
     ["Meta",null,1,98,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Meta",null,-1,1,5,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],

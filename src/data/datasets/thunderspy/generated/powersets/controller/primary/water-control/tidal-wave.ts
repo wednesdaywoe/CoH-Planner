@@ -96,13 +96,13 @@ export const TidalWave: Power = {
     ["Damage","Smashing",0.2,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Cold",0.6,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Stunned",15,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? ! &&"],
-    ["Mez","Stunned",6,1,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Stunned",6,1,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Movement","Run",0.35,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? !"],
     ["Movement","Fly",0.35,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? !"],
     ["Movement","Jump",0.35,1,15,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? !"],
     ["Movement","JumpHeight",0.35,1,15,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? !"],
     ["Mez","Knockup",3,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
-    ["GrantPower",null,1,0.27067646384239197,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,0.27067646384239197,null,true],
     ["Damage","Cold",0.066667,1,1.1,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? &&",true],
     ["Mez","Stunned",20,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? &&",true],
     ["Damage","Cold",0.8,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || IncarnateBoss target.HasTag? || &&",true],
@@ -161,6 +161,18 @@ export const TidalWave: Power = {
           "table": "Ranged_Stun"
         }
       }
+    }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Stun"
+    },
+    {
+      "kind": "grant",
+      "chance": 0.27067646384239197,
+      "label": "state"
     }
   ],
   "damageTypes": [

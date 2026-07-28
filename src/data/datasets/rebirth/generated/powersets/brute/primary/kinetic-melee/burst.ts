@@ -86,7 +86,7 @@ export const Burst: Power = {
     ["DamageBuff","Cold",1.7,1,7,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Energy",1.7,1,7,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Negative",1.7,1,7,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Damage","Fire",0.5625,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Fire",0.5625,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
     ["Damage","Smashing",2.301652,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Energy",0.970095,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> player eq",true],

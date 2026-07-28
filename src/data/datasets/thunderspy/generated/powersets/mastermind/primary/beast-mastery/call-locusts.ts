@@ -93,8 +93,15 @@ export const CallLocusts: Power = {
     ["Movement","Jump",0.2,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","JumpHeight",0.2,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
     ["Movement","FlyMode",-1.6,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["GrantPower",null,1,0.6883780360221863,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"temporary_powers.temporary_powers.Pack_Mentality_Lock source.ownPower? !"],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,0.6883780360221863,null,true,null,null,null,null,"temporary_powers.temporary_powers.Pack_Mentality_Lock source.ownPower? !"],
     ["Damage","Lethal",0.398131,1,1.5,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.375,1,null,null,null,null,null,null,"enttype target> player eq",true]
+  ],
+  "specialEffects": [
+    {
+      "kind": "grant",
+      "chance": 0.6883780360221863,
+      "label": "state"
+    }
   ],
   "damageTypes": [
     "Lethal"

@@ -90,7 +90,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.20000000298023224,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -112,7 +112,7 @@
           "table": "Ranged_Tempdamage",
           "scale": 0.75,
           "duration": "0 seconds",
-          "magnitude": 0.20000000298023224,
+          "magnitude": 1.0,
           "delay": 1.2,
           "duration_expression": "",
           "magnitude_expression": "",

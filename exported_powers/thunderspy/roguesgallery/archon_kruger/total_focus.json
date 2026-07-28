@@ -211,11 +211,11 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.5,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_outer": 17.799999237060547,
       "requires_expression": "",
       "tags": [],
       "flags": [],
@@ -233,7 +233,7 @@
           "table": "Melee_InherentTaunt",
           "scale": 1.0,
           "duration": "0 seconds",
-          "magnitude": 0.5,
+          "magnitude": 4.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",

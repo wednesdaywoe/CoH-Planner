@@ -73,7 +73,7 @@ export const NWSmokeGrenade: Power = {
     ["Meta",null,1,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
     ["EntCreate",null,0.2,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
     ["ToHit",null,0.5,1,60,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
-    ["Mez","Placate",10,1,0,"Melee_Taunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Placate",6,1,0,"Melee_Taunt","Abs","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Mez","Placate",10,4,0,"Melee_Taunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Placate",6,4,0,"Melee_Taunt","Abs","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ]
 };

@@ -80,7 +80,7 @@ export const BodyBlow: Power = {
     ["DamageBuff","Cold",0.75,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Energy",0.75,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Negative",0.75,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Damage","Fire",0.522,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Fire",0.522,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
     ["Mez","Stunned",2,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Smashing",1.161077,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Energy",0.387026,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],

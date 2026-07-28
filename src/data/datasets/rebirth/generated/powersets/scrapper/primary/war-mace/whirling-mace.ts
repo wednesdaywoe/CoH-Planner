@@ -59,7 +59,7 @@ export const WhirlingMace: Power = {
   "atoms": [
     ["Damage","Smashing",1.12,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Stunned",5,2,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Fire",0.504,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Fire",0.504,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
     ["Damage","Smashing",1.855167,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Stunned",5,2,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Smashing",1.855167,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq",true],

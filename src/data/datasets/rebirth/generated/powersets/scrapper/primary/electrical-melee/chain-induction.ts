@@ -81,7 +81,7 @@ export const ChainInduction: Power = {
     ["Meta",null,1,59,4,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,4.300000190734863,1,null,true],
     ["Endurance",null,-0.1,1,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Recovery",null,-1,1,4,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896],
-    ["Damage","Fire",0.594,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Fire",0.594,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
     ["Damage","Smashing",1.262916,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Energy",0.841944,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Endurance",null,-2,1,0,"Melee_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],

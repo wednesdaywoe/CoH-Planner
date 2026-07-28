@@ -79,17 +79,49 @@ export const HellonEarth: Power = {
     ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
     ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
     ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
-    ["EntCreate",null,1,0.949999988079071,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
-    ["EntCreate",null,1,0.949999988079071,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["EntCreate",null,1,0.8999999761581421,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
-    ["EntCreate",null,1,0.8999999761581421,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["EntCreate",null,1,0.8500000238418579,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
-    ["EntCreate",null,1,0.8500000238418579,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["EntCreate",null,1,0.800000011920929,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
-    ["EntCreate",null,1,0.800000011920929,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["EntCreate",null,1,0.75,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
-    ["EntCreate",null,1,0.75,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["EntCreate",null,1,0.699999988079071,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
-    ["EntCreate",null,1,0.699999988079071,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,0.949999988079071,null,true],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,0.949999988079071],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,0.8999999761581421,null,true],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,0.8999999761581421],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,0.8500000238418579,null,true],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,0.8500000238418579],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,0.800000011920929,null,true],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,0.800000011920929],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,0.75,null,true],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,0.75],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,0.699999988079071,null,true],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,0.699999988079071]
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.949999988079071,
+      "label": "Create_Entity"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.8999999761581421,
+      "label": "Create_Entity"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.8500000238418579,
+      "label": "Create_Entity"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.800000011920929,
+      "label": "Create_Entity"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.75,
+      "label": "Create_Entity"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.699999988079071,
+      "label": "Create_Entity"
+    }
   ]
 };

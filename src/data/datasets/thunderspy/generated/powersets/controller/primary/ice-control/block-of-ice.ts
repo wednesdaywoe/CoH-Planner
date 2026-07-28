@@ -83,7 +83,7 @@ export const BlockofIce: Power = {
   },
   "atoms": [
     ["Mez","Held",12,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Held",9,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Held",9,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Cold",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Movement","Run",0.3,1,12,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","Fly",0.3,1,12,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -96,6 +96,13 @@ export const BlockofIce: Power = {
     ["Damage","Cold",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || IncarnateBoss target.HasTag? || &&",true],
     ["Damage","Cold",3.401981,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Cold",1.70099,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || &&",true]
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Hold"
+    }
   ],
   "damageTypes": [
     "Cold"

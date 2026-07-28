@@ -101,7 +101,7 @@ export const ShatterArmor: Power = {
     ["Resistance","Negative",-1,1,8,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Resistance","Psionic",-1,1,8,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Resistance","Toxic",-1,1,8,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Damage","Fire",1.4454,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+    ["Damage","Fire",1.4454,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0]
   ],
   "modeVariants": {
     "FastMode": {

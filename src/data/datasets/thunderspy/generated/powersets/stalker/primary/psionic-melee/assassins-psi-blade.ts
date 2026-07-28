@@ -80,7 +80,7 @@ export const AssassinsPsiBlade: Power = {
     ["Damage","Smashing",0.5625,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Stealth","RadiusPvE",-1,1,8,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Stealth","RadiusPvP",-1,1,8,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["GrantPower",null,1,0.7111111283302307,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower? ! Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight_Lockout source.ownPower? ! && Temporary_Powers.Temporary_Powers.Boggled target.ownPower? ! &&"],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.7111111283302307,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower? ! Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight_Lockout source.ownPower? ! && Temporary_Powers.Temporary_Powers.Boggled target.ownPower? ! &&"],
     ["Resistance","Psionic",-2,1,5,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true]
   ],
   "damageTypes": [

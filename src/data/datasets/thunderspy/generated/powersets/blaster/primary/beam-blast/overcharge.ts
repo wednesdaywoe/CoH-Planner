@@ -90,10 +90,10 @@ export const Overcharge: Power = {
     ["DamageBuff","Negative",0.04,1,10.4,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Toxic",0.04,1,10.4,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Psionic",0.04,1,10.4,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Mez","Stunned",4,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Beam_Rifle_Debuff target.ownPower? ! &&"],
+    ["Mez","Stunned",4,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.6000000238418579,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Beam_Rifle_Debuff target.ownPower? ! &&"],
     ["Defense","All",1.5,1,15,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Damage","Energy",1.522071,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Stunned",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Beam_Rifle_Debuff target.ownPower? ! &&",true],
+    ["Mez","Stunned",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.6000000238418579,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Beam_Rifle_Debuff target.ownPower? ! &&",true],
     ["Mez","Stunned",8,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Beam_Rifle_Debuff target.ownPower? &&",true],
     ["Mez","Stunned",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Beam_Rifle_Debuff target.ownPower? &&",true],
     ["EntCreate",null,-1,1,6,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,6.25,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Beam_Rifle_Debuff target.ownPower?",true],
@@ -118,6 +118,13 @@ export const Overcharge: Power = {
           "isPseudoPet": false
         }
       }
+    }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.6000000238418579,
+      "label": "Stun"
     }
   ],
   "damageTypes": [

@@ -79,9 +79,16 @@ export const NeurotoxicBreath: Power = {
     ["Movement","Jump",0.65,1,20,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["Movement","Run",0.65,1,20,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["Movement","Fly",0.65,1,20,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-    ["Mez","Held",3,2,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Held",3,2,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Movement","Run",-1.5,1,20,"Ranged_SpeedRunning","Max","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Held",2,2,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Mez","Held",2,2,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,"enttype target> player eq",true]
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.25,
+      "label": "Hold"
+    }
   ],
   "requires": "Corruptor_Buff.Poison.Hallucinogenic_Spray !"
 };

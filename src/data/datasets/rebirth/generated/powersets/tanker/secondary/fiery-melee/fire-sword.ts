@@ -88,8 +88,8 @@ export const FireSword: Power = {
     ["Damage","Fire",0.82,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Fire",0.1,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0.800000011920929],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
-    ["Damage","Fire",0.594,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Fire",0.045,1,2.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["Damage","Fire",0.594,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+    ["Damage","Fire",0.045,1,2.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,-0.20000000298023224],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
     ["Damage","Lethal",0.756964,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Fire",1.235046,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
@@ -100,6 +100,11 @@ export const FireSword: Power = {
     {
       "kind": "effect-proc",
       "chance": 0.800000011920929,
+      "label": "Fire_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": -0.20000000298023224,
       "label": "Fire_Dmg"
     }
   ]

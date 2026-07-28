@@ -67,7 +67,7 @@ export const AoEBridge: Power = {
     ["Meta",null,1,52,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["Meta",null,1,53,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["Meta",null,1,54,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["Damage","Fire",0.2565,1,0.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.4000000059604645,1],
+    ["Damage","Fire",0.2565,1,0.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.4000000059604645,0],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
     ["Mez","Taunt",6,4,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,0.14399999380111694,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Lethal",0.894475,1,0.6,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,"enttype target> player eq",true],
@@ -75,7 +75,7 @@ export const AoEBridge: Power = {
     ["ToHit",null,1,1,20,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kDD_DebuffMode_2 source.Mode?",true],
     ["Damage","Lethal",0.57,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kDD_BonusAoEMode_2 source.Mode?",true],
     ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kDD_BonusAoEMode_2 source.Mode?",true],
-    ["Damage","Fire",0.2565,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kDD_BonusAoEMode_2 source.Mode?",true]
+    ["Damage","Fire",0.2565,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,"kDD_BonusAoEMode_2 source.Mode?",true]
   ],
   "conditionalEffects": [
     {
@@ -104,18 +104,11 @@ export const AoEBridge: Power = {
       "label": "DD Bonus Ao E Mode 2",
       "scope": "global",
       "defaultActive": false,
-      "damage": [
-        {
-          "type": "Lethal",
-          "scale": 0.57,
-          "table": "Melee_Damage"
-        },
-        {
-          "type": "Fire",
-          "scale": 0.2565,
-          "table": "Melee_Damage"
-        }
-      ],
+      "damage": {
+        "type": "Lethal",
+        "scale": 0.57,
+        "table": "Melee_Damage"
+      },
       "effects": {
         "knockback": {
           "scale": 0.67,

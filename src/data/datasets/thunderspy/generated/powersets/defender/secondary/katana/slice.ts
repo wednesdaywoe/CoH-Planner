@@ -61,7 +61,7 @@ export const Slice: Power = {
   "atoms": [
     ["Damage","Lethal",0.99,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Defense","All",1,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["GrantPower",null,1,0.10000000149011612,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.BulletCut source.ownPower? !"],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.10000000149011612,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.BulletCut source.ownPower? !"],
     ["Damage","Lethal",1.973328,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Defense","Ranged",2,1,5,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.BulletCut source.ownPower?",true]
   ],
@@ -84,6 +84,13 @@ export const Slice: Power = {
           "defenseBuff": 5
         }
       }
+    }
+  ],
+  "specialEffects": [
+    {
+      "kind": "grant",
+      "chance": 0.10000000149011612,
+      "label": "state"
     }
   ],
   "damageTypes": [

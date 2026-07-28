@@ -97,7 +97,7 @@ export const CripplingAxeKick: Power = {
     ["Movement","JumpHeight",0.5,1,8,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
     ["Movement","Jump",0.5,1,8,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Defense","All",1,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Fire",0.954,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Fire",0.954,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
     ["Mez","Immobilized",2,2,0,"Melee_Immobilize","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Smashing",2.485257,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Smashing",2.485257,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq",true],

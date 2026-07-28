@@ -70,23 +70,23 @@ export const Placate: Power = {
     }
   },
   "atoms": [
-    ["GrantPower",null,1,0.1904483437538147,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower? ! Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight_Lockout source.ownPower? ! && Temporary_Powers.Temporary_Powers.Boggled target.ownPower? ! &&"],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.1904483437538147,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower? ! Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight_Lockout source.ownPower? ! && Temporary_Powers.Temporary_Powers.Boggled target.ownPower? ! &&"],
     ["Damage","Lethal",0.36,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Psionic",1.08,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["RechargeTime",null,0.15,1,6,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
-    ["Mez","Stunned",5,2,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower? ! enttype target> critter eq &&"],
+    ["Mez","Stunned",5,2,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.33000001311302185,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower? ! enttype target> critter eq &&"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
-    ["GrantPower",null,1,0.3808966875076294,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower? ! Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight_Lockout source.ownPower? ! && Temporary_Powers.Temporary_Powers.Boggled target.ownPower? &&",true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.3808966875076294,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower? ! Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight_Lockout source.ownPower? ! && Temporary_Powers.Temporary_Powers.Boggled target.ownPower? &&",true],
     ["Damage","Lethal",0.496798,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Psionic",1.490393,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Psionic",0.236,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower?",true],
-    ["Damage","Psionic",1.595974,0.5,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true],
-    ["Damage","Psionic",1.595974,0.20000000298023224,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
+    ["Damage","Psionic",1.595974,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true],
+    ["Damage","Psionic",1.595974,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
     ["Damage","Psionic",1.42,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true,null,null,null,null,"30 source.TeamSize> 0.03 * 0.07 + rand >= @StdResult *"],
-    ["Damage","Psionic",1.42,0.5,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true],
-    ["Mez","Stunned",2,2,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower? ! enttype target> player eq &&",true],
-    ["Mez","Stunned",5,3,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower? enttype target> critter eq &&",true],
-    ["Mez","Stunned",2,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower? enttype target> player eq &&",true]
+    ["Damage","Psionic",1.42,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true],
+    ["Mez","Stunned",2,2,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.33000001311302185,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower? ! enttype target> player eq &&",true],
+    ["Mez","Stunned",5,3,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower? enttype target> critter eq &&",true],
+    ["Mez","Stunned",2,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower? enttype target> player eq &&",true]
   ],
   "conditionalEffects": [
     {
@@ -100,7 +100,9 @@ export const Placate: Power = {
         "scale": 0.236,
         "table": "Melee_Damage",
         "duration": 3.1,
-        "tickRate": 1
+        "tickRate": 1,
+        "chance": 0.8,
+        "cancelOnMiss": true
       },
       "effects": {
         "stun": {
@@ -109,6 +111,33 @@ export const Placate: Power = {
           "table": "Melee_Stun"
         }
       }
+    }
+  ],
+  "specialEffects": [
+    {
+      "kind": "grant",
+      "chance": 0.1904483437538147,
+      "label": "state"
+    },
+    {
+      "kind": "grant",
+      "chance": 0.3808966875076294,
+      "label": "state"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Psionic_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.33000001311302185,
+      "label": "Stun"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Stun"
     }
   ],
   "damageTypes": [

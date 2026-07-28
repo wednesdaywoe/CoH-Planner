@@ -45,7 +45,7 @@
   ],
   "effects": [
     {
-      "chance": 1.0,
+      "chance": 0.33000001311302185,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -257,7 +257,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.5,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -279,7 +279,7 @@
           "table": "Ranged_Ones",
           "scale": 1.0,
           "duration": "3 seconds",
-          "magnitude": 0.5,
+          "magnitude": 1.0,
           "delay": 1.5,
           "duration_expression": "",
           "magnitude_expression": "",

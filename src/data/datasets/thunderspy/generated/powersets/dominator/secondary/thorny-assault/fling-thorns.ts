@@ -54,7 +54,9 @@ export const FlingThorns: Power = {
       "scale": 0.1,
       "table": "Ranged_Damage",
       "duration": 4.1,
-      "tickRate": 1
+      "tickRate": 1,
+      "chance": 0.8,
+      "cancelOnMiss": true
     }
   ],
   "effects": {

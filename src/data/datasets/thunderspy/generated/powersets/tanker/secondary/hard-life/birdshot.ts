@@ -81,8 +81,8 @@ export const Birdshot: Power = {
     }
   },
   "atoms": [
-    ["Mez","Taunt",20,1,0,"Melee_Taunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Taunt",5,1,0,"Melee_Taunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1],
+    ["Mez","Taunt",20,4,0,"Melee_Taunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Taunt",5,4,0,"Melee_Taunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1],
     ["Mez","Immobilized",15,1.5,0,"Melee_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["RechargeTime",null,0.4,1,10,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
     ["Movement","Run",0.4,1,15,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],

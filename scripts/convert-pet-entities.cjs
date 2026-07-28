@@ -453,7 +453,16 @@ function extractDamage(powerData) {
         // has always carried this through; damage silently did not, so every such
         // entry was summed at face value — Trip Mine read ~14% high before the
         // fires-per-spawn bug even entered into it.
-        const chance = typeof effectGroup.chance === 'number' && effectGroup.chance < 1
+        //
+        // Zero is excluded because it is not a probability here: a chance:0 group
+        // carrying a payload is a mode GATE, the same sentinel `collectTemplatesDeep`
+        // reads in convert-powerset.cjs and `pet-damage.ts` already honours for
+        // ability-level damage (`damageChance > 0 ? … : undefined`). Consuming it as
+        // a literal 0 multiplies the component away: all three datasets author the
+        // Howler Wolf's third Lethal bite (scale 0.42) under a chance:0 group, and
+        // it was being dropped from the pet's damage entirely.
+        const chance = typeof effectGroup.chance === 'number'
+          && effectGroup.chance > 0 && effectGroup.chance < 1
           ? effectGroup.chance
           : undefined;
         for (const attrib of template.attribs) {

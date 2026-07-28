@@ -72,7 +72,7 @@ export const Burn: Power = {
     ["EntCreate",null,1,1,10,"Melee_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Mez","Immobilized",-30,1,100,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
     ["Damage","Fire",1.44,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"@ToHitRoll @ToHit < @ForceHit || entref source> entref target> == ! &&"],
-    ["Damage","Fire",0.891,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"@ToHitRoll @ToHit < @ForceHit || entref source> entref target> == ! &&"],
+    ["Damage","Fire",0.891,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,"@ToHitRoll @ToHit < @ForceHit || entref source> entref target> == ! &&"],
     ["MezResist","Immobilized",3,1,100,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
   ],
   "damageTypes": [

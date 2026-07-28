@@ -69,7 +69,7 @@ export const RiseofthePhoenix: Power = {
     ["Heal",null,5,1,0.5,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,1,1],
     ["EntCreate",null,1,1,5,"Melee_Level","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["EntCreate",null,1,1,5,"Melee_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Mez","Untouchable",10,1,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Mez","Untouchable",10,10,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Endurance",null,50,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["Meta",null,1,1,90,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
   ],

@@ -122,7 +122,7 @@
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
-          "tick_chance": 1.0,
+          "tick_chance": 0.9980000257492065,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "",
@@ -218,7 +218,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.20000000298023224,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -240,7 +240,7 @@
           "table": "Melee_Damage",
           "scale": 1.512456,
           "duration": "0 seconds",
-          "magnitude": 0.20000000298023224,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -341,7 +341,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.699999988079071,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -363,7 +363,7 @@
           "table": "Melee_Ones",
           "scale": 1.0,
           "duration": "0 seconds",
-          "magnitude": 0.699999988079071,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",

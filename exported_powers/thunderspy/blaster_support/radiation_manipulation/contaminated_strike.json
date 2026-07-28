@@ -78,7 +78,7 @@
           "table": "Ranged_Ones",
           "scale": 0.0,
           "duration": "0 seconds",
-          "magnitude": 1.0,
+          "magnitude": 0.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -299,7 +299,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.11999999731779099,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -321,7 +321,7 @@
           "table": "Melee_Ones",
           "scale": 1.0,
           "duration": "0 seconds",
-          "magnitude": 0.11999999731779099,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",

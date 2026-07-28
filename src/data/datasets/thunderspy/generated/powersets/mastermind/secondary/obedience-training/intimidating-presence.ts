@@ -42,11 +42,6 @@ export const IntimidatingPresence: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "buffDuration": 2,
-    "durations": {
-      "immobilize": 2
-    },
-    "effectDuration": 2,
     "fear": {
       "mag": 3,
       "scale": 10,
@@ -60,7 +55,7 @@ export const IntimidatingPresence: Power = {
   },
   "atoms": [
     ["Mez","Terrorized",10,3,0,"Ranged_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,1],
-    ["Mez","Immobilized",15,3,2,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1]
+    ["Mez","Immobilized",15,3,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1]
   ],
   "damageTypes": [
     "Psionic"

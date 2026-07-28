@@ -126,7 +126,7 @@ export const Adaptation: Power = {
     }
   },
   "atoms": [
-    ["Mez","Taunt",1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
+    ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
     ["Resistance","Smashing",-1,1,0.75,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode? ! kDefensiveAdaptation Source.Mode? ! &&"],
     ["Resistance","Lethal",-1,1,0.75,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode? ! kDefensiveAdaptation Source.Mode? ! &&"],
     ["Resistance","Fire",-1,1,0.75,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode? ! kDefensiveAdaptation Source.Mode? ! &&"],
@@ -151,7 +151,7 @@ export const Adaptation: Power = {
     ["Resistance","Toxic",0.05,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.05],
     ["Resistance","Smashing",0.05,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.05],
     ["Resistance","Lethal",0.05,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.05],
-    ["Mez","Taunt",1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
+    ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
     ["RechargeTime",null,0.03,1,5,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kRestedAdaptation Source.Mode?",true],
     ["Regeneration",null,0.3,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kRestedAdaptation Source.Mode?",true],
     ["Regeneration",null,0.06,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"kRestedAdaptation Source.Mode?",true],

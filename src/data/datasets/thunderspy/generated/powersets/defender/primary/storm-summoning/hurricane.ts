@@ -66,10 +66,17 @@ export const Hurricane: Power = {
     ["Range",null,-0.6,1,10,"Ranged_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["ToHit",null,3,1,10,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["Mez","Repel",1,1,1.05,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Knockback",0.2,0.05000000074505806,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",0.2,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Repel",1,1,0.75,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Replace",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll .10 + @ToHit < &&",true],
     ["Mez","Knockback",4,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll .10 + @ToHit < &&",true],
     ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq @ToHitRoll .10 + @ToHit >= &&",true]
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.05000000074505806,
+      "label": "Knockback"
+    }
   ],
   "requires": "Defender_Buff.Storm_Summoning.Typhoon !"
 };

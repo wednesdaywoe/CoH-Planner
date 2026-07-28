@@ -56,7 +56,9 @@ export const KineticBolt: Power = {
       "scale": 0.084,
       "table": "Ranged_Damage",
       "duration": 2.1,
-      "tickRate": 1
+      "tickRate": 1,
+      "chance": 0.8,
+      "cancelOnMiss": true
     }
   ],
   "effects": {

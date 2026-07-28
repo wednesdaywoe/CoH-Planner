@@ -217,7 +217,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.25,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -239,7 +239,7 @@
           "table": "Ranged_Knockback",
           "scale": 0.75,
           "duration": "0 seconds",
-          "magnitude": 0.25,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -257,7 +257,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.25,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -279,7 +279,7 @@
           "table": "Ranged_Knockback",
           "scale": 0.75,
           "duration": "0 seconds",
-          "magnitude": 0.25,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -297,7 +297,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -319,7 +319,7 @@
           "table": "Ranged_Damage",
           "scale": 0.82,
           "duration": "0 seconds",
-          "magnitude": 0.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -337,7 +337,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -359,7 +359,7 @@
           "table": "Ranged_Damage",
           "scale": 1.41,
           "duration": "0 seconds",
-          "magnitude": 0.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -404,7 +404,7 @@
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 1.0,
-          "tick_chance": 1.0,
+          "tick_chance": 0.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "",
@@ -420,7 +420,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -442,7 +442,7 @@
           "table": "Ranged_Damage",
           "scale": 0.82,
           "duration": "0 seconds",
-          "magnitude": 0.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -460,7 +460,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -482,7 +482,7 @@
           "table": "Ranged_Damage",
           "scale": 1.41,
           "duration": "0 seconds",
-          "magnitude": 0.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -500,7 +500,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -522,7 +522,7 @@
           "table": "Ranged_Slow",
           "scale": 0.15,
           "duration": "10 seconds",
-          "magnitude": 0.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -543,7 +543,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -565,7 +565,7 @@
           "table": "Ranged_Slow",
           "scale": 0.15,
           "duration": "10 seconds",
-          "magnitude": 0.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -586,7 +586,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -608,7 +608,7 @@
           "table": "Ranged_Slow",
           "scale": 0.15,
           "duration": "10 seconds",
-          "magnitude": 0.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -630,7 +630,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -652,7 +652,7 @@
           "table": "Ranged_Slow",
           "scale": 0.15,
           "duration": "10 seconds",
-          "magnitude": 0.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -673,7 +673,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -695,7 +695,7 @@
           "table": "Ranged_Slow",
           "scale": 0.15,
           "duration": "8 seconds",
-          "magnitude": 0.0,
+          "magnitude": 1.0,
           "delay": 10.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -717,7 +717,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -757,7 +757,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -797,7 +797,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -819,7 +819,7 @@
           "table": "Ranged_Damage",
           "scale": 0.82,
           "duration": "0 seconds",
-          "magnitude": 0.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -837,7 +837,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -859,7 +859,7 @@
           "table": "Ranged_Damage",
           "scale": 1.41,
           "duration": "0 seconds",
-          "magnitude": 0.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -877,7 +877,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -899,7 +899,7 @@
           "table": "Ranged_Debuff_Dam",
           "scale": 1.0,
           "duration": "10 seconds",
-          "magnitude": 0.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -920,7 +920,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -942,7 +942,7 @@
           "table": "Ranged_Debuff_Dam",
           "scale": 1.0,
           "duration": "10 seconds",
-          "magnitude": 0.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -963,7 +963,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -985,7 +985,7 @@
           "table": "Ranged_Debuff_Dam",
           "scale": 1.0,
           "duration": "10 seconds",
-          "magnitude": 0.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -1006,7 +1006,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -1028,7 +1028,7 @@
           "table": "Ranged_Debuff_Dam",
           "scale": 1.0,
           "duration": "10 seconds",
-          "magnitude": 0.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -1049,7 +1049,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -1071,7 +1071,7 @@
           "table": "Ranged_Debuff_Dam",
           "scale": 1.0,
           "duration": "10 seconds",
-          "magnitude": 0.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -1092,7 +1092,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -1114,7 +1114,7 @@
           "table": "Ranged_Debuff_Dam",
           "scale": 1.0,
           "duration": "10 seconds",
-          "magnitude": 0.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -1135,7 +1135,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -1157,7 +1157,7 @@
           "table": "Ranged_Debuff_Dam",
           "scale": 1.0,
           "duration": "10 seconds",
-          "magnitude": 0.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -1178,7 +1178,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -1200,7 +1200,7 @@
           "table": "Ranged_Debuff_Dam",
           "scale": 1.0,
           "duration": "10 seconds",
-          "magnitude": 0.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",

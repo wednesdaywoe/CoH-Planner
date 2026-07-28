@@ -61,11 +61,11 @@ export const Slash: Power = {
     ["Damage","Lethal",0.42,1,0.3,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Defense","All",1,1,6,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Damage","Fire",0.189,1,0.3,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1],
-    ["GrantPower",null,1,0.10000000149011612,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.BulletCut source.ownPower? !"],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.10000000149011612,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.BulletCut source.ownPower? !"],
     ["Damage","Lethal",0.62702,1,0.3,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Lethal",0.62702,1,0.3,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Lethal",0.84,0.05000000074505806,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
-    ["Damage","Lethal",0.84,0.10000000149011612,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true],
+    ["Damage","Lethal",0.84,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
+    ["Damage","Lethal",0.84,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true],
     ["Defense","Ranged",2,1,5,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.BulletCut source.ownPower?",true]
   ],
   "conditionalEffects": [
@@ -87,6 +87,18 @@ export const Slash: Power = {
           "defenseBuff": 5
         }
       }
+    }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.05000000074505806,
+      "label": "Lethal_Dmg"
+    },
+    {
+      "kind": "grant",
+      "chance": 0.10000000149011612,
+      "label": "state"
     }
   ],
   "requires": "Scrapper_Defense.Shield_Defense !",

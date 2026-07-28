@@ -104,8 +104,8 @@ export const ArticAir: Power = {
   },
   "atoms": [
     ["Damage","Cold",0.2,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Mez","Afraid",2,3,0,"Ranged_Fear","Cur","Duration","Target","Any",true,"Replace",2,null,null,1],
-    ["Mez","Confused",4,3,0,"Ranged_Fear","Cur","Duration","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Afraid",2,3,0,"Ranged_Fear","Cur","Duration","Target","Any",true,"Replace",2,null,null,0.5],
+    ["Mez","Confused",4,3,0,"Ranged_Fear","Cur","Duration","Target","PvE",true,"Replace",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"],
     ["RechargeTime",null,0.5,1,2.25,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Movement","Run",0.65,1,2.25,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["Movement","Fly",0.65,1,2.25,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
@@ -114,7 +114,24 @@ export const ArticAir: Power = {
     ["Movement","Run",-1,1,2.25,"Ranged_SpeedRunning","Max","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
     ["Stealth","RadiusPvE",-35,1,2.25,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["Stealth","RadiusPvP",-389,1,2.25,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-    ["Damage","Cold",0.2,0.75,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || IncarnateBoss target.HasTag? || &&",true],
-    ["Mez","Confused",4,3,0,"Ranged_Fear","Cur","Duration","Target","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Damage","Cold",0.2,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.75,null,null,null,null,null,null,"enttype target> critter eq kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || IncarnateBoss target.HasTag? || &&",true],
+    ["Mez","Confused",4,3,0,"Ranged_Fear","Cur","Duration","Target","PvP",true,"Replace",2,null,null,0.5,null,null,null,null,null,null,"enttype target> player eq",true]
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.75,
+      "label": "Cold_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Afraid"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Confuse"
+    }
   ]
 };

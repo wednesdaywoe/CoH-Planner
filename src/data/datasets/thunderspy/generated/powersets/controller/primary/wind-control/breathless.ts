@@ -71,7 +71,7 @@ export const Breathless: Power = {
   "atoms": [
     ["Damage","Lethal",0.3,1,0,"Ranged_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"@Scale 0.25 Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPowerNum? * + @Value * @Effectiveness * @Strength *"],
     ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Immobilized",15,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Immobilized",15,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"],
     ["RechargeTime",null,0.3,1,15,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Smashing",2,1,15,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
     ["DamageBuff","Lethal",2,1,15,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
@@ -113,6 +113,13 @@ export const Breathless: Power = {
           "damageDebuff": 15
         }
       }
+    }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Immobilized"
     }
   ],
   "damageTypes": [

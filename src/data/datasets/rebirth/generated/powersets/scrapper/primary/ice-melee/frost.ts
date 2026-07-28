@@ -87,7 +87,7 @@ export const Frost: Power = {
     ["Movement","Fly",0.2,1,8,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","JumpHeight",0.2,1,8,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
     ["Movement","Jump",0.2,1,8,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Fire",0.1215,1,2.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1],
+    ["Damage","Fire",0.1215,1,2.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,0],
     ["Damage","Cold",0.410659,1,2.6,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Cold",2.463954,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Cold",1.62,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],

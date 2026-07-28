@@ -55,7 +55,9 @@ export const Pounce: Power = {
       "scale": 0.1,
       "table": "Melee_Damage",
       "duration": 4.1,
-      "tickRate": 1
+      "tickRate": 1,
+      "chance": 0.85,
+      "cancelOnMiss": true
     }
   ],
   "effects": {
@@ -67,19 +69,19 @@ export const Pounce: Power = {
   },
   "atoms": [
     ["Damage","Lethal",2.76,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Lethal",1.38,0.10000000149011612,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kProwlerCloakMode Source.Mode? ! &&"],
+    ["Damage","Lethal",1.38,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> critter eq kProwlerCloakMode Source.Mode? ! &&"],
     ["Damage","Lethal",0.1,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"kProwlerCloakMode Source.Mode? !"],
     ["Meta",null,0.1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"kProwlerCloakMode Source.Mode? !"],
-    ["Mez","Stunned",4,4,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kProwlerCloakMode Source.Mode? ! enttype target> critter eq &&"],
+    ["Mez","Stunned",4,4,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.75,null,null,null,null,null,null,"kProwlerCloakMode Source.Mode? ! enttype target> critter eq &&"],
     ["Mez","Stunned",4,4,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kProwlerCloakMode Source.Mode? ! enttype target> critter eq &&"],
     ["Damage","Lethal",1.38,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kProwlerCloakMode Source.Mode? &&",true],
     ["Damage","Lethal",2.1468,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Lethal",1.0734,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kProwlerMode Source.Mode? &&",true],
-    ["Damage","Lethal",1.0734,0.10000000149011612,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kProwlerCloakMode Source.Mode? ! &&",true],
+    ["Damage","Lethal",1.0734,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> player eq kProwlerCloakMode Source.Mode? ! &&",true],
     ["Damage","Lethal",0.2,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"kProwlerCloakMode Source.Mode?",true],
     ["Meta",null,0.2,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"kProwlerCloakMode Source.Mode?",true],
     ["Mez","Stunned",6,4,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kProwlerCloakMode Source.Mode? enttype target> critter eq &&",true],
-    ["Mez","Stunned",2,2,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["Mez","Stunned",2,2,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.10000000149011612,null,true,null,null,null,null,"enttype target> player eq",true]
   ],
   "conditionalEffects": [
     {
@@ -98,7 +100,9 @@ export const Pounce: Power = {
           "scale": 0.2,
           "table": "Melee_Damage",
           "duration": 4.1,
-          "tickRate": 1
+          "tickRate": 1,
+          "chance": 0.85,
+          "cancelOnMiss": true
         }
       ],
       "effects": {
@@ -108,6 +112,18 @@ export const Pounce: Power = {
           "table": "Melee_Stun"
         }
       }
+    }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.10000000149011612,
+      "label": "Lethal_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.75,
+      "label": "Stun"
     }
   ],
   "requires": "Feral_Might.Feral_Might.Prowler_Form",

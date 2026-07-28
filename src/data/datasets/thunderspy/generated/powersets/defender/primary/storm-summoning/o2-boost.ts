@@ -46,8 +46,7 @@ export const O2Boost: Power = {
     {
       "type": "Heal",
       "scale": 1,
-      "table": "Ranged_Heal",
-      "duration": 1
+      "table": "Ranged_Heal"
     }
   ],
   "effects": {
@@ -97,7 +96,7 @@ export const O2Boost: Power = {
   },
   "atoms": [
     ["Heal",null,1.32,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Heal",null,1,1,1,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Heal",null,1,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Mez","Stunned",-20,1,60,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
     ["Mez","Sleep",-20,1,60,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
     ["Recovery",null,2,1,60,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],

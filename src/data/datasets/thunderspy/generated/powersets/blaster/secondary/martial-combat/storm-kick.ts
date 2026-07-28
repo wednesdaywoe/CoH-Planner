@@ -50,7 +50,8 @@ export const StormKick: Power = {
       "scale": 0.1,
       "table": "Melee_Damage",
       "duration": 1.5,
-      "tickRate": 0.5
+      "tickRate": 0.5,
+      "chance": 0.6
     }
   ],
   "effects": {

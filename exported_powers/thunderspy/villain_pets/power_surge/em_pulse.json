@@ -92,7 +92,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.5,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,

@@ -96,7 +96,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.5,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -118,7 +118,7 @@
           "table": "Ranged_Knockback",
           "scale": 0.7,
           "duration": "0 seconds",
-          "magnitude": 0.5,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -136,7 +136,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.5,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -158,7 +158,7 @@
           "table": "Ranged_Knockback",
           "scale": 0.7,
           "duration": "0 seconds",
-          "magnitude": 0.5,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",

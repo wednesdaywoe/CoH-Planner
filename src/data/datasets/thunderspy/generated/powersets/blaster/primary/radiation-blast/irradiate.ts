@@ -76,7 +76,7 @@ export const Irradiate: Power = {
     ["Damage","Energy",0.07,1,4.6,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Toxic",0.03,1,4.6,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Defense","All",3,1,10,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["GrantPower",null,1,0.3499999940395355,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated target.ownPower? !"],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,0.3499999940395355,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated target.ownPower? !"],
     ["DamageBuff","Smashing",0.018,1,8.57,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Lethal",0.018,1,8.57,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Fire",0.018,1,8.57,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
@@ -87,6 +87,13 @@ export const Irradiate: Power = {
     ["DamageBuff","Psionic",0.018,1,8.57,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Damage","Energy",0.0245,1,4.6,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Toxic",0.0105,1,4.6,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> player eq",true]
+  ],
+  "specialEffects": [
+    {
+      "kind": "grant",
+      "chance": 0.3499999940395355,
+      "label": "state"
+    }
   ],
   "damageTypes": [
     "Energy"

@@ -68,7 +68,7 @@ export const ArcofDestruction: Power = {
     ["Damage","Smashing",2.596,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Smashing",2.596,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.15000000596046448,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.75,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Fire",1.1682,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Fire",1.1682,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
     ["Meta",null,1,98,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Meta",null,-1,1,5,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kFastMode source.Mode?",true],

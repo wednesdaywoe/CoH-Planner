@@ -203,7 +203,7 @@
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 6.25,
-          "tick_chance": 1.0,
+          "tick_chance": 0.5,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "Temporary_Powers.Temporary_Powers.Beam_Rifle_Debuff target.ownPower?",

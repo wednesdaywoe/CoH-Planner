@@ -130,7 +130,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.05000000074505806,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -152,7 +152,7 @@
           "table": "Melee_Knockback",
           "scale": 4.0,
           "duration": "0 seconds",
-          "magnitude": 0.05000000074505806,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",

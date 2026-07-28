@@ -54,7 +54,9 @@ export const Inferno: Power = {
       "scale": 0.3,
       "table": "Ranged_Damage",
       "duration": 8.1,
-      "tickRate": 1
+      "tickRate": 1,
+      "chance": 0.99,
+      "cancelOnMiss": true
     }
   ],
   "atoms": [

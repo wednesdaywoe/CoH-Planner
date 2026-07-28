@@ -175,6 +175,19 @@ def _decode_flags2(flags2_raw: int, attribs: list[str]) -> list[str]:
 _dropped_powers: list[str] = []
 _DROP_WARN_CAP = 25
 
+# A Chance outside [0,1] is a value we can't read, not a record we lost. The
+# source oracle rolls `fRand < fChance` with fRand drawn from [0,1), so a
+# negative can never fire and a value above 1 always does — yet all three forks
+# author the SAME out-of-range numbers on the SAME templates (Fiery Melee's
+# -0.2, Deafening Wave's -0.80/-0.90/-0.93/-0.95), which rules out misalignment
+# and leaves them data whose meaning is undecoded. They carry to the export as
+# read; this counts them so a future decode has a number to chase and the
+# unread state can't go quiet. Deliberately NOT _warn_dropped, whose contract is
+# a record that was lost: nothing here is dropped, and inflating the drop count
+# would assert a falsehood.
+_out_of_range_chances: list[str] = []
+_CHANCE_SAMPLE_CAP = 5
+
 # Format detection scores the first 20 records under deliberately wrong
 # layouts; the resulting parse failures are the detection mechanism, not
 # data loss. Suppress warnings while probing so they can't masquerade as
@@ -192,6 +205,19 @@ def _warn_dropped(full_name: str, reason: str) -> None:
     elif len(_dropped_powers) == _DROP_WARN_CAP + 1:
         print(f"  Warning: … further dropped-data warnings suppressed "
               f"(see total at end)", file=sys.stderr)
+
+
+def _note_chances(full_name: str, group_chance: float, templates) -> None:
+    """Record any Chance the roll can't consume, on the group or its templates."""
+    if _probing:
+        return
+    candidates = [('group', group_chance)]
+    candidates += [('template', t.tick_chance) for t in templates]
+    for where, value in candidates:
+        if value is None or 0.0 <= value <= 1.0:
+            continue
+        _out_of_range_chances.append(
+            f"{full_name or '<unknown power>'} ({where} chance {value})")
 
 
 def _detect_format(r: BinReader) -> tuple[bool, bool, bool, bool]:
@@ -304,6 +330,7 @@ def parse_powers(bin_path_or_data) -> list[PowerRecord]:
             parser = lambda sub: _parse_power(sub, has_field_45b=has_45b, has_field_41b=has_41b)
 
     _dropped_powers.clear()
+    _out_of_range_chances.clear()
     global _undecoded_message_fx_tails, _undecoded_params_tails, _undecoded_parse6_tails
     _undecoded_message_fx_tails = 0
     _undecoded_params_tails = 0
@@ -335,6 +362,12 @@ def parse_powers(bin_path_or_data) -> list[PowerRecord]:
         print(f"  Warning: {len(_dropped_powers)} dropped-data incident(s) across "
               f"{len(set(_dropped_powers))} power(s) due to parse failures "
               f"(see GAME-DATA-PRINCIPLES §5)", file=sys.stderr)
+    if _out_of_range_chances:
+        import sys
+        print(f"  Warning: {len(_out_of_range_chances)} Chance value(s) outside [0,1]; "
+              f"carried to the export as read and left undecoded", file=sys.stderr)
+        for sample in _out_of_range_chances[:_CHANCE_SAMPLE_CAP]:
+            print(f"    {sample}", file=sys.stderr)
     if _undecoded_message_fx_tails:
         import sys
         print(f"  Warning: {_undecoded_message_fx_tails} template(s) had a Messages/FX "
@@ -1249,6 +1282,8 @@ def _parse_effect_group(r: BinReader, *, veracity: bool = False,
             _warn_dropped(power_name, f"effect template parse failed ({e})")
         r.skip(tmpl_len)
 
+    _note_chances(power_name, chance, templates)
+
     # Nested effect groups (recursive). The .def grammar allows `Effect { ... }`
     # inside another `Effect { ... }` (e.g. Chance/Requires-gated sub-effects);
     # the binary mirrors this with a struct_array of child groups right after
@@ -2155,7 +2190,7 @@ def _tspy_submods(strtab_data, elem_start: int, elem_end: int) -> list[tuple[int
 
 def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base,
                                       *, incarnate_scope: str | None = None,
-                                      sub_index: int = 0) -> EffectTemplate:
+                                      sub_index: int = 0) -> tuple[EffectTemplate, dict]:
     """Parse a Thunderspy AttribMod template.
 
     Thunderspy predates the enum-coded AttribMod format used by HC (Parse7) and
@@ -2163,12 +2198,17 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base,
     rather than enum indices, and the tail block beyond `requires` has a
     variable layout the source spec doesn't document publicly.
 
-    Strategy: parse the well-defined header (attribs, magnitude-default,
-    duration defaults, requires-RPN) deterministically, then SCAN the remaining
-    bytes for the modifier table name (`Melee_Damage`, `Ranged_Damage`, …) and
-    pull the table-scale + duration that immediately follow it. This loses some
-    of the rarely-used flags but recovers the load-bearing damage/heal/mez
-    numbers the planner needs.
+    Strategy: parse the well-defined element header (Tag-position attribs, then
+    HC's EffectGroup block of Chance/PPM/Delay/RadiusInner/RadiusOuter and the
+    requires-RPN) deterministically, then SCAN the remaining bytes for the
+    modifier table name (`Melee_Damage`, `Ranged_Damage`, …) and pull the
+    table-scale + duration that immediately follow it. This loses some of the
+    rarely-used flags but recovers the load-bearing damage/heal/mez numbers the
+    planner needs.
+
+    Returns (template, group_extras): the element is HC's EffectGroup, so its
+    header fields belong on the synthetic group the caller builds, not on the
+    AttribMod — the same contract `_parse_effect_template_parse6` uses.
     """
     def _resolve_str(off: int) -> str | None:
         # Bound by the actual string-table length, not an arbitrary cap.
@@ -2211,16 +2251,24 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base,
     front_attribs = [n for n in (_resolve_str(o) for o in attrib_offs) if n]
     attribs = front_attribs
 
-    # Magnitude (default — table-scale found later usually overrides for damage)
-    magnitude = r.read_f4()
-    # Two post-magnitude u4s — a float + zero pad, NOT the typing enums (that early guess is
-    # superseded: TSPY-3 step 1 found aspect/application/type/target in the pre-table typing
-    # block at table−20/−16/−12/−8 — see _parse_effect_template_thunderspy)
-    r.read_u4()
-    r.read_u4()
-    # Duration defaults — instant attacks use -1.0 sentinel
-    duration_default = r.read_f4()
-    max_duration_default = r.read_f4()
+    # The five header floats are HC's EffectGroup header, field for field
+    # (Chance/PPM/Delay/RadiusInner/RadiusOuter), not the per-AttribMod defaults
+    # they were long read as (RB5-b2). What pins each one is its own corpus shape,
+    # graded against the Rebirth and Homecoming exports over the aligned templates:
+    #   chance        99.77% inside [0,1]; equals Rebirth's chance on 94.6%
+    #   ppm           zero on 99.56%, and every non-zero one is a whole/half
+    #                 procs-per-minute rate carried by a proc enhancement
+    #   group_delay   zero corpus-wide
+    #   radius_inner  −1.0 (HC's own default) on 96.3%
+    #   radius_outer  −1.0 on 95.8%, the rest real radii in feet
+    # Frag Grenade is the anchor: its Knockback element reads 0.5 here, which is
+    # the `Chance 0.5` Homecoming and Rebirth both author — and which this parser
+    # exported as `magnitude: 0.5` for as long as it has read the record.
+    chance = r.read_f4()
+    ppm = r.read_f4()
+    group_delay = r.read_f4()
+    radius_inner = r.read_f4()
+    radius_outer = r.read_f4()
     # Requires expression (RPN string tokens)
     req_offs = r.read_u4_array()
     req_parts = [n for n in (_resolve_str(o) for o in req_offs) if n]
@@ -2298,6 +2346,10 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base,
     duration = 0.0
     app_period = 0.0
     delay = 0.0
+    # Only reached when the tail scan finds no table at all, which is 0 records
+    # corpus-wide; such a record has no scale either. The dataclass default keeps
+    # that degenerate case reading as it did before the tick block was decoded.
+    tick_chance = 1.0
     dur_expr = ''
     mag_expr = ''
     stack = ''
@@ -2316,7 +2368,7 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base,
     # `aspect, application, type, target, <pad>, table` — with aspect ÷8 (HC
     # encoding, NOT Parse6's ÷4) and the rest direct enums. Thunderspy shares this
     # layout; it was long thought to "leave the aspect all-zero" only because the
-    # parser looked at the two header u4s after `magnitude` (which are a float +
+    # parser looked at the element-header words after the chance (PPM + Delay, a float +
     # zero pad), never at the pre-table block. Recovered 2026-07-19 (TSPY-3): read
     # backward from the located table. Corpus-wide the raw values are pure enum
     # indices — aspect ∈ {0,8,16,24,32}, target ∈ {0,1,2,4,5}, etc. — and reproduce
@@ -2394,8 +2446,22 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base,
         delay = _f4(pos)
         app_period = _f4(pos + 4)   # application_period — the DoT tick interval
 
-        # Stack triple, three words past the tick block (tick_chance / tick_mul /
-        # tick_add) that follows the period. `stack` is what separates a per-target
+        # First word of the tick block, read rather than stepped over (RB5-b2):
+        # `tick_chance` equals Homecoming's on 98.2% of the 40,142 templates the
+        # two forks share, which is what identifies it as the PER-TICK roll and
+        # not the group's application roll (that one is the element header's
+        # `chance`, and the two disagree on 10,158 records). Fire Sword is the
+        # anchor — its 0.1-scale burn reads 0.8 here against a group chance of
+        # 1.0, exactly as Homecoming authors it.
+        tick_chance = _f4(pos + 8)
+        # The next two words — where HC keeps TickMultiplier and TickAdditive —
+        # read 0.0 on all 79,759 records. A field that is one value corpus-wide
+        # is a default showing through, not a decode, so they are deliberately
+        # NOT assigned: the multiplier especially, since HC authors it 1.0 and
+        # writing a 0 would hand every consumer a silent zero. Undecoded, left
+        # at the dataclass defaults.
+
+        # Stack triple, three words past the tick block. `stack` is what separates a per-target
         # INCREMENT (`Stack`) from the cap that replaces it (`Replace`) — the field
         # `computeAoePerTargetPatches` keys on, and with it blank every Thunderspy
         # AoE self-buff skipped that pass entirely. Anchored on Soul Drain, whose
@@ -2436,10 +2502,11 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base,
             flags = _decode_flags(flags_raw)
         break
 
-    # Sentinel -1 means "instant" — collapse to 0 so downstream doesn't read
-    # it as a real duration value.
-    if duration_default == -1.0:
-        duration_default = 0.0
+    # Both chances carry exactly as read, including the 28 records outside [0,1]
+    # (Fiery Melee's −0.2, the Seed of Hamidon −1/−2/−3 ladder, White Dwarf's 3.0).
+    # Those are not misalignment: Rebirth authors the same −0.2 on the same
+    # templates. What they MEAN is the open question RB5-b1 carries for all three
+    # forks, so this path preserves the value rather than deciding it here.
     if duration < 0:
         duration = 0.0
     if app_period < 0:
@@ -2455,10 +2522,19 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base,
     _tspy_res_surfaced = (bool(table) and 'Res_DMG' in table
                           and front_attribs == ['Res_DMG'] and bool(_idx_attribs))
 
-    # For damage attacks, table-scale supersedes the template-level magnitude
-    # default (which is the unscaled "1.0" placeholder). Magnitude only matters
-    # for non-table effects like raw mez magnitudes.
-    final_scale = scale if table else magnitude
+    # The table scale IS the scale on this schema. It used to fall back to the
+    # header word for a tableless record, which the RB5-b2 decode retires — that
+    # word is the group's Chance, and no record reaches here without a table.
+    final_scale = scale
+
+    # Magnitude comes from the post-table slot, where HC's field order puts it
+    # (`table scale duration MAGNITUDE`). It reads 1.0 on 91.7% of templates —
+    # the same unscaled placeholder Homecoming carries — with the real applied
+    # values behind it (mez Mag 2/3/4, the −50/100 percentage effects). The two
+    # narrow branches that used to adopt it for modes and applied mez existed
+    # only because the header word held this slot; with that word identified as
+    # Chance the field needs no special case.
+    magnitude = mag_post_table
 
     # Aspect. Now read directly from the pre-table typing block (raw_aspect,
     # above) instead of left blank — Thunderspy DOES carry the aspect, it just
@@ -2550,33 +2626,19 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base,
         elif _front == "ArchVillain_Res":
             aspect = "Resistance"
 
-    # Mode set/unset: the front string-attrib is the `Ones` unit placeholder and
-    # the real attrib is the byte-granular special in the index array. Adopt the
-    # post-table Magnitude with it — that slot is where this schema keeps the MODE
-    # INDEX, the same datum HC/Rebirth carry in their template magnitude, which
-    # `export_powers` resolves through `attrib_names.bin`. Verified by taking the
-    # mode NAME each power's Rebirth twin sets, looking it up in THUNDERSPY's own
-    # registry, and finding that index in the template: 85/85 at this field
-    # (DATA-GAP TSPY-4). Without it every tspy `Source.Mode?` gate is unbindable —
-    # the Primalist forms and Bio Armor's adaptations alike.
-    if any(a in _TSPY_MODE_SPECIALS for a in attribs) and mag_post_table > 0:
-        magnitude = mag_post_table
-    # Applied mez: relabel the front (an enhancement/duration category) to the
-    # index array's real mez attrib and adopt the post-table Magnitude. Fires for
-    # both `Ones` fronts (Tesla Cage) and mismatched real-mez fronts (Blind's
-    # `Immobilize`-front Hold). `Res_Boolean` tables are protection thresholds, not
-    # applied mez, so they're excluded; the self/ally target-trap is vetoed in the
-    # converter (this schema drops the per-template target). `scale` here is the
-    # duration multiplier, left untouched — only the Magnitude is corrected.
-    if (_idx_count == 1 and len(_idx_attribs) == 1
-            and _idx_attribs[0] in _TSPY_MEZ_INDEX
-            and 'Res_Boolean' not in table
-            and final_scale > 0):
-        if mag_post_table > 0:
-            magnitude = mag_post_table
+    # The post-table Magnitude adopted above is also where this schema keeps a
+    # mode set/unset's MODE INDEX — the same datum HC/Rebirth carry in their
+    # template magnitude, which `export_powers` resolves through
+    # `attrib_names.bin`. Verified by taking the mode NAME each power's Rebirth
+    # twin sets, looking it up in THUNDERSPY's own registry, and finding that
+    # index in the template: 85/85 at this field (DATA-GAP TSPY-4). Without it
+    # every tspy `Source.Mode?` gate is unbindable — the Primalist forms and Bio
+    # Armor's adaptations alike. It is likewise the applied mez Magnitude (Tesla
+    # Cage's Hold, Blind's `Immobilize`-front Hold). Both used to need their own
+    # branch to reach past the header word; neither does now.
 
     r.skip_to_end()
-    return EffectTemplate(
+    template = EffectTemplate(
         attribs=attribs,
         type=raw_type,
         application_type=raw_application,
@@ -2584,10 +2646,11 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base,
         target=raw_target,
         table=table,
         scale=final_scale,
-        duration=duration or duration_default,
+        duration=duration,
         magnitude=magnitude,
         delay=delay,
         application_period=app_period,
+        tick_chance=tick_chance,
         duration_expression=dur_expr,
         magnitude_expression=mag_expr,
         jit_requires=jit_requires,
@@ -2597,6 +2660,16 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base,
         flags=flags,
         flags_raw=flags_raw,
     )
+    # The element's own fields, for the synthetic group the caller wraps this in
+    # — the same (template, group_extras) contract the Parse6 path uses.
+    group_extras = {
+        'chance': chance,
+        'ppm': ppm,
+        'delay': group_delay,
+        'radius_inner': radius_inner,
+        'radius_outer': radius_outer,
+    }
+    return template, group_extras
 
 
 # Rebirth templates whose post-magnitude tail didn't match the validated
@@ -3045,19 +3118,21 @@ def _parse_effects_parse6(r: BinReader, *, thunderspy: bool = False,
         try:
             sibling_templates: list[EffectTemplate] = []
             if thunderspy:
-                tmpl = _parse_effect_template_thunderspy(
+                tmpl, group_extras = _parse_effect_template_thunderspy(
                     elem_reader, r._data, r._strtab_base, incarnate_scope=incarnate_scope
                 )
                 # A tspy element is HC's EffectGroup: one header over a struct_array
                 # of AttribMods (see `_tspy_submods`). Parse every sibling past the
                 # first — each needs its own reader, since the template parser reads
-                # the shared header before seeking to its sub-record.
+                # the shared header before seeking to its sub-record. The siblings
+                # re-read that shared header, so their group_extras are the same
+                # values this one already carries.
                 for _sub in range(1, len(_tspy_submods(r._data, elem_start,
                                                        elem_start + elem_len))):
                     sibling_templates.append(_parse_effect_template_thunderspy(
                         r.sub_reader(elem_len), r._data, r._strtab_base,
                         incarnate_scope=incarnate_scope, sub_index=_sub,
-                    ))
+                    )[0])
             else:
                 tmpl, group_extras = _parse_effect_template_parse6(elem_reader)
             # Synthetic group — Parse6 stores conditional gates (PvE vs PvP,
@@ -3101,10 +3176,21 @@ def _parse_effects_parse6(r: BinReader, *, thunderspy: bool = False,
                 is_pvp = 'EITHER'
             # Group-level fields Parse6 stores on the AttribMod (HC moved them
             # to the EffectGroup wrapper): radii, PPM, EvalFlags.
-            if thunderspy:
-                group_extras = {}
+            # Thunderspy's element IS the group, so its chance is read from the
+            # element header rather than lifted off the AttribMod.
+            #
+            # Parse6 has no group to read one from, so the AttribMod's own
+            # `Chance` serves both roles — the application roll and the per-tick
+            # roll are one `fChance` on this schema, and emitting it into both
+            # slots is faithful rather than a double-spend. It is NOT clamped:
+            # the source oracle rolls `fRand < fChance` with fRand in [0,1), so a
+            # zero never fires, and rewriting one to 1.0 turned every inert
+            # component into a certain hit (RB5-b1).
+            group_chance = (group_extras.pop('chance') if thunderspy
+                            else tmpl.tick_chance)
+            _note_chances(power_name, group_chance, [tmpl] + sibling_templates)
             effects.append(EffectGroup(
-                chance=tmpl.tick_chance if tmpl.tick_chance > 0 else 1.0,
+                chance=group_chance,
                 requires_expression=req,
                 is_pvp=is_pvp,
                 templates=[tmpl],
@@ -3141,20 +3227,22 @@ def _parse_effects_parse6(r: BinReader, *, thunderspy: bool = False,
                             params=params,
                         )
                         effects.append(EffectGroup(
-                            chance=tmpl.tick_chance if tmpl.tick_chance > 0 else 1.0,
+                            chance=group_chance,
                             requires_expression=req,
                             is_pvp=is_pvp,
                             templates=[ce],
+                            **group_extras,
                         ))
             # Sibling AttribMods share the element header, so they carry the same
             # gate and PvE/PvP split as the first. Appended after the summon block
             # so its shell `pop()` still targets the template it was built from.
             for sibling in sibling_templates:
                 effects.append(EffectGroup(
-                    chance=sibling.tick_chance if sibling.tick_chance > 0 else 1.0,
+                    chance=group_chance,
                     requires_expression=req,
                     is_pvp=is_pvp,
                     templates=[sibling],
+                    **group_extras,
                 ))
         except Exception as e:
             _warn_dropped(power_name, f"AttribMod parse failed ({e})")

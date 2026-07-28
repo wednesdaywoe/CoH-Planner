@@ -49,8 +49,8 @@ export const OrbitingDeath: Power = {
   "atoms": [
     ["Damage","Negative",0.17,1,2.5,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,3,1],
     ["Meta",null,1,1,2.5,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,2,1],
-    ["Mez","Taunt",1,1,0,"Melee_Ones","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < && kWarshade_Tanker_Mode Source.Mode? &&",true],
-    ["Mez","Taunt",1,1,0,"Melee_Ones","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq && kWarshade_Tanker_Mode Source.Mode? &&",true]
+    ["Mez","Taunt",1,3.5,0,"Melee_Ones","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < && kWarshade_Tanker_Mode Source.Mode? &&",true],
+    ["Mez","Taunt",1,3.5,0,"Melee_Ones","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq && kWarshade_Tanker_Mode Source.Mode? &&",true]
   ],
   "damageTypes": [
     "Negative"

@@ -85,7 +85,7 @@ export const ParasiticAura: Power = {
     ["DamageBuff","Negative",2,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode? !"],
     ["DamageBuff","Toxic",2,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode? !"],
     ["DamageBuff","Psionic",2,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode? !"],
-    ["Mez","Taunt",1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Raid target.HasTag? ! &&"],
+    ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Raid target.HasTag? ! &&"],
     ["Recovery",null,0.125,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kRestedAdaptation Source.Mode?",true],
     ["Regeneration",null,0.15,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kRestedAdaptation Source.Mode?",true],
     ["Absorb",null,0.033,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
@@ -98,7 +98,7 @@ export const ParasiticAura: Power = {
     ["DamageBuff","Negative",2.6,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
     ["DamageBuff","Toxic",2.6,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
     ["DamageBuff","Psionic",2.6,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
-    ["Mez","Taunt",1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true]
+    ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true]
   ],
   "conditionalEffects": [
     {

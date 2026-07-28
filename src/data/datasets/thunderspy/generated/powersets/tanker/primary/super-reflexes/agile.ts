@@ -95,9 +95,9 @@ export const Agile: Power = {
     ["RechargeTime",null,-0.4,1,10,"Melee_Slow","Str","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
     ["Movement","JumpHeight",-0.7,1,10,"Melee_Slow","Str","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
     ["Movement","Run",1,1,10,"Melee_SpeedRunning","Max","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-    ["Mez","Taunt",2.25,1,0,"Melee_Ones","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
+    ["Mez","Taunt",2.25,4,0,"Melee_Ones","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
     ["Absorb",null,0.8,1,10,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq",true],
-    ["Mez","Taunt",2.25,1,0,"Melee_Ones","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true]
+    ["Mez","Taunt",2.25,4,0,"Melee_Ones","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true]
   ],
   "damageTypes": [
     "Energy"

@@ -57,9 +57,9 @@ export const PackMaster: Power = {
     ["Heal",null,0.05,1,10.25,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! &&"],
     ["Regeneration",null,0.6,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! &&"],
     ["Heal",null,0.1,1,10.25,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! &&"],
-    ["Regeneration",null,1.2,0,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! &&"],
-    ["Regeneration",null,1.2,0,10.25,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! && entref target> entref source> eq ! &&"],
-    ["Regeneration",null,2.4,0,10.25,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! && entref target> entref source> eq ! &&"],
+    ["Regeneration",null,1.2,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,"kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! &&"],
+    ["Regeneration",null,1.2,1,10.25,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,"kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! && entref target> entref source> eq ! &&"],
+    ["Regeneration",null,2.4,1,10.25,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,"kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! && entref target> entref source> eq ! &&"],
     ["DamageBuff","Smashing",0.1,1,10.25,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode? entref target> entref source> eq ! &&"],
     ["DamageBuff","Lethal",0.1,1,10.25,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode? entref target> entref source> eq ! &&"],
     ["DamageBuff","Fire",0.1,1,10.25,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode? entref target> entref source> eq ! &&"],
@@ -68,16 +68,16 @@ export const PackMaster: Power = {
     ["DamageBuff","Negative",0.1,1,10.25,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode? entref target> entref source> eq ! &&"],
     ["DamageBuff","Toxic",0.1,1,10.25,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode? entref target> entref source> eq ! &&"],
     ["DamageBuff","Psionic",0.1,1,10.25,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode? entref target> entref source> eq ! &&"],
-    ["DamageBuff","Smashing",0.2,0,10.25,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode? entref target> entref source> eq ! &&"],
-    ["DamageBuff","Lethal",0.2,0,10.25,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode? entref target> entref source> eq ! &&"],
-    ["DamageBuff","Fire",0.2,0,10.25,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode? entref target> entref source> eq ! &&"],
-    ["DamageBuff","Cold",0.2,0,10.25,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode? entref target> entref source> eq ! &&"],
-    ["DamageBuff","Energy",0.2,0,10.25,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode? entref target> entref source> eq ! &&"],
-    ["DamageBuff","Negative",0.2,0,10.25,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode? entref target> entref source> eq ! &&"],
-    ["DamageBuff","Toxic",0.2,0,10.25,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode? entref target> entref source> eq ! &&"],
-    ["DamageBuff","Psionic",0.2,0,10.25,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode? entref target> entref source> eq ! &&"],
+    ["DamageBuff","Smashing",0.2,1,10.25,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,0,null,true,null,null,null,null,"kHunterMode Source.Mode? entref target> entref source> eq ! &&"],
+    ["DamageBuff","Lethal",0.2,1,10.25,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,0,null,true,null,null,null,null,"kHunterMode Source.Mode? entref target> entref source> eq ! &&"],
+    ["DamageBuff","Fire",0.2,1,10.25,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,0,null,true,null,null,null,null,"kHunterMode Source.Mode? entref target> entref source> eq ! &&"],
+    ["DamageBuff","Cold",0.2,1,10.25,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,0,null,true,null,null,null,null,"kHunterMode Source.Mode? entref target> entref source> eq ! &&"],
+    ["DamageBuff","Energy",0.2,1,10.25,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,0,null,true,null,null,null,null,"kHunterMode Source.Mode? entref target> entref source> eq ! &&"],
+    ["DamageBuff","Negative",0.2,1,10.25,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,0,null,true,null,null,null,null,"kHunterMode Source.Mode? entref target> entref source> eq ! &&"],
+    ["DamageBuff","Toxic",0.2,1,10.25,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,0,null,true,null,null,null,null,"kHunterMode Source.Mode? entref target> entref source> eq ! &&"],
+    ["DamageBuff","Psionic",0.2,1,10.25,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,0,null,true,null,null,null,null,"kHunterMode Source.Mode? entref target> entref source> eq ! &&"],
     ["RechargeTime",null,0.1,1,10.25,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kProwlerMode Source.Mode? entref target> entref source> eq ! &&"],
-    ["RechargeTime",null,0.2,0,10.25,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kProwlerMode Source.Mode? entref target> entref source> eq ! &&"],
+    ["RechargeTime",null,0.2,1,10.25,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,0,null,true,null,null,null,null,"kProwlerMode Source.Mode? entref target> entref source> eq ! &&"],
     ["DamageBuff","Smashing",0.05,1,10.25,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode?",true],
     ["DamageBuff","Lethal",0.05,1,10.25,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode?",true],
     ["DamageBuff","Fire",0.05,1,10.25,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode?",true],
@@ -86,16 +86,16 @@ export const PackMaster: Power = {
     ["DamageBuff","Negative",0.05,1,10.25,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode?",true],
     ["DamageBuff","Toxic",0.05,1,10.25,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode?",true],
     ["DamageBuff","Psionic",0.05,1,10.25,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode?",true],
-    ["DamageBuff","Smashing",0.1,0,10.25,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode?",true],
-    ["DamageBuff","Lethal",0.1,0,10.25,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode?",true],
-    ["DamageBuff","Fire",0.1,0,10.25,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode?",true],
-    ["DamageBuff","Cold",0.1,0,10.25,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode?",true],
-    ["DamageBuff","Energy",0.1,0,10.25,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode?",true],
-    ["DamageBuff","Negative",0.1,0,10.25,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode?",true],
-    ["DamageBuff","Toxic",0.1,0,10.25,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode?",true],
-    ["DamageBuff","Psionic",0.1,0,10.25,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kHunterMode Source.Mode?",true],
+    ["DamageBuff","Smashing",0.1,1,10.25,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,true,null,null,null,null,"kHunterMode Source.Mode?",true],
+    ["DamageBuff","Lethal",0.1,1,10.25,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,true,null,null,null,null,"kHunterMode Source.Mode?",true],
+    ["DamageBuff","Fire",0.1,1,10.25,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,true,null,null,null,null,"kHunterMode Source.Mode?",true],
+    ["DamageBuff","Cold",0.1,1,10.25,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,true,null,null,null,null,"kHunterMode Source.Mode?",true],
+    ["DamageBuff","Energy",0.1,1,10.25,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,true,null,null,null,null,"kHunterMode Source.Mode?",true],
+    ["DamageBuff","Negative",0.1,1,10.25,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,true,null,null,null,null,"kHunterMode Source.Mode?",true],
+    ["DamageBuff","Toxic",0.1,1,10.25,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,true,null,null,null,null,"kHunterMode Source.Mode?",true],
+    ["DamageBuff","Psionic",0.1,1,10.25,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,true,null,null,null,null,"kHunterMode Source.Mode?",true],
     ["RechargeTime",null,0.05,1,10.25,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kProwlerMode Source.Mode?",true],
-    ["RechargeTime",null,0.1,0,10.25,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kProwlerMode Source.Mode?",true]
+    ["RechargeTime",null,0.1,1,10.25,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,true,null,null,null,null,"kProwlerMode Source.Mode?",true]
   ],
   "conditionalEffects": [
     {
@@ -106,7 +106,7 @@ export const PackMaster: Power = {
       "effects": {
         "buffDuration": 10.25,
         "damageBuff": {
-          "scale": 0.1,
+          "scale": 0.05,
           "table": "Melee_Ones"
         },
         "durations": {
@@ -125,7 +125,7 @@ export const PackMaster: Power = {
           "rechargeBuff": 10.25
         },
         "rechargeBuff": {
-          "scale": 0.1,
+          "scale": 0.05,
           "table": "Melee_Ones"
         }
       }

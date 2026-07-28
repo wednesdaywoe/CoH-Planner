@@ -46,8 +46,7 @@ export const Alkaloid: Power = {
     {
       "type": "Heal",
       "scale": 0.76,
-      "table": "Ranged_Heal",
-      "duration": 1
+      "table": "Ranged_Heal"
     }
   ],
   "effects": {
@@ -64,7 +63,7 @@ export const Alkaloid: Power = {
   },
   "atoms": [
     ["Heal",null,1.52,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Heal",null,0.76,1,1,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Heal",null,0.76,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Resistance","Toxic",2,1,60,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true]
   ],
   "requires": "Mastermind_Buff.Poison.Alkaloid_Splash !"

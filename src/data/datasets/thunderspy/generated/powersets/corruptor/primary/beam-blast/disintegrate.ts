@@ -75,9 +75,9 @@ export const Disintegrate: Power = {
     ["Damage","Energy",0.316,1,10.5,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1.1100000143051147,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Energy",0.158,1,10.5,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1.1100000143051147,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Energy",2.156,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> critter eq &&",true],
-    ["Damage","Energy",1.078,1,1,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> critter eq &&",true],
+    ["Damage","Energy",1.078,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> critter eq &&",true],
     ["Damage","Energy",2.231,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> player eq &&",true],
-    ["Damage","Energy",1.1155,1,1,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> player eq &&",true],
+    ["Damage","Energy",1.1155,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> player eq &&",true],
     ["Regeneration",null,-6,1,15,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
   ],
   "damageTypes": [

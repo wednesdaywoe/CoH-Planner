@@ -298,7 +298,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -320,7 +320,7 @@
           "table": "Melee_Slow",
           "scale": 1.0,
           "duration": "30 seconds",
-          "magnitude": 0.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "cur.kMeter source> .45 * .45 + @StdResult *",
@@ -338,7 +338,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -360,7 +360,7 @@
           "table": "Melee_Slow",
           "scale": 1.0,
           "duration": "30 seconds",
-          "magnitude": 0.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "cur.kMeter source> .45 * .45 + @StdResult *",
@@ -378,7 +378,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -400,7 +400,7 @@
           "table": "Melee_Slow",
           "scale": 1.0,
           "duration": "30 seconds",
-          "magnitude": 0.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "cur.kMeter source> .45 * .45 + @StdResult *",
@@ -418,7 +418,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -440,7 +440,7 @@
           "table": "Melee_Slow",
           "scale": 1.0,
           "duration": "30 seconds",
-          "magnitude": 0.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "cur.kMeter source> .45 * .45 + @StdResult *",
@@ -461,7 +461,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -483,7 +483,7 @@
           "table": "Melee_Slow",
           "scale": 1.0,
           "duration": "30 seconds",
-          "magnitude": 0.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "cur.kMeter source> .45 * .45 + @StdResult *",
@@ -501,7 +501,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -523,7 +523,7 @@
           "table": "Melee_DeBuff_ToHit",
           "scale": 1.0,
           "duration": "30 seconds",
-          "magnitude": 0.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "cur.kMeter source> 1.5 * 1.5 + @StdResult *",

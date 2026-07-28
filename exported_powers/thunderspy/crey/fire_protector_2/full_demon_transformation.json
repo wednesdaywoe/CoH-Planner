@@ -284,7 +284,7 @@
           "table": "Melee_Ones",
           "scale": 2.5,
           "duration": "0 seconds",
-          "magnitude": 1.0,
+          "magnitude": 100.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",

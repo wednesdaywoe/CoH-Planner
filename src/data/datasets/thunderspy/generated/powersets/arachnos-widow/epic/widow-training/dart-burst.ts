@@ -61,7 +61,9 @@ export const DartBurst: Power = {
       "scale": 0.11,
       "table": "Ranged_Damage",
       "duration": 5,
-      "tickRate": 1
+      "tickRate": 1,
+      "chance": 0.8,
+      "cancelOnMiss": true
     }
   ],
   "effects": {

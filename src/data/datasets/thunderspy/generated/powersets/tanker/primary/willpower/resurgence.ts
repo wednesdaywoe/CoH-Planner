@@ -80,7 +80,7 @@ export const Resurgence: Power = {
   "atoms": [
     ["Heal",null,0.8,1,0.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,1,1],
     ["Endurance",null,0.5,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
-    ["Mez","Untouchable",15,1,0,"Ranged_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Mez","Untouchable",15,10,0,"Ranged_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Recovery",null,2,1,90,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
     ["RechargeTime",null,1,1,90,"Ranged_Ones","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],

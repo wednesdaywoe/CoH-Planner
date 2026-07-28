@@ -42,7 +42,7 @@
   "attack_types": [],
   "effects": [
     {
-      "chance": 1.0,
+      "chance": 0.5,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -64,7 +64,7 @@
           "table": "Melee_Heal",
           "scale": 2.0,
           "duration": "0 seconds",
-          "magnitude": 0.5,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "isPVPMap? !",
@@ -85,7 +85,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.5,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -107,7 +107,7 @@
           "table": "Melee_Ones",
           "scale": 0.1,
           "duration": "0 seconds",
-          "magnitude": 0.5,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -128,7 +128,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.5,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -150,7 +150,7 @@
           "table": "Melee_Ones",
           "scale": 2.0,
           "duration": "10.25 seconds",
-          "magnitude": 0.5,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "isPVPMap?",

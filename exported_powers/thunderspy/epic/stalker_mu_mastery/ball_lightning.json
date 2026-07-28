@@ -255,7 +255,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.20000000298023224,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -277,7 +277,7 @@
           "table": "Melee_Damage",
           "scale": 0.75814,
           "duration": "0 seconds",
-          "magnitude": 0.20000000298023224,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -338,7 +338,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.5,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -360,7 +360,7 @@
           "table": "Melee_Damage",
           "scale": 1.02,
           "duration": "0 seconds",
-          "magnitude": 0.5,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -458,7 +458,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.30000001192092896,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -480,7 +480,7 @@
           "table": "Melee_Ones",
           "scale": -1.0,
           "duration": "4 seconds",
-          "magnitude": 0.30000001192092896,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",

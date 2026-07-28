@@ -49,8 +49,8 @@
   "attack_types": [],
   "effects": [
     {
-      "chance": 1.0,
-      "ppm": 0.0,
+      "chance": 0.0,
+      "ppm": 6.0,
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
@@ -71,7 +71,7 @@
           "table": "Melee_TempDamage",
           "scale": 0.4,
           "duration": "0 seconds",
-          "magnitude": 0.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": ".8 RechargeTime power.base> 1 30 minmax * 1.8 + .2 * @StdResult * areafactor power.base> /",
@@ -93,8 +93,8 @@
       ]
     },
     {
-      "chance": 1.0,
-      "ppm": 0.0,
+      "chance": 0.0,
+      "ppm": 6.0,
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
@@ -115,7 +115,7 @@
           "table": "Melee_TempDamage",
           "scale": 0.4,
           "duration": "0 seconds",
-          "magnitude": 0.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": ".22 activateperiod power.base> 0 30 minmax * @StdResult * areafactor power.base> /",

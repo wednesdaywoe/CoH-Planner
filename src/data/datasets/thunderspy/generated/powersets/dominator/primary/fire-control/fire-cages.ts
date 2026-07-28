@@ -52,10 +52,8 @@ export const FireCages: Power = {
   "effects": {
     "buffDuration": 10,
     "durations": {
-      "immobilize": 1,
       "slow": 10
     },
-    "effectDuration": 1,
     "immobilize": {
       "mag": 4,
       "scale": 15,
@@ -71,7 +69,7 @@ export const FireCages: Power = {
   "atoms": [
     ["Damage","Fire",0.11,1,5.2,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Immobilized",15,4,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Immobilized",15,3,1,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["MezResist","Knockback",0.99,1,12,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["MezResist","Knockup",0.99,1,12,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["Movement","FlyMode",-1.6,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],

@@ -93,8 +93,8 @@ export const MaimingSlash: Power = {
     ["Movement","JumpHeight",0.7,1,10,"Melee_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Movement","Jump",0.7,1,10,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
-    ["Damage","Fire",0.522,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Fire",0.04176,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["Damage","Fire",0.522,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+    ["Damage","Fire",0.04176,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0],
     ["Damage","Lethal",1.919227,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Lethal",0.153538,1,3.1,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,0.800000011920929,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true]

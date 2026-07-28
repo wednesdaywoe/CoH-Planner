@@ -98,7 +98,7 @@ export const ThroatStrike: Power = {
   },
   "atoms": [
     ["Damage","Smashing",1.32,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Fire",0.594,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Fire",0.594,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
     ["DamageBuff","Smashing",1.5,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
     ["DamageBuff","Lethal",1.5,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
     ["DamageBuff","Fire",1.5,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],

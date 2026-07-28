@@ -71,10 +71,17 @@ export const PsychicScream: Power = {
   "atoms": [
     ["Damage","Psionic",0.178,1,2.05,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["RechargeTime",null,0.3,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
-    ["Mez","Knockup",1.4,0.5,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Mez","Knockup",1.4,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5],
     ["Resistance","Psionic",-2,1,10,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Damage","Psionic",0.193343,1,2.05,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Knock Up"
+    }
   ],
   "damageTypes": [
     "Psionic"

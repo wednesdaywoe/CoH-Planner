@@ -84,9 +84,9 @@ export const QuantumFlight: Power = {
     ["EntCreate",null,0.8,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDisable_Toggle Source.Mode? !"],
     ["Stealth","RadiusPvE",20,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDisable_Toggle Source.Mode? !"],
     ["Stealth","RadiusPvP",222,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDisable_Toggle Source.Mode? !"],
-    ["Mez","CombatPhase",0.75,1,0,"Melee_Ones","Cur","Duration","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDisable_Toggle Source.Mode? !"],
-    ["Mez","CombatPhase",0.75,1,0,"Melee_Ones","Cur","Duration","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDisable_Toggle Source.Mode? !"],
-    ["Mez","Intangible",0.75,1,0,"Melee_Ones","Cur","Duration","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDisable_Toggle Source.Mode? !"],
+    ["Mez","CombatPhase",0.75,3,0,"Melee_Ones","Cur","Duration","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDisable_Toggle Source.Mode? !"],
+    ["Mez","CombatPhase",0.75,3,0,"Melee_Ones","Cur","Duration","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDisable_Toggle Source.Mode? !"],
+    ["Mez","Intangible",0.75,3,0,"Melee_Ones","Cur","Duration","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDisable_Toggle Source.Mode? !"],
     ["ThreatLevel",null,-1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDisable_Toggle Source.Mode? !"]
   ]
 };

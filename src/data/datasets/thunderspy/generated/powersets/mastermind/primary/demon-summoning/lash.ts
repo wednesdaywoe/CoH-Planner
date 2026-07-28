@@ -49,7 +49,8 @@ export const Lash: Power = {
       "scale": 0.11,
       "table": "Ranged_Damage",
       "duration": 1.5,
-      "tickRate": 1
+      "tickRate": 1,
+      "chance": 0.4
     }
   ],
   "effects": {
@@ -107,9 +108,16 @@ export const Lash: Power = {
     ["Resistance","Toxic",-1.25,1,10,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
     ["Damage","Fire",1.96,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Toxic",0.11,1,1.5,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
-    ["Mez","Knockback",0.64,0.4000000059604645,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",0.64,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.4000000059604645,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Fire",2.987841,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Knockback",0.64,0.4000000059604645,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
+    ["Mez","Knockback",0.64,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.4000000059604645,null,true,null,null,null,null,"enttype target> player eq",true]
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.4000000059604645,
+      "label": "Knockback"
+    }
   ],
   "damageTypes": [
     "Fire",

@@ -86,8 +86,8 @@ export const ShockingGrasp: Power = {
     ["Damage","Energy",0.3,1,5.1,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Held",8,3,0,"Melee_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Endurance",null,-0.07,1,8.1,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Recovery",null,-1,0.5,4,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Endurance",null,9.1,0.30000001192092896,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Recovery",null,-1,1,4,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5],
+    ["Endurance",null,9.1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,0.30000001192092896],
     ["DamageBuff","Smashing",0.066,1,8.5,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Lethal",0.066,1,8.5,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Fire",0.066,1,8.5,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
@@ -99,6 +99,18 @@ export const ShockingGrasp: Power = {
     ["Damage","Energy",0.348377,1,5.1,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,5.099999904632568,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Held",2,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Endurance",null,-2.5,1,8.1,"Melee_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> player eq",true]
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Recovery"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.30000001192092896,
+      "label": "Endurance"
+    }
   ],
   "damageTypes": [
     "Energy"

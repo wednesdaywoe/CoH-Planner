@@ -42,7 +42,7 @@
   "attack_types": [],
   "effects": [
     {
-      "chance": 1.0,
+      "chance": 0.15000000596046448,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -64,7 +64,7 @@
           "table": "Melee_Ones",
           "scale": 0.6,
           "duration": "10.25 seconds",
-          "magnitude": 0.15000000596046448,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",

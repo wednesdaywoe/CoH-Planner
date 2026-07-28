@@ -93,7 +93,7 @@ export const Microburst: Power = {
   "atoms": [
     ["Damage","Smashing",0.2,1,0,"Ranged_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq",null,null,null,null,null,"@Scale 0.43 Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPowerNum? * + @Value * @Effectiveness * @Strength *"],
     ["Mez","Stunned",15,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Stunned",10,1,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Stunned",10,1,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Movement","Run",0.3,1,12,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["Movement","Fly",0.3,1,12,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["Movement","Jump",0.3,1,12,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
@@ -143,6 +143,13 @@ export const Microburst: Power = {
         }
       },
       "group": "wind_control_pressure-stacks"
+    }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Stun"
     }
   ],
   "damageTypes": [

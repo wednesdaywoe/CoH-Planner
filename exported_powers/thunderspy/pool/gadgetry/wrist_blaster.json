@@ -213,7 +213,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.05000000074505806,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -235,7 +235,7 @@
           "table": "Ranged_Damage",
           "scale": 1.64,
           "duration": "0 seconds",
-          "magnitude": 0.05000000074505806,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -253,7 +253,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.20000000298023224,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -275,7 +275,7 @@
           "table": "Ranged_Damage",
           "scale": 1.64,
           "duration": "0 seconds",
-          "magnitude": 0.20000000298023224,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -413,7 +413,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.05000000074505806,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -435,7 +435,7 @@
           "table": "Ranged_Damage",
           "scale": 1.64,
           "duration": "0 seconds",
-          "magnitude": 0.05000000074505806,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -493,7 +493,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.20000000298023224,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -515,7 +515,7 @@
           "table": "Ranged_Damage",
           "scale": 1.64,
           "duration": "0 seconds",
-          "magnitude": 0.20000000298023224,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -635,7 +635,7 @@
           "table": "Ranged_InherentTaunt",
           "scale": 1.0,
           "duration": "0 seconds",
-          "magnitude": 1.0,
+          "magnitude": 4.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -675,7 +675,7 @@
           "table": "Ranged_InherentTaunt",
           "scale": 1.0,
           "duration": "0 seconds",
-          "magnitude": 1.0,
+          "magnitude": 4.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -693,7 +693,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.8999999761581421,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -715,7 +715,7 @@
           "table": "Melee_Ones",
           "scale": 1.0,
           "duration": "0 seconds",
-          "magnitude": 0.8999999761581421,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",

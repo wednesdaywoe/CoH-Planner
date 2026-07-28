@@ -376,7 +376,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.5,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -398,7 +398,7 @@
           "table": "Melee_Ones",
           "scale": 0.67,
           "duration": "0 seconds",
-          "magnitude": 0.5,
+          "magnitude": 1.0,
           "delay": 0.4,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -419,7 +419,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.574999988079071,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -441,7 +441,7 @@
           "table": "Melee_Ones",
           "scale": 0.67,
           "duration": "0 seconds",
-          "magnitude": 0.574999988079071,
+          "magnitude": 1.0,
           "delay": 0.4,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -462,7 +462,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.6499999761581421,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -484,7 +484,7 @@
           "table": "Melee_Ones",
           "scale": 0.67,
           "duration": "0 seconds",
-          "magnitude": 0.6499999761581421,
+          "magnitude": 1.0,
           "delay": 0.4,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -505,7 +505,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.75,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -527,7 +527,7 @@
           "table": "Melee_Ones",
           "scale": 0.67,
           "duration": "0 seconds",
-          "magnitude": 0.75,
+          "magnitude": 1.0,
           "delay": 0.4,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -548,7 +548,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.5,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -570,7 +570,7 @@
           "table": "Melee_Ones",
           "scale": 0.67,
           "duration": "0 seconds",
-          "magnitude": 0.5,
+          "magnitude": 1.0,
           "delay": 0.4,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -594,7 +594,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.574999988079071,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -616,7 +616,7 @@
           "table": "Melee_Ones",
           "scale": 0.67,
           "duration": "0 seconds",
-          "magnitude": 0.574999988079071,
+          "magnitude": 1.0,
           "delay": 0.4,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -640,7 +640,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.6499999761581421,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -662,7 +662,7 @@
           "table": "Melee_Ones",
           "scale": 0.67,
           "duration": "0 seconds",
-          "magnitude": 0.6499999761581421,
+          "magnitude": 1.0,
           "delay": 0.4,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -686,7 +686,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.75,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -708,7 +708,7 @@
           "table": "Melee_Ones",
           "scale": 0.67,
           "duration": "0 seconds",
-          "magnitude": 0.75,
+          "magnitude": 1.0,
           "delay": 0.4,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -1052,11 +1052,11 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.30000001192092896,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_outer": 10.0,
       "requires_expression": "Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower? enttype target> critter eq &&",
       "tags": [],
       "flags": [],
@@ -1092,11 +1092,11 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.30000001192092896,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_outer": 10.0,
       "requires_expression": "Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower? enttype target> player eq &&",
       "tags": [],
       "flags": [],
@@ -1137,7 +1137,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -1159,7 +1159,7 @@
           "table": "Melee_Damage",
           "scale": 0.3465,
           "duration": "0 seconds",
-          "magnitude": 0.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -1199,7 +1199,7 @@
           "table": "Melee_InherentTaunt",
           "scale": 1.0,
           "duration": "0 seconds",
-          "magnitude": 1.0,
+          "magnitude": 4.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -1242,7 +1242,7 @@
           "table": "Melee_InherentTaunt",
           "scale": 1.0,
           "duration": "0 seconds",
-          "magnitude": 1.0,
+          "magnitude": 4.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",

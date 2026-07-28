@@ -67,12 +67,12 @@ export const Special2: Power = {
     ["Meta",null,1,52,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["Meta",null,1,53,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["Meta",null,1,54,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["Damage","Fire",0.765,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Fire",0.765,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
     ["Damage","Lethal",0.2,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"kDD_BonusDoTMode_2 source.Mode?",true],
     ["Damage","Lethal",2.300638,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? enttype target> player eq || kRage Source> 70 < &&",true],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
-    ["Damage","Fire",0.09,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"kDD_BonusDoTMode_2 source.Mode?",true]
+    ["Damage","Fire",0.09,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0,null,null,null,null,null,null,"kDD_BonusDoTMode_2 source.Mode?",true]
   ],
   "conditionalEffects": [
     {
@@ -80,22 +80,13 @@ export const Special2: Power = {
       "label": "DD Bonus Do T Mode 2",
       "scope": "global",
       "defaultActive": false,
-      "damage": [
-        {
-          "type": "Lethal",
-          "scale": 0.2,
-          "table": "Melee_Damage",
-          "duration": 4.1,
-          "tickRate": 1
-        },
-        {
-          "type": "Fire",
-          "scale": 0.09,
-          "table": "Melee_Damage",
-          "duration": 4.1,
-          "tickRate": 1
-        }
-      ]
+      "damage": {
+        "type": "Lethal",
+        "scale": 0.2,
+        "table": "Melee_Damage",
+        "duration": 4.1,
+        "tickRate": 1
+      }
     }
   ]
 };

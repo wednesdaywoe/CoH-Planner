@@ -67,7 +67,7 @@ export const DefensiveSweep: Power = {
     ["Damage","Smashing",0.679,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Defense","Melee",1.5,1,10,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["Defense","Smashing",1.5,1,10,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
-    ["Damage","Fire",0.30555,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+    ["Damage","Fire",0.30555,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0]
   ],
   "modeVariants": {
     "FastMode": {

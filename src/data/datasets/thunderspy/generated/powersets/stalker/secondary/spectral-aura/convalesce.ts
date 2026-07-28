@@ -43,7 +43,7 @@ export const Convalesce: Power = {
   "atoms": [
     ["Heal",null,2.5,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1],
     ["Meta",null,1,122,6,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["ExecutePower",null,0,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,true]
+    ["ExecutePower",null,0,0,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,true]
   ],
   "setsModes": [
     "SpectralHeal"

@@ -220,7 +220,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 2.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -242,7 +242,7 @@
           "table": "Ranged_Res_Dmg",
           "scale": -5.0,
           "duration": "31 seconds",
-          "magnitude": 2.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -263,7 +263,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 3.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -285,7 +285,7 @@
           "table": "Ranged_Res_Dmg",
           "scale": -5.0,
           "duration": "32 seconds",
-          "magnitude": 3.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -306,7 +306,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 4.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -328,7 +328,7 @@
           "table": "Ranged_Res_Dmg",
           "scale": -5.0,
           "duration": "33 seconds",
-          "magnitude": 4.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -349,7 +349,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 5.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -371,7 +371,7 @@
           "table": "Ranged_Res_Dmg",
           "scale": -5.0,
           "duration": "34 seconds",
-          "magnitude": 5.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -392,7 +392,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 6.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -414,7 +414,7 @@
           "table": "Ranged_Res_Dmg",
           "scale": -5.0,
           "duration": "35 seconds",
-          "magnitude": 6.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -435,7 +435,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 7.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -457,7 +457,7 @@
           "table": "Ranged_Res_Dmg",
           "scale": -5.0,
           "duration": "36 seconds",
-          "magnitude": 7.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -478,7 +478,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 8.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -500,7 +500,7 @@
           "table": "Ranged_Res_Dmg",
           "scale": -5.0,
           "duration": "37 seconds",
-          "magnitude": 8.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -521,7 +521,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 9.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -543,7 +543,7 @@
           "table": "Ranged_Res_Dmg",
           "scale": -5.0,
           "duration": "38 seconds",
-          "magnitude": 9.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",

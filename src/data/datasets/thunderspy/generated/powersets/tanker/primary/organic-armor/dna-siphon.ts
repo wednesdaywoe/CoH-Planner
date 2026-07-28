@@ -55,7 +55,9 @@ export const DNASiphon: Power = {
       "scale": 0.1,
       "table": "Melee_Damage",
       "duration": 2,
-      "tickRate": 1
+      "tickRate": 1,
+      "chance": 0.8,
+      "cancelOnMiss": true
     },
     {
       "type": "Heal",
@@ -102,7 +104,7 @@ export const DNASiphon: Power = {
     ["Regeneration",null,0.2,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 ==",null,0.2],
     ["Recovery",null,0.125,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 ==",null,0.125],
     ["Regeneration",null,-1,1,30,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq kOffensiveAdaptation Source.Mode? ! &&"],
-    ["Mez","Taunt",1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Raid target.HasTag? ! &&"],
+    ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Raid target.HasTag? ! &&"],
     ["Heal",null,0.375,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Cur.kHitPoints target> 0 > kDefensiveAdaptation Source.Mode? &&",true],
     ["Heal",null,0.05,1,10,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,1,1,null,true,null,null,null,null,"Cur.kHitPoints target> 0 > kDefensiveAdaptation Source.Mode? &&",true],
     ["Regeneration",null,0.06,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Cur.kHitPoints target> 0 == kRestedAdaptation Source.Mode? &&",true],
@@ -126,7 +128,7 @@ export const DNASiphon: Power = {
     ["Defense","Psionic",-0.5,1,10,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
     ["Regeneration",null,-1.33,1,30,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq kOffensiveAdaptation Source.Mode? &&",true],
     ["Regeneration",null,-2.66,1,30,"Melee_Res_Boolean","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq kOffensiveAdaptation Source.Mode? &&",true],
-    ["Mez","Taunt",1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true]
+    ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true]
   ],
   "conditionalEffects": [
     {

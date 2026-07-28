@@ -79,11 +79,11 @@ export const ShadowMaul: Power = {
     ["Damage","Smashing",0.16,1,2,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.625,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Negative",0.38,1,2,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.625,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["ToHit",null,0.75,1,10,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Mez","Taunt",1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
+    ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
     ["Damage","Fire",0.24255,1,2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.625,1],
     ["Damage","Smashing",0.29,1,2,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.625,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Negative",0.69,1,2,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.625,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Mez","Taunt",1,1,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
+    ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
     ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? enttype target> player eq || kRage source> 70 < &&",true]
   ],
   "damageTypes": [

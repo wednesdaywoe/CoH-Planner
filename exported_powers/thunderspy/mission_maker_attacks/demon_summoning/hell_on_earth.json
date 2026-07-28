@@ -488,7 +488,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.949999988079071,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -510,7 +510,7 @@
           "table": "Ranged_Levelminus2",
           "scale": 1.0,
           "duration": "0 seconds",
-          "magnitude": 0.949999988079071,
+          "magnitude": 1.0,
           "delay": 40.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -532,7 +532,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.949999988079071,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -554,7 +554,7 @@
           "table": "Ranged_Levelminus2",
           "scale": 1.0,
           "duration": "0 seconds",
-          "magnitude": 0.949999988079071,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -576,7 +576,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.8999999761581421,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -598,7 +598,7 @@
           "table": "Ranged_Levelminus2",
           "scale": 1.0,
           "duration": "0 seconds",
-          "magnitude": 0.8999999761581421,
+          "magnitude": 1.0,
           "delay": 50.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -620,7 +620,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.8999999761581421,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -642,7 +642,7 @@
           "table": "Ranged_Levelminus2",
           "scale": 1.0,
           "duration": "0 seconds",
-          "magnitude": 0.8999999761581421,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -664,7 +664,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.8500000238418579,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -686,7 +686,7 @@
           "table": "Ranged_Levelminus2",
           "scale": 1.0,
           "duration": "0 seconds",
-          "magnitude": 0.8500000238418579,
+          "magnitude": 1.0,
           "delay": 60.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -708,7 +708,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.8500000238418579,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -730,7 +730,7 @@
           "table": "Ranged_Levelminus2",
           "scale": 1.0,
           "duration": "0 seconds",
-          "magnitude": 0.8500000238418579,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -752,7 +752,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.800000011920929,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -774,7 +774,7 @@
           "table": "Ranged_Levelminus2",
           "scale": 1.0,
           "duration": "0 seconds",
-          "magnitude": 0.800000011920929,
+          "magnitude": 1.0,
           "delay": 70.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -796,7 +796,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.800000011920929,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -818,7 +818,7 @@
           "table": "Ranged_Levelminus2",
           "scale": 1.0,
           "duration": "0 seconds",
-          "magnitude": 0.800000011920929,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -840,7 +840,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.75,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -862,7 +862,7 @@
           "table": "Ranged_Levelminus2",
           "scale": 1.0,
           "duration": "0 seconds",
-          "magnitude": 0.75,
+          "magnitude": 1.0,
           "delay": 80.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -884,7 +884,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.75,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -906,7 +906,7 @@
           "table": "Ranged_Levelminus2",
           "scale": 1.0,
           "duration": "0 seconds",
-          "magnitude": 0.75,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -928,7 +928,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.699999988079071,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -950,7 +950,7 @@
           "table": "Ranged_Levelminus2",
           "scale": 1.0,
           "duration": "0 seconds",
-          "magnitude": 0.699999988079071,
+          "magnitude": 1.0,
           "delay": 90.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -972,7 +972,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.699999988079071,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -994,7 +994,7 @@
           "table": "Ranged_Levelminus2",
           "scale": 1.0,
           "duration": "0 seconds",
-          "magnitude": 0.699999988079071,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",

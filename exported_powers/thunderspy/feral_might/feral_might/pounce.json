@@ -134,7 +134,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.10000000149011612,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -156,7 +156,7 @@
           "table": "Melee_Damage",
           "scale": 1.38,
           "duration": "0 seconds",
-          "magnitude": 0.10000000149011612,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -254,7 +254,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.10000000149011612,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -276,7 +276,7 @@
           "table": "Melee_Damage",
           "scale": 1.0734,
           "duration": "0 seconds",
-          "magnitude": 0.10000000149011612,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -321,7 +321,7 @@
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 1.0,
-          "tick_chance": 1.0,
+          "tick_chance": 0.8500000238418579,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "kProwlerCloakMode Source.Mode? !",
@@ -364,7 +364,7 @@
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 1.0,
-          "tick_chance": 1.0,
+          "tick_chance": 0.8500000238418579,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "kProwlerCloakMode Source.Mode?",
@@ -468,7 +468,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.75,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -588,7 +588,7 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.10000000149011612,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,

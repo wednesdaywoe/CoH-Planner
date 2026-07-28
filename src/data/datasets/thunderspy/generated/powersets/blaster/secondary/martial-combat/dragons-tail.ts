@@ -62,7 +62,7 @@ export const DragonsTail: Power = {
   },
   "atoms": [
     ["Damage","Smashing",1.18,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Knockback",0.67,0.75,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.75,null,null,null,null,null,null,"enttype target> critter eq"],
     ["DamageBuff","Smashing",0.11,1,9,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.11],
     ["DamageBuff","Lethal",0.11,1,9,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.11],
     ["DamageBuff","Fire",0.11,1,9,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.11],
@@ -71,8 +71,15 @@ export const DragonsTail: Power = {
     ["DamageBuff","Negative",0.11,1,9,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.11],
     ["DamageBuff","Toxic",0.11,1,9,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.11],
     ["DamageBuff","Psionic",0.11,1,9,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.11],
-    ["Mez","Knockback",0.67,0.75,0,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.75,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Smashing",1.456375,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.75,
+      "label": "Knockback"
+    }
   ],
   "damageTypes": [
     "Smashing"

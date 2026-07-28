@@ -74,7 +74,7 @@ export const BurstofSpeed: Power = {
     ["DamageBuff","Negative",0.068,1,7.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Toxic",0.068,1,7.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Psionic",0.068,1,7.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["RechargePower",null,1,2,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["GlobalChanceMod",null,-1,2,30,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
+    ["RechargePower",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,2,null,true],
+    ["GlobalChanceMod",null,-1,1,30,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,2,null,true]
   ]
 };

@@ -153,7 +153,7 @@
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 1.0,
-          "tick_chance": 1.0,
+          "tick_chance": 0.9599999785423279,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "",

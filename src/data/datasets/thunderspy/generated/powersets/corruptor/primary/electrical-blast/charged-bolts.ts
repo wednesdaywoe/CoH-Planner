@@ -70,12 +70,24 @@ export const ChargedBolts: Power = {
   "atoms": [
     ["Damage","Energy",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Endurance",null,-0.07,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Recovery",null,-1,0.20000000298023224,2,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Endurance",null,2.6,0.30000001192092896,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Recovery",null,-1,1,2,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224],
+    ["Endurance",null,2.6,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,0.30000001192092896],
     ["Damage","Energy",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> critter eq &&",true],
     ["Damage","Energy",1.704176,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Energy",1.704176,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> player eq &&",true],
     ["Endurance",null,-1.25,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.20000000298023224,
+      "label": "Recovery"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.30000001192092896,
+      "label": "Endurance"
+    }
   ],
   "damageTypes": [
     "Energy"

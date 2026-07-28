@@ -65,7 +65,7 @@ export const RisetotheChallenge: Power = {
     ["ToHit",null,0.5,1,1,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["Regeneration",null,0.25,1,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !",null,0.25],
     ["Regeneration",null,1,1,1.125,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["Damage","Fire",0.045,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Fire",0.045,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
     ["Mez","Taunt",1.25,3,0,"Melee_Ones","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
     ["Regeneration",null,0.25,1,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true,0.25],
     ["Regeneration",null,1,1,1.125,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]

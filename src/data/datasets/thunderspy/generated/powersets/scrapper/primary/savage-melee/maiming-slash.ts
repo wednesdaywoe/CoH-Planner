@@ -50,7 +50,9 @@ export const MaimingSlash: Power = {
       "scale": 0.223,
       "table": "Melee_Damage",
       "duration": 3.1,
-      "tickRate": 1
+      "tickRate": 1,
+      "chance": 0.8,
+      "cancelOnMiss": true
     }
   ],
   "effects": {
@@ -80,14 +82,14 @@ export const MaimingSlash: Power = {
     ["Movement","Run",0.7,1,10,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["Movement","Jump",0.7,1,10,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["Movement","JumpHeight",0.7,1,10,"Melee_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Damage","Fire",0.522,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Fire",0.522,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
     ["Damage","Fire",0.04176,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
     ["Heal",null,1,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Replace",2,null,1,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.BloodDrink source.ownPower?",true],
     ["Damage","Lethal",1.628435,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Lethal",0.130275,1,3.1,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Lethal",1.628435,0.05000000074505806,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Damage","Lethal",1.16,0.05000000074505806,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
-    ["Damage","Lethal",1.16,0.10000000149011612,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true]
+    ["Damage","Lethal",1.628435,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Lethal",1.16,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
+    ["Damage","Lethal",1.16,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true]
   ],
   "conditionalEffects": [
     {
@@ -101,6 +103,13 @@ export const MaimingSlash: Power = {
         "table": "Melee_HealSelf",
         "tickRate": 1
       }
+    }
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.05000000074505806,
+      "label": "Lethal_Dmg"
     }
   ],
   "damageTypes": [
