@@ -18,6 +18,7 @@ Auto-detected via _detect_field_41b.
 
 import struct
 from pathlib import Path
+from typing import NamedTuple
 from ._reader import open_parse7, BinReader, Parse6BinReader
 from ._dataclasses import PowerRecord, EffectGroup, EffectTemplate
 from ._enums import (
@@ -1488,9 +1489,19 @@ def _parse_cast_flags(r: BinReader) -> tuple[list[str], list[str], int]:
 MAX_BOOSTS_DEFAULT = 6
 
 
-def _parse_power_tail(r: BinReader) -> tuple[int, int, list[int]]:
-    """Decode the leading slice of the HC post-effects tail; return
-    (max_boosts, proc_allowed_raw, strengths_disallowed).
+class PowerTail(NamedTuple):
+    """The named slice of the HC post-effects tail (see `_parse_power_tail`)."""
+    max_boosts: int
+    proc_allowed_raw: int
+    strengths_disallowed: list[int]
+    global_strengths_disallowed: list[int]
+    unknown_bools_raw: list[int]
+    proc_main_target_only: bool
+    anim_main_target_only: bool
+
+
+def _parse_power_tail(r: BinReader) -> PowerTail:
+    """Decode the leading slice of the HC post-effects tail.
 
     The tail follows the i24 ParseBasePower order (fields after `AttribMod`)
     with HC insertions. Verified 2026-07-21 against the `.powers` oracle
@@ -1511,11 +1522,28 @@ def _parse_power_tail(r: BinReader) -> tuple[int, int, list[int]]:
       then: Var (struct_array), ToggleDroppable (u4), ProcAllowed (HC-added
       u4; 0 = procs allowed, the only authored value is `ProcAllowed kNone`),
       StrengthsDisallowed (u4_array of attrib offsets — present in the client
-      bin, contrary to HC-2's earlier server-only assumption).
+      bin, contrary to HC-2's earlier server-only assumption),
+      GlobalStrengthsDisallowed (u4_array, the same attrib-offset encoding),
+      two unnamed HC bools, ProcMainTargetOnly, AnimMainTargetOnly.
 
-    Everything beyond StrengthsDisallowed (highlight/FX/position metadata)
-    stays skipped by the caller's skip_to_end. Implausible values raise so the
-    caller can drop the fields LOUDLY instead of shipping a misread.
+    The four words past GlobalStrengthsDisallowed were decoded 2026-07-29
+    (HC-3) against the `raw defs/**.powers` oracle over all 4,943 authored
+    player powers, with GlobalStrengthsDisallowed itself confirmed two ways
+    (15 authored powers, exact set AND per-power element counts, zero FP/FN —
+    it is what shifted every earlier probe of this region):
+
+      +0  unnamed bool — 0 on every authored power, 1 on 22 NPC powers
+      +4  unnamed bool — 1 on every authored power, 0 on 30 NPC powers
+      +8  ProcMainTargetOnly — 92 TP / 0 FP / 0 FN
+      +c  AnimMainTargetOnly — 48 TP / 0 FP / 0 FN
+
+    The two unnamed bools only ever vary on `5thColumn.Aereus_Goliath_*`
+    powers, which have no authored def to name them from, so they are carried
+    raw rather than discarded (fidelity rule: unknown is exportable, discarded
+    is unrecoverable). Everything beyond AnimMainTargetOnly (a string_array of
+    highlight/FX/position metadata) stays skipped by the caller's skip_to_end.
+    Implausible values raise so the caller can drop the fields LOUDLY instead
+    of shipping a misread.
     """
     r.skip(0x1c)
     max_boosts = r.read_u4()
@@ -1542,7 +1570,32 @@ def _parse_power_tail(r: BinReader) -> tuple[int, int, list[int]]:
     if len(strengths_disallowed) > 64 or any(
             v > 4096 or v % 4 for v in strengths_disallowed):
         raise ValueError(f"implausible StrengthsDisallowed {strengths_disallowed} — wrong position?")
-    return max_boosts, proc_allowed_raw, strengths_disallowed
+    global_strengths_disallowed = r.read_u4_array()
+    if len(global_strengths_disallowed) > 64 or any(
+            v > 4096 or v % 4 for v in global_strengths_disallowed):
+        raise ValueError(
+            f"implausible GlobalStrengthsDisallowed {global_strengths_disallowed} "
+            f"— wrong position?")
+    unknown_bools_raw = [r.read_u4(), r.read_u4()]
+    proc_main_target_only_raw = r.read_u4()
+    anim_main_target_only_raw = r.read_u4()
+    # All four are bools in the parse table; anything else means the layout
+    # moved under us and the whole slice is suspect.
+    for label, value in (("unknown tail bool 1", unknown_bools_raw[0]),
+                         ("unknown tail bool 2", unknown_bools_raw[1]),
+                         ("ProcMainTargetOnly", proc_main_target_only_raw),
+                         ("AnimMainTargetOnly", anim_main_target_only_raw)):
+        if value > 1:
+            raise ValueError(f"implausible {label} {value} — wrong position?")
+    return PowerTail(
+        max_boosts=max_boosts,
+        proc_allowed_raw=proc_allowed_raw,
+        strengths_disallowed=strengths_disallowed,
+        global_strengths_disallowed=global_strengths_disallowed,
+        unknown_bools_raw=unknown_bools_raw,
+        proc_main_target_only=bool(proc_main_target_only_raw),
+        anim_main_target_only=bool(anim_main_target_only_raw),
+    )
 
 
 def _parse_power_tail_parse6(r: BinReader, *, rebirth_fork_words: bool) -> tuple[int, list[int]]:
@@ -1883,19 +1936,16 @@ def _parse_power(r: BinReader, *, has_field_45b: bool = True, has_field_41b: boo
     # Post-effects tail — the reader is only positioned at the tail when the
     # effects parse succeeded, so a misaligned record skips straight to the end
     # rather than reading garbage into named fields.
-    max_boosts = MAX_BOOSTS_DEFAULT
-    proc_allowed_raw = 0
-    strengths_disallowed: list[int] = []
+    tail = PowerTail(MAX_BOOSTS_DEFAULT, 0, [], [], [], False, False)
     if effects_aligned:
         try:
-            max_boosts, proc_allowed_raw, strengths_disallowed = _parse_power_tail(r)
+            tail = _parse_power_tail(r)
         except Exception as e:
             _warn_dropped(full_name,
                           f"post-effects tail parse failed ({e}); "
-                          f"MaxBoosts/ProcAllowed/StrengthsDisallowed lost")
-            max_boosts = MAX_BOOSTS_DEFAULT
-            proc_allowed_raw = 0
-            strengths_disallowed = []
+                          f"MaxBoosts/ProcAllowed/StrengthsDisallowed/"
+                          f"ProcMainTargetOnly lost")
+            tail = PowerTail(MAX_BOOSTS_DEFAULT, 0, [], [], [], False, False)
     r.skip_to_end()
 
     return PowerRecord(
@@ -1946,9 +1996,13 @@ def _parse_power(r: BinReader, *, has_field_45b: bool = True, has_field_41b: boo
         over_cap_multiplier=over_cap_multiplier,
         over_cap_exponential=over_cap_exponential,
         max_toggle_time=max_toggle_time,
-        max_boosts=max_boosts,
-        proc_allowed_raw=proc_allowed_raw,
-        strengths_disallowed=strengths_disallowed,
+        max_boosts=tail.max_boosts,
+        proc_allowed_raw=tail.proc_allowed_raw,
+        strengths_disallowed=tail.strengths_disallowed,
+        global_strengths_disallowed=tail.global_strengths_disallowed,
+        tail_unknown_bools_raw=tail.unknown_bools_raw,
+        proc_main_target_only=tail.proc_main_target_only,
+        anim_main_target_only=tail.anim_main_target_only,
         _field43_str=field43_str,
         effects=effects,
         activation_effects=activation_effects,

@@ -23,6 +23,14 @@ Previously, the parser read from loose `.bin` files in a `bin/` subdirectory tha
 
 Goal: Generate CoD2-compatible structured JSON from Bin Crawler's binary parser, filtered to only the 34 player-relevant categories (out of 204 total). This replaces the dependency on the external City of Data 2.0 raw data archive (thousands of NPC/critter files we don't need).
 
+### `tools/bin-crawler/` and `exported_powers/` are VENDORED — do not edit them here
+
+**`coh-sidekick-1.0` is canonical for the parser and for the exports it produces.** This repo ships the crawler as part of the Sidekick tool suite, so both paths must physically exist here, but they are a one-way copy. Edit the parser *there*, re-export *there*, then run [`scripts/sync-bin-crawler.sh`](scripts/sync-bin-crawler.sh) here and commit the refreshed tree. Everything downstream — the converters under `scripts/`, `src/`, `generated/` — is owned by this repo and edited normally.
+
+The sync records what it copied in `tools/bin-crawler-vendored.json`; [`bin-crawler-vendored.test.ts`](src/data/bin-crawler-vendored.test.ts) checks it two ways. Editing either path here goes red anywhere, including CI. A canonical repo that has moved ahead goes red only on a machine that has both checked out — which is where the edits actually happen, but it does mean a machine holding only this repo cannot tell it is behind.
+
+Why this exists: HC-3's parser decode landed in the canonical repo while this one kept a hardcoded stand-in, and nothing went red for twelve days. `export-staleness.test.ts` compares this repo's exports against *this* repo's parser, so a copy that is uniformly stale is also perfectly self-consistent.
+
 ### Current State
 
 The export is functional and verified. Run with: `py -3 tools/bin-crawler/bin_crawler/export_powers.py` (or `py -3 -m bin_crawler.export_powers` from inside `tools/bin-crawler/`).

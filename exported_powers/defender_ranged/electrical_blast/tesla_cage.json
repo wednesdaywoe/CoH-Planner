@@ -745,6 +745,7 @@
   "chain_eff_expression": "@ChainJump 1 4 minmax 2.33 *",
   "max_targets_expression": "1 Redirects.Shock_Therapy.Shock_Therapy_Static source.ownPowerNum? + 1 11 minmax",
   "chain_delay": 0.5,
+  "procs_only_on_main_target": true,
   "modes_disallowed": [
     "Disable_All"
   ],

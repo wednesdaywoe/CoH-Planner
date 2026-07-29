@@ -425,6 +425,23 @@ def power_to_dict(pw, msgs=None, set_cats_index=None, mode_table=None,
         attrib_resolver = _STRENGTH_ATTRIB_RESOLVER[dataset_flavor]
         d['strengths_disallowed'] = [
             attrib_resolver(v) for v in pw.strengths_disallowed]
+    if pw.global_strengths_disallowed:
+        attrib_resolver = _STRENGTH_ATTRIB_RESOLVER[dataset_flavor]
+        d['global_strengths_disallowed'] = [
+            attrib_resolver(v) for v in pw.global_strengths_disallowed]
+    # ProcMainTargetOnly / AnimMainTargetOnly: sparse-true, matching how the
+    # `.powers` source authors them (`kTrue` or absent). The proc one drives the
+    # PPM area factor — see docs/DATA-GAP-REGISTER.md HC-3.
+    if pw.proc_main_target_only:
+        d['procs_only_on_main_target'] = True
+    if pw.anim_main_target_only:
+        d['anim_main_target_only'] = True
+    # The two unnamed tail bools read [0, 1] on every authored player power;
+    # only the ~50 NPC records that deviate are worth carrying (see
+    # `_parse_power_tail`). Emitting the default would put a redundant pair on
+    # all 26k powers.
+    if pw.tail_unknown_bools_raw and pw.tail_unknown_bools_raw != [0, 1]:
+        d['tail_unknown_bools_raw'] = list(pw.tail_unknown_bools_raw)
 
     # Power-level mode gates (ModesRequired / ModesDisallowed / ModesSuspended)
     # resolved to mode names via the same registry Set_Mode magnitudes index.

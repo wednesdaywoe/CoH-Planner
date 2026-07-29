@@ -167,6 +167,7 @@
       ]
     }
   ],
+  "anim_main_target_only": true,
   "available_level": 0,
   "powerset": "V_Arachnos.Aeon_Power"
 }

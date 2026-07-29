@@ -597,6 +597,8 @@
   "strengths_disallowed": [
     "Range"
   ],
+  "procs_only_on_main_target": true,
+  "anim_main_target_only": true,
   "modes_disallowed": [
     "Disable_All"
   ],

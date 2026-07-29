@@ -416,6 +416,9 @@
     "Range",
     "RechargeTime"
   ],
+  "global_strengths_disallowed": [
+    "RechargeTime"
+  ],
   "available_level": 0,
   "powerset": "V_Arachnos.Arachnos_CHB_Mechanics"
 }

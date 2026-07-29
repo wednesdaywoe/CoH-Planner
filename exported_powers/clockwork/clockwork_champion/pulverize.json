@@ -215,6 +215,7 @@
   "strengths_disallowed": [
     "Range"
   ],
+  "procs_only_on_main_target": true,
   "available_level": 0,
   "powerset": "Clockwork.Clockwork_Champion"
 }

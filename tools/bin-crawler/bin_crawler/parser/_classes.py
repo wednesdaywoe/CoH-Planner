@@ -69,6 +69,7 @@ structural values.
 
 from ._reader import open_parse7, BinReader, Parse6BinReader
 from ._dataclasses import ClassRecord
+from ._enums import ATTRIB_NAME, ATTRIB_NAME_REBIRTH, ATTRIB_NAME_THUNDERSPY
 
 # Attrib indices used by the export. Table order (ParseCharacterAttributes-
 # Table) puts HitPoints right after the 20 damage types on every dataset;
@@ -174,9 +175,99 @@ def _absorb_cap(name: str, attrib_max, attrib_max_max) -> list[float] | None:
     return cap[:_PLAYER_LEVELS]
 
 
+# The reduction aspects whose net strength `ClampStrength` bounds, keyed by the
+# export prefix each pair is written under. Attribute names, not game proper
+# nouns: these are the CharacterAttributes field labels the maps in `_enums`
+# carry, so a rename upstream raises in `_attrib_struct_index` rather than
+# silently reading a neighbouring slot.
+_CLAMPED_STRENGTHS = {
+    "recharge": "RechargeTime",
+    "endurance": "EnduranceDiscount",
+}
+
+# The four travel axes the planner tracks, keyed by the export name each is
+# written under. Addressed by attribute name for the same reason as
+# `_CLAMPED_STRENGTHS`; SpeedSwimming sits between FlyingSpeed and
+# JumpingSpeed and is deliberately absent (no swim mechanic to plan around).
+_MOVEMENT_ATTRIBS = {
+    "run_speed": "RunningSpeed",
+    "fly_speed": "FlyingSpeed",
+    "jump_speed": "JumpingSpeed",
+    "jump_height": "JumpHeight",
+}
+
+
+def _attrib_struct_index(flavor: str, attrib: str) -> int:
+    """`attrib`'s index in the CharacterAttributes STRUCT order, per dataset —
+    single-sourced from the measured attrib maps in `_enums` (RechargeTime at
+    HC/Rebirth 90, Thunderspy 89: its struct is one field short from 89 up;
+    EnduranceDiscount sits two further along on every dataset). A map carrying
+    zero or several entries for the name is layout drift."""
+    table = {"hc": ATTRIB_NAME,
+             "rebirth": ATTRIB_NAME_REBIRTH,
+             "thunderspy": ATTRIB_NAME_THUNDERSPY}[flavor]
+    matches = [i for i, n in table.items() if n == attrib]
+    if len(matches) != 1:
+        raise ValueError(f"{flavor}: attrib map names {attrib} at "
+                         f"{matches} — expected exactly one index")
+    return matches[0]
+
+
+def _table_index(struct_index: int) -> int:
+    """The CharacterAttributesTable index of a struct-order attrib.
+
+    `ParseCharacterAttributesTable` has no Absorb slot after HitPoints (it
+    serializes Absorb last instead), so every attrib past struct 21 sits one
+    slot earlier in table order. Anchored per dataset by Endurance's flat-100
+    row landing at table 21 and Absorb's at table 115."""
+    return struct_index - 1
+
+
+def _movement_scales(name, attrib_base, attrib_max, movement_struct_indices):
+    """Per-axis `(base scalar, per-level cap row)` in movement SCALE units.
+
+    The scale is the multiplier the server hands the physics layer:
+    `setSpeed(ent, surf, attrCur.fSpeedRunning)` scales
+    `BASE_PLAYER_FORWARDS_SPEED` (0.7 ft/tick × 30 ticks/s = 21 ft/s), and
+    `setJumpHeight` takes `attrCur.fJumpHeight` the same way
+    (`Common/entity/character_tick.c`, `MapServer/src/entity/entGameActions.c`).
+    Base is AttribBase's scalar — 1.0 run/jump/height and 1.5 fly on every
+    class of all three datasets — and the ceiling is the AttribMaxTable row
+    `ClampCur` bounds `attrCur` against, which is per-level on the forks
+    (Thunderspy scales 4.5 → 6.46 run over levels 1-50; Rebirth authors its own
+    4× band) and flat on Homecoming.
+
+    Both are exported raw. The unit projection (mph, feet) belongs to whoever
+    displays them, and lives in the client rather than in any bin.
+
+    Unlike [`_absorb_cap`] there is no value signature re-proving the rows'
+    identity, because there is no value a movement row cannot hold: NPC classes
+    author a 0.0 run base (Class_Minion_Turret cannot move) and a jump-height
+    ceiling BELOW the default scale (Class_Minion_Grunt caps at 0.799 over a
+    1.0 base). Absorb needs its own proof because table 115 is a derived
+    constant; these indices come from the per-dataset attrib NAME maps via
+    [`_attrib_struct_index`], which raises on a rename, so the anchor is the
+    name and any added value rule would only reject real data."""
+    out_base, out_cap = {}, {}
+    for axis, struct_index in movement_struct_indices.items():
+        table_index = _table_index(struct_index)
+        if len(attrib_base[0]) <= struct_index or len(attrib_max[0]) <= table_index:
+            raise ValueError(f"{name}: movement axis {axis} sits past the end "
+                             f"of the attrib struct/table — layout drift")
+        cap = attrib_max[0][table_index]
+        if len(cap) < _PLAYER_LEVELS:
+            raise ValueError(f"{name}: movement axis {axis} cap row has "
+                             f"{len(cap)} levels, expected at least "
+                             f"{_PLAYER_LEVELS} — table drift")
+        out_base[axis] = attrib_base[0][struct_index]
+        out_cap[axis] = cap[:_PLAYER_LEVELS]
+    return out_base, out_cap
+
+
 def _extract_attribs(name, attrib_base, attrib_max, attrib_max_max,
-                     strength_max, resistance_max) -> dict:
-    """The planner's six attrib values, addressed structurally.
+                     strength_max, resistance_max, strength_min,
+                     clamp_struct_indices, movement_struct_indices) -> dict:
+    """The planner's attrib values, addressed structurally.
 
     hit_points / hp_cap: the HitPoints per-level rows of AttribMaxTable /
     AttribMaxMaxTable. NB hp_cap must come from the HitPoints row, not the
@@ -186,6 +277,21 @@ def _extract_attribs(name, attrib_base, attrib_max, attrib_max_max,
     resistance_cap: ResistanceMaxTable DamageType00 (flat per-level run).
     base_threat: AttribBase ThreatLevel scalar.
     damage_cap: StrengthMaxTable DamageType00 at level 50.
+    <aspect>_floor / <aspect>_cap for each of `_CLAMPED_STRENGTHS`: the net-
+    strength clamp bounds (`ClampStrength`, `Common/entity/character_attribs.c`:
+    net strength clamps between StrengthMin — struct order — and
+    StrengthMaxTable[level] — table order, see [`_table_index`]).
+    movement_base / movement_cap for each of `_MOVEMENT_ATTRIBS`: the travel
+    scales and their per-level ceilings (see [`_movement_scales`]).
+
+    recharge: 0.25 / 5.0 on every player class of all three datasets — the −75%
+    recharge-debuff floor and the +400% recharge cap.
+    endurance: 0.0001 / 5.0 likewise. The floor is the same epsilon the server
+    adds to the divisor at every consumption site (`fEnduranceCost /
+    (fEnduranceDiscount + 0.0001f)`, character_tick.c / character_combat_eval.c
+    / attrib_description.c), i.e. a divide guard rather than a real floor:
+    unlike recharge, an endurance PENALTY is not bounded, so a debuffed power
+    can cost arbitrarily more.
     """
     out: dict[str, object] = {}
     if attrib_max and len(attrib_max[0]) > _IDX_TABLE_HITPOINTS:
@@ -210,6 +316,19 @@ def _extract_attribs(name, attrib_base, attrib_max, attrib_max_max,
         dmg = strength_max[0][_IDX_TABLE_DAMAGE]
         if len(dmg) >= _PLAYER_LEVELS:
             out["damage_cap"] = dmg[_PLAYER_LEVELS - 1]
+    for aspect, struct_index in clamp_struct_indices.items():
+        if strength_min and len(strength_min[0]) > struct_index:
+            out[f"{aspect}_floor"] = strength_min[0][struct_index]
+        table_index = _table_index(struct_index)
+        if strength_max and strength_max[0] and len(strength_max[0]) > table_index:
+            row = strength_max[0][table_index]
+            if len(row) >= _PLAYER_LEVELS:
+                out[f"{aspect}_cap"] = row[_PLAYER_LEVELS - 1]
+    if attrib_base and attrib_max:
+        base, cap = _movement_scales(name, attrib_base, attrib_max,
+                                     movement_struct_indices)
+        out["movement_base"] = base
+        out["movement_cap"] = cap
     return out
 
 
@@ -259,9 +378,10 @@ def _read_class_record(r, flavor: str) -> ClassRecord:
         rec["playstyle_flags"] = r.read_u4()
 
     # AttribMin, AttribBase, StrengthMin, ResistanceMin, then the six
-    # diminishing-returns tables; only AttribBase feeds the export today.
+    # diminishing-returns tables; AttribBase and StrengthMin feed the export.
     attrib_structs = [_read_attrib_struct_array(r) for _ in range(10)]
     attrib_base = attrib_structs[1]
+    strength_min = attrib_structs[2]
     attrib_max = _read_attrib_table_array(r)
     attrib_max_max = _read_attrib_table_array(r)
     strength_max = _read_attrib_table_array(r)
@@ -270,7 +390,11 @@ def _read_class_record(r, flavor: str) -> ClassRecord:
     rec["named_tables"] = _read_named_tables(r)
     rec["attribs"] = _extract_attribs(rec["name"], attrib_base, attrib_max,
                                       attrib_max_max, strength_max,
-                                      resistance_max)
+                                      resistance_max, strength_min,
+                                      {aspect: _attrib_struct_index(flavor, attrib)
+                                       for aspect, attrib in _CLAMPED_STRENGTHS.items()},
+                                      {axis: _attrib_struct_index(flavor, attrib)
+                                       for axis, attrib in _MOVEMENT_ATTRIBS.items()})
 
     rec["connect_hp_and_status"] = bool(r.read_u4())
     if flavor == "hc":

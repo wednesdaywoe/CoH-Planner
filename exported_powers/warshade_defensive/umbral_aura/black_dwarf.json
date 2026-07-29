@@ -1072,6 +1072,16 @@
       ]
     }
   ],
+  "global_strengths_disallowed": [
+    "Smashing_Dmg",
+    "Lethal_Dmg",
+    "Fire_Dmg",
+    "Cold_Dmg",
+    "Energy_Dmg",
+    "Negative_Energy_Dmg",
+    "Psionic_Dmg",
+    "Toxic_Dmg"
+  ],
   "modes_disallowed": [
     "Disable_All"
   ],

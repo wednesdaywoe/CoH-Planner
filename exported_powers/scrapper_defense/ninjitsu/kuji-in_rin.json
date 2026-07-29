@@ -328,6 +328,9 @@
       ]
     }
   ],
+  "global_strengths_disallowed": [
+    "Psionic_Dmg"
+  ],
   "modes_disallowed": [
     "Disable_All"
   ],

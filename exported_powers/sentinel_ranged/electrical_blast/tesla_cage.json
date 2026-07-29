@@ -944,6 +944,7 @@
   "chain_eff_expression": ".15",
   "max_targets_expression": "1 Redirects.Shock_Therapy.Shock_Therapy_Static source.ownPowerNum? + 1 7 minmax",
   "chain_delay": 0.5,
+  "procs_only_on_main_target": true,
   "modes_disallowed": [
     "Disable_All"
   ],

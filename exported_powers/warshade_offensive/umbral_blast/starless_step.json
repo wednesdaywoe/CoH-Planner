@@ -230,6 +230,9 @@
       ]
     }
   ],
+  "global_strengths_disallowed": [
+    "Range"
+  ],
   "modes_disallowed": [
     "Disable_All",
     "Disable_Teleport",

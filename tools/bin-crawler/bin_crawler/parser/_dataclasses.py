@@ -216,6 +216,30 @@ class PowerRecord:
     # decoded on the HC layout only.
     strengths_disallowed: list[int] = field(default_factory=list)
 
+    # GlobalStrengthsDisallowed (i24 tail field, same attrib-offset encoding) —
+    # the global-buff counterpart of StrengthsDisallowed (Teleport Foe: Range,
+    # Kuji-In Rin: Psionic). 15 authored powers. HC layout only.
+    global_strengths_disallowed: list[int] = field(default_factory=list)
+
+    # The two unnamed HC bools between GlobalStrengthsDisallowed and
+    # ProcMainTargetOnly. They only vary on `5thColumn.Aereus_Goliath_*` NPC
+    # powers, which have no authored def to name them from — carried raw so a
+    # later oracle can name them (see `_parse_power_tail`). HC layout only.
+    tail_unknown_bools_raw: list[int] = field(default_factory=list)
+
+    # ProcMainTargetOnly (HC-added tail field) — procs slotted in this power
+    # roll against the main target only, so they use the single-target PPM area
+    # factor even though the power carries an AoE radius (Propel's 15ft is its
+    # knockback splash). Measured in game 2026-07-28/29 on Propel and Lightning
+    # Clap; see docs/DATA-GAP-REGISTER.md HC-3. HC layout only — no separating
+    # field exists in the Parse6 forks' tails.
+    proc_main_target_only: bool = False
+
+    # AnimMainTargetOnly (HC-added tail field) — the animation/FX counterpart,
+    # play the effect on the main target only. Cosmetic; parsed so the byte is
+    # accounted for rather than skipped.
+    anim_main_target_only: bool = False
+
     # Parse7/HC diagnostic scratch — field 43 is an FX / ChainIntoPower array, NOT
     # ChainTarget (that's 43b → chain_target_expression above). Kept for probes,
     # never emitted to the export (leading underscore + repr=False). See HOMECOMING_PARSER.

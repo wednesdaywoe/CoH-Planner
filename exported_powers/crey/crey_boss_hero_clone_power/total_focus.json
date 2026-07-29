@@ -134,6 +134,7 @@
       ]
     }
   ],
+  "anim_main_target_only": true,
   "available_level": 0,
   "powerset": "Crey.Crey_Boss_Hero_Clone_Power"
 }

@@ -342,6 +342,9 @@
       ]
     }
   ],
+  "global_strengths_disallowed": [
+    "RechargeTime"
+  ],
   "available_level": 0,
   "powerset": "Pets.Reverberant"
 }

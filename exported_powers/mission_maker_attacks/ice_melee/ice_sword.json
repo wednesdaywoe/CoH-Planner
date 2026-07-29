@@ -187,6 +187,8 @@
   "strengths_disallowed": [
     "Range"
   ],
+  "procs_only_on_main_target": true,
+  "anim_main_target_only": true,
   "available_level": 0,
   "powerset": "Mission_Maker_Attacks.Ice_Melee"
 }

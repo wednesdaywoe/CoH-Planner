@@ -143,6 +143,7 @@
   "strengths_disallowed": [
     "Range"
   ],
+  "procs_only_on_main_target": true,
   "available_level": 11,
   "powerset": "Mission_Maker_Attacks.Battle_Axe"
 }

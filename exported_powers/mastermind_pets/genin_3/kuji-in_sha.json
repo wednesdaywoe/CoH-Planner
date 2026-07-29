@@ -95,6 +95,9 @@
   "strengths_disallowed": [
     "RechargeTime"
   ],
+  "global_strengths_disallowed": [
+    "RechargeTime"
+  ],
   "available_level": 19,
   "powerset": "Mastermind_Pets.Genin_3"
 }
