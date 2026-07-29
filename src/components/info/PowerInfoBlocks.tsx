@@ -27,8 +27,7 @@ import { Chip, type TagKind } from './TagsRow';
 import {
   findProcData,
   isProcAlwaysOn,
-  isFoeDamageProc,
-  isDamageMainTargetOnlyPower,
+  resolveProcRollGeometry,
   calculateProcChance,
   calculateAutoToggleProcChance,
   getPPMAreaDenominator,
@@ -244,9 +243,9 @@ export function GeneralStatsBlock({
         radius={procAreaGeometry.radius}
         arcDegrees={procAreaGeometry.arcDegrees}
         slottedRechargeBonus={enhancementBonuses.recharge ?? 0}
-        // Propel & co.: damage procs score single-target (the AoE radius is a
-        // secondary knockback), while non-damage procs (Force Feedback) keep it.
-        damageMainTargetOnly={isDamageMainTargetOnlyPower(power.internalName)}
+        // Propel & co.: every proc scores single-target — the AoE radius belongs
+        // to a secondary knockback, not to what the procs roll against.
+        internalName={power.internalName}
       />
     </div>
   );
@@ -294,10 +293,9 @@ interface ProcChanceRowProps {
   radius: number;
   arcDegrees: number | undefined;
   slottedRechargeBonus: number;
-  /** True when the power's foe damage is main-target-only despite an AoE radius
-   *  (Propel): damage procs are scored single-target while non-damage procs keep
-   *  the power's radius. See isDamageMainTargetOnlyPower. */
-  damageMainTargetOnly?: boolean;
+  /** The power's internalName — resolveProcRollGeometry uses it to spot the
+   *  main-target-only powers (Propel) whose procs all roll single-target. */
+  internalName?: string;
 }
 
 interface ProcEntry {
@@ -307,10 +305,6 @@ interface ProcEntry {
   ppm: number | null;
   /** undefined when always-on (no PPM); otherwise the computed chance 0–1 */
   chance?: number;
-  /** Area denominator used for THIS proc's chance — per-proc so a main-target-only
-   *  damage proc (denom 1) and an AoE non-damage proc (denom > 1) in the same
-   *  power each show their own formula. */
-  areaDenom: number;
 }
 
 function ProcChanceRow({
@@ -321,7 +315,7 @@ function ProcChanceRow({
   radius,
   arcDegrees,
   slottedRechargeBonus,
-  damageMainTargetOnly,
+  internalName,
 }: ProcChanceRowProps) {
   // Per-view local expansion plus a persisted "pin" toggle. The pin
   // wins when on — Power Info shows the breakdown automatically for
@@ -338,9 +332,13 @@ function ProcChanceRow({
   // For non-attack passives there's nothing to compute.
   if (!isToggleOrAuto && baseRecharge <= 0 && castTime <= 0) return null;
 
-  const arcDeg = radius > 0 ? (arcDegrees && arcDegrees > 0 ? arcDegrees : 360) : 360;
+  // Propel & co.: the power's radius is a secondary knockback splash, so every
+  // proc in it — damage or Force Feedback alike — rolls the single-target
+  // area-factor. resolveProcRollGeometry owns that rule for all PPM surfaces.
+  const { radius: procRadius, arcDegrees: arcDeg } =
+    resolveProcRollGeometry(internalName, radius, arcDegrees);
   const modifiedRecharge = baseRecharge / (1 + slottedRechargeBonus);
-  const areaDenom = getPPMAreaDenominator(radius, arcDeg);
+  const areaDenom = getPPMAreaDenominator(procRadius, arcDeg);
 
   const entries: ProcEntry[] = [];
   const procDataByKey: Record<string, ProcData> = {};
@@ -361,22 +359,13 @@ function ProcChanceRow({
         name: ioSlot.name,
         setName: ioSlot.setName,
         ppm: null,
-        areaDenom,
       });
       continue;
     }
 
-    // A foe-damage proc in a main-target-only-damage power (Propel) rolls the
-    // single-target area-factor; every other proc — incl. Force Feedback, which
-    // rolls against the AoE knockback — keeps the power's radius.
-    const singleTarget = !!damageMainTargetOnly && isFoeDamageProc(procData);
-    const procRadius = singleTarget ? 0 : radius;
-    const procArc = singleTarget ? 360 : arcDeg;
-    const procAreaDenom = singleTarget ? 1 : areaDenom;
-
     const chance = isToggleOrAuto
-      ? calculateAutoToggleProcChance(procData.ppm, procRadius, procArc)
-      : calculateProcChance(procData.ppm, baseRecharge, castTime, procRadius, procArc, slottedRechargeBonus);
+      ? calculateAutoToggleProcChance(procData.ppm, procRadius, arcDeg)
+      : calculateProcChance(procData.ppm, baseRecharge, castTime, procRadius, arcDeg, slottedRechargeBonus);
 
     entries.push({
       key,
@@ -384,7 +373,6 @@ function ProcChanceRow({
       setName: ioSlot.setName,
       ppm: procData.ppm,
       chance,
-      areaDenom: procAreaDenom,
     });
   }
 
@@ -459,7 +447,7 @@ function ProcChanceRow({
               isToggleOrAuto={isToggleOrAuto}
               modifiedRecharge={modifiedRecharge}
               castTime={castTime}
-              areaDenom={entry.areaDenom}
+              areaDenom={areaDenom}
               hasRechargeMod={slottedRechargeBonus > 0}
               baseRecharge={baseRecharge}
             />

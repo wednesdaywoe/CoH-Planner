@@ -23,14 +23,29 @@ diff, the census, and the committed-export discipline).
 
 ## BLOCKERS (do not proceed past these)
 
-### TSPY-1 — the on-disk Thunderspy `bin.pigg` is INCOMPLETE. Never re-export tspy.
-**Severity: blocker (for any tspy re-export) · Status: RECORDED · Blocked on: obtaining a complete, verified tspy binary**
-A fresh parse of the current binary yields Super Speed as a single `Ones 35` template —
-the real movement data is gone from the binary but present in the committed export
-(discovered 2026-07-16 while verifying a planned re-export; the verification prevented a
-regression). **The committed `exported_powers/` outranks any fresh tspy parse.** A
-re-export is only permissible after a complete binary is obtained AND verified against
-the committed export (count-parity style diff, both directions).
+### TSPY-1 — ~~the on-disk Thunderspy `bin.pigg` is INCOMPLETE~~ — RESOLVED 2026-07-17, re-export is permitted
+**Severity: was blocker (for any tspy re-export) · Status: RESOLVED · Synced into this repo 2026-07-29**
+**This entry was stale in this repo until 2026-07-29** — it still said "never re-export tspy"
+months after the blocker was cleared, and that stale text was cited as blocking HC-3's parser
+fix. Resolved in the rebuild (`coh-sidekick-1.0`, `docs/DATA-GAP-REGISTER-RESOLVED.md`
+TSPY-1): a fresh powers parse of the current on-disk `tspy/bin.pigg` reproduces the committed
+`exported_powers/thunderspy` tree **byte-for-byte** — 10,438 files, 0 content diffs, 0 drops,
+0 spurious files, `diff -rq` both directions — and Super Speed (the 2026-07-16 "data is gone"
+example) parses with its full `SpeedRunning` buffs. The blocker's own exit condition is met.
+Thunderspy has since been re-exported twice on tspy parser improvements. Verified 2026-07-29
+that **this repo's `exported_powers/thunderspy` and `/rebirth` power trees are byte-identical
+to the rebuild's**, so that verification applies here directly.
+
+**Live caveat (carried over):** a powers-only `export_powers.py` run does NOT emit the
+committed tree's `entities/` and `tables/` subtrees (separate exporters). Any re-export must
+regenerate or preserve those, or they are lost.
+
+**Historical record (2026-07-16, superseded):** a fresh parse of the *then*-on-disk binary
+yielded Super Speed as a single `Ones 35` template; the committed export was ruled to outrank
+it and re-export was blocked — a correct call for that artifact. Either the client shipped a
+complete binary since, or later parser work learned the `Ones`-front/index-array encoding that
+looked degenerate (present-but-unparsed, not gone). Not disambiguated; doesn't change the
+result. The real remaining tspy gap is TSPY-3 (atom typing), not missing data.
 
 ## RECORDED gaps (understood, tracked, not currently wrong-in-app)
 
@@ -76,21 +91,147 @@ eligibility), `OverCapMultiplier`/`OverCapTrigger` (63), `MaxBoosts` (63), `Chai
 (36), and server-only `StrengthsDisallowed` (952 — not in the client bin; would need
 `raw defs/` sourcing). None feed a currently-modeled calc feature.
 
-### HC-3 — effect-group `MainTargetOnly` flag dropped (proc area-factor mis-scoring)
-**Severity: low (one player power, worked around) · Status: RECORDED · Blocked on: parser change + re-export**
+### HC-3 — `MainTargetOnly` / `ProcMainTargetOnly` dropped (proc area-factor mis-scoring)
+**Severity: MEDIUM (≥7 player power families, only 1 worked around) · Status: RECORDED, scoped 2026-07-28, verified live 2026-07-29 · Blocked on: locating the power-level field (the tspy re-export blocker is GONE — TSPY-1 resolved)**
 `_parse_effect_group` reads the group flag word (`flags_val`) but keeps only the PvE/PvP
 bits (bit 0/1), discarding `MainTargetOnly` — and the power-level `ProcMainTargetOnly`
 isn't parsed at all. Consequence: a power whose damage lands on the main target only
 while it carries an AoE radius from a *secondary* effect is indistinguishable from a
 genuine AoE (Propel's damage groups look identical to Fire Ball's — both `radius_outer -1`
 = "inherit power area"). Damage procs slotted in such a power were scored against the 15ft
-AoE area-factor (~22–28%) instead of single-target (~59–76%). **Only Propel is affected
-among player powers** (Controller/Dominator Gravity Control; scan of 10,707 HC powers).
-Worked around in the calc layer via the curated `DAMAGE_MAIN_TARGET_ONLY_POWERS` set
-(`src/data/proc-data.ts`) — damage procs there roll single-target, non-damage procs
-(Force Feedback) keep the AoE radius (matches in-game). Durable fix: decode the
-`MainTargetOnly` bit in the parser + re-export, then key the override off the real flag.
+AoE area-factor (~22–28%) instead of single-target (~59–76%).
+
+**Scoping pass 2026-07-28 (bug-reporter follow-up: "find powers that have this flag").
+The earlier claim "only Propel is affected" was wrong — it came from an effects-shape scan,
+not from the flag.** Ground truth is `raw defs/` (the `.powers` server source; note the
+local dump is PARTIAL — no `Controller_*`, `Corruptor_*`, Kheldian or Widow trees, so
+these counts are a lower bound):
+- **`ProcMainTargetOnly kTrue` (power-level — CoD2's `procs_only_on_main_target`, the field
+  the reporter cites): 92 files.** 54 are `EffectArea kCharacter`, where it can't change an
+  area factor (single-target melee: Chop/Bash/Clobber/Beheader…). **38 carry a real radius
+  and would switch to the ST calc**, in 7 distinct power families: `Placate` (15ft — 17
+  Stalker sets + Bane Spider), `Ground_Zero` (15ft, 5 ATs), `Touch_of_Fear` (6ft, 9ft on
+  Tanker), `Lightning_Clap` (10–20ft), `Tesla_Cage` (kChain 10ft), `Focused_Burst`
+  (kChain 8ft), `Propel` (15ft). Plus `Spirit_Ward` (no radius — no-op).
+- **`Flags MainTargetOnly` (effect-group level) is a DIFFERENT field: 258 files.** Only 12
+  powers carry both. Do not conflate them.
+
+Bin decodability, probed against the 4,915 raw-defs files that match a bin power:
+- The **group-level** flag IS recoverable: group-flag word **bit 3 (value 8)** matches
+  `Flags MainTargetOnly` with **124 true-positive / 0 false-positive** — but 134 misses, so
+  bit 3 alone is a partial decode, not the whole story.
+- The **power-level** flag is NOT that bit (80 powers have the power flag and no bit-3
+  group; 112 the reverse) and is not in the parsed power tail (`_parse_power_tail` is mapped
+  through `StrengthsDisallowed`; everything past it is skipped). **Locating it is the open
+  work** — it is the field the ST-calc rule should key on.
+
+**The one piece of counter-evidence is RETRACTED (2026-07-28).** The 2026-07-07 live log
+(Touch of Fear landing three Eradication procs on three different targets in one
+activation) was read as disproving the flag. **An HC dev explained the structure: Touch of
+Fear is three powers in one — the parent runs two `ExecutePower` children, one ST and one
+AoE.** The procs rolled on the AoE *child*, which does not carry the parent's flag. The log
+never tested the flag at all, and the "DISPROVEN" verdict in `power-level-fields-triage`
+is withdrawn. Confirmed in the source: `Touch_of_Fear.powers` carries
+`Attrib kExecutePower` + `Flags NoHitDelay CopyBoosts`.
+
+Splitting the flagged-with-radius families by whether they act directly or via a wrapper
+(this is what decides which are testable, and it cleanly isolates both confounds):
+
+| family | files | structure | radius |
+|---|---|---|---|
+| `Propel` | 1 | direct (`Attrib kSmashing` under `Flags MainTargetOnly`) | 15 |
+| `Lightning_Clap` | 3 | direct (`Attrib kEnergy` + `kStunned`) | 15 |
+| `Placate` | 20 | direct | 15 |
+| `Tesla_Cage` | 3 | direct | 10 (chain) |
+| `Focused_Burst` | 1 | direct | 8 (chain) |
+| `Spirit_Ward` | 1 | direct | — (no-op) |
+| **`Ground_Zero`** | 5 | **ALL `ExecutePower` wrappers** | 15 |
+| **`Touch_of_Fear`** | 4 | **ALL `ExecutePower` wrappers** | 6, 9 |
+
+Both wrapper families are unusable as evidence *and* untestable (see HC-4).
+
+**VERIFIED LIVE 2026-07-28 — the ST calc is correct for Propel.** Gravity Controller vs a
+Vanguard Training Pylon, Explosive Strike: Chance for Smashing Damage (3.5 PPM) as the only
+proc, no recharge slotted in Propel:
+
+| | |
+|---|---|
+| activations | 74 (8 misses, each followed by a streakbreaker hit — 8/8 internally consistent) |
+| hits | 66 |
+| procs | **43 → 65.2%** (95% CI 53.7–76.6%) |
+| **ST model** (radius 0) | predicts 58.7% → 38.8 procs · **z = +1.06, p = 0.18 — consistent** |
+| **AoE model** (15ft) | predicts 21.9% → 14.4 procs · **z = +8.51, p = 5.6e-14 — excluded** |
+
+The AoE denominator is dead by 8.5 sigma. The observed rate runs a touch above the ST
+prediction, but 1.1σ on n=66 is noise — no further claim. This validates the whole
+`PROC_MAIN_TARGET_ONLY_POWERS` override *and* the 2026-07-28 correction that extended it
+from foe-damage procs to every proc (the area factor is per-power, so a damage proc measures
+the exact denominator Force Feedback rolls against).
+
+**GENERALITY CONFIRMED 2026-07-29 — `Lightning_Clap`, second independent family.** Same
+Explosive Strike proc, single pylon: **65 hits → 61 procs = 93.8%** (95% CI 88.0–99.7%).
+AoE model predicts 35.2% → 22.9 procs, **z = +9.89, p = 2.8e-23 — excluded**. ST model
+(our 90% clamp) predicts 58.5, z = +1.03 — consistent; uncapped 94.7% fits marginally better
+(z = −0.30) but n=65 cannot separate 90% from 94.7%, so the clamp stands unchallenged. The
+tested copy is confirmed as a *flagged* radius-15 one (Brute/Scrapper/Tanker): the observed
+~16.2s cycle matches 15s recharge + 1.23s cast, not Stalker's 20s/2.53s or Blaster's
+10s/2.03s. **Two independent families ⇒ the flag is the mechanism, not a Propel quirk.**
+
+**BUT: the flag is per-AT-COPY, not per power name — a name-keyed override is unsafe.**
+
+| family | flagged copies | NOT flagged |
+|---|---|---|
+| `Placate` | 20/21 (all player copies) | Mastermind pet `Jonin_2` |
+| `Lightning_Clap` | 3/6 — Brute, Scrapper, Tanker (r15) | **Stalker (r10), Blaster (r20)**, Dominator (r0, no-op) |
+| `Tesla_Cage` | 3/4 — Blaster, Defender, Sentinel (chain r10) | Dominator Electric Control (r0, no-op) |
+| `Focused_Burst` | **1/4 — Scrapper only** | **Brute, Stalker, Tanker** (all r8) |
+| `Propel` | 1/1 (dump has only the Dominator copy) | — |
+
+Extending `PROC_MAIN_TARGET_ONLY_POWERS` by `internalName` would therefore *introduce* a bug:
+Stalker Lightning Clap (61.8%→90%), Blaster Lightning Clap (21.6%→70.2%) and 3 of 4 Focused
+Bursts would get an unearned boost. And `internalName` is the wrong key in principle — the
+generated layer stores one Power object per AT copy, all sharing `internalName`, and even
+`powerSet` doesn't discriminate (Scrapper and Stalker both call it "Electrical Melee"). This
+is [[rain-of-fire-fireblast-internalname-collision]]'s bug class. **The flag belongs as a
+field ON the Power object**, not in a name list — which is what the parser fix produces
+naturally, since `powers.bin` keys `full_name = Category.Powerset.Power`.
+
+Under-count that remains (3.5 PPM / 2 PPM proc, current → correct): Lightning Clap
+35.2→90% / 20.1→54.1%; Tesla Cage 33.4→71.0% / 19.1→40.6%; Sentinel Tesla Cage 38.9→82.7%;
+Scrapper Focused Burst 30.7→58.3%; Bane Placate 77.7→90%; Stalker Placate 90→90% at 3.5 PPM
+but **75.4→90% at 2 PPM** (Force Feedback). Ground Zero caps either way (no visible change).
+Only Propel is corrected today. `Ground_Zero`/`Touch_of_Fear` are the HC-4 wrapper families —
+their procs roll on a child, so the parent's flag may not even govern; leave them alone.
+
+Worked around in the calc layer via the curated `PROC_MAIN_TARGET_ONLY_POWERS` set +
+`resolveProcRollGeometry` (`src/data/proc-data.ts`), the single seam every PPM surface
+calls — **every** proc in such a power rolls single-target, damage or not. (The first
+cut, 93807f1fab, applied the override only to foe-damage procs and left Force Feedback
+on the 15ft denominator; corrected 2026-07-28 — the flag is a property of the power,
+not of the individual proc.) Durable fix: locate the power-level `ProcMainTargetOnly`
+field in the power record (the group bit 3 above is the wrong field), decode + re-export,
+then key the override off the real flag and drop the curated set.
 Note: `ProcAllowed` (HC-2 backlog) lives in the same power-level flag family.
+
+### HC-4 — procs in `ExecutePower` wrapper powers roll on the CHILD, not the parent
+**Severity: unknown, potentially material · Status: OPEN, found 2026-07-28 · Found via: HC-3**
+Some powers deal nothing themselves: the parent carries `Attrib kExecutePower` with
+`Flags NoHitDelay CopyBoosts`, and `CopyBoosts` hands the parent's slotted enhancements —
+**including procs** — to the child that does the work. An HC dev's description of Touch of
+Fear ("a sneaky three powers in one — the main power does two Execute Powers, one for ST
+one for AoE") is the canonical shape, and a live log confirms procs firing from the child.
+
+The planner scores a slotted proc's PPM against the **parent's** radius/arc and recharge.
+If the game rolls it on the child, the inputs are wrong in both terms: the child has its own
+geometry (Touch of Fear's ST child and AoE child differ), and a child's recharge is
+typically 0 — so which recharge the engine feeds the PPM window is an open question. Where
+a parent fans out to more than one child, one activation may also roll more than once.
+
+Unquantified — the population of wrapper powers that accept procs hasn't been counted, and
+no live measurement exists. Known instances: `Touch_of_Fear` (4 files), `Ground_Zero` (5).
+Both surfaced only because HC-3's flag scan happened to cross them, so treat those two as a
+lower bound, not the population. First step is a census of `kExecutePower` + `CopyBoosts`
+powers that allow boosts, then a live proc-rate measurement on one of them.
 
 ### TWIN-1 — converter-twin shape divergences: triage worklist
 **Severity: low-medium (each needs an individual eyeball) · Status: RECORDED, worklist**

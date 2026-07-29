@@ -16,6 +16,7 @@ import {
   getProcEffects,
   calculateProcChance,
   interpolateProcDamage,
+  resolveProcRollGeometry,
 } from '@/data';
 
 export interface SlottedProcDamageInput {
@@ -32,10 +33,10 @@ export interface SlottedProcDamageInput {
   rechargeEnh: number;
   /** Character level used to interpolate proc damage. */
   buildLevel: number;
-  /** True when this power's foe damage is main-target-only despite an AoE radius
-   *  (Propel — its 15ft radius is the knockback splash, not the damage). Damage
-   *  procs then roll the single-target area-factor; see isDamageMainTargetOnlyPower. */
-  damageMainTargetOnly?: boolean;
+  /** The power's internalName. Only used to detect the main-target-only powers
+   *  (Propel) whose procs roll single-target despite an AoE radius — pass it and
+   *  the override applies itself; see resolveProcRollGeometry. */
+  internalName?: string;
 }
 
 /**
@@ -44,11 +45,11 @@ export interface SlottedProcDamageInput {
  */
 export function calculateSlottedProcDamagePerCast(input: SlottedProcDamageInput): number {
   const { slots, baseRecharge, castTime, radius, arcDegrees, rechargeEnh, buildLevel } = input;
-  // Every proc handled here is a foe-damage proc (filtered below), so a
-  // main-target-only-damage power (Propel) scores them all single-target: the
-  // AoE radius belongs to a non-damage effect the damage proc never rolls against.
-  const areaRadius = input.damageMainTargetOnly ? 0 : radius;
-  const areaArc = input.damageMainTargetOnly ? 360 : arcDegrees;
+  // In a main-target-only power (Propel) every proc — damage or not — rolls
+  // single-target: the AoE radius belongs to a secondary effect (the knockback
+  // splash) that the proc never rolls against.
+  const { radius: areaRadius, arcDegrees: areaArc } =
+    resolveProcRollGeometry(input.internalName, radius, arcDegrees);
   let total = 0;
   for (const slot of slots) {
     if (!slot || slot.type !== 'io-set') continue;

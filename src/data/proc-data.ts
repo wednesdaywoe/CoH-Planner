@@ -2753,30 +2753,18 @@ export function calculateProcsPerMinute(
 }
 
 /**
- * True when a proc's payload is FOE DAMAGE — a Damage effect carrying a
- * value..valueMax range. This is the exact shape every damage-proc site keys on
- * (Build Up's self-buff Damage carries a duration and no valueMax, so it's
- * excluded). Centralized here so the main-target-only area-factor rule below and
- * `calculateSlottedProcDamagePerCast` apply to precisely the same set of procs.
- */
-export function isFoeDamageProc(procData: ProcData): boolean {
-  return getProcEffects(procData).some(
-    (e) => e.category === 'Damage' && e.value !== undefined && e.valueMax !== undefined,
-  );
-}
-
-/**
- * Powers whose FOE DAMAGE lands on the main target only — the game flags them
- * `ProcMainTargetOnly` / tags each damage effect group `MainTargetOnly` — even
- * though the power carries an AoE radius from a *secondary* effect. Propel is the
- * canonical (and, among player powers, the only) case: its 15ft radius is the
- * knockback splash, while the Smashing damage strikes just the main target.
+ * Powers whose procs roll against the MAIN TARGET ONLY — the game flags them
+ * `ProcMainTargetOnly` / tags the effect group `MainTargetOnly` — even though the
+ * power carries an AoE radius from a *secondary* effect. Propel is the canonical
+ * (and, among player powers, the only) case: its 15ft radius is the knockback
+ * splash, while the power itself lands on just the main target.
  *
- * For a DAMAGE proc slotted in one of these, the PPM area-factor must be scored
+ * For EVERY proc slotted in one of these, the PPM area-factor is scored
  * single-target (radius 0), not against the power's AoE radius — matching the
- * in-game proc rate. Non-damage procs are unaffected: Force Feedback (+Recharge)
- * is a Knockback proc that rolls against the AoE knockback, so it keeps the
- * power's 15ft radius.
+ * in-game proc rate. The flag belongs to the POWER, not to an individual proc:
+ * Force Feedback (+Recharge) in Propel rolls single-target exactly like a damage
+ * proc does. (The first cut of this override applied only to foe-damage procs and
+ * left Force Feedback on the AoE denominator — that was wrong.)
  *
  * This curated set stands in for a datum the binary parser currently drops — it
  * reads the effect-group flag word but keeps only the PvE/PvP bits, discarding
@@ -2785,14 +2773,37 @@ export function isFoeDamageProc(procData: ProcData): boolean {
  * keep-the-lights-on correction. Keyed by `internalName` so one entry covers
  * every dataset (HC/Rebirth/Thunderspy) and both the Controller/Dominator copies.
  */
-export const DAMAGE_MAIN_TARGET_ONLY_POWERS: ReadonlySet<string> = new Set([
+export const PROC_MAIN_TARGET_ONLY_POWERS: ReadonlySet<string> = new Set([
   'Propel',
 ]);
 
-/** Whether a power's foe damage is main-target-only (see the set above). Safe on
+/** Whether a power's procs are main-target-only (see the set above). Safe on
  *  undefined/empty names. */
-export function isDamageMainTargetOnlyPower(internalName: string | undefined | null): boolean {
-  return !!internalName && DAMAGE_MAIN_TARGET_ONLY_POWERS.has(internalName);
+export function isProcMainTargetOnlyPower(internalName: string | undefined | null): boolean {
+  return !!internalName && PROC_MAIN_TARGET_ONLY_POWERS.has(internalName);
+}
+
+/**
+ * The area geometry a slotted proc actually rolls against in a given power —
+ * the single place the main-target-only override is applied, so every PPM
+ * surface (Power Info proc row, InfoPanel proc DPS, DamageBlock/attack-chain
+ * proc damage, the enhancement tooltip) can't drift apart.
+ *
+ * `radius`/`arcDegrees` in must already be the power's *effective* footprint
+ * (i.e. post-`resolveProcAreaGeometry`, so summon-shell AoEs carry their
+ * pseudo-pet radius). Returns a normalized arc: 360 whenever the roll is
+ * single-target or the power supplies no usable arc.
+ */
+export function resolveProcRollGeometry(
+  internalName: string | undefined | null,
+  radius: number,
+  arcDegrees: number | undefined,
+): { radius: number; arcDegrees: number } {
+  if (isProcMainTargetOnlyPower(internalName)) return { radius: 0, arcDegrees: 360 };
+  return {
+    radius,
+    arcDegrees: radius > 0 && arcDegrees && arcDegrees > 0 ? arcDegrees : 360,
+  };
 }
 
 // ============================================================================

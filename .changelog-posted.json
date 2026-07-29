@@ -305,6 +305,31 @@
       "id": "launch-jump-height-global",
       "date": "2026-07-26",
       "preview": "Launch's +Jump Height global was doing nothing. It was being read as +Run Speed,"
+    },
+    {
+      "id": "end-cost-net-end",
+      "date": "2026-07-27",
+      "preview": "Fix for END COST and NET END not reading from the calculation path"
+    },
+    {
+      "id": "cache-bust-stamp",
+      "date": "2026-07-27",
+      "preview": "Added a build-engine stamp to help with calculator load issues"
+    },
+    {
+      "id": "missing-absorb-boost",
+      "date": "2026-07-27",
+      "preview": "Fix for Cardiac and Resilient Alpha missing absorb boost"
+    },
+    {
+      "id": "fly-speed-1.5-scale",
+      "date": "2026-07-27",
+      "preview": "Fly speed, once more: a fly buff is worth 21.48 mph per 100%, not 14.32. Flying "
+    },
+    {
+      "id": "sj-cj-jump-suppression",
+      "date": "2026-07-27",
+      "preview": "Known issue: with both Super Jump and Combat Jumping, in-combat jump speed reads"
     }
   ]
 }

@@ -5,7 +5,7 @@
 
 import { useBuildStore, useUIStore } from '@/stores';
 import { useBonusTracking } from '@/hooks';
-import { getIOSet, lookupPower, findProcData, resolveProcPieceName, procEffectSummary, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, interpolateProcDamage, calculateProcChance, calculateProcsPerMinute, calculateProcDPS, calculateAutoToggleProcChance, calculateAutoToggleProcsPerMinute, arcToDegrees } from '@/data';
+import { getIOSet, lookupPower, findProcData, resolveProcPieceName, procEffectSummary, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, resolveProcRollGeometry, interpolateProcDamage, calculateProcChance, calculateProcsPerMinute, calculateProcDPS, calculateAutoToggleProcChance, calculateAutoToggleProcsPerMinute, arcToDegrees } from '@/data';
 import {
   normalizeAspectName,
   normalizeStatName,
@@ -275,12 +275,18 @@ export function EnhancementInfoContent({ powerName, powerSet, slotIndex }: Enhan
                       const { selected, base } = powerData;
                       const powerType = selected.powerType?.toLowerCase() || base?.powerType?.toLowerCase() || 'click';
                       const isAutoOrToggle = powerType === 'auto' || powerType === 'toggle';
+                      // Propel & co.: the radius is a secondary knockback splash — every
+                      // proc in the power rolls the single-target area-factor.
+                      const procPowerName = selected.internalName ?? base?.internalName;
 
                       // For Auto/Toggle powers, use special calculation
                       if (isAutoOrToggle) {
-                        const togRadius = base?.effects?.radius || selected.effects?.radius || 0;
                         const togArcRaw = base?.effects?.arc ?? selected.effects?.arc;
-                        const togArc = togRadius > 0 ? (arcToDegrees(togArcRaw) || 360) : 360;
+                        const { radius: togRadius, arcDegrees: togArc } = resolveProcRollGeometry(
+                          procPowerName,
+                          base?.effects?.radius || selected.effects?.radius || 0,
+                          arcToDegrees(togArcRaw) || undefined,
+                        );
                         const procChance = calculateAutoToggleProcChance(procData.ppm, togRadius, togArc);
                         const procsPerMin = calculateAutoToggleProcsPerMinute(procData.ppm, togRadius, togArc);
 
@@ -351,9 +357,12 @@ export function EnhancementInfoContent({ powerName, powerSet, slotIndex }: Enhan
                       // For Click powers, need recharge and cast time
                       const recharge = base?.effects?.recharge || selected.effects?.recharge || 0;
                       const castTime = base?.effects?.castTime || selected.effects?.castTime || 1;
-                      const radius = base?.effects?.radius || selected.effects?.radius || 0;
                       const arcRaw = base?.effects?.arc ?? selected.effects?.arc;
-                      const arcDegrees = radius > 0 ? (arcToDegrees(arcRaw) || 360) : 360;
+                      const { radius, arcDegrees } = resolveProcRollGeometry(
+                        procPowerName,
+                        base?.effects?.radius || selected.effects?.radius || 0,
+                        arcToDegrees(arcRaw) || undefined,
+                      );
 
                       if (recharge <= 0) return null; // Can't calculate without recharge
 
