@@ -6352,6 +6352,10 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
     const sd = getStrengthsDisallowedIndex().get(powerJson.full_name.toLowerCase());
     if (sd && sd.global.length) power.globalStrengthsDisallowed = sd.global;
   }
+  // ProcMainTargetOnly — procs roll single-target here regardless of the power's
+  // radius. Authored per AT copy, so it must come from the power, not a name.
+  // See the field doc on `Power.procsOnlyOnMainTarget`.
+  if (powerJson.procs_only_on_main_target) power.procsOnlyOnMainTarget = true;
 
   // Chain / target-cap RPN expressions (bin fields 43b / 38 — Electrical Affinity
   // circuits, Chain Lightning, Gauntlet, …). Raw token lists carried through for

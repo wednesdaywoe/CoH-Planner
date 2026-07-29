@@ -18,6 +18,7 @@ export const GroundZero: Power = {
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "procsOnlyOnMainTarget": true,
   "stats": {
     "accuracy": 1.2,
     "radius": 15,

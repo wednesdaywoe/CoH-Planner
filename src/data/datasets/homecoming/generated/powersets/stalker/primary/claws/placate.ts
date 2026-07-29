@@ -18,6 +18,7 @@ export const Placate: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "procsOnlyOnMainTarget": true,
   "stats": {
     "accuracy": 1,
     "range": 60,

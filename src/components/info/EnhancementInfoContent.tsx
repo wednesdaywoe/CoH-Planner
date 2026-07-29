@@ -277,13 +277,14 @@ export function EnhancementInfoContent({ powerName, powerSet, slotIndex }: Enhan
                       const isAutoOrToggle = powerType === 'auto' || powerType === 'toggle';
                       // Propel & co.: the radius is a secondary knockback splash — every
                       // proc in the power rolls the single-target area-factor.
-                      const procPowerName = selected.internalName ?? base?.internalName;
+                      const procsOnlyOnMainTarget =
+                        selected.procsOnlyOnMainTarget ?? base?.procsOnlyOnMainTarget;
 
                       // For Auto/Toggle powers, use special calculation
                       if (isAutoOrToggle) {
                         const togArcRaw = base?.effects?.arc ?? selected.effects?.arc;
                         const { radius: togRadius, arcDegrees: togArc } = resolveProcRollGeometry(
-                          procPowerName,
+                          procsOnlyOnMainTarget,
                           base?.effects?.radius || selected.effects?.radius || 0,
                           arcToDegrees(togArcRaw) || undefined,
                         );
@@ -359,7 +360,7 @@ export function EnhancementInfoContent({ powerName, powerSet, slotIndex }: Enhan
                       const castTime = base?.effects?.castTime || selected.effects?.castTime || 1;
                       const arcRaw = base?.effects?.arc ?? selected.effects?.arc;
                       const { radius, arcDegrees } = resolveProcRollGeometry(
-                        procPowerName,
+                        procsOnlyOnMainTarget,
                         base?.effects?.radius || selected.effects?.radius || 0,
                         arcToDegrees(arcRaw) || undefined,
                       );

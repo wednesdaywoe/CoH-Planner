@@ -841,6 +841,21 @@ export interface Power {
    * Hasten/set bonuses don't). Same sourcing/caveats as `strengthsDisallowed`.
    */
   globalStrengthsDisallowed?: string[];
+  /**
+   * `ProcMainTargetOnly` (HC power-level bin field, decoded 2026-07-29). Procs
+   * slotted here roll against the main target only, so they use the
+   * single-target PPM area factor even though the power carries an AoE radius —
+   * that radius belongs to a splash the procs don't follow (Propel's 15ft is its
+   * knockback). Applies to EVERY proc in the power, damage or not, because it is
+   * a property of the power. Read by `resolveProcRollGeometry`, the one place
+   * the rule lives.
+   *
+   * Authored per AT copy, which is why a name-keyed override could never express
+   * it: Lightning Clap carries the flag on Brute/Scrapper/Tanker but not on
+   * Stalker. Sparse — absent on powers that don't set it, and on every
+   * Rebirth/Thunderspy power (no such field exists in the Parse6 tail).
+   */
+  procsOnlyOnMainTarget?: boolean;
   /** Prerequisite power(s) - logical expression */
   requires?: string;
   /**

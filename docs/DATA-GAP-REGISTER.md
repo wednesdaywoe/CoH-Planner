@@ -91,11 +91,11 @@ eligibility), `OverCapMultiplier`/`OverCapTrigger` (63), `MaxBoosts` (63), `Chai
 (36), and server-only `StrengthsDisallowed` (952 — not in the client bin; would need
 `raw defs/` sourcing). None feed a currently-modeled calc feature.
 
-### HC-3 — `MainTargetOnly` / `ProcMainTargetOnly` dropped (proc area-factor mis-scoring)
-**Severity: MEDIUM (≥7 player power families, only 1 worked around) · Status: RECORDED, scoped 2026-07-28, verified live 2026-07-29 · Blocked on: locating the power-level field (the tspy re-export blocker is GONE — TSPY-1 resolved)**
-`_parse_effect_group` reads the group flag word (`flags_val`) but keeps only the PvE/PvP
+### HC-3 — ~~`MainTargetOnly` / `ProcMainTargetOnly` dropped (proc area-factor mis-scoring)~~ — RESOLVED 2026-07-29
+**Severity: was MEDIUM (≥7 player power families, only 1 worked around) · Status: RESOLVED — power-level field decoded, exported, and read from the `Power` object; the curated override is deleted**
+`_parse_effect_group` read the group flag word (`flags_val`) but kept only the PvE/PvP
 bits (bit 0/1), discarding `MainTargetOnly` — and the power-level `ProcMainTargetOnly`
-isn't parsed at all. Consequence: a power whose damage lands on the main target only
+was not parsed at all. Consequence: a power whose damage lands on the main target only
 while it carries an AoE radius from a *secondary* effect is indistinguishable from a
 genuine AoE (Propel's damage groups look identical to Fire Ball's — both `radius_outer -1`
 = "inherit power area"). Damage procs slotted in such a power were scored against the 15ft
@@ -121,9 +121,39 @@ Bin decodability, probed against the 4,915 raw-defs files that match a bin power
   `Flags MainTargetOnly` with **124 true-positive / 0 false-positive** — but 134 misses, so
   bit 3 alone is a partial decode, not the whole story.
 - The **power-level** flag is NOT that bit (80 powers have the power flag and no bit-3
-  group; 112 the reverse) and is not in the parsed power tail (`_parse_power_tail` is mapped
-  through `StrengthsDisallowed`; everything past it is skipped). **Locating it is the open
-  work** — it is the field the ST-calc rule should key on.
+  group; 112 the reverse).
+
+**DECODED 2026-07-29 — it sits four words past where the tail decode stopped.** The real
+layout after `StrengthsDisallowed` is `GlobalStrengthsDisallowed` (u4_array), two unnamed
+bools, `ProcMainTargetOnly`, `AnimMainTargetOnly`. Verified against the `raw defs/**.powers`
+oracle over all 4,943 authored player powers:
+
+| field | result |
+|---|---|
+| `GlobalStrengthsDisallowed` | 15 TP / 0 FP / 0 FN, exact per-power element counts |
+| `ProcMainTargetOnly` | **92 TP / 0 FP / 0 FN** |
+| `AnimMainTargetOnly` | 48 TP / 0 FP / 0 FN |
+
+**The probe lesson (worth more than the field).** An earlier probe of this region found a
+near-perfect separator with 12 stubborn false positives — Teleport Foe, Kuji-In Rin,
+Starless Step. They were not noise: every one carries `GlobalStrengthsDisallowed`, an unread
+variable-length array that shifted exactly those records by `1+N` words onto a default-`1`
+neighbour. Reading it first took the false positives to zero. **A ragged edge in a positional
+probe is a variable-length field you have not read yet — ask what the outliers share before
+doubting the hypothesis.**
+
+The two unnamed bools only ever vary on `5thColumn.Aereus_Goliath_*` NPC powers, which have
+no authored def to name them from, so they ship raw rather than being discarded (unknown is
+exportable; discarded is unrecoverable). All four are bool-guarded — a value outside 0/1
+raises, so a future layout shift drops the fields loudly instead of shipping a misread.
+Re-export produced zero new tail-parse failures.
+
+**The forks have no such field.** 40 words were probed past Parse6's `StrengthsDisallowed`
+in both Rebirth and Thunderspy; no bool separates the flagged set (best: rebirth word[27],
+39/84 with 155 FP), and `GlobalStrengthsDisallowed` is absent too — consistent with Parse6
+following the stock i24 `ParseBasePower` table with no HC insertions. Absent field = absent
+feature: Rebirth/Thunderspy Propel keeps the AoE denominator, now as a data statement rather
+than an assumption.
 
 **The one piece of counter-evidence is RETRACTED (2026-07-28).** The 2026-07-07 live log
 (Touch of Fear landing three Eradication procs on three different targets in one
@@ -203,15 +233,26 @@ but **75.4→90% at 2 PPM** (Force Feedback). Ground Zero caps either way (no vi
 Only Propel is corrected today. `Ground_Zero`/`Touch_of_Fear` are the HC-4 wrapper families —
 their procs roll on a child, so the parent's flag may not even govern; leave them alone.
 
-Worked around in the calc layer via the curated `PROC_MAIN_TARGET_ONLY_POWERS` set +
-`resolveProcRollGeometry` (`src/data/proc-data.ts`), the single seam every PPM surface
-calls — **every** proc in such a power rolls single-target, damage or not. (The first
-cut, 93807f1fab, applied the override only to foe-damage procs and left Force Feedback
-on the 15ft denominator; corrected 2026-07-28 — the flag is a property of the power,
-not of the individual proc.) Durable fix: locate the power-level `ProcMainTargetOnly`
-field in the power record (the group bit 3 above is the wrong field), decode + re-export,
-then key the override off the real flag and drop the curated set.
-Note: `ProcAllowed` (HC-2 backlog) lives in the same power-level flag family.
+**What shipped.** The flag rides the export as `procs_only_on_main_target`, the three power
+converters put it on the `Power` object as `procsOnlyOnMainTarget`, and
+`resolveProcRollGeometry` (`src/data/proc-data.ts`) — the single seam every PPM surface
+calls — reads it. **95 converted powers carry it**, against the 1 the name-keyed set could
+reach. `PROC_MAIN_TARGET_ONLY_POWERS` and `isProcMainTargetOnlyPower` are deleted, and with
+them the Rule-0 deviation: the per-AT table above is now reproduced by the data itself
+(Lightning Clap flagged on Brute/Scrapper/Tanker, absent on Stalker; Focused Burst on
+Scrapper alone of four). The guard `src/data/proc-main-target-only.test.ts` asserts that
+directly off the generated powers, which the hardcoded set made impossible; both axes are
+mutation-tested.
+
+The interim override was correct while it lasted — the first cut, 93807f1fab, applied it
+only to foe-damage procs and left Force Feedback on the 15ft denominator; corrected
+2026-07-28, since the flag is a property of the power, not of the individual proc.
+
+Not fixed here (deliberate): `globalStrengthsDisallowed` still comes from the `raw defs/`
+scrape rather than the export, even though the bin now carries it — the two disagree on
+attrib vocabulary (`Psionic_Dmg` vs `Psionic`), so switching sources is a consumer-visible
+rename, not a drop-in. Note also that `ProcAllowed` (HC-2 backlog) lives in the same
+power-level flag family.
 
 ### HC-4 — procs in `ExecutePower` wrapper powers roll on the CHILD, not the parent
 **Severity: unknown, potentially material · Status: OPEN, found 2026-07-28 · Found via: HC-3**

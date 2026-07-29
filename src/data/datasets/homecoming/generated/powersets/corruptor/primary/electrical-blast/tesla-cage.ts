@@ -18,6 +18,7 @@ export const TeslaCage: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Chain",
+  "procsOnlyOnMainTarget": true,
   "maxTargetsExpression": "1 Redirects.Shock_Therapy.Shock_Therapy_Static source.ownPowerNum? + 1 11 minmax",
   "stats": {
     "accuracy": 1,

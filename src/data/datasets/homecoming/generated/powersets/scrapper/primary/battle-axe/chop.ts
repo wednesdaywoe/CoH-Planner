@@ -21,6 +21,7 @@ export const Chop: Power = {
   "strengthsDisallowed": [
     "Range"
   ],
+  "procsOnlyOnMainTarget": true,
   "stats": {
     "accuracy": 1.15,
     "range": 7,

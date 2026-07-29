@@ -479,7 +479,7 @@ function computeProcDamagePerActivation(props: DamageBlockProps): number {
       arcDegrees,
       rechargeEnh: enhancementBonuses.recharge ?? 0,
       buildLevel,
-      internalName: selectedPower.internalName,
+      procsOnlyOnMainTarget: selectedPower.procsOnlyOnMainTarget,
     });
   }
   return total;

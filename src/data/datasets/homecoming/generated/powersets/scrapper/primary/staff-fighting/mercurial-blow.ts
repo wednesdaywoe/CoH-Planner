@@ -21,6 +21,7 @@ export const MercurialBlow: Power = {
   "strengthsDisallowed": [
     "Range"
   ],
+  "procsOnlyOnMainTarget": true,
   "stats": {
     "accuracy": 1.05,
     "range": 9,

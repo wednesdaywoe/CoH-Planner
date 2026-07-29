@@ -155,6 +155,9 @@ function convertPoolPower(rawJson, rank, availableLevel) {
       && getStrengthsDisallowedIndex().get(rawJson.full_name.toLowerCase());
     if (sd && sd.global.length) power.globalStrengthsDisallowed = sd.global;
   }
+  // ProcMainTargetOnly — procs roll single-target here regardless of the power's
+  // radius. See the field doc on `Power.procsOnlyOnMainTarget`.
+  if (rawJson.procs_only_on_main_target) power.procsOnlyOnMainTarget = true;
   power.rank = rank;
   power.available = availableLevel;
 

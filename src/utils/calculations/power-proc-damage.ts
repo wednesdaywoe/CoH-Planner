@@ -33,10 +33,9 @@ export interface SlottedProcDamageInput {
   rechargeEnh: number;
   /** Character level used to interpolate proc damage. */
   buildLevel: number;
-  /** The power's internalName. Only used to detect the main-target-only powers
-   *  (Propel) whose procs roll single-target despite an AoE radius — pass it and
-   *  the override applies itself; see resolveProcRollGeometry. */
-  internalName?: string;
+  /** The power's `ProcMainTargetOnly` flag — when set, its procs roll
+   *  single-target despite an AoE radius; see resolveProcRollGeometry. */
+  procsOnlyOnMainTarget?: boolean;
 }
 
 /**
@@ -45,11 +44,11 @@ export interface SlottedProcDamageInput {
  */
 export function calculateSlottedProcDamagePerCast(input: SlottedProcDamageInput): number {
   const { slots, baseRecharge, castTime, radius, arcDegrees, rechargeEnh, buildLevel } = input;
-  // In a main-target-only power (Propel) every proc — damage or not — rolls
+  // In a main-target-only power every proc — damage or not — rolls
   // single-target: the AoE radius belongs to a secondary effect (the knockback
   // splash) that the proc never rolls against.
   const { radius: areaRadius, arcDegrees: areaArc } =
-    resolveProcRollGeometry(input.internalName, radius, arcDegrees);
+    resolveProcRollGeometry(input.procsOnlyOnMainTarget, radius, arcDegrees);
   let total = 0;
   for (const slot of slots) {
     if (!slot || slot.type !== 'io-set') continue;

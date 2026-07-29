@@ -4524,6 +4524,7 @@ export const POWER_POOLS_RAW = {
       {
         "name": "Spirit Ward",
         "fullName": "Pool.Sorcery.Spirit_Ward",
+        "procsOnlyOnMainTarget": true,
         "rank": 1,
         "available": 0,
         "description": "You encompass an ally in a mystical Spirit Ward, which causes them to gain a moderate amount of damage absorption instantly, in addition to a small amount of damage absorption every few seconds while the power is active.<br><br><color #fcfc95>Recharge: Slow.</color>",

@@ -26107,6 +26107,7 @@ export const EPIC_POOLS_RAW = {
         "strengthsDisallowed": [
           "Range"
         ],
+        "procsOnlyOnMainTarget": true,
         "rank": 4,
         "available": 40,
         "description": "This massive attack hits with all the force of the Earth itself. It deals tremendous amounts of damage, and may Hold the target if they are not defeated outright. You must be level 41 and have one other Earth Mastery Powers before selecting this power.",

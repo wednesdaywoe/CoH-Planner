@@ -245,7 +245,7 @@ export function GeneralStatsBlock({
         slottedRechargeBonus={enhancementBonuses.recharge ?? 0}
         // Propel & co.: every proc scores single-target — the AoE radius belongs
         // to a secondary knockback, not to what the procs roll against.
-        internalName={power.internalName}
+        procsOnlyOnMainTarget={power.procsOnlyOnMainTarget}
       />
     </div>
   );
@@ -293,9 +293,9 @@ interface ProcChanceRowProps {
   radius: number;
   arcDegrees: number | undefined;
   slottedRechargeBonus: number;
-  /** The power's internalName — resolveProcRollGeometry uses it to spot the
-   *  main-target-only powers (Propel) whose procs all roll single-target. */
-  internalName?: string;
+  /** The power's `ProcMainTargetOnly` flag — resolveProcRollGeometry scores its
+   *  procs single-target despite the power's AoE radius. */
+  procsOnlyOnMainTarget?: boolean;
 }
 
 interface ProcEntry {
@@ -315,7 +315,7 @@ function ProcChanceRow({
   radius,
   arcDegrees,
   slottedRechargeBonus,
-  internalName,
+  procsOnlyOnMainTarget,
 }: ProcChanceRowProps) {
   // Per-view local expansion plus a persisted "pin" toggle. The pin
   // wins when on — Power Info shows the breakdown automatically for
@@ -336,7 +336,7 @@ function ProcChanceRow({
   // proc in it — damage or Force Feedback alike — rolls the single-target
   // area-factor. resolveProcRollGeometry owns that rule for all PPM surfaces.
   const { radius: procRadius, arcDegrees: arcDeg } =
-    resolveProcRollGeometry(internalName, radius, arcDegrees);
+    resolveProcRollGeometry(procsOnlyOnMainTarget, radius, arcDegrees);
   const modifiedRecharge = baseRecharge / (1 + slottedRechargeBonus);
   const areaDenom = getPPMAreaDenominator(procRadius, arcDeg);
 

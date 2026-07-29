@@ -21,6 +21,7 @@ export const PreciseStrike: Power = {
   "strengthsDisallowed": [
     "Range"
   ],
+  "procsOnlyOnMainTarget": true,
   "stats": {
     "accuracy": 1.1,
     "range": 9,

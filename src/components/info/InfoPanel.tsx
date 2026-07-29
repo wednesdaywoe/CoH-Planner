@@ -524,7 +524,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     // Propel & co.: procs are main-target-only despite the power's AoE radius
     // (that radius is a secondary knockback), so score them single-target.
     const { radius: procRadius, arcDegrees: procArc } =
-      resolveProcRollGeometry(effectivePower?.internalName, radius, arcDegrees);
+      resolveProcRollGeometry(effectivePower?.procsOnlyOnMainTarget, radius, arcDegrees);
     if (!baseRecharge && !castTime) return null;
 
     // Cycle time uses the *enhanced* recharge (slotted + global) and

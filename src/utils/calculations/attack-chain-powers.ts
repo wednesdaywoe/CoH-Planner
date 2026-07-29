@@ -329,7 +329,7 @@ export function buildChainPowers(
         arcDegrees: radiusP > 0 ? (arcToDegrees(powerArc(p)) || 360) : 360,
         rechargeEnh: enh.recharge || 0,
         buildLevel: build.level,
-        internalName: p.internalName,
+        procsOnlyOnMainTarget: p.procsOnlyOnMainTarget,
       });
       const dot = dotData && !dotInCast
         ? {
