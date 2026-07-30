@@ -166,6 +166,22 @@ TAG_TO_CATEGORY = {
     'Heal': 'Heal', 'ToHit': 'ToHit',
 }
 
+# Boost-set categories whose pieces are only slottable in a SUMMON power, so the
+# game copies the boosts onto the summoned pet and the pet is what carries the proc.
+# Such a proc's templates say `target: Self` — but "self" there is the PET, not the
+# player, so every effect they resolve to has to be stamped `target: 'pets'` for the
+# player-dashboard passes to skip it.
+#
+# The set category is the ONLY discriminator the binary offers. Verified 2026-07-30:
+# Soulbound Allegiance (ECPetDamage), Decimation (ECRanged) and Gaussian's
+# (ECToHitBuff) all grant the byte-identical `Set_Bonus.Global_Bonus.Boost_Up` power
+# through a byte-identical `Grant_Power` template — nothing inside the proc piece
+# distinguishes the pet-only Build Up from the two self ones.
+PET_CARRIED_CATEGORIES = {
+    'ECPetDamage', 'ECRechargeIntensivePets',   # Soulbound, Expedient Reinforcement, Call to Arms…
+    'ECMastermind', 'ECSMastermind',            # Mastermind ATOs (henchman summons only)
+}
+
 # Globals the binary can't express as a plain (attrib, scale) — value comes from
 # an HP-scaling expression or special mechanic. Hand-override to match the current
 # planner behaviour (parity); revisit when the scaling model is improved.
@@ -803,6 +819,11 @@ def main() -> int:
         if not pick and not want:
             pick = next(iter(by_key.values()), None)  # no inference -> any payload
         if pick:
+            # A piece from a pet set rides on the PET (see PET_CARRIED_CATEGORIES) —
+            # its `target: Self` templates mean the pet. Copy rather than mutate:
+            # `by_key` aliases one payload list under several keys.
+            if s.category in PET_CARRIED_CATEGORIES:
+                pick = [{**ef, 'target': 'pets'} for ef in pick]
             eff_gen[e['key']] = pick
         else:
             payload_keys = sorted(by_key.keys())

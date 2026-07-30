@@ -20,6 +20,7 @@ import { withoutIllegalSlots } from '@/utils/build-enhancement-validation';
 import { stanceAdjusterOverrides, STANCE_GROUPS, activeStanceOptionId } from '@/data';
 import { getIOSet, getAlphaEffects, getDestinyEffects, getDestinyEffectsAtTime, getDestinySustainedFloorTime, getDestinyBoostsAllowed, applyAlphaToDestiny, getHybridEffects, getLoreEffects, getGenesisEffects, findProcData, getProcEffects, isProcAlwaysOn, calculateAutoToggleProcsPerMinute, calculateProcChance, arcToDegrees, getProcControlType, DEFAULT_STACK_COUNT, resolveProcContribution, procOverrideKey } from '@/data';
 import type { DestinyEffects, GenesisEffects } from '@/data';
+import type { ProcEffect } from '@/data/proc-data';
 import { getTableValue } from '@/data/at-tables';
 import { getBaseToHit, getCombatModifier } from '@/data/purple-patch';
 import { getPowerPool } from '@/data/power-pools';
@@ -2350,10 +2351,15 @@ function applyBuildUpProcBonuses(
 
       // A Build Up proc is a self-buff Damage effect with a duration (regular
       // damage procs carry a valueMax range and no duration), plus a ToHit buff.
+      // SELF-buff is the operative word: Soulbound Allegiance is a pet-set piece
+      // slotted in a summon power, so its Build Up lands on the PET (target 'pets')
+      // and must not reach the player's dashboard — the same skip the always-on and
+      // variable proc passes already apply.
       const effects = getProcEffects(procData);
-      const dmgE = effects.find((e) => e.category === 'Damage' && e.duration !== undefined);
+      const isSelf = (e: ProcEffect) => e.target === undefined || e.target === 'self';
+      const dmgE = effects.find((e) => e.category === 'Damage' && e.duration !== undefined && isSelf(e));
       if (!dmgE) continue;
-      const toHitE = effects.find((e) => e.category === 'ToHit');
+      const toHitE = effects.find((e) => e.category === 'ToHit' && isSelf(e));
 
       buildUpProcs.push({
         procName: ioSlot.name,

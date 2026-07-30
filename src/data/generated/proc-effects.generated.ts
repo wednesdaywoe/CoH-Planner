@@ -48,7 +48,7 @@ export const PROC_OTHER_EFFECTS: Record<string, ProcEffect[]> = {
   "Ragnarok: Chance for Knockdown": [{ category: "Control", value: 0.67, effectType: "Knockdown", target: "foe" }],
   "Sentinel's Ward: Recharge/Chance for +Absorb": [{ category: "Absorb", value: 100.0 }],
   "Siphon Insight: Chance for +ToHit": [{ category: "ToHit", value: 200.0, duration: 10.0, target: "pets" }],
-  "Soulbound Allegiance: Chance for Build Up": [{ category: "Damage", value: 100.0, effectType: "All", duration: 10.0 }, { category: "ToHit", value: 15.0, duration: 10.0 }],
+  "Soulbound Allegiance: Chance for Build Up": [{ category: "Damage", value: 100.0, effectType: "All", duration: 10.0, target: "pets" }, { category: "ToHit", value: 15.0, duration: 10.0, target: "pets" }],
   "Superior Blistering Cold: Recharge/Chance for Hold": [{ category: "Control", value: 3.0, effectType: "Hold", duration: 8.0, target: "foe" }],
   "Superior Defiant Barrage: Recharge/Chance for Mez Protection,Resistance": [{ category: "MezResist", value: 100.0, effectType: "All", duration: 10.25 }, { category: "MezResist", value: 20.0, effectType: "All", duration: 10.25 }],
   "Superior Dominion of Arachnos: Recharge/Chance for -Dam(All)/Chance for Terror": [{ category: "Control", value: 2.0, effectType: "Fear", duration: 10.0, target: "foe" }],
