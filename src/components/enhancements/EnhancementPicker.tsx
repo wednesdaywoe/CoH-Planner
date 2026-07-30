@@ -18,7 +18,7 @@ import {
   getRarityColor, getTierTextColor, getTierBorderColor,
   findProcData, resolveProcPieceName, procEffectSummary, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, interpolateProcDamage,
 } from '@/data';
-import { normalizeAspectName, getEffectiveAspectCount, calculateSingleEnhancementValues } from '@/utils/calculations';
+import { normalizeAspectName, readAspectDisplayValue, getEffectiveAspectCount, calculateSingleEnhancementValues } from '@/utils/calculations';
 import { Modal, ModalBody } from '@/components/modals';
 import { Tooltip, Toggle, LevelSpinner } from '@/components/ui';
 import { IOSetIcon, GenericIOIcon, OriginEnhancementIcon, SpecialEnhancementIcon } from './EnhancementIcon';
@@ -1964,13 +1964,8 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
     piece.name,
   );
 
-  const calculateAspectValue = (aspect: string): number | null => {
-    const normalized = normalizeAspectName(aspect);
-    // `Mez` fans out into the six mez aspects rather than normalizing to one — read any of
-    // them, they carry the same value.
-    if (!normalized) return aspect.trim() === 'Mez' ? previewValues.hold ?? null : null;
-    return previewValues[normalized] ?? null;
-  };
+  const calculateAspectValue = (aspect: string): number | null =>
+    readAspectDisplayValue(aspect, previewValues);
 
   return (
     <div className="space-y-2 max-w-[320px]">

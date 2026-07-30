@@ -316,6 +316,33 @@ export function normalizeAspectName(aspect: string): string | null {
   return ASPECT_NAME_MAP[trimmed] || null;
 }
 
+/**
+ * Aspect labels that fan out to several internal keys instead of normalizing to one,
+ * mapped to the key a UI row should display for them. `Mez` fans out to six keys that
+ * all carry the same value, so any is representative. `Move Speed` fans out to the
+ * travel modes *and* Range, which sit on different schedules and so carry different
+ * values — the row is labelled for movement, so it reads the movement value.
+ */
+const FANNED_ASPECT_DISPLAY_KEY: Record<string, string> = {
+  Mez: 'hold',
+  'Move Speed': 'run',
+};
+
+/**
+ * Resolve the value a UI row should show for one piece aspect, handling the fan-out
+ * labels that {@link normalizeAspectName} deliberately rejects. Shared so the picker
+ * preview and the slotted-enhancement info panel cannot drift apart.
+ */
+export function readAspectDisplayValue(
+  aspect: string,
+  values: Record<string, number | undefined>,
+): number | null {
+  const normalized = normalizeAspectName(aspect);
+  if (normalized) return values[normalized] ?? null;
+  const fanned = FANNED_ASPECT_DISPLAY_KEY[aspect.trim()];
+  return fanned ? values[fanned] ?? null : null;
+}
+
 // ============================================
 // ENHANCEMENT DIVERSIFICATION
 // ============================================
@@ -457,6 +484,30 @@ export function getEffectiveAspectCount(
 const UNIVERSAL_MEZ_KEYS = ['hold', 'stun', 'immobilize', 'sleep', 'confuse', 'fear'] as const;
 
 /**
+ * "Universal Travel" pieces (Winter's Gift, Blessing of the Zephyr) — ONE boost that
+ * enhances every travel mode plus Range, which is why the game counts it as a single
+ * aspect slot. Verified against the binary export
+ * (`exported_powers/boosts/crafted_winters_gift_a`), whose in-game piece name is
+ * literally "Run Speed, Jump, Flight Speed, Range":
+ *
+ *   ['RunningSpeed','FlyingSpeed','JumpingSpeed']  Melee_Boosts_33  scale 1.0
+ *   ['JumpHeight']                                 Melee_Boosts_33  scale 1.0
+ *   ['Range']                                      Melee_Boosts_20  scale 1.0
+ *
+ * The two tables are Schedule A and Schedule B respectively, and `scale` is just the
+ * multi-aspect modifier (1.0 at one slot; the Endurance piece carries 0.625 across
+ * all four templates, the two-slot rate) — so fanning out to these keys at their own
+ * schedules reproduces the game numbers exactly. `jump` is the single jump category
+ * covering both JumpingSpeed and JumpHeight, as elsewhere in the registries.
+ *
+ * The extractor labels this bundle "Move Speed" (`HC_PIECE_ASPECT_OVERRIDES` in
+ * scripts/extract-rebirth-io-sets-v2.py), a name no consumer understood — so until
+ * 2026-07-30 both Winter's Gift and Blessing of the Zephyr silently enhanced nothing
+ * at all through their travel aspect.
+ */
+const UNIVERSAL_TRAVEL_KEYS = ['run', 'fly', 'jump', 'range'] as const;
+
+/**
  * Every Heal-boosting enhancement boosts Absorb by the same amount — ONE boost
  * applied to two attribs, not two boosts. Verified in powers.bin: the generic
  * Healing IO `Boosts.Crafted_Heal_50` is a single `['Heal_Dmg','Absorb']`
@@ -518,6 +569,16 @@ export function parseIOSetPieceValues(
       const value = baseValue * modifier;
       for (const key of UNIVERSAL_MEZ_KEYS) {
         bonuses[key] = (bonuses[key] ?? 0) + value;
+      }
+      return;
+    }
+    if (aspect.trim() === 'Move Speed') {
+      // Universal-travel expansion (see UNIVERSAL_TRAVEL_KEYS above). Unlike Mez,
+      // these do NOT share a schedule — Range is B where the travel modes are A —
+      // so each key is looked up on its own.
+      for (const key of UNIVERSAL_TRAVEL_KEYS) {
+        const baseValue = getIOValueAtLevel(level, getAspectSchedule(key));
+        bonuses[key] = (bonuses[key] ?? 0) + baseValue * modifier;
       }
       return;
     }

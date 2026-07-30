@@ -8,6 +8,7 @@ import { useBonusTracking } from '@/hooks';
 import { getIOSet, lookupPower, findProcData, resolveProcPieceName, procEffectSummary, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, resolveProcRollGeometry, interpolateProcDamage, calculateProcChance, calculateProcsPerMinute, calculateProcDPS, calculateAutoToggleProcChance, calculateAutoToggleProcsPerMinute, arcToDegrees } from '@/data';
 import {
   normalizeAspectName,
+  readAspectDisplayValue,
   normalizeStatName,
   getTotalBonusCount,
   isBonusCapped,
@@ -101,13 +102,8 @@ export function EnhancementInfoContent({ powerName, powerSet, slotIndex }: Enhan
     );
     const aspectModifier = getMultiAspectModifier(effectiveAspectCount);
 
-    const calculateAspectValue = (aspect: string): number | null => {
-      const normalized = normalizeAspectName(aspect);
-      // `Mez` fans out into the six mez aspects rather than normalizing to one — read any of
-      // them, they carry the same value.
-      if (!normalized) return aspect.trim() === 'Mez' ? slottedValues.hold ?? null : null;
-      return slottedValues[normalized] ?? null;
-    };
+    const calculateAspectValue = (aspect: string): number | null =>
+      readAspectDisplayValue(aspect, slottedValues);
 
     return (
       <div className="space-y-2 max-w-[320px]">

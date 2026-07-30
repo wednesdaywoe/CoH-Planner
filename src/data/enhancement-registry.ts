@@ -306,17 +306,23 @@ export function getTierBorderColor(tier: string): string {
  * obtained already-attuned (Summer Blockbuster, Valentine, Winter events + reward-
  * merit vendors) and are NOT craftable at a fixed level — the range in the data is
  * never exposed to players as a craft option. (Verified in-game 2026-07-02:
- * Overwhelming Force. Winter's Gift is the lone `SEO_` set with maxLevel>1 — same
- * anomaly.) Keyed by display name, which is stable across datasets.
+ * Overwhelming Force.) Keyed by display name, which is stable across datasets.
  *
  * NB this is deliberately a name list, NOT an icon-prefix rule: Thunderspy's
  * Subaluwa is a `UD_` universal-damage set that IS crafted-only (verified in the
  * in-game AH), so it must stay OFF this list and remain level-craftable.
+ *
+ * Winter's Gift was on this list until 2026-07-30 on exactly the icon-prefix
+ * reasoning the paragraph above forbids — it is the lone `SEO_`-iconned set with
+ * maxLevel>1, and that was read as "Superior Event Origin". It is not an event set:
+ * it is the level 10-50 `rare` / `Universal Travel` run-speed set, structurally
+ * identical to Blessing of the Zephyr (`Zephyr.png`, never listed here), whereas
+ * every genuine Winter-event set (Blistering Cold, Frozen Blast, Avalanche, Entomb,
+ * Winter's Bite) is `1-1` / `event`. Only the art is wintry.
  */
 const ATTUNED_ONLY_SET_NAMES: ReadonlySet<string> = new Set([
   'Overwhelming Force',
   "Cupid's Crush",
-  "Winter's Gift",
 ]);
 
 /**

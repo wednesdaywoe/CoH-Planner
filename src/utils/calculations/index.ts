@@ -26,6 +26,7 @@ export {
   getAspectSchedule,
   getIOValueAtLevel,
   normalizeAspectName,
+  readAspectDisplayValue,
   applyED,
   parseIOSetPieceValues,
   BOOST_MULTIPLIER_PER_LEVEL,
