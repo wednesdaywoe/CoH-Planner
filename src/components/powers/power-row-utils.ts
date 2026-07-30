@@ -50,6 +50,51 @@ const CASTER_BUFF_KEYS = [
 /** targetType values where the power cannot be cast on self — buffs go to allies only. */
 const ALLY_ONLY_TARGETS = new Set(['ally', 'ally (alive)']);
 
+/**
+ * `mezResistance` and `debuffResistance` are sub-keyed containers, so their mere
+ * presence proves nothing — the calc routes them per subtype and silently drops
+ * subtypes it has no total for. A power whose only "caster buff" is an unrouted
+ * subtype gets a toggle that cannot move a single number.
+ *
+ * Reported 2026-07-30: Fold Space had a toggle that did nothing. Its bag carries
+ * `mezResistance.teleport` — which is the *foes'* 15s teleport protection (so they
+ * can't be chain-yanked), not a caster buff, and there is no teleport-resistance
+ * total for it to reach either. Same for Rebirth's Mass Translocate and
+ * Thunderspy's Teleport Foe.
+ *
+ * These lists mirror `mezResMapping` / `debuffResMapping` in
+ * `src/utils/calculations/legacy-totals.oracle.ts` (and their Rust twins in
+ * `coh_math`); `power-row-utils.test.ts` pins them in sync.
+ *
+ * Note this is deliberately a routability test, not a `toWho` test: Aid Self also
+ * stamps `toWho: 'Target'` on its `mezResistance.stun`, but it is a self-cast
+ * single-target power where the target *is* the caster, and `stun` does route.
+ */
+export const ROUTED_SUBTYPES: Record<string, Set<string>> = {
+  mezResistance: new Set([
+    'hold', 'stun', 'immobilize', 'sleep', 'confuse', 'fear', 'knockback',
+  ]),
+  debuffResistance: new Set([
+    'movement', 'defense', 'recharge', 'endurance', 'recovery', 'tohit',
+    'regeneration', 'perception',
+  ]),
+};
+
+/**
+ * True when a caster-buff key carries something the calc can actually consume.
+ * Only the sub-keyed resistance containers are scrutinised; every other key is
+ * a scalar or `*Buff` field whose presence is itself the signal.
+ */
+function keyCarriesUsableEffect(key: string, effects: Record<string, unknown>): boolean {
+  const routed = ROUTED_SUBTYPES[key];
+  if (!routed) return true;
+  const container = effects[key];
+  if (!container || typeof container !== 'object') return false;
+  return Object.keys(container as Record<string, unknown>).some((subtype) =>
+    routed.has(subtype.toLowerCase()),
+  );
+}
+
 function isDamagingAttack(power: { damage?: unknown }): boolean {
   // True when the power directly deals damage to enemies. The shared check
   // below uses this to skip the per-cast `damageBuff` field on attack
@@ -84,7 +129,9 @@ function hasPersistentBuffEffects(power: { effects?: object; damage?: unknown },
   // Time Stop) store a positive `specialBuff` on a Foe-targeted power — those
   // must not gain a self-buff toggle.
   if (!isSelf) skip.add('specialBuff');
-  return CASTER_BUFF_KEYS.some(key => key in effects && !skip.has(key));
+  return CASTER_BUFF_KEYS.some(
+    key => key in effects && !skip.has(key) && keyCarriesUsableEffect(key, effects),
+  );
 }
 
 function affectsCaster(power: { targetType?: string }): boolean {
