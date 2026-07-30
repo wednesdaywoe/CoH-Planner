@@ -809,23 +809,25 @@ export function calculateSingleEnhancementValues(
 }
 
 /**
- * Calculate total enhancement bonuses from slotted enhancements
- * Applies Enhancement Diversification (ED) limits
+ * Every slot's raw (pre-ED) per-aspect contribution, across the four slot kinds
+ * (IO set / generic IO / special / origin).
+ *
+ * ONE accumulator, shared by `calculatePowerEnhancementBonuses` and `combineWithAlphaED`,
+ * because they were separate copies of this loop and drifted: the Alpha copy never picked up
+ * the `slot.level` fix, so with an Alpha active every non-attuned set IO was read at the
+ * character's level instead of its craft level (a level-30 Artillery triple paid 21.2%
+ * recharge, not 17.4%). An Alpha changes what is ADDED to a power's aspects — never how the
+ * power's own slots are read — so there is nothing here for a caller to vary.
  */
-export function calculatePowerEnhancementBonuses(
-  power: PowerWithSlots,
-  globalIOLevel = 50,
-  getIOSet?: (setId: string) => { pieces: Array<{ num: number; name?: string; aspects?: string[]; proc?: boolean; totalAspects?: number }>; maxLevel: number; category?: string; name?: string } | undefined,
-  exemplarLevel?: number
-): EnhancementBonuses {
-  if (!power?.slots) {
-    return {};
-  }
-
+function accumulateRawSlotBonuses(
+  slots: PowerWithSlots['slots'],
+  globalIOLevel: number,
+  getIOSet: ((setId: string) => { pieces: Array<{ num: number; name?: string; aspects?: string[]; proc?: boolean; totalAspects?: number }>; maxLevel: number; category?: string; name?: string } | undefined) | undefined,
+  exemplarLevel: number | undefined,
+): Record<string, number> {
   const rawBonuses: Record<string, number> = {};
 
-  // Accumulate bonuses from all slots
-  power.slots.forEach((slot) => {
+  slots.forEach((slot) => {
     if (!slot) return;
 
     // Boost multiplier: each boost level adds 5% to enhancement value
@@ -912,6 +914,25 @@ export function calculatePowerEnhancementBonuses(
     }
   });
 
+  return rawBonuses;
+}
+
+/**
+ * Calculate total enhancement bonuses from slotted enhancements
+ * Applies Enhancement Diversification (ED) limits
+ */
+export function calculatePowerEnhancementBonuses(
+  power: PowerWithSlots,
+  globalIOLevel = 50,
+  getIOSet?: (setId: string) => { pieces: Array<{ num: number; name?: string; aspects?: string[]; proc?: boolean; totalAspects?: number }>; maxLevel: number; category?: string; name?: string } | undefined,
+  exemplarLevel?: number
+): EnhancementBonuses {
+  if (!power?.slots) {
+    return {};
+  }
+
+  const rawBonuses = accumulateRawSlotBonuses(power.slots, globalIOLevel, getIOSet, exemplarLevel);
+
   // Apply Enhancement Diversification
   const edBonuses: EnhancementBonuses = {};
   Object.entries(rawBonuses).forEach(([aspect, rawValue]) => {
@@ -963,67 +984,9 @@ export function combineWithAlphaED(
 ): EnhancementBonuses {
   if (!power?.slots) return { ...alphaBonuses };
 
-  // Step 1: Compute raw IO bonuses (before ED)
-  const rawBonuses: Record<string, number> = {};
-  power.slots.forEach((slot) => {
-    if (!slot) return;
-    const boostMultiplier = enhancementLevelMultiplier(slot);
-
-    if (slot.type === 'io-set' && getIOSet) {
-      const set = getIOSet(slot.setId);
-      if (!set) return;
-      const piece = set.pieces.find((p) => p.num === slot.pieceNum);
-      if (!piece?.aspects) return;
-      const isAttuned = set.maxLevel <= 1 || slot.attuned === true;
-      let ioLevel: number;
-      if (isAttuned) {
-        // Attuned IOs scale with character level, uncapped by set.maxLevel
-        // (see longer comment at the sibling site in this file).
-        ioLevel = exemplarLevel ?? globalIOLevel;
-      } else {
-        ioLevel = Math.min(globalIOLevel, set.maxLevel);
-      }
-      const rarityMultiplier = getSetRarityMultiplier(set.category, set.name);
-      const bonuses = parseIOSetPieceValues(piece.aspects, ioLevel, piece.proc, piece.totalAspects, piece.name);
-      Object.entries(bonuses).forEach(([aspect, value]) => {
-        let scaledValue = value * rarityMultiplier * boostMultiplier;
-        const isPureProc = piece.proc && (!piece.aspects || piece.aspects.length === 0);
-        if (exemplarLevel !== undefined && !isAttuned && !isPureProc) {
-          scaledValue = applyExemplarScaling(scaledValue, ioLevel, exemplarLevel);
-        }
-        rawBonuses[aspect] = (rawBonuses[aspect] || 0) + scaledValue;
-      });
-    } else if (slot.type === 'io-generic') {
-      const aspect = slot.stat as string;
-      const normalized = normalizeAspectName(aspect);
-      if (normalized) {
-        const schedule = getAspectSchedule(normalized);
-        const genericIOLevel = slot.level || globalIOLevel;
-        let value = getIOValueAtLevel(genericIOLevel, schedule) * boostMultiplier;
-        if (exemplarLevel !== undefined) {
-          value = applyExemplarScaling(value, genericIOLevel, exemplarLevel);
-        }
-        addEnhancementBonuses(rawBonuses, { [normalized]: value });
-      }
-    } else if (slot.type === 'special') {
-      if (slot.aspects) {
-        const slotBonuses: Record<string, number> = {};
-        slot.aspects.forEach((aspect: { stat: string; value: number }) => {
-          const normalized = normalizeAspectName(aspect.stat);
-          if (normalized) {
-            slotBonuses[normalized] = (slotBonuses[normalized] || 0) + (aspect.value / 100) * boostMultiplier;
-          }
-        });
-        addEnhancementBonuses(rawBonuses, slotBonuses);
-      }
-    } else if (slot.type === 'origin') {
-      const aspect = slot.stat as string;
-      const normalized = normalizeAspectName(aspect);
-      if (normalized && slot.value) {
-        addEnhancementBonuses(rawBonuses, { [normalized]: (slot.value / 100) * boostMultiplier });
-      }
-    }
-  });
+  // Step 1: Compute raw IO bonuses (before ED) — the same accumulator the non-Alpha path
+  // uses, so a slot is read identically whether or not an Alpha happens to be active.
+  const rawBonuses = accumulateRawSlotBonuses(power.slots, globalIOLevel, getIOSet, exemplarLevel);
 
   // Alpha is a global boost that applies only to aspects the power's
   // `allowedEnhancements` list accepts (matches the game's behaviour —

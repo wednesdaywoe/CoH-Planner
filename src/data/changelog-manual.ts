@@ -42,6 +42,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
       { id: 'winters-gift-enh', message: 'Winters Gift show now be a normal craftable, not auto-attuned', type: 'fix'},
       { id: 'power-effect-conditionals', message:'Power conditionals like Impact should now be surfaced and flow into the attach chain builder', type: 'fix'},
       { id: 'compare-slotting-persistance', message: 'Extended persistance for the Compare Slotting tool', type: 'fix'},
+      { id: 'slot-aggregation-level', message: 'Fix for an active Alpha causing enhancement craft level to get overidden by character level', type: 'fix'},
 
     ]
   },
