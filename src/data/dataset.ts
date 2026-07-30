@@ -43,8 +43,52 @@ export interface ATTableData {
   tables: Record<string, number[]>;
 }
 
+/** Scalar for a base, per-level array for a cap. */
+export interface PetMovementAttrib {
+  run_speed?: number | number[];
+  fly_speed?: number | number[];
+  jump_speed?: number | number[];
+  jump_height?: number | number[];
+}
+
+/**
+ * A pet class's own character stats.
+ *
+ * A summon is a second character (COH-DATA-MODEL §6), and these are the numbers
+ * that make it one: its hit points and the ceilings it lives against. They come
+ * from the PET's class row (`Class_Minion_Pets`, `Class_Henchman_Boss`, …), never
+ * from the caster's archetype — a Bruiser's 90% resistance cap is not its
+ * Mastermind's, and neither is its HP.
+ */
+export interface PetClassAttribs {
+  /** Base max HP per level (index = level − 1). */
+  hitPoints: number[];
+  hpCap?: number[];
+  absorbCap?: number[];
+  /** Damage-resistance ceiling as a fraction (0.9 = 90%). */
+  resistanceCap?: number;
+  /** Damage strength ceiling as a multiplier (4 = +300%). */
+  damageCap?: number;
+  baseThreat?: number;
+  rechargeFloor?: number;
+  rechargeCap?: number;
+  enduranceFloor?: number;
+  enduranceCap?: number;
+  movementBase?: PetMovementAttrib;
+  movementCap?: PetMovementAttrib;
+}
+
 export interface PetTableData {
   tables: Record<string, number[]>;
+  /** The class's villain-rank enum. Player classes are 0; the classes the game
+   *  treats as summons are 10 — including `henchman_boss`, so this does NOT
+   *  separate a henchman minion from a henchman boss. Useful only for telling a
+   *  pet class apart from a repurposed NPC one (grunt 2, elite 6, AV 7). */
+  villainRank?: number;
+  /** Absent when the dataset's export didn't carry an attribs block — read via
+   *  `getPetClassStats` in `src/utils/calculations/pet-stats.ts`, which stands
+   *  aside rather than inventing a hit point total. */
+  attribs?: PetClassAttribs;
 }
 
 /** Shape for granted-power groups (parent → auto-granted children). */

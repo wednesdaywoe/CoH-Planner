@@ -9,10 +9,11 @@
  * edit here (resolved DATA-GAP-REGISTER CLASSES-2, 2026-07-21: the WS8
  * sequential parse restored the header fields this reads).
  *
- * `PET_CLASSES` stays hand-declared: unlike the archetypes it is a curated
- * gameplay subset of the NPC classes, and no exported field marks "player-
- * relevant pet" — every pet class carries the same NPC-rank / empty-restriction
- * signal as a random enemy boss, so it is not data-derivable.
+ * `PET_CLASSES` is not derivable from the class files themselves — every pet
+ * class carries the same NPC-rank / empty-restriction signal as a random enemy
+ * boss. But it IS derivable from the other side: `discoverPetClasses` reads the
+ * class each exported summon actually declares. The hand list below survives
+ * only as a floor.
  */
 
 const fs = require('node:fs');
@@ -76,4 +77,35 @@ function derivePlayerArchetypes(tablesDir) {
   return stems;
 }
 
-module.exports = { derivePlayerArchetypes, PET_CLASSES };
+/**
+ * Every character class named by a villain def in `entitiesDir`, unioned with
+ * the PET_CLASSES floor. Sorted for deterministic output.
+ *
+ * The hand list named only Homecoming's spellings. HC renamed the Mastermind
+ * henchman classes (`minion_henchman` → `henchman_minion`) and forked the Lore
+ * classes (`lt_praetoriangrunt` → `lt_praetoriangrunt_pet`); Rebirth and
+ * Thunderspy still ship the originals. So on two of the three datasets every
+ * henchman and every Lore pet resolved against no class row — which is not an
+ * error anywhere, it is a pet that deals no damage and has no hit points.
+ * Skipping a class is never neutral; see the AT-table allowlist gap in
+ * GAME-DATA-PRINCIPLES.
+ */
+function discoverPetClasses(entitiesDir) {
+  const found = new Set(PET_CLASSES);
+  if (!fs.existsSync(entitiesDir)) return [...found].sort();
+
+  for (const file of fs.readdirSync(entitiesDir)) {
+    if (!file.endsWith('.json') || file.startsWith('_')) continue;
+    let record;
+    try {
+      record = JSON.parse(fs.readFileSync(path.join(entitiesDir, file), 'utf-8'));
+    } catch {
+      continue;
+    }
+    const cls = record && record.defaults && record.defaults.character_class_name;
+    if (typeof cls === 'string' && cls.length > 0) found.add(cls);
+  }
+  return [...found].sort();
+}
+
+module.exports = { derivePlayerArchetypes, PET_CLASSES, discoverPetClasses };

@@ -8,6 +8,10 @@
 const fs = require('fs');
 const path = require('path');
 const { parseDatasetArg, datasetPath } = require('./_dataset-paths.cjs');
+// Pet character classes: the hand list as a floor, unioned with every class the
+// dataset's own villain defs declare. See `discoverPetClasses` for why the floor
+// alone was not enough.
+const { discoverPetClasses } = require('./_player-classes.cjs');
 
 const datasetId = parseDatasetArg();
 
@@ -45,21 +49,64 @@ const PLAYER_ARCHETYPES = [
   'guardian', // Rebirth-only custom AT (warn+skip on HC/Thunderspy)
 ];
 
-// Pet character classes that need damage tables
-const PET_CLASSES = [
-  'minion_pets',
-  'minion_controllerpets',
-  'henchman_minion',
-  'henchman_minion_small',
-  'henchman_boss',
-  'henchman_lt',
-  'boss_heavypet',
-  'minion_turret',
-  'minion_monument',
-  'boss_praetoriangrunt_pet',
-  'lt_praetoriangrunt_pet',
-  'minion_praetoriansmall',
-];
+// Villain defs, same per-dataset layout rule as the class tables. Each carries
+// `defaults.character_class_name` — the class its stats resolve against.
+const ENTITIES_PATH = (datasetId === 'homecoming' && !fs.existsSync(path.join(RAW_DATA_BASE, datasetId, 'entities')))
+  ? path.join(RAW_DATA_BASE, 'entities')
+  : path.join(RAW_DATA_BASE, datasetId, 'entities');
+
+/**
+ * The pet class's own character stats — the numbers that make a summon a second
+ * character rather than an effect (COH-DATA-MODEL §6). `hit_points`, `hp_cap`
+ * and `absorb_cap` are per-level arrays (index = level − 1); the caps and
+ * clamps are scalars. Returns null when the export doesn't carry the block, so
+ * a consumer can show nothing rather than invent a hit point total.
+ */
+function petAttribs(data, petClass) {
+  const a = data.attribs;
+  if (!a || typeof a !== 'object') {
+    console.warn(`  ${petClass}: no attribs block — pet stats will be unavailable`);
+    return null;
+  }
+  const levelArray = (key) => {
+    const v = a[key];
+    if (!Array.isArray(v) || v.length === 0) return undefined;
+    if (!v.every((n) => typeof n === 'number' && Number.isFinite(n))) return undefined;
+    return v;
+  };
+  const scalar = (key) => (typeof a[key] === 'number' && Number.isFinite(a[key]) ? a[key] : undefined);
+  const movement = (key) => {
+    const m = a[key];
+    if (!m || typeof m !== 'object') return undefined;
+    const out = {};
+    for (const axis of ['run_speed', 'fly_speed', 'jump_speed', 'jump_height']) {
+      const v = m[axis];
+      if (typeof v === 'number' && Number.isFinite(v)) out[axis] = v;
+      else if (Array.isArray(v) && v.every((n) => typeof n === 'number' && Number.isFinite(n))) out[axis] = v;
+    }
+    return Object.keys(out).length > 0 ? out : undefined;
+  };
+
+  const hitPoints = levelArray('hit_points');
+  if (!hitPoints) {
+    console.warn(`  ${petClass}: no usable hit_points array — pet stats will be unavailable`);
+    return null;
+  }
+  return {
+    hitPoints,
+    hpCap: levelArray('hp_cap'),
+    absorbCap: levelArray('absorb_cap'),
+    resistanceCap: scalar('resistance_cap'),
+    damageCap: scalar('damage_cap'),
+    baseThreat: scalar('base_threat'),
+    rechargeFloor: scalar('recharge_floor'),
+    rechargeCap: scalar('recharge_cap'),
+    enduranceFloor: scalar('endurance_floor'),
+    enduranceCap: scalar('endurance_cap'),
+    movementBase: movement('movement_base'),
+    movementCap: movement('movement_cap'),
+  };
+}
 
 // Principled filter: include every binary named table exposed on player AT/pet
 // class exports. This avoids hand-maintained allowlists that silently miss real
@@ -139,7 +186,7 @@ function extractTables() {
 function extractPetTables() {
   const petTables = {};
 
-  for (const petClass of PET_CLASSES) {
+  for (const petClass of discoverPetClasses(ENTITIES_PATH)) {
     const filePath = path.join(RAW_DATA_PATH, `${petClass}.json`);
 
     if (!fs.existsSync(filePath)) {
@@ -150,7 +197,11 @@ function extractPetTables() {
     console.log(`Processing pet class ${petClass}...`);
     const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
 
-    petTables[petClass] = { tables: {} };
+    petTables[petClass] = {
+      villainRank: typeof data.villain_rank === 'number' ? data.villain_rank : undefined,
+      attribs: petAttribs(data, petClass),
+      tables: {},
+    };
 
     if (data.named_tables && typeof data.named_tables === 'object') {
       for (const [tableName, tableValues] of Object.entries(data.named_tables)) {
@@ -161,9 +212,9 @@ function extractPetTables() {
     }
 
     const tableCount = Object.keys(petTables[petClass].tables).length;
-    if (tableCount === 0) {
+    if (tableCount === 0 && !petTables[petClass].attribs) {
       delete petTables[petClass];
-      console.warn(`  No usable named tables found, skipping`);
+      console.warn(`  No usable named tables or attribs found, skipping`);
     }
   }
 
@@ -192,8 +243,44 @@ function generateTypeScript(tables, petTables) {
   lines.push(`  tables: Record<string, number[]>;`);
   lines.push(`}`);
   lines.push(``);
+  lines.push(`/** A pet class's own character stats — see PetTableData. */`);
+  lines.push(`export interface PetClassAttribs {`);
+  lines.push(`  /** Base max HP per level (index = level − 1). */`);
+  lines.push(`  hitPoints: number[];`);
+  lines.push(`  hpCap?: number[];`);
+  lines.push(`  absorbCap?: number[];`);
+  lines.push(`  /** Damage-resistance ceiling as a fraction (0.9 = 90%). */`);
+  lines.push(`  resistanceCap?: number;`);
+  lines.push(`  /** Damage strength ceiling as a multiplier (4 = +300%). */`);
+  lines.push(`  damageCap?: number;`);
+  lines.push(`  baseThreat?: number;`);
+  lines.push(`  rechargeFloor?: number;`);
+  lines.push(`  rechargeCap?: number;`);
+  lines.push(`  enduranceFloor?: number;`);
+  lines.push(`  enduranceCap?: number;`);
+  lines.push(`  movementBase?: PetMovementAttrib;`);
+  lines.push(`  movementCap?: PetMovementAttrib;`);
+  lines.push(`}`);
+  lines.push(``);
+  lines.push(`/** Scalar for a base, per-level array for a cap. */`);
+  lines.push(`export interface PetMovementAttrib {`);
+  lines.push(`  run_speed?: number | number[];`);
+  lines.push(`  fly_speed?: number | number[];`);
+  lines.push(`  jump_speed?: number | number[];`);
+  lines.push(`  jump_height?: number | number[];`);
+  lines.push(`}`);
+  lines.push(``);
   lines.push(`export interface PetTableData {`);
   lines.push(`  tables: Record<string, number[]>;`);
+  lines.push(`  /** The class's villain-rank enum. Player classes are 0; the classes the`);
+  lines.push(`   *  game treats as summons are 10 — including \`henchman_boss\`, so this does`);
+  lines.push(`   *  NOT separate a henchman minion from a henchman boss. */`);
+  lines.push(`  villainRank?: number;`);
+  lines.push(`  /** The class's own character stats — hit points and the caps a summon`);
+  lines.push(`   *  lives against. A summon is a second character, so these resolve`);
+  lines.push(`   *  against the PET's class row, never the caster's archetype.`);
+  lines.push(`   *  Absent when the export didn't carry an attribs block. */`);
+  lines.push(`  attribs?: PetClassAttribs;`);
   lines.push(`}`);
   lines.push(``);
   lines.push(`export const AT_TABLES: Record<string, ATTableData> = {`);
@@ -314,6 +401,26 @@ function generateTypeScript(tables, petTables) {
 
     for (const [petClass, petData] of Object.entries(petTables)) {
       lines.push(`  '${petClass}': {`);
+      if (typeof petData.villainRank === 'number') {
+        lines.push(`    villainRank: ${petData.villainRank},`);
+      }
+      if (petData.attribs) {
+        lines.push(`    attribs: {`);
+        for (const [key, value] of Object.entries(petData.attribs)) {
+          if (value === undefined) continue;
+          if (Array.isArray(value)) {
+            lines.push(`      ${key}: ${formatArray(value)},`);
+          } else if (typeof value === 'object') {
+            const axes = Object.entries(value)
+              .map(([axis, v]) => `${axis}: ${Array.isArray(v) ? formatArray(v) : v}`)
+              .join(', ');
+            lines.push(`      ${key}: { ${axes} },`);
+          } else {
+            lines.push(`      ${key}: ${value},`);
+          }
+        }
+        lines.push(`    },`);
+      }
       lines.push(`    tables: {`);
 
       for (const [tableName, values] of Object.entries(petData.tables)) {
