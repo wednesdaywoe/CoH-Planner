@@ -226,6 +226,145 @@ const BUFF_SCALAR_ATTRIBS = {
   rechargetime: 'RechargeBuff',
 };
 
+// ---------------------------------------------------------------------------
+// SELF-buff vocabulary — the pet's OWN defensive profile.
+//
+// A summon is a second character (COH-DATA-MODEL §6): the pet has its own class
+// row and its own always-on powers, and those powers carry its resistance, defense,
+// mez protection and mez resistance on `target: Self` templates. `isDebuffTemplate`
+// rejects target=Self wholesale, so every one of them was parsed from the bin and
+// then dropped — 352 of the entities a player power can summon have at least one.
+// This is what "can I see my pet's stats" needs.
+//
+// CRITICAL — these MUST NOT reuse the `DefenseBuff`/`ResistanceBuff`/`Absorb` type
+// names. Those are the ALLY-aura vocabulary below, and `buff-pet-auras.ts` folds
+// them into the PLAYER's totals by exact type string. A pet's own +Res is not the
+// player's +Res, and emitting it under the ally name would leak a pet stat onto the
+// character sheet — the same failure as a pet-set proc read as a self buff
+// (COH-DATA-MODEL §6). Hence the `Self…` prefix, and a guard test that asserts the
+// two vocabularies stay disjoint.
+//
+// The families below are the census of what actually appears on self templates
+// across all 760 pet powers reachable from a player summon — not a guess.
+const SELF_MEZ_ATTRIBS = {
+  held: 'Hold', stunned: 'Stun', sleep: 'Sleep', confused: 'Confuse',
+  terrorized: 'Fear', immobilized: 'Immobilize', placate: 'Placate',
+  knockback: 'Knockback', knockup: 'Knockup', repel: 'Repel', taunt: 'Taunt',
+};
+
+// Powersets whose self-buffs are TRANSIENT and must not be read as pet stats.
+// This is a documented client-bin gap, not a preference: `Mastermind_Pets.
+// Materialization` is the shared spawn-in grace window every MM henchman gets, and
+// its own help text reads "As hechmen are first summoned, they are invisible to
+// enemies and hard to hit. This effect lasts for up to 15s after the henchman is
+// summoned or until they engage in combat." NEITHER condition is in the binary —
+// the templates say a flat +100% Defense to all 11 positions/types on a 20s
+// duration with a 20s activate_period, structurally identical to a permanent
+// refreshing aura (Phalanx Fighting, Cosmic Balance, and Ghosts' own Resistance all
+// carry duration == period and ARE permanent, so no duration heuristic separates
+// them). Reading it literally tells a Mastermind their Bruiser has 100% defense.
+// The summon-time scoping and the combat suppression are server-side, the same
+// class of gap as the unparsed `suppress_events` tail.
+//
+// Named exclusions are pinned by pet-self-buffs.test.ts so this list cannot grow
+// silently — anything added here needs the same standard of evidence.
+const SELF_BUFF_EXCLUDED_POWERSETS = new Set([
+  'mastermind_pets.materialization',
+]);
+
+// `aspect=Resistance` on a NON-damage, non-mez attrib is resistance to that
+// attribute being debuffed (slow resistance, recharge-debuff resistance,
+// heal-debuff resistance), not damage resistance.
+const SELF_DEBUFF_RES_ATTRIBS = {
+  runningspeed: 'runSpeed', jumpingspeed: 'jumpSpeed', flyingspeed: 'flySpeed',
+  rechargetime: 'recharge', heal_dmg: 'heal', hitpoints: 'maxHP',
+  recovery: 'recovery', endurance: 'endurance', tohit: 'toHit',
+};
+
+/**
+ * Classify a `target: Self` template as one of the pet's own defensive stats.
+ * Returns an array of PetEffect objects (possibly empty — most self templates are
+ * movement/marker/utility and belong to nobody).
+ *
+ * Sign is load-bearing and preserved, not absolute-valued:
+ *  • `aspect=Resistance` + damage type, +scale → resistance; −scale → VULNERABILITY
+ *    (Dark Servant carries a real −20% Energy resistance, and abs()ing it would
+ *    turn a weakness into a strength).
+ *  • `aspect=Current` + mez, −scale → mez PROTECTION at magnitude |scale × table|
+ *    (the game stores protection as negative magnitude on the mez attrib).
+ *    A POSITIVE Current mez is the opposite thing — the pet applying a mode to
+ *    itself (`Fly`, `Untouchable` at +100) — and is deliberately not captured.
+ *  • `aspect=Resistance` + mez, +scale → mez RESISTANCE (duration reduction).
+ */
+function extractSelfBuff(template) {
+  const out = [];
+  const scale = template.scale;
+  if (typeof scale !== 'number' || scale === 0 || !template.table) return out;
+  const aspect = template.aspect;
+  const attribsLower = (template.attribs || []).map(a => a.toLowerCase());
+  const table = template.table;
+
+  if (aspect === 'Resistance') {
+    // Damage resistance (signed — a negative is a real vulnerability).
+    const resistanceTypes = [];
+    for (const a of attribsLower) {
+      const key = BUFF_RES_TYPE_MAP[a];
+      if (key && !resistanceTypes.includes(key)) resistanceTypes.push(key);
+    }
+    if (resistanceTypes.length > 0) {
+      out.push({ type: 'SelfResistance', scale, table, resistanceTypes });
+    }
+    // Mez resistance (shorter mez duration), distinct from mez protection.
+    const mezTypes = [];
+    for (const a of attribsLower) {
+      const key = SELF_MEZ_ATTRIBS[a];
+      if (key && !mezTypes.includes(key)) mezTypes.push(key);
+    }
+    if (mezTypes.length > 0 && scale > 0) {
+      out.push({ type: 'SelfMezResistance', scale, table, mezTypes });
+    }
+    // Debuff resistance (slow / -recharge / -heal / -HP …).
+    const debuffTypes = [];
+    for (const a of attribsLower) {
+      const key = SELF_DEBUFF_RES_ATTRIBS[a];
+      if (key && !debuffTypes.includes(key)) debuffTypes.push(key);
+    }
+    if (debuffTypes.length > 0 && scale > 0) {
+      out.push({ type: 'SelfDebuffResistance', scale, table, debuffTypes });
+    }
+    return out;
+  }
+
+  if (aspect === 'Current') {
+    // Positional/typed defense on a Buff_Def table (or a bare Ones scalar —
+    // Lore's Evasion is `Area 0.5 x Melee_Ones`). Guard against the debuff twin.
+    const tableLower = table.toLowerCase();
+    if (!tableLower.includes('debuff') && scale > 0) {
+      const defenseTypes = [];
+      for (const a of attribsLower) {
+        const key = BUFF_DEF_TYPE_MAP[a];
+        if (key && !defenseTypes.includes(key)) defenseTypes.push(key);
+      }
+      if (defenseTypes.length > 0) {
+        out.push({ type: 'SelfDefense', scale, table, defenseTypes });
+      }
+    }
+    // Mez protection: negative magnitude on the mez attrib.
+    if (scale < 0) {
+      const mezTypes = [];
+      for (const a of attribsLower) {
+        const key = SELF_MEZ_ATTRIBS[a];
+        if (key && !mezTypes.includes(key)) mezTypes.push(key);
+      }
+      if (mezTypes.length > 0) {
+        out.push({ type: 'SelfMezProtection', scale: Math.abs(scale), table, mezTypes });
+      }
+    }
+  }
+
+  return out;
+}
+
 /**
  * Classify an ally-buff-aura template (Defense / Resistance / Absorb / +Regen /
  * +Recovery / +ToHit / +Recharge — the vocabulary of "floaty" buff-pets: Force
@@ -543,12 +682,37 @@ function isDebuffTemplate(template, effectGroup) {
 function extractEffects(powerData) {
   const effects = [];
   const seenTypes = new Set(); // Avoid duplicate effect types per power
+  // Transient self-buffs that must not be read as permanent pet stats — see
+  // SELF_BUFF_EXCLUDED_POWERSETS for why the binary can't tell us this itself.
+  const selfBuffsSuppressed = SELF_BUFF_EXCLUDED_POWERSETS.has(
+    String(powerData.powerset || '').toLowerCase(),
+  );
 
   for (const effectGroup of (powerData.effects || [])) {
     if (isPvpOnlyGroup(effectGroup)) continue;
 
     const processTemplates = (templates, chance) => {
       for (const template of (templates || [])) {
+        // The pet's OWN defensive stats (target: Self) — a separate vocabulary
+        // from everything below, which is foe/ally-facing. `isDebuffTemplate`
+        // rejects target=Self, so this branch has to run before it, not after.
+        // Deduped per (type + sub-type set + scale) so a pet whose Resistance power
+        // lists S/L and F/C on separate templates keeps BOTH rows (different
+        // scales) while a genuine repeat collapses.
+        if (template.target === 'Self') {
+          if (selfBuffsSuppressed) continue;
+          for (const self of extractSelfBuff(template)) {
+            const subKey = (self.resistanceTypes || self.defenseTypes || self.mezTypes
+              || self.debuffTypes || []).join(',');
+            const key = `${self.type}|${subKey}|${self.scale}`;
+            if (seenTypes.has(key)) continue;
+            seenTypes.add(key);
+            if (chance < 1.0) self.chance = chance;
+            effects.push(self);
+          }
+          continue;
+        }
+
         if (!isDebuffTemplate(template, effectGroup)) continue;
 
         // Ally-buff auras (Def/Res/Absorb/+Regen/…) — the whole point of a buff-pet.
@@ -1099,6 +1263,14 @@ function generateTypeScript(entities) {
   lines.push(`  defenseTypes?: string[];`);
   lines.push(`  resistanceTypes?: string[];`);
   lines.push(`  absorbAspect?: string;`);
+  lines.push(`  /** The pet's OWN defensive profile (\`target: Self\` templates) —`);
+  lines.push(`   *  \`SelfResistance\` / \`SelfDefense\` / \`SelfMezProtection\` /`);
+  lines.push(`   *  \`SelfMezResistance\` / \`SelfDebuffResistance\`. Deliberately NOT the`);
+  lines.push(`   *  ally-aura type names above: those fold into the PLAYER's totals, and a`);
+  lines.push(`   *  pet's own resistance is not the player's. \`scale\` stays SIGNED on`);
+  lines.push(`   *  SelfResistance (a negative is a real vulnerability). */`);
+  lines.push(`  mezTypes?: string[];`);
+  lines.push(`  debuffTypes?: string[];`);
   lines.push(`}`);
   lines.push(``);
   lines.push(`export interface PetAbility {`);
@@ -1220,4 +1392,13 @@ function generateTypeScript(entities) {
   return lines.join('\n');
 }
 
-main();
+// Only convert when run as a script — `require()`ing this module (pet-self-buffs.test.ts
+// grades the two classifiers directly, which is the only way to catch a self-buff
+// emitted under an ally-aura type name) must not rewrite the committed datasets.
+if (require.main === module) main();
+
+module.exports = {
+  extractSelfBuff,
+  extractBuffAura,
+  SELF_BUFF_EXCLUDED_POWERSETS,
+};

@@ -164,7 +164,72 @@ The rule of thumb: **if a fact requires looking at the whole power, the redirect
 the raw text to know, it must be stamped by the converter — the runtime sees only the atom.**
 This is why "just re-derive it in the calc" is usually wrong for these four.
 
-## 6. Why there are five converters (and why they drift)
+## 6. Summons — the pet is a second character, not an effect
+
+A summon is the one place the flat-atom model stops describing *the caster*. A
+`Create_Entity` AttribMod does not modify an attribute; it **instantiates a second character**
+with its own class column, its own level, and its own flat list of powers. Every number a pet
+produces resolves against the pet's tables, not the caster's — so "which class, at which level"
+is the first question about any summoned effect, and getting it wrong scales *everything*.
+
+**The pet's class** is the villain def's `character_class_name` (`henchman_boss`,
+`minion_pets`, …), and it is a full class row: `attribs.hit_points` per level, `hp_cap`,
+`resistance_cap`, `damage_cap`, `recharge_floor`/`cap`, `base_threat`, plus the same ~107
+named modifier tables an archetype has. Tiering is expressed as *different classes*, not as a
+level offset — `henchman_minion`, `henchman_lt` and `henchman_boss` are three separate rows
+(578.3 / — / 963.8 HP at 50).
+
+**The pet's level lives in the `Create_Entity` template's `scale × table`**, and the class
+tables carry a purpose-built level ladder to express it:
+
+```
+Melee_Level       [1,2,3,…,48,49,50,51,52]   → the caster's level
+Melee_Levelminus  [1,2,3,…,47,48,49,50,51]   → caster − 1 (floored at 1)
+Melee_Levelminus2 [1,2,3,…,46,47,48,49,50]   → caster − 2
+Melee_Ones        [1,1,1,…, 1, 1, 1, 1, 1]   → flat 1.0
+```
+
+Across the 34 player categories every summon lands in one of three buckets (HC, 2026-07-30):
+
+| Encoding | Templates | Means | Examples |
+|---|---|---|---|
+| `1.0 × *_Levelminus` | 364 | caster level **− 1** | Fire Imps; **all 352 Lore pets** |
+| `−1.0 × *_Ones` → −1 | 222 | sentinel: *no explicit level* → inherit the caster's | Singularity, Jack Frost, Phantasm, Dark Servant, Phantom Army, Mastermind henchmen, Patron pets |
+| `1.0 × *_Level` | 124 | caster level, stated explicitly | Gremlins, Force Field Generator, Voltaic Sentinel, Tornado |
+
+The sentinel reading is corroborated by Lore: every Lore pet uses `Levelminus`, and the Lore
+powers grant a `levelShift` *because* those pets spawn a level down. Two encodings for the same
+−1 would be redundant; a sentinel and a ladder are not. (Confirm once in game by conning a
+Singularity against a Fire Imp — the Imp should read one lower.)
+
+Do not reach for MidsReborn here: `SummonedEntity` carries no level at all, and `GetModifier`
+evaluates every pet power at a hardcoded `MathLevelBase = 49` against the pet's `ForcedClass`
+column. It shows every pet as caster-level. It is still a fine *structural* oracle for which
+powers a pet owns (§5 of GAME-DATA-PRINCIPLES) — just not for the level.
+
+**What the caster contributes is two independent axes, and conflating them is a bug:**
+
+- **`CopyBoosts`** (a flag on the summon's `Create_Entity` template) — the pet inherits the
+  **enhancements slotted in the summoning power**, procs included.
+- **`copy_creator_mods`** (a flag on the villain def) — the pet inherits the **creator's own
+  buffs/modifiers**.
+
+They are not the same and they do not imply each other: a Mastermind henchman is
+`copy_creator_mods: false` but `CopyBoosts: true`. Anything asking "do the player's numbers
+reach this pet?" must OR the two (`shouldApplyEnhancements`).
+
+**The trap this creates.** Because `CopyBoosts` makes the *pet* the carrier of a slotted piece,
+a proc in a pet enhancement set fires from the pet — so its templates' `target: Self` means
+**the pet**, not the player. The binary offers no other discriminator: Soulbound Allegiance
+(`ECPetDamage`), Decimation (`ECRanged`) and Gaussian's (`ECToHitBuff`) grant the *byte-identical*
+`Set_Bonus.Global_Bonus.Boost_Up` power through a byte-identical `Grant_Power` template. Only
+the **boost set's category** separates the pet-only Build Up from the two self ones — which is
+why `extract-proc-data.py` stamps `target: 'pets'` from `PET_CARRIED_CATEGORIES` rather than
+trusting the template. Read literally, that one template handed the player a flat +90% damage.
+This is rule 1 of §3 in a new costume: *"Self" is a relation, and you have to know who the
+caster is before it means anything.*
+
+## 7. Why there are five converters (and why they drift)
 
 The same flat-list model is built five times, by five scripts, because the planner's data was
 originally organized around *player-visible categories* (powersets, pools, epic pools,
@@ -190,7 +255,7 @@ a different, thinner converter. Two consequences you must carry:
 The direction of travel is to unify all five onto the shared `AtomicEffect` core so the model
 is built *once*; see [converter-unification-direction.md](docs/converter-unification-direction.md).
 
-## 7. Reasoning about a new effect — the checklist
+## 8. Reasoning about a new effect — the checklist
 
 When you add or debug an effect, walk the model instead of pattern-matching a slot:
 
@@ -204,10 +269,13 @@ When you add or debug an effect, walk the model instead of pattern-matching a sl
    `toWho`, or duration are the classic colliding pair.
 4. **Decide wire vs stamped** (§5): if the fact you need (base-vs-gated, per-foe, combat-
    suppressed, not-on-caster) can't be read off a single atom, the converter must stamp it.
-5. **Verify against an oracle** (§5, §6): the `.powers` source for structure, the parallel
+5. **If it comes from a summon, resolve the pet first** (§6): whose class, at what level, and
+   does the caster's slotting even reach it (`CopyBoosts` / `copy_creator_mods`)? A pet number
+   read against the caster's AT table is wrong before any discriminator is considered.
+6. **Verify against an oracle** (§5, §7): the `.powers` source for structure, the parallel
    converter's twin for a same-shape power, in-game/Mids for a number. A self-consistent
    pipeline proves nothing — check something outside it.
-6. **Gate it, and distrust the gate** (GAME-DATA-PRINCIPLES §14): a shadow comparison that
+7. **Gate it, and distrust the gate** (GAME-DATA-PRINCIPLES §14): a shadow comparison that
    sweeps the *whole* corpus (all five converters, all three datasets, both directions), then
    mutation-test the gate so you know it can go red. A green gate is a statement about the
    observer until you've said what it can't see.

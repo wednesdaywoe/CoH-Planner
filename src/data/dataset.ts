@@ -86,6 +86,15 @@ export interface PetEffect {
   defenseTypes?: string[];
   resistanceTypes?: string[];
   absorbAspect?: string;
+  /** The pet's OWN defensive profile, from its `target: Self` templates —
+   *  `SelfResistance` (signed: a negative scale is a real vulnerability),
+   *  `SelfDefense`, `SelfMezProtection` (magnitude in `scale`),
+   *  `SelfMezResistance`, `SelfDebuffResistance`. A summon is a second character
+   *  (COH-DATA-MODEL §6), so these resolve against the PET's class table at the
+   *  pet's level — they are not the player's stats and must never be folded into
+   *  character totals the way the ally-aura types above are. */
+  mezTypes?: string[];
+  debuffTypes?: string[];
 }
 
 export interface PetAbility {
