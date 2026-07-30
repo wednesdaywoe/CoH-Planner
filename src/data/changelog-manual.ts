@@ -34,6 +34,15 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
   {
+    date: '2026-07-29',
+
+    items: [
+      { id: 'proc-main-target-only', message: 'Procs in powers the game flags as main-target-only now roll against that one target instead of the power\'s knockdown splash', type: 'fix' },
+      { id: 'proc-main-target-per-archetype', message: 'That flag is also read per archetype now instead of by power name', type: 'fix' },
+      { id: 'perma-window-caster-clock', message: 'Fix for perma tracking: it now times the buff on you rather than whichever effect on the power lasted longest, and measures against your archetype\'s recharge cap ', type: 'fix' },
+    ]
+  },
+  {
     date: '2026-07-27',
 
     items: [
