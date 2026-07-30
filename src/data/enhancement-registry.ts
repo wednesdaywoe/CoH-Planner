@@ -337,6 +337,26 @@ export function isInherentlyAttuned(set: Pick<IOSet, 'maxLevel' | 'name'>): bool
   return set.maxLevel <= 1 || ATTUNED_ONLY_SET_NAMES.has(set.name);
 }
 
+/**
+ * Normalise a stored level offset (`Enhancement.boost`) for persistence.
+ *
+ * Drops the no-op so a slot at even level stays slim on the wire, and PRESERVES
+ * a negative — an SO three levels under you is a real, common state worth x0.70
+ * on Homecoming, and flooring it to 0 is how imported builds came to read
+ * stronger than they are.
+ *
+ * Deliberately does NOT clamp to a range. The domain is a property of the active
+ * dataset's curves (Homecoming stops at -3, Rebirth runs to -9, Thunderspy
+ * applies no attenuation at all), and these factories run during deserialization
+ * where the dataset may not be the one the build was authored on. The authority
+ * is `enhancementLevelMultiplier`, which clamps to the curve at read time.
+ */
+function storedLevelOffset(offset?: number): number | undefined {
+  if (!offset || !Number.isFinite(offset)) return undefined;
+  const whole = Math.trunc(offset);
+  return whole === 0 ? undefined : whole;
+}
+
 /** Create an IO Set Enhancement object */
 export function createIOSetEnhancement(
   set: IOSet,
@@ -423,15 +443,13 @@ export function createSpecialEnhancement(
   const prefix = SPECIAL_ICON_PREFIX[category];
   // D-Sync enhancements all share a single icon
   const icon = category === 'd-sync' ? 'DSO_all.png' : `${prefix}${capitalizedId}.png`;
-  // Special enhancements cap at +3 boost
-  const cappedBoost = (boost && boost > 0) ? Math.min(boost, 3) : undefined;
   return {
     type: 'special',
     id: `${category}-${id}`,
     name: def.name,
     icon,
     category,
-    boost: cappedBoost,
+    boost: storedLevelOffset(boost),
     aspects: def.aspects.map(a => ({ stat: a.stat as EnhancementStatType, value: a.value })),
   };
 }
@@ -444,8 +462,6 @@ export function createOriginEnhancement(
   boost?: number,
 ): OriginEnhancement {
   const tierInfo = ORIGIN_TIERS.find((t) => t.short === tier);
-  // Origin enhancements cap at +3 boost
-  const cappedBoost = (boost && boost > 0) ? Math.min(boost, 3) : undefined;
   return {
     type: 'origin',
     id: `origin-${tier}-${stat}`,
@@ -453,7 +469,7 @@ export function createOriginEnhancement(
     icon: getOriginIconPath(stat, tier),
     tier,
     origin: tier === 'SO' ? (origin as OriginEnhancement['origin']) : undefined,
-    boost: cappedBoost,
+    boost: storedLevelOffset(boost),
     stat,
     value: tierInfo?.value ?? 0,
   };

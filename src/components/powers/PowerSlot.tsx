@@ -123,9 +123,13 @@ function EnhancementTooltip({ enhancement, slots }: EnhancementTooltipProps) {
         {enhancement.attuned && !enhancement.level && (
           <span>• Attuned</span>
         )}
-        {enhancement.boost && enhancement.boost > 0 && (
-          <span className="text-green-400">+{enhancement.boost} Boosted</span>
-        )}
+        {enhancement.boost ? (
+          enhancement.boost > 0 ? (
+            <span className="text-green-400">+{enhancement.boost} Boosted</span>
+          ) : (
+            <span className="text-red-400">{enhancement.boost} Under Level</span>
+          )
+        ) : null}
       </div>
 
       {/* Set bonuses */}

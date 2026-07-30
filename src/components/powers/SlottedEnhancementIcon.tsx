@@ -21,16 +21,22 @@ interface SlottedEnhancementIconProps {
  * Boost level badge overlay - small circle with the boost number
  */
 function BoostBadge({ boost, size }: { boost: number; size: number }) {
-  if (!boost || boost <= 0) return null;
+  if (!boost) return null;
   const badgeSize = size <= 16 ? 8 : size <= 20 ? 10 : 12;
   const fontSize = size <= 16 ? 5 : size <= 20 ? 6 : 7;
+  // An under-level enhancement is a penalty, so it reads red rather than green
+  // and shows its sign — the badge is the only place the slot's level offset is
+  // visible at a glance.
+  const penalty = boost < 0;
   return (
     <div
-      className="absolute -bottom-0.5 -left-0.5 rounded-full bg-green-600 border border-gray-900 flex items-center justify-center pointer-events-none z-10"
+      className={`absolute -bottom-0.5 -left-0.5 rounded-full border border-gray-900 flex items-center justify-center pointer-events-none z-10 ${
+        penalty ? 'bg-red-600' : 'bg-green-600'
+      }`}
       style={{ width: badgeSize, height: badgeSize }}
     >
       <span className="text-white font-bold leading-none" style={{ fontSize }}>
-        {boost}
+        {penalty ? Math.abs(boost) : boost}
       </span>
     </div>
   );

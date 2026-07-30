@@ -196,8 +196,10 @@ interface BuildActions {
    * Walk every slotted enhancement and bump it to its "finalized" form.
    * All options are individually optional — pass only the ones you want
    * to change; omitted ones leave the corresponding state alone.
-   *   - `specialLevel`: set Hamidon/Titan/Hydra/D-Sync (`type: 'special'`)
-   *     to this level. Typical cap 53.
+   *   - `relativeLevel`: set the signed relative level on every enhancement
+   *     that carries one — origin (TO/DO/SO) and special (Hamidon/Titan/
+   *     Hydra/D-Sync/prestige). Negative means under-level and is worth
+   *     LESS (-10% per level on Homecoming); 0 clears the offset.
    *   - `ioLevel`: force every non-attuned IO (`type: 'io-set'`,
    *     `'io-generic'`) to this level. Set IOs are clamped to the set's
    *     [minLevel, maxLevel] range. Attuned IOs are skipped (they don't
@@ -209,12 +211,14 @@ interface BuildActions {
    *   - `boostLevel`: set the +X catalyst boost on every NON-attuned IO
    *     at L50+ (generic or set). Attuned IOs cannot accept boosters in
    *     the game; sub-50 non-attuned IOs are similarly ineligible.
-   * Origin enhancements (TO/DO/SO) are untouched — they don't have a
-   * boost mechanic. Slots already at the target value are left alone so
-   * the operation is idempotent and the breakdown stays clean.
+   * `relativeLevel` and `boostLevel` are disjoint by enhancement type, not
+   * by accident: they are two different game mechanics off two different
+   * curves, and no enhancement sits on both. Slots already at the target
+   * value are left alone so the operation is idempotent and the breakdown
+   * stays clean.
    */
   maximizeEnhancementLevels: (options?: {
-    specialLevel?: number;
+    relativeLevel?: number;
     ioLevel?: number;
     attuneAll?: boolean;
     boostLevel?: number;
@@ -2104,17 +2108,23 @@ export const useBuildStore = create<BuildStore>()(
       },
 
       maximizeEnhancementLevels: (options) => {
-        const { specialLevel, ioLevel, attuneAll, boostLevel } = options ?? {};
+        const { relativeLevel, ioLevel, attuneAll, boostLevel } = options ?? {};
         // Map a single slot to its maxed form. Returns the same object
         // when nothing changes so the React equality check downstream can
         // bail without a rerender. Each option is applied independently —
         // omitted options leave the corresponding state alone.
         const maxSlot = (slot: Enhancement | null): Enhancement | null => {
           if (!slot) return slot;
-          if (slot.type === 'special') {
-            if (specialLevel === undefined) return slot;
-            if (slot.level === specialLevel) return slot;
-            return { ...slot, level: specialLevel };
+          // Origin and special enhancements carry a RELATIVE level, stored in
+          // `boost`. This used to write `slot.level` on specials only, which
+          // nothing reads and serialization drops — the control looked like it
+          // worked because the slot badge renders `level`, and the value died
+          // on the next save.
+          if (slot.type === 'special' || slot.type === 'origin') {
+            if (relativeLevel === undefined) return slot;
+            const next = relativeLevel === 0 ? undefined : relativeLevel;
+            if ((slot.boost ?? 0) === (next ?? 0)) return slot;
+            return { ...slot, boost: next };
           }
           if (slot.type === 'io-set' || slot.type === 'io-generic') {
             let next: Enhancement = slot;

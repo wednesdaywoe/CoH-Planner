@@ -192,19 +192,27 @@ function formatter(format: ForumExportFormat): Formatter {
 // Enhancement name rendering
 // ─────────────────────────────────────────────────────────────────
 
+/** Signed level offset suffix, or '' when the slot sits at even/unboosted. */
+function levelOffsetSuffix(offset?: number): string {
+  if (!offset) return '';
+  return offset > 0 ? `+${offset}` : `${offset}`;
+}
+
 function formatEnhancementName(enh: Enhancement): string {
   switch (enh.type) {
     case 'io-set': {
       const level = enh.attuned ? '∞' : enh.level ?? 50;
-      const boost = enh.boost ? `+${enh.boost}` : '';
-      return `${enh.setName}: ${enh.name} (${level}${boost})`;
+      return `${enh.setName}: ${enh.name} (${level}${levelOffsetSuffix(enh.boost)})`;
     }
     case 'io-generic':
       return `${enh.name} (${enh.level ?? 50})`;
+    // Origin and special enhancements carry a RELATIVE level, and an exported
+    // build that omits it reads as a full-strength one. A -3 SO is worth x0.70
+    // on Homecoming, so the reader needs to see it.
     case 'origin':
-      return `${enh.name}`;
+      return `${enh.name}${levelOffsetSuffix(enh.boost) && ` (${levelOffsetSuffix(enh.boost)})`}`;
     case 'special':
-      return enh.name;
+      return `${enh.name}${levelOffsetSuffix(enh.boost) && ` (${levelOffsetSuffix(enh.boost)})`}`;
   }
 }
 

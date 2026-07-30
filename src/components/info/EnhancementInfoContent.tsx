@@ -12,7 +12,7 @@ import {
   normalizeStatName,
   getTotalBonusCount,
   isBonusCapped,
-  BOOST_MULTIPLIER_PER_LEVEL,
+  enhancementLevelMultiplier,
   getMultiAspectModifier,
   getEffectiveAspectCount,
   calculateSingleEnhancementValues,
@@ -26,6 +26,20 @@ import {
 } from '@/components/enhancements/EnhancementIcon';
 import { findSelectedPowerInBuild } from './powerDisplayUtils';
 import type { IOSetEnhancement, GenericIOEnhancement, OriginEnhancement, SpecialEnhancement, Enhancement } from '@/types';
+
+/**
+ * How a slot's stored level offset reads to the player. A booster combine is a
+ * bonus ("+3 Boosted"); a negative is an out-levelled enhancement, which is a
+ * penalty and has to say so — the panel used to render only the positive half,
+ * so an under-level piece looked identical to an even one.
+ */
+function levelOffsetLabel(offset: number): string {
+  return offset > 0 ? `+${offset} Boosted` : `${offset} Under Level`;
+}
+
+function levelOffsetClass(offset: number): string {
+  return offset > 0 ? 'text-green-400' : 'text-red-400';
+}
 
 interface EnhancementInfoContentProps {
   powerName: string;
@@ -506,9 +520,9 @@ export function EnhancementInfoContent({ powerName, powerSet, slotIndex }: Enhan
           {ioEnh.isUnique && (
             <span className="text-red-400">Unique</span>
           )}
-          {enhancement.boost && enhancement.boost > 0 && (
-            <span className="text-green-400">+{enhancement.boost} Boosted</span>
-          )}
+          {enhancement.boost ? (
+            <span className={levelOffsetClass(enhancement.boost)}>{levelOffsetLabel(enhancement.boost)}</span>
+          ) : null}
         </div>
 
         {/* Set Bonuses */}
@@ -610,7 +624,7 @@ export function EnhancementInfoContent({ powerName, powerSet, slotIndex }: Enhan
           <span className="text-green-400">{genericEnh.stat}</span>
           <span className="text-slate-300"> by </span>
           <span className="text-green-400">
-            {(genericEnh.value * (1 + (enhancement.boost || 0) * BOOST_MULTIPLIER_PER_LEVEL)).toFixed(1)}%
+            {(genericEnh.value * enhancementLevelMultiplier(enhancement)).toFixed(1)}%
           </span>
         </div>
         <div className="text-xs flex gap-3">
@@ -619,9 +633,9 @@ export function EnhancementInfoContent({ powerName, powerSet, slotIndex }: Enhan
               Level: <span className="text-slate-200">{enhancement.level}</span>
             </span>
           )}
-          {enhancement.boost && enhancement.boost > 0 && (
-            <span className="text-green-400">+{enhancement.boost} Boosted</span>
-          )}
+          {enhancement.boost ? (
+            <span className={levelOffsetClass(enhancement.boost)}>{levelOffsetLabel(enhancement.boost)}</span>
+          ) : null}
         </div>
       </div>
     );
@@ -651,12 +665,12 @@ export function EnhancementInfoContent({ powerName, powerSet, slotIndex }: Enhan
           <span className="text-green-400">{originEnh.stat}</span>
           <span className="text-slate-300"> by </span>
           <span className="text-green-400">
-            {(originEnh.value * (1 + (enhancement.boost || 0) * BOOST_MULTIPLIER_PER_LEVEL)).toFixed(1)}%
+            {(originEnh.value * enhancementLevelMultiplier(enhancement)).toFixed(1)}%
           </span>
         </div>
-        {enhancement.boost && enhancement.boost > 0 && (
-          <div className="text-xs text-green-400">+{enhancement.boost} Boosted</div>
-        )}
+        {enhancement.boost ? (
+          <div className={`text-xs ${levelOffsetClass(enhancement.boost)}`}>{levelOffsetLabel(enhancement.boost)}</div>
+        ) : null}
       </div>
     );
   }
@@ -687,14 +701,14 @@ export function EnhancementInfoContent({ powerName, powerSet, slotIndex }: Enhan
           <span className="text-slate-300">Enhances: </span>
           <span className="text-green-400">
             {specialEnh.aspects.map(a => {
-              const boosted = a.value * (1 + (enhancement.boost || 0) * BOOST_MULTIPLIER_PER_LEVEL);
+              const boosted = a.value * enhancementLevelMultiplier(enhancement);
               return `${a.stat} +${boosted.toFixed(1)}%`;
             }).join(', ')}
           </span>
         </div>
-        {enhancement.boost && enhancement.boost > 0 && (
-          <div className="text-xs text-green-400">+{enhancement.boost} Boosted</div>
-        )}
+        {enhancement.boost ? (
+          <div className={`text-xs ${levelOffsetClass(enhancement.boost)}`}>{levelOffsetLabel(enhancement.boost)}</div>
+        ) : null}
       </div>
     );
   }

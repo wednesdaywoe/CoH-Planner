@@ -59,8 +59,10 @@ function enhancementMeta(enh: Enhancement): string {
   } else if (enh.level) {
     parts.push(`L${enh.level}`);
   }
-  if (enh.boost && enh.boost > 0) {
-    parts.push(`+${enh.boost}`);
+  // Signed: a negative is an under-level enhancement, which is a penalty the
+  // player needs to SEE. Rendering only the positive half hid it entirely.
+  if (enh.boost) {
+    parts.push(enh.boost > 0 ? `+${enh.boost}` : `${enh.boost}`);
   }
   return parts.join(' ');
 }

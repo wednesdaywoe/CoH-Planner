@@ -12,6 +12,7 @@ import { useState } from 'react';
 import { useBuildStore } from '@/stores';
 import { Modal, ModalBody, ModalFooter } from './Modal';
 import { Button, Slider, Toggle } from '@/components/ui';
+import { enhancementLevelRange } from '@/utils/calculations';
 
 interface EnhancementToolsModalProps {
   isOpen: boolean;
@@ -25,7 +26,11 @@ export function EnhancementToolsModal({ isOpen, onClose }: EnhancementToolsModal
   // applies an option when it's defined; we send `undefined` for any
   // section the user didn't enable.
   const [specialEnabled, setSpecialEnabled] = useState(true);
-  const [specialLevel, setSpecialLevel] = useState(53);
+  // Relative level, not absolute. The old control was a 47–53 "level" slider,
+  // which is ±3 around 50 wearing absolute clothing — it wrote `slot.level`,
+  // a field nothing reads on a special and serialization discards.
+  const relativeRange = enhancementLevelRange('special');
+  const [relativeLevel, setRelativeLevel] = useState(relativeRange.max);
 
   const [ioLevelEnabled, setIoLevelEnabled] = useState(true);
   const [ioLevel, setIoLevel] = useState(50);
@@ -37,7 +42,7 @@ export function EnhancementToolsModal({ isOpen, onClose }: EnhancementToolsModal
 
   const handleApply = () => {
     maximizeEnhancementLevels({
-      specialLevel: specialEnabled ? specialLevel : undefined,
+      relativeLevel: specialEnabled ? relativeLevel : undefined,
       ioLevel: ioLevelEnabled ? ioLevel : undefined,
       attuneAll: attuneAll ? true : undefined,
       boostLevel: boostEnabled ? boostLevel : undefined,
@@ -53,24 +58,23 @@ export function EnhancementToolsModal({ isOpen, onClose }: EnhancementToolsModal
         <div className="px-1 py-1 space-y-4">
           <p className="text-sm text-gray-400">
             Bulk-edit enhancement levels, attunement, and boosters across
-            every slotted enhancement in the build. SO/DO/TO enhancements
-            are not affected.
+            every slotted enhancement in the build.
           </p>
 
-          {/* Special enhancements */}
+          {/* Relative level — origin + special enhancements */}
           <Section
             checked={specialEnabled}
             onCheckedChange={setSpecialEnabled}
-            label="Special enhancement level"
-            description="Hamidon, Titan, Hydra, D-Sync, and prestige enhancements."
+            label="Relative level"
+            description="SO/DO/TO, Hamidon, Titan, Hydra, D-Sync, and prestige enhancements. How far the enhancement's level sits from your combat level — below even, it is weaker."
           >
             <Slider
-              value={specialLevel}
-              min={47}
-              max={53}
-              onChange={(e) => setSpecialLevel(Number(e.target.value))}
+              value={relativeLevel}
+              min={relativeRange.min}
+              max={relativeRange.max}
+              onChange={(e) => setRelativeLevel(Number(e.target.value))}
               disabled={!specialEnabled}
-              valueFormatter={(v) => `Level ${v}`}
+              valueFormatter={(v) => (v === 0 ? 'Even' : v > 0 ? `+${v}` : `${v}`)}
             />
           </Section>
 

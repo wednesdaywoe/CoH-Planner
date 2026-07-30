@@ -46,6 +46,13 @@ import { encodeImportFragment } from '@/utils/import-url';
 // SLIM TYPES (exported for BuildExport typing)
 // ============================================
 
+/**
+ * `boost` here is the stored level offset, and it is SIGNED for `origin` and
+ * `special` (relative level) while unsigned for the two IO kinds (booster
+ * combines) — see `Enhancement.boost`. The writers below gate on truthiness, so
+ * a negative persists and an even/unboosted slot stays off the wire; older
+ * builds simply have no negatives to read.
+ */
 export type SlimEnhancement =
   | { type: 'io-set'; setId: string; pieceNum: number; attuned?: boolean; level?: number; boost?: number }
   | { type: 'io-generic'; stat: string; level: number; boost?: number }

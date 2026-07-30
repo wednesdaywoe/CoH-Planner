@@ -13,8 +13,94 @@ import { isCalcDebugEnabled, debugGroup, debugGroupEnd, debugFormula } from '@/u
 // SHARED CONSTANTS
 // ============================================
 
-/** Each boost level adds 5% to enhancement value */
+/**
+ * Each boost level adds 5% to enhancement value.
+ *
+ * @deprecated The game does not have one "+5% per level" rule — it ships THREE
+ * effectiveness curves in three separate bins, and this constant is only ever
+ * right for the first four entries of two of them. Read the dataset's curves via
+ * {@link enhancementLevelMultiplier} instead. Kept exported because it is still
+ * an honest description of the `boosters` curve's slope on every shipped dataset.
+ */
 export const BOOST_MULTIPLIER_PER_LEVEL = 0.05;
+
+// ============================================
+// ENHANCEMENT LEVEL EFFECTIVENESS
+// ============================================
+
+/**
+ * The two axes an enhancement's stored level offset can sit on.
+ *
+ * These are DIFFERENT game mechanics read from DIFFERENT bins
+ * (`boost_effect_boosters.bin` vs `boost_effect_above.bin` /
+ * `boost_effect_below.bin`), and no enhancement has both:
+ *
+ *  - `booster` — Enhancement Booster combines, IOs only. 0..+5.
+ *  - `relative` — the enhancement's level minus the character's combat level,
+ *    which is what an SO/DO/TO (and a Hamidon-class special) actually carries.
+ *    Signed: the negative half is a real, common state.
+ *
+ * They were collapsed into one `boost` field because on Homecoming they are
+ * numerically IDENTICAL over 0..+3 (`[1, 1.05, 1.10, 1.15]` either way) — the
+ * entire range the app could previously express. They diverge only below even,
+ * which is exactly the half that was dropped everywhere: the Mids importer
+ * floored `MinusOne/Two/Three` to 0, the registry factories dropped any value
+ * `<= 0`, and no UI could produce one.
+ */
+export type EnhancementLevelAxis = 'booster' | 'relative';
+
+/** Which axis an enhancement's stored level offset sits on. */
+export function enhancementLevelAxis(type: Enhancement['type']): EnhancementLevelAxis {
+  return type === 'origin' || type === 'special' ? 'relative' : 'booster';
+}
+
+/**
+ * The inclusive domain of the stored level offset for `type`, read from the
+ * dataset's own curves rather than a hardcoded ±3.
+ *
+ * The datasets genuinely disagree and the difference is not cosmetic:
+ *   Homecoming  above 0..+3, below 0..-3 (floor x0.70)
+ *   Rebirth     above 0..+4, below 0..-9 (floor x0.10)
+ *   Thunderspy  above/below flat 1.0 at every step — attenuation switched OFF
+ *
+ * A hardcoded rule would have invented a Thunderspy penalty the server does not
+ * apply, and truncated Rebirth's much longer tail.
+ */
+export function enhancementLevelRange(
+  type: Enhancement['type'],
+  curves = getEnhancementCurves(),
+): { min: number; max: number } {
+  const { above, below, boosters } = curves.boostEffectiveness;
+  if (enhancementLevelAxis(type) === 'booster') {
+    return { min: 0, max: Math.max(0, boosters.length - 1) };
+  }
+  return { min: -Math.max(0, below.length - 1), max: Math.max(0, above.length - 1) };
+}
+
+/**
+ * Effectiveness multiplier for a slot's stored level offset, off the dataset's
+ * curves. Out-of-domain values clamp to the curve's end rather than throwing:
+ * a Mids file may legitimately carry `PlusFive` on an SO, and a hand-edited or
+ * older save may carry anything at all. Clamping is what the game does at the
+ * ends of these tables, and a dropped slot would silently understate a build.
+ */
+export function enhancementLevelMultiplier(
+  slot: Pick<Enhancement, 'type' | 'boost'>,
+  curves = getEnhancementCurves(),
+): number {
+  const offset = Math.trunc(slot.boost || 0);
+  const { above, below, boosters } = curves.boostEffectiveness;
+  // The booster axis is unsigned — there is no such thing as a negative combine,
+  // so a negative there is a corrupt value, not a penalty to honour.
+  const [curve, step] =
+    enhancementLevelAxis(slot.type) === 'booster'
+      ? [boosters, Math.max(0, offset)]
+      : offset < 0
+        ? [below, -offset]
+        : [above, offset];
+  if (curve.length === 0) return 1;
+  return curve[Math.min(step, curve.length - 1)];
+}
 
 /** Base endurance recovery rate: 100 endurance in 60 seconds */
 export const BASE_RECOVERY_RATE = 1.667;
@@ -743,7 +829,7 @@ export function calculatePowerEnhancementBonuses(
     if (!slot) return;
 
     // Boost multiplier: each boost level adds 5% to enhancement value
-    const boostMultiplier = 1 + (slot.boost || 0) * BOOST_MULTIPLIER_PER_LEVEL;
+    const boostMultiplier = enhancementLevelMultiplier(slot);
 
     if (slot.type === 'io-set' && getIOSet) {
       // IO Set piece
@@ -881,7 +967,7 @@ export function combineWithAlphaED(
   const rawBonuses: Record<string, number> = {};
   power.slots.forEach((slot) => {
     if (!slot) return;
-    const boostMultiplier = 1 + (slot.boost || 0) * BOOST_MULTIPLIER_PER_LEVEL;
+    const boostMultiplier = enhancementLevelMultiplier(slot);
 
     if (slot.type === 'io-set' && getIOSet) {
       const set = getIOSet(slot.setId);

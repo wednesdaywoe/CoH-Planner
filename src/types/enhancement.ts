@@ -36,7 +36,20 @@ export interface BaseEnhancement {
   level?: number;
   /** Whether it's attuned (level-agnostic) */
   attuned?: boolean;
-  /** Level boost from Enhancement Boosters (0-5, each adds 5% multiplier) */
+  /**
+   * Stored level offset. Which game mechanic this IS depends on the enhancement
+   * type, because the two sit on different curves from different bins and no
+   * enhancement carries both (see `enhancementLevelAxis`):
+   *
+   *  - `io-set` / `io-generic` — Enhancement Booster combines, 0..+5, unsigned.
+   *  - `origin` / `special` — RELATIVE LEVEL: the enhancement's level minus the
+   *    character's combat level, and legitimately NEGATIVE. An out-levelled SO
+   *    is weaker, steeply so: -10% per level on Homecoming, not -5%.
+   *
+   * Undefined means even/unboosted. The effective multiplier is never derived
+   * from this field arithmetically — read it through `enhancementLevelMultiplier`,
+   * which indexes the active dataset's curves and clamps to their real domain.
+   */
   boost?: number;
   /** Timestamp when added (for ordering) */
   addedAt?: number;

@@ -173,17 +173,31 @@ function buildPowerName(
 // ENHANCEMENT UID CONSTRUCTION
 // ============================================
 
-/** Build boost RelativeLevel string from boost number */
+/**
+ * Build a Mids `RelativeLevel` (`eEnhRelative`) from a signed level offset.
+ *
+ * The negative half matters for the round-trip: Mids can express a -3 SO, so
+ * exporting one as "Even" would launder an under-level build into a fresh one
+ * on the way out the same way the importer used to on the way in. Mids' enum
+ * bottoms out at MinusThree and tops out at PlusFive, so anything beyond that
+ * clamps to the nearest end rather than silently becoming even.
+ */
+const RELATIVE_LEVEL_NAMES: Record<number, string> = {
+  [-3]: 'MinusThree',
+  [-2]: 'MinusTwo',
+  [-1]: 'MinusOne',
+  0: 'Even',
+  1: 'PlusOne',
+  2: 'PlusTwo',
+  3: 'PlusThree',
+  4: 'PlusFour',
+  5: 'PlusFive',
+};
+
 function buildRelativeLevel(boost?: number): string {
-  if (!boost || boost <= 0) return 'Even';
-  const map: Record<number, string> = {
-    1: 'PlusOne',
-    2: 'PlusTwo',
-    3: 'PlusThree',
-    4: 'PlusFour',
-    5: 'PlusFive',
-  };
-  return map[boost] || 'Even';
+  if (!boost || !Number.isFinite(boost)) return 'Even';
+  const clamped = Math.min(5, Math.max(-3, Math.trunc(boost)));
+  return RELATIVE_LEVEL_NAMES[clamped] ?? 'Even';
 }
 
 /** Build Mids enhancement UID and metadata from an app Enhancement */

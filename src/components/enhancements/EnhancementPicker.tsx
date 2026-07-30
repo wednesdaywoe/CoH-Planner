@@ -18,7 +18,7 @@ import {
   getRarityColor, getTierTextColor, getTierBorderColor,
   findProcData, resolveProcPieceName, procEffectSummary, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, interpolateProcDamage,
 } from '@/data';
-import { normalizeAspectName, readAspectDisplayValue, getEffectiveAspectCount, calculateSingleEnhancementValues } from '@/utils/calculations';
+import { normalizeAspectName, readAspectDisplayValue, getEffectiveAspectCount, calculateSingleEnhancementValues, enhancementLevelAxis, enhancementLevelRange } from '@/utils/calculations';
 import { Modal, ModalBody } from '@/components/modals';
 import { Tooltip, Toggle, LevelSpinner } from '@/components/ui';
 import { IOSetIcon, GenericIOIcon, OriginEnhancementIcon, SpecialEnhancementIcon } from './EnhancementIcon';
@@ -63,6 +63,27 @@ export function EnhancementPicker() {
   // Local filter state
   const [typeFilter, setTypeFilter] = useState<EnhancementTypeFilter>('io-sets');
   const [sidebarFilter, setSidebarFilter] = useState<SidebarFilter>('all');
+
+  // The header spinner feeds every slotting path, but the two enhancement
+  // families sit on DIFFERENT axes: IOs take booster combines (0..+5), while
+  // origin/special carry a relative level that is legitimately negative. The
+  // active tab decides which, and the domain comes from the dataset's own
+  // curves rather than a hardcoded +-3 (Rebirth reaches -9; Thunderspy applies
+  // no attenuation at all).
+  const levelOffsetType: Enhancement['type'] =
+    typeFilter === 'origin' ? 'origin' : typeFilter === 'special' ? 'special' : 'io-set';
+  const levelOffsetAxis = enhancementLevelAxis(levelOffsetType);
+  const levelOffsetRange = useMemo(
+    () => enhancementLevelRange(levelOffsetType),
+    [levelOffsetType],
+  );
+
+  // Switching to a booster-axis tab must not leave a negative behind — it would
+  // silently read as +0 there while still showing as a penalty in the spinner.
+  useEffect(() => {
+    if (globalBoostLevel < levelOffsetRange.min) setGlobalBoostLevel(levelOffsetRange.min);
+    else if (globalBoostLevel > levelOffsetRange.max) setGlobalBoostLevel(levelOffsetRange.max);
+  }, [levelOffsetRange, globalBoostLevel, setGlobalBoostLevel]);
 
   // Drag selection state (mouse/desktop only)
   const [isDragging, setIsDragging] = useState(false);
@@ -770,19 +791,31 @@ export function EnhancementPicker() {
             />
             <div
               className="flex items-center gap-1.5"
-              title="Catalyst boost level (+0 to +5). Each boost increases enhancement strength."
+              title={
+                levelOffsetAxis === 'relative'
+                  ? `Relative level (${levelOffsetRange.min} to +${levelOffsetRange.max}) — how far the enhancement's level sits from yours. Below even it is weaker.`
+                  : `Catalyst boost level (+0 to +${levelOffsetRange.max}). Each boost increases enhancement strength.`
+              }
             >
-              <span className="text-xs text-gray-400">Boost</span>
+              <span className="text-xs text-gray-400">
+                {levelOffsetAxis === 'relative' ? 'Rel. Level' : 'Boost'}
+              </span>
               <LevelSpinner
                 value={globalBoostLevel}
-                min={0}
-                max={5}
+                min={levelOffsetRange.min}
+                max={levelOffsetRange.max}
                 onChange={setGlobalBoostLevel}
                 showPlus
-                decreaseTitle="Decrease catalyst boost level"
-                increaseTitle="Increase catalyst boost level"
-                valueTitle="Drag up/down to change, click to type (0–5)"
-                valueColorClass={globalBoostLevel > 0 ? 'text-green-400' : 'text-gray-500'}
+                decreaseTitle="Decrease level offset"
+                increaseTitle="Increase level offset"
+                valueTitle={`Drag up/down to change, click to type (${levelOffsetRange.min}–${levelOffsetRange.max})`}
+                valueColorClass={
+                  globalBoostLevel > 0
+                    ? 'text-green-400'
+                    : globalBoostLevel < 0
+                      ? 'text-red-400'
+                      : 'text-gray-500'
+                }
               />
             </div>
           </div>

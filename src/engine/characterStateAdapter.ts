@@ -50,6 +50,12 @@ export type CharacterStateEnhancement = {
   icon: string;
   level: number | null;
   attuned: boolean;
+  /**
+   * Stored level offset — SIGNED. Booster combines on the IO kinds, relative
+   * level on origin/special, where a negative is an under-level enhancement.
+   * The Rust side is `i8` for this reason; it was `u8`, which could not carry
+   * the negative half across the wire at all.
+   */
   boost: number;
 } & CharacterStateEnhancementKind;
 

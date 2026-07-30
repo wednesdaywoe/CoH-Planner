@@ -729,11 +729,24 @@ export interface EnhancementMapResult {
 }
 
 /**
- * Parse Mids RelativeLevel string to a boost number (0-5).
- * "PlusOne" → 1, "PlusTwo" → 2, ..., "PlusFive" → 5
- * "Even", "None", or anything else → 0
+ * Parse a Mids `RelativeLevel` (the `eEnhRelative` enum) to a signed level
+ * offset. "MinusThree" → -3 … "Even" → 0 … "PlusFive" → 5.
+ *
+ * The negative half was previously missing, so every `Minus*` fell through the
+ * `?? 0` and imported as even. That silently overstated the build: on Homecoming
+ * an enhancement three levels under your combat level is worth x0.70, so a
+ * levelling build slotted with red SOs read as though every one of them were
+ * fresh. Specials had the same hole, but SOs are where it bites — they are what
+ * a sub-50 build is actually full of.
+ *
+ * "None" and anything unrecognised still mean even; Mids writes "None" for an
+ * empty slot, which carries no level offset to preserve.
  */
-const RELATIVE_LEVEL_BOOST: Record<string, number> = {
+const RELATIVE_LEVEL_OFFSET: Record<string, number> = {
+  'MinusThree': -3,
+  'MinusTwo': -2,
+  'MinusOne': -1,
+  'Even': 0,
   'PlusOne': 1,
   'PlusTwo': 2,
   'PlusThree': 3,
@@ -742,7 +755,7 @@ const RELATIVE_LEVEL_BOOST: Record<string, number> = {
 };
 
 function parseBoostLevel(relativeLevel: string): number {
-  return RELATIVE_LEVEL_BOOST[relativeLevel] ?? 0;
+  return RELATIVE_LEVEL_OFFSET[relativeLevel] ?? 0;
 }
 
 /**
