@@ -330,6 +330,21 @@
       "id": "sj-cj-jump-suppression",
       "date": "2026-07-27",
       "preview": "Known issue: with both Super Jump and Combat Jumping, in-combat jump speed reads"
+    },
+    {
+      "id": "proc-main-target-only",
+      "date": "2026-07-29",
+      "preview": "Procs in powers the game flags as main-target-only now roll against that one tar"
+    },
+    {
+      "id": "proc-main-target-per-archetype",
+      "date": "2026-07-29",
+      "preview": "That flag is also read per archetype now instead of by power name"
+    },
+    {
+      "id": "perma-window-caster-clock",
+      "date": "2026-07-29",
+      "preview": "Fix for perma tracking: it now times the buff on you rather than whichever effec"
     }
   ]
 }

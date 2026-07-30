@@ -21,7 +21,9 @@ import {
   useStalkerTeamSize,
   useStalkerCritActive,
   useSentinelCritActive,
+  useDominationActive,
 } from '@/stores';
+import { effectiveGlobalAdjusters } from '@/components/info/resolveEffectivePower';
 import { calculateCharacterTotals } from '@/utils/calculations';
 import {
   buildChainPowers,
@@ -149,6 +151,12 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
   const stalkerTeamSize = useStalkerTeamSize();
   const stalkerCritActive = useStalkerCritActive();
   const sentinelCritActive = useSentinelCritActive();
+  // Conditional-effect toggles (Gravity Control's Impact, Bio Armor stances,
+  // Domination) — the same maps the InfoPanel resolves a power under, so a bonus
+  // the tooltip shows is a bonus the chain's DPS counts.
+  const mechanicAdjusters = useUIStore((s) => s.mechanicAdjusters);
+  const globalAdjusters = useUIStore((s) => s.globalAdjusters);
+  const dominationActive = useDominationActive();
   // Per-power targets-hit slider (drives the endurance gain of Dark Consumption
   // / Consume / Power Sink, scaled per foe — same setting the dashboard uses).
   const targetsHitValues = useUIStore((s) => s.targetsHitValues);
@@ -167,13 +175,17 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
       stalkerTeamSize,
     };
     return {
-      powers: buildChainPowers(build, calc.globalBonuses, mechCtx, targetsHitValues),
+      powers: buildChainPowers(build, calc.globalBonuses, mechCtx, targetsHitValues, {
+        globalAdjusters: effectiveGlobalAdjusters(build, globalAdjusters),
+        mechanicAdjusters,
+        atInherentState: { dominationActive },
+      }),
       endParams: getEnduranceParams(calc.globalBonuses),
       buildGlobalRech: getBuildGlobalRecharge(calc.globalBonuses),
       // Always-on ToHit (% points) — drives the fast-snipe rule in replayChain.
       permanentToHit: calc.globalBonuses.toHit,
     };
-  }, [build, containmentActive, scourgeActive, criticalHitsActive, stalkerCritActive, sentinelCritActive, stalkerHidden, stalkerTeamSize, targetsHitValues]);
+  }, [build, containmentActive, scourgeActive, criticalHitsActive, stalkerCritActive, sentinelCritActive, stalkerHidden, stalkerTeamSize, targetsHitValues, mechanicAdjusters, globalAdjusters, dominationActive]);
 
   const [sequence, setSequence] = useState<number[]>([]);
   const [extraRech, setExtraRech] = useState(0);

@@ -17,9 +17,10 @@ import {
   calculateArcanaTime,
   calculateCharacterTotals,
 } from '@/utils/calculations';
-import { calcThreeTier, convertGlobalBonusesToAspects } from '@/components/info/powerDisplayUtils';
+import { calcThreeTier, convertGlobalBonusesToAspects, applyActiveConditionals } from '@/components/info/powerDisplayUtils';
+import { selectActiveConditionals, type ATInherentState } from '@/utils/conditional-effects';
 import { calculateSlottedProcDamagePerCast } from './power-proc-damage';
-import { atMechanicMultiplier, type AtMechanicContext } from './power-at-mechanics';
+import { atMechanicMultiplier, applyAtMechanicBonus, type AtMechanicContext } from './power-at-mechanics';
 import { applyQuickSnipe } from '@/utils/quick-snipe';
 import type { ChainPower, ChainDoT, ChainForm, ChainPowerType, EnduranceParams, FormTrigger } from './attack-chain';
 
@@ -243,6 +244,28 @@ function buildJudgementChainPower(build: Build, archetypeId: string | undefined)
   } satisfies ChainPower;
 }
 
+/**
+ * The conditional-effect toggle state the chain resolves each power under — the
+ * SAME maps the InfoPanel reads, so a bonus the tooltip shows is a bonus the
+ * chain's DPS counts. Defaults to the empty maps, which means every conditional
+ * falls back to its own `defaultActive` (Gravity Control's Impact is on).
+ *
+ * Deliberately NOT `resolveEffectivePower`: that resolver also swaps in a
+ * snipe's quick form and Assassin's Strike's mid-combat cast, and the chain
+ * models both of those as ALTERNATE FORMS on one timeline rather than as a
+ * single current state. Only the conditional merge is shared. Mode redirects
+ * (`power.modeVariants` — Kheldian forms, Momentum) are still unwired here.
+ */
+export interface ChainConditionalState {
+  /** `scope: 'global'` toggles by conditional id — pass through
+   *  `effectiveGlobalAdjusters` so the build's live stance wins over a stale toggle. */
+  globalAdjusters?: Record<string, boolean>;
+  /** `scope: 'per-power'` toggles, keyed `<internalName>:<id>`. */
+  mechanicAdjusters?: Record<string, boolean>;
+  /** AT-inherent mechanics the Header owns rather than the toggle maps. */
+  atInherentState?: ATInherentState;
+}
+
 /** Build the per-power chain data for the current build. `targetsHit` maps a
  *  power's name → the targets-hit slider value (for per-target effects like the
  *  endurance gain on Dark Consumption); defaults to none. */
@@ -251,13 +274,30 @@ export function buildChainPowers(
   globalBonuses: GlobalBonuses,
   mechCtx: AtMechanicContext,
   targetsHit: Record<string, number> = {},
+  conditionalState: ChainConditionalState = {},
 ): ChainPower[] {
   const globalForCalc = convertGlobalBonusesToAspects(globalBonuses);
   const archetypeId = build.archetype?.id ?? undefined;
 
   const judgement = buildJudgementChainPower(build, archetypeId);
 
+  const { globalAdjusters = {}, mechanicAdjusters = {}, atInherentState = {} } = conditionalState;
+
   const powers = collectCandidates(build).map(({ power, powersetName, powersetId, category, bucket }) => {
+    // Conditional contributions whose gate is on (Gravity Control's Impact, a
+    // Bio Armor stance, Domination). Selected ONCE from the base power — every
+    // cast form shares the same `conditionalEffects` and the same toggle key —
+    // then merged per form rather than once up front, because `applyQuickSnipe`
+    // REPLACES `damage` outright and would drop an earlier merge. No power today
+    // has both a conditional and an alternate form, so that ordering is
+    // defensive; it costs nothing and stops the pairing being a latent bug.
+    const activeConditionals = selectActiveConditionals(power, mechanicAdjusters, globalAdjusters, atInherentState);
+    const withConditionals = <T extends SelectedPower>(p: T): T =>
+      activeConditionals.length === 0 ? p : (applyActiveConditionals(p, activeConditionals).power as T);
+    // The power as the rest of this function should read it — effect windows and
+    // the click endurance gain included, not just damage.
+    const effectivePower = withConditionals(power);
+
     const enh = calculatePowerEnhancementBonuses(
       { name: power.name, slots: power.slots },
       build.level,
@@ -295,7 +335,8 @@ export function buildChainPowers(
     // (→ different proc chance), so the fast form's numbers must be recomputed,
     // not scaled from the slow form's. `mult` defaults to the base power's AT
     // multiplier; a form (AS from-Hide) can pass its own.
-    const deriveDamage = (p: SelectedPower, mult: number = baseMult): { damage: number; dot: ChainDoT | null } => {
+    const deriveDamage = (raw: SelectedPower, mult: number = baseMult): { damage: number; dot: ChainDoT | null } => {
+      const p = withConditionals(raw);
       const hasDamage = !!p.damage || !!p.effects?.damage;
       const dmg = hasDamage
         ? calculatePowerDamage(
@@ -340,7 +381,13 @@ export function buildChainPowers(
             ...(dotData.cancelOnMiss ? { cancelOnMiss: true } : {}),
           }
         : null;
-      const damage = mult * (directHit + (dotInCast ? dotTotal : 0)) + procDmg;
+      // The AT's hit-time mechanic multiplies the hit, but NOT the slice carried
+      // by entries the game never mints an `*_InherentDamage` twin of — Gravity
+      // Control's Impact. Folding Impact in and then doubling the sum would read
+      // (1.96 + 0.49) × 2 where the game gives 1.96 × 2 + 0.49. Same seam the
+      // InfoPanel's damage column uses, so the two surfaces cannot diverge.
+      const exempt = isPureDot ? 0 : (dmg?.atMechanicExemptDamage?.final ?? 0);
+      const damage = applyAtMechanicBonus(directHit + (dotInCast ? dotTotal : 0), mult, exempt) + procDmg;
       return { damage, dot };
     };
 
@@ -354,8 +401,8 @@ export function buildChainPowers(
     // debuff (Touch of Fear −ToHit, −Res/−Def attacks) windows. Both ride on
     // damaging attacks too — Soul Drain & Follow Up deal damage AND self-buff —
     // so neither is gated on damage. Self-buff wins if a power does both.
-    const buffDur = selfBuffWindow(power);
-    const debuffDur = buffDur > 0 ? 0 : foeDebuffWindow(power);
+    const buffDur = selfBuffWindow(effectivePower);
+    const debuffDur = buffDur > 0 ? 0 : foeDebuffWindow(effectivePower);
     const effectWindow =
       buffDur > 0
         ? { kind: 'buff' as const, duration: buffDur }
@@ -366,7 +413,7 @@ export function buildChainPowers(
       damage > 0 || dot ? 'attack' : buffDur > 0 ? 'buff' : 'utility';
 
     const endGain = selfEnduranceGain(
-      power,
+      effectivePower,
       // The targets-hit slider is keyed by internalName everywhere (dashboard,
       // active-buffs) — match that so the user's setting actually applies.
       targetsHit[power.internalName] ?? 0,
@@ -421,7 +468,7 @@ export function buildChainPowers(
     const grants = CHARGE_GRANTS[power.internalName];
     // Window (seconds) during which this power's ToHit buff makes a snipe fast
     // (Build Up / Aim / Soul Drain) — NOT a recharge-only buff like Hasten.
-    const tohitWin = toHitBuffWindow(power);
+    const tohitWin = toHitBuffWindow(effectivePower);
 
     return {
       id: `${bucket}:${power.internalName}`,
