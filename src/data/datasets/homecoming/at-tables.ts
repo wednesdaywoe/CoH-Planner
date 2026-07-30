@@ -9,6 +9,11 @@
 export interface ATTableData {
   primaryCategory: string;
   secondaryCategory: string;
+  /** RechargeTime ClampStrength interval — the bounds on NET recharge
+   *  strength (floor 0.25 = the −75% debuff floor, cap 5 = +400%). Absent
+   *  when the export didn't carry it; consumers stand aside rather than
+   *  invent a ceiling. See perma.ts. */
+  rechargeBounds?: { floor: number; cap: number };
   tables: Record<string, number[]>;
 }
 
@@ -20,6 +25,7 @@ export const AT_TABLES: Record<string, ATTableData> = {
   'blaster': {
     primaryCategory: 'Blaster_RANGED',
     secondaryCategory: 'Blaster_SUPPORT',
+    rechargeBounds: { floor: 0.25, cap: 5 },
     tables: {
       'melee_damage': [
         -10, -10.735099792480469, -11.499099731445312, -12.291899681091309, -13.113100051879883, -13.962699890136719, -14.840399742126465, -15.744500160217285, -16.67650032043457, -17.632299423217773,
@@ -1456,6 +1462,7 @@ export const AT_TABLES: Record<string, ATTableData> = {
   'brute': {
     primaryCategory: 'Brute_Melee',
     secondaryCategory: 'Brute_DEFENSE',
+    rechargeBounds: { floor: 0.25, cap: 5 },
     tables: {
       'melee_damage': [
         -9.5, -10.171500205993652, -10.837900161743164, -11.523599624633789, -12.227999687194824, -12.915499687194824, -13.541899681091309, -14.170000076293945, -14.800399780273438, -15.428299903869629,
@@ -2905,6 +2912,7 @@ export const AT_TABLES: Record<string, ATTableData> = {
   'controller': {
     primaryCategory: 'Controller_CONTROL',
     secondaryCategory: 'Controller_BUFF',
+    rechargeBounds: { floor: 0.25, cap: 5 },
     tables: {
       'melee_damage': [
         -9.100000381469727, -9.720600128173828, -10.309000015258789, -10.909000396728516, -11.51990032196045, -12.077699661254883, -12.503100395202637, -12.910499572753906, -13.299500465393066, -13.664999961853027,
@@ -4354,6 +4362,7 @@ export const AT_TABLES: Record<string, ATTableData> = {
   'corruptor': {
     primaryCategory: 'Corruptor_Ranged',
     secondaryCategory: 'Corruptor_BUFF',
+    rechargeBounds: { floor: 0.25, cap: 5 },
     tables: {
       'melee_damage': [
         -9.5, -10.171500205993652, -10.837900161743164, -11.523599624633789, -12.227999687194824, -12.915499687194824, -13.541899681091309, -14.170000076293945, -14.800399780273438, -15.428299903869629,
@@ -5803,6 +5812,7 @@ export const AT_TABLES: Record<string, ATTableData> = {
   'defender': {
     primaryCategory: 'Defender_BUFF',
     secondaryCategory: 'Defender_RANGED',
+    rechargeBounds: { floor: 0.25, cap: 5 },
     tables: {
       'melee_damage': [
         -9.100000381469727, -9.720600128173828, -10.309000015258789, -10.909000396728516, -11.51990032196045, -12.077699661254883, -12.503100395202637, -12.910499572753906, -13.299500465393066, -13.664999961853027,
@@ -7264,6 +7274,7 @@ export const AT_TABLES: Record<string, ATTableData> = {
   'dominator': {
     primaryCategory: 'Dominator_CONTROL',
     secondaryCategory: 'Dominator_Assault',
+    rechargeBounds: { floor: 0.25, cap: 5 },
     tables: {
       'melee_damage': [
         -10.100000381469727, -10.847800254821777, -11.631400108337402, -12.445500373840332, -13.29010009765625, -14.172100067138672, -15.100099563598633, -16.05940055847168, -17.051700592041016, -18.07309913635254,
@@ -8713,6 +8724,7 @@ export const AT_TABLES: Record<string, ATTableData> = {
   'mastermind': {
     primaryCategory: 'Mastermind_Summon',
     secondaryCategory: 'Mastermind_Buff',
+    rechargeBounds: { floor: 0.25, cap: 5 },
     tables: {
       'melee_damage': [
         -9.100000381469727, -9.720600128173828, -10.309000015258789, -10.909000396728516, -11.51990032196045, -12.077699661254883, -12.503100395202637, -12.910499572753906, -13.299500465393066, -13.664999961853027,
@@ -10162,6 +10174,7 @@ export const AT_TABLES: Record<string, ATTableData> = {
   'scrapper': {
     primaryCategory: 'Scrapper_MELEE',
     secondaryCategory: 'Scrapper_DEFENSE',
+    rechargeBounds: { floor: 0.25, cap: 5 },
     tables: {
       'melee_damage': [
         -10.25, -11.016900062561035, -11.829700469970703, -12.675999641418457, -13.555700302124023, -14.486300468444824, -15.489700317382812, -16.531700134277344, -17.614599227905273, -18.73430061340332,
@@ -11611,6 +11624,7 @@ export const AT_TABLES: Record<string, ATTableData> = {
   'sentinel': {
     primaryCategory: 'Sentinel_Ranged',
     secondaryCategory: 'Sentinel_Defense',
+    rechargeBounds: { floor: 0.25, cap: 5 },
     tables: {
       'melee_damage': [
         -10.199999809265137, -10.96049976348877, -11.76360034942627, -12.599200248718262, -13.46720027923584, -14.381500244140625, -15.359800338745117, -16.374300003051758, -17.427000045776367, -18.513900756835938,
@@ -13060,6 +13074,7 @@ export const AT_TABLES: Record<string, ATTableData> = {
   'stalker': {
     primaryCategory: 'Stalker_Melee',
     secondaryCategory: 'Stalker_Defense',
+    rechargeBounds: { floor: 0.25, cap: 5 },
     tables: {
       'melee_damage': [
         -10, -10.735099792480469, -11.499099731445312, -12.291899681091309, -13.113100051879883, -13.962699890136719, -14.840399742126465, -15.744500160217285, -16.67650032043457, -17.632299423217773,
@@ -14509,6 +14524,7 @@ export const AT_TABLES: Record<string, ATTableData> = {
   'tanker': {
     primaryCategory: 'Tanker_DEFENSE',
     secondaryCategory: 'Tanker_MELEE',
+    rechargeBounds: { floor: 0.25, cap: 5 },
     tables: {
       'melee_damage': [
         -9.899999618530273, -10.622400283813477, -11.366900444030762, -12.138199806213379, -12.936100006103516, -13.753199577331543, -14.580699920654297, -15.42959976196289, -16.301300048828125, -17.191499710083008,
@@ -15958,6 +15974,7 @@ export const AT_TABLES: Record<string, ATTableData> = {
   'peacebringer': {
     primaryCategory: 'Peacebringer_Offensive',
     secondaryCategory: 'Peacebringer_Defensive',
+    rechargeBounds: { floor: 0.25, cap: 5 },
     tables: {
       'melee_damage': [
         -9.699999809265137, -10.396900177001953, -11.102399826049805, -11.830900192260742, -12.581999778747559, -13.33430004119873, -14.061300277709961, -14.799799919128418, -15.55090045928955, -16.309900283813477,
@@ -17407,6 +17424,7 @@ export const AT_TABLES: Record<string, ATTableData> = {
   'warshade': {
     primaryCategory: 'Warshade_Offensive',
     secondaryCategory: 'Warshade_Defensive',
+    rechargeBounds: { floor: 0.25, cap: 5 },
     tables: {
       'melee_damage': [
         -9.699999809265137, -10.396900177001953, -11.102399826049805, -11.830900192260742, -12.581999778747559, -13.33430004119873, -14.061300277709961, -14.799799919128418, -15.55090045928955, -16.309900283813477,
@@ -18856,6 +18874,7 @@ export const AT_TABLES: Record<string, ATTableData> = {
   'arachnos-soldier': {
     primaryCategory: 'Arachnos_Soldiers',
     secondaryCategory: 'Training_Gadgets',
+    rechargeBounds: { floor: 0.25, cap: 5 },
     tables: {
       'melee_damage': [
         -10, -10.735099792480469, -11.499099731445312, -12.291899681091309, -13.113100051879883, -13.962699890136719, -14.840399742126465, -15.744500160217285, -16.67650032043457, -17.632299423217773,
@@ -20305,6 +20324,7 @@ export const AT_TABLES: Record<string, ATTableData> = {
   'arachnos-widow': {
     primaryCategory: 'Widow_Training',
     secondaryCategory: 'Teamwork',
+    rechargeBounds: { floor: 0.25, cap: 5 },
     tables: {
       'melee_damage': [
         -10, -10.735099792480469, -11.499099731445312, -12.291899681091309, -13.113100051879883, -13.962699890136719, -14.840399742126465, -15.744500160217285, -16.67650032043457, -17.632299423217773,

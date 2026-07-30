@@ -2,6 +2,7 @@ import { describe, it, expect, beforeAll } from 'vitest';
 import { loadDataset } from '@/data/dataset';
 import { getPowerPool } from '@/data';
 import { isPermaEligible } from '@/utils/calculations/perma';
+import { getRechargeBounds } from '@/data/at-tables';
 import { SpeedBoost } from './datasets/thunderspy/generated/powersets/controller/secondary/kinetics/speed-boost';
 import { SiphonSpeed } from './datasets/thunderspy/generated/powersets/controller/secondary/kinetics/siphon-speed';
 import { Absorption } from './datasets/thunderspy/generated/powersets/warshade/epic/umbral-aura/absorption';
@@ -88,7 +89,12 @@ describe('Thunderspy Ones-attrib buff recovery (data-driven)', () => {
     // walked every sub-record of an element (TSPY-4). Perma-eligibility is what this
     // test guards, and it still turns on the absent rechargeBuff.
     expect(burnout!.effects?.buffDuration).toBe(60);
-    expect(isPermaEligible(burnout!)).toBe(false);
+    // Eligibility is now a reachability question — can this cycle fit inside its
+    // own window at the archetype's MAXIMUM recharge strength — so the clamp bounds
+    // are an input, exactly as the UI passes them. Burnout's recharge cannot fit
+    // 60s even at the +400% ceiling. (Passing no bounds deliberately stands the
+    // test aside rather than inventing a ceiling, so it would read eligible.)
+    expect(isPermaEligible(burnout!, getRechargeBounds('blaster'))).toBe(false);
   });
 
   // --- Disambiguation vetoes (guardThunderspyOnesBuffs) ---------------------

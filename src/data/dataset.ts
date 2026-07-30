@@ -36,6 +36,10 @@ export type { EnhancementCurvesData } from './datasets/homecoming/generated/enha
 export interface ATTableData {
   primaryCategory: string;
   secondaryCategory: string;
+  /** RechargeTime ClampStrength interval — the bounds on NET recharge strength
+   *  (floor 0.25 = the −75% debuff floor, cap 5 = +400%). Absent when the
+   *  dataset's export didn't carry it; read via `getRechargeBounds`. */
+  rechargeBounds?: { floor: number; cap: number };
   tables: Record<string, number[]>;
 }
 

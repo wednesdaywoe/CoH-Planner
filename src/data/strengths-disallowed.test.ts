@@ -86,7 +86,11 @@ describe('calculatePermaInfo honors the recharge locks', () => {
     allowedEnhancements: [],
     description: '',
     powerType: 'Click',
-    effects: { recharge: 300, buffDuration: 120 },
+    // Hasten-shaped, and the self-buff slot is load-bearing: the perma window is
+    // the CASTER-side state's own duration, so a bare `buffDuration` with nothing
+    // landing on the caster is no window at all and yields null. These cases are
+    // about the recharge LOCKS, so the power has to hold something first.
+    effects: { recharge: 300, buffDuration: 120, rechargeBuff: 0.7 },
   } as unknown as Power;
 
   it('unflagged power: slotted + global recharge both apply', () => {

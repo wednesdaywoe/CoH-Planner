@@ -74,6 +74,34 @@ function normalizeNamedTableEntry(tableName, tableValues) {
   };
 }
 
+/**
+ * The class's RechargeTime `ClampStrength` interval — the floor and cap the
+ * server bounds NET recharge strength to, exported per class in `attribs`
+ * (`{floor: 0.25, cap: 5}` on every player class: −75% debuff floor, +400% cap).
+ *
+ * Unlike most clamps this one is REACHABLE — a perma build stacking Hasten, set
+ * bonuses and Ageless lives against it — so the perma tracker needs it both to
+ * stop selling recharge past the ceiling and to decide whether a power's cycle
+ * can ever fit inside its own window (`perma.ts`).
+ *
+ * Returns null when the export doesn't carry the pair, so a consumer can stand
+ * aside rather than invent a ceiling. That is the failure mode a hardcoded 5
+ * used to hide: it was ALSO wrong about what the number meant, reading the ×5.0
+ * net strength as a +500% bonus.
+ */
+function rechargeBounds(data, at) {
+  const attribs = data.attribs;
+  if (!attribs || typeof attribs !== 'object') return null;
+  const floor = attribs.recharge_floor;
+  const cap = attribs.recharge_cap;
+  if (typeof floor !== 'number' || typeof cap !== 'number'
+      || !Number.isFinite(floor) || !Number.isFinite(cap) || cap <= 0) {
+    console.warn(`  ${at}: no usable recharge clamp bounds in attribs — perma reachability will stand aside`);
+    return null;
+  }
+  return { floor, cap };
+}
+
 function extractTables() {
   const allTables = {};
 
@@ -92,6 +120,7 @@ function extractTables() {
     allTables[atKey] = {
       primaryCategory: data.primary_category,
       secondaryCategory: data.secondary_category,
+      rechargeBounds: rechargeBounds(data, at),
       tables: {}
     };
 
@@ -155,6 +184,11 @@ function generateTypeScript(tables, petTables) {
   lines.push(`export interface ATTableData {`);
   lines.push(`  primaryCategory: string;`);
   lines.push(`  secondaryCategory: string;`);
+  lines.push(`  /** RechargeTime ClampStrength interval — the bounds on NET recharge`);
+  lines.push(`   *  strength (floor 0.25 = the −75% debuff floor, cap 5 = +400%). Absent`);
+  lines.push(`   *  when the export didn't carry it; consumers stand aside rather than`);
+  lines.push(`   *  invent a ceiling. See perma.ts. */`);
+  lines.push(`  rechargeBounds?: { floor: number; cap: number };`);
   lines.push(`  tables: Record<string, number[]>;`);
   lines.push(`}`);
   lines.push(``);
@@ -168,6 +202,10 @@ function generateTypeScript(tables, petTables) {
     lines.push(`  '${atKey}': {`);
     lines.push(`    primaryCategory: '${atData.primaryCategory}',`);
     lines.push(`    secondaryCategory: '${atData.secondaryCategory}',`);
+    if (atData.rechargeBounds) {
+      const { floor, cap } = atData.rechargeBounds;
+      lines.push(`    rechargeBounds: { floor: ${floor}, cap: ${cap} },`);
+    }
     lines.push(`    tables: {`);
 
     for (const [tableName, values] of Object.entries(atData.tables)) {

@@ -254,6 +254,33 @@ attrib vocabulary (`Psionic_Dmg` vs `Psionic`), so switching sources is a consum
 rename, not a drop-in. Note also that `ProcAllowed` (HC-2 backlog) lives in the same
 power-level flag family.
 
+### ATOMS-1 — pool and epic powers carry NO atom array, so any atom-native rule is blind there
+**Severity: minor today (2 known powers wrong) · Status: OPEN, measured 2026-07-29 · Found via: porting the perma caster-window fix**
+`convert-pool-powers.cjs` and `convert-epic-pools.cjs` are shortened pipelines that never emit
+`Power.atoms`. Measured corpus-wide: **0 of 71 pool and 0 of 405 epic powers carry atoms on
+Homecoming, 0/77 and 0/375 on Rebirth, 0/82 and 0/330 on Thunderspy** — not a sampling gap, the
+field is simply absent from both partitions on every dataset. (The powerset converter does emit
+them; this is the same five-converter drift that left epic Soul Drain flat and six epic snipes
+without damage.)
+
+Consequence for any rule that reads atoms rather than the effect bag: it degrades to the bag's
+answer on every pool and epic power, silently, because absence of evidence is deliberately not a
+negative. The first case is the perma caster-side window — the bag's buff slots carry no target,
+so only an atom's `toWho` can tell a caster's buff from a foe's debuff at the same duration.
+Two powers currently read a foe's clock as the caster's window: **Rebirth Long Range Teleport**
+(bag `{mezResistance: 15, stealth: 1.5}`, engine window 1s) and **Thunderspy Teleport Foe** (bag
+`{mezResistance: 15}`, engine window 1.5s), both `targetType: Foe`. The engine reads the same
+powers from `contract/` WITH atoms and removes the 15s.
+
+Declared rather than hidden: `powerProjectionParity.test.ts` routes exactly these into its
+`engine-supersedes-beta` adjudicated channel, keyed on "this power carries no atoms beta-side",
+and only for `duration` / `rechargeNeeded` / `permaPercent` — `isPerma` stays a hard delta, so a
+flipped verdict still fails. Negative-controlled: disabling that arm returns all four deltas.
+
+Fix is upstream — emit atoms from the pool and epic converters, as the powerset converter does.
+That is a broad change (it would newly feed every atom-reading applier for those partitions), so
+it is not bundled with the perma port.
+
 ### HC-4 — procs in `ExecutePower` wrapper powers roll on the CHILD, not the parent
 **Severity: unknown, potentially material · Status: OPEN, found 2026-07-28 · Found via: HC-3**
 Some powers deal nothing themselves: the parent carries `Attrib kExecutePower` with

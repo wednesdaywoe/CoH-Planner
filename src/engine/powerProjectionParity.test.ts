@@ -43,6 +43,8 @@ import { getAlphaEnhancementBonuses, getAlphaEdBypassBonuses } from '@/utils/cal
 import { areIncarnatesSuppressed, INCARNATE_MIN_LEVEL } from '@/utils/calculations/effective-level';
 import { getIncarnateTrees } from '@/data/incarnates';
 import { calculatePermaInfo, type PermaInfo } from '@/utils/calculations/perma';
+import { getRechargeBounds } from '@/data/at-tables';
+import { atomsOf } from '@/data/core/atom-query';
 import { calculateArcanaTime } from '@/utils/calculations/damage';
 import { calcThreeTier, convertGlobalBonusesToAspects, withStrengthBonuses, type ThreeTierValues } from '@/components/info/powerDisplayUtils';
 import { resolvePowerMagnitudes, type ResolvedMagnitude } from '@/components/info/resolvePowerMagnitudes';
@@ -429,10 +431,30 @@ function permaEvidence(power: BundlePower | undefined, betaDuration: number): { 
   };
 }
 
+/**
+ * True when the beta's copy of the power carries no atom array. The caster-side
+ * window (`selfStateWindow`) uses the atoms' `toWho` to veto a bag duration that
+ * belongs to the TARGET — the bag's buff slots carry no target of their own — so
+ * with no atoms the beta has no evidence to run that veto with and keeps the bag's
+ * answer, by design (absence is not a negative).
+ *
+ * Measured 2026-07-29: pool and epic powers carry atoms on NO dataset (0/71 and
+ * 0/405 on Homecoming, 0/77 and 0/375 Rebirth, 0/82 and 0/330 Thunderspy) —
+ * `convert-pool-powers.cjs` / `convert-epic-pools.cjs` are shortened pipelines
+ * that never emit them, while the engine reads the same powers from `contract/`
+ * WITH atoms. Two powers currently differ because of it, both a foe-side
+ * `mezResistance` window the engine removes: Rebirth Long Range Teleport and
+ * Thunderspy Teleport Foe.
+ */
+function betaCannotRunTheWindowVeto(power: Power | SelectedPower | undefined): boolean {
+  return power !== undefined && atomsOf(power).length === 0;
+}
+
 function permaDelta(
   engine: PermaInfo | null,
   beta: PermaInfo | null,
   evidence?: BundlePower | undefined,
+  betaPower?: Power | SelectedPower,
 ): { real: string[]; adjudicated: string[] } {
   if (engine === null && beta === null) return { real: [], adjudicated: [] };
   if (engine !== null && beta === null) {
@@ -448,6 +470,10 @@ function permaDelta(
   // even on a power the evidence covers.
   const lockedFields = new Set<keyof PermaInfo>(['totalRecharge', 'effectiveRecharge', 'permaPercent']);
   const durationFields = new Set<keyof PermaInfo>(['duration', 'rechargeNeeded', 'permaPercent']);
+  // Deliberately the same field set as `durationFields` and no wider: a missing atom
+  // array can only move the WINDOW and what derives from it. `isPerma` stays a hard
+  // delta below regardless — a flipped verdict is worth failing over even here.
+  const windowBlind = betaCannotRunTheWindowVeto(betaPower);
 
   const numeric: (keyof PermaInfo)[] = ['baseRecharge', 'duration', 'effectiveRecharge', 'rechargeNeeded', 'totalRecharge', 'permaPercent'];
   for (const k of numeric) {
@@ -456,6 +482,8 @@ function permaDelta(
       adjudicated.push(`perma.${k}: engine ${engine[k]} vs beta ${beta[k]} — the export disallows ${RECHARGE_STRENGTH} on this power and the beta applies the global anyway`);
     } else if (durationDiffers && durationFields.has(k)) {
       adjudicated.push(`perma.${k}: engine ${engine[k]} vs beta ${beta[k]} — the two datasets resolved different durations (engine ${engine.duration}s, beta ${beta.duration}s)`);
+    } else if (windowBlind && durationFields.has(k)) {
+      adjudicated.push(`perma.${k}: engine ${engine[k]} vs beta ${beta[k]} — this power carries no atoms beta-side, so the caster-window veto cannot run and the bag's duration stands`);
     } else {
       real.push(`perma.${k}: engine ${engine[k]} vs beta ${beta[k]}`);
     }
@@ -550,7 +578,15 @@ function betaReference(
             ? calcThreeTier('range', rangeBase, enh, global)
             : calcThreeTier('range', rangeBase, enh, {})
           : null,
-      perma: calculatePermaInfo(power, enh, (rawGlobal.recharge ?? 0) / 100),
+      // The archetype's RechargeTime clamp bounds, as the engine reads them: the
+      // +400% cap is reachable, so recharge past it must stop buying a faster
+      // cycle and stop closing the gap to perma on both sides.
+      perma: calculatePermaInfo(
+        power,
+        enh,
+        (rawGlobal.recharge ?? 0) / 100,
+        getRechargeBounds(archetypeId),
+      ),
       // PROD6D — the fractions every tier above was built from, now carried on the projection so
       // a re-slotting surface reads them instead of running this same calculator beside it.
       enhancementBonuses: enh,
@@ -895,7 +931,7 @@ function diffProjection(
     expect(engine, `${server}: no engine projection for ${power.internalName}`).toBeDefined();
     if (!engine) continue;
     const { projection: beta, magnitudes, bag } = betaReference(power, build, archetypeId, rawGlobal, state);
-    const perma = permaDelta(engine.perma, beta.perma);
+    const perma = permaDelta(engine.perma, beta.perma, undefined, power);
     const mags = magnitudeDeltas(
       power.internalName,
       engine.grantedMagnitudes,
@@ -1208,7 +1244,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
             bag,
             enginePower ? displayBag(enginePower as unknown as Power, 0, shownPower(enginePower as unknown as Power, build)) : {},
           );
-          const perma = permaDelta(engine.perma, beta.perma, enginePower);
+          const perma = permaDelta(engine.perma, beta.perma, enginePower, power);
           deltas.push(
             ...tierDelta(`${tag}.recharge`, engine.recharge, beta.recharge),
             ...tierDelta(`${tag}.enduranceCost`, engine.enduranceCost, beta.enduranceCost),

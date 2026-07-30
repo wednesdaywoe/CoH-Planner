@@ -45,6 +45,22 @@ export function getTableValue(archetype: string, tableName: string, level: numbe
   return getActiveDataset().getTableValue(archetype, tableName, level);
 }
 
+/**
+ * The archetype's RechargeTime `ClampStrength` interval, or undefined when the
+ * active dataset's export didn't carry one. Read from the same per-class export
+ * the tables come from, so it follows the active dataset.
+ *
+ * Consumers must treat undefined as "no ceiling to measure against" and stand
+ * aside, never substitute a literal — a hardcoded stand-in for this exact number
+ * is what put unfillable perma rings on ~80 powers per fork (see perma.ts).
+ */
+export function getRechargeBounds(
+  archetype: string | null | undefined,
+): { floor: number; cap: number } | undefined {
+  if (!archetype) return undefined;
+  return getActiveDataset().atTables.archetypes[archetype]?.rechargeBounds;
+}
+
 export function calculateEffectValue(
   archetype: string,
   tableName: string,

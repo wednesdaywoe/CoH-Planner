@@ -35,6 +35,7 @@ import { calculatePowerEnhancementBonuses, combineWithAlphaED, calculatePowerDam
 import { resolveAtMechanic } from '@/utils/calculations/power-at-mechanics';
 import type { IOSetEnhancement } from '@/types';
 import { isPermaEligible } from '@/utils/calculations/perma';
+import { getRechargeBounds } from '@/data/at-tables';
 import { buildDisplayEffects, getStackingInfo, withPseudoPetEffects, withTargetsHit } from './buildDisplayEffects';
 import { calculatePetDamage, calculateResolvedPseudoPetDamage, shouldApplyEnhancements, resolveProcAreaGeometry, type PetDamageResult, type PetAbilityDamage, type PetEffectComputed } from '@/utils/calculations/pet-damage';
 import { getPetEntity, type PetAbility } from '@/data/pet-entities';
@@ -1154,7 +1155,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
 
       {/* Perma Tracker. The numbers come from the engine's projection for this power
         * (PROD6C) — the same pass the totals ran, rather than a second TS calc. */}
-      {isPermaEligible(power) && (() => {
+      {isPermaEligible(power, getRechargeBounds(archetypeId)) && (() => {
         const permaTracked = useUIStore.getState().permaTrackedPowers.includes(power.internalName);
         const togglePerma = useUIStore.getState().togglePermaTracked;
         const permaInfo = projection?.perma ?? null;
