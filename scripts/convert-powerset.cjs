@@ -9,6 +9,9 @@
 const fs = require('fs');
 const path = require('path');
 const { parseDatasetArg, dataPath, datasetPath } = require('./_dataset-paths.cjs');
+// Text fields that didn't resolve to text (message-store keys like
+// `P2937209522`) must not reach the UI as if they had.
+const { displayText } = require('./_display-text.cjs');
 
 const datasetId = parseDatasetArg();
 
@@ -6381,11 +6384,16 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
   const mappedTargetType = rawTargetType ? TARGET_TYPE_MAP[rawTargetType] : undefined;
 
   const power = {
-    name: DISPLAY_NAME_OVERRIDES[powerJson.name] || powerJson.display_name,
+    name: DISPLAY_NAME_OVERRIDES[powerJson.name] || displayText(powerJson.display_name) || powerJson.name,
     internalName: powerJson.name,
     available: availableLevel,
-    description: powerJson.display_help?.replace(/<[^>]+>/g, '').trim(),
-    shortHelp: powerJson.display_short_help,
+    // `description` is required on Power, so an unresolvable help string
+    // degrades to empty rather than to a missing field.
+    description: (displayText(powerJson.display_help) ?? '').replace(/<[^>]+>/g, '').trim(),
+    // An unresolved message-store key is not text — see `_display-text.cjs`.
+    // Dropping it shows no tags, which is true; keeping it showed a chip
+    // reading "P2937209522" on Mercenaries > Soldiers.
+    shortHelp: displayText(powerJson.display_short_help),
     icon: normalizeIconPath(ICON_OVERRIDES[powerJson.icon] || powerJson.icon),
     // Map bin's "GlobalBoost" to the planner's "Global Enhancement" type.
     // Other types (Click/Toggle/Auto) match between bin and planner.

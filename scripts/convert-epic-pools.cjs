@@ -47,6 +47,9 @@ const RAW_POWERS_PATH = (() => {
   return oldLayout;
 })();
 const { parseDatasetArg, dataPath, datasetPath } = require('./_dataset-paths.cjs');
+// Text fields that didn't resolve to text (message-store keys like
+// `P2937209522`) must not reach the UI as if they had.
+const { displayText } = require('./_display-text.cjs');
 const datasetId = parseDatasetArg();
 
 // All datasets write under `src/data/datasets/<id>/`.
@@ -116,7 +119,7 @@ function convertEpicPower(rawJson, rank, availableLevel) {
   resolveThunderspyMovementTargets(rawJson);
 
   // Basic metadata
-  power.name = rawJson.display_name || rawJson.name;
+  power.name = displayText(rawJson.display_name) || rawJson.name;
   power.fullName = rawJson.full_name;
 
   // StrengthsDisallowed from the bin export; GlobalStrengthsDisallowed from the
@@ -138,8 +141,8 @@ function convertEpicPower(rawJson, rank, availableLevel) {
   power.available = availableLevel;
 
   // Description & help
-  power.description = rawJson.display_help || '';
-  if (rawJson.display_short_help) {
+  power.description = displayText(rawJson.display_help) || '';
+  if (displayText(rawJson.display_short_help)) {
     power.shortHelp = rawJson.display_short_help.replace(/\u00a0/g, ' ');
   }
   power.icon = normalizeIconPath(rawJson.icon || '');
