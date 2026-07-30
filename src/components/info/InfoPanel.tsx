@@ -32,7 +32,7 @@ import {
 import { useGlobalBonuses, usePowerProjection } from '@/hooks/useCalculatedStats';
 import { useBuildMaxAttackDamage } from '@/hooks/useBuildMaxAttackDamage';
 import { calculatePowerEnhancementBonuses, combineWithAlphaED, calculatePowerDamage, getAlphaEnhancementBonuses, getAlphaEdBypassBonuses, abbreviateDamageType, calculateArcanaTime, dotTickCount, calculateDamageWithATTable, type EnhancementBonuses, type PowerDamageResult, isControllerPower, isCorruptorAttackPower, isBruteAttackPower, isScrapperAttackPower, isStalkerAttackPower, calculateFuryDamageBonus, calculateAssassinationDamageBonus, getContainmentInfo, getScourgeInfo, getCriticalHitInfo, getFuryInfo, getEffectiveLevel, areIncarnatesSuppressed } from '@/utils/calculations';
-import { resolveAtMechanic } from '@/utils/calculations/power-at-mechanics';
+import { resolveAtMechanic, applyAtMechanicBonus } from '@/utils/calculations/power-at-mechanics';
 import type { IOSetEnhancement } from '@/types';
 import { isPermaEligible } from '@/utils/calculations/perma';
 import { getRechargeBounds } from '@/data/at-tables';
@@ -498,7 +498,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     return {
       header,
       color: 'text-sk-magenta',
-      applyBonus: (damage: number) => damage * mech.multiplier,
+      applyBonus: (damage: number, exempt = 0) => applyAtMechanicBonus(damage, mech.multiplier, exempt),
       showContainment: mech.kind === 'containment',
     };
   }, [calculatedDamage, archetypeId, powerSet, containmentActive, scourgeActive,

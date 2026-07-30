@@ -76,3 +76,22 @@ export function resolveAtMechanic(
 export function atMechanicMultiplier(powersetId: string, ctx: AtMechanicContext, fromHideBonus?: number): number {
   return resolveAtMechanic(powersetId, ctx, fromHideBonus)?.multiplier ?? 1;
 }
+
+/**
+ * Apply a hit-time mechanic multiplier to a final damage value, stepping around the
+ * slice that the mechanic does not multiply.
+ *
+ * `exempt` is the part of `value` carried by damage entries flagged
+ * `excludeFromAtMechanic` — Gravity Control's Impact, whose bonus group the game
+ * never duplicates onto an `*_InherentDamage` table. Containment therefore doubles
+ * Propel's base damage and leaves Impact alone: `1.96 × 2 + 0.49`, not
+ * `(1.96 + 0.49) × 2` (which overstates a Controller's Propel by ~11%).
+ *
+ * With `exempt = 0` this is the plain `value × multiplier` every other power gets.
+ */
+export function applyAtMechanicBonus(value: number, multiplier: number, exempt = 0): number {
+  // Clamp so a caller that mismatches the two (e.g. a pure-DoT power whose direct
+  // tier isn't in `value`) can never subtract more than is there.
+  const safeExempt = Math.min(Math.max(exempt, 0), value);
+  return (value - safeExempt) * multiplier + safeExempt;
+}

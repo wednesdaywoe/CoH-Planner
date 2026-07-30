@@ -63,6 +63,20 @@ export const Propel: Power = {
     ["Damage","Smashing",1.96,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || IncarnateBoss target.HasTag? || &&",true],
     ["Damage","Smashing",1.65,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || &&",true]
   ],
+  "conditionalEffects": [
+    {
+      "id": "gravitydistortion",
+      "label": "Impact (Gravity Distortion)",
+      "scope": "per-power",
+      "defaultActive": true,
+      "damage": {
+        "type": "Smashing",
+        "scale": 0.49,
+        "table": "Ranged_Damage",
+        "excludeFromAtMechanic": true
+      }
+    }
+  ],
   "damageTypes": [
     "Smashing"
   ]

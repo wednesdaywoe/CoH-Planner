@@ -407,6 +407,28 @@ function isPvpOnlyGroup(effectGroup) {
 }
 
 /**
+ * True for a bonus-damage group gated on a target-state window the pet does not
+ * always satisfy: `now <Token> target.TokenTime> - <N> <` ("the target was hit by
+ * <Token> in the last N seconds").
+ *
+ * Singularity's Lift carries Gravity Control's Impact group (`GravityDistortion`,
+ * 12s, scale 0.33 on top of the 1.32 base). This converter has no conditional-gate
+ * filter at all, so it summed both and showed Lift as ALWAYS dealing 1.65 — a +25%
+ * over-count, the exact mirror of the powerset converter dropping the same group
+ * entirely (see `_isUntoggleableGate` in convert-powerset.cjs). A pet's powers carry
+ * no user toggles, so the honest reading is base damage only.
+ *
+ * Deliberately narrow: this converter still lacks the general
+ * `_isConditionalGate` pass that convert-powerset.cjs applies, so other gated pet
+ * bonuses remain summed. Widening it needs its own audit of every pet damage number
+ * — tracked in docs/HOMECOMING_PARSER.md.
+ */
+function isTargetTokenWindowGroup(effectGroup) {
+  const req = effectGroup?.requires_expression || '';
+  return /\btarget\.TokenTime>/.test(req);
+}
+
+/**
  * Check if an effect template is PvE-relevant damage
  */
 function isPvEDamageTemplate(template, effectGroup) {
@@ -419,6 +441,7 @@ function isPvEDamageTemplate(template, effectGroup) {
   // from the shortHelp at extract time.
   if (_TSPY && attribs.includes('damage')) {
     if (isPvpOnlyGroup(effectGroup)) return false;
+    if (isTargetTokenWindowGroup(effectGroup)) return false;
     return /_damage$/i.test(template.table || '') && template.scale > 0;
   }
 
@@ -430,6 +453,10 @@ function isPvEDamageTemplate(template, effectGroup) {
 
   // Skip PvP-only effects and the PvP half of a PvE/PvP pair
   if (isPvpOnlyGroup(effectGroup)) return false;
+
+  // Skip conditional bonus damage the pet doesn't always land (Singularity's
+  // Lift + Gravity Distortion Impact).
+  if (isTargetTokenWindowGroup(effectGroup)) return false;
 
   return true;
 }

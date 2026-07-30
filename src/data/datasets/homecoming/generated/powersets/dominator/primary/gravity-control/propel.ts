@@ -61,5 +61,19 @@ export const Propel: Power = {
     ["Mez","Knockback",2,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Smashing",0.49,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"now GravityDistortion target.TokenTime> - 12 <",true]
+  ],
+  "conditionalEffects": [
+    {
+      "id": "gravitydistortion",
+      "label": "Impact (Gravity Distortion)",
+      "scope": "per-power",
+      "defaultActive": true,
+      "damage": {
+        "type": "Smashing",
+        "scale": 0.49,
+        "table": "Ranged_Damage",
+        "excludeFromAtMechanic": true
+      }
+    }
   ]
 };

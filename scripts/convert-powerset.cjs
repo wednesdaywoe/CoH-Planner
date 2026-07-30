@@ -2438,10 +2438,22 @@ function _isUntoggleableGate(req) {
   // Sleep variants. Equivalent to "the player isn't currently being mez'd";
   // tracked by combat state, not a user toggle.
   if (/\b(Held|Stunned|Sleep|Confused|Terrorized|Immobilized)\s+source\.EventTimeSince>/.test(req)) return true;
-  // Token-time / token-owned mechanics (Gravity Distortion's "lift/propel
-  // bonus on a recently-distorted target") — these layer on top of a
-  // separate power's effect, not toggleable independently.
-  if (/\.TokenTime>|\.TokenOwned\?/.test(req)) return true;
+  // Token-owned flags: `Power_Disallow*` opt-outs on buff targets, plus mission/
+  // story tokens (IvyKidnapped, NTutorialSavedHero, …). Never player-toggleable.
+  if (/\.TokenOwned\?/.test(req)) return true;
+  // SOURCE-side token-time gates are caster combo state, not a user toggle:
+  // Radiation Melee's Contamination follow-up (`Radiation_Melee_Contamination_Hit
+  // source.TokenTime> - 1 <`) and Kinetic Assault's secondaries (an RPN scaling
+  // expression, not a boolean gate).
+  //
+  // TARGET-side token-time gates are the opposite: "this target was hit by X in
+  // the last N seconds" is a target state the player drives by attack order, in
+  // the same family as the `vs <type>` / Disintegrating conditionals. Gravity
+  // Control's Impact (`now GravityDistortion target.TokenTime> - 12 <` on Propel
+  // and Lift) is one, and blanket-blacklisting both sides silently dropped it —
+  // the group was excluded from the base collectors AND never surfaced as a
+  // conditional, so the bonus damage vanished entirely. It now classifies below.
+  if (/\bsource\.TokenTime>/.test(req)) return true;
   // Caster archetype / class scaling. Pool powers (Boxing, Cross Punch,
   // Toxic Dart, etc.) carry per-AT damage variants gated on `arch source>
   // Class_<AT>` — these aren't a user toggle, they're which-character-
@@ -2591,6 +2603,21 @@ function _classifyConditionalGate(req, powersetKey) {
       _powerName: dotted,
     };
   }
+  // Target-side token-time window: `now <Token> target.TokenTime> - <N> <` reads
+  // "the target's <Token> was applied less than N seconds ago". Gravity Control's
+  // Impact is the only player instance (Propel + Lift, 12s, applied by Gravity
+  // Distortion AND Gravity Distortion Field). Source-side variants are rejected
+  // as caster combo state by `_isUntoggleableGate` above.
+  const tokenTimeMatch = _stripIgnoredClauses(req)
+    .trim()
+    .match(/^now\s+([A-Za-z][A-Za-z0-9_]*)\s+target\.TokenTime>\s+-\s+(\d+(?:\.\d+)?)\s+</);
+  if (tokenTimeMatch) {
+    return {
+      id: tokenTimeMatch[1].toLowerCase(),
+      label: _splitCamelOrUnderscore(tokenTimeMatch[1]),
+      side: 'target',
+    };
+  }
   // `kStealth source>` — caster's kStealth attribute. CoH overloads this
   // attribute slot per-AT: Dominators (especially in Rebirth's i23-era
   // Domination revival) use it as the Domination meter; for everyone else
@@ -2667,7 +2694,50 @@ const CONDITIONAL_LABEL_OVERRIDES = {
   // The "in storm cell" gate — surfaced as a single global "Storm Cell Active"
   // toggle (Storm Blast: attacks' in-cell bonuses + Storm Cell's High Winds).
   stormblast_instormcell: 'Storm Cell Active',
+  // Gravity Control's Impact: Propel and Lift deal bonus damage to a target hit
+  // by Gravity Distortion (or Gravity Distortion Field) in the last 12s. The
+  // in-game floater is literally "Impact!", so lead with that — "Gravity
+  // Distortion" alone reads like the mez power rather than the damage bonus.
+  gravitydistortion: 'Impact (Gravity Distortion)',
 };
+
+/**
+ * Conditional ids that default ON. A conditional is off by default because most
+ * are situational, but a few are the normal case and defaulting them off makes the
+ * planner understate the power.
+ *
+ * `gravitydistortion` (Gravity Control's Impact): Gravity Distortion is the set's
+ * single-target hold and opens the ST rotation, so Propel/Lift land inside the 12s
+ * window as a matter of course. Reported 2026-07-30: "The bonus damage is generally
+ * guaranteed since Gravity Distortion would be used first in an ST rotation."
+ */
+const CONDITIONALS_DEFAULT_ACTIVE = new Set(['gravitydistortion']);
+
+/**
+ * Conditional ids whose bonus damage is NOT multiplied by the archetype's hit-time
+ * mechanic (Containment, crit, Scourge, Assassination, Opportunity).
+ *
+ * How the binary says so: an AT mechanic applies to a damage group only where the
+ * game mints a duplicate of that group on an `*_InherentDamage` table. Propel has
+ * exactly two such twins (`tags: ["Containment"]`, `Ranged_InherentDamage`, scale
+ * 1.96 / PvP 0.3845) and both mirror the BASE group — there is no Containment twin
+ * of the Impact group. So Containment doubles the base damage and leaves Impact
+ * alone, which is what the reporter observed in game ("Containment doesn't double
+ * the damage"). Impact IS boosted by damage enhancement: its table is the ordinary
+ * `Ranged_Damage`, same as base, and it carries no IgnoreStrength flag.
+ *
+ * Without this, merging Impact into `power.damage` would put it inside the ×2 —
+ * (1.96 + 0.49) × 2 instead of 1.96 × 2 + 0.49, an ~11% overstatement on a
+ * Controller.
+ */
+const CONDITIONALS_AT_MECHANIC_EXEMPT = new Set(['gravitydistortion']);
+
+/** Stamp `excludeFromAtMechanic` on a conditional's damage entries when its id is exempt. */
+function _markAtMechanicExempt(id, damage) {
+  if (!CONDITIONALS_AT_MECHANIC_EXEMPT.has(id) || !damage) return damage;
+  const mark = (d) => ({ ...d, excludeFromAtMechanic: true });
+  return Array.isArray(damage) ? damage.map(mark) : mark(damage);
+}
 
 function _applyLabelOverride(id, label) {
   // Stack-count form appends `-<N>` to the id (e.g. `tidal_power-3`); look
@@ -3006,10 +3076,10 @@ function extractConditionalEffects(rawEffects, powerJson) {
       // so it's a single toggle shared across the whole Storm Blast set (the
       // attacks' in-cell bonuses AND the Storm Cell summon's powered-up state).
       scope: (id === 'stormblast_instormcell' || group.side === 'source') ? 'global' : 'per-power',
-      defaultActive: false,
+      defaultActive: CONDITIONALS_DEFAULT_ACTIVE.has(id),
     };
     if (mode) entry.mode = mode;
-    if (hasDamage) entry.damage = damage;
+    if (hasDamage) entry.damage = _markAtMechanicExempt(id, damage);
     if (hasEffects) entry.effects = effects;
     out.push(entry);
   }

@@ -363,6 +363,18 @@ export interface PowerDamageResult {
   capped?: boolean;
   /** The power's damage scale value (for relative comparison between powers) */
   scale?: number;
+  /**
+   * The portion of `base`/`enhanced`/`final` contributed by entries flagged
+   * `excludeFromAtMechanic` (Gravity Control's Impact). These stay INSIDE the main
+   * totals — this is the slice the archetype's hit-time multiplier must step around,
+   * so a Controller's Propel reads `(final - exempt) × 2 + exempt`. Absent when the
+   * power has no such entry, which is every power but Propel and Lift today.
+   */
+  atMechanicExemptDamage?: {
+    base: number;
+    enhanced: number;
+    final: number;
+  };
   /** Conditional Fiery Embrace damage (if detected) */
   fieryEmbraceDamage?: {
     base: number;
@@ -457,9 +469,13 @@ export function calculatePowerDamage(
   type DotEntry = { type: string; scale: number; table?: string; duration: number; tickRate: number; chance?: number; cancelOnMiss?: boolean };
   let pendingDotEntries: DotEntry[] = [];
   let isPureDot = false;
+  // Scale contributed by entries the archetype's hit-time mechanic must not
+  // multiply (Gravity Control's Impact — see `excludeFromAtMechanic`). Summed here
+  // because the flag is lost once `damageEffect` is normalized to {types, scale}.
+  let atMechanicExemptScale = 0;
 
   if (Array.isArray(damageEffect)) {
-    type ArrayEntry = { type: string; scale: number; table?: string; duration?: number; tickRate?: number; chance?: number; cancelOnMiss?: boolean };
+    type ArrayEntry = { type: string; scale: number; table?: string; duration?: number; tickRate?: number; chance?: number; cancelOnMiss?: boolean; excludeFromAtMechanic?: boolean };
     // Filter:
     //   • Heal entries (handled separately)
     //   • PvP-table entries — PvP variants of the same damage. The
@@ -496,6 +512,9 @@ export function calculatePowerDamage(
 
     if (directEntries.length > 0) {
       // Mixed or direct-only: use direct entries for the main result
+      atMechanicExemptScale = directEntries
+        .filter((e) => e.excludeFromAtMechanic)
+        .reduce((sum: number, e: ArrayEntry) => sum + e.scale, 0);
       damageEffect = {
         types: directEntries,
         scale: directEntries.reduce((sum: number, e: ArrayEntry) => sum + e.scale, 0),
@@ -662,6 +681,19 @@ export function calculatePowerDamage(
     capped,
     scale,
   };
+
+  // AT-mechanic-exempt slice. Damage is linear in scale at every tier — AT table,
+  // generic table, and the damage-cap branch are all `scale × k` — so the exempt
+  // portion is its share of the summed scale. Reported rather than subtracted so
+  // the displayed total still includes it.
+  if (atMechanicExemptScale > 0 && scale > 0) {
+    const share = atMechanicExemptScale / scale;
+    result.atMechanicExemptDamage = {
+      base: baseDamage * share,
+      enhanced: enhancedDamage * share,
+      final: finalDamage * share,
+    };
+  }
 
   // Calculate Fiery Embrace damage separately if detected
   if (fieryEmbraceScale !== null && fieryEmbraceScale > 0) {

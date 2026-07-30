@@ -69,5 +69,19 @@ export const Lift: Power = {
     ["Damage","Smashing",1.32,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || &&",true],
     ["Damage","Smashing",0.6805,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || &&",true],
     ["Damage","Smashing",0.33,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"now GravityDistortion target.TokenTime> - 12 <",true]
+  ],
+  "conditionalEffects": [
+    {
+      "id": "gravitydistortion",
+      "label": "Impact (Gravity Distortion)",
+      "scope": "per-power",
+      "defaultActive": true,
+      "damage": {
+        "type": "Smashing",
+        "scale": 0.33,
+        "table": "Ranged_Damage",
+        "excludeFromAtMechanic": true
+      }
+    }
   ]
 };

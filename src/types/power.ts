@@ -749,6 +749,16 @@ export interface ScaledDamageEntry {
   /** For `type: 'Heal'` entries flagged IgnoreStrength — the heal is not boosted
    *  by Healing enhancement or global +Heal. */
   ignoreStrength?: boolean;
+  /**
+   * Bonus damage the archetype's hit-time mechanic (Containment, crit, Scourge,
+   * Assassination, Opportunity) does NOT multiply. Set by the converter for
+   * conditional groups the binary never duplicates onto an `*_InherentDamage`
+   * table — currently Gravity Control's Impact. Still fully enhanceable.
+   *
+   * The entry stays in the damage total; only the AT multiplier steps around it,
+   * so a Controller's Propel is `base × 2 + impact`, not `(base + impact) × 2`.
+   */
+  excludeFromAtMechanic?: boolean;
 }
 
 // ============================================

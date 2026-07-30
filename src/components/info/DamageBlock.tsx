@@ -31,8 +31,13 @@ export interface InherentDamageInfo {
   color: string;
   /** Column header text ("w/ Scourge", "w/ Fury", etc.) */
   header: string;
-  /** Apply the AT-bonus to a given final damage value */
-  applyBonus: (value: number) => number;
+  /**
+   * Apply the AT-bonus to a given final damage value. `exempt` is the slice of
+   * `value` the mechanic must not multiply (Gravity Control's Impact — Containment
+   * doubles Propel's base damage but leaves Impact alone), so the result is
+   * `(value - exempt) × multiplier + exempt`.
+   */
+  applyBonus: (value: number, exempt?: number) => number;
 }
 
 export type DamageDisplayMode = 'damage' | 'damagePerAnim' | 'damagePerSec' | 'damagePerEnd';
@@ -191,7 +196,13 @@ function DamageTiers({
   const showCombatMod = targetLevelOffset !== 0 && globalCombatModifier !== 1;
   const cm = showCombatMod ? globalCombatModifier : 1;
   const totalFinal = totalFinalRaw * cm;
-  const inherentFinal = (inherentInfo ? inherentInfo.applyBonus(totalFinalRaw) : totalFinalRaw) * cm;
+  // The AT-mechanic-exempt slice lives in the DIRECT damage (`cd.final`), so it is
+  // part of `totalFinalRaw` for every power except a pure-DoT one, where the direct
+  // tier isn't summed in at all. Guard on `isPureDot` so the exemption can never
+  // exceed the value it's subtracted from.
+  const atExemptFinal = isPureDot ? 0 : (cd.atMechanicExemptDamage?.final ?? 0);
+  const inherentFinal =
+    (inherentInfo ? inherentInfo.applyBonus(totalFinalRaw, atExemptFinal) : totalFinalRaw) * cm;
 
   // Metric divisors. Cast time is not enhanced, so DPA shares it across
   // tiers; only DPS varies its divisor (base vs enhanced cycle).
