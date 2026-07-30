@@ -5,7 +5,7 @@
  * Supports the three-tier display: Base → Enhanced → Final
  */
 
-import { getPetEntity, type PetAbility } from '@/data/pet-entities';
+import { getPetEntity, type PetAbility, type PetEffect } from '@/data/pet-entities';
 import { getPetTableValue, getTableValue } from '@/data/at-tables';
 import type { ResolvedPseudoPet } from '@/types/power';
 
@@ -37,7 +37,10 @@ export interface PetEffectComputed {
   type: string;
   /** Computed value at current level (from scale*table or magnitude). For
    *  percentage debuffs this is the fraction (0.07 = -7%); for mez it's the
-   *  duration in seconds; for KB/heal/-end it's the raw magnitude/points. */
+   *  duration in seconds; for KB/heal/-end it's the raw magnitude/points.
+   *  SIGNED for the types in `SIGNED_PET_EFFECTS` — a Dark Servant's −20%
+   *  Energy resistance is a vulnerability, and rendering it as +20% would read
+   *  as the opposite stat. */
   value?: number;
   /** Mez/knock magnitude (e.g. a mag-3 Stun) — distinct from `value` (duration). */
   magnitude?: number;
@@ -46,6 +49,69 @@ export interface PetEffectComputed {
   ignoreStrength?: boolean;
   /** Mode-gated: only applies while the power is empowered/triggered. */
   conditional?: boolean;
+  /** Which sub-types this effect covers — the damage types resisted, the
+   *  positions/vectors defended, the mez it protects against. Carried through
+   *  from `PetEffect` because they are what makes the number mean anything:
+   *  "21%" is not a stat, "21% Smashing/Lethal resistance" is. They are also
+   *  the discriminator that keeps two effects of the same type apart (see
+   *  `effectKey`). */
+  defenseTypes?: string[];
+  resistanceTypes?: string[];
+  mezTypes?: string[];
+  debuffTypes?: string[];
+}
+
+/**
+ * Effect types whose sign is semantic rather than a storage convention.
+ *
+ * Damage tables are stored negative and every debuff carries its sign in the
+ * LABEL ("-ToHit"), so the general rule is to magnitude the pair. `SelfResistance`
+ * is the documented exception: the converter preserves the sign precisely because
+ * a negative is a real vulnerability (`scripts/convert-pet-entities.cjs`,
+ * `extractSelfBuff`), and ~55 Homecoming entities carry one. The sibling self
+ * types can't reach here signed — the converter gates them on `scale > 0` or
+ * absolute-values them at extraction.
+ */
+const SIGNED_PET_EFFECTS = new Set(['SelfResistance']);
+
+/**
+ * Identity of one computed effect within a pet's aggregated list.
+ *
+ * Keying on `type` alone silently drops every effect after the first of its
+ * kind, and a pet's defensive profile is exactly where duplicates are the norm:
+ * a Soldier carries Mag 4 Placate protection AND Mag 2 Confuse protection, +5%
+ * Ranged defense AND +3% AoE defense. Type-only keying kept the first of each
+ * pair and discarded the rest with no error anywhere.
+ */
+function effectKey(type: string, eff: Pick<PetEffectComputed, 'defenseTypes' | 'resistanceTypes' | 'mezTypes' | 'debuffTypes'>): string {
+  const sub = [eff.resistanceTypes, eff.defenseTypes, eff.mezTypes, eff.debuffTypes]
+    .filter((list): list is string[] => Array.isArray(list) && list.length > 0)
+    .map((list) => list.join(','))
+    .join('|');
+  return sub ? `${type} ${sub}` : type;
+}
+
+/** Resolve an effect's scale × table at a level, preserving sign where it means something. */
+function computeEffectValue(
+  eff: { scale?: number; table?: string; magnitude?: number; type: string },
+  tableValue: number | undefined,
+): number | undefined {
+  if (eff.scale && eff.table) {
+    if (tableValue === undefined) return undefined;
+    const magnitude = Math.abs(tableValue) * Math.abs(eff.scale);
+    return SIGNED_PET_EFFECTS.has(eff.type) && eff.scale < 0 ? -magnitude : magnitude;
+  }
+  return eff.magnitude;
+}
+
+/** The sub-type lists a `PetEffect` carries, for copying onto its computed twin. */
+function subTypes(eff: PetEffect) {
+  return {
+    defenseTypes: eff.defenseTypes,
+    resistanceTypes: eff.resistanceTypes,
+    mezTypes: eff.mezTypes,
+    debuffTypes: eff.debuffTypes,
+  };
 }
 
 export interface PetDamageResult {
@@ -174,18 +240,19 @@ export function calculatePetDamage(
     // Collect effects from all abilities, computing values from table lookups
     if (ability.effects) {
       for (const eff of ability.effects) {
-        if (!allEffectsMap.has(eff.type)) {
-          let value: number | undefined;
-          if (eff.scale && eff.table) {
-            const tableValue = getPetTableValue(entity.characterClass, eff.table, level);
-            if (tableValue !== undefined) {
-              value = Math.abs(tableValue) * Math.abs(eff.scale);
-            }
-          } else if (eff.magnitude !== undefined) {
-            value = eff.magnitude;
-          }
-          allEffectsMap.set(eff.type, { type: eff.type, value, magnitude: eff.magnitude, chance: eff.chance });
-        }
+        const sub = subTypes(eff);
+        const key = effectKey(eff.type, sub);
+        if (allEffectsMap.has(key)) continue;
+        const tableValue = eff.table
+          ? getPetTableValue(entity.characterClass, eff.table, level)
+          : undefined;
+        allEffectsMap.set(key, {
+          type: eff.type,
+          value: computeEffectValue(eff, tableValue),
+          magnitude: eff.magnitude,
+          chance: eff.chance,
+          ...sub,
+        });
       }
     }
 
@@ -305,15 +372,19 @@ export function calculateResolvedPseudoPetDamage(
     const effSource = (poweredUp && ability.poweredUpEffects) ? ability.poweredUpEffects : ability.effects;
     if (effSource) {
       for (const eff of effSource) {
+        // Synthesized pseudo-pets carry no sub-type lists (they are built from a
+        // redirect's own templates, not a villain def), so the key degrades to
+        // the bare type — same behaviour as before for this path.
         if (allEffectsMap.has(eff.type)) continue;
-        let value: number | undefined;
-        if (eff.scale && eff.table) {
-          const tv = getTableValue(archetype, eff.table, level);
-          if (tv !== undefined) value = Math.abs(tv) * Math.abs(eff.scale);
-        } else if (eff.magnitude !== undefined) {
-          value = eff.magnitude;
-        }
-        allEffectsMap.set(eff.type, { type: eff.type, value, magnitude: eff.magnitude, chance: eff.chance, ignoreStrength: eff.ignoreStrength, conditional: poweredUp ? false : eff.conditional });
+        const tv = eff.table ? getTableValue(archetype, eff.table, level) : undefined;
+        allEffectsMap.set(eff.type, {
+          type: eff.type,
+          value: computeEffectValue(eff, tv),
+          magnitude: eff.magnitude,
+          chance: eff.chance,
+          ignoreStrength: eff.ignoreStrength,
+          conditional: poweredUp ? false : eff.conditional,
+        });
       }
     }
 

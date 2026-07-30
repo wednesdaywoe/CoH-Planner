@@ -52,6 +52,7 @@ import {
 } from '@/utils/calculations';
 import { calculatePetDamage, calculateResolvedPseudoPetDamage, shouldApplyEnhancements, type PetDamageResult } from '@/utils/calculations/pet-damage';
 import { buildDisplayEffects, withPseudoPetEffects } from './buildDisplayEffects';
+import { formatPetEffectValue, petEffectLabel } from './petEffectDisplay';
 import { resolveEffectivePower, effectiveGlobalAdjusters, isCasterHidden } from './resolveEffectivePower';
 import type { ArchetypeId } from '@/types';
 import {
@@ -468,15 +469,16 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
           )}
           {petDamageAggregate && petDamageAggregate.results.some(r => r.allEffects.length > 0) && (
             <div className="flex flex-wrap gap-0.5 mt-0.5 ml-3">
-              {/* Collect unique effects across all entities */}
+              {/* Unique effects across all entities. Keyed by the full LABEL, not
+                  the bare type: two entities' "Protection" chips are different
+                  chips when one is Placate and the other Confuse. */}
               {Array.from(new Map(
-                petDamageAggregate.results.flatMap(r => r.allEffects).map(eff => [eff.type, eff])
-              ).values()).map((eff) => {
-                const valLabel = eff.value !== undefined ? ` ${eff.value.toFixed(1)}` : '';
+                petDamageAggregate.results.flatMap(r => r.allEffects).map(eff => [petEffectLabel(eff), eff])
+              ).entries()).map(([label, eff]) => {
                 const chanceLabel = eff.chance && eff.chance < 1 ? ` ${(eff.chance * 100).toFixed(0)}%` : '';
                 return (
-                  <span key={eff.type} className="text-[10px] text-purple-300 bg-purple-900/30 px-0.5 rounded">
-                    {eff.type}{valLabel}{chanceLabel}
+                  <span key={label} className="text-[10px] text-purple-300 bg-purple-900/30 px-0.5 rounded">
+                    {label} {formatPetEffectValue(eff)}{chanceLabel}
                   </span>
                 );
               })}

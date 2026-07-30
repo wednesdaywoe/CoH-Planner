@@ -71,6 +71,13 @@ import { resolveEffectivePower, effectiveGlobalAdjusters, isCasterHidden } from 
 import {
   RegistryEffectsDisplay,
 } from './SharedPowerComponents';
+import {
+  formatEffectArea,
+  formatPetEffectValue,
+  partitionPetEffects,
+  petEffectColor,
+  petEffectLabel,
+} from './petEffectDisplay';
 
 // Pseudo-pet summon durations at or above this are the data's "permanent"
 // sentinel (99999s) — a persistent attack pet (e.g. Voltaic Sentinel) with no
@@ -2021,94 +2028,6 @@ interface PetDamageDisplayProps {
   archetypeId?: string;
 }
 
-/** Effect type display info */
-const EFFECT_DISPLAY: Record<string, { label: string; color: string }> = {
-  Heal: { label: 'Heal', color: 'text-green-400' },
-  Sleep: { label: 'Sleep', color: 'text-purple-400' },
-  Hold: { label: 'Hold', color: 'text-purple-400' },
-  Stun: { label: 'Stun', color: 'text-purple-400' },
-  Fear: { label: 'Fear', color: 'text-purple-400' },
-  Confuse: { label: 'Confuse', color: 'text-purple-400' },
-  Immobilize: { label: 'Immobilize', color: 'text-purple-400' },
-  Knockback: { label: 'Knockback', color: 'text-cyan-400' },
-  Knockup: { label: 'Knockup', color: 'text-cyan-400' },
-  Taunt: { label: 'Taunt', color: 'text-yellow-400' },
-  EndDrain: { label: '-End', color: 'text-blue-400' },
-  RecoveryDebuff: { label: '-Recovery', color: 'text-blue-400' },
-  ToHitDebuff: { label: '-ToHit', color: 'text-orange-400' },
-  DefenseDebuff: { label: '-Defense', color: 'text-orange-400' },
-  ResistanceDebuff: { label: '-Resistance', color: 'text-orange-400' },
-  DamageDebuff: { label: '-Damage', color: 'text-orange-400' },
-  RechargeDebuff: { label: '-Recharge', color: 'text-teal-400' },
-  Slow: { label: '-Speed', color: 'text-teal-400' },
-  // Ally-facing pseudo-pet field buffs / protection (EMP Field, Faraday Cage).
-  ResistanceBuff: { label: '+Resistance', color: 'text-green-400' },
-  // Buff-pet auras (Force Field Generator, Barrier Reef, Triage Beacon) — the
-  // persistent AoE buffs a summoned buff drone projects onto the team.
-  DefenseBuff: { label: '+Defense', color: 'text-green-400' },
-  Absorb: { label: 'Absorb', color: 'text-green-400' },
-  RegenBuff: { label: '+Regen', color: 'text-green-400' },
-  RecoveryBuff: { label: '+Recovery', color: 'text-green-400' },
-  ToHitBuff: { label: '+ToHit', color: 'text-green-400' },
-  RechargeBuff: { label: '+Recharge', color: 'text-green-400' },
-  HoldProtection: { label: 'Hold Protection', color: 'text-sky-400' },
-  StunProtection: { label: 'Stun Protection', color: 'text-sky-400' },
-  SleepProtection: { label: 'Sleep Protection', color: 'text-sky-400' },
-  ImmobilizeProtection: { label: 'Immob Protection', color: 'text-sky-400' },
-  FearProtection: { label: 'Fear Protection', color: 'text-sky-400' },
-  ConfuseProtection: { label: 'Confuse Protection', color: 'text-sky-400' },
-  KnockbackProtection: { label: 'KB Protection', color: 'text-sky-400' },
-  KnockupProtection: { label: 'KB Protection', color: 'text-sky-400' },
-  EndDrainResist: { label: 'End Drain Resist', color: 'text-sky-400' },
-  RecoveryDebuffResist: { label: '-Recovery Resist', color: 'text-sky-400' },
-  RegenDebuffResist: { label: '-Regen Resist', color: 'text-sky-400' },
-  RechargeDebuffResist: { label: '-Recharge Resist', color: 'text-sky-400' },
-};
-
-// Pet/pseudo-pet debuffs whose computed `value` is a fraction → show as a percent
-// (the label already carries the sign, e.g. "-ToHit 5%"). Everything else shows
-// its calculated magnitude: mez as "mag N (Ns)", KB/-end/heal as the raw value.
-const PERCENT_PET_EFFECTS = new Set([
-  'RechargeDebuff', 'Slow', 'ToHitDebuff', 'DefenseDebuff', 'ResistanceDebuff', 'DamageDebuff', 'RecoveryDebuff',
-  'ResistanceBuff',
-  // Buff-pet aura percentages (Absorb is shown as raw HP points, not a percent).
-  'DefenseBuff', 'RegenBuff', 'RecoveryBuff', 'ToHitBuff', 'RechargeBuff',
-  // Ally debuff resistances from a summoned field render as a resistance percent.
-  'EndDrainResist', 'RecoveryDebuffResist', 'RegenDebuffResist', 'RechargeDebuffResist',
-]);
-const MEZ_PET_EFFECTS = new Set(['Stun', 'Hold', 'Sleep', 'Fear', 'Confuse', 'Immobilize']);
-// Ally mez/knock protection from a summoned field — a protection MAGNITUDE
-// (value = scale × table), shown as "Mag N" like other protection.
-const PROTECTION_PET_EFFECTS = new Set([
-  'HoldProtection', 'StunProtection', 'SleepProtection', 'ImmobilizeProtection',
-  'FearProtection', 'ConfuseProtection', 'KnockbackProtection', 'KnockupProtection',
-]);
-
-/** Format a computed pet effect value for display — percentages for debuffs, mag
- *  (+duration) for mez, raw magnitude for the rest. Replaces showing the raw
- *  table×scale fraction (e.g. 0.05) which read as a meaningless modifier. */
-function formatPetEffectValue(eff: PetEffectComputed): string {
-  const { type, value, magnitude } = eff;
-  if (PERCENT_PET_EFFECTS.has(type)) {
-    if (value === undefined) return '—';
-    const pct = value * 100;
-    return `${pct.toFixed(pct < 10 ? 1 : 0)}%`;
-  }
-  if (MEZ_PET_EFFECTS.has(type)) {
-    const mag = magnitude !== undefined ? `mag ${magnitude}` : '';
-    const dur = value !== undefined && value > 0 ? ` ${value.toFixed(1)}s` : '';
-    return (mag + dur).trim() || '—';
-  }
-  if (PROTECTION_PET_EFFECTS.has(type)) {
-    // Protection magnitude = scale × table (the resolved `value`), not a duration.
-    return value !== undefined ? `Mag ${value.toFixed(1)}` : '—';
-  }
-  // Knockback / Knockup / Taunt / EndDrain / Heal: the computed value/points.
-  if (value !== undefined) return value.toFixed(2);
-  if (magnitude !== undefined) return `mag ${magnitude}`;
-  return '—';
-}
-
 /** Expandable row for a single pet ability with damage */
 function PetAbilityRow({ ad }: { ad: PetAbilityDamage }) {
   const [open, setOpen] = useState(false);
@@ -2144,6 +2063,72 @@ function PetAbilityRow({ ad }: { ad: PetAbilityDamage }) {
   );
 }
 
+/** A summon's lifetime. The data's "permanent" sentinel is a literal 99999s,
+ *  which printed verbatim reads as a number somebody forgot to fix rather than
+ *  as "this henchman stays until it dies" — the same sentinel the damage
+ *  headline already special-cases (`PERMANENT_PSEUDOPET_DURATION`). */
+function formatSummonDuration(duration?: number): string {
+  if (!duration || duration >= PERMANENT_PSEUDOPET_DURATION) return 'permanent';
+  return `${duration}s`;
+}
+
+/** One titled block of the effects list — the pet's own stats, or what it
+ *  applies to others. Renders nothing when empty. */
+function PetEffectGroup({ title, hint, effects, showTitle = true }: {
+  title: string;
+  hint: string;
+  effects: PetEffectComputed[];
+  showTitle?: boolean;
+}) {
+  if (effects.length === 0) return null;
+  return (
+    <div>
+      {showTitle && (
+        <div className="text-[10px] uppercase tracking-wide text-slate-500 mt-0.5" title={hint}>
+          {title}
+        </div>
+      )}
+      {/* Two-column flow — each effect is a compact label↔value pair so the
+          block packs tightly instead of one tall column with a wide gap. */}
+      <div className="grid grid-cols-2 gap-x-4 gap-y-0.5">
+        {effects.map((eff, i) => {
+          const chanceLabel = eff.chance && eff.chance < 1 ? ` (${(eff.chance * 100).toFixed(0)}%)` : '';
+          return (
+            <div key={`${eff.type}-${i}`} className="flex items-baseline justify-between gap-1.5 text-[11px]">
+              <span className={`${petEffectColor(eff)} truncate`} title={petEffectLabel(eff)}>
+                {petEffectLabel(eff)}{chanceLabel}
+                {eff.conditional && (
+                  <span className="text-amber-500/70 italic ml-1" title="Only while the power is in its empowered/triggered state (e.g. Storm Cell's High Winds)">
+                    ⚡
+                  </span>
+                )}
+                {eff.ignoreStrength && (
+                  <span className="text-slate-500 italic ml-1" title="Ignores buffs and enhancements">
+                    (unenh.)
+                  </span>
+                )}
+              </span>
+              <span className="text-slate-300 tabular-nums shrink-0">
+                {formatPetEffectValue(eff)}
+              </span>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+/** Deduped, human-readable list of the effect KINDS an ability carries. */
+function abilityEffectSummary(ability: PetAbility): string {
+  const seen: string[] = [];
+  for (const eff of ability.effects ?? []) {
+    const label = petEffectLabel(eff);
+    if (!seen.includes(label)) seen.push(label);
+  }
+  return seen.join(', ');
+}
+
 /** Expandable row for a pet ability with effects only (no damage) */
 function PetEffectAbilityRow({ ability }: { ability: PetAbility }) {
   const [open, setOpen] = useState(false);
@@ -2162,11 +2147,13 @@ function PetEffectAbilityRow({ ability }: { ability: PetAbility }) {
           {ability.displayName}
           {ability.type === 'Auto' && <span className="text-slate-400 text-[9px]">auto</span>}
         </span>
-        <span className="text-slate-500 text-right col-span-3">
-          {ability.effects?.map(e => {
-            const d = EFFECT_DISPLAY[e.type];
-            return d?.label || e.type;
-          }).join(', ')}
+        {/* A summary, not a transcript: the same effect type recurs across an
+            ability's templates (a Soldier's Resistance carries two separate mez
+            protections), and repeating "SelfMezProtection, SelfMezProtection"
+            in a 9rem gutter told the reader nothing. Values live in the
+            expanded detail below. */}
+        <span className="text-slate-500 text-right col-span-3 truncate" title={abilityEffectSummary(ability)}>
+          {abilityEffectSummary(ability)}
         </span>
         <span className="text-slate-500 text-right">—</span>
       </div>
@@ -2190,7 +2177,7 @@ function PetAbilityDetails({ ability, cycleTime, damageByType }: {
   if (ability.activatePeriod) stats.push({ label: 'Period', value: `${ability.activatePeriod}s` });
   if (cycleTime) stats.push({ label: 'Cycle', value: `${cycleTime.toFixed(2)}s` });
   if (ability.effectArea && ability.effectArea !== 'Character') {
-    stats.push({ label: 'Area', value: ability.effectArea });
+    stats.push({ label: 'Area', value: formatEffectArea(ability.effectArea) });
   }
   if (ability.range) stats.push({ label: 'Range', value: `${ability.range}ft` });
   if (ability.radius) stats.push({ label: 'Radius', value: `${ability.radius}ft` });
@@ -2223,16 +2210,17 @@ function PetAbilityDetails({ ability, cycleTime, damageByType }: {
           ))}
         </div>
       )}
-      {/* Effects */}
+      {/* Effects. One chip per template, each carrying its own sub-types —
+          two SelfMezProtections are two different protections (Placate mag 4,
+          Confuse mag 2) and are only distinguishable by what they name. */}
       {ability.effects && ability.effects.length > 0 && (
         <div className="flex flex-wrap gap-1 mt-0.5">
           {ability.effects.map((eff, i) => {
-            const display = EFFECT_DISPLAY[eff.type] || { label: eff.type, color: 'text-slate-300' };
             const magLabel = eff.magnitude ? ` ${eff.magnitude}` : '';
             const chanceLabel = eff.chance && eff.chance < 1 ? ` ${(eff.chance * 100).toFixed(0)}%` : '';
             return (
-              <span key={`${eff.type}-${i}`} className={`text-[10px] px-1 py-0.5 rounded bg-slate-800/60 ${display.color}`}>
-                {display.label}{magLabel}{chanceLabel}
+              <span key={`${eff.type}-${i}`} className={`text-[10px] px-1 py-0.5 rounded bg-slate-800/60 ${petEffectColor(eff)}`}>
+                {petEffectLabel(eff)}{magLabel}{chanceLabel}
               </span>
             );
           })}
@@ -2268,7 +2256,7 @@ function SingleEntityDisplay({
   // debuffs/mez ARE the power's content (Storm Cell is all -rech/-spd/-tohit).
   const [effectsExpanded, setEffectsExpanded] = useState(hideDamage);
 
-  const durationLabel = duration ? `${duration}s` : 'permanent';
+  const durationLabel = formatSummonDuration(duration);
   const countLabel = entityCount > 1 ? ` x${entityCount}` : '';
 
   const hasDamage = !hideDamage && petDamage && petDamage.aggregateDpsBase > 0;
@@ -2276,6 +2264,10 @@ function SingleEntityDisplay({
   const hasBuff = petDamage && petDamage.aggregateDpsFinal !== petDamage.aggregateDpsEnhanced;
   const hasEffects = petDamage && petDamage.allEffects.length > 0;
   const hasContent = hasDamage || hasEffects;
+  const petEffects = useMemo(
+    () => partitionPetEffects(petDamage?.allEffects ?? []),
+    [petDamage],
+  );
 
   return (
     <div>
@@ -2366,34 +2358,25 @@ function SingleEntityDisplay({
                 <span className="text-xs text-slate-300 font-medium">Effects</span>
               </div>
               {effectsExpanded && (
-                // Two-column flow — each effect is a compact label↔value pair so
-                // the block packs tightly instead of one tall column with a wide
-                // gap between label and value.
-                <div className="mt-0.5 ml-3 grid grid-cols-2 gap-x-4 gap-y-0.5">
-                  {petDamage!.allEffects.map((eff) => {
-                    const display = EFFECT_DISPLAY[eff.type] || { label: eff.type, color: 'text-slate-300' };
-                    const chanceLabel = eff.chance && eff.chance < 1 ? ` (${(eff.chance * 100).toFixed(0)}%)` : '';
-                    return (
-                      <div key={eff.type} className="flex items-baseline justify-between gap-1.5 text-[11px]">
-                        <span className={`${display.color} truncate`}>
-                          {display.label}{chanceLabel}
-                          {eff.conditional && (
-                            <span className="text-amber-500/70 italic ml-1" title="Only while the power is in its empowered/triggered state (e.g. Storm Cell's High Winds)">
-                              ⚡
-                            </span>
-                          )}
-                          {eff.ignoreStrength && (
-                            <span className="text-slate-500 italic ml-1" title="Ignores buffs and enhancements">
-                              (unenh.)
-                            </span>
-                          )}
-                        </span>
-                        <span className="text-slate-300 tabular-nums shrink-0">
-                          {formatPetEffectValue(eff)}
-                        </span>
-                      </div>
-                    );
-                  })}
+                // Split into the pet's OWN stats and what it puts on somebody
+                // else. A summon is a second character (COH-DATA-MODEL §6), so
+                // its resistance and mez protection describe the thing standing
+                // there; the debuffs describe what it does to enemies. Rendered
+                // as one flat list they read as a single undifferentiated pile.
+                <div className="mt-0.5 ml-3 space-y-0.5">
+                  <PetEffectGroup
+                    title="Its own defenses"
+                    hint="The summon's own stats — its resistance, defense and mez protection. These belong to the pet and are never added to your character totals."
+                    effects={petEffects.self}
+                  />
+                  <PetEffectGroup
+                    title="Applies to targets"
+                    hint="What this pet puts on the things it hits (or on allies in range)."
+                    effects={petEffects.applied}
+                    // Only worth naming when there is something to contrast it
+                    // with — a pet with nothing but debuffs needs no heading.
+                    showTitle={petEffects.self.length > 0}
+                  />
                 </div>
               )}
             </div>
@@ -2525,7 +2508,7 @@ export function PetDamageDisplay({ summon, level, enhancementDamageBonus, global
   const hasDamage = totals.base > 0 && !mutuallyExclusive;
   const hasEnh = totals.enhanced !== totals.base;
   const hasBuff = totals.final !== totals.enhanced;
-  const durationLabel = summon.duration ? `${summon.duration}s` : 'permanent';
+  const durationLabel = formatSummonDuration(summon.duration);
 
   // Nothing to show (e.g. a location shell with only an unresolved entity).
   if (entityList.length === 0 && resolvedResults.length === 0 && conditionalResults.length === 0) return null;
