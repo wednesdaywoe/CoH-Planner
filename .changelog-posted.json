@@ -345,6 +345,36 @@
       "id": "perma-window-caster-clock",
       "date": "2026-07-29",
       "preview": "Fix for perma tracking: it now times the buff on you rather than whichever effec"
+    },
+    {
+      "id": "relative-level-enh-curve",
+      "date": "2026-07-30",
+      "preview": "Relative level is now curve-driven for origin/special"
+    },
+    {
+      "id": "caster-buff-toggle",
+      "date": "2026-07-30",
+      "preview": "Fix for state toggles appearing on anything with caster-buff key, regardless if "
+    },
+    {
+      "id": "winters-gift-enh",
+      "date": "2026-07-30",
+      "preview": "Winters Gift show now be a normal craftable, not auto-attuned"
+    },
+    {
+      "id": "power-effect-conditionals",
+      "date": "2026-07-30",
+      "preview": "Power conditionals like Impact should now be surfaced and flow into the attach c"
+    },
+    {
+      "id": "compare-slotting-persistance",
+      "date": "2026-07-30",
+      "preview": "Extended persistance for the Compare Slotting tool"
+    },
+    {
+      "id": "slot-aggregation-level",
+      "date": "2026-07-30",
+      "preview": "Fix for an active Alpha causing enhancement craft level to get overidden by char"
     }
   ]
 }
