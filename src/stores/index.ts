@@ -46,7 +46,7 @@ export {
   useMechanicAdjuster,
   useGlobalAdjuster,
 } from './uiStore';
-export type { Toast, ToastAction } from './uiStore';
+export type { Toast, ToastAction, ComparisonCopy } from './uiStore';
 
 // Auth store
 export { useAuthStore } from './authStore';

@@ -29,14 +29,26 @@ import { SlottedEnhancementIcon } from '@/components/powers/SlottedEnhancementIc
 import { resolvePath } from '@/utils/paths';
 import { Modal, ModalBody } from './Modal';
 import type { Enhancement, ArchetypeId, SetBonus } from '@/types';
+import type { ComparisonCopy } from '@/stores';
 import type { EnhancementBonuses } from '@/utils/calculations/enhancement-values';
 
-interface ComparisonCopy {
-  id: number;
-  slots: (Enhancement | null)[];
-}
+/** Row 0 — the live mirror of the build's actual slotting. Never stored. */
+const CURRENT_COPY_ID = 0;
 
-let nextCopyId = 1;
+/**
+ * Force a saved copy to the power's current slot count. A copy is a fixed-length
+ * array captured when it was made; the user can add or remove slots on the real
+ * power afterwards, and a mismatched length would otherwise render the wrong
+ * number of circles and let Apply write past the end of the power.
+ */
+export function reconcileLength(
+  slots: (Enhancement | null)[],
+  slotCount: number
+): (Enhancement | null)[] {
+  if (slots.length === slotCount) return slots;
+  if (slots.length > slotCount) return slots.slice(0, slotCount);
+  return [...slots, ...new Array<Enhancement | null>(slotCount - slots.length).fill(null)];
+}
 
 export function CompareSlottingModal() {
   const isOpen = useUIStore((s) => s.compareSlottingOpen);
@@ -44,6 +56,7 @@ export function CompareSlottingModal() {
   const closeModal = useUIStore((s) => s.closeCompareSlotting);
   const openCompareSlotting = useUIStore((s) => s.openCompareSlotting);
   const openEnhancementPicker = useUIStore((s) => s.openEnhancementPicker);
+  const setStoredCopies = useUIStore((s) => s.setCompareSlottingCopies);
 
   const build = useBuildStore((s) => s.build);
   const setEnhancement = useBuildStore((s) => s.setEnhancement);
@@ -53,9 +66,18 @@ export function CompareSlottingModal() {
   const targetLevelOffset = useUIStore((s) => s.targetLevelOffset);
   const incarnateActive = useUIStore((s) => s.incarnateActive);
 
-  const [copies, setCopies] = useState<ComparisonCopy[]>([]);
+  // Row 0's slots. Local because the row mirrors the build: it re-seeds
+  // whenever the real slotting changes, so nothing worth keeping lives here.
+  const [currentSlots, setCurrentSlots] = useState<(Enhancement | null)[]>([]);
   const [hoveredCopyId, setHoveredCopyId] = useState<number | null>(null);
   const [appliedCopyId, setAppliedCopyId] = useState<number | null>(null);
+
+  const targetKey = compareTarget
+    ? `${compareTarget.powerSet}::${compareTarget.powerName}`
+    : null;
+
+  // The user-made rows for this power, surviving close/reopen and power switching.
+  const storedCopies = useUIStore((s) => (targetKey ? s.compareSlottingCopies[targetKey] : undefined));
 
   // Resolve the power definition
   const lookupResult = useMemo(() => {
@@ -107,18 +129,58 @@ export function CompareSlottingModal() {
     return groups;
   }, [allBuildPowers]);
 
-  // Initialize copies when modal opens or target power changes
+  // Re-seed the "Current" row from the build. Keyed on the build's actual
+  // slotting (not just the power name) so applying a copy — or slotting the
+  // power outside this modal — is reflected here instead of leaving row 0
+  // showing a snapshot that silently disagrees with the build. `isOpen` is a
+  // dep for the same reason: row 0 is a mirror, so it starts each visit at
+  // what the build actually holds, and scratch edits to it don't outlive the
+  // session the way the saved rows do.
+  const buildSlotsSignature = useMemo(
+    () => JSON.stringify(selectedPower?.slots ?? []),
+    [selectedPower]
+  );
   useEffect(() => {
-    if (isOpen && selectedPower) {
-      nextCopyId = 1;
-      setCopies([{
-        id: nextCopyId++,
-        slots: [...selectedPower.slots],
-      }]);
-      setHoveredCopyId(null);
-      setAppliedCopyId(null);
+    setCurrentSlots(selectedPower ? [...selectedPower.slots] : []);
+  }, [isOpen, targetKey, buildSlotsSignature]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Hover/apply highlighting is about the row under the cursor, so it means
+  // nothing once the power changes.
+  useEffect(() => {
+    setHoveredCopyId(null);
+    setAppliedCopyId(null);
+  }, [targetKey]);
+
+  // Current row first, then the saved rows — each forced to the power's
+  // present slot count, so every consumer below sees correct-length arrays.
+  const copies = useMemo<ComparisonCopy[]>(() => {
+    if (!selectedPower) return [];
+    const slotCount = selectedPower.slots.length;
+    return [
+      { id: CURRENT_COPY_ID, slots: reconcileLength(currentSlots, slotCount) },
+      ...(storedCopies ?? []).map((c) => ({ ...c, slots: reconcileLength(c.slots, slotCount) })),
+    ];
+  }, [selectedPower, currentSlots, storedCopies]);
+
+  // Write the saved rows back. Always fed from `copies`, which is already
+  // length-reconciled, so a stale-length copy is repaired the first time it
+  // is touched rather than being written back short.
+  const commitCopies = useCallback((next: ComparisonCopy[]) => {
+    if (targetKey) setStoredCopies(targetKey, next);
+  }, [targetKey, setStoredCopies]);
+
+  const updateCopySlots = useCallback((
+    copyId: number,
+    mapSlots: (slots: (Enhancement | null)[]) => (Enhancement | null)[]
+  ) => {
+    if (copyId === CURRENT_COPY_ID) {
+      setCurrentSlots((prev) => mapSlots(prev));
+      return;
     }
-  }, [isOpen, selectedPower?.name]); // eslint-disable-line react-hooks/exhaustive-deps
+    commitCopies(
+      copies.slice(1).map((c) => (c.id === copyId ? { ...c, slots: mapSlots(c.slots) } : c))
+    );
+  }, [copies, commitCopies]);
 
   // Computed values shared across copies
   const globalBonusesForCalc = useMemo(
@@ -330,50 +392,53 @@ export function CompareSlottingModal() {
     const copy = copies.find(c => c.id === copyId);
     if (!copy) return;
     const overrideHandler = (si: number, enhancement: Enhancement) => {
-      setCopies(prev => prev.map(c =>
-        c.id === copyId
-          ? { ...c, slots: c.slots.map((s, i) => i === si ? enhancement : s) }
-          : c
-      ));
+      updateCopySlots(copyId, (slots) => slots.map((s, i) => (i === si ? enhancement : s)));
     };
     openEnhancementPicker(compareTarget.powerName, compareTarget.powerSet, slotIndex, overrideHandler, copy.slots);
-  }, [compareTarget, copies, openEnhancementPicker]);
+  }, [compareTarget, copies, openEnhancementPicker, updateCopySlots]);
 
   // Handler: clear enhancement from a comparison copy slot
   const handleClearSlot = useCallback((copyId: number, slotIndex: number) => {
-    setCopies(prev => prev.map(c =>
-      c.id === copyId
-        ? { ...c, slots: c.slots.map((s, i) => i === slotIndex ? null : s) }
-        : c
-    ));
-  }, []);
+    updateCopySlots(copyId, (slots) => slots.map((s, i) => (i === slotIndex ? null : s)));
+  }, [updateCopySlots]);
+
+  // IDs only have to be unique within one power's list, and the counter that
+  // used to hand them out was module state reset on open — which would collide
+  // with saved rows the moment those outlived a close.
+  const nextCopyId = useCallback(
+    () => copies.reduce((max, c) => Math.max(max, c.id), CURRENT_COPY_ID) + 1,
+    [copies]
+  );
 
   // Handler: add new empty copy
   const handleAddCopy = useCallback(() => {
     if (!selectedPower) return;
-    setCopies(prev => [...prev, {
-      id: nextCopyId++,
-      slots: new Array(selectedPower.slots.length).fill(null),
-    }]);
-  }, [selectedPower]);
+    commitCopies([
+      ...copies.slice(1),
+      { id: nextCopyId(), slots: new Array(selectedPower.slots.length).fill(null) },
+    ]);
+  }, [selectedPower, copies, commitCopies, nextCopyId]);
 
   // Handler: duplicate a copy
   const handleDuplicateCopy = useCallback((copyId: number) => {
-    setCopies(prev => {
-      const source = prev.find(c => c.id === copyId);
-      if (!source) return prev;
-      const idx = prev.indexOf(source);
-      const newCopy = { id: nextCopyId++, slots: [...source.slots] };
-      const next = [...prev];
-      next.splice(idx + 1, 0, newCopy);
-      return next;
-    });
-  }, []);
+    const source = copies.find(c => c.id === copyId);
+    if (!source) return;
+    const stored = copies.slice(1);
+    // Duplicating "Current" has no predecessor among the saved rows, so it
+    // lands at the front of them — still directly below the row it came from.
+    const insertAt = copyId === CURRENT_COPY_ID
+      ? 0
+      : stored.findIndex(c => c.id === copyId) + 1;
+    const next = [...stored];
+    next.splice(insertAt, 0, { id: nextCopyId(), slots: [...source.slots] });
+    commitCopies(next);
+  }, [copies, commitCopies, nextCopyId]);
 
-  // Handler: remove a copy
+  // Handler: remove a copy (never the live "Current" row)
   const handleRemoveCopy = useCallback((copyId: number) => {
-    setCopies(prev => prev.filter(c => c.id !== copyId));
-  }, []);
+    if (copyId === CURRENT_COPY_ID) return;
+    commitCopies(copies.slice(1).filter(c => c.id !== copyId));
+  }, [copies, commitCopies]);
 
   // Handler: apply a copy's slotting to the actual build
   const handleApply = useCallback((copyId: number) => {
@@ -601,7 +666,7 @@ export function CompareSlottingModal() {
                     >
                       Apply
                     </button>
-                    {copies.length > 1 && (
+                    {idx > 0 && (
                       <button
                         onClick={(e) => { e.stopPropagation(); handleRemoveCopy(copy.id); }}
                         className="text-[10px] px-1 py-0.5 rounded text-slate-500 hover:text-red-400 hover:bg-slate-600"

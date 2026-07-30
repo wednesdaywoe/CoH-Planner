@@ -87,6 +87,17 @@ const DEFAULT_PROC_SETTINGS: ProcSettings = {
  */
 export type DamageDisplayMode = 'damage' | 'damagePerAnim' | 'damagePerSec' | 'damagePerEnd';
 
+/**
+ * One alternative slotting under test in the Compare Slotting modal.
+ *
+ * `id` is unique only within a power's own list; the "Current" row the modal
+ * renders first is not one of these and reserves id 0.
+ */
+export interface ComparisonCopy {
+  id: number;
+  slots: (Enhancement | null)[];
+}
+
 // ============================================
 // UI STORE INTERFACE
 // ============================================
@@ -342,6 +353,18 @@ interface UIState {
   /** Compare Slotting modal */
   compareSlottingOpen: boolean;
   compareSlottingPower: { powerName: string; powerSet: string } | null;
+  /** Compare Slotting: the user-made comparison configurations, keyed by
+   *  `powerSet::powerName`. Holds only the "Copy 1..N" rows — the "Current"
+   *  row is mirrored live from the build every time it is read, so it is
+   *  never stored here and can never go stale against actual slotting.
+   *
+   *  Session-scoped on purpose: deliberately absent from `partialize`.
+   *  Persisting it to localStorage would outlive the build it describes,
+   *  and this store is global while builds are per-server — saved copies
+   *  would surface against a different build, or against a dataset whose
+   *  enhancements do not resolve. Surviving close/reopen and power
+   *  switching is the part that was actually missing. */
+  compareSlottingCopies: Record<string, ComparisonCopy[]>;
 
   /** Power view mode: 'chronological' (Mids-style, default) or 'category' */
   powerViewMode: 'category' | 'chronological';
@@ -663,6 +686,10 @@ interface UIActions {
   // Compare Slotting Modal
   openCompareSlotting: (powerName?: string, powerSet?: string) => void;
   closeCompareSlotting: () => void;
+  /** Replace a power's saved comparison copies. An empty list drops the entry
+   *  entirely, so powers the user has stopped comparing don't accumulate. */
+  setCompareSlottingCopies: (key: string, copies: ComparisonCopy[]) => void;
+  clearCompareSlottingCopies: () => void;
 
   // Power View Mode
   setPowerViewMode: (mode: 'category' | 'chronological') => void;
@@ -915,6 +942,7 @@ export const useUIStore = create<UIStore>()(
       selectedBranch: null, // No branch selected by default
       compareSlottingOpen: false,
       compareSlottingPower: null,
+      compareSlottingCopies: {},
       powerViewMode: 'category', // powerViewMode: 'category' | 'chronological';
       hoverHint: null,
       slotMoveSource: null,
@@ -1668,6 +1696,16 @@ export const useUIStore = create<UIStore>()(
       closeCompareSlotting: () =>
         set({ compareSlottingOpen: false, compareSlottingPower: null }),
 
+      setCompareSlottingCopies: (key, copies) =>
+        set((state) => {
+          const next = { ...state.compareSlottingCopies };
+          if (copies.length === 0) delete next[key];
+          else next[key] = copies;
+          return { compareSlottingCopies: next };
+        }),
+
+      clearCompareSlottingCopies: () => set({ compareSlottingCopies: {} }),
+
       // Power View Mode
       setPowerViewMode: (mode) =>
         set({ powerViewMode: mode }),
@@ -1807,6 +1845,9 @@ export const useUIStore = create<UIStore>()(
           tooltip: defaultTooltip,
           compareSlottingOpen: false,
           compareSlottingPower: null,
+          // Copies describe slotting on a specific build's powers; a new build
+          // shares neither the powers nor the slot counts.
+          compareSlottingCopies: {},
           selectedBranch: null,
           targetsHitValues: {},
           mechanicAdjusters: {},

@@ -2610,6 +2610,12 @@ export const useBuildStore = create<BuildStore>()(
             useUIStore.getState().setSelectedBranch(branch);
           }
 
+          // Compare Slotting copies are keyed by powerset+power and hold whole
+          // enhancements. An imported build shares neither the slot counts nor
+          // (across a dataset switch) the enhancement vocabulary, so anything
+          // held for the outgoing build would resurface as someone else's.
+          useUIStore.getState().clearCompareSlottingCopies();
+
           set({ build });
           return true;
         } catch (e) {
@@ -2628,6 +2634,7 @@ export const useBuildStore = create<BuildStore>()(
         // respec-mode levels as stored entries so the first add/remove
         // slot interaction doesn't collapse untouched slots' levels.
         ensureSlotOrderPopulated(build);
+        useUIStore.getState().clearCompareSlottingCopies();
         set({ build });
       },
 

@@ -33,6 +33,18 @@ export interface ManualEntry {
 */
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
+  { 
+    date: '2026-07-30',
+    
+    items: [
+      { id: 'relative-level-enh-curve', message: 'Relative level is now curve-driven for origin/special', type: 'fix' },
+      { id: 'caster-buff-toggle', message: 'Fix for state toggles appearing on anything with caster-buff key, regardless if it makes sense', type: 'fix' },
+      { id: 'winters-gift-enh', message: 'Winters Gift show now be a normal craftable, not auto-attuned', type: 'fix'},
+      { id: 'power-effect-conditionals', message:'Power conditionals like Impact should now be surfaced and flow into the attach chain builder', type: 'fix'},
+      { id: 'compare-slotting-persistance', message: 'Extended persistance for the Compare Slotting tool', type: 'fix'},
+
+    ]
+  },
   {
     date: '2026-07-29',
 
