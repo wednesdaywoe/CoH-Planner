@@ -1,6 +1,6 @@
 {
   "schema": "dsh8-incarnate-collapse-worklist/1",
-  "dataset": "thunderspy",
+  "dataset": "homecoming",
   "scope": {
     "slots": "Hybrid (passive/frontLoaded/perTarget) + Destiny (flat stat map) — the multi-type buff slots feeding caster totals. Alpha/Genesis (single-aspect enhancement) + Interface/Judgement/Lore (proc/nuke/pet) are structurally collapse-free here and tracked as coverage, not swept.",
     "gate": "class-present, sibling-missing: an input effectType represented somewhere in the output but a specific subType absent (the multi-type explosion). DamageBuff/Accuracy/scalars are folded to presence; Defense/Resistance/Mez-protection/Movement are checked per-subType. Fold-all output keys (defenseAll/resistanceAll/mezProtection/damage) cover any subType.",
@@ -10,7 +10,7 @@
     "powersTotal": 81,
     "powersChecked": 81,
     "genMissing": 0,
-    "atomsChecked": 432
+    "atomsChecked": 429
   },
   "summary": {
     "highConfidenceCollapses": 0,

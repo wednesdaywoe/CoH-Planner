@@ -6,10 +6,10 @@
     "tools/bin-crawler",
     "exported_powers"
   ],
-  "synced_from_commit": "b0d5cac0da0df61fd9d3ee1b3ff5adfafdb881c9",
-  "synced_from_subject": "ProcMainTargetOnly was four words past where the tail decode stopped",
-  "synced_from_date": "2026-07-29T09:30:26-04:00",
-  "tree_fingerprint": "89579fc6874f87ee0037e7df10abf962e70d3a93357272e2e070a9d4e6e8372b",
-  "export_manifest_digest": "50bc5704724248b8cf7391c2224f851bd0162e88af500484f65029ad6eb663bc",
+  "synced_from_commit": "408e2bd159e9c256d3425cbe74f7f4b7613577be",
+  "synced_from_subject": "restamp the three export manifests for the event-calibration parser",
+  "synced_from_date": "2026-07-30T22:31:43-04:00",
+  "tree_fingerprint": "a7658716a6b4675e6a3a07f4fb64169239ab1609fb9ed2d5d83e36f486361e79",
+  "export_manifest_digest": "c3fd9d41f3baca6f3cc08e12dc24efbe9166222cc10a2a0505ba9a4072dbfc66",
   "export_manifest_count": 10
 }
