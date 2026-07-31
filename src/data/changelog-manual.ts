@@ -43,7 +43,13 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
       { id: 'power-effect-conditionals', message:'Power conditionals like Impact should now be surfaced and flow into the attach chain builder', type: 'fix'},
       { id: 'compare-slotting-persistance', message: 'Extended persistance for the Compare Slotting tool', type: 'fix'},
       { id: 'slot-aggregation-level', message: 'Fix for an active Alpha causing enhancement craft level to get overidden by character level', type: 'fix'},
-
+      { id: 'mm-upgrades-from-build', message: 'Mastermind pet upgrades now come from your build. Taking Equip Mercenary equips your henchmen, so the pet panel shows equipped henchmen: the boxes are pre-set from the powers you\'ve taken and named after them, instead of "Upgrade 1 / Upgrade 2". You can still click them to compare upgraded against un-upgraded, and there\'s a "follow build" link back.', type: 'feat' },
+      { id: 'mm-upgrade-dps-double-count', message: 'Upgraded pet DPS was overstated. An upgrade replaces a henchman\'s powerset rather than adding to it, but the calc was stacking the tiers', type: 'fix' },
+      { id: 'mm-upgrade-stats-update', message: 'Pet stats now actually change when you upgrade them.', type: 'fix' },
+      { id: 'pet-stat-rows-out-of-ability-list', message: 'The upgrade powers no longer take up rows in a pet\'s ability list.', type: 'fix' },
+      { id: 'tspy-upgrade-manual', message: 'Known issue: on Thunderspy, pet upgrades can\'t be read off your build. The game data doesn\'t record which power grants which upgrade, so those checkboxes stay manual and start unticked. The double-counted damage is fixed there regardless.', type: 'known-issue' },
+      { id: 'pet-self-buffs-recovered', message: 'A pet\'s own resistance, defence, mez protection and mez resistance now surface in the info', type: 'fix' },
+      { id: 'pet-class-stats-cross-server', message: 'Pet class list is now derived from the summons themselves instead of hand-maintained, and carries each pet\'s own hit points and caps.', type: 'fix' },
     ]
   },
   {
