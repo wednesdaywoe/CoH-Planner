@@ -158,9 +158,28 @@ export interface PetAbility {
   rechargeUnaffected?: boolean;
 }
 
+/**
+ * One henchman upgrade — the `_2` / `_3` powerset a Mastermind's Equip/Upgrade
+ * power switches the pet over to.
+ *
+ * "Switches over", not "adds to": see `revokes`. Reading a tier as an append is
+ * what made the Skeletal Warrior swing Hack and Slash once per tier and the
+ * Howler Wolf keep quoting its un-upgraded resistance.
+ */
 export interface PetUpgradeTier {
   tier: number;
   abilities: PetAbility[];
+  /** The player power(s) that turn this tier on, by internal name
+   *  (`Equip_Mercenary`, `Tactical_Upgrade`). Derived from which powerset each
+   *  grant targets — the `_2`/`_3` suffix IS the tier — so it holds whatever a
+   *  server names its upgrades, at whatever level. Absent when the export
+   *  carries no resolved grant targets (Thunderspy), where the build alone
+   *  cannot say whether the tier is active. */
+  grantedBy?: string[];
+  /** Abilities this tier TAKES AWAY, by name. Equip Mercenary revokes the
+   *  Soldier's base Resistance as it grants Equip; Enchant Undead revokes the
+   *  Skeletal Warrior's base Hack and Slash as it grants its own. */
+  revokes?: string[];
 }
 
 export interface PetEntity {

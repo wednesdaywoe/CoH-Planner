@@ -254,6 +254,31 @@ export function partitionPetEffects(effects: PetEffectComputed[]): {
   return { self, applied };
 }
 
+/**
+ * True when an ability is the pet's stat sheet rather than something it does.
+ *
+ * An always-on power that deals no damage and whose every effect lands on the
+ * pet itself IS the pet's defensive profile — the Soldier's `Resistance`, the
+ * `Equip` that replaces it, the `Tactical_Upgrade` that adds ranged defence.
+ * Listing those beside its attacks reads as three more things the henchman
+ * does, when their entire content is already shown under "Its own defenses".
+ *
+ * Deliberately narrow. A passive that touches anybody else (the Demon Prince's
+ * Chilling Embrace) is an aura the pet projects and stays on the list; so does
+ * a click self-buff, which is a choice the pet makes rather than a standing
+ * stat.
+ */
+export function isPetStatCarrier(ability: {
+  type: string;
+  damage: readonly unknown[];
+  effects?: readonly PetEffectSubtyped[];
+}): boolean {
+  if (ability.type !== 'Auto') return false;
+  if (ability.damage.length > 0) return false;
+  const effects = ability.effects ?? [];
+  return effects.length > 0 && effects.every(isSelfEffect);
+}
+
 /** Internal effect-area enum → the spelling the game uses. */
 const EFFECT_AREA_LABEL: Record<string, string> = {
   SingleTarget: 'Single Target',

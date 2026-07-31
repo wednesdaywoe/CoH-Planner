@@ -60,6 +60,19 @@ export interface PetAbility {
 export interface PetUpgradeTier {
   tier: number;
   abilities: PetAbility[];
+  /** The player power(s) that turn this tier on, by internal name
+   *  (`Equip_Mercenary`, `Tactical_Upgrade`). Derived from which powerset the
+   *  grant targets — the `_2`/`_3` suffix IS the tier — so it holds whatever a
+   *  server names its upgrades. Absent when the export carries no resolved
+   *  grant targets (Thunderspy), in which case a consumer cannot tell from the
+   *  build alone whether the tier is active. */
+  grantedBy?: string[];
+  /** Abilities this tier TAKES AWAY, by name. An upgrade replaces rather than
+   *  adds: Equip Mercenary revokes the Soldier's base Resistance as it grants
+   *  Equip, and Enchant Undead revokes the Skeletal Warrior's base Hack and
+   *  Slash as it grants its own. Appending a tier without applying these
+   *  double-counts the attacks and leaves the stale passive on top. */
+  revokes?: string[];
 }
 
 export interface PetEntity {
@@ -9496,6 +9509,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     upgradeTiers: [
       {
         tier: 2,
+        grantedBy: ["Equip_Robot"],
         abilities: [
           {
             name: "Dual_Plasma_Blast",
@@ -9551,6 +9565,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
       },
       {
         tier: 3,
+        grantedBy: ["Upgrade_Robot"],
         abilities: [
           {
             name: "Incendiary_Swarm_Missiles",
@@ -9640,6 +9655,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     upgradeTiers: [
       {
         tier: 2,
+        grantedBy: ["Enchant_Demon"],
         abilities: [
           {
             name: "Ice_Blast",
@@ -9668,6 +9684,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
       },
       {
         tier: 3,
+        grantedBy: ["Abyssal_Empowerment"],
         abilities: [
           {
             name: "Frost_Breath",
@@ -9744,6 +9761,8 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     upgradeTiers: [
       {
         tier: 2,
+        grantedBy: ["Equip_Mercenary"],
+        revokes: ["Resistance"],
         abilities: [
           {
             name: "Buckshot",
@@ -9786,6 +9805,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
       },
       {
         tier: 3,
+        grantedBy: ["Tactical_Upgrade"],
         abilities: [
           {
             name: "Bulllet_Barrage",
@@ -9903,6 +9923,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     upgradeTiers: [
       {
         tier: 2,
+        grantedBy: ["Enchant_Demon"],
         abilities: [
           {
             name: "Block_of_Ice",
@@ -9956,6 +9977,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
       },
       {
         tier: 3,
+        grantedBy: ["Abyssal_Empowerment"],
         abilities: [
           {
             name: "Frozen_Aura",
@@ -10044,6 +10066,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     upgradeTiers: [
       {
         tier: 2,
+        grantedBy: ["Train_Beasts"],
         abilities: [
           {
             name: "Freezing_Roar",
@@ -10086,6 +10109,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
       },
       {
         tier: 3,
+        grantedBy: ["Tame_Beasts"],
         abilities: [
           {
             name: "Terrible_Howl",
@@ -10148,6 +10172,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     upgradeTiers: [
       {
         tier: 2,
+        grantedBy: ["Equip_Robot"],
         abilities: [
           {
             name: "Heavy_Laser_Burst",
@@ -10187,6 +10212,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
       },
       {
         tier: 3,
+        grantedBy: ["Upgrade_Robot"],
         abilities: [
           {
             name: "Full_Auto_Laser",
@@ -10276,6 +10302,8 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     upgradeTiers: [
       {
         tier: 2,
+        grantedBy: ["Enchant_Demon"],
+        revokes: ["Ember_Shield_Owner","Shield_of_Hellfire"],
         abilities: [
           {
             name: "Ember_Shield_Owner",
@@ -10331,6 +10359,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
       },
       {
         tier: 3,
+        grantedBy: ["Abyssal_Empowerment"],
         abilities: [
           {
             name: "Abyssal_Mending",
@@ -10418,6 +10447,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     upgradeTiers: [
       {
         tier: 2,
+        grantedBy: ["Enchant_Demon"],
         abilities: [
           {
             name: "Fire_Blast",
@@ -10445,6 +10475,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
       },
       {
         tier: 3,
+        grantedBy: ["Abyssal_Empowerment"],
         abilities: [
           {
             name: "Fire_Breath",
@@ -10508,6 +10539,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     upgradeTiers: [
       {
         tier: 2,
+        grantedBy: ["Train_Ninjas"],
         abilities: [
           {
             name: "Danger_Sense",
@@ -10546,6 +10578,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
       },
       {
         tier: 3,
+        grantedBy: ["Kuji_In_Zen"],
         abilities: [
           {
             name: "Aimed_Shot",
@@ -10889,6 +10922,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     upgradeTiers: [
       {
         tier: 2,
+        grantedBy: ["Enchant_Demon"],
         abilities: [
           {
             name: "Hellfire",
@@ -10916,6 +10950,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
       },
       {
         tier: 3,
+        grantedBy: ["Abyssal_Empowerment"],
         abilities: [
           {
             name: "Hellfire_Breath",
@@ -10990,6 +11025,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     upgradeTiers: [
       {
         tier: 2,
+        grantedBy: ["Enchant_Demon"],
         abilities: [
           {
             name: "Breath_of_Hellfire",
@@ -11031,6 +11067,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
       },
       {
         tier: 3,
+        grantedBy: ["Abyssal_Empowerment"],
         abilities: [
           {
             name: "Hellfire_Burst",
@@ -11104,6 +11141,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     upgradeTiers: [
       {
         tier: 2,
+        grantedBy: ["Train_Beasts"],
         abilities: [
           {
             name: "Howl",
@@ -11145,6 +11183,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
       },
       {
         tier: 3,
+        grantedBy: ["Tame_Beasts"],
         abilities: [
           {
             name: "Lick_Wounds",
@@ -11217,6 +11256,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     upgradeTiers: [
       {
         tier: 2,
+        grantedBy: ["Tame_Beasts","Train_Beasts"],
         abilities: [
           {
             name: "Howl",
@@ -11258,6 +11298,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
       },
       {
         tier: 3,
+        grantedBy: ["Tame_Beasts"],
         abilities: [
           {
             name: "Growl",
@@ -11333,6 +11374,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     upgradeTiers: [
       {
         tier: 2,
+        grantedBy: ["Train_Ninjas"],
         abilities: [
           {
             name: "Disembowel",
@@ -11372,6 +11414,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
       },
       {
         tier: 3,
+        grantedBy: ["Kuji_In_Zen"],
         abilities: [
           {
             name: "Blinding_Powder",
@@ -11442,6 +11485,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     upgradeTiers: [
       {
         tier: 2,
+        grantedBy: ["Enchant_Undead"],
         abilities: [
           {
             name: "Petrifying_Gaze",
@@ -11484,6 +11528,8 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
       },
       {
         tier: 3,
+        grantedBy: ["Dark_Empowerment"],
+        revokes: ["Costume1"],
         abilities: [
           {
             name: "Fearsome_Stare",
@@ -11570,6 +11616,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     upgradeTiers: [
       {
         tier: 2,
+        grantedBy: ["Train_Beasts"],
         abilities: [
           {
             name: "Ferocious_Growl",
@@ -11612,6 +11659,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
       },
       {
         tier: 3,
+        grantedBy: ["Tame_Beasts"],
         abilities: [
           {
             name: "Claw_Swipe",
@@ -11765,6 +11813,8 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     upgradeTiers: [
       {
         tier: 2,
+        grantedBy: ["Equip_Mercenary"],
+        revokes: ["Brawl","Resistance"],
         abilities: [
           {
             name: "Equip",
@@ -11793,6 +11843,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
       },
       {
         tier: 3,
+        grantedBy: ["Tactical_Upgrade"],
         abilities: [
           {
             name: "Frag_Grenade",
@@ -11879,6 +11930,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     upgradeTiers: [
       {
         tier: 2,
+        grantedBy: ["Train_Ninjas"],
         abilities: [
           {
             name: "Danger_Sense",
@@ -11931,6 +11983,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
       },
       {
         tier: 3,
+        grantedBy: ["Kuji_In_Zen"],
         abilities: [
           {
             name: "Char",
@@ -11982,6 +12035,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     upgradeTiers: [
       {
         tier: 2,
+        grantedBy: ["Equip_Robot"],
         abilities: [
           {
             name: "Heavy_Laser_Burst",
@@ -12021,6 +12075,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
       },
       {
         tier: 3,
+        grantedBy: ["Upgrade_Robot"],
         abilities: [
           {
             name: "Overcharged_Burst",
@@ -12111,6 +12166,8 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     upgradeTiers: [
       {
         tier: 2,
+        grantedBy: ["Enchant_Undead"],
+        revokes: ["Hack","Slash"],
         abilities: [
           {
             name: "Disembowel",
@@ -12175,6 +12232,8 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
       },
       {
         tier: 3,
+        grantedBy: ["Dark_Empowerment","Enchant_Undead"],
+        revokes: ["Costume1","Disembowel","Hack","Slash"],
         abilities: [
           {
             name: "Death_Shroud",
@@ -12301,6 +12360,8 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     upgradeTiers: [
       {
         tier: 2,
+        grantedBy: ["Equip_Mercenary"],
+        revokes: ["Resistance"],
         abilities: [
           {
             name: "ASMG_Heavy_Burst",
@@ -12341,6 +12402,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
       },
       {
         tier: 3,
+        grantedBy: ["Tactical_Upgrade"],
         abilities: [
           {
             name: "Assault_Rifle_Auto_Fire",
@@ -12464,6 +12526,8 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     upgradeTiers: [
       {
         tier: 2,
+        grantedBy: ["Equip_Mercenary"],
+        revokes: ["Resistance"],
         abilities: [
           {
             name: "Equip",
@@ -12518,6 +12582,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
       },
       {
         tier: 3,
+        grantedBy: ["Tactical_Upgrade"],
         abilities: [
           {
             name: "SCAR_Snipe",
@@ -12603,6 +12668,8 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     upgradeTiers: [
       {
         tier: 2,
+        grantedBy: ["Equip_Thugs","Upgrade_Equipment"],
+        revokes: ["Equip_1_2","Equip_2_2","Equip_3_2","Equip_4_2","Equip_5_2","Pistol","Upgrade_Equipment_1_3","Upgrade_Equipment_2_3","Upgrade_Equipment_3_3","Upgrade_Equipment_4_3","Upgrade_Equipment_5_3"],
         abilities: [
           {
             name: "Dual_Wield",
@@ -12642,6 +12709,8 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
       },
       {
         tier: 3,
+        grantedBy: ["Equip_Thugs","Upgrade_Equipment"],
+        revokes: ["Equip_1_2","Equip_2_2","Equip_3_2","Equip_4_2","Equip_5_2","Pistol","Upgrade_Equipment_1_3","Upgrade_Equipment_2_3","Upgrade_Equipment_3_3","Upgrade_Equipment_4_3","Upgrade_Equipment_5_3"],
         abilities: [
           {
             name: "Empty_Clips",
@@ -12707,6 +12776,8 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     upgradeTiers: [
       {
         tier: 2,
+        grantedBy: ["Equip_Thugs"],
+        revokes: ["Upgrade_Equipment_1_3","Upgrade_Equipment_2_3","Upgrade_Equipment_3_3"],
         abilities: [
           {
             name: "Resistance",
@@ -12736,6 +12807,8 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
       },
       {
         tier: 3,
+        grantedBy: ["Equip_Thugs","Upgrade_Equipment"],
+        revokes: ["Equip_1_2","Equip_2_2","Equip_3_2","Upgrade_Equipment_1_3","Upgrade_Equipment_2_3","Upgrade_Equipment_3_3"],
         abilities: [
           {
             name: "Fire_Bomb",
@@ -12800,6 +12873,8 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     upgradeTiers: [
       {
         tier: 2,
+        grantedBy: ["Equip_Thugs"],
+        revokes: ["Upgrade_Equipment_1_3","Upgrade_Equipment_2_3","Upgrade_Equipment_3_3"],
         abilities: [
           {
             name: "Hand_Clap",
@@ -12841,6 +12916,8 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
       },
       {
         tier: 3,
+        grantedBy: ["Equip_Thugs","Upgrade_Equipment"],
+        revokes: ["Equip_1_2","Equip_2_2","Equip_3_2","Upgrade_Equipment_1_3","Upgrade_Equipment_2_3","Upgrade_Equipment_3_3"],
         abilities: [
           {
             name: "Foot_Stomp",
@@ -12940,6 +13017,8 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     upgradeTiers: [
       {
         tier: 2,
+        grantedBy: ["Equip_Thugs","Upgrade_Equipment"],
+        revokes: ["Burst","Heavy_Burst","Maneuvers"],
         abilities: [
           {
             name: "Resistance",
@@ -13007,6 +13086,8 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
       },
       {
         tier: 3,
+        grantedBy: ["Equip_Thugs","Upgrade_Equipment"],
+        revokes: ["Burst","Heavy_Burst","Maneuvers"],
         abilities: [
           {
             name: "Blast_Clip",
@@ -13061,6 +13142,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     upgradeTiers: [
       {
         tier: 2,
+        grantedBy: ["Enchant_Undead"],
         abilities: [
           {
             name: "Projectile_Vomit",
@@ -13103,6 +13185,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
       },
       {
         tier: 3,
+        grantedBy: ["Dark_Empowerment"],
         abilities: [
           {
             name: "Siphon_Life",
@@ -27277,6 +27360,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     upgradeTiers: [
       {
         tier: 2,
+        grantedBy: ["Enchant_Undead"],
         abilities: [
           {
             name: "Projectile_Vomit",
@@ -27319,6 +27403,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
       },
       {
         tier: 3,
+        grantedBy: ["Dark_Empowerment"],
         abilities: [
           {
             name: "Siphon_Life",

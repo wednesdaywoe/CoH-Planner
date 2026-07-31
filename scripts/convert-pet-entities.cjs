@@ -906,6 +906,102 @@ function processPetPower(powerFilePath, powerData) {
 }
 
 /**
+ * Which player power turns a henchman's `_2` / `_3` powerset on, and what it
+ * takes away when it does.
+ *
+ * A Mastermind upgrade is not additive. `Equip_Mercenary` grants
+ * `Mastermind_Pets.Soldier_2.Equip` and in the same breath REVOKES
+ * `Mastermind_Pets.Soldier.Resistance` — the upgraded henchman has one
+ * resistance power, not two. Read as an append, the Skeletal Warrior ends up
+ * swinging Hack and Slash once per tier (three times over at tier 3) and the
+ * Howler Wolf keeps quoting its un-upgraded 7.5% instead of 12%.
+ *
+ * The revoke lives on the PLAYER power, so it has to be read from
+ * `mastermind_summon/` and joined back onto the pet by target powerset. Keying
+ * on the powerset (`mastermind_pets/soldier_2`) rather than on power names is
+ * what makes the tier number data-derived: the `_2` / `_3` suffix on what a
+ * power grants IS which tier it is, so nothing here depends on power naming or
+ * on the level the upgrade unlocks at.
+ *
+ * Returns `{ granters, revokes }`, both keyed by target powerset:
+ *   granters: 'mastermind_pets/soldier_2' -> Set('Equip_Mercenary')
+ *   revokes:  'mastermind_pets/soldier'   -> Set('Resistance')
+ *   (revokes are keyed under the granter too, so a tier only drops what ITS
+ *    own granter revokes.)
+ */
+const GRANT_ATTRIBS = new Set(['Grant_Power', 'Grant_Boosted_Power']);
+const UPGRADE_SOURCE_CATEGORY = 'mastermind_summon';
+
+/** `Mastermind_Pets.Soldier_2.Equip` -> `{ set: 'mastermind_pets/soldier_2', power: 'Equip' }`. */
+function splitPowerFullName(fullName) {
+  const parts = String(fullName).split('.');
+  if (parts.length < 3) return null;
+  return {
+    set: `${parts[0].toLowerCase()}/${parts[1].toLowerCase()}`,
+    power: parts[parts.length - 1],
+  };
+}
+
+function buildPetUpgradeMap() {
+  const granters = new Map(); // targetSet -> Set(playerPowerName)
+  const revokes = new Map();  // playerPowerName -> Map(targetSet -> Set(powerName))
+
+  const categoryDir = path.join(POWERS_PATH, UPGRADE_SOURCE_CATEGORY);
+  if (!fs.existsSync(categoryDir)) return { granters, revokes };
+
+  for (const setName of fs.readdirSync(categoryDir)) {
+    const setDir = path.join(categoryDir, setName);
+    if (!fs.statSync(setDir).isDirectory()) continue;
+
+    for (const file of fs.readdirSync(setDir)) {
+      if (!file.endsWith('.json') || file === 'index.json') continue;
+      const data = readJsonFile(path.join(setDir, file));
+      if (!data || !data.name) continue;
+
+      for (const group of data.effects || []) {
+        for (const template of group.templates || []) {
+          const attrib = (template.attribs || [])[0];
+          const names = (template.params || {}).power_names || [];
+          if (!names.length) continue;
+
+          if (GRANT_ATTRIBS.has(attrib)) {
+            // A grant conditional on owning ANOTHER power is that other power's
+            // tier, not this one's. Thunderspy's Equip Mercenary grants the
+            // tier-3 set when you also hold Tactical Upgrade; attributing that
+            // to Equip would light tier 3 up for a build that never took the
+            // second upgrade.
+            const requires = `${template.jit_requires || ''} ${group.requires_expression || ''}`;
+            if (/\bownPower\b/.test(requires)) continue;
+            for (const name of names) {
+              const target = splitPowerFullName(name);
+              if (!target) continue;
+              if (!granters.has(target.set)) granters.set(target.set, new Set());
+              granters.get(target.set).add(data.name);
+            }
+          } else if (attrib === 'Revoke_Power') {
+            for (const name of names) {
+              const target = splitPowerFullName(name);
+              if (!target) continue;
+              if (!revokes.has(data.name)) revokes.set(data.name, new Map());
+              const bySet = revokes.get(data.name);
+              if (!bySet.has(target.set)) bySet.set(target.set, new Set());
+              bySet.get(target.set).add(target.power);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  return { granters, revokes };
+}
+
+/** The export's powerset key for a pet powerset directory, e.g. `mastermind_pets/soldier_2`. */
+function powersetKey(dirPath) {
+  return path.relative(POWERS_PATH, dirPath).split(path.sep).join('/').toLowerCase();
+}
+
+/**
  * Scan a power directory and process all power files in it
  * Returns an array of PetAbility objects
  */
@@ -1044,7 +1140,7 @@ function detectOneShot(abilities, selfDestructDelay) {
 /**
  * Read an entity file and extract its powers
  */
-function processEntity(entityFilePath) {
+function processEntity(entityFilePath, upgradeMap) {
   const entityData = readJsonFile(entityFilePath);
   if (!entityData) return null;
 
@@ -1106,20 +1202,43 @@ function processEntity(entityFilePath) {
     }
   }
 
-  // Scan for upgrade tier directories (_2 and _3)
+  // Scan for upgrade tier directories (_2 and _3), and resolve what turns each
+  // one on and what it takes away — see buildPetUpgradeMap.
+  // Every powerset this pet draws powers from — base and both tiers. A tier-3
+  // upgrade routinely revokes a tier-2 power, so the tier sets belong here too.
+  const ownSets = new Set();
+  for (const psPath of powersetPaths) {
+    ownSets.add(powersetKey(psPath));
+    for (const tier of [2, 3]) ownSets.add(powersetKey(`${psPath}_${tier}`));
+  }
   const upgradeTiers = [];
   for (const psPath of powersetPaths) {
-    const tier2Dir = psPath + '_2';
-    const tier3Dir = psPath + '_3';
+    for (const tier of [2, 3]) {
+      const tierDir = `${psPath}_${tier}`;
+      const abilities = processUpgradeDirectory(tierDir);
+      if (abilities.length === 0) continue;
 
-    const tier2Abilities = processUpgradeDirectory(tier2Dir);
-    if (tier2Abilities.length > 0) {
-      upgradeTiers.push({ tier: 2, abilities: tier2Abilities });
-    }
+      const tierKey = powersetKey(tierDir);
+      const grantedBy = [...((upgradeMap && upgradeMap.granters.get(tierKey)) || [])].sort();
 
-    const tier3Abilities = processUpgradeDirectory(tier3Dir);
-    if (tier3Abilities.length > 0) {
-      upgradeTiers.push({ tier: 3, abilities: tier3Abilities });
+      // Only what THIS tier's granter revokes, and only against powersets this
+      // pet actually owns — an upgrade power revokes across every henchman it
+      // touches, and the Soldier must not lose the Medic's Brawl.
+      const revoked = new Set();
+      for (const granter of grantedBy) {
+        const bySet = (upgradeMap && upgradeMap.revokes.get(granter)) || new Map();
+        for (const [targetSet, powers] of bySet) {
+          if (!ownSets.has(targetSet)) continue;
+          for (const power of powers) revoked.add(power);
+        }
+      }
+
+      upgradeTiers.push({
+        tier,
+        abilities,
+        grantedBy: grantedBy.length > 0 ? grantedBy : undefined,
+        revokes: revoked.size > 0 ? [...revoked].sort() : undefined,
+      });
     }
   }
 
@@ -1157,9 +1276,16 @@ function main() {
 
   console.log(`Found ${entityFiles.length} pet entity files\n`);
 
+  const upgradeMap = buildPetUpgradeMap();
+  console.log(
+    `Upgrade grants: ${upgradeMap.granters.size} pet powersets granted by ` +
+    `${new Set([...upgradeMap.granters.values()].flatMap((s) => [...s])).size} player powers, ` +
+    `${upgradeMap.revokes.size} of which revoke\n`
+  );
+
   for (const file of entityFiles) {
     const filePath = path.join(ENTITIES_PATH, file);
-    const entity = processEntity(filePath);
+    const entity = processEntity(filePath, upgradeMap);
 
     if (!entity) continue;
 
@@ -1293,6 +1419,19 @@ function generateTypeScript(entities) {
   lines.push(`export interface PetUpgradeTier {`);
   lines.push(`  tier: number;`);
   lines.push(`  abilities: PetAbility[];`);
+  lines.push(`  /** The player power(s) that turn this tier on, by internal name`);
+  lines.push(`   *  (\`Equip_Mercenary\`, \`Tactical_Upgrade\`). Derived from which powerset the`);
+  lines.push(`   *  grant targets — the \`_2\`/\`_3\` suffix IS the tier — so it holds whatever a`);
+  lines.push(`   *  server names its upgrades. Absent when the export carries no resolved`);
+  lines.push(`   *  grant targets (Thunderspy), in which case a consumer cannot tell from the`);
+  lines.push(`   *  build alone whether the tier is active. */`);
+  lines.push(`  grantedBy?: string[];`);
+  lines.push(`  /** Abilities this tier TAKES AWAY, by name. An upgrade replaces rather than`);
+  lines.push(`   *  adds: Equip Mercenary revokes the Soldier's base Resistance as it grants`);
+  lines.push(`   *  Equip, and Enchant Undead revokes the Skeletal Warrior's base Hack and`);
+  lines.push(`   *  Slash as it grants its own. Appending a tier without applying these`);
+  lines.push(`   *  double-counts the attacks and leaves the stale passive on top. */`);
+  lines.push(`  revokes?: string[];`);
   lines.push(`}`);
   lines.push(``);
   lines.push(`export interface PetEntity {`);
@@ -1358,6 +1497,8 @@ function generateTypeScript(entities) {
       for (const tier of entity.upgradeTiers) {
         lines.push(`      {`);
         lines.push(`        tier: ${tier.tier},`);
+        if (tier.grantedBy) lines.push(`        grantedBy: ${JSON.stringify(tier.grantedBy)},`);
+        if (tier.revokes) lines.push(`        revokes: ${JSON.stringify(tier.revokes)},`);
         lines.push(`        abilities: [`);
         for (const ability of tier.abilities) {
           lines.push(`          {`);

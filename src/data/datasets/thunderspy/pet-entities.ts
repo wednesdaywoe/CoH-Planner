@@ -60,6 +60,19 @@ export interface PetAbility {
 export interface PetUpgradeTier {
   tier: number;
   abilities: PetAbility[];
+  /** The player power(s) that turn this tier on, by internal name
+   *  (`Equip_Mercenary`, `Tactical_Upgrade`). Derived from which powerset the
+   *  grant targets — the `_2`/`_3` suffix IS the tier — so it holds whatever a
+   *  server names its upgrades. Absent when the export carries no resolved
+   *  grant targets (Thunderspy), in which case a consumer cannot tell from the
+   *  build alone whether the tier is active. */
+  grantedBy?: string[];
+  /** Abilities this tier TAKES AWAY, by name. An upgrade replaces rather than
+   *  adds: Equip Mercenary revokes the Soldier's base Resistance as it grants
+   *  Equip, and Enchant Undead revokes the Skeletal Warrior's base Hack and
+   *  Slash as it grants its own. Appending a tier without applying these
+   *  double-counts the attacks and leaves the stale passive on top. */
+  revokes?: string[];
 }
 
 export interface PetEntity {

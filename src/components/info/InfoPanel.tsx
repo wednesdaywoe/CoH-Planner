@@ -39,6 +39,7 @@ import { getRechargeBounds } from '@/data/at-tables';
 import { buildDisplayEffects, getStackingInfo, withPseudoPetEffects, withTargetsHit } from './buildDisplayEffects';
 import { calculatePetDamage, calculateResolvedPseudoPetDamage, shouldApplyEnhancements, resolveProcAreaGeometry, type PetDamageResult, type PetAbilityDamage, type PetEffectComputed } from '@/utils/calculations/pet-damage';
 import { getPetEntity, type PetAbility } from '@/data/pet-entities';
+import { petUpgradeStatuses, resolveActiveUpgradeTiers, takenPowerNames, type PetUpgradeStatus } from '@/utils/calculations/pet-upgrades';
 import { calculateIncarnateDamage } from '@/data/at-tables';
 import { getBaselineHealth } from '@/utils/calculations/stats';
 import type { GenesisExemplarEffect } from '@/data';
@@ -74,6 +75,7 @@ import {
 import {
   formatEffectArea,
   formatPetEffectValue,
+  isPetStatCarrier,
   partitionPetEffects,
   petEffectColor,
   petEffectLabel,
@@ -381,11 +383,13 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     // lifespan so the fires-per-spawn accounting is per-entity (Category Five's
     // 20s storm and 17s lightning Eye differ).
     const results: { result: PetDamageResult; count: number; duration: number }[] = [];
+    const takenNames = takenPowerNames(build);
     for (const { entityName, count } of entityList) {
       const applyEnh = shouldApplyEnhancements(entityName, summon.copyBoosts);
       const result = calculatePetDamage(
         entityName, build.level, count, summon.duration,
-        applyEnh ? enhBonus : 0, applyEnh, globalBonus, 0,
+        applyEnh ? enhBonus : 0, applyEnh, globalBonus,
+        resolveActiveUpgradeTiers(getPetEntity(entityName), takenNames) ?? [],
       );
       if (result) results.push({ result, count, duration: summon.duration ?? 0 });
     }
@@ -469,7 +473,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
       type: typeLabel,
       scale: 1,
     } as PowerDamageResult;
-  }, [calculatedDamage, effectivePower, build.level, enhancementBonuses.damage, globalBonusesForCalc.damage, archetypeId, stormCellActive, mechanicAdjusters]);
+  }, [calculatedDamage, effectivePower, build, enhancementBonuses.damage, globalBonusesForCalc.damage, archetypeId, stormCellActive, mechanicAdjusters]);
 
   // Resolved damage shown in the Damage block — direct first, pseudo-pet fallback.
   const resolvedDamage = calculatedDamage ?? pseudoPetDamage;
@@ -2338,9 +2342,13 @@ function SingleEntityDisplay({
               {petDamage!.abilities.map((ad) => (
                 <PetAbilityRow key={ad.ability.name} ad={ad} />
               ))}
-              {petDamage!.effectOnlyAbilities.map((ability) => (
-                <PetEffectAbilityRow key={ability.name} ability={ability} />
-              ))}
+              {petDamage!.effectOnlyAbilities
+                // The pet's own always-on stat carriers are not things it does —
+                // their whole content is the "Its own defenses" block below.
+                .filter((ability) => !isPetStatCarrier(ability))
+                .map((ability) => (
+                  <PetEffectAbilityRow key={ability.name} ability={ability} />
+                ))}
             </div>
           )}
 
@@ -2387,8 +2395,79 @@ function SingleEntityDisplay({
   );
 }
 
+/**
+ * The henchman-upgrade row.
+ *
+ * Reads as build state, not as a what-if: a Mastermind who has taken Equip
+ * Mercenary has equipped henchmen, so the boxes come pre-ticked from the build
+ * and the labels name the actual powers. It stays clickable — comparing an
+ * un-upgraded pet against an upgraded one is a real question — but a click is
+ * then flagged as an override, with a way back.
+ *
+ * When the dataset can't say which power grants which tier (Thunderspy's export
+ * doesn't resolve grant targets), the generic labels return and nothing is
+ * pre-ticked. Better a plain "Upgrade 1" the user drives than a named power the
+ * data can't actually vouch for.
+ */
+function PetUpgradeRow({
+  statuses, available, activeTiers, derivable, overridden, onToggle, onFollowBuild,
+}: {
+  statuses: PetUpgradeStatus[];
+  available: ReadonlySet<number>;
+  activeTiers: ReadonlySet<number>;
+  derivable: boolean;
+  overridden: boolean;
+  onToggle: (tier: number) => void;
+  onFollowBuild: () => void;
+}) {
+  // One entry per selectable tier. Named where we know the granting power,
+  // positional where we don't.
+  const rows = derivable
+    ? statuses.map((s) => ({ tier: s.tier, label: s.powerName.replace(/_/g, ' '), taken: s.taken }))
+    : [...available].sort().map((tier, i) => ({ tier, label: `Upgrade ${i + 1}`, taken: false }));
+
+  return (
+    <div className="flex items-center gap-3 mb-2 pb-1.5 border-b border-indigo-500/20 flex-wrap">
+      <span className="text-xs text-indigo-400 font-medium">Upgrades:</span>
+      {rows.map((row) => (
+        <label key={row.tier} className="flex items-center gap-1 cursor-pointer">
+          <input
+            type="checkbox"
+            checked={activeTiers.has(row.tier)}
+            onChange={() => onToggle(row.tier)}
+            className="w-3 h-3 accent-indigo-500"
+          />
+          <span
+            className={`text-xs ${activeTiers.has(row.tier) ? 'text-indigo-300' : 'text-slate-400'}`}
+            title={derivable
+              ? (row.taken ? `${row.label} is in this build` : `${row.label} is not in this build`)
+              : 'This dataset does not record which power grants this upgrade'}
+          >
+            {row.label}
+            {derivable && !row.taken && <span className="text-slate-500"> (not taken)</span>}
+          </span>
+        </label>
+      ))}
+      {overridden && (
+        <button
+          type="button"
+          onClick={onFollowBuild}
+          className="text-[10px] text-indigo-400 underline hover:text-indigo-300"
+          title="Stop overriding and follow the powers this build has taken"
+        >
+          follow build
+        </button>
+      )}
+    </div>
+  );
+}
+
 export function PetDamageDisplay({ summon, level, enhancementDamageBonus, globalDamageBonus, archetypeId }: PetDamageDisplayProps) {
-  const [upgradeTier, setUpgradeTier] = useState(0);
+  const build = useBuildStore((s) => s.build);
+  // Manual override of the derived tier set. Null = follow the build, which is
+  // what a Mastermind wants: taking Equip Mercenary equips the henchmen, and a
+  // panel defaulting to un-equipped shows a pet the character doesn't have.
+  const [tierOverride, setTierOverride] = useState<Set<number> | null>(null);
   // "Storm Cell Active" / High Winds — empowered pseudo-pet display (WindSpeed + lightning).
   const stormCellActive = useGlobalAdjuster('stormblast_instormcell', false);
 
@@ -2416,20 +2495,29 @@ export function PetDamageDisplay({ summon, level, enhancementDamageBonus, global
     });
   }, [summon.entities, summon.entity, summon.entityCount]);
 
-  // Check max upgrade tier available across all entities
-  const maxUpgradeTier = useMemo(() => {
-    let max = 0;
-    for (const e of entityList) {
-      const entity = getPetEntity(e.entityName);
-      if (entity?.upgradeTiers) {
-        for (const t of entity.upgradeTiers) {
-          if (t.tier === 2) max = Math.max(max, 1);
-          if (t.tier === 3) max = Math.max(max, 2);
-        }
-      }
+  const entities = useMemo(() => entityList.map(e => getPetEntity(e.entityName)), [entityList]);
+
+  // Which upgrades the BUILD has taken, and their status for the label row.
+  // Undefined = this dataset's export doesn't record what grants each tier
+  // (Thunderspy), so the tier can't be read off the build and the checkboxes
+  // stay as the only answer.
+  const upgrades = useMemo(() => {
+    const taken = takenPowerNames(build);
+    const statuses = petUpgradeStatuses(entities, taken);
+    const derived = new Set<number>();
+    let derivable = false;
+    for (const entity of entities) {
+      const tiers = resolveActiveUpgradeTiers(entity, taken);
+      if (!tiers) continue;
+      derivable = true;
+      for (const t of tiers) derived.add(t);
     }
-    return max;
-  }, [entityList]);
+    const available = new Set<number>();
+    for (const entity of entities) for (const t of entity?.upgradeTiers ?? []) available.add(t.tier);
+    return { statuses, derived, derivable, available };
+  }, [entities, build]);
+
+  const activeTiers = tierOverride ?? upgrades.derived;
 
   // Calculate pet damage for each entity
   const petResults = useMemo(() => {
@@ -2441,11 +2529,11 @@ export function PetDamageDisplay({ summon, level, enhancementDamageBonus, global
         count: e.count,
         result: calculatePetDamage(
           e.entityName, level, e.count, summon.duration,
-          enhBonus, applyEnh, globalDamageBonus, upgradeTier
+          enhBonus, applyEnh, globalDamageBonus, activeTiers
         ),
       };
     });
-  }, [entityList, level, enhancementDamageBonus, globalDamageBonus, upgradeTier, summon.copyBoosts, summon.duration]);
+  }, [entityList, level, enhancementDamageBonus, globalDamageBonus, activeTiers, summon.copyBoosts, summon.duration]);
 
   // Synthesized location pseudo-pets (Storm Cell, Category Five, …). Their DAMAGE
   // is already unified into the headline Damage block (pseudoPetDamage), so here
@@ -2515,36 +2603,22 @@ export function PetDamageDisplay({ summon, level, enhancementDamageBonus, global
 
   return (
     <div className="bg-indigo-900/30 rounded p-2 border border-indigo-500/30">
-      {/* Upgrade Toggles */}
-      {maxUpgradeTier > 0 && (
-        <div className="flex items-center gap-3 mb-2 pb-1.5 border-b border-indigo-500/20">
-          <span className="text-xs text-indigo-400 font-medium">Upgrades:</span>
-          <label className="flex items-center gap-1 cursor-pointer">
-            <input
-              type="checkbox"
-              checked={upgradeTier >= 1}
-              onChange={(e) => setUpgradeTier(e.target.checked ? Math.max(upgradeTier, 1) : 0)}
-              className="w-3 h-3 accent-indigo-500"
-            />
-            <span className={`text-xs ${upgradeTier >= 1 ? 'text-indigo-300' : 'text-slate-400'}`}>
-              Upgrade 1
-            </span>
-          </label>
-          {maxUpgradeTier >= 2 && (
-            <label className="flex items-center gap-1 cursor-pointer">
-              <input
-                type="checkbox"
-                checked={upgradeTier >= 2}
-                onChange={(e) => setUpgradeTier(e.target.checked ? 2 : 1)}
-                className="w-3 h-3 accent-indigo-500"
-                disabled={upgradeTier < 1}
-              />
-              <span className={`text-xs ${upgradeTier >= 2 ? 'text-indigo-300' : 'text-slate-400'}`}>
-                Upgrade 2
-              </span>
-            </label>
-          )}
-        </div>
+      {/* Upgrades. Named after the powers that grant them where the data says
+          which those are, and pre-set from the build rather than from zero. */}
+      {upgrades.available.size > 0 && (
+        <PetUpgradeRow
+          statuses={upgrades.statuses}
+          available={upgrades.available}
+          activeTiers={activeTiers}
+          derivable={upgrades.derivable}
+          overridden={tierOverride !== null}
+          onToggle={(tier) => {
+            const next = new Set(activeTiers);
+            if (next.has(tier)) next.delete(tier); else next.add(tier);
+            setTierOverride(next);
+          }}
+          onFollowBuild={() => setTierOverride(null)}
+        />
       )}
 
       {/* Single entity display (same as before) */}

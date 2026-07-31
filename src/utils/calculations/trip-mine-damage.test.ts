@@ -49,7 +49,7 @@ describe('Trip Mine damage (homecoming)', () => {
   it('a mine fires once, not once per attack-recharge over the summon window', () => {
     // Guards the bug's actual mechanism: the naive formula must still disagree,
     // else this test would pass for the wrong reason on any future data change.
-    const r = calculatePetDamage('Pets_Mine', 50, 1, SUMMON_WINDOW, 0, false, 0, 0)!;
+    const r = calculatePetDamage('Pets_Mine', 50, 1, SUMMON_WINDOW, 0, false, 0, [])!;
     const naiveFires = dotTickCount(SUMMON_WINDOW, r.abilities[0].cycleTime);
     expect(naiveFires).toBeGreaterThan(1);
     expect(r.oneShot).toBe(true);
@@ -60,13 +60,13 @@ describe('Trip Mine damage (homecoming)', () => {
     const dmg = defender.abilities[0].damage;
     expect(dmg.map((d) => d.chance)).toEqual([undefined, undefined, 0.5]);
     // 1.3 + 0.65 + 0.5×0.65 = 2.275 scale, not 2.6.
-    const r = calculatePetDamage('Pets_Traps_Mine_Defender', 50, 1, SUMMON_WINDOW, 0, false, 0, 0)!;
+    const r = calculatePetDamage('Pets_Traps_Mine_Defender', 50, 1, SUMMON_WINDOW, 0, false, 0, [])!;
     expect(r.abilities[0].damagePerHit).toBeCloseTo(2.275 * 55.66, 0);
   });
 
   it('per-detonation damage matches the scales, per AT', () => {
     const perHit = (e: string) =>
-      calculatePetDamage(e, 50, 1, SUMMON_WINDOW, 0, false, 0, 0)!.abilities[0].damagePerHit;
+      calculatePetDamage(e, 50, 1, SUMMON_WINDOW, 0, false, 0, [])!.abilities[0].damagePerHit;
     // Blaster 2 + 1 + 0.5×1 = 3.5; was shown as 13 × 222.6 = 2894.
     expect(perHit('Pets_Mine')).toBeCloseTo(3.5 * 55.66, 0);
     // Defender 1.3 + 0.65 + 0.5×0.65 = 2.275; was shown as 13 × 144.7 = 1881.

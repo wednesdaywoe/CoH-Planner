@@ -5,7 +5,7 @@
  * Supports the three-tier display: Base → Enhanced → Final
  */
 
-import { getPetEntity, type PetAbility, type PetEffect } from '@/data/pet-entities';
+import { getPetEntity, type PetAbility, type PetEffect, type PetEntity } from '@/data/pet-entities';
 import { getPetTableValue, getTableValue } from '@/data/at-tables';
 import type { ResolvedPseudoPet } from '@/types/power';
 
@@ -102,6 +102,37 @@ function computeEffectValue(
     return SIGNED_PET_EFFECTS.has(eff.type) && eff.scale < 0 ? -magnitude : magnitude;
   }
   return eff.magnitude;
+}
+
+/**
+ * The abilities a henchman actually has once the chosen upgrades are applied.
+ *
+ * A Mastermind upgrade REPLACES; it does not add. Equip Mercenary revokes the
+ * Soldier's base Resistance and grants Equip in its place; Enchant Undead
+ * revokes the Skeletal Warrior's Hack and Slash and grants its own. Appending
+ * the tier — which is what this used to do — left the warrior swinging Hack
+ * twice at tier 2 and three times at tier 3, and left the Howler Wolf quoting
+ * its un-upgraded 7.5% resistance instead of the upgraded 12%.
+ *
+ * Two rules, applied in tier order:
+ *  - the tier's own `revokes` list, which the game authors on the player power
+ *    and the converter joins back onto the pet, and
+ *  - same NAME wins: a `_2`/`_3` power with a base power's name IS that power,
+ *    upgraded. This one needs no export support, which matters because
+ *    Thunderspy's export doesn't resolve grant targets and so carries no
+ *    `revokes` at all.
+ */
+function resolveAbilities(entity: PetEntity, activeTiers: ReadonlySet<number>): PetAbility[] {
+  const byName = new Map<string, PetAbility>();
+  for (const ability of entity.abilities) byName.set(ability.name, ability);
+
+  for (const tier of entity.upgradeTiers ?? []) {
+    if (!activeTiers.has(tier.tier)) continue;
+    for (const name of tier.revokes ?? []) byName.delete(name);
+    for (const ability of tier.abilities) byName.set(ability.name, ability);
+  }
+
+  return [...byName.values()];
 }
 
 /** The sub-type lists a `PetEffect` carries, for copying onto its computed twin. */
@@ -203,7 +234,10 @@ function calculateCycleTime(ability: PetAbility): number {
  * @param enhancementBonus - Damage enhancement bonus (0-1+), applied if copyBoosts/copyCreatorMods
  * @param applyEnhancements - Whether to apply enhancement bonus (based on copyBoosts/copyCreatorMods)
  * @param globalDamageBonus - Global damage bonus from buffs (as decimal, e.g., 0.30 = +30%)
- * @param upgradeTier - Upgrade tier for MM pets: 0=base, 1=first upgrade, 2=both upgrades
+ * @param activeUpgradeTiers - Which henchman upgrade tiers are applied, by tier
+ *   number as the data names them (2 = the first upgrade's powerset, 3 = the
+ *   second's). Empty or omitted = un-upgraded. Tier numbers rather than a count
+ *   because a build can hold the second upgrade without the first.
  */
 export function calculatePetDamage(
   entityName: string,
@@ -213,21 +247,12 @@ export function calculatePetDamage(
   enhancementBonus: number = 0,
   applyEnhancements: boolean = false,
   globalDamageBonus: number = 0,
-  upgradeTier: number = 0
+  activeUpgradeTiers: Iterable<number> = []
 ): PetDamageResult | null {
   const entity = getPetEntity(entityName);
   if (!entity) return null;
 
-  // Build the combined ability list: base + upgrade tiers
-  let allAbilities: PetAbility[] = [...entity.abilities];
-  if (upgradeTier >= 1 && entity.upgradeTiers) {
-    const tier2 = entity.upgradeTiers.find(t => t.tier === 2);
-    if (tier2) allAbilities = [...allAbilities, ...tier2.abilities];
-  }
-  if (upgradeTier >= 2 && entity.upgradeTiers) {
-    const tier3 = entity.upgradeTiers.find(t => t.tier === 3);
-    if (tier3) allAbilities = [...allAbilities, ...tier3.abilities];
-  }
+  const allAbilities = resolveAbilities(entity, new Set(activeUpgradeTiers));
 
   const abilities: PetAbilityDamage[] = [];
   const effectOnlyAbilities: PetAbility[] = [];

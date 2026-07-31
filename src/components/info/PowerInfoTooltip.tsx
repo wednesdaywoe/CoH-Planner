@@ -53,6 +53,8 @@ import {
 import { calculatePetDamage, calculateResolvedPseudoPetDamage, shouldApplyEnhancements, type PetDamageResult } from '@/utils/calculations/pet-damage';
 import { buildDisplayEffects, withPseudoPetEffects } from './buildDisplayEffects';
 import { formatPetEffectValue, petEffectLabel } from './petEffectDisplay';
+import { getPetEntity } from '@/data/pet-entities';
+import { resolveActiveUpgradeTiers, takenPowerNames } from '@/utils/calculations/pet-upgrades';
 import { resolveEffectivePower, effectiveGlobalAdjusters, isCasterHidden } from './resolveEffectivePower';
 import type { ArchetypeId } from '@/types';
 import {
@@ -254,10 +256,16 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
     const results: PetDamageResult[] = [];
     let base = 0, enhanced = 0, final_ = 0;
 
+    // Henchman upgrades come off the build, same as the InfoPanel. Omitting
+    // them here (which is what this did) meant hovering a summon quoted the
+    // un-upgraded DPS while the panel beside it quoted the upgraded one.
+    const taken = takenPowerNames(build);
+
     for (const e of entityList) {
       const applyEnh = shouldApplyEnhancements(e.entityName, summon.copyBoosts);
       const enhBonus = applyEnh ? (enhancementBonuses.damage || 0) : 0;
-      const result = calculatePetDamage(e.entityName, build.level, e.count, summon.duration, enhBonus, applyEnh, globalDmgBonus);
+      const tiers = resolveActiveUpgradeTiers(getPetEntity(e.entityName), taken) ?? [];
+      const result = calculatePetDamage(e.entityName, build.level, e.count, summon.duration, enhBonus, applyEnh, globalDmgBonus, tiers);
       if (result) {
         results.push(result);
         base += result.aggregateDpsBase;
@@ -282,7 +290,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
     }
 
     return results.length > 0 ? { results, base, enhanced, final: final_ } : null;
-  }, [effectivePower?.effects?.summon, effectivePower?.internalName, build.level, enhancementBonuses.damage, globalBonusesForCalc.damage, archetypeId, stormCellActive, mechanicAdjusters]);
+  }, [effectivePower?.effects?.summon, effectivePower?.internalName, build, enhancementBonuses.damage, globalBonusesForCalc.damage, archetypeId, stormCellActive, mechanicAdjusters]);
 
   // Calculate archetype-specific damage bonuses
   const damageDisplayInfo = useMemo(() => {

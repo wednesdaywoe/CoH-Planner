@@ -67,7 +67,7 @@ describe.each(DATASETS)('pet effect display (%s)', (datasetId) => {
     // type with no display entry is by definition one nobody thought to check.
     const bad: string[] = [];
     for (const name of Object.keys(PET_ENTITIES)) {
-      const result = calculatePetDamage(name, 50, 1, undefined, 0, false, 0, 2);
+      const result = calculatePetDamage(name, 50, 1, undefined, 0, false, 0, [2, 3]);
       if (!result) continue;
       for (const eff of result.allEffects) {
         if (/Self[A-Z]/.test(petEffectLabel(eff))) {
@@ -85,7 +85,7 @@ describe.each(DATASETS)('pet effect display (%s)', (datasetId) => {
     // NOT in scope: their magnitudes are genuinely unitless in the game's own UI.
     const bad: string[] = [];
     for (const name of Object.keys(PET_ENTITIES)) {
-      const result = calculatePetDamage(name, 50, 1, undefined, 0, false, 0, 2);
+      const result = calculatePetDamage(name, 50, 1, undefined, 0, false, 0, [2, 3]);
       if (!result) continue;
       for (const eff of partitionPetEffects(result.allEffects).self) {
         const value = formatPetEffectValue(eff);
@@ -102,30 +102,35 @@ describe.each(DATASETS)('pet effect display (%s)', (datasetId) => {
     // type alone silently loses the second of every pair. Checked corpus-wide:
     // any ability carrying two same-type effects with different sub-types must
     // still show two rows.
+    //
+    // Expectation comes from the RESOLVED ability set, not from base ∪ tiers.
+    // An upgrade replaces the powerset it upgrades — the Soldier's base
+    // Resistance is revoked as Equip is granted, and the Hellfire Demonling's
+    // upgraded Resistance moves toxic and cold between bands — so a base effect
+    // legitimately disappearing is the fix working, not a collapse.
     const lost: string[] = [];
-    for (const [name, entity] of Object.entries(PET_ENTITIES)) {
-      const abilities = [
-        ...entity.abilities,
-        ...(entity.upgradeTiers ?? []).flatMap((t) => t.abilities),
-      ];
+    let checked = 0;
+    for (const [name] of Object.entries(PET_ENTITIES)) {
+      const result = calculatePetDamage(name, 50, 1, undefined, 0, false, 0, [2, 3]);
+      if (!result) continue;
       const expectedKeys = new Set<string>();
-      for (const ability of abilities) {
+      for (const ability of [...result.abilities.map((a) => a.ability), ...result.effectOnlyAbilities]) {
         for (const eff of ability.effects ?? []) expectedKeys.add(petEffectLabel(eff));
       }
       if (expectedKeys.size === 0) continue;
-      const result = calculatePetDamage(name, 50, 1, undefined, 0, false, 0, 2);
-      if (!result) continue;
+      checked++;
       const shown = new Set(result.allEffects.map((e) => petEffectLabel(e)));
       for (const key of expectedKeys) {
         if (!shown.has(key)) lost.push(`${name}: ${key}`);
       }
     }
+    expect(checked, 'entities carrying effects').toBeGreaterThan(100);
     expect(lost.slice(0, 20)).toEqual([]);
   });
 
   it('files a pet\'s own stats separately from what it applies to others', () => {
     for (const name of Object.keys(PET_ENTITIES)) {
-      const result = calculatePetDamage(name, 50, 1, undefined, 0, false, 0, 2);
+      const result = calculatePetDamage(name, 50, 1, undefined, 0, false, 0, [2, 3]);
       if (!result) continue;
       const { self, applied } = partitionPetEffects(result.allEffects);
       expect(self.length + applied.length).toBe(result.allEffects.length);
@@ -141,7 +146,7 @@ describe('pet effect display — anchored (homecoming)', () => {
   });
 
   const linesFor = (entityName: string) => {
-    const result = calculatePetDamage(entityName, 50, 1, undefined, 0, false, 0, 2);
+    const result = calculatePetDamage(entityName, 50, 1, undefined, 0, false, 0, [2, 3]);
     expect(result, entityName).toBeTruthy();
     return partitionPetEffects(result!.allEffects);
   };
