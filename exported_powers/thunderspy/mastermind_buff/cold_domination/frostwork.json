@@ -128,9 +128,10 @@
           "stack_limit": 2,
           "stack_key": null,
           "flags": [
+            "IgnoreStrength",
             "IgnoreResistance"
           ],
-          "flags_raw": 1056
+          "flags_raw": 1072
         }
       ]
     }

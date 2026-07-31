@@ -16,13 +16,13 @@ export const UnchainEssence: Power = {
   "shortHelp": "Ranged (Targeted AoE Special), Superior DMG(Negative), Foe Disorient, Knockback, -Recharge, -SPD",
   "icon": "umbralblast_unchainessence.png",
   "powerType": "Click",
-  "targetType": "DeadFoe",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
-    "range": 40,
-    "radius": 20,
-    "recharge": 240,
+    "range": 50,
+    "radius": 25,
+    "recharge": 60,
     "endurance": 26,
     "castTime": 3.17,
     "maxTargets": 16
@@ -30,7 +30,6 @@ export const UnchainEssence: Power = {
   "allowedEnhancements": [
     "Slow",
     "EnduranceReduction",
-    "Range",
     "Stun",
     "Recharge",
     "Knockback",
@@ -48,7 +47,7 @@ export const UnchainEssence: Power = {
   "maxSlots": 6,
   "damage": {
     "type": "Negative",
-    "scale": 2.6,
+    "scale": 2,
     "table": "Ranged_Damage"
   },
   "effects": {
@@ -90,7 +89,7 @@ export const UnchainEssence: Power = {
     }
   },
   "atoms": [
-    ["Damage","Negative",2.6,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Negative",2,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Mez","Stunned",5,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Movement","JumpHeight",0.3,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
     ["Movement","Jump",0.3,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],

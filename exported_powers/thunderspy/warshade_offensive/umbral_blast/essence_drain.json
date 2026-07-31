@@ -15,7 +15,7 @@
   "max_targets_hit": 0,
   "radius": 0.0,
   "arc": 0.0,
-  "range": 7.0,
+  "range": 25.0,
   "range_secondary": 0.0,
   "activation_time": 1.93,
   "recharge_time": 15.0,

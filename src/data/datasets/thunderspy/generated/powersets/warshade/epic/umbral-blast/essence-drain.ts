@@ -20,7 +20,7 @@ export const EssenceDrain: Power = {
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
-    "range": 7,
+    "range": 25,
     "recharge": 15,
     "endurance": 15.6,
     "castTime": 1.93

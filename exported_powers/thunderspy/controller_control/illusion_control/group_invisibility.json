@@ -263,9 +263,9 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "Unknown(843076)",
+          "stack": "Unknown(843077)",
           "stack_limit": 427,
-          "stack_key": "Key660172",
+          "stack_key": "Key660173",
           "flags": [
             "BoostIgnoreDiminishing",
             "CancelOnMiss",
@@ -309,9 +309,9 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "Unknown(843076)",
+          "stack": "Unknown(843077)",
           "stack_limit": 427,
-          "stack_key": "Key660172"
+          "stack_key": "Key660173"
         }
       ]
     },

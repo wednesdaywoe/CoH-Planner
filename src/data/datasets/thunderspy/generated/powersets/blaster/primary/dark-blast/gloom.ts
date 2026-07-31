@@ -29,7 +29,7 @@ export const Gloom: Power = {
     "range": 80,
     "recharge": 8,
     "endurance": 8.528,
-    "castTime": 1.67
+    "castTime": 1.1
   },
   "allowedEnhancements": [
     "EnduranceReduction",

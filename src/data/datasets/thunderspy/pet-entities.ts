@@ -22876,7 +22876,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "minion_pets",
     commandable: false,
     copyCreatorMods: true,
-    lifespan: 200,
+    lifespan: 90,
     abilities: [
       {
         name: "Shadow_Bolt",

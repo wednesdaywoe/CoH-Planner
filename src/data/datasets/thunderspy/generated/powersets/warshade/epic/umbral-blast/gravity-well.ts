@@ -20,7 +20,7 @@ export const GravityWell: Power = {
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
-    "range": 7,
+    "range": 25,
     "recharge": 20,
     "endurance": 18.512,
     "castTime": 2.07

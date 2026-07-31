@@ -84,14 +84,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "kPeacebringer_Blaster_Mode Source.Mode? !",
           "caster_stack": "",
-          "stack": "Unknown(23577)",
-          "stack_limit": 17558,
+          "stack": "Replace",
+          "stack_limit": 2,
           "stack_key": null,
           "flags": [
-            "NoFloaters",
-            "BoostIgnoreDiminishing"
+            "BoostIgnoreDiminishing",
+            "CancelOnMiss",
+            "IgnoreStrength"
           ],
-          "flags_raw": 3
+          "flags_raw": 22
         }
       ]
     },
@@ -128,14 +129,15 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "kPeacebringer_Blaster_Mode Source.Mode? !",
           "caster_stack": "",
-          "stack": "Unknown(23577)",
-          "stack_limit": 17558,
+          "stack": "Replace",
+          "stack_limit": 2,
           "stack_key": null,
           "flags": [
-            "NoFloaters",
-            "BoostIgnoreDiminishing"
+            "BoostIgnoreDiminishing",
+            "CancelOnMiss",
+            "IgnoreStrength"
           ],
-          "flags_raw": 3
+          "flags_raw": 22
         }
       ]
     }

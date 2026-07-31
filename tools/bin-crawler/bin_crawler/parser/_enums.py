@@ -538,25 +538,122 @@ ATTRIB_NAME_REBIRTH: dict[int, str] = {
 # Power_Redirect as Add_Behavior — the root of the "Parse6 lowers Grant_Power
 # to Null" workaround in _parse6_tail_params and of Rebirth's missing
 # redirects, WS7).
-SPECIAL_ATTRIB_BY_RAW_REBIRTH: dict[int, str] = {
-    464 + k: name for k, name in enumerate([
-        "Translucency", "Create_Entity", "Clear_Damagers", "Silent_Kill",
-        "XPDebtProtection", "Set_Mode", "Set_Costume", "Glide",
-        "Null", "Avoid", "Reward", "XPDebt",
-        "Drop_Toggles", "Grant_Power", "Revoke_Power", "Unset_Mode",
-        "Global_Chance_Mod", "Power_Chance_Mod", "Grant_Boosted_Power",
-        "View_Attributes", "Reward_Source", "Reward_Source_Team",
-        "Clear_Fog", "Combat_Phase", "Combat_Mod_Shift", "Recharge_Power",
-        "Vision_Phase", "Ninja_Run", "Walk", "Beast_Run",
-        "Steam_Jump", "Designer_Status", "Exclusive_Vision_Phase",
-        "Hover_Board", "Set_Script_Value", "Add_Behavior", "Power_Redirect",
-        "Magic_Carpet", "Token_Add", "Token_Set", "Token_Clear",
-        "Lua_Exec", "Force_Move", "Parkour_Run",
-    ])
-}
+#
+# The band is stored base-relative because its base is not a constant of the
+# format — it IS sizeof(CharacterAttributes), so it moves whenever a fork adds
+# an attrib to that struct. Stock i24 / Rebirth / Thunderspy-through-2026-07-09
+# carry 116 attribs (base 464); HC carries 117 (base 468), and Thunderspy's
+# 2026-07-30 build joined it by appending `ReflectDamage` at index 116 — see
+# `select_special_attrib_base`.
+SPECIAL_ATTRIB_BAND: tuple[str, ...] = (
+    "Translucency", "Create_Entity", "Clear_Damagers", "Silent_Kill",
+    "XPDebtProtection", "Set_Mode", "Set_Costume", "Glide",
+    "Null", "Avoid", "Reward", "XPDebt",
+    "Drop_Toggles", "Grant_Power", "Revoke_Power", "Unset_Mode",
+    "Global_Chance_Mod", "Power_Chance_Mod", "Grant_Boosted_Power",
+    "View_Attributes", "Reward_Source", "Reward_Source_Team",
+    "Clear_Fog", "Combat_Phase", "Combat_Mod_Shift", "Recharge_Power",
+    "Vision_Phase", "Ninja_Run", "Walk", "Beast_Run",
+    "Steam_Jump", "Designer_Status", "Exclusive_Vision_Phase",
+    "Hover_Board", "Set_Script_Value", "Add_Behavior", "Power_Redirect",
+    "Magic_Carpet", "Token_Add", "Token_Set", "Token_Clear",
+    "Lua_Exec", "Force_Move", "Parkour_Run",
+)
+
+# Create_Entity's offset within the band. Thunderspy's nested summon sub-entries
+# LEAD with this raw value, so the byte-scan that recovers pet lists keys on
+# `base + SPECIAL_ATTRIB_CREATE_ENTITY` rather than a literal (see
+# `_extract_thunderspy_summons`) — a stale literal finds nothing and DELETES
+# every summon's pet templates instead of merely mislabeling them.
+SPECIAL_ATTRIB_CREATE_ENTITY = SPECIAL_ATTRIB_BAND.index("Create_Entity")
+
+
+def special_attrib_table(base: int) -> dict[int, str]:
+    """The byte-granular special-attrib map anchored at `base`."""
+    return {base + k: name for k, name in enumerate(SPECIAL_ATTRIB_BAND)}
+
+
+# The two struct generations seen in the wild. A 116-attrib struct puts the band
+# at 464, a 117-attrib one at 468.
+SPECIAL_ATTRIB_BASE_CANDIDATES: tuple[int, ...] = (464, 468)
+
+SPECIAL_ATTRIB_BY_RAW_REBIRTH: dict[int, str] = special_attrib_table(464)
 
 SPECIAL_ATTRIB_MIN_REBIRTH = 464
-SPECIAL_ATTRIB_MAX_REBIRTH = 507
+SPECIAL_ATTRIB_MAX_REBIRTH = 464 + len(SPECIAL_ATTRIB_BAND) - 1
+
+
+def select_special_attrib_base(raw_counts: dict[int, int],
+                               min_coverage: float = 0.9) -> int:
+    """Pick the special-attrib band base this build actually uses.
+
+    The band base is `sizeof(CharacterAttributes)`, so adding one attrib to that
+    struct slides the whole band up 4 and every name in it becomes its
+    neighbour's — Create_Entity reads as Set_Mode, Grant_Power as
+    Power_Chance_Mod. Thunderspy did exactly that on 2026-07-30 (appending
+    `ReflectDamage`), and nothing in powers.bin announces it: the header checksum
+    is content-derived and `_detect_format` passes because the LAYOUT did not
+    change, only the struct's size.
+
+    Calibrate from the corpus instead, off the band's BOTTOM edge. Normal attrib
+    indices are stored 4-ALIGNED (index*4), so a raw that is not a multiple of 4
+    is unambiguously a band member — and since the band starts at `base`, no
+    unaligned raw can ever fall below it. The lowest one therefore pins the base
+    to a single 4-word group:
+
+        base = 4 * (lowest_unaligned_raw // 4)
+
+    That is a structural bound, not a preference, which matters because scoring
+    candidates by coverage does NOT work here: the band is 44 wide, so sliding it
+    4 keeps almost every value inside either window. On the real 2026-07-30 build
+    coverage separates the two bases by 0.02 percentage points — noise. The
+    bottom edge separates them by a whole group, every time.
+
+    The lowest raw is taken over values with real support, so one stray cannot
+    drag the base down a group. Create_Entity (base+1) anchors it in practice:
+    it is the most-used byte-granular attrib in any powers corpus (~29% of
+    unaligned uses on both Thunderspy builds).
+
+    Raises ValueError when the implied base is not a generation we model, or when
+    the band it implies fails to name `min_coverage` of the band's own uses —
+    rather than picking a base that renames the corpus plausibly-but-wrongly.
+    """
+    unaligned = {v: n for v, n in raw_counts.items() if v % 4}
+    total = sum(unaligned.values())
+    if not total:
+        # No byte-granular attrib in this corpus — the band is unused, so the
+        # base is unobservable and also cannot mislabel anything.
+        return SPECIAL_ATTRIB_MIN_REBIRTH
+
+    # Ignore raws too rare to be a real band slot (a corrupt record, a field this
+    # parser misreads). 0.5% still leaves every genuine band member in play.
+    floor = max(2, total * 0.005)
+    supported = [v for v, n in unaligned.items() if n >= floor] or list(unaligned)
+    base = 4 * (min(supported) // 4)
+
+    if base not in SPECIAL_ATTRIB_BASE_CANDIDATES:
+        raise ValueError(
+            "no known CharacterAttributes generation explains this build's "
+            f"special-attrib band: its lowest byte-granular attrib raw is "
+            f"{min(supported)}, implying base {base}, but only "
+            f"{list(SPECIAL_ATTRIB_BASE_CANDIDATES)} are modelled. A patch "
+            f"likely resized CharacterAttributes — add {base} to "
+            "SPECIAL_ATTRIB_BASE_CANDIDATES rather than editing the band."
+        )
+
+    named = sum(n for v, n in unaligned.items()
+                if base <= v < base + len(SPECIAL_ATTRIB_BAND))
+    if named / total < min_coverage:
+        outside = sorted(((n, v) for v, n in unaligned.items()
+                          if not (base <= v < base + len(SPECIAL_ATTRIB_BAND))),
+                         reverse=True)[:6]
+        raise ValueError(
+            f"special-attrib base {base} names only {named / total:.1%} of this "
+            f"build's byte-granular attrib uses. Most-used raws outside the "
+            f"band: {[v for _, v in outside]}. The band itself may have grown — "
+            "extend SPECIAL_ATTRIB_BAND rather than moving the base."
+        )
+    return base
 
 
 def resolve_attrib_rebirth(raw: int) -> str:
@@ -592,15 +689,41 @@ def resolve_attrib_rebirth(raw: int) -> str:
 # dim_returns evidence for InterruptTime (the Interrupt boost-type's ED record stores
 # offset 360 where HC stores 364) is the same fact seen from the other side.
 #
-# NB the byte-granular special/scripting band (`SPECIAL_ATTRIB_BY_RAW_REBIRTH`, raw
-# 464+) is NOT shifted — it is read from raw values on its own path and was validated
-# separately against Rebirth (64/64 on raw 469 = Set_Mode).
+# The byte-granular special/scripting band (`SPECIAL_ATTRIB_BAND`) is read from raw
+# values on its own path, but this table carries the band's COLLAPSED 4-aligned view
+# in its top entries (index 116+ on the base-464 generation) — and the index-array
+# reader tries this table FIRST, so a band raw that happens to be 4-aligned is named
+# from here, not from the special map. The two therefore have to move together:
+# `thunderspy_attrib_table` slides these entries by the same amount the band base
+# moves. Fixing only the special map leaves every 4-aligned band value on the old
+# name, which is how the 2026-07-30 build still mislabeled 866 powers after the
+# band itself was re-anchored.
 _TSPY_ATTRIB_SHIFT_FROM = 89
 
-ATTRIB_NAME_THUNDERSPY: dict[int, str] = {
+# Index of the band's collapsed view in the base-464 generation (464 // 4).
+_TSPY_BAND_INDEX_BASE = 116
+
+_ATTRIB_NAME_THUNDERSPY_BASE: dict[int, str] = {
     **{i: n for i, n in ATTRIB_NAME.items() if i < _TSPY_ATTRIB_SHIFT_FROM},
     **{i - 1: n for i, n in ATTRIB_NAME.items() if i > _TSPY_ATTRIB_SHIFT_FROM},
 }
+
+
+def thunderspy_attrib_table(special_base: int) -> dict[int, str]:
+    """Thunderspy's normal-attrib table for a build whose band sits at `special_base`.
+
+    Only the band's collapsed entries move; the normal attribs below it are
+    unaffected, which is what the corpus shows — across the 2026-07-30 build the
+    raw counts for indices 0-115 are unchanged while every band raw moved +4.
+    """
+    shift = special_base // 4 - _TSPY_BAND_INDEX_BASE
+    if not shift:
+        return dict(_ATTRIB_NAME_THUNDERSPY_BASE)
+    return {(i + shift if i >= _TSPY_BAND_INDEX_BASE else i): n
+            for i, n in _ATTRIB_NAME_THUNDERSPY_BASE.items()}
+
+
+ATTRIB_NAME_THUNDERSPY: dict[int, str] = thunderspy_attrib_table(464)
 
 ATTRIB_MOD_TYPE: dict[int, str] = {
     # Verified via Ghidra keyword table at 0x1408eb958 in cityofheroes.exe —

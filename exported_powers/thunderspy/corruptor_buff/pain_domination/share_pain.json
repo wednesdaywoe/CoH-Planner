@@ -127,7 +127,7 @@
           "jit_requires": "target.isFriend?",
           "caster_stack": "",
           "stack": "Unknown(400)",
-          "stack_limit": 196049,
+          "stack_limit": 196050,
           "stack_key": "Key49960",
           "flags": [
             "BoostIgnoreDiminishing",

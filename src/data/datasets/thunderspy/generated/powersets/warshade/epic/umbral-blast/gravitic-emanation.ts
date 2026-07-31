@@ -23,7 +23,7 @@ export const GraviticEmanation: Power = {
     "range": 40,
     "radius": 40,
     "arc": 0.7853981852531433,
-    "recharge": 45,
+    "recharge": 25,
     "endurance": 14.352,
     "castTime": 1,
     "maxTargets": 10
@@ -49,7 +49,7 @@ export const GraviticEmanation: Power = {
   "maxSlots": 6,
   "damage": {
     "type": "Negative",
-    "scale": 0.4,
+    "scale": 1,
     "table": "Ranged_Damage"
   },
   "effects": {
@@ -91,7 +91,7 @@ export const GraviticEmanation: Power = {
     }
   },
   "atoms": [
-    ["Damage","Negative",0.4,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Negative",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Knockback",5,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Stunned",10,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Movement","JumpHeight",0.2,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],

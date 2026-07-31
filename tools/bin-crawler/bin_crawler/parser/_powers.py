@@ -17,19 +17,20 @@ Auto-detected via _detect_field_41b.
 """
 
 import struct
+from collections import Counter
 from pathlib import Path
 from typing import NamedTuple
 from ._reader import open_parse7, BinReader, Parse6BinReader
 from ._dataclasses import PowerRecord, EffectGroup, EffectTemplate
 from ._enums import (
     BOOST_TYPE, BOOST_TYPE_REBIRTH, ATTRIB_NAME, ATTRIB_NAME_REBIRTH,
-    ATTRIB_NAME_THUNDERSPY, EVENT_NAME, EVENT_NAME_PARSE6, resolve_attrib,
+    EVENT_NAME, EVENT_NAME_PARSE6, resolve_attrib,
     resolve_attrib_rebirth, select_event_table, event_id_from_name,
     ATTRIB_MOD_TYPE, ATTRIB_MOD_ASPECT, ATTRIB_MOD_APPLICATION,
     ATTRIB_MOD_TARGET, ATTRIB_MOD_STACK, ATTRIB_MOD_CASTER_STACK,
     PVP_FLAG, KNOCK_VEC_POSITION, NOTIFY_EVENT,
-    SPECIAL_ATTRIB_BY_RAW_REBIRTH, SPECIAL_ATTRIB_MIN_REBIRTH,
-    SPECIAL_ATTRIB_MAX_REBIRTH,
+    SPECIAL_ATTRIB_MIN_REBIRTH, SPECIAL_ATTRIB_CREATE_ENTITY,
+    special_attrib_table, select_special_attrib_base, thunderspy_attrib_table,
 )
 
 
@@ -312,6 +313,7 @@ def parse_powers(bin_path_or_data) -> list[PowerRecord]:
 
     if is_parse6:
         parser = _parse_power_parse6
+        is_thunderspy = is_veracity = False
     else:
         # Auto-detect HC format version by testing the first few records.
         # Two known post-release additions that shift subsequent field offsets:
@@ -330,29 +332,63 @@ def parse_powers(bin_path_or_data) -> list[PowerRecord]:
         else:
             parser = lambda sub: _parse_power(sub, has_field_45b=has_45b, has_field_41b=has_41b)
 
-    _dropped_powers.clear()
-    _out_of_range_chances.clear()
     global _undecoded_message_fx_tails, _undecoded_params_tails, _undecoded_parse6_tails
-    _undecoded_message_fx_tails = 0
-    _undecoded_params_tails = 0
-    _undecoded_parse6_tails = 0
-    records = []
-    dropped_record_count = 0
-    for i in range(count):
-        rec_len = r.read_u4()
-        sub = r.sub_reader(rec_len)
 
-        try:
-            pw = parser(sub)
-            records.append(pw)
-        except Exception as e:
-            # Log but continue — don't let one bad record stop everything
-            dropped_record_count += 1
-            if dropped_record_count <= 5:
-                import sys
-                print(f"  Warning: record {i} parse error: {e}", file=sys.stderr)
+    records_start = r._pos
 
-        r.skip(rec_len)
+    def _read_all_records():
+        """One full pass over the record block. Re-runnable from the top."""
+        global _undecoded_message_fx_tails, _undecoded_params_tails
+        global _undecoded_parse6_tails
+        r._pos = records_start
+        _dropped_powers.clear()
+        _out_of_range_chances.clear()
+        _undecoded_message_fx_tails = 0
+        _undecoded_params_tails = 0
+        _undecoded_parse6_tails = 0
+        out = []
+        dropped = 0
+        for i in range(count):
+            rec_len = r.read_u4()
+            sub = r.sub_reader(rec_len)
+
+            try:
+                out.append(parser(sub))
+            except Exception as e:
+                # Log but continue — don't let one bad record stop everything
+                dropped += 1
+                if dropped <= 5:
+                    import sys
+                    print(f"  Warning: record {i} parse error: {e}", file=sys.stderr)
+
+            r.skip(rec_len)
+        return out, dropped
+
+    if is_thunderspy:
+        # The special-attrib band's base is sizeof(CharacterAttributes), which a
+        # fork moves by adding an attrib — Thunderspy did on 2026-07-30. Nothing
+        # in the file announces it (the header checksum is content-derived and
+        # the LAYOUT is unchanged, so _detect_format still passes), so calibrate
+        # from the corpus: parse once, look at the raw attrib values actually
+        # used, then re-parse if they say the band moved.
+        #
+        # A second pass is needed rather than a post-hoc rename because the base
+        # also drives the summon marker, and that scan decides which templates
+        # EXIST — it cannot be corrected after the fact.
+        _set_tspy_band_base(SPECIAL_ATTRIB_MIN_REBIRTH)
+        _TSPY_RAW_ATTRIB_COUNTS.clear()
+        records, dropped_record_count = _read_all_records()
+        calibrated = select_special_attrib_base(_TSPY_RAW_ATTRIB_COUNTS)
+        if calibrated != _TSPY_BAND_BASE:
+            import sys
+            print(f"  Note: Thunderspy special-attrib band calibrated to base "
+                  f"{calibrated} (default {_TSPY_BAND_BASE}); re-parsing",
+                  file=sys.stderr)
+            _set_tspy_band_base(calibrated)
+            _TSPY_RAW_ATTRIB_COUNTS.clear()
+            records, dropped_record_count = _read_all_records()
+    else:
+        records, dropped_record_count = _read_all_records()
 
     if dropped_record_count:
         import sys
@@ -2190,7 +2226,36 @@ def _tspy_hybrid_aspect_class(attrib: str, *, melee: bool = False) -> str | None
 # it. The affected-attrib index array (`_idx_attribs`) never names Create_Entity for
 # these — the marker lives in the nested params block, not the index array — which is
 # why the recharge/mez index-array recovery above leaves summons untouched.
-_TSPY_CREATE_ENTITY_MARKER = 465
+#
+# The marker is DERIVED from the active band base, never written as a literal.
+# It is the second consumer of that base, and the dangerous one: the special map
+# merely renames a template it fails on, but this scan DELETES — a stale marker
+# matches nothing, so every summon silently loses its per-pet Create_Entity
+# templates and keeps the shell it should have replaced. That is the whole of
+# the 2026-07-30 build's "2,523 templates vanished" symptom.
+_TSPY_BAND_BASE = 464
+_TSPY_SPECIAL_BY_RAW: dict[int, str] = special_attrib_table(_TSPY_BAND_BASE)
+_TSPY_ATTRIB_NAME: dict[int, str] = thunderspy_attrib_table(_TSPY_BAND_BASE)
+_TSPY_CREATE_ENTITY_MARKER = _TSPY_BAND_BASE + SPECIAL_ATTRIB_CREATE_ENTITY
+
+# Raw attrib values seen in Thunderspy index arrays during the current parse —
+# the evidence `select_special_attrib_base` calibrates the band base from.
+_TSPY_RAW_ATTRIB_COUNTS: Counter = Counter()
+
+
+def _set_tspy_band_base(base: int) -> None:
+    """Re-anchor every consumer of the Thunderspy special-attrib band at once.
+
+    The base is one fact with three consumers (special map, collapsed view in the
+    normal table, summon marker); they are set together here so none can be
+    updated without the others.
+    """
+    global _TSPY_BAND_BASE, _TSPY_SPECIAL_BY_RAW, _TSPY_ATTRIB_NAME
+    global _TSPY_CREATE_ENTITY_MARKER
+    _TSPY_BAND_BASE = base
+    _TSPY_SPECIAL_BY_RAW = special_attrib_table(base)
+    _TSPY_ATTRIB_NAME = thunderspy_attrib_table(base)
+    _TSPY_CREATE_ENTITY_MARKER = base + SPECIAL_ATTRIB_CREATE_ENTITY
 
 # The `Ones`/`Level`(minus) front attribs on a summon element are pure summon
 # SHELLS (the level-setting placeholder), carrying no player-facing effect of their
@@ -2419,18 +2484,24 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base,
         if 0 < icount <= 32 and ipos + 4 + icount * 4 <= _sub_end:
             _idx_count = icount
             idxs = struct.unpack_from('<%dI' % icount, strtab_data, ipos + 4)
-            _idx_attribs = [ATTRIB_NAME_THUNDERSPY[v // 4] for v in idxs
-                            if v % 4 == 0 and (v // 4) in ATTRIB_NAME_THUNDERSPY]
+            _TSPY_RAW_ATTRIB_COUNTS.update(idxs)
+            _idx_attribs = [_TSPY_ATTRIB_NAME[v // 4] for v in idxs
+                            if v % 4 == 0 and (v // 4) in _TSPY_ATTRIB_NAME]
             # The special/scripting band is BYTE-granular, so its entries fail the
-            # 4-aligned filter above and were dropped whole. Thunderspy indexes it
+            # 4-aligned filter above and were dropped whole. Thunderspy indexed it
             # from the same base 464 as Rebirth — both descend from the i24 source
-            # whose ESpecialAttrib enum SPECIAL_ATTRIB_BY_RAW_REBIRTH transcribes.
-            # Established against the Rebirth export as an oracle: of the tspy
-            # powers carrying raw 469 that also exist on Rebirth, 64/64 set a mode
-            # there (DATA-GAP TSPY-4).
-            _idx_specials = [SPECIAL_ATTRIB_BY_RAW_REBIRTH[v] for v in idxs
-                             if SPECIAL_ATTRIB_MIN_REBIRTH <= v <= SPECIAL_ATTRIB_MAX_REBIRTH
-                             and v in SPECIAL_ATTRIB_BY_RAW_REBIRTH]
+            # whose ESpecialAttrib enum SPECIAL_ATTRIB_BAND transcribes. Established
+            # against the Rebirth export as an oracle: of the tspy powers carrying
+            # raw 469 that also exist on Rebirth, 64/64 set a mode there
+            # (DATA-GAP TSPY-4).
+            #
+            # The base is NOT a constant, though — it is sizeof(CharacterAttributes),
+            # and the 2026-07-30 build moved it to 468 by appending ReflectDamage.
+            # So the table is the calibrated one for this build, chosen by
+            # `select_special_attrib_base` from the raws collected just above,
+            # and the min/max window is implicit in the map's own keys.
+            _idx_specials = [_TSPY_SPECIAL_BY_RAW[v] for v in idxs
+                             if v in _TSPY_SPECIAL_BY_RAW]
     except Exception:
         pass
     # The index array wins wherever it decodes. It is the mod's own attrib list;

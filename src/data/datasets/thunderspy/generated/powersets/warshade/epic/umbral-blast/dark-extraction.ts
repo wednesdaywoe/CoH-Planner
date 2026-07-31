@@ -16,14 +16,15 @@ export const DarkExtraction: Power = {
   "shortHelp": "Summon Essence: Ranged Moderate DMG (Negative)",
   "icon": "umbralblast_darkextraction.png",
   "powerType": "Click",
-  "targetType": "DeadFoe",
-  "effectArea": "SingleTarget",
+  "targetType": "Self",
+  "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
-    "range": 40,
-    "recharge": 240,
+    "radius": 20,
+    "recharge": 400,
     "endurance": 26,
-    "castTime": 3.2
+    "castTime": 3.2,
+    "maxTargets": 3
   },
   "allowedEnhancements": [
     "Slow",

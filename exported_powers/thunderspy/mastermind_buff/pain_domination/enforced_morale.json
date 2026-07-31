@@ -319,7 +319,7 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "target.isFriend?",
           "caster_stack": "",
-          "stack": "Unknown(784600)",
+          "stack": "Unknown(784601)",
           "stack_limit": 17558,
           "stack_key": null
         }
@@ -358,7 +358,7 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "target.isFriend?",
           "caster_stack": "",
-          "stack": "Unknown(784600)",
+          "stack": "Unknown(784601)",
           "stack_limit": 17558,
           "stack_key": null
         }
@@ -397,7 +397,7 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "target.isFriend?",
           "caster_stack": "",
-          "stack": "Unknown(784600)",
+          "stack": "Unknown(784601)",
           "stack_limit": 17558,
           "stack_key": null
         }
@@ -436,7 +436,7 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "target.isFriend?",
           "caster_stack": "",
-          "stack": "Unknown(784600)",
+          "stack": "Unknown(784601)",
           "stack_limit": 17558,
           "stack_key": null
         }

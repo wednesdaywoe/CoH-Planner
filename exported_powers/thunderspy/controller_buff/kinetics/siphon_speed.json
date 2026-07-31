@@ -348,7 +348,7 @@
           "jit_requires": "",
           "caster_stack": "",
           "stack": "StackThenIgnore",
-          "stack_limit": 4,
+          "stack_limit": 3,
           "stack_key": null,
           "flags": [
             "IgnoreResistance",

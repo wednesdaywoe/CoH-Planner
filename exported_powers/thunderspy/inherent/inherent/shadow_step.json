@@ -114,7 +114,7 @@
           "scale": 1.0,
           "duration": "0 seconds",
           "magnitude": 1.0,
-          "delay": 1.17,
+          "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -155,7 +155,7 @@
           "target": "Self",
           "table": "Ranged_Ones",
           "scale": 1.0,
-          "duration": "4 seconds",
+          "duration": "2 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -191,8 +191,6 @@
       "templates": [
         {
           "attribs": [
-            "FlyingSpeed",
-            "MovementControl",
             "MovementFriction"
           ],
           "type": "Magnitude",
