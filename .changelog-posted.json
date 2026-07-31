@@ -375,6 +375,41 @@
       "id": "slot-aggregation-level",
       "date": "2026-07-30",
       "preview": "Fix for an active Alpha causing enhancement craft level to get overidden by char"
+    },
+    {
+      "id": "mm-upgrades-from-build",
+      "date": "2026-07-30",
+      "preview": "Mastermind pet upgrades now come from your build. Taking Equip Mercenary equips "
+    },
+    {
+      "id": "mm-upgrade-dps-double-count",
+      "date": "2026-07-30",
+      "preview": "Upgraded pet DPS was overstated. An upgrade replaces a henchman's powerset rathe"
+    },
+    {
+      "id": "mm-upgrade-stats-update",
+      "date": "2026-07-30",
+      "preview": "Pet stats now actually change when you upgrade them."
+    },
+    {
+      "id": "pet-stat-rows-out-of-ability-list",
+      "date": "2026-07-30",
+      "preview": "The upgrade powers no longer take up rows in a pet's ability list."
+    },
+    {
+      "id": "tspy-upgrade-manual",
+      "date": "2026-07-30",
+      "preview": "Known issue: on Thunderspy, pet upgrades can't be read off your build. The game "
+    },
+    {
+      "id": "pet-self-buffs-recovered",
+      "date": "2026-07-30",
+      "preview": "A pet's own resistance, defence, mez protection and mez resistance now surface i"
+    },
+    {
+      "id": "pet-class-stats-cross-server",
+      "date": "2026-07-30",
+      "preview": "Pet class list is now derived from the summons themselves instead of hand-mainta"
     }
   ]
 }
