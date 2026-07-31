@@ -24,7 +24,7 @@ from ._dataclasses import PowerRecord, EffectGroup, EffectTemplate
 from ._enums import (
     BOOST_TYPE, BOOST_TYPE_REBIRTH, ATTRIB_NAME, ATTRIB_NAME_REBIRTH,
     ATTRIB_NAME_THUNDERSPY, EVENT_NAME, EVENT_NAME_PARSE6, resolve_attrib,
-    resolve_attrib_rebirth,
+    resolve_attrib_rebirth, select_event_table, event_id_from_name,
     ATTRIB_MOD_TYPE, ATTRIB_MOD_ASPECT, ATTRIB_MOD_APPLICATION,
     ATTRIB_MOD_TARGET, ATTRIB_MOD_STACK, ATTRIB_MOD_CASTER_STACK,
     PVP_FLAG, KNOCK_VEC_POSITION, NOTIFY_EVENT,
@@ -386,7 +386,77 @@ def parse_powers(bin_path_or_data) -> list[PowerRecord]:
               f"back to the heuristic scanner (see _read_parse6_template_tail)",
               file=sys.stderr)
 
+    if not (is_parse6 or is_thunderspy or is_veracity):
+        recalibrate_event_names(records)
+
     return records
+
+
+def _iter_groups(groups):
+    """Yield every EffectGroup in `groups`, including nested children."""
+    for g in groups or []:
+        yield g
+        yield from _iter_groups(getattr(g, "child_groups", None))
+
+
+def recalibrate_event_names(records) -> str | None:
+    """Re-resolve HC event names against the generation this build actually uses.
+
+    Templates are named at parse time with the live table, which is a guess:
+    HC silently renumbers the event enum when a patch inserts an event, and a
+    stale table keeps resolving — to the NEIGHBOURING name. Wrong-but-plausible
+    output is worse than an error, so once the whole corpus is parsed we look
+    at which ids actually occur and re-resolve with the table that explains
+    them (see select_event_table).
+
+    Runs on HC layouts only; Parse6/Thunderspy/Veracity resolve through
+    EVENT_NAME_PARSE6, which has its own numbering.
+
+    Returns the chosen generation name, or None when the build carries no
+    events at all. Rewrites names in place; a no-op when the live table wins,
+    so live exports are byte-identical.
+    """
+    from collections import Counter
+
+    counts: Counter = Counter()
+    templates = []
+    for pw in records:
+        for group in _iter_groups(getattr(pw, "effects", None)):
+            for t in getattr(group, "templates", None) or []:
+                templates.append(t)
+                for name in t.cancel_events:
+                    eid = event_id_from_name(name)
+                    if eid is not None:
+                        counts[eid] += 1
+                for rec in (*t.suppress_events, *t.required_events):
+                    eid = rec.get("event_id")
+                    if eid is not None:
+                        counts[eid] += 1
+
+    if not counts:
+        return None
+
+    gen_name, table = select_event_table(counts)
+    if table is EVENT_NAME:
+        return gen_name  # live numbering — parse-time names already correct
+
+    def rename(eid: int) -> str:
+        return table.get(eid, f"Event_{eid}")
+
+    for t in templates:
+        t.cancel_events = [
+            rename(eid) if (eid := event_id_from_name(n)) is not None else n
+            for n in t.cancel_events
+        ]
+        for rec in (*t.suppress_events, *t.required_events):
+            eid = rec.get("event_id")
+            if eid is not None:
+                rec["event"] = rename(eid)
+
+    import sys
+    print(f"  Event enum: '{gen_name}' generation detected; "
+          f"{len(templates)} template(s) re-resolved.", file=sys.stderr)
+    return gen_name
 
 
 def _resolve_offset(strtab_data, strtab_base, offset: int) -> str | None:

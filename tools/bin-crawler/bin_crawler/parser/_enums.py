@@ -178,6 +178,97 @@ EVENT_NAME: dict[int, str] = {
     48: "PseudoPetHelped",
 }
 
+
+# --- Event-enum generations ---------------------------------------------
+#
+# HC renumbers this enum when a patch inserts a new event, and the shift is
+# SILENT: ids keep resolving, just to the neighbouring name. The 2026-07-30
+# closed beta (assets/experimental) inserted one event at id 32, so every id
+# >= 32 moved up one — `Knocked` (33) started reading as `Repelled` (34) and
+# `MissionObjectClick` (37) as the fail-loud `Event_38`. Verified by
+# histogramming every suppress/cancel id across full live and beta exports:
+# ids <= 29 identical, 33/37/41/47/48 each vanish and reappear at +1, and a
+# genuinely new id 32 arrives with 72 uses.
+#
+# The beta table is DERIVED from the live one rather than retyped, so the
+# insertion point is the only thing stated and the names cannot drift apart.
+
+def _insert_event(base: dict[int, str], at: int) -> dict[int, str]:
+    """`base` renumbered as if one new event were inserted at id `at`."""
+    return {(k + 1 if k >= at else k): v for k, v in base.items()}
+
+
+EVENT_NAME_HC_BETA_2026_07: dict[int, str] = _insert_event(EVENT_NAME, 32)
+
+# Ordered candidates for select_event_table(). Add a new entry when a patch
+# renumbers again; do NOT edit EVENT_NAME in place (live must keep its ids).
+EVENT_TABLE_CANDIDATES: tuple[tuple[str, dict[int, str]], ...] = (
+    ("hc-live", EVENT_NAME),
+    ("hc-beta-2026-07", EVENT_NAME_HC_BETA_2026_07),
+)
+
+# Ids that are unnamed in EVERY candidate (never observed in any corpus, so
+# there is nothing to distinguish tables by). Excluded from scoring so they
+# can't drag every candidate's coverage down equally.
+_EVENT_IDS_NEVER_NAMED = frozenset(
+    i for i in range(64)
+    if not any(i in tbl for _, tbl in EVENT_TABLE_CANDIDATES)
+)
+
+
+def select_event_table(id_counts: dict[int, int],
+                       min_coverage: float = 0.9) -> tuple[str, dict[int, str]]:
+    """Pick the event table that best explains the ids a build actually uses.
+
+    Scores each candidate by the share of observed event OCCURRENCES it can
+    name (weighted by count, so one rare stray can't outvote a common event).
+    A wrong table leaves the common ids unnamed, which is exactly the signal.
+
+    Raises ValueError when even the best candidate falls below `min_coverage`
+    — that means the build renumbered in a way nobody has modelled yet, and
+    guessing would silently mislabel. Fail loud instead.
+    """
+    scorable = {i: n for i, n in id_counts.items()
+                if i not in _EVENT_IDS_NEVER_NAMED}
+    total = sum(scorable.values())
+    if not total:
+        return EVENT_TABLE_CANDIDATES[0]
+
+    scored = [
+        (sum(n for i, n in scorable.items() if i in tbl) / total, name, tbl)
+        for name, tbl in EVENT_TABLE_CANDIDATES
+    ]
+    scored.sort(key=lambda s: -s[0])
+    best_cov, best_name, best_tbl = scored[0]
+    if best_cov < min_coverage:
+        unnamed = sorted((n, i) for i, n in scorable.items() if i not in best_tbl)
+        raise ValueError(
+            "no known event-enum generation explains this build "
+            f"(best '{best_name}' names only {best_cov:.1%} of event uses). "
+            f"Most-used unnamed ids: {[i for _, i in unnamed[-6:]][::-1]}. "
+            "A patch likely renumbered the event enum — add a candidate to "
+            "EVENT_TABLE_CANDIDATES rather than editing EVENT_NAME."
+        )
+    return best_name, best_tbl
+
+
+# Inverse of the live table, for recovering the raw id from a name that was
+# already resolved at parse time (so recalibration needs no schema change).
+EVENT_ID_BY_LIVE_NAME: dict[str, int] = {v: k for k, v in EVENT_NAME.items()}
+
+
+def event_id_from_name(name: str) -> int | None:
+    """Recover the raw event id from a name produced with the live table."""
+    if name in EVENT_ID_BY_LIVE_NAME:
+        return EVENT_ID_BY_LIVE_NAME[name]
+    if name.startswith("Event_"):
+        try:
+            return int(name[len("Event_"):])
+        except ValueError:
+            return None
+    return None
+
+
 ATTRIB_NAME: dict[int, str] = {
     # Binary stores attrib indices as value * 4 (byte offsets).
     # Divide binary value by 4 to get the index used here.
