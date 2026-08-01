@@ -6,9 +6,9 @@
     "tools/bin-crawler",
     "exported_powers"
   ],
-  "synced_from_commit": "a9d221b6809c33b23b9746d2a5dd32390c1e3956",
-  "synced_from_subject": "the grant predicate read a proxy for the marker, so a form pick never handed over its own attacks",
-  "synced_from_date": "2026-08-01T10:11:25-04:00",
+  "synced_from_commit": "bddd7c3ef3d2fe030012771e7055bbbb88821896",
+  "synced_from_subject": "the homecoming export was read from the open-beta shard, so the planner shipped a divergent branch's data",
+  "synced_from_date": "2026-08-01T11:44:29-04:00",
   "tree_fingerprint": "fb69d6f0207141f8e42fbf5dc210f91c7f527ceda9c807ca9cf46b10e8444e08",
   "export_manifest_digest": "088e551ec42669873c96911c415a733d520152ace9127b70fce1395aa1bd9b0a",
   "export_manifest_count": 10

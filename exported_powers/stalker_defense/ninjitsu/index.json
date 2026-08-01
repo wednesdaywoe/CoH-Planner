@@ -27,7 +27,7 @@
     29
   ],
   "power_display_names": [
-    "Hidden Shinobi",
+    "Hide",
     "Ninja Reflexes",
     "Danger Sense",
     "Caltrops",
@@ -38,7 +38,7 @@
     "Kuji-In Retsu"
   ],
   "power_short_helps": [
-    "Toggle: Self Stealth, +DEF(Melee, Ranged, AoE), +Stealth Crit",
+    "Toggle: Self Stealth, +DEF(Melee, Ranged, AoE)",
     "Toggle: Self +DEF(Melee), Res(DeBuff DEF)",
     "Toggle: Self +DEF(Ranged, AoE), +Perception, Res(DeBuff DEF)",
     "Ranged (Location AoE), Minor DoT(Lethal), Foe -Speed",

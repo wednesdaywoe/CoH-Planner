@@ -6,7 +6,7 @@
 
 export const ENGINE_BUNDLE_VERSIONS: Record<string, string> =
   {
-    "homecoming": "cb23fc159421bc15",
+    "homecoming": "3a16ad22dbe63641",
     "rebirth": "cb078d3cea98484f",
     "thunderspy": "c0e8c499cba363aa"
   };

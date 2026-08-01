@@ -10,7 +10,7 @@
   "icon": "psionicarmor_consumepsyche",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
-  "free": false,
+  "free": true,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,

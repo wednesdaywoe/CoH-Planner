@@ -49,8 +49,6 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
       { id: 'modes-disallowed-recovered', message: 'Powers now know which forms they cannot be used in. Roughly 1,500 powers across all three servers were missing that flag entirely, which is why a Kheldian attack chain could offer you human-form attacks alongside Nova ones. The attack chain builder no longer mixes forms you cannot be in at once.', type: 'fix' },
       { id: 'speed-of-sound-suppression', message: 'Speed of Sound now suppresses the pool, run and travel toggles the game suppresses, and Jaunt correctly requires it. Same for the Rebirth and Thunderspy copies.', type: 'fix' },
       { id: 'tspy-warshade-umbral-blast', message: 'Thunderspy: Warshade Umbral Blast reads correctly now. Gravitic Emanation was at 40% damage and a 45s recharge (really full damage, 25s), Unchain Essence was targeting only defeated foes on a 240s recharge (really any foe, 60s), Dark Extraction was single-target (really a 3-target AoE), and Essence Drain and Gravity Well were both showing 7ft range instead of 25ft.', type: 'fix' },
-      { id: 'hc-patch-hidden-shinobi', message: 'Homecoming renamed Stalker Ninjitsu\'s Hide to "Hidden Shinobi" and gave it two more effects. Not a Sidekick change — the game\'s own data says so now, and the power info reads accordingly.', type: 'update' },
-      { id: 'obscure-sustenance-recharge-180', message: 'Homecoming lengthened Obscure Sustenance\'s recharge from 60s to 180s on Brute, Scrapper, Stalker and Tanker Dark Armor. Sentinel keeps its 60s. Again the game\'s number rather than mine, but builds leaning on it for uptime will read differently than they did last week.', type: 'update' },
     ]
   },
   {
