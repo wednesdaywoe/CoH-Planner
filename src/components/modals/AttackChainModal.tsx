@@ -34,7 +34,8 @@ import {
   sequenceToIds,
   idsToSequence,
 } from '@/utils/calculations/attack-chain-powers';
-import { whatIfControls } from './whatIfControls';
+import { humanise, whatIfControls } from './whatIfControls';
+import { useWhatIfActive, WhatIfChip } from './WhatIfChipPanel';
 import { modeLabel } from '@/utils/mode-suppression';
 import type { AttackChain } from '@/types';
 import { getArchetype } from '@/data';
@@ -229,6 +230,9 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
   const openWhatIfBuffsModal = useUIStore((s) => s.openWhatIfBuffsModal);
   const extraRech = whatIfBuffs.recharge ?? 0;
   const setExtraRech = (v: number) => setWhatIfBuff('recharge', v);
+  // Chip-activation for the OTHER team buffs (recharge keeps its dedicated slider above).
+  // The layer is shared, so a buff set in the WhatIfBuffsModal arrives here already active.
+  const { activeStats: whatIfActive, toggle: toggleWhatIf } = useWhatIfActive(whatIfBuffs, setWhatIfBuff);
   const [px, setPx] = useState(38);
 
   // Timeline reorder: dragging a bar moves that cast in the sequence. Bars are
@@ -847,20 +851,36 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
           {/* The rest of the chain-moving team buffs. Each slider spans the archetype's OWN
               exported ceiling for that stat, mirrored to the debuff side — the game caps the
               buff half, and a hand-set range would be a guess about a number the export owns. */}
-          <div className="mt-3 border-t border-gray-800 pt-2 space-y-1">
+          <div className="mt-3 border-t border-gray-800 pt-2 space-y-1.5">
             <div className="text-[10px] font-semibold uppercase tracking-wide text-gray-500">
               Other team buffs this chain responds to
+              <span className="ml-1 font-normal normal-case tracking-normal text-gray-600">
+                — tap a chip to add its slider
+              </span>
             </div>
-            {otherWhatIf.map((row) => {
+            {/* One chip per chain-moving stat; only an activated chip takes up a slider row. */}
+            <div className="flex flex-wrap gap-1">
+              {otherWhatIf.map((row) => (
+                <WhatIfChip
+                  key={row.stat}
+                  control={row.control ?? { stat: row.stat, label: humanise(row.stat), category: 'offense', color: 'text-gray-300', unit: '' }}
+                  active={whatIfActive.has(row.stat)}
+                  value={whatIfBuffs[row.stat] ?? 0}
+                  onToggle={() => toggleWhatIf(row.stat)}
+                />
+              ))}
+            </div>
+            {otherWhatIf.filter((row) => whatIfActive.has(row.stat)).map((row) => {
               const simulated = whatIfBuffs[row.stat] ?? 0;
-              const label = row.control?.label ?? row.stat;
+              const label = row.control?.label ?? humanise(row.stat);
+              const unit = row.control?.unit ?? '';
               return (
                 <div key={row.stat} className="flex items-center gap-2 text-[11px]">
-                  <span className="w-28 shrink-0 truncate" style={{ color: row.control?.color }}>
+                  <span className={`w-28 shrink-0 truncate ${row.control?.color ?? 'text-gray-300'}`}>
                     {label}
                   </span>
                   <span className="w-20 shrink-0 text-right tabular-nums text-gray-600">
-                    Build {fmt(row.fromBuild, 0)}
+                    Build {fmt(row.fromBuild, 0)}{unit}
                   </span>
                   {row.ceiling === null ? (
                     <span className="flex-1 text-[10px] text-amber-400/80">
@@ -891,7 +911,7 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
                       simulated === 0 ? 'text-gray-600' : simulated > 0 ? 'text-emerald-400' : 'text-amber-400'
                     }`}
                   >
-                    {simulated === 0 ? '—' : `→ ${fmt(row.current, 0)}`}
+                    {simulated === 0 ? '—' : `→ ${fmt(row.current, 0)}${unit}`}
                   </span>
                 </div>
               );

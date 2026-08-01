@@ -37,6 +37,8 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
     date: '2026-08-01',
 
     items: [
+      { id: 'buff-debuff-sim', message: 'Added a new modal to simulate buff/debuffs on your character stats. This is wired to the chain builder modal as well.', type:'feat' },
+      { id: 'character-identity-bookmarks', message: 'When saving a bookmark for a build, it will now use your character identity for the title instead of just the website string', type: 'feat' },
       { id: 'kheldian-form-attack-chain', message: 'The attack chain builder can now see Kheldian form attacks, gated by form. The Form control shows up only when your build can actually change form', type: 'feat' },
       { id: 'attack-chain-empty-character', message: 'Fix for the attack chain builder doing its math on an empty character', type: 'fix' },
       { id: 'tohit-buff-self-enhancing', message: 'Fix for +ToHit buffs enhancing themselves.', type: 'fix' },

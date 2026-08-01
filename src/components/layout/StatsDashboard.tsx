@@ -201,6 +201,7 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
   const attackChainModalOpen = useUIStore((s) => s.attackChainModalOpen);
   const openAttackChainModal = useUIStore((s) => s.openAttackChainModal);
   const whatIfBuffsModalOpen = useUIStore((s) => s.whatIfBuffsModalOpen);
+  const openWhatIfBuffsModal = useUIStore((s) => s.openWhatIfBuffsModal);
   const closeWhatIfBuffsModal = useUIStore((s) => s.closeWhatIfBuffsModal);
   const closeAttackChainModal = useUIStore((s) => s.closeAttackChainModal);
   const trackedStats = useUIStore((s) => s.trackedStats);
@@ -529,6 +530,7 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
               openStatsConfigModal={openStatsConfigModal}
               openControlsModal={openControlsModal}
               openAttackChainModal={openAttackChainModal}
+              openWhatIfBuffsModal={openWhatIfBuffsModal}
               variant="desktop"
             />
           </div>
@@ -545,6 +547,7 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
               openStatsConfigModal={openStatsConfigModal}
               openControlsModal={openControlsModal}
               openAttackChainModal={openAttackChainModal}
+              openWhatIfBuffsModal={openWhatIfBuffsModal}
               variant="mobile"
             />
           </div>
@@ -720,6 +723,7 @@ interface DashboardActionButtonsProps {
   openStatsConfigModal: () => void;
   openControlsModal: () => void;
   openAttackChainModal: () => void;
+  openWhatIfBuffsModal: () => void;
   variant: 'desktop' | 'mobile';
 }
 
@@ -822,6 +826,13 @@ function DashboardActionButtons(props: DashboardActionButtonsProps) {
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />,
         isMobile ? 'Chain' : 'Attack Chain',
         'attack-chain',
+      )}
+      {btn(
+        'purple',
+        props.openWhatIfBuffsModal,
+        'Simulate the buffs a teammate could hand this build (what-if layer)',
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />,
+        'Team Buffs',
       )}
       {btn(
         'purple',

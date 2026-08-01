@@ -18,6 +18,8 @@ export interface WhatIfControl {
   label: string;
   category: string;
   color: string;
+  /** Display unit, concatenated after the value like the dashboard does ('%', 'Mag', ''). */
+  unit: string;
 }
 
 /** Section display names, in the canonical `STAT_SECTIONS` order. */
@@ -34,7 +36,7 @@ export const CATEGORY_LABELS: Record<string, string> = {
 };
 
 /** `defSmashing` → `Def Smashing`. Used only where no dashboard row names the key alone. */
-function humanise(key: string): string {
+export function humanise(key: string): string {
   const spaced = key.replace(/([A-Z])/g, ' $1');
   return spaced.charAt(0).toUpperCase() + spaced.slice(1);
 }
@@ -48,10 +50,17 @@ function humanise(key: string): string {
  * that moves nothing.
  */
 export function whatIfControls(vocabulary: readonly string[]): WhatIfControl[] {
-  const byBreakdownKey = new Map<string, { id: string; label: string; color: string }>();
+  const byBreakdownKey = new Map<string, { id: string; label: string; color: string; unit: string }>();
   for (const def of Object.values(STAT_DEFINITIONS)) {
     if (def.breakdownKey && !byBreakdownKey.has(def.breakdownKey)) {
-      byBreakdownKey.set(def.breakdownKey, { id: def.id, label: def.label, color: def.color });
+      byBreakdownKey.set(def.breakdownKey, {
+        id: def.id,
+        label: def.label,
+        color: def.color,
+        // The row's own breakdown unit — '%' by default, 'Mag' for status protection, '' for
+        // unitless counts (level shift) — so a control can't claim a unit its row doesn't.
+        unit: def.breakdownUnit ?? '%',
+      });
     }
   }
   const controls: WhatIfControl[] = [];
@@ -66,6 +75,7 @@ export function whatIfControls(vocabulary: readonly string[]): WhatIfControl[] {
       label: row.label.length >= 6 ? row.label : humanise(stat),
       category: STAT_CATEGORY[row.id] ?? 'offense',
       color: row.color,
+      unit: row.unit,
     });
   }
   return controls;

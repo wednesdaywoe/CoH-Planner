@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sidekick — storage rescue</title>
+  <style>
+    body { font-family: system-ui, sans-serif; background: #0f172a; color: #e2e8f0; max-width: 720px; margin: 40px auto; padding: 0 16px; }
+    h1 { font-size: 20px; }
+    table { border-collapse: collapse; width: 100%; margin: 16px 0; font-size: 14px; }
+    td, th { border: 1px solid #334155; padding: 6px 10px; text-align: left; }
+    button { background: #1e293b; color: #e2e8f0; border: 1px solid #475569; border-radius: 6px; padding: 6px 12px; cursor: pointer; margin-right: 8px; }
+    button:hover { border-color: #94a3b8; }
+    .danger { border-color: #b45309; color: #fbbf24; }
+    .note { color: #94a3b8; font-size: 13px; line-height: 1.5; }
+  </style>
+</head>
+<body>
+  <h1>Sidekick — storage rescue</h1>
+  <p class="note">
+    This page shares the app's origin but loads none of its code, so it works even when the
+    planner hangs at boot. Download a backup FIRST — it contains your builds — then remove
+    keys one at a time to find the one the boot chokes on.
+  </p>
+  <div>
+    <button id="backup">Download full backup</button>
+  </div>
+  <table id="keys"><tr><th>localStorage key</th><th>size</th><th></th></tr></table>
+  <p class="note" id="status"></p>
+  <script>
+    function render() {
+      var table = document.getElementById('keys');
+      while (table.rows.length > 1) table.deleteRow(1);
+      for (var i = 0; i < localStorage.length; i++) {
+        (function (key) {
+          var v = localStorage.getItem(key) || '';
+          var row = table.insertRow();
+          row.insertCell().textContent = key;
+          row.insertCell().textContent = (v.length / 1024).toFixed(1) + ' KB';
+          var btn = document.createElement('button');
+          btn.textContent = 'Remove';
+          btn.className = 'danger';
+          btn.onclick = function () {
+            if (confirm('Remove "' + key + '"? Make sure you downloaded the backup.')) {
+              localStorage.removeItem(key);
+              render();
+            }
+          };
+          row.insertCell().appendChild(btn);
+        })(localStorage.key(i));
+      }
+    }
+    document.getElementById('backup').onclick = function () {
+      var dump = {};
+      for (var i = 0; i < localStorage.length; i++) {
+        var k = localStorage.key(i);
+        dump[k] = localStorage.getItem(k);
+      }
+      var blob = new Blob([JSON.stringify(dump, null, 2)], { type: 'application/json' });
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'sidekick-localstorage-backup.json';
+      a.click();
+      document.getElementById('status').textContent = 'Backup downloaded (' + Object.keys(dump).length + ' keys).';
+    };
+    render();
+  </script>
+</body>
+</html>
