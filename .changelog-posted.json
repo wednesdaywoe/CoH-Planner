@@ -410,6 +410,66 @@
       "id": "pet-class-stats-cross-server",
       "date": "2026-07-30",
       "preview": "Pet class list is now derived from the summons themselves instead of hand-mainta"
+    },
+    {
+      "id": "kheldian-form-attack-chain",
+      "date": "2026-08-01",
+      "preview": "The attack chain builder can now see Kheldian form attacks, gated by form. The F"
+    },
+    {
+      "id": "attack-chain-empty-character",
+      "date": "2026-08-01",
+      "preview": "Fix for the attack chain builder doing its math on an empty character"
+    },
+    {
+      "id": "tohit-buff-self-enhancing",
+      "date": "2026-08-01",
+      "preview": "Fix for +ToHit buffs enhancing themselves."
+    },
+    {
+      "id": "generic-io-value-display",
+      "date": "2026-08-01",
+      "preview": "Generic IOs were advertising wrong values, level moved to the header and each st"
+    },
+    {
+      "id": "unmapped-enhancement-aspects",
+      "date": "2026-08-01",
+      "preview": "Immobilize, Terrorize, Threat and Interrupt enhancements were contributing nothi"
+    },
+    {
+      "id": "tspy-pets-summoned-twice",
+      "date": "2026-08-01",
+      "preview": "Thunderspy: summons were exporting their pets twice"
+    },
+    {
+      "id": "tspy-range-disallowed",
+      "date": "2026-08-01",
+      "preview": "Thunderspy: 720 powers now say which enhancement strengths they refuse. Mostly t"
+    },
+    {
+      "id": "tspy-mechanic-names",
+      "date": "2026-08-01",
+      "preview": "Thunderspy: power mechanics should now show their real names instead of a placeh"
+    },
+    {
+      "id": "rebirth-stealth-suppression",
+      "date": "2026-08-01",
+      "preview": "Rebirth: stealth and suppression data was being dropped before it reached the pl"
+    },
+    {
+      "id": "modes-disallowed-recovered",
+      "date": "2026-08-01",
+      "preview": "Powers shoould now know which forms they cannot be used in. Roughly 1,500 powers"
+    },
+    {
+      "id": "speed-of-sound-suppression",
+      "date": "2026-08-01",
+      "preview": "Speed of Sound now suppresses the pool, run and travel toggles the game suppress"
+    },
+    {
+      "id": "tspy-warshade-umbral-blast",
+      "date": "2026-08-01",
+      "preview": "Thunderspy: Warshade Umbral Blast should read correctly now. Gravitic Emanation "
     }
   ]
 }

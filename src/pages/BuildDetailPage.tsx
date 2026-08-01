@@ -9,6 +9,7 @@ import { getSharedBuild, incrementViews, isOwnedBuild, deleteBuild, reclaimBuild
 import { useBuildStore } from '@/stores/buildStore';
 import { useAuthStore } from '@/stores/authStore';
 import { getActiveDataset } from '@/data/dataset';
+import { buildDocumentTitle, useDocumentTitle, DEFAULT_DOCUMENT_TITLE } from '@/utils/document-title';
 import type { SharedBuild } from '@/types/shared';
 
 export function BuildDetailPage() {
@@ -42,6 +43,18 @@ export function BuildDetailPage() {
   const [editTags, setEditTags] = useState('');
   const [editLoading, setEditLoading] = useState(false);
   const [editError, setEditError] = useState<string | null>(null);
+
+  // Name the tab (and so any bookmark of this link) after the shared build.
+  useDocumentTitle(
+    build
+      ? buildDocumentTitle({
+          name: build.name,
+          archetypeName: build.archetype_name,
+          primaryName: build.primary_name,
+          secondaryName: build.secondary_name,
+        })
+      : DEFAULT_DOCUMENT_TITLE,
+  );
 
   useEffect(() => {
     let cancelled = false;

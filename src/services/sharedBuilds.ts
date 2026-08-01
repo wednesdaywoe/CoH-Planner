@@ -6,6 +6,7 @@ import { supabase } from '@/lib/supabase';
 import { useAuthStore } from '@/stores/authStore';
 import type { SharedBuild, ShareBuildInput, SearchFilters, SearchResult } from '@/types/shared';
 import type { BuildExport } from '@/types/build';
+import { DEFAULT_BUILD_NAME } from '@/types/build';
 
 const DEFAULT_PAGE_SIZE = 20;
 const OWNER_TOKENS_KEY = 'coh-planner-owner-tokens';
@@ -278,7 +279,7 @@ export async function shareBuild(input: ShareBuildInput): Promise<{ id: string; 
   const secondary = buildData.build.secondary;
 
   const payload: Record<string, unknown> = {
-    name: input.name || buildData.build.name || 'Untitled Build',
+    name: input.name || buildData.build.name || DEFAULT_BUILD_NAME,
     description: input.description,
     archetype: archetype.id || '',
     archetype_name: archetype.name || '',

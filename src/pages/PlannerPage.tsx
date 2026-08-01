@@ -17,6 +17,7 @@
 import { useRef, useState } from 'react';
 import { useBuildStore, useUIStore, usePowerViewMode } from '@/stores';
 import { useUrlBuildSync } from '@/utils/url-build-sync';
+import { useBuildDocumentTitle } from '@/utils/document-title';
 import { AvailablePowers } from '@/components/powers/AvailablePowers';
 import { AvailablePoolPowers } from '@/components/powers/AvailablePoolPowers';
 import { SelectedPowers } from '@/components/powers/SelectedPowers';
@@ -142,6 +143,7 @@ interface SectionDescriptor {
 
 export function PlannerPage() {
   useUrlBuildSync();
+  useBuildDocumentTitle();
   const build = useBuildStore((s) => s.build);
   const addPower = useBuildStore((s) => s.addPower);
   const tooltipEnabled = useUIStore((s) => s.infoPanel.tooltipEnabled);

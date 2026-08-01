@@ -10,6 +10,7 @@
  */
 
 import { forwardRef } from 'react';
+import { DEFAULT_BUILD_NAME } from '@/types/build';
 import type { Build } from '@/types/build';
 import type { SelectedPower, Enhancement } from '@/types';
 import { getPowerIconPath } from '@/data';
@@ -239,7 +240,7 @@ function Header({ build, options }: { build: Build; options: ExportImageOptions 
     <div className="flex items-start justify-between gap-4 border-b border-slate-700 pb-3 mb-3">
       <div className="min-w-0">
         <div className="text-[22px] font-bold text-slate-50 leading-tight truncate">
-          {build.name || 'Untitled Build'}
+          {build.name || DEFAULT_BUILD_NAME}
         </div>
         <div className="text-[13px] text-cyan-300 mt-0.5">
           {at}

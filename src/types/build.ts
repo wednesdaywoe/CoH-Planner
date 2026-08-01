@@ -245,9 +245,17 @@ export interface ProcOverride {
 // DEFAULT BUILD FACTORY
 // ============================================
 
+/**
+ * Placeholder name a build carries until the user renames it. Callers that
+ * distinguish "the user named this" from "nobody has named this yet" — the
+ * document title, for one — must compare against this rather than against `''`,
+ * because the factory seeds the placeholder rather than leaving the name blank.
+ */
+export const DEFAULT_BUILD_NAME = 'Untitled Build';
+
 export function createEmptyBuild(serverId: 'homecoming' | 'rebirth' | 'thunderspy' = 'homecoming'): Build {
   return {
-    name: 'Untitled Build',
+    name: DEFAULT_BUILD_NAME,
     serverId,
     archetype: {
       id: null,
