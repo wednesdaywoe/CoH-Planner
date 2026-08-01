@@ -204,6 +204,12 @@ export interface CharacterCalculationResult {
    *  guarantees the hovered power and the picked one are computed the same way, rather
    *  than a second assembly of the context drifting from this one. */
   engineStateJson: string | null;
+  /** The `GlobalBonuses` keys the what-if TEAM-BUFF layer moved, and by how much — the
+   *  engine's own record of what it injected. A surface marks a number SIMULATED by asking
+   *  whether its breakdown key is in here, never by re-reading the sliders: that second
+   *  answer could describe a different calculation than the one on screen. Empty on every
+   *  build with nothing simulated. */
+  whatIfMoved: Record<string, number>;
 }
 
 // ============================================
@@ -779,6 +785,11 @@ export interface CalculationOptions {
   /** Header alpha-strike toggle — with the build's Hide power it becomes the engine's `hidden`,
    *  which gates a from-Hide opener's mid-combat cast (PROD6C-3k). Display-only. */
   stalkerHidden?: boolean;
+  /** The what-if TEAM-BUFF layer, keyed by the `GlobalBonuses` field each buff lands in.
+   *  Unlike the display-only inputs above this one MOVES THE TOTALS — the engine injects it
+   *  into the accumulators before projection, exactly where a teammate's real buff would land,
+   *  so the archetype ceilings bind against it. Default `{}` (nothing simulated). */
+  whatIfBuffs?: Record<string, number>;
 }
 
 /**
@@ -811,6 +822,7 @@ export function calculateCharacterTotals(
     mechanicAdjusters: options?.mechanicAdjusters ?? {},
     dominationActive: options?.dominationActive ?? false,
     stalkerHidden: options?.stalkerHidden ?? false,
+    whatIfBuffs: options?.whatIfBuffs ?? {},
   };
 
   try {
@@ -831,6 +843,7 @@ export function calculateCharacterTotals(
     bonusTracking: {},
     powerProjection: new Map(),
     engineStateJson: null,
+    whatIfMoved: {},
   };
 }
 

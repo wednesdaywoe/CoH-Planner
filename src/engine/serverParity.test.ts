@@ -79,6 +79,7 @@ const CTX: AdapterCalcContext = {
   mechanicAdjusters: {},
   dominationActive: false,
   stalkerHidden: false,
+  whatIfBuffs: {},
 };
 
 /** A power is pickable at 50 when it unlocks by level (available 0-indexed, < 50) and isn't

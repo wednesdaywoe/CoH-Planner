@@ -1,6 +1,6 @@
 {
   "schema": "bin-crawler-export-manifest/1",
   "note": "classes_fingerprint is the sha256 of the classes exporter (bin_crawler/parser/**/*.py + export_classes.py) at export time. If it disagrees with the current committed exporter source, THIS tables/ tree is stale \u2014 re-run export_classes for this dataset and commit. Guarded by src/data/export-staleness.test.ts.",
-  "classes_fingerprint": "e61702808d099edbcd751bded013fcfdfbbb733e943fbd3ce0f9a64b12ffb282",
+  "classes_fingerprint": "5a85c4712b39ef0b25ce04f5500637cca2ae0e5bf1d8e28c55c503bdad86c19c",
   "class_files": 59
 }

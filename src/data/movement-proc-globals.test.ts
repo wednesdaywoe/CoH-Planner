@@ -62,6 +62,7 @@ const CTX: AdapterCalcContext = {
   mechanicAdjusters: {},
   dominationActive: false,
   stalkerHidden: false,
+  whatIfBuffs: {},
 };
 
 const THRUST_GLOBAL = 'Thrust: Run/+Run Speed';

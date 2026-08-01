@@ -100,6 +100,7 @@ const CTX: AdapterCalcContext = {
   mechanicAdjusters: {},
   dominationActive: false,
   stalkerHidden: false,
+  whatIfBuffs: {},
 };
 
 function pickable(p: Power): boolean {

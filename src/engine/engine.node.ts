@@ -48,15 +48,33 @@ function handleFor(server: ServerId): EngineHandle {
       `engine artifacts missing (${NODE_ENGINE} / ${server}.json.gz) — run \`npm run build:engine\`.`,
     );
   }
-  const require = createRequire(import.meta.url);
-  const glue = require('./wasm-node/coh_wasm.cjs') as { load_dataset: (bytes: Uint8Array) => EngineHandle };
-  const handle = glue.load_dataset(new Uint8Array(readFileSync(join(BUNDLE_DIR, `${server}.json.gz`))));
+  const handle = glue().load_dataset(new Uint8Array(readFileSync(join(BUNDLE_DIR, `${server}.json.gz`))));
   handles.set(server, handle);
   return handle;
 }
 
+interface EngineGlue {
+  load_dataset: (bytes: Uint8Array) => EngineHandle;
+  what_if_vocabulary: () => string;
+}
+
+function glue(): EngineGlue {
+  const require = createRequire(import.meta.url);
+  return require('./wasm-node/coh_wasm.cjs') as EngineGlue;
+}
+
 export async function loadDataset(server: ServerId): Promise<void> {
   handleFor(server);
+}
+
+/**
+ * The what-if team-buff vocabulary, straight from the engine.
+ *
+ * A property of the accumulator rather than of any dataset, so unlike the browser twin this
+ * answers before any dataset is loaded — the wasm module is instantiated at require time here.
+ */
+export function whatIfVocabulary(): string[] {
+  return JSON.parse(glue().what_if_vocabulary()) as string[];
 }
 
 export function isDatasetLoaded(server: ServerId): boolean {

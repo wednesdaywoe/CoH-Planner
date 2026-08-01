@@ -200,27 +200,40 @@ const EPS = 0.001;
 export type PowerMetric = 'damage' | 'dpa' | 'dps';
 
 /**
- * Smallest the recharge divisor `(1 + strength)` may reach. City of Heroes
- * clamps *net* recharge strength (all buffs − all debuffs) to a minimum of
- * −75%, so the divisor floors at 0.25 and a power can be slowed to AT MOST 4×
- * its base recharge — it never stops recharging or goes negative, however deep
- * the −recharge debuff. This is what makes the what-if debuff slider safe: the
- * denominator can't cross zero.
+ * The bounds `ClampStrength` holds the recharge divisor `(1 + strength)` between —
+ * the archetype's own `StrengthMin` and `StrengthMaxTable[level]` rows, read from
+ * the class binary (`archetype-stats.generated.ts` `rechargeFloor`/`rechargeCap`,
+ * 0.25 and 5.0 on every player class of every dataset).
  *
- * Note this is DELIBERATELY different from perma.ts's `Math.max(1, …)`, which is
- * a buff-only view where a debuff is a no-op (a perma power can't be pushed
- * above base by an enemy). It's also distinct from the −90% movement-speed floor
- * — recharge and movement clamp independently. Source: Homecoming/Fandom wikis
- * "Recharge" & "Limits" (net strength ∈ [−0.75, +4.0]).
+ * Both halves matter and only one used to be here. The floor means a power slows
+ * to AT MOST 4× its base recharge however deep the debuff, which is what keeps
+ * the what-if slider's denominator off zero. The CAP means buffs stop at +400% —
+ * and with no cap at all the slider could drive a chain faster than the game
+ * ever will, which is exactly the soft-wrong number a what-if must not produce
+ * (WHAT-IF-BUFFS-PLAN WIF19).
+ *
+ * Note the floor is DELIBERATELY different from perma.ts's `Math.max(1, …)`,
+ * which is a buff-only view where a debuff is a no-op (a perma power can't be
+ * pushed above base by an enemy), and distinct from the −90% movement-speed
+ * floor — recharge and movement clamp independently.
  */
-export const MIN_RECHARGE_DENOM = 0.25;
+export interface RechargeBounds {
+  /** `StrengthMin` — the lowest the divisor may reach (0.25 = the −75% floor). */
+  floor: number;
+  /** `StrengthMaxTable[level]` — the highest (5.0 = the +400% cap). */
+  cap: number;
+}
 
-/** Effective recharge after enhancement + (build + what-if) global recharge,
- *  with the game's −75% net-strength floor so a recharge debuff can slow a power
- *  to at most 4× base rather than blowing the divisor past zero. */
-export function effectiveRecharge(p: ChainPower, globalRechargePct: number): number {
+/** Effective recharge after enhancement + (build + what-if) global recharge, with
+ *  the divisor held inside the archetype's own `ClampStrength` bounds. */
+export function effectiveRecharge(
+  p: ChainPower,
+  globalRechargePct: number,
+  bounds: RechargeBounds,
+): number {
   if (p.fixedRecharge) return p.baseRecharge;
-  const denom = Math.max(MIN_RECHARGE_DENOM, 1 + p.rechargeEnh + globalRechargePct / 100);
+  const raw = 1 + p.rechargeEnh + globalRechargePct / 100;
+  const denom = Math.min(bounds.cap, Math.max(bounds.floor, raw));
   return p.baseRecharge / denom;
 }
 
@@ -256,11 +269,12 @@ export function powerMetricValue(
   p: ChainPower,
   metric: PowerMetric,
   globalRechargePct: number,
+  bounds: RechargeBounds,
 ): number {
   const dmg = nominalDamage(p);
   if (metric === 'dpa') return p.cast > 0 ? dmg / p.cast : 0;
   if (metric === 'dps') {
-    const t = p.cast + effectiveRecharge(p, globalRechargePct);
+    const t = p.cast + effectiveRecharge(p, globalRechargePct, bounds);
     return t > 0 ? dmg / t : 0;
   }
   return dmg; // 'damage'
@@ -287,9 +301,10 @@ export function findSlot(
   activations: Activation[],
   pi: number,
   globalRechargePct: number,
+  bounds: RechargeBounds,
 ): number {
   const p = powers[pi];
-  const effRech = effectiveRecharge(p, globalRechargePct);
+  const effRech = effectiveRecharge(p, globalRechargePct, bounds);
   const mine = activations.filter((a) => a.pi === pi);
   const laneReadyAt = mine.length > 0 ? Math.max(...mine.map((a) => a.end + effRech)) : 0;
 
@@ -312,8 +327,9 @@ export function addActivation(
   activations: Activation[],
   pi: number,
   globalRechargePct: number,
+  bounds: RechargeBounds,
 ): Activation[] {
-  const start = findSlot(powers, activations, pi, globalRechargePct);
+  const start = findSlot(powers, activations, pi, globalRechargePct, bounds);
   const next = [...activations, { pi, start, end: start + powers[pi].cast }];
   next.sort((a, b) => a.start - b.start);
   return next;
@@ -349,6 +365,7 @@ export function replayChain(
   powers: ChainPower[],
   sequence: number[],
   globalRechargePct: number,
+  bounds: RechargeBounds,
   formCtx: FormContext = {},
 ): Activation[] {
   const acts: Activation[] = [];
@@ -363,7 +380,7 @@ export function replayChain(
   sequence.forEach((pi, seq) => {
     if (pi < 0 || pi >= powers.length) return;
     const p = powers[pi];
-    const start = findSlot(powers, acts, pi, globalRechargePct);
+    const start = findSlot(powers, acts, pi, globalRechargePct, bounds);
     // Auto-pick the first alternate form whose trigger is satisfiable now and
     // consume what it requires.
     let formId: string | undefined;
@@ -537,6 +554,7 @@ export function computeChain(
   powers: ChainPower[],
   activations: Activation[],
   globalRechargePct: number,
+  bounds: RechargeBounds,
   end: EnduranceParams | null,
   metric: PowerMetric = 'damage',
 ): ChainResult | null {
@@ -555,7 +573,7 @@ export function computeChain(
     const mine = activations.filter((a) => a.pi === pi);
     const firstStart = Math.min(...mine.map((a) => a.start));
     const lastEndPi = Math.max(...mine.map((a) => a.end));
-    const need = lastEndPi + effectiveRecharge(powers[pi], globalRechargePct) - firstStart;
+    const need = lastEndPi + effectiveRecharge(powers[pi], globalRechargePct, bounds) - firstStart;
     if (need > cycleSec) cycleSec = need;
   }
 
@@ -587,9 +605,9 @@ export function computeChain(
   let wSum = 0;
   let wuSum = 0;
   for (const [pi, count] of castCount) {
-    const w = powerMetricValue(powers[pi], metric, globalRechargePct);
+    const w = powerMetricValue(powers[pi], metric, globalRechargePct, bounds);
     if (w <= 0) continue;
-    const period = powers[pi].cast + effectiveRecharge(powers[pi], globalRechargePct);
+    const period = powers[pi].cast + effectiveRecharge(powers[pi], globalRechargePct, bounds);
     const u = cycleSec > 0 && period > 0 ? Math.min(1, (count * period) / cycleSec) : 1;
     wSum += w;
     wuSum += w * u;

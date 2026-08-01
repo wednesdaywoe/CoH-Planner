@@ -30,3 +30,16 @@ export class DatasetHandle {
  * Load a dataset bundle (gz or raw JSON bytes) into an opaque [`DatasetHandle`].
  */
 export function load_dataset(bytes: Uint8Array): DatasetHandle;
+
+/**
+ * The stat names a what-if TEAM-BUFF entry may use, as a JSON array of strings.
+ *
+ * Dataset-independent, so it hangs off the module rather than a [`DatasetHandle`]: the
+ * vocabulary is a property of the ACCUMULATOR (which fields it routes and which of those
+ * are accumulations rather than baselines), not of any fork's data.
+ *
+ * Exported so the beta's what-if modal derives its controls from the same answer the
+ * engine's own injection uses. A hand-kept list on the JS side would be a second stat
+ * vocabulary free to drift — the exact shape PROD6A killed.
+ */
+export function what_if_vocabulary(): string;

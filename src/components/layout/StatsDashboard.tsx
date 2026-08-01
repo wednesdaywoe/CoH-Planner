@@ -13,7 +13,7 @@ import { getArchetype } from '@/data';
 import { getDefenseSoftcap } from '@/data/purple-patch';
 import { isOverCapMuted } from '@/data/set-bonus-groups';
 import { Tooltip } from '@/components/ui';
-import { StatsConfigModal, AccoladesModal, AboutModal, DonateModal, ExportImportModal, FeedbackModal, ChangelogModal, EnhancementListModal, WelcomeModal, SetBonusLookupModal, ControlsModal, HelpModal, CompareSlottingModal, DetailedTotalsModal, PowersetCompareModal, ProcSettingsModal, EnhancementToolsModal, AttackChainModal, AnnouncementModal, BuildImageModal } from '@/components/modals';
+import { StatsConfigModal, AccoladesModal, AboutModal, DonateModal, ExportImportModal, FeedbackModal, ChangelogModal, EnhancementListModal, WelcomeModal, SetBonusLookupModal, ControlsModal, HelpModal, CompareSlottingModal, DetailedTotalsModal, PowersetCompareModal, ProcSettingsModal, EnhancementToolsModal, AttackChainModal, WhatIfBuffsModal, AnnouncementModal, BuildImageModal } from '@/components/modals';
 import { IncarnateSlotGrid, IncarnateModal, IncarnateCraftingModal, DestinyTimeSlider } from '@/components/incarnate';
 import { HINTS } from '@/components/powers';
 import { PinnedPowersBar } from './PinnedPowersBar';
@@ -200,6 +200,8 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
   const closeEnhancementToolsModal = useUIStore((s) => s.closeEnhancementToolsModal);
   const attackChainModalOpen = useUIStore((s) => s.attackChainModalOpen);
   const openAttackChainModal = useUIStore((s) => s.openAttackChainModal);
+  const whatIfBuffsModalOpen = useUIStore((s) => s.whatIfBuffsModalOpen);
+  const closeWhatIfBuffsModal = useUIStore((s) => s.closeWhatIfBuffsModal);
   const closeAttackChainModal = useUIStore((s) => s.closeAttackChainModal);
   const trackedStats = useUIStore((s) => s.trackedStats);
   const toggleTrackedStat = useUIStore((s) => s.toggleTrackedStat);
@@ -236,6 +238,9 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
   const resistanceCap = (at?.stats.resistanceCap ?? 0.75) * 100;
   const breakdowns = calcResult.breakdown;
   const globalBonuses = calcResult.globalBonuses;
+  // The accumulator keys the what-if team-buff layer moved, straight from the engine run that
+  // produced these totals (WHAT-IF-BUFFS-PLAN WIF14).
+  const whatIfMoved = calcResult.whatIfMoved;
   const mutedOverCapStats = build.mutedOverCapStats;
 
   // Level-scoped power-pick and slot budgets (shared with the mobile build bar).
@@ -331,7 +336,11 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
           };
         }
 
-        return { ...def, value, breakdown, breakdownUnit: def.breakdownUnit, totalBaseOffset, hpCap: config.stat === 'health' ? maxHPCap : undefined, cap, tooltip, format };
+        // Asked of the engine's own record of what the layer moved, not of the sliders — so
+        // the mark describes THESE totals and cannot outlive or precede them.
+        const simulated = def.breakdownKey != null && def.breakdownKey in whatIfMoved;
+
+        return { ...def, value, breakdown, breakdownUnit: def.breakdownUnit, totalBaseOffset, hpCap: config.stat === 'health' ? maxHPCap : undefined, cap, tooltip, format, simulated };
       });
     // Every user-enabled stat is shown, including zeros. Stats are opt-in via
     // Settings → Stats, so toggling one on should reliably display it — this
@@ -342,7 +351,7 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
     // they could never be displayed. (StatDefinition.showWhenZero is no longer
     // consulted here; it's retained as metadata for a possible future
     // "hide zero stats" toggle.)
-  }, [statsConfig, stats, baseHP, maxHPCap, breakdowns, globalBonuses, effectiveMovementCaps, rechargeMidsStyle]);
+  }, [statsConfig, stats, baseHP, maxHPCap, breakdowns, globalBonuses, effectiveMovementCaps, rechargeMidsStyle, whatIfMoved]);
 
   // Group visible stats into the dashboard's display sections. Section→stat
   // placement is single-sourced via STAT_CATEGORY (see stat-definitions.ts);
@@ -437,6 +446,7 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
                       hpCap={stat.hpCap}
                       cap={stat.cap}
                       overCapMuted={stat.breakdownKey ? isOverCapMuted(stat.breakdownKey, mutedOverCapStats) : false}
+                      simulated={stat.simulated}
                     />
                   ))}
                 </div>
@@ -685,6 +695,12 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
         isOpen={attackChainModalOpen}
         onClose={closeAttackChainModal}
       />
+
+      {/* What-if team buffs */}
+      <WhatIfBuffsModal
+        isOpen={whatIfBuffsModalOpen}
+        onClose={closeWhatIfBuffsModal}
+      />
       </>}
     </>
   );
@@ -876,9 +892,14 @@ interface StatItemProps {
    *  (the stat's over-cap warnings are muted). Softcap/hardcap display and the
    *  numeric total are unaffected. */
   overCapMuted?: boolean;
+  /** The what-if team-buff layer moved this stat, so the number is SIMULATED rather than the
+   *  build's own. Drawn as a literal `sim` tag, not a hue: the whole point is that a
+   *  SCREENSHOT of a buffed dashboard cannot pass as an unbuffed one, and a screenshot carries
+   *  no tooltip and no colour vocabulary. */
+  simulated?: boolean;
 }
 
-function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, breakdownUnit = '%', totalBaseOffset = 0, formatTotal, formatBreakdownSource, rawValue, className = '', tracked, onTrack, hpCap, cap, overCapMuted }: StatItemProps) {
+function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, breakdownUnit = '%', totalBaseOffset = 0, formatTotal, formatBreakdownSource, rawValue, className = '', tracked, onTrack, hpCap, cap, overCapMuted, simulated }: StatItemProps) {
   const hasCapped = !overCapMuted && (breakdown?.sources.some(s => s.capped) ?? false);
   const numericValue = typeof rawValue === 'number' ? rawValue : undefined;
   const isAtCap = cap !== undefined && numericValue !== undefined && numericValue >= cap;
@@ -909,6 +930,14 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, b
     >
       <span className="text-xs text-gray-500 uppercase tracking-wide shrink-0">{label}</span>
       <span className={`text-sm font-medium tabular-nums text-right truncate ${displayColor} ${isAtCap ? 'underline decoration-current decoration-dotted underline-offset-2' : ''}`}>
+        {simulated && (
+          <span
+            className="mr-1 rounded bg-purple-500 px-1 align-[1px] text-[9px] font-semibold uppercase tracking-wider text-gray-950"
+            title="Includes a simulated team buff — not this build's own number"
+          >
+            sim
+          </span>
+        )}
         {mainText}
         {secondaryText && (
           <span className="text-[10px] text-gray-500 ml-1">{secondaryText}</span>

@@ -181,6 +181,9 @@ export interface EngineTotals {
   buff_pet_breakdown: EngineBuffPetBreakdownSource[];
   movement_breakdown: EngineMovementBreakdownSource[];
   power_projection: EnginePowerProjection[];
+  /** What the what-if TEAM-BUFF layer moved in producing these totals. Measured by the engine's
+   *  own injection, so a "simulated" marker cannot disagree with the numbers it marks. */
+  what_if: { moved: Record<string, number> };
 }
 
 /** The beta-facing form of one resolved granted magnitude — {@link EngineGrantedMagnitude} with

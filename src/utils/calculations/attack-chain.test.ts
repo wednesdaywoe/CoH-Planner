@@ -4,7 +4,13 @@ import {
   computeChain,
   effectiveRecharge,
   type ChainPower,
+  type RechargeBounds,
 } from './attack-chain';
+
+/** Every player class of every dataset authors these ClampStrength bounds
+ *  (`rechargeFloor` / `rechargeCap` in archetype-stats.generated.ts): the −75%
+ *  debuff floor and the +400% recharge cap. */
+const BOUNDS: RechargeBounds = { floor: 0.25, cap: 5 };
 
 const mk = (over: Partial<ChainPower> = {}): ChainPower => ({
   id: 'x',
@@ -22,30 +28,51 @@ const mk = (over: Partial<ChainPower> = {}): ChainPower => ({
 describe('effectiveRecharge', () => {
   it('folds enhancement + global recharge into one divisive denominator', () => {
     const p = mk({ baseRecharge: 10, rechargeEnh: 1 }); // +100% slotted
-    expect(effectiveRecharge(p, 0)).toBeCloseTo(5, 5); // 10 / (1 + 1)
-    expect(effectiveRecharge(p, 100)).toBeCloseTo(10 / 3, 5); // 10 / (1 + 1 + 1)
+    expect(effectiveRecharge(p, 0, BOUNDS)).toBeCloseTo(5, 5); // 10 / (1 + 1)
+    expect(effectiveRecharge(p, 100, BOUNDS)).toBeCloseTo(10 / 3, 5); // 10 / (1 + 1 + 1)
   });
 
   it('a recharge DEBUFF (negative global) slows the power', () => {
     const p = mk({ baseRecharge: 10, rechargeEnh: 0 });
-    expect(effectiveRecharge(p, -20)).toBeCloseTo(12.5, 5); // 10 / (1 − 0.2)
-    expect(effectiveRecharge(p, -50)).toBeCloseTo(20, 5); // 10 / (1 − 0.5)
+    expect(effectiveRecharge(p, -20, BOUNDS)).toBeCloseTo(12.5, 5); // 10 / (1 − 0.2)
+    expect(effectiveRecharge(p, -50, BOUNDS)).toBeCloseTo(20, 5); // 10 / (1 − 0.5)
   });
 
   it('slotting + build recharge absorb the debuff before it slows below base', () => {
     // +200% slotted: a −100% debuff still leaves net strength +1 → 2× base speed.
     // This is the "am I over-built for recharge" case the debuff slider exists for.
     const p = mk({ baseRecharge: 10, rechargeEnh: 2 });
-    expect(effectiveRecharge(p, -100)).toBeCloseTo(5, 5); // 10 / (1 + 2 − 1)
+    expect(effectiveRecharge(p, -100, BOUNDS)).toBeCloseTo(5, 5); // 10 / (1 + 2 − 1)
+  });
+
+  it('clamps to the archetype +400% recharge CAP, so a what-if cannot outrun the game', () => {
+    // The half that did not exist before WIF19: the floor was hardcoded and there was no cap
+    // at all, so the what-if slider could drive the divisor to 9 and report a chain a third
+    // faster than the game will ever cast it.
+    const p = mk({ baseRecharge: 10, rechargeEnh: 0 });
+    expect(effectiveRecharge(p, 400, BOUNDS)).toBeCloseTo(2, 5); // 10 / 5.0, exactly at the cap
+    expect(effectiveRecharge(p, 800, BOUNDS)).toBeCloseTo(2, 5); // still 10 / 5.0
+    // Slotted enhancement counts against the same cap — it is NET strength that clamps.
+    const slotted = mk({ baseRecharge: 10, rechargeEnh: 1 });
+    expect(effectiveRecharge(slotted, 400, BOUNDS)).toBeCloseTo(2, 5); // 1 + 1 + 4 → 5.0
+  });
+
+  it('reads both bounds from the archetype rather than a constant', () => {
+    // The bounds are data: an archetype authoring different rows must produce different
+    // numbers here, which is what stops the pair silently reverting to a hardcode.
+    const p = mk({ baseRecharge: 10, rechargeEnh: 0 });
+    const narrow = { floor: 0.5, cap: 2 };
+    expect(effectiveRecharge(p, -300, narrow)).toBeCloseTo(20, 5); // 10 / 0.5, not 10 / 0.25
+    expect(effectiveRecharge(p, 800, narrow)).toBeCloseTo(5, 5); // 10 / 2, not 10 / 5
   });
 
   it('clamps to the CoH −75% net floor: at most 4× base, never Infinity/negative', () => {
     const p = mk({ baseRecharge: 10, rechargeEnh: 0 });
     // Denominator would be 0 (→Infinity) at −100 and negative below; floored at 0.25.
-    expect(effectiveRecharge(p, -100)).toBeCloseTo(40, 5); // 10 / 0.25 = 4× base
-    expect(effectiveRecharge(p, -300)).toBeCloseTo(40, 5); // still capped at 4× base
-    expect(Number.isFinite(effectiveRecharge(p, -300))).toBe(true);
-    expect(effectiveRecharge(p, -300)).toBeGreaterThan(0);
+    expect(effectiveRecharge(p, -100, BOUNDS)).toBeCloseTo(40, 5); // 10 / 0.25 = 4× base
+    expect(effectiveRecharge(p, -300, BOUNDS)).toBeCloseTo(40, 5); // still capped at 4× base
+    expect(Number.isFinite(effectiveRecharge(p, -300, BOUNDS))).toBe(true);
+    expect(effectiveRecharge(p, -300, BOUNDS)).toBeGreaterThan(0);
   });
 });
 
@@ -55,8 +82,8 @@ describe('recharge debuff (negative what-if) scheduling', () => {
     const B = mk({ id: 'B', cast: 1, baseRecharge: 4, damage: 10 });
     const powers = [A, B];
     const seq = [0, 1, 0, 1];
-    const base = computeChain(powers, replayChain(powers, seq, 0), 0, null)!;
-    const debuffed = computeChain(powers, replayChain(powers, seq, -200), -200, null)!;
+    const base = computeChain(powers, replayChain(powers, seq, 0, BOUNDS), 0, BOUNDS, null)!;
+    const debuffed = computeChain(powers, replayChain(powers, seq, -200, BOUNDS), -200, BOUNDS, null)!;
     expect(debuffed.cycleSec).toBeGreaterThan(base.cycleSec);
     expect(debuffed.dps).toBeLessThan(base.dps);
     expect(Number.isFinite(debuffed.cycleSec)).toBe(true);
@@ -67,7 +94,7 @@ describe('recharge debuff (negative what-if) scheduling', () => {
 
   it('a −100% debuff floors an un-slotted power at 4× base recharge (finite timeline)', () => {
     const A = mk({ id: 'A', cast: 1, baseRecharge: 4, rechargeEnh: 0 });
-    const acts = replayChain([A], [0, 0], -100);
+    const acts = replayChain([A], [0, 0], -100, BOUNDS);
     expect(acts.every((a) => Number.isFinite(a.start) && Number.isFinite(a.end))).toBe(true);
     // effRech floored to 4 / 0.25 = 16; the second cast can't start before
     // cast-end(1) + 16 = 17.
@@ -83,10 +110,10 @@ describe('chain packer', () => {
     const A = mk({ id: 'A', baseRecharge: 1, damage: 10 });
     const B = mk({ id: 'B', baseRecharge: 1, damage: 20 });
     const powers = [A, B];
-    const acts = replayChain(powers, [0, 1, 0, 1], 0);
+    const acts = replayChain(powers, [0, 1, 0, 1], 0, BOUNDS);
     expect(acts.map((a) => a.start)).toEqual([0, 1, 2, 3]);
 
-    const r = computeChain(powers, acts, 0, null)!;
+    const r = computeChain(powers, acts, 0, BOUNDS, null)!;
     expect(r.cycleSec).toBe(4);
     expect(r.deadTime).toBe(0);
     expect(r.efficiency).toBe(100);
@@ -103,8 +130,8 @@ describe('chain packer', () => {
     // cycle is 6s, and the boundary idle counts as dead time.
     const A = mk({ id: 'A', cast: 1, baseRecharge: 5 });
     const B = mk({ id: 'B', cast: 1, baseRecharge: 1 });
-    const acts = replayChain([A, B], [0, 1], 0); // A@0, B@1
-    const r = computeChain([A, B], acts, 0, null)!;
+    const acts = replayChain([A, B], [0, 1], 0, BOUNDS); // A@0, B@1
+    const r = computeChain([A, B], acts, 0, BOUNDS, null)!;
     expect(r.cycleSec).toBe(6);
     expect(r.deadTime).toBe(4); // 6s loop − 2s of animation
     expect(r.efficiency).toBe(33);
@@ -112,10 +139,10 @@ describe('chain packer', () => {
 
   it('a single power loops at cast + recharge, not its last visible cast', () => {
     const C = mk({ id: 'C', baseRecharge: 3, cast: 1, damage: 5 });
-    const acts = replayChain([C], [0, 0], 0); // C@0, then ready at end(1)+3=4
+    const acts = replayChain([C], [0, 0], 0, BOUNDS); // C@0, then ready at end(1)+3=4
     expect(acts.map((a) => a.start)).toEqual([0, 4]);
 
-    const r = computeChain([C], acts, 0, null)!;
+    const r = computeChain([C], acts, 0, BOUNDS, null)!;
     // C cycles every cast + recharge = 4s; two casts span an 8s loop.
     expect(r.cycleSec).toBe(8);
     expect(r.deadTime).toBe(6); // idle 1→4 and 5→8
@@ -127,17 +154,17 @@ describe('chain packer', () => {
 
   it('global recharge shrinks the loop', () => {
     const C = mk({ id: 'C', baseRecharge: 3, cast: 1 });
-    const acts = replayChain([C], [0, 0], 50); // +50% → effRech 2 → ready at end(1)+2=3
+    const acts = replayChain([C], [0, 0], 50, BOUNDS); // +50% → effRech 2 → ready at end(1)+2=3
     expect(acts.map((a) => a.start)).toEqual([0, 3]);
-    const r = computeChain([C], acts, 50, null)!;
+    const r = computeChain([C], acts, 50, BOUNDS, null)!;
     expect(r.cycleSec).toBe(6); // 2 casts × (cast 1 + effRech 2)
     expect(r.deadTime).toBe(4);
   });
 
   it('counts after-cast DoT ticks that land inside the cycle', () => {
     const D = mk({ id: 'D', cast: 1, baseRecharge: 1, damage: 0, dot: { ticks: 3, period: 1, perTick: 4 } });
-    const acts = replayChain([D], [0, 0], 0); // D@0, ready at end(1)+1=2 → D@2 → cycle = 4
-    const r = computeChain([D], acts, 0, null)!;
+    const acts = replayChain([D], [0, 0], 0, BOUNDS); // D@0, ready at end(1)+1=2 → D@2 → cycle = 4
+    const r = computeChain([D], acts, 0, BOUNDS, null)!;
     // D@0 ticks land at 2,3,4 (all ≤ cycle 4 → +12); D@2 ticks at 4,5,6 → only
     // t=4 lands (+4). Trailing ticks past the loop boundary truncate.
     expect(r.cycleSec).toBe(4);
@@ -154,8 +181,8 @@ describe('compactness', () => {
     const X = mk({ id: 'X', cast: 1, baseRecharge: 1, damage: 100 });
     const Y = mk({ id: 'Y', cast: 1, baseRecharge: 1, damage: 100 });
     const Z = mk({ id: 'Z', cast: 1, baseRecharge: 1, damage: 100 });
-    const acts = replayChain([X, Y, Z], [0, 1, 2, 0, 1, 2], 0); // packs [0..6)
-    const r = computeChain([X, Y, Z], acts, 0, null)!;
+    const acts = replayChain([X, Y, Z], [0, 1, 2, 0, 1, 2], 0, BOUNDS); // packs [0..6)
+    const r = computeChain([X, Y, Z], acts, 0, BOUNDS, null)!;
     expect(r.cycleSec).toBe(6);
     expect(r.efficiency).toBe(100); // packed, no idle
     expect(r.compactness).toBe(67); // each: min(1, 2×period2/6) = 0.667
@@ -167,8 +194,8 @@ describe('compactness', () => {
     // high-damage power, so default metric = per-cast damage weights it heavily.
     const X = mk({ id: 'X', cast: 1, baseRecharge: 4, damage: 100 });
     const A = mk({ id: 'A', cast: 1, baseRecharge: 1, damage: 10 });
-    const acts = replayChain([X, A], [0, 1, 1, 1], 0); // X@0, A@1,3,5
-    const r = computeChain([X, A], acts, 0, null)!;
+    const acts = replayChain([X, A], [0, 1, 1, 1], 0, BOUNDS); // X@0, A@1,3,5
+    const r = computeChain([X, A], acts, 0, BOUNDS, null)!;
     expect(r.cycleSec).toBe(6);
     expect(r.efficiency).toBe(67);
     // X period 5 in a 6s loop → u = 5/6 = 0.833; A period 2 × 3 = 6 → u = 1.
@@ -180,16 +207,16 @@ describe('compactness', () => {
     // Same chain, metric = dps: X = 100/(1+4) = 20, A = 10/(1+1) = 5.
     const X = mk({ id: 'X', cast: 1, baseRecharge: 4, damage: 100 });
     const A = mk({ id: 'A', cast: 1, baseRecharge: 1, damage: 10 });
-    const acts = replayChain([X, A], [0, 1, 1, 1], 0);
-    const r = computeChain([X, A], acts, 0, null, 'dps')!;
+    const acts = replayChain([X, A], [0, 1, 1, 1], 0, BOUNDS);
+    const r = computeChain([X, A], acts, 0, BOUNDS, null, 'dps')!;
     // (20×0.833 + 5×1) / 25 = 0.867 → 87
     expect(r.compactness).toBe(87);
   });
 
   it('is null when the chain deals no damage', () => {
     const T = mk({ id: 'T', cast: 1, baseRecharge: 1, damage: 0, dot: null });
-    const acts = replayChain([T], [0, 0], 0);
-    const r = computeChain([T], acts, 0, null)!;
+    const acts = replayChain([T], [0, 0], 0, BOUNDS);
+    const r = computeChain([T], acts, 0, BOUNDS, null)!;
     expect(r.compactness).toBeNull();
   });
 });
@@ -198,8 +225,8 @@ describe('endurance model', () => {
   it('reports a sustainable chain (net ≥ 0, no stall)', () => {
     const A = mk({ id: 'A', baseRecharge: 1 });
     const B = mk({ id: 'B', baseRecharge: 1 });
-    const acts = replayChain([A, B], [0, 1, 0, 1], 0); // cycle 4, 4 casts × 1 end
-    const r = computeChain([A, B], acts, 0, { maxEnd: 100, recoveryPerSec: 2, togglePerSec: 0 })!;
+    const acts = replayChain([A, B], [0, 1, 0, 1], 0, BOUNDS); // cycle 4, 4 casts × 1 end
+    const r = computeChain([A, B], acts, 0, BOUNDS, { maxEnd: 100, recoveryPerSec: 2, togglePerSec: 0 })!;
     const e = r.endurance!;
     expect(e.attackPerSec).toBeCloseTo(1, 5); // 4 end / 4 s
     expect(e.netPerSec).toBeCloseTo(1, 5); // 2 recovery − 0 toggle − 1 attack
@@ -210,8 +237,8 @@ describe('endurance model', () => {
 
   it('detects a mid-rotation stall even from a full bar', () => {
     const D = mk({ id: 'D', cast: 1, baseRecharge: 1, endCost: 15 });
-    const acts = replayChain([D], [0, 0, 0], 0); // ready at end+1 → D@0,2,4
-    const r = computeChain([D], acts, 0, { maxEnd: 20, recoveryPerSec: 1, togglePerSec: 0 })!;
+    const acts = replayChain([D], [0, 0, 0], 0, BOUNDS); // ready at end+1 → D@0,2,4
+    const r = computeChain([D], acts, 0, BOUNDS, { maxEnd: 20, recoveryPerSec: 1, togglePerSec: 0 })!;
     const e = r.endurance!;
     // full 20 → cast −15 = 5 → +1/s for 2s → at t=2: 7 − 15 = −8 ⇒ stall at t=2
     expect(e.sustainable).toBe(false);
@@ -222,8 +249,8 @@ describe('endurance model', () => {
     // A normal attack costs 2 end; R costs 1 but refunds 11 (net +10/cast).
     const A = mk({ id: 'A', cast: 1, baseRecharge: 1, endCost: 2, damage: 5 });
     const R = mk({ id: 'R', cast: 1, baseRecharge: 1, endCost: 1, endGain: 11, damage: 0 });
-    const acts = replayChain([A, R], [0, 1], 0); // A@0, R@1 → cycle 2
-    const r = computeChain([A, R], acts, 0, { maxEnd: 100, recoveryPerSec: 0, togglePerSec: 0 })!;
+    const acts = replayChain([A, R], [0, 1], 0, BOUNDS); // A@0, R@1 → cycle 2
+    const r = computeChain([A, R], acts, 0, BOUNDS, { maxEnd: 100, recoveryPerSec: 0, togglePerSec: 0 })!;
     const e = r.endurance!;
     expect(r.cycleSec).toBe(2);
     expect(e.attackPerSec).toBeCloseTo(1.5, 5); // gross spend (2+1)/2
@@ -238,8 +265,8 @@ describe('endurance model', () => {
     // the clamped bar empties → must report a stall, not "sustainable".
     const R = mk({ id: 'R', cast: 1, baseRecharge: 1, endCost: 0, endGain: 110, damage: 0 });
     const A = mk({ id: 'A', cast: 1, baseRecharge: 1, endCost: 35, damage: 5 });
-    const acts = replayChain([R, A], [0, 1, 1, 1], 0); // R@0, A@1,2,3 → cycle 4
-    const r = computeChain([R, A], acts, 0, { maxEnd: 100, recoveryPerSec: 0, togglePerSec: 0 })!;
+    const acts = replayChain([R, A], [0, 1, 1, 1], 0, BOUNDS); // R@0, A@1,2,3 → cycle 4
+    const r = computeChain([R, A], acts, 0, BOUNDS, { maxEnd: 100, recoveryPerSec: 0, togglePerSec: 0 })!;
     const e = r.endurance!;
     expect(e.perLoopDelta).toBeCloseTo(5, 5); // analytic looks positive…
     expect(e.sustainable).toBe(false); // …but the overfilled gain is wasted
@@ -248,8 +275,8 @@ describe('endurance model', () => {
 
   it('toggle drain pushes an otherwise-fine chain negative', () => {
     const A = mk({ id: 'A', endCost: 1, baseRecharge: 1 }); // period cast 1 + rech 1
-    const acts = replayChain([A], [0, 0], 0); // A@0, A@2 → 4s loop (2 casts × 2s)
-    const r = computeChain([A], acts, 0, { maxEnd: 100, recoveryPerSec: 1.5, togglePerSec: 1.5 })!;
+    const acts = replayChain([A], [0, 0], 0, BOUNDS); // A@0, A@2 → 4s loop (2 casts × 2s)
+    const r = computeChain([A], acts, 0, BOUNDS, { maxEnd: 100, recoveryPerSec: 1.5, togglePerSec: 1.5 })!;
     const e = r.endurance!;
     expect(e.attackPerSec).toBeCloseTo(0.5, 5); // 2 end / 4 s
     expect(e.netPerSec).toBeCloseTo(-0.5, 5); // 1.5 − 1.5 − 0.5
@@ -263,11 +290,11 @@ describe('per-bar removal via sequence', () => {
     const A = mk({ id: 'A' });
     const B = mk({ id: 'B' });
     const seq = [0, 1, 0]; // A, B, A
-    const acts = replayChain([A, B], seq, 0);
+    const acts = replayChain([A, B], seq, 0, BOUNDS);
     expect(acts.map((a) => a.seq)).toEqual([0, 1, 2]);
 
     const seq2 = seq.filter((_, i) => i !== 1); // remove the B
-    const acts2 = replayChain([A, B], seq2, 0);
+    const acts2 = replayChain([A, B], seq2, 0, BOUNDS);
     expect(acts2.every((a) => a.pi === 0)).toBe(true);
     expect(acts2).toHaveLength(2);
   });
@@ -298,13 +325,13 @@ describe('cast forms (charge trigger — fast Energy Transfer)', () => {
   const powers = [tf, et];
 
   it('uses the base (slow) form with no preceding grantor', () => {
-    const acts = replayChain([et], [0], 0);
+    const acts = replayChain([et], [0], 0, BOUNDS);
     expect(acts[0].formId).toBeUndefined();
     expect(acts[0].end - acts[0].start).toBeCloseTo(2.67, 5); // slow animation
   });
 
   it('upgrades to the fast form after Total Focus, consuming the charge', () => {
-    const acts = replayChain(powers, [0, 1], 0);
+    const acts = replayChain(powers, [0, 1], 0, BOUNDS);
     const etAct = acts.find((a) => a.pi === 1)!;
     expect(etAct.formId).toBe('fast');
     expect(etAct.end - etAct.start).toBeCloseTo(1, 5); // shortened cast
@@ -312,7 +339,7 @@ describe('cast forms (charge trigger — fast Energy Transfer)', () => {
 
   it('powers exactly one fast ET per Energy Focus', () => {
     // TF, ET, ET → first ET fast (spends the charge), second falls back to slow.
-    const acts = replayChain(powers, [0, 1, 1], 0);
+    const acts = replayChain(powers, [0, 1, 1], 0, BOUNDS);
     const ets = acts.filter((a) => a.pi === 1).sort((a, b) => a.start - b.start);
     expect(ets.map((a) => a.formId)).toEqual(['fast', undefined]);
   });
@@ -343,30 +370,30 @@ describe('cast forms (tohit trigger — fast snipe)', () => {
   const hasten = mk({ id: 'HAS', cast: 1, baseRecharge: 90, damage: 0, type: 'buff' });
 
   it('uses the slow form with no permanent ToHit and no buff window', () => {
-    const acts = replayChain([snipe], [0], 0);
+    const acts = replayChain([snipe], [0], 0, BOUNDS);
     expect(acts[0].formId).toBeUndefined();
     expect(acts[0].end - acts[0].start).toBeCloseTo(3.67, 5);
   });
 
   it('fires fast when permanent ToHit meets the threshold', () => {
-    const acts = replayChain([snipe], [0], 0, { permanentToHit: 24 });
+    const acts = replayChain([snipe], [0], 0, BOUNDS, { permanentToHit: 24 });
     expect(acts[0].formId).toBe('fast');
     expect(acts[0].end - acts[0].start).toBeCloseTo(1.67, 5);
   });
 
   it('fires fast inside a Build Up ToHit window (no permanent ToHit)', () => {
-    const acts = replayChain([buildUp, snipe], [0, 1], 0, { permanentToHit: 0 });
+    const acts = replayChain([buildUp, snipe], [0, 1], 0, BOUNDS, { permanentToHit: 0 });
     expect(acts.find((a) => a.pi === 1)!.formId).toBe('fast');
   });
 
   it('fires fast when forceFastSnipe is set, even below threshold and with no window', () => {
-    const acts = replayChain([snipe], [0], 0, { permanentToHit: 0, forceFastSnipe: true });
+    const acts = replayChain([snipe], [0], 0, BOUNDS, { permanentToHit: 0, forceFastSnipe: true });
     expect(acts[0].formId).toBe('fast');
     expect(acts[0].end - acts[0].start).toBeCloseTo(1.67, 5);
   });
 
   it('a recharge-only buff (Hasten) does NOT make a snipe fast', () => {
-    const acts = replayChain([hasten, snipe], [0, 1], 0, { permanentToHit: 0 });
+    const acts = replayChain([hasten, snipe], [0, 1], 0, BOUNDS, { permanentToHit: 0 });
     expect(acts.find((a) => a.pi === 1)!.formId).toBeUndefined();
   });
 });
@@ -396,24 +423,24 @@ describe('cast forms (hidden trigger — Assassin\'s Strike)', () => {
   const filler = mk({ id: 'FILL', cast: 1, baseRecharge: 1, damage: 10 });
 
   it('fires the slow from-Hide form as the rotation opener', () => {
-    const acts = replayChain([as, filler], [0, 1], 0);
+    const acts = replayChain([as, filler], [0, 1], 0, BOUNDS);
     expect(acts[0].formId).toBe('hidden');
     expect(acts[0].end - acts[0].start).toBeCloseTo(3.0, 5);
   });
 
   it('uses the fast mid-combat base form mid-rotation (not after Placate)', () => {
     // filler opens, so AS is mid-combat → base form.
-    const acts = replayChain([as, filler], [1, 0], 0);
+    const acts = replayChain([as, filler], [1, 0], 0, BOUNDS);
     expect(acts.find((a) => a.pi === 0)!.formId).toBeUndefined();
   });
 
   it('fires from-Hide when cast immediately after Placate', () => {
-    const acts = replayChain([as, placate, filler], [2, 1, 0], 0); // filler, Placate, AS
+    const acts = replayChain([as, placate, filler], [2, 1, 0], 0, BOUNDS); // filler, Placate, AS
     expect(acts.find((a) => a.pi === 0)!.formId).toBe('hidden');
   });
 
   it('does NOT fire from-Hide when an attack intervenes after Placate', () => {
-    const acts = replayChain([as, placate, filler], [1, 2, 0], 0); // Placate, filler, AS
+    const acts = replayChain([as, placate, filler], [1, 2, 0], 0, BOUNDS); // Placate, filler, AS
     expect(acts.find((a) => a.pi === 0)!.formId).toBeUndefined();
   });
 });

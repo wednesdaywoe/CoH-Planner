@@ -7,7 +7,7 @@
  * `attack-chain.ts`; this layer is the only part that touches build/data.
  */
 
-import type { Build, SelectedPower, PowerEffects } from '@/types';
+import type { ArchetypeStats, Build, SelectedPower, PowerEffects } from '@/types';
 import { hasSelfDirectedPenalty, INCARNATE_REQUIRED_LEVEL } from '@/types';
 import { getIOSet, arcToDegrees, getJudgementEffects } from '@/data';
 import { getTableValue, calculateIncarnateDamage } from '@/data/at-tables';
@@ -574,14 +574,130 @@ export function buildChainPowers(
   return judgement ? [...powers, judgement] : powers;
 }
 
-/** Character endurance parameters for the sustainability sim. */
-export function getEnduranceParams(globalBonuses: GlobalBonuses): EnduranceParams {
-  const maxEnd = 100 + (globalBonuses.maxEndurance || 0);
+/**
+ * The what-if team-buff stats a chain's numbers actually move with — the sliders the Attack
+ * Chain Builder offers, out of the layer's full vocabulary.
+ *
+ * MEASURED, not chosen: `attack-chain-sensitivity.test.ts` pushes every key the engine's
+ * vocabulary offers through this whole pipeline and holds this list to exactly the set that
+ * changed a chain number. A stat that stops mattering cannot linger as a control that does
+ * nothing, and one the chain grows a dependency on fails the test until it is offered.
+ */
+export const CHAIN_WHAT_IF_STATS = [
+  'damage', 'endurance', 'maxEndurance', 'recharge', 'recovery', 'toHit',
+] as const;
+
+/** A per-level table's value at `level`, clamped to the table's ends (index 0 = level 1). */
+function atLevel(table: number[], level: number): number {
+  return table[Math.min(Math.max(Math.round(level), 1), table.length) - 1];
+}
+
+/**
+ * A buff ceiling expressed over the class's own base, as the percentage a planner shows
+ * (CAPS-1). The ceiling is an ABSOLUTE attribute value, so it says nothing on its own —
+ * `5.0 / 0.25 - 1 = +1900%` is a Blaster's regeneration ceiling, and the same 5.0 over an
+ * Arachnos Soldier's 0.30 base is +1567%.
+ */
+function buffCeilingPercent(capTable: number[], base: number, level: number): number | null {
+  if (!capTable?.length || !(base > 0)) return null;
+  return (atLevel(capTable, level) / base - 1) * 100;
+}
+
+/**
+ * Character endurance parameters for the sustainability sim.
+ *
+ * Both the bar and the rate it refills at come from the archetype's own export (CAPS-1), not
+ * from a literal: the pool is `maxEnduranceTable` plus the build's +MaxEnd, clamped to
+ * `maxEnduranceCapTable`, and the recovery percentage is clamped to the class's recovery
+ * ceiling. This used to open `100 + maxEndurance` with no clamp on either — a hardcoded pool
+ * and a rate a team buff could push arbitrarily past what the game allows.
+ *
+ * `null` when the build has no archetype to read: there is no bar to drain, and the modal says
+ * so rather than draining an invented one.
+ */
+export function getEnduranceParams(
+  globalBonuses: GlobalBonuses,
+  stats: ArchetypeStats | null | undefined,
+  level: number,
+): EnduranceParams | null {
+  if (!stats?.maxEnduranceTable?.length || !stats?.maxEnduranceCapTable?.length) return null;
+  const maxEnd = Math.min(
+    atLevel(stats.maxEnduranceTable, level) + (globalBonuses.maxEndurance || 0),
+    atLevel(stats.maxEnduranceCapTable, level),
+  );
+  const recoveryCeiling = buffCeilingPercent(stats.recoveryCapTable, stats.recoveryBase, level);
+  const recovery = recoveryCeiling === null
+    ? (globalBonuses.recovery || 0)
+    : Math.min(globalBonuses.recovery || 0, recoveryCeiling);
   return {
     maxEnd,
-    recoveryPerSec: (maxEnd / 60) * (1 + (globalBonuses.recovery || 0) / 100),
+    recoveryPerSec: (maxEnd / 60) * (1 + recovery / 100),
     togglePerSec: globalBonuses.toggleEndCost || 0,
   };
+}
+
+/** One chain-side what-if control: where the stat stands now, and where it stops. */
+export interface ChainWhatIfRow {
+  /** The `GlobalBonuses` field the what-if layer is keyed by. */
+  stat: (typeof CHAIN_WHAT_IF_STATS)[number];
+  /** The value the chain is computing with, in the layer's units — layer included, ceiling
+   *  applied where the chain runs on a clamped figure. */
+  current: number;
+  /** What the build reaches WITHOUT the layer, measured off the raw accumulator. Deriving it as
+   *  `current − simulated` breaks the moment a ceiling binds: a +5000% recovery what-if against
+   *  a +400% ceiling would have the surface reading "Build −4600%". */
+  fromBuild: number;
+  /** The archetype's ceiling for it, or null when the dataset ships none. */
+  ceiling: number | null;
+}
+
+/**
+ * The chain-side what-if controls, each carrying the value the chain is using and the ceiling
+ * the archetype's export sets for it.
+ *
+ * The accessors travel with the stat list for the same reason the rebuild's do: a name on its
+ * own would leave a surface to invent a slider range, and the export owns every one of these
+ * numbers. A reduction aspect's `ClampStrength` cap is a net-strength multiplier, so the most a
+ * global can be worth is `(cap − 1) × 100`.
+ */
+export function chainWhatIfRows(
+  globalBonuses: GlobalBonuses,
+  stats: ArchetypeStats | null | undefined,
+  level: number,
+  layer: Record<string, number> = {},
+): ChainWhatIfRow[] {
+  const strengthCap = (cap: number | undefined) =>
+    typeof cap === 'number' ? (cap - 1) * 100 : null;
+  const pool = stats?.maxEnduranceTable?.length && stats?.maxEnduranceCapTable?.length
+    ? { base: atLevel(stats.maxEnduranceTable, level), cap: atLevel(stats.maxEnduranceCapTable, level) }
+    : null;
+  const ceilings: Record<ChainWhatIfRow['stat'], number | null> = {
+    damage: strengthCap(stats?.damageCap),
+    endurance: strengthCap(stats?.enduranceCap),
+    recharge: strengthCap(stats?.rechargeCap),
+    maxEndurance: pool ? pool.cap - pool.base : null,
+    recovery: stats ? buffCeilingPercent(stats.recoveryCapTable, stats.recoveryBase, level) : null,
+    toHit: stats ? buffCeilingPercent(stats.toHitCapTable, stats.toHitBase, level) : null,
+  };
+  // The RAW accumulator per stat — build plus layer, before any ceiling.
+  const accumulated: Record<ChainWhatIfRow['stat'], number> = {
+    damage: globalBonuses.damage || 0,
+    endurance: globalBonuses.endurance || 0,
+    recharge: globalBonuses.recharge || 0,
+    maxEndurance: globalBonuses.maxEndurance || 0,
+    recovery: globalBonuses.recovery || 0,
+    toHit: globalBonuses.toHit || 0,
+  };
+  return CHAIN_WHAT_IF_STATS.map((stat) => ({
+    stat,
+    // The clamped figure where the chain runs on one: the endurance sim binds recovery to its
+    // ceiling. The snipe rule reads the accumulator's ToHit directly, so that one is raw.
+    current: stat === 'recovery' && ceilings.recovery !== null
+      ? Math.min(accumulated.recovery, ceilings.recovery)
+      : accumulated[stat],
+    fromBuild: accumulated[stat] - (layer[stat] ?? 0),
+    ceiling: ceilings[stat],
+  }));
 }
 
 /** The build's global recharge bonus as a percentage (e.g. 70 = +70%). */

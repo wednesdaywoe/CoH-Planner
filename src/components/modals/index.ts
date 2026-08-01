@@ -26,4 +26,5 @@ export { PoolPickerModal } from './PoolPickerModal';
 export { ForumExportModal } from './ForumExportModal';
 export { BuildImageModal } from './BuildImageModal';
 export { AttackChainModal } from './AttackChainModal';
+export { WhatIfBuffsModal } from './WhatIfBuffsModal';
 export { AnnouncementModal } from './AnnouncementModal';

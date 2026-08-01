@@ -3808,5 +3808,9 @@ export function legacyCalculateCharacterTotals(
     // parity diff, which reads the dashboard totals.
     powerProjection: new Map(),
     engineStateJson: null,
+    // The quarantined legacy calculator has no what-if layer: it is an ORACLE, graded against
+    // the engine over builds with nothing simulated (PROD7). An entry here would be a second
+    // implementation of the injection, which is exactly what the quarantine exists to prevent.
+    whatIfMoved: {},
   };
 }

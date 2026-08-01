@@ -30,18 +30,21 @@ import {
   buildFormModes,
   getEnduranceParams,
   getBuildGlobalRecharge,
+  chainWhatIfRows,
   sequenceToIds,
   idsToSequence,
 } from '@/utils/calculations/attack-chain-powers';
+import { whatIfControls } from './whatIfControls';
 import { modeLabel } from '@/utils/mode-suppression';
 import type { AttackChain } from '@/types';
+import { getArchetype } from '@/data';
 import {
   replayChain,
   computeChain,
   effectiveRecharge,
+  type RechargeBounds,
   powerMetricValue,
   chainDotTickProbability,
-  MIN_RECHARGE_DENOM,
   type ChainPower,
   type PowerMetric,
 } from '@/utils/calculations/attack-chain';
@@ -60,8 +63,11 @@ const MAX_PX = 80;
 // What-if global-recharge slider. Spans a heavy stacked enemy −recharge debuff
 // (Heat Loss alone ≈ −300%) through the +400% recharge-strength buff cap. 0 = the
 // build exactly as slotted. Values are % points added to the build's global
-// recharge; the per-power −75% net floor (MIN_RECHARGE_DENOM in attack-chain.ts)
+// recharge; the per-power ClampStrength bounds (RechargeBounds in attack-chain.ts)
 // keeps every result honest no matter how deep the debuff is dialled.
+/** The one chain-moving stat with a dedicated control of its own (the labelled track below), so
+ *  the compact row list skips it rather than offering the same layer entry twice. */
+const RECHARGE_STAT = 'recharge';
 const WHATIF_RECH_MIN = -300;
 const WHATIF_RECH_MAX = 400;
 const WHATIF_RECH_STEP = 5;
@@ -179,6 +185,14 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
   // means this modal hits the same memo cache as the rest of the app.
   const calc = useCharacterCalculation();
 
+  // The archetype's binary-sourced stats — the ClampStrength bounds the chain divides by, the
+  // endurance pool it drains, and every ceiling the what-if sliders below reach to. Read once:
+  // nothing in this modal may invent one of these numbers (CAPS-1).
+  const archetypeStats = useMemo(
+    () => (build.archetype?.id ? getArchetype(build.archetype.id)?.stats ?? null : null),
+    [build.archetype?.id],
+  );
+
   const { powers, endParams, buildGlobalRech, permanentToHit } = useMemo(() => {
     const hasHide = build.secondary.powers.some((p) => p.internalName === 'Hide');
     const mechCtx = {
@@ -198,15 +212,23 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
         atInherentState: { dominationActive },
         formMode,
       }),
-      endParams: getEnduranceParams(calc.globalBonuses),
+      endParams: getEnduranceParams(calc.globalBonuses, archetypeStats, build.level),
       buildGlobalRech: getBuildGlobalRecharge(calc.globalBonuses),
       // Always-on ToHit (% points) — drives the fast-snipe rule in replayChain.
       permanentToHit: calc.globalBonuses.toHit,
     };
-  }, [build, calc, containmentActive, scourgeActive, criticalHitsActive, stalkerCritActive, sentinelCritActive, stalkerHidden, stalkerTeamSize, targetsHitValues, mechanicAdjusters, globalAdjusters, dominationActive, formMode]);
+  }, [build, calc, archetypeStats, containmentActive, scourgeActive, criticalHitsActive, stalkerCritActive, sentinelCritActive, stalkerHidden, stalkerTeamSize, targetsHitValues, mechanicAdjusters, globalAdjusters, dominationActive, formMode]);
 
   const [sequence, setSequence] = useState<number[]>([]);
-  const [extraRech, setExtraRech] = useState(0);
+  // The recharge what-if is ONE ENTRY in the shared team-buff layer, not a number this modal
+  // owns: `buildGlobalRech` already carries it (the engine injects the layer into the
+  // accumulators before projection, so `calc.globalBonuses.recharge` is already simulated).
+  // Keeping a second local copy here would double-count the same adjustment.
+  const whatIfBuffs = useUIStore((s) => s.whatIfBuffs);
+  const setWhatIfBuff = useUIStore((s) => s.setWhatIfBuff);
+  const openWhatIfBuffsModal = useUIStore((s) => s.openWhatIfBuffsModal);
+  const extraRech = whatIfBuffs.recharge ?? 0;
+  const setExtraRech = (v: number) => setWhatIfBuff('recharge', v);
   const [px, setPx] = useState(38);
 
   // Timeline reorder: dragging a bar moves that cast in the sequence. Bars are
@@ -242,10 +264,34 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
     window.addEventListener('pointerup', up);
   };
 
-  const globalRech = buildGlobalRech + extraRech;
+  const globalRech = buildGlobalRech;
+  // What the build reaches on its own, for the slider's zero-point readout.
+  const unsimulatedRech = buildGlobalRech - extraRech;
+
+  // The archetype's own ClampStrength bounds on the recharge divisor, read from the class
+  // binary rather than assumed. Without the CAP half the what-if slider could drive a chain
+  // past the +400% recharge cap the game enforces (WHAT-IF-BUFFS-PLAN WIF19); without the
+  // FLOOR half a deep debuff could take the divisor through zero. A build with no archetype
+  // yet has no bounds to read, and the modal cannot schedule without them.
+  const rechargeBounds = useMemo<RechargeBounds | null>(
+    () => (archetypeStats ? { floor: archetypeStats.rechargeFloor, cap: archetypeStats.rechargeCap } : null),
+    [archetypeStats],
+  );
+
+  // The OTHER team buffs a chain's numbers move with — damage, endurance discount, the
+  // endurance pool, recovery and always-on ToHit (recharge keeps its own richer control above).
+  // Which stats these are is measured, not chosen here: `attack-chain-sensitivity.test.ts`
+  // pushes every key the layer offers through this whole pipeline and holds
+  // `CHAIN_WHAT_IF_STATS` to exactly the set that moved a number.
+  const otherWhatIf = useMemo(() => {
+    const rows = chainWhatIfRows(calc.globalBonuses, archetypeStats, build.level, whatIfBuffs)
+      .filter((row) => row.stat !== RECHARGE_STAT);
+    const labels = new Map(whatIfControls(rows.map((row) => row.stat)).map((c) => [c.stat, c]));
+    return rows.map((row) => ({ ...row, control: labels.get(row.stat) }));
+  }, [calc.globalBonuses, archetypeStats, build.level, whatIfBuffs]);
 
   // How many distinct chain powers are pinned at the game's 4× recharge floor
-  // (net strength ≤ −75%, i.e. the divisor is already at MIN_RECHARGE_DENOM)
+  // (net strength at the archetype's own StrengthMin, i.e. the divisor is at the floor)
   // under the current what-if. Once a power is floored, more −recharge can't slow
   // it further — surfacing it keeps a correct cap from reading as a stuck slider
   // (the "why did it stop at −75%?" gotcha on a low-recharge build).
@@ -259,20 +305,28 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
       const p = powers[pi];
       if (!p || p.baseRecharge <= 0) continue;
       total += 1;
-      if (extraRech < 0 && 1 + p.rechargeEnh + globalRech / 100 <= MIN_RECHARGE_DENOM + 1e-9) {
+      if (extraRech < 0 && rechargeBounds != null
+          && 1 + p.rechargeEnh + globalRech / 100 <= rechargeBounds.floor + 1e-9) {
         floored += 1;
       }
     }
     return { total, floored, all: total > 0 && floored === total };
-  }, [sequence, powers, globalRech, extraRech]);
+  }, [sequence, powers, globalRech, extraRech, rechargeBounds]);
 
   // A power's ranking value under the chosen metric (closes over the live
   // global recharge so DPS tracks the what-if slider).
-  const metricVal = (p: ChainPower) => powerMetricValue(p, powerMetric, globalRech);
+  const metricVal = (p: ChainPower) =>
+    rechargeBounds ? powerMetricValue(p, powerMetric, globalRech, rechargeBounds) : 0;
 
   const activations = useMemo(
-    () => replayChain(powers, sequence, globalRech, { permanentToHit, forceFastSnipe: combatMode }),
-    [powers, sequence, globalRech, permanentToHit, combatMode],
+    () =>
+      rechargeBounds
+        ? replayChain(powers, sequence, globalRech, rechargeBounds, {
+            permanentToHit,
+            forceFastSnipe: combatMode,
+          })
+        : [],
+    [powers, sequence, globalRech, rechargeBounds, permanentToHit, combatMode],
   );
 
   // Snipe surfacing: if the chain holds a snipe (a power with a ToHit-gated fast
@@ -287,8 +341,11 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
   }, [powers]);
   const toHitMeetsThreshold = fastSnipe != null && permanentToHit >= fastSnipe.threshold;
   const result = useMemo(
-    () => computeChain(powers, activations, globalRech, endParams, powerMetric),
-    [powers, activations, globalRech, endParams, powerMetric],
+    () =>
+      rechargeBounds
+        ? computeChain(powers, activations, globalRech, rechargeBounds, endParams, powerMetric)
+        : null,
+    [powers, activations, globalRech, rechargeBounds, endParams, powerMetric],
   );
 
   // When the build's power set changes underneath us (power ids shift), re-map
@@ -435,22 +492,26 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
       .map((p, i) => ({ p, i }))
       .sort((a, b) => {
         if (rank(a.p) !== rank(b.p)) return rank(a.p) - rank(b.p);
-        return powerMetricValue(b.p, powerMetric, globalRech) - powerMetricValue(a.p, powerMetric, globalRech);
+        return metricVal(b.p) - metricVal(a.p);
       });
-  }, [powers, powerMetric, globalRech]);
+  }, [powers, powerMetric, globalRech, rechargeBounds]);
 
   const usedPis = useMemo(() => [...new Set(activations.map((a) => a.pi))], [activations]);
   // Metric-intensity reference over the WHOLE build (not just the chain) so a
   // power's color is stable and identical across the palette and timeline — the
   // visual link between the two areas.
   const maxMetric = useMemo(
-    () => Math.max(0, ...powers.map((p) => powerMetricValue(p, powerMetric, globalRech))),
-    [powers, powerMetric, globalRech],
+    () => Math.max(0, ...powers.map((p) => metricVal(p))),
+    [powers, powerMetric, globalRech, rechargeBounds],
   );
 
   const cycleSec = result?.cycleSec ?? 0;
   const maxCdEnd = activations.length
-    ? Math.max(...activations.map((a) => a.start + effectiveRecharge(powers[a.pi], globalRech)))
+    ? Math.max(
+        ...activations.map(
+          (a) => a.start + (rechargeBounds ? effectiveRecharge(powers[a.pi], globalRech, rechargeBounds) : 0),
+        ),
+      )
     : 0;
   const displaySec = Math.max(cycleSec, maxCdEnd);
   const displayW = displaySec * px;
@@ -458,10 +519,10 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
   // Instant endurance restored by click recovery powers (Dark Consumption etc.)
   // — a lump (refills on cast, not over time). Sum across the distinct recovery
   // powers in the chain, capped at the bar.
-  const instantRestore = Math.min(
-    endParams.maxEnd,
-    usedPis.reduce((s, pi) => s + (powers[pi].endGain ?? 0), 0),
-  );
+  // Without an archetype there is no bar to cap the lump against, so it stays uncapped rather
+  // than being clamped to an invented one — the same reason `endParams` is nullable.
+  const clickRestore = usedPis.reduce((s, pi) => s + (powers[pi].endGain ?? 0), 0);
+  const instantRestore = endParams ? Math.min(endParams.maxEnd, clickRestore) : clickRestore;
   // Continuous net shown as "Net end" = Recovery − Spend, so the three /s stats
   // reconcile. Click recovery is a lump (instantRestore) and feeds Sustain
   // instead — folding its averaged rate into Net end here would make the visible
@@ -675,7 +736,7 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
                 +/- Recharge Simulation
               </span>
               <span className="text-[11px] text-gray-600">
-                Build <span className="text-emerald-400 font-medium">+{fmt(buildGlobalRech, 0)}%</span>
+                Build <span className="text-emerald-400 font-medium">+{fmt(unsimulatedRech, 0)}%</span>
               </span>
             </div>
             <div className="flex items-center gap-2">
@@ -684,11 +745,11 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
                   <span className="text-gray-500">No adjustment</span>
                 ) : extraRech > 0 ? (
                   <span className="text-emerald-400">
-                    +{fmt(extraRech, 0)}% → <span className="font-medium">+{fmt(globalRech, 0)}%</span> global
+                    +{fmt(extraRech, 0)}% simulated → <span className="font-medium">+{fmt(globalRech, 0)}%</span> global
                   </span>
                 ) : (
                   <span className="text-amber-400">
-                    −{fmt(-extraRech, 0)}% debuff → <span className="font-medium">{globalRech >= 0 ? '+' : ''}{fmt(globalRech, 0)}%</span> global
+                    −{fmt(-extraRech, 0)}% simulated debuff → <span className="font-medium">{globalRech >= 0 ? '+' : ''}{fmt(globalRech, 0)}%</span> global
                   </span>
                 )}
               </span>
@@ -701,6 +762,13 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
                   Reset
                 </button>
               )}
+              <button
+                onClick={openWhatIfBuffsModal}
+                className="h-5 px-1.5 rounded border border-gray-700 text-gray-400 text-[10px] hover:border-gray-500"
+                title="Every other stat a teammate can buff — the same layer this slider writes to"
+              >
+                All team buffs…
+              </button>
             </div>
           </div>
 
@@ -775,6 +843,60 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
                 : `You’re at your −recharge floor on ${rechargeFloor.floored} of ${rechargeFloor.total} chain powers. They are capped at 4× base recharge and won’t slow further; the rest still have recharge headroom before they cap.`}
             </div>
           )}
+
+          {/* The rest of the chain-moving team buffs. Each slider spans the archetype's OWN
+              exported ceiling for that stat, mirrored to the debuff side — the game caps the
+              buff half, and a hand-set range would be a guess about a number the export owns. */}
+          <div className="mt-3 border-t border-gray-800 pt-2 space-y-1">
+            <div className="text-[10px] font-semibold uppercase tracking-wide text-gray-500">
+              Other team buffs this chain responds to
+            </div>
+            {otherWhatIf.map((row) => {
+              const simulated = whatIfBuffs[row.stat] ?? 0;
+              const label = row.control?.label ?? row.stat;
+              return (
+                <div key={row.stat} className="flex items-center gap-2 text-[11px]">
+                  <span className="w-28 shrink-0 truncate" style={{ color: row.control?.color }}>
+                    {label}
+                  </span>
+                  <span className="w-20 shrink-0 text-right tabular-nums text-gray-600">
+                    Build {fmt(row.fromBuild, 0)}
+                  </span>
+                  {row.ceiling === null ? (
+                    <span className="flex-1 text-[10px] text-amber-400/80">
+                      no exported ceiling for this archetype — value only
+                    </span>
+                  ) : (
+                    <input
+                      type="range"
+                      min={-row.ceiling}
+                      max={row.ceiling}
+                      step={5}
+                      value={simulated}
+                      onChange={(e) => setWhatIfBuff(row.stat, Number(e.target.value) || 0)}
+                      aria-label={`${label} team-buff simulation`}
+                      className="flex-1 h-4 cursor-pointer accent-purple-400"
+                    />
+                  )}
+                  <input
+                    type="number"
+                    step={5}
+                    value={simulated}
+                    onChange={(e) => setWhatIfBuff(row.stat, Number(e.target.value) || 0)}
+                    aria-label={`${label} team-buff simulation, exact value`}
+                    className="w-16 shrink-0 rounded border border-gray-700 bg-gray-900 px-1 py-0.5 text-right tabular-nums text-gray-200"
+                  />
+                  <span
+                    className={`w-24 shrink-0 text-right tabular-nums ${
+                      simulated === 0 ? 'text-gray-600' : simulated > 0 ? 'text-emerald-400' : 'text-amber-400'
+                    }`}
+                  >
+                    {simulated === 0 ? '—' : `→ ${fmt(row.current, 0)}`}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
         </div>
 
         {/* Palette */}
@@ -921,7 +1043,7 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
                   const p = powers[pi];
                   const rel = maxMetric > 0 ? metricVal(p) / maxMetric : 0;
                   const mine = activations.filter((a) => a.pi === pi);
-                  const effRech = effectiveRecharge(p, globalRech);
+                  const effRech = rechargeBounds ? effectiveRecharge(p, globalRech, rechargeBounds) : 0;
                   const cdW = Math.max(0, effRech - p.cast) * px;
                   return (
                     <div key={pi} style={{ display: 'flex', alignItems: 'center', height: LANE_H, marginBottom: 3 }}>

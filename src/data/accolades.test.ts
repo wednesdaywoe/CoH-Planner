@@ -54,6 +54,7 @@ const CTX: AdapterCalcContext = {
   mechanicAdjusters: {},
   dominationActive: false,
   stalkerHidden: false,
+  whatIfBuffs: {},
 };
 
 /** The stats an accolade can move, keyed the way `Accolade.bonuses` names them. */

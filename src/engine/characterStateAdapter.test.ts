@@ -21,6 +21,7 @@ function defaultCtx(overrides: Partial<AdapterCalcContext> = {}): AdapterCalcCon
     mechanicAdjusters: {},
     dominationActive: false,
     stalkerHidden: false,
+    whatIfBuffs: {},
     ...overrides,
   };
 }

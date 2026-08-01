@@ -104,6 +104,32 @@ function load_dataset(bytes) {
     return DatasetHandle.__wrap(ret[0]);
 }
 exports.load_dataset = load_dataset;
+
+/**
+ * The stat names a what-if TEAM-BUFF entry may use, as a JSON array of strings.
+ *
+ * Dataset-independent, so it hangs off the module rather than a [`DatasetHandle`]: the
+ * vocabulary is a property of the ACCUMULATOR (which fields it routes and which of those
+ * are accumulations rather than baselines), not of any fork's data.
+ *
+ * Exported so the beta's what-if modal derives its controls from the same answer the
+ * engine's own injection uses. A hand-kept list on the JS side would be a second stat
+ * vocabulary free to drift — the exact shape PROD6A killed.
+ * @returns {string}
+ */
+function what_if_vocabulary() {
+    let deferred1_0;
+    let deferred1_1;
+    try {
+        const ret = wasm.what_if_vocabulary();
+        deferred1_0 = ret[0];
+        deferred1_1 = ret[1];
+        return getStringFromWasm0(ret[0], ret[1]);
+    } finally {
+        wasm.__wbindgen_free(deferred1_0, deferred1_1, 1);
+    }
+}
+exports.what_if_vocabulary = what_if_vocabulary;
 function __wbg_get_imports() {
     const import0 = {
         __proto__: null,

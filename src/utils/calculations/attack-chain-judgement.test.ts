@@ -1,9 +1,14 @@
 import { describe, it, expect, beforeAll } from 'vitest';
 import { loadDataset } from '@/data/dataset';
 import { buildChainPowers } from './attack-chain-powers';
-import { effectiveRecharge } from './attack-chain';
+import { effectiveRecharge, type RechargeBounds } from './attack-chain';
 import { createEmptyBuild } from '@/types/build';
 import type { SelectedIncarnatePower } from '@/types/incarnate';
+
+/** Every player class of every dataset authors these ClampStrength bounds
+ *  (`rechargeFloor` / `rechargeCap` in archetype-stats.generated.ts): the −75%
+ *  debuff floor and the +400% recharge cap. */
+const BOUNDS: RechargeBounds = { floor: 0.25, cap: 5 };
 
 /**
  * The Attack Chain Builder never queried `build.incarnates`, so a slotted
@@ -66,8 +71,8 @@ describe('Attack Chain Builder — Judgement', () => {
     const build = scrapperBuild(judgementSlot('cryonic_core_judgement'));
     const powers = buildChainPowers(build, globalBonuses, mechCtx);
     const j = powers.find((p) => p.id === 'judgement:cryonic_core_judgement')!;
-    expect(effectiveRecharge(j, 0)).toBe(90);
-    expect(effectiveRecharge(j, 400)).toBe(90); // a what-if +400% global recharge does nothing
-    expect(effectiveRecharge(j, -300)).toBe(90); // nor a -300% debuff
+    expect(effectiveRecharge(j, 0, BOUNDS)).toBe(90);
+    expect(effectiveRecharge(j, 400, BOUNDS)).toBe(90); // a what-if +400% global recharge does nothing
+    expect(effectiveRecharge(j, -300, BOUNDS)).toBe(90); // nor a -300% debuff
   });
 });

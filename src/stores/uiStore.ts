@@ -238,6 +238,9 @@ interface UIState {
   /** Attack Chain Builder modal open state */
   attackChainModalOpen: boolean;
 
+  /** What-if team-buffs modal open state */
+  whatIfBuffsModalOpen: boolean;
+
   /** Persisted: ids of feature announcements the user has permanently dismissed
    *  ("don't show again"). Keyed by Announcement.id — see data/core/announcements. */
   dismissedAnnouncements: string[];
@@ -334,6 +337,17 @@ interface UIState {
 
   /** Stalker Hidden state - whether attacking from Hide */
   stalkerHidden: boolean;
+
+  /** The what-if TEAM-BUFF layer: how much of each stat to pretend a teammate is handing the
+   *  build, keyed by the `GlobalBonuses` field name the buff lands in (`damage`, `toHit`,
+   *  `recharge`, …). The engine injects it into the accumulators before projection, so the
+   *  archetype ceilings bind against it and every surface agrees.
+   *
+   *  Session-scoped on purpose: deliberately absent from `partialize`, for the same reason
+   *  exemplar mode is. A simulated +damage surviving a reload would silently present a
+   *  team-buffed number as the build's own, and the whole risk of this feature is exactly
+   *  that confusion. */
+  whatIfBuffs: Record<string, number>;
 
   /** Stalker team size for Assassination bonus (0 = solo, 1-7 = teammates) */
   stalkerTeamSize: number;
@@ -485,6 +499,8 @@ interface UIActions {
   openEnhancementToolsModal: () => void;
   closeEnhancementToolsModal: () => void;
   openAttackChainModal: () => void;
+  openWhatIfBuffsModal: () => void;
+  closeWhatIfBuffsModal: () => void;
   closeAttackChainModal: () => void;
   dismissAnnouncement: (id: string) => void;
   setChainPowerMetric: (metric: PowerMetric) => void;
@@ -662,6 +678,12 @@ interface UIActions {
   // Stalker Hidden State (Stalker inherent)
   toggleStalkerHidden: () => void;
   setStalkerHidden: (hidden: boolean) => void;
+
+  /** Set one what-if entry. A magnitude of 0 REMOVES it, so "is anything simulated?" stays a
+   *  plain key count rather than a scan for non-zero values. */
+  setWhatIfBuff: (stat: string, magnitude: number) => void;
+  /** Drop the whole what-if layer. */
+  clearWhatIfBuffs: () => void;
 
   // Stalker Team Size (Stalker inherent) - slider 0-7
   setStalkerTeamSize: (size: number) => void;
@@ -907,6 +929,7 @@ export const useUIStore = create<UIStore>()(
       procSettingsModalOpen: false,
       enhancementToolsModalOpen: false,
       attackChainModalOpen: false,
+      whatIfBuffsModalOpen: false,
       dismissedAnnouncements: [],
       chainPowerMetric: 'damage' as PowerMetric,
       chainShowEffectWindows: true,
@@ -935,6 +958,7 @@ export const useUIStore = create<UIStore>()(
       vigilanceTeamSize: 0, // Default to solo (0 teammates) for max damage bonus
       criticalHitsActive: false, // Default to OFF (like Scourge)
       stalkerHidden: false, // Default to not hidden (showing out-of-hide damage)
+      whatIfBuffs: {}, // Nothing simulated until the user asks for it
       stalkerTeamSize: 0, // Default to solo (0 teammates)
       stalkerCritActive: false, // Default to OFF (like Critical Hits)
       containmentActive: false, // Default to OFF (like Critical Hits)
@@ -1125,6 +1149,12 @@ export const useUIStore = create<UIStore>()(
 
       openAttackChainModal: () =>
         set({ attackChainModalOpen: true }),
+
+      openWhatIfBuffsModal: () =>
+        set({ whatIfBuffsModalOpen: true }),
+
+      closeWhatIfBuffsModal: () =>
+        set({ whatIfBuffsModalOpen: false }),
 
       closeAttackChainModal: () =>
         set({ attackChainModalOpen: false }),
@@ -1651,6 +1681,17 @@ export const useUIStore = create<UIStore>()(
       setStalkerHidden: (hidden) =>
         set({ stalkerHidden: hidden }),
 
+      // What-if team buffs
+      setWhatIfBuff: (stat, magnitude) =>
+        set((state) => {
+          const next = { ...state.whatIfBuffs };
+          if (magnitude === 0) delete next[stat];
+          else next[stat] = magnitude;
+          return { whatIfBuffs: next };
+        }),
+
+      clearWhatIfBuffs: () => set({ whatIfBuffs: {} }),
+
       // Stalker Team Size
       setStalkerTeamSize: (size) =>
         set({ stalkerTeamSize: Math.max(0, Math.min(7, size)) }),
@@ -1852,6 +1893,8 @@ export const useUIStore = create<UIStore>()(
           targetsHitValues: {},
           mechanicAdjusters: {},
           globalAdjusters: {},
+          // A new build must never open already simulating (WHAT-IF-BUFFS-PLAN WIF15).
+          whatIfBuffs: {},
           incarnateActive: createDefaultIncarnateActiveState(),
           incarnateLevelShiftActive: true,
           destinyTime: 0,

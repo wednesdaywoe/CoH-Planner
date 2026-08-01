@@ -14,7 +14,7 @@
  * `engine.node.ts` is the same API over the wasm-node target — what vitest runs against.
  */
 
-import __wbg_init, { load_dataset, type DatasetHandle } from './wasm/coh_wasm';
+import __wbg_init, { load_dataset, what_if_vocabulary, type DatasetHandle } from './wasm/coh_wasm';
 import wasmUrl from './wasm/coh_wasm_bg.wasm?url';
 import { ENGINE_BUNDLE_VERSIONS } from './bundleVersions.generated';
 
@@ -67,6 +67,20 @@ export async function loadDataset(server: ServerId): Promise<void> {
   } finally {
     inflight.delete(server);
   }
+}
+
+/**
+ * The stat names a what-if TEAM-BUFF entry may use — the engine's own answer, so the modal's
+ * controls and the injection that consumes them cannot name different things.
+ *
+ * Dataset-independent (it is a property of the accumulator, not of any fork's data), but it
+ * still needs the wasm module INITIALIZED, so it returns an empty list before the first
+ * `loadDataset` resolves rather than throwing. A modal opened that early renders no controls,
+ * which is honest: the engine cannot yet accept one.
+ */
+export function whatIfVocabulary(): string[] {
+  if (handles.size === 0) return [];
+  return JSON.parse(what_if_vocabulary()) as string[];
 }
 
 /** True once `server`'s handle is loaded and `recalcJson` will return engine output. */

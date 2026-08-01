@@ -196,6 +196,39 @@ _MOVEMENT_ATTRIBS = {
     "jump_height": "JumpHeight",
 }
 
+# The attributes whose ceiling is a plain AttribMaxTable row over an AttribBase
+# scalar, keyed by the export prefix each pair is written under
+# (`<prefix>_base` / `<prefix>_cap`). Both halves are needed: the ceiling is an
+# ABSOLUTE attribute value, and the per-archetype percentage a planner shows is
+# only recoverable against that class's own base (Arachnos classes author a
+# higher regeneration base under the same 5.0 ceiling than every other class).
+# Addressed by attribute name for the same reason as `_CLAMPED_STRENGTHS`.
+# DATA-GAP-REGISTER CAPS-1.
+_CEILED_ATTRIBS = {
+    "to_hit": "ToHit",
+    "regeneration": "Regeneration",
+    "recovery": "Recovery",
+}
+
+# The per-type defense slots, in CharacterAttributes order. Every non-empty row
+# carries the same curve as every other on the same class (measured over all 45
+# player archetypes of the three datasets), so the export writes ONE defense
+# ceiling — but [`_defense_cap`] proves that agreement per record rather than
+# reading one row and assuming. `Base_Defense` (the aggregate `fDefense` slot)
+# is deliberately out: Homecoming authors it as all zeros where both forks carry
+# the same curve as the typed rows, so including it would read as a zero ceiling
+# on one dataset.
+_DEFENSE_ATTRIBS = ["Ranged", "Melee", "Area", "Smashing", "Lethal", "Fire",
+                    "Cold", "Energy", "Negative_Energy", "Psionic", "Toxic"]
+
+# The attributes whose BASE is itself a per-level AttribMaxTable row, with the
+# ceiling one table further out in AttribMaxMaxTable — HitPoints' shape, the one
+# `ClampMax` bounds rather than `ClampCur`. Keyed by the export name the base is
+# written under; the ceiling goes to `<name>_cap`. HitPoints keeps its own index
+# constant above because that index is what the table order is anchored by;
+# Endurance is addressed by attribute name like everything else here.
+_MAX_STYLE_ATTRIBS = {"max_endurance": "Endurance"}
+
 
 def _attrib_struct_index(flavor: str, attrib: str) -> int:
     """`attrib`'s index in the CharacterAttributes STRUCT order, per dataset —
@@ -264,10 +297,75 @@ def _movement_scales(name, attrib_base, attrib_max, movement_struct_indices):
     return out_base, out_cap
 
 
+def _ceiling_row(name, table, attrib, table_index):
+    """One attribute's per-level row out of a CharacterAttributesTable.
+
+    For `_CEILED_ATTRIBS` the caller passes AttribMaxTable — the ceiling
+    `ClampCur` bounds `attrCur` against, the same table [`_movement_scales`]
+    reads its axis ceilings from. AttribMaxMaxTable is deliberately NOT read for
+    those: it bounds `attrMax`, which is what a Max-aspect mod raises, and the
+    export models that the way movement already does — carry the AttribMaxTable
+    row and let the calc add whatever the build's own powers raised it by.
+    (Measured 2026-08-01: the two tables are identical row-for-row on all 45
+    player archetypes for every attribute in `_CEILED_ATTRIBS` and
+    `_DEFENSE_ATTRIBS`, so nothing raises those ceilings today — but the shape
+    does not depend on that staying true.) For `_MAX_STYLE_ATTRIBS` both tables
+    are read, because there the two genuinely differ.
+    """
+    if len(table[0]) <= table_index:
+        raise ValueError(f"{name}: {attrib} sits past the end of the attrib "
+                         f"table — layout drift")
+    row = table[0][table_index]
+    if len(row) < _PLAYER_LEVELS:
+        raise ValueError(f"{name}: {attrib} ceiling row has {len(row)} levels, "
+                         f"expected at least {_PLAYER_LEVELS} — table drift")
+    return row[:_PLAYER_LEVELS]
+
+
+def _defense_cap(name, attrib_max, defense_struct_indices) -> list[float] | None:
+    """The per-level defense ceiling — one curve, proven against every typed
+    defense row the dataset authors.
+
+    The game clamps defense (`CLAMP_CUR(fDefenseType[0..19])`), just at a value
+    three to five times the purple-patch softcap, which is a threshold rather
+    than a clamp and stays exposed separately. So this ceiling never contradicts
+    the softcap; it sits far above it.
+
+    Returns None when the dataset authors no populated typed-defense row at all,
+    and raises when two populated rows disagree — that disagreement would mean
+    defense has become a per-type ceiling and one number can no longer carry it.
+    An EMPTY row is not a disagreement: both forks stop authoring at Psionic and
+    leave Toxic empty where Homecoming authors all eleven.
+    """
+    agreed, agreed_by = None, None
+    for attrib, struct_index in defense_struct_indices.items():
+        table_index = _table_index(struct_index)
+        if len(attrib_max[0]) <= table_index:
+            continue
+        row = attrib_max[0][table_index]
+        if len(row) < _PLAYER_LEVELS:
+            continue
+        row = row[:_PLAYER_LEVELS]
+        if agreed is None:
+            agreed, agreed_by = row, attrib
+        elif row != agreed:
+            raise ValueError(
+                f"{name}: defense ceiling row {attrib} disagrees with "
+                f"{agreed_by} — defense is now a per-type ceiling and the "
+                f"export must carry one row per type")
+    return agreed
+
+
 def _extract_attribs(name, attrib_base, attrib_max, attrib_max_max,
                      strength_max, resistance_max, strength_min,
-                     clamp_struct_indices, movement_struct_indices) -> dict:
+                     struct_indices) -> dict:
     """The planner's attrib values, addressed structurally.
+
+    `struct_indices` bundles the per-dataset CharacterAttributes STRUCT indices
+    of every attribute addressed by NAME here, grouped by the table that names
+    them: `clamped`, `movement`, `ceiled`, `max_style`, `defense`. They are
+    resolved by the caller through [`_attrib_struct_index`], which raises on a
+    rename, so this function stays free of dataset knowledge.
 
     hit_points / hp_cap: the HitPoints per-level rows of AttribMaxTable /
     AttribMaxMaxTable. NB hp_cap must come from the HitPoints row, not the
@@ -283,6 +381,13 @@ def _extract_attribs(name, attrib_base, attrib_max, attrib_max_max,
     StrengthMaxTable[level] — table order, see [`_table_index`]).
     movement_base / movement_cap for each of `_MOVEMENT_ATTRIBS`: the travel
     scales and their per-level ceilings (see [`_movement_scales`]).
+    <prefix>_base / <prefix>_cap for each of `_CEILED_ATTRIBS`: the AttribBase
+    scalar and the per-level AttribMaxTable ceiling `ClampCur` bounds it against
+    (see [`_ceiling_row`]). DATA-GAP-REGISTER CAPS-1.
+    <name> / <name>_cap for each of `_MAX_STYLE_ATTRIBS`: HitPoints' shape —
+    the AttribMaxTable row and the AttribMaxMaxTable ceiling over it.
+    defense_cap: the per-level defense ceiling, one curve proven against every
+    typed defense row the dataset authors (see [`_defense_cap`]).
 
     recharge: 0.25 / 5.0 on every player class of all three datasets — the −75%
     recharge-debuff floor and the +400% recharge cap.
@@ -316,7 +421,7 @@ def _extract_attribs(name, attrib_base, attrib_max, attrib_max_max,
         dmg = strength_max[0][_IDX_TABLE_DAMAGE]
         if len(dmg) >= _PLAYER_LEVELS:
             out["damage_cap"] = dmg[_PLAYER_LEVELS - 1]
-    for aspect, struct_index in clamp_struct_indices.items():
+    for aspect, struct_index in struct_indices["clamped"].items():
         if strength_min and len(strength_min[0]) > struct_index:
             out[f"{aspect}_floor"] = strength_min[0][struct_index]
         table_index = _table_index(struct_index)
@@ -326,9 +431,27 @@ def _extract_attribs(name, attrib_base, attrib_max, attrib_max_max,
                 out[f"{aspect}_cap"] = row[_PLAYER_LEVELS - 1]
     if attrib_base and attrib_max:
         base, cap = _movement_scales(name, attrib_base, attrib_max,
-                                     movement_struct_indices)
+                                     struct_indices["movement"])
         out["movement_base"] = base
         out["movement_cap"] = cap
+    for prefix, struct_index in struct_indices["ceiled"].items():
+        if attrib_base and len(attrib_base[0]) > struct_index:
+            out[f"{prefix}_base"] = attrib_base[0][struct_index]
+        if attrib_max:
+            out[f"{prefix}_cap"] = _ceiling_row(name, attrib_max, prefix,
+                                                _table_index(struct_index))
+    for export_name, struct_index in struct_indices["max_style"].items():
+        table_index = _table_index(struct_index)
+        if attrib_max:
+            out[export_name] = _ceiling_row(name, attrib_max, export_name,
+                                            table_index)
+        if attrib_max_max:
+            out[f"{export_name}_cap"] = _ceiling_row(name, attrib_max_max,
+                                                     export_name, table_index)
+    if attrib_max:
+        defense_cap = _defense_cap(name, attrib_max, struct_indices["defense"])
+        if defense_cap is not None:
+            out["defense_cap"] = defense_cap
     return out
 
 
@@ -388,13 +511,22 @@ def _read_class_record(r, flavor: str) -> ClassRecord:
     resistance_max = _read_attrib_table_array(r)
 
     rec["named_tables"] = _read_named_tables(r)
+    struct_indices = {
+        "clamped": {aspect: _attrib_struct_index(flavor, attrib)
+                    for aspect, attrib in _CLAMPED_STRENGTHS.items()},
+        "movement": {axis: _attrib_struct_index(flavor, attrib)
+                     for axis, attrib in _MOVEMENT_ATTRIBS.items()},
+        "ceiled": {prefix: _attrib_struct_index(flavor, attrib)
+                   for prefix, attrib in _CEILED_ATTRIBS.items()},
+        "max_style": {export_name: _attrib_struct_index(flavor, attrib)
+                      for export_name, attrib in _MAX_STYLE_ATTRIBS.items()},
+        "defense": {attrib: _attrib_struct_index(flavor, attrib)
+                    for attrib in _DEFENSE_ATTRIBS},
+    }
     rec["attribs"] = _extract_attribs(rec["name"], attrib_base, attrib_max,
                                       attrib_max_max, strength_max,
                                       resistance_max, strength_min,
-                                      {aspect: _attrib_struct_index(flavor, attrib)
-                                       for aspect, attrib in _CLAMPED_STRENGTHS.items()},
-                                      {axis: _attrib_struct_index(flavor, attrib)
-                                       for axis, attrib in _MOVEMENT_ATTRIBS.items()})
+                                      struct_indices)
 
     rec["connect_hp_and_status"] = bool(r.read_u4())
     if flavor == "hc":

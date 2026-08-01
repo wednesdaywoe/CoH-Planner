@@ -118,6 +118,10 @@ export interface CharacterStateCombatContext {
   global_conditionals: Record<string, boolean>;
   per_power_conditionals: Record<string, boolean>;
   active_modes: string[];
+  /** The what-if TEAM-BUFF layer, keyed by the `GlobalBonuses` field each entry lands in. The
+   *  engine injects it into the accumulators before projection — the one live input here that
+   *  moves the totals rather than choosing which power a surface describes. */
+  what_if_buffs: Record<string, number>;
 }
 
 export interface CharacterState {
@@ -169,6 +173,13 @@ export interface AdapterCalcContext {
   /** Header alpha-strike toggle. Combined with the build's Hide power into the engine's
    *  `hidden`, which gates the mid-combat cast. */
   stalkerHidden: boolean;
+  /** The what-if TEAM-BUFF layer: how much of each stat to pretend a teammate is handing the
+   *  build, keyed by the `GlobalBonuses` field name the buff lands in (`damage`, `toHit`,
+   *  `recharge`, …). A live preview input like `destinyTime`, never persisted with the build —
+   *  a shared build carrying a hidden +damage would read as the build's own number. The engine
+   *  injects it into the accumulators before projection, so every archetype ceiling binds
+   *  against it and the fast-snipe ToHit threshold sees it. */
+  whatIfBuffs: Record<string, number>;
 }
 
 const INCARNATE_SLOTS = ['alpha', 'judgement', 'interface', 'destiny', 'lore', 'hybrid', 'genesis'] as const;
@@ -411,6 +422,10 @@ export function toCharacterState(build: Build, ctx: AdapterCalcContext): Charact
       // record into the projection, and the TOTALS pass reads the same states through the
       // powers' own `setsModes` gates, so no total moves (PROD6C-3l).
       active_modes: build.activeModes ?? [],
+      // The what-if team-buff layer. Passed as a live input like `destiny_time`: the engine
+      // strips it at its own persistence boundary, so nothing here can leak it into a saved
+      // or shared build.
+      what_if_buffs: ctx.whatIfBuffs,
     },
   };
 }

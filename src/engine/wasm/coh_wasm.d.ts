@@ -31,6 +31,19 @@ export class DatasetHandle {
  */
 export function load_dataset(bytes: Uint8Array): DatasetHandle;
 
+/**
+ * The stat names a what-if TEAM-BUFF entry may use, as a JSON array of strings.
+ *
+ * Dataset-independent, so it hangs off the module rather than a [`DatasetHandle`]: the
+ * vocabulary is a property of the ACCUMULATOR (which fields it routes and which of those
+ * are accumulations rather than baselines), not of any fork's data.
+ *
+ * Exported so the beta's what-if modal derives its controls from the same answer the
+ * engine's own injection uses. A hand-kept list on the JS side would be a second stat
+ * vocabulary free to drift — the exact shape PROD6A killed.
+ */
+export function what_if_vocabulary(): string;
+
 export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
 
 export interface InitOutput {
@@ -39,6 +52,7 @@ export interface InitOutput {
     readonly datasethandle_project_power: (a: number, b: number, c: number, d: number, e: number, f: number, g: number, h: number) => [number, number, number, number];
     readonly datasethandle_recalculate: (a: number, b: number, c: number) => [number, number, number, number];
     readonly load_dataset: (a: number, b: number) => [number, number, number];
+    readonly what_if_vocabulary: () => [number, number];
     readonly __wbindgen_externrefs: WebAssembly.Table;
     readonly __wbindgen_malloc: (a: number, b: number) => number;
     readonly __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
