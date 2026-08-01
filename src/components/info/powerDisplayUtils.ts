@@ -249,7 +249,14 @@ const GLOBAL_BONUS_ASPECT_MAP: [string, keyof CharacterGlobalBonuses][] = [
   ['recharge', 'recharge'],
   ['endurance', 'endurance'],
   ['range', 'range'],
-  ['tohit', 'toHit'],
+  // NB `tohit` is deliberately absent. `globalBonuses.toHit` is the character's
+  // ToHit TOTAL — the sum of every +ToHit buff running, Rage's own included — and
+  // the only row that reads the `tohit` aspect is `tohitBuff`. Feeding the total in
+  // as a strength multiplier made a ToHit buff enhance itself: two stacks of Rage
+  // (+40% ToHit) displayed its own +ToHit row at 40 × 1.40. What actually scales a
+  // ToHit buff is ToHit enhancement plus ToHit STRENGTH (Power Boost), which is the
+  // `1 + enhBonuses.tohit + strengthBuffs.toHit` the dashboard totals use — so the
+  // strength half arrives through `withStrengthBonuses` below instead.
   ['heal', 'healOther'],
   // Offensive mez/control duration → power effect keys (terror → 'fear').
   // Produces e.g. result['immobilize'] = immobilizeDuration / 100, which the
@@ -298,9 +305,13 @@ const STRENGTH_MEZ_ASPECTS = ['immobilize', 'hold', 'stun', 'sleep', 'confuse', 
  * +Heal set bonus already there. Absorb is keyed apart from heal because the server reads
  * Strength at the mod's own attrib offset, and every +Heal set bonus targets `Heal_Dmg`
  * alone — the absorb rows reach `absorb` through the registry's `strengthAspect`.
- * ToHit and damage are deliberately left out — the dashboard totals
- * have already folded ToHit strength into the field those rows read, and the family grants
- * no damage strength, so either would double-count. The fields are stored as FRACTIONS by
+ * Damage is deliberately left out: the family grants no damage strength, so folding it
+ * would double-count against the +Damage global already in the map. ToHit used to be
+ * left out too, on the reading that the dashboard totals "have already folded ToHit
+ * strength into the field those rows read" — but that field is `toHit`, the character's
+ * ToHit TOTAL, not a strength, and using a total as a multiplier is what made a +ToHit
+ * buff scale by its own output. The map no longer carries `tohit`; the strength half
+ * belongs here with the rest. The fields are stored as FRACTIONS by
  * `calculateCharacterTotals` (`collectStrengthBuffs`), so they add without the /100.
  *
  * The engine owns this rule (`granted.rs` `STRENGTH_ASPECTS`); this is its beta twin, kept
@@ -317,6 +328,7 @@ export function withStrengthBonuses(
   add('defense', globalBonuses.strengthDefense);
   add('heal', globalBonuses.strengthHeal);
   add('absorb', globalBonuses.strengthAbsorb);
+  add('tohit', globalBonuses.strengthToHit);
   for (const aspect of STRENGTH_MEZ_ASPECTS) add(aspect, globalBonuses.strengthMez);
   return out;
 }

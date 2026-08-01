@@ -17,7 +17,7 @@ import { computeSetTracking } from '@/utils/calculations/set-tracking';
 import { projectionKey } from '@/engine/engineTotalsMap';
 import { getBaselineHealth } from '@/utils/calculations/stats';
 import { useGlobalBonuses, useCharacterCalculation, useHypotheticalCalculation, convertToLegacyStats } from '@/hooks';
-import { convertGlobalBonusesToAspects, findSelectedPowerInBuild } from '@/components/info/powerDisplayUtils';
+import { convertGlobalBonusesToAspects, withStrengthBonuses, findSelectedPowerInBuild } from '@/components/info/powerDisplayUtils';
 import { buildDisplayEffects } from '@/components/info/buildDisplayEffects';
 import { STAT_DEFINITIONS } from '@/data/stat-definitions';
 import type { StatValue } from '@/data/stat-definitions';
@@ -182,9 +182,12 @@ export function CompareSlottingModal() {
     );
   }, [copies, commitCopies]);
 
-  // Computed values shared across copies
+  // Computed values shared across copies. Strength folded in for the same reason
+  // the InfoPanel and the picker tooltip do it — the +Strength self-buffs are part
+  // of the Final column, and a comparison that omitted them would rank slottings
+  // against different numbers than the panel the user opened it from.
   const globalBonusesForCalc = useMemo(
-    () => convertGlobalBonusesToAspects(globalBonuses),
+    () => withStrengthBonuses(convertGlobalBonusesToAspects(globalBonuses), globalBonuses),
     [globalBonuses]
   );
 
