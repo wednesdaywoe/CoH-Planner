@@ -25,8 +25,6 @@ export {
   HYDRA_ENHANCEMENTS,
   DSYNC_ENHANCEMENTS,
   PRESTIGE_ENHANCEMENTS,
-  calculateCommonIOValue,
-  getCommonIOValueAtLevel,
   COMMON_IO_TYPES,
   ORIGIN_TIERS,
   getOriginTier,

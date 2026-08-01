@@ -11,14 +11,14 @@ import { useState, useMemo, useEffect, useRef } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
 import {
   getIOSetsForPower, getIOSet, lookupPower,
-  getCommonIOValueAtLevel, ORIGIN_TIERS,
+  ORIGIN_TIERS,
   sortCategoriesByPriority,
   createIOSetEnhancement, createGenericIOEnhancement, createSpecialEnhancement, createOriginEnhancement, isInherentlyAttuned,
   getAvailableGenericIOs, getAvailableHamidons, getAvailableTitans, getAvailableHydras, getAvailableDSyncs, getAvailablePrestige,
   getRarityColor, getTierTextColor, getTierBorderColor,
   findProcData, resolveProcPieceName, procEffectSummary, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, interpolateProcDamage,
 } from '@/data';
-import { normalizeAspectName, readAspectDisplayValue, getEffectiveAspectCount, calculateSingleEnhancementValues, enhancementLevelAxis, enhancementLevelRange } from '@/utils/calculations';
+import { normalizeAspectName, readAspectDisplayValue, getEffectiveAspectCount, calculateSingleEnhancementValues, enhancementLevelAxis, enhancementLevelRange, genericIOValueAtLevel } from '@/utils/calculations';
 import { Modal, ModalBody } from '@/components/modals';
 import { Tooltip, Toggle, LevelSpinner } from '@/components/ui';
 import { IOSetIcon, GenericIOIcon, OriginEnhancementIcon, SpecialEnhancementIcon } from './EnhancementIcon';
@@ -719,8 +719,6 @@ export function EnhancementPicker() {
   const availableDSyncs = useMemo(() => getAvailableDSyncs(currentPower ?? null), [currentPower]);
   const availablePrestige = useMemo(() => getAvailablePrestige(currentPower ?? null), [currentPower]);
 
-  const ioValue = getCommonIOValueAtLevel(globalIOLevel);
-
   return (
     <Modal
       isOpen={picker.isOpen}
@@ -1057,7 +1055,6 @@ export function EnhancementPicker() {
             {typeFilter === 'generic' && (
               <GenericIOContent
                 availableIOs={availableGenericIOs}
-                ioValue={ioValue}
                 globalIOLevel={globalIOLevel}
                 onSelect={handleSelectGenericIO}
                 stackedCountFor={(stat) => stackedCountFor(`generic:${stat}`)}
@@ -1765,14 +1762,13 @@ function StackedCountBadge({ count, onDecrement }: { count: number; onDecrement:
 
 interface GenericIOContentProps {
   availableIOs: EnhancementStatType[];
-  ioValue: number;
   globalIOLevel: number;
   onSelect: (stat: EnhancementStatType, e?: React.MouseEvent) => void;
   stackedCountFor: (stat: EnhancementStatType) => number;
   onDecrement: (stat: EnhancementStatType) => void;
 }
 
-function GenericIOContent({ availableIOs, ioValue, globalIOLevel, onSelect, stackedCountFor, onDecrement }: GenericIOContentProps) {
+function GenericIOContent({ availableIOs, globalIOLevel, onSelect, stackedCountFor, onDecrement }: GenericIOContentProps) {
   if (availableIOs.length === 0) {
     return <div className="text-center text-gray-500 py-8">No generic IOs available for this power</div>;
   }
@@ -1781,15 +1777,18 @@ function GenericIOContent({ availableIOs, ioValue, globalIOLevel, onSelect, stac
     <div className="bg-gray-800/40 rounded-lg p-2">
       <div className="flex items-center gap-2 mb-2">
         <span className="text-sm font-medium text-gray-300">Generic IOs</span>
-        <span className="text-xs text-gray-500">
-          Lv {globalIOLevel} • +{ioValue.toFixed(1)}%
-        </span>
+        {/* The value is per-stat, not per-level: these stats span all four ED
+            schedules, so one number here would be right for the Schedule A ones
+            and wrong for ToHit / Defense / Resistance / Range / Interrupt /
+            Knockback. It lives on each chip's tooltip instead. */}
+        <span className="text-xs text-gray-500">Lv {globalIOLevel}</span>
       </div>
       <div className="flex flex-wrap gap-1">
         {availableIOs.map((stat) => {
           const count = stackedCountFor(stat);
+          const value = genericIOValueAtLevel(stat, globalIOLevel);
           return (
-            <Tooltip key={stat} content={`${stat} IO (+${ioValue.toFixed(1)}%)`}>
+            <Tooltip key={stat} content={value === null ? `${stat} IO` : `${stat} IO (+${value.toFixed(1)}%)`}>
               <div className="relative">
                 <button
                   onClick={(e) => onSelect(stat, e)}

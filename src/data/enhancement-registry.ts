@@ -22,7 +22,8 @@ import type {
   OriginEnhancement,
   SpecialEnhancementDef,
 } from '@/types';
-import { HAMIDON_ENHANCEMENTS, TITAN_ENHANCEMENTS, HYDRA_ENHANCEMENTS, DSYNC_ENHANCEMENTS, PRESTIGE_ENHANCEMENTS, COMMON_IO_TYPES, ORIGIN_TIERS, getCommonIOValueAtLevel } from './enhancements';
+import { HAMIDON_ENHANCEMENTS, TITAN_ENHANCEMENTS, HYDRA_ENHANCEMENTS, DSYNC_ENHANCEMENTS, PRESTIGE_ENHANCEMENTS, COMMON_IO_TYPES, ORIGIN_TIERS } from './enhancements';
+import { genericIOValueAtLevel } from '@/utils/calculations/enhancement-values';
 import { resolvePath } from '@/utils/paths';
 
 // ============================================
@@ -394,7 +395,14 @@ export function createIOSetEnhancement(
   };
 }
 
-/** Create a Generic IO Enhancement object */
+/** Create a Generic IO Enhancement object.
+ *
+ * `value` is a DERIVED display cache — it is not serialized (build-serialization
+ * stores only `stat` + `level` and re-runs this factory on load), and the calc
+ * never reads it: `accumulateRawSlotBonuses` re-derives from `stat` + `level`.
+ * It carried the Schedule A value for every stat until 2026-07-31, so a ToHit IO
+ * read +42.4% in the picker and the info panel while contributing the correct
+ * 25.5%. Both now go through the one schedule-aware helper. */
 export function createGenericIOEnhancement(
   stat: EnhancementStatType,
   level: number,
@@ -408,7 +416,10 @@ export function createGenericIOEnhancement(
     level,
     boost: (boost && boost > 0) ? boost : undefined,
     stat,
-    value: getCommonIOValueAtLevel(level),
+    // Null = the stat has no normalized aspect, which is the one case the calc
+    // also contributes nothing for. 0 keeps the two agreeing and reads as visibly
+    // broken rather than plausibly wrong; `genericIOVocabulary` reds first.
+    value: genericIOValueAtLevel(stat, level) ?? 0,
   };
 }
 

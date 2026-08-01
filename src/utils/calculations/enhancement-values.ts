@@ -345,6 +345,16 @@ const ASPECT_NAME_MAP: Record<string, string> = {
   KB: 'knockback',
   Slow: 'slow',
 
+  // `boosts_allowed` / IO-set-piece vocabulary that has no other spelling here.
+  // Each was absent, and an absent name is not an inert one: every caller
+  // (`parseAspectsToBonuses`, `accumulateRawSlotBonuses`) SKIPS the aspect, so an
+  // Immobilize IO contributed nothing at all while its tooltip read +42.4%.
+  // 109 HC powers allow `Immobilize`, and 51 set pieces carry one of these four.
+  Immobilize: 'immobilize',
+  Terrorize: 'fear',
+  Threat: 'taunt',
+  InterruptTime: 'interrupt',
+
   // EnhancementStatType values (used by generic IOs, origin enhancements, and specials)
   EnduranceReduction: 'endurance',
   EnduranceModification: 'enduranceMod',
@@ -427,6 +437,29 @@ export function readAspectDisplayValue(
   if (normalized) return values[normalized] ?? null;
   const fanned = FANNED_ASPECT_DISPLAY_KEY[aspect.trim()];
   return fanned ? values[fanned] ?? null : null;
+}
+
+/**
+ * The enhancement a Generic (Common) IO of `stat` gives at `level`, as a PERCENT.
+ *
+ * A generic IO is single-aspect, so its value is that aspect's own schedule curve —
+ * only the Schedule A stats reach the 42.4% that every generic IO used to be built
+ * and labelled with. ToHit, ToHit Debuff, Defense, Resistance and Range sit on B
+ * (25.5%), Interrupt on C (50.9%), Knockback on D (76.4%).
+ *
+ * Shared by the picker, the info panel and the slotting factory so the value a
+ * player is shown is the one `accumulateRawSlotBonuses` actually applies — those
+ * two read the same schedule off the same aspect name, and had no way to agree
+ * while the display side went through a separate Schedule-A-only table.
+ *
+ * Null when the stat has no normalized aspect, which is a vocabulary gap rather
+ * than a value of zero — `genericIOVocabulary` in enhancement-values.test.ts is
+ * the guard that reds when a dataset introduces one.
+ */
+export function genericIOValueAtLevel(stat: string, level: number): number | null {
+  const normalized = normalizeAspectName(stat);
+  if (!normalized) return null;
+  return getIOValueAtLevel(level, getAspectSchedule(normalized)) * 100;
 }
 
 // ============================================

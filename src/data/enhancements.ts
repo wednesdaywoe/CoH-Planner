@@ -596,66 +596,6 @@ export const PRESTIGE_ENHANCEMENTS: SpecialEnhancementRegistry = {
 };
 
 // ============================================
-// COMMON IO CALCULATION
-// ============================================
-
-/**
- * Common IO enhancement values by level (Schedule A)
- * Based on Homecoming "Level-Based IO Effectiveness" table
- * These are the actual game values for single-aspect IOs
- */
-const COMMON_IO_VALUES: Record<number, number> = {
-  10: 11.7,
-  15: 19.2,
-  20: 25.6,
-  25: 32.0,
-  30: 34.8,
-  35: 36.7,
-  40: 38.6,
-  45: 40.5,
-  50: 42.4,
-  53: 43.5,
-};
-
-/**
- * Calculate Common IO enhancement value based on level
- * @param level - IO level (10-53)
- * @returns Enhancement value as percentage
- */
-export function calculateCommonIOValue(level: number): number {
-  const clampedLevel = Math.max(10, Math.min(53, level));
-
-  // If exact level exists, return it
-  if (COMMON_IO_VALUES[clampedLevel]) {
-    return COMMON_IO_VALUES[clampedLevel];
-  }
-
-  // Otherwise interpolate between levels
-  const levels = [10, 15, 20, 25, 30, 35, 40, 45, 50, 53];
-  let lowerLevel = levels[0];
-  let upperLevel = levels[1];
-
-  for (let i = 0; i < levels.length - 1; i++) {
-    if (levels[i] <= clampedLevel && levels[i + 1] > clampedLevel) {
-      lowerLevel = levels[i];
-      upperLevel = levels[i + 1];
-      break;
-    }
-  }
-
-  const ratio = (clampedLevel - lowerLevel) / (upperLevel - lowerLevel);
-  return COMMON_IO_VALUES[lowerLevel] + (COMMON_IO_VALUES[upperLevel] - COMMON_IO_VALUES[lowerLevel]) * ratio;
-}
-
-/**
- * Get common IO value at a specific level
- * Common IOs range from level 10-50 (or 53 with boosters)
- */
-export function getCommonIOValueAtLevel(level: number): number {
-  return calculateCommonIOValue(level);
-}
-
-// ============================================
 // COMMON IO TYPES
 // ============================================
 
