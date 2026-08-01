@@ -37,6 +37,11 @@ HC-only `exported_powers/salvage.json`, stamped alongside as
 `salvage_export_manifest.json`) is HC-only: Rebirth/Thunderspy piggs carry no
 `salvage.bin`, so those exports early-return and no manifest is written.
 
+The manifest carries a second, independent record alongside these fingerprints:
+`source`, the assets tree the bytes were read from (`BinResolver.provenance()`,
+guarded by `src/data/export-provenance.test.ts`). A fingerprint says which
+exporter ran; it cannot say what it was pointed at — DATA-GAP-REGISTER PROV-1.
+
 The JS side (`export-staleness.test.ts`) MUST replicate this algorithm byte for
 byte: sorted (posix-relpath-from-bin_crawler, file-bytes) folded into sha256 as
 `relpath\0content\0` per file. Keep the two in lockstep — a divergence surfaces

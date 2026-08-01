@@ -1,0 +1,59 @@
+{
+  "schema": "bin-crawler-assets-sources/1",
+  "note": [
+    "The canonical game-install tree for every dataset and ring. DATA-GAP-REGISTER PROV-1/PROV-2.",
+    "Exports read the LIVE game installs directly. The repo keeps no .pigg snapshots: a snapshot",
+    "goes stale in place, shares its shard basename with the tree it was copied from, and so",
+    "cannot be told apart by name — which is how a month-old Thunderspy corpus nearly shipped.",
+    "Only 'exportable_ring' may produce a committed export; the other rings exist to be READ when",
+    "checking what a patch is about to do, never to be exported into the tree users get.",
+    "Paths are this workstation's installs — if an install moves, fix it here and nowhere else."
+  ],
+  "datasets": {
+    "homecoming": {
+      "exportable_ring": "live",
+      "rings": {
+        "live": {
+          "path": "/home/jiiwii/.wine/drive_c/Games/Homecoming/assets/live",
+          "note": "The only Homecoming data users may ever see."
+        },
+        "open_beta": {
+          "path": "/home/jiiwii/.wine/drive_c/Games/Homecoming/assets/beta",
+          "note": "Open beta. Checked once a patch moves from closed to open beta."
+        },
+        "closed_beta": {
+          "path": "/home/jiiwii/.wine/drive_c/Games/Homecoming/assets/experimental",
+          "note": "Closed beta, despite the folder being named 'experimental'. Checked once a patch moves from development to closed beta."
+        }
+      },
+      "rejected_paths": {
+        "/home/jiiwii/.wine/drive_c/Games/Homecoming/assets/closedbeta": "NOT the closed beta despite the name — the closed beta is the 'experimental' folder. Never export from here."
+      }
+    },
+    "rebirth": {
+      "exportable_ring": "live",
+      "rings": {
+        "live": {
+          "path": "/home/jiiwii/Games/coh-sweettea/drive_c/users/jiiwii/AppData/Local/Thunderspy Gaming/Sweet Tea/rebirth",
+          "note": "Rebirth ships from the Sweet Tea install, alongside Thunderspy."
+        }
+      },
+      "rejected_paths": {
+        "/home/jiiwii/Games/coh-sweettea/drive_c/users/jiiwii/AppData/Local/Thunderspy Gaming/Sweet Tea/rebirth_test": "Rebirth's test ring. Not tracked — Rebirth's major updates are infrequent and its user base small, so only live is followed (dev, 2026-08-01).",
+        "/home/jiiwii/Games/coh-sweettea/drive_c/users/jiiwii/AppData/Local/Thunderspy Gaming/Sweet Tea/piggs": "A decoy: it resolves powers.bin but yields an unrelated corpus (12,169 files differ from live)."
+      }
+    },
+    "thunderspy": {
+      "exportable_ring": "live",
+      "rings": {
+        "live": {
+          "path": "/home/jiiwii/Games/coh-sweettea/drive_c/users/jiiwii/AppData/Local/Thunderspy Gaming/Sweet Tea/tspy",
+          "note": "Thunderspy ships from the Sweet Tea install, alongside Rebirth."
+        }
+      },
+      "rejected_paths": {
+        "/home/jiiwii/Games/coh-sweettea/drive_c/users/jiiwii/AppData/Local/Thunderspy Gaming/Sweet Tea/piggs": "A decoy: it resolves powers.bin but yields an unrelated corpus."
+      }
+    }
+  }
+}

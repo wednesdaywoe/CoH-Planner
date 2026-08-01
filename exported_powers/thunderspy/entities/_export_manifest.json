@@ -1,6 +1,18 @@
 {
-  "schema": "bin-crawler-export-manifest/1",
-  "note": "entities_fingerprint is the sha256 of the entities exporter (bin_crawler/parser/**/*.py + export_entities.py) at export time. If it disagrees with the current committed exporter source, THIS entities/ tree is stale \u2014 re-run export_entities for this dataset and commit. Guarded by src/data/export-staleness.test.ts.",
-  "entities_fingerprint": "c973b898be66720e3b16e5378d79a57b60927b34cb667635c3ce3eab856e1a60",
+  "schema": "bin-crawler-export-manifest/2",
+  "note": "entities_fingerprint is the sha256 of the entities exporter (bin_crawler/parser/**/*.py + export_entities.py) at export time. If it disagrees with the current committed exporter source, THIS entities/ tree is stale \u2014 re-run export_entities for this dataset and commit. Guarded by src/data/export-staleness.test.ts. `source` names the assets shard the bytes were read from; guarded by src/data/export-provenance.test.ts.",
+  "entities_fingerprint": "50d729886e1eadb6b72bc86b067078879760fd7a0fa08e59e14605ead654ef8d",
+  "source": {
+    "assets_dir": "/home/jiiwii/Games/coh-sweettea/drive_c/users/jiiwii/AppData/Local/Thunderspy Gaming/Sweet Tea/tspy",
+    "shard": "tspy",
+    "sources": [
+      {
+        "name": "bin.pigg",
+        "bytes": 26384155,
+        "modified": "2026-07-31T01:36:05Z",
+        "sha256": "65b6b703fa3fdcd48ad64a4596588169c72502c0113425abd0fff9236b546628"
+      }
+    ]
+  },
   "entity_files": 619
 }

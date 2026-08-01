@@ -34,7 +34,7 @@ from bin_crawler.parser._schedules import parse_schedules, parse_exemplar_handic
 from bin_crawler.parser._messages import load_messages
 from bin_crawler.parser._attrib_names import parse_mode_table, parse_stack_key_table
 from bin_crawler.parser._pigg import BinResolver
-from bin_crawler.assets_dir import resolve_assets_dir
+from bin_crawler.assets_dir import add_source_arguments, resolve_export_source
 from bin_crawler._export_fingerprint import parser_fingerprint
 from bin_crawler.parser._enums import (
     POWER_TYPE, EFFECT_AREA, PVP_FLAG, CASTABLE_AFTER_DEATH,
@@ -724,18 +724,14 @@ def _write_power_tree(powers, ps_records, ps_available, msgs, set_cats_index,
 
 def main():
     ap = argparse.ArgumentParser(description='Export player power data as structured JSON')
-    ap.add_argument('--assets-dir', default=None,
-                    help='Path to assets directory (with .pigg files or bin/ subdir). '
-                         'Omit to use the remembered path or a folder picker.')
-    ap.add_argument('--pick', action='store_true',
-                    help='Open a folder picker to choose/change the assets directory')
+    add_source_arguments(ap)
     ap.add_argument('--output-dir', default=None,
                     help='Output directory for JSON files (default: ./exported_powers/<assets-dir-name>, e.g. ./exported_powers/live or ./exported_powers/experimental)')
     ap.add_argument('--categories', nargs='*',
                     help='Specific categories to export (default: all player categories)')
     args = ap.parse_args()
 
-    assets_dir = resolve_assets_dir(args.assets_dir, pick=args.pick)
+    assets_dir = resolve_export_source(args)
 
     if args.output_dir is None:
         source_name = Path(assets_dir).name or 'export'
@@ -938,14 +934,17 @@ def main():
     # categories would defeat the guard.
     if not args.categories:
         manifest = {
-            'schema': 'bin-crawler-export-manifest/1',
+            'schema': 'bin-crawler-export-manifest/2',
             'note': ('parser_fingerprint is the sha256 of the powers exporter '
                      '(bin_crawler/parser/**/*.py + export_powers.py) at export '
                      'time. If it disagrees with the current committed exporter '
                      'source, THIS tree is stale — re-run export_powers for this '
                      'dataset and commit. Guarded by '
-                     'src/data/export-staleness.test.ts.'),
+                     'src/data/export-staleness.test.ts. `source` names the '
+                     'assets shard the bytes were read from; guarded by '
+                     'src/data/export-provenance.test.ts.'),
             'parser_fingerprint': parser_fingerprint(),
+            'source': resolver.provenance(),
             'categories': len(grouped),
             'power_files': total_files,
         }

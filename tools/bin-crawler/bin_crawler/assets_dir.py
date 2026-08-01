@@ -26,6 +26,7 @@ import sys
 from pathlib import Path
 from typing import Callable
 
+from . import assets_sources
 from .parser._pigg import BinResolver
 
 _APP = "bin-crawler"
@@ -163,3 +164,57 @@ def resolve_assets_dir(cli_value: str | None, *, pick: bool = False) -> str:
         title="Select the game assets directory (the folder containing the .pigg files)",
         pick=pick,
     )
+
+
+def add_source_arguments(ap) -> None:
+    """The source-selection flags every exporter shares."""
+    ap.add_argument("--source", default=None, metavar="DATASET[:RING]",
+                    help="Canonical tree to read, e.g. 'homecoming' (its exportable "
+                         "ring) or 'homecoming:open_beta'. Preferred over --assets-dir: "
+                         "it names a tree instead of typing a path. See "
+                         "bin_crawler/assets_sources.json")
+    ap.add_argument("--assets-dir", default=None,
+                    help="Path to assets directory (with .pigg files or bin/ subdir). "
+                         "Must be a tree assets_sources.json names, unless "
+                         "--allow-unregistered-source is given.")
+    ap.add_argument("--pick", action="store_true",
+                    help="Open a folder picker to choose/change the assets directory")
+    ap.add_argument("--allow-unregistered-source", action="store_true",
+                    help="Permit reading a tree the registry does not name. For ad-hoc "
+                         "exploration into a scratch --output-dir; never for an export "
+                         "committed to exported_powers/.")
+
+
+def resolve_export_source(args) -> str:
+    """Resolve an exporter's assets directory, refusing trees the registry rejects.
+
+    A path typed at the command line is the one export input nothing downstream
+    can check — a wrong-tree export is internally self-consistent and passes
+    every gate that reads the export (DATA-GAP-REGISTER PROV-1/PROV-2). So an
+    unregistered tree stops the run rather than quietly becoming data. The traps
+    are close enough to the real thing to need naming: Homecoming's `closedbeta`
+    folder is not the closed beta, and Sweet Tea's `piggs` folder resolves
+    `powers.bin` while holding an unrelated corpus.
+    """
+    if args.source:
+        dataset, ring, path = assets_sources.resolve(args.source)
+        if not Path(path).is_dir():
+            sys.exit(f"{dataset}:{ring} is registered at {path}, which does not exist.")
+        return path
+
+    chosen = resolve_assets_dir(args.assets_dir, pick=args.pick)
+
+    if getattr(args, "allow_unregistered_source", False):
+        return chosen
+
+    rejected = assets_sources.rejection_reason(chosen)
+    if rejected:
+        sys.exit(f"Refusing to export from {chosen}:\n  {rejected}")
+    if assets_sources.dataset_for_path(chosen) is None:
+        sys.exit(
+            f"Refusing to export from {chosen}: assets_sources.json does not name it.\n"
+            f"  Use --source <dataset>[:<ring>] ({', '.join(assets_sources.datasets())}),\n"
+            f"  register the tree if it is a new install, or pass "
+            f"--allow-unregistered-source for a scratch export."
+        )
+    return chosen

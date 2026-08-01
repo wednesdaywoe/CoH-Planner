@@ -6,10 +6,10 @@
     "tools/bin-crawler",
     "exported_powers"
   ],
-  "synced_from_commit": "bddd7c3ef3d2fe030012771e7055bbbb88821896",
-  "synced_from_subject": "the homecoming export was read from the open-beta shard, so the planner shipped a divergent branch's data",
-  "synced_from_date": "2026-08-01T11:44:29-04:00",
-  "tree_fingerprint": "fb69d6f0207141f8e42fbf5dc210f91c7f527ceda9c807ca9cf46b10e8444e08",
-  "export_manifest_digest": "088e551ec42669873c96911c415a733d520152ace9127b70fce1395aa1bd9b0a",
+  "synced_from_commit": "5bf2fa78fc2a88d6777bc748b28d38079a1fc590",
+  "synced_from_subject": "What-if team-buff layer, and the archetype ceilings it was blocked on",
+  "synced_from_date": "2026-08-01T17:44:38-04:00",
+  "tree_fingerprint": "620f22eba1135d5d07c5acc7f42157c80885a07fabfb6e01f23ece935ee51613",
+  "export_manifest_digest": "fdcfbab1973a4e1be90f27347f9bbbb12fdf9e7a5bb718c7279d9911218e6233",
   "export_manifest_count": 10
 }
