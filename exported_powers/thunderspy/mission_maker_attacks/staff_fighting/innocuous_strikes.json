@@ -10,6 +10,7 @@
   "icon": "stafffighting_innocuousstrikes.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.05,
   "effect_area": "Cone",
   "max_targets_hit": 5,
@@ -88,6 +89,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} hits {PlayerDest} for {Damage} points of smashing damage and slows their movement speed.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of smashing damage and slows your movement speed!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -128,6 +135,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You attempt to immobilize {PlayerDest} with your {PowerName}.",
+            "display_victim_hit": "{PlayerSource} attempts to immobilizes you with their {PowerName}.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 2560
         }
       ]
@@ -168,6 +181,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "GENERICCONTINUING/DEBUFFSPEEDFEET.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags_raw": 1280
         }
       ]

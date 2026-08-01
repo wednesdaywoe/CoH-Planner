@@ -10,6 +10,7 @@
   "icon": "fireblast_fireball.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -84,10 +85,19 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "{PlayerSource} hits {PlayerDest} with their {PowerName} causing them to catch on fire inflicting {Damage} points of fire damage!",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} causing you to catch on fire inflicting {Damage} points of fire damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
     }
+  ],
+  "strengths_disallowed": [
+    "RechargeTime"
   ],
   "modes_disallowed": [
     "Disable_All"

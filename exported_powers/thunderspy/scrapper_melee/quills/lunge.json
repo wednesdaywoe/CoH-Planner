@@ -10,6 +10,7 @@
   "icon": "quills_lunge.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -89,6 +90,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} stabs {PlayerDest} for {Damage} points of lethal damage!",
+            "display_victim_hit": "{PlayerSource} stabs you with his {PowerName} for {Damage} points of lethal damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -257,6 +264,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Poison from your Spines deal {damage} points of Toxic damage to {PlayerDest}.",
+            "display_victim_hit": "You take {Damage} points of poison damage from {PlayerSource}'s Spines!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "CancelOnMiss"
           ],
@@ -386,6 +399,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} stabs {PlayerDest} for {Damage} points of lethal damage!",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -426,6 +445,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You land a critical hit with your {PowerName} for an extra {Damage} points of lethal damage!",
+            "display_victim_hit": "{PlayerSource} lands a critical hit with {PowerName} for an extra {Damage} points of lethal damage!",
+            "display_float": "CRITICAL",
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -466,6 +491,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You land a critical hit with your {PowerName} for an extra {Damage} points of lethal damage!",
+            "display_victim_hit": "{PlayerSource} lands a critical hit with {PowerName} for an extra {Damage} points of lethal damage!",
+            "display_float": "CRITICAL",
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -506,6 +537,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You land a critical hit with your {PowerName} for an extra {Damage} points of lethal damage!",
+            "display_victim_hit": "{PlayerSource} lands a critical hit with {PowerName} for an extra {Damage} points of lethal damage!",
+            "display_float": "CRITICAL",
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -546,10 +583,25 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You burn {PlayerDest} with your Fiery Embrace for {Damage} bonus points of fire damage!",
+            "display_victim_hit": "{PlayerSource} burns you for {Damage} points of bonus fire damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "POWERS/FIRECONTROL/CINDERSHIT.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags_raw": 1280
         }
       ]
     }
+  ],
+  "strengths_disallowed": [
+    "Range"
   ],
   "modes_disallowed": [
     "Disable_All"

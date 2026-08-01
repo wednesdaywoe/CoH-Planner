@@ -10,6 +10,7 @@
   "icon": "radiationpoisoning_enervatingfield.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.05,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -80,6 +81,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": "{PlayerSource} blasts you with a Sonic Rifle for {Damage} for points of energy damage and reduces your damage resistance!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -120,6 +127,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "GENERICCONTINUING/DAMAGERESISTANCE/DEBUFFDAMRESCONTINUING.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreStrength"
           ],

@@ -10,6 +10,7 @@
   "icon": "iceassault_iceswordcircle.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Sphere",
   "max_targets_hit": 10,
@@ -81,6 +82,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your mighty {PowerName} hacks {PlayerDest} for {Damage} points of lethal damage!",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of lethal damage and slows you!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -121,6 +128,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your mighty {PowerName} freezes {PlayerDest} for {Damage} points of cold damage and slows them!",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of cold damage and slows you!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -246,6 +259,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "POWERS/COLDCONTROL/COLDMISTCONTINUING.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreStrength"
           ],
@@ -253,6 +272,9 @@
         }
       ]
     }
+  ],
+  "strengths_disallowed": [
+    "Range"
   ],
   "modes_disallowed": [
     "Disable_All"

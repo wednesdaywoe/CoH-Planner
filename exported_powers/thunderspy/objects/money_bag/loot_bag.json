@@ -10,6 +10,7 @@
   "icon": "teleportation_teleport.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Sphere",
   "max_targets_hit": 16,
@@ -79,6 +80,13 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "power_names": [
+              "Objects.money_Bag_Auto.Loot_Bag"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"

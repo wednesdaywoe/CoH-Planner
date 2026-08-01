@@ -18,6 +18,9 @@ export const TelekineticBlow: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,
@@ -95,12 +98,12 @@ export const TelekineticBlow: Power = {
     {
       "kind": "grant",
       "chance": 0.23266667127609253,
-      "label": "state"
+      "label": "Insight"
     },
     {
       "kind": "grant",
       "chance": 0.46533334255218506,
-      "label": "state"
+      "label": "Insight"
     },
     {
       "kind": "effect-proc",
@@ -110,7 +113,7 @@ export const TelekineticBlow: Power = {
     {
       "kind": "grant",
       "chance": 0.949999988079071,
-      "label": "state"
+      "label": "Assassins Focus"
     }
   ],
   "damageTypes": [

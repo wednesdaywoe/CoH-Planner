@@ -116,6 +116,11 @@ class PowerRecord:
     num_allowed: int
     auto_issue: bool
     auto_issue_keeps_level: bool
+    # BasePower.bFree — "doesn't count towards the player's current count of
+    # powers" (powers.h:512). powers_load.c:950 forces AutoIssue ⟹ Free, so a
+    # granted power always costs zero picks, but Free also stands alone on
+    # records that are buyable-but-uncounted.
+    free: bool
     attack_types: list[int]
     requires: str
     activate_requires: str

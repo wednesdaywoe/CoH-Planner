@@ -10,6 +10,7 @@
   "icon": "darkmiasma_tarpatch.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Sphere",
   "max_targets_hit": 16,
@@ -85,6 +86,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": "You take {Damage} points of Lethal damage from a {PowerName}.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -125,6 +132,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": "You take {Damage} points of Fire damage from a {PowerName}.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -165,6 +178,27 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "vec_start": "Target",
+            "vec_end": "Target",
+            "priority": 1,
+            "vel": 1.0,
+            "vel_mag": 0.02500000037252903,
+            "height": 3.0,
+            "height_mag": 0.25,
+            "vec_adjust_pyr": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "type": "Knock"
+          },
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": "The {PlayerSource} knocks you from your feet!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -183,7 +217,7 @@
       "templates": [
         {
           "attribs": [
-            "Grant_Power"
+            "Drop_Toggles"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -205,6 +239,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} temporarily disables a power in use by {PlayerDest}.",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "CancelOnMiss",
             "IgnoreStrength",
@@ -228,7 +268,7 @@
       "templates": [
         {
           "attribs": [
-            "Grant_Power"
+            "Drop_Toggles"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -250,6 +290,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} temporarily disables a power in use by {PlayerDest}.",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "CancelOnMiss",
             "IgnoreStrength",
@@ -273,7 +319,7 @@
       "templates": [
         {
           "attribs": [
-            "Grant_Power"
+            "Drop_Toggles"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -295,6 +341,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} temporarily disables a power in use by {PlayerDest}.",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "CancelOnMiss",
             "IgnoreStrength",
@@ -318,7 +370,7 @@
       "templates": [
         {
           "attribs": [
-            "Grant_Power"
+            "Drop_Toggles"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -340,6 +392,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} temporarily disables a power in use by {PlayerDest}.",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "CancelOnMiss",
             "IgnoreStrength",
@@ -351,6 +409,9 @@
     }
   ],
   "castable_after_death": "DeadOnly",
+  "strengths_disallowed": [
+    "RechargeTime"
+  ],
   "available_level": 0,
   "powerset": "Pets.Bomb"
 }

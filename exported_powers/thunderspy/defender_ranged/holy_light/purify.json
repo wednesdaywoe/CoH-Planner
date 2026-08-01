@@ -10,6 +10,7 @@
   "icon": "luminousblast_protonscatter.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Cone",
   "max_targets_hit": 255,
@@ -89,6 +90,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You strike {PlayerDest} with your {PowerName} for {Damage} fire damage",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} fire damage",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -129,6 +136,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You strike {PlayerDest} with your {PowerName} for {Damage} fire damage",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} fire damage",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -169,6 +182,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "{PlayerDest} is healed for {Damage} points of damage and is protected from Sleep and Disorientation.",
+            "display_victim_hit": "{PlayerSource} heals you for {Damage} points of damage and protect you from Sleep and Disorientation.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -209,6 +228,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "{PlayerDest} takes an additional {Damage} damage from your {PowerName} due to their unholy nature",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]

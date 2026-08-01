@@ -10,6 +10,7 @@
   "icon": "temporary_terravoltaglow.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Map",
   "max_targets_hit": 999,
@@ -77,6 +78,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": "You are Alpha entangled. Avoid contact with Beta entangled allies!",
+            "display_float": "Alpha Entangled!",
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -122,6 +129,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.EntangledInteractA"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -166,6 +180,13 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.EntangledAuraA"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -210,6 +231,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": "You are Beta entangled. Avoid contact with Alpha entangled allies!",
+            "display_float": "Beta Entangled!",
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -255,6 +282,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.EntangledInteractB"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -299,6 +333,13 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.EntangledAuraB"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"

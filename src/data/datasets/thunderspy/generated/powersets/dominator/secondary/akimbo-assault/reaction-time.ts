@@ -29,6 +29,9 @@ export const Reactiontime: Power = {
     "sleep",
     "stun"
   ],
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 15,

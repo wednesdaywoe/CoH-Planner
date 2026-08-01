@@ -10,6 +10,7 @@
   "icon": "electricalbolt_lightningbolt.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.2,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -83,10 +84,19 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": "The Auto Turret rattles you for {Damage} points of lethal damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
     }
+  ],
+  "strengths_disallowed": [
+    "RechargeTime"
   ],
   "available_level": 0,
   "powerset": "Pets.Turret"

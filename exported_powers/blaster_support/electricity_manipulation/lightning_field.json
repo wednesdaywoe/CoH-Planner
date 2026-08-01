@@ -10,6 +10,7 @@
   "icon": "electricitymanipulation_lightningclap.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 0.8,
   "effect_area": "Sphere",
   "max_targets_hit": 10,

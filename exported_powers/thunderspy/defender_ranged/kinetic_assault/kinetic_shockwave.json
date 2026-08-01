@@ -10,6 +10,7 @@
   "icon": "kineticassault_kineticshockwave.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Sphere",
   "max_targets_hit": 10,
@@ -99,6 +100,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "GENERICCONTINUING/DEBUFFDAMAGECONTINUING.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreStrength"
           ],
@@ -142,6 +149,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You unleash a massive {PowerName}, dealing {Damage} points of smashing damage to {PlayerDest}.",
+            "display_victim_hit": "{PlayerSource} unleashes a massive {PowerName}, striking you for {Damage} points of smashing damage.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -182,6 +195,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "{PlayerDest} suffers an additional {Damage} points of energy damage from your {PowerName}.",
+            "display_victim_hit": "You suffer an additional {Damage} points of energy damage from {PlayerSource}'s {PowerName}.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -222,6 +241,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "{PlayerDest} suffers {Damage} points of bonus energy damage due to your Impulse.",
+            "display_victim_hit": "{PlayerSource} causes {Damage} points of bonus energy damage due to their built up Impulse.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -262,6 +287,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You unleash a massive {PowerName}, dealing {Damage} points of smashing damage to {PlayerDest}.",
+            "display_victim_hit": "{PlayerSource} unleashes a massive {PowerName}, striking you for {Damage} points of smashing damage.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -302,6 +333,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "{PlayerDest} suffers an additional {Damage} points of energy damage from your {PowerName}.",
+            "display_victim_hit": "You suffer an additional {Damage} points of energy damage from {PlayerSource}'s {PowerName}.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -342,6 +379,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "{PlayerDest} suffers {Damage} points of bonus energy damage due to your Impulse.",
+            "display_victim_hit": "{PlayerSource} causes {Damage} points of bonus energy damage due to their built up Impulse.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -382,6 +425,27 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "vec_start": "Target",
+            "vec_end": "Target",
+            "priority": 1,
+            "vel": 1.0,
+            "vel_mag": 0.02500000037252903,
+            "height": 3.0,
+            "height_mag": 0.25,
+            "vec_adjust_pyr": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "type": "Knock"
+          },
+          "messages": {
+            "display_attacker_hit": "You knock {PlayerDest} off their feet with your {PowerName}.",
+            "display_victim_hit": "You have been knocked off your feet by {PlayerSource}'s {PowerName}.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -422,13 +486,36 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "NoFloaters",
-            "CancelOnMiss",
-            "NearGround",
-            "IgnoreStrength"
+          "params": {
+            "vec_start": "Target",
+            "vec_end": "Target",
+            "priority": 1,
+            "vel": 1.0,
+            "vel_mag": 0.02500000037252903,
+            "height": 3.0,
+            "height_mag": 0.25,
+            "vec_adjust_pyr": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "type": "Knock"
+          },
+          "messages": {
+            "display_attacker_hit": "You knock {PlayerDest} off their feet with your {PowerName}.",
+            "display_victim_hit": "You have been knocked off your feet by {PlayerSource}'s {PowerName}.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "suppress_events": [
+            {
+              "event": "Knocked",
+              "event_id": 29,
+              "duration": 10.0,
+              "always": 0
+            }
           ],
-          "flags_raw": 29
+          "flags_raw": 1280
         }
       ]
     },
@@ -468,6 +555,20 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You disorient {PlayerDest} with your {PowerName}!",
+            "display_victim_hit": "{PlayerSource} disorients you with their {PowerName}!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              21
+            ],
+            "conditional_fx": "GENERICCONTINUING/STUNCONTINUING.FX"
+          },
           "flags_raw": 2560
         }
       ]
@@ -508,6 +609,20 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You disorient {PlayerDest} with your {PowerName}!",
+            "display_victim_hit": "{PlayerSource} disorients you with their {PowerName}!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              21
+            ],
+            "conditional_fx": "GENERICCONTINUING/STUNCONTINUING.FX"
+          },
           "flags_raw": 2560
         }
       ]
@@ -548,6 +663,19 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse"
+            ],
+            "count": 2,
+            "type": "Power"
+          },
+          "messages": {
+            "display_attacker_hit": "You build 1 Impulse!",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -592,11 +720,20 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance"
+            "IgnoreResistance",
+            "RevokeAll"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 1
         }
       ]
     },
@@ -636,6 +773,19 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "power_names": [
+              "Defender_Ranged.Kinetic_Assault.Coalescence"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} caused Coalescence to recharge!",
+            "display_victim_hit": null,
+            "display_float": "Coalescence Recharged!",
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -644,6 +794,9 @@
         }
       ]
     }
+  ],
+  "strengths_disallowed": [
+    "Range"
   ],
   "modes_disallowed": [
     "Disable_All"

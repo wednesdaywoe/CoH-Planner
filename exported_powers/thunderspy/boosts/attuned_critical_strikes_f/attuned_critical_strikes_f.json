@@ -10,6 +10,7 @@
   "icon": "e_icon_critical_strikes_ato.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -129,6 +130,19 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "power_names": [
+              "Set_Bonus.Set_Bonus.Critical_Strikes_Proc"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
+          "messages": {
+            "display_attacker_hit": "You gain a massive bonus to your critical hit chance!",
+            "display_victim_hit": null,
+            "display_float": "Critical Strikes!",
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "CancelOnMiss",
             "IgnoreStrength",

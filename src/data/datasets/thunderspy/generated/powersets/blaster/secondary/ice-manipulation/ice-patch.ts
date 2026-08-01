@@ -39,6 +39,7 @@ export const IcePatch: Power = {
       "damageBuff": 10.97
     },
     "summon": {
+      "copyBoosts": true,
       "duration": 30,
       "entity": "Pets_IcePatch",
       "isPseudoPet": false
@@ -50,7 +51,6 @@ export const IcePatch: Power = {
   },
   "atoms": [
     ["EntCreate",null,1,1,30,"Melee_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["EntCreate",null,1,1,30,"Melee_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["DamageBuff","Smashing",0.229,1,10.97,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Lethal",0.229,1,10.97,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Fire",0.229,1,10.97,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],

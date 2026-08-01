@@ -41,13 +41,13 @@ export const SpectralTerror: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
+      "copyBoosts": true,
       "duration": 45,
       "entity": "Pets_Terror",
       "isPseudoPet": false
     }
   },
   "atoms": [
-    ["EntCreate",null,-1,1,45,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["EntCreate",null,-1,1,45,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["EntCreate",null,-1,1,45,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true]
   ]
 };

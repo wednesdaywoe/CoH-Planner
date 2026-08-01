@@ -10,6 +10,7 @@
   "icon": "umbralaura_blackdwarfstrike.png",
   "auto_issue": true,
   "auto_issue_keeps_level": true,
+  "free": true,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -421,6 +422,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "GENERICCONTINUING/DEBUFFSPEEDALL.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreStrength"
           ],
@@ -566,7 +573,7 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
-      "eval_flags": 0,
+      "eval_flags": 2,
       "templates": [
         {
           "attribs": [

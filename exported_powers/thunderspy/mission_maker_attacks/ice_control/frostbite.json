@@ -10,6 +10,7 @@
   "icon": "iceformation_frostbite.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 0.9,
   "effect_area": "Sphere",
   "max_targets_hit": 16,
@@ -80,6 +81,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} freezes {PlayerDest} for {Damage} points of cold damage.",
+            "display_victim_hit": "{PlayerSource} freezes you with their {PowerName} for {Damage} points of cold damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -120,6 +127,18 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You Immobilized {PlayerDest} with your {PowerName}!",
+            "display_victim_hit": "{PlayerSource} immobilized you with their {PowerName}!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "POWERS/COLDCONTROL/DEEPFREEZE.FX"
+          },
           "flags_raw": 2560
         }
       ]
@@ -160,6 +179,18 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your Immobilization of {PlayerDest} with your {PowerName} was even more powerful!",
+            "display_victim_hit": "{PlayerSource} lands an extra strong immobilization on you with their {PowerName}!",
+            "display_float": "Overpower",
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "POWERS/COLDCONTROL/DEEPFREEZE.FX"
+          },
           "flags_raw": 2560
         }
       ]
@@ -201,6 +232,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "POWERS/COLDCONTROL/COLDMISTCONTINUING.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -368,6 +405,21 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "vec_start": "Target",
+            "vec_end": "Target",
+            "priority": 1,
+            "vel": 1.0,
+            "vel_mag": 0.02500000037252903,
+            "height": 3.0,
+            "height_mag": 0.25,
+            "vec_adjust_pyr": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "type": "Knock"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -412,6 +464,21 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "vec_start": "Target",
+            "vec_end": "Target",
+            "priority": 1,
+            "vel": 0.0,
+            "vel_mag": 0.0,
+            "height": 6.0,
+            "height_mag": 1.0,
+            "vec_adjust_pyr": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "type": "Knock"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -456,6 +523,21 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "vec_start": "Target",
+            "vec_end": "Target",
+            "priority": 1,
+            "vel": 1.0,
+            "vel_mag": 0.02500000037252903,
+            "height": 3.0,
+            "height_mag": 0.25,
+            "vec_adjust_pyr": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "type": "Knock"
+          },
           "flags": [
             "IgnoreResistance"
           ],
@@ -499,6 +581,21 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "vec_start": "Target",
+            "vec_end": "Target",
+            "priority": 1,
+            "vel": 0.0,
+            "vel_mag": 0.0,
+            "height": 6.0,
+            "height_mag": 1.0,
+            "vec_adjust_pyr": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "type": "Knock"
+          },
           "flags": [
             "IgnoreResistance"
           ],

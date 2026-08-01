@@ -134,7 +134,7 @@ export const Hypothermia: Power = {
     {
       "kind": "grant",
       "chance": 0.32465052604675293,
-      "label": "state"
+      "label": "Drowning"
     }
   ]
 };

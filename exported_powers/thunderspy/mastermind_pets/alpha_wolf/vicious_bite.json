@@ -10,6 +10,7 @@
   "icon": "beastmastery_petviciousbite.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -84,6 +85,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "{PlayerSource} shreds {PlayerDest} with their {PowerName} for {Damage} points of Lethal damage!",
+            "display_victim_hit": "{PlayerSource} shreds you with their {PowerName} for {Damage} points of Lethal damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -124,6 +131,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} causes {PlayerDest} to bleed for {Damage} points of lethal damage!",
+            "display_victim_hit": "You continue to bleed the {PowerName} for {Damage} points of lethal damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "CancelOnMiss"
           ],
@@ -167,6 +180,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "{PlayerSource} critically hits {PlayerDest} with their {PowerName} for {Damage} points of bonus Lethal damage!",
+            "display_victim_hit": "{PlayerSource} critically hits you with their {PowerName} for {Damage} points of bonus Lethal damage!",
+            "display_float": "CRITICAL",
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -214,6 +233,9 @@
         }
       ]
     }
+  ],
+  "strengths_disallowed": [
+    "Range"
   ],
   "modes_disallowed": [
     "Disable_All"

@@ -18,6 +18,9 @@ export const MassLevitate: Power = {
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 10,
@@ -87,12 +90,12 @@ export const MassLevitate: Power = {
     {
       "kind": "grant",
       "chance": 0.20000000298023224,
-      "label": "state"
+      "label": "Insight"
     },
     {
       "kind": "grant",
       "chance": 0.4000000059604645,
-      "label": "state"
+      "label": "Insight"
     },
     {
       "kind": "effect-proc",

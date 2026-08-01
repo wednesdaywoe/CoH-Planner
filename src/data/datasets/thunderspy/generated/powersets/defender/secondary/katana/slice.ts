@@ -18,6 +18,9 @@ export const Slice: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 7,
@@ -90,7 +93,7 @@ export const Slice: Power = {
     {
       "kind": "grant",
       "chance": 0.10000000149011612,
-      "label": "state"
+      "label": "BulletCut"
     }
   ],
   "damageTypes": [

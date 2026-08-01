@@ -18,6 +18,9 @@ export const PsiBlade: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,
@@ -96,17 +99,17 @@ export const PsiBlade: Power = {
     {
       "kind": "grant",
       "chance": 0.140666663646698,
-      "label": "state"
+      "label": "Insight"
     },
     {
       "kind": "grant",
       "chance": 0.281333327293396,
-      "label": "state"
+      "label": "Insight"
     },
     {
       "kind": "grant",
       "chance": 0.75,
-      "label": "state"
+      "label": "Assassins Focus"
     }
   ],
   "damageTypes": [

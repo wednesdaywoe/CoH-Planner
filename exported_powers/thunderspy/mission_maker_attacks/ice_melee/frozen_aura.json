@@ -10,6 +10,7 @@
   "icon": "icyonslaught_frozenaura.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Sphere",
   "max_targets_hit": 10,
@@ -80,6 +81,20 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} freezes {PlayerDest} in thin ice that will break if attacked!",
+            "display_victim_hit": "{PlayerSource} freezes you in thin ice with their {PowerName}! You cannot move or attack until someone strikes you to break it!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              379
+            ],
+            "conditional_fx": "POWERS/COLDCONTROL/FLASHFREEZECONTINUING.FX"
+          },
           "flags_raw": 2560
         }
       ]
@@ -120,10 +135,19 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} freezes {PlayerDest} for {Damage} points of cold damage and encases them in thin ice!",
+            "display_victim_hit": "{PlayerSource} freezes you with their {PowerName} for {Damage} points of cold damage and encases you in thin ice!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
     }
+  ],
+  "strengths_disallowed": [
+    "Range"
   ],
   "available_level": 37,
   "powerset": "Mission_Maker_Attacks.Ice_Melee"

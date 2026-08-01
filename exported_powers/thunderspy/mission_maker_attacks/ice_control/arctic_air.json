@@ -10,6 +10,7 @@
   "icon": "iceformation_articair.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Sphere",
   "max_targets_hit": 16,
@@ -77,6 +78,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "POWERS/COLDCONTROL/COLDMISTCONTINUING.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreStrength"
           ],
@@ -248,14 +255,18 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "NoFloaters",
-            "BoostIgnoreDiminishing",
-            "CancelOnMiss",
-            "NearGround",
-            "IgnoreStrength"
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 31,
+              "duration": 10.0,
+              "always": 1
+            }
           ],
-          "flags_raw": 31
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -295,10 +306,30 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "BoostIgnoreDiminishing"
+          "suppress_events": [
+            {
+              "event": "Attacked",
+              "event_id": 2,
+              "duration": 10.0,
+              "always": 1
+            },
+            {
+              "event": "HitByFoe",
+              "event_id": 13,
+              "duration": 10.0,
+              "always": 1
+            },
+            {
+              "event": "MissionObjectClick",
+              "event_id": 31,
+              "duration": 10.0,
+              "always": 1
+            }
           ],
-          "flags_raw": 2
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -338,6 +369,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You terrify {PlayerDest} as the foggy {PowerName} surrounds them!",
+            "display_victim_hit": "{PlayerSource} terrifies you as the foggy {PowerName} surrounds you!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 2560
         }
       ]
@@ -378,6 +415,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You confuse {PlayerDest} with the clouds from your {PowerName}!",
+            "display_victim_hit": "{PlayerSource} confuses you with the clouds from their {PowerName}!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 2560
         }
       ]

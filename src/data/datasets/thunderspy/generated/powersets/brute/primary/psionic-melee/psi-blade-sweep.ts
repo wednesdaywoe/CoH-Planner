@@ -18,6 +18,9 @@ export const PsiBladeSweep: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,
@@ -113,12 +116,12 @@ export const PsiBladeSweep: Power = {
     {
       "kind": "grant",
       "chance": 0.1904483437538147,
-      "label": "state"
+      "label": "Insight"
     },
     {
       "kind": "grant",
       "chance": 0.3808966875076294,
-      "label": "state"
+      "label": "Insight"
     },
     {
       "kind": "effect-proc",

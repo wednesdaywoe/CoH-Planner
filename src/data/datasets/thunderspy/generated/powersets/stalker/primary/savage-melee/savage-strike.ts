@@ -18,6 +18,9 @@ export const SavageStrike: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,
@@ -85,7 +88,7 @@ export const SavageStrike: Power = {
     {
       "kind": "grant",
       "chance": 0.625,
-      "label": "state"
+      "label": "Assassins Focus"
     }
   ],
   "damageTypes": [

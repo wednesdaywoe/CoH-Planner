@@ -83,8 +83,5 @@ export const PressOn: Power = {
     ["DamageBuff","Toxic",4.5,1,59,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
     ["DamageBuff","Psionic",4.5,1,59,"Ranged_Buff_Dmg","Str","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
     ["ToHit",null,2.5,1,59,"Ranged_Buff_ToHit","Cur","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
-  ],
-  "setsModes": [
-    "Peacebringer_Blaster_Mode"
   ]
 };

@@ -10,6 +10,7 @@
   "icon": "teleportation_teleport.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -77,6 +78,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "combat_phases": [],
+            "vision_phases": [
+              15
+            ],
+            "exclusive_vision_phase": -1,
+            "type": "Phase"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
@@ -122,6 +131,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "combat_phases": [
+              4
+            ],
+            "vision_phases": [],
+            "exclusive_vision_phase": -1,
+            "type": "Phase"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",

@@ -10,6 +10,7 @@
   "icon": "stafffighting_serpentsreach.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.05,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -90,6 +91,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You strike {PlayerDest} with your {PowerName} for {Damage} points of smashing damage.",
+            "display_victim_hit": "{PlayerSource} strikes you with their {PowerName} for {Damage} points of smashing damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -130,6 +137,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You strike {PlayerDest} with your {PowerName} for {Damage} points of smashing damage.",
+            "display_victim_hit": "{PlayerSource} strikes you with their {PowerName} for {Damage} points of smashing damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -170,6 +183,27 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "vec_start": "Target",
+            "vec_end": "Target",
+            "priority": 1,
+            "vel": 1.0,
+            "vel_mag": 0.02500000037252903,
+            "height": 3.0,
+            "height_mag": 0.25,
+            "vec_adjust_pyr": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "type": "Knock"
+          },
+          "messages": {
+            "display_attacker_hit": "You knocked {PlayerDest} from their feet!",
+            "display_victim_hit": "{PlayerSource} knocks you from your feet!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -210,6 +244,27 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "vec_start": "Target",
+            "vec_end": "Target",
+            "priority": 1,
+            "vel": 1.0,
+            "vel_mag": 0.02500000037252903,
+            "height": 3.0,
+            "height_mag": 0.25,
+            "vec_adjust_pyr": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "type": "Knock"
+          },
+          "messages": {
+            "display_attacker_hit": "You knocked {PlayerDest} from their feet!",
+            "display_victim_hit": "{PlayerSource} knocks you from your feet!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -250,6 +305,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You land a critical hit with your {PowerName} for an extra {Damage} points of Smashing damage!",
+            "display_victim_hit": "{PlayerSource} lands a critical hit with their {PowerName} for an extra {Damage} points of Smashing damage!",
+            "display_float": "CRITICAL",
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -290,6 +351,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You land a critical hit with your {PowerName} for an extra {Damage} points of Smashing damage!",
+            "display_victim_hit": "{PlayerSource} lands a critical hit with their {PowerName} for an extra {Damage} points of Smashing damage!",
+            "display_float": "CRITICAL",
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -330,6 +397,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You land a critical hit with your {PowerName} for an extra {Damage} points of Smashing damage!",
+            "display_victim_hit": "{PlayerSource} lands a critical hit with their {PowerName} for an extra {Damage} points of Smashing damage!",
+            "display_float": "CRITICAL",
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "HideZero"
           ],
@@ -373,6 +446,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You land a critical hit with your {PowerName} for an extra {Damage} points of Smashing damage!",
+            "display_victim_hit": "{PlayerSource} lands a critical hit with their {PowerName} for an extra {Damage} points of Smashing damage!",
+            "display_float": "CRITICAL",
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -413,6 +492,19 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_1"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
+          "messages": {
+            "display_attacker_hit": "You boost your Perfection of Body to level 1!",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -457,6 +549,19 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_2"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
+          "messages": {
+            "display_attacker_hit": "You boost your Perfection of Body to level 2!",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -501,6 +606,13 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_1"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -545,6 +657,19 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
+          "messages": {
+            "display_attacker_hit": "You boost your Perfection of Body to level 3!",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -589,6 +714,13 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_2"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -633,6 +765,19 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_1"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
+          "messages": {
+            "display_attacker_hit": "You boost your Perfection of Mind to level 1!",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -677,6 +822,19 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_2"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
+          "messages": {
+            "display_attacker_hit": "You boost your Perfection of Mind to level 2!",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -721,6 +879,13 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_1"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -765,6 +930,19 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_3"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
+          "messages": {
+            "display_attacker_hit": "You boost your Perfection of Mind to level 3!",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -809,6 +987,13 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_2"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -853,6 +1038,19 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_1"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
+          "messages": {
+            "display_attacker_hit": "You boost your Perfection of Soul to level 1!",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -897,6 +1095,19 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_2"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
+          "messages": {
+            "display_attacker_hit": "You boost your Perfection of Soul to level 2!",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -941,6 +1152,13 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_1"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -985,6 +1203,19 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_3"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
+          "messages": {
+            "display_attacker_hit": "You boost your Perfection of Soul to level 3!",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -1029,6 +1260,13 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_2"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -1073,6 +1311,19 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Assassins_Focus"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
+          "messages": {
+            "display_attacker_hit": "You gain 1 stack of Assassin's Focus!",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -1081,6 +1332,9 @@
         }
       ]
     }
+  ],
+  "strengths_disallowed": [
+    "Range"
   ],
   "modes_disallowed": [
     "Disable_All"

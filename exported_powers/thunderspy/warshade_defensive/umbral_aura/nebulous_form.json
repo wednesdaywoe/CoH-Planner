@@ -10,6 +10,7 @@
   "icon": "umbralaura_nebulousform.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -66,7 +67,7 @@
       "templates": [
         {
           "attribs": [
-            "Create_Entity"
+            "Translucency"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -88,12 +89,21 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "BoostIgnoreDiminishing",
-            "CancelOnMiss",
-            "IgnoreStrength"
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "PFX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
+          "cancel_events": [
+            "Held",
+            "Stunned",
+            "Sleep"
           ],
-          "flags_raw": 22
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -133,12 +143,23 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "BoostIgnoreDiminishing",
-            "CancelOnMiss",
-            "IgnoreStrength"
+          "cancel_events": [
+            "Held",
+            "Stunned",
+            "Sleep"
           ],
-          "flags_raw": 22
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 31,
+              "duration": 10.0,
+              "always": 1
+            }
+          ],
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -178,12 +199,35 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "BoostIgnoreDiminishing",
-            "CancelOnMiss",
-            "IgnoreStrength"
+          "cancel_events": [
+            "Held",
+            "Stunned",
+            "Sleep"
           ],
-          "flags_raw": 22
+          "suppress_events": [
+            {
+              "event": "Attacked",
+              "event_id": 2,
+              "duration": 10.0,
+              "always": 1
+            },
+            {
+              "event": "HitByFoe",
+              "event_id": 13,
+              "duration": 10.0,
+              "always": 1
+            },
+            {
+              "event": "MissionObjectClick",
+              "event_id": 31,
+              "duration": 10.0,
+              "always": 1
+            }
+          ],
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -223,12 +267,31 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "BoostIgnoreDiminishing",
-            "CancelOnMiss",
-            "IgnoreStrength"
+          "params": {
+            "combat_phases": [
+              3
+            ],
+            "vision_phases": [],
+            "exclusive_vision_phase": -1,
+            "type": "Phase"
+          },
+          "cancel_events": [
+            "Held",
+            "Stunned",
+            "Sleep"
           ],
-          "flags_raw": 22
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 31,
+              "duration": 10.0,
+              "always": 1
+            }
+          ],
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 2080
         }
       ]
     },
@@ -268,12 +331,31 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "BoostIgnoreDiminishing",
-            "CancelOnMiss",
-            "IgnoreStrength"
+          "params": {
+            "combat_phases": [
+              0
+            ],
+            "vision_phases": [],
+            "exclusive_vision_phase": -1,
+            "type": "Phase"
+          },
+          "cancel_events": [
+            "Held",
+            "Stunned",
+            "Sleep"
           ],
-          "flags_raw": 22
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 31,
+              "duration": 10.0,
+              "always": 1
+            }
+          ],
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 2080
         }
       ]
     },
@@ -313,12 +395,23 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "BoostIgnoreDiminishing",
-            "CancelOnMiss",
-            "IgnoreStrength"
+          "cancel_events": [
+            "Held",
+            "Stunned",
+            "Sleep"
           ],
-          "flags_raw": 22
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 31,
+              "duration": 10.0,
+              "always": 1
+            }
+          ],
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 2080
         }
       ]
     },
@@ -358,12 +451,24 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "BoostIgnoreDiminishing",
-            "CancelOnMiss",
-            "IgnoreStrength"
+          "cancel_events": [
+            "Held",
+            "Stunned",
+            "Sleep"
           ],
-          "flags_raw": 22
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 31,
+              "duration": 10.0,
+              "always": 1
+            }
+          ],
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -403,12 +508,15 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "BoostIgnoreDiminishing",
-            "CancelOnMiss",
-            "IgnoreStrength"
+          "cancel_events": [
+            "Held",
+            "Stunned",
+            "Sleep"
           ],
-          "flags_raw": 22
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -448,12 +556,15 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "BoostIgnoreDiminishing",
-            "CancelOnMiss",
-            "IgnoreStrength"
+          "cancel_events": [
+            "Held",
+            "Stunned",
+            "Sleep"
           ],
-          "flags_raw": 22
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -493,12 +604,15 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "BoostIgnoreDiminishing",
-            "CancelOnMiss",
-            "IgnoreStrength"
+          "cancel_events": [
+            "Held",
+            "Stunned",
+            "Sleep"
           ],
-          "flags_raw": 22
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -538,12 +652,15 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "BoostIgnoreDiminishing",
-            "CancelOnMiss",
-            "IgnoreStrength"
+          "cancel_events": [
+            "Held",
+            "Stunned",
+            "Sleep"
           ],
-          "flags_raw": 22
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -583,6 +700,13 @@
           "stack": "Extend",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.NoPhase"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"

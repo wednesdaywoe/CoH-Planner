@@ -10,6 +10,7 @@
   "icon": "darkcast_nightfall.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Cone",
   "max_targets_hit": 10,
@@ -91,6 +92,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You blast {PlayerDest} with your {PowerName} for {Damage} points of negative energy damage and reduce their chance to hit!",
+            "display_victim_hit": "{PlayerSource} blasts you with their {PowerName} for {Damage} points of negative energy damage and reduce your chance to hit!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -131,6 +138,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "PFX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -171,6 +184,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You blast {PlayerDest} with your {PowerName} for {Damage} points of negative energy damage and reduce their chance to hit!",
+            "display_victim_hit": "{PlayerSource} blasts you with their {PowerName} for {Damage} points of negative energy damage and reduce your chance to hit!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -211,6 +230,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You land a critical hit with your {PowerName} for an extra {Damage} points of negative energy damage!",
+            "display_victim_hit": "{PlayerSource} lands a critical hit with his {PowerName} for an extra {Damage} points of negative energy damage!",
+            "display_float": "CRITICAL",
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -251,6 +276,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You land a critical hit with your {PowerName} for an extra {Damage} points of negative energy damage!",
+            "display_victim_hit": "{PlayerSource} lands a critical hit with his {PowerName} for an extra {Damage} points of negative energy damage!",
+            "display_float": "CRITICAL",
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -291,6 +322,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You land a critical hit with your {PowerName} for an extra {Damage} points of negative energy damage!",
+            "display_victim_hit": "{PlayerSource} lands a critical hit with his {PowerName} for an extra {Damage} points of negative energy damage!",
+            "display_float": "CRITICAL",
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -331,6 +368,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You land a critical hit with your {PowerName} for an extra {Damage} points of negative energy damage!",
+            "display_victim_hit": "{PlayerSource} lands a critical hit with his {PowerName} for an extra {Damage} points of negative energy damage!",
+            "display_float": "CRITICAL",
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -371,6 +414,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You land a critical hit with your {PowerName} for an extra {Damage} points of negative energy damage!",
+            "display_victim_hit": "{PlayerSource} lands a critical hit with his {PowerName} for an extra {Damage} points of negative energy damage!",
+            "display_float": "CRITICAL",
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -411,6 +460,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You land a critical hit with your {PowerName} for an extra {Damage} points of negative energy damage!",
+            "display_victim_hit": "{PlayerSource} lands a critical hit with his {PowerName} for an extra {Damage} points of negative energy damage!",
+            "display_float": "CRITICAL",
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "HideZero"
           ],
@@ -454,6 +509,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You land a critical hit with your {PowerName} for an extra {Damage} points of negative energy damage!",
+            "display_victim_hit": "{PlayerSource} lands a critical hit with his {PowerName} for an extra {Damage} points of negative energy damage!",
+            "display_float": "CRITICAL",
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]

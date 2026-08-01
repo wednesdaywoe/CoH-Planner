@@ -114,7 +114,7 @@ export const Farsight: Power = {
     ["Defense","Negative",1.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
     ["Defense","Psionic",1.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
     ["ToHit",null,1,1,120,"Ranged_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
-    ["Perception",null,1.5,1,120,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Perception",null,2,1,120,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true]
+    ["Perception",null,1.5,1,120,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Perception",null,2,1,120,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1]
   ]
 };

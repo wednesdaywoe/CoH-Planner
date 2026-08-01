@@ -13,7 +13,7 @@ HC (Homecoming) Parse7 layout per record:
   u4 specialize_at
   string_array specialize_requires
   string_array powers
-  u4_array available
+  s4_array available
   ... (remaining fields skipped)
 
   Two layout variants:
@@ -32,10 +32,16 @@ Rebirth (retail i24) Parse6 layout per record:
   u4 specialize_at
   string_array specialize_requires
   string_array powers
-  u4_array vestigial_available (always empty)
-  u4_array real_available (count == len(powers))
+  s4_array vestigial_available (always empty)
+  s4_array real_available (count == len(powers))
   u4_array unknown2..6 (5 more arrays, each count == len(powers))
   s4 terminal (-1)
+
+`available` is `const int *piAvailable` in the game (powers.h:1286) and is
+compared signed: `baseset_BasePowerAvailableByIdx` returns `piAvailable[i] -
+iLevel`, and "<= 0 means available now" (powers.c:545). Authored defs that
+state no level requirement store -1, so reading the array unsigned turned that
+into 4294967295 and every consumer had to special-case the sentinel.
 """
 
 import sys
@@ -116,7 +122,7 @@ def _read_tail(sub: BinReader, head: dict) -> PowersetRecord:
     sub.read_u4()                   # specialize_at
     sub.read_string_array()         # specialize_requires
     powers = sub.read_string_array()
-    available = sub.read_u4_array()
+    available = sub.read_s4_array()
 
     # Validate layout correctness
     if len(available) != len(powers):
@@ -179,8 +185,8 @@ def _parse_parse6(sub: BinReader) -> PowersetRecord:
     # real per-power available levels (e.g. [0,0,1,5,7,11,17,25,31]). Reading
     # blindly as "skip first, take second" gave Thunderspy the all-zeros second
     # array → every power showed as level 1. Pick by the empty-first marker.
-    first = sub.read_u4_array()
-    available = sub.read_u4_array() if len(first) == 0 else first
+    first = sub.read_s4_array()
+    available = sub.read_s4_array() if len(first) == 0 else first
 
     # Validate
     if len(available) != len(powers):

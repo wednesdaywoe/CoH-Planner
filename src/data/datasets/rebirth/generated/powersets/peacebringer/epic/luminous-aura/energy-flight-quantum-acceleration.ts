@@ -45,6 +45,7 @@ export const EnergyFlightQuantumAcceleration: Power = {
       },
       "flySpeed": {
         "scale": 2,
+        "suppressible": true,
         "table": "Melee_Ones"
       }
     },
@@ -65,7 +66,7 @@ export const EnergyFlightQuantumAcceleration: Power = {
   "atoms": [
     ["Meta",null,1,128,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,1,1,null,true],
     ["Movement","Fly",1,1,0.75,"Melee_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Movement","Fly",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0],
+    ["Movement","Fly",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0,null,null,null,null,null,null,null,null,null,true],
     ["Movement","Fly",-1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0],
     ["Movement","FlyMode",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0]
   ],

@@ -18,6 +18,9 @@ export const AtomSmasher: Power = {
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 15,
@@ -90,7 +93,7 @@ export const AtomSmasher: Power = {
     {
       "kind": "grant",
       "chance": 0.3499999940395355,
-      "label": "state"
+      "label": "Contaminated"
     }
   ],
   "damageTypes": [

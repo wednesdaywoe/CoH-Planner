@@ -18,6 +18,9 @@ export const ProtonSweep: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 40,
@@ -92,7 +95,7 @@ export const ProtonSweep: Power = {
     {
       "kind": "grant",
       "chance": 0.20999999344348907,
-      "label": "state"
+      "label": "Contaminated"
     }
   ],
   "damageTypes": [

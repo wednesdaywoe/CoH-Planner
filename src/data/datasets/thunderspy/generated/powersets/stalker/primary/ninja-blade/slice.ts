@@ -100,12 +100,12 @@ export const Slice: Power = {
     {
       "kind": "grant",
       "chance": 0.800000011920929,
-      "label": "state"
+      "label": "Assassins Focus"
     },
     {
       "kind": "grant",
       "chance": 0.10000000149011612,
-      "label": "state"
+      "label": "BulletCut"
     }
   ],
   "damageTypes": [

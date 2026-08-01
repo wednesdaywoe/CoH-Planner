@@ -10,6 +10,7 @@
   "icon": "ninjas_kujikiri.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Sphere",
   "max_targets_hit": 0,
@@ -81,10 +82,36 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "BoostIgnoreDiminishing"
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "V_COV/POWERS/NINJITSU/HIDE.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
+          "suppress_events": [
+            {
+              "event": "Attacked",
+              "event_id": 2,
+              "duration": 0.0,
+              "always": 0
+            },
+            {
+              "event": "Damaged",
+              "event_id": 17,
+              "duration": 0.0,
+              "always": 0
+            },
+            {
+              "event": "MissionObjectClick",
+              "event_id": 31,
+              "duration": 0.0,
+              "always": 0
+            }
           ],
-          "flags_raw": 2
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -124,10 +151,30 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "BoostIgnoreDiminishing"
+          "suppress_events": [
+            {
+              "event": "Attacked",
+              "event_id": 2,
+              "duration": 0.0,
+              "always": 0
+            },
+            {
+              "event": "Damaged",
+              "event_id": 17,
+              "duration": 0.0,
+              "always": 0
+            },
+            {
+              "event": "MissionObjectClick",
+              "event_id": 31,
+              "duration": 0.0,
+              "always": 0
+            }
           ],
-          "flags_raw": 2
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -189,7 +236,7 @@
       "templates": [
         {
           "attribs": [
-            "Create_Entity"
+            "Translucency"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -255,6 +302,13 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "power_names": [
+              "Villain_Pets.Kuji_Kiri.Smoke_Bomb"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"

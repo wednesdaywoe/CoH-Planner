@@ -40,14 +40,14 @@ export const Caltrops: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
+      "copyBoosts": true,
       "duration": 45,
       "entity": "Pets_Caltrops",
       "isPseudoPet": false
     }
   },
   "atoms": [
-    ["EntCreate",null,-1,1,45,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["EntCreate",null,-1,1,45,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["EntCreate",null,-1,1,45,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
   ],
   "damageTypes": [
     "Lethal"

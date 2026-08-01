@@ -18,6 +18,9 @@ export const Flay: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 9,
@@ -120,7 +123,7 @@ export const Flay: Power = {
     {
       "kind": "grant",
       "chance": 0.20000000298023224,
-      "label": "state"
+      "label": "Spread"
     }
   ],
   "requires": "Tanker_Defense.Shield_Defense !",

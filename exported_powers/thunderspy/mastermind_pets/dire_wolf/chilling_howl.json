@@ -10,6 +10,7 @@
   "icon": "beastmastery_petchillinghowl.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Cone",
   "max_targets_hit": 3,
@@ -85,6 +86,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "{PlayerSource} chills {PlayerDest} with their {PowerName} for {Damage} points of cold damage and reduces their movement and attack speed!",
+            "display_victim_hit": "{PlayerSource} chills you with their {PowerName} for {Damage} points of cold damage and reduces your movement and attack speed!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -125,6 +132,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "{PlayerSource} continues to chill you with their {PowerName} for {Damage} points of cold damage!",
+            "display_victim_hit": "Your {PowerName} causes {PlayerDest} to suffer {Damage} points of additional cold damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "CancelOnMiss"
           ],
@@ -168,6 +181,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "PFX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreStrength"
           ],
@@ -336,10 +355,19 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "{PlayerSource} critically hits {PlayerDest} with their {PowerName} for {Damage} points of bonus Cold damage!",
+            "display_victim_hit": "{PlayerSource} critically hits you with their {PowerName} for {Damage} points of bonus Cold damage!",
+            "display_float": "CRITICAL",
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
     }
+  ],
+  "strengths_disallowed": [
+    "Range"
   ],
   "modes_disallowed": [
     "Disable_All"

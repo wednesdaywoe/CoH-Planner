@@ -10,6 +10,7 @@
   "icon": "darkmiasma_tarpatch.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Sphere",
   "max_targets_hit": 10,
@@ -167,6 +168,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": "You take {Damage} points of Lethal damage from standing on the Spike Trap.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "NearGround"
           ],

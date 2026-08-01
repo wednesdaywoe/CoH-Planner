@@ -64,6 +64,8 @@ export const JoltingChain: Power = {
       "table": "Ranged_Ones"
     },
     "summon": {
+      "copyBoosts": true,
+      "duration": 1,
       "entity": "Pets_Chain_Jolt_Dominator_Jump1",
       "entityCount": 2,
       "isPseudoPet": false
@@ -71,8 +73,6 @@ export const JoltingChain: Power = {
   },
   "atoms": [
     ["Mez","Knockback",0.66,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["EntCreate",null,0.66,1,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["EntCreate",null,0.66,1,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["EntCreate",null,-1,1,1,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["EntCreate",null,-1,1,1,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Meta",null,1,54,4,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,4.25,1,null,true],

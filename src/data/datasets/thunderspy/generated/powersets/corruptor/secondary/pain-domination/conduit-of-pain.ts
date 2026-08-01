@@ -90,8 +90,5 @@ export const ConduitofPain: Power = {
     ["DamageBuff","Toxic",3,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Psionic",3,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["Heal",null,4,1,0.5,"Ranged_Ones","Cur","Magnitude","Target","PvP",false,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true]
-  ],
-  "setsModes": [
-    "Peacebringer_Blaster_Mode"
   ]
 };

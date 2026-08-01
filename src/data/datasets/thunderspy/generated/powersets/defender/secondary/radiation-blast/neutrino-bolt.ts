@@ -77,7 +77,7 @@ export const NeutrinoBolt: Power = {
     {
       "kind": "grant",
       "chance": 0.15000000596046448,
-      "label": "state"
+      "label": "Contaminated"
     }
   ],
   "damageTypes": [

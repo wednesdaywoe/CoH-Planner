@@ -37,6 +37,7 @@ export const TimeBomb: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
+      "copyBoosts": true,
       "duration": 90,
       "entity": "Pets_Turret",
       "entityCount": 2,
@@ -45,8 +46,6 @@ export const TimeBomb: Power = {
   },
   "atoms": [
     ["EntCreate",null,1,1,90,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["EntCreate",null,1,1,90,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["EntCreate",null,1,1,90,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["EntCreate",null,1,1,90,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
   ],
   "damageTypes": [

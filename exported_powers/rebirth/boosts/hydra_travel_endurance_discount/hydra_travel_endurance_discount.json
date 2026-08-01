@@ -10,6 +10,7 @@
   "icon": "e_icon_sewer_01.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -93,7 +94,8 @@
             "IgnoreResistance",
             "Boost"
           ],
-          "flags_raw": 5168
+          "flags_raw": 5168,
+          "boost_mod_allowed_id": 20
         }
       ]
     },
@@ -138,7 +140,8 @@
             "IgnoreResistance",
             "Boost"
           ],
-          "flags_raw": 5168
+          "flags_raw": 5168,
+          "boost_mod_allowed_id": 14
         }
       ]
     },
@@ -183,7 +186,8 @@
             "IgnoreResistance",
             "Boost"
           ],
-          "flags_raw": 5168
+          "flags_raw": 5168,
+          "boost_mod_allowed_id": 17
         }
       ]
     },
@@ -228,7 +232,8 @@
             "IgnoreResistance",
             "Boost"
           ],
-          "flags_raw": 5168
+          "flags_raw": 5168,
+          "boost_mod_allowed_id": 17
         }
       ]
     },
@@ -273,7 +278,8 @@
             "IgnoreResistance",
             "Boost"
           ],
-          "flags_raw": 5168
+          "flags_raw": 5168,
+          "boost_mod_allowed_id": 24
         }
       ]
     }

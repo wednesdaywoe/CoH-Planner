@@ -10,6 +10,7 @@
   "icon": "ninjas_quickshot.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.155,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,

@@ -10,6 +10,7 @@
   "icon": "iceformation_glacier.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Sphere",
   "max_targets_hit": 16,
@@ -80,6 +81,15 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              389,
+              692
+            ],
+            "conditional_fx": "POWERS/COLDCONTROL/ICEROOTCONTINUING.FX"
+          },
           "flags": [
             "NearGround"
           ],
@@ -123,6 +133,15 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              389,
+              692
+            ],
+            "conditional_fx": "POWERS/COLDCONTROL/ICEROOTCONTINUING.FX"
+          },
           "flags": [
             "NearGround"
           ],
@@ -507,6 +526,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "POWERS/COLDCONTROL/ICEHITCONTINUING.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreStrength"
           ],

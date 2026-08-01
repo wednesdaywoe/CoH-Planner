@@ -53,6 +53,7 @@ export const Whirlpool: Power = {
       "damageBuff": 9.53
     },
     "summon": {
+      "copyBoosts": true,
       "duration": 15,
       "entity": "Pets_Whirlpool_Blaster",
       "isPseudoPet": false
@@ -60,7 +61,6 @@ export const Whirlpool: Power = {
   },
   "atoms": [
     ["EntCreate",null,1,1,15,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["EntCreate",null,1,1,15,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
     ["DamageBuff","Smashing",0.033,1,9.53,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Lethal",0.033,1,9.53,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],

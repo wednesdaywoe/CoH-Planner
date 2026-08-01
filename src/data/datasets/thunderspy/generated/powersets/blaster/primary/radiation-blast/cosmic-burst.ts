@@ -103,7 +103,7 @@ export const CosmicBurst: Power = {
     {
       "kind": "grant",
       "chance": 0.30000001192092896,
-      "label": "state"
+      "label": "Contaminated"
     }
   ],
   "damageTypes": [

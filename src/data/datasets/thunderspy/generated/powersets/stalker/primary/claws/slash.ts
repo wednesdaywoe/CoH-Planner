@@ -18,6 +18,9 @@ export const Slash: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,
@@ -78,7 +81,7 @@ export const Slash: Power = {
     {
       "kind": "grant",
       "chance": 0.7400000095367432,
-      "label": "state"
+      "label": "Assassins Focus"
     }
   ],
   "damageTypes": [

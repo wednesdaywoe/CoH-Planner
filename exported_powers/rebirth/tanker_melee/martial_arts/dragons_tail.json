@@ -10,6 +10,7 @@
   "icon": "martialarts_monkeysweep.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.05,
   "effect_area": "Sphere",
   "max_targets_hit": 10,
@@ -176,6 +177,14 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "Knocked",
+              "event_id": 29,
+              "duration": 10.0,
+              "always": 0
+            }
+          ],
           "flags": [
             "NearGround"
           ],
@@ -259,6 +268,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "POWERS/FIRECONTROL/CINDERSHIT.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -273,7 +288,7 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
-      "eval_flags": 0,
+      "eval_flags": 2,
       "templates": [
         {
           "attribs": [

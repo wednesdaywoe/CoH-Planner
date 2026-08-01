@@ -103,6 +103,7 @@ export const RallyTheMilitia: Power = {
       "table": "Ranged_Ones"
     },
     "summon": {
+      "copyBoosts": true,
       "duration": 120,
       "entities": [
         {
@@ -140,12 +141,6 @@ export const RallyTheMilitia: Power = {
     ["DamageBuff","Smashing",5,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Lethal",5,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["EntCreate",null,1,1,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["EntCreate",null,1,1,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["EntCreate",null,1,1,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["EntCreate",null,1,1,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["EntCreate",null,1,1,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["EntCreate",null,1,1,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],

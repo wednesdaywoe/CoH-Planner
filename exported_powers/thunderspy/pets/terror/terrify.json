@@ -10,6 +10,7 @@
   "icon": "mentalcontrol_terrify.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.4,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -82,6 +83,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "GENERICCONTINUING/AFRAIDCONTINUING.FX"
+          },
           "flags": [
             "IgnoreCombatMods"
           ],
@@ -168,6 +175,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "GENERICCONTINUING/AFRAIDCONTINUING.FX"
+          },
           "flags_raw": 2560
         }
       ]
@@ -208,10 +221,25 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": "{PlayerSource} terrifies you!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "GENERICCONTINUING/AFRAIDCONTINUING.FX"
+          },
           "flags_raw": 2560
         }
       ]
     }
+  ],
+  "strengths_disallowed": [
+    "RechargeTime"
   ],
   "available_level": 0,
   "powerset": "Pets.Terror"

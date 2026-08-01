@@ -45,16 +45,18 @@ export const Haunt: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
+      "copyBoosts": true,
       "duration": 60,
       "entity": "Pets_Shade",
       "entityCount": 2,
-      "isPseudoPet": false
+      "isPseudoPet": false,
+      "powers": [
+        "Temporary_Powers.Temporary_Powers.Haunted"
+      ]
     }
   },
   "atoms": [
     ["EntCreate",null,-1,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
-    ["EntCreate",null,-1,1,60,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["EntCreate",null,-1,1,60,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["EntCreate",null,-1,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["GrantPower",null,1,1,1,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true]
   ]

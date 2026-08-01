@@ -10,6 +10,7 @@
   "icon": "inherent_blasterdesperation.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": true,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -85,9 +86,10 @@
           },
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance"
+            "IgnoreResistance",
+            "StackExactPower"
           ],
-          "flags_raw": 1072
+          "flags_raw": 525360
         }
       ]
     },
@@ -135,9 +137,10 @@
           },
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance"
+            "IgnoreResistance",
+            "StackExactPower"
           ],
-          "flags_raw": 1072
+          "flags_raw": 525360
         }
       ]
     },
@@ -185,9 +188,10 @@
           },
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance"
+            "IgnoreResistance",
+            "StackExactPower"
           ],
-          "flags_raw": 1072
+          "flags_raw": 525360
         }
       ]
     },
@@ -235,9 +239,10 @@
           },
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance"
+            "IgnoreResistance",
+            "StackExactPower"
           ],
-          "flags_raw": 1072
+          "flags_raw": 525360
         }
       ]
     },
@@ -285,9 +290,10 @@
           },
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance"
+            "IgnoreResistance",
+            "StackExactPower"
           ],
-          "flags_raw": 1072
+          "flags_raw": 525360
         }
       ]
     },
@@ -335,9 +341,10 @@
           },
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance"
+            "IgnoreResistance",
+            "StackExactPower"
           ],
-          "flags_raw": 1072
+          "flags_raw": 525360
         }
       ]
     },
@@ -385,9 +392,10 @@
           },
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance"
+            "IgnoreResistance",
+            "StackExactPower"
           ],
-          "flags_raw": 1072
+          "flags_raw": 525360
         }
       ]
     },
@@ -435,9 +443,10 @@
           },
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance"
+            "IgnoreResistance",
+            "StackExactPower"
           ],
-          "flags_raw": 1072
+          "flags_raw": 525360
         }
       ]
     },
@@ -485,9 +494,10 @@
           },
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance"
+            "IgnoreResistance",
+            "StackExactPower"
           ],
-          "flags_raw": 1072
+          "flags_raw": 525360
         }
       ]
     }

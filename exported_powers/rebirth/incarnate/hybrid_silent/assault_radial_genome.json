@@ -10,6 +10,7 @@
   "icon": "incarnate_hybrid_assault_veryrare.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": true,
   "accuracy": 0.35,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,

@@ -10,6 +10,7 @@
   "icon": "electricalbolt_shortcircuit.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.3,
   "effect_area": "Sphere",
   "max_targets_hit": 16,
@@ -80,6 +81,18 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} shocks {PlayerDest} for {Damage} points of energy damage!",
+            "display_victim_hit": "{PlayerSource} electrocutes you for {Damage} points of energy damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "POWERS/ELECTRICITYCONTROL/ELECTRICITYBOLTHITCONTINUING.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -120,6 +133,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} drains {PlayerDest} Endurance!",
+            "display_victim_hit": "{PlayerSource} shocks you with their {PowerName} and drains some of your Endurance!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -200,6 +219,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} deals an extra {Damage} points of energy damage to {PlayerDest}!",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]

@@ -18,6 +18,9 @@ export const WhirlingSword: Power = {
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 1.05,
     "radius": 8,
@@ -107,7 +110,7 @@ export const WhirlingSword: Power = {
     {
       "kind": "grant",
       "chance": 0.10000000149011612,
-      "label": "state"
+      "label": "BulletCut"
     }
   ],
   "damageTypes": [

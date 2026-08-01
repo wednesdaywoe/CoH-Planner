@@ -51,5 +51,19 @@ export const EnvenomedBlades: Power = {
     ["GrantPower",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["Meta",null,1,1,40,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["ToHit",null,2,1,40,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1]
+  ],
+  "grantedDamageProcs": [
+    {
+      "name": "Envenomed_Blades",
+      "displayName": "Envenomed Blades",
+      "damage": [
+        {
+          "damageType": "Toxic",
+          "scale": 1,
+          "table": "Melee_Damage"
+        }
+      ],
+      "enhanceable": false
+    }
   ]
 };

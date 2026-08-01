@@ -10,6 +10,7 @@
   "icon": "windcontrol_vacuum.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -96,58 +97,24 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "IgnoreStrength",
-            "IgnoreResistance"
-          ],
-          "flags_raw": 2096
-        }
-      ]
-    },
-    {
-      "chance": 1.0,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": "entref target.owner> entref source> eq !",
-      "tags": [],
-      "flags": [],
-      "is_pvp": "EITHER",
-      "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "Create_Entity"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "",
-          "target": "",
-          "table": "Ranged_Ones",
-          "scale": -1.0,
-          "duration": "8 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "entref target.owner> entref source> eq !",
-          "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Pets_WindControl_Vacuum_Dominator",
             "priority_list": "PL_StaticObject",
-            "redirects": [
-              "Temporary_Powers.Temporary_Powers.Wind_Control_Pressure"
-            ]
-          }
+            "type": "EntCreate"
+          },
+          "messages": {
+            "display_attacker_hit": "You create a {PowerName} field at {PlayerDest}'s location.",
+            "display_victim_hit": "{PlayerSource} creates a {PowerName} field at your location.",
+            "display_float": "I Hit Not My Pet!",
+            "display_attrib_defense_float": null
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "CopyBoosts"
+          ],
+          "flags_raw": 2096,
+          "flags2_raw": 4
         }
       ]
     },
@@ -187,6 +154,21 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "{PlayerDest} has been held within your {PowerName} field.",
+            "display_victim_hit": "You are staggered by {PlayerSource}'s {PowerName} and held in place.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              379,
+              682
+            ],
+            "conditional_fx": "POWERS/COLDCONTROL/ICEROOTCONTINUING.FX"
+          },
           "flags_raw": 2560
         }
       ]
@@ -227,6 +209,21 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "{PlayerDest} has been held within your {PowerName} field.",
+            "display_victim_hit": "You are staggered by {PlayerSource}'s {PowerName} and held in place.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              379,
+              682
+            ],
+            "conditional_fx": "POWERS/COLDCONTROL/ICEROOTCONTINUING.FX"
+          },
           "flags_raw": 2560
         }
       ]
@@ -267,6 +264,21 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": null,
+            "display_float": "DOMINATION",
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              379,
+              682
+            ],
+            "conditional_fx": "POWERS/COLDCONTROL/ICEROOTCONTINUING.FX"
+          },
           "flags_raw": 2560
         }
       ]
@@ -307,6 +319,21 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": null,
+            "display_float": "DOMINATION",
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              379,
+              682
+            ],
+            "conditional_fx": "POWERS/COLDCONTROL/ICEROOTCONTINUING.FX"
+          },
           "flags": [
             "IgnoreResistance"
           ],
@@ -350,6 +377,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You create a {PowerName} field at {PlayerDest}'s location.",
+            "display_victim_hit": "{PlayerSource} creates a {PowerName} field at your location!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -390,6 +423,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You cause {Damage} points of lethal damage on {PlayerDest} by creating a maximized {PowerName} field.",
+            "display_victim_hit": "You suffer {Damage} points of lethal damage due to {PlayerSource}'s maximized {PowerName} field.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -430,6 +469,12 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": "You create a {PowerName} field on your Vortex and gain the Clear Skies boon.",
+            "display_float": "I Hit My Pet!",
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
@@ -476,6 +521,12 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": null,
+            "display_float": "I Hit My Pet!",
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
@@ -522,6 +573,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Wind_Control_Pressure"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -566,6 +624,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": "You release all atmospheric Pressure changes you have accumulated.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"

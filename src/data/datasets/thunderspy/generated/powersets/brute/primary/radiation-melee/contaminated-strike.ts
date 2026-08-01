@@ -18,6 +18,9 @@ export const ContaminatedStrike: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,
@@ -99,7 +102,7 @@ export const ContaminatedStrike: Power = {
     {
       "kind": "grant",
       "chance": 0.11999999731779099,
-      "label": "state"
+      "label": "Contaminated"
     }
   ],
   "damageTypes": [

@@ -10,6 +10,7 @@
   "icon": "umbralblast_gravitywell.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -92,6 +93,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You strike {PlayerDest} with your {PowerName} for {Damage} points of negative energy damage and slow them!",
+            "display_victim_hit": "{PlayerSource} strikes you with their {PowerName} for {Damage} points of negative energy damage and slows you!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -132,6 +139,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} continues to crush {PlayerDest} for an additional {Damage} points of smashing damage.",
+            "display_victim_hit": "{PowerName} continues to crush you for an additional {Damage} points of smashing damage.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -172,6 +185,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You strike {PlayerDest} with your {PowerName} for {Damage} points of negative energy damage and slow them!",
+            "display_victim_hit": "{PlayerSource} strikes you with their {PowerName} for {Damage} points of negative energy damage and slows you!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -212,6 +231,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} continues to crush {PlayerDest} for an additional {Damage} points of smashing damage.",
+            "display_victim_hit": "{PowerName} continues to crush you for an additional {Damage} points of smashing damage.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -252,6 +277,14 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              379
+            ],
+            "conditional_fx": "PFX"
+          },
           "flags_raw": 2560
         }
       ]
@@ -292,6 +325,14 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              379
+            ],
+            "conditional_fx": "PFX"
+          },
           "flags_raw": 2560
         }
       ]
@@ -417,6 +458,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "GENERICCONTINUING/DEBUFFSPEEDALL.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreStrength"
           ],

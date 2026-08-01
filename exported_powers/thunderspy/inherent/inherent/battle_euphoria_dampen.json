@@ -10,6 +10,7 @@
   "icon": "inherent_blasterdesperation.png",
   "auto_issue": true,
   "auto_issue_keeps_level": false,
+  "free": true,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -121,11 +122,25 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "NoFloaters",
-            "BoostIgnoreDiminishing"
+          "suppress_events": [
+            {
+              "event": "Event_3",
+              "event_id": 3,
+              "duration": 5.0,
+              "always": 1
+            },
+            {
+              "event": "Event_8",
+              "event_id": 8,
+              "duration": 5.0,
+              "always": 1
+            }
           ],
-          "flags_raw": 3
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     }

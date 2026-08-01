@@ -75,7 +75,7 @@ export const SharePain: Power = {
     ["DamageBuff","Negative",5,1,2,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Psionic",5,1,2,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Toxic",5,1,2,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["ToHit",null,1,1,2,"Ranged_Buff_ToHit","Cur","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"RecoveryBuff"],
+    ["ToHit",null,1,1,2,"Ranged_Buff_ToHit","Cur","Magnitude","Self","Any",false,"No",null,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"RecoveryBuff"],
     ["ToHit",null,0.5,1,2,"Ranged_Buff_ToHit","Cur","Magnitude","Self","Any",true,"Stack",3,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"HybridDefense"],
     ["DamageBuff","Smashing",-2.5,1,2,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"target.isFriend? !"],
     ["DamageBuff","Lethal",-2.5,1,2,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"target.isFriend? !"],

@@ -10,6 +10,7 @@
   "icon": "brawling_crushinguppercut.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.2,
   "effect_area": "Sphere",
   "max_targets_hit": 5,
@@ -66,8 +67,8 @@
       "chance": 1.0,
       "ppm": 0.0,
       "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_inner": 0.0,
+      "radius_outer": 0.0,
       "requires_expression": "Temporary_Powers.Temporary_Powers.Combo_Level_1 source.ownPower? ! Temporary_Powers.Temporary_Powers.Combo_Level_2 source.ownPower? ! && Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower? ! && enttype target> critter eq &&",
       "tags": [],
       "flags": [],
@@ -106,8 +107,8 @@
       "chance": 1.0,
       "ppm": 0.0,
       "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_inner": 0.0,
+      "radius_outer": 0.0,
       "requires_expression": "Temporary_Powers.Temporary_Powers.Combo_Level_1 source.ownPower? enttype target> critter eq &&",
       "tags": [],
       "flags": [],
@@ -146,8 +147,8 @@
       "chance": 1.0,
       "ppm": 0.0,
       "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_inner": 0.0,
+      "radius_outer": 0.0,
       "requires_expression": "Temporary_Powers.Temporary_Powers.Combo_Level_2 source.ownPower? enttype target> critter eq &&",
       "tags": [],
       "flags": [],
@@ -186,8 +187,8 @@
       "chance": 1.0,
       "ppm": 0.0,
       "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_inner": 0.0,
+      "radius_outer": 0.0,
       "requires_expression": "Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower? enttype target> critter eq &&",
       "tags": [],
       "flags": [],
@@ -226,8 +227,8 @@
       "chance": 1.0,
       "ppm": 0.0,
       "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_inner": 0.0,
+      "radius_outer": 0.0,
       "requires_expression": "Temporary_Powers.Temporary_Powers.Combo_Level_1 source.ownPower? ! Temporary_Powers.Temporary_Powers.Combo_Level_2 source.ownPower? ! && Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower? ! && enttype target> player eq &&",
       "tags": [],
       "flags": [],
@@ -266,8 +267,8 @@
       "chance": 1.0,
       "ppm": 0.0,
       "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_inner": 0.0,
+      "radius_outer": 0.0,
       "requires_expression": "Temporary_Powers.Temporary_Powers.Combo_Level_1 source.ownPower? enttype target> player eq &&",
       "tags": [],
       "flags": [],
@@ -306,8 +307,8 @@
       "chance": 1.0,
       "ppm": 0.0,
       "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_inner": 0.0,
+      "radius_outer": 0.0,
       "requires_expression": "Temporary_Powers.Temporary_Powers.Combo_Level_2 source.ownPower? enttype target> player eq &&",
       "tags": [],
       "flags": [],
@@ -346,8 +347,8 @@
       "chance": 1.0,
       "ppm": 0.0,
       "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_inner": 0.0,
+      "radius_outer": 0.0,
       "requires_expression": "Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower? enttype target> player eq &&",
       "tags": [],
       "flags": [],
@@ -386,8 +387,8 @@
       "chance": 1.0,
       "ppm": 0.0,
       "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_inner": 0.0,
+      "radius_outer": 0.0,
       "requires_expression": "enttype target> critter eq Temporary_Powers.Temporary_Powers.Combo_Level_1 source.ownPower? ! && Temporary_Powers.Temporary_Powers.Combo_Level_2 source.ownPower? ! && Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower? ! &&",
       "tags": [],
       "flags": [],
@@ -418,6 +419,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "GENERICCONTINUING/STUNCONTINUING.FX"
+          },
           "flags_raw": 2560
         }
       ]
@@ -426,8 +433,8 @@
       "chance": 1.0,
       "ppm": 0.0,
       "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_inner": 0.0,
+      "radius_outer": 0.0,
       "requires_expression": "enttype target> critter eq Temporary_Powers.Temporary_Powers.Combo_Level_1 source.ownPower? &&",
       "tags": [],
       "flags": [],
@@ -458,6 +465,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "GENERICCONTINUING/STUNCONTINUING.FX"
+          },
           "flags_raw": 2560
         }
       ]
@@ -466,8 +479,8 @@
       "chance": 1.0,
       "ppm": 0.0,
       "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_inner": 0.0,
+      "radius_outer": 0.0,
       "requires_expression": "enttype target> critter eq Temporary_Powers.Temporary_Powers.Combo_Level_2 source.ownPower? &&",
       "tags": [],
       "flags": [],
@@ -498,6 +511,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "GENERICCONTINUING/STUNCONTINUING.FX"
+          },
           "flags_raw": 2560
         }
       ]
@@ -506,8 +525,8 @@
       "chance": 1.0,
       "ppm": 0.0,
       "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_inner": 0.0,
+      "radius_outer": 0.0,
       "requires_expression": "enttype target> critter eq Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower? &&",
       "tags": [],
       "flags": [],
@@ -538,6 +557,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "GENERICCONTINUING/STUNCONTINUING.FX"
+          },
           "flags_raw": 2560
         }
       ]
@@ -546,8 +571,8 @@
       "chance": 1.0,
       "ppm": 0.0,
       "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_inner": 0.0,
+      "radius_outer": 0.0,
       "requires_expression": "enttype target> player eq Temporary_Powers.Temporary_Powers.Combo_Level_1 source.ownPower? ! && Temporary_Powers.Temporary_Powers.Combo_Level_2 source.ownPower? ! && Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower? ! &&",
       "tags": [],
       "flags": [],
@@ -578,6 +603,44 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "GENERICCONTINUING/STUNCONTINUING.FX"
+          },
+          "suppress_events": [
+            {
+              "event": "Held",
+              "event_id": 21,
+              "duration": 15.0,
+              "always": 0
+            },
+            {
+              "event": "Sleep",
+              "event_id": 22,
+              "duration": 15.0,
+              "always": 0
+            },
+            {
+              "event": "Stunned",
+              "event_id": 19,
+              "duration": 15.0,
+              "always": 0
+            },
+            {
+              "event": "Immobilized",
+              "event_id": 20,
+              "duration": 15.0,
+              "always": 0
+            },
+            {
+              "event": "Terrorized",
+              "event_id": 23,
+              "duration": 15.0,
+              "always": 0
+            }
+          ],
           "flags_raw": 2560
         }
       ]
@@ -586,8 +649,8 @@
       "chance": 1.0,
       "ppm": 0.0,
       "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_inner": 0.0,
+      "radius_outer": 0.0,
       "requires_expression": "enttype target> player eq Temporary_Powers.Temporary_Powers.Combo_Level_1 source.ownPower? &&",
       "tags": [],
       "flags": [],
@@ -618,6 +681,44 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "GENERICCONTINUING/STUNCONTINUING.FX"
+          },
+          "suppress_events": [
+            {
+              "event": "Held",
+              "event_id": 21,
+              "duration": 15.0,
+              "always": 0
+            },
+            {
+              "event": "Sleep",
+              "event_id": 22,
+              "duration": 15.0,
+              "always": 0
+            },
+            {
+              "event": "Stunned",
+              "event_id": 19,
+              "duration": 15.0,
+              "always": 0
+            },
+            {
+              "event": "Immobilized",
+              "event_id": 20,
+              "duration": 15.0,
+              "always": 0
+            },
+            {
+              "event": "Terrorized",
+              "event_id": 23,
+              "duration": 15.0,
+              "always": 0
+            }
+          ],
           "flags_raw": 2560
         }
       ]
@@ -626,8 +727,8 @@
       "chance": 1.0,
       "ppm": 0.0,
       "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_inner": 0.0,
+      "radius_outer": 0.0,
       "requires_expression": "enttype target> player eq Temporary_Powers.Temporary_Powers.Combo_Level_2 source.ownPower? &&",
       "tags": [],
       "flags": [],
@@ -658,6 +759,44 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "GENERICCONTINUING/STUNCONTINUING.FX"
+          },
+          "suppress_events": [
+            {
+              "event": "Held",
+              "event_id": 21,
+              "duration": 15.0,
+              "always": 0
+            },
+            {
+              "event": "Sleep",
+              "event_id": 22,
+              "duration": 15.0,
+              "always": 0
+            },
+            {
+              "event": "Stunned",
+              "event_id": 19,
+              "duration": 15.0,
+              "always": 0
+            },
+            {
+              "event": "Immobilized",
+              "event_id": 20,
+              "duration": 15.0,
+              "always": 0
+            },
+            {
+              "event": "Terrorized",
+              "event_id": 23,
+              "duration": 15.0,
+              "always": 0
+            }
+          ],
           "flags_raw": 2560
         }
       ]
@@ -666,8 +805,8 @@
       "chance": 1.0,
       "ppm": 0.0,
       "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_inner": 0.0,
+      "radius_outer": 0.0,
       "requires_expression": "enttype target> player eq Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower? &&",
       "tags": [],
       "flags": [],
@@ -698,6 +837,44 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "GENERICCONTINUING/STUNCONTINUING.FX"
+          },
+          "suppress_events": [
+            {
+              "event": "Held",
+              "event_id": 21,
+              "duration": 15.0,
+              "always": 0
+            },
+            {
+              "event": "Sleep",
+              "event_id": 22,
+              "duration": 15.0,
+              "always": 0
+            },
+            {
+              "event": "Stunned",
+              "event_id": 19,
+              "duration": 15.0,
+              "always": 0
+            },
+            {
+              "event": "Immobilized",
+              "event_id": 20,
+              "duration": 15.0,
+              "always": 0
+            },
+            {
+              "event": "Terrorized",
+              "event_id": 23,
+              "duration": 15.0,
+              "always": 0
+            }
+          ],
           "flags_raw": 2560
         }
       ]
@@ -706,8 +883,8 @@
       "chance": 1.0,
       "ppm": 0.0,
       "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_inner": 0.0,
+      "radius_outer": 0.0,
       "requires_expression": "enttype target> critter eq",
       "tags": [],
       "flags": [],
@@ -746,8 +923,8 @@
       "chance": 1.0,
       "ppm": 0.0,
       "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_inner": 0.0,
+      "radius_outer": 0.0,
       "requires_expression": "enttype target> player eq",
       "tags": [],
       "flags": [],
@@ -778,6 +955,14 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "Knocked",
+              "event_id": 29,
+              "duration": 10.0,
+              "always": 0
+            }
+          ],
           "flags_raw": 1280
         }
       ]
@@ -786,8 +971,8 @@
       "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_inner": 0.0,
+      "radius_outer": 0.0,
       "requires_expression": "",
       "tags": [],
       "flags": [],
@@ -818,6 +1003,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "POWERS/FIRECONTROL/CINDERSHIT.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -826,13 +1017,13 @@
       "chance": 1.0,
       "ppm": 0.0,
       "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_inner": 0.0,
+      "radius_outer": 15.0,
       "requires_expression": "Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
-      "eval_flags": 0,
+      "eval_flags": 2,
       "templates": [
         {
           "attribs": [
@@ -870,8 +1061,8 @@
       "chance": 1.0,
       "ppm": 0.0,
       "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_inner": 0.0,
+      "radius_outer": 15.0,
       "requires_expression": "Raid target.HasTag? ! enttype target> critter eq &&",
       "tags": [],
       "flags": [],
@@ -914,8 +1105,8 @@
       "chance": 0.2759999930858612,
       "ppm": 0.0,
       "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_inner": 0.0,
+      "radius_outer": 0.0,
       "requires_expression": "enttype target> player eq",
       "tags": [],
       "flags": [],

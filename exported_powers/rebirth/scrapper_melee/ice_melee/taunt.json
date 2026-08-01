@@ -10,6 +10,7 @@
   "icon": "icyonslaught_taunt.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -98,7 +99,7 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
-      "eval_flags": 0,
+      "eval_flags": 2,
       "templates": [
         {
           "attribs": [
@@ -181,7 +182,7 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
-      "eval_flags": 0,
+      "eval_flags": 2,
       "templates": [
         {
           "attribs": [

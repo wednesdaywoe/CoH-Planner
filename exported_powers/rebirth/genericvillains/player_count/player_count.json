@@ -10,6 +10,7 @@
   "icon": "invulnerability_toughhide.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "NamedVolume",
   "max_targets_hit": 0,
@@ -49,13 +50,13 @@
       "chance": 1.0,
       "ppm": 0.0,
       "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_inner": 0.0,
+      "radius_outer": 0.0,
       "requires_expression": "",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
-      "eval_flags": 0,
+      "eval_flags": 20,
       "templates": [
         {
           "attribs": [
@@ -84,9 +85,10 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
-            "IgnoreCombatMods"
+            "IgnoreCombatMods",
+            "DelayEval"
           ],
-          "flags_raw": 112
+          "flags_raw": 32880
         }
       ]
     },

@@ -10,6 +10,7 @@
   "icon": "electricitymastery_chargedarmor.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.5,
   "effect_area": "Sphere",
   "max_targets_hit": 1,
@@ -87,6 +88,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "PFX"
+          },
           "flags_raw": 2560
         }
       ]
@@ -127,6 +134,20 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "PFX"
+          },
+          "suppress_events": [
+            {
+              "event": "Event_24",
+              "event_id": 24,
+              "duration": 15.0,
+              "always": 0
+            }
+          ],
           "flags_raw": 2560
         }
       ]
@@ -212,7 +233,10 @@
             "entity_def": "Pets_Chain_Confuse_Controller_Jump3",
             "priority_list": "PL_Untargetable_FightPreferRanged"
           },
-          "flags_raw": 1280
+          "flags": [
+            "KeepThroughDeath"
+          ],
+          "flags_raw": 17664
         }
       ]
     },
@@ -257,7 +281,10 @@
             "entity_def": "Pets_Chain_Confuse_Controller_Jump3",
             "priority_list": "PL_Untargetable_FightPreferRanged"
           },
-          "flags_raw": 1280
+          "flags": [
+            "KeepThroughDeath"
+          ],
+          "flags_raw": 17664
         }
       ]
     },

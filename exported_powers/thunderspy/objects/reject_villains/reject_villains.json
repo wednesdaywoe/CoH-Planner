@@ -10,6 +10,7 @@
   "icon": "temporary_terravoltaglow.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Map",
   "max_targets_hit": 0,
@@ -77,6 +78,10 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "destination": "71.NewPlayer",
+            "type": "Teleport"
+          },
           "flags": [
             "IgnoreResistance"
           ],

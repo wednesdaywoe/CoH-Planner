@@ -10,6 +10,7 @@
   "icon": "bioorganicarmor_parasiticaura.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.5,
   "effect_area": "Sphere",
   "max_targets_hit": 10,
@@ -91,6 +92,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} siphons the genetic material of your target and boosts your own regeneration, recovery as well as granting a measure of damage absorption for a short time!",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"

@@ -10,6 +10,7 @@
   "icon": "paramilitary_draftarmy.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Location",
   "max_targets_hit": 0,
@@ -97,9 +98,11 @@
           },
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance"
+            "IgnoreResistance",
+            "DoNotTintCostume"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 2
         }
       ]
     },
@@ -146,9 +149,11 @@
           },
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance"
+            "IgnoreResistance",
+            "DoNotTintCostume"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 2
         }
       ]
     },
@@ -195,9 +200,11 @@
           },
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance"
+            "IgnoreResistance",
+            "DoNotTintCostume"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 2
         }
       ]
     }

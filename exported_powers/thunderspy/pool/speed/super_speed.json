@@ -10,6 +10,7 @@
   "icon": "superspeed_superspeed.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -87,12 +88,23 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "BoostIgnoreDiminishing",
-            "CancelOnMiss",
-            "IgnoreStrength"
+          "cancel_events": [
+            "Held",
+            "Stunned",
+            "Sleep"
           ],
-          "flags_raw": 22
+          "suppress_events": [
+            {
+              "event": "ActivateAttackClick",
+              "event_id": 1,
+              "duration": 4.0,
+              "always": 1
+            }
+          ],
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -132,12 +144,29 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "BoostIgnoreDiminishing",
-            "CancelOnMiss",
-            "IgnoreStrength"
+          "cancel_events": [
+            "Held",
+            "Stunned",
+            "Sleep"
           ],
-          "flags_raw": 22
+          "suppress_events": [
+            {
+              "event": "Attacked",
+              "event_id": 2,
+              "duration": 10.0,
+              "always": 1
+            },
+            {
+              "event": "MissionObjectClick",
+              "event_id": 31,
+              "duration": 10.0,
+              "always": 1
+            }
+          ],
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -177,12 +206,30 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "BoostIgnoreDiminishing",
-            "CancelOnMiss",
-            "IgnoreStrength"
+          "cancel_events": [
+            "Held",
+            "Stunned",
+            "Sleep"
           ],
-          "flags_raw": 22
+          "suppress_events": [
+            {
+              "event": "Attacked",
+              "event_id": 2,
+              "duration": 10.0,
+              "always": 1
+            },
+            {
+              "event": "MissionObjectClick",
+              "event_id": 31,
+              "duration": 10.0,
+              "always": 1
+            }
+          ],
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -222,12 +269,23 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "BoostIgnoreDiminishing",
-            "CancelOnMiss",
-            "IgnoreStrength"
+          "cancel_events": [
+            "Held",
+            "Stunned",
+            "Sleep"
           ],
-          "flags_raw": 22
+          "suppress_events": [
+            {
+              "event": "ActivateAttackClick",
+              "event_id": 1,
+              "duration": 4.0,
+              "always": 1
+            }
+          ],
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     }

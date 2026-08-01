@@ -10,6 +10,7 @@
   "icon": "temporary_teargas.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -77,55 +78,18 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "entity_def": "ParagonPolice_Heracles_TearGas",
+            "priority_list": "PL_StaticObject",
+            "type": "EntCreate"
+          },
           "flags": [
             "IgnoreCombatMods",
-            "KeepThroughDeath"
+            "KeepThroughDeath",
+            "CopyBoosts"
           ],
-          "flags_raw": 16704
-        }
-      ]
-    },
-    {
-      "chance": 1.0,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": "",
-      "tags": [],
-      "flags": [],
-      "is_pvp": "EITHER",
-      "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "Create_Entity"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "",
-          "target": "",
-          "table": "Ranged_Ones",
-          "scale": -1.0,
-          "duration": "5 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null,
-          "params": {
-            "type": "EntCreate",
-            "entity_def": "ParagonPolice_Heracles_TearGas",
-            "priority_list": "PL_StaticObject"
-          }
+          "flags_raw": 16704,
+          "flags2_raw": 4
         }
       ]
     },
@@ -165,10 +129,19 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": "{PlayerSource} hits you with their Grenade for {Damage} points of smashing damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
     }
+  ],
+  "strengths_disallowed": [
+    "RechargeTime"
   ],
   "available_level": 0,
   "powerset": "Pets.Longbow_Heavy"

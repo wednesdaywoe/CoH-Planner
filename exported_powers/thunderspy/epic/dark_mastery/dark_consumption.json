@@ -10,6 +10,7 @@
   "icon": "shadowfighting_darkconsumption.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Sphere",
   "max_targets_hit": 10,
@@ -88,6 +89,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "{PowerName} deals {Damage} points of negative energy damage to {PlayerDest} to increase your Endurance.",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -171,6 +178,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You attack {PlayerDest} with your {PowerName} for {Damage} points of negative energy damage!",
+            "display_victim_hit": "{PlayerSource} attacks you with a {PowerName} for {Damage} points of negative energy damage!",
+            "display_float": "Scourge",
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "NearGround"
           ],

@@ -10,6 +10,7 @@
   "icon": "electricitymastery_chargedarmor.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 2.0,
   "effect_area": "Sphere",
   "max_targets_hit": 1,
@@ -258,7 +259,10 @@
             "entity_def": "Pets_Chain_Jolt_Controller_Jump2",
             "priority_list": "PL_Untargetable_FightPreferRanged"
           },
-          "flags_raw": 1280
+          "flags": [
+            "KeepThroughDeath"
+          ],
+          "flags_raw": 17664
         }
       ]
     },
@@ -303,7 +307,10 @@
             "entity_def": "Pets_Chain_Jolt_Controller_Jump2",
             "priority_list": "PL_Untargetable_FightPreferRanged"
           },
-          "flags_raw": 1280
+          "flags": [
+            "KeepThroughDeath"
+          ],
+          "flags_raw": 17664
         }
       ]
     },

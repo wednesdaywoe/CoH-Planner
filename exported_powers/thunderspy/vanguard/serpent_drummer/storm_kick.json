@@ -10,6 +10,7 @@
   "icon": "martialarts_stormkick.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.1,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -80,6 +81,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": "{PlayerSource} pummels you with a {PowerName} for {Damage} points of smashing damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]

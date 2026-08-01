@@ -10,6 +10,7 @@
   "icon": "reconhealing_painabsorption.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -714,9 +715,10 @@
           },
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance"
+            "IgnoreResistance",
+            "KeepThroughDeath"
           ],
-          "flags_raw": 3120
+          "flags_raw": 19504
         }
       ]
     },

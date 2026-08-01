@@ -50,6 +50,8 @@ export const BurstofSpeed: Power = {
       "damageBuff": 7.5
     },
     "summon": {
+      "copyBoosts": true,
+      "duration": 2,
       "entity": "Pets_Burst_of_Speed",
       "isPseudoPet": false
     },
@@ -64,7 +66,6 @@ export const BurstofSpeed: Power = {
   },
   "atoms": [
     ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
-    ["EntCreate",null,1,1,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["EntCreate",null,-1,1,2,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Smashing",0.068,1,7.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Lethal",0.068,1,7.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],

@@ -10,6 +10,7 @@
   "icon": "e_icon_absoluteamazement.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -84,6 +85,18 @@
           "stack": "StackThenIgnore",
           "stack_limit": 10,
           "stack_key": "AbsoluteAmazementProc",
+          "messages": {
+            "display_attacker_hit": "You reduce {PlayerDest}'s accuracy.",
+            "display_victim_hit": "{PlayerSource} has reduced your accuracy.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "POWERS/DARKNESSCONTROL/CHILLOFNIGHTHITCONTNUING.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreStrength"
           ],

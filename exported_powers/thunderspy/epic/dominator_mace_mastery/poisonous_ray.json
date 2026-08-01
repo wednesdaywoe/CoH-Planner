@@ -10,6 +10,7 @@
   "icon": "arachnos_patron_targeteddebuffdefense.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.05,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -90,6 +91,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You blast {PlayerDest} with your {PowerName} for {Damage} points of energy damage and reduces his defense and damage resistance.",
+            "display_victim_hit": "{PlayerSource} blasts you for {Damage} points of energy damage with a {PowerName} and reduces your defense and damage resistance.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -130,6 +137,18 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "The {PowerName} continues to deal {Damage} points of Toxic damage to {PlayerDest}.",
+            "display_victim_hit": "You continue to take {Damage} points of Toxic damage from the {PowerName}.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "PFX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -170,6 +189,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You blast {PlayerDest} with your {PowerName} for {Damage} points of energy damage and reduces his defense and damage resistance.",
+            "display_victim_hit": "{PlayerSource} blasts you for {Damage} points of energy damage with a {PowerName} and reduces your defense and damage resistance.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -210,6 +235,18 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "The {PowerName} continues to deal {Damage} points of Toxic damage to {PlayerDest}.",
+            "display_victim_hit": "You continue to take {Damage} points of Toxic damage from the {PowerName}.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "PFX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -250,6 +287,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "GENERICCONTINUING/DEBUFFDEFCONTINUING.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -340,6 +383,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} blasts {PlayerDest} for {Damage} points of negative energy damage!",
+            "display_victim_hit": "{PlayerSource} blasts you with his {PowerName} for {Damage} points of negative energy damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -380,6 +429,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} blasts {PlayerDest} for {Damage} points of negative energy damage!",
+            "display_victim_hit": "{PlayerSource} blasts you with his {PowerName} for {Damage} points of negative energy damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]

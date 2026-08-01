@@ -10,6 +10,7 @@
   "icon": "plantcontrol_seedsconfusion.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Cone",
   "max_targets_hit": 16,
@@ -89,6 +90,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "GENERICCONTINUING/CONFUSECONTINUING.FX"
+          },
           "flags_raw": 2560
         }
       ]
@@ -129,6 +136,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "GENERICCONTINUING/CONFUSECONTINUING.FX"
+          },
           "flags_raw": 2560
         }
       ]
@@ -169,6 +182,20 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "GENERICCONTINUING/CONFUSECONTINUING.FX"
+          },
+          "suppress_events": [
+            {
+              "event": "Event_24",
+              "event_id": 24,
+              "duration": 15.0,
+              "always": 0
+            }
+          ],
           "flags_raw": 2560
         }
       ]

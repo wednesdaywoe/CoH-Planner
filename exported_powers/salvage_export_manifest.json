@@ -1,6 +1,6 @@
 {
   "schema": "bin-crawler-export-manifest/1",
   "note": "salvage_fingerprint is the sha256 of the salvage exporter (bin_crawler/parser/**/*.py + export_salvage.py) at export time. If it disagrees with the current committed exporter source, THIS salvage.json is stale \u2014 re-run export_salvage and commit. Guarded by src/data/export-staleness.test.ts.",
-  "salvage_fingerprint": "e6eda8d94370c31e98b31bc94049075344f495973ee2580ac9ddd6bb6386a1a8",
+  "salvage_fingerprint": "6030751ca467e0967121efb829317595e78af0b9bce6c465beb6a46ec8030092",
   "salvage_records": 360
 }

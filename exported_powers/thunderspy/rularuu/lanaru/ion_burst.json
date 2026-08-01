@@ -10,6 +10,7 @@
   "icon": "electricalbolt_lightningbolt.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.5,
   "effect_area": "Sphere",
   "max_targets_hit": 16,
@@ -80,6 +81,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": "{PlayerSource} blasts you with his {PowerName} for {Damage} points of energy damage and drains some of your Endurance!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -120,6 +127,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": "{PlayerSource} shocks you with his {PowerName} and drains some of your Endurance!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]

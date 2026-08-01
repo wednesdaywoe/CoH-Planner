@@ -10,6 +10,7 @@
   "icon": "radiationpoisoning_radiationinfection.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 2.0,
   "effect_area": "Sphere",
   "max_targets_hit": 16,

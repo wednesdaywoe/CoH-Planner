@@ -41,6 +41,7 @@ export const SummonSpiderlings: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
+      "copyBoosts": true,
       "duration": 240,
       "entity": "Pets_Patron_Powers_Arachnobot_Spiderling",
       "entityCount": 3,
@@ -49,9 +50,6 @@ export const SummonSpiderlings: Power = {
   },
   "atoms": [
     ["EntCreate",null,1,1,240,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
-    ["EntCreate",null,1,1,240,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["EntCreate",null,1,1,240,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["EntCreate",null,1,1,240,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["EntCreate",null,1,1,240,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
     ["EntCreate",null,1,1,240,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true]
   ],

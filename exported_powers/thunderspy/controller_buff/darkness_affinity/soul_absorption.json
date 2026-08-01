@@ -10,6 +10,7 @@
   "icon": "darknessaffinity_soulabsorption.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.2,
   "effect_area": "Sphere",
   "max_targets_hit": 16,
@@ -90,56 +91,31 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "entity_def": "Pets_SoulAbsorptionBuff",
+            "priority_list": "PL_StaticObject",
+            "type": "EntCreate"
+          },
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} siphons essence from nearby foes to cause you and your team to regenerate health and recover endurance.",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "POWERS/DARKNESSCONTROL/DARKESTNIGHTHITCONTINUING.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
-            "IgnoreCombatMods"
+            "IgnoreCombatMods",
+            "CopyBoosts"
           ],
-          "flags_raw": 112
-        }
-      ]
-    },
-    {
-      "chance": 1.0,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": "",
-      "tags": [],
-      "flags": [],
-      "is_pvp": "EITHER",
-      "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "Create_Entity"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "",
-          "target": "",
-          "table": "Ranged_Ones",
-          "scale": -1.0,
-          "duration": "1 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null,
-          "params": {
-            "type": "EntCreate",
-            "entity_def": "Pets_SoulAbsorptionBuff",
-            "priority_list": "PL_StaticObject"
-          }
+          "flags_raw": 112,
+          "flags2_raw": 4
         }
       ]
     },
@@ -179,6 +155,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {powername} reduces the to hit chance of {PlayerDest}!",
+            "display_victim_hit": "{PlayerSource} reduces your chance to hit with their {Powername}!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]

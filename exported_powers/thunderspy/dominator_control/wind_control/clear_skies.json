@@ -10,6 +10,7 @@
   "icon": "windcontrol_clearskies.png",
   "auto_issue": true,
   "auto_issue_keeps_level": false,
+  "free": true,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -255,6 +256,12 @@
           "stack": "Replace",
           "stack_limit": 1,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": "Clear Skies",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -299,6 +306,12 @@
           "stack": "Replace",
           "stack_limit": 1,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": "Cloudy Skies",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"

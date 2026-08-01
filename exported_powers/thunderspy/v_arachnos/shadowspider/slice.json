@@ -10,6 +10,7 @@
   "icon": "katana_slice.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.2,
   "effect_area": "Cone",
   "max_targets_hit": 16,
@@ -81,6 +82,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": "{PlayerSource} slashes you for {Damage} points of lethal damage and reduces your defense!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -121,6 +128,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": "{PlayerSource} hacks you for {Damage} points of negative energy damage and reduces your accuracy!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "CancelOnMiss"
           ],

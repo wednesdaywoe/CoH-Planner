@@ -10,6 +10,7 @@
   "icon": "quills_flingquills.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Sphere",
   "max_targets_hit": 10,
@@ -80,6 +81,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You Fling your quills all around you and impale {PlayerDest} for {Damage} points of lethal damage!",
+            "display_victim_hit": "{PlayerSource} grazes you with a {PowerName} for {Damage} points of lethal damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -120,6 +127,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Poison from your Spines deal {damage} points of Toxic damage to {PlayerDest}.",
+            "display_victim_hit": "You take {Damage} points of poison damage from {PlayerSource}'s Spines!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "CancelOnMiss"
           ],
@@ -298,6 +311,9 @@
         }
       ]
     }
+  ],
+  "strengths_disallowed": [
+    "Range"
   ],
   "available_level": 1,
   "powerset": "Mission_Maker_Attacks.Spines"

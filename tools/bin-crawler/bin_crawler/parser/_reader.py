@@ -129,6 +129,10 @@ class BinReader:
             result.append(self.read_u4())
         return result
 
+    def read_s4_array(self) -> list[int]:
+        count = self.read_u4()
+        return [self.read_s4() for _ in range(count)]
+
     def read_string_array(self) -> list[str]:
         count = self.read_u4()
         return [self.read_string() for _ in range(count)]

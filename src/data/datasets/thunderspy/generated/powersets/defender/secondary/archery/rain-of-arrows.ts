@@ -40,6 +40,7 @@ export const RainofArrows: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
+      "copyBoosts": true,
       "duration": 3,
       "entities": [
         {
@@ -56,8 +57,6 @@ export const RainofArrows: Power = {
   },
   "atoms": [
     ["EntCreate",null,1,1,3,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["EntCreate",null,1,1,3,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["EntCreate",null,1,1,3,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["EntCreate",null,1,1,1,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
   ],
   "damageTypes": [

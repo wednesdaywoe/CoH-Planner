@@ -24,6 +24,9 @@ export const PowerThrust: Power = {
     "stun",
     "terror"
   ],
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,

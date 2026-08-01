@@ -10,6 +10,7 @@
   "icon": "feralmight_hunterform.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -176,6 +177,11 @@
           "stack": "Extend",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "costume_name": "WINTER_WOLF",
+            "priority": 5,
+            "type": "Costume"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -220,6 +226,11 @@
           "stack": "Extend",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "costume_name": "NW_WODAN_01",
+            "priority": 5,
+            "type": "Costume"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -264,6 +275,11 @@
           "stack": "Extend",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "costume_name": "NW_SHADOWHOUND_01",
+            "priority": 5,
+            "type": "Costume"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -308,12 +324,23 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "BoostIgnoreDiminishing",
-            "CancelOnMiss",
-            "IgnoreStrength"
+          "cancel_events": [
+            "Held",
+            "Stunned",
+            "Sleep"
           ],
-          "flags_raw": 22
+          "suppress_events": [
+            {
+              "event": "ActivateAttackClick",
+              "event_id": 1,
+              "duration": 4.0,
+              "always": 1
+            }
+          ],
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -353,12 +380,23 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "BoostIgnoreDiminishing",
-            "CancelOnMiss",
-            "IgnoreStrength"
+          "cancel_events": [
+            "Held",
+            "Stunned",
+            "Sleep"
           ],
-          "flags_raw": 22
+          "suppress_events": [
+            {
+              "event": "ActivateAttackClick",
+              "event_id": 1,
+              "duration": 4.0,
+              "always": 1
+            }
+          ],
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -398,12 +436,23 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "BoostIgnoreDiminishing",
-            "CancelOnMiss",
-            "IgnoreStrength"
+          "cancel_events": [
+            "Held",
+            "Stunned",
+            "Sleep"
           ],
-          "flags_raw": 22
+          "suppress_events": [
+            {
+              "event": "ActivateAttackClick",
+              "event_id": 1,
+              "duration": 4.0,
+              "always": 1
+            }
+          ],
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -443,12 +492,23 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "BoostIgnoreDiminishing",
-            "CancelOnMiss",
-            "IgnoreStrength"
+          "cancel_events": [
+            "Held",
+            "Stunned",
+            "Sleep"
           ],
-          "flags_raw": 22
+          "suppress_events": [
+            {
+              "event": "ActivateAttackClick",
+              "event_id": 1,
+              "duration": 4.0,
+              "always": 1
+            }
+          ],
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -488,12 +548,23 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "BoostIgnoreDiminishing",
-            "CancelOnMiss",
-            "IgnoreStrength"
+          "cancel_events": [
+            "Held",
+            "Stunned",
+            "Sleep"
           ],
-          "flags_raw": 22
+          "suppress_events": [
+            {
+              "event": "ActivateAttackClick",
+              "event_id": 1,
+              "duration": 4.0,
+              "always": 1
+            }
+          ],
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -533,12 +604,15 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "BoostIgnoreDiminishing",
-            "CancelOnMiss",
-            "IgnoreStrength"
+          "cancel_events": [
+            "Held",
+            "Stunned",
+            "Sleep"
           ],
-          "flags_raw": 22
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -578,12 +652,15 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "BoostIgnoreDiminishing",
-            "CancelOnMiss",
-            "IgnoreStrength"
+          "cancel_events": [
+            "Held",
+            "Stunned",
+            "Sleep"
           ],
-          "flags_raw": 22
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -623,12 +700,15 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "BoostIgnoreDiminishing",
-            "CancelOnMiss",
-            "IgnoreStrength"
+          "cancel_events": [
+            "Held",
+            "Stunned",
+            "Sleep"
           ],
-          "flags_raw": 22
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -668,12 +748,15 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "BoostIgnoreDiminishing",
-            "CancelOnMiss",
-            "IgnoreStrength"
+          "cancel_events": [
+            "Held",
+            "Stunned",
+            "Sleep"
           ],
-          "flags_raw": 22
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -713,12 +796,15 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "BoostIgnoreDiminishing",
-            "CancelOnMiss",
-            "IgnoreStrength"
+          "cancel_events": [
+            "Held",
+            "Stunned",
+            "Sleep"
           ],
-          "flags_raw": 22
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     }

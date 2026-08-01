@@ -10,6 +10,7 @@
   "icon": "darkarmor_fearfulaura.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.2,
   "effect_area": "Sphere",
   "max_targets_hit": 10,
@@ -79,6 +80,18 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": "You have been terrorized by {PlayerSource}'s {PowerName} and suffer a reduced chance to hit.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "GENERICCONTINUING/AFRAIDCONTINUING.FX",
+            "conditional_bits": [],
+            "conditional_fx": "GENERICCONTINUING/AFRAIDCONTINUING.FX"
+          },
           "flags_raw": 2560
         }
       ]
@@ -119,13 +132,31 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "NoFloaters",
-            "BoostIgnoreDiminishing",
-            "CancelOnMiss",
-            "IgnoreStrength"
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": "You have been terrorized by {PlayerSource}'s {PowerName} and suffer a reduced chance to hit.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "GENERICCONTINUING/AFRAIDCONTINUING.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
+          "suppress_events": [
+            {
+              "event": "Terrorized",
+              "event_id": 23,
+              "duration": 10.0,
+              "always": 0
+            }
           ],
-          "flags_raw": 23
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 592
         }
       ]
     },
@@ -165,6 +196,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "GENERICCONTINUING/DEBUFFTOHITCONTINUING.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags_raw": 1280
         }
       ]

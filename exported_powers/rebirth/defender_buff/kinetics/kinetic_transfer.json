@@ -10,6 +10,7 @@
   "icon": "kineticboost_kinetictransfer.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -90,9 +91,10 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
-            "IgnoreCombatMods"
+            "IgnoreCombatMods",
+            "KeepThroughDeath"
           ],
-          "flags_raw": 112
+          "flags_raw": 16496
         }
       ]
     },

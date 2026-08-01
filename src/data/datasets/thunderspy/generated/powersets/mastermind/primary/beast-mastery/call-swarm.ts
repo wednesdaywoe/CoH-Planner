@@ -92,7 +92,7 @@ export const CallSwarm: Power = {
     {
       "kind": "grant",
       "chance": 0.3199999928474426,
-      "label": "state"
+      "label": "Pack Mentality"
     }
   ],
   "damageTypes": [

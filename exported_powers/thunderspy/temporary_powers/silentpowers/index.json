@@ -1,0 +1,35 @@
+{
+  "key": "Temporary_Powers.SilentPowers",
+  "display_name": "Temporary Powers",
+  "help": "Temporary Powers",
+  "short_help": "Temporary Powers",
+  "icon": "silentpowers_set.ico",
+  "powers": [
+    "Temporary_Powers.SilentPowers.Divine_Core_Oscillation",
+    "Temporary_Powers.SilentPowers.Divine_Core_Oscillation_Icon",
+    "Temporary_Powers.SilentPowers.Inner_Inspiration_Lock",
+    "Temporary_Powers.SilentPowers.Limitless_Radial_Freeeem",
+    "Temporary_Powers.SilentPowers.Paradox_Core_Eternity"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "power_display_names": [
+    "Divine Core Oscillation",
+    "Divine Core Oscillation",
+    "Inner Inspiration Lock",
+    "Limitless Radial Freeeem",
+    "Paradox Core Eternity"
+  ],
+  "power_short_helps": [
+    "Add Proc: +Unresistable Damage",
+    "Add Proc: +Unresistable Damage",
+    "Inner Inspiration Lock",
+    "Self +Everything (Special)",
+    "Self Untouchable (Special)"
+  ]
+}

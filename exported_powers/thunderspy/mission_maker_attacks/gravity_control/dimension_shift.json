@@ -10,6 +10,7 @@
   "icon": "gravitycontrol_dimensionshift.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Sphere",
   "max_targets_hit": 16,
@@ -79,6 +80,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You shift {PlayerDest} into another dimension.  They are now intangible.",
+            "display_victim_hit": "{PlayerSource} shift you into another dimension.  You are now intangible, and cannot affect or be affected by those in normal space.",
+            "display_float": "Dimension Shift",
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -200,6 +207,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "POWERS/GRAVITYCONTROL/GCDIMENSIONSHIFTCONTINUING_WITHFADE.FX"
+          },
           "flags_raw": 1280
         }
       ]

@@ -10,6 +10,7 @@
   "icon": "incarnate_judgement_ion_rare.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": true,
   "accuracy": 2.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -61,7 +62,7 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
-      "eval_flags": 0,
+      "eval_flags": 2,
       "templates": [
         {
           "attribs": [
@@ -101,7 +102,7 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
-      "eval_flags": 0,
+      "eval_flags": 2,
       "templates": [
         {
           "attribs": [
@@ -213,6 +214,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "PFX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -264,9 +271,10 @@
           },
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance"
+            "IgnoreResistance",
+            "KeepThroughDeath"
           ],
-          "flags_raw": 1072
+          "flags_raw": 17456
         }
       ]
     },
@@ -280,7 +288,7 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
-      "eval_flags": 0,
+      "eval_flags": 2,
       "templates": [
         {
           "attribs": [
@@ -320,7 +328,7 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
-      "eval_flags": 0,
+      "eval_flags": 2,
       "templates": [
         {
           "attribs": [
@@ -360,7 +368,7 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
-      "eval_flags": 0,
+      "eval_flags": 2,
       "templates": [
         {
           "attribs": [

@@ -10,6 +10,7 @@
   "icon": "luminousaura_antagonize.png",
   "auto_issue": true,
   "auto_issue_keeps_level": false,
+  "free": true,
   "accuracy": 1.5,
   "effect_area": "Sphere",
   "max_targets_hit": 5,
@@ -98,7 +99,7 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
-      "eval_flags": 0,
+      "eval_flags": 2,
       "templates": [
         {
           "attribs": [
@@ -181,7 +182,7 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
-      "eval_flags": 0,
+      "eval_flags": 2,
       "templates": [
         {
           "attribs": [
@@ -221,6 +222,6 @@
     "Warshade_Tanker_Mode",
     "Disable_All"
   ],
-  "available_level": 4294967295,
+  "available_level": -1,
   "powerset": "Inherent.Inherent"
 }

@@ -10,6 +10,7 @@
   "icon": "darknesscontrol_shadowfield.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Sphere",
   "max_targets_hit": 16,
@@ -122,12 +123,39 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "NoFloaters",
-            "CancelOnMiss",
-            "IgnoreStrength"
+          "suppress_events": [
+            {
+              "event": "Held",
+              "event_id": 21,
+              "duration": 15.0,
+              "always": 0
+            },
+            {
+              "event": "Sleep",
+              "event_id": 22,
+              "duration": 15.0,
+              "always": 0
+            },
+            {
+              "event": "Stunned",
+              "event_id": 19,
+              "duration": 15.0,
+              "always": 0
+            },
+            {
+              "event": "Immobilized",
+              "event_id": 20,
+              "duration": 15.0,
+              "always": 0
+            },
+            {
+              "event": "Terrorized",
+              "event_id": 23,
+              "duration": 15.0,
+              "always": 0
+            }
           ],
-          "flags_raw": 21
+          "flags_raw": 2560
         }
       ]
     },
@@ -167,6 +195,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your hold on {PlayerDest} with your {PowerName} was even more powerful!",
+            "display_victim_hit": "{PlayerSource} lands an extra strong hold on you with their {PowerName}!",
+            "display_float": "Overpower",
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 2560
         }
       ]

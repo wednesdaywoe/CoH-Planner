@@ -77,7 +77,7 @@ export const XRayBeam: Power = {
     {
       "kind": "grant",
       "chance": 0.23000000417232513,
-      "label": "state"
+      "label": "Contaminated"
     }
   ],
   "damageTypes": [

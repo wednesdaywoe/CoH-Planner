@@ -56,5 +56,19 @@ export const WorldofPain: Power = {
     ["Resistance","Toxic",2,1,60,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"target.isFriend?",true],
     ["Mez","Placate",-30,1,60,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"target.isFriend?",true],
     ["GrantPower",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"target.isFriend?",true]
+  ],
+  "grantedDamageProcs": [
+    {
+      "name": "World_of_Pain_Proc",
+      "displayName": "World of Pain Proc",
+      "damage": [
+        {
+          "damageType": "Psionic",
+          "scale": 1,
+          "table": "Melee_Damage"
+        }
+      ],
+      "enhanceable": false
+    }
   ]
 };

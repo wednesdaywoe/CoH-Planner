@@ -188,7 +188,7 @@ export const TidalWave: Power = {
     {
       "kind": "grant",
       "chance": 0.27067646384239197,
-      "label": "state"
+      "label": "Drowning"
     }
   ],
   "damageTypes": [

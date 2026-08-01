@@ -10,6 +10,7 @@
   "icon": "plantcontrol_strangler.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.2,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -80,6 +81,20 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} holds {PlayerDest}, paralyzing them!",
+            "display_victim_hit": "{PlayerSource} holds you in place with their {PowerName} attack!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              379
+            ],
+            "conditional_fx": "ENEMYFX/CROATOA/TUATHA/STRANGLERROOTS.FX"
+          },
           "flags": [
             "NearGround"
           ],
@@ -123,6 +138,20 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your hold on {PlayerDest} with your {PowerName} was even more powerful!",
+            "display_victim_hit": "{PlayerSource} lands an extra strong hold on you with their {PowerName}!",
+            "display_float": "Overpower",
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              379
+            ],
+            "conditional_fx": "ENEMYFX/CROATOA/TUATHA/STRANGLERROOTS.FX"
+          },
           "flags": [
             "NearGround"
           ],
@@ -166,6 +195,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your Strangler Vines crush {PlayerDest} for {Damage} points of smashing damage.",
+            "display_victim_hit": "{PlayerSource} crushes you with Strangler Vines for {Damage} points of smashing damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -206,6 +241,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your Strangler Vines crush {PlayerDest} for {Damage} points of smashing damage.",
+            "display_victim_hit": "{PlayerSource} crushes you with Strangler Vines for {Damage} points of smashing damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]

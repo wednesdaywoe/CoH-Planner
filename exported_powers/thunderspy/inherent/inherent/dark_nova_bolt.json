@@ -10,6 +10,7 @@
   "icon": "umbralblast_shadowbolt.png",
   "auto_issue": true,
   "auto_issue_keeps_level": false,
+  "free": true,
   "accuracy": 1.5,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -90,6 +91,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with {Damage} points of negative energy damage from your {PowerName} and slow him.",
+            "display_victim_hit": "{PlayerSource} hits you with his {PowerName} for {Damage} points of negative energy damage and slows you!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -215,6 +222,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "GENERICCONTINUING/DEBUFFSPEEDALL.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreStrength"
           ],
@@ -258,6 +271,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with {Damage} points of negative energy damage from your {PowerName} and slow him.",
+            "display_victim_hit": "{PlayerSource} hits you with his {PowerName} for {Damage} points of negative energy damage and slows you!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]

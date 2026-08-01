@@ -10,6 +10,7 @@
   "icon": "umbralaura_essencedrain.png",
   "auto_issue": true,
   "auto_issue_keeps_level": false,
+  "free": true,
   "accuracy": 1.7,
   "effect_area": "Sphere",
   "max_targets_hit": 5,
@@ -92,6 +93,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You drain {PlayerDest} with your {PowerName} for {Damage} points of negative energy damage and slow him!",
+            "display_victim_hit": "{PlayerSource} drains you for {Damage} points of negative energy damage to heal himself and slows you!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -132,6 +139,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You gain {Damage} hit points from your {PowerName}!",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -261,6 +274,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "GENERICCONTINUING/DEBUFFSPEEDALL.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreStrength"
           ],
@@ -356,6 +375,9 @@
     }
   ],
   "max_boosts": 0,
+  "strengths_disallowed": [
+    "Range"
+  ],
   "modes_required": [
     "Warshade_Tanker_Mode"
   ],

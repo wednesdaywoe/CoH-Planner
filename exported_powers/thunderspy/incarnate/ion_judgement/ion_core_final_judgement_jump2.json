@@ -10,6 +10,7 @@
   "icon": "incarnate_judgement_ion_veryrare.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": true,
   "accuracy": 1.8,
   "effect_area": "Sphere",
   "max_targets_hit": 3,
@@ -91,6 +92,12 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} deals {Damage} points of energy damage to {PlayerDest}!",
+            "display_victim_hit": "{PlayerSource} blasts you with their {PowerName} for {Damage} points of energy damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -131,6 +138,12 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} deals an additional {Damage} points of energy damage to {PlayerDest}!",
+            "display_victim_hit": "{PlayerSource} blasts you with their {PowerName} for an additional {Damage} points of energy damage!",
+            "display_float": "JUDGEMENT CRITICAL",
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -195,50 +208,6 @@
       "templates": [
         {
           "attribs": [
-            "Create_Entity"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "",
-          "target": "",
-          "table": "Ranged_Ones",
-          "scale": 1.0,
-          "duration": "4 seconds",
-          "magnitude": 52.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null,
-          "params": {
-            "type": "EntCreate",
-            "entity_def": "IncarnatePets_Ion_Core_Final_Judgement_Jump3",
-            "priority_list": "PL_Untargetable_FightPreferRanged"
-          }
-        }
-      ]
-    },
-    {
-      "chance": 1.0,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": "",
-      "tags": [],
-      "flags": [],
-      "is_pvp": "EITHER",
-      "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
             "Null"
           ],
           "type": "Magnitude",
@@ -261,6 +230,18 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": null,
+            "display_float": "ION JUDGEMENT JUMP",
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "PFX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -305,15 +286,25 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "entity_def": "IncarnatePets_Ion_Core_Final_Judgement_Jump3",
+            "priority_list": "PL_Untargetable_FightPreferRanged",
+            "type": "EntCreate"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
-            "KeepThroughDeath"
+            "KeepThroughDeath",
+            "CopyBoosts"
           ],
-          "flags_raw": 17456
+          "flags_raw": 17456,
+          "flags2_raw": 4
         }
       ]
     }
+  ],
+  "strengths_disallowed": [
+    "RechargeTime"
   ],
   "modes_disallowed": [
     "Disable_All",

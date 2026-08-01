@@ -10,6 +10,7 @@
   "icon": "firetrap_hotfeet.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Sphere",
   "max_targets_hit": 16,
@@ -80,6 +81,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You activate {PowerName} and burn {PlayerDest} for {Damage} points of fire damage, and Slow their attack speed and movement.",
+            "display_victim_hit": "{PlayerSource}'s {PowerName} burns you for {Damage} points of Fire damage.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "NearGround"
           ],
@@ -292,6 +299,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "POWERS/FIRECONTROL/HOTFEETHIT.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "NearGround"
           ],

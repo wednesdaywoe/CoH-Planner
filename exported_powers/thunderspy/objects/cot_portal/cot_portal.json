@@ -10,6 +10,7 @@
   "icon": "regeneration_revive.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Sphere",
   "max_targets_hit": 16,
@@ -77,136 +78,16 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
-          "flags_raw": 1280
-        }
-      ]
-    },
-    {
-      "chance": 1.0,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": "",
-      "tags": [],
-      "flags": [],
-      "is_pvp": "EITHER",
-      "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "Create_Entity"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "",
-          "target": "",
-          "table": "Ranged_Ones",
-          "scale": -1.0,
-          "duration": "99999 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null,
           "params": {
-            "type": "EntCreate",
-            "entity_def": "Arachnos_Mu_Striker_High_Ghost_Noexp"
-          }
-        }
-      ]
-    },
-    {
-      "chance": 1.0,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": "",
-      "tags": [],
-      "flags": [],
-      "is_pvp": "EITHER",
-      "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "Create_Entity"
+            "entity_def": "Arachnos_Mu_Striker_High_Ghost_Noexp",
+            "priority_list": "RUNOUTOFDOOR,COMBAT",
+            "type": "EntCreate"
+          },
+          "flags": [
+            "CopyBoosts"
           ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "",
-          "target": "",
-          "table": "Ranged_Ones",
-          "scale": -1.0,
-          "duration": "99999 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null,
-          "params": {
-            "type": "EntCreate",
-            "entity_def": "Arachnos_Mu_Striker_High_Ghost_Noexp"
-          }
-        }
-      ]
-    },
-    {
-      "chance": 1.0,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": "",
-      "tags": [],
-      "flags": [],
-      "is_pvp": "EITHER",
-      "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "Create_Entity"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "",
-          "target": "",
-          "table": "Ranged_Ones",
-          "scale": -1.0,
-          "duration": "99999 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null,
-          "params": {
-            "type": "EntCreate",
-            "entity_def": "Arachnos_Mu_Striker_High_Ghost_Noexp"
-          }
+          "flags_raw": 1280,
+          "flags2_raw": 4
         }
       ]
     },
@@ -246,7 +127,16 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
-          "flags_raw": 1280
+          "params": {
+            "entity_def": "Arachnos_Mu_Striker_High_Ghost_Noexp",
+            "priority_list": "RUNOUTOFDOOR,COMBAT",
+            "type": "EntCreate"
+          },
+          "flags": [
+            "CopyBoosts"
+          ],
+          "flags_raw": 1280,
+          "flags2_raw": 4
         }
       ]
     },
@@ -286,7 +176,16 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
-          "flags_raw": 1280
+          "params": {
+            "entity_def": "Arachnos_Mu_Striker_High_Ghost_Noexp",
+            "priority_list": "RUNOUTOFDOOR,COMBAT",
+            "type": "EntCreate"
+          },
+          "flags": [
+            "CopyBoosts"
+          ],
+          "flags_raw": 1280,
+          "flags2_raw": 4
         }
       ]
     },
@@ -326,50 +225,16 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
-          "flags_raw": 1280
-        }
-      ]
-    },
-    {
-      "chance": 0.20000000298023224,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": "",
-      "tags": [],
-      "flags": [],
-      "is_pvp": "EITHER",
-      "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "Create_Entity"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "",
-          "target": "",
-          "table": "Ranged_Ones",
-          "scale": -1.0,
-          "duration": "99999 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null,
           "params": {
-            "type": "EntCreate",
-            "entity_def": "Arachnos_Mu_Adept_High_Ghost_Noexp"
-          }
+            "entity_def": "Arachnos_Mu_Adept_High_Ghost_Noexp",
+            "priority_list": "RUNOUTOFDOOR,COMBAT",
+            "type": "EntCreate"
+          },
+          "flags": [
+            "CopyBoosts"
+          ],
+          "flags_raw": 1280,
+          "flags2_raw": 4
         }
       ]
     },
@@ -409,50 +274,16 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
-          "flags_raw": 1280
-        }
-      ]
-    },
-    {
-      "chance": 0.10000000149011612,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": "",
-      "tags": [],
-      "flags": [],
-      "is_pvp": "EITHER",
-      "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "Create_Entity"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "",
-          "target": "",
-          "table": "Ranged_Ones",
-          "scale": -1.0,
-          "duration": "99999 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null,
           "params": {
-            "type": "EntCreate",
-            "entity_def": "Arachnos_Mu_Guardian_High_Ghost_Noexp"
-          }
+            "entity_def": "Arachnos_Mu_Guardian_High_Ghost_Noexp",
+            "priority_list": "RUNOUTOFDOOR,COMBAT",
+            "type": "EntCreate"
+          },
+          "flags": [
+            "CopyBoosts"
+          ],
+          "flags_raw": 1280,
+          "flags2_raw": 4
         }
       ]
     }

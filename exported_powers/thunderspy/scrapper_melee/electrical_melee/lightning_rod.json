@@ -10,6 +10,7 @@
   "icon": "electricmelee_pbaoeteleport.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Location",
   "max_targets_hit": 0,
@@ -112,13 +113,13 @@
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
-          "aspect": "",
-          "target": "",
+          "aspect": "Current",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
-          "scale": 1.0,
-          "duration": "0 seconds",
+          "scale": -1.0,
+          "duration": "4 seconds",
           "magnitude": 1.0,
-          "delay": 0.0,
+          "delay": 0.625,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -127,58 +128,21 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
+          "stack": "Replace",
+          "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Pets_Lightning_Rod_Scrapper",
-            "priority_list": "PL_StaticObject"
-          }
-        }
-      ]
-    },
-    {
-      "chance": 1.0,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": "",
-      "tags": [],
-      "flags": [],
-      "is_pvp": "EITHER",
-      "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "Create_Entity"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "Current",
-          "target": "AnyAffected",
-          "table": "Ranged_Ones",
-          "scale": -1.0,
-          "duration": "4 seconds",
-          "magnitude": 1.0,
-          "delay": 0.625,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "",
-          "stack": "Replace",
-          "stack_limit": 2,
-          "stack_key": null,
+            "priority_list": "PL_StaticObject",
+            "type": "EntCreate"
+          },
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance"
+            "IgnoreResistance",
+            "CopyBoosts"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 4
         }
       ]
     },
@@ -217,56 +181,19 @@
           "caster_stack": "",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null,
-          "flags": [
-            "IgnoreStrength",
-            "IgnoreResistance"
-          ],
-          "flags_raw": 1072
-        }
-      ]
-    },
-    {
-      "chance": 0.0,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": "",
-      "tags": [],
-      "flags": [],
-      "is_pvp": "EITHER",
-      "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "Create_Entity"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "",
-          "target": "",
-          "table": "Ranged_Ones",
-          "scale": -1.0,
-          "duration": "4 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Pets_Embraced_Lightning_Rod_Scrapper",
-            "priority_list": "PL_StaticObject"
-          }
+            "priority_list": "PL_StaticObject",
+            "type": "EntCreate"
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "CopyBoosts"
+          ],
+          "flags_raw": 1072,
+          "flags2_raw": 4
         }
       ]
     }

@@ -93,8 +93,5 @@ export const ElixirofLife: Power = {
     ["DamageBuff","Psionic",4,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["ToHit",null,3,1,90,"Ranged_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["Resistance","Toxic",2,1,90,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1]
-  ],
-  "setsModes": [
-    "Peacebringer_Blaster_Mode"
   ]
 };

@@ -52,17 +52,14 @@ export const Vacuum: Power = {
       "table": "Ranged_Immobilize"
     },
     "summon": {
+      "copyBoosts": true,
       "duration": 8,
       "entity": "Pets_WindControl_Vacuum_Dominator",
-      "isPseudoPet": false,
-      "powers": [
-        "Temporary_Powers.Temporary_Powers.Wind_Control_Pressure"
-      ]
+      "isPseudoPet": false
     }
   },
   "atoms": [
     ["EntCreate",null,-1,1,8,"Ranged_Ones","Cur","Expression","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target.owner> entref source> eq !"],
-    ["EntCreate",null,-1,1,8,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target.owner> entref source> eq !"],
     ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"entref target.owner> entref source> eq ! target.isFriend? ! && enttype target> critter eq &&"],
     ["Mez","Held",4,4,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"entref target.owner> entref source> eq ! target.isFriend? ! && enttype target> player eq &&",true],
     ["Mez","Held",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"entref target.owner> entref source> eq ! target.isFriend? ! && enttype target> critter eq && kStealth source> 0.5 > &&",true],

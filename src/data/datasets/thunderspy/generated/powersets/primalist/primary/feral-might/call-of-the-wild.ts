@@ -39,6 +39,7 @@ export const CalloftheWild: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
+      "copyBoosts": true,
       "duration": 90,
       "entity": "Pets_PrimalWolf",
       "entityCount": 2,
@@ -47,8 +48,6 @@ export const CalloftheWild: Power = {
   },
   "atoms": [
     ["EntCreate",null,1,1,90,"Melee_Levelminus","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
-    ["EntCreate",null,1,1,90,"Melee_Levelminus","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["EntCreate",null,1,1,90,"Melee_Levelminus","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["EntCreate",null,1,1,90,"Melee_Levelminus","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true]
   ]
 };

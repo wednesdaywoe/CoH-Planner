@@ -10,6 +10,7 @@
   "icon": "temporary_terravoltaglow.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Sphere",
   "max_targets_hit": 1,
@@ -84,9 +85,11 @@
           },
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance"
+            "IgnoreResistance",
+            "VanishEntOnTimeout"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 1
         }
       ]
     },
@@ -129,9 +132,11 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
-            "IgnoreCombatMods"
+            "IgnoreCombatMods",
+            "VanishEntOnTimeout"
           ],
           "flags_raw": 112,
+          "flags2_raw": 1,
           "mode_name": "OnePowerCell"
         }
       ]

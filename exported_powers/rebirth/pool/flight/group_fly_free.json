@@ -10,6 +10,7 @@
   "icon": "flight_groupfly.png",
   "auto_issue": true,
   "auto_issue_keeps_level": false,
+  "free": true,
   "accuracy": 1.0,
   "effect_area": "Sphere",
   "max_targets_hit": 255,
@@ -83,6 +84,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "PFX"
+          },
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -352,6 +359,6 @@
     "Warshade_Form_Change",
     "Warshade_Form_Change2"
   ],
-  "available_level": 4294967295,
+  "available_level": -1,
   "powerset": "Pool.Flight"
 }

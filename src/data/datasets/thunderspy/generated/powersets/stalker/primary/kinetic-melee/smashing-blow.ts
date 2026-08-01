@@ -18,6 +18,9 @@ export const SmashingBlow: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,
@@ -94,7 +97,7 @@ export const SmashingBlow: Power = {
     {
       "kind": "grant",
       "chance": 0.8500000238418579,
-      "label": "state"
+      "label": "Assassins Focus"
     }
   ],
   "damageTypes": [

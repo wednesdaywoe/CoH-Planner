@@ -10,6 +10,7 @@
   "icon": "devouringearthseed_seedling_bullrush.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.4,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -79,6 +80,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": "{PlayerSource} slams you with a {PowerName} attack that causes {Damage} points of lethal damage and infects you with a minor case of the Tellurian plague!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -119,10 +126,25 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": "The infection from {PlayerSource} weakens your body, causing {Damage} points of toxic damage.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "ENEMYFX/PRAETORIAN/WARWORKS/CHEMICALGRENADE_TOXIC_CONTINUING.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags_raw": 1280
         }
       ]
     }
+  ],
+  "strengths_disallowed": [
+    "Range"
   ],
   "available_level": 0,
   "powerset": "DevouringEarth.Malignant_Seedling"

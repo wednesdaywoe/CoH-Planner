@@ -10,6 +10,7 @@
   "icon": "mentalcontrol_confuse.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 0.8,
   "effect_area": "Sphere",
   "max_targets_hit": 16,
@@ -79,6 +80,18 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You confuse {PlayerDest}!",
+            "display_victim_hit": "{PlayerSource} confuses you!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "GENERICCONTINUING/CONFUSECONTINUING.FX"
+          },
           "flags_raw": 2560
         }
       ]
@@ -119,6 +132,18 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You confuse {PlayerDest} even more!",
+            "display_victim_hit": "{PlayerSource} confuses you even more!",
+            "display_float": "Overpower",
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "GENERICCONTINUING/CONFUSECONTINUING.FX"
+          },
           "flags_raw": 2560
         }
       ]

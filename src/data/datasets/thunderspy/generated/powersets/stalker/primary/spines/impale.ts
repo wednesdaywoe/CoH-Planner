@@ -118,7 +118,7 @@ export const Impale: Power = {
     {
       "kind": "grant",
       "chance": 0.8999999761581421,
-      "label": "state"
+      "label": "Assassins Focus"
     }
   ],
   "damageTypes": [

@@ -10,6 +10,7 @@
   "icon": "powerpunch_buildup.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.3,
   "effect_area": "Sphere",
   "max_targets_hit": 16,

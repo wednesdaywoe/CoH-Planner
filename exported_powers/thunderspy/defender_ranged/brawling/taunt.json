@@ -10,6 +10,7 @@
   "icon": "brawling_placate.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Sphere",
   "max_targets_hit": 5,
@@ -82,7 +83,18 @@
           "caster_stack": "",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You Placate {PlayerDest}.",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "cancel_events": [
+            "Attacked",
+            "Damaged"
+          ],
+          "flags_raw": 2560
         }
       ]
     },
@@ -121,7 +133,18 @@
           "caster_stack": "",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You Placate {PlayerDest}.",
+            "display_victim_hit": "You have been Placated and cannot target {PlayerSource}.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "cancel_events": [
+            "Attacked",
+            "Damaged"
+          ],
+          "flags_raw": 2560
         }
       ]
     },
@@ -161,6 +184,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "GENERICCONTINUING/BUFFDEFCONTINUING.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"

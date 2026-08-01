@@ -10,6 +10,7 @@
   "icon": "banespider_bash.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.05,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -90,6 +91,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You Bash {PlayerDest} with your Mace for {Damage} points of smashing damage!",
+            "display_victim_hit": "{PlayerSource} Bashes you with their Mace for {Damage} points of smashing damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -130,6 +137,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of toxic damage!",
+            "display_victim_hit": "{PlayerSource} Poisons you for {Damage} points of toxic damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -170,6 +183,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You Bash {PlayerDest} with your Mace for {Damage} points of smashing damage!",
+            "display_victim_hit": "{PlayerSource} Bashes you with their Mace for {Damage} points of smashing damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -210,6 +229,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of toxic damage!",
+            "display_victim_hit": "{PlayerSource} Poisons you for {Damage} points of toxic damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -250,6 +275,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of toxic damage!",
+            "display_victim_hit": "{PlayerSource} Poisons you for {Damage} points of toxic damage!",
+            "display_float": "STEALTH STRIKE",
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -290,6 +321,18 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You disorient {PlayerDest} with your {PowerName}!",
+            "display_victim_hit": "{PlayerSource} disorients you with their {PowerName}!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "GENERICCONTINUING/STUNCONTINUING.FX"
+          },
           "flags_raw": 2560
         }
       ]
@@ -330,6 +373,18 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You disorient {PlayerDest} with your {PowerName}!",
+            "display_victim_hit": "{PlayerSource} disorients you with their {PowerName}!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "GENERICCONTINUING/STUNCONTINUING.FX"
+          },
           "flags_raw": 2560
         }
       ]
@@ -370,6 +425,18 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "The poison from your {PowerName} deals {Damage} points of toxic damage to {PlayerDest}",
+            "display_victim_hit": "{PlayerSource} poisons you for {Damage} points of Toxic damage with his {PowerName}.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "V_COV/ENEMYPOWERS/ARACHNOS/BANEMACE/BANEMACEHITCONTINUING.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -410,10 +477,19 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of toxic damage!",
+            "display_victim_hit": "{PlayerSource} Poisons you for {Damage} points of toxic damage!",
+            "display_float": "STEALTH STRIKE",
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
     }
+  ],
+  "strengths_disallowed": [
+    "Range"
   ],
   "modes_disallowed": [
     "Disable_All"

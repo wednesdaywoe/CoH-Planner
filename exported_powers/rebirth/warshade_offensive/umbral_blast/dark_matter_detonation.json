@@ -10,6 +10,7 @@
   "icon": "umbralblast_darkmatterdetonation.png",
   "auto_issue": true,
   "auto_issue_keeps_level": true,
+  "free": true,
   "accuracy": 1.0,
   "effect_area": "Sphere",
   "max_targets_hit": 16,
@@ -317,6 +318,14 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "Knocked",
+              "event_id": 29,
+              "duration": 10.0,
+              "always": 0
+            }
+          ],
           "flags_raw": 1280
         }
       ]
@@ -520,6 +529,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "GENERICCONTINUING/DEBUFFSPEEDALL.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreStrength"
           ],

@@ -10,6 +10,7 @@
   "icon": "superreflexes_quickness.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": true,
   "accuracy": 1.0,
   "effect_area": "Sphere",
   "max_targets_hit": 16,
@@ -77,11 +78,18 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "GENERICCONTINUING/DAMAGERESISTANCE/BUFFDAMRESCONTINUING.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance"
+            "IgnoreResistance",
+            "StackExactPower"
           ],
-          "flags_raw": 1072
+          "flags_raw": 525360
         }
       ]
     },
@@ -123,9 +131,10 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance"
+            "IgnoreResistance",
+            "StackExactPower"
           ],
-          "flags_raw": 1072
+          "flags_raw": 525360
         }
       ]
     },
@@ -167,9 +176,10 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance"
+            "IgnoreResistance",
+            "StackExactPower"
           ],
-          "flags_raw": 1072
+          "flags_raw": 525360
         }
       ]
     },
@@ -211,9 +221,10 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance"
+            "IgnoreResistance",
+            "StackExactPower"
           ],
-          "flags_raw": 1072
+          "flags_raw": 525360
         }
       ]
     },
@@ -255,9 +266,10 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance"
+            "IgnoreResistance",
+            "StackExactPower"
           ],
-          "flags_raw": 1072
+          "flags_raw": 525360
         }
       ]
     },
@@ -299,9 +311,10 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance"
+            "IgnoreResistance",
+            "StackExactPower"
           ],
-          "flags_raw": 1072
+          "flags_raw": 525360
         }
       ]
     },
@@ -343,9 +356,10 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance"
+            "IgnoreResistance",
+            "StackExactPower"
           ],
-          "flags_raw": 1072
+          "flags_raw": 525360
         }
       ]
     },
@@ -387,9 +401,10 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance"
+            "IgnoreResistance",
+            "StackExactPower"
           ],
-          "flags_raw": 1072
+          "flags_raw": 525360
         }
       ]
     },
@@ -431,9 +446,10 @@
           "stack_key": null,
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance"
+            "IgnoreResistance",
+            "StackExactPower"
           ],
-          "flags_raw": 1072
+          "flags_raw": 525360
         }
       ]
     }

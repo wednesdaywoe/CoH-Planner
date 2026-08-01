@@ -10,6 +10,7 @@
   "icon": "devouringearthseed_seedling_bullrush.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.4,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -119,6 +120,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "ENEMYFX/PRAETORIAN/WARWORKS/CHEMICALGRENADE_TOXIC_CONTINUING.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags_raw": 1280
         }
       ]

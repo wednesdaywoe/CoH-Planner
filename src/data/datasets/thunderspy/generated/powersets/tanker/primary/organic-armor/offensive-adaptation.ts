@@ -92,6 +92,20 @@ export const OffensiveAdaptation: Power = {
     ["Resistance","Psionic",-0.075,1,1.1,"Melee_Ones","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
     ["Resistance","Toxic",-0.075,1,1.1,"Melee_Ones","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true]
   ],
+  "grantedDamageProcs": [
+    {
+      "name": "Offensive_Adaptation_Proc",
+      "displayName": "Offensive Adaptation",
+      "damage": [
+        {
+          "damageType": "Toxic",
+          "scale": 0.25,
+          "table": "Melee_Damage"
+        }
+      ],
+      "enhanceable": false
+    }
+  ],
   "requires": "Tanker_Defense.Organic_Armor.Evolution",
   "setsModes": [
     "OffensiveAdaptation"

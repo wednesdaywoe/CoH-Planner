@@ -10,6 +10,7 @@
   "icon": "watercontrol_riptide.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Sphere",
   "max_targets_hit": 16,
@@ -80,7 +81,29 @@
           "caster_stack": "",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "vec_start": "Target",
+            "vec_end": "Source",
+            "priority": 1,
+            "vel": 1.0,
+            "vel_mag": 0.10000000149011612,
+            "height": 0.0,
+            "height_mag": 0.0,
+            "vec_adjust_pyr": [
+              0.0,
+              0.0,
+              90.0
+            ],
+            "type": "Knock"
+          },
+          "cancel_events": [
+            "Event_33"
+          ],
+          "flags": [
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 320
         }
       ]
     },
@@ -120,6 +143,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": "The {PlayerSource} chills you for {Damage} points of cold damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -160,6 +189,19 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Water_Control_Drowning"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": null,
+            "display_float": "Drowning",
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"

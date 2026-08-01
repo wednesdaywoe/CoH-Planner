@@ -18,6 +18,9 @@ export const RadioactiveSmash: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,
@@ -106,7 +109,7 @@ export const RadioactiveSmash: Power = {
     {
       "kind": "grant",
       "chance": 0.23000000417232513,
-      "label": "state"
+      "label": "Contaminated"
     }
   ],
   "damageTypes": [

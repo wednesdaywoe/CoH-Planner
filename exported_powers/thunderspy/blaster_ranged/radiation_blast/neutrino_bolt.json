@@ -10,6 +10,7 @@
   "icon": "radiationburst_neutrinoblast",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -96,7 +97,18 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags_raw": 1280
+          "params": {
+            "power_names": [
+              "Pets.Contamination.Neutrino_Bolt"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
+          "flags": [
+            "CopyBoosts"
+          ],
+          "flags_raw": 1280,
+          "flags2_raw": 4
         }
       ]
     },
@@ -136,6 +148,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You blast {PlayerDest} with your {PowerName} for {Damage} points of energy damage, and reduce their Defense!",
+            "display_victim_hit": "{PlayerSource} blasts you with their {PowerName} for {Damage} points of energy damage and reduces your Defense!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -176,6 +194,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You blast {PlayerDest} with your {PowerName} for {Damage} points of energy damage, and reduce their Defense!",
+            "display_victim_hit": "{PlayerSource} blasts you with their {PowerName} for {Damage} points of energy damage and reduces your Defense!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -216,6 +240,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You blast {PlayerDest} with your {PowerName} for {Damage} points of energy damage, and reduce their Defense!",
+            "display_victim_hit": "{PlayerSource} blasts you with their {PowerName} for {Damage} points of energy damage and reduces your Defense!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -256,6 +286,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You blast {PlayerDest} with your {PowerName} for {Damage} points of energy damage, and reduce their Defense!",
+            "display_victim_hit": "{PlayerSource} blasts you with their {PowerName} for {Damage} points of energy damage and reduces your Defense!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -296,6 +332,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "PFX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "CancelOnMiss"
           ],
@@ -339,6 +381,19 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
+          "messages": {
+            "display_attacker_hit": "You contaminate {PlayerDest}!",
+            "display_victim_hit": "{PlayerSource} has contaminated you.",
+            "display_float": "Contaminated!",
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -383,6 +438,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "tokens": [
+              "Radiation_Melee_Contamination_Hit"
+            ],
+            "type": "Token"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"

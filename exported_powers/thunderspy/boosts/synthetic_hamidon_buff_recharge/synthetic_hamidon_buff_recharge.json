@@ -10,6 +10,7 @@
   "icon": "e_icon_hamidon_01.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -92,7 +93,8 @@
             "IgnoreResistance",
             "Boost"
           ],
-          "flags_raw": 5168
+          "flags_raw": 5168,
+          "boost_mod_allowed_id": 7
         }
       ]
     },
@@ -137,7 +139,8 @@
             "IgnoreResistance",
             "Boost"
           ],
-          "flags_raw": 5168
+          "flags_raw": 5168,
+          "boost_mod_allowed_id": 6
         }
       ]
     },
@@ -191,7 +194,8 @@
             "IgnoreResistance",
             "Boost"
           ],
-          "flags_raw": 5168
+          "flags_raw": 5168,
+          "boost_mod_allowed_id": 6
         }
       ]
     },
@@ -236,7 +240,8 @@
             "IgnoreResistance",
             "Boost"
           ],
-          "flags_raw": 5168
+          "flags_raw": 5168,
+          "boost_mod_allowed_id": 18
         }
       ]
     }

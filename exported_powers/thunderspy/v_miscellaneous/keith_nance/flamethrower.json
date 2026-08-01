@@ -10,6 +10,7 @@
   "icon": "assaultweapons_arflamethrower.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.3,
   "effect_area": "Cone",
   "max_targets_hit": 10,
@@ -80,6 +81,18 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your Flamethrower burns {PlayerDest} for {Damage} points of fire damage!",
+            "display_victim_hit": "{PlayerSource} burns you for {Damage} points of fire damage with their FlameThrower!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "POWERS/FIRECONTROL/CINDERSHIT.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags_raw": 1280
         }
       ]

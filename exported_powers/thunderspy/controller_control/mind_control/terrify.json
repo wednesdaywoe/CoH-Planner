@@ -10,6 +10,7 @@
   "icon": "mentalcontrol_terrify.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Cone",
   "max_targets_hit": 16,
@@ -92,6 +93,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "GENERICCONTINUING/AFRAIDCONTINUING.FX"
+          },
           "flags_raw": 2560
         }
       ]
@@ -132,6 +139,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "{PlayerDest} is Terrified and takes {Damage} points of Psionic damage.",
+            "display_victim_hit": "{PlayerSource} Terrifies you.  Your fear consumes you for {Damage} points of Psionic damage.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -172,6 +185,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "{PlayerDest} is Terrified and takes {Damage} points of Psionic damage.",
+            "display_victim_hit": "{PlayerSource} Terrifies you.  Your fear consumes you for {Damage} points of Psionic damage.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -212,6 +231,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} burns {PlayerDest} for {Damage} points of fire damage.",
+            "display_victim_hit": "{PlayerSource} burns you with their {PowerName} for {Damage} points of fire damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -252,6 +277,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} burns {PlayerDest} for {Damage} points of fire damage.",
+            "display_victim_hit": "{PlayerSource} burns you with their {PowerName} for {Damage} points of fire damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "IgnoreResistance"
           ],
@@ -295,6 +326,18 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You {PowerName} {PlayerDest} even more!",
+            "display_victim_hit": "{PlayerSource} terrifies you even more!",
+            "display_float": "Overpower",
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "GENERICCONTINUING/AFRAIDCONTINUING.FX"
+          },
           "flags_raw": 2560
         }
       ]
@@ -335,6 +378,18 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You {PowerName} {PlayerDest}!",
+            "display_victim_hit": "{PlayerSource} terrifies you!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "GENERICCONTINUING/AFRAIDCONTINUING.FX"
+          },
           "flags_raw": 2560
         }
       ]

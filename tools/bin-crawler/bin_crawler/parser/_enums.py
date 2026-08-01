@@ -560,11 +560,12 @@ SPECIAL_ATTRIB_BAND: tuple[str, ...] = (
     "Lua_Exec", "Force_Move", "Parkour_Run",
 )
 
-# Create_Entity's offset within the band. Thunderspy's nested summon sub-entries
-# LEAD with this raw value, so the byte-scan that recovers pet lists keys on
-# `base + SPECIAL_ATTRIB_CREATE_ENTITY` rather than a literal (see
-# `_extract_thunderspy_summons`) — a stale literal finds nothing and DELETES
-# every summon's pet templates instead of merely mislabeling them.
+# Create_Entity's offset within the band, which is where a summon's AttribMod
+# resolves once the band base is right. It used to also anchor a byte-scan that
+# recovered pet lists by matching `base + SPECIAL_ATTRIB_CREATE_ENTITY` in the
+# raw bytes — the one band consumer that DELETED rather than mislabelled when the
+# base went stale (TSPY-6). That scan is retired; pets come from the AttribMod's
+# own Params payload, so this is a naming offset again and nothing more.
 SPECIAL_ATTRIB_CREATE_ENTITY = SPECIAL_ATTRIB_BAND.index("Create_Entity")
 
 
@@ -900,8 +901,30 @@ TARGET_TYPE_CLASSIC: dict[int, str] = {
 # at the bottom of the table (1 ActivateAttackClick, 2 Attacked), a +4 shift
 # through the mez/damage band (13→17 HitByFoe … 29→33 Knocked: HC inserted
 # four events below 13), and +6 at 31→37 MissionObjectClick. Only the ids
-# observed in the Rebirth corpus are named — per fail-loud, everything else
-# renders as Event_<id> rather than borrowing a possibly-shifted HC name.
+# observed in the corpus are named — per fail-loud, everything else renders
+# as Event_<id> rather than borrowing a possibly-shifted HC name.
+#
+# Thunderspy shares this numbering (WRAP-3, 2026-07-31). Position-pairing
+# alone does NOT prove that: the five-element mez suppress block is written in
+# a different ORDER on each side, and a permutation reads as a consistent 93%
+# "majority" that maps 19→Held / 21→Stunned. Two order-free methods settle it
+# instead, and they cover disjoint halves of the table:
+#   * records forced by a duration unique within their array, or by being the
+#     last unpinned element of an array whose others are already pinned —
+#     unanimous for 1, 8, 19, 20, 21, 22, 23, 24, 29, 31;
+#   * per-template set co-occurrence across every power the two forks share,
+#     which ignores order entirely — the discriminating result for 2 (→2
+#     Attacked), 13 (→17 HitByFoe) and 17 (→21 Damaged), each beating its
+#     runner-up by a wide margin. It is deliberately NOT used for the mez
+#     block, where those five ids always occur together and so score as a tie.
+# Both methods reproduce the same shift running Rebirth→HC and Thunderspy→HC,
+# and Thunderspy→Rebirth is the identity on every observed id.
+#
+# 25 = Untouchable is anchored semantically rather than by shift arithmetic:
+# it is carried by the intangibility powers (Detention Field, Sonic Cage,
+# Black Hole, Dimension Shift) on both forks, and Rebirth's Dimension Shift
+# pairs (20, 25) against Homecoming's (Immobilized 24, Untouchable 29) with
+# 20 already pinned. Both forks shipped it as the fail-loud Event_25 before.
 EVENT_NAME_PARSE6: dict[int, str] = {
     1: "ActivateAttackClick",
     2: "Attacked",
@@ -912,6 +935,7 @@ EVENT_NAME_PARSE6: dict[int, str] = {
     21: "Held",
     22: "Sleep",
     23: "Terrorized",
+    25: "Untouchable",
     29: "Knocked",
     31: "MissionObjectClick",
 }

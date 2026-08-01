@@ -10,6 +10,7 @@
   "icon": "firetrap_soot.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -85,6 +86,14 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              375
+            ],
+            "conditional_fx": "POWERS/FIRECONTROL/SMOKEHIT.FX"
+          },
           "flags_raw": 2560
         }
       ]
@@ -125,6 +134,14 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              375
+            ],
+            "conditional_fx": "POWERS/FIRECONTROL/SMOKEHIT.FX"
+          },
           "flags_raw": 2560
         }
       ]
@@ -165,6 +182,18 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "{PlayerSource} burns {PlayerDest} with their {PowerName} for {Damage} points of fire damage!",
+            "display_victim_hit": "{PlayerSource} burns you with their {PowerName} for {Damage} points of fire damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "POWERS/FIRECONTROL/CINDERSHIT.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -205,10 +234,25 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "{PlayerSource} lands a critical hit and burns {PlayerDest} with their {PowerName} for an extra {Damage} points of fire damage!",
+            "display_victim_hit": "{PlayerSource} lands a critical hit and burns you with their {PowerName} for an extra {Damage} points of fire damage!",
+            "display_float": "CRITICAL",
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "POWERS/FIRECONTROL/CINDERSHIT.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags_raw": 1280
         }
       ]
     }
+  ],
+  "strengths_disallowed": [
+    "RechargeTime"
   ],
   "modes_disallowed": [
     "Disable_All"

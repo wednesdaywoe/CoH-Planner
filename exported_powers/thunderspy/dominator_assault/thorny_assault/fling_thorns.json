@@ -10,6 +10,7 @@
   "icon": "thornyassault_flingthorns.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Cone",
   "max_targets_hit": 10,
@@ -91,6 +92,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} strikes {PlayerDest} for {Damage} points of lethal damage and reduces their defense!",
+            "display_victim_hit": "{PlayerSource} strikes you with their {PowerName} for {Damage} points of lethal damage reducing your defense!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -131,6 +138,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Poison from your Thorns deal {damage} points of Toxic damage to {PlayerDest} for {Damage}!",
+            "display_victim_hit": "You take {Damage} points of toxic damage from the Thorns.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "CancelOnMiss"
           ],
@@ -174,6 +187,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} strikes {PlayerDest} for {Damage} points of lethal damage and reduces their defense!",
+            "display_victim_hit": "{PlayerSource} strikes you with their {PowerName} for {Damage} points of lethal damage reducing your defense!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -214,6 +233,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "GENERICCONTINUING/DEBUFFDEFCONTINUING.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags_raw": 1280
         }
       ]

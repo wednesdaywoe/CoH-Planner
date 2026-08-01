@@ -10,6 +10,7 @@
   "icon": "invulnerability_temporaryinvulnerabilty.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -132,7 +133,11 @@
             "entity_def": "Objects_UXB_Target",
             "priority_list": "PL_BeGoodandFight"
           },
-          "flags_raw": 1280
+          "flags": [
+            "VanishEntOnTimeout"
+          ],
+          "flags_raw": 1280,
+          "flags2_raw": 1
         }
       ]
     }

@@ -10,6 +10,7 @@
   "icon": "incarnate_interface_reactive_common.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": true,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -84,6 +85,18 @@
           "stack": "StackThenIgnore",
           "stack_limit": 8,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} continues to burn for {Damage} points of fire damage!",
+            "display_victim_hit": "You continue to burn from the {PowerName} for {Damage} points of fire damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "INCARNATEPOWERS/INTERFACE/REACTIVE.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "CancelOnMiss",
             "IgnoreStrength"

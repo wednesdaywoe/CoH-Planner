@@ -10,6 +10,7 @@
   "icon": "invisibility_phaseshift.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 0.5,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -185,7 +186,7 @@
       "templates": [
         {
           "attribs": [
-            "Create_Entity"
+            "Translucency"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -228,7 +229,7 @@
       "templates": [
         {
           "attribs": [
-            "Create_Entity"
+            "Translucency"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -271,7 +272,7 @@
       "templates": [
         {
           "attribs": [
-            "Create_Entity"
+            "Translucency"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",

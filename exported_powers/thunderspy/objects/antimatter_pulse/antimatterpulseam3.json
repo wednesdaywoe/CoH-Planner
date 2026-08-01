@@ -10,6 +10,7 @@
   "icon": "temporary_terravoltaglow.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Map",
   "max_targets_hit": 0,
@@ -79,6 +80,12 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": "The {PowerName} from the reactor irradiates you for {Damage} points of annihilation damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -123,6 +130,12 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": "The {PowerName} from the reactor irradiates you for {Damage} points of Energy damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "IgnoreStrength"
           ],
@@ -166,6 +179,12 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": "The {PowerName} from the reactor irradiates you for {Damage} points of Energy damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"

@@ -10,6 +10,7 @@
   "icon": "darkmiasma_tarpatch.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Volume",
   "max_targets_hit": 0,
@@ -55,7 +56,7 @@
       "templates": [
         {
           "attribs": [
-            "Create_Entity"
+            "Translucency"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -120,6 +121,15 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [
+              379,
+              682
+            ],
+            "continuing_fx": "POWERS/ILLUSIONS/ILLUSINVISIBILITYCONTINUING.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods",
@@ -165,6 +175,10 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "destination": "85.RiktiTeleport4",
+            "type": "Teleport"
+          },
           "flags": [
             "IgnoreResistance"
           ],
@@ -208,6 +222,10 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "destination": "85.RiktiTeleport1",
+            "type": "Teleport"
+          },
           "flags": [
             "IgnoreResistance"
           ],
@@ -251,6 +269,10 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "destination": "85.RiktiTeleport2",
+            "type": "Teleport"
+          },
           "flags": [
             "IgnoreResistance"
           ],
@@ -294,6 +316,10 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "destination": "85.RiktiTeleport3",
+            "type": "Teleport"
+          },
           "flags": [
             "IgnoreResistance"
           ],

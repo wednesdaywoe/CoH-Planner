@@ -54,23 +54,23 @@ export const TargetingDrone: Power = {
     "durations": {
       "debuffResistance": 0.75,
       "perceptionBuff": 0.75,
-      "tohitBuffUnenhanced": 0.75
+      "tohitBuff": 0.75
     },
     "perceptionBuff": {
       "scale": 0.6,
       "table": "Melee_Ones"
     },
-    "tohitBuffUnenhanced": {
+    "tohitBuff": {
       "scale": 1.85,
       "table": "Melee_Buff_ToHit"
     }
   },
   "atoms": [
-    ["ToHit",null,1.85,1,0.75,"Melee_Buff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["ToHit",null,2,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Perception",null,0.6,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-    ["Perception",null,0.6,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,38,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Extend",2,null,null,1,null,true]
+    ["ToHit",null,1.85,1,0.75,"Melee_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["ToHit",null,2,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Perception",null,0.6,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Perception",null,0.6,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Meta",null,1,38,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,null,1,null,true]
   ],
   "setsModes": [
     "Range_Finder_Mode"

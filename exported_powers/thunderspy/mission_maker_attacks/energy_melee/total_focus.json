@@ -10,6 +10,7 @@
   "icon": "powerpunch_totalfocus.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.2,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -81,6 +82,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "The devastation of your {PowerName} deals a whopping {Damage} points of smashing Damage to {PlayerDest}.",
+            "display_victim_hit": "{PlayerSource} smashes you for {Damage} points of smashing damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -121,6 +128,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "The devastation of your {PowerName} deals an additional whopping {Damage} points of energy Damage to {PlayerDest}.",
+            "display_victim_hit": "{PlayerSource} smashes you for {Damage} points of energy damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -161,10 +174,27 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You disorient {PlayerDest} with your {PowerName}!",
+            "display_victim_hit": "{PlayerSource} disorients you with their {PowerName}!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              21
+            ],
+            "conditional_fx": "GENERICCONTINUING/STUNCONTINUING.FX"
+          },
           "flags_raw": 2560
         }
       ]
     }
+  ],
+  "strengths_disallowed": [
+    "Range"
   ],
   "available_level": 17,
   "powerset": "Mission_Maker_Attacks.Energy_Melee"

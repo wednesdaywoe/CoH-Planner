@@ -10,6 +10,7 @@
   "icon": "darkarmor_soultransfer.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Sphere",
   "max_targets_hit": 255,
@@ -77,6 +78,20 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": "You are brought back from the clutches of death and healed you for {Damage} points of damage.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [
+              323
+            ],
+            "continuing_fx": "PFX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -143,7 +158,7 @@
       "templates": [
         {
           "attribs": [
-            "Set_Mode"
+            "XPDebtProtection"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -169,8 +184,7 @@
             "IgnoreStrength",
             "IgnoreResistance"
           ],
-          "flags_raw": 1072,
-          "mode_name": "Peacebringer_Blaster_Mode"
+          "flags_raw": 1072
         }
       ]
     }

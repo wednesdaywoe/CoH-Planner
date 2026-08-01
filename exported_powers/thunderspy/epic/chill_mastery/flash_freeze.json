@@ -10,6 +10,7 @@
   "icon": "coldmastery_flashfreeze.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Sphere",
   "max_targets_hit": 10,
@@ -90,6 +91,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} deals {Damage} points of lethal damage to {PlayerDest}.",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "NearGround"
           ],
@@ -133,6 +140,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} deals {Damage} points of cold damage to {PlayerDest}.",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "NearGround"
           ],
@@ -176,6 +189,14 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              379
+            ],
+            "conditional_fx": "PFX"
+          },
           "flags": [
             "NearGround"
           ],
@@ -219,6 +240,14 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              379
+            ],
+            "conditional_fx": "PFX"
+          },
           "flags": [
             "NearGround"
           ],

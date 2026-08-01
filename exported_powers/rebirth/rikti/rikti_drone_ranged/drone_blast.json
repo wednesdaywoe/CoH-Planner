@@ -10,6 +10,7 @@
   "icon": "rikti_drone_ranged_drone_blast_pow.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.2,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,

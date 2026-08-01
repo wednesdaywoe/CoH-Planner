@@ -10,6 +10,7 @@
   "icon": "natureaffinity_rebirth.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -86,6 +87,20 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You revive {PlayerDest} and heal them for {Damage} points of damage and restore some of their endurance.",
+            "display_victim_hit": "{PlayerSource} returns you from the brink of death and heals you for {Damage} points of damage and restores some endurance.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [
+              323
+            ],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreResistance"
           ],
@@ -129,6 +144,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You heal {PlayerDest} with your {PowerName} for {Damage} points.",
+            "display_victim_hit": "{PlayerSource} heals you with their {PowerName} for {Damage} points.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -212,6 +233,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Bloom"
+            ],
+            "count": 3,
+            "type": "Power"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"

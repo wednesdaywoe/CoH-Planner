@@ -10,6 +10,7 @@
   "icon": "flight_combatflight.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -98,12 +99,15 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "BoostIgnoreDiminishing",
-            "CancelOnMiss",
-            "IgnoreStrength"
+          "cancel_events": [
+            "Held",
+            "Stunned",
+            "Sleep"
           ],
-          "flags_raw": 22
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -239,12 +243,15 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "BoostIgnoreDiminishing",
-            "CancelOnMiss",
-            "IgnoreStrength"
+          "cancel_events": [
+            "Held",
+            "Stunned",
+            "Sleep"
           ],
-          "flags_raw": 22
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -284,6 +291,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "tags": [
+              "FlightActive"
+            ],
+            "type": "EffectFilter"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -328,12 +341,15 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "BoostIgnoreDiminishing",
-            "CancelOnMiss",
-            "IgnoreStrength"
+          "cancel_events": [
+            "Held",
+            "Stunned",
+            "Sleep"
           ],
-          "flags_raw": 22
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -373,12 +389,15 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "BoostIgnoreDiminishing",
-            "CancelOnMiss",
-            "IgnoreStrength"
+          "cancel_events": [
+            "Held",
+            "Stunned",
+            "Sleep"
           ],
-          "flags_raw": 22
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     }

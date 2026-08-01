@@ -10,6 +10,7 @@
   "icon": "windcontrol_vortex_blastofdebris.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -87,6 +88,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You launch a {PowerName} at {PlayerDest}, causing {Damage} points of smashing damage.",
+            "display_victim_hit": "{PlayerSource} throws a {PowerName} at you, causing {Damage} points of smashing damage.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -127,6 +134,18 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "{PlayerDest} suffers an additional {Damage} points of lethal damage due to your {PowerName}.",
+            "display_victim_hit": "You suffer an additional {Damage} points of lethal damage after being struck by {PlayerSource}'s {PowerName}.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "V_COV/POWERS/QUILLS/IMPALEHITCONTINUING.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -167,6 +186,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You launch a {PowerName} at {PlayerDest}, causing {Damage} points of smashing damage.",
+            "display_victim_hit": "{PlayerSource} throws a {PowerName} at you, causing {Damage} points of smashing damage.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -207,6 +232,18 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "{PlayerDest} suffers an additional {Damage} points of lethal damage due to your {PowerName}.",
+            "display_victim_hit": "You suffer an additional {Damage} points of lethal damage after being struck by {PlayerSource}'s {PowerName}.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "V_COV/POWERS/QUILLS/IMPALEHITCONTINUING.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -247,6 +284,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You launch a {PowerName} at {PlayerDest}, critically striking them for {Damage} points of smashing damage.",
+            "display_victim_hit": "{PlayerSource} throws a {PowerName} at you, critically striking you for {Damage} points of smashing damage.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -287,6 +330,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "{PlayerDest} suffers an additional {Damage} points of lethal damage due to your critical strength {PowerName}.",
+            "display_victim_hit": "You suffer an additional {Damage} points of lethal damage after being struck by {PlayerSource}'s critically strong {PowerName}.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -327,6 +376,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You launch a {PowerName} at {PlayerDest}, critically striking them for {Damage} points of smashing damage.",
+            "display_victim_hit": "{PlayerSource} throws a {PowerName} at you, critically striking you for {Damage} points of smashing damage.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -367,6 +422,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "{PlayerDest} suffers an additional {Damage} points of lethal damage due to your critical strength {PowerName}.",
+            "display_victim_hit": "You suffer an additional {Damage} points of lethal damage after being struck by {PlayerSource}'s critically strong {PowerName}.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]

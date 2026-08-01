@@ -10,6 +10,7 @@
   "icon": "fieryfray_scorch.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Sphere",
   "max_targets_hit": 5,
@@ -59,8 +60,8 @@
       "chance": 1.0,
       "ppm": 0.0,
       "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_inner": 0.0,
+      "radius_outer": 0.0,
       "requires_expression": "enttype target> critter eq",
       "tags": [],
       "flags": [],
@@ -99,8 +100,8 @@
       "chance": 0.800000011920929,
       "ppm": 0.0,
       "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_inner": 0.0,
+      "radius_outer": 0.0,
       "requires_expression": "",
       "tags": [],
       "flags": [],
@@ -131,6 +132,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "PFX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "CancelOnMiss"
           ],
@@ -142,8 +149,8 @@
       "chance": 1.0,
       "ppm": 0.0,
       "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_inner": 0.0,
+      "radius_outer": 0.0,
       "requires_expression": "enttype target> player eq",
       "tags": [],
       "flags": [],
@@ -183,12 +190,12 @@
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_outer": 4.199999809265137,
       "requires_expression": "Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
-      "eval_flags": 0,
+      "eval_flags": 2,
       "templates": [
         {
           "attribs": [
@@ -227,7 +234,7 @@
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_outer": 4.199999809265137,
       "requires_expression": "Raid target.HasTag? ! enttype target> critter eq &&",
       "tags": [],
       "flags": [],
@@ -270,8 +277,8 @@
       "chance": 0.08399999886751175,
       "ppm": 0.0,
       "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_inner": 0.0,
+      "radius_outer": 0.0,
       "requires_expression": "enttype target> player eq",
       "tags": [],
       "flags": [],
@@ -311,7 +318,7 @@
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_outer": 0.0,
       "requires_expression": "",
       "tags": [],
       "flags": [],
@@ -342,6 +349,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "POWERS/FIRECONTROL/CINDERSHIT.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -350,8 +363,8 @@
       "chance": -0.20000000298023224,
       "ppm": 0.0,
       "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_inner": 0.0,
+      "radius_outer": 0.0,
       "requires_expression": "",
       "tags": [],
       "flags": [],
@@ -382,6 +395,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "POWERS/FIRECONTROL/CINDERSHIT.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "CancelOnMiss"
           ],
@@ -394,7 +413,7 @@
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_outer": 0.0,
       "requires_expression": "",
       "tags": [],
       "flags": [],

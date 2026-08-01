@@ -10,6 +10,7 @@
   "icon": "umbralblast_starlessstep.png",
   "auto_issue": true,
   "auto_issue_keeps_level": false,
+  "free": true,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -216,10 +217,24 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "PFX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "cancel_events": [
             "Held",
             "Stunned",
             "Sleep"
+          ],
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 31,
+              "duration": 10.0,
+              "always": 1
+            }
           ],
           "flags": [
             "IgnoreResistance"
@@ -269,6 +284,14 @@
             "Stunned",
             "Sleep"
           ],
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 31,
+              "duration": 10.0,
+              "always": 1
+            }
+          ],
           "flags": [
             "IgnoreResistance"
           ],
@@ -316,6 +339,14 @@
             "Held",
             "Stunned",
             "Sleep"
+          ],
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 31,
+              "duration": 10.0,
+              "always": 1
+            }
           ],
           "flags": [
             "IgnoreResistance"
@@ -365,6 +396,14 @@
             "Stunned",
             "Sleep"
           ],
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 31,
+              "duration": 10.0,
+              "always": 1
+            }
+          ],
           "flags": [
             "IgnoreResistance"
           ],
@@ -413,6 +452,14 @@
             "Stunned",
             "Sleep"
           ],
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 31,
+              "duration": 10.0,
+              "always": 1
+            }
+          ],
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -457,6 +504,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 31,
+              "duration": 10.0,
+              "always": 1
+            }
+          ],
           "flags": [
             "IgnoreResistance"
           ],
@@ -508,9 +563,10 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
-            "IgnoreCombatMods"
+            "IgnoreCombatMods",
+            "KeepThroughDeath"
           ],
-          "flags_raw": 112
+          "flags_raw": 16496
         }
       ]
     }

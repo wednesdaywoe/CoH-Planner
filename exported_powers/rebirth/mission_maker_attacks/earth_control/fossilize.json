@@ -10,6 +10,7 @@
   "icon": "earthgrasp_fossilize.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.2,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -80,6 +81,15 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "POWERS/EARTHCONTROL/EARTHHITCONTINUING.FX",
+            "conditional_bits": [
+              389,
+              692
+            ],
+            "conditional_fx": "POWERS/EARTHCONTROL/FOSSILHIT.FX"
+          },
           "flags": [
             "NearGround"
           ],
@@ -123,6 +133,15 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "POWERS/EARTHCONTROL/EARTHHITCONTINUING.FX",
+            "conditional_bits": [
+              389,
+              692
+            ],
+            "conditional_fx": "POWERS/EARTHCONTROL/FOSSILHIT.FX"
+          },
           "flags": [
             "NearGround"
           ],

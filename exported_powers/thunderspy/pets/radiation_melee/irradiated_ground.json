@@ -10,6 +10,7 @@
   "icon": "radiationmelee_irradiatedground.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Sphere",
   "max_targets_hit": 10,
@@ -81,6 +82,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} hits {PlayerDest} for {Damage} points of Fire damage.",
+            "display_victim_hit": "The {PowerName} burns you for {Damage} points of Toxic damage and reduces your defense.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -121,6 +128,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} hits {PlayerDest} for {Damage} points of Fire damage.",
+            "display_victim_hit": "The {PowerName} burns you for {Damage} points of Toxic damage and reduces your defense.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -161,6 +174,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "P294255785",
+            "display_victim_hit": "The {PowerName} burns you for {Damage} points of Toxic damage and reduces your defense.",
+            "display_float": "CRITICAL",
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -201,6 +220,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} hits {PlayerDest} for {Damage} points of Fire damage.",
+            "display_victim_hit": "The {PowerName} burns you for {Damage} points of Toxic damage and reduces your defense.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -241,6 +266,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} hits {PlayerDest} for {Damage} points of Fire damage.",
+            "display_victim_hit": "The {PowerName} burns you for {Damage} points of Toxic damage and reduces your defense.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -281,6 +312,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} hits {PlayerDest} for {Damage} points of Fire damage.",
+            "display_victim_hit": "The {PowerName} burns you for {Damage} points of Toxic damage and reduces your defense.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -364,6 +401,19 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
+          "messages": {
+            "display_attacker_hit": "You contaminate {PlayerDest}!",
+            "display_victim_hit": "{PlayerSource} has contaminated you.",
+            "display_float": "Contaminated!",
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"

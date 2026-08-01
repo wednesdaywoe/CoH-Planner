@@ -10,6 +10,7 @@
   "icon": "widowteamwork_placate.png",
   "auto_issue": true,
   "auto_issue_keeps_level": false,
+  "free": true,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -80,6 +81,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You Placate {PlayerDest}.",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 2560
         }
       ]
@@ -120,6 +127,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You Placate {PlayerDest}.",
+            "display_victim_hit": "You have been Placated and cannot target {PlayerSource}.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 2560
         }
       ]
@@ -160,14 +173,21 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "NoFloaters",
-            "BoostIgnoreDiminishing",
-            "CancelOnMiss",
-            "NearGround",
-            "IgnoreStrength"
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "V_COV/POWERS/NINJITSU/HIDE.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
+          "cancel_events": [
+            "Attacked",
+            "Damaged",
+            "MissionObjectClick"
           ],
-          "flags_raw": 31
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -207,14 +227,15 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "NoFloaters",
-            "BoostIgnoreDiminishing",
-            "CancelOnMiss",
-            "NearGround",
-            "IgnoreStrength"
+          "cancel_events": [
+            "Attacked",
+            "Damaged",
+            "MissionObjectClick"
           ],
-          "flags_raw": 31
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -254,14 +275,16 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "NoFloaters",
-            "BoostIgnoreDiminishing",
-            "CancelOnMiss",
-            "NearGround",
-            "IgnoreStrength"
+          "cancel_events": [
+            "Attacked",
+            "Damaged",
+            "MissionObjectClick"
           ],
-          "flags_raw": 31
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     },
@@ -279,7 +302,7 @@
       "templates": [
         {
           "attribs": [
-            "Create_Entity"
+            "Translucency"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -301,14 +324,16 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "NoFloaters",
-            "BoostIgnoreDiminishing",
-            "CancelOnMiss",
-            "NearGround",
-            "IgnoreStrength"
+          "cancel_events": [
+            "Attacked",
+            "Damaged",
+            "MissionObjectClick"
           ],
-          "flags_raw": 31
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     }

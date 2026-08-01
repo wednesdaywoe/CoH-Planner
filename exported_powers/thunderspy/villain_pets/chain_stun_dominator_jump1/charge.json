@@ -10,6 +10,7 @@
   "icon": "electricitymastery_chargedarmor.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 2.0,
   "effect_area": "Sphere",
   "max_targets_hit": 1,
@@ -87,6 +88,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Electric charge from Stunning Aura jumps a to a new target, zapping {PlayerDest} for {Damage} points of energy damage.",
+            "display_victim_hit": "You are zapped with a charge of electricity for {Damage} points of energy damage from the Stunning Aura.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -127,6 +134,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "GENERICCONTINUING/STUNCONTINUING.FX"
+          },
           "flags_raw": 2560
         }
       ]

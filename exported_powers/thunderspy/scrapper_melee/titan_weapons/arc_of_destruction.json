@@ -10,6 +10,7 @@
   "icon": "titanweapons_arcofdestruction.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Cone",
   "max_targets_hit": 5,
@@ -64,6 +65,9 @@
       "condition_expression": "Always",
       "show_in_info": true
     }
+  ],
+  "strengths_disallowed": [
+    "Range"
   ],
   "modes_disallowed": [
     "Disable_All"

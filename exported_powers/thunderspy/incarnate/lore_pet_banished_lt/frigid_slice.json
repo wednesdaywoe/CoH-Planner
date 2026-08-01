@@ -10,6 +10,7 @@
   "icon": "banishedpantheon_banespawn_frigidslice.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Cone",
   "max_targets_hit": 16,
@@ -86,6 +87,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": "{PlayerSource}'s {PowerName} chills you, causing {Damage} points of cold damage and reducing your resistance to cold and negative energy.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -126,6 +133,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": "{PlayerSource}'s {PowerName} weakens your soul, causing {Damage} points of negative energy damage.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -166,13 +179,24 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": "You cower in fear after {PlayerSource}'s {PowerName}.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "suppress_events": [
+            {
+              "event": "Terrorized",
+              "event_id": 23,
+              "duration": 15.0,
+              "always": 0
+            }
+          ],
           "flags": [
-            "NoFloaters",
-            "BoostIgnoreDiminishing",
-            "CancelOnMiss",
             "IgnoreStrength"
           ],
-          "flags_raw": 23
+          "flags_raw": 2576
         }
       ]
     },
@@ -217,6 +241,9 @@
         }
       ]
     }
+  ],
+  "strengths_disallowed": [
+    "Range"
   ],
   "available_level": 0,
   "powerset": "Incarnate.Lore_Pet_Banished_LT"

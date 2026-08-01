@@ -10,6 +10,7 @@
   "icon": "e_icon_spider's_bite_ato.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -84,6 +85,13 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "power_names": [
+              "Set_Bonus.Set_Bonus.Spiders_Bite"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
           "flags": [
             "CancelOnMiss",
             "IgnoreStrength",

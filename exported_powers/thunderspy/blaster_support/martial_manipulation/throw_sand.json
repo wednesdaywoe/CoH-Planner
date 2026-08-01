@@ -10,6 +10,7 @@
   "icon": "martialmanipulations_throwsand.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Cone",
   "max_targets_hit": 10,
@@ -90,6 +91,20 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} disorients {PlayerDest}!",
+            "display_victim_hit": "{PlayerSource} has disoriented you with their {PowerName}!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              376
+            ],
+            "conditional_fx": null
+          },
           "flags_raw": 2560
         }
       ]
@@ -130,6 +145,20 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} disorients {PlayerDest}!",
+            "display_victim_hit": "{PlayerSource} has disoriented you with their {PowerName}!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              376
+            ],
+            "conditional_fx": null
+          },
           "flags_raw": 2560
         }
       ]
@@ -169,7 +198,11 @@
           "caster_stack": "",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "cancel_events": [
+            "Damaged"
+          ],
+          "flags_raw": 1280
         }
       ]
     },

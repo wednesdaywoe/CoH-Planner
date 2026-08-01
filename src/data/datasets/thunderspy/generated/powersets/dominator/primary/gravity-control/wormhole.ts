@@ -44,9 +44,19 @@ export const Wormhole: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 1.5,
+    "durations": {
+      "stealth": 1.5
+    },
     "knockback": {
       "scale": 7,
       "table": "Ranged_Knockback"
+    },
+    "stealth": {
+      "translucency": {
+        "scale": 0,
+        "table": "Ranged_Ones"
+      }
     },
     "stun": {
       "mag": 3,
@@ -59,7 +69,7 @@ export const Wormhole: Power = {
     }
   },
   "atoms": [
-    ["EntCreate",null,0,1,1.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["Stealth","Translucency",0,1,1.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
     ["Mez","Teleport",4.1,4,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Mez","Intangible",1.25,3,0,"Ranged_Ones","Cur","Duration","Target","Any",false,"Replace",2,null,null,1],
     ["Mez","Stunned",15,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],

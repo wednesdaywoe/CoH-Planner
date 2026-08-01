@@ -42,6 +42,7 @@ export const Gremlins: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
+      "copyBoosts": true,
       "duration": 99999,
       "entity": "Pets_Gremlin",
       "entityCount": 2,
@@ -50,8 +51,6 @@ export const Gremlins: Power = {
   },
   "atoms": [
     ["EntCreate",null,1,1,99999,"Ranged_Levelminus","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1],
-    ["EntCreate",null,1,1,99999,"Ranged_Levelminus","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["EntCreate",null,1,1,99999,"Ranged_Levelminus","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["EntCreate",null,1,1,99999,"Ranged_Levelminus","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1]
   ],
   "damageTypes": [

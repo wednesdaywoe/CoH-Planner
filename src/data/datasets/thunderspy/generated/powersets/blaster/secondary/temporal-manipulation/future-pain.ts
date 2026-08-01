@@ -48,7 +48,8 @@ export const FuturePain: Power = {
     },
     "durations": {
       "damageBuff": 9.17,
-      "movement": 10
+      "movement": 10,
+      "stealth": 1.5
     },
     "knockback": {
       "scale": 0.4,
@@ -68,6 +69,12 @@ export const FuturePain: Power = {
         "table": "Melee_SpeedRunning"
       }
     },
+    "stealth": {
+      "translucency": {
+        "scale": 0,
+        "table": "Ranged_Ones"
+      }
+    },
     "stun": {
       "mag": 3,
       "scale": 8,
@@ -84,7 +91,7 @@ export const FuturePain: Power = {
     ]
   },
   "atoms": [
-    ["EntCreate",null,0,1,1.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["Stealth","Translucency",0,1,1.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
     ["Mez","Teleport",10,10,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["RechargeTime",null,0.2,1,10,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Mez","Stunned",8,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],

@@ -53,6 +53,7 @@ export const Blizzard: Power = {
       "damageBuff": 9.53
     },
     "summon": {
+      "copyBoosts": true,
       "duration": 15,
       "entity": "Pets_Blizzard",
       "isPseudoPet": false
@@ -60,7 +61,6 @@ export const Blizzard: Power = {
   },
   "atoms": [
     ["EntCreate",null,1,1,15,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["EntCreate",null,1,1,15,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["DamageBuff","Smashing",0.024,1,9.53,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Lethal",0.024,1,9.53,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Fire",0.024,1,9.53,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],

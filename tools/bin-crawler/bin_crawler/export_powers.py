@@ -23,7 +23,8 @@ from pathlib import Path
 # directory to sys.path so `bin_crawler` is importable.
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from bin_crawler.parser._powers import parse_powers, detect_dataset_flavor
+from bin_crawler.parser._powers import (
+    parse_powers, detect_dataset_flavor, resolve_attrib_thunderspy)
 from bin_crawler.parser._powersets import parse_powersets
 from bin_crawler.parser._powercats import parse_powercats
 from bin_crawler.parser._classes import parse_classes
@@ -45,15 +46,15 @@ from bin_crawler.parser._enums import (
 
 # StrengthsDisallowed stores raw attrib offsets, whose index space is
 # per-dataset (Rebirth shifts Accuracy/Range; Thunderspy shifts the
-# Recharge/Interrupt band). Thunderspy has no special-band resolver because
-# its corpus authors zero StrengthsDisallowed entries — a normal-band //4
-# lookup is exact for everything that could appear today.
+# Recharge/Interrupt band). Every flavor routes through a band-aware resolver
+# so a special-band offset surfaces as `Special(<raw>)` rather than borrowing
+# a normal-band name; Thunderspy's reads the calibrated band base, since that
+# base is corpus-derived per build rather than constant.
 _STRENGTH_ATTRIB_RESOLVER = {
     'homecoming': resolve_attrib,
     'veracity': resolve_attrib,
     'rebirth': resolve_attrib_rebirth,
-    'thunderspy': lambda raw: ATTRIB_NAME_THUNDERSPY.get(
-        raw // 4, f"Unknown({raw // 4})"),
+    'thunderspy': resolve_attrib_thunderspy,
 }
 
 
@@ -224,6 +225,7 @@ def power_to_dict(pw, msgs=None, set_cats_index=None, mode_table=None,
         'icon': pw.icon.lower().replace('.tga', '.png') if pw.icon else '',
         'auto_issue': pw.auto_issue,
         'auto_issue_keeps_level': pw.auto_issue_keeps_level,
+        'free': pw.free,
         'accuracy': round(pw.accuracy, 6),
         'effect_area': EFFECT_AREA.get(pw.effect_area, f'Unknown({pw.effect_area})'),
         'max_targets_hit': pw.max_targets_hit,
@@ -473,24 +475,34 @@ def power_to_dict(pw, msgs=None, set_cats_index=None, mode_table=None,
     return d
 
 
-def _collect_grant_targets(powers, prefix='temporary_powers.'):
-    """Collect the dotted names a set of powers GRANT via `Grant_Power`
-    templates, restricted to the given category prefix (default
-    Temporary_Powers). Walks the full effect tree — top-level groups,
-    child_groups, and activation_effects — since a grant can nest anywhere.
-    Returns a set of lowercased full names.
+# The attrib a power delegates its work through, by fork spelling. Homecoming
+# and Thunderspy author `Execute_Power`; Rebirth authors `Power_Redirect` and
+# carries no Execute_Power template at all, so reading one fork's spelling
+# reports the other as having no wrappers (DATA-GAP WRAP-2).
+WRAPPER_ATTRIBS = ('Execute_Power', 'Power_Redirect')
+
+GRANT_ATTRIBS = ('Grant_Power',)
+
+
+def _collect_referenced_targets(powers, attribs, prefix=None):
+    """Collect the dotted power names `powers` reference through `attribs`.
+
+    Walks the full effect tree — top-level groups, child_groups, and
+    activation_effects — since a reference can nest anywhere. `prefix` restricts
+    the result to one category (a lowercased dotted prefix); without it every
+    referenced name is returned. Returns a set of lowercased full names.
     """
+    wanted = set(attribs)
     targets: set[str] = set()
 
     def walk(groups):
         for g in groups or []:
             for t in getattr(g, 'templates', []) or []:
-                attribs = getattr(t, 'attribs', None) or []
-                if 'Grant_Power' not in attribs:
+                if not wanted & set(getattr(t, 'attribs', None) or []):
                     continue
                 params = getattr(t, 'params', None) or {}
                 for name in params.get('power_names') or []:
-                    if name.lower().startswith(prefix):
+                    if prefix is None or name.lower().startswith(prefix):
                         targets.add(name.lower())
             walk(getattr(g, 'child_groups', None))
 
@@ -840,7 +852,8 @@ def main():
     # turns Temporary_Powers into a powerset (not in its category map), so these
     # are pure resolver data.
     if not args.categories:
-        grant_targets = _collect_grant_targets(player_powers)
+        grant_targets = _collect_referenced_targets(
+            player_powers, GRANT_ATTRIBS, prefix='temporary_powers.')
         by_full = {pw.full_name.lower(): pw for pw in all_powers}
         already = {pw.full_name.lower() for pw in player_powers}
         added = []
@@ -849,11 +862,44 @@ def main():
                 continue
             pw = by_full.get(tgt)
             if pw is not None:
+                already.add(tgt)
                 player_powers.append(pw)
                 added.append(pw)
         if added:
             print(f'  +{len(added)} referenced Grant_Power targets '
                   f'(Temporary_Powers grant hosts).', flush=True)
+
+        # The other referenced edge: the child a wrapper power delegates its work
+        # to. Most children sit in the Pets/*_Aux categories the filter already
+        # keeps, but a few live in Temporary_Powers or Mission_Maker_Pets and so
+        # reached no export at all — leaving the wrapper naming a child nothing
+        # downstream could resolve (DATA-GAP HC-4). No category prefix here: a
+        # wrapper's child IS that power's work, wherever the fork files it. Walked
+        # to a fixpoint because a child may delegate in turn; a name the binary
+        # does not define is surfaced rather than skipped.
+        wrapper_added = []
+        dangling: set[str] = set()
+        frontier = list(player_powers)
+        while frontier:
+            targets = _collect_referenced_targets(frontier, WRAPPER_ATTRIBS)
+            frontier = []
+            for tgt in sorted(targets):
+                if tgt in already:
+                    continue
+                already.add(tgt)
+                pw = by_full.get(tgt)
+                if pw is None:
+                    dangling.add(tgt)
+                    continue
+                player_powers.append(pw)
+                wrapper_added.append(pw)
+                frontier.append(pw)
+        if wrapper_added:
+            print(f'  +{len(wrapper_added)} referenced wrapper targets '
+                  f'(the powers a delegating power hands its work to).', flush=True)
+        if dangling:
+            print(f'  Warning: {len(dangling)} wrapper target(s) name a power this '
+                  f'source does not define: {sorted(dangling)[:5]}', file=sys.stderr)
 
         # Whole-powerset inclusion for the real player-facing Temporary_Powers
         # powersets the category filter drops (see INCLUDED_TEMPORARY_POWERSETS).

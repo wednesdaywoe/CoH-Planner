@@ -10,6 +10,7 @@
   "icon": "radiationpoisoning_lingeringradiation.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Map",
   "max_targets_hit": 999,
@@ -77,6 +78,20 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": "Anti-Matter has frozen you in place while he prepares to channel energy from the reactors!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              375
+            ],
+            "conditional_fx": "POWERS/RADIATIONCONTROL/CHOKINGCLOUDCONTINUING.FX"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -166,6 +181,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Disintegrated"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",

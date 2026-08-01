@@ -10,6 +10,7 @@
   "icon": "psionicmelee_assassinspsiblade.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.2,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -87,6 +88,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} waylays {PlayerDest} for {Damage} points of Psionic damage!",
+            "display_victim_hit": "{PlayerSource} waylays you with their {PowerName} for {Damage} points of Psionic damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -127,6 +134,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} waylays {PlayerDest} for {Damage} points of Psionic damage!",
+            "display_victim_hit": "{PlayerSource} waylays you with their {PowerName} for {Damage} points of Psionic damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -167,6 +180,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You critically hit {PlayerDest} with your {PowerName} for {Damage} points of Psionic damage!",
+            "display_victim_hit": "{PlayerSource} critically hits you with their {PowerName} for {Damage} points of Psionic damage!",
+            "display_float": "CRITICAL",
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -207,6 +226,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} waylays {PlayerDest} for {Damage} points of Psionic damage!",
+            "display_victim_hit": "{PlayerSource} waylays you with their {PowerName} for {Damage} points of Psionic damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -247,6 +272,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} waylays {PlayerDest} for {Damage} points of Smashing damage!",
+            "display_victim_hit": "{PlayerSource} waylays you with their {PowerName} for {Damage} points of Smashing damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -287,6 +318,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You critically hit {PlayerDest} with your {PowerName} for {Damage} points of Psionic damage!",
+            "display_victim_hit": "{PlayerSource} critically hits you with their {PowerName} for {Damage} points of Psionic damage!",
+            "display_float": "CRITICAL",
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -327,11 +364,20 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Assassins_Focus"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance"
+            "IgnoreResistance",
+            "RevokeAll"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "flags2_raw": 1
         }
       ]
     },
@@ -371,6 +417,19 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
+          "messages": {
+            "display_attacker_hit": "You gain Insight into your foes' weaknesses!",
+            "display_victim_hit": null,
+            "display_float": "Insight!",
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -415,6 +474,19 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
+          "messages": {
+            "display_attacker_hit": "You gain Insight into your foes' weaknesses!",
+            "display_victim_hit": null,
+            "display_float": "Insight!",
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -467,6 +539,9 @@
         }
       ]
     }
+  ],
+  "strengths_disallowed": [
+    "Range"
   ],
   "modes_disallowed": [
     "Disable_All"

@@ -10,6 +10,7 @@
   "icon": "kineticattack_assassinsstrike.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.2,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -88,6 +89,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} waylays {PlayerDest} for {Damage} points of Smashing damage!",
+            "display_victim_hit": "{PlayerSource} waylays you with their {PowerName} for {Damage} points of Smashing damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -128,6 +135,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} waylays {PlayerDest} for {Damage} points of Energy damage!",
+            "display_victim_hit": "{PlayerSource} waylays you with their {PowerName} for {Damage} points of Energy damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -168,6 +181,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You land a critical strike for an extra {Damage} points of Energy damage!",
+            "display_victim_hit": null,
+            "display_float": "ASSASSIN STRIKE",
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -208,6 +227,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You land a critical strike for an extra {Damage} points of Energy damage!",
+            "display_victim_hit": null,
+            "display_float": "ASSASSIN STRIKE",
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "HideZero"
           ],
@@ -251,6 +276,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You land a critical strike for an extra {Damage} points of Energy damage!",
+            "display_victim_hit": "{PlayerSource} strikes you for {Damage} points of critical Energy damage!",
+            "display_float": "ASSASSIN STRIKE",
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "IgnoreResistance"
           ],
@@ -294,6 +325,13 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Demoralized"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
@@ -348,6 +386,9 @@
         }
       ]
     }
+  ],
+  "strengths_disallowed": [
+    "Range"
   ],
   "modes_disallowed": [
     "Disable_All"

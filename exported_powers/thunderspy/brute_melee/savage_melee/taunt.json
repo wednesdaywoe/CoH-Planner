@@ -10,6 +10,7 @@
   "icon": "savagemelee_taunt.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Sphere",
   "max_targets_hit": 5,
@@ -86,6 +87,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You Taunt {PlayerDest} to attack you.",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 2560
         }
       ]
@@ -126,6 +133,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You Taunt {PlayerDest} to attack you.",
+            "display_victim_hit": "{PlayerSource} Taunts you!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 2560
         }
       ]

@@ -10,6 +10,7 @@
   "icon": "radiationburst_cosmicburst",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Sphere",
   "max_targets_hit": 5,
@@ -83,6 +84,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You contaminate {PlayerDest} with your {PowerName} for {Damage} points of Toxic damage!",
+            "display_victim_hit": "{PlayerSource} contaminates you with their {PowerName} for {Damage} points of Toxic damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -123,6 +130,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You contaminate {PlayerDest} with your {PowerName} for {Damage} points of Toxic damage!",
+            "display_victim_hit": "{PlayerSource} contaminates you with their {PowerName} for {Damage} points of Toxic damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]

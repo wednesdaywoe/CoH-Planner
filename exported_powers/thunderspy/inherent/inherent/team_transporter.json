@@ -10,6 +10,7 @@
   "icon": "inherent_teamtransport.png",
   "auto_issue": true,
   "auto_issue_keeps_level": false,
+  "free": true,
   "accuracy": 1.0,
   "effect_area": "Location",
   "max_targets_hit": 0,
@@ -77,55 +78,19 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "entity_def": "Pets_Team_Transporter_Hero",
+            "priority_list": "Pet(DoNotMove(1),NoTeleport(1))",
+            "type": "EntCreate"
+          },
           "flags": [
             "NearGround",
             "IgnoreStrength",
-            "IgnoreResistance"
+            "IgnoreResistance",
+            "CopyBoosts"
           ],
-          "flags_raw": 1080
-        }
-      ]
-    },
-    {
-      "chance": 1.0,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": "AllyID source> hero eq praetorianprogress source> normal eq praetorianprogress source> Earth eq || &&",
-      "tags": [],
-      "flags": [],
-      "is_pvp": "EITHER",
-      "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "Create_Entity"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "",
-          "target": "",
-          "table": "Ranged_Ones",
-          "scale": -1.0,
-          "duration": "0 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "AllyID source> hero eq praetorianprogress source> normal eq praetorianprogress source> Earth eq || &&",
-          "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null,
-          "params": {
-            "type": "EntCreate",
-            "entity_def": "Pets_Team_Transporter_Hero"
-          }
+          "flags_raw": 1080,
+          "flags2_raw": 4
         }
       ]
     },
@@ -165,55 +130,19 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "entity_def": "Pets_Team_Transporter_Villain",
+            "priority_list": "Pet(DoNotMove(1),NoTeleport(1))",
+            "type": "EntCreate"
+          },
           "flags": [
             "NearGround",
             "IgnoreStrength",
-            "IgnoreResistance"
+            "IgnoreResistance",
+            "CopyBoosts"
           ],
-          "flags_raw": 1080
-        }
-      ]
-    },
-    {
-      "chance": 1.0,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": "AllyID source> villain eq praetorianprogress source> normal eq praetorianprogress source> Earth eq || &&",
-      "tags": [],
-      "flags": [],
-      "is_pvp": "EITHER",
-      "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "Create_Entity"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "",
-          "target": "",
-          "table": "Ranged_Ones",
-          "scale": -1.0,
-          "duration": "0 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "AllyID source> villain eq praetorianprogress source> normal eq praetorianprogress source> Earth eq || &&",
-          "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null,
-          "params": {
-            "type": "EntCreate",
-            "entity_def": "Pets_Team_Transporter_Villain"
-          }
+          "flags_raw": 1080,
+          "flags2_raw": 4
         }
       ]
     },
@@ -253,60 +182,27 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "entity_def": "Pets_Team_Transporter_Praetorian",
+            "priority_list": "Pet(DoNotMove(1),NoTeleport(1))",
+            "type": "EntCreate"
+          },
           "flags": [
             "NearGround",
             "IgnoreStrength",
-            "IgnoreResistance"
+            "IgnoreResistance",
+            "CopyBoosts"
           ],
-          "flags_raw": 1080
-        }
-      ]
-    },
-    {
-      "chance": 1.0,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": "praetorianprogress source> praetoria eq praetorianprogress source> tutorial eq ||",
-      "tags": [],
-      "flags": [],
-      "is_pvp": "EITHER",
-      "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "Create_Entity"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "",
-          "target": "",
-          "table": "Ranged_Ones",
-          "scale": -1.0,
-          "duration": "0 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "praetorianprogress source> praetoria eq praetorianprogress source> tutorial eq ||",
-          "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null,
-          "params": {
-            "type": "EntCreate",
-            "entity_def": "Pets_Team_Transporter_Praetorian"
-          }
+          "flags_raw": 1080,
+          "flags2_raw": 4
         }
       ]
     }
   ],
   "max_boosts": 0,
+  "strengths_disallowed": [
+    "RechargeTime"
+  ],
   "modes_disallowed": [
     "Disable_Temp",
     "Disable_Travel",

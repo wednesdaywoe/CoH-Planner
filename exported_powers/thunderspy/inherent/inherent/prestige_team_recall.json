@@ -10,6 +10,7 @@
   "icon": "veteran_targetaoeteleportteamtocaster.png",
   "auto_issue": true,
   "auto_issue_keeps_level": false,
+  "free": true,
   "accuracy": 1.0,
   "effect_area": "Map",
   "max_targets_hit": 0,
@@ -55,7 +56,7 @@
       "templates": [
         {
           "attribs": [
-            "Create_Entity"
+            "Translucency"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -129,6 +130,9 @@
     }
   ],
   "max_boosts": 0,
+  "strengths_disallowed": [
+    "RechargeTime"
+  ],
   "modes_disallowed": [
     "Disable_Temp",
     "Disable_All",

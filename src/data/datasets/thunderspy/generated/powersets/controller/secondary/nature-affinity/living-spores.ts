@@ -44,14 +44,14 @@ export const LivingSpores: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
+      "copyBoosts": true,
       "duration": 5,
       "entity": "Pets_Lifegiving_Spores_Controller",
       "isPseudoPet": false
     }
   },
   "atoms": [
-    ["EntCreate",null,-1,1,5,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1],
-    ["EntCreate",null,-1,1,5,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["EntCreate",null,-1,1,5,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1]
   ],
   "requires": "Controller_Buff.Nature_Affinity.Lifegiving_Spores !"
 };

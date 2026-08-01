@@ -10,6 +10,7 @@
   "icon": "e_icon_absoluteamazement.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -50,7 +51,7 @@
   "effects": [
     {
       "chance": 0.0,
-      "ppm": 0.0,
+      "ppm": 4.5,
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
@@ -89,6 +90,12 @@
             "power_names": [
               "Set_Bonus.Set_Bonus.Amazed"
             ]
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "POWERS/DARKNESSCONTROL/CHILLOFNIGHTHITCONTNUING.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
           },
           "flags": [
             "CancelOnMiss",

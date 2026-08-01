@@ -135,7 +135,8 @@ export const Manifest: Power = {
       }
     },
     "summon": {
-      "duration": 10,
+      "copyBoosts": true,
+      "duration": 15,
       "entity": "Pets_Telekinetic_Sword",
       "entityCount": 3,
       "isPseudoPet": false
@@ -162,9 +163,6 @@ export const Manifest: Power = {
     ["DamageBuff","Toxic",5,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["ToHit",null,2,1,10,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["Enhancement","Stunned",0.5,1,10,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["EntCreate",null,0.5,1,10,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["EntCreate",null,0.5,1,10,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["EntCreate",null,0.5,1,10,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Enhancement","Sleep",0.5,1,10,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["Enhancement","Confused",0.5,1,10,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["Enhancement","Terrorized",0.5,1,10,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],

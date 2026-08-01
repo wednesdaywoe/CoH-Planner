@@ -10,6 +10,7 @@
   "icon": "gravitycontrol_gravitydistortion.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.2,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -80,6 +81,14 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              403
+            ],
+            "conditional_fx": "POWERS/GRAVITYCONTROL/GCCRUSHCONTINUING.FX"
+          },
           "flags_raw": 2560
         }
       ]
@@ -120,6 +129,14 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              403
+            ],
+            "conditional_fx": "POWERS/GRAVITYCONTROL/GCCRUSHCONTINUING.FX"
+          },
           "flags_raw": 2560
         }
       ]
@@ -200,6 +217,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "POWERS/GRAVITYCONTROL/GCDISTORTIONCONTINUING.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags_raw": 1280
         }
       ]

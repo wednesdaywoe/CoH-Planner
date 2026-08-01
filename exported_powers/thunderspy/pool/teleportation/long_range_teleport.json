@@ -10,6 +10,7 @@
   "icon": "teleportation_longrangeteleport.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -58,7 +59,7 @@
       "templates": [
         {
           "attribs": [
-            "Create_Entity"
+            "Translucency"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -123,6 +124,10 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "destination": "MONORAIL.ParagonCityTeleport",
+            "type": "Teleport"
+          },
           "flags": [
             "IgnoreResistance"
           ],
@@ -166,6 +171,10 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "destination": "MONORAIL.RogueIslesTeleport",
+            "type": "Teleport"
+          },
           "flags": [
             "IgnoreResistance"
           ],
@@ -209,6 +218,10 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "destination": "MONORAIL.PraetoriaTeleport",
+            "type": "Teleport"
+          },
           "flags": [
             "IgnoreResistance"
           ],

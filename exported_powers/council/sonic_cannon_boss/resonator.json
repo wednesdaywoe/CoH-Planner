@@ -10,6 +10,7 @@
   "icon": "sonicblast_cone.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.05,
   "effect_area": "Cone",
   "max_targets_hit": 16,

@@ -10,6 +10,7 @@
   "icon": "gravitycontrol_lift.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.3,
   "effect_area": "Sphere",
   "max_targets_hit": 999,
@@ -77,6 +78,22 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": "The Obliteration Beam's {PowerName} holds you in place!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              21,
+              621,
+              19
+            ],
+            "conditional_fx": "PFX"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -121,6 +138,13 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Caught_By_Attractor"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"

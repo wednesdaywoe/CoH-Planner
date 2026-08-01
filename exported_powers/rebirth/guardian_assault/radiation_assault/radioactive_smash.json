@@ -10,6 +10,7 @@
   "icon": "radiationmelee_radioactivesmash.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Sphere",
   "max_targets_hit": 5,
@@ -64,8 +65,8 @@
       "chance": 1.0,
       "ppm": 0.0,
       "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_inner": 0.0,
+      "radius_outer": 0.0,
       "requires_expression": "",
       "tags": [],
       "flags": [],
@@ -104,9 +105,10 @@
           },
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance"
+            "IgnoreResistance",
+            "KeepThroughDeath"
           ],
-          "flags_raw": 1072
+          "flags_raw": 17456
         }
       ]
     },
@@ -114,8 +116,8 @@
       "chance": 1.0,
       "ppm": 0.0,
       "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_inner": 0.0,
+      "radius_outer": 0.0,
       "requires_expression": "enttype target> critter eq",
       "tags": [],
       "flags": [],
@@ -154,8 +156,8 @@
       "chance": 1.0,
       "ppm": 0.0,
       "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_inner": 0.0,
+      "radius_outer": 0.0,
       "requires_expression": "enttype target> critter eq",
       "tags": [],
       "flags": [],
@@ -194,8 +196,8 @@
       "chance": 1.0,
       "ppm": 0.0,
       "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_inner": 0.0,
+      "radius_outer": 0.0,
       "requires_expression": "enttype target> player eq",
       "tags": [],
       "flags": [],
@@ -234,8 +236,8 @@
       "chance": 1.0,
       "ppm": 0.0,
       "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_inner": 0.0,
+      "radius_outer": 0.0,
       "requires_expression": "enttype target> player eq",
       "tags": [],
       "flags": [],
@@ -274,8 +276,8 @@
       "chance": 1.0,
       "ppm": 0.0,
       "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_inner": 0.0,
+      "radius_outer": 0.0,
       "requires_expression": "",
       "tags": [],
       "flags": [],
@@ -306,6 +308,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "GENERICCONTINUING/DEBUFFDEFCONTINUING.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "CancelOnMiss"
           ],
@@ -317,8 +325,8 @@
       "chance": 0.23000000417232513,
       "ppm": 0.0,
       "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_inner": 0.0,
+      "radius_outer": 0.0,
       "requires_expression": "",
       "tags": [],
       "flags": [],
@@ -367,8 +375,8 @@
       "chance": 1.0,
       "ppm": 0.0,
       "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_inner": 0.0,
+      "radius_outer": 0.0,
       "requires_expression": "Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated target.ownPower?",
       "tags": [],
       "flags": [],
@@ -417,8 +425,8 @@
       "chance": 1.0,
       "ppm": 0.0,
       "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_inner": 0.0,
+      "radius_outer": 8.0,
       "requires_expression": "enttype target> critter eq now Radiation_Melee_Contamination_Hit source.TokenTime> - 1 < &&",
       "tags": [],
       "flags": [],
@@ -449,7 +457,10 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
-          "flags_raw": 1280
+          "flags": [
+            "DelayEval"
+          ],
+          "flags_raw": 34048
         }
       ]
     },
@@ -457,8 +468,8 @@
       "chance": 1.0,
       "ppm": 0.0,
       "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_inner": 0.0,
+      "radius_outer": 8.0,
       "requires_expression": "enttype target> player eq now Radiation_Melee_Contamination_Hit source.TokenTime> - 1 < &&",
       "tags": [],
       "flags": [],
@@ -489,7 +500,10 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
-          "flags_raw": 1280
+          "flags": [
+            "DelayEval"
+          ],
+          "flags_raw": 34048
         }
       ]
     },
@@ -497,8 +511,8 @@
       "chance": 0.33000001311302185,
       "ppm": 0.0,
       "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_inner": 0.0,
+      "radius_outer": 0.0,
       "requires_expression": "enttype target> critter eq",
       "tags": [],
       "flags": [],
@@ -537,8 +551,8 @@
       "chance": 0.33000001311302185,
       "ppm": 0.0,
       "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_inner": 0.0,
+      "radius_outer": 0.0,
       "requires_expression": "enttype target> player eq",
       "tags": [],
       "flags": [],
@@ -569,6 +583,14 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "Knocked",
+              "event_id": 29,
+              "duration": 10.0,
+              "always": 0
+            }
+          ],
           "flags_raw": 1280
         }
       ]

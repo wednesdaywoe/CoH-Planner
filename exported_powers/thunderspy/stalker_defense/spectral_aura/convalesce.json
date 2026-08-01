@@ -10,6 +10,7 @@
   "icon": "spectralaura6.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -85,7 +86,18 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags_raw": 1280
+          "params": {
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Convalesce_End_Drain"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
+          "flags": [
+            "CopyBoosts"
+          ],
+          "flags_raw": 1280,
+          "flags2_raw": 4
         }
       ]
     },
@@ -125,6 +137,12 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} recovers {Damage} points of damage!",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"

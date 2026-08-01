@@ -10,6 +10,7 @@
   "icon": "illusions_phantasm.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -81,54 +82,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "NearGround"
-          ],
-          "flags_raw": 1288
-        }
-      ]
-    },
-    {
-      "chance": 1.0,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": "",
-      "tags": [],
-      "flags": [],
-      "is_pvp": "EITHER",
-      "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "Create_Entity"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "",
-          "target": "",
-          "table": "Melee_Ones",
-          "scale": -1.0,
-          "duration": "0 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "LegacyChain_Champion",
-            "priority_list": "PL_FightPreferRanged"
-          }
+            "priority_list": "PL_FightPreferRanged",
+            "type": "EntCreate"
+          },
+          "flags": [
+            "NearGround",
+            "CopyBoosts"
+          ],
+          "flags_raw": 1288,
+          "flags2_raw": 4
         }
       ]
     },
@@ -150,8 +114,8 @@
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
-          "aspect": "",
-          "target": "",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Melee_Ones",
           "scale": -1.0,
           "duration": "0 seconds",
@@ -165,14 +129,20 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
+          "stack": "Stack",
+          "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Pets_FireImp",
-            "priority_list": "PL_FightPreferMelee"
-          }
+            "priority_list": "PL_FightPreferMelee",
+            "type": "EntCreate"
+          },
+          "flags": [
+            "NearGround",
+            "CopyBoosts"
+          ],
+          "flags_raw": 1288,
+          "flags2_raw": 4
         }
       ]
     },
@@ -194,8 +164,8 @@
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
-          "aspect": "",
-          "target": "",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Melee_Ones",
           "scale": -1.0,
           "duration": "0 seconds",
@@ -209,14 +179,20 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
+          "stack": "Stack",
+          "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Pets_FireImp",
-            "priority_list": "PL_FightPreferMelee"
-          }
+            "priority_list": "PL_FightPreferMelee",
+            "type": "EntCreate"
+          },
+          "flags": [
+            "NearGround",
+            "CopyBoosts"
+          ],
+          "flags_raw": 1288,
+          "flags2_raw": 4
         }
       ]
     },
@@ -238,8 +214,8 @@
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
-          "aspect": "",
-          "target": "",
+          "aspect": "Current",
+          "target": "Self",
           "table": "Melee_Ones",
           "scale": -1.0,
           "duration": "0 seconds",
@@ -253,143 +229,20 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
+          "stack": "Stack",
+          "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Pets_Stone",
-            "priority_list": "PL_FightPreferMelee"
-          }
-        }
-      ]
-    },
-    {
-      "chance": 1.0,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": "",
-      "tags": [],
-      "flags": [],
-      "is_pvp": "EITHER",
-      "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "Create_Entity"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "Current",
-          "target": "Self",
-          "table": "Melee_Ones",
-          "scale": -1.0,
-          "duration": "0 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "",
-          "stack": "Stack",
-          "stack_limit": 2,
-          "stack_key": null,
+            "priority_list": "PL_FightPreferMelee",
+            "type": "EntCreate"
+          },
           "flags": [
-            "NearGround"
+            "NearGround",
+            "CopyBoosts"
           ],
-          "flags_raw": 1288
-        }
-      ]
-    },
-    {
-      "chance": 1.0,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": "",
-      "tags": [],
-      "flags": [],
-      "is_pvp": "EITHER",
-      "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "Create_Entity"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "Current",
-          "target": "Self",
-          "table": "Melee_Ones",
-          "scale": -1.0,
-          "duration": "0 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "",
-          "stack": "Stack",
-          "stack_limit": 2,
-          "stack_key": null,
-          "flags": [
-            "NearGround"
-          ],
-          "flags_raw": 1288
-        }
-      ]
-    },
-    {
-      "chance": 1.0,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": "",
-      "tags": [],
-      "flags": [],
-      "is_pvp": "EITHER",
-      "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "Create_Entity"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "Current",
-          "target": "Self",
-          "table": "Melee_Ones",
-          "scale": -1.0,
-          "duration": "0 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "",
-          "stack": "Stack",
-          "stack_limit": 2,
-          "stack_key": null,
-          "flags": [
-            "NearGround"
-          ],
-          "flags_raw": 1288
+          "flags_raw": 1288,
+          "flags2_raw": 4
         }
       ]
     },
@@ -428,55 +281,18 @@
           "caster_stack": "",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null,
-          "flags": [
-            "NearGround"
-          ],
-          "flags_raw": 1288
-        }
-      ]
-    },
-    {
-      "chance": 0.5,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": "",
-      "tags": [],
-      "flags": [],
-      "is_pvp": "EITHER",
-      "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "Create_Entity"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "",
-          "target": "",
-          "table": "Melee_Ones",
-          "scale": -1.0,
-          "duration": "0 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
           "stack_key": null,
           "params": {
-            "type": "EntCreate",
             "entity_def": "Pets_FireImp",
-            "priority_list": "PL_FightPreferMelee"
-          }
+            "priority_list": "PL_FightPreferMelee",
+            "type": "EntCreate"
+          },
+          "flags": [
+            "NearGround",
+            "CopyBoosts"
+          ],
+          "flags_raw": 1288,
+          "flags2_raw": 4
         }
       ]
     }

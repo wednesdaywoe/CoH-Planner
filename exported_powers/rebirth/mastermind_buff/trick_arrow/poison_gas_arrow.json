@@ -10,6 +10,7 @@
   "icon": "trickarrow_debuffdamage.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -94,9 +95,10 @@
             "priority_list": "PL_StaticObject"
           },
           "flags": [
-            "IgnoreCombatMods"
+            "IgnoreCombatMods",
+            "KeepThroughDeath"
           ],
-          "flags_raw": 320
+          "flags_raw": 16704
         }
       ]
     }

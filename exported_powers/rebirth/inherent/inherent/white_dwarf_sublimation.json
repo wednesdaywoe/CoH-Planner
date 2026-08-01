@@ -10,6 +10,7 @@
   "icon": "luminousaura_reformessence.png",
   "auto_issue": true,
   "auto_issue_keeps_level": false,
+  "free": true,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -101,6 +102,6 @@
     "Warshade_Tanker_Mode",
     "Disable_All"
   ],
-  "available_level": 4294967295,
+  "available_level": -1,
   "powerset": "Inherent.Inherent"
 }

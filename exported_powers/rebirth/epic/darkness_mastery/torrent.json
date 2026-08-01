@@ -10,6 +10,7 @@
   "icon": "darkcast_torrent.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Cone",
   "max_targets_hit": 10,
@@ -216,6 +217,14 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "Knocked",
+              "event_id": 29,
+              "duration": 10.0,
+              "always": 0
+            }
+          ],
           "flags_raw": 1280
         }
       ]
@@ -256,6 +265,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "PFX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -470,7 +485,7 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
-      "eval_flags": 0,
+      "eval_flags": 4,
       "templates": [
         {
           "attribs": [
@@ -496,7 +511,10 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
-          "flags_raw": 1280
+          "flags": [
+            "HideZero"
+          ],
+          "flags_raw": 9472
         }
       ]
     },
@@ -593,7 +611,7 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
-      "eval_flags": 0,
+      "eval_flags": 2,
       "templates": [
         {
           "attribs": [

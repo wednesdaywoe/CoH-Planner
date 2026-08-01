@@ -10,6 +10,7 @@
   "icon": "gadgets_timebomb.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.2,
   "effect_area": "Sphere",
   "max_targets_hit": 16,
@@ -86,6 +87,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} deals {Damage} points of lethal damage!",
+            "display_victim_hit": "You take {Damage} points of Lethal damage from a {PowerName}.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -126,6 +133,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} deals {Damage} points of fire damage!",
+            "display_victim_hit": "You take {Damage} points of Fire damage from a {PowerName}.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -166,6 +179,27 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "vec_start": "Target",
+            "vec_end": "Target",
+            "priority": 1,
+            "vel": 1.0,
+            "vel_mag": 0.02500000037252903,
+            "height": 3.0,
+            "height_mag": 0.25,
+            "vec_adjust_pyr": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "type": "Knock"
+          },
+          "messages": {
+            "display_attacker_hit": "Your bomb's blast knocks {PlayerDest} off their feet!",
+            "display_victim_hit": "You have been knocked off your feet by the blast!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -206,6 +240,27 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "vec_start": "Target",
+            "vec_end": "Target",
+            "priority": 1,
+            "vel": 1.0,
+            "vel_mag": 0.02500000037252903,
+            "height": 3.0,
+            "height_mag": 0.25,
+            "vec_adjust_pyr": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "type": "Knock"
+          },
+          "messages": {
+            "display_attacker_hit": "Your bomb's blast knocks {PlayerDest} off their feet!",
+            "display_victim_hit": "You have been knocked off your feet by the blast!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -268,7 +323,7 @@
       "templates": [
         {
           "attribs": [
-            "Grant_Power"
+            "Drop_Toggles"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -313,7 +368,7 @@
       "templates": [
         {
           "attribs": [
-            "Grant_Power"
+            "Drop_Toggles"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -358,7 +413,7 @@
       "templates": [
         {
           "attribs": [
-            "Grant_Power"
+            "Drop_Toggles"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -403,7 +458,7 @@
       "templates": [
         {
           "attribs": [
-            "Grant_Power"
+            "Drop_Toggles"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",

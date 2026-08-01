@@ -10,6 +10,7 @@
   "icon": "martialmanipulation_kipush.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -98,6 +99,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You blast {PlayerDest} with your {PowerName} for {Damage} points of Smashing damage and send them flying!",
+            "display_victim_hit": "{PlayerSource} blasts you with their {PowerName} for {Damage} points of Smashing damage and sends you flying!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -138,6 +145,37 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "vec_start": "Source",
+            "vec_end": "Target",
+            "priority": 1,
+            "vel": 0.5,
+            "vel_mag": 0.019999999552965164,
+            "height": 0.0,
+            "height_mag": 0.0,
+            "vec_adjust_pyr": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "type": "Knock"
+          },
+          "messages": {
+            "display_attacker_hit": "You repel {PlayerDest} with your {PowerName}!",
+            "display_victim_hit": "{PlayerSource} repels you with a {PowerName}!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              21,
+              621,
+              19
+            ],
+            "conditional_fx": "PFX"
+          },
           "flags": [
             "CancelOnMiss"
           ],
@@ -269,6 +307,33 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "vec_start": "Source",
+            "vec_end": "Target",
+            "priority": 1,
+            "vel": 0.5,
+            "vel_mag": 0.019999999552965164,
+            "height": 0.0,
+            "height_mag": 0.0,
+            "vec_adjust_pyr": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "type": "Knock"
+          },
+          "messages": {
+            "display_attacker_hit": "You repel {PlayerDest} with your {PowerName}!",
+            "display_victim_hit": "{PlayerSource} repels you with a {PowerName}!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "PFX"
+          },
           "flags": [
             "CancelOnMiss"
           ],
@@ -352,6 +417,21 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "vec_start": "Target",
+            "vec_end": "Target",
+            "priority": 1,
+            "vel": 1.0,
+            "vel_mag": 0.02500000037252903,
+            "height": 3.0,
+            "height_mag": 0.25,
+            "vec_adjust_pyr": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "type": "Knock"
+          },
           "flags": [
             "CancelOnMiss"
           ],
@@ -395,6 +475,21 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "vec_start": "Target",
+            "vec_end": "Target",
+            "priority": 1,
+            "vel": 1.0,
+            "vel_mag": 0.02500000037252903,
+            "height": 3.0,
+            "height_mag": 0.25,
+            "vec_adjust_pyr": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "type": "Knock"
+          },
           "flags": [
             "CancelOnMiss"
           ],

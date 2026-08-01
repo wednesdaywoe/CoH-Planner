@@ -53,9 +53,16 @@ export const PrimalistsCloak: Power = {
         "table": "Melee_Buff_Def"
       }
     },
+    "defenseBuffSuppressible": {
+      "aoe": {
+        "scale": 2,
+        "table": "Melee_Buff_Def"
+      }
+    },
     "durations": {
       "debuffResistance": 1.25,
       "defenseBuff": 1.25,
+      "defenseBuffSuppressible": 1.25,
       "stealth": 1.25
     },
     "stealth": {
@@ -66,21 +73,25 @@ export const PrimalistsCloak: Power = {
       "stealthPvP": {
         "scale": 350,
         "table": "Melee_Ones"
+      },
+      "translucency": {
+        "scale": 0.15,
+        "table": "Melee_Ones"
       }
     }
   },
   "atoms": [
-    ["Stealth","RadiusPvE",35,1,1.25,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kProwlerMode Source.Mode? !"],
-    ["Stealth","RadiusPvP",350,1,1.25,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kProwlerMode Source.Mode? !"],
-    ["Defense","AoE",2,1,1.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
-    ["Defense","AoE",2,1,1.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
-    ["Meta",null,1,103,1.25,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-    ["EntCreate",null,0.15,1,1.25,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-    ["Defense","All",0.3,1,1.25,"Melee_Res_Boolean","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-    ["Stealth","RadiusPvE",45,1,1.25,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kProwlerMode Source.Mode?",true],
-    ["Stealth","RadiusPvP",450,1,1.25,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kProwlerMode Source.Mode?",true],
-    ["Defense","AoE",2,1,1.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
-    ["Defense","AoE",2,1,1.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
+    ["Stealth","RadiusPvE",35,1,1.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kProwlerMode Source.Mode? !",null,null,true],
+    ["Stealth","RadiusPvP",350,1,1.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kProwlerMode Source.Mode? !",null,null,true],
+    ["Defense","AoE",2,1,1.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !",null,null,true],
+    ["Defense","AoE",2,1,1.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Meta",null,1,103,1.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
+    ["Stealth","Translucency",0.15,1,1.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
+    ["Defense","All",0.3,1,1.25,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Stealth","RadiusPvE",45,1,1.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kProwlerMode Source.Mode?",true,null,true],
+    ["Stealth","RadiusPvP",450,1,1.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kProwlerMode Source.Mode?",true,null,true],
+    ["Defense","AoE",2,1,1.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true,null,true],
+    ["Defense","AoE",2,1,1.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
   ],
   "conditionalEffects": [
     {

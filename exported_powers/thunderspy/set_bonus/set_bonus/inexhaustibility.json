@@ -10,6 +10,7 @@
   "icon": "e_icon_inexhaustibility.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": true,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -77,10 +78,31 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "BoostIgnoreDiminishing"
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": "You are healed by the Inexhaustibility effect for {Damage} points of healing.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "suppress_events": [
+            {
+              "event": "Attacked",
+              "event_id": 2,
+              "duration": 30.0,
+              "always": 1
+            },
+            {
+              "event": "HitByFoe",
+              "event_id": 13,
+              "duration": 30.0,
+              "always": 1
+            }
           ],
-          "flags_raw": 2
+          "flags": [
+            "IgnoreStrength",
+            "StackExactPower"
+          ],
+          "flags_raw": 525584
         }
       ]
     },
@@ -120,10 +142,33 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "BoostIgnoreDiminishing"
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": "{PlayerSource} grants you {Damage} points of endurance with their {PowerName}!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "suppress_events": [
+            {
+              "event": "Attacked",
+              "event_id": 2,
+              "duration": 30.0,
+              "always": 1
+            },
+            {
+              "event": "HitByFoe",
+              "event_id": 13,
+              "duration": 30.0,
+              "always": 1
+            }
           ],
-          "flags_raw": 2
+          "flags": [
+            "CancelOnMiss",
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "StackExactPower"
+          ],
+          "flags_raw": 525364
         }
       ]
     },
@@ -163,10 +208,25 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "BoostIgnoreDiminishing"
+          "suppress_events": [
+            {
+              "event": "Attacked",
+              "event_id": 2,
+              "duration": 30.0,
+              "always": 1
+            },
+            {
+              "event": "HitByFoe",
+              "event_id": 13,
+              "duration": 30.0,
+              "always": 1
+            }
           ],
-          "flags_raw": 2
+          "flags": [
+            "IgnoreResistance",
+            "StackExactPower"
+          ],
+          "flags_raw": 525344
         }
       ]
     }

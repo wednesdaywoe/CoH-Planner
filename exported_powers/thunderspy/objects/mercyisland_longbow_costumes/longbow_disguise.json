@@ -10,6 +10,7 @@
   "icon": "temporary_terravoltaglow.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Map",
   "max_targets_hit": 0,
@@ -77,6 +78,11 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "costume_name": "LONGBOW_MALE_GROUP_01_MINION_01",
+            "priority": 9,
+            "type": "Costume"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -121,6 +127,11 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "costume_name": "LONGBOW_FEMALE_GROUP_01_MINION_02",
+            "priority": 9,
+            "type": "Costume"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -165,6 +176,11 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "costume_name": "LONGBOW_MALE_GROUP_01_MINION_01",
+            "priority": 9,
+            "type": "Costume"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"

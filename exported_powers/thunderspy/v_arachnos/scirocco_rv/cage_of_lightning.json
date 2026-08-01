@@ -10,6 +10,7 @@
   "icon": "electricalbolt_telsacage.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -80,6 +81,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": "{PlayerSource} electrocutes you for {Damage} points of Energy damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -120,6 +127,14 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              380
+            ],
+            "conditional_fx": "V_COV/ENEMYPOWERS/ARACHNOS/MU_SHOCKING_HOLD.FX"
+          },
           "flags_raw": 2560
         }
       ]
@@ -178,7 +193,7 @@
       "templates": [
         {
           "attribs": [
-            "Set_Mode"
+            "XPDebtProtection"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -205,8 +220,7 @@
             "IgnoreResistance",
             "IgnoreCombatMods"
           ],
-          "flags_raw": 112,
-          "mode_name": "Peacebringer_Blaster_Mode"
+          "flags_raw": 112
         }
       ]
     },
@@ -246,6 +260,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": "{PlayerSource} shocks you with a {PowerName} and drains some of your Endurance!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]

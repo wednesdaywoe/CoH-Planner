@@ -18,6 +18,9 @@ export const PaleBlade: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 8,
@@ -156,7 +159,7 @@ export const PaleBlade: Power = {
     {
       "kind": "grant",
       "chance": 0.20000000298023224,
-      "label": "state"
+      "label": "Spread"
     }
   ],
   "damageTypes": [

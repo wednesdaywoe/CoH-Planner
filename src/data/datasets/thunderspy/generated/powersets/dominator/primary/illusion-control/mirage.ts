@@ -39,16 +39,15 @@ export const Mirage: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
+      "copyBoosts": true,
       "duration": 10,
-      "entity": "MirageAttackerHit",
+      "entity": "Pets_Mirage_Dominator",
       "isPseudoPet": false
     }
   },
   "atoms": [
     ["EntCreate",null,1,1,10,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kStealth source> 0.5 <="],
-    ["EntCreate",null,1,1,10,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kStealth source> 0.5 <="],
-    ["EntCreate",null,1,1,10,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kStealth source> 0.5 >",true],
-    ["EntCreate",null,1,1,10,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kStealth source> 0.5 >",true]
+    ["EntCreate",null,1,1,10,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kStealth source> 0.5 >",true]
   ],
   "conditionalEffects": [
     {
@@ -58,8 +57,9 @@ export const Mirage: Power = {
       "defaultActive": false,
       "effects": {
         "summon": {
+          "copyBoosts": true,
           "duration": 10,
-          "entity": "MirageAttackerHit",
+          "entity": "Pets_Mirage_Dominator_Domination",
           "isPseudoPet": false
         }
       }

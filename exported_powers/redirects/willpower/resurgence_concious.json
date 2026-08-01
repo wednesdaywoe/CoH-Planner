@@ -10,6 +10,7 @@
   "icon": "willpower_reconstruction.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -615,16 +616,6 @@
     }
   ],
   "castable_after_death": "DeadOrAlive",
-  "global_strengths_disallowed": [
-    "Smashing_Dmg",
-    "Lethal_Dmg",
-    "Fire_Dmg",
-    "Cold_Dmg",
-    "Energy_Dmg",
-    "Negative_Energy_Dmg",
-    "Psionic_Dmg",
-    "Toxic_Dmg"
-  ],
   "modes_disallowed": [
     "Disable_All"
   ],

@@ -10,6 +10,7 @@
   "icon": "electricalbolt_telsacage.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.3,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -80,6 +81,14 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              390
+            ],
+            "conditional_fx": "POWERS/ELECTRICITYCONTROL/ELECTRICITYCAGE.FX"
+          },
           "flags_raw": 2560
         }
       ]
@@ -120,6 +129,14 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              390
+            ],
+            "conditional_fx": "POWERS/ELECTRICITYCONTROL/ELECTRICITYCAGE.FX"
+          },
           "flags_raw": 2560
         }
       ]
@@ -160,6 +177,14 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              390
+            ],
+            "conditional_fx": "POWERS/ELECTRICITYCONTROL/ELECTRICITYCAGE.FX"
+          },
           "flags_raw": 2560
         }
       ]
@@ -200,6 +225,14 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              390
+            ],
+            "conditional_fx": "POWERS/ELECTRICITYCONTROL/ELECTRICITYCAGE.FX"
+          },
           "flags_raw": 2560
         }
       ]

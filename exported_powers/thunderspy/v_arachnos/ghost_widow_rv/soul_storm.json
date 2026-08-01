@@ -10,6 +10,7 @@
   "icon": "gravitycontrol_lift.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Sphere",
   "max_targets_hit": 16,
@@ -80,6 +81,17 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              21,
+              47,
+              379,
+              393
+            ],
+            "conditional_fx": "V_COV/ENEMYPOWERS/GHOSTWIDOW/SOULSTORMVICTIMCONTINUING.FX"
+          },
           "flags": [
             "IgnoreResistance"
           ],
@@ -123,6 +135,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": "{PowerName} drains you for {Damage} points of Negative Energy damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -141,7 +159,7 @@
       "templates": [
         {
           "attribs": [
-            "Set_Mode"
+            "XPDebtProtection"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -168,8 +186,7 @@
             "IgnoreResistance",
             "IgnoreCombatMods"
           ],
-          "flags_raw": 112,
-          "mode_name": "Peacebringer_Blaster_Mode"
+          "flags_raw": 112
         }
       ]
     }

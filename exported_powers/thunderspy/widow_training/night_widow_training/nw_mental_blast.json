@@ -10,6 +10,7 @@
   "icon": "nightwidowtraining_mentalblast.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -88,6 +89,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} rips the mind of {PlayerDest} for {Damage} points of psionic damage and Slows their attack speed!",
+            "display_victim_hit": "{PlayerSource} blasts you with a {PowerName} for {Damage} points of Psionic damage and slows your attack speed!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -128,6 +135,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "POWERS/PSIONICS/TEALHITCONTNUING.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreStrength"
           ],
@@ -171,6 +184,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} rips the mind of {PlayerDest} for {Damage} points of psionic damage and Slows their attack speed!",
+            "display_victim_hit": "{PlayerSource} blasts you with a {PowerName} for {Damage} points of Psionic damage and slows your attack speed!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]

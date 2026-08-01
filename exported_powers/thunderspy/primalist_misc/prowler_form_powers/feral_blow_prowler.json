@@ -10,6 +10,7 @@
   "icon": "feralmight_feralblow.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 1,
@@ -90,6 +91,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} pierces {PlayerDest} for {Damage} points of lethal damage!",
+            "display_victim_hit": "{PlayerSource} pierces you with their {PowerName} for {Damage} points of lethal damage and reduces your defense!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -130,6 +137,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You strike {PlayerSource} from the shadows dealing {Damage} points of extra lethal damage!",
+            "display_victim_hit": "{PlayerSource} strikes from the shadows to deal {Damage} points of lethal damage.",
+            "display_float": "CRITICAL!",
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -170,6 +183,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You strike {PlayerSource} from the shadows dealing {Damage} points of extra lethal damage!",
+            "display_victim_hit": "{PlayerSource} strikes from the shadows to deal {Damage} points of lethal damage.",
+            "display_float": "CRITICAL!",
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -210,6 +229,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} pierces {PlayerDest} for {Damage} points of lethal damage!",
+            "display_victim_hit": "{PlayerSource} pierces you with their {PowerName} for {Damage} points of lethal damage and reduces your defense!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -250,6 +275,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You strike {PlayerSource} from the shadows dealing {Damage} points of extra lethal damage!",
+            "display_victim_hit": "{PlayerSource} strikes from the shadows to deal {Damage} points of lethal damage.",
+            "display_float": "CRITICAL!",
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -290,6 +321,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You strike {PlayerSource} from the shadows dealing {Damage} points of extra lethal damage!",
+            "display_victim_hit": "{PlayerSource} strikes from the shadows to deal {Damage} points of lethal damage.",
+            "display_float": "CRITICAL!",
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -374,6 +411,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} causes {PlayerDest} to bleed for {Damage} points of lethal damage!",
+            "display_victim_hit": "You're bleeding from {PlayerSource}'s {PowerName},you suffer {Damage} points of Lethal damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "CancelOnMiss"
           ],
@@ -417,6 +460,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} causes {PlayerDest} to bleed for {Damage} points of lethal damage!",
+            "display_victim_hit": "You're bleeding from {PlayerSource}'s {PowerName},you suffer {Damage} points of Lethal damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -457,6 +506,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} causes {PlayerDest} to bleed for {Damage} points of lethal damage!",
+            "display_victim_hit": "You're bleeding from {PlayerSource}'s {PowerName},you suffer {Damage} points of Lethal damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "CancelOnMiss"
           ],
@@ -464,6 +519,9 @@
         }
       ]
     }
+  ],
+  "strengths_disallowed": [
+    "Range"
   ],
   "modes_disallowed": [
     "Disable_All"

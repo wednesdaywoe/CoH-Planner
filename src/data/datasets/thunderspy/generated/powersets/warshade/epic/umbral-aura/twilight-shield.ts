@@ -56,7 +56,7 @@ export const TwilightShield: Power = {
     }
   },
   "atoms": [
-    ["Resistance","Energy",3,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kWarshade_Blaster_Mode Source.Mode? !"],
-    ["Resistance","Negative",3,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kWarshade_Blaster_Mode Source.Mode? !"]
+    ["Resistance","Energy",3,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kWarshade_Blaster_Mode Source.Mode? !"],
+    ["Resistance","Negative",3,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kWarshade_Blaster_Mode Source.Mode? !"]
   ]
 };

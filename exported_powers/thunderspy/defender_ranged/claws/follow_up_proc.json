@@ -10,6 +10,7 @@
   "icon": "claws_feint.png",
   "auto_issue": true,
   "auto_issue_keeps_level": false,
+  "free": true,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -84,6 +85,19 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Sharpen_Claws"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
+          "messages": {
+            "display_attacker_hit": "You {PowerName} and are more deadly for a short while.",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "IgnoreResistance"
           ],
@@ -127,6 +141,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your Sharpened Claws hit for {Damage} points of Fire damage!",
+            "display_victim_hit": "You are struck by {PlayerSource}'s Sharpened Claws for {Damage} points of Fire damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "CancelOnMiss",
             "IgnoreStrength"
@@ -139,6 +159,6 @@
   "modes_disallowed": [
     "Disable_All"
   ],
-  "available_level": 4294967295,
+  "available_level": -1,
   "powerset": "Defender_Ranged.Claws"
 }

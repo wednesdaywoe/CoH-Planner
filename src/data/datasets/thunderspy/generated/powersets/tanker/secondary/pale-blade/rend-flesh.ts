@@ -18,6 +18,9 @@ export const RendFlesh: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 9,
@@ -122,7 +125,7 @@ export const RendFlesh: Power = {
     {
       "kind": "grant",
       "chance": 0.20000000298023224,
-      "label": "state"
+      "label": "Spread"
     }
   ],
   "damageTypes": [

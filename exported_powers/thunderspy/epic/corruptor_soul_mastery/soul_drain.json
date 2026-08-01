@@ -10,6 +10,7 @@
   "icon": "arachnos_patron_pbaoebuffdamage.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.2,
   "effect_area": "Sphere",
   "max_targets_hit": 7,
@@ -89,6 +90,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} steals {Damage} points of life from the soul of {PlayerDest} to increase your power!",
+            "display_victim_hit": "{PlayerSource} drains {Damage} points of life from you.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -129,6 +136,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} steals {Damage} points of life from the soul of {PlayerDest} to increase your power!",
+            "display_victim_hit": "{PlayerSource} drains {Damage} points of life from you.",
+            "display_float": "Scourge",
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -169,6 +182,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} steals {Damage} points of life from the soul of {PlayerDest} to increase your power!",
+            "display_victim_hit": "{PlayerSource} drains {Damage} points of life from you.",
+            "display_float": "Scourge",
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "IgnoreResistance"
           ],
@@ -212,6 +231,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "PFX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"

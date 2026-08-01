@@ -10,6 +10,7 @@
   "icon": "sorcerypool_runeofprotection.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -180,6 +181,6 @@
   "strengths_disallowed": [
     "RechargeTime"
   ],
-  "available_level": 4294967295,
+  "available_level": -1,
   "powerset": "Vanguard.HERO1"
 }

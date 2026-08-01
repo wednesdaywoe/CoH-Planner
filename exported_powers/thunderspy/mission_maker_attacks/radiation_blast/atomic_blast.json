@@ -10,6 +10,7 @@
   "icon": "radiationburst_atomicblast",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.4,
   "effect_area": "Sphere",
   "max_targets_hit": 16,
@@ -80,6 +81,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You devastate {PlayerDest} with your {PowerName} for a whopping {Damage} points of smashing damage!",
+            "display_victim_hit": "{PlayerSource} devastates you with a {PowerName} for {Damage} points of smashing damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -120,6 +127,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You devastate {PlayerDest} with your {PowerName} for an additional {Damage} points of energy damage, and reduce their Defense!",
+            "display_victim_hit": "{PlayerSource} devastates you with a {PowerName} for {Damage} points of energy damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -160,6 +173,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You devastate {PlayerDest} with your {PowerName} for a whopping {Damage} points of smashing damage!",
+            "display_victim_hit": "{PlayerSource} devastates you with a {PowerName} for {Damage} points of smashing damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -200,6 +219,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You devastate {PlayerDest} with your {PowerName} for an additional {Damage} points of energy damage, and reduce their Defense!",
+            "display_victim_hit": "{PlayerSource} devastates you with a {PowerName} for {Damage} points of energy damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -240,6 +265,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You devastate {PlayerDest} with your {PowerName} for an additional {Damage} points of energy damage!",
+            "display_victim_hit": "{PlayerSource} devastates you with a {PowerName} for {Damage} points of energy damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -280,6 +311,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You devastate {PlayerDest} with your {PowerName} for an additional {Damage} points of energy damage!",
+            "display_victim_hit": "{PlayerSource} devastates you with a {PowerName} for {Damage} points of energy damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -320,6 +357,20 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You stun {PlayerDest} with your {PowerName}!",
+            "display_victim_hit": "{PlayerSource} stunned you with their {PowerName}!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              375
+            ],
+            "conditional_fx": "POWERS/RADIATIONCONTROL/CHOKINGCLOUDCONTINUING.FX"
+          },
           "flags_raw": 2560
         }
       ]
@@ -400,6 +451,18 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} has left you exhausted and helpless!",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "GENERICCONTINUING/DEBUFFEND2CONTINUING.FX"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",

@@ -104,7 +104,7 @@ export const TurbulentAura: Power = {
     {
       "kind": "grant",
       "chance": 0.10000000149011612,
-      "label": "state"
+      "label": "Drowning"
     }
   ],
   "damageTypes": [

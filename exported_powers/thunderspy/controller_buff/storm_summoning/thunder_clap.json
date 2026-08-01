@@ -10,6 +10,7 @@
   "icon": "stormsummoning_thunderclap.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Sphere",
   "max_targets_hit": 16,
@@ -86,6 +87,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "GENERICCONTINUING/STUNCONTINUING.FX"
+          },
           "flags": [
             "CancelOnMiss"
           ],
@@ -129,6 +136,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "GENERICCONTINUING/STUNCONTINUING.FX"
+          },
           "flags": [
             "CancelOnMiss"
           ],
@@ -150,7 +163,7 @@
       "templates": [
         {
           "attribs": [
-            "Grant_Power"
+            "Drop_Toggles"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -172,6 +185,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} temporarily disables a power in use by {PlayerDest}.",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "CancelOnMiss",
             "IgnoreStrength",
@@ -195,7 +214,7 @@
       "templates": [
         {
           "attribs": [
-            "Grant_Power"
+            "Drop_Toggles"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -217,6 +236,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} temporarily disables a power in use by {PlayerDest}.",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "CancelOnMiss",
             "IgnoreStrength",
@@ -240,7 +265,7 @@
       "templates": [
         {
           "attribs": [
-            "Grant_Power"
+            "Drop_Toggles"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -262,6 +287,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} temporarily disables a power in use by {PlayerDest}.",
+            "display_victim_hit": null,
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"

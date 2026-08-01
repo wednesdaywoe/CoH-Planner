@@ -92,6 +92,10 @@ export const GroupInvisibility: Power = {
       "stealthPvP": {
         "scale": 667,
         "table": "Ranged_Ones"
+      },
+      "translucency": {
+        "scale": 0.8,
+        "table": "Ranged_Ones"
       }
     },
     "threatDebuff": {
@@ -100,21 +104,21 @@ export const GroupInvisibility: Power = {
     }
   },
   "atoms": [
-    ["Stealth","RadiusPvE",60,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-    ["EntCreate",null,0.9,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-    ["Defense","Smashing",0.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Defense","Lethal",0.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Defense","Energy",0.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Defense","Negative",0.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Defense","Fire",0.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Defense","Cold",0.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Defense","Psionic",0.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Defense","Melee",0.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Defense","Ranged",0.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Defense","AoE",0.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Stealth","RadiusPvP",667,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["EntCreate",null,0.5,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",427,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"Key660173"],
-    ["EntCreate",null,0.8,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",427,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"Key660173"],
+    ["Stealth","RadiusPvE",60,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Stealth","Translucency",0.9,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Smashing",0.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Lethal",0.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Energy",0.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Negative",0.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Fire",0.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Cold",0.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Psionic",0.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Melee",0.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Ranged",0.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","AoE",0.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Stealth","RadiusPvP",667,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Stealth","Translucency",0.5,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",427,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"Key660173"],
+    ["Stealth","Translucency",0.8,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",427,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"Key660173"],
     ["Defense","Smashing",0.5,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
     ["Defense","Lethal",0.5,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
     ["Defense","Energy",0.5,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],

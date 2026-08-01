@@ -10,6 +10,7 @@
   "icon": "fireblast_arcoffire.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.2,
   "effect_area": "Cone",
   "max_targets_hit": 16,
@@ -99,6 +100,6 @@
       ]
     }
   ],
-  "available_level": 4294967295,
+  "available_level": -1,
   "powerset": "Crey.Revenant_BioRanger_BackupB"
 }

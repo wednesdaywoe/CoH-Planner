@@ -1,0 +1,19 @@
+{
+  "key": "temporary_powers.temporary_powers",
+  "display_name": "Temporary Powers",
+  "help": "These Powers are given to heroes on a temporary basis.",
+  "short_help": "Temporary Powers",
+  "icon": "temporary_powers_set.ico",
+  "powers": [
+    "temporary_powers.temporary_powers.Pack_Mentality_Lock"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Pack Mentality Lock"
+  ],
+  "power_short_helps": [
+    "Cannot Gain Pack Mentality"
+  ]
+}

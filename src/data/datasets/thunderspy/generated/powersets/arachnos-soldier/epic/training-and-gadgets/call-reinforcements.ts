@@ -41,6 +41,7 @@ export const CallReinforcements: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
+      "copyBoosts": true,
       "duration": 240,
       "entity": "Pets_Patron_Powers_Arachnobot_Disrupter",
       "entityCount": 2,
@@ -49,8 +50,6 @@ export const CallReinforcements: Power = {
   },
   "atoms": [
     ["EntCreate",null,1,1,240,"Ranged_Levelminus","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
-    ["EntCreate",null,1,1,240,"Ranged_Levelminus","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["EntCreate",null,1,1,240,"Ranged_Levelminus","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["EntCreate",null,1,1,240,"Ranged_Levelminus","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true]
   ],
   "damageTypes": [

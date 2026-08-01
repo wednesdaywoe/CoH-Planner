@@ -10,6 +10,7 @@
   "icon": "invulnerability_toughhide.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -77,10 +78,20 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "NearGround"
+          "suppress_events": [
+            {
+              "event": "Event_8",
+              "event_id": 8,
+              "duration": 30.0,
+              "always": 1
+            }
           ],
-          "flags_raw": 8,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 112,
           "mode_name": "NotInCombat"
         }
       ]

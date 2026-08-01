@@ -93,7 +93,7 @@ export const DrowningPool: Power = {
     {
       "kind": "grant",
       "chance": 0.6077499985694885,
-      "label": "state"
+      "label": "Drowning"
     }
   ],
   "damageTypes": [

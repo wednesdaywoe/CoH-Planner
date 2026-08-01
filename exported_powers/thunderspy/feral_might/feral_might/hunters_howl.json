@@ -10,6 +10,7 @@
   "icon": "feralmight_huntershowl.png",
   "auto_issue": true,
   "auto_issue_keeps_level": false,
+  "free": true,
   "accuracy": 1.0,
   "effect_area": "Sphere",
   "max_targets_hit": 10,
@@ -90,6 +91,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} reduces {PlayerDest}'s movement speed, attack rate and chance to hit.",
+            "display_victim_hit": "{PlayerSource} reduces your movement speed, attack rate and chance to hit with their {PowerName}!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -333,6 +340,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} reduces {PlayerDest}'s movement speed, attack rate and chance to hit.",
+            "display_victim_hit": "{PlayerSource} reduces your movement speed, attack rate and chance to hit with their {PowerName}!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -626,12 +639,15 @@
       ]
     }
   ],
+  "strengths_disallowed": [
+    "Range"
+  ],
   "modes_required": [
     "HunterMode"
   ],
   "modes_disallowed": [
     "Disable_All"
   ],
-  "available_level": 4294967295,
+  "available_level": -1,
   "powerset": "Feral_Might.Feral_Might"
 }

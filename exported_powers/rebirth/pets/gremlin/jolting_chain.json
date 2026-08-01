@@ -10,6 +10,7 @@
   "icon": "electricalbolt_lightningbolt.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -251,7 +252,10 @@
             "entity_def": "Pets_Chain_Jolt_Gremlin_Jump1",
             "priority_list": "PL_Untargetable_FightPreferRanged"
           },
-          "flags_raw": 1280
+          "flags": [
+            "KeepThroughDeath"
+          ],
+          "flags_raw": 17664
         }
       ]
     },
@@ -296,7 +300,10 @@
             "entity_def": "Pets_Chain_Jolt_Gremlin_Jump1",
             "priority_list": "PL_Untargetable_FightPreferRanged"
           },
-          "flags_raw": 1280
+          "flags": [
+            "KeepThroughDeath"
+          ],
+          "flags_raw": 17664
         }
       ]
     },

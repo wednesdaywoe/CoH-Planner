@@ -10,6 +10,7 @@
   "icon": "mentalcontrol_worldofconfusion.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Sphere",
   "max_targets_hit": 10,
@@ -89,6 +90,18 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "{PlayerSource} confuses you.",
+            "display_victim_hit": "You are confused by {PlayerSource}.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "GENERICCONTINUING/CONFUSECONTINUING.FX"
+          },
           "flags": [
             "IgnoreCombatMods"
           ],
@@ -132,6 +145,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You sear the mind of {PlayerDest} with your {PowerName} for {Damage} points of damage!",
+            "display_victim_hit": "{PlayerSource} sears your mind with their {PowerName} ability for {Damage} points of Psionic damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]

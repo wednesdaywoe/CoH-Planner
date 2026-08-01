@@ -18,6 +18,9 @@ export const JacobsLadder: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,
@@ -71,7 +74,7 @@ export const JacobsLadder: Power = {
   "atoms": [
     ["Damage","Energy",1.5,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Sleep",6,2,0,"Melee_Sleep","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Sleep",0.3,2,0,"Melee_Ones","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,true],
+    ["Mez","Sleep",0.3,2,0,"Melee_Ones","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.10000000149011612],
     ["Endurance",null,-0.14,1,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Recovery",null,-1.5,1,2,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896],
     ["Damage","Fire",0.675,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],

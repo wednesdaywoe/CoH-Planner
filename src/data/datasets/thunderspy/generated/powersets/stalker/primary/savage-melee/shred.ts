@@ -18,6 +18,9 @@ export const Shred: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,
@@ -103,7 +106,7 @@ export const Shred: Power = {
     {
       "kind": "grant",
       "chance": 0.875,
-      "label": "state"
+      "label": "Assassins Focus"
     }
   ],
   "damageTypes": [

@@ -42,13 +42,13 @@ export const ShadowField: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
+      "copyBoosts": true,
       "duration": 45,
       "entity": "Pets_Shadow_Field_Controller",
       "isPseudoPet": false
     }
   },
   "atoms": [
-    ["EntCreate",null,1,1,45,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
-    ["EntCreate",null,1,1,45,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["EntCreate",null,1,1,45,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true]
   ]
 };

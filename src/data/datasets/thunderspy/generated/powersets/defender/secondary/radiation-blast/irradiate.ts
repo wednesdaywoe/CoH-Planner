@@ -79,7 +79,7 @@ export const Irradiate: Power = {
     {
       "kind": "grant",
       "chance": 0.3499999940395355,
-      "label": "state"
+      "label": "Contaminated"
     }
   ],
   "damageTypes": [

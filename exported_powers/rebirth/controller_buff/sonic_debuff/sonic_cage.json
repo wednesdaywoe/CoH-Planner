@@ -10,6 +10,7 @@
   "icon": "sonicdebuff_hold.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.4,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -84,6 +85,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "PFX"
+          },
           "flags": [
             "IgnoreCombatMods"
           ],
@@ -213,6 +220,20 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "PFX"
+          },
+          "suppress_events": [
+            {
+              "event": "Untouchable",
+              "event_id": 25,
+              "duration": 15.0,
+              "always": 0
+            }
+          ],
           "flags_raw": 1280
         }
       ]
@@ -253,6 +274,14 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "Untouchable",
+              "event_id": 25,
+              "duration": 15.0,
+              "always": 0
+            }
+          ],
           "flags_raw": 1280
         }
       ]
@@ -293,7 +322,18 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
-          "flags_raw": 1280
+          "suppress_events": [
+            {
+              "event": "Untouchable",
+              "event_id": 25,
+              "duration": 15.0,
+              "always": 0
+            }
+          ],
+          "flags": [
+            "IgnoreSuppressErrors"
+          ],
+          "flags_raw": 1049856
         }
       ]
     }

@@ -65,6 +65,7 @@ export const Burn: Power = {
       }
     },
     "summon": {
+      "copyBoosts": true,
       "duration": 10,
       "entity": "Pets_Burn",
       "isPseudoPet": false
@@ -72,7 +73,6 @@ export const Burn: Power = {
   },
   "atoms": [
     ["EntCreate",null,1,1,10,"Melee_Level","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1],
-    ["EntCreate",null,1,1,10,"Melee_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Mez","Immobilized",100,-15,0,"Melee_Res_Boolean","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["MezResist","Immobilized",1,-15,0,"Melee_Res_Boolean","Res","Duration","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Damage","Fire",1.6,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"@ToHitRoll @ToHit < @ForceHit || entref source> entref target> == ! &&"],

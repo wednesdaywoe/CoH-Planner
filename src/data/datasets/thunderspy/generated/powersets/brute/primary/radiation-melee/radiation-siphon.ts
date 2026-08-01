@@ -18,6 +18,9 @@ export const RadiationSiphon: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,
@@ -120,7 +123,7 @@ export const RadiationSiphon: Power = {
     {
       "kind": "grant",
       "chance": 0.3199999928474426,
-      "label": "state"
+      "label": "Contaminated"
     }
   ],
   "damageTypes": [

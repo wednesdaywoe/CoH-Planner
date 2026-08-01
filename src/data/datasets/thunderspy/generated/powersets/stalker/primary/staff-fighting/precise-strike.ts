@@ -18,6 +18,9 @@ export const PreciseStrike: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 1.1,
     "range": 9,
@@ -86,7 +89,7 @@ export const PreciseStrike: Power = {
     {
       "kind": "grant",
       "chance": 0.800000011920929,
-      "label": "state"
+      "label": "Assassins Focus"
     }
   ],
   "requires": "Scrapper_Defense.Shield_Defense !",

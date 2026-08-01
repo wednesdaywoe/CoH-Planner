@@ -45,14 +45,14 @@ export const Blizzard: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
+      "copyBoosts": true,
       "duration": 15,
       "entity": "Pets_Corruptor_Blizzard",
       "isPseudoPet": false
     }
   },
   "atoms": [
-    ["EntCreate",null,-1,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["EntCreate",null,-1,1,15,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["EntCreate",null,-1,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
   ],
   "damageTypes": [
     "Cold"

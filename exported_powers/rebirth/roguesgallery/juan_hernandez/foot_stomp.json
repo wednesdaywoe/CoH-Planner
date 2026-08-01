@@ -10,6 +10,7 @@
   "icon": "roguesgallery_juanhernandez_footstomp.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Sphere",
   "max_targets_hit": 16,
@@ -140,7 +141,7 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
-      "eval_flags": 0,
+      "eval_flags": 2,
       "templates": [
         {
           "attribs": [
@@ -166,6 +167,14 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "Knocked",
+              "event_id": 29,
+              "duration": 5.0,
+              "always": 0
+            }
+          ],
           "flags": [
             "NearGround"
           ],

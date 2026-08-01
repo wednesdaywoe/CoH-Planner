@@ -41,7 +41,7 @@ export const Invisibility: Power = {
     },
     "durations": {
       "defenseBuff": 0.75,
-      "stealth": 0.75,
+      "stealth": 120,
       "threatDebuff": 0.75
     },
     "stealth": {
@@ -52,6 +52,10 @@ export const Invisibility: Power = {
       "stealthPvP": {
         "scale": 1000,
         "table": "Melee_Ones"
+      },
+      "translucency": {
+        "scale": 0.8,
+        "table": "Ranged_Ones"
       }
     },
     "threatDebuff": {
@@ -60,12 +64,12 @@ export const Invisibility: Power = {
     }
   },
   "atoms": [
-    ["Stealth","RadiusPvE",200,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-    ["Stealth","RadiusPvP",1000,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1],
-    ["EntCreate",null,0.9,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["ThreatLevel",null,-1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1],
-    ["EntCreate",null,0.5,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"@CustomFX BrightNoTransparency eq @CustomFX DarkNoTransparency eq || !"],
-    ["EntCreate",null,0.8,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"@CustomFX BrightNoTransparency eq @CustomFX DarkNoTransparency eq ||"],
+    ["Stealth","RadiusPvE",200,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+    ["Stealth","RadiusPvP",1000,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+    ["Stealth","Translucency",0.9,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+    ["ThreatLevel",null,-1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
+    ["Stealth","Translucency",0.5,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"@CustomFX BrightNoTransparency eq @CustomFX DarkNoTransparency eq || !",null,null,true],
+    ["Stealth","Translucency",0.8,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"@CustomFX BrightNoTransparency eq @CustomFX DarkNoTransparency eq ||",null,null,true],
     ["Defense","Melee",0,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1]
   ],
   "requires": "Controller_Control.Illusion_Control.Blind Controller_Control.Illusion_Control.Phantasm ||"

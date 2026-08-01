@@ -43,22 +43,27 @@ export const HunterForm: Power = {
     "movement": {
       "jumpHeight": {
         "scale": 0.25,
+        "suppressible": true,
         "table": "Melee_Leap"
       },
       "jumpSpeed": {
         "scale": 0.55,
+        "suppressible": true,
         "table": "Melee_SpeedJumping"
       },
       "movementControl": {
         "scale": 10,
+        "suppressible": true,
         "table": "Melee_Ones"
       },
       "movementFriction": {
         "scale": 2,
+        "suppressible": true,
         "table": "Melee_Ones"
       },
       "runSpeed": {
         "scale": 0.4,
+        "suppressible": true,
         "table": "Melee_SpeedRunning"
       }
     }
@@ -69,16 +74,16 @@ export const HunterForm: Power = {
     ["Meta",null,1,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,null,1,null,true,null,null,null,null,"@CustomFX Wodan eq ! @CustomFX ShadowHound eq ! &&"],
     ["Meta",null,1,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,null,1,null,true,null,null,null,null,"@CustomFX Wodan eq @CustomFX ShadowHound eq ! &&"],
     ["Meta",null,1,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,null,1,null,true,null,null,null,null,"@CustomFX ShadowHound eq @CustomFX Wodan eq ! &&"],
-    ["Movement","JumpHeight",0.25,1,2.25,"Melee_Leap","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
-    ["Movement","Jump",0.55,1,2.25,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
-    ["Movement","Control",10,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
-    ["Movement","Friction",2,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
-    ["Movement","Run",0.4,1,2.25,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
-    ["Movement","JumpHeight",0.25,1,2.25,"Melee_Leap","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
-    ["Movement","Jump",0.55,1,2.25,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
-    ["Movement","Control",10,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
-    ["Movement","Friction",2,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
-    ["Movement","Run",0.4,1,2.25,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
+    ["Movement","JumpHeight",0.25,1,2.25,"Melee_Leap","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !",null,null,true],
+    ["Movement","Jump",0.55,1,2.25,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !",null,null,true],
+    ["Movement","Control",10,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !",null,null,true],
+    ["Movement","Friction",2,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !",null,null,true],
+    ["Movement","Run",0.4,1,2.25,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !",null,null,true],
+    ["Movement","JumpHeight",0.25,1,2.25,"Melee_Leap","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
+    ["Movement","Jump",0.55,1,2.25,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
+    ["Movement","Control",10,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
+    ["Movement","Friction",2,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
+    ["Movement","Run",0.4,1,2.25,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
   ],
   "setsModes": [
     "Disable_Temp",

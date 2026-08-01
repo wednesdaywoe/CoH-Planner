@@ -10,6 +10,7 @@
   "icon": "watercontrol_hypothermia.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Sphere",
   "max_targets_hit": 16,
@@ -89,6 +90,20 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} incapacitates {PlayerDest} chilling them to the bone putting them to sleep as well as reducing their movement speed.",
+            "display_victim_hit": "{PlayerSource} chills you to the bone with their {PowerName} putting you to sleep and reducing your movement speed!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              276
+            ],
+            "conditional_fx": "GENERICCONTINUING/SLEEPCONTINUING.FX"
+          },
           "flags_raw": 2560
         }
       ]
@@ -129,6 +144,20 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} incapacitates {PlayerDest} chilling them to the bone putting them to sleep as well as reducing their movement speed.",
+            "display_victim_hit": "{PlayerSource} chills you to the bone with their {PowerName} putting you to sleep and reducing your movement speed!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              276
+            ],
+            "conditional_fx": "GENERICCONTINUING/SLEEPCONTINUING.FX"
+          },
           "flags_raw": 2560
         }
       ]
@@ -169,6 +198,20 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": null,
+            "display_float": "DOMINATION",
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              276
+            ],
+            "conditional_fx": "GENERICCONTINUING/SLEEPCONTINUING.FX"
+          },
           "flags_raw": 2560
         }
       ]
@@ -209,6 +252,20 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": null,
+            "display_float": "DOMINATION",
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              276
+            ],
+            "conditional_fx": "GENERICCONTINUING/SLEEPCONTINUING.FX"
+          },
           "flags_raw": 2560
         }
       ]
@@ -249,6 +306,20 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} incapacitates {PlayerDest} chilling them to the bone putting them to sleep as well as reducing their movement speed.",
+            "display_victim_hit": "{PlayerSource} chills you to the bone with their {PowerName} putting you to sleep and reducing your movement speed!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              276
+            ],
+            "conditional_fx": "GENERICCONTINUING/SLEEPCONTINUING.FX"
+          },
           "flags_raw": 2560
         }
       ]
@@ -289,6 +360,20 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your {PowerName} incapacitates {PlayerDest} chilling them to the bone putting them to sleep as well as reducing their movement speed.",
+            "display_victim_hit": "{PlayerSource} chills you to the bone with their {PowerName} putting you to sleep and reducing your movement speed!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              276
+            ],
+            "conditional_fx": "GENERICCONTINUING/SLEEPCONTINUING.FX"
+          },
           "flags_raw": 2560
         }
       ]
@@ -331,6 +416,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "GENERICCONTINUING/BUFFSPEEDFEET.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -371,6 +462,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "GENERICCONTINUING/BUFFSPEEDFEET.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreStrength"
           ],
@@ -416,6 +513,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "GENERICCONTINUING/BUFFSPEEDFEET.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -456,6 +559,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "GENERICCONTINUING/BUFFSPEEDFEET.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreStrength"
           ],
@@ -499,6 +608,19 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Water_Control_Drowning"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
+          "messages": {
+            "display_attacker_hit": null,
+            "display_victim_hit": null,
+            "display_float": "Drowning",
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"

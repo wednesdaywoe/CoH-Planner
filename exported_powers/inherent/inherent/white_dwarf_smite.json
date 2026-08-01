@@ -10,6 +10,7 @@
   "icon": "luminousaura_whitedwarfsmite.png",
   "auto_issue": true,
   "auto_issue_keeps_level": false,
+  "free": true,
   "accuracy": 1.2,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -660,6 +661,6 @@
     "Warshade_Blaster_Mode",
     "Warshade_Tanker_Mode"
   ],
-  "available_level": 4294967295,
+  "available_level": -1,
   "powerset": "Inherent.Inherent"
 }

@@ -48,6 +48,7 @@ export const TimeBomb: Power = {
       "damageBuff": 15.5
     },
     "summon": {
+      "copyBoosts": true,
       "duration": 21,
       "entity": "Pets_Bomb",
       "isPseudoPet": false
@@ -59,7 +60,6 @@ export const TimeBomb: Power = {
   },
   "atoms": [
     ["EntCreate",null,1,1,21,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["EntCreate",null,1,1,21,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["DamageBuff","Smashing",0.528,1,15.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Lethal",0.528,1,15.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Fire",0.528,1,15.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],

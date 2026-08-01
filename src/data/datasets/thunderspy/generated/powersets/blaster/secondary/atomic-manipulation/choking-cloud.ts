@@ -47,14 +47,14 @@ export const ChokingCloud: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
+      "copyBoosts": true,
       "duration": 2,
       "entity": "Pets_Radiation_Melee_Irradiated_Ground_Pet",
       "isPseudoPet": false
     }
   },
   "atoms": [
-    ["EntCreate",null,-1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1],
-    ["EntCreate",null,-1,1,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["EntCreate",null,-1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1]
   ],
   "damageTypes": [
     "Toxic"

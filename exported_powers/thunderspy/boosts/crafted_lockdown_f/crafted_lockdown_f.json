@@ -10,6 +10,7 @@
   "icon": "e_icon_lockdown.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -84,6 +85,20 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hold {PlayerDest}!",
+            "display_victim_hit": "{PlayerSource} has held you!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              393
+            ],
+            "conditional_fx": "POWERS/GRAVITYCONTROL/GCCRUSHCONTINUING.FX"
+          },
           "flags": [
             "CancelOnMiss",
             "IgnoreStrength"

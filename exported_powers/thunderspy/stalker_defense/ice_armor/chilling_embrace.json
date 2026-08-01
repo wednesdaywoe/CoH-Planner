@@ -10,6 +10,7 @@
   "icon": "icearmor_chillingembrace.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Sphere",
   "max_targets_hit": 10,
@@ -86,12 +87,18 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "BoostIgnoreDiminishing",
-            "CancelOnMiss",
-            "IgnoreStrength"
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "PFX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
+          "cancel_events": [
+            "Held",
+            "Stunned",
+            "Sleep"
           ],
-          "flags_raw": 22
+          "flags_raw": 1280
         }
       ]
     },
@@ -131,12 +138,15 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "cancel_events": [
+            "Held",
+            "Stunned",
+            "Sleep"
+          ],
           "flags": [
-            "BoostIgnoreDiminishing",
-            "CancelOnMiss",
             "IgnoreStrength"
           ],
-          "flags_raw": 22
+          "flags_raw": 1296
         }
       ]
     },
@@ -177,12 +187,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags": [
-            "BoostIgnoreDiminishing",
-            "CancelOnMiss",
-            "IgnoreStrength"
+          "cancel_events": [
+            "Held",
+            "Stunned",
+            "Sleep"
           ],
-          "flags_raw": 22
+          "flags_raw": 1280
         }
       ]
     },
@@ -222,12 +232,15 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "cancel_events": [
+            "Held",
+            "Stunned",
+            "Sleep"
+          ],
           "flags": [
-            "BoostIgnoreDiminishing",
-            "CancelOnMiss",
             "IgnoreStrength"
           ],
-          "flags_raw": 22
+          "flags_raw": 1296
         }
       ]
     },
@@ -267,12 +280,15 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "cancel_events": [
+            "Held",
+            "Stunned",
+            "Sleep"
+          ],
           "flags": [
-            "BoostIgnoreDiminishing",
-            "CancelOnMiss",
             "IgnoreStrength"
           ],
-          "flags_raw": 22
+          "flags_raw": 1296
         }
       ]
     },
@@ -319,12 +335,15 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "cancel_events": [
+            "Held",
+            "Stunned",
+            "Sleep"
+          ],
           "flags": [
-            "BoostIgnoreDiminishing",
-            "CancelOnMiss",
             "IgnoreStrength"
           ],
-          "flags_raw": 22
+          "flags_raw": 1296
         }
       ]
     }

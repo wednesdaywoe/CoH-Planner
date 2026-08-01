@@ -10,6 +10,7 @@
   "icon": "radiationburst_atomicblast",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.4,
   "effect_area": "Sphere",
   "max_targets_hit": 16,
@@ -240,6 +241,14 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              385
+            ],
+            "conditional_fx": "POWERS/RADIATIONCONTROL/CHOKINGCLOUDCONTINUING.FX"
+          },
           "flags_raw": 2560
         }
       ]

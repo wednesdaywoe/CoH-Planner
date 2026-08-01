@@ -123,7 +123,7 @@ export const Suffocate: Power = {
     {
       "kind": "grant",
       "chance": 0.3257099986076355,
-      "label": "state"
+      "label": "Drowning"
     }
   ],
   "damageTypes": [

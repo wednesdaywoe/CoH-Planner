@@ -18,6 +18,9 @@ export const Eviscerate: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,
@@ -58,7 +61,7 @@ export const Eviscerate: Power = {
     {
       "kind": "grant",
       "chance": 0.9433500170707703,
-      "label": "state"
+      "label": "Assassins Focus"
     }
   ],
   "damageTypes": [

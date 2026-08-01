@@ -10,6 +10,7 @@
   "icon": "incarnate_lore_vanguard_common.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": true,
   "accuracy": 1.0,
   "effect_area": "Location",
   "max_targets_hit": 0,

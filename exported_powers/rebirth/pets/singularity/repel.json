@@ -10,6 +10,7 @@
   "icon": "kineticboost_repel.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Sphere",
   "max_targets_hit": 16,
@@ -47,7 +48,7 @@
       "chance": 1.0,
       "ppm": 0.0,
       "delay": 0.0,
-      "radius_inner": -1.0,
+      "radius_inner": 5.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> critter eq",
       "tags": [],
@@ -87,13 +88,13 @@
       "chance": 1.0,
       "ppm": 0.0,
       "delay": 0.0,
-      "radius_inner": -1.0,
+      "radius_inner": 5.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> player eq @ToHitRoll .10 + @ToHit < &&",
       "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
-      "eval_flags": 0,
+      "eval_flags": 2,
       "templates": [
         {
           "attribs": [
@@ -127,8 +128,8 @@
       "chance": 1.0,
       "ppm": 0.0,
       "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_inner": 0.0,
+      "radius_outer": 9.0,
       "requires_expression": "enttype target> critter eq",
       "tags": [],
       "flags": [],
@@ -170,8 +171,8 @@
       "chance": 1.0,
       "ppm": 0.0,
       "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_inner": 0.0,
+      "radius_outer": 9.0,
       "requires_expression": "enttype target> player eq",
       "tags": [],
       "flags": [],
@@ -202,6 +203,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "Knocked",
+              "event_id": 29,
+              "duration": 10.0,
+              "always": 0
+            }
+          ],
           "flags": [
             "IgnoreCombatMods"
           ],

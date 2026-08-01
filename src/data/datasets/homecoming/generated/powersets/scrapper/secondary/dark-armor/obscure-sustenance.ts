@@ -20,7 +20,7 @@ export const ObscureSustenance: Power = {
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
-    "recharge": 60,
+    "recharge": 180,
     "endurance": 10.4,
     "castTime": 1.93
   },

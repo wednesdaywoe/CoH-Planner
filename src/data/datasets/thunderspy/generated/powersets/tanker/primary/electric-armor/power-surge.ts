@@ -62,6 +62,7 @@ export const PowerSurge: Power = {
       "repel": 90,
       "resistance": 90,
       "sleep": 90,
+      "stealth": 89,
       "stun": 90
     },
     "effectDuration": 90,
@@ -152,13 +153,20 @@ export const PowerSurge: Power = {
       "scale": 50,
       "table": "Melee_Res_Boolean"
     },
+    "stealth": {
+      "translucency": {
+        "scale": 0,
+        "table": "Melee_Ones"
+      }
+    },
     "stun": {
       "mag": 1,
       "scale": 50,
       "table": "Melee_Res_Boolean"
     },
     "summon": {
-      "duration": 90,
+      "copyBoosts": true,
+      "duration": 4,
       "entity": "Pets_Power_Surge",
       "isPseudoPet": false
     }
@@ -173,7 +181,6 @@ export const PowerSurge: Power = {
     ["Resistance","Negative",3.36,1,90,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Resistance","Psionic",3.36,1,90,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Recovery",null,1,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["EntCreate",null,1,1,90,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Mez","Knockup",-100,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["MezResist","Knockup",10,1,90,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Mez","Knockback",-100,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
@@ -181,7 +188,7 @@ export const PowerSurge: Power = {
     ["Mez","Repel",-10,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["MezResist","Repel",10,1,90,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["MezResist","Teleport",1,1,90,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["EntCreate",null,0,1,89,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Stealth","Translucency",0,1,89,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["EntCreate",null,-1,1,4,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["MaxEndurance",null,-15,1,15,"Melee_Ones","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["Mez","Stunned",-50,1,90,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],

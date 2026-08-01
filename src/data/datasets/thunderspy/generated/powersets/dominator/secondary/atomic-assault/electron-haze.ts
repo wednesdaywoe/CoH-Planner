@@ -78,7 +78,7 @@ export const ElectronHaze: Power = {
     {
       "kind": "grant",
       "chance": 0.20999999344348907,
-      "label": "state"
+      "label": "Contaminated"
     }
   ],
   "damageTypes": [

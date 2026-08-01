@@ -10,6 +10,7 @@
   "icon": "ba_crey_pistol.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": true,
   "accuracy": 1.5,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,

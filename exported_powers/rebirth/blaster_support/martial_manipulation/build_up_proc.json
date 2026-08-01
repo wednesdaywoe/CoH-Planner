@@ -10,6 +10,7 @@
   "icon": "martialmanipulation_reachforthelimit.png",
   "auto_issue": true,
   "auto_issue_keeps_level": false,
+  "free": true,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -50,7 +51,7 @@
   "effects": [
     {
       "chance": 1.0,
-      "ppm": 0.0,
+      "ppm": 0.6700000166893005,
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
@@ -101,6 +102,6 @@
   "modes_disallowed": [
     "Disable_All"
   ],
-  "available_level": 4294967295,
+  "available_level": -1,
   "powerset": "Blaster_Support.Martial_Manipulation"
 }

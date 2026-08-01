@@ -49,6 +49,7 @@ export const Aim: Power = {
       "damageBuff": 11.5
     },
     "summon": {
+      "copyBoosts": true,
       "duration": 10,
       "entity": "Pets_FlameThrower",
       "isPseudoPet": false
@@ -60,7 +61,6 @@ export const Aim: Power = {
   },
   "atoms": [
     ["EntCreate",null,1,1,10,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["EntCreate",null,1,1,10,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["DamageBuff","Smashing",0.151,1,11.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Lethal",0.151,1,11.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Fire",0.151,1,11.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],

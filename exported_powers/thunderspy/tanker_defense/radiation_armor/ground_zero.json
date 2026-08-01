@@ -10,6 +10,7 @@
   "icon": "radiationarmor_groundzero.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.2,
   "effect_area": "Sphere",
   "max_targets_hit": 30,
@@ -95,6 +96,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You blast {PlayerDest} with your {PowerName} for {Damage} points of energy damage and reduce their defense!",
+            "display_victim_hit": "{PlayerSource} blasts you with a {PowerName} for {Damage} points of energy damage and reduces your defense!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -135,6 +142,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You continue to harm {PlayerDest} for {Damage} points of toxic damage!",
+            "display_victim_hit": "{PowerName} continues to harm you for {Damage} points of toxic damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -215,6 +228,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You heal {PlayerDest} with your {PowerName} for {Damage} points of health!",
+            "display_victim_hit": "{PlayerSource} heals you with their {PowerName} for {Damage} points of health!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "IgnoreResistance"
           ],
@@ -258,6 +277,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You continue to heal {PlayerDest} with your {PowerName} for {Damage} points of health!",
+            "display_victim_hit": "{PlayerSource} continues to heal you with their {PowerName} for {Damage} points of health!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags": [
             "IgnoreResistance"
           ],

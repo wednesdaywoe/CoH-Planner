@@ -10,6 +10,7 @@
   "icon": "poison_neurotoxicbreath.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Cone",
   "max_targets_hit": 16,
@@ -89,6 +90,12 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "GENERICCONTINUING/DEBUFFSPEEDALL.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreStrength"
           ],
@@ -217,6 +224,18 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "P2783563770",
+            "display_victim_hit": "{PlayerSource} has terrorized you with their {PowerName} and reduces your chance to hit!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "V_COV/POWERS/POISON/POISONTRAPCONTINUING.FX"
+          },
           "flags_raw": 2560
         }
       ]
@@ -257,6 +276,18 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You terrorize {PlayerDest} with your {PowerName}!",
+            "display_victim_hit": "{PlayerSource} has terrorized you with their {PowerName}!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "V_COV/POWERS/POISON/POISONTRAPCONTINUING.FX"
+          },
           "flags_raw": 2560
         }
       ]

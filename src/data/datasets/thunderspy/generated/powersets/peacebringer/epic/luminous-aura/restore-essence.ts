@@ -64,9 +64,6 @@ export const RestoreEssence: Power = {
     ["Mez","Immobilized",4,50,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["Meta",null,1,1,90,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
   ],
-  "setsModes": [
-    "Peacebringer_Blaster_Mode"
-  ],
   "modesDisallowed": [
     "Peacebringer_Blaster_Mode",
     "Peacebringer_Tanker_Mode"

@@ -68,6 +68,7 @@ export const TimeLord: Power = {
       }
     },
     "summon": {
+      "copyBoosts": true,
       "duration": 120,
       "entity": "Pets_Time",
       "isPseudoPet": false
@@ -82,7 +83,6 @@ export const TimeLord: Power = {
   },
   "atoms": [
     ["EntCreate",null,1,1,120,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-    ["EntCreate",null,1,1,120,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["RechargeTime",null,0.2,1,10,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Movement","Run",0.1,1,10,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["Movement","Fly",0.15,1,10,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],

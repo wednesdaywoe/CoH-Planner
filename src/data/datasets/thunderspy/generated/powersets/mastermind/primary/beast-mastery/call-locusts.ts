@@ -100,7 +100,7 @@ export const CallLocusts: Power = {
     {
       "kind": "grant",
       "chance": 0.6883780360221863,
-      "label": "state"
+      "label": "Pack Mentality"
     }
   ],
   "damageTypes": [

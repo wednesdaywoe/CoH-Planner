@@ -29,7 +29,7 @@ from ._enums import (
     ATTRIB_MOD_TYPE, ATTRIB_MOD_ASPECT, ATTRIB_MOD_APPLICATION,
     ATTRIB_MOD_TARGET, ATTRIB_MOD_STACK, ATTRIB_MOD_CASTER_STACK,
     PVP_FLAG, KNOCK_VEC_POSITION, NOTIFY_EVENT,
-    SPECIAL_ATTRIB_MIN_REBIRTH, SPECIAL_ATTRIB_CREATE_ENTITY,
+    SPECIAL_ATTRIB_MIN_REBIRTH,
     special_attrib_table, select_special_attrib_base, thunderspy_attrib_table,
 )
 
@@ -333,19 +333,21 @@ def parse_powers(bin_path_or_data) -> list[PowerRecord]:
             parser = lambda sub: _parse_power(sub, has_field_45b=has_45b, has_field_41b=has_41b)
 
     global _undecoded_message_fx_tails, _undecoded_params_tails, _undecoded_parse6_tails
+    global _undecoded_thunderspy_tails
 
     records_start = r._pos
 
     def _read_all_records():
         """One full pass over the record block. Re-runnable from the top."""
         global _undecoded_message_fx_tails, _undecoded_params_tails
-        global _undecoded_parse6_tails
+        global _undecoded_parse6_tails, _undecoded_thunderspy_tails
         r._pos = records_start
         _dropped_powers.clear()
         _out_of_range_chances.clear()
         _undecoded_message_fx_tails = 0
         _undecoded_params_tails = 0
         _undecoded_parse6_tails = 0
+        _undecoded_thunderspy_tails = 0
         out = []
         dropped = 0
         for i in range(count):
@@ -421,6 +423,12 @@ def parse_powers(bin_path_or_data) -> list[PowerRecord]:
               f"post-magnitude tail that didn't match the validated layout; fell "
               f"back to the heuristic scanner (see _read_parse6_template_tail)",
               file=sys.stderr)
+    if _undecoded_thunderspy_tails:
+        import sys
+        print(f"  Warning: {_undecoded_thunderspy_tails} Thunderspy sub-record(s) "
+              f"had a post-stack tail that didn't match the validated layout; "
+              f"flags read at the fixed offset and Params left undecoded "
+              f"(see _read_thunderspy_template_tail)", file=sys.stderr)
 
     if not (is_parse6 or is_thunderspy or is_veracity):
         recalibrate_event_names(records)
@@ -749,7 +757,8 @@ def _extract_params_parse6(tail_bytes: bytes, attribs: list[str]) -> dict | None
     return {'type': 'Power', 'power_names': power_names}
 
 
-def _read_event_records(r: BinReader) -> list[dict]:
+def _read_event_records(r: BinReader, *, event_names: dict[int, str] = EVENT_NAME,
+                        seconds_as_int: bool = False) -> list[dict]:
     """Read one event-condition struct_array (RequiredEvents or Suppress).
 
     Record shape, shared by both arrays and confirmed against CoD2's
@@ -758,6 +767,20 @@ def _read_event_records(r: BinReader) -> list[dict]:
     rec_len-driven skip keeps alignment even if a variant adds fields.
     `duration` here is the post-event window in seconds, not the
     AttribMod's buff duration.
+
+    `event_names` selects the enum generation to resolve ids through, because
+    the numbering is per-fork: Homecoming renumbers this enum on patch — which
+    is why `recalibrate_event_names` exists — so resolving a fork that never
+    had HC's numbering through `EVENT_NAME` names the neighbouring event.
+    Thunderspy passes `EVENT_NAME_PARSE6`, the numbering it shares with the
+    rest of the Parse6 lineage (WRAP-3 derives it there). The id is the datum;
+    an id absent from the chosen table stays `Event_<n>`.
+
+    `seconds_as_int` reads the post-event window as a u4 rather than an f4, the
+    encoding the Parse6 lineage uses (`_read_parse6_template_tail` reads its own
+    copy of this record the same way). Homecoming writes Super Speed's
+    suppression window as the float 4.0; Thunderspy writes the integer 4 in the
+    same slot of the same record.
     """
     count = r.read_u4()
     if count > 64:
@@ -769,10 +792,13 @@ def _read_event_records(r: BinReader) -> list[dict]:
         rec_len = r.read_u4()
         rec = r.sub_reader(rec_len)
         event_id = rec.read_u4()
-        post_duration = rec.read_f4() if rec_len >= 8 else 0.0
+        if rec_len < 8:
+            post_duration = 0.0
+        else:
+            post_duration = float(rec.read_u4()) if seconds_as_int else rec.read_f4()
         always = rec.read_u4() if rec_len >= 12 else 0
         records.append({
-            "event": EVENT_NAME.get(event_id, f"Event_{event_id}"),
+            "event": event_names.get(event_id, f"Event_{event_id}"),
             "event_id": event_id,
             "duration": post_duration,
             "always": always,
@@ -832,6 +858,15 @@ _TEMPLATE_MESSAGE_FIELDS = (
     "display_info",
 )
 
+# Thunderspy's Messages record is 16 bytes, not 20 — one slot shorter than
+# Parse7. Slot occupancy across the fork's 43,382 records identifies the first
+# three by the same shape Homecoming shows (attacker-hit and victim-hit heavy,
+# float rare): 17,314 / 23,397 / 2,671, against HC's 12,754 / 12,070 / 2,295.
+# Slot 3 is empty on every record in the corpus, so which of HC's last two
+# fields tspy dropped is unobservable — the name below is HC's field order
+# continued, and it labels nothing either way.
+_TSPY_TEMPLATE_MESSAGE_FIELDS = _TEMPLATE_MESSAGE_FIELDS[:4]
+
 # Templates whose Messages/FX region didn't match the validated layout and was
 # left undecoded (raw bytes still reach the params scanner). Corpus-validated
 # counts are strictly 0-or-1, so anything else is a layout-variant signal that
@@ -839,7 +874,10 @@ _TEMPLATE_MESSAGE_FIELDS = (
 _undecoded_message_fx_tails = 0
 
 
-def _read_template_messages_and_fx(r: BinReader) -> tuple[dict | None, dict | None, bool]:
+def _read_template_messages_and_fx(
+    r: BinReader,
+    message_fields: tuple[str, ...] = _TEMPLATE_MESSAGE_FIELDS,
+) -> tuple[dict | None, dict | None, bool]:
     """Decode the Messages and FX struct_arrays that follow the flags words.
 
     Validated corpus-wide vs CoD2 (2026-07-20, 94,816 HC templates): Messages
@@ -877,11 +915,11 @@ def _read_template_messages_and_fx(r: BinReader) -> tuple[dict | None, dict | No
         if r.remaining() < 4:
             return rewind()
         record_length = r.read_u4()
-        if record_length != 4 * len(_TEMPLATE_MESSAGE_FIELDS) or r.remaining() < record_length:
+        if record_length != 4 * len(message_fields) or r.remaining() < record_length:
             return rewind()
         record = r.sub_reader(record_length)
         messages = {name: record.read_string() or None
-                    for name in _TEMPLATE_MESSAGE_FIELDS}
+                    for name in message_fields}
         r.skip(record_length)
         if not any(messages.values()):
             messages = None
@@ -938,11 +976,16 @@ _PARAMS_TYPE_NAMES = {
 _undecoded_params_tails = 0
 
 
-def _read_params_payload(kind: str, r: BinReader) -> dict:
+def _read_params_payload(kind: str, r: BinReader, *,
+                         thunderspy: bool = False) -> dict:
     """Decode one Params payload. Field layouts pinned against the CoD2
     oracle 2026-07-20 (order-insensitive pair check over 11,019 typed
     payloads: zero structural disagreements; residual value diffs all
     live-binary version skew clustered in post-snapshot patched sets).
+
+    `thunderspy` selects the two payload shapes that fork diverges on
+    (EntCreate and Knock); every other kind is byte-identical to Homecoming's,
+    which is what lets this one reader serve both (WRAP-1).
 
     Raises ValueError on any structural violation (array overrun, garbage
     count, unconsumed bytes) — the caller falls back to the scanner.
@@ -970,6 +1013,52 @@ def _read_params_payload(kind: str, r: BinReader) -> dict:
         out = {"costume_name": string_or_none(), "priority": r.read_u4()}
     elif kind == "Reward":
         out = {"rewards": checked_string_array()}
+    elif kind == "EntCreate" and thunderspy:
+        # Thunderspy's EntCreate is 36 bytes against Homecoming's 40: the same
+        # six leading strings, then THREE name arrays where HC has four. The
+        # string half is pinned by slot occupancy — across all 2,523 records
+        # only slots 0 and 4 are ever set, and they hold an entity def
+        # (`5thColumn_Boss_Nightwolf_Lycan`) and a priority list
+        # (`PL_FightPreferMelee`), which is where HC puts EntityDef and
+        # PriorityList. Every array is empty corpus-wide, so WHICH of HC's four
+        # this fork dropped cannot be read off the data; naming them would be a
+        # guess, so a non-empty one raises instead.
+        out = {
+            "entity_def": string_or_none(),
+            "class_name": string_or_none(),
+            "costume_name": string_or_none(),
+            "display_name": string_or_none(),
+            "priority_list": string_or_none(),
+            "ai_config": string_or_none(),
+        }
+        for _ in range(3):
+            if checked_string_array():
+                raise ValueError(
+                    "thunderspy EntCreate name array is non-empty — the field "
+                    "it belongs to is unidentified (empty on every record the "
+                    "shape was pinned against)"
+                )
+    elif kind == "Knock" and thunderspy:
+        # Same eight fields and same 40 bytes as Homecoming, with the PYR
+        # adjustment vector moved from third position to last. Pinned by what
+        # each mez authors rather than by shape: Knockup reads height 6.0 /
+        # height_mag 1.0 with vel and vel_mag both zero, Repel reads vel 0.5 /
+        # vel_mag 0.02 with both height fields zero, and Knockback reads all
+        # four. Under HC's order those same words land in `vec_adjust_pyr` and
+        # `priority`, which is how the misread announced itself: priority came
+        # back 1077936128, the bit pattern of 3.0f.
+        _vec_start_raw = r.read_u4()
+        _vec_end_raw = r.read_u4()
+        out = {
+            "vec_start": KNOCK_VEC_POSITION.get(_vec_start_raw, f"Unknown({_vec_start_raw})"),
+            "vec_end": KNOCK_VEC_POSITION.get(_vec_end_raw, f"Unknown({_vec_end_raw})"),
+            "priority": r.read_u4(),
+            "vel": r.read_f4(),
+            "vel_mag": r.read_f4(),
+            "height": r.read_f4(),
+            "height_mag": r.read_f4(),
+            "vec_adjust_pyr": [r.read_f4(), r.read_f4(), r.read_f4()],
+        }
     elif kind == "EntCreate":
         # Authored field order: EntityDef, Class, Costume, DisplayName,
         # PriorityList, AIConfig, then category/powerset/power name arrays,
@@ -1048,7 +1137,8 @@ def _read_params_payload(kind: str, r: BinReader) -> dict:
     return out
 
 
-def _read_params_union(r: BinReader) -> tuple[dict | None, bool]:
+def _read_params_union(r: BinReader, *,
+                       thunderspy: bool = False) -> tuple[dict | None, bool]:
     """Decode the Params tagged union that ends the AttribMod tail:
     u4 type id (0 = none), u4 payload length, payload.
 
@@ -1083,7 +1173,7 @@ def _read_params_union(r: BinReader) -> tuple[dict | None, bool]:
         return rewind()
     payload = r.sub_reader(payload_length)
     try:
-        out = _read_params_payload(kind, payload)
+        out = _read_params_payload(kind, payload, thunderspy=thunderspy)
     except ValueError:
         return rewind()
     r.skip(payload_length)
@@ -1704,9 +1794,11 @@ def _parse_power_tail(r: BinReader) -> PowerTail:
     )
 
 
-def _parse_power_tail_parse6(r: BinReader, *, rebirth_fork_words: bool) -> tuple[int, list[int]]:
+def _parse_power_tail_parse6(
+        r: BinReader, *, rebirth_fork_words: bool,
+        has_proc_allowed: bool) -> tuple[int, int, list[int]]:
     """Decode the leading slice of the Parse6/Thunderspy post-effects tail;
-    return (max_boosts, strengths_disallowed).
+    return (max_boosts, proc_allowed_raw, strengths_disallowed).
 
     The tail follows the stock i24 ParseBasePower order after `AttribMod`
     (the released-source parse table, no HC insertions):
@@ -1721,17 +1813,30 @@ def _parse_power_tail_parse6(r: BinReader, *, rebirth_fork_words: bool) -> tuple
       BoostLicenseLevel (default 999), MinSlotLevel (default -3),
       MaxSlotLevel (49), MaxBoostLevel (50),
       Var (struct_array), ToggleDroppable (u4),
+      [Thunderspy: ProcAllowed (u4)],
       StrengthsDisallowed (u4_array of attrib offsets).
 
     Rebirth carries two fork-added words with no stock counterpart, one on
     each side of MaxBoosts (2026-07-21 corpus census, 21,559 records, zero
     guard failures: the pre word is 0 except 1 on six temp powers — a bool;
     the post word is 5 except 3 twice — an unnamed fork scalar). Thunderspy
-    has neither; its fork addition is the ActivationEffect struct_array
-    BEFORE this tail, which the caller consumes into `activation_effects`.
-    Everything beyond StrengthsDisallowed (highlight/FX/position metadata)
-    stays skipped by the caller's skip_to_end. Implausible values raise so
-    the caller drops the fields LOUDLY instead of shipping a misread.
+    has neither; its fork additions are the ActivationEffect struct_array
+    BEFORE this tail, which the caller consumes into `activation_effects`,
+    and `ProcAllowed` — the HC-added word between ToggleDroppable and
+    StrengthsDisallowed, which Thunderspy carries and stock Parse6 does not
+    (TSPY-5, 2026-07-31). Everything beyond StrengthsDisallowed
+    (highlight/FX/position metadata) stays skipped by the caller's
+    skip_to_end; Thunderspy has no GlobalStrengthsDisallowed, so the HC read
+    is not simply inherited whole — continuing past StrengthsDisallowed under
+    HC's layout breaks its guards on 299 records.
+
+    ProcAllowed is where TSPY-5 lived. Reading the tail without it left the
+    always-0 ProcAllowed word standing where the StrengthsDisallowed count
+    belongs, so `read_u4_array` returned empty on every one of 20,965 records
+    and the fork appeared to author none — an absence no guard can catch,
+    because an empty array trips neither the length nor the alignment check.
+    Implausible values raise so the caller drops the fields LOUDLY instead of
+    shipping a misread.
     """
     r.skip(4 * (8 if rebirth_fork_words else 7))
     max_boosts = r.read_u4()
@@ -1765,11 +1870,16 @@ def _parse_power_tail_parse6(r: BinReader, *, rebirth_fork_words: bool) -> tuple
     toggle_droppable = r.read_u4()
     if toggle_droppable > 16:
         raise ValueError(f"implausible ToggleDroppable {toggle_droppable} — wrong position?")
+    proc_allowed_raw = 0
+    if has_proc_allowed:
+        proc_allowed_raw = r.read_u4()
+        if proc_allowed_raw > 16:
+            raise ValueError(f"implausible ProcAllowed {proc_allowed_raw} — wrong position?")
     strengths_disallowed = r.read_u4_array()
     if len(strengths_disallowed) > 64 or any(
             v > 4096 or v % 4 for v in strengths_disallowed):
         raise ValueError(f"implausible StrengthsDisallowed {strengths_disallowed} — wrong position?")
-    return max_boosts, strengths_disallowed
+    return max_boosts, proc_allowed_raw, strengths_disallowed
 
 
 def _parse_power(r: BinReader, *, has_field_45b: bool = True, has_field_41b: bool = False) -> PowerRecord:
@@ -1792,7 +1902,7 @@ def _parse_power(r: BinReader, *, has_field_45b: bool = True, has_field_41b: boo
     # 8. auto_issue_save_level (bool)
     auto_issue_keeps_level = r.read_bool()
     # 9. free (bool)
-    r.read_bool()
+    free = r.read_bool()
     # 10. display (string) — display_name
     display_name = r.read_string()
     # 11. help (string) — display_help
@@ -2066,6 +2176,7 @@ def _parse_power(r: BinReader, *, has_field_45b: bool = True, has_field_41b: boo
         num_allowed=num_allowed,
         auto_issue=auto_issue,
         auto_issue_keeps_level=auto_issue_keeps_level,
+        free=free,
         attack_types=attack_types,
         requires=requires,
         activate_requires=activate_requires,
@@ -2212,31 +2323,16 @@ def _tspy_hybrid_aspect_class(attrib: str, *, melee: bool = False) -> str | None
     return None
 
 
-# Create_Entity (pet/pseudo-pet summon) marker in Thunderspy's effect elements.
-# Unlike HC/Rebirth — which carry Create_Entity as the template's *front* attrib
-# (enum 469 / 116) and one AttribMod per pet — Thunderspy packs the summon list
-# into a NESTED struct-array inside a single effect element. Each nested EntCreate
-# sub-entry LEADS with the byte-granular raw value 465 ( = index 116 << 2 | 1:
-# Rebirth's -1 Create_Entity index shift PLUS HC's byte-granular +1 special-region
-# sub-index) and carries its own `Ranged_Ones`/`Ranged_Level` table + the EntityDef
-# / PriorityList / redirect string offsets. The element's *front* attrib is a bare
-# `Ones`/`Level` summon shell. Verified against the binary: the count of 465 markers
-# equals the pet count exactly (Summon_Wolves 3, Rally_The_Militia 6, Hell_on_Earth
-# 10, Haunt 2 shades), and 1863 elements across 1512 player-relevant powers carry
-# it. The affected-attrib index array (`_idx_attribs`) never names Create_Entity for
-# these — the marker lives in the nested params block, not the index array — which is
-# why the recharge/mez index-array recovery above leaves summons untouched.
-#
-# The marker is DERIVED from the active band base, never written as a literal.
-# It is the second consumer of that base, and the dangerous one: the special map
-# merely renames a template it fails on, but this scan DELETES — a stale marker
-# matches nothing, so every summon silently loses its per-pet Create_Entity
-# templates and keeps the shell it should have replaced. That is the whole of
-# the 2026-07-30 build's "2,523 templates vanished" symptom.
+# Thunderspy's special-attrib band base. Unlike HC's and Rebirth's, which are
+# constants, this one MOVES: adding an attrib slides the whole band, so it is
+# calibrated from the corpus at parse time (`select_special_attrib_base`) and
+# every table derived from it is re-anchored together by `_set_tspy_band_base`.
+# A stale base does not fail loudly — it renames each affected template to its
+# BAND NEIGHBOUR, which is a real attrib that real powers carry, so the result
+# looks plausible. That is DATA-GAP TSPY-6 and TSPY-7 both.
 _TSPY_BAND_BASE = 464
 _TSPY_SPECIAL_BY_RAW: dict[int, str] = special_attrib_table(_TSPY_BAND_BASE)
 _TSPY_ATTRIB_NAME: dict[int, str] = thunderspy_attrib_table(_TSPY_BAND_BASE)
-_TSPY_CREATE_ENTITY_MARKER = _TSPY_BAND_BASE + SPECIAL_ATTRIB_CREATE_ENTITY
 
 # Raw attrib values seen in Thunderspy index arrays during the current parse —
 # the evidence `select_special_attrib_base` calibrates the band base from.
@@ -2246,97 +2342,58 @@ _TSPY_RAW_ATTRIB_COUNTS: Counter = Counter()
 def _set_tspy_band_base(base: int) -> None:
     """Re-anchor every consumer of the Thunderspy special-attrib band at once.
 
-    The base is one fact with three consumers (special map, collapsed view in the
-    normal table, summon marker); they are set together here so none can be
-    updated without the others.
+    The base is one fact with two consumers (the special map and the collapsed
+    view in the normal table); they are set together here so neither can be
+    updated without the other.
     """
     global _TSPY_BAND_BASE, _TSPY_SPECIAL_BY_RAW, _TSPY_ATTRIB_NAME
-    global _TSPY_CREATE_ENTITY_MARKER
     _TSPY_BAND_BASE = base
     _TSPY_SPECIAL_BY_RAW = special_attrib_table(base)
     _TSPY_ATTRIB_NAME = thunderspy_attrib_table(base)
-    _TSPY_CREATE_ENTITY_MARKER = base + SPECIAL_ATTRIB_CREATE_ENTITY
-
-# The `Ones`/`Level`(minus) front attribs on a summon element are pure summon
-# SHELLS (the level-setting placeholder), carrying no player-facing effect of their
-# own — HC emits only the Create_Entity template(s), no shell. So for these fronts we
-# REPLACE the shell with the extracted Create_Entity templates. A summon element with
-# any OTHER front (a real Damage/Knockback/… effect that also summons — e.g. an attack
-# with an incidental pet) keeps its header template AND gains the Create_Entity ones.
-_TSPY_SUMMON_SHELL_FRONTS = frozenset(
-    {"Ones", "Level", "Levelminus", "Levelminus2"}
-)
-
-# Front-attrib / table / control tokens that resolve as entity-def-shaped strings
-# (leading uppercase, underscores, no dots) but are NOT summoned EntityDefs. The
-# table prefixes are filtered separately via `_TSPY_TABLE_PREFIXES`.
-_TSPY_NON_ENTITYDEF = frozenset(
-    {"Ones", "Damage", "Level", "Levelminus", "Levelminus2", "Heal", "Endurance",
-     "PFX", "Combat", "Pet"}
-)
 
 
-def _extract_thunderspy_summons(strtab_data, start: int, end: int,
-                                strtab_base: int, front: str, table: str) -> list[dict]:
-    """Extract EntCreate params from a Thunderspy summon element.
+def resolve_attrib_thunderspy(raw: int) -> str:
+    """Resolve a raw Thunderspy attrib value to its name, band-aware.
 
-    Splits the element `[start, end)` into one region per `465` Create_Entity
-    marker and pulls each nested sub-entry's EntityDef (+ PriorityList + redirect
-    power names) — mirroring HC's `_extract_params` string-scan, but scoped per
-    region so a multi-pet summon yields one `{type:'EntCreate', entity_def, ...}`
-    per pet (matching HC's one-template-per-pet convention that the converter
-    counts). Returns [] when the element carries no marker.
-
-    The EntityDef is the region's first entity-def-shaped string that isn't the
-    front attrib, the modifier table, a `PL_` priority list, a `P<digits>` combat-
-    text message key, or a known non-entity token; PriorityList is the first `PL_`
-    / `Pet` identifier after it; redirects are 3-part dotted power names that
-    aren't FX asset paths (`…FX` / `…Fail_Safe` / `PFX`). Verified clean over all
-    809 player-category summon sub-entries (0 missing EntityDef); the residual
-    mismatches are NPC/critter powers dropped by the export's PLAYER_CATEGORIES.
+    The sibling resolvers for HC and Rebirth live in `_enums` because their
+    band bases are constants; Thunderspy's is calibrated from the corpus at
+    parse time (`select_special_attrib_base`), so this one has to read the
+    live tables rather than a module-level snapshot — a caller using
+    `ATTRIB_NAME_THUNDERSPY` directly gets whatever base the process started
+    with, which is wrong for every build whose band has moved.
     """
-    markers = [off for off in range(start, end - 3, 4)
-               if struct.unpack_from('<I', strtab_data, off)[0] == _TSPY_CREATE_ENTITY_MARKER]
-    if not markers:
-        return []
-    bounds = markers + [end]
-    out: list[dict] = []
-    for i, mpos in enumerate(markers):
-        r_start, r_end = mpos, bounds[i + 1]
-        entity_def = None
-        priority_list = None
-        redirects: list[str] = []
-        for off in range(r_start, r_end - 3, 4):
-            u = struct.unpack_from('<I', strtab_data, off)[0]
-            s = _resolve_offset(strtab_data, strtab_base, u)
-            if not s:
-                continue
-            if '.' in s:
-                # power-name redirect (3-part dotted) vs FX asset path — skip FX
-                if (s.count('.') == 2 and not s.endswith(('FX', 'Fail_Safe'))
-                        and 'PFX' not in s and s not in redirects):
-                    redirects.append(s)
-                continue
-            if s.startswith('PL_') or s == 'Pet':
-                if priority_list is None and entity_def is not None:
-                    priority_list = s
-                continue
-            if _is_message_key(s):
-                continue
-            if (entity_def is None and _looks_like_entity_def(s)
-                    and s not in _TSPY_NON_ENTITYDEF
-                    and not s.startswith(_TSPY_TABLE_PREFIXES)
-                    and s != front and s != table):
-                entity_def = s
-        if not entity_def:
-            continue  # NPC edge cases (digit-leading / classref) — dropped downstream
-        params: dict = {'type': 'EntCreate', 'entity_def': entity_def}
-        if priority_list:
-            params['priority_list'] = priority_list
-        if redirects:
-            params['redirects'] = redirects
-        out.append(params)
-    return out
+    if raw in _TSPY_SPECIAL_BY_RAW:
+        return _TSPY_SPECIAL_BY_RAW[raw]
+    if raw >= _TSPY_BAND_BASE:
+        return f"Special({raw})"
+    return _TSPY_ATTRIB_NAME.get(raw // 4, f"Unknown({raw // 4})")
+
+def _attach_thunderspy_redirects(templates: list) -> None:
+    """Copy an element's redirect power names onto its Create_Entity templates.
+
+    Thunderspy's EntCreate payload carries the EntityDef and the PriorityList
+    but no redirect list — HC's four trailing name arrays are three here and
+    every one of them is empty corpus-wide. The names are still in the element:
+    they are the `power_names` of a sibling AttribMod's `Power` payload, which
+    is 19 of the 21 the byte-scan this replaced used to recover (it read them
+    out of the neighbouring bytes without knowing whose field they were).
+
+    The remaining two are Wind Control's Vacuum, where the name sits inside an
+    RPN expression in one of the sub-records whose tail does not decode; those
+    surface through the undecoded-tail warning rather than being recovered here.
+
+    `resolvePetLifespan` in convert-powerset.cjs reads `params.redirects` off
+    the Create_Entity template to resolve a pseudopet's `*.Self_Destruct` delay,
+    so the field has to live there rather than on the sibling that carries it.
+    """
+    redirects = [name for t in templates
+                 if (t.params or {}).get('type') == 'Power'
+                 for name in (t.params.get('power_names') or [])]
+    if not redirects:
+        return
+    for t in templates:
+        if (t.params or {}).get('type') == 'EntCreate':
+            t.params['redirects'] = redirects
 
 
 def _tspy_submods(strtab_data, elem_start: int, elem_end: int) -> list[tuple[int, int]]:
@@ -2375,6 +2432,92 @@ def _tspy_submods(strtab_data, elem_start: int, elem_end: int) -> list[tuple[int
         out.append((pos + 4, pos + 4 + length))
         pos += 4 + length
     return out
+
+
+# Thunderspy AttribMod sub-records whose tail past the stack triple didn't match
+# the layout below. Same loud-at-parse-end contract as the Parse7 counters.
+_undecoded_thunderspy_tails = 0
+
+
+def _read_thunderspy_template_tail(
+    strtab_data, strtab_base: int, start: int, end: int,
+) -> dict | None:
+    """Structurally decode a Thunderspy AttribMod's tail, from the byte after
+    the stack triple to the end of the sub-record.
+
+    Layout, pinned corpus-wide over 79,735 sub-records (99.94% account for
+    every tail byte under it):
+
+        CancelEvents     u4_array
+        Suppress         struct_array   (12-byte records, HC's shape, with the
+                                         Parse6 lineage's integer seconds; both
+                                         arrays' ids resolve through
+                                         EVENT_NAME_PARSE6, which is also this
+                                         fork's numbering — see WRAP-3 there)
+        BoostModAllowed  u4
+        Flags            u4
+        Flags2           u4
+        Messages         struct_array   (16-byte record, see
+                                         _TSPY_TEMPLATE_MESSAGE_FIELDS)
+        FX               struct_array   (HC's shape)
+        Params           tagged union   (HC's, type 0 = none)
+
+    That is Homecoming's Parse7 tail minus `RequiredEvents` — the same single
+    event array Parse6 carries. Which of HC's two arrays survives here is not a
+    shape question (both are 12-byte event records): Super Speed answers it.
+    Homecoming suppresses its RunningSpeed/JumpingSpeed mods on
+    `ActivateAttackClick` for 4.0s and requires no event at all; Thunderspy's
+    same templates read event 1, seconds 4, always 1 in this array. Reading it
+    as RequiredEvents makes the converter drop them as conditional, and the
+    fork's travel powers lose their speed.
+
+    The slot after it is `BoostModAllowed`, not a second event array: on the 464
+    records where it is non-zero, a Suppress count would overrun the record,
+    while as a boost category it is 5 on a Hamidon enhancement's Accuracy row,
+    9 on every damage row, 21 on Stunned, 20 on Sleep — one value per attrib.
+
+    The union's own framing is the check that the walk arrived where it should:
+    a typed payload's declared length equals the bytes left in the sub-record,
+    and type 0 occupies exactly the final four.
+
+    Returns None when any block violates its shape — the caller keeps the
+    fixed-offset reading it had and the anomaly is counted, rather than a
+    misaligned flags word shipping as data.
+    """
+    global _undecoded_thunderspy_tails
+    r = BinReader(strtab_data, _string_table=(strtab_base, strtab_data),
+                  _offset=start, _length=end - start)
+    try:
+        cancel_event_ids = r.read_u4_array()
+        suppress_events = _read_event_records(r, event_names=EVENT_NAME_PARSE6,
+                                              seconds_as_int=True)
+        boost_mod_allowed_id = r.read_u4()
+        flags_raw = r.read_u4()
+        flags2_raw = r.read_u4()
+    except (ValueError, struct.error):
+        _undecoded_thunderspy_tails += 1
+        return None
+    messages, fx, tail_decoded = _read_template_messages_and_fx(
+        r, _TSPY_TEMPLATE_MESSAGE_FIELDS
+    )
+    if not tail_decoded:
+        _undecoded_thunderspy_tails += 1
+        return None
+    params, params_decoded = _read_params_union(r, thunderspy=True)
+    if not params_decoded:
+        _undecoded_thunderspy_tails += 1
+        return None
+    return {
+        'cancel_events': [EVENT_NAME_PARSE6.get(v, f"Event_{v}")
+                          for v in cancel_event_ids],
+        'suppress_events': suppress_events,
+        'boost_mod_allowed_id': boost_mod_allowed_id,
+        'flags_raw': flags_raw,
+        'flags2_raw': flags2_raw,
+        'messages': messages,
+        'fx': fx,
+        'params': params,
+    }
 
 
 def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base,
@@ -2485,10 +2628,15 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base,
             _idx_count = icount
             idxs = struct.unpack_from('<%dI' % icount, strtab_data, ipos + 4)
             _TSPY_RAW_ATTRIB_COUNTS.update(idxs)
+            # A raw inside the band is a band member whatever its alignment, so
+            # the byte-granular map below is asked first. The collapsed view
+            # carries its own names for the eleven 4-aligned raws the band also
+            # covers, and they are its neighbours' — see TSPY-7.
             _idx_attribs = [_TSPY_ATTRIB_NAME[v // 4] for v in idxs
-                            if v % 4 == 0 and (v // 4) in _TSPY_ATTRIB_NAME]
-            # The special/scripting band is BYTE-granular, so its entries fail the
-            # 4-aligned filter above and were dropped whole. Thunderspy indexed it
+                            if v % 4 == 0 and v not in _TSPY_SPECIAL_BY_RAW
+                            and (v // 4) in _TSPY_ATTRIB_NAME]
+            # The special/scripting band is BYTE-granular, so most of its entries
+            # fail a 4-aligned filter and were once dropped whole. Thunderspy indexed it
             # from the same base 464 as Rebirth — both descend from the i24 source
             # whose ESpecialAttrib enum SPECIAL_ATTRIB_BAND transcribes. Established
             # against the Rebirth export as an oracle: of the tspy powers carrying
@@ -2552,6 +2700,13 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base,
     stack_key_id = 0
     flags: list[str] = []
     flags_raw = 0
+    flags2_raw = 0
+    cancel_events: list[str] = []
+    suppress_events: list[dict] = []
+    boost_mod_allowed_id = 0
+    messages: dict | None = None
+    fx: dict | None = None
+    params: dict | None = None
     # Post-table magnitude (HC Parse7 layout: table scale duration MAGNITUDE).
     # For damage this is the ~1.0 per-tick multiplier; for MEZ it is the real
     # applied Magnitude (Mag 3 hold, Mag 4 taunt, …) — the template-level
@@ -2691,10 +2846,28 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base,
         # renormalization lifts mean flag agreement 90.98% → 96.74%, IgnoreEfficiency
         # 57.9% → 99.6% and Boost 77.0% → 99.2%. Reading it as-read left every tspy
         # enhancement piece without its `Boost` flag.
-        _flags_raw = _stack_u4(pos + 44)
+        #
+        # The word's POSITION comes from the structural walk of everything past
+        # the stack triple (`_read_thunderspy_template_tail`), because the three
+        # blocks in between are variable-length: on the 6,724 sub-records that
+        # carry a CancelEvents id or a RequiredEvents record, the fixed pos+44
+        # slot holds one of those instead of the flags. The fixed read stays as
+        # the fallback for the tail shapes the walk rejects.
+        _tail = _read_thunderspy_template_tail(
+            strtab_data, strtab_base, tail_start + pos + 32, _sub_end
+        )
+        _flags_raw = _tail['flags_raw'] if _tail else _stack_u4(pos + 44)
         if _flags_raw is not None and _flags_raw < (1 << 24):
             flags_raw = (_flags_raw & 0x7F) | ((_flags_raw & ~0x7F) << 1)
             flags = _decode_flags(flags_raw)
+        if _tail:
+            flags2_raw = _tail['flags2_raw']
+            cancel_events = _tail['cancel_events']
+            suppress_events = _tail['suppress_events']
+            boost_mod_allowed_id = _tail['boost_mod_allowed_id']
+            messages = _tail['messages']
+            fx = _tail['fx']
+            params = _tail['params']
         break
 
     # Both chances carry exactly as read, including the 28 records outside [0,1]
@@ -2832,6 +3005,15 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base,
     # Cage's Hold, Blind's `Immobilize`-front Hold). Both used to need their own
     # branch to reach past the header word; neither does now.
 
+    # Second flags word — the attrib-contextual keywords Homecoming keeps in the
+    # same slot, and read here with the same per-attrib gate. It is what puts
+    # `CopyBoosts` on this fork's 2,144 entity-creating and executing templates
+    # (HC-4's marker), `RevokeAll` on its Revoke_Power mods and the
+    # SetTimer/AdjustTimer/Cooldown triple on its Recharge_Power ones; every
+    # value seen is a subset of the bits those classes use on HC.
+    if flags2_raw:
+        flags = flags + _decode_flags2(flags2_raw, attribs)
+
     r.skip_to_end()
     template = EffectTemplate(
         attribs=attribs,
@@ -2852,8 +3034,16 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base,
         stack=stack,
         stack_limit=stack_limit,
         stack_key_id=stack_key_id,
+        cancel_events=cancel_events,
+        suppress_events=suppress_events,
+        boost_mod_allowed=str(boost_mod_allowed_id) if boost_mod_allowed_id else "",
+        boost_mod_allowed_id=boost_mod_allowed_id,
         flags=flags,
         flags_raw=flags_raw,
+        flags2_raw=flags2_raw,
+        messages=messages,
+        fx=fx,
+        params=params,
     )
     # The element's own fields, for the synthetic group the caller wraps this in
     # — the same (template, group_extras) contract the Parse6 path uses.
@@ -3215,15 +3405,6 @@ def _parse_effect_template_parse6(r: BinReader, *, thunderspy: bool = False) -> 
         params = _extract_params_parse6(tail_bytes, attribs)
     else:
         params = _parse6_tail_params(tail)
-    # Power_Redirect: the target power lives in PrimaryStringList (i24
-    # redirect mechanism), not in the tail's param strings — surface it in
-    # the same `{type: 'Power', power_names}` shape Execute_Power uses so
-    # the downstream redirect-follow logic reads both uniformly.
-    if attribs == ["Power_Redirect"] and primary_str_list:
-        if params is None:
-            params = {"type": "Power", "power_names": list(primary_str_list)}
-        else:
-            params.setdefault("power_names", list(primary_str_list))
         suppress_events = tail["suppress"]
         for (name, bit, second_word), value in zip(_PARSE6_TAIL_BOOL_FLAGS, tail["bools"]):
             if not value:
@@ -3255,6 +3436,18 @@ def _parse_effect_template_parse6(r: BinReader, *, thunderspy: bool = False) -> 
             # means the same thing across datasets.
             "eval_flags": tail["eval_flags"] << 1,
         }
+
+    # Power_Redirect: the target power lives in PrimaryStringList (i24 redirect
+    # mechanism), not in the tail's param strings — surface it in the same
+    # `{type: 'Power', power_names}` shape Execute_Power uses so the downstream
+    # redirect-follow logic reads both uniformly. Only `params` is special here:
+    # this used to enclose the whole tail block above, which fenced Rebirth's
+    # flags2/FX/suppress/PPM behind an attrib 235 of 81,913 templates carry.
+    if attribs == ["Power_Redirect"] and primary_str_list:
+        if params is None:
+            params = {"type": "Power", "power_names": list(primary_str_list)}
+        else:
+            params.setdefault("power_names", list(primary_str_list))
 
     template = EffectTemplate(
         attribs=attribs,
@@ -3391,46 +3584,16 @@ def _parse_effects_parse6(r: BinReader, *, thunderspy: bool = False,
                 templates=[tmpl],
                 **group_extras,
             ))
-            # Thunderspy summon (Create_Entity) expansion. Thunderspy packs the
-            # EntCreate list into a nested struct-array the single-template
-            # parser above doesn't surface, so summon powers carry only a bare
-            # `Ones`/`Level` shell and lose their pet linkage. Emit one
-            # Create_Entity template (with `params` EntCreate) per nested pet —
-            # matching HC's shape so the existing converter/display path
-            # (`params.entity_def` → PET_ENTITIES) works unchanged. See
-            # `_extract_thunderspy_summons` + THUNDERSPY_PARSER.md.
+            # A pet's redirect powers are not in its own EntCreate payload —
+            # they are the `power_names` of a Power payload on a SIBLING
+            # AttribMod of the same element, which is where the byte-scan this
+            # replaced used to find them, by proximity rather than by field.
+            # `resolvePetLifespan` reads them off the Create_Entity template, so
+            # carry them across the element to keep that cascade whole.
             if thunderspy:
-                summons = _extract_thunderspy_summons(
-                    r._data, elem_start, elem_start + elem_len,
-                    r._strtab_base, tmpl.attribs[0] if tmpl.attribs else '',
-                    tmpl.table,
-                )
-                if summons:
-                    front = tmpl.attribs[0] if tmpl.attribs else ''
-                    if front in _TSPY_SUMMON_SHELL_FRONTS:
-                        effects.pop()  # drop the summon shell (HC emits no shell)
-                    for params in summons:
-                        ce = EffectTemplate(
-                            attribs=['Create_Entity'],
-                            type='Magnitude',
-                            application_type='OnTick',
-                            table=tmpl.table,
-                            scale=tmpl.scale,
-                            duration=tmpl.duration,
-                            magnitude=tmpl.magnitude or 1.0,
-                            jit_requires=tmpl.jit_requires,
-                            params=params,
-                        )
-                        effects.append(EffectGroup(
-                            chance=group_chance,
-                            requires_expression=req,
-                            is_pvp=is_pvp,
-                            templates=[ce],
-                            **group_extras,
-                        ))
+                _attach_thunderspy_redirects([tmpl] + sibling_templates)
             # Sibling AttribMods share the element header, so they carry the same
-            # gate and PvE/PvP split as the first. Appended after the summon block
-            # so its shell `pop()` still targets the template it was built from.
+            # gate and PvE/PvP split as the first.
             for sibling in sibling_templates:
                 effects.append(EffectGroup(
                     chance=group_chance,
@@ -3484,7 +3647,7 @@ def _parse_power_parse6(r: BinReader, *, thunderspy: bool = False,
     r.read_u4()  # system
     auto_issue = r.read_bool()
     auto_issue_keeps_level = r.read_bool()
-    r.read_bool()  # free
+    free = r.read_bool()
     display_name = r.read_string()
     display_help = r.read_string()
     short_help = r.read_string()
@@ -3705,17 +3868,20 @@ def _parse_power_parse6(r: BinReader, *, thunderspy: bool = False,
     # succeeded; Veracity's retail tail layout is unverified, so it stays
     # skipped (not an exported dataset).
     max_boosts = MAX_BOOSTS_DEFAULT
+    proc_allowed_raw = 0
     strengths_disallowed: list[int] = []
     if effects_aligned and not veracity:
         try:
-            max_boosts, strengths_disallowed = _parse_power_tail_parse6(
+            max_boosts, proc_allowed_raw, strengths_disallowed = _parse_power_tail_parse6(
                 r,
-                rebirth_fork_words=not thunderspy)
+                rebirth_fork_words=not thunderspy,
+                has_proc_allowed=thunderspy)
         except Exception as e:
             _warn_dropped(full_name,
                           f"post-effects tail parse failed ({e}); "
                           f"MaxBoosts/StrengthsDisallowed lost")
             max_boosts = MAX_BOOSTS_DEFAULT
+            proc_allowed_raw = 0
             strengths_disallowed = []
     r.skip_to_end()
 
@@ -3731,6 +3897,7 @@ def _parse_power_parse6(r: BinReader, *, thunderspy: bool = False,
         num_allowed=num_allowed,
         auto_issue=auto_issue,
         auto_issue_keeps_level=auto_issue_keeps_level,
+        free=free,
         attack_types=attack_types,
         requires=requires,
         activate_requires=activate_requires,
@@ -3761,11 +3928,14 @@ def _parse_power_parse6(r: BinReader, *, thunderspy: bool = False,
         # Parse6 has no MaxTargetsExpr (field 38, HC-only) and no ChainTarget
         # (field 43 is an FX array here — see the read above). Only ChainEff.
         chain_eff_expression=chain_eff_expr,
-        # i24-original fields shared with the HC layout. The HC-added fields
-        # (OverCap block, MaxToggleTime, ProcAllowed) don't exist in Parse6.
+        # i24-original fields shared with the HC layout. Of the HC-added
+        # fields, the OverCap block and MaxToggleTime don't exist in Parse6;
+        # ProcAllowed does not either, but Thunderspy carries it (TSPY-5) —
+        # the tail reader gates it on the flavor and leaves it 0 elsewhere.
         castable_after_death=castable_after_death,
         chain_delay=chain_delay,
         max_boosts=max_boosts,
+        proc_allowed_raw=proc_allowed_raw,
         strengths_disallowed=strengths_disallowed,
         effects=effects,
         activation_effects=activation_effects,

@@ -18,6 +18,9 @@ export const ForceFieldGenerator: Power = {
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "strengthsDisallowed": [
+    "RechargeTime"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 20,
@@ -35,13 +38,13 @@ export const ForceFieldGenerator: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
+      "copyBoosts": true,
       "duration": 99999,
       "entity": "Pets_Traps_FF_Generator",
       "isPseudoPet": false
     }
   },
   "atoms": [
-    ["EntCreate",null,1,1,99999,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-    ["EntCreate",null,1,1,99999,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["EntCreate",null,1,1,99999,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1]
   ]
 };

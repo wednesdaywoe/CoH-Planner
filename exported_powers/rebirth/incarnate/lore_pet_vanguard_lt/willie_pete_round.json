@@ -10,6 +10,7 @@
   "icon": "assaultweapons_arm30grenade.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.2,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -132,9 +133,10 @@
           },
           "flags": [
             "NearGround",
-            "IgnoreCombatMods"
+            "IgnoreCombatMods",
+            "KeepThroughDeath"
           ],
-          "flags_raw": 328
+          "flags_raw": 16712
         }
       ]
     },
@@ -181,9 +183,10 @@
           },
           "flags": [
             "NearGround",
-            "IgnoreCombatMods"
+            "IgnoreCombatMods",
+            "KeepThroughDeath"
           ],
-          "flags_raw": 328
+          "flags_raw": 16712
         }
       ]
     }

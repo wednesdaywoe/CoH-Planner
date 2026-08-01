@@ -51,6 +51,7 @@ export const HellonEarth: Power = {
       "tohitBuff": 90
     },
     "summon": {
+      "copyBoosts": true,
       "duration": 90,
       "entity": "Pets_Living_Hellfire",
       "entityCount": 10,
@@ -72,25 +73,15 @@ export const HellonEarth: Power = {
     ["DamageBuff","Toxic",5,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Psionic",5,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
-    ["EntCreate",null,1,1,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["EntCreate",null,1,1,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["EntCreate",null,1,1,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["EntCreate",null,1,1,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
     ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
     ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
     ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,0.949999988079071,null,true],
-    ["EntCreate",null,1,1,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,0.949999988079071],
     ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,0.8999999761581421,null,true],
-    ["EntCreate",null,1,1,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,0.8999999761581421],
     ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,0.8500000238418579,null,true],
-    ["EntCreate",null,1,1,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,0.8500000238418579],
     ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,0.800000011920929,null,true],
-    ["EntCreate",null,1,1,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,0.800000011920929],
     ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,0.75,null,true],
-    ["EntCreate",null,1,1,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,0.75],
-    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,0.699999988079071,null,true],
-    ["EntCreate",null,1,1,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,0.699999988079071]
+    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,0.699999988079071,null,true]
   ],
   "specialEffects": [
     {

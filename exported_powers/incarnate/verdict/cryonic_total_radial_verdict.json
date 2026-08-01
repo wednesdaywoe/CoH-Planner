@@ -10,6 +10,7 @@
   "icon": "incarnate_judgement_cryonic_rare.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": true,
   "accuracy": 1.0,
   "effect_area": "Cone",
   "max_targets_hit": 24,

@@ -10,6 +10,7 @@
   "icon": "arachnos_patron_megabuff.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -87,6 +88,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 31,
+              "duration": 10.0,
+              "always": 1
+            }
+          ],
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -136,6 +145,14 @@
             "Stunned",
             "Sleep"
           ],
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 31,
+              "duration": 10.0,
+              "always": 1
+            }
+          ],
           "flags": [
             "IgnoreResistance"
           ],
@@ -179,6 +196,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 31,
+              "duration": 10.0,
+              "always": 1
+            }
+          ],
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -227,6 +252,14 @@
             "Held",
             "Stunned",
             "Sleep"
+          ],
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 31,
+              "duration": 10.0,
+              "always": 1
+            }
           ],
           "flags": [
             "IgnoreStrength",
@@ -277,6 +310,14 @@
             "Stunned",
             "Sleep"
           ],
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 31,
+              "duration": 10.0,
+              "always": 1
+            }
+          ],
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -325,6 +366,14 @@
             "Held",
             "Stunned",
             "Sleep"
+          ],
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 31,
+              "duration": 10.0,
+              "always": 1
+            }
           ],
           "flags": [
             "IgnoreStrength",
@@ -375,6 +424,14 @@
             "Stunned",
             "Sleep"
           ],
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 31,
+              "duration": 10.0,
+              "always": 1
+            }
+          ],
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -423,6 +480,14 @@
             "Held",
             "Stunned",
             "Sleep"
+          ],
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 31,
+              "duration": 10.0,
+              "always": 1
+            }
           ],
           "flags": [
             "IgnoreStrength",
@@ -473,6 +538,14 @@
             "Stunned",
             "Sleep"
           ],
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 31,
+              "duration": 10.0,
+              "always": 1
+            }
+          ],
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -521,6 +594,14 @@
             "Held",
             "Stunned",
             "Sleep"
+          ],
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 31,
+              "duration": 10.0,
+              "always": 1
+            }
           ],
           "flags": [
             "IgnoreStrength",
@@ -566,6 +647,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 31,
+              "duration": 10.0,
+              "always": 1
+            }
+          ],
           "flags": [
             "IgnoreResistance"
           ],
@@ -609,6 +698,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 31,
+              "duration": 10.0,
+              "always": 1
+            }
+          ],
           "flags": [
             "IgnoreResistance"
           ],
@@ -652,6 +749,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 31,
+              "duration": 10.0,
+              "always": 1
+            }
+          ],
           "flags": [
             "IgnoreResistance"
           ],
@@ -695,6 +800,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 31,
+              "duration": 10.0,
+              "always": 1
+            }
+          ],
           "flags": [
             "IgnoreResistance"
           ],
@@ -738,6 +851,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 31,
+              "duration": 10.0,
+              "always": 1
+            }
+          ],
           "flags": [
             "IgnoreResistance"
           ],
@@ -781,6 +902,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 31,
+              "duration": 10.0,
+              "always": 1
+            }
+          ],
           "flags": [
             "IgnoreResistance"
           ],
@@ -824,6 +953,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 31,
+              "duration": 10.0,
+              "always": 1
+            }
+          ],
           "flags": [
             "IgnoreResistance"
           ],
@@ -867,6 +1004,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 31,
+              "duration": 10.0,
+              "always": 1
+            }
+          ],
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -911,6 +1056,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 31,
+              "duration": 10.0,
+              "always": 1
+            }
+          ],
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -955,6 +1108,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 31,
+              "duration": 10.0,
+              "always": 1
+            }
+          ],
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -999,6 +1160,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 31,
+              "duration": 10.0,
+              "always": 1
+            }
+          ],
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -1043,6 +1212,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 31,
+              "duration": 10.0,
+              "always": 1
+            }
+          ],
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -1087,6 +1264,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 31,
+              "duration": 10.0,
+              "always": 1
+            }
+          ],
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -1131,6 +1316,14 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "MissionObjectClick",
+              "event_id": 31,
+              "duration": 10.0,
+              "always": 1
+            }
+          ],
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"

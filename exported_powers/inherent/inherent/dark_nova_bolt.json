@@ -10,6 +10,7 @@
   "icon": "umbralblast_shadowbolt.png",
   "auto_issue": true,
   "auto_issue_keeps_level": false,
+  "free": true,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -237,6 +238,6 @@
     "Peacebringer_Tanker_Mode",
     "Warshade_Tanker_Mode"
   ],
-  "available_level": 4294967295,
+  "available_level": -1,
   "powerset": "Inherent.Inherent"
 }

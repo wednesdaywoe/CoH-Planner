@@ -10,6 +10,7 @@
   "icon": "paramilitary_equipsoldier.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -77,6 +78,11 @@
           "stack": "Extend",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "costume_name": "MASTERMIND_THUG_MINION_02_02",
+            "priority": 6,
+            "type": "Costume"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"

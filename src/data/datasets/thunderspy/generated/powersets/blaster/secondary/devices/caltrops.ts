@@ -49,6 +49,7 @@ export const Caltrops: Power = {
       "damageBuff": 8.57
     },
     "summon": {
+      "copyBoosts": true,
       "duration": 45,
       "entity": "Pets_Caltrops",
       "isPseudoPet": false
@@ -56,7 +57,6 @@ export const Caltrops: Power = {
   },
   "atoms": [
     ["EntCreate",null,1,1,45,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["EntCreate",null,1,1,45,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["DamageBuff","Smashing",0.071,1,8.57,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Lethal",0.071,1,8.57,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Fire",0.071,1,8.57,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],

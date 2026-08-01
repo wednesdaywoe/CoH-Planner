@@ -10,6 +10,7 @@
   "icon": "beastmastery_calllocusts.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.155,
   "effect_area": "Cone",
   "max_targets_hit": 10,
@@ -93,6 +94,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You call forth an unkindness of ravens upon {PlayerDest} for {Damage} points of Lethal damage reducing their defense and movement speed.",
+            "display_victim_hit": "{PlayerSource} attacks you with an unkindness of ravens for {Damage} points of Lethal damage and reduces your defense and movement speed.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -133,6 +140,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You call forth an unkindness of ravens upon {PlayerDest} for {Damage} points of Lethal damage reducing their defense and movement speed.",
+            "display_victim_hit": "{PlayerSource} attacks you with an unkindness of ravens for {Damage} points of Lethal damage and reduces your defense and movement speed.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -173,6 +186,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "PFX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -338,6 +357,13 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Pack_Mentality"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"

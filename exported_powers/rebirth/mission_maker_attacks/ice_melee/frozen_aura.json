@@ -10,6 +10,7 @@
   "icon": "icyonslaught_frozenaura.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.0,
   "effect_area": "Sphere",
   "max_targets_hit": 10,
@@ -80,6 +81,14 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [
+              389
+            ],
+            "conditional_fx": "POWERS/COLDCONTROL/FLASHFREEZECONTINUING.FX"
+          },
           "flags_raw": 2560
         }
       ]

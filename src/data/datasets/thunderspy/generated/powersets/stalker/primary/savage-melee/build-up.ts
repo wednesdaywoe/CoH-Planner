@@ -18,6 +18,9 @@ export const BuildUp: Power = {
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 110,

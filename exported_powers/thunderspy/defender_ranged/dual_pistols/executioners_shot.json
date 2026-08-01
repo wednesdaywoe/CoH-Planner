@@ -10,6 +10,7 @@
   "icon": "dualpistols_executionersshot.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
+  "free": false,
   "accuracy": 1.25,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
@@ -95,6 +96,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You shoot {PlayerDest} with your {PowerName} for {Damage} points of lethal damage.",
+            "display_victim_hit": "{PlayerSource} shoots you with their {PowerName} for {Damage} points of lethal damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -135,6 +142,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You shoot {PlayerDest} with your {PowerName} for {Damage} points of lethal damage.",
+            "display_victim_hit": "{PlayerSource} shoots you with their {PowerName} for {Damage} points of lethal damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -175,6 +188,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You blast {PlayerDest} with your Standard Rounds for {Damage} bonus points of lethal damage and reduce the target's defense!",
+            "display_victim_hit": "{PlayerSource} shoots you with their Standard Rounds for {Damage} points of bonus lethal damage and reduces your defense!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -215,6 +234,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You blast {PlayerDest} with your Standard Rounds for {Damage} bonus points of lethal damage and reduce the target's defense!",
+            "display_victim_hit": "{PlayerSource} shoots you with their Standard Rounds for {Damage} points of bonus lethal damage and reduces your defense!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -255,6 +280,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "GENERICCONTINUING/DEBUFFDEFCONTINUING.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -295,6 +326,27 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "vec_start": "Target",
+            "vec_end": "Target",
+            "priority": 1,
+            "vel": 1.0,
+            "vel_mag": 0.02500000037252903,
+            "height": 3.0,
+            "height_mag": 0.25,
+            "vec_adjust_pyr": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "type": "Knock"
+          },
+          "messages": {
+            "display_attacker_hit": "Your Standard Rounds knock {PlayerDest} off their feet!",
+            "display_victim_hit": "{PlayerSource} has knocked you off your feet with their Standard Rounds!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -335,6 +387,27 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "params": {
+            "vec_start": "Target",
+            "vec_end": "Target",
+            "priority": 1,
+            "vel": 1.0,
+            "vel_mag": 0.02500000037252903,
+            "height": 3.0,
+            "height_mag": 0.25,
+            "vec_adjust_pyr": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "type": "Knock"
+          },
+          "messages": {
+            "display_attacker_hit": "Your Standard Rounds knock {PlayerDest} off their feet!",
+            "display_victim_hit": "{PlayerSource} has knocked you off your feet with their Standard Rounds!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -375,6 +448,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You blast {PlayerDest} with your Incendiary Rounds for {Damage} bonus points of fire damage!",
+            "display_victim_hit": "{PlayerSource} shoots you with their Incendiary Rounds for {Damage} points of bonus fire damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -415,6 +494,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You blast {PlayerDest} with your Incendiary Rounds for {Damage} bonus points of fire damage!",
+            "display_victim_hit": "{PlayerSource} shoots you with their Incendiary Rounds for {Damage} points of bonus fire damage!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -455,6 +540,18 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "Your Incendiary Rounds causes {PlayerDest} to suffer an additional {Damage} points of fire damage.",
+            "display_victim_hit": "{PlayerSource} hits you with their Incendiary Rounds causing you to suffer an additional {Damage} points of fire damage.",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "POWERS/FIRECONTROL/CINDERSHIT.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "CancelOnMiss"
           ],
@@ -498,6 +595,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You blast {PlayerDest} with your Cryo Rounds for {Damage} bonus points of cold damage reducing their attack and movement speed!",
+            "display_victim_hit": "{PlayerSource} shoots you with their Cryo Rounds for {Damage} points of bonus cold damage reducing  your attack and movement speed!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -538,6 +641,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You blast {PlayerDest} with your Cryo Rounds for {Damage} bonus points of cold damage reducing their attack and movement speed!",
+            "display_victim_hit": "{PlayerSource} shoots you with their Cryo Rounds for {Damage} points of bonus cold damage reducing  your attack and movement speed!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -741,6 +850,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "POWERS/COLDCONTROL/ICEHITCONTINUING.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreStrength"
           ],
@@ -784,6 +899,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "POWERS/COLDCONTROL/DEEPFREEZE.FX"
+          },
           "flags_raw": 2560
         }
       ]
@@ -824,6 +945,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": null,
+            "conditional_bits": [],
+            "conditional_fx": "POWERS/COLDCONTROL/DEEPFREEZE.FX"
+          },
           "flags_raw": 2560
         }
       ]
@@ -864,6 +991,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You blast {PlayerDest} with your Chemical Rounds for {Damage} bonus points of toxic damage and slightly reduce their damage output!",
+            "display_victim_hit": "{PlayerSource} shoots you with their Chemical for {Damage} points of bonus toxic damage and slightly decreases your damage output!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -904,6 +1037,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You blast {PlayerDest} with your Chemical Rounds for {Damage} bonus points of toxic damage and slightly reduce their damage output!",
+            "display_victim_hit": "{PlayerSource} shoots you with their Chemical for {Damage} points of bonus toxic damage and slightly decreases your damage output!",
+            "display_float": null,
+            "display_attrib_defense_float": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -944,6 +1083,12 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "GENERICCONTINUING/DEBUFFDAMAGECONTINUING.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
           "flags": [
             "IgnoreStrength"
           ],

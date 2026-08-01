@@ -16,12 +16,14 @@ Two things make this worth a guard rather than a constant bump:
 
   * the failure was SILENT and plausible — a summon read `Set_Mode` instead of
     `Create_Entity`, which looks like data rather than a bug;
-  * the base has THREE consumers, and the third one DELETES. The special map and
+  * the base had THREE consumers, and the third one DELETED. The special map and
     the collapsed 4-aligned view in `ATTRIB_NAME_THUNDERSPY` merely rename, but
-    `_TSPY_CREATE_ENTITY_MARKER` drives a byte-scan that decides which templates
-    EXIST — a stale marker matched nothing and silently dropped 2,523 summon
-    templates. Fixing any one or two of the three leaves a corrupt export that
-    still looks self-consistent.
+    the summon marker drove a byte-scan that decided which templates EXIST — a
+    stale marker matched nothing and silently dropped 2,523 summon templates.
+    Fixing any one or two of the three left a corrupt export that still looked
+    self-consistent. That third consumer is retired: pets are read from the
+    AttribMod's own Params payload, so a stale base can no longer delete one.
+    Two renaming consumers remain, and both are pinned below.
 
 Pure-function test (no .bin / .pigg needed). Run directly:
     python3 tools/bin-crawler/tests/test_special_attrib_band_base.py
@@ -142,13 +144,17 @@ def test_collapsed_view_moves_with_the_band():
         assert t464.get(i) == t468.get(i), f"normal index {i} must not move"
 
 
-def test_summon_marker_is_derived_from_the_base():
-    """The deleting consumer. A literal here is the bug that dropped 2,523
-    templates; it must follow the base automatically."""
+def test_create_entity_resolves_through_both_tables_at_any_base():
+    """Summons are named by both surviving consumers, so both must follow the base.
+
+    This used to also pin `_TSPY_CREATE_ENTITY_MARKER`, the byte-scan's anchor and
+    the one consumer that DELETED rather than renamed. The scan is gone — pets now
+    come from the AttribMod's own Params payload — so that failure mode no longer
+    has a mechanism, and the marker with it.
+    """
     for base in (464, 468):
         _powers._set_tspy_band_base(base)
-        assert _powers._TSPY_CREATE_ENTITY_MARKER == base + SPECIAL_ATTRIB_CREATE_ENTITY
-        assert (_powers._TSPY_SPECIAL_BY_RAW[_powers._TSPY_CREATE_ENTITY_MARKER]
+        assert (_powers._TSPY_SPECIAL_BY_RAW[base + SPECIAL_ATTRIB_CREATE_ENTITY]
                 == "Create_Entity")
         assert _powers._TSPY_ATTRIB_NAME[base // 4] == "Create_Entity"
     _powers._set_tspy_band_base(464)  # restore the default

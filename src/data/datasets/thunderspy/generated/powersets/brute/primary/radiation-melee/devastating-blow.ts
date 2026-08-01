@@ -18,6 +18,9 @@ export const DevastatingBlow: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 7,
@@ -108,7 +111,7 @@ export const DevastatingBlow: Power = {
     {
       "kind": "grant",
       "chance": 0.5,
-      "label": "state"
+      "label": "Contaminated"
     },
     {
       "kind": "effect-proc",

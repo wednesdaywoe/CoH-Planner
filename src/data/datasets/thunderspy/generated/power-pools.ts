@@ -232,9 +232,9 @@ export const POWER_POOLS_RAW = {
           "Universal Travel"
         ],
         "atoms": [
-          ["Movement","Run",1,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
+          ["Movement","Run",1,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !",null,null,true],
           ["Meta",null,1,110,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["Movement","Run",1,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
+          ["Movement","Run",1,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true,null,true]
         ],
         "effects": {
           "accuracy": 1,
@@ -248,6 +248,7 @@ export const POWER_POOLS_RAW = {
           "movement": {
             "runSpeed": {
               "scale": 1,
+              "suppressible": true,
               "table": "Melee_SpeedRunning"
             }
           }
@@ -285,8 +286,7 @@ export const POWER_POOLS_RAW = {
           "Ranged AoE Damage"
         ],
         "atoms": [
-          ["EntCreate",null,1,1,14,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["EntCreate",null,1,1,14,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+          ["EntCreate",null,1,1,14,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
         ],
         "effects": {
           "accuracy": 1,
@@ -296,6 +296,7 @@ export const POWER_POOLS_RAW = {
           "activationTime": 1.2,
           "effectArea": "SingleTarget",
           "summon": {
+            "copyBoosts": true,
             "duration": 14,
             "entity": "Pets_Experimentation_Corrosive_Vial",
             "isPseudoPet": false
@@ -423,6 +424,9 @@ export const POWER_POOLS_RAW = {
       {
         "name": "Boxing",
         "fullName": "Pool.Fighting.Boxing",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 1,
         "available": 0,
         "description": "You strike your opponent with a strong punch that causes  smashing damage and has a small chance to stun foes. this power will fatigue the target, draining some endurance and lowering recovery slightly. Choosing this power locks out Weapon Strike. Damage: Moderate, Recharge: Fast",
@@ -510,6 +514,9 @@ export const POWER_POOLS_RAW = {
       {
         "name": "Weapon Strike",
         "fullName": "Pool.Fighting.Strike",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 2,
         "available": 0,
         "description": "You strike your opponent with your weapon to cause smashing damage and have a chance to stun foes. this power will fatigue the target, draining some endurance and lowering recovery slightly. Choosing this power locks out Boxing. Damage: Moderate, Recharge: Fast",
@@ -597,6 +604,9 @@ export const POWER_POOLS_RAW = {
       {
         "name": "Kick",
         "fullName": "Pool.Fighting.Kick",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 3,
         "available": 0,
         "description": "You strike your opponent with a forceful kick that causes high smashing damage and has a small chance to knock opponents down. this power will fatigue the target, draining some endurance and lowering recovery slightly. Choosing this power locks out Weapon Slam. Damage: High, Recharge: Moderate",
@@ -680,6 +690,9 @@ export const POWER_POOLS_RAW = {
       {
         "name": "Weapon Slam",
         "fullName": "Pool.Fighting.Slam",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 4,
         "available": 0,
         "description": "You strike your opponent with a forceful slam that causes high smashing damage and has a chance to knock opponents down. this power will fatigue the target, draining some endurance and lowering recovery slightly. Choosing this power locks out Kick. Damage: High, Recharge: Moderate",
@@ -784,8 +797,8 @@ export const POWER_POOLS_RAW = {
           "Resist Damage"
         ],
         "atoms": [
-          ["Resistance","Smashing",1.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Resistance","Lethal",1.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true]
+          ["Resistance","Smashing",1.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Resistance","Lethal",1.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1]
         ],
         "effects": {
           "accuracy": 1,
@@ -834,17 +847,17 @@ export const POWER_POOLS_RAW = {
           "Defense Sets"
         ],
         "atoms": [
-          ["Defense","Melee",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Ranged",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","AoE",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Smashing",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Lethal",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Fire",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Cold",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Energy",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Negative",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Psionic",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["MezResist","Immobilized",1.75,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true]
+          ["Defense","Melee",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Defense","Ranged",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Defense","AoE",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Defense","Smashing",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Defense","Lethal",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Defense","Fire",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Defense","Cold",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Defense","Energy",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Defense","Negative",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Defense","Psionic",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["MezResist","Immobilized",1.75,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1]
         ],
         "effects": {
           "accuracy": 1,
@@ -911,6 +924,9 @@ export const POWER_POOLS_RAW = {
       {
         "name": "Cross Punch",
         "fullName": "Pool.Fighting.Cross_Punch",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 7,
         "available": 13,
         "description": "You execute a sweeping right hook that can strike multiple targets in your frontal arc. This attack causes moderate smashing damage and has a chance to both knock down and stun foes this power will improve your recharge and accuracy briefly. Choosing this power locks out Weapon Swing. Damage: Moderate, Recharge: Moderate",
@@ -1004,6 +1020,9 @@ export const POWER_POOLS_RAW = {
       {
         "name": "Weapon Swing",
         "fullName": "Pool.Fighting.Swirl",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 8,
         "available": 13,
         "description": "You swing your weapon in a wide arc in front of you. This attack strikes all foes within melee range. You deal moderate damage, and have a chance to Knockdown and Disorient every foe you hit. Damage: Moderate, Recharge: Slow",
@@ -1324,16 +1343,16 @@ export const POWER_POOLS_RAW = {
           "Universal Travel"
         ],
         "atoms": [
-          ["Defense","Melee",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Ranged",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","AoE",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Smashing",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Lethal",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Fire",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Cold",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Energy",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Negative",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Psionic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+          ["Defense","Melee",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Defense","Ranged",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Defense","AoE",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Defense","Smashing",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Defense","Lethal",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Defense","Fire",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Defense","Cold",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Defense","Energy",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Defense","Negative",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Defense","Psionic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Defense","Melee",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",17558,null,null,1],
           ["Defense","Ranged",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",17558,null,null,1],
           ["Defense","AoE",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",17558,null,null,1],
@@ -1345,10 +1364,10 @@ export const POWER_POOLS_RAW = {
           ["Defense","Negative",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",17558,null,null,1],
           ["Defense","Psionic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"No",17558,null,null,1],
           ["Movement","FlyMode",4,1,0.75,"Melee_Ones","Cur","Magnitude","All","Any",false,"Replace",2,null,null,1],
-          ["Movement","Fly",0.5,1,0.75,"Melee_Ones","Cur","Magnitude","All","Any",true,"Replace",2,null,null,1,null,true],
+          ["Movement","Fly",0.5,1,0.75,"Melee_Ones","Cur","Magnitude","All","Any",false,"Replace",2,null,null,1],
           ["GlobalChanceMod",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","All","Any",false,"Replace",2,null,null,1,null,true],
-          ["Movement","Control",25,1,0.75,"Melee_Control","Cur","Magnitude","All","Any",true,"Replace",2,null,null,1,null,true],
-          ["Movement","Friction",25,1,0.75,"Melee_Friction","Cur","Magnitude","All","Any",true,"Replace",2,null,null,1,null,true]
+          ["Movement","Control",25,1,0.75,"Melee_Control","Cur","Magnitude","All","Any",false,"Replace",2,null,null,1],
+          ["Movement","Friction",25,1,0.75,"Melee_Friction","Cur","Magnitude","All","Any",false,"Replace",2,null,null,1]
         ],
         "effects": {
           "accuracy": 1,
@@ -1425,6 +1444,9 @@ export const POWER_POOLS_RAW = {
       {
         "name": "Air Superiority",
         "fullName": "Pool.Flight.Air_Superiority",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 2,
         "available": 0,
         "description": "This two-handed overhead melee attack can knock a flying target to the ground.",
@@ -1532,15 +1554,15 @@ export const POWER_POOLS_RAW = {
         ],
         "atoms": [
           ["Movement","FlyMode",1,1,0.75,"Melee_Ones","Cur","Magnitude","All","Any",false,"Replace",2,null,null,1],
-          ["Movement","Fly",1,1,0.75,"Melee_Ones","Cur","Magnitude","All","Any",true,"Replace",2,null,null,1,null,true],
+          ["Movement","Fly",1,1,0.75,"Melee_Ones","Cur","Magnitude","All","Any",false,"Replace",2,null,null,1,null,true],
           ["Movement","Fly",-1.01,1,0.75,"Melee_Ones","Cur","Magnitude","All","Any",false,"Replace",2,null,null,1,null,true],
           ["GlobalChanceMod",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","All","Any",false,"Replace",2,null,null,1,null,true],
-          ["Movement","Fly",1.25,1,0.75,"Melee_SpeedFlying","Cur","Magnitude","All","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
-          ["Movement","Fly",0.8,1,0.75,"Melee_Ones","Cur","Magnitude","All","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
-          ["Movement","Control",2,1,0.75,"Melee_Control","Cur","Magnitude","All","Any",true,"Replace",2,null,null,1,null,true],
-          ["Movement","Friction",2,1,0.75,"Melee_Friction","Cur","Magnitude","All","Any",true,"Replace",2,null,null,1,null,true],
-          ["Movement","Fly",1,1,0.75,"Melee_SpeedFlying","Cur","Magnitude","All","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
-          ["Movement","Fly",0.8,1,0.75,"Melee_Ones","Cur","Magnitude","All","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
+          ["Movement","Fly",1.25,1,0.75,"Melee_SpeedFlying","Cur","Magnitude","All","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !",null,null,true],
+          ["Movement","Fly",0.8,1,0.75,"Melee_Ones","Cur","Magnitude","All","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !",null,null,true],
+          ["Movement","Control",2,1,0.75,"Melee_Control","Cur","Magnitude","All","Any",false,"Replace",2,null,null,1],
+          ["Movement","Friction",2,1,0.75,"Melee_Friction","Cur","Magnitude","All","Any",false,"Replace",2,null,null,1],
+          ["Movement","Fly",1,1,0.75,"Melee_SpeedFlying","Cur","Magnitude","All","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true,null,true],
+          ["Movement","Fly",0.8,1,0.75,"Melee_Ones","Cur","Magnitude","All","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true,null,true]
         ],
         "effects": {
           "accuracy": 1,
@@ -1559,6 +1581,7 @@ export const POWER_POOLS_RAW = {
             },
             "flySpeed": {
               "scale": 0.8,
+              "suppressible": true,
               "table": "Melee_Ones"
             },
             "movementControl": {
@@ -1610,9 +1633,9 @@ export const POWER_POOLS_RAW = {
         ],
         "atoms": [
           ["Movement","FlyMode",1,1,10,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Power_DisallowGroupFly target.TokenOwned? !"],
-          ["Movement","Control",10,1,10,"Melee_Control","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Power_DisallowGroupFly target.TokenOwned? !"],
-          ["Movement","Fly",0.5,1,10,"Melee_SpeedFlying","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Power_DisallowGroupFly target.TokenOwned? !"],
-          ["Movement","Friction",10,1,10,"Melee_Friction","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Power_DisallowGroupFly target.TokenOwned? !"],
+          ["Movement","Control",10,1,10,"Melee_Control","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Power_DisallowGroupFly target.TokenOwned? !"],
+          ["Movement","Fly",0.5,1,10,"Melee_SpeedFlying","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Power_DisallowGroupFly target.TokenOwned? !"],
+          ["Movement","Friction",10,1,10,"Melee_Friction","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Power_DisallowGroupFly target.TokenOwned? !"],
           ["GlobalChanceMod",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
         ],
         "effects": {
@@ -1681,18 +1704,18 @@ export const POWER_POOLS_RAW = {
           ["Movement","Fly",1,1,0.75,"Melee_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Mez","OnlyAffectsSelf",4,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Movement","FlyMode",4,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0],
-          ["Defense","Melee",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
-          ["Defense","Ranged",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
-          ["Defense","AoE",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
-          ["Defense","Smashing",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
-          ["Defense","Lethal",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
-          ["Defense","Fire",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
-          ["Defense","Cold",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
-          ["Defense","Energy",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
-          ["Defense","Negative",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
-          ["Defense","Psionic",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
-          ["Movement","Control",15,1,0.75,"Melee_Control","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Movement","Friction",15,1,0.75,"Melee_Friction","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+          ["Defense","Melee",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+          ["Defense","Ranged",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+          ["Defense","AoE",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+          ["Defense","Smashing",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+          ["Defense","Lethal",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+          ["Defense","Fire",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+          ["Defense","Cold",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+          ["Defense","Energy",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+          ["Defense","Negative",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+          ["Defense","Psionic",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+          ["Movement","Control",15,1,0.75,"Melee_Control","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Movement","Friction",15,1,0.75,"Melee_Friction","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Defense","Melee",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
           ["Defense","Ranged",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
           ["Defense","AoE",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
@@ -2007,15 +2030,15 @@ export const POWER_POOLS_RAW = {
           "Universal Travel"
         ],
         "atoms": [
-          ["Movement","JumpHeight",1,1,0.75,"Melee_Leap","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
-          ["Movement","Jump",1,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
-          ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
-          ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
+          ["Movement","JumpHeight",1,1,0.75,"Melee_Leap","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !",null,null,true],
+          ["Movement","Jump",1,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !",null,null,true],
+          ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !",null,null,true],
+          ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !",null,null,true],
           ["Meta",null,1,111,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["Movement","JumpHeight",1,1,0.75,"Melee_Leap","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
-          ["Movement","Jump",1,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
-          ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
-          ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
+          ["Movement","JumpHeight",1,1,0.75,"Melee_Leap","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true,null,true],
+          ["Movement","Jump",1,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true,null,true],
+          ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true,null,true],
+          ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true,null,true]
         ],
         "effects": {
           "accuracy": 1,
@@ -2029,18 +2052,22 @@ export const POWER_POOLS_RAW = {
           "movement": {
             "jumpHeight": {
               "scale": 1,
+              "suppressible": true,
               "table": "Melee_Leap"
             },
             "jumpSpeed": {
               "scale": 1,
+              "suppressible": true,
               "table": "Melee_SpeedJumping"
             },
             "movementControl": {
               "scale": 10,
+              "suppressible": true,
               "table": "Melee_Ones"
             },
             "movementFriction": {
               "scale": 2,
+              "suppressible": true,
               "table": "Melee_Ones"
             }
           }
@@ -2498,15 +2525,15 @@ export const POWER_POOLS_RAW = {
         ],
         "atoms": [
           ["Movement","FlyMode",1,1,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-          ["Movement","Fly",1,1,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+          ["Movement","Fly",1,1,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["Movement","Fly",-1.01,1,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["Meta",null,1,112,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["Movement","Fly",1,1,0.75,"Ranged_SpeedFlying","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
-          ["Movement","Fly",0.8,1,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
-          ["Movement","Control",2,1,0.75,"Ranged_Control","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Movement","Friction",2,1,0.75,"Ranged_Friction","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Movement","Fly",1,1,0.75,"Ranged_SpeedFlying","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
-          ["Movement","Fly",0.8,1,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
+          ["Movement","Fly",1,1,0.75,"Ranged_SpeedFlying","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !",null,null,true],
+          ["Movement","Fly",0.8,1,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !",null,null,true],
+          ["Movement","Control",2,1,0.75,"Ranged_Control","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Movement","Friction",2,1,0.75,"Ranged_Friction","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Movement","Fly",1,1,0.75,"Ranged_SpeedFlying","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true,null,true],
+          ["Movement","Fly",0.8,1,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true,null,true]
         ],
         "effects": {
           "accuracy": 1,
@@ -2525,6 +2552,7 @@ export const POWER_POOLS_RAW = {
             },
             "flySpeed": {
               "scale": 0.8,
+              "suppressible": true,
               "table": "Ranged_Ones"
             },
             "movementControl": {
@@ -2698,8 +2726,8 @@ export const POWER_POOLS_RAW = {
         "atoms": [
           ["Movement","Fly",1,1,30,"Ranged_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Movement","FlyMode",4,1,30,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-          ["Movement","Control",15,1,30,"Ranged_Control","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Movement","Friction",15,1,30,"Ranged_Friction","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true]
+          ["Movement","Control",15,1,30,"Ranged_Control","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Movement","Friction",15,1,30,"Ranged_Friction","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1]
         ],
         "effects": {
           "accuracy": 1,
@@ -2771,30 +2799,30 @@ export const POWER_POOLS_RAW = {
           "Defense Sets"
         ],
         "atoms": [
-          ["Defense","Melee",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Ranged",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","AoE",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Smashing",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Lethal",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Fire",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Cold",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Energy",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Negative",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Psionic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Melee",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Ranged",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","AoE",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Smashing",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Lethal",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Fire",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Cold",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Energy",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Negative",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Psionic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Stealth","RadiusPvE",35,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Stealth","RadiusPvP",389,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["EntCreate",null,0.8,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Meta",null,1,78,0.75,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true]
+          ["Defense","Melee",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Ranged",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","AoE",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Smashing",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Lethal",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Fire",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Cold",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Energy",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Negative",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Psionic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+          ["Defense","Melee",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Defense","Ranged",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Defense","AoE",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Defense","Smashing",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Defense","Lethal",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Defense","Fire",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Defense","Cold",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Defense","Energy",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Defense","Negative",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Defense","Psionic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Stealth","RadiusPvE",35,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+          ["Stealth","RadiusPvP",389,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+          ["Stealth","Translucency",0.8,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+          ["Meta",null,1,78,0.75,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true]
         ],
         "effects": {
           "accuracy": 1,
@@ -2846,8 +2874,51 @@ export const POWER_POOLS_RAW = {
               "table": "Melee_Buff_Def"
             }
           },
+          "defenseBuffSuppressible": {
+            "aoe": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "cold": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "energy": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "fire": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "lethal": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "melee": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "negative": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "psionic": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "ranged": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "smashing": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            }
+          },
           "durations": {
             "defenseBuff": 0.75,
+            "defenseBuffSuppressible": 0.75,
             "stealth": 0.75
           },
           "stealth": {
@@ -2857,6 +2928,10 @@ export const POWER_POOLS_RAW = {
             },
             "stealthPvP": {
               "scale": 389,
+              "table": "Melee_Ones"
+            },
+            "translucency": {
+              "scale": 0.8,
               "table": "Melee_Ones"
             }
           }
@@ -2903,20 +2978,20 @@ export const POWER_POOLS_RAW = {
           ["Defense","Energy",0.25,1,120,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
           ["Defense","Negative",0.25,1,120,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
           ["Defense","Psionic",0.25,1,120,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
-          ["Defense","Melee",0.25,1,120,"Melee_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Ranged",0.25,1,120,"Melee_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","AoE",0.25,1,120,"Melee_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Smashing",0.25,1,120,"Melee_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Lethal",0.25,1,120,"Melee_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Fire",0.25,1,120,"Melee_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Cold",0.25,1,120,"Melee_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Energy",0.25,1,120,"Melee_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Negative",0.25,1,120,"Melee_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Psionic",0.25,1,120,"Melee_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-          ["Stealth","RadiusPvE",55,1,120,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-          ["Stealth","RadiusPvP",611,1,120,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-          ["EntCreate",null,0.5,1,120,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-          ["EntCreate",null,0.8,1,120,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1]
+          ["Defense","Melee",0.25,1,120,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+          ["Defense","Ranged",0.25,1,120,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+          ["Defense","AoE",0.25,1,120,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+          ["Defense","Smashing",0.25,1,120,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+          ["Defense","Lethal",0.25,1,120,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+          ["Defense","Fire",0.25,1,120,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+          ["Defense","Cold",0.25,1,120,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+          ["Defense","Energy",0.25,1,120,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+          ["Defense","Negative",0.25,1,120,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+          ["Defense","Psionic",0.25,1,120,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+          ["Stealth","RadiusPvE",55,1,120,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+          ["Stealth","RadiusPvP",611,1,120,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+          ["Stealth","Translucency",0.5,1,120,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+          ["Stealth","Translucency",0.8,1,120,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1]
         ],
         "effects": {
           "accuracy": 1,
@@ -2982,6 +3057,10 @@ export const POWER_POOLS_RAW = {
             "stealthPvP": {
               "scale": 611,
               "table": "Melee_Ones"
+            },
+            "translucency": {
+              "scale": 0.8,
+              "table": "Melee_Ones"
             }
           }
         }
@@ -3008,13 +3087,13 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [],
         "atoms": [
-          ["EntCreate",null,0.3,1,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Stealth","RadiusPvE",20,1,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Stealth","RadiusPvP",222,1,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Mez","CombatPhase",0.75,3,0,"Ranged_Ones","Cur","Duration","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Mez","CombatPhase",0.75,3,0,"Ranged_Ones","Cur","Duration","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Mez","Intangible",0.75,3,0,"Ranged_Ones","Cur","Duration","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["ThreatLevel",null,-1,1,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+          ["Stealth","Translucency",0.3,1,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+          ["Stealth","RadiusPvE",20,1,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+          ["Stealth","RadiusPvP",222,1,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+          ["Mez","CombatPhase",0.75,3,0,"Ranged_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+          ["Mez","CombatPhase",0.75,3,0,"Ranged_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+          ["Mez","Intangible",0.75,3,0,"Ranged_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+          ["ThreatLevel",null,-1,1,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
           ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
         ],
         "effects": {
@@ -3036,6 +3115,10 @@ export const POWER_POOLS_RAW = {
             },
             "stealthPvP": {
               "scale": 222,
+              "table": "Ranged_Ones"
+            },
+            "translucency": {
+              "scale": 0.3,
               "table": "Ranged_Ones"
             }
           },
@@ -3162,24 +3245,24 @@ export const POWER_POOLS_RAW = {
           "Running & Sprints"
         ],
         "atoms": [
-          ["Defense","Melee",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Ranged",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","AoE",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Smashing",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Lethal",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Fire",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Cold",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Energy",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Negative",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Psionic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+          ["Defense","Melee",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Defense","Ranged",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Defense","AoE",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Defense","Smashing",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Defense","Lethal",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Defense","Fire",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Defense","Cold",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Defense","Energy",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Defense","Negative",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Defense","Psionic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Mez","Intangible",3,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["Movement","JumpHeight",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Movement","Jump",0.01,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Movement","Friction",0.2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+          ["Movement","JumpHeight",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Movement","Jump",0.01,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Movement","Friction",0.2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Movement","Run",0.1,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-          ["Movement","Control",10,1,0.75,"Melee_Control","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Mez","Immobilized",-30,1,0.75,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
-          ["MezResist","Immobilized",3,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
+          ["Movement","Control",10,1,0.75,"Melee_Control","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Mez","Immobilized",-30,1,0.75,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+          ["MezResist","Immobilized",3,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
         ],
         "effects": {
           "accuracy": 1,
@@ -3300,16 +3383,16 @@ export const POWER_POOLS_RAW = {
           "Defense Sets"
         ],
         "atoms": [
-          ["Defense","Melee",0.35,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Ranged",0.35,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","AoE",0.35,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Smashing",0.35,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Lethal",0.35,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Fire",0.35,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Cold",0.35,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Energy",0.35,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Negative",0.35,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Psionic",0.35,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true]
+          ["Defense","Melee",0.35,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+          ["Defense","Ranged",0.35,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+          ["Defense","AoE",0.35,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+          ["Defense","Smashing",0.35,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+          ["Defense","Lethal",0.35,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+          ["Defense","Fire",0.35,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+          ["Defense","Cold",0.35,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+          ["Defense","Energy",0.35,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+          ["Defense","Negative",0.35,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+          ["Defense","Psionic",0.35,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1]
         ],
         "effects": {
           "accuracy": 1,
@@ -3389,16 +3472,16 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [],
         "atoms": [
-          ["DamageBuff","Smashing",1.5,1,2.25,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-          ["DamageBuff","Lethal",1.5,1,2.25,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-          ["DamageBuff","Fire",1.5,1,2.25,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-          ["DamageBuff","Cold",1.5,1,2.25,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-          ["DamageBuff","Energy",1.5,1,2.25,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-          ["DamageBuff","Negative",1.5,1,2.25,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-          ["DamageBuff","Toxic",1.5,1,2.25,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-          ["DamageBuff","Psionic",1.5,1,2.25,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-          ["MezResist","Taunt",1.75,1,2.25,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-          ["MezResist","Placate",1.75,1,2.25,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true]
+          ["DamageBuff","Smashing",1.5,1,2.25,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+          ["DamageBuff","Lethal",1.5,1,2.25,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+          ["DamageBuff","Fire",1.5,1,2.25,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+          ["DamageBuff","Cold",1.5,1,2.25,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+          ["DamageBuff","Energy",1.5,1,2.25,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+          ["DamageBuff","Negative",1.5,1,2.25,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+          ["DamageBuff","Toxic",1.5,1,2.25,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+          ["DamageBuff","Psionic",1.5,1,2.25,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+          ["MezResist","Taunt",1.75,1,2.25,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+          ["MezResist","Placate",1.75,1,2.25,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1]
         ],
         "effects": {
           "accuracy": 1,
@@ -3454,13 +3537,13 @@ export const POWER_POOLS_RAW = {
           "To Hit Buff"
         ],
         "atoms": [
-          ["ToHit",null,1,1,2.25,"Ranged_Buff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-          ["Perception",null,1.5,1,2.25,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-          ["Perception",null,2,1,2.25,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-          ["MezResist","Terrorized",1.75,1,2.25,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-          ["MezResist","Confused",1.75,1,2.25,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
-          ["Mez","Confused",-15,1,2.25,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
-          ["MezResist","Confused",3.25,1,2.25,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
+          ["ToHit",null,1,1,2.25,"Ranged_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+          ["Perception",null,1.5,1,2.25,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+          ["Perception",null,2,1,2.25,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+          ["MezResist","Terrorized",1.75,1,2.25,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+          ["MezResist","Confused",1.75,1,2.25,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+          ["Mez","Confused",-15,1,2.25,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+          ["MezResist","Confused",3.25,1,2.25,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
         ],
         "effects": {
           "accuracy": 1,
@@ -3488,7 +3571,7 @@ export const POWER_POOLS_RAW = {
             "debuffResistance": 2.25,
             "mezResistance": 2.25,
             "perceptionBuff": 2.25,
-            "tohitBuffUnenhanced": 2.25
+            "tohitBuff": 2.25
           },
           "effectDuration": 2.25,
           "mezResistance": {
@@ -3505,7 +3588,7 @@ export const POWER_POOLS_RAW = {
             "scale": 2,
             "table": "Ranged_Res_Boolean"
           },
-          "tohitBuffUnenhanced": {
+          "tohitBuff": {
             "scale": 1,
             "table": "Ranged_Buff_ToHit"
           }
@@ -3708,17 +3791,11 @@ export const POWER_POOLS_RAW = {
         ],
         "atoms": [
           ["EntCreate",null,-1,1,2,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"rank target> Class_Minion_Small eq rank target> Class_Minion_Small_Agressive eq || rank target> Class_Minion_Turret eq || rank target> Class_Minion_Fire eq || rank target> Class_Minion_Swarm eq || rank target> Class_Minion_Henchman eq || rank target> Class_Minion_OilSlickTarget eq || rank target> Class_Minion_Monument eq || rank target> Class_Minion_UnkillableNPC eq || rank target> Class_Minion_PraetorianSmall eq || rank target> Class_Minion_Practice eq ||",true],
-          ["EntCreate",null,-1,1,2,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"rank target> Class_Minion_Small eq rank target> Class_Minion_Small_Agressive eq || rank target> Class_Minion_Turret eq || rank target> Class_Minion_Fire eq || rank target> Class_Minion_Swarm eq || rank target> Class_Minion_Henchman eq || rank target> Class_Minion_OilSlickTarget eq || rank target> Class_Minion_Monument eq || rank target> Class_Minion_UnkillableNPC eq || rank target> Class_Minion_PraetorianSmall eq || rank target> Class_Minion_Practice eq ||",true],
           ["EntCreate",null,-1,1,2,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"rank target> Class_Minion_PraetorianGrunt eq rank target> Class_Minion_Grunt eq ||",true],
-          ["EntCreate",null,-1,1,2,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"rank target> Class_Minion_PraetorianGrunt eq rank target> Class_Minion_Grunt eq ||",true],
           ["EntCreate",null,-1,1,2,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"rank target> Class_Lt_PraetorianGrunt eq rank target> Class_Lt_Grunt eq || rank target> Class_Lt_Sniper eq || rank target> Class_Lt_Henchman eq || rank target> Class_Lt_LongRangeDrone eq || rank target> Class_Lt_Turret eq ||",true],
-          ["EntCreate",null,-1,1,2,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"rank target> Class_Lt_PraetorianGrunt eq rank target> Class_Lt_Grunt eq || rank target> Class_Lt_Sniper eq || rank target> Class_Lt_Henchman eq || rank target> Class_Lt_LongRangeDrone eq || rank target> Class_Lt_Turret eq ||",true],
           ["EntCreate",null,-1,1,2,"Melee_Ones","Cur","Magnitude","Target","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq rank target> Class_Boss_PraetorianGrunt eq || rank target> Class_Boss_Grunt eq || rank target> Class_Boss_HeavyPet eq || rank target> Class_Boss_Shield eq || rank target> Class_Boss_Grunt eq || rank target> Class_Boss_Mito eq || rank target> Class_Boss_Guard eq || rank target> Class_Boss_Henchman eq || rank target> Class_Boss_Signature_Pets eq || rank target> Class_Boss_HugeDevice eq || enttype target> player eq ||",true],
-          ["EntCreate",null,-1,1,2,"Melee_Ones","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq rank target> Class_Boss_PraetorianGrunt eq || rank target> Class_Boss_Grunt eq || rank target> Class_Boss_HeavyPet eq || rank target> Class_Boss_Shield eq || rank target> Class_Boss_Grunt eq || rank target> Class_Boss_Mito eq || rank target> Class_Boss_Guard eq || rank target> Class_Boss_Henchman eq || rank target> Class_Boss_Signature_Pets eq || rank target> Class_Boss_HugeDevice eq || enttype target> player eq ||",true],
           ["EntCreate",null,-1,1,2,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"rank target> Class_Boss_PraetorianElite eq rank target> Class_Boss_Elite eq || rank target> Class_Boss_EliteTurret eq ||",true],
-          ["EntCreate",null,-1,1,2,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"rank target> Class_Boss_PraetorianElite eq rank target> Class_Boss_Elite eq || rank target> Class_Boss_EliteTurret eq ||",true],
-          ["EntCreate",null,-1,1,2,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"rank target> Class_Boss_PraetorianArchvillain eq rank target> Class_Boss_PraetorianAVLowPerception eq || rank target> Class_Boss_Archvillain eq || rank target> Class_Boss_Monster eq || rank target> Class_Boss_Rularuu eq || rank target> Class_Boss_RularuuCoP eq || rank target> Class_Boss_RularuuFM eq || rank target> Class_Boss_Hamidon eq || rank target> Class_Boss_Archvillain_Flying eq || rank target> Class_Boss_Monster_Flying eq || rank target> Class_Boss_Reichsman eq ||",true],
-          ["EntCreate",null,-1,1,2,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"rank target> Class_Boss_PraetorianArchvillain eq rank target> Class_Boss_PraetorianAVLowPerception eq || rank target> Class_Boss_Archvillain eq || rank target> Class_Boss_Monster eq || rank target> Class_Boss_Rularuu eq || rank target> Class_Boss_RularuuCoP eq || rank target> Class_Boss_RularuuFM eq || rank target> Class_Boss_Hamidon eq || rank target> Class_Boss_Archvillain_Flying eq || rank target> Class_Boss_Monster_Flying eq || rank target> Class_Boss_Reichsman eq ||",true]
+          ["EntCreate",null,-1,1,2,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"rank target> Class_Boss_PraetorianArchvillain eq rank target> Class_Boss_PraetorianAVLowPerception eq || rank target> Class_Boss_Archvillain eq || rank target> Class_Boss_Monster eq || rank target> Class_Boss_Rularuu eq || rank target> Class_Boss_RularuuCoP eq || rank target> Class_Boss_RularuuFM eq || rank target> Class_Boss_Hamidon eq || rank target> Class_Boss_Archvillain_Flying eq || rank target> Class_Boss_Monster_Flying eq || rank target> Class_Boss_Reichsman eq ||",true]
         ],
         "effects": {
           "accuracy": 1,
@@ -3743,6 +3820,9 @@ export const POWER_POOLS_RAW = {
       {
         "name": "Jump Kick",
         "fullName": "Pool.Leaping.Jump_Kick",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 1,
         "available": 0,
         "description": "A good jumping kick attack that may knock foes down. Good if you are looking for another attack power.",
@@ -3832,22 +3912,22 @@ export const POWER_POOLS_RAW = {
           "Universal Travel"
         ],
         "atoms": [
-          ["Defense","Melee",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Ranged",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","AoE",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Smashing",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Lethal",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Fire",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Cold",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Energy",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Negative",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Defense","Psionic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Movement","JumpHeight",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Movement","Jump",0.01,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Movement","Friction",0.2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Movement","Control",10,1,0.75,"Melee_Control","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Mez","Immobilized",-30,1,0.75,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
-          ["MezResist","Immobilized",3,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
+          ["Defense","Melee",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Defense","Ranged",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Defense","AoE",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Defense","Smashing",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Defense","Lethal",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Defense","Fire",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Defense","Cold",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Defense","Energy",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Defense","Negative",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Defense","Psionic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Movement","JumpHeight",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Movement","Jump",0.01,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Movement","Friction",0.2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Movement","Control",10,1,0.75,"Melee_Control","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Mez","Immobilized",-30,1,0.75,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+          ["MezResist","Immobilized",3,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
         ],
         "effects": {
           "accuracy": 1,
@@ -3957,14 +4037,14 @@ export const POWER_POOLS_RAW = {
           "Universal Travel"
         ],
         "atoms": [
-          ["Movement","JumpHeight",1.25,1,0.75,"Melee_Leap","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
-          ["Movement","Jump",1.25,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
-          ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
-          ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
-          ["Movement","JumpHeight",1,1,0.75,"Melee_Leap","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
-          ["Movement","Jump",1,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
-          ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
-          ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
+          ["Movement","JumpHeight",1.25,1,0.75,"Melee_Leap","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !",null,null,true],
+          ["Movement","Jump",1.25,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !",null,null,true],
+          ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !",null,null,true],
+          ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !",null,null,true],
+          ["Movement","JumpHeight",1,1,0.75,"Melee_Leap","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true,null,true],
+          ["Movement","Jump",1,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true,null,true],
+          ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true,null,true],
+          ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true,null,true]
         ],
         "effects": {
           "accuracy": 1,
@@ -3978,18 +4058,22 @@ export const POWER_POOLS_RAW = {
           "movement": {
             "jumpHeight": {
               "scale": 1.25,
+              "suppressible": true,
               "table": "Melee_Leap"
             },
             "jumpSpeed": {
               "scale": 1.25,
+              "suppressible": true,
               "table": "Melee_SpeedJumping"
             },
             "movementControl": {
               "scale": 10,
+              "suppressible": true,
               "table": "Melee_Ones"
             },
             "movementFriction": {
               "scale": 2,
+              "suppressible": true,
               "table": "Melee_Ones"
             }
           }
@@ -4019,10 +4103,10 @@ export const POWER_POOLS_RAW = {
           "Knockback"
         ],
         "atoms": [
-          ["Mez","Knockback",-7,1,1.25,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
-          ["Mez","Knockup",-7,1,1.25,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
-          ["Mez","Knockback",-2,1,1.25,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
-          ["Mez","Knockup",-2,1,1.25,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
+          ["Mez","Knockback",-7,1,1.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
+          ["Mez","Knockup",-7,1,1.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
+          ["Mez","Knockback",-2,1,1.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+          ["Mez","Knockup",-2,1,1.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
           ["Mez","Held",-2,1,1.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
           ["MezResist","Held",1.75,1,1.25,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
           ["MezResist","Held",3.75,1,1.25,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
@@ -4096,7 +4180,6 @@ export const POWER_POOLS_RAW = {
         ],
         "atoms": [
           ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
-          ["EntCreate",null,1,1,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
           ["EntCreate",null,-1,1,4,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true]
         ],
         "effects": {
@@ -4107,6 +4190,8 @@ export const POWER_POOLS_RAW = {
           "activationTime": 1.5,
           "effectArea": "Location",
           "summon": {
+            "copyBoosts": true,
+            "duration": 4,
             "entity": "Pets_Spring_Attack",
             "isPseudoPet": false
           },
@@ -4601,9 +4686,6 @@ export const POWER_POOLS_RAW = {
         "icon": "medicine_smellingsalts.png",
         "powerType": "Click",
         "targetType": "Dead Teammate",
-        "setsModes": [
-          "Peacebringer_Blaster_Mode"
-        ],
         "modesDisallowed": [
           "HunterMode",
           "ProwlerMode",
@@ -4879,15 +4961,15 @@ export const POWER_POOLS_RAW = {
         ],
         "atoms": [
           ["Movement","FlyMode",1,1,0.75,"Ranged_Ones","Cur","Magnitude","All","Any",false,"Replace",2,null,null,1],
-          ["Movement","Fly",1,1,0.75,"Ranged_Ones","Cur","Magnitude","All","Any",true,"Replace",2,null,null,1,null,true],
+          ["Movement","Fly",1,1,0.75,"Ranged_Ones","Cur","Magnitude","All","Any",false,"Replace",2,null,null,1,null,true],
           ["Movement","Fly",-1.01,1,0.75,"Ranged_Ones","Cur","Magnitude","All","Any",false,"Replace",2,null,null,1,null,true],
           ["Meta",null,1,113,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["Movement","Fly",1,1,0.75,"Ranged_SpeedFlying","Cur","Magnitude","All","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
-          ["Movement","Fly",0.8,1,0.75,"Ranged_Ones","Cur","Magnitude","All","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
-          ["Movement","Control",2,1,0.75,"Ranged_Control","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Movement","Friction",2,1,0.75,"Ranged_Friction","Cur","Magnitude","All","Any",true,"Replace",2,null,null,1,null,true],
-          ["Movement","Fly",1,1,0.75,"Ranged_SpeedFlying","Cur","Magnitude","All","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
-          ["Movement","Fly",0.8,1,0.75,"Ranged_Ones","Cur","Magnitude","All","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
+          ["Movement","Fly",1,1,0.75,"Ranged_SpeedFlying","Cur","Magnitude","All","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !",null,null,true],
+          ["Movement","Fly",0.8,1,0.75,"Ranged_Ones","Cur","Magnitude","All","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !",null,null,true],
+          ["Movement","Control",2,1,0.75,"Ranged_Control","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Movement","Friction",2,1,0.75,"Ranged_Friction","Cur","Magnitude","All","Any",false,"Replace",2,null,null,1],
+          ["Movement","Fly",1,1,0.75,"Ranged_SpeedFlying","Cur","Magnitude","All","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true,null,true],
+          ["Movement","Fly",0.8,1,0.75,"Ranged_Ones","Cur","Magnitude","All","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true,null,true]
         ],
         "effects": {
           "accuracy": 1,
@@ -4906,6 +4988,7 @@ export const POWER_POOLS_RAW = {
             },
             "flySpeed": {
               "scale": 0.8,
+              "suppressible": true,
               "table": "Ranged_Ones"
             },
             "movementControl": {
@@ -4959,12 +5042,6 @@ export const POWER_POOLS_RAW = {
         ],
         "atoms": [
           ["EntCreate",null,1,1,5,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-          ["EntCreate",null,1,1,5,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-          ["EntCreate",null,1,1,5,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-          ["EntCreate",null,1,1,5,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-          ["EntCreate",null,1,1,5,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-          ["EntCreate",null,1,1,5,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-          ["EntCreate",null,1,1,5,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
           ["EntCreate",null,1,1,5,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
           ["EntCreate",null,1,1,5,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
           ["EntCreate",null,1,1,5,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
@@ -4979,6 +5056,7 @@ export const POWER_POOLS_RAW = {
           "activationTime": 2.07,
           "effectArea": "SingleTarget",
           "summon": {
+            "copyBoosts": true,
             "duration": 5,
             "entity": "Pets_Enflame_Pet",
             "entityCount": 6,
@@ -5169,6 +5247,9 @@ export const POWER_POOLS_RAW = {
       {
         "name": "Flurry",
         "fullName": "Pool.Speed.Flurry",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 1,
         "available": 0,
         "description": "Unleashes a super fast Flurry of punches to pummel your foe. Flurry is so dizzying that it has a chance to Disorient the target.",
@@ -5318,10 +5399,10 @@ export const POWER_POOLS_RAW = {
           "Universal Travel"
         ],
         "atoms": [
-          ["Movement","Run",1.25,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
-          ["Stealth","RadiusPvE",35,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["ThreatLevel",null,-1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Movement","Run",1,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
+          ["Movement","Run",1.25,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !",null,null,true],
+          ["Stealth","RadiusPvE",35,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+          ["ThreatLevel",null,-1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
+          ["Movement","Run",1,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true,null,true]
         ],
         "effects": {
           "accuracy": 1,
@@ -5337,6 +5418,7 @@ export const POWER_POOLS_RAW = {
           "movement": {
             "runSpeed": {
               "scale": 1.25,
+              "suppressible": true,
               "table": "Melee_SpeedRunning"
             }
           },
@@ -5540,7 +5622,7 @@ export const POWER_POOLS_RAW = {
           "Universal Travel"
         ],
         "atoms": [
-          ["EntCreate",null,0,1,1.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+          ["Stealth","Translucency",0,1,1.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
           ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1]
         ],
         "effects": {
@@ -5550,6 +5632,16 @@ export const POWER_POOLS_RAW = {
           "endurance": 15,
           "activationTime": 5.93,
           "effectArea": "SingleTarget",
+          "buffDuration": 1.5,
+          "durations": {
+            "stealth": 1.5
+          },
+          "stealth": {
+            "translucency": {
+              "scale": 0,
+              "table": "Ranged_Ones"
+            }
+          },
           "teleport": {
             "scale": 1,
             "table": "Ranged_Ones"
@@ -5589,13 +5681,12 @@ export const POWER_POOLS_RAW = {
           "Universal Travel"
         ],
         "atoms": [
-          ["EntCreate",null,0,1,1.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
-          ["EntCreate",null,0,1,1.5,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+          ["Stealth","Translucency",0,1,1.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
           ["Mez","Teleport",2.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
           ["MezResist","Teleport",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
           ["EntCreate",null,-1,1,1,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
-          ["EntCreate",null,0.3,1,0.75,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
-          ["Mez","Intangible",0.75,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+          ["Stealth","Translucency",0.3,1,0.75,"Ranged_Ones","Cur","Magnitude","Target","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,true],
+          ["Mez","Intangible",0.75,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true,null,true],
           ["Meta",null,-10,1,4,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Stalker eq",true]
         ],
         "effects": {
@@ -5607,7 +5698,8 @@ export const POWER_POOLS_RAW = {
           "effectArea": "SingleTarget",
           "buffDuration": 15,
           "durations": {
-            "mezResistance": 15
+            "mezResistance": 15,
+            "stealth": 1.5
           },
           "mezResistance": {
             "teleport": {
@@ -5615,8 +5707,15 @@ export const POWER_POOLS_RAW = {
               "table": "Ranged_Ones"
             }
           },
+          "stealth": {
+            "translucency": {
+              "scale": 0,
+              "table": "Ranged_Ones"
+            }
+          },
           "summon": {
-            "duration": 1.5,
+            "copyBoosts": true,
+            "duration": 1,
             "entity": "Pets_TPFoeTaunt",
             "isPseudoPet": false
           },
@@ -5725,7 +5824,7 @@ export const POWER_POOLS_RAW = {
           "Universal Travel"
         ],
         "atoms": [
-          ["EntCreate",null,0,1,1.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"Power_DisallowTeamTeleport target.TokenOwned? !"],
+          ["Stealth","Translucency",0,1,1.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"Power_DisallowTeamTeleport target.TokenOwned? !"],
           ["Mez","Teleport",3.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"Power_DisallowTeamTeleport target.TokenOwned? !"],
           ["Movement","FlyMode",1,1,4,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Power_DisallowTeamTeleport target.TokenOwned? !"],
           ["Movement","Fly",-1,1,4,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Power_DisallowTeamTeleport target.TokenOwned? !"],
@@ -5743,7 +5842,8 @@ export const POWER_POOLS_RAW = {
           "buffDuration": 4,
           "durations": {
             "movement": 4,
-            "slow": 4
+            "slow": 4,
+            "stealth": 1.5
           },
           "movement": {
             "fly": {
@@ -5762,6 +5862,12 @@ export const POWER_POOLS_RAW = {
             },
             "movementFriction": {
               "scale": 1,
+              "table": "Ranged_Ones"
+            }
+          },
+          "stealth": {
+            "translucency": {
+              "scale": 0,
               "table": "Ranged_Ones"
             }
           },
@@ -5802,7 +5908,7 @@ export const POWER_POOLS_RAW = {
           "Universal Travel"
         ],
         "atoms": [
-          ["EntCreate",null,0,1,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+          ["Stealth","Translucency",0,1,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
           ["Mez","Teleport",1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"AllyID source> hero eq praetorianprogress source> normal eq praetorianprogress source> Earth eq || && praetoria source.MapTeamArea> eq ! &&"],
           ["Mez","Teleport",1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"AllyID source> villain eq praetorianprogress source> normal eq praetorianprogress source> Earth eq || && praetoria source.MapTeamArea> eq ! &&"],
           ["Mez","Teleport",1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"praetorianprogress source> praetoria eq praetoria source.MapTeamArea> eq ||",true]
@@ -5813,6 +5919,16 @@ export const POWER_POOLS_RAW = {
           "endurance": 26,
           "activationTime": 12,
           "effectArea": "SingleTarget",
+          "buffDuration": 5,
+          "durations": {
+            "stealth": 5
+          },
+          "stealth": {
+            "translucency": {
+              "scale": 0,
+              "table": "Melee_Ones"
+            }
+          },
           "teleport": {
             "scale": 1,
             "table": "Melee_Ones"
@@ -6020,18 +6136,18 @@ export const POWER_POOLS_RAW = {
           "Universal Travel"
         ],
         "atoms": [
-          ["Movement","JumpHeight",0.25,1,0.75,"Melee_Leap","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
-          ["Movement","Jump",0.55,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
-          ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
-          ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
-          ["Movement","Run",0.4,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
-          ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
+          ["Movement","JumpHeight",0.25,1,0.75,"Melee_Leap","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !",null,null,true],
+          ["Movement","Jump",0.55,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !",null,null,true],
+          ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !",null,null,true],
+          ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !",null,null,true],
+          ["Movement","Run",0.4,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !",null,null,true],
+          ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["Meta",null,1,114,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-          ["Movement","JumpHeight",0.25,1,0.75,"Melee_Leap","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
-          ["Movement","Jump",0.55,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
-          ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
-          ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
-          ["Movement","Run",0.4,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
+          ["Movement","JumpHeight",0.25,1,0.75,"Melee_Leap","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true,null,true],
+          ["Movement","Jump",0.55,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true,null,true],
+          ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true,null,true],
+          ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true,null,true],
+          ["Movement","Run",0.4,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true,null,true]
         ],
         "effects": {
           "accuracy": 1,
@@ -6045,22 +6161,27 @@ export const POWER_POOLS_RAW = {
           "movement": {
             "jumpHeight": {
               "scale": 0.25,
+              "suppressible": true,
               "table": "Melee_Leap"
             },
             "jumpSpeed": {
               "scale": 0.55,
+              "suppressible": true,
               "table": "Melee_SpeedJumping"
             },
             "movementControl": {
               "scale": 10,
+              "suppressible": true,
               "table": "Melee_Ones"
             },
             "movementFriction": {
               "scale": 2,
+              "suppressible": true,
               "table": "Melee_Ones"
             },
             "runSpeed": {
               "scale": 0.4,
+              "suppressible": true,
               "table": "Melee_SpeedRunning"
             }
           }
@@ -6232,11 +6353,11 @@ export const POWER_POOLS_RAW = {
         "allowedEnhancements": [],
         "allowedSetCategories": [],
         "atoms": [
-          ["Movement","JumpHeight",0.3,1,30,"Melee_Leap","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Movement","Jump",0.66,1,30,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Movement","Control",10,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Movement","Friction",2,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-          ["Movement","Run",0.5,1,30,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true]
+          ["Movement","JumpHeight",0.3,1,30,"Melee_Leap","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Jump",0.66,1,30,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Control",10,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Friction",2,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+          ["Movement","Run",0.5,1,30,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true]
         ],
         "effects": {
           "accuracy": 1,
@@ -6250,22 +6371,27 @@ export const POWER_POOLS_RAW = {
           "movement": {
             "jumpHeight": {
               "scale": 0.3,
+              "suppressible": true,
               "table": "Melee_Leap"
             },
             "jumpSpeed": {
               "scale": 0.66,
+              "suppressible": true,
               "table": "Melee_SpeedJumping"
             },
             "movementControl": {
               "scale": 10,
+              "suppressible": true,
               "table": "Melee_Ones"
             },
             "movementFriction": {
               "scale": 2,
+              "suppressible": true,
               "table": "Melee_Ones"
             },
             "runSpeed": {
               "scale": 0.5,
+              "suppressible": true,
               "table": "Melee_SpeedRunning"
             }
           }
