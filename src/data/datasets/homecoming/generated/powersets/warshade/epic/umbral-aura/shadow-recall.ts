@@ -59,5 +59,12 @@ export const ShadowRecall: Power = {
     ["Stealth","Translucency",0,1,1.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
     ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1]
   ],
-  "requires": "Inherent.Inherent.Shadow_Recall !"
+  "requires": "Inherent.Inherent.Shadow_Recall !",
+  "modesDisallowed": [
+    "Disable_Recall",
+    "Peacebringer_Blaster_Mode",
+    "Peacebringer_Tanker_Mode",
+    "Warshade_Blaster_Mode",
+    "Warshade_Tanker_Mode"
+  ]
 };

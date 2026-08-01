@@ -83,6 +83,9 @@ export const DawnStrike: Power = {
       "label": "Energy_Dmg"
     }
   ],
+  "modesDisallowed": [
+    "Peacebringer_Tanker_Mode"
+  ],
   "damageTypes": [
     "Energy"
   ]

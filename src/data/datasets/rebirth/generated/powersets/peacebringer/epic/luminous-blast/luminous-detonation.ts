@@ -126,5 +126,8 @@ export const LuminousDetonation: Power = {
       "powerType": "Click"
     }
   },
-  "requires": "Peacebringer_Offensive.Luminous_Blast.Bright_Nova Peacebringer_Offensive.Luminous_Blast.Bright_Nova_Detonation ! && Inherent.Inherent.Bright_Nova_Detonation ! &&"
+  "requires": "Peacebringer_Offensive.Luminous_Blast.Bright_Nova Peacebringer_Offensive.Luminous_Blast.Bright_Nova_Detonation ! && Inherent.Inherent.Bright_Nova_Detonation ! &&",
+  "modesDisallowed": [
+    "Peacebringer_Tanker_Mode"
+  ]
 };

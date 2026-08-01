@@ -90,5 +90,9 @@ export const Quasar: Power = {
     ["Movement","Jump",0.3,1,20,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Damage","Negative",1.7474,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Knockback",10,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+  ],
+  "modesDisallowed": [
+    "Warshade_Blaster_Mode",
+    "Warshade_Tanker_Mode"
   ]
 };

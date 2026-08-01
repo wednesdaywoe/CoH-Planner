@@ -152,5 +152,13 @@ export const ShadowStep: Power = {
       "powerType": "Click"
     }
   },
-  "requires": "Inherent.Inherent.Shadow_Step !"
+  "requires": "Inherent.Inherent.Shadow_Step !",
+  "modesDisallowed": [
+    "Disable_Teleport",
+    "Disable_Travel",
+    "Peacebringer_Blaster_Mode",
+    "Peacebringer_Tanker_Mode",
+    "Warshade_Blaster_Mode",
+    "Warshade_Tanker_Mode"
+  ]
 };

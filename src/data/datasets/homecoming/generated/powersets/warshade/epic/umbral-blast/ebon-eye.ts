@@ -124,5 +124,8 @@ export const EbonEye: Power = {
       "targetType": "Foe",
       "powerType": "Click"
     }
-  }
+  },
+  "modesDisallowed": [
+    "Warshade_Tanker_Mode"
+  ]
 };

@@ -68,5 +68,9 @@ export const DawnStrike: Power = {
     ["Defense","All",2,1,20,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Damage","Energy",1.7474,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Knockback",10,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+  ],
+  "modesDisallowed": [
+    "Peacebringer_Blaster_Mode",
+    "Peacebringer_Tanker_Mode"
   ]
 };

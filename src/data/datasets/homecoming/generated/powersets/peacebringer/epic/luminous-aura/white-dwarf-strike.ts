@@ -96,5 +96,10 @@ export const WhiteDwarfStrike: Power = {
   "requires": "Peacebringer_Defensive.Luminous_Aura.White_Dwarf Inherent.Inherent.White_Dwarf_Strike ! &&",
   "modesRequired": [
     "Peacebringer_Tanker_Mode"
+  ],
+  "modesDisallowed": [
+    "Peacebringer_Blaster_Mode",
+    "Warshade_Blaster_Mode",
+    "Warshade_Tanker_Mode"
   ]
 };

@@ -255,5 +255,8 @@ export const BlackDwarf: Power = {
     "Disable_Temp",
     "Warshade_Tanker_Mode",
     "Warshade_Form_Change2"
+  ],
+  "modesDisallowed": [
+    "Warshade_Human_Mode2"
   ]
 };

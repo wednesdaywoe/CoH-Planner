@@ -182,5 +182,8 @@ export const GravimetricSnare: Power = {
       "targetType": "Foe",
       "powerType": "Click"
     }
-  }
+  },
+  "modesDisallowed": [
+    "Warshade_Blaster_Mode"
+  ]
 };

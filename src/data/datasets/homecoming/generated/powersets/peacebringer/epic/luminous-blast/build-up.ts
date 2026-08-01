@@ -84,5 +84,9 @@ export const BuildUp: Power = {
     ["DamageBuff","Negative",3.2,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Psionic",3.2,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Toxic",3.2,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
+  ],
+  "modesDisallowed": [
+    "Peacebringer_Blaster_Mode",
+    "Peacebringer_Tanker_Mode"
   ]
 };

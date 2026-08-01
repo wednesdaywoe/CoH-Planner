@@ -112,5 +112,9 @@ export const UnchainEssence: Power = {
       "chance": 0.10000000149011612,
       "label": "Knockback"
     }
+  ],
+  "modesDisallowed": [
+    "Warshade_Blaster_Mode",
+    "Warshade_Tanker_Mode"
   ]
 };

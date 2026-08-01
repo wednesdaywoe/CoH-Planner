@@ -75,5 +75,11 @@ export const GleamingBlast: Power = {
       "chance": 0.10000000149011612,
       "label": "Knockback"
     }
+  ],
+  "modesDisallowed": [
+    "Peacebringer_Blaster_Mode",
+    "Peacebringer_Tanker_Mode",
+    "Warshade_Blaster_Mode",
+    "Warshade_Tanker_Mode"
   ]
 };

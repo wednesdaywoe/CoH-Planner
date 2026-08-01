@@ -95,5 +95,12 @@ export const BlackDwarfStep: Power = {
   "requires": "Warshade_Defensive.Umbral_Aura.Black_Dwarf Inherent.Inherent.Black_Dwarf_Step ! &&",
   "modesRequired": [
     "Warshade_Tanker_Mode"
+  ],
+  "modesDisallowed": [
+    "Disable_Teleport",
+    "Disable_Travel",
+    "Peacebringer_Blaster_Mode",
+    "Peacebringer_Tanker_Mode",
+    "Warshade_Blaster_Mode"
   ]
 };

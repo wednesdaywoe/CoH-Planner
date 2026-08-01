@@ -97,5 +97,9 @@ export const RestoreEssence: Power = {
     ["ToHit",null,3,1,90,"Ranged_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
     ["Recovery",null,0.5,1,90,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
     ["Meta",null,1,1,90,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+  ],
+  "modesDisallowed": [
+    "Peacebringer_Blaster_Mode",
+    "Peacebringer_Tanker_Mode"
   ]
 };

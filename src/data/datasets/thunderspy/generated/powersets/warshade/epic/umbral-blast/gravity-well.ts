@@ -102,6 +102,9 @@ export const GravityWell: Power = {
     ["Damage","Smashing",0.295501,1,2.75,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Held",2,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
+  "modesDisallowed": [
+    "Warshade_Blaster_Mode"
+  ],
   "damageTypes": [
     "Negative",
     "Smashing"

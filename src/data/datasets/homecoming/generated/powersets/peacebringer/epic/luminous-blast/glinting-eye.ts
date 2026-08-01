@@ -91,5 +91,8 @@ export const GlintingEye: Power = {
       "targetType": "Foe",
       "powerType": "Click"
     }
-  }
+  },
+  "modesDisallowed": [
+    "Peacebringer_Tanker_Mode"
+  ]
 };

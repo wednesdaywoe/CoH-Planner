@@ -106,5 +106,8 @@ export const Quasar: Power = {
         "table": "Ranged_SSDamage"
       }
     }
+  ],
+  "modesDisallowed": [
+    "Warshade_Tanker_Mode"
   ]
 };

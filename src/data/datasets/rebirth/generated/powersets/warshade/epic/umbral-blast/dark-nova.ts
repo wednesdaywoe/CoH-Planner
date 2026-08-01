@@ -116,5 +116,8 @@ export const DarkNova: Power = {
     "Warshade_Blaster_Mode",
     "Warshade_Form_Change",
     "Warshade_Form_Change2"
+  ],
+  "modesDisallowed": [
+    "Warshade_Human_Mode"
   ]
 };

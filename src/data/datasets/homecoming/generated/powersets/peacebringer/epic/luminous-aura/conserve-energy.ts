@@ -46,5 +46,9 @@ export const ConserveEnergy: Power = {
   "atoms": [
     ["EnduranceDiscount",null,1,1,90,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["Meta",null,1,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+  ],
+  "modesDisallowed": [
+    "Peacebringer_Blaster_Mode",
+    "Peacebringer_Tanker_Mode"
   ]
 };

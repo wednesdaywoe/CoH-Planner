@@ -103,5 +103,10 @@ export const DarkNovaDetonation: Power = {
   "requires": "0",
   "modesRequired": [
     "Warshade_Blaster_Mode"
+  ],
+  "modesDisallowed": [
+    "Peacebringer_Blaster_Mode",
+    "Peacebringer_Tanker_Mode",
+    "Warshade_Tanker_Mode"
   ]
 };

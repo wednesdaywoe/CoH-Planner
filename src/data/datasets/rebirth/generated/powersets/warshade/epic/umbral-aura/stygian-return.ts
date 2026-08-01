@@ -103,5 +103,9 @@ export const StygianReturn: Power = {
     ["Mez","Immobilized",4,50,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["Meta",null,1,1,90,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Mez","Stunned",2,30,0,"Melee_Stun","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+  ],
+  "modesDisallowed": [
+    "Warshade_Blaster_Mode",
+    "Warshade_Tanker_Mode"
   ]
 };

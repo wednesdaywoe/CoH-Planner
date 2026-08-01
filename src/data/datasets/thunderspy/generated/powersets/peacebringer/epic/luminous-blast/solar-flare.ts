@@ -76,6 +76,10 @@ export const SolarFlare: Power = {
       "label": "Knock Up"
     }
   ],
+  "modesDisallowed": [
+    "Peacebringer_Blaster_Mode",
+    "Peacebringer_Tanker_Mode"
+  ],
   "damageTypes": [
     "Energy"
   ]

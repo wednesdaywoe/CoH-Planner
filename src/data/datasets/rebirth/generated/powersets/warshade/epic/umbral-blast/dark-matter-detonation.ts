@@ -160,5 +160,8 @@ export const DarkMatterDetonation: Power = {
       "powerType": "Click"
     }
   },
-  "requires": "Warshade_Offensive.Umbral_Blast.Dark_Nova Warshade_Offensive.Umbral_Blast.Dark_Nova_Detonation ! && Inherent.Inherent.Dark_Nova_Detonation ! &&"
+  "requires": "Warshade_Offensive.Umbral_Blast.Dark_Nova Warshade_Offensive.Umbral_Blast.Dark_Nova_Detonation ! && Inherent.Inherent.Dark_Nova_Detonation ! &&",
+  "modesDisallowed": [
+    "Warshade_Tanker_Mode"
+  ]
 };

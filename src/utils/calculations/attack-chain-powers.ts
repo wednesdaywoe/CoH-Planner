@@ -22,6 +22,7 @@ import { selectActiveConditionals, type ATInherentState } from '@/utils/conditio
 import { calculateSlottedProcDamagePerCast } from './power-proc-damage';
 import { atMechanicMultiplier, applyAtMechanicBonus, type AtMechanicContext } from './power-at-mechanics';
 import { applyQuickSnipe } from '@/utils/quick-snipe';
+import { applyModeRedirect } from '@/components/info/resolveEffectivePower';
 import type { ChainPower, ChainDoT, ChainForm, ChainPowerType, EnduranceParams, FormTrigger } from './attack-chain';
 
 type CalcResult = ReturnType<typeof calculateCharacterTotals>;
@@ -78,10 +79,75 @@ const POWER_FORMS: Record<string, FormSpec[]> = {
  *  immediately-following Assassin's Strike fire its slow from-Hide form. */
 const CHARGE_GRANTS: Record<string, string> = { Total_Focus: 'energy_focus', Placate: 'hidden' };
 
+/** Every power the build holds, across primary, secondary, pools and the epic pool. */
+function allBuildPowers(build: Build): SelectedPower[] {
+  return [
+    ...(build.primary?.powers ?? []),
+    ...(build.secondary?.powers ?? []),
+    ...(build.pools?.flatMap((pool) => pool.powers ?? []) ?? []),
+    ...(build.epicPool?.powers ?? []),
+  ];
+}
+
+/**
+ * The caster forms this build can build a chain in — the Kheldian Nova/Dwarf forms, and
+ * nothing else unless a fork adds a mode shaped the same way.
+ *
+ * Derived, never listed. A mode qualifies when the build can enter it (some power the
+ * build holds `setsModes` it) AND entering it changes what can be cast (some click the
+ * build holds requires it or is disallowed in it). The second half is what keeps the
+ * selector honest: the form toggles also set `Suppress_PoolToggles` and `Disable_Walk`,
+ * which gate no click and so are never offered; Granite Armor's `Granite_Mode` gates only
+ * two global-boost redirects, so a Stone build gets no selector at all.
+ *
+ * It is also what confines the gate in {@link castableInMode} to forms. `modesRequired`
+ * carries plenty that is NOT a form — Titan Weapons' Momentum (`FastMode`), Swap Ammo's
+ * `LethalAmmo`, the `*On` travel toggles — and none of those has a setter/gate pair that
+ * lands here, so those powers stay in the chain exactly as before.
+ */
+export function buildFormModes(build: Build): string[] {
+  const powers = allBuildPowers(build);
+  const settable = new Set<string>();
+  for (const p of powers) for (const mode of p.setsModes ?? []) settable.add(mode);
+  if (settable.size === 0) return [];
+
+  const gating = new Set<string>();
+  for (const p of powers) {
+    if (p.powerType !== 'Click') continue;
+    for (const mode of p.modesRequired ?? []) if (settable.has(mode)) gating.add(mode);
+    for (const mode of p.modesDisallowed ?? []) if (settable.has(mode)) gating.add(mode);
+  }
+  return [...gating];
+}
+
+/**
+ * Whether `power` can be cast while `mode` is the live form (null = no form).
+ *
+ * Both halves of the binary's gate are read, and they are not complements:
+ * `modesDisallowed` is what refuses the cast, while a power with a `modeVariants`
+ * redirect into a form is deliberately absent from it — the game plays the form's
+ * version instead (see `Power.modesDisallowed`).
+ *
+ * A requirement is only enforced when the required mode is one of this build's
+ * `formModes`, so Momentum- and ammo-gated attacks are unaffected.
+ */
+function castableInMode(power: SelectedPower, mode: string | null, formModes: string[]): boolean {
+  if (mode && power.modesDisallowed?.includes(mode)) return false;
+  for (const required of power.modesRequired ?? []) {
+    if (formModes.includes(required) && required !== mode) return false;
+  }
+  return true;
+}
+
 /** Click powers (attacks, click buffs, click controls) from every powerset.
- *  Toggles/autos/passives can't sit in an attack chain, so they're excluded. */
-function collectCandidates(build: Build): Candidate[] {
+ *  Toggles/autos/passives can't sit in an attack chain, so they're excluded.
+ *
+ *  `mode` is the caster form the chain is being built in (null = no form). It gates
+ *  candidates through {@link castableInMode} and swaps in each power's redirect for
+ *  that form, so a chain shows the powers — and the numbers — the form actually has. */
+function collectCandidates(build: Build, mode: string | null = null): Candidate[] {
   const out: Candidate[] = [];
+  const formModes = buildFormModes(build);
   const add = (
     powers: SelectedPower[] | undefined,
     powersetName: string,
@@ -91,10 +157,17 @@ function collectCandidates(build: Build): Candidate[] {
   ) => {
     powers?.forEach((p) => {
       if (p.powerType !== 'Click') return;
-      if (p.isAutoGranted) return;
+      // Auto-granted powers don't cost a pick, which says nothing about whether they
+      // can be cast in a rotation — the Kheldian form attacks are auto-granted and are
+      // the whole rotation in that form. What separates them from the free riders a
+      // travel power hands out (Double Jump, Translocation, Jaunt) is that the game
+      // lets you slot them: those carry an empty `boosts_allowed` in the export.
+      if (p.isAutoGranted && !p.allowedEnhancements?.length) return;
+      if (!castableInMode(p, mode, formModes)) return;
       // Needs a cast time from EITHER shape (stats or effects) to sit in a chain.
       if (p.stats?.castTime == null && p.effects?.castTime == null) return;
-      out.push({ power: p, powersetName, powersetId, category, bucket });
+      const power = mode ? (applyModeRedirect(p, [mode]) as SelectedPower) : p;
+      out.push({ power, powersetName, powersetId, category, bucket });
     });
   };
   add(build.primary?.powers, build.primary?.name ?? 'Primary', build.primary?.id ?? '', 'pri', 'PRIMARY');
@@ -264,6 +337,10 @@ export interface ChainConditionalState {
   mechanicAdjusters?: Record<string, boolean>;
   /** AT-inherent mechanics the Header owns rather than the toggle maps. */
   atInherentState?: ATInherentState;
+  /** The caster form the chain is built in — one of {@link buildFormModes}, or null/absent
+   *  for no form. A form's attacks are auto-granted by its toggle and are unreachable from
+   *  human form, so the chain is built inside one form at a time rather than across them. */
+  formMode?: string | null;
 }
 
 /** Build the per-power chain data for the current build. `targetsHit` maps a
@@ -281,9 +358,9 @@ export function buildChainPowers(
 
   const judgement = buildJudgementChainPower(build, archetypeId);
 
-  const { globalAdjusters = {}, mechanicAdjusters = {}, atInherentState = {} } = conditionalState;
+  const { globalAdjusters = {}, mechanicAdjusters = {}, atInherentState = {}, formMode = null } = conditionalState;
 
-  const powers = collectCandidates(build).map(({ power, powersetName, powersetId, category, bucket }) => {
+  const powers = collectCandidates(build, formMode).map(({ power, powersetName, powersetId, category, bucket }) => {
     // Conditional contributions whose gate is on (Gravity Control's Impact, a
     // Bio Armor stance, Domination). Selected ONCE from the base power — every
     // cast form shares the same `conditionalEffects` and the same toggle key —

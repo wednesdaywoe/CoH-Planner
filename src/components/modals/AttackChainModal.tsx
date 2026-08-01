@@ -24,14 +24,16 @@ import {
   useDominationActive,
 } from '@/stores';
 import { effectiveGlobalAdjusters } from '@/components/info/resolveEffectivePower';
-import { calculateCharacterTotals } from '@/utils/calculations';
+import { useCharacterCalculation } from '@/hooks/useCalculatedStats';
 import {
   buildChainPowers,
+  buildFormModes,
   getEnduranceParams,
   getBuildGlobalRecharge,
   sequenceToIds,
   idsToSequence,
 } from '@/utils/calculations/attack-chain-powers';
+import { modeLabel } from '@/utils/mode-suppression';
 import type { AttackChain } from '@/types';
 import {
   replayChain,
@@ -161,8 +163,23 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
   // / Consume / Power Sink, scaled per foe — same setting the dashboard uses).
   const targetsHitValues = useUIStore((s) => s.targetsHitValues);
 
+  // Caster form. Kheldian Nova/Dwarf attacks are auto-granted by the form toggle and
+  // usable only inside that form, while the human powers are disallowed inside it, so a
+  // chain is built in one form at a time. Empty for every build with no form to enter.
+  const formModes = useMemo(() => buildFormModes(build), [build]);
+  const [formMode, setFormMode] = useState<string | null>(null);
+
+  // The dashboard's calculation, not a fresh bare one. Calling
+  // `calculateCharacterTotals(build)` here passed NO options, so every global the
+  // chain reads — damage, recharge, ToHit, endurance — was computed with the
+  // targets-hit sliders empty, no incarnates, no exemplar and every adjuster at
+  // its default. Rage was the reported symptom: its stack slider moved the
+  // dashboard and not the chain, and "Off" still counted one stack here because
+  // an absent slider entry reads as the base 1-stack value. Sharing the hook also
+  // means this modal hits the same memo cache as the rest of the app.
+  const calc = useCharacterCalculation();
+
   const { powers, endParams, buildGlobalRech, permanentToHit } = useMemo(() => {
-    const calc = calculateCharacterTotals(build);
     const hasHide = build.secondary.powers.some((p) => p.internalName === 'Hide');
     const mechCtx = {
       archetypeId: build.archetype?.id ?? undefined,
@@ -179,13 +196,14 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
         globalAdjusters: effectiveGlobalAdjusters(build, globalAdjusters),
         mechanicAdjusters,
         atInherentState: { dominationActive },
+        formMode,
       }),
       endParams: getEnduranceParams(calc.globalBonuses),
       buildGlobalRech: getBuildGlobalRecharge(calc.globalBonuses),
       // Always-on ToHit (% points) — drives the fast-snipe rule in replayChain.
       permanentToHit: calc.globalBonuses.toHit,
     };
-  }, [build, containmentActive, scourgeActive, criticalHitsActive, stalkerCritActive, sentinelCritActive, stalkerHidden, stalkerTeamSize, targetsHitValues, mechanicAdjusters, globalAdjusters, dominationActive]);
+  }, [build, calc, containmentActive, scourgeActive, criticalHitsActive, stalkerCritActive, sentinelCritActive, stalkerHidden, stalkerTeamSize, targetsHitValues, mechanicAdjusters, globalAdjusters, dominationActive, formMode]);
 
   const [sequence, setSequence] = useState<number[]>([]);
   const [extraRech, setExtraRech] = useState(0);
@@ -557,6 +575,32 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
         {/* Toolbar */}
         <div className="flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-3 flex-wrap">
+            {/* Form selector — only for builds that have a form to switch into. A form's
+              * attacks can't be used outside it and human attacks can't be used inside it,
+              * so a chain lives in one form; switching here rebuilds the candidate list. */}
+            {formModes.length > 0 && (
+              <div className="flex items-center gap-1" role="group" aria-label="Caster form">
+                <span className="text-[11px] text-gray-500 mr-0.5">Form</span>
+                {[null, ...formModes].map((mode) => {
+                  const isActive = formMode === mode;
+                  return (
+                    <button
+                      key={mode ?? 'human'}
+                      type="button"
+                      onClick={() => setFormMode(mode)}
+                      aria-pressed={isActive}
+                      className={`px-2 py-0.5 text-[11px] rounded border transition-colors ${
+                        isActive
+                          ? 'bg-[var(--color-selected)]/40 border-[var(--color-selected)] text-[var(--color-link)]'
+                          : 'bg-gray-800 border-gray-600 text-gray-400 hover:bg-gray-700'
+                      }`}
+                    >
+                      {mode === null ? 'Human' : modeLabel(mode)}
+                    </button>
+                  );
+                })}
+              </div>
+            )}
             <label className="flex items-center gap-1.5 text-[11px] text-gray-500 cursor-pointer select-none">
               <input
                 type="checkbox"

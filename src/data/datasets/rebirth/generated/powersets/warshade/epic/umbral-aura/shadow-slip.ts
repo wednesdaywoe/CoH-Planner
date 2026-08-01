@@ -79,5 +79,9 @@ export const ShadowSlip: Power = {
     ["Mez","Untouchable",0.75,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["ThreatLevel",null,-1,1,0.75,"Ranged_Ones","Cur","Magnitude","Target","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
     ["Mez","OnlyAffectsSelf",0.75,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+  ],
+  "modesDisallowed": [
+    "Warshade_Blaster_Mode",
+    "Warshade_Tanker_Mode"
   ]
 };

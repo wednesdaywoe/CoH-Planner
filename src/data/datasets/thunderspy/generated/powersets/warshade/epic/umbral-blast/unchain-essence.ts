@@ -112,6 +112,9 @@ export const UnchainEssence: Power = {
       "label": "Knockback"
     }
   ],
+  "modesDisallowed": [
+    "Warshade_Tanker_Mode"
+  ],
   "damageTypes": [
     "Negative"
   ]

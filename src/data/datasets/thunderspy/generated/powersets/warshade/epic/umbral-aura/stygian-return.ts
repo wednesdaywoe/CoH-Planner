@@ -82,6 +82,10 @@ export const StygianReturn: Power = {
   "setsModes": [
     "Peacebringer_Blaster_Mode"
   ],
+  "modesDisallowed": [
+    "Warshade_Blaster_Mode",
+    "Warshade_Tanker_Mode"
+  ],
   "damageTypes": [
     "Negative"
   ]

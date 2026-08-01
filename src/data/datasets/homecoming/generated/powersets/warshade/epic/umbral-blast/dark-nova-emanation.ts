@@ -91,5 +91,10 @@ export const DarkNovaEmanation: Power = {
   "requires": "Warshade_Offensive.Umbral_Blast.Dark_Nova Inherent.Inherent.Dark_Nova_Emanation ! &&",
   "modesRequired": [
     "Warshade_Blaster_Mode"
+  ],
+  "modesDisallowed": [
+    "Peacebringer_Blaster_Mode",
+    "Peacebringer_Tanker_Mode",
+    "Warshade_Tanker_Mode"
   ]
 };

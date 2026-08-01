@@ -97,5 +97,9 @@ export const EnergyFlight: Power = {
     "Peacebringer_Tanker_Mode",
     "Suppress_FlyToggles",
     "Suppress_TravelToggles"
+  ],
+  "modesDisallowed": [
+    "Disable_FlyToggles",
+    "Disable_Travel"
   ]
 };

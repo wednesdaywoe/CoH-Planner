@@ -91,5 +91,9 @@ export const EnergyFlight: Power = {
     "HoverOn",
     "Peacebringer_Human_Mode",
     "EnergyFlyOn"
+  ],
+  "modesDisallowed": [
+    "Peacebringer_Form_Change",
+    "Disable_Travel"
   ]
 };

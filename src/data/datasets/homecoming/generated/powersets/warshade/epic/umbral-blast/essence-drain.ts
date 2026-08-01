@@ -91,5 +91,9 @@ export const EssenceDrain: Power = {
     ["Movement","Run",0.2,1,6,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","Fly",0.2,1,6,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","Jump",0.2,1,6,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+  ],
+  "modesDisallowed": [
+    "Warshade_Blaster_Mode",
+    "Warshade_Tanker_Mode"
   ]
 };

@@ -84,5 +84,8 @@ export const DawnStrike: Power = {
         "table": "Ranged_SSDamage"
       }
     }
+  ],
+  "modesDisallowed": [
+    "Peacebringer_Tanker_Mode"
   ]
 };

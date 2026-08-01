@@ -63,5 +63,11 @@ export const StarlessStep: Power = {
     ["ToHit",null,1,1,5,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["RechargePower",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,2,null,true],
     ["GlobalChanceMod",null,-1,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,2,null,true]
+  ],
+  "modesDisallowed": [
+    "Disable_Teleport",
+    "Disable_Travel",
+    "Warshade_Blaster_Mode",
+    "Warshade_Tanker_Mode"
   ]
 };

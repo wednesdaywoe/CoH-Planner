@@ -96,5 +96,8 @@ export const GleamingBolt: Power = {
       "targetType": "Foe",
       "powerType": "Click"
     }
-  }
+  },
+  "modesDisallowed": [
+    "Peacebringer_Blaster_Mode"
+  ]
 };

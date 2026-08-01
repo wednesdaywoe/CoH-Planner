@@ -22,6 +22,7 @@ const {
   SET_CATEGORY_MAP,
   extractEffects,
   extractDamage,
+  assignModes,
   resolveThunderspyMovementTargets,
   collectTemplatesDeep,
   collectAtomTemplates,
@@ -156,6 +157,10 @@ function convertEpicPower(rawJson, rank, availableLevel) {
     const mapped = TARGET_TYPE_MAP[rawJson.target_type];
     if (mapped) power.targetType = mapped;
   }
+
+  // Game modes — the same four arrays archetype and pool powers carry, stamped here
+  // so a power's mode gating never depends on which converter tree produced it.
+  assignModes(power, rawJson);
 
   // Requires
   if (rawJson.requires && rawJson.requires !== '') {

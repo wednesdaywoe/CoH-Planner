@@ -850,6 +850,52 @@ const MODE_VARIANT_FIELDS = [
 ];
 
 /**
+ * `Disable_All` is stamped on nearly every power (it is how the game blanks the tray), and
+ * `ServerTrayOverride` is mode index 0 — the system tray slot, with no gameplay meaning.
+ * Neither is a caster state a build can be in, so both are stripped from every mode array.
+ */
+const MODE_NOISE = new Set(['Disable_All', 'ServerTrayOverride']);
+const dropNoiseMode = (m) => m && !MODE_NOISE.has(m);
+
+/**
+ * Stamp a power's four game-"mode" arrays (combat states: Kheldian Nova/Dwarf forms, Titan
+ * Momentum, Domination, Granite, Swap-Ammo, travel toggles). The exporter resolves the
+ * per-server mode registry from attrib_names.bin and stamps three power-level arrays plus a
+ * `mode_name` on each Set_Mode template.
+ *
+ *   setsModes        modes this power ACTIVATES (from Set_Mode `mode_name`).
+ *   modesSuspended   modes that SUSPEND this power's own effects (Granite suspends the other
+ *                    Stone toggles; forms suspend human toggles).
+ *   modesRequired    modes the power needs to be USABLE.
+ *   modesDisallowed  modes that make the power UNCASTABLE.
+ *
+ * Shared by the powerset, pool and epic converters so a power's mode gating does not depend on
+ * which tree it was converted through — the pools carry the Kheldian form modes too, and a
+ * pool-only omission read as "Hasten is castable in Nova form".
+ *
+ * Empty arrays are left unset rather than emitted, so the shape matches the rest of the
+ * converter and an absent field means "no gating" everywhere.
+ */
+function assignModes(power, powerJson) {
+  const setsModes = [];
+  for (const grp of powerJson.effects || []) {
+    if (grp?.is_pvp === 'PVP_ONLY') continue; // PvE planner default — PvP-only setters excluded
+    for (const t of grp?.templates || []) {
+      if (t?.mode_name && (t.attribs || []).includes('Set_Mode') && dropNoiseMode(t.mode_name)) {
+        if (!setsModes.includes(t.mode_name)) setsModes.push(t.mode_name);
+      }
+    }
+  }
+  if (setsModes.length) power.setsModes = setsModes;
+  const modesSuspended = (powerJson.modes_suspended || []).filter(dropNoiseMode);
+  if (modesSuspended.length) power.modesSuspended = modesSuspended;
+  const modesRequired = (powerJson.modes_required || []).filter(dropNoiseMode);
+  if (modesRequired.length) power.modesRequired = modesRequired;
+  const modesDisallowed = (powerJson.modes_disallowed || []).filter(dropNoiseMode);
+  if (modesDisallowed.length) power.modesDisallowed = modesDisallowed;
+}
+
+/**
  * Mode-gated redirect variants: `power.modeVariants[<Mode>]` is what the power becomes while that
  * caster mode is live. The game decides this at activation time through the PowerRedirector, and
  * the binary carries the whole table — a Kheldian attack in Nova form, a Titan Weapons attack under
@@ -6909,27 +6955,22 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
   //                    toggles) — the calc drops the effect contribution when a
   //                    live mode intersects.
   //   - modesRequired:  modes the power needs to be USABLE (FastMode/Momentum,
-  //                    Domination, form-gated attacks) — annotation only; a
-  //                    build planner always slots these, so no picker gating.
-  // `modes_disallowed` is ~5.8k files of pure `Disable_All` noise → dropped.
+  //                    Domination, form-gated attacks).
+  //   - modesDisallowed: modes that make the power UNCASTABLE. This is the half
+  //                    that says a human-form Kheldian attack cannot be used in
+  //                    Nova, and it is not derivable from the other three: the
+  //                    tier-one attacks are absent from it for the ONE form they
+  //                    have a `modeVariants` redirect into, which is exactly how
+  //                    the binary distinguishes "disabled in this form" from
+  //                    "becomes the form's version" (Gleaming Bolt disallows
+  //                    Nova and redirects under Dwarf; Glinting Eye the reverse).
+  //                    It was dropped on the grounds of being "~5.8k files of
+  //                    pure Disable_All noise" — true of the bulk, but the
+  //                    remainder carries the four Kheldian form modes across
+  //                    ~500 powers including the pools.
   // `Disable_All` (ubiquitous) and `ServerTrayOverride` (mode index 0 — the
   // system tray slot, no gameplay meaning) are stripped everywhere.
-  const MODE_NOISE = new Set(['Disable_All', 'ServerTrayOverride']);
-  const dropNoiseMode = (m) => m && !MODE_NOISE.has(m);
-  const setsModes = [];
-  for (const grp of powerJson.effects || []) {
-    if (grp?.is_pvp === 'PVP_ONLY') continue; // PvE planner default — PvP-only setters excluded
-    for (const t of grp?.templates || []) {
-      if (t?.mode_name && (t.attribs || []).includes('Set_Mode') && dropNoiseMode(t.mode_name)) {
-        if (!setsModes.includes(t.mode_name)) setsModes.push(t.mode_name);
-      }
-    }
-  }
-  if (setsModes.length) power.setsModes = setsModes;
-  const modesSuspended = (powerJson.modes_suspended || []).filter(dropNoiseMode);
-  if (modesSuspended.length) power.modesSuspended = modesSuspended;
-  const modesRequired = (powerJson.modes_required || []).filter(dropNoiseMode);
-  if (modesRequired.length) power.modesRequired = modesRequired;
+  assignModes(power, powerJson);
 
   // Mechanic power type detection
   const showInManage = powerJson.show_in_manage !== false; // defaults to true
@@ -7307,6 +7348,7 @@ module.exports = {
   convertPower,
   classifyModeRedirect,
   extractModeVariants,
+  assignModes,
   collectRedirectTemplates,
   collectBaseTemplates,
   _filterFieryEmbraceBonus,

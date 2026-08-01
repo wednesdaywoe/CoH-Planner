@@ -61,5 +61,12 @@ export const ShadowRecall: Power = {
     ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"target.isFriend?",true],
     ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq Warshade_Offensive.Umbral_Blast.Starless_Step source.ownPower? && target.isFriend? ! &&",true]
   ],
-  "requires": "Inherent.Inherent.Shadow_Recall !"
+  "requires": "Inherent.Inherent.Shadow_Recall !",
+  "modesDisallowed": [
+    "Peacebringer_Blaster_Mode",
+    "Peacebringer_Tanker_Mode",
+    "Warshade_Blaster_Mode",
+    "Warshade_Tanker_Mode",
+    "Disable_Recall"
+  ]
 };

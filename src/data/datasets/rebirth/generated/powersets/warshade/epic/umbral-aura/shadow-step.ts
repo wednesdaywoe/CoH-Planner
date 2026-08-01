@@ -109,5 +109,10 @@ export const ShadowStep: Power = {
   "requires": "Inherent.Inherent.Shadow_Step !",
   "setsModes": [
     "Warshade_Human_Mode"
+  ],
+  "modesDisallowed": [
+    "Warshade_Form_Change",
+    "Disable_Travel",
+    "Disable_Teleport"
   ]
 };

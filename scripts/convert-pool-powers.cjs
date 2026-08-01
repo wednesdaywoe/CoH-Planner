@@ -22,6 +22,7 @@ const {
   extractEffects,
   extractDamage,
   extractModeVariants,
+  assignModes,
   guardThunderspyOnesBuffs,
   resolveThunderspyMovementTargets,
   inferAllowedSetCategories,
@@ -187,6 +188,12 @@ function convertPoolPower(rawJson, rank, availableLevel) {
   if (modeVariants) {
     power.modeVariants = modeVariants;
   }
+
+  // Game modes — the same four arrays archetype powers carry. The pools were left
+  // without them, and the gap is load-bearing rather than cosmetic: every pool click
+  // is `modes_disallowed` in the four Kheldian form modes, so a surface asking "can
+  // this be cast right now" read Hasten and Boxing as usable in Nova form.
+  assignModes(power, rawJson);
 
   // Requires
   if (rawJson.requires && rawJson.requires !== '') {

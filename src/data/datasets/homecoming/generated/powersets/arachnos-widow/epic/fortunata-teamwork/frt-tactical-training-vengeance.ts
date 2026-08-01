@@ -186,5 +186,8 @@ export const FRTTacticalTrainingVengeance: Power = {
   ],
   "setsModes": [
     "Vengeance_Mode"
+  ],
+  "modesDisallowed": [
+    "Disable_Pool"
   ]
 };

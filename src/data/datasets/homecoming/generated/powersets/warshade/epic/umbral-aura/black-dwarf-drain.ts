@@ -104,5 +104,10 @@ export const BlackDwarfDrain: Power = {
   "requires": "Warshade_Defensive.Umbral_Aura.Black_Dwarf Inherent.Inherent.Black_Dwarf_Drain ! &&",
   "modesRequired": [
     "Warshade_Tanker_Mode"
+  ],
+  "modesDisallowed": [
+    "Peacebringer_Blaster_Mode",
+    "Peacebringer_Tanker_Mode",
+    "Warshade_Blaster_Mode"
   ]
 };

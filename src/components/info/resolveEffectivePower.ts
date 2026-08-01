@@ -53,7 +53,7 @@ export interface EffectivePowerState {
  * variant, the power's own table order decides, which is the order the binary lists the
  * redirects in.
  */
-function applyModeRedirect(power: Power, activeModes: readonly string[] | undefined): Power {
+export function applyModeRedirect(power: Power, activeModes: readonly string[] | undefined): Power {
   if (!power.modeVariants || !activeModes?.length) return power;
   const mode = Object.keys(power.modeVariants).find((m) => activeModes.includes(m));
   if (mode === undefined) return power;

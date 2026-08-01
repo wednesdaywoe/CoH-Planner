@@ -75,5 +75,10 @@ export const EnergyFlightQuantumAcceleration: Power = {
   ],
   "modesRequired": [
     "EnergyFlyOn"
+  ],
+  "modesDisallowed": [
+    "AfterburnerOff",
+    "Peacebringer_Blaster_Mode",
+    "Peacebringer_Tanker_Mode"
   ]
 };

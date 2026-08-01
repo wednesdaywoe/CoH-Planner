@@ -899,10 +899,32 @@ export interface Power {
   /**
    * Modes this power needs to be USABLE — Titan `FastMode` (Momentum) attacks,
    * Kheldian form attacks, Domination-only powers, travel-toggle-gated powers.
-   * Annotation only: a build planner always slots these, so they are NOT greyed
-   * out; the InfoPanel shows a "Requires: <mode>" note. Raw mode ids.
+   * Never a picker gate: a build planner always slots these, so they are NOT
+   * greyed out, and the InfoPanel just shows a "Requires: <mode>" note.
+   *
+   * The attack chain builder does read it as a cast gate, but only for the modes
+   * its form selector offers (`buildFormModes`) — a Momentum- or ammo-gated attack
+   * has no selectable form to sit in and is scheduled as it always was. Raw mode ids.
    */
   modesRequired?: string[];
+  /**
+   * Modes that make this power UNCASTABLE while live — the other half of the gate
+   * `modesRequired` opens. Nearly every human-form Kheldian power and every pool
+   * click carries the four `*_Blaster_Mode` / `*_Tanker_Mode` form ids.
+   *
+   * NOT the complement of `modesRequired`: a power with a `modeVariants` redirect
+   * into a form is absent from this list for that form specifically, because the
+   * game plays the form's version rather than refusing the cast. Gleaming Bolt
+   * disallows Nova and redirects under Dwarf; Glinting Eye does the reverse. So
+   * "castable in mode M" is `!modesDisallowed?.includes(M)`, and the redirect is
+   * what it resolves to — neither question is answerable from `modesRequired`.
+   *
+   * Raw mode ids, with the ubiquitous `Disable_All` and the meaningless
+   * `ServerTrayOverride` stripped. What remains still includes the content gates
+   * (`Disable_Epic`, `Disable_Incarnate`, `Disable_Pool`, …), which no build power
+   * sets — a consumer only ever asks about modes something in the build is setting.
+   */
+  modesDisallowed?: string[];
   /**
    * If set, this power is a mechanic (non-standard) power:
    * - 'childToggle': Auto-granted child toggle (ammo types, stance forms, adaptations)

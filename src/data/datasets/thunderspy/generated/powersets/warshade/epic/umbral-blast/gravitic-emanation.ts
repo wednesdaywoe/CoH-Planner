@@ -103,6 +103,9 @@ export const GraviticEmanation: Power = {
     ["Mez","Knockback",5,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Stunned",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
+  "modesDisallowed": [
+    "Warshade_Blaster_Mode"
+  ],
   "damageTypes": [
     "Negative"
   ]

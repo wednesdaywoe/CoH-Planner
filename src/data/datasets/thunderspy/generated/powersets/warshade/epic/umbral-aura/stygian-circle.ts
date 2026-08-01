@@ -52,6 +52,10 @@ export const StygianCircle: Power = {
     ["Heal",null,4,1,0,"Melee_HealSelf","Abs","Magnitude","Self","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch target> Class_Boss_Grunt eq arch target> Class_Boss_Elite eq || enttype target> player eq ||",true],
     ["Heal",null,5,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch target> Class_Boss_Archvillain eq arch target> Class_Boss_Monster eq ||",true]
   ],
+  "modesDisallowed": [
+    "Warshade_Blaster_Mode",
+    "Warshade_Tanker_Mode"
+  ],
   "damageTypes": [
     "Negative"
   ]

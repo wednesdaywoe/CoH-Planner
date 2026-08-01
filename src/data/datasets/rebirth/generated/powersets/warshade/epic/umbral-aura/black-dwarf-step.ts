@@ -89,5 +89,12 @@ export const BlackDwarfStep: Power = {
   "requires": "0",
   "modesRequired": [
     "Warshade_Tanker_Mode"
+  ],
+  "modesDisallowed": [
+    "Peacebringer_Blaster_Mode",
+    "Peacebringer_Tanker_Mode",
+    "Warshade_Blaster_Mode",
+    "Disable_Travel",
+    "Disable_Teleport"
   ]
 };

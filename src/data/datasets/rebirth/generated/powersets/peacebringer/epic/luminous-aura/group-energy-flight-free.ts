@@ -67,5 +67,8 @@ export const GroupEnergyFlightFree: Power = {
   "requires": "Peacebringer_Defensive.Luminous_Aura.Group_Energy_Flight",
   "modesRequired": [
     "EnergyFlyOn"
+  ],
+  "modesDisallowed": [
+    "Peacebringer_Form_Change"
   ]
 };

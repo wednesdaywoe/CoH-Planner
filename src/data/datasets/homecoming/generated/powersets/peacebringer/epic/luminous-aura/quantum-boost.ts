@@ -63,5 +63,9 @@ export const QuantumBoost: Power = {
   ],
   "modesRequired": [
     "FlyOn"
+  ],
+  "modesDisallowed": [
+    "Disable_FlyToggles",
+    "Disable_Travel"
   ]
 };

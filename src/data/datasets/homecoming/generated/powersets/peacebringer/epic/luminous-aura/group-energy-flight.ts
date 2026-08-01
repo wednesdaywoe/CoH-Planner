@@ -88,5 +88,8 @@ export const GroupEnergyFlight: Power = {
     "Peacebringer_Blaster_Mode",
     "Peacebringer_Tanker_Mode",
     "Suppress_FlyToggles"
+  ],
+  "modesDisallowed": [
+    "Disable_FlyToggles"
   ]
 };

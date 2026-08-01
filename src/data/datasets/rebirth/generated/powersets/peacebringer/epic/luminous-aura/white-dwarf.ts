@@ -254,5 +254,8 @@ export const WhiteDwarf: Power = {
     "Disable_Temp",
     "Peacebringer_Tanker_Mode",
     "Peacebringer_Form_Change"
+  ],
+  "modesDisallowed": [
+    "Peacebringer_Human_Mode"
   ]
 };

@@ -70,5 +70,8 @@ export const HardLife: Power = {
     ["DamageBuff","Psionic",5,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["RechargeTime",null,0.3,1,30,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+  ],
+  "modesDisallowed": [
+    "Disable_Pool"
   ]
 };

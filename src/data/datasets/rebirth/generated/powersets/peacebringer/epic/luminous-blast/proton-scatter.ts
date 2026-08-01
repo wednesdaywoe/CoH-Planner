@@ -102,5 +102,8 @@ export const ProtonScatter: Power = {
       "powerType": "Click"
     }
   },
-  "requires": "Peacebringer_Offensive.Luminous_Blast.Bright_Nova Peacebringer_Offensive.Luminous_Blast.Bright_Nova_Scatter ! && Inherent.Inherent.Bright_Nova_Scatter ! &&"
+  "requires": "Peacebringer_Offensive.Luminous_Blast.Bright_Nova Peacebringer_Offensive.Luminous_Blast.Bright_Nova_Scatter ! && Inherent.Inherent.Bright_Nova_Scatter ! &&",
+  "modesDisallowed": [
+    "Peacebringer_Tanker_Mode"
+  ]
 };

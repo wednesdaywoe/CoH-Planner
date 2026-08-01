@@ -102,5 +102,9 @@ export const NebulousForm: Power = {
   "setsModes": [
     "Warshade_Human_Mode",
     "Warshade_Human_Mode2"
+  ],
+  "modesDisallowed": [
+    "Warshade_Form_Change",
+    "Warshade_Form_Change2"
   ]
 };

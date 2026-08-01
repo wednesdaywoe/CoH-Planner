@@ -51,5 +51,10 @@ export const BlackDwarfAntagonize: Power = {
   "requires": "Warshade_Defensive.Umbral_Aura.Black_Dwarf Inherent.Inherent.Black_Dwarf_Antagonize ! &&",
   "modesRequired": [
     "Warshade_Tanker_Mode"
+  ],
+  "modesDisallowed": [
+    "Peacebringer_Blaster_Mode",
+    "Peacebringer_Tanker_Mode",
+    "Warshade_Blaster_Mode"
   ]
 };

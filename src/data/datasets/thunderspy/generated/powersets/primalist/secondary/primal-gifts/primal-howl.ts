@@ -119,5 +119,8 @@ export const PrimalHowl: Power = {
       "targetType": "Self",
       "powerType": "Click"
     }
-  }
+  },
+  "modesDisallowed": [
+    "ProwlerMode"
+  ]
 };

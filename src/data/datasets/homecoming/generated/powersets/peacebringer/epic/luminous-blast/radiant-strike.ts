@@ -94,5 +94,9 @@ export const RadiantStrike: Power = {
       "chance": 0.6000000238418579,
       "label": "Knockback"
     }
+  ],
+  "modesDisallowed": [
+    "Peacebringer_Blaster_Mode",
+    "Peacebringer_Tanker_Mode"
   ]
 };

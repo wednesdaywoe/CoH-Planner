@@ -88,5 +88,9 @@ export const QuantumFlight: Power = {
     ["Mez","CombatPhase",0.75,3,0,"Melee_Ones","Cur","Duration","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDisable_Toggle Source.Mode? !"],
     ["Mez","Intangible",0.75,3,0,"Melee_Ones","Cur","Duration","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDisable_Toggle Source.Mode? !"],
     ["ThreatLevel",null,-1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDisable_Toggle Source.Mode? !"]
+  ],
+  "modesDisallowed": [
+    "Peacebringer_Blaster_Mode",
+    "Peacebringer_Tanker_Mode"
   ]
 };

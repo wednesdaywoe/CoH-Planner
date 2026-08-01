@@ -31,6 +31,13 @@ export const POWER_POOLS_RAW = {
         "icon": "experimentation_experimentalinjection.png",
         "powerType": "Click",
         "targetType": "Ally (Alive)",
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -129,6 +136,13 @@ export const POWER_POOLS_RAW = {
         "icon": "experimentation_toxicdart.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -190,6 +204,19 @@ export const POWER_POOLS_RAW = {
         "icon": "experimentation_speedofsound.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "setsModes": [
+          "SpeedofSoundOn"
+        ],
+        "modesSuspended": [
+          "Suppress_PoolToggles",
+          "Suppress_RunToggles",
+          "Suppress_TravelToggles"
+        ],
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Disable_RunToggles",
+          "Disable_Travel"
+        ],
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -245,6 +272,13 @@ export const POWER_POOLS_RAW = {
         "icon": "experimentation_corrosivevial.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "Pool.Experimentation.Experimental_Injection Pool.Experimentation.Toxic_Dart && Pool.Experimentation.Experimental_Injection Pool.Experimentation.Speed_of_Sound && || Pool.Experimentation.Toxic_Dart Pool.Experimentation.Speed_of_Sound && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -290,6 +324,13 @@ export const POWER_POOLS_RAW = {
         "icon": "experimentation_adrenalbooster.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "Pool.Experimentation.Experimental_Injection Pool.Experimentation.Toxic_Dart && Pool.Experimentation.Experimental_Injection Pool.Experimentation.Speed_of_Sound && || Pool.Experimentation.Toxic_Dart Pool.Experimentation.Speed_of_Sound && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -405,6 +446,17 @@ export const POWER_POOLS_RAW = {
         "icon": "experimentation_jaunt.png",
         "powerType": "Click",
         "targetType": "Teleport",
+        "modesRequired": [
+          "SpeedofSoundOn"
+        ],
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Disable_Travel",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "Pool.Experimentation.Speed_of_Sound",
         "maxSlots": 6,
         "allowedEnhancements": [],
@@ -467,6 +519,13 @@ export const POWER_POOLS_RAW = {
         "icon": "fighting_boxing.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -533,6 +592,13 @@ export const POWER_POOLS_RAW = {
         "icon": "fighting_kick.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -595,6 +661,12 @@ export const POWER_POOLS_RAW = {
         "icon": "fighting_tough.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesSuspended": [
+          "Suppress_PoolToggles"
+        ],
+        "modesDisallowed": [
+          "Disable_Pool"
+        ],
         "requires": "Pool.Fighting.Boxing Pool.Fighting.Kick ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -650,6 +722,12 @@ export const POWER_POOLS_RAW = {
         "icon": "fighting_weave.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesSuspended": [
+          "Suppress_PoolToggles"
+        ],
+        "modesDisallowed": [
+          "Disable_Pool"
+        ],
         "requires": "Pool.Fighting.Boxing Pool.Fighting.Kick && Pool.Fighting.Boxing Pool.Fighting.Tough && || Pool.Fighting.Kick Pool.Fighting.Tough && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -764,6 +842,13 @@ export const POWER_POOLS_RAW = {
         "icon": "fighting_crosspunch.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "Pool.Fighting.Boxing Pool.Fighting.Kick && Pool.Fighting.Boxing Pool.Fighting.Tough && || Pool.Fighting.Boxing Pool.Fighting.Weave && || Pool.Fighting.Kick Pool.Fighting.Tough && || Pool.Fighting.Kick Pool.Fighting.Weave && || Pool.Fighting.Tough Pool.Fighting.Weave && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -864,6 +949,13 @@ export const POWER_POOLS_RAW = {
         "icon": "fitness_quick.png",
         "powerType": "Auto",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "Inherent.Fitness.Swift !",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -909,6 +1001,13 @@ export const POWER_POOLS_RAW = {
         "icon": "fitness_hurdle.png",
         "powerType": "Auto",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "Inherent.Fitness.Hurdle !",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -952,6 +1051,13 @@ export const POWER_POOLS_RAW = {
         "icon": "fitness_health.png",
         "powerType": "Auto",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "Inherent.Fitness.Health ! Pool.Fitness.Quick Pool.Fitness.Hurdle || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -995,6 +1101,13 @@ export const POWER_POOLS_RAW = {
         "icon": "fitness_stamina.png",
         "powerType": "Auto",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "Inherent.Fitness.Stamina ! Pool.Fitness.Quick Pool.Fitness.Hurdle && Pool.Fitness.Quick Pool.Fitness.Health && || Pool.Fitness.Hurdle Pool.Fitness.Health && || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1040,6 +1153,14 @@ export const POWER_POOLS_RAW = {
         "icon": "flight_combatflight.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesSuspended": [
+          "Suppress_FlyToggles",
+          "Suppress_PoolToggles"
+        ],
+        "modesDisallowed": [
+          "Disable_FlyToggles",
+          "Disable_Pool"
+        ],
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1176,6 +1297,13 @@ export const POWER_POOLS_RAW = {
         "icon": "flight_arialassault.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1243,6 +1371,19 @@ export const POWER_POOLS_RAW = {
         "icon": "flight_travelflight.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "setsModes": [
+          "FlyOn"
+        ],
+        "modesSuspended": [
+          "Suppress_FlyToggles",
+          "Suppress_PoolToggles",
+          "Suppress_TravelToggles"
+        ],
+        "modesDisallowed": [
+          "Disable_FlyToggles",
+          "Disable_Pool",
+          "Disable_Travel"
+        ],
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1318,6 +1459,16 @@ export const POWER_POOLS_RAW = {
         "icon": "flight_groupfly.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesSuspended": [
+          "Suppress_FlyToggles",
+          "Suppress_PoolToggles",
+          "Suppress_TravelToggles"
+        ],
+        "modesDisallowed": [
+          "Disable_FlyToggles",
+          "Disable_Pool",
+          "Disable_Travel"
+        ],
         "requires": "Pool.Flight.Combat_Flight Pool.Flight.Air_Superiority && Pool.Flight.Combat_Flight Pool.Flight.Fly && || Pool.Flight.Air_Superiority Pool.Flight.Fly && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1386,6 +1537,14 @@ export const POWER_POOLS_RAW = {
         "icon": "flight_evasivemaneuvers.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesSuspended": [
+          "Suppress_PoolToggles",
+          "Suppress_TravelToggles"
+        ],
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Disable_Travel"
+        ],
         "requires": "Pool.Flight.Combat_Flight Pool.Flight.Air_Superiority && Pool.Flight.Combat_Flight Pool.Flight.Fly && || Pool.Flight.Air_Superiority Pool.Flight.Fly && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1530,6 +1689,18 @@ export const POWER_POOLS_RAW = {
         "icon": "flight_afterburner.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesSuspended": [
+          "Suppress_FlyToggles",
+          "Suppress_PoolToggles",
+          "Suppress_TravelToggles"
+        ],
+        "modesRequired": [
+          "FlyOn"
+        ],
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Disable_Travel"
+        ],
         "requires": "Pool.Flight.Fly",
         "maxSlots": 6,
         "allowedEnhancements": [],
@@ -1585,6 +1756,13 @@ export const POWER_POOLS_RAW = {
         "icon": "forceofwill_weakenresolve.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1680,6 +1858,13 @@ export const POWER_POOLS_RAW = {
         "icon": "forceofwill_projectwill.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1739,6 +1924,19 @@ export const POWER_POOLS_RAW = {
         "icon": "forceofwill_mightyleap.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "setsModes": [
+          "MightyLeapOn"
+        ],
+        "modesSuspended": [
+          "Suppress_JumpToggles",
+          "Suppress_PoolToggles",
+          "Suppress_TravelToggles"
+        ],
+        "modesDisallowed": [
+          "Disable_JumpToggles",
+          "Disable_Pool",
+          "Disable_Travel"
+        ],
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1820,6 +2018,13 @@ export const POWER_POOLS_RAW = {
         "icon": "forceofwill_wallofforce.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "Pool.Force_of_Will.Weaken_Resolve Pool.Force_of_Will.Project_Will + Pool.Force_of_Will.Mighty_Leap + Pool.Force_of_Will.Wall_of_Force + Pool.Force_of_Will.Unleash_Potential + 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1891,6 +2096,13 @@ export const POWER_POOLS_RAW = {
         "icon": "forceofwill_unleashpotential.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "Pool.Force_of_Will.Weaken_Resolve Pool.Force_of_Will.Project_Will + Pool.Force_of_Will.Mighty_Leap + Pool.Force_of_Will.Wall_of_Force + Pool.Force_of_Will.Unleash_Potential + 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1998,6 +2210,20 @@ export const POWER_POOLS_RAW = {
         "icon": "forceofwill_stomp.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesSuspended": [
+          "Suppress_TravelToggles"
+        ],
+        "modesRequired": [
+          "MightyLeapOn"
+        ],
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Disable_Travel",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "Pool.Force_of_Will.Mighty_Leap",
         "maxSlots": 0,
         "allowedEnhancements": [],
@@ -2040,6 +2266,13 @@ export const POWER_POOLS_RAW = {
         "icon": "gadgetry_nanonet.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "accesslevel char> 0 >=",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2188,6 +2421,19 @@ export const POWER_POOLS_RAW = {
         "icon": "gadgetry_jetpack.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "setsModes": [
+          "JetpackOn"
+        ],
+        "modesSuspended": [
+          "Suppress_FlyToggles",
+          "Suppress_PoolToggles",
+          "Suppress_TravelToggles"
+        ],
+        "modesDisallowed": [
+          "Disable_FlyToggles",
+          "Disable_Pool",
+          "Disable_Travel"
+        ],
         "requires": "$archtype @Class_Peacebringer == ! $archtype @Class_Warshade == ! && accesslevel char> 0 >= &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2262,6 +2508,13 @@ export const POWER_POOLS_RAW = {
         "icon": "gadgetry_blasterbarrage.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "Pool.Gadgetry.Nano_Net Pool.Gadgetry.Wrist_Blaster && Pool.Gadgetry.Nano_Net Pool.Gadgetry.Jetpack && || Pool.Gadgetry.Wrist_Blaster Pool.Gadgetry.Jetpack && || accesslevel char> 0 >= &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2386,6 +2639,12 @@ export const POWER_POOLS_RAW = {
         "icon": "gadgetry_turboboost.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesSuspended": [
+          "Suppress_PoolToggles"
+        ],
+        "modesRequired": [
+          "JetpackOn"
+        ],
         "requires": "accesslevel char> 0 >= Pool.Gadgetry.Jetpack &&",
         "maxSlots": 6,
         "allowedEnhancements": [],
@@ -2442,6 +2701,15 @@ export const POWER_POOLS_RAW = {
         "icon": "invisibility_stealth.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "setsModes": [
+          "Hidden_Attack"
+        ],
+        "modesSuspended": [
+          "Suppress_PoolToggles"
+        ],
+        "modesDisallowed": [
+          "Disable_Pool"
+        ],
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2640,6 +2908,13 @@ export const POWER_POOLS_RAW = {
         "icon": "invisibility_groupinvisibility.png",
         "powerType": "Click",
         "targetType": "Teammate",
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2811,6 +3086,21 @@ export const POWER_POOLS_RAW = {
         "icon": "invisibility_infiltration.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "setsModes": [
+          "Hidden_Attack"
+        ],
+        "modesSuspended": [
+          "Suppress_JumpToggles",
+          "Suppress_PoolToggles",
+          "Suppress_RunToggles",
+          "Suppress_TravelToggles"
+        ],
+        "modesDisallowed": [
+          "Disable_JumpToggles",
+          "Disable_Pool",
+          "Disable_RunToggles",
+          "Disable_Travel"
+        ],
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2951,6 +3241,14 @@ export const POWER_POOLS_RAW = {
         "icon": "invisibility_phaseshift.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Disable_Toggle",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "Pool.Invisibility.Stealth Pool.Invisibility.Grant_Invisibility && Pool.Invisibility.Stealth Pool.Invisibility.Invisibility && || Pool.Invisibility.Grant_Invisibility Pool.Invisibility.Invisibility && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3010,6 +3308,13 @@ export const POWER_POOLS_RAW = {
         "icon": "invisibility_placate.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "Pool.Invisibility.Stealth Pool.Invisibility.Grant_Invisibility && Pool.Invisibility.Stealth Pool.Invisibility.Invisibility && || Pool.Invisibility.Stealth Pool.Invisibility.Phase_Shift && || Pool.Invisibility.Grant_Invisibility Pool.Invisibility.Invisibility && || Pool.Invisibility.Grant_Invisibility Pool.Invisibility.Phase_Shift && || Pool.Invisibility.Invisibility Pool.Invisibility.Phase_Shift && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3105,6 +3410,12 @@ export const POWER_POOLS_RAW = {
         "icon": "leadership_defense.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesSuspended": [
+          "Suppress_PoolToggles"
+        ],
+        "modesDisallowed": [
+          "Disable_Pool"
+        ],
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3209,6 +3520,12 @@ export const POWER_POOLS_RAW = {
         "icon": "leadership_assault.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesSuspended": [
+          "Suppress_PoolToggles"
+        ],
+        "modesDisallowed": [
+          "Disable_Pool"
+        ],
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3268,6 +3585,12 @@ export const POWER_POOLS_RAW = {
         "icon": "leadership_tactics.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesSuspended": [
+          "Suppress_PoolToggles"
+        ],
+        "modesDisallowed": [
+          "Disable_Pool"
+        ],
         "requires": "Pool.Leadership.Defense Pool.Leadership.Assault ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3346,6 +3669,16 @@ export const POWER_POOLS_RAW = {
         "icon": "leadership_vengence.png",
         "powerType": "Click",
         "targetType": "Dead Teammate",
+        "setsModes": [
+          "Vengeance_Mode"
+        ],
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "Pool.Leadership.Defense Pool.Leadership.Assault && Pool.Leadership.Defense Pool.Leadership.Tactics && || Pool.Leadership.Assault Pool.Leadership.Tactics && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3525,6 +3858,13 @@ export const POWER_POOLS_RAW = {
         "icon": "leadership_victoryrush.png",
         "powerType": "Click",
         "targetType": "DeadFoe",
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "Pool.Leadership.Defense Pool.Leadership.Assault && Pool.Leadership.Defense Pool.Leadership.Tactics && || Pool.Leadership.Defense Pool.Leadership.Vengeance && || Pool.Leadership.Assault Pool.Leadership.Tactics && || Pool.Leadership.Assault Pool.Leadership.Vengeance && || Pool.Leadership.Tactics Pool.Leadership.Vengeance && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3633,6 +3973,14 @@ export const POWER_POOLS_RAW = {
         "icon": "jump_combatjump.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesSuspended": [
+          "Suppress_JumpToggles",
+          "Suppress_PoolToggles"
+        ],
+        "modesDisallowed": [
+          "Disable_JumpToggles",
+          "Disable_Pool"
+        ],
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3773,6 +4121,19 @@ export const POWER_POOLS_RAW = {
         "icon": "jump_longjump.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "setsModes": [
+          "SuperJumpOn"
+        ],
+        "modesSuspended": [
+          "Suppress_JumpToggles",
+          "Suppress_PoolToggles",
+          "Suppress_TravelToggles"
+        ],
+        "modesDisallowed": [
+          "Disable_JumpToggles",
+          "Disable_Pool",
+          "Disable_Travel"
+        ],
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3854,6 +4215,12 @@ export const POWER_POOLS_RAW = {
         "icon": "jump_acrobatics.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesSuspended": [
+          "Suppress_PoolToggles"
+        ],
+        "modesDisallowed": [
+          "Disable_Pool"
+        ],
         "requires": "Pool.Leaping.Jump_Kick Pool.Leaping.Combat_Jumping && Pool.Leaping.Jump_Kick Pool.Leaping.Long_Jump && || Pool.Leaping.Combat_Jumping Pool.Leaping.Long_Jump && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3923,6 +4290,13 @@ export const POWER_POOLS_RAW = {
         "icon": "jump_springattack.png",
         "powerType": "Click",
         "targetType": "Teleport",
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "Pool.Leaping.Jump_Kick Pool.Leaping.Combat_Jumping && Pool.Leaping.Jump_Kick Pool.Leaping.Long_Jump && || Pool.Leaping.Combat_Jumping Pool.Leaping.Long_Jump && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3984,6 +4358,20 @@ export const POWER_POOLS_RAW = {
         "icon": "jump_highjump.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesSuspended": [
+          "Suppress_JumpToggles",
+          "Suppress_PoolToggles",
+          "Suppress_TravelToggles"
+        ],
+        "modesRequired": [
+          "SuperJumpOn"
+        ],
+        "modesDisallowed": [
+          "Disable_JumpPack",
+          "Disable_Pool",
+          "Disable_Teleport",
+          "Disable_Travel"
+        ],
         "requires": "Pool.Leaping.Long_Jump",
         "maxSlots": 6,
         "allowedEnhancements": [],
@@ -4021,6 +4409,13 @@ export const POWER_POOLS_RAW = {
         "icon": "manipulation_placate.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4060,6 +4455,13 @@ export const POWER_POOLS_RAW = {
         "icon": "manipulation_provoke.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4099,6 +4501,13 @@ export const POWER_POOLS_RAW = {
         "icon": "manipulation_intimidate.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "Pool.Manipulation.Challenge Pool.Manipulation.Provoke ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4142,6 +4551,13 @@ export const POWER_POOLS_RAW = {
         "icon": "manipulation_invokepanic.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "Pool.Manipulation.Challenge Pool.Manipulation.Provoke && Pool.Manipulation.Challenge Pool.Manipulation.Intimidate && || Pool.Manipulation.Provoke Pool.Manipulation.Intimidate && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4184,6 +4600,13 @@ export const POWER_POOLS_RAW = {
         "icon": "manipulation_unrelenting.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "Pool.Manipulation.Challenge Pool.Manipulation.Provoke && Pool.Manipulation.Challenge Pool.Manipulation.Intimidate && || Pool.Manipulation.Challenge Pool.Manipulation.Invoke_Panic && || Pool.Manipulation.Provoke Pool.Manipulation.Intimidate && || Pool.Manipulation.Provoke Pool.Manipulation.Invoke_Panic && || Pool.Manipulation.Intimidate Pool.Manipulation.Invoke_Panic && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4261,6 +4684,13 @@ export const POWER_POOLS_RAW = {
         "icon": "medicine_aid.png",
         "powerType": "Click",
         "targetType": "Ally (Alive)",
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4299,6 +4729,13 @@ export const POWER_POOLS_RAW = {
         "icon": "medicine_injection.png",
         "powerType": "Click",
         "targetType": "Any",
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4384,6 +4821,13 @@ export const POWER_POOLS_RAW = {
         "icon": "medicine_selfadministration.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "Pool.Medicine.Aid_Other Pool.Medicine.Stimulant ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4433,6 +4877,13 @@ export const POWER_POOLS_RAW = {
         "icon": "medicine_smellingsalts.png",
         "powerType": "Click",
         "targetType": "Dead Teammate",
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "Pool.Medicine.Aid_Other Pool.Medicine.Stimulant && Pool.Medicine.Aid_Other Pool.Medicine.Aid_Self && || Pool.Medicine.Stimulant Pool.Medicine.Aid_Self && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4474,6 +4925,13 @@ export const POWER_POOLS_RAW = {
         "icon": "medicine_fieldmedic.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "Pool.Medicine.Aid_Other Pool.Medicine.Stimulant && Pool.Medicine.Aid_Other Pool.Medicine.Aid_Self && || Pool.Medicine.Aid_Other Pool.Medicine.Resuscitate && || Pool.Medicine.Stimulant Pool.Medicine.Aid_Self && || Pool.Medicine.Stimulant Pool.Medicine.Resuscitate && || Pool.Medicine.Aid_Self Pool.Medicine.Resuscitate && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4532,6 +4990,15 @@ export const POWER_POOLS_RAW = {
         "icon": "sorcerypool_spiritward.png",
         "powerType": "Toggle",
         "targetType": "Ally (Alive)",
+        "modesSuspended": [
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
+        "modesDisallowed": [
+          "Disable_Pool"
+        ],
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4579,6 +5046,13 @@ export const POWER_POOLS_RAW = {
         "icon": "sorcerypool_arcanebolt.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4644,6 +5118,19 @@ export const POWER_POOLS_RAW = {
         "icon": "sorcerypool_mysticflight.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "setsModes": [
+          "MysticFlightOn"
+        ],
+        "modesSuspended": [
+          "Suppress_FlyToggles",
+          "Suppress_PoolToggles",
+          "Suppress_TravelToggles"
+        ],
+        "modesDisallowed": [
+          "Disable_FlyToggles",
+          "Disable_Pool",
+          "Disable_Travel"
+        ],
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4719,6 +5206,15 @@ export const POWER_POOLS_RAW = {
         "icon": "sorcerypool_enflame.png",
         "powerType": "Toggle",
         "targetType": "Any",
+        "modesSuspended": [
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
+        "modesDisallowed": [
+          "Disable_Pool"
+        ],
         "requires": "Pool.Sorcery.Spirit_Ward Pool.Sorcery.Arcane_Bolt + Pool.Sorcery.Mystic_Flight + 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4766,6 +5262,13 @@ export const POWER_POOLS_RAW = {
         "icon": "sorcerypool_runeofprotection.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "Pool.Sorcery.Spirit_Ward Pool.Sorcery.Arcane_Bolt + Pool.Sorcery.Mystic_Flight + 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4899,6 +5402,13 @@ export const POWER_POOLS_RAW = {
         "icon": "sorcerypool_arcanebolt.png",
         "powerType": "Auto",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "Pool.Sorcery.Arcane_Bolt",
         "maxSlots": 0,
         "allowedEnhancements": [],
@@ -4926,6 +5436,18 @@ export const POWER_POOLS_RAW = {
         "icon": "sorcerypool_translocation.png",
         "powerType": "Click",
         "targetType": "Teleport",
+        "modesRequired": [
+          "MysticFlightOn"
+        ],
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Disable_Teleport",
+          "Disable_Travel",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "Pool.Sorcery.Mystic_Flight",
         "maxSlots": 6,
         "allowedEnhancements": [],
@@ -4982,6 +5504,13 @@ export const POWER_POOLS_RAW = {
         "icon": "superspeed_flurry.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5045,6 +5574,13 @@ export const POWER_POOLS_RAW = {
         "icon": "superspeed_acceleratedcombat.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5084,6 +5620,20 @@ export const POWER_POOLS_RAW = {
         "icon": "superspeed_superspeed.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "setsModes": [
+          "SuperSpeedOn",
+          "Hidden_Attack"
+        ],
+        "modesSuspended": [
+          "Suppress_PoolToggles",
+          "Suppress_RunToggles",
+          "Suppress_TravelToggles"
+        ],
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Disable_RunToggles",
+          "Disable_Travel"
+        ],
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5185,6 +5735,12 @@ export const POWER_POOLS_RAW = {
         "icon": "superspeed_whirlwind.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesSuspended": [
+          "Suppress_PoolToggles"
+        ],
+        "modesDisallowed": [
+          "Disable_Pool"
+        ],
         "requires": "Pool.Speed.Flurry Pool.Speed.Hasten && Pool.Speed.Flurry Pool.Speed.Super_Speed && || Pool.Speed.Hasten Pool.Speed.Super_Speed && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5248,6 +5804,13 @@ export const POWER_POOLS_RAW = {
         "icon": "superspeed_burnout.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "Pool.Speed.Flurry Pool.Speed.Hasten && Pool.Speed.Flurry Pool.Speed.Super_Speed && || Pool.Speed.Hasten Pool.Speed.Super_Speed && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5285,6 +5848,19 @@ export const POWER_POOLS_RAW = {
         "icon": "superspeed_speedphase.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesSuspended": [
+          "Suppress_PoolToggles",
+          "Suppress_RunToggles",
+          "Suppress_TravelToggles"
+        ],
+        "modesRequired": [
+          "SuperSpeedOn"
+        ],
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Disable_Teleport",
+          "Disable_Travel"
+        ],
         "requires": "Pool.Speed.Super_Speed",
         "maxSlots": 6,
         "allowedEnhancements": [],
@@ -5329,6 +5905,14 @@ export const POWER_POOLS_RAW = {
         "icon": "teleportation_teleportfoe.png",
         "powerType": "Click",
         "targetType": "Any",
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Disable_Recall",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5382,6 +5966,18 @@ export const POWER_POOLS_RAW = {
         "icon": "combat_teleport.png",
         "powerType": "Click",
         "targetType": "Teleport",
+        "modesSuspended": [
+          "Suppress_TravelToggles"
+        ],
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Disable_Teleport",
+          "Disable_Travel",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5488,6 +6084,18 @@ export const POWER_POOLS_RAW = {
             "powerType": "Click"
           }
         },
+        "modesSuspended": [
+          "Suppress_TravelToggles"
+        ],
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Disable_Teleport",
+          "Disable_Travel",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5577,6 +6185,18 @@ export const POWER_POOLS_RAW = {
         "icon": "teleportation_groupteleport.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesSuspended": [
+          "Suppress_TravelToggles"
+        ],
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Disable_Teleport",
+          "Disable_Travel",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "Pool.Teleportation.Recall_Friend Pool.Teleportation.Teleport_Foe && Pool.Teleportation.Recall_Friend Pool.Teleportation.Teleport && || Pool.Teleportation.Teleport_Foe Pool.Teleportation.Teleport && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5653,6 +6273,16 @@ export const POWER_POOLS_RAW = {
         "icon": "pool_fold_space.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesSuspended": [
+          "Suppress_TravelToggles"
+        ],
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "Pool.Teleportation.Recall_Friend Pool.Teleportation.Teleport_Foe && Pool.Teleportation.Recall_Friend Pool.Teleportation.Teleport && || Pool.Teleportation.Teleport_Foe Pool.Teleportation.Teleport && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5712,6 +6342,13 @@ export const POWER_POOLS_RAW = {
         "icon": "utilitybelt_bolas.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "accesslevel char> 0 >=",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5770,6 +6407,13 @@ export const POWER_POOLS_RAW = {
         "icon": "utilitybelt_poisoneddagger.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "accesslevel char> 0 >=",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5858,6 +6502,21 @@ export const POWER_POOLS_RAW = {
         "icon": "utilitybelt_freerunning.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "setsModes": [
+          "FreeRunningOn"
+        ],
+        "modesSuspended": [
+          "Suppress_JumpToggles",
+          "Suppress_PoolToggles",
+          "Suppress_RunToggles",
+          "Suppress_TravelToggles"
+        ],
+        "modesDisallowed": [
+          "Disable_JumpToggles",
+          "Disable_Pool",
+          "Disable_RunToggles",
+          "Disable_Travel"
+        ],
         "requires": "accesslevel char> 0 >=",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5943,6 +6602,13 @@ export const POWER_POOLS_RAW = {
         "icon": "utilitybelt_envenomedbarrage.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "Pool.Utility_Belt.Bolas Pool.Utility_Belt.Poisoned_Dagger && Pool.Utility_Belt.Bolas Pool.Utility_Belt.Freerunning && || Pool.Utility_Belt.Poisoned_Dagger Pool.Utility_Belt.Freerunning && || accesslevel char> 0 >= &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6034,6 +6700,13 @@ export const POWER_POOLS_RAW = {
         "icon": "utilitybelt_lifesupportsystem.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Pool",
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "Pool.Utility_Belt.Bolas Pool.Utility_Belt.Poisoned_Dagger && Pool.Utility_Belt.Bolas Pool.Utility_Belt.Freerunning && || Pool.Utility_Belt.Poisoned_Dagger Pool.Utility_Belt.Freerunning && || accesslevel char> 0 >= &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6080,6 +6753,15 @@ export const POWER_POOLS_RAW = {
         "icon": "utilitybelt_athletics.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesRequired": [
+          "FreeRunningOn"
+        ],
+        "modesDisallowed": [
+          "Peacebringer_Blaster_Mode",
+          "Peacebringer_Tanker_Mode",
+          "Warshade_Blaster_Mode",
+          "Warshade_Tanker_Mode"
+        ],
         "requires": "accesslevel char> 0 >= Pool.Utility_Belt.Freerunning &&",
         "maxSlots": 6,
         "allowedEnhancements": [],

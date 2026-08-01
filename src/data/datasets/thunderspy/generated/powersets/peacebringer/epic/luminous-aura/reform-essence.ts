@@ -51,5 +51,8 @@ export const ReformEssence: Power = {
   "atoms": [
     ["Heal",null,4,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["Heal",null,2.25,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+  ],
+  "modesDisallowed": [
+    "Peacebringer_Blaster_Mode"
   ]
 };

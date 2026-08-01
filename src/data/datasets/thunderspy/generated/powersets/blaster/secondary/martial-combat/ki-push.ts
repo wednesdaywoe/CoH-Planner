@@ -103,6 +103,9 @@ export const KiPush: Power = {
     ["Damage","Smashing",1.548213,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Knockback",4,1,0,"Melee_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
+  "modesDisallowed": [
+    "Defiant"
+  ],
   "damageTypes": [
     "Smashing"
   ]

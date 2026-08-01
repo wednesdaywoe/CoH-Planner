@@ -92,6 +92,9 @@ export const RadiantStrike: Power = {
       "label": "Knock Up"
     }
   ],
+  "modesDisallowed": [
+    "Peacebringer_Blaster_Mode"
+  ],
   "damageTypes": [
     "Energy",
     "Smashing"

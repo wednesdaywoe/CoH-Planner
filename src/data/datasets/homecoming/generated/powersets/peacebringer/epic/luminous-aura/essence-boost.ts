@@ -71,5 +71,9 @@ export const EssenceBoost: Power = {
     ["MaxHP",null,2,1,120,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["Heal",null,4,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["Resistance","Toxic",2,1,120,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1]
+  ],
+  "modesDisallowed": [
+    "Peacebringer_Blaster_Mode",
+    "Peacebringer_Tanker_Mode"
   ]
 };

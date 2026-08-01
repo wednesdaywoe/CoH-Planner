@@ -76,6 +76,9 @@ export const GleamingBlast: Power = {
       "label": "Knockback"
     }
   ],
+  "modesDisallowed": [
+    "Peacebringer_Tanker_Mode"
+  ],
   "damageTypes": [
     "Energy"
   ]

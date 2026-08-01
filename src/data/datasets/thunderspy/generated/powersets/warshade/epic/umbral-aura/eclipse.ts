@@ -112,6 +112,10 @@ export const Eclipse: Power = {
     ["Resistance","Psionic",1.5,1,90,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,1.5],
     ["Resistance","Toxic",1.5,1,90,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,1.5]
   ],
+  "modesDisallowed": [
+    "Warshade_Blaster_Mode",
+    "Warshade_Tanker_Mode"
+  ],
   "damageTypes": [
     "Negative"
   ]

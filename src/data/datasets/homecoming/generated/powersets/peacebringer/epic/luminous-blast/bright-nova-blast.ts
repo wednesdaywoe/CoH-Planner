@@ -79,5 +79,10 @@ export const BrightNovaBlast: Power = {
   "requires": "Peacebringer_Offensive.Luminous_Blast.Bright_Nova Inherent.Inherent.Bright_Nova_Blast ! &&",
   "modesRequired": [
     "Peacebringer_Blaster_Mode"
+  ],
+  "modesDisallowed": [
+    "Peacebringer_Tanker_Mode",
+    "Warshade_Blaster_Mode",
+    "Warshade_Tanker_Mode"
   ]
 };

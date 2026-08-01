@@ -54,5 +54,8 @@ export const Pulsar: Power = {
       "chance": 0.5,
       "label": "Stun"
     }
+  ],
+  "modesDisallowed": [
+    "Peacebringer_Blaster_Mode"
   ]
 };

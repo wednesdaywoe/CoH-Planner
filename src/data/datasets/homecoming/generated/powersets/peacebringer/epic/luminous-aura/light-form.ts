@@ -185,5 +185,9 @@ export const LightForm: Power = {
   ],
   "setsModes": [
     "Peacebringer_Light_Mode"
+  ],
+  "modesDisallowed": [
+    "Peacebringer_Blaster_Mode",
+    "Peacebringer_Tanker_Mode"
   ]
 };

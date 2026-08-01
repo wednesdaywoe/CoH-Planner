@@ -101,5 +101,10 @@ export const QuantumFlight: Power = {
   ],
   "modesSuspended": [
     "Suppress_FlyToggles"
+  ],
+  "modesDisallowed": [
+    "Disable_FlyToggles",
+    "Peacebringer_Blaster_Mode",
+    "Peacebringer_Tanker_Mode"
   ]
 };

@@ -75,5 +75,9 @@ export const SolarFlare: Power = {
       "chance": 0.800000011920929,
       "label": "Knockback"
     }
+  ],
+  "modesDisallowed": [
+    "Peacebringer_Blaster_Mode",
+    "Peacebringer_Tanker_Mode"
   ]
 };

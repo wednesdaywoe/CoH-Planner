@@ -123,5 +123,8 @@ export const SolarFlare: Power = {
       "powerType": "Click"
     }
   },
-  "requires": "Peacebringer_Defensive.Luminous_Aura.White_Dwarf Peacebringer_Defensive.Luminous_Aura.White_Dwarf_Flare ! && Inherent.Inherent.White_Dwarf_Flare ! &&"
+  "requires": "Peacebringer_Defensive.Luminous_Aura.White_Dwarf Peacebringer_Defensive.Luminous_Aura.White_Dwarf_Flare ! && Inherent.Inherent.White_Dwarf_Flare ! &&",
+  "modesDisallowed": [
+    "Peacebringer_Blaster_Mode"
+  ]
 };

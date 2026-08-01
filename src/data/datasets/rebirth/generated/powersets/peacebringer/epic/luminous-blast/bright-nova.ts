@@ -114,5 +114,8 @@ export const BrightNova: Power = {
     "Disable_Temp",
     "Peacebringer_Blaster_Mode",
     "Peacebringer_Form_Change"
+  ],
+  "modesDisallowed": [
+    "Peacebringer_Human_Mode"
   ]
 };

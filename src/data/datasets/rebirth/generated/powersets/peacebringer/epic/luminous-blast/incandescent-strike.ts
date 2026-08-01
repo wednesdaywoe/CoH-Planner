@@ -168,5 +168,8 @@ export const IncandescentStrike: Power = {
       "targetType": "Foe",
       "powerType": "Click"
     }
-  }
+  },
+  "modesDisallowed": [
+    "Peacebringer_Blaster_Mode"
+  ]
 };

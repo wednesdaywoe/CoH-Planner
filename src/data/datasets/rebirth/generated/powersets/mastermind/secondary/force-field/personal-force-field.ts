@@ -122,5 +122,8 @@ export const PersonalForceField: Power = {
   ],
   "setsModes": [
     "PFF_Active"
+  ],
+  "modesDisallowed": [
+    "Disable_PFF"
   ]
 };

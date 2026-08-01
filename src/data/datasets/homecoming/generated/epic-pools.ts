@@ -33,6 +33,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "ice_mastery_chillblain.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -136,6 +140,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "ice_mastery_blockofice.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -232,6 +240,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "ice_mastery_iceblast.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -315,6 +327,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "ice_mastery_shiver.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -384,6 +400,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "ice_mastery_icestorm.png",
         "powerType": "Click",
         "targetType": "Location",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -448,6 +468,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "dark_mastery_murkycloud.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Blaster ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -513,6 +537,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "dark_mastery_fearsomestare.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Blaster ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -568,6 +596,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "dark_mastery_possess.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -826,6 +858,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "dark_mastery_soulconsumption.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -906,6 +942,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Blaster == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -997,6 +1037,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_defensebuff.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Blaster == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1072,6 +1116,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1124,6 +1172,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
         "targetType": "Location",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1171,6 +1223,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1270,6 +1326,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Blaster == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1336,6 +1396,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_resistbuff.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Blaster == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1396,6 +1460,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
         "targetType": "Location",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1445,6 +1513,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1519,6 +1591,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1609,6 +1685,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "pyremastery_ringoffire.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Scrapper == $archetype @Class_Stalker == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1671,6 +1751,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "pyremastery_soot.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Scrapper == $archetype @Class_Stalker == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1731,6 +1815,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "fireblast_fireblast.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1794,6 +1882,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "pyremastery_meltarmor.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1882,6 +1974,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "fireblast_fireball.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1966,6 +2062,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "bodymastery_conservepower.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Scrapper ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2006,6 +2106,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "gadgets_targetingdrone.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Scrapper ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2071,6 +2175,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "bodymastery_laserbeameyes.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2152,6 +2260,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "bodymastery_physicalperfection.png",
         "powerType": "Auto",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2195,6 +2307,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "bodymastery_energytorrent.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2281,6 +2397,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "bodymastery_conservepower.png",
         "powerType": "Auto",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Stalker ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2316,6 +2436,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "gadgets_targetingdrone.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Stalker ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2381,6 +2505,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "bodymastery_laserbeameyes.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2451,6 +2579,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "bodymastery_physicalperfection.png",
         "powerType": "Auto",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2494,6 +2626,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "bodymastery_energytorrent.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2571,6 +2707,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_targetedrangedhighdmg.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2642,6 +2782,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_coneimmobilize.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2722,6 +2866,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2791,6 +2939,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_coneslow.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2953,6 +3105,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
         "targetType": "Location",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3014,6 +3170,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_targetedrangedhighdmg.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3071,6 +3231,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3172,6 +3336,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_selftohitbuff.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3237,6 +3405,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3296,6 +3468,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
         "targetType": "Location",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3355,6 +3531,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_targetedrangedhighdmg.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3430,6 +3610,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3514,6 +3698,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3599,6 +3787,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3673,6 +3865,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
         "targetType": "Location",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3730,6 +3926,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_targetedrangedhighdmg.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3795,6 +3995,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_coneimmobilize.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3869,6 +4073,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_aoedamagedebuff.png",
         "powerType": "Toggle",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3934,6 +4142,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3997,6 +4209,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
         "targetType": "Location",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4051,6 +4267,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "electrical_mastery_static_discharge.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Mastermind ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4103,6 +4323,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "electrical_mastery_shocking_bolt.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Mastermind ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4184,6 +4408,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "chargemastery_thunderstrike.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4268,6 +4496,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "electrical_mastery_powersurge.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4367,6 +4599,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "electrical_mastery_em_pulse.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4439,6 +4675,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "ice_mastery_iceblast.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Mastermind ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4514,6 +4754,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "ice_mastery_flashfreeze.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Mastermind ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4568,6 +4812,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "ice_mastery_hoarfrost.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4633,6 +4881,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "ice_mastery_frozenarmor.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4708,6 +4960,11 @@ export const EPIC_POOLS_RAW = {
         "icon": "ice_mastery_hibernate.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool",
+          "Disable_Toggle"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4819,6 +5076,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "ice_mastery_snowstorm.png",
         "powerType": "Toggle",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Blaster ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4891,6 +5152,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "ice_mastery_flashfreeze.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Blaster ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4955,6 +5220,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "ice_mastery_hoarfrost.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5020,6 +5289,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "ice_mastery_frozenarmor.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5095,6 +5368,11 @@ export const EPIC_POOLS_RAW = {
         "icon": "ice_mastery_hibernate.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool",
+          "Disable_Toggle"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5206,6 +5484,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "dark_mastery_murkycloud.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Controller ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5271,6 +5553,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "dark_mastery_darkblast.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Controller ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5326,6 +5612,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "dark_mastery_umbraltorrent.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5395,6 +5685,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "dark_mastery_midnightgrasp.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5469,6 +5763,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "dark_mastery_soulconsumption.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5549,6 +5847,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_targeteddebuffdefense.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Controller == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5658,6 +5960,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_defensebuff.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Controller == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5733,6 +6039,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5786,6 +6096,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_selftohitbuff.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5851,6 +6165,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
         "targetType": "Location",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5911,6 +6229,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "flamingshield_consume.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Corruptor ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5970,6 +6292,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "flamemastery_soot.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Corruptor ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6024,6 +6350,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "flamingshield_flamingshield.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6089,6 +6419,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "flamingshield_riseofthephoenix.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6163,6 +6497,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "firemastery_greaterfiresword.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6229,6 +6567,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_coneimmobilize.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Corruptor == $archetype @Class_Defender == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6297,6 +6639,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_resistbuff.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Corruptor == $archetype @Class_Defender == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6357,6 +6703,11 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_selfbuffresistancephysical.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool",
+          "Disable_Toggle"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6456,6 +6807,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6530,6 +6885,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
         "targetType": "Location",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6591,6 +6950,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Corruptor == $archetype @Class_Defender == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6684,6 +7047,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_defensebuff.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Corruptor == $archetype @Class_Defender == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6759,6 +7126,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_selftohitbuff.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6824,6 +7195,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6913,6 +7288,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
         "targetType": "Location",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6974,6 +7353,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_pbaoedrain.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Corruptor == $archetype @Class_Defender == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -7027,6 +7410,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_resistbuff.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Corruptor == $archetype @Class_Defender == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -7087,6 +7474,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -7167,6 +7558,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_conservepower.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -7218,6 +7613,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
         "targetType": "Location",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -7279,6 +7678,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Corruptor == $archetype @Class_Defender == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -7333,6 +7736,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_resistbuff.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Corruptor == $archetype @Class_Defender == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -7398,6 +7805,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_powerboost.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -7551,6 +7962,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_pbaoebuffdamage.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -7628,6 +8043,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
         "targetType": "Location",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -7690,6 +8109,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "dark_mastery_oppressivegloom.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Defender == $archetype @Class_Corruptor == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -7738,6 +8161,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "dark_mastery_darkconsumption.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Defender == $archetype @Class_Corruptor == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -7787,6 +8214,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "dark_mastery_darkembrace.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -7852,6 +8283,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "dark_mastery_soultransfer.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -7943,6 +8378,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "dark_mastery_spiritdrain.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8034,6 +8473,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "darkcast_torrent.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Scrapper == $archetype @Class_Stalker == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8113,6 +8556,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "darknessmastery_petrifyinggaze.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Scrapper == $archetype @Class_Stalker == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8170,6 +8617,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "darkcast_darkblast.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8238,6 +8689,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "darkcast_nightfall.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8313,6 +8768,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "darkcast_tenebroustentacles.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8424,6 +8883,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "flamingshield_consume.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Defender ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8482,6 +8945,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "flamemastery_soot.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Defender ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8534,6 +9001,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "flamingshield_flamingshield.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8599,6 +9070,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "flamingshield_riseofthephoenix.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8673,6 +9148,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "firemastery_greaterfiresword.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8737,6 +9216,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "ice_mastery_frozenarmor.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Corruptor == $archetype @Class_Defender == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8812,6 +9295,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "ice_mastery_flashfreeze.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Corruptor == $archetype @Class_Defender == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8865,6 +9352,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "ice_mastery_hoarfrost.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8987,6 +9478,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "ice_mastery_iceelemental.png",
         "powerType": "Click",
         "targetType": "Location",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -9045,6 +9540,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "dark_mastery_murkycloud.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Dominator ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -9110,6 +9609,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "dark_mastery_tarpatch.png",
         "powerType": "Click",
         "targetType": "Location",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Dominator ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -9153,6 +9656,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "dark_mastery_darkestnight.png",
         "powerType": "Toggle",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -9218,6 +9725,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "dark_mastery_umbraltorrent.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -9282,6 +9793,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "dark_mastery_soulconsumption.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -9362,6 +9877,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_dropknockback.png",
         "powerType": "Click",
         "targetType": "Location",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Dominator == $archetype @Class_Controller == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -9408,6 +9927,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Dominator == $archetype @Class_Controller == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -9465,6 +9988,11 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_selfbuffresistancephysical.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool",
+          "Disable_Toggle"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -9564,6 +10092,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_resistbuff.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -9624,6 +10156,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
         "targetType": "Location",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -9680,6 +10216,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_targeteddebuffdefense.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Dominator == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -9789,6 +10329,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_defensebuff.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Dominator == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -9864,6 +10408,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -9917,6 +10465,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_megabuff.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10073,6 +10625,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
         "targetType": "Location",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10133,6 +10689,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_pbaoedrain.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Dominator == $archetype @Class_Controller == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10186,6 +10746,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_resistbuff.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Dominator == $archetype @Class_Controller == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10246,6 +10810,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10319,6 +10887,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_selfbuffresistancephysical.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10418,6 +10990,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
         "targetType": "Location",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10476,6 +11052,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_pbaoedrain.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Dominator == $archetype @Class_Controller == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10525,6 +11105,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_resistbuff.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Dominator == $archetype @Class_Controller == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10590,6 +11174,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10647,6 +11235,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_pbaoebuffdamage.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10724,6 +11316,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
         "targetType": "Location",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10780,6 +11376,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "earth_mastery_stoneprison.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10862,6 +11462,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "earth_mastery_saltcrystals.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10914,6 +11518,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "earth_mastery_fossilize.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10981,6 +11589,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "earth_mastery_quicksand.png",
         "powerType": "Click",
         "targetType": "Location",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11020,6 +11632,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "earth_mastery_rangedaoe.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11101,6 +11717,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "electrical_mastery_static_discharge.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Blaster ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11153,6 +11773,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "electrical_mastery_shocking_bolt.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Blaster ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11226,6 +11850,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "electrical_mastery_charged_armor.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11286,6 +11914,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "electrical_mastery_powersurge.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11385,6 +12017,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "electrical_mastery_em_pulse.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11463,6 +12099,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "electricitymanipulation_electricfence.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Defender == $archetype @Class_Corruptor == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11537,6 +12177,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "electricitymanipulation_thunderstrike.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Defender == $archetype @Class_Corruptor == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11625,6 +12269,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "electricitymastery_chargedarmor.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11685,6 +12333,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "electricitymastery_shockingbolt.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11760,6 +12412,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "electricitymanipulation_powersink.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11825,6 +12481,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "energymastery_conservepower.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Tanker ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11865,6 +12525,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "energymastery_focusedaccuracy.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Tanker ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11930,6 +12594,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "energymastery_laserbeameyes.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12007,6 +12675,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "energymastery_physicalperfection.png",
         "powerType": "Auto",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12050,6 +12722,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "powerblast_energytorrent.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12129,6 +12805,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "energymastery_conservepower.png",
         "powerType": "Auto",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Brute ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12164,6 +12844,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "energymastery_focusedaccuracy.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Brute ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12229,6 +12913,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "energymastery_laserbeameyes.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12306,6 +12994,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "energymastery_physicalperfection.png",
         "powerType": "Auto",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12349,6 +13041,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "powerblast_energytorrent.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12428,6 +13124,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "fieldmastery_tempinvulnerability.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Mastermind ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12483,6 +13183,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "powerblast_powerblast.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Mastermind ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12541,6 +13245,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "primalforcesmastery_energytorrent.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12602,6 +13310,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "powerblast_explosion.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12662,6 +13374,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "fieldmastery_forceofnature.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12769,6 +13485,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "fireblast_fireblast.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Controller ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12824,6 +13544,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "fireblast_fireball.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Controller ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12889,6 +13613,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "firemastery_flamingshield.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12954,6 +13682,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "firemastery_riseofthephoenix.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -13025,6 +13757,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "firemastery_consume.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -13097,6 +13833,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "fireblast_rainoffire.png",
         "powerType": "Click",
         "targetType": "Location",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Dominator ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -13138,6 +13878,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "fireblast_fireball.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Dominator ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -13203,6 +13947,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "firemastery_flamingshield.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -13268,6 +14016,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "firemastery_riseofthephoenix.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -13339,6 +14091,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "pyremastery_meltarmor.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -13439,6 +14195,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "flamemastery_bonfire.png",
         "powerType": "Click",
         "targetType": "Location",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Blaster ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -13485,6 +14245,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "flamemastery_soot.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Blaster ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -13537,6 +14301,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "flamingshield_flamingshield.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -13602,6 +14370,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "flamemastery_meltarmor.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -13690,6 +14462,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "flamingshield_riseofthephoenix.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -13773,6 +14549,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "forcefield_personalforcefield.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Blaster ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -13929,6 +14709,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "forcefield_repulsionfield.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Blaster ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -13972,6 +14756,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "forcemastery_temporaryinvulnerabilty.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -14027,6 +14815,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "forcefield_repulsionbomb.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -14140,6 +14932,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "forcemastery_unstoppable.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -14247,6 +15043,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "heatmastery_bonfire.png",
         "powerType": "Click",
         "targetType": "Location",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Mastermind ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -14293,6 +15093,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "fireblast_fireblast.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Mastermind ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -14346,6 +15150,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "fireblast_fireball.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -14408,6 +15216,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "pyremastery_soot.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -14460,6 +15272,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "heatmastery_riseofthephoenix.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -14543,6 +15359,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "ice_mastery_iceblast.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Controller ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -14620,6 +15440,11 @@ export const EPIC_POOLS_RAW = {
         "icon": "ice_mastery_hibernate.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool",
+          "Disable_Toggle"
+        ],
         "requires": "$archetype @Class_Controller ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -14719,6 +15544,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "ice_mastery_frozenarmor.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -14794,6 +15623,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "ice_mastery_frostbreath.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -14876,6 +15709,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "ice_mastery_icestorm.png",
         "powerType": "Click",
         "targetType": "Location",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -14930,6 +15767,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "ice_mastery_sleet.png",
         "powerType": "Click",
         "targetType": "Location",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Dominator ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -14980,6 +15821,11 @@ export const EPIC_POOLS_RAW = {
         "icon": "ice_mastery_hibernate.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool",
+          "Disable_Toggle"
+        ],
         "requires": "$archetype @Class_Dominator ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -15079,6 +15925,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "ice_mastery_frozenarmor.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -15154,6 +16004,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "ice_mastery_hoarfrost.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -15219,6 +16073,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "ice_mastery_icestorm.png",
         "powerType": "Click",
         "targetType": "Location",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -15273,6 +16131,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "dark_mastery_murkycloud.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Mastermind ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -15412,6 +16274,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "dark_mastery_darkpit.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -15640,6 +16506,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "dark_mastery_soulconsumption.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -15720,6 +16590,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_coneimmobilize.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Mastermind == $archetype @Class_Blaster == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -15786,6 +16660,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Mastermind == $archetype @Class_Blaster == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -15844,6 +16722,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_koblow.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -15901,6 +16783,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_resistbuff.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -15961,6 +16847,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -16045,6 +16935,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Mastermind == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -16136,6 +17030,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_defensebuff.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Mastermind == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -16211,6 +17109,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -16263,6 +17165,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_powerboost.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -16416,6 +17322,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -16515,6 +17425,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Mastermind == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -16581,6 +17495,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_resistbuff.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Mastermind == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -16644,6 +17562,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_meleetargetedaoe.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -16730,6 +17652,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -16804,6 +17730,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -16894,6 +17824,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_conedot.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Mastermind == $archetype @Class_Blaster == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -16952,6 +17886,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_resistbuff.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Mastermind == $archetype @Class_Blaster == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17017,6 +17955,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_pbaoestun.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17065,6 +18007,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_coneimmobilize.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17131,6 +18077,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17195,6 +18145,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "psionic_mastery_mentalblast.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Scrapper == $archetype @Class_Stalker == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17252,6 +18206,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "psionic_mastery_psioniclance.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Scrapper == $archetype @Class_Stalker == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17303,6 +18261,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "psionic_mastery_psychicscream.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17363,6 +18325,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "psionic_mastery_harmonicmind.png",
         "powerType": "Auto",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17404,6 +18370,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "psionic_mastery_psionicnexus.png",
         "powerType": "Click",
         "targetType": "Location",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17466,6 +18436,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "munitionsmastery_bodyarmor.png",
         "powerType": "Auto",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Blaster ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17541,6 +18515,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "munitionsmastery_cryofreezeray.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Blaster ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17627,6 +18605,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "munitionsmastery_sleepgrenade.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17679,6 +18661,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "munitionsmastery_surveillance.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17765,6 +18751,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "munitionsmastery_lrmrocket.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17835,6 +18825,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "energymanipulation_conservepower.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Defender == $archetype @Class_Corruptor == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17875,6 +18869,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "powermastery_powerbuildup.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Defender == $archetype @Class_Corruptor == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -18050,6 +19048,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "powermastery_tempinvulnerability.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -18105,6 +19107,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "powermastery_forceofnature.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -18200,6 +19206,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "energymanipulation_totalfocus.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -18272,6 +19282,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "powerblast_powerblast.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Controller ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -18332,6 +19346,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "primalforcesmastery_conservepower.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Controller ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -18372,6 +19390,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "primalforcesmastery_temporaryinvulnerabilty.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -18427,6 +19449,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "primalforcesmastery_energytorrent.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -18490,6 +19516,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "primalforcesmastery_powerboost.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -18658,6 +19688,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "primalforcesmasterydominator_energytransfer.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Dominator ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -18722,6 +19756,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "primalforcesmastery_conservepower.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Dominator ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -18762,6 +19800,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "primalforcesmastery_temporaryinvulnerabilty.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -18817,6 +19859,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "primalforcesmastery_energytorrent.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -18880,6 +19926,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "primalforcesmasterydominator_explosiveblast.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -18951,6 +20001,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "psychicblast_mentalblast.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Controller ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -19003,6 +20057,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "psionicmastery_indomitablewill.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Controller ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -19089,6 +20147,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "psionicmastery_mindoverbody.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -19149,6 +20211,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "psionicmastery_worldofconfusion.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -19197,6 +20263,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "psychicblast_psionictornado.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -19271,6 +20341,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "psionicmastery_linkminds.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Dominator ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -19378,6 +20452,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "psionicmastery_indomitablewill.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Dominator ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -19464,6 +20542,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "psionicmastery_mindoverbody.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -19524,6 +20606,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "psionicmastery_worldofconfusion.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -19572,6 +20658,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "psychicblast_psionictornado.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -19644,6 +20734,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "mentalcontrol_command.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Defender == $archetype @Class_Corruptor == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -19696,6 +20790,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "mentalcontrol_masshypnosis.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Defender == $archetype @Class_Corruptor == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -19739,6 +20837,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "psychicmastery_mindoverbody.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -19799,6 +20901,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "psychicmastery_worldofconfusion.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -19845,6 +20951,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "mentalcontrol_telekinesis.png",
         "powerType": "Toggle",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -19909,6 +21019,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "pyremastery_ringoffire.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -19973,6 +21087,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "pyremastery_soot.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -20035,6 +21153,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "fireblast_fireblast.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -20102,6 +21224,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "pyremastery_meltarmor.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -20190,6 +21316,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "fireblast_fireball.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -20279,6 +21409,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "ice_mastery_icebolt.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Scrapper == $archetype @Class_Stalker == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -20361,6 +21495,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "ice_mastery_frozenspear.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Scrapper == $archetype @Class_Stalker == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -20445,6 +21583,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "ice_mastery_shiver.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -20514,6 +21656,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "ice_mastery_frigidwind.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -20601,6 +21747,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "ice_mastery_iceelemental.png",
         "powerType": "Click",
         "targetType": "Location",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -20659,6 +21809,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "darknesscontrol_livingshadows.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Sentinel ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -20750,6 +21904,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "darknesscontrol_punch.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Sentinel ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -20825,6 +21983,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "darknesscontrol_darkgrasp.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -20896,6 +22058,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "darknesscontrol_pbaoe.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -20976,6 +22142,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "darknesscontrol_debuff.png",
         "powerType": "Toggle",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -21053,6 +22223,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "electriccontrol_chainfences.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Sentinel ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -21144,6 +22318,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "electriccontrol_havokpunch.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Sentinel ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -21239,6 +22417,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "electriccontrol_teslacage.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -21315,6 +22497,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "electriccontrol_lightningfield.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -21378,6 +22564,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "electriccontrol_heal.png",
         "powerType": "Click",
         "targetType": "Ally (Alive)",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -21429,6 +22619,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "firetrap_firecage.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Sentinel ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -21510,6 +22704,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "firetrap_punch.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Sentinel ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -21575,6 +22773,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "firetrap_hold.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -21638,6 +22840,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "firetrap_pbaoe.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -21706,6 +22912,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "firetrap_heal.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -21756,6 +22966,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "ice_mastery_frostbite.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Sentinel ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -21865,6 +23079,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "ice_mastery_icesword.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Sentinel ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -21960,6 +23178,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "ice_mastery_blockofice.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -22057,6 +23279,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "ice_mastery_frozenaura.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -22119,6 +23345,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "ice_mastery_snowstorm.png",
         "powerType": "Toggle",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -22203,6 +23433,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_coneimmobilize.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Sentinel == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -22288,6 +23522,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_koblow.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Sentinel == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -22354,6 +23592,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -22442,6 +23684,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_coneslow.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -22606,6 +23852,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
         "targetType": "Location",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -22661,6 +23911,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Sentinel == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -22766,6 +24020,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_pulverize.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Sentinel == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -22840,6 +24098,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -22938,6 +24200,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_teamtohitbuff.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -23005,6 +24271,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
         "targetType": "Location",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -23065,6 +24335,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Sentinel == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -23153,6 +24427,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_thunderstrike.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Sentinel == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -23253,6 +24531,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -23342,6 +24624,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -23417,6 +24703,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
         "targetType": "Location",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -23479,6 +24769,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "ninjatools_slow.png",
         "powerType": "Click",
         "targetType": "Location",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Sentinel ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -23525,6 +24819,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "ninjatools_katanalight.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Sentinel ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -23587,6 +24885,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "ninjatools_hold.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -23686,6 +24988,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "ninjatools_katanaaoe.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -23765,6 +25071,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "ninjatools_placate.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -23850,6 +25160,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "mentalcontrol_masshypnosis.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Sentinel ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -23896,6 +25210,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "mentalcontrol_mindprobe.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Sentinel ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -23954,6 +25272,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "mentalcontrol_command.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -24013,6 +25335,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "mentalcontrol_psionicshockwave.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -24081,6 +25407,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "mentalcontrol_mindlink.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -24200,6 +25530,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_coneimmobilize.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Sentinel == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -24285,6 +25619,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_midnightgrasp.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Sentinel == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -24371,6 +25709,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -24434,6 +25776,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_aoedamagedebuff.png",
         "powerType": "Toggle",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -24499,6 +25845,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
         "targetType": "Location",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -24561,6 +25911,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_targetedrangedmoddmg.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Stalker == $archetype @Class_Scrapper == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -24625,6 +25979,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_dropknockback.png",
         "powerType": "Click",
         "targetType": "Location",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Stalker == $archetype @Class_Scrapper == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -24671,6 +26029,11 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_selfbuffresistancephysical.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool",
+          "Disable_Toggle"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -24770,6 +26133,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -24851,6 +26218,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
         "targetType": "Location",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -24912,6 +26283,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_targetedrangedmoddmg.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Stalker == $archetype @Class_Scrapper == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -24969,6 +26344,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_targetedrangedsnipe.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Stalker == $archetype @Class_Scrapper == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -25018,6 +26397,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -25077,6 +26460,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -25171,6 +26558,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
         "targetType": "Location",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -25230,6 +26621,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_targetedrangedmoddmg.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Stalker == $archetype @Class_Scrapper == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -25305,6 +26700,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_targetedrangedsnipe.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Stalker == $archetype @Class_Scrapper == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -25368,6 +26767,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -25448,6 +26851,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -25534,6 +26941,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
         "targetType": "Location",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -25595,6 +27006,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_targetedrangedmoddmg.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Stalker == $archetype @Class_Scrapper == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -25656,6 +27071,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_targetedrangedsnipe.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Stalker == $archetype @Class_Scrapper == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -25710,6 +27129,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_selfbuffresistancephysical.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -25809,6 +27232,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -25878,6 +27305,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
         "targetType": "Location",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -25935,6 +27366,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "earth_mastery_hurlboulder.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Controller ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -25986,6 +27421,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "earth_mastery_fissure.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Controller ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -26049,6 +27488,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "earth_mastery_rockarmor.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -26115,6 +27558,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "earth_mastery_seismicsmash.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -26166,6 +27613,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "earth_mastery_earthsembrace.png",
         "powerType": "Click",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -26243,6 +27694,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "dark_mastery_penumbralgrasp.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Tanker == $archetype @Class_Brute == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -26309,6 +27764,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "dark_mastery_petrifyinggaze.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Tanker == $archetype @Class_Brute == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -26359,6 +27818,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "dark_mastery_darkblast.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -26420,6 +27883,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "dark_mastery_nightfall.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -26478,6 +27945,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "dark_mastery_tarpatch.png",
         "powerType": "Click",
         "targetType": "Location",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -26533,6 +28004,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "psionic_mastery_mesmerize.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -26585,6 +28060,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "psionic_mastery_dominate.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -26643,6 +28122,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "psionic_mastery_harmonicmind.png",
         "powerType": "Auto",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -26684,6 +28167,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "psionic_mastery_mentalblast.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -26742,6 +28229,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "psionic_mastery_psionictornado.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -26822,6 +28313,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_targetedrangedhighdmg.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Arachnos_Soldier == $archetype @Class_Arachnos_Widow == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -26877,6 +28372,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_coneimmobilize.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Arachnos_Soldier == $archetype @Class_Arachnos_Widow == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -26943,6 +28442,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -26998,6 +28501,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_coneslow.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -27146,6 +28653,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
         "targetType": "Location",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -27207,6 +28718,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_targetedrangedhighdmg.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Arachnos_Soldier == $archetype @Class_Arachnos_Widow == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -27256,6 +28771,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Arachnos_Soldier == $archetype @Class_Arachnos_Widow == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -27347,6 +28866,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -27398,6 +28921,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_targeteddebuffdefense.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -27485,6 +29012,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
         "targetType": "Location",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -27544,6 +29075,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_targetedrangedhighdmg.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Arachnos_Soldier == $archetype @Class_Arachnos_Widow == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -27611,6 +29146,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Arachnos_Soldier == $archetype @Class_Arachnos_Widow == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -27685,6 +29224,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -27756,6 +29299,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -27822,6 +29369,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
         "targetType": "Location",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -27879,6 +29430,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_targetedrangedhighdmg.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Arachnos_Soldier == $archetype @Class_Arachnos_Widow == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -27934,6 +29489,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_coneimmobilize.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Arachnos_Soldier == $archetype @Class_Arachnos_Widow == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -28000,6 +29559,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -28055,6 +29618,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_aoedamagedebuff.png",
         "powerType": "Toggle",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -28120,6 +29687,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
         "targetType": "Location",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -28174,6 +29745,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "gadgets_webgrenade.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Scrapper ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -28264,6 +29839,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "gadgets_caltrops.png",
         "powerType": "Click",
         "targetType": "Location",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Scrapper ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -28306,6 +29885,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "weaponmastery_shuriken.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -28358,6 +29941,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "weaponmastery_targetingdrone.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -28423,6 +30010,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "weaponmastery_explodingshuriken.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -28489,6 +30080,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "gadgets_webgrenade.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Stalker ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -28580,6 +30175,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "bodymastery_physicalperfection.png",
         "powerType": "Auto",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "$archetype @Class_Stalker ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -28623,6 +30222,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "weaponmastery_shuriken.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -28668,6 +30271,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "weaponmastery_targetingdrone.png",
         "powerType": "Toggle",
         "targetType": "Self",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -28733,6 +30340,10 @@ export const EPIC_POOLS_RAW = {
         "icon": "weaponmastery_explodingshuriken.png",
         "powerType": "Click",
         "targetType": "Foe",
+        "modesDisallowed": [
+          "Disable_Epic",
+          "Disable_Pool"
+        ],
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [

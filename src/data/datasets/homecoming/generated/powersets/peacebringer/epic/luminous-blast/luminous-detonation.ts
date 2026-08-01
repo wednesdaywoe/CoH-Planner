@@ -77,5 +77,9 @@ export const LuminousDetonation: Power = {
       "chance": 0.5,
       "label": "Knockback"
     }
+  ],
+  "modesDisallowed": [
+    "Peacebringer_Blaster_Mode",
+    "Peacebringer_Tanker_Mode"
   ]
 };

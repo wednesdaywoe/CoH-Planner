@@ -61,6 +61,9 @@ export const GlintingEye: Power = {
     ["Defense","All",2,1,6,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Damage","Energy",2.0748,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
+  "modesDisallowed": [
+    "Peacebringer_Tanker_Mode"
+  ],
   "damageTypes": [
     "Energy",
     "Toxic"

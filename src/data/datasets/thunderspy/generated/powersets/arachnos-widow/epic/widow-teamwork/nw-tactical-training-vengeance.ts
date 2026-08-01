@@ -173,5 +173,8 @@ export const NWTacticalTrainingVengeance: Power = {
   ],
   "setsModes": [
     "Vengeance_Mode"
+  ],
+  "modesDisallowed": [
+    "Disable_Pool"
   ]
 };

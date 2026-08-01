@@ -139,5 +139,8 @@ export const CombatFlight: Power = {
   "setsModes": [
     "HoverOn",
     "Peacebringer_Human_Mode"
+  ],
+  "modesDisallowed": [
+    "Peacebringer_Form_Change"
   ]
 };

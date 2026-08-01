@@ -95,5 +95,12 @@ export const WhiteDwarfStep: Power = {
   "requires": "Peacebringer_Defensive.Luminous_Aura.White_Dwarf Inherent.Inherent.White_Dwarf_Step ! &&",
   "modesRequired": [
     "Peacebringer_Tanker_Mode"
+  ],
+  "modesDisallowed": [
+    "Disable_Teleport",
+    "Disable_Travel",
+    "Peacebringer_Blaster_Mode",
+    "Warshade_Blaster_Mode",
+    "Warshade_Tanker_Mode"
   ]
 };

@@ -160,5 +160,8 @@ export const GraviticEmanation: Power = {
       "powerType": "Click"
     }
   },
-  "requires": "Warshade_Offensive.Umbral_Blast.Dark_Nova Warshade_Offensive.Umbral_Blast.Dark_Nova_Emanation ! && Inherent.Inherent.Dark_Nova_Emanation ! &&"
+  "requires": "Warshade_Offensive.Umbral_Blast.Dark_Nova Warshade_Offensive.Umbral_Blast.Dark_Nova_Emanation ! && Inherent.Inherent.Dark_Nova_Emanation ! &&",
+  "modesDisallowed": [
+    "Warshade_Tanker_Mode"
+  ]
 };

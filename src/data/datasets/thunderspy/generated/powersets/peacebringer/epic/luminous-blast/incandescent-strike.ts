@@ -101,6 +101,9 @@ export const IncandescentStrike: Power = {
       "label": "Knockback"
     }
   ],
+  "modesDisallowed": [
+    "Peacebringer_Blaster_Mode"
+  ],
   "damageTypes": [
     "Energy",
     "Smashing"

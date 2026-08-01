@@ -99,5 +99,9 @@ export const DarkMatterDetonation: Power = {
       "chance": 0.5,
       "label": "Knockback"
     }
+  ],
+  "modesDisallowed": [
+    "Warshade_Blaster_Mode",
+    "Warshade_Tanker_Mode"
   ]
 };

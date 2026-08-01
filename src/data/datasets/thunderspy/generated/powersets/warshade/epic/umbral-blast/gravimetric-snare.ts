@@ -105,6 +105,9 @@ export const GravimetricSnare: Power = {
     ["Damage","Smashing",0.20748,1,9.2,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Immobilized",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
+  "modesDisallowed": [
+    "Warshade_Tanker_Mode"
+  ],
   "damageTypes": [
     "Negative",
     "Smashing"

@@ -114,5 +114,9 @@ export const GleamingBlast: Power = {
       "targetType": "Foe",
       "powerType": "Click"
     }
-  }
+  },
+  "modesDisallowed": [
+    "Peacebringer_Tanker_Mode",
+    "Warshade_Tanker_Mode"
+  ]
 };

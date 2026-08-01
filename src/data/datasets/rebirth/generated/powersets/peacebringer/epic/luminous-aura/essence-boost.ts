@@ -102,5 +102,8 @@ export const EssenceBoost: Power = {
         }
       }
     }
+  ],
+  "modesDisallowed": [
+    "Peacebringer_Blaster_Mode"
   ]
 };

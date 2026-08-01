@@ -71,5 +71,8 @@ export const Telekinesis: Power = {
         }
       }
     }
+  ],
+  "modesDisallowed": [
+    "Defiant"
   ]
 };
