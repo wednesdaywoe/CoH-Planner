@@ -9,20 +9,59 @@ in beta, or to ship it once it goes live.
 
 Every install path lives in
 [`tools/bin-crawler/bin_crawler/assets_sources.json`](tools/bin-crawler/bin_crawler/assets_sources.json)
-and nowhere else. It names, per dataset, each ring's path and — critically —
-which single ring is **exportable**.
+and nowhere else. It names, per dataset, where the game is installed, which
+subdirectory each ring is, and — critically — which single ring is
+**exportable**.
 
-Two things it protects against, both of which have nearly shipped bad data:
+### Roots vary by machine; rings do not
+
+A path splits into two parts. The **root** is the install directory, which is
+different on every workstation. The **ring** is a fixed subdirectory inside it
+(`live`, `beta`, `experimental` for Homecoming) that is the same wherever the
+game is installed.
+
+So each dataset lists every root it has been seen at — one per workstation — and
+each ring names only its subpath:
+
+```jsonc
+"homecoming": {
+  "exportable_ring": "live",
+  "roots": [
+    { "host": "mac-launchcat", "path": "~/Library/Application Support/LaunchCat/coh/assets" },
+    { "host": "linux-wine",    "path": "~/.wine/drive_c/Games/Homecoming/assets" }
+  ],
+  "rings": { "live": { "subpath": "live" }, "open_beta": { "subpath": "beta" } }
+}
+```
+
+Resolution picks whichever root **exists on this machine**, so the same command
+works on any box and adding a workstation means adding a root rather than
+trading one machine's paths away for another's. Paths may be written
+home-relative (`~/…`).
+
+If two registered roots are both present, resolution **refuses rather than
+guesses** — two plausible installs is exactly the ambiguity the registry exists
+to prevent. Set `BIN_CRAWLER_ASSETS_HOST=<host label>` to name one. That selects
+among *registered* roots by label, never by typed path, so the no-typed-paths
+guarantee holds.
+
+### What it protects against
+
+Three things, all of which have nearly shipped bad data:
 
 - **Homecoming's `closedbeta` folder is not the closed beta.** The closed beta is
-  the folder named `experimental`. `closedbeta` is registered as a *rejected
-  path*; exporting from it stops the run.
+  the folder named `experimental`. `closedbeta` is a *rejected subpath*;
+  exporting from it stops the run.
+- **`issue24` is an Issue-24 era snapshot** sitting right beside the live rings.
+  Its `bin.pigg` is byte-identical to the Sweet Tea `piggs` decoy — the same
+  unrelated corpus, resolving `powers.bin` just as convincingly. Also rejected.
 - **The repo keeps no `.pigg` snapshots.** A snapshot goes stale in place and
   shares its shard basename with the tree it was copied from, so it can't be told
   apart by name. Exports read the live installs directly.
 
-Paths are workstation-specific. If an install lives somewhere else on your
-machine, fix it in the registry — not in a script, not on a command line.
+Rejections are subpaths, so they apply under **every** root. A trap named once
+stays named on every machine — naming them absolutely, as the first schema did,
+meant a rejection silently stopped rejecting the moment the workstation changed.
 
 ## One command
 
@@ -37,8 +76,11 @@ node scripts/refresh-from-channel.cjs --dataset rebirth
 
 What it does, in order:
 
-1. **Resolve** the ring against the registry. An unknown ring, or one whose path
-   is missing on this machine, stops here with the valid names listed.
+1. **Resolve** the ring against the registry, which also picks this machine's
+   root. An unknown ring, or one whose path is missing here, stops with the
+   valid names and the roots it considered. Resolution is asked of
+   `bin_crawler.assets_sources` rather than reimplemented in the script, so what
+   it prints is necessarily what the exporters will read.
 2. **Export** the ring's piggs → JSON scratch
    (`tools/bin-crawler/exported_powers/<dataset>-<ring>/`, gitignored) via all
    four exporters (`export_powers`, `export_classes` → `tables/`,
@@ -60,7 +102,8 @@ What it does, in order:
 
 Options: `--dataset <id>`, `--no-apply`, `--no-regen`, `--skip-tsc`. Set
 `PYTHON=…` to override the interpreter (defaults to `py -3` on Windows,
-`python3` elsewhere).
+`python3` elsewhere) and `BIN_CRAWLER_ASSETS_HOST=…` to pick a root when more
+than one is present.
 
 ## Only the exportable ring becomes committed data
 

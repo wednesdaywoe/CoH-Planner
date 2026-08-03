@@ -14,6 +14,12 @@
  *   --no-regen          export + apply, but skip regen-all
  *   --skip-tsc          skip the final typecheck gate
  *
+ * Which install it reads is not configured here. The registry lists every root
+ * a dataset has been seen at, one per workstation, and picks whichever exists
+ * on this machine — so the same command works on any box without editing paths.
+ * If two registered roots are present it refuses rather than guesses; set
+ * BIN_CRAWLER_ASSETS_HOST=<host label> to name one.
+ *
  * Flow:  export ring → JSON scratch  →  diff vs committed (de-risk)
  *        →  apply (wholesale-replace each top-level entry)
  *        →  regen-all --dataset <id>  →  tsc.
@@ -78,27 +84,68 @@ const banner = (m) => console.log(`\n========== ${m} ==========`);
 const run = (cmd, cwd) => { console.log(`$ ${cmd}`); execSync(cmd, { stdio: 'inherit', cwd: cwd || REPO }); };
 
 // ---- 0. resolve the ring against the registry ----
+//
+// Resolution is asked of bin_crawler.assets_sources rather than reimplemented
+// here: it owns root selection, the ambiguity refusal and the rejected-subpath
+// list, and a second copy of that logic in JS would be a copy that drifts. The
+// exporters this script drives resolve through the very same module, so what we
+// print is necessarily what they will read.
 if (!fs.existsSync(REGISTRY)) die(`No assets registry at ${REGISTRY}.`);
-const registry = JSON.parse(fs.readFileSync(REGISTRY, 'utf8'));
 
-const entry = registry.datasets[dataset];
-if (!entry) {
-  die(`Unknown dataset '${dataset}'.\n  Registered: ${Object.keys(registry.datasets).join(', ')}`);
+const RESOLVER = `
+import json, os, sys
+from pathlib import Path
+from bin_crawler import assets_sources as a
+
+ds = os.environ["RESOLVE_DATASET"]
+want = os.environ.get("RESOLVE_RING") or ""
+try:
+    if ds not in a.datasets():
+        raise a.UnknownSource("Unknown dataset %r. Registered: %s" % (ds, ", ".join(a.datasets())))
+    exportable = a.exportable_ring(ds)
+    ring = want or exportable
+    if ring not in a.rings(ds):
+        raise a.UnknownSource(
+            "Unknown ring %r for dataset %r.\\n  Registered rings: %s\\n  Exportable ring:  %s"
+            % (ring, ds, ", ".join(a.rings(ds)), exportable))
+    rep = a.root_report(ds)
+    path = a.resolve("%s:%s" % (ds, ring))[2]
+    print(json.dumps({
+        "dataset": ds, "ring": ring, "path": path, "exists": Path(path).is_dir(),
+        "exportable_ring": exportable, "note": a.ring_note(ds, ring),
+        "root": rep["chosen"], "via": rep["via"], "candidates": rep["candidates"],
+    }))
+except Exception as e:
+    print(json.dumps({"error": str(e), "kind": type(e).__name__}))
+`;
+
+let resolved;
+try {
+  const out = execSync(`${PY} -`, {
+    cwd: BIN, encoding: 'utf8', input: RESOLVER,
+    env: { ...process.env, RESOLVE_DATASET: dataset, RESOLVE_RING: ringArg || '' },
+    stdio: ['pipe', 'pipe', 'pipe'],
+  });
+  resolved = JSON.parse(out);
+} catch (e) {
+  die(`Could not ask the registry to resolve '${dataset}${ringArg ? ':' + ringArg : ''}'.\n` +
+      `  Ran: ${PY} (cwd ${path.relative(REPO, BIN)})\n` +
+      `  ${(e.stderr || e.message || '').toString().trim().split('\n').slice(-4).join('\n  ')}\n` +
+      `  Set PYTHON=… if the interpreter is elsewhere.`);
 }
-const exportableRing = entry.exportable_ring;
-const ring = ringArg || exportableRing;
-const ringEntry = entry.rings[ring];
-if (!ringEntry) {
-  die(`Unknown ring '${ring}' for dataset '${dataset}'.\n` +
-      `  Registered rings: ${Object.keys(entry.rings).join(', ')}\n` +
-      `  Exportable ring:  ${exportableRing}`);
-}
-if (!fs.existsSync(ringEntry.path)) {
-  die(`'${dataset}:${ring}' is registered at:\n  ${ringEntry.path}\n` +
+if (resolved.error) die(resolved.error);
+
+const { ring, exportable_ring: exportableRing, root, candidates } = resolved;
+if (!resolved.exists) {
+  const others = candidates.filter((c) => c.path !== root.path);
+  die(`'${dataset}:${ring}' resolves to:\n  ${resolved.path}\n` +
       `…which does not exist on this machine.\n` +
-      `  Registry paths are workstation-specific — if the install lives elsewhere here,\n` +
-      `  fix the path in ${path.relative(REPO, REGISTRY)} and nowhere else.\n` +
-      `  Then sync the '${ring}' ring in the launcher so its .pigg files are current.`);
+      `  Root in use: ${root.host} (${root.path})\n` +
+      (others.length
+        ? `  Other registered roots: ${others.map((c) => `${c.host} ${c.exists ? '(present)' : '(absent)'}`).join(', ')}\n`
+        : '') +
+      `  Add this machine's root to ${path.relative(REPO, REGISTRY)} if it is missing,\n` +
+      `  then sync the '${ring}' ring in the launcher so its .pigg files are current.`);
 }
 
 const committedRel = COMMITTED_ROOTS[dataset];
@@ -120,13 +167,14 @@ const applying = !readOnlyRing && !has('--no-apply');
 if (readOnlyRing) {
   console.log(
     `\nNOTE: '${dataset}:${ring}' is not the exportable ring (${dataset}:${exportableRing}).\n` +
-    `      ${ringEntry.note || 'A read-only ring.'}\n` +
+    `      ${resolved.note || 'A read-only ring.'}\n` +
     `      Running export + diff only — the committed export will not be modified.`
   );
 }
 
 banner(`REFRESH ${dataset}:${ring}`);
-console.log(`  source ring:   ${ringEntry.path}`);
+console.log(`  root:          ${root.host} — ${root.path}${resolved.via === 'BIN_CRAWLER_ASSETS_HOST' ? '  (forced by BIN_CRAWLER_ASSETS_HOST)' : ''}`);
+console.log(`  source ring:   ${resolved.path}`);
 console.log(`  scratch:       ${path.relative(REPO, scratch)}`);
 console.log(`  committed:     ${committedRel}${nested.length ? `  (preserving ${nested.join(', ')})` : ''}`);
 console.log(`  will apply:    ${applying ? 'yes' : 'no'}`);
