@@ -91,3 +91,67 @@ describe('importer special-enhancement level → boost', () => {
     expect(enh.boost).toBe(3);
   });
 });
+
+describe('importer generic IO stat vocabulary', () => {
+  beforeAll(async () => {
+    await loadDataset('homecoming');
+  });
+
+  /** The one slotted enhancement in a single-enhancement export. */
+  function slotted(uid: string) {
+    const result = importFromParsedData(exportWithEnhancement(so(uid)));
+    expect(result.warnings.filter((w) => w.type === 'enhancement')).toEqual([]);
+    const allPowers = [
+      ...result.build!.primary.powers,
+      ...result.build!.secondary.powers,
+      ...result.build!.inherents,
+    ];
+    return allPowers.flatMap((p) => p.slots ?? []).find(Boolean) as { stat?: string } | undefined;
+  }
+
+  /**
+   * Every stat the game's boost table defines a crafted IO for, as the UID suffix
+   * the export writes. Regenerate with:
+   *   ls -d exported_powers/boosts/crafted_*_[0-9]* | sed -E 's/_[0-9]+$//' | sort -u
+   * (`decreased_regeneration` is excluded — it is an NPC-only boost with no
+   * level-50 tier and no player recipe.)
+   */
+  const CRAFTED_STATS = [
+    'Accuracy', 'Confuse', 'Damage', 'Defense_Buff', 'Defense_Debuff',
+    'Endurance_Discount', 'Fear', 'Fly', 'Heal', 'Hold', 'Immobilize',
+    'Intangible', 'Interrupt', 'Jump', 'Knockback', 'Range', 'Recharge',
+    'Recovery', 'Res_Damage', 'Run', 'Sleep', 'Snare', 'Stun', 'Taunt',
+    'ToHit_Buff', 'ToHit_Debuff',
+  ];
+
+  it.each(CRAFTED_STATS)('resolves the Crafted_%s generic IO', (statSuffix) => {
+    // Bug report (direct-game export): "Unknown generic IO stat: Defense_Debuff".
+    // Defense_Debuff, ToHit_Debuff, Intangible and Snare were all absent from
+    // GENERIC_STAT_MAP, so each dropped its slot on import.
+    expect(slotted(`Crafted_${statSuffix}`)).toBeDefined();
+  });
+
+  it.each(CRAFTED_STATS)('resolves the SO form of %s', (statSuffix) => {
+    expect(slotted(`Magic_${statSuffix}`)).toBeDefined();
+  });
+
+  it('keeps a ToHit Debuff IO out of the ToHit Buff aspect', () => {
+    // Tohit_Debuff used to map onto 'ToHit', which imported a debuff IO as a
+    // buff one — same schedule, so the number looked right and the stat wasn't.
+    expect(slotted('Crafted_ToHit_Debuff')?.stat).toBe('ToHit Debuff');
+    expect(slotted('Crafted_ToHit_Buff')?.stat).toBe('ToHit');
+  });
+
+  it('maps the boost table\'s debuff and utility spellings to app stats', () => {
+    expect(slotted('Crafted_Defense_Debuff')?.stat).toBe('Defense Debuff');
+    expect(slotted('Crafted_Defense_Buff')?.stat).toBe('Defense');
+    expect(slotted('Crafted_Snare')?.stat).toBe('Slow');
+    expect(slotted('Crafted_Intangible')?.stat).toBe('Intangible');
+  });
+
+  it('resolves the two origin-only stats that have no crafted counterpart', () => {
+    // "Science Range" and "Magic Endurance" SOs are keyed Cone / Drain_Endurance.
+    expect(slotted('Science_Cone')?.stat).toBe('Range');
+    expect(slotted('Magic_Drain_Endurance')?.stat).toBe('EnduranceModification');
+  });
+});

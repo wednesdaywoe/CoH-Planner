@@ -721,6 +721,17 @@ const MIDS_STAT_MAP: Record<string, string> = {
   'EndMod': 'EnduranceModification',
   'Recovery': 'EnduranceModification',
   'Recovery_Buff': 'EnduranceModification',
+  // Boost-table spellings. Unmapped stats fall through to the raw UID suffix
+  // below, which is a valid EnhancementStatType only by luck — these four are
+  // the ones where it isn't, so they used to import as a 0-value enhancement
+  // wearing the Unknown icon rather than warning.
+  'Res_Damage': 'Resistance',
+  'Defense_Debuff': 'Defense Debuff',
+  'ToHit_Debuff': 'ToHit Debuff',
+  'Snare': 'Slow',
+  'Intangible': 'Intangible',
+  'Interrupt': 'Interrupt',
+  'Absorb': 'Absorb',
 };
 
 export interface EnhancementMapResult {

@@ -151,6 +151,16 @@ function getCategoryType(category: string, archetypeId: string): 'primary' | 'se
 // GENERIC IO STAT MAPPING
 // ============================================
 
+/**
+ * Boost-UID stat suffix → EnhancementStatType.
+ *
+ * The authoritative vocabulary is the game's own `Boosts.Crafted_<stat>_<level>`
+ * table — 26 stats, enumerated by the `crafted_*` directories under
+ * `exported_powers/boosts/`. Every one of them must appear here or the importer
+ * drops the slot: the four debuff/utility stats a player is least likely to slot
+ * (Defense_Debuff, ToHit_Debuff, Intangible, Snare) were the ones missing, so
+ * the gap only surfaced on builds that used them.
+ */
 const GENERIC_STAT_MAP: Record<string, string> = {
   'Damage': 'Damage',
   'Accuracy': 'Accuracy',
@@ -186,9 +196,12 @@ const GENERIC_STAT_MAP: Record<string, string> = {
   'EndMod': 'EnduranceModification',
   'Interrupt': 'Interrupt',
   'Absorb': 'Absorb',
-  // Internal boost category names (used by external tools)
+  'Intangible': 'Intangible',
+  // Internal boost category names — the spelling the game's own boost table uses.
   'Res_Damage': 'Resistance',
-  'Tohit_Debuff': 'ToHit',
+  'ToHit_Debuff': 'ToHit Debuff',
+  'Defense_Debuff': 'Defense Debuff',
+  'Snare': 'Slow',
   'Recovery': 'EnduranceModification',
   'Endurance_Discount': 'EnduranceReduction',
 };
@@ -199,12 +212,20 @@ const GENERIC_STAT_MAP: Record<string, string> = {
 
 const SO_ORIGINS = ['Natural', 'Magic', 'Mutation', 'Science', 'Technology'] as const;
 
-/** Stat names used in SO/DO UIDs that differ from GENERIC_STAT_MAP */
+/**
+ * Stat names used in SO/DO UIDs that differ from GENERIC_STAT_MAP.
+ *
+ * `Cone` and `Drain_Endurance` have no crafted-IO counterpart at all — they exist
+ * only as origin enhancements ("Science Range", "Magic Endurance"), so they would
+ * never appear in the generic map.
+ */
 const SO_STAT_MAP: Record<string, string> = {
   'Recovery': 'EnduranceModification',  // Endurance Recovery SOs
   'Endurance_Discount': 'EnduranceReduction',
   'Defense_Buff': 'Defense',
   'Run': 'Run Speed',
+  'Cone': 'Range',                      // "Enhances the range of a power"
+  'Drain_Endurance': 'EnduranceModification',
 };
 
 /**
