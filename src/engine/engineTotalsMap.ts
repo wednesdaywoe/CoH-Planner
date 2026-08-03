@@ -173,6 +173,47 @@ export interface EngineMovementBreakdownSource {
   power_name: string;
 }
 
+/** One stealth-radius contribution — `superseded` when a larger radius in the same suppress
+ *  group won the grouped-max resolve. The travel twin of {@link EngineMovementBreakdownSource},
+ *  and `superseded` maps onto the same `suppressed` display state. */
+export interface EngineStealthBreakdownSource {
+  breakdown_key: string;
+  value: number;
+  superseded: boolean;
+  power_name: string;
+}
+
+/** One row of the engine's per-power provenance ledger (engine `PowerBreakdownSource`) — the
+ *  main active-power, accolade and archetype-inherent contributions, measured as the accumulator
+ *  delta around each contributor rather than reported by the appliers. The ROW's `kind` names the
+ *  source group, not the field it arrived in: by the time the apply pass runs, an accolade and a
+ *  toggle are both auto-on Self powers. */
+export interface EnginePowerBreakdownSource {
+  breakdown_key: string;
+  power_internal_name: string;
+  power_set: string;
+  /** Signed — a power's self-penalty (Granite's −Recharge) is a contribution like any other. */
+  value: number;
+  kind: EnginePowerSourceKind;
+}
+
+/** The engine's `PowerSourceKind` variants, serialized as their Rust identifiers. */
+export type EnginePowerSourceKind = 'ActivePower' | 'Accolade' | 'Inherent';
+
+/** One incarnate contribution (engine `IncarnateBreakdownSource`). Not a power: the loadout
+ *  addresses it by slot, and one equipped power can contribute more than once (its stat block
+ *  and its below-45 exemplar buff), so it carries its own ledger. */
+export interface EngineIncarnateBreakdownSource {
+  breakdown_key: string;
+  /** Catalog slot id (`alpha` … `genesis`) — how the player finds the contributor. */
+  slot: string;
+  /** The equipped power's internal name; the display name is resolved here from the loadout. */
+  power_name: string;
+  /** The below-45 Genesis exemplar buff, a DIFFERENT contribution of the same equipped power. */
+  exemplar: boolean;
+  value: number;
+}
+
 export interface EngineTotals {
   stats: EngineStats;
   bonuses: EngineBonuses;
@@ -180,6 +221,9 @@ export interface EngineTotals {
   proc_breakdown: EngineProcBreakdownSource[];
   buff_pet_breakdown: EngineBuffPetBreakdownSource[];
   movement_breakdown: EngineMovementBreakdownSource[];
+  stealth_breakdown: EngineStealthBreakdownSource[];
+  power_breakdown: EnginePowerBreakdownSource[];
+  incarnate_breakdown: EngineIncarnateBreakdownSource[];
   power_projection: EnginePowerProjection[];
   /** What the what-if TEAM-BUFF layer moved in producing these totals. Measured by the engine's
    *  own injection, so a "simulated" marker cannot disagree with the numbers it marks. */
@@ -329,6 +373,35 @@ function procLabel(src: EngineProcBreakdownSource, resolveName: PowerNameResolve
 }
 
 /**
+ * File one source under `key`, creating the entry if this is the first thing to reach it.
+ *
+ * `contributed` is separate from `source.value` because the two grouped-max families show a row
+ * for a contribution that did not land: a suppressed travel buff or a superseded stealth radius
+ * keeps its value on the row (what it WOULD have given) but adds 0 to the total, so the entry
+ * matches the number the dashboard shows.
+ */
+function pushSource(
+  breakdown: Map<string, DashboardStatBreakdown>,
+  key: string,
+  source: StatSource,
+  contributed: number,
+): void {
+  const entry = breakdown.get(key);
+  if (entry) {
+    entry.sources.push(source);
+    entry.total += contributed;
+    if (source.capped) entry.cappedSources++;
+  } else {
+    breakdown.set(key, {
+      total: contributed,
+      base: 0,
+      sources: [source],
+      cappedSources: source.capped ? 1 : 0,
+    });
+  }
+}
+
+/**
  * Fold the engine's always-on proc contributions into the dashboard `breakdown` map as
  * `type:'proc'` sources — the beta's `applySingleProcEffect` / PPM / Build-Up `addToBreakdown`
  * calls. Mutates `breakdown` in place (procs land on top of the set-bonus sources, as in the
@@ -342,34 +415,20 @@ export function addProcBreakdown(
   resolveName: PowerNameResolver,
 ): void {
   for (const src of procSources) {
-    const source: StatSource = {
+    pushSource(breakdown, src.breakdown_key, {
       name: procLabel(src, resolveName),
       value: src.value,
       type: 'proc',
       capped: src.capped,
       ...(src.kind === 'always_on' ? { powerName: resolveName(src) } : {}),
-    };
-    const entry = breakdown.get(src.breakdown_key);
-    if (entry) {
-      entry.sources.push(source);
-      entry.total += src.value;
-      if (src.capped) entry.cappedSources++;
-    } else {
-      breakdown.set(src.breakdown_key, {
-        total: src.value,
-        base: 0,
-        sources: [source],
-        cappedSources: src.capped ? 1 : 0,
-      });
-    }
+    }, src.value);
   }
 }
 
 /**
  * Fold the engine's buff-pet aura rows into the breakdown map — one `active-power` source per
  * (pet aura, stat), named after the summoning power (Force Field Generator, Triage Beacon).
- * Mirrors {@link addProcBreakdown}; the fold is opt-in per pet, so this is a no-op on a build
- * that has enabled none.
+ * The fold is opt-in per pet, so this is a no-op on a build that has enabled none.
  */
 export function addBuffPetBreakdown(
   breakdown: Map<string, DashboardStatBreakdown>,
@@ -377,56 +436,110 @@ export function addBuffPetBreakdown(
   resolveName: PowerNameResolver,
 ): void {
   for (const src of sources) {
-    const source: StatSource = {
+    pushSource(breakdown, src.breakdown_key, {
       name: resolveName({ power_internal_name: src.power_internal_name, power_set: src.power_set }),
       value: src.value,
       type: 'active-power',
-    };
-    const entry = breakdown.get(src.breakdown_key);
-    if (entry) {
-      entry.sources.push(source);
-      entry.total += src.value;
-    } else {
-      breakdown.set(src.breakdown_key, {
-        total: src.value,
-        base: 0,
-        sources: [source],
-        cappedSources: 0,
-      });
-    }
+    }, src.value);
   }
 }
 
 /**
  * Fold the engine's travel-buff rows into the breakdown map. Each source keeps its own value
  * and carries `suppressed`, so the tooltip can show a suppress-group loser dimmed with what it
- * would have contributed; the entry TOTAL counts only the surviving ones, matching the number
- * the dashboard shows.
+ * would have contributed.
  */
 export function addMovementBreakdown(
   breakdown: Map<string, DashboardStatBreakdown>,
   sources: EngineMovementBreakdownSource[],
 ): void {
   for (const src of sources) {
-    const source: StatSource = {
+    pushSource(breakdown, src.breakdown_key, {
       name: src.power_name,
       value: src.value,
       type: 'active-power',
       ...(src.suppressed ? { suppressed: true } : {}),
-    };
-    const contributed = src.suppressed ? 0 : src.value;
-    const entry = breakdown.get(src.breakdown_key);
-    if (entry) {
-      entry.sources.push(source);
-      entry.total += contributed;
-    } else {
-      breakdown.set(src.breakdown_key, {
-        total: contributed,
-        base: 0,
-        sources: [source],
-        cappedSources: 0,
-      });
-    }
+    }, src.suppressed ? 0 : src.value);
+  }
+}
+
+/**
+ * Fold the engine's stealth-radius rows into the breakdown map. The stealth twin of
+ * {@link addMovementBreakdown} — both are grouped-max resolves, so a radius beaten by a larger
+ * one in its suppress group is shown dimmed and contributes nothing.
+ */
+export function addStealthBreakdown(
+  breakdown: Map<string, DashboardStatBreakdown>,
+  sources: EngineStealthBreakdownSource[],
+): void {
+  for (const src of sources) {
+    pushSource(breakdown, src.breakdown_key, {
+      name: src.power_name,
+      value: src.value,
+      type: 'active-power',
+      ...(src.superseded ? { suppressed: true } : {}),
+    }, src.superseded ? 0 : src.value);
+  }
+}
+
+/**
+ * Which breakdown group each ledger `kind` renders under. A `Record` rather than a switch so a
+ * new engine variant breaks the build here instead of silently landing in someone else's group
+ * (CLAUDE.md Rule 1) — the same idiom `CAP_POOL` uses in over-cap-mute.ts.
+ */
+const POWER_SOURCE_TYPE: Record<EnginePowerSourceKind, StatSource['type']> = {
+  ActivePower: 'active-power',
+  Accolade: 'accolade',
+  Inherent: 'inherent',
+};
+
+/**
+ * Fold the engine's per-power provenance ledger into the breakdown map — the "Active Powers",
+ * "Accolades" and "Inherent Powers" groups of every stat tooltip and of the Detailed Totals
+ * sheet. This is the bulk of what a breakdown explains: an armour toggle's Defense and
+ * Resistance, a passive's +Regen, a click's +MaxHP.
+ *
+ * The row's `kind` chooses the group, not the field it arrived in — see
+ * {@link EnginePowerBreakdownSource}. Nothing here is Rule-of-5 tracked, so no row carries
+ * `capped`/`powerName`: a power contribution can neither cap a bucket nor be rejected by one,
+ * and giving it a `powerName` would enrol it in the over-cap ring's accounting.
+ */
+export function addPowerBreakdown(
+  breakdown: Map<string, DashboardStatBreakdown>,
+  sources: EnginePowerBreakdownSource[],
+  resolveName: PowerNameResolver,
+): void {
+  for (const src of sources) {
+    pushSource(breakdown, src.breakdown_key, {
+      name: resolveName(src),
+      value: src.value,
+      type: POWER_SOURCE_TYPE[src.kind],
+    }, src.value);
+  }
+}
+
+/** Resolves an equipped incarnate's internal name to the display name the loadout stores. */
+export type IncarnateNameResolver = (src: EngineIncarnateBreakdownSource) => string;
+
+/**
+ * Fold the engine's incarnate ledger into the breakdown map as `type:'incarnate'` sources.
+ * Separate from {@link addPowerBreakdown} because an incarnate is addressed by slot rather than
+ * by powerset, and one equipped power contributes more than once — the below-45 exemplar buff is
+ * a different contribution of the same power, and carries the beta's `(exemplar)` suffix so the
+ * two rows are tellable apart.
+ */
+export function addIncarnateBreakdown(
+  breakdown: Map<string, DashboardStatBreakdown>,
+  sources: EngineIncarnateBreakdownSource[],
+  resolveName: IncarnateNameResolver,
+): void {
+  for (const src of sources) {
+    const name = resolveName(src);
+    pushSource(breakdown, src.breakdown_key, {
+      name: src.exemplar ? `${name} (exemplar)` : name,
+      value: src.value,
+      type: 'incarnate',
+    }, src.value);
   }
 }
 

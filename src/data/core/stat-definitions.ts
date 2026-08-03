@@ -416,7 +416,12 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     color: STAT_COLORS.maxEnd,
     tooltip: 'Maximum endurance',
     showWhenZero: true,
-    breakdownKey: 'maxend',
+    // The engine's breakdown map is keyed by its accumulator field name, which is
+    // `maxEndurance`; `maxend` is the CANONICAL key (`toCanonicalStatKey`) the over-cap
+    // mute store uses, and looking the map up by it found nothing on every build.
+    breakdownKey: 'maxEndurance',
+    // Endurance points, not a percentage — an accolade's +5 is five endurance.
+    breakdownUnit: '',
   },
   recovery: {
     id: 'recovery',
@@ -526,6 +531,9 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     color: STAT_COLORS.absorb,
     tooltip: 'Absorb shield — a temporary pool that soaks damage before your HP. Shields that scale with Max HP (e.g. Wild Bastion) grow with +HP accolades and +Absorb strength (Power Boost, Clarion). Capped per archetype and level at roughly your unbuffed Max HP; +MaxHP buffs raise your HP but not this ceiling. Only self-affecting absorb from active powers is counted.',
     breakdownKey: 'absorb',
+    // Absorb rows are absolute HP, like the headline — not the percentage the default unit
+    // assumes. (Contrast `health`, whose rows ARE percentages even though its headline is HP.)
+    breakdownUnit: '',
   },
 
   // Movement — values display in mph (or feet for jump height); raw % shown in tooltip via dashboard override.

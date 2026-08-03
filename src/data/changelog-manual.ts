@@ -34,6 +34,15 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
   {
+    date: '2026-08-03',
+
+    items: [
+      { id: 'rule-of-5-proc-pool-ring', message: 'Rule of 5: Fixed a capped LotG +Recharge global highlighting powers whose 7.5% Recharge came from a set bonus instead', type: 'fix' },
+      
+      { id: 'dashboard-power-contrib', message: 'Fxed power contributors not appearing in Dashboard totals', type: 'fix' },    
+    ]
+  },
+  {
     date: '2026-08-01',
 
     items: [

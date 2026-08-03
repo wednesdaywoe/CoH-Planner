@@ -4,12 +4,18 @@ import {
   mapSetBonusBreakdown,
   mapGlobal,
   addProcBreakdown,
+  addPowerBreakdown,
+  addIncarnateBreakdown,
+  addStealthBreakdown,
   type EngineStats,
   type EngineBonuses,
   type EngineSetBonusTracking,
   type EngineBonusSourceRef,
   type EngineProcBreakdownSource,
+  type EnginePowerBreakdownSource,
+  type EnginePowerSourceKind,
   type PowerNameResolver,
+  type IncarnateNameResolver,
 } from './engineTotalsMap';
 import type { DashboardStatBreakdown } from '@/utils/calculations';
 
@@ -151,6 +157,98 @@ describe('mapSetBonusBreakdown', () => {
     const melee = mapSetBonusBreakdown([a, b], resolver).get('defMelee')!;
     expect(melee.total).toBeCloseTo(3.75 * 2 + 1.88);
     expect(melee.sources).toHaveLength(3);
+  });
+});
+
+describe('addPowerBreakdown', () => {
+  const row = (
+    kind: EnginePowerSourceKind,
+    breakdown_key: string,
+    value: number,
+    i = 0,
+  ): EnginePowerBreakdownSource => ({
+    breakdown_key, power_internal_name: `p${i}`, power_set: 'primary/blast', value, kind,
+  });
+
+  it('routes each ledger kind to the group that renders it', () => {
+    const bd = new Map<string, DashboardStatBreakdown>();
+    addPowerBreakdown(bd, [
+      row('ActivePower', 'resSmashing', 25, 0),
+      row('Accolade', 'maxHP', 5, 1),
+      row('Inherent', 'regeneration', 20, 2),
+    ], resolver);
+    expect(bd.get('resSmashing')!.sources[0]).toEqual({ name: 'Power 0', value: 25, type: 'active-power' });
+    expect(bd.get('maxHP')!.sources[0]).toEqual({ name: 'Power 1', value: 5, type: 'accolade' });
+    expect(bd.get('regeneration')!.sources[0]).toEqual({ name: 'Power 2', value: 20, type: 'inherent' });
+  });
+
+  it('sums same-key contributors and lands on top of existing set-bonus sources', () => {
+    const bd = mapSetBonusBreakdown([{
+      stat_key: 'resSmashing',
+      breakdown_keys: ['resSmashing'],
+      buckets: { '3.13': { value: 3.13, count: 2, capped: false, sources: [ref(7), ref(8)], rejected_sources: [] } },
+    }], resolver);
+    addPowerBreakdown(bd, [row('ActivePower', 'resSmashing', 25, 0), row('ActivePower', 'resSmashing', 12.5, 1)], resolver);
+    const res = bd.get('resSmashing')!;
+    expect(res.total).toBeCloseTo(3.13 * 2 + 25 + 12.5);
+    expect(res.sources.map((s) => s.type)).toEqual(['set-bonus', 'set-bonus', 'active-power', 'active-power']);
+  });
+
+  it('carries a self-penalty through as the negative it is', () => {
+    const bd = new Map<string, DashboardStatBreakdown>();
+    addPowerBreakdown(bd, [row('ActivePower', 'recharge', -20)], resolver);
+    expect(bd.get('recharge')!.total).toBe(-20);
+  });
+
+  it('leaves power rows out of the Rule-of-5 accounting', () => {
+    // No `capped`, no `powerName`: a power contribution can neither cap a bucket nor be
+    // rejected by one, so it must not light the over-cap ring.
+    const bd = new Map<string, DashboardStatBreakdown>();
+    addPowerBreakdown(bd, [row('ActivePower', 'defMelee', 13.9)], resolver);
+    const entry = bd.get('defMelee')!;
+    expect(entry.cappedSources).toBe(0);
+    expect(entry.sources[0].capped).toBeUndefined();
+    expect(entry.sources[0].powerName).toBeUndefined();
+  });
+});
+
+describe('addIncarnateBreakdown', () => {
+  const incarnateName: IncarnateNameResolver = (src) =>
+    src.slot === 'destiny' ? 'Barrier Core Epiphany' : src.power_name;
+
+  it('names the equipped power and marks the exemplar buff as a separate contribution', () => {
+    const bd = new Map<string, DashboardStatBreakdown>();
+    addIncarnateBreakdown(bd, [
+      { breakdown_key: 'defMelee', slot: 'destiny', power_name: 'Barrier_Core_Epiphany', exemplar: false, value: 5 },
+      { breakdown_key: 'defMelee', slot: 'destiny', power_name: 'Barrier_Core_Epiphany', exemplar: true, value: 2.5 },
+    ], incarnateName);
+    const entry = bd.get('defMelee')!;
+    expect(entry.total).toBe(7.5);
+    expect(entry.sources).toEqual([
+      { name: 'Barrier Core Epiphany', value: 5, type: 'incarnate' },
+      { name: 'Barrier Core Epiphany (exemplar)', value: 2.5, type: 'incarnate' },
+    ]);
+  });
+
+  it('falls back to the internal name when the slot holds nothing resolvable', () => {
+    const bd = new Map<string, DashboardStatBreakdown>();
+    addIncarnateBreakdown(bd, [
+      { breakdown_key: 'recovery', slot: 'hybrid', power_name: 'Assault_Radial_Embodiment', exemplar: false, value: 3 },
+    ], incarnateName);
+    expect(bd.get('recovery')!.sources[0].name).toBe('Assault_Radial_Embodiment');
+  });
+});
+
+describe('addStealthBreakdown', () => {
+  it('shows a superseded radius dimmed and contributing nothing', () => {
+    const bd = new Map<string, DashboardStatBreakdown>();
+    addStealthBreakdown(bd, [
+      { breakdown_key: 'stealthRadiusPvE', value: 35, superseded: false, power_name: 'Super Speed' },
+      { breakdown_key: 'stealthRadiusPvE', value: 30, superseded: true, power_name: 'Stealth' },
+    ]);
+    const entry = bd.get('stealthRadiusPvE')!;
+    expect(entry.total).toBe(35);
+    expect(entry.sources[1]).toEqual({ name: 'Stealth', value: 30, type: 'active-power', suppressed: true });
   });
 });
 
