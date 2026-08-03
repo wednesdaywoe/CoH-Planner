@@ -436,8 +436,9 @@ export function buildChainPowers(
       // the hit); one that outlasts it lingers after the cast (trailing marks).
       const rawCastP = powerCastTime(p);
       const dotInCast = !!dotData && dotData.duration > 0 && dotData.duration <= rawCastP + 0.05;
-      // Slotted-proc damage keys off base + LOCAL recharge and the cast time, so
-      // a shorter (fast-snipe) cast yields a different PPM chance.
+      // Slotted-proc damage keys off the recharge window (base, shrunk by this
+      // power's own recharge and widened back by the build's global) and the cast
+      // time, so a shorter (fast-snipe) cast yields a different PPM chance.
       const radiusP = powerRadius(p);
       const procDmg = calculateSlottedProcDamagePerCast({
         slots: p.slots,
@@ -446,6 +447,7 @@ export function buildChainPowers(
         radius: radiusP,
         arcDegrees: radiusP > 0 ? (arcToDegrees(powerArc(p)) || 360) : 360,
         rechargeEnh: enh.recharge || 0,
+        globalRechargeEnh: globalForCalc.recharge || 0,
         buildLevel: build.level,
         procsOnlyOnMainTarget: p.procsOnlyOnMainTarget,
       });

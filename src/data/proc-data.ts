@@ -2686,19 +2686,27 @@ function clampProcChance(rawChance: number, ppm: number): number {
  * Calculate proc chance per activation using the PPM formula.
  *
  * Formula: Proc% = PPM × (ModifiedRecharge + CastTime) / (60 × AreaDenom)
- *   where ModifiedRecharge = BaseRecharge / (1 + EnhancedRechargeBonus)
+ *   where ModifiedRecharge = BaseRecharge × (1 + Global) / (1 + Global + Local)
  *   and AreaDenom = 0.25 + 0.75 × (1 + radius × (11 × arc + 540) / 30,000)
  *
  * Subject to clamps: min = 5% + PPM × 1.5%, max = 90%.
+ *
+ * Global recharge belongs in BOTH nets, where it cancels for an unslotted power and DILUTES the
+ * penalty for a slotted one: at +65% global, 99% slotted recharge costs ~28% of the window, where
+ * with no global it would cost ~50%. Measured in game 2026-08-02 — Smashing Blow + Mako's Bite,
+ * 54/117 landed hits unslotted against 49/143 with three level-50 common Recharge IOs (46.2% →
+ * 34.3%, where a local-only penalty predicts 27.5% and no penalty at all predicts 47.8%). See the
+ * engine's `procs::proc_recharge_window` and DATA-GAP-REGISTER PPM-2 for the full write-up.
  *
  * @param ppm - Procs Per Minute value from the enhancement
  * @param baseRecharge - Base (unenhanced) recharge time in seconds
  * @param castTime - Activation/cast time in seconds
  * @param radius - AoE radius in feet (0 for single target)
  * @param arcDegrees - cone arc in degrees (default 360 = sphere)
- * @param enhancedRechargeBonus - decimal recharge enhancement applied to *this power's*
- *        slotted enhancements only (NOT global recharge / set bonuses / Hasten).
- *        e.g. 0.95 for +95%. Default 0.
+ * @param enhancedRechargeBonus - decimal recharge enhancement from *this power's* own slotting,
+ *        post-ED and Alpha included. e.g. 0.95 for +95%. Default 0.
+ * @param globalRechargeBonus - decimal build-wide recharge (set bonuses, Hasten, Ageless). Only
+ *        matters when the power carries slotting of its own; 0 leaves the window at base. Default 0.
  */
 export function calculateProcChance(
   ppm: number,
@@ -2706,9 +2714,12 @@ export function calculateProcChance(
   castTime: number,
   radius: number = 0,
   arcDegrees: number = 360,
-  enhancedRechargeBonus: number = 0
+  enhancedRechargeBonus: number = 0,
+  globalRechargeBonus: number = 0
 ): number {
-  const modifiedRecharge = baseRecharge / (1 + enhancedRechargeBonus);
+  const modifiedRecharge =
+    (baseRecharge * (1 + globalRechargeBonus)) /
+    (1 + globalRechargeBonus + enhancedRechargeBonus);
   const areaDenom = getPPMAreaDenominator(radius, arcDegrees);
   const raw = (ppm * (modifiedRecharge + castTime)) / (60 * areaDenom);
   return clampProcChance(raw, ppm);
@@ -2721,7 +2732,10 @@ export function calculateProcChance(
  * @param baseRecharge - Base recharge time in seconds
  * @param castTime - Cast time in seconds
  * @param radius - AoE radius (0 for single target)
- * @param enhancedRechargeBonus - Total recharge enhancement bonus as decimal (e.g., 0.95 for +95%)
+ * @param enhancedRechargeBonus - This power's own slotted recharge as decimal (e.g. 0.95 for +95%)
+ * @param globalRechargeBonus - Build-wide recharge as decimal. It enters here TWICE over, and
+ *        differently: it dilutes the slotted penalty on the proc chance, and it shortens the
+ *        cycle time outright, because a hasted power fires more often.
  * @returns Expected number of procs per minute
  */
 export function calculateProcsPerMinute(
@@ -2730,7 +2744,8 @@ export function calculateProcsPerMinute(
   castTime: number,
   radius: number = 0,
   enhancedRechargeBonus: number = 0,
-  arcDegrees: number = 360
+  arcDegrees: number = 360,
+  globalRechargeBonus: number = 0
 ): number {
   const procChance = calculateProcChance(
     ppm,
@@ -2739,11 +2754,11 @@ export function calculateProcsPerMinute(
     radius,
     arcDegrees,
     enhancedRechargeBonus,
+    globalRechargeBonus,
   );
 
-  // Calculate actual cycle time with enhanced recharge
-  // Enhanced recharge reduces recharge time: actualRecharge = baseRecharge / (1 + bonus)
-  const actualRecharge = baseRecharge / (1 + enhancedRechargeBonus);
+  // Actual cycle time: every source of recharge shortens it, slotted and global alike.
+  const actualRecharge = baseRecharge / (1 + enhancedRechargeBonus + globalRechargeBonus);
   const cycleTime = actualRecharge + castTime;
 
   // Activations per minute
@@ -3065,7 +3080,8 @@ export interface PowerProcCalcData {
 export function calculateProcStats(
   procData: ProcData,
   power: PowerProcCalcData,
-  enhancedRechargeBonus: number = 0
+  enhancedRechargeBonus: number = 0,
+  globalRechargeBonus: number = 0
 ): {
   procChance: number;
   procsPerMinute: number;
@@ -3095,6 +3111,7 @@ export function calculateProcStats(
       power.radius || 0,
       arcDegrees,
       enhancedRechargeBonus,
+      globalRechargeBonus,
     );
     procsPerMinute = calculateProcsPerMinute(
       procData.ppm,
@@ -3103,6 +3120,7 @@ export function calculateProcStats(
       power.radius || 0,
       enhancedRechargeBonus,
       arcDegrees,
+      globalRechargeBonus,
     );
   }
 

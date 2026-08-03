@@ -470,6 +470,16 @@
       "id": "tspy-warshade-umbral-blast",
       "date": "2026-08-01",
       "preview": "Thunderspy: Warshade Umbral Blast should read correctly now. Gravitic Emanation "
+    },
+    {
+      "id": "buff-debuff-sim",
+      "date": "2026-08-01",
+      "preview": "Added a new modal to simulate buff/debuffs on your character stats. This is wire"
+    },
+    {
+      "id": "character-identity-bookmarks",
+      "date": "2026-08-01",
+      "preview": "When saving a bookmark for a build, it will now use your character identity for "
     }
   ]
 }

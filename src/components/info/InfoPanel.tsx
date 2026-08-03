@@ -541,9 +541,10 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
 
     // Cycle time uses the *enhanced* recharge (slotted + global) and
     // arcana-aware cast time, so proc DPS matches the headline Cycle Time and
-    // the DamageBlock "+proc" annotation. Proc *chance* (below) still uses
-    // only the power's slotted recharge — global recharge never affects PPM
-    // rolls, but it does make the power fire more often.
+    // the DamageBlock "+proc" annotation. Proc *chance* (below) reads both too,
+    // but differently: global recharge cancels out of the window unless the power
+    // carries slotted recharge, and then it softens that penalty rather than
+    // adding one (DATA-GAP-REGISTER PPM-2).
     const enhancedRecharge = calcThreeTier('recharge', baseRecharge, enhancementBonuses, globalBonusesForCalc).final;
     const effectiveCast = useArcanaTimeToggle ? calculateArcanaTime(castTime) : castTime;
     const cycleTime = (enhancedRecharge + effectiveCast) || 1;
@@ -574,9 +575,8 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
       // Scourge) can multiply a proc's damage, and those are applied at
       // hit time by the game, not surfaced in the planner's averages.
       const avgDamage = interpolateProcDamage(effect.value, effect.valueMax, procData.levelRange, slotLevel);
-      // Proc chance includes slotted Recharge enhancement on this power;
-      // a slotted Recharge IO lowers the firing window which lowers PPM
-      // chance (the in-game formula uses the post-enhancement recharge).
+      // A slotted Recharge IO lowers the firing window, which lowers PPM chance; the build's
+      // global recharge dilutes that loss instead of deepening it.
       const chance = calculateProcChance(
         procData.ppm,
         baseRecharge,
@@ -584,6 +584,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         procRadius,
         procArc,
         enhancementBonuses.recharge || 0,
+        globalBonusesForCalc.recharge || 0,
       );
       const perActivation = chance * avgDamage;
       const dps = perActivation / cycleTime;
@@ -623,6 +624,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         radius,
         arcDegrees,
         enhancementBonuses.recharge || 0,
+        globalBonusesForCalc.recharge || 0,
         expectedTargets,
       );
       for (const c of incContribs) {
@@ -1241,6 +1243,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         power={power}
         effects={effects}
         enhancementBonuses={enhancementBonuses}
+        globalRechargeBonus={globalBonusesForCalc.recharge || 0}
         projection={projection}
         damageType={calculatedDamage?.type}
         useArcanaTime={useArcanaTimeToggle}

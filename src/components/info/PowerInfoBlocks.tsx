@@ -149,6 +149,9 @@ interface GeneralStatsBlockProps {
     maxTargets?: number;
   };
   enhancementBonuses: Record<string, number | undefined>;
+  /** The build's global recharge as a decimal — the proc row's window needs it beside the
+   *  power's own slotting, and only the caller has the character totals. */
+  globalRechargeBonus: number;
   /** The engine's resolved values for this power (PROD6C) — Activation, Pwr Range and
    *  ArcanaTime read straight off it instead of re-deriving the three-tier here. Null while
    *  the dataset loads or for a power the dataset cannot resolve, which hides those rows
@@ -166,6 +169,7 @@ export function GeneralStatsBlock({
   power,
   effects,
   enhancementBonuses,
+  globalRechargeBonus,
   projection,
   damageType,
   useArcanaTime,
@@ -243,6 +247,7 @@ export function GeneralStatsBlock({
         radius={procAreaGeometry.radius}
         arcDegrees={procAreaGeometry.arcDegrees}
         slottedRechargeBonus={enhancementBonuses.recharge ?? 0}
+        globalRechargeBonus={globalRechargeBonus}
         // Propel & co.: every proc scores single-target — the AoE radius belongs
         // to a secondary knockback, not to what the procs roll against.
         procsOnlyOnMainTarget={power.procsOnlyOnMainTarget}
@@ -279,10 +284,14 @@ function ActivationRow({
 // Expanded shows per-proc formula breakdown so users can reproduce the
 // math by hand.
 //
-// PPM rule of thumb: only this power's slotted enhancement recharge
-// modifies the formula (NOT global recharge / set bonuses / Hasten).
-// `slottedRechargeBonus` here is the post-ED enhancement total for the
-// power; Alpha incarnate is bundled into that figure.
+// PPM rule: recharge slotted in THIS power shrinks the window its procs
+// roll against, and the build's global recharge DILUTES that penalty —
+// `base × (1 + global) / (1 + global + local)`. Global alone changes
+// nothing (it cancels), which is why the rule of thumb used to read
+// "global recharge doesn't matter"; it matters as soon as the power
+// carries slotting of its own. Measured in game 2026-08-02 — see
+// DATA-GAP-REGISTER PPM-2. `slottedRechargeBonus` is the post-ED
+// enhancement total for the power; Alpha incarnate is bundled into it.
 // ----------------------------------------------------------------------
 
 interface ProcChanceRowProps {
@@ -293,6 +302,9 @@ interface ProcChanceRowProps {
   radius: number;
   arcDegrees: number | undefined;
   slottedRechargeBonus: number;
+  /** The build's global recharge as a decimal. Only bites when the power carries slotted
+   *  recharge of its own, where it softens the penalty rather than adding one. */
+  globalRechargeBonus: number;
   /** The power's `ProcMainTargetOnly` flag — resolveProcRollGeometry scores its
    *  procs single-target despite the power's AoE radius. */
   procsOnlyOnMainTarget?: boolean;
@@ -315,6 +327,7 @@ function ProcChanceRow({
   radius,
   arcDegrees,
   slottedRechargeBonus,
+  globalRechargeBonus,
   procsOnlyOnMainTarget,
 }: ProcChanceRowProps) {
   // Per-view local expansion plus a persisted "pin" toggle. The pin
@@ -337,7 +350,10 @@ function ProcChanceRow({
   // area-factor. resolveProcRollGeometry owns that rule for all PPM surfaces.
   const { radius: procRadius, arcDegrees: arcDeg } =
     resolveProcRollGeometry(procsOnlyOnMainTarget, radius, arcDegrees);
-  const modifiedRecharge = baseRecharge / (1 + slottedRechargeBonus);
+  // The window the breakdown row prints, kept identical to what calculateProcChance computes
+  // below — a formula the user can reproduce by hand has to be the formula that ran.
+  const modifiedRecharge =
+    (baseRecharge * (1 + globalRechargeBonus)) / (1 + globalRechargeBonus + slottedRechargeBonus);
   const areaDenom = getPPMAreaDenominator(procRadius, arcDeg);
 
   const entries: ProcEntry[] = [];
@@ -365,7 +381,7 @@ function ProcChanceRow({
 
     const chance = isToggleOrAuto
       ? calculateAutoToggleProcChance(procData.ppm, procRadius, arcDeg)
-      : calculateProcChance(procData.ppm, baseRecharge, castTime, procRadius, arcDeg, slottedRechargeBonus);
+      : calculateProcChance(procData.ppm, baseRecharge, castTime, procRadius, arcDeg, slottedRechargeBonus, globalRechargeBonus);
 
     entries.push({
       key,

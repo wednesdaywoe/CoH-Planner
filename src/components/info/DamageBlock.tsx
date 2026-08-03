@@ -476,7 +476,7 @@ function DamageContext({
  * and raw cast time (not ArcanaTime), matching the proc-chance tooltip.
  */
 function computeProcDamagePerActivation(props: DamageBlockProps): number {
-  const { selectedPower, effects, includeProcDamage, enhancementBonuses, buildLevel, incarnateProcDamage } = props;
+  const { selectedPower, effects, includeProcDamage, enhancementBonuses, globalBonusesForCalc, buildLevel, incarnateProcDamage } = props;
   if (!includeProcDamage) return 0;
   let total = incarnateProcDamage ?? 0;
   if (selectedPower?.slots) {
@@ -489,6 +489,7 @@ function computeProcDamagePerActivation(props: DamageBlockProps): number {
       radius,
       arcDegrees,
       rechargeEnh: enhancementBonuses.recharge ?? 0,
+      globalRechargeEnh: globalBonusesForCalc.recharge ?? 0,
       buildLevel,
       procsOnlyOnMainTarget: selectedPower.procsOnlyOnMainTarget,
     });

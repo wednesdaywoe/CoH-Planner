@@ -5,9 +5,12 @@
  *
  * Proc damage is FLAT in CoH: it is NOT modified by damage IOs slotted in the
  * power, nor by damage-strength buffs (Fury/Build Up/Aim/Musculature). A proc
- * fires at its fixed scale-table value. Proc *chance* uses the power's base +
- * slotted (local) recharge — global recharge never affects PPM rolls (it just
- * makes the power fire more often).
+ * fires at its fixed scale-table value. Proc *chance* uses the power's base
+ * recharge shrunk by its own slotted recharge and widened back out by the
+ * build's global — `base × (1 + global) / (1 + global + local)`. Global alone
+ * cancels, which is why the older reading "global recharge never affects PPM
+ * rolls" held for as long as nobody slotted recharge in the power; once they do,
+ * global softens the penalty. Measured 2026-08-02 (DATA-GAP-REGISTER PPM-2).
  */
 
 import type { Enhancement, IOSetEnhancement } from '@/types';
@@ -21,7 +24,7 @@ import {
 
 export interface SlottedProcDamageInput {
   slots: (Enhancement | null)[];
-  /** Base recharge (s) — proc chance uses base + local recharge enh, not global. */
+  /** Base recharge (s) — the window is built from this plus both recharge terms. */
   baseRecharge: number;
   /** Raw cast/activation time (s) — NOT ArcanaTime. */
   castTime: number;
@@ -31,6 +34,9 @@ export interface SlottedProcDamageInput {
   arcDegrees: number;
   /** Local slotted recharge enhancement as a fraction (e.g. 0.95). */
   rechargeEnh: number;
+  /** Build-wide recharge as a fraction. Bites only when `rechargeEnh` is non-zero,
+   *  where it softens the penalty rather than adding one. Defaults to 0. */
+  globalRechargeEnh?: number;
   /** Character level used to interpolate proc damage. */
   buildLevel: number;
   /** The power's `ProcMainTargetOnly` flag — when set, its procs roll
@@ -70,7 +76,7 @@ export function calculateSlottedProcDamagePerCast(input: SlottedProcDamageInput)
     // levelRange. (@Redlynne report, 2026-06-12 — was using io.level for
     // non-attuned, so Global-IO-Level builds under-counted 10×.)
     const procDmg = interpolateProcDamage(dmg.value, dmg.valueMax, procData.levelRange, buildLevel);
-    const procChance = calculateProcChance(procData.ppm, baseRecharge, castTime, areaRadius, areaArc, rechargeEnh);
+    const procChance = calculateProcChance(procData.ppm, baseRecharge, castTime, areaRadius, areaArc, rechargeEnh, input.globalRechargeEnh ?? 0);
     total += procDmg * procChance;
   }
   return total;
