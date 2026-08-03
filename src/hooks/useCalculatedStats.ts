@@ -584,9 +584,11 @@ export type { CappedBonusReason };
 
 /**
  * Map of `power.name` → the distinct Rule-of-5-capped bonuses it contributes.
- * A power is "offending" if it feeds *any* (stat, value) bucket that's hit the
- * cap — including the 5 accepted sources, not just the rejected 6th+, since the
- * powers in a full bucket are interchangeable (unslotting any one resolves it).
+ * A power is "offending" if it feeds *any* (pool, stat, value) bucket that's hit
+ * the cap — including the 5 accepted sources, not just the rejected 6th+, since
+ * the powers in a full bucket are interchangeable (unslotting any one resolves
+ * it). Set bonuses and proc globals cap in separate pools; see `CAP_POOL` in
+ * over-cap-mute.ts for why that axis is part of the bucket identity.
  *
  * The reasons name the specific capped stat + value so the orange-ring tooltip
  * can explain *why* a power is flagged — crucial when the culprit is a hidden
