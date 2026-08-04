@@ -34,6 +34,15 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
   {
+    date: '2026-08-04',
+
+    items: [
+      { id: 'kheldian-inherent-slots-import', message: 'Fix for Kheldian powers losing slots and enhancements whenever a build was loaded from a share link, a JSON/.skif import or the cloud', type: 'fix' },
+      { id: 'kheldian-form-subpower-wipe', message: 'Fix for an edge case where Kheldian and Primalist form attacks could vanish entirely when an older saved build was loaded', type: 'fix' },
+      { id: 'unslottable-power-phantom-slot', message: 'Powers that take no enhancements (Swap Ammo, Adaptation, Staff Mastery, Reach for the Limit) no longer come back from an import with an empty slot stuck to them', type: 'fix' },
+    ]
+  },
+  {
     date: '2026-08-03',
 
     items: [

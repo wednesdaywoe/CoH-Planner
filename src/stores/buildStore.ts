@@ -3093,33 +3093,73 @@ export const useBuildStore = create<BuildStore>()(
               allPowers.push(...sorted);
 
               if (anyChanged) {
+                // The write-back below rebuilds each category from `allPowers`,
+                // which EXCLUDES auto-granted form sub-powers (Kheldian
+                // Nova/Dwarf, Primalist Hunter/Prowler) — they don't occupy a
+                // pick slot, so they're rightly left out of the relevelling.
+                // But they're still in the build arrays, and rebuilding from
+                // the filtered list alone deletes them together with every
+                // slot and enhancement the user put in them. Carry them over,
+                // restamped to their parent's corrected pick level (addPower
+                // keeps a sub-power at its form's level; leaving it at the
+                // stale one misreports slot placement — see
+                // addAutoGrantedPowers in slot-levels.ts).
+                const correctedLevels = new Map<string, number>();
+                for (const entry of allPowers) {
+                  correctedLevels.set(`${entry.category}|${entry.power.internalName}`, entry.power.level);
+                }
+                const carryGranted = (powers: SelectedPower[], category: string): SelectedPower[] =>
+                  powers
+                    .filter((p) => p.isAutoGranted)
+                    .map((p) => {
+                      const parentLevel = p.grantedByPower
+                        ? correctedLevels.get(`${category}|${p.grantedByPower}`)
+                        : undefined;
+                      return parentLevel !== undefined && parentLevel !== p.level
+                        ? { ...p, level: parentLevel }
+                        : p;
+                    });
+
                 // Write fixed levels back to the build
                 const fixedPrimary = allPowers.filter((e) => e.category === 'primary').map((e) => e.power);
                 const fixedSecondary = allPowers.filter((e) => e.category === 'secondary').map((e) => e.power);
 
                 if (fixedPrimary.length > 0) {
-                  state.build.primary = { ...state.build.primary, powers: fixedPrimary };
+                  state.build.primary = {
+                    ...state.build.primary,
+                    powers: [...fixedPrimary, ...carryGranted(state.build.primary.powers, 'primary')],
+                  };
                 }
                 if (fixedSecondary.length > 0) {
-                  state.build.secondary = { ...state.build.secondary, powers: fixedSecondary };
+                  state.build.secondary = {
+                    ...state.build.secondary,
+                    powers: [...fixedSecondary, ...carryGranted(state.build.secondary.powers, 'secondary')],
+                  };
                 }
 
-                // Fix pool powers — need to maintain pool grouping
+                // Fix pool powers — need to maintain pool grouping. Slice by the
+                // count of powers that were actually COLLECTED from this pool
+                // (auto-granted ones were filtered out), or the window drifts
+                // and powers migrate between pools.
                 const fixedPoolPowers = allPowers.filter((e) => e.category === 'pool').map((e) => e.power);
                 if (fixedPoolPowers.length > 0) {
                   let poolPowerIdx = 0;
                   state.build.pools = state.build.pools.map((pool) => {
-                    const count = pool.powers.length;
+                    const granted = carryGranted(pool.powers, 'pool');
+                    const count = pool.powers.length - granted.length;
                     const fixedPowers = fixedPoolPowers.slice(poolPowerIdx, poolPowerIdx + count);
                     poolPowerIdx += count;
-                    return { ...pool, powers: fixedPowers };
+                    return { ...pool, powers: [...fixedPowers, ...granted] };
                   });
                 }
 
                 // Fix epic powers
                 const fixedEpic = allPowers.filter((e) => e.category === 'epic').map((e) => e.power);
                 if (fixedEpic.length > 0 && state.build.epicPool) {
-                  state.build.epicPool = { ...state.build.epicPool, powers: fixedEpic };
+                  state.build.epicPool = {
+                    ...state.build.epicPool,
+                    powers: [...fixedEpic, ...carryGranted(state.build.epicPool.powers, 'epic')],
+                  };
                 }
               }
             }

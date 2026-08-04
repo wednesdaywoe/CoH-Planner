@@ -480,6 +480,31 @@
       "id": "character-identity-bookmarks",
       "date": "2026-08-01",
       "preview": "When saving a bookmark for a build, it will now use your character identity for "
+    },
+    {
+      "id": "rule-of-5-proc-pool-ring",
+      "date": "2026-08-03",
+      "preview": "Rule of 5: Fixed a capped LotG +Recharge global highlighting powers whose 7.5% R"
+    },
+    {
+      "id": "dashboard-power-contrib",
+      "date": "2026-08-03",
+      "preview": "Fxed power contributors not appearing in Dashboard totals"
+    },
+    {
+      "id": "kheldian-inherent-slots-import",
+      "date": "2026-08-04",
+      "preview": "Fix for Kheldian powers losing slots and enhancements whenever a build was loade"
+    },
+    {
+      "id": "kheldian-form-subpower-wipe",
+      "date": "2026-08-04",
+      "preview": "Fix for an edge case where Kheldian and Primalist form attacks could vanish enti"
+    },
+    {
+      "id": "unslottable-power-phantom-slot",
+      "date": "2026-08-04",
+      "preview": "Powers that take no enhancements (Swap Ammo, Adaptation, Staff Mastery, Reach fo"
     }
   ]
 }

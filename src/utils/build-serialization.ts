@@ -28,6 +28,7 @@ import {
   getEpicPool,
   getIOSet,
   getInherentPowers,
+  getArchetypeInherentPowers,
   createArchetypeInherentPower,
   createIOSetEnhancement,
   createGenericIOEnhancement,
@@ -303,6 +304,7 @@ export function hydrateBuild(slim: Record<string, any>): Build {
   // resolved against the active dataset's inherent rules; the active
   // dataset is loaded at app boot to match the build being hydrated.
   const inherents = getInherentSelectedPowers(
+    archetypeId,
     archetypeSelection.name,
     archetypeSelection.inherent,
     slim.level ?? 50,
@@ -409,13 +411,22 @@ function hydratePowers(slimPowers: SlimPower[], powerDefs: readonly Power[], pow
       );
     }
 
-    // Hydrate enhancement slots
-    const slots: (Enhancement | null)[] = slim.slots.map(
-      (s: SlimEnhancement | null) => (s ? hydrateEnhancement(s) : null)
-    );
+    // Hydrate enhancement slots. A power with `maxSlots: 0` takes none at
+    // all — the mode setters and stance switchers (Bio Armor's Adaptation /
+    // Evolution, Dual Pistols' Swap Ammo, Staff Fighting's Staff Mastery,
+    // Martial Combat's Reach for the Limit). `addPower` strips their base
+    // slot on pick and the serializer stores `slots: []`, so "ensure at least
+    // one slot" would hand every imported build a slot the picker never
+    // gives; and restoring stored ones from a build saved against an older,
+    // slottable definition would spend real budget on a power that can't use
+    // it. Same guard the inherent merge above applies.
+    const unslottable = def?.maxSlots === 0;
+    const slots: (Enhancement | null)[] = unslottable
+      ? []
+      : slim.slots.map((s: SlimEnhancement | null) => (s ? hydrateEnhancement(s) : null));
 
     // Ensure at least one slot
-    if (slots.length === 0) slots.push(null);
+    if (slots.length === 0 && !unslottable) slots.push(null);
 
     if (def) {
       // Full reconstruction: spread power definition, overlay build-specific fields
@@ -538,6 +549,7 @@ function createInherentSelectedPower(
 }
 
 function getInherentSelectedPowers(
+  archetypeId: string | null,
   archetypeName: string,
   archetypeInherent: { name: string; description: string } | null,
   characterLevel: number,
@@ -546,6 +558,14 @@ function getInherentSelectedPowers(
   if (archetypeName && archetypeInherent) {
     const atInherentDef = createArchetypeInherentPower(archetypeName, archetypeInherent);
     powers.unshift(createInherentSelectedPower(atInherentDef, characterLevel));
+  }
+  // Archetype-specific inherents (Kheldian travel powers: Energy/Combat Flight,
+  // Shadow Step/Recall). These are SLOTTABLE, so they have to be in the list the
+  // stored inherents merge onto — otherwise the slim entry finds no match and its
+  // slots and enhancements are dropped. `syncBuildDefinitions` appends a pristine
+  // copy afterwards, which is why the power still shows up but comes back empty.
+  for (const def of getArchetypeInherentPowers(archetypeId || undefined)) {
+    powers.push(createInherentSelectedPower(def, characterLevel));
   }
   return powers;
 }
