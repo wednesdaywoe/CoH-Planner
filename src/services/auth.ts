@@ -47,15 +47,28 @@ export async function getCurrentUser(): Promise<User | null> {
 /**
  * Subscribe to auth state changes.
  * Returns an unsubscribe function.
+ *
+ * A same-user TOKEN_REFRESHED is swallowed. The JWT lives in Supabase's own
+ * storage, never in our store, so a rotation has nothing for subscribers to
+ * consume — but it does hand back a brand-new `User` object, and that fresh
+ * identity alone is enough to retrigger every effect keyed on `user`. That's
+ * how a single visibility toggle used to remount the whole My Builds grid:
+ * updateBuildVisibility refreshes the session, the refresh re-set the store,
+ * BuildsPage's effect saw a "new" user and refetched mid-write. USER_UPDATED
+ * (the event that actually carries profile changes) still propagates.
  */
 export function onAuthStateChange(
   callback: (user: User | null) => void,
 ): () => void {
   if (!supabase) return () => {};
 
+  let lastUserId: string | null | undefined;
   const { data: { subscription } } = supabase.auth.onAuthStateChange(
-    (_event, session) => {
-      callback(session?.user ?? null);
+    (event, session) => {
+      const user = session?.user ?? null;
+      if (event === 'TOKEN_REFRESHED' && user?.id === lastUserId) return;
+      lastUserId = user?.id ?? null;
+      callback(user);
     },
   );
 

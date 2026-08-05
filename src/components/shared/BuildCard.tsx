@@ -25,7 +25,7 @@ export function BuildCard({ build, showDelete, onDeleted, onAuthorClick, onVisib
   const [deleteConfirm, setDeleteConfirm] = useState(false);
   const [deleteLoading, setDeleteLoading] = useState(false);
   const [visibilityLoading, setVisibilityLoading] = useState(false);
-  const [isPublic, setIsPublic] = useState(build.is_public);
+  const [visibilityError, setVisibilityError] = useState<string | null>(null);
 
   const timeAgo = getTimeAgo(build.created_at);
   const owned = showDelete && isOwnedBuild(build.id, build);
@@ -63,16 +63,22 @@ export function BuildCard({ build, showDelete, onDeleted, onAuthorClick, onVisib
     }
   };
 
+  // The lock reflects `build.is_public` from the list, not a local copy — the
+  // caller owns the optimistic flip and the revert. Keeping a second copy here
+  // meant any remount (a refetch flipping the page to its loading state, say)
+  // silently reset the icon to whatever the list still held.
   const handleVisibilityToggle = async (e: React.MouseEvent) => {
     e.stopPropagation();
     if (!onVisibilityToggle || visibilityLoading) return;
     setVisibilityLoading(true);
-    const newIsPublic = !isPublic;
-    setIsPublic(newIsPublic); // optimistic update
+    setVisibilityError(null);
     try {
-      await onVisibilityToggle(build.id, newIsPublic);
-    } catch {
-      setIsPublic(!newIsPublic); // revert on error
+      await onVisibilityToggle(build.id, !build.is_public);
+    } catch (err) {
+      // updateBuildVisibility unwraps the edge function's error body into a real
+      // message ('Build not found or not authorized', 'Session expired', ...).
+      // Swallowing it made a 403 and a successful write look identical.
+      setVisibilityError(err instanceof Error ? err.message : 'Failed to update visibility');
     } finally {
       setVisibilityLoading(false);
     }
@@ -89,7 +95,7 @@ export function BuildCard({ build, showDelete, onDeleted, onAuthorClick, onVisib
         <div className="flex items-start justify-between gap-2 mb-2">
           <div className="flex items-center gap-1.5 min-w-0">
             <h3 className="font-semibold text-white text-sm truncate">{build.name}</h3>
-            {!isPublic && (
+            {!build.is_public && (
               <span className="shrink-0 px-1 py-0.5 bg-indigo-900/60 border border-indigo-700/50 rounded text-[10px] text-indigo-300 font-medium">
                 Private
               </span>
@@ -112,11 +118,11 @@ export function BuildCard({ build, showDelete, onDeleted, onAuthorClick, onVisib
                 role="button"
                 onClick={handleVisibilityToggle}
                 className={`p-0.5 transition-colors rounded ${visibilityLoading ? 'opacity-50' : ''} ${
-                  isPublic ? 'text-gray-500 hover:text-indigo-400' : 'text-indigo-400 hover:text-indigo-300'
+                  build.is_public ? 'text-gray-500 hover:text-indigo-400' : 'text-indigo-400 hover:text-indigo-300'
                 }`}
-                title={isPublic ? 'Make private (save to library)' : 'Make public'}
+                title={build.is_public ? 'Make private (save to library)' : 'Make public'}
               >
-                {isPublic ? (
+                {build.is_public ? (
                   <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" />
                   </svg>
@@ -158,6 +164,17 @@ export function BuildCard({ build, showDelete, onDeleted, onAuthorClick, onVisib
             )}
           </div>
         </div>
+
+        {/* Visibility toggle failure — the icon has already reverted by now */}
+        {visibilityError && (
+          <p
+            role="alert"
+            onClick={(e) => e.stopPropagation()}
+            className="mb-2 px-2 py-1 bg-red-900/25 border border-red-700/40 rounded text-[11px] text-red-300"
+          >
+            {visibilityError}
+          </p>
+        )}
 
         {/* Archetype + Powersets */}
         <div className="text-xs text-gray-400 space-y-0.5 mb-3">

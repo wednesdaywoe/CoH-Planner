@@ -145,11 +145,23 @@ export function BuildsPage() {
     setMyBuilds((prev) => prev.filter((b) => b.id !== id));
   };
 
-  const handleVisibilityToggle = async (id: string, isPublic: boolean) => {
-    await updateBuildVisibility(id, isPublic);
+  // The list is the single source of truth for the lock icon — BuildCard renders
+  // straight off `build.is_public` rather than holding its own copy, so the
+  // optimistic flip survives a re-render or a remount. Rethrow on failure so the
+  // card can surface the message; the revert has already landed by then.
+  const setVisibility = (id: string, isPublic: boolean) =>
     setMyBuilds((prev) =>
       prev.map((b) => (b.id === id ? { ...b, is_public: isPublic } : b)),
     );
+
+  const handleVisibilityToggle = async (id: string, isPublic: boolean) => {
+    setVisibility(id, isPublic);
+    try {
+      await updateBuildVisibility(id, isPublic);
+    } catch (e) {
+      setVisibility(id, !isPublic);
+      throw e;
+    }
   };
 
   if (!isShareEnabled()) {
