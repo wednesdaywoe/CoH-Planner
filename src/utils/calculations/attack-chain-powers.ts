@@ -29,7 +29,17 @@ type CalcResult = ReturnType<typeof calculateCharacterTotals>;
 type GlobalBonuses = CalcResult['globalBonuses'];
 
 interface Candidate {
+  /** The variant for `modes[0]` — the power's DEFAULT numbers in this chain. */
   power: SelectedPower;
+  /** Every caster form this power is castable in, `null` = human. Never empty
+   *  (a power castable in no form is not a candidate at all). */
+  modes: (string | null)[];
+  /** The mode-redirected power for each entry of `modes`. */
+  variants: Map<string | null, SelectedPower>;
+  /** The UNREDIRECTED internalName. A mode redirect renames the power
+   *  (`Gleaming_Bolt` → `Dwarf_Gleaming_Bolt`), and the chain id must not move
+   *  with the caster's form: it is one tray slot on one cooldown. */
+  internalName: string;
   powersetName: string;
   /** Powerset id (e.g. "scrapper/dark-melee") — gates the AT crit mechanic. */
   powersetId: string;
@@ -78,6 +88,56 @@ const POWER_FORMS: Record<string, FormSpec[]> = {
  *  re-Hides you, so it grants `hidden` — the marker the chain checks to let an
  *  immediately-following Assassin's Strike fire its slow from-Hide form. */
 const CHARGE_GRANTS: Record<string, string> = { Total_Focus: 'energy_focus', Placate: 'hidden' };
+
+/**
+ * A caster-form switch, in seconds of RAW animation (pre-ArcanaTime). These two
+ * are CHAIN-LAYER modelling constants and live here beside {@link POWER_FORMS}
+ * for the same reason it does.
+ *
+ * They must never be written into the export tree, a dataset's generated layer,
+ * or a dataset overrides file. Both are INFERRED; putting an inferred number
+ * where extracted data lives makes it indistinguishable from extracted data, and
+ * it would then survive a future re-export as a stale pin.
+ *
+ * ── Where they come from ────────────────────────────────────────────────────
+ * The four Kheldian form toggles (Black Dwarf, Dark Nova, Bright Nova, White
+ * Dwarf) carry `activation_time 0.0`. That is REAL data, not an extraction gap.
+ * Decoding `bin_sequencers.pigg → bin/sequencers.bin` shows why — the sequencer
+ * author SPLIT the shapeshift move in two:
+ *
+ *   TRANSFORM_KHELDIAN   (ground, move 2563)  <body>/PRE_POISON  frames 1 → 2
+ *                                             + FEET/TRANSFORM.FX
+ *   TRANSFORM_KHELDIAN2  (move 2564)          <body>/PRE_POISON  frames 3 → end
+ *
+ * The first segment is the BLOCKING cast: 2 frames = 0.0667s at 30fps, with the
+ * frame rate calibrated against 96 move↔power pairs — exact hits that reproduce
+ * the 2-dp rounding in the power definitions. From frame 3 the second move
+ * auto-chains as a NON-blocking segment carrying eight interrupt states
+ * (<DEATHIRQ> <HITIRQ> <REACTIRQ> <ATTACKIRQ> <BLOCKIRQ> <MOVEIRQ>
+ * <IRQEMOTESALL> <IRQENCOUNTERS>), so attacking or moving truncates it. That is
+ * the animation-cancel Homecoming players use, and it is a consequence of where
+ * the move was split. (Deliberately not written as "frames 3-124": 124 is the
+ * shared clip's length, which the next paragraph refutes as evidence about this
+ * power — quoting it here as the segment's extent would state the refuted
+ * reading as fact two lines before refuting it.)
+ *
+ * The full uncancelled shift is 2.033s = 61 frames. It is NOT the 124-frame
+ * (4.133s) clip: that reading was REFUTED — 124 frames is the length of the
+ * shared clip, and the power→move binding is by NAME only, so the clip's length
+ * is not evidence about this power. The 61 frames come from a sibling-power
+ * oracle instead: seven sibling powers performing the same shapeshift with the
+ * same BLASTERSHAPSHIFT FX (including NPC re-issues of these very powers), plus
+ * DEACTIVATE_KHELDIAN — the return to human — reading 61 independently.
+ *
+ * ── Why 0.067 and not 0 ─────────────────────────────────────────────────────
+ * 0.067 is a measured number, and `calculateArcanaTime` treats it as one:
+ * (ceil(0.067 / 0.132) + 1) × 0.132 = 0.264s. Passing 0 instead takes the
+ * function's `<= 0` branch and returns a bare 0.132s tick, which is a different
+ * — and wrong — answer.
+ */
+export const SHAPESHIFT_BLOCKING_CAST = 0.067;
+/** @see SHAPESHIFT_BLOCKING_CAST — 61 frames at 30fps, the uncancelled shift. */
+export const SHAPESHIFT_FULL_ANIM = 2.033;
 
 /** Every power the build holds, across primary, secondary, pools and the epic pool. */
 function allBuildPowers(build: Build): SelectedPower[] {
@@ -134,6 +194,109 @@ export function buildFormModes(build: Build): string[] {
 }
 
 /**
+ * The form switches a cross-form chain can schedule: one per form the build can
+ * enter, plus one back to human.
+ *
+ * A switch is a first-class {@link ChainPower} (`type: 'switch'`) rather than a
+ * timeline annotation, so `findSlot` reserves its animation and the
+ * one-animation-at-a-time invariant covers it for free — and its recharge lane
+ * is the toggle's own.
+ *
+ * Everything except the cast time is READ FROM THE TOGGLE. The form toggle is
+ * not a `Click`, so it never reaches {@link collectCandidates}; this builds from
+ * its `SelectedPower` directly, through the same helpers every other ChainPower
+ * uses. That is where the 1s floor on re-shift cadence comes from (the Kheldian
+ * toggles carry `recharge_time 1.0`), and the 0.13 endurance the shift costs —
+ * neither is invented here. Only `cast` is a modelling constant
+ * ({@link SHAPESHIFT_BLOCKING_CAST}); the opt-in full animation rides as a
+ * `manual` form so flipping the assumption does not rebuild the roster.
+ *
+ * `globalForCalc` is the same aspect map {@link buildChainPowers} passes to
+ * `calcThreeTier`, so a switch's endurance is reduced by the build's global
+ * end-cost bonuses exactly like every attack's. Omit it and you get the
+ * unreduced cost.
+ */
+export function buildFormSwitchPowers(
+  build: Build,
+  globalForCalc: ReturnType<typeof convertGlobalBonusesToAspects> = {},
+): ChainPower[] {
+  const modes = buildFormModes(build);
+  if (modes.length === 0) return [];
+  const powers = allBuildPowers(build);
+
+  /** The uncancelled tail, as the opt-in alternate form. */
+  const fullShift = (endCost: number): ChainForm => ({
+    id: 'full',
+    label: 'Full shift animation',
+    kind: 'slow',
+    cast: calculateArcanaTime(SHAPESHIFT_FULL_ANIM),
+    damage: 0,
+    endCost,
+    dot: null,
+    trigger: { type: 'manual' },
+  });
+
+  const out: ChainPower[] = [];
+  for (const mode of modes) {
+    // The power that ENTERS this form, under the same free-rider discipline
+    // buildFormModes applies to the gating click: an auto-granted power with an
+    // empty `boosts_allowed` is a travel toggle's rider, never a form toggle.
+    const toggle = powers.find(
+      (p) => p.setsModes?.includes(mode) && !(p.isAutoGranted && !p.allowedEnhancements?.length),
+    );
+    if (!toggle) continue;
+    const enh = calculatePowerEnhancementBonuses(
+      { name: toggle.name, slots: toggle.slots }, build.level, getIOSet,
+    );
+    const fixed = toggle.strengthsDisallowed?.includes('RechargeTime');
+    // For a toggle `stats.endurance` is the per-period drain, which the game
+    // also charges once at activation — that activation charge is what a shift
+    // costs. The ongoing drain is already in the build's `togglePerSec`.
+    const endCost = calcThreeTier('endurance', powerEndCost(toggle), enh, globalForCalc).final;
+    out.push({
+      id: `switch:${mode}`,
+      name: toggle.name,
+      type: 'switch',
+      switchTo: mode,
+      cast: calculateArcanaTime(SHAPESHIFT_BLOCKING_CAST),
+      baseRecharge: powerBaseRecharge(toggle),
+      rechargeEnh: fixed ? 0 : (enh.recharge || 0),
+      ...(fixed ? { fixedRecharge: true } : {}),
+      endCost,
+      damage: 0,
+      dot: null,
+      // Shifting Nova → Dwarf is one click, so every form but the destination is
+      // a legal starting point. Re-entering the form you are wearing is not.
+      castableModes: [null, ...modes].filter((m) => m !== mode),
+      forms: [fullShift(endCost)],
+    } satisfies ChainPower);
+  }
+  if (out.length === 0) return [];
+
+  out.push({
+    id: 'switch:human',
+    name: 'Human Form',
+    type: 'switch',
+    switchTo: null,
+    cast: calculateArcanaTime(SHAPESHIFT_BLOCKING_CAST),
+    // Dropping a form is a DETOGGLE: no activation cost and no cooldown of its
+    // own. The 1s recharge on a form toggle gates re-ENTERING that form, which
+    // the per-form switches above already carry. Deliberately not borrowed from
+    // one of those toggles — WHICH form is being dropped is a timeline fact, not
+    // a build fact, so there is no single toggle to read. Known simplification:
+    // the dropped form's own lane is therefore not put on cooldown here.
+    baseRecharge: 0,
+    rechargeEnh: 0,
+    endCost: 0,
+    damage: 0,
+    dot: null,
+    castableModes: [...modes],
+    forms: [fullShift(0)],
+  } satisfies ChainPower);
+  return out;
+}
+
+/**
  * Whether `power` can be cast while `mode` is the live form (null = no form).
  *
  * Both halves of the binary's gate are read, and they are not complements:
@@ -155,12 +318,25 @@ function castableInMode(power: SelectedPower, mode: string | null, formModes: st
 /** Click powers (attacks, click buffs, click controls) from every powerset.
  *  Toggles/autos/passives can't sit in an attack chain, so they're excluded.
  *
- *  `mode` is the caster form the chain is being built in (null = no form). It gates
- *  candidates through {@link castableInMode} and swaps in each power's redirect for
- *  that form, so a chain shows the powers — and the numbers — the form actually has. */
-function collectCandidates(build: Build, mode: string | null = null): Candidate[] {
+ *  Returns the UNION across caster forms — one candidate per power, tagged with
+ *  every form it can be cast in and carrying that form's redirect. It used to
+ *  take a single `mode` and drop every other form's roster, which is what
+ *  confined a chain to one form; a cross-form rotation needs them all present at
+ *  once so the palette can DIM an unavailable power rather than hide it, and so
+ *  `Bolt → shift → Bolt` stays one power on one cooldown lane.
+ *
+ *  The result does NOT depend on which form the chain opens in — one roster with
+ *  one set of ids, whatever the caster is wearing. Which VARIANT a cast uses is a
+ *  per-cast question the scheduler answers from the live form. */
+function collectCandidates(build: Build): Candidate[] {
   const out: Candidate[] = [];
   const formModes = buildFormModes(build);
+  // Human FIRST, and unconditionally: `modes[0]` becomes the ChainPower's base
+  // and every other castable mode rides beside it as a `mode` form. Human has to
+  // be the base wherever it is castable at all, because a `mode` trigger names a
+  // form and there is no trigger meaning "no form" — human cannot be expressed
+  // as a sibling, so it must be what the siblings fall back to.
+  const ordered: (string | null)[] = [null, ...formModes];
   const add = (
     powers: SelectedPower[] | undefined,
     powersetName: string,
@@ -176,11 +352,23 @@ function collectCandidates(build: Build, mode: string | null = null): Candidate[
       // travel power hands out (Double Jump, Translocation, Jaunt) is that the game
       // lets you slot them: those carry an empty `boosts_allowed` in the export.
       if (p.isAutoGranted && !p.allowedEnhancements?.length) return;
-      if (!castableInMode(p, mode, formModes)) return;
       // Needs a cast time from EITHER shape (stats or effects) to sit in a chain.
       if (p.stats?.castTime == null && p.effects?.castTime == null) return;
-      const power = mode ? (applyModeRedirect(p, [mode]) as SelectedPower) : p;
-      out.push({ power, powersetName, powersetId, category, bucket });
+      const modes = ordered.filter((m) => castableInMode(p, m, formModes));
+      if (modes.length === 0) return;
+      const variants = new Map<string | null, SelectedPower>(
+        modes.map((m) => [m, m ? (applyModeRedirect(p, [m]) as SelectedPower) : p]),
+      );
+      out.push({
+        power: variants.get(modes[0])!,
+        modes,
+        variants,
+        internalName: p.internalName,
+        powersetName,
+        powersetId,
+        category,
+        bucket,
+      });
     });
   };
   add(build.primary?.powers, build.primary?.name ?? 'Primary', build.primary?.id ?? '', 'pri', 'PRIMARY');
@@ -340,7 +528,8 @@ function buildJudgementChainPower(build: Build, archetypeId: string | undefined)
  * snipe's quick form and Assassin's Strike's mid-combat cast, and the chain
  * models both of those as ALTERNATE FORMS on one timeline rather than as a
  * single current state. Only the conditional merge is shared. Mode redirects
- * (`power.modeVariants` — Kheldian forms, Momentum) are still unwired here.
+ * (`power.modeVariants` — Kheldian forms, Momentum) ride the same alternate-form
+ * machinery, one `mode`-triggered {@link ChainForm} per caster form.
  */
 export interface ChainConditionalState {
   /** `scope: 'global'` toggles by conditional id — pass through
@@ -350,10 +539,12 @@ export interface ChainConditionalState {
   mechanicAdjusters?: Record<string, boolean>;
   /** AT-inherent mechanics the Header owns rather than the toggle maps. */
   atInherentState?: ATInherentState;
-  /** The caster form the chain is built in — one of {@link buildFormModes}, or null/absent
-   *  for no form. A form's attacks are auto-granted by its toggle and are unreachable from
-   *  human form, so the chain is built inside one form at a time rather than across them. */
-  formMode?: string | null;
+  // NOTE: the caster form used to live here as `formMode` — "the one form this chain lives
+  // in" — because the roster was rebuilt per form and a chain could not leave the one it was
+  // built in. A chain now SPANS forms via `switch` steps, so the roster is a union and does
+  // not depend on the form at all. What remains of that field is `FormContext.startForm`,
+  // "the form the chain OPENS in", which the SCHEDULER reads (replayChain / nextPickForm /
+  // computeChain) — not this builder.
 }
 
 /** Build the per-power chain data for the current build. `targetsHit` maps a
@@ -371,9 +562,16 @@ export function buildChainPowers(
 
   const judgement = buildJudgementChainPower(build, archetypeId);
 
-  const { globalAdjusters = {}, mechanicAdjusters = {}, atInherentState = {}, formMode = null } = conditionalState;
+  const { globalAdjusters = {}, mechanicAdjusters = {}, atInherentState = {} } = conditionalState;
+  // Non-empty only for a build that can shapeshift. It is what turns
+  // `castableModes` on: with no form to be in, every cast is trivially legal and
+  // tagging every power with `[null]` would be noise the legality walk re-checks
+  // for nothing.
+  const formModes = buildFormModes(build);
 
-  const powers = collectCandidates(build, formMode).map(({ power, powersetName, powersetId, category, bucket }) => {
+  const powers = collectCandidates(build).map(({
+    power, modes, variants, internalName, powersetName, powersetId, category, bucket,
+  }) => {
     // Conditional contributions whose gate is on (Gravity Control's Impact, a
     // Bio Armor stance, Domination). Selected ONCE from the base power — every
     // cast form shares the same `conditionalEffects` and the same toggle key —
@@ -507,8 +705,10 @@ export function buildChainPowers(
     const endGain = selfEnduranceGain(
       effectivePower,
       // The targets-hit slider is keyed by internalName everywhere (dashboard,
-      // active-buffs) — match that so the user's setting actually applies.
-      targetsHit[power.internalName] ?? 0,
+      // active-buffs) — match that so the user's setting actually applies. The
+      // UNREDIRECTED name: a mode redirect renames the power, and the slider the
+      // user moved is on the tray slot, not on the form's version of it.
+      targetsHit[internalName] ?? 0,
       enh.enduranceMod || 0,
       archetypeId ?? '',
       build.level,
@@ -518,7 +718,7 @@ export function buildChainPowers(
     // (reuses the base damage, overrides only the animation). Snipes add an
     // In-Combat fast form synthesized from quickSnipe — its own reduced damage
     // and ~1.67s cast — gated on the ToHit fast-snipe rule.
-    const forms: ChainForm[] = (POWER_FORMS[power.internalName] ?? []).map((s) => ({
+    const forms: ChainForm[] = (POWER_FORMS[internalName] ?? []).map((s) => ({
       id: s.id,
       label: s.label,
       kind: s.kind,
@@ -557,13 +757,62 @@ export function buildChainPowers(
         trigger: { type: 'hidden' },
       });
     }
-    const grants = CHARGE_GRANTS[power.internalName];
+    // Caster-form variants as sibling forms on the SAME ChainPower. Gleaming
+    // Bolt and Dwarf Gleaming Bolt are one tray slot on one cooldown, so they
+    // must not become two ChainPowers — `findSlot` keys its recharge lane on
+    // `pi`, and a split would let `Bolt → shift → Bolt` fire twice off one
+    // cooldown and report ~2× the true DPS.
+    //
+    // `modes[0]` is already the base above, so only the rest need a form; and a
+    // mode whose redirect changes nothing measurable gets none at all, since the
+    // base numbers already answer for it.
+    //
+    // Two things a ChainForm cannot carry, and so are read from the base variant
+    // for every form:
+    //  - RECHARGE, which is the point (one power, one cooldown lane). A handful
+    //    of redirects do author their own — HC's Glinting Eye 4s → 5s in Nova and
+    //    Ebon Eye the same, plus a longer list on Rebirth — so an in-form cast of
+    //    one of those is scheduled against the human cooldown. Modelling it would
+    //    mean per-form lanes, which is exactly the ~2× DPS bug above;
+    //  - the effect WINDOWS (`effectWindow` / `tohitWindow`), same as for the
+    //    fast-snipe and from-Hide forms.
+    for (const mode of modes.slice(1)) {
+      if (mode === null) continue; // human is never a redirect target
+      const variant = variants.get(mode)!;
+      const vCast = calculateArcanaTime(powerCastTime(variant));
+      const vEnd = calcThreeTier('endurance', powerEndCost(variant), enh, globalForCalc).final;
+      const v = deriveDamage(variant);
+      const same =
+        Math.abs(vCast - cast) < 1e-9 &&
+        Math.abs(v.damage - damage) < 1e-9 &&
+        Math.abs(vEnd - endCost) < 1e-9 &&
+        JSON.stringify(v.dot ?? null) === JSON.stringify(dot ?? null);
+      if (same) continue;
+      forms.push({
+        id: `mode:${mode}`,
+        // The redirect renames the power (Dwarf Gleaming Bolt); that name is the
+        // most useful thing to show on the chip, so prefer it over the mode id.
+        label: variant.name !== power.name ? variant.name : mode,
+        kind: 'mode',
+        cast: vCast,
+        damage: v.damage,
+        endCost: vEnd,
+        dot: v.dot,
+        trigger: { type: 'mode', mode },
+      });
+    }
+
+    const grants = CHARGE_GRANTS[internalName];
     // Window (seconds) during which this power's ToHit buff makes a snipe fast
     // (Build Up / Aim / Soul Drain) — NOT a recharge-only buff like Hasten.
     const tohitWin = toHitBuffWindow(effectivePower);
 
     return {
-      id: `${bucket}:${power.internalName}`,
+      // The UNREDIRECTED internalName, so the id does not move with the caster's
+      // form. `pri:Gleaming_Bolt` in human and `pri:Dwarf_Gleaming_Bolt` in
+      // Dwarf would be two ids for one power — two entries in a union palette,
+      // two saved-chain keys, and two recharge lanes.
+      id: `${bucket}:${internalName}`,
       name: power.name,
       type,
       cast,
@@ -583,10 +832,15 @@ export function buildChainPowers(
       ...(forms.length ? { forms } : {}),
       ...(grants && { grants }),
       ...(tohitWin ? { tohitWindow: tohitWin } : {}),
+      // Only a build that can shapeshift carries a gate worth checking; without
+      // one every cast is trivially legal and the tag would be dead weight.
+      ...(formModes.length ? { castableModes: modes } : {}),
     } satisfies ChainPower;
   });
 
-  return judgement ? [...powers, judgement] : powers;
+  // Form switches are chain steps like any other: they animate, they hold a
+  // recharge lane, and they move the form later casts resolve against.
+  return [...powers, ...buildFormSwitchPowers(build, globalForCalc), ...(judgement ? [judgement] : [])];
 }
 
 /**

@@ -13,7 +13,10 @@
  * average net is positive).
  */
 
-export type ChainPowerType = 'attack' | 'utility' | 'buff';
+/** `switch` is a CASTER-FORM change (a Kheldian shapeshift), not an attack: it
+ *  deals no damage but occupies the animation lane like any other cast, and it
+ *  moves the form every later cast is resolved and legality-checked against. */
+export type ChainPowerType = 'attack' | 'utility' | 'buff' | 'switch';
 
 /** Damage-over-time that ticks AFTER the cast finishes (drawn as ticks on the
  *  timeline). DoT that lands during the cast is already folded into `damage`. */
@@ -37,24 +40,44 @@ export function chainDotTickProbability(dot: ChainDoT, t: number): number {
   return dot.cancelOnMiss ? Math.pow(dot.chance, t) : dot.chance;
 }
 
-/** When an alternate form of a power is legal. The chain auto-picks the form
- *  whose trigger is satisfiable at a given cast: `charge` (Energy Transfer's
- *  fast cast, gated on an Energy Focus from Total Focus), `tohit` (fast snipe,
- *  permanent ToHit ≥ threshold or inside a Build Up/Aim window), `hidden`
- *  (Assassin's Strike's slow from-Hide form — opener or immediately post-Placate). */
+/**
+ * When an alternate form of a power is legal. The chain auto-picks the form
+ * whose trigger is satisfiable at a given cast:
+ *  - `charge` — Energy Transfer's fast cast, gated on an Energy Focus banked by
+ *    Total Focus.
+ *  - `tohit`  — fast snipe: permanent ToHit ≥ threshold, or the cast lands
+ *    inside a Build Up / Aim window.
+ *  - `hidden` — Assassin's Strike's slow from-Hide form: rotation opener, or
+ *    immediately after a Placate.
+ *  - `mode`   — the CASTER-FORM variant: satisfied when the form live at this
+ *    cast equals `mode`. This is what lets ONE ChainPower carry its human and
+ *    in-form versions as sibling forms. Gleaming Bolt redirects to Dwarf
+ *    Gleaming Bolt inside White Dwarf, but it is one tray slot on one cooldown,
+ *    so it must NOT become two ChainPowers: {@link findSlot} keys `laneReadyAt`
+ *    on `pi`, so a split would hand the power two recharge lanes and report a
+ *    `Bolt → shift → Bolt` chain at ~2× its true DPS.
+ *  - `manual` — a form the USER opts into rather than one the rotation earns.
+ *    Today's only one is a shapeshift's uncancelled tail animation, selected by
+ *    {@link FormContext.fullShiftAnimations}.
+ */
 export type FormTrigger =
   | { type: 'charge'; resource: string }
   | { type: 'tohit'; threshold: number }
   | { type: 'hidden' }
+  | { type: 'mode'; mode: string }
   | { type: 'manual' };
 
 /** An alternate form of a ChainPower (e.g. fast Energy Transfer). Carries the
  *  same already-enhanced fields as the base power so the calc can read either
- *  via {@link effectiveCast} et al. */
+ *  via {@link effectiveStats} et al.
+ *
+ *  `kind` describes the animation relative to the base: `fast`/`slow`, or
+ *  `mode` for a caster-form variant, which is neither (it is simply the version
+ *  that form plays, and can be either longer or shorter). */
 export interface ChainForm {
   id: string;
   label: string;
-  kind: 'fast' | 'slow';
+  kind: 'fast' | 'slow' | 'mode';
   /** ArcanaTime for this form's animation. */
   cast: number;
   damage: number;
@@ -105,6 +128,19 @@ export interface ChainPower {
    *  Soul Drain. A snipe cast inside it fires its fast form (the fast-snipe
    *  ≥22% ToHit rule). undefined = no ToHit buff. */
   tohitWindow?: number;
+  /** `type: 'switch'` only — the caster form this step ENTERS (`null` = back to
+   *  human). The scheduler sets its live form to this once the switch is
+   *  scheduled; every later cast resolves its `mode` form, and is checked for
+   *  legality, against the result. */
+  switchTo?: string | null;
+  /** The caster forms this power may legally be cast in — `null` = human / no
+   *  form. Absent means "no mode gate at all", which is every power outside the
+   *  Kheldian/Titan-Weapons mode machinery.
+   *
+   *  Tagged rather than filtered because a cross-form chain's palette is a UNION
+   *  across forms: it can no longer PREVENT an uncastable pick by leaving the
+   *  chip out, so {@link computeChain} DETECTS one instead. */
+  castableModes?: (string | null)[];
 }
 
 /** A scheduled cast: `pi` indexes into the ChainPower[] passed alongside. */
@@ -115,7 +151,10 @@ export interface Activation {
   /** index into the pick-order sequence (for per-bar removal). */
   seq?: number;
   /** Which alternate form this cast uses ({@link ChainForm.id}); undefined =
-   *  the power's default/base form. */
+   *  the power's default/base form. A CAST form (fast snipe, from-Hide
+   *  Assassin's Strike, the in-form variant of a redirecting power) — not the
+   *  caster's form, which is timeline state rather than a per-cast choice and is
+   *  replayed by {@link casterFormTimeline}. */
   formId?: string;
 }
 
@@ -163,6 +202,19 @@ export interface EnduranceResult {
   trackLoops: number;
 }
 
+/** A cast the caster's live form does not allow. See {@link ChainResult.illegal}. */
+export interface IllegalCast {
+  /** Pick-order index — the offending {@link Activation.seq}. Falls back to the
+   *  activation's position in the array for lists built without one. */
+  seq: number;
+  /** Index into the `ChainPower[]`, so a surface can name/label the power. */
+  pi: number;
+  /** The caster form live at that cast (`null` = human). */
+  form: string | null;
+  /** Plain-English, with RAW mode ids — the surface owns pretty form labels. */
+  reason: string;
+}
+
 export interface ChainResult {
   cycleSec: number;
   totalDamage: number;
@@ -183,6 +235,16 @@ export interface ChainResult {
   endurance: EnduranceResult | null;
   /** max per-activation damage in the chain — drives relative-damage coloring. */
   maxDamage: number;
+  /** Casts the caster's live form does not allow — a Dwarf attack scheduled
+   *  while still human, a shift into the form you are already in. Empty for the
+   *  overwhelming majority of chains (nothing tags `castableModes` unless the
+   *  build can shapeshift at all).
+   *
+   *  The numbers above STILL count these casts. A partially-illegal chain is one
+   *  the user is mid-edit on — silently dropping steps from cycleSec/totalDamage
+   *  would make the readout jump around while they build it — so the offenders
+   *  are flagged for the surface to mark rather than excised here. */
+  illegal: IllegalCast[];
 }
 
 const EPS = 0.001;
@@ -408,6 +470,22 @@ export interface FormContext {
    *  ToHit or buff windows — the user's "assume I'll Aim/Build Up first"
    *  override. Set from the Attack Chain Builder's "Quick snipe" toggle. */
   forceFastSnipe?: boolean;
+  /** The caster form the chain OPENS in (`null`/absent = human). Only the
+   *  starting state: a cross-form rotation moves through `switch` steps, and
+   *  {@link replayChain} walks the live form forward from here.
+   *
+   *  (This replaces the old chain-wide `formMode`, which meant "the one form
+   *  this chain lives in" back when the candidate roster was rebuilt per form.) */
+  startForm?: string | null;
+  /** Charge each form switch its FULL uncancelled shapeshift animation instead
+   *  of just the blocking segment it always pays.
+   *
+   *  Off by default, and that default is the modelling claim: a chain that casts
+   *  immediately after switching animation-cancels the tail BY CONSTRUCTION, so
+   *  it never pays it. The opt-in is for players who do not cancel. See
+   *  SHAPESHIFT_BLOCKING_CAST / SHAPESHIFT_FULL_ANIM in attack-chain-powers.ts
+   *  for where the two numbers come from. */
+  fullShiftAnimations?: boolean;
 }
 
 /** Everything {@link displayForm} needs beyond the build-global {@link FormContext}:
@@ -428,6 +506,14 @@ export interface FormResolveContext extends FormContext {
   at?: number;
   /** Casts already scheduled — the ToHit-buff windows `at` is tested against. */
   activations?: Activation[];
+  /** The caster form live at THIS cast (`null` = human). DERIVED by the walk —
+   *  {@link replayChain} and {@link nextPickContext} advance it across every
+   *  `switch` step from {@link FormContext.startForm} — never passed in by a
+   *  caller, who supplies `startForm` instead.
+   *
+   *  `undefined` is NOT null: it means the caller does not track the form at
+   *  all. {@link reservedCast} widens for that case rather than assuming human. */
+  currentForm?: string | null;
 }
 
 /**
@@ -478,6 +564,19 @@ export function displayForm(
       const afterPlacate = ctx.prevPi != null && powers[ctx.prevPi]?.grants === 'hidden';
       if (isOpener || afterPlacate) return f;
     }
+    if (f.trigger.type === 'mode') {
+      // The caster-form variant, legal exactly while that form is live. An
+      // `undefined` currentForm never matches (the caller is not tracking the
+      // form), so the base variant answers and `reservedCast` widens the
+      // reservation instead of guessing.
+      if (ctx.currentForm === f.trigger.mode) return f;
+    }
+    if (f.trigger.type === 'manual') {
+      // Opt-in only. The single manual form today is a shapeshift's uncancelled
+      // tail: by default a switch charges just its blocking segment, because a
+      // chain that casts straight afterwards animation-cancels the rest.
+      if (ctx.fullShiftAnimations) return f;
+    }
   }
   return undefined;
 }
@@ -506,12 +605,18 @@ export function nextPickContext(
 ): FormResolveContext {
   const charges: Record<string, number> = {};
   let prevPi: number | null = null;
+  // The live caster form, walked forward exactly as replayChain walks it. If
+  // these two ever disagree the palette advertises one form's variant while the
+  // timeline schedules another's — which is precisely the drift nextPickContext
+  // exists to prevent, so the mutation below is a mirror of replayChain's.
+  let currentForm: string | null = formCtx.startForm ?? null;
   sequence.forEach((pi, seq) => {
     if (pi < 0 || pi >= powers.length) return;
     const f = displayForm(powers, pi, {
       ...formCtx,
       charges,
       prevPi,
+      currentForm,
       at: activations.find((a) => a.seq === seq)?.start,
       // Only the picks BEFORE this one were on the timeline when the scheduler
       // resolved it — pick order, not time order, so a later pick that gap-fills
@@ -521,9 +626,10 @@ export function nextPickContext(
     if (f?.trigger.type === 'charge') charges[f.trigger.resource] -= 1;
     const grants = powers[pi].grants;
     if (grants) charges[grants] = (charges[grants] ?? 0) + 1;
+    if (powers[pi].type === 'switch') currentForm = powers[pi].switchTo ?? null;
     prevPi = pi;
   });
-  return { ...formCtx, charges, prevPi, activations };
+  return { ...formCtx, charges, prevPi, currentForm, activations };
 }
 
 /**
@@ -536,12 +642,25 @@ export function nextPickContext(
  * resolved without a position, widened by any `tohit` form the settled start
  * might yet select. Never short (so the one-animation-at-a-time invariant
  * holds), and exact whenever position cannot change the answer.
+ *
+ * Exported so the widening rules are directly testable — "never short, never
+ * gratuitously long" is a property of THIS function, and reaching it only
+ * through the schedulers would leave the `currentForm === undefined` arm
+ * unreachable from any test.
  */
-function reservedCast(powers: ChainPower[], pi: number, ctx: FormResolveContext): number {
+export function reservedCast(powers: ChainPower[], pi: number, ctx: FormResolveContext): number {
   const p = powers[pi];
   let cast = displayForm(powers, pi, ctx)?.cast ?? p.cast;
   for (const f of p.forms ?? []) {
     if (f.trigger.type === 'tohit' && f.cast > cast) cast = f.cast;
+    // A `mode` form resolves EXACTLY whenever the caller tracks the caster form,
+    // and both schedulers settle it before findSlot runs — so nothing is widened
+    // on the scheduling path, and a human-form cast is not reserved against a
+    // longer in-form variant it will never play. A caller that left
+    // `currentForm` out has told us nothing about which form the cast lands in;
+    // reserving the base there would repeat the from-Hide under-reservation in a
+    // new shape (an in-form variant dropped into a gap only the human one fits).
+    if (f.trigger.type === 'mode' && ctx.currentForm === undefined && f.cast > cast) cast = f.cast;
   }
   return cast;
 }
@@ -589,13 +708,18 @@ export function replayChain(
   // The immediately-preceding power in PICK order (not time order) — drives the
   // "AS only right after Placate" rule. null at the rotation opener.
   let prevPi: number | null = null;
+  // The caster form live at the next pick, opened at `startForm` and moved by
+  // every `switch` step. Walked in PICK order like the charge ledger beside it,
+  // which is also the order `casterFormTimeline` replays for legality — the two
+  // must agree or a cast could fire its in-form variant and still be flagged.
+  let currentForm: string | null = formCtx.startForm ?? null;
   sequence.forEach((pi, seq) => {
     if (pi < 0 || pi >= powers.length) return;
     const p = powers[pi];
     // Resolve BEFORE scheduling: findSlot has to reserve this cast's real
     // animation (see reservedCast), then the settled start feeds the one rule
     // that needs a position.
-    const base: FormResolveContext = { ...formCtx, charges, prevPi, activations: acts };
+    const base: FormResolveContext = { ...formCtx, charges, prevPi, currentForm, activations: acts };
     const start = findSlot(
       powers, acts, pi, globalRechargePct, bounds, reservedCast(powers, pi, base),
     );
@@ -605,10 +729,44 @@ export function replayChain(
 
     acts.push({ pi, start, end: start + (form?.cast ?? p.cast), seq, formId: form?.id });
     if (p.grants) charges[p.grants] = (charges[p.grants] ?? 0) + 1;
+    // Mirrored verbatim in nextPickContext — keep the two in step.
+    if (p.type === 'switch') currentForm = p.switchTo ?? null;
     acts.sort((a, b) => a.start - b.start);
     prevPi = pi;
   });
   return acts;
+}
+
+/**
+ * The caster form live at each scheduled cast, replayed from `startForm` across
+ * every `switch` step.
+ *
+ * Walked in PICK order (`Activation.seq`) to match {@link replayChain}, which
+ * resolves each cast's `mode` form against the form live when it was PICKED, not
+ * when it animates. The two orders can differ — findSlot gap-fills a later pick
+ * into an earlier hole — and if this walk used time order a cast could fire its
+ * in-form variant and still be reported illegal. Falls back to time order for
+ * activation lists carrying no `seq` (nothing in the app builds one, but
+ * {@link addActivation} does).
+ */
+export function casterFormTimeline(
+  powers: ChainPower[],
+  activations: Activation[],
+  startForm: string | null = null,
+): { act: Activation; form: string | null }[] {
+  const ordered = [...activations].sort((a, b) =>
+    a.seq !== undefined && b.seq !== undefined ? a.seq - b.seq : a.start - b.start,
+  );
+  let form = startForm;
+  const out: { act: Activation; form: string | null }[] = [];
+  for (const act of ordered) {
+    // The form the cast happens IN is the one live BEFORE it — a switch changes
+    // the form for everything after it, not for itself.
+    out.push({ act, form });
+    const p = powers[act.pi];
+    if (p?.type === 'switch') form = p.switchTo ?? null;
+  }
+  return out;
 }
 
 function calcDeadGaps(activations: Activation[], cycleSec: number): DeadGap[] {
@@ -737,6 +895,7 @@ export function computeChain(
   bounds: RechargeBounds,
   end: EnduranceParams | null,
   metric: PowerMetric = 'damage',
+  formCtx: FormContext = {},
 ): ChainResult | null {
   if (activations.length === 0) return null;
 
@@ -813,6 +972,32 @@ export function computeChain(
     wuSum += w * u;
   }
   const compactness = wSum > 0 ? Math.round((wuSum / wSum) * 100) : null;
+  // A `switch` step deals no damage, so its metric weight is 0 and the `w <= 0`
+  // guard above drops it from both sums — compactness stays a statement about
+  // the ATTACKS' recharge utilization and is not diluted by the shapeshifts
+  // between them. (It still moves indirectly, because the switches lengthen
+  // cycleSec, which is real: time spent shifting is time an attack is not
+  // firing on cooldown.)
+
+  // Cross-form legality. While the roster was rebuilt per form this was
+  // PREVENTED — an uncastable power simply had no chip. A union palette cannot
+  // prevent it, so detect it: replay the live form over the timeline and flag
+  // any cast whose power does not list that form.
+  const illegal: IllegalCast[] = [];
+  casterFormTimeline(powers, activations, formCtx.startForm ?? null).forEach(({ act, form }, i) => {
+    const p = powers[act.pi];
+    if (!p?.castableModes || p.castableModes.includes(form)) return;
+    illegal.push({
+      seq: act.seq ?? i,
+      pi: act.pi,
+      form,
+      // A switch's `castableModes` is "every form except the one it enters", so
+      // its only possible failure is shifting into the form already worn.
+      reason: p.type === 'switch'
+        ? `${p.name} is already the active form`
+        : `${p.name} cannot be cast in ${form ?? 'Human'} form`,
+    });
+  });
 
   return {
     cycleSec,
@@ -825,5 +1010,6 @@ export function computeChain(
     compactness,
     endurance: end ? simulateEndurance(powers, activations, cycleSec, end) : null,
     maxDamage,
+    illegal,
   };
 }

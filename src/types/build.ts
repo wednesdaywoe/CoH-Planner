@@ -111,17 +111,38 @@ export interface AttackChain {
   /** Cast order as ChainPower ids. */
   powers: string[];
   /**
-   * The caster form the chain was built in — a mode id from `buildFormModes`
+   * The caster form the chain OPENS in — a mode id from `buildFormModes`
    * (a Kheldian's Bright Nova / White Dwarf), or null/absent for human form.
    *
-   * Load-bearing, not decorative. A form's attacks are auto-granted by its
-   * toggle and castable ONLY inside it, so the candidate roster a chain's ids
-   * resolve against is per-form. Without this, reopening a Nova chain resolved
-   * it against the human roster, `idsToSequence` dropped every id it could not
-   * find, and one click of Save wrote that emptied list back over the saved
-   * chain — the rotation was gone with no way to get it back.
+   * Load-bearing, not decorative. It was originally "the one form this chain
+   * lives in", because a form's attacks are castable only inside it and the
+   * candidate roster was rebuilt per form: reopening a Nova chain in human form
+   * resolved none of its ids, `idsToSequence` dropped them all, and one click of
+   * Save wrote that emptied list back over the saved rotation.
+   *
+   * A chain can now SPAN forms via `switch` steps, so the roster is a union and
+   * the ids resolve whatever form is set. What this field still decides is the
+   * form the walk starts from — which determines which variant each cast fires
+   * and which casts are flagged illegal. Same rotation, different opening form,
+   * different numbers.
    */
   startForm?: string | null;
+  /**
+   * Whether this chain charges each form switch its FULL uncancelled shapeshift
+   * animation (~2.24s of ArcanaTime) instead of only the blocking segment
+   * (0.26s) it always pays. Absent/false = the blocking segment, the default.
+   *
+   * Stored per chain, and it has to be: the two readings are different
+   * rotations, not different views of one. A Kheldian form toggle declares no
+   * activation time and its animation is cancelled by the next attack, so a
+   * chain that casts straight after switching never pays the tail — but a chain
+   * built by a player who does not cancel is a slower rotation with a lower DPS,
+   * and reloading it under the other assumption and pressing Save would
+   * overwrite the original with numbers its author never chose. See
+   * SHAPESHIFT_BLOCKING_CAST / SHAPESHIFT_FULL_ANIM in attack-chain-powers.ts
+   * for where the two figures come from.
+   */
+  fullShiftAnimations?: boolean;
 }
 
 export interface Build {

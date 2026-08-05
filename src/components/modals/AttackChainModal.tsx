@@ -13,6 +13,24 @@
  * cycle time, DPS, dead time, and an endurance gain/spend model with a
  * sustainability sawtooth. All per-power numbers come from the live build via
  * the same calc the power tooltips use (attack-chain-powers.ts).
+ *
+ * CROSS-FORM ROTATIONS. A Kheldian chain can shapeshift mid-rotation. The
+ * palette is a UNION across caster forms, so a power the current form cannot
+ * cast is DIMMED rather than absent — you can see what a switch would unlock —
+ * and a `→ Form` chip appends the shift as a step like any other pick. Because a
+ * union palette cannot prevent an illegal pick, `computeChain` detects one
+ * instead and this surface marks it (red ring, ⚠, the reason on hover) while
+ * still showing every number: a half-shifted chain is one the user is mid-edit
+ * on. The Form control picks where the rotation OPENS, not where it lives.
+ *
+ * The shift cost is an ASSUMPTION, and the surface says so wherever it shows.
+ * By default a switch costs only the blocking segment its animation actually
+ * locks you out for, because a chain that attacks straight afterwards cancels
+ * the rest by construction; the "Play shift animations in full" checkbox charges
+ * the whole shift instead. Cycle and DPS carry a persistent marker while it is
+ * on, the clipboard export names whichever assumption produced its numbers, and
+ * the Efficiency help says outright that a switch counts as busy but deals no
+ * damage. See SHAPESHIFT_BLOCKING_CAST / SHAPESHIFT_FULL_ANIM for provenance.
  */
 
 import { useMemo, useRef, useState } from 'react';
@@ -39,7 +57,10 @@ import {
   chainWhatIfRows,
   sequenceToIds,
   idsToSequence,
+  SHAPESHIFT_BLOCKING_CAST,
+  SHAPESHIFT_FULL_ANIM,
 } from '@/utils/calculations/attack-chain-powers';
+import { calculateArcanaTime } from '@/utils/calculations';
 import { humanise, whatIfControls } from './whatIfControls';
 import { useWhatIfActive, WhatIfChip } from './WhatIfChipPanel';
 import { modeLabel } from '@/utils/mode-suppression';
@@ -53,10 +74,13 @@ import {
   powerMetricValue,
   powerMetricCeiling,
   nextPickForm,
+  nextPickContext,
   activationForm,
   chainDotTickProbability,
   type ChainForm,
   type ChainPower,
+  type FormContext,
+  type IllegalCast,
   type PowerMetric,
 } from '@/utils/calculations/attack-chain';
 
@@ -65,7 +89,19 @@ interface AttackChainModalProps {
   onClose: () => void;
 }
 
-const TYPE_HUE: Record<ChainPower['type'], number> = { attack: 258, utility: 152, buff: 35 };
+// A `switch` (Kheldian shapeshift) gets a hue of its own, deliberately far from
+// the three power hues AND from every semantic colour on the timeline (the green
+// active band, the red dead gaps, the amber DoT ticks, the blue endurance
+// track). It has to be unmistakable: a switch deals no damage, so its `rel` is
+// always 0 and it draws as the palest bar there is — 0.26s of it by default,
+// which is precisely the width a user reads as a gap between two attacks rather
+// than as a step that cost them time.
+const TYPE_HUE: Record<ChainPower['type'], number> = { attack: 258, utility: 152, buff: 35, switch: 315 };
+/** Hard edge on switch bars/chips, for the same reason — a bright ring so the
+ *  sliver reads as deliberate. */
+const SWITCH_EDGE = 'hsl(315, 85%, 78%)';
+/** Outline + marker colour for a cast the caster's live form does not allow. */
+const ILLEGAL_EDGE = '#F87171';
 const LABEL_W = 116;
 const LANE_H = 24;
 const MIN_PX = 4; // low enough to fit very long recharges (e.g. 50s+ nukes)
@@ -132,6 +168,59 @@ function fmt(n: number, d = 1): string {
   return n.toFixed(d);
 }
 
+/** A caster form's name for a control or a chip — `null` is human. Straight
+ *  through `modeLabel`, the same helper the InfoPanel's "Requires: <mode>"
+ *  annotation uses, so a form reads identically everywhere in the app. */
+const formLabel = (mode: string | null): string => (mode === null ? 'Human' : modeLabel(mode));
+/** The same name inside a sentence that already supplies the word "form"
+ *  ("cannot be cast in <X> form"). `modeLabel` hands back display names that
+ *  carry it themselves — "Dwarf Form", "Nova Form" — and "in Dwarf Form form" is
+ *  not a sentence. */
+const formNoun = (mode: string | null): string => formLabel(mode).replace(/\s+Form$/i, '');
+/** A switch step's destination, for its chip / lane label. Uses the form
+ *  TOGGLE's own name ("Black Dwarf") — the words on the player's tray — in
+ *  preference to the mode id's generic label ("Dwarf Form"), and says plain
+ *  "Human" for the step that drops the form (whose ChainPower is named "Human
+ *  Form"). `buildFormSwitchPowers` always names a switch after its toggle, so
+ *  the `formLabel` arm is defensive only. */
+const switchTarget = (p: ChainPower): string =>
+  p.switchTo == null ? 'Human' : p.name || formLabel(p.switchTo);
+
+/** `IllegalCast.reason` is display-ready except for the RAW mode id it names —
+ *  the calc layer deliberately owns no pretty labels. Swap that one id using the
+ *  structured `form` field rather than pattern-matching the sentence, so a
+ *  reworded reason keeps working. */
+const prettyReason = (bad: IllegalCast): string =>
+  bad.form ? bad.reason.replace(bad.form, formNoun(bad.form)) : bad.reason;
+
+// The two shapeshift costs, in the units the user sees them in: the raw
+// animation seconds the sequencer declares, and the ArcanaTime the chain
+// actually charges. Derived from the same constants the model uses — never
+// retyped here, or the tooltip and the timeline could disagree.
+const SHIFT_BLOCKING_ARCANA = calculateArcanaTime(SHAPESHIFT_BLOCKING_CAST);
+const SHIFT_FULL_ARCANA = calculateArcanaTime(SHAPESHIFT_FULL_ANIM);
+
+/**
+ * The provenance sentence for the shift cost, shown wherever a switch's price
+ * appears. It is not decoration: 2.03s is an INFERRED number and the user is
+ * entitled to know it is inferred, and from what.
+ *
+ * Claims only what the sequencer data supports. An earlier draft said Homecoming
+ * had "deliberately left" the zero activation time in place; nothing in the
+ * decode speaks to any live team's intent, and a tooltip is not the place to
+ * invent one.
+ */
+const SHIFT_PROVENANCE =
+  `Kheldian form toggles declare no activation time, and the sequencer splits the shapeshift ` +
+  `move in two: a blocking segment of ${fmt(SHAPESHIFT_BLOCKING_CAST, 3)}s (2 frames at 30fps), ` +
+  `then a tail that any attack or movement interrupts. A chain that casts immediately after ` +
+  `switching cancels that tail by construction, so by default a switch costs only its ` +
+  `${fmt(SHIFT_BLOCKING_ARCANA, 2)}s blocking segment. Turn on "Play shift animations in full" ` +
+  `to charge the whole ${fmt(SHAPESHIFT_FULL_ANIM, 2)}s shift instead ` +
+  `(${fmt(SHIFT_FULL_ARCANA, 2)}s of ArcanaTime). That ${fmt(SHAPESHIFT_FULL_ANIM, 2)}s is not ` +
+  `declared on your power; it is what the game declares on seven sibling powers performing the ` +
+  `same shapeshift.`;
+
 export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
   const build = useBuildStore((s) => s.build);
 
@@ -181,10 +270,18 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
   const targetsHitValues = useUIStore((s) => s.targetsHitValues);
 
   // Caster form. Kheldian Nova/Dwarf attacks are auto-granted by the form toggle and
-  // usable only inside that form, while the human powers are disallowed inside it, so a
-  // chain is built in one form at a time. Empty for every build with no form to enter.
+  // usable only inside that form, while the human powers are disallowed inside it. The
+  // roster used to be rebuilt per form, which confined a chain to the one it was built
+  // in; it is now a UNION across forms, so this selects only where the rotation OPENS —
+  // `switch` steps move it from there. Empty for every build with no form to enter.
   const formModes = useMemo(() => buildFormModes(build), [build]);
-  const [formMode, setFormMode] = useState<string | null>(null);
+  const [startForm, setStartForm] = useState<string | null>(null);
+  // Charge each switch its full uncancelled shapeshift animation instead of the
+  // blocking segment. OFF is the default and the default is a claim: a chain that
+  // attacks straight after switching animation-cancels the tail, so it never pays it.
+  // Part of the saved chain's identity (AttackChain.fullShiftAnimations), not a view
+  // setting — the same order under the other assumption is a different rotation.
+  const [fullShiftAnimations, setFullShiftAnimations] = useState(false);
 
   // The dashboard's calculation, not a fresh bare one. Calling
   // `calculateCharacterTotals(build)` here passed NO options, so every global the
@@ -217,18 +314,21 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
       stalkerTeamSize,
     };
     return {
+      // The roster no longer depends on the caster form — one union across every
+      // form, one set of ids, whatever the caster is wearing. Which VARIANT a cast
+      // fires is a per-cast question the SCHEDULER answers from the live form, so
+      // the form belongs in `formCtx` below and not in this memo (nor its deps).
       powers: buildChainPowers(build, calc.globalBonuses, mechCtx, targetsHitValues, {
         globalAdjusters: effectiveGlobalAdjusters(build, globalAdjusters),
         mechanicAdjusters,
         atInherentState: { dominationActive },
-        formMode,
       }),
       endParams: getEnduranceParams(calc.globalBonuses, archetypeStats, build.level),
       buildGlobalRech: getBuildGlobalRecharge(calc.globalBonuses),
       // Always-on ToHit (% points) — drives the fast-snipe rule in replayChain.
       permanentToHit: calc.globalBonuses.toHit,
     };
-  }, [build, calc, archetypeStats, containmentActive, scourgeActive, criticalHitsActive, stalkerCritActive, sentinelCritActive, stalkerHidden, stalkerTeamSize, targetsHitValues, mechanicAdjusters, globalAdjusters, dominationActive, formMode]);
+  }, [build, calc, archetypeStats, containmentActive, scourgeActive, criticalHitsActive, stalkerCritActive, sentinelCritActive, stalkerHidden, stalkerTeamSize, targetsHitValues, mechanicAdjusters, globalAdjusters, dominationActive]);
 
   const [sequence, setSequence] = useState<number[]>([]);
   // The recharge what-if is ONE ENTRY in the shared team-buff layer, not a number this modal
@@ -327,15 +427,19 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
     return { total, floored, all: total > 0 && floored === total };
   }, [sequence, powers, globalRech, extraRech, rechargeBounds]);
 
+  // The ONE form context. `replayChain`, `nextPickForm` and `computeChain` must all
+  // be handed the same one: the scheduler resolves each cast's form from it, the
+  // palette previews the next pick through it, and the legality walk replays the
+  // caster form over it. Hand two of them different objects and a chip advertises
+  // one form's variant while the timeline schedules another's.
+  const formCtx = useMemo<FormContext>(
+    () => ({ permanentToHit, forceFastSnipe: combatMode, startForm, fullShiftAnimations }),
+    [permanentToHit, combatMode, startForm, fullShiftAnimations],
+  );
+
   const activations = useMemo(
-    () =>
-      rechargeBounds
-        ? replayChain(powers, sequence, globalRech, rechargeBounds, {
-            permanentToHit,
-            forceFastSnipe: combatMode,
-          })
-        : [],
-    [powers, sequence, globalRech, rechargeBounds, permanentToHit, combatMode],
+    () => (rechargeBounds ? replayChain(powers, sequence, globalRech, rechargeBounds, formCtx) : []),
+    [powers, sequence, globalRech, rechargeBounds, formCtx],
   );
 
   // The form a palette tap of `pi` would fire in — resolved through the same
@@ -346,11 +450,22 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
   // the form the chain will NOT fire.
   const paletteForm = (pi: number): ChainForm | undefined =>
     rechargeBounds
-      ? nextPickForm(powers, sequence, activations, pi, globalRech, rechargeBounds, {
-          permanentToHit,
-          forceFastSnipe: combatMode,
-        })
+      ? nextPickForm(powers, sequence, activations, pi, globalRech, rechargeBounds, formCtx)
       : undefined;
+
+  // The caster form a tap RIGHT NOW would happen in — the same walk replayChain
+  // makes, so the palette's "can I cast this" answer and the timeline's legality
+  // verdict cannot disagree. Drives the dimming below: an out-of-form power stays
+  // on the palette (dimmed) rather than vanishing, so a user can see what a switch
+  // would unlock instead of guessing at an absence.
+  const nextForm = useMemo(
+    () => nextPickContext(powers, sequence, activations, formCtx).currentForm ?? null,
+    [powers, sequence, activations, formCtx],
+  );
+  /** Whether `p` can be cast in the form the NEXT pick lands in. Untagged powers
+   *  (every power on a build that cannot shapeshift) are always castable. */
+  const castableNext = (p: ChainPower): boolean =>
+    !p.castableModes || p.castableModes.includes(nextForm);
 
   // A power's value under the chosen metric, measured on the form given (omit
   // for the base form). Closes over the live global recharge so DPS tracks the
@@ -372,15 +487,37 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
   const result = useMemo(
     () =>
       rechargeBounds
-        ? computeChain(powers, activations, globalRech, rechargeBounds, endParams, powerMetric)
+        ? computeChain(powers, activations, globalRech, rechargeBounds, endParams, powerMetric, formCtx)
         : null,
-    [powers, activations, globalRech, rechargeBounds, endParams, powerMetric],
+    [powers, activations, globalRech, rechargeBounds, endParams, powerMetric, formCtx],
+  );
+
+  // Casts the live caster form does not allow, keyed by pick index so a bar and a
+  // rotation-order step can both find their own. Shown, never hidden: the numbers
+  // above still count these casts because a partially-illegal chain is one the user
+  // is mid-edit on, so the surface's job is to mark them, not to quietly drop them.
+  const illegalBySeq = useMemo(() => {
+    const m = new Map<number, IllegalCast>();
+    for (const bad of result?.illegal ?? []) m.set(bad.seq, bad);
+    return m;
+  }, [result]);
+
+  // Does this rotation actually shapeshift? Gates every honesty marker below — a
+  // build with a form but a single-form chain pays no shift cost, and a note about
+  // an assumption that changes nothing is noise.
+  const chainHasSwitch = useMemo(
+    () => sequence.some((pi) => powers[pi]?.type === 'switch'),
+    [sequence, powers],
   );
 
   // When the build's power set changes underneath us (power ids shift), re-map
   // the loaded saved chain to the new powers (dropping any now-missing power);
   // if nothing is loaded, clear the scratch sequence. Keyed by power ids so a
   // mere re-slot (which doesn't change ids) leaves the working chain alone.
+  //
+  // Picking a different caster form no longer lands here: the roster is a union
+  // across forms, so `powers` (and this key) are identical whichever form the
+  // chain opens in. `loadChain` maps against it directly for the same reason.
   const powersKey = powers.map((p) => p.id).join('|');
   const [lastKey, setLastKey] = useState(powersKey);
   if (powersKey !== lastKey) {
@@ -394,9 +531,36 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
   const clear = () => setSequence([]);
 
   // Copy the settled rotation order as plain text (for sharing / notes).
+  //
+  // A cross-form rotation carries its shift assumption out with it. Note which way
+  // round: the DEFAULT is the animation-cancelled reading, so the DEFAULT export is
+  // the one that needs the note — its cycle and DPS assume the player cancels every
+  // shift by attacking out of it, which is execution the text alone does not
+  // convey. A bare "3.4s → 210 DPS" pasted into Discord is exactly how an
+  // execution-dependent figure escapes as a universal one.
   const copySequence = () => {
-    const text = sequence.map((pi) => powers[pi]?.name).filter(Boolean).join(' → ');
-    if (!text) return;
+    const steps = sequence
+      .map((pi) => {
+        const p = powers[pi];
+        if (!p) return null;
+        // A switch is a step, not a separator — bracket it so the arrow chain
+        // still reads as a cast order in plain text.
+        return p.type === 'switch' ? `[shift: ${switchTarget(p)}]` : p.name;
+      })
+      .filter(Boolean);
+    if (steps.length === 0) return;
+    const lines: string[] = [];
+    if (startForm !== null) lines.push(`Opens in ${formLabel(startForm)}.`);
+    lines.push(steps.join(' → '));
+    if (chainHasSwitch) {
+      lines.push(
+        fullShiftAnimations
+          ? `(Form switches charged at the full ${fmt(SHAPESHIFT_FULL_ANIM, 2)}s shift animation.)`
+          : `(Form switches charged at the ${fmt(SHIFT_BLOCKING_ARCANA, 2)}s blocking segment only —`
+            + ` these numbers assume you animation-cancel every shift by attacking straight out of it.)`,
+      );
+    }
+    const text = lines.join('\n');
     const clip = navigator.clipboard;
     if (!clip) {
       showToast({ message: 'Clipboard unavailable', tone: 'warning' });
@@ -422,28 +586,30 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
   const currentIds = sequenceToIds(powers, sequence);
   const selectedChain = selectedChainId ? savedChains.find((c) => c.id === selectedChainId) ?? null : null;
   const sameIds = (a: string[], b: string[]) => a.length === b.length && a.every((x, i) => x === b[i]);
-  // Form counts as part of the chain: the same ids in a different caster form are
-  // a different rotation (and mostly aren't even castable), so re-forming a
-  // loaded chain marks it unsaved rather than silently reading as "no changes".
+  // Both modelling assumptions count as part of the chain, exactly as the cast
+  // order does. The same ids opened in a different form fire different variants
+  // and flag different casts; the same ids under the other shift assumption are a
+  // slower rotation with a lower DPS. Either one silently reading as "no changes"
+  // is how one press of Save overwrites a rotation with numbers its author never
+  // chose — so both mark the chain unsaved.
   const modified = selectedChain
-    ? !sameIds(currentIds, selectedChain.powers) || formMode !== (selectedChain.startForm ?? null)
+    ? !sameIds(currentIds, selectedChain.powers)
+      || startForm !== (selectedChain.startForm ?? null)
+      || fullShiftAnimations !== (selectedChain.fullShiftAnimations ?? false)
     : sequence.length > 0;
 
   const loadChain = (c: AttackChain) => {
-    const form = c.startForm ?? null;
     setSelectedChainId(c.id);
     setNaming(null);
-    // Re-enter the form the chain was built in. A form's attacks are castable
-    // only inside it, so loading a Nova chain in human form resolved none of its
-    // ids — and Save then wrote that emptied list back over the saved rotation.
-    if (form !== formMode) setFormMode(form);
-    // Map against the CURRENT roster. When the form actually changed this is the
-    // outgoing roster and so probably wrong, but `powers` is memoised on formMode
-    // and does not update until the next render; the powersKey block above re-maps
-    // the selected chain as soon as the new roster lands (same render pass, before
-    // paint). Doing it here as well covers the case where both forms happen to
-    // expose the same power ids, which leaves powersKey unchanged and that block
-    // dormant — without this the load would silently do nothing.
+    // Restore the assumptions the chain's numbers were settled under, BEFORE its
+    // order: opening form and shift cost both feed `formCtx`, and a rotation
+    // replayed under the wrong one is a different rotation.
+    setStartForm(c.startForm ?? null);
+    setFullShiftAnimations(c.fullShiftAnimations ?? false);
+    // The roster is a union across forms and does not depend on either setting, so
+    // mapping against the current `powers` is correct here and needs no second
+    // pass. (It used to be rebuilt per form, which is why this had to lean on the
+    // powersKey block below to re-map after the roster caught up.)
     setSequence(idsToSequence(powers, c.powers));
   };
   const newChain = () => {
@@ -454,7 +620,7 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
   const onSaveClick = () => {
     if (sequence.length === 0) return;
     if (selectedChain) {
-      updateAttackChain(selectedChain.id, currentIds, formMode);
+      updateAttackChain(selectedChain.id, currentIds, startForm, fullShiftAnimations);
       showToast({ message: `Saved "${selectedChain.name}"`, tone: 'success' });
     } else {
       setNaming({ mode: 'new', value: '' });
@@ -469,7 +635,7 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
     if (naming.mode === 'rename') {
       if (selectedChain) renameAttackChain(selectedChain.id, name);
     } else {
-      const id = saveAttackChain(name, currentIds, formMode);
+      const id = saveAttackChain(name, currentIds, startForm, fullShiftAnimations);
       setSelectedChainId(id);
       showToast({ message: `Saved "${name}"`, tone: 'success' });
     }
@@ -541,15 +707,22 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
   // ranking it by a number the chip no longer shows and the chain never deals —
   // the exact mis-advice this whole change is about. So order, printed value and
   // tint all move together; the form label in the tooltip says why.
+  //
+  // Switches sort into a band of their own at the end. They carry no metric at
+  // all (zero damage, so every metric is 0) and would otherwise scatter through
+  // the buff/utility tail in whatever order the roster happened to build them;
+  // as a fixed trailing group they are where a cross-form user can always find
+  // them. Deliberately NOT sorted by castability — a dimmed chip that jumps
+  // position every time you add a step is worse than one that sits still.
   const palette = useMemo(() => {
-    const rank = (p: ChainPower) => (p.type === 'attack' ? 0 : 1);
+    const rank = (p: ChainPower) => (p.type === 'attack' ? 0 : p.type === 'switch' ? 2 : 1);
     return powers
       .map((p, i) => ({ p, i, form: paletteForm(i) }))
       .sort((a, b) => {
         if (rank(a.p) !== rank(b.p)) return rank(a.p) - rank(b.p);
         return metricVal(b.p, b.form) - metricVal(a.p, a.form);
       });
-  }, [powers, powerMetric, globalRech, rechargeBounds, sequence, activations, permanentToHit, combatMode]);
+  }, [powers, powerMetric, globalRech, rechargeBounds, sequence, activations, formCtx]);
 
   const usedPis = useMemo(() => [...new Set(activations.map((a) => a.pi))], [activations]);
   // Metric-intensity reference over the WHOLE build (not just the chain) so a
@@ -598,6 +771,52 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
   // instead — folding its averaged rate into Net end here would make the visible
   // Recovery/Spend/Net numbers fail to add up.
   const passiveNet = end ? end.recoveryPerSec - end.togglePerSec - end.attackPerSec : 0;
+
+  // Cycle and the DPS derived from it carry a PERSISTENT marker rather than a
+  // toast, plus a leading clause on their help text. A figure that only holds
+  // under an execution assumption has to say so at the moment it is read, not
+  // once when the box was ticked.
+  //
+  // WHICH numbers the assumption moves depends on the rotation, so the pill goes
+  // on every tile it COULD move rather than on the packed-bound answer alone.
+  // Two regimes, both real:
+  //   packed-bound (past ~+250% global recharge on the motivating Warshade
+  //     rotation): the cycle itself pays — 8.71s → 12.67s, 57.19 → 39.32 DPS.
+  //   recharge-bound (ordinary slotting, the COMMON case): the extra animation
+  //     is absorbed by dead time the loop already had. Cycle, Total dmg and DPS
+  //     come out bit-for-bit identical (22.24s / 22.40 DPS either way) and
+  //     Efficiency moves instead, 39% → 57%.
+  // Marking only Cycle and DPS therefore put the pill on two numbers the box had
+  // not changed while the one it had changed wore none. Efficiency now carries it
+  // too. See the two-regime gate in attack-chain-cross-form.test.ts.
+  //
+  // And the pill rides BOTH states, because the default is an assumption too —
+  // "you cancel every shift" is a claim about execution exactly as much as "you
+  // never do". A number that only holds under an assumption says so at the
+  // moment it is read; silence is what a plain, unconditional number looks like.
+  const shiftMarker = !chainHasSwitch ? undefined : fullShiftAnimations ? 'full shift' : 'cancelled';
+
+  // Casts the live form does not allow stay IN the totals — computeChain reports
+  // a chain the user is mid-edit on rather than silently dropping steps — so the
+  // headline reads higher than the rotation can deliver. On the motivating
+  // Warshade rotation with the shift deleted, the two orphaned Dwarf attacks are
+  // 37.5% of Total dmg and push DPS to 1.60x its legal reading (22.40 vs 13.99).
+  // The per-bar rings and the timeline legend already flag them, but both sit
+  // rows away from the stat grid, so the number a user actually quotes carried
+  // nothing. This puts it on the tiles the illegal casts inflate.
+  const illegalMarker =
+    illegalBySeq.size > 0
+      ? `${illegalBySeq.size} wrong form`
+      : undefined;
+  const illegalHelpClause =
+    illegalBySeq.size === 0
+      ? ''
+      : `⚠ ${illegalBySeq.size} step${illegalBySeq.size === 1 ? '' : 's'} can't be cast in the form live at that point in the rotation, and ${illegalBySeq.size === 1 ? 'it is' : 'they are'} still counted here — so this number is higher than the rotation can actually deliver. Add the form switch ${illegalBySeq.size === 1 ? 'it needs' : 'they need'}, or remove ${illegalBySeq.size === 1 ? 'it' : 'them'}. `;
+  const shiftHelpClause = !chainHasSwitch
+    ? ''
+    : fullShiftAnimations
+      ? `Assumes you play each form switch's animation in FULL (${fmt(SHIFT_FULL_ARCANA, 2)}s per shift) rather than cancelling it. `
+      : `Assumes you animation-cancel each form switch by attacking straight out of it, so a shift costs only its ${fmt(SHIFT_BLOCKING_ARCANA, 2)}s blocking segment. `;
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} title="Attack Chain Builder" size="full">
@@ -706,19 +925,26 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
         {/* Toolbar */}
         <div className="flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-3 flex-wrap">
-            {/* Form selector — only for builds that have a form to switch into. A form's
-              * attacks can't be used outside it and human attacks can't be used inside it,
-              * so a chain lives in one form; switching here rebuilds the candidate list. */}
+            {/* Starting form — only for builds that have a form to enter. This no longer
+              * confines the chain: the palette is a union across forms and a `→ Form`
+              * switch chip moves the caster mid-rotation. What it picks is where the
+              * rotation OPENS, which decides which variant each cast fires and which
+              * casts are flagged as uncastable. */}
             {formModes.length > 0 && (
-              <div className="flex items-center gap-1" role="group" aria-label="Caster form">
-                <span className="text-[11px] text-gray-500 mr-0.5">Form</span>
+              <div
+                className="flex items-center gap-1"
+                role="group"
+                aria-label="Starting caster form"
+                title="The form the rotation opens in. Add a “→ Form” step from the palette to switch mid-chain."
+              >
+                <span className="text-[11px] text-gray-500 mr-0.5">Opens in</span>
                 {[null, ...formModes].map((mode) => {
-                  const isActive = formMode === mode;
+                  const isActive = startForm === mode;
                   return (
                     <button
                       key={mode ?? 'human'}
                       type="button"
-                      onClick={() => setFormMode(mode)}
+                      onClick={() => setStartForm(mode)}
                       aria-pressed={isActive}
                       className={`px-2 py-0.5 text-[11px] rounded border transition-colors ${
                         isActive
@@ -726,7 +952,7 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
                           : 'bg-gray-800 border-gray-600 text-gray-400 hover:bg-gray-700'
                       }`}
                     >
-                      {mode === null ? 'Human' : modeLabel(mode)}
+                      {formLabel(mode)}
                     </button>
                   );
                 })}
@@ -758,6 +984,23 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
                   className="w-3.5 h-3.5 rounded border-gray-600 bg-gray-800 accent-amber-500 disabled:opacity-50"
                 />
                 Combat Mode (quick snipe)
+              </label>
+            )}
+            {/* The shift-cost assumption. Same shape and weight as Combat Mode beside
+              * it: both are "how do you actually play this", not view settings, and
+              * both change the numbers. Default OFF — the blocking segment only. */}
+            {formModes.length > 0 && (
+              <label
+                className="flex items-center gap-1.5 text-[11px] text-gray-500 cursor-pointer select-none"
+                title={SHIFT_PROVENANCE}
+              >
+                <input
+                  type="checkbox"
+                  checked={fullShiftAnimations}
+                  onChange={(e) => setFullShiftAnimations(e.target.checked)}
+                  className="w-3.5 h-3.5 rounded border-gray-600 bg-gray-800 accent-amber-500"
+                />
+                Play shift animations in full
               </label>
             )}
           </div>
@@ -990,6 +1233,15 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
           <div className="flex items-center justify-between mb-2">
             <div className="text-[10px] font-semibold uppercase tracking-wide text-gray-500">
               Available powers — tap to add
+              {/* Which form the next tap lands in — the thing that decides whether
+                * a chip is dimmed, so it has to be readable beside them. Only
+                * mentions dimming when something actually is dimmed. */}
+              {formModes.length > 0 && (
+                <span className="ml-1 font-normal normal-case tracking-normal text-gray-600">
+                  — you’re in {formLabel(nextForm)}
+                  {palette.some(({ p }) => !castableNext(p)) && '; dimmed chips need a form switch first'}
+                </span>
+              )}
             </div>
             <label className="flex items-center gap-1.5 text-[10px] text-gray-500">
               Rank by
@@ -1021,37 +1273,80 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
                 // snipe details".
                 const effCast = form?.cast ?? p.cast;
                 const rel = maxMetric > 0 ? metricVal(p, form) / maxMetric : 0;
+                const isSwitch = p.type === 'switch';
+                // Castable in the form the next tap would land in? A union palette
+                // can no longer PREVENT an illegal pick by leaving the chip out, so
+                // it dims it instead — visible, still clickable, and `computeChain`
+                // flags the cast if you take it anyway. Showing it is the point: a
+                // user needs to see what a switch would unlock.
+                const castable = castableNext(p);
                 // Powers that carry a special chain mechanic: an alternate cast
-                // form (snipes, Energy Transfer, Assassin's Strike from-Hide) or
-                // a charge that enables one (Total Focus, Placate). Flag them so
-                // the build/spend pieces stand out; the hint is trigger-aware.
-                const specialForm = p.forms?.find((f) => f.kind === 'fast') ?? p.forms?.[0];
+                // form (snipes, Energy Transfer, Assassin's Strike from-Hide, a
+                // caster-form variant) or a charge that enables one (Total Focus,
+                // Placate). Flag them so the build/spend pieces stand out; the hint
+                // is trigger-aware. Switches are excluded — their whole chip is
+                // about the mechanic already, and their only form is the opt-in
+                // shift animation, which the checkbox above owns.
+                const specialForm = isSwitch
+                  ? undefined
+                  : p.forms?.find((f) => f.kind === 'fast') ?? p.forms?.[0];
                 const special = specialForm
                   ? specialForm.trigger.type === 'tohit'
                     ? `Has a fast form — auto-fires with ≥${specialForm.trigger.threshold}% ToHit (Build Up / Aim / Tactics)`
                     : specialForm.trigger.type === 'hidden'
                       ? `Has a slow from-Hide form — auto-fires as the opener or right after Placate`
-                      : `Has a ${specialForm.label} fast form — auto-fires when its charge is available`
+                      : specialForm.trigger.type === 'mode'
+                        ? `Becomes ${specialForm.label} in ${formNoun(specialForm.trigger.mode)} form — same tray slot, same cooldown`
+                        : specialForm.trigger.type === 'charge'
+                          ? `Has a ${specialForm.label} fast form — auto-fires when its charge is available`
+                          : null
                   : p.grants === 'hidden'
                     ? `Re-Hides you — lets the next Assassin's Strike use its from-Hide form`
                     : p.grants
                       ? `Grants ${p.grants.replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())} — enables a fast form later in the chain`
                       : null;
+                const label = isSwitch ? `→ ${switchTarget(p)}` : p.name;
+                const title = isSwitch
+                  ? `Switch to ${switchTarget(p)} · costs ${fmt(effCast, 2)}s`
+                    + `${p.endCost > 0 ? ` · ${fmt(p.endCost, 2)} end` : ''}`
+                    + `${p.baseRecharge > 0 ? ` · re-entry cooldown ${fmt(p.baseRecharge, 1)}s` : ''}`
+                    + `\n${SHIFT_PROVENANCE}`
+                    + (castable ? '' : `\n⚠ You are already in this form.`)
+                  : `${p.name}${form ? ` · ${form.label}` : ''} · cast ${fmt(effCast, 2)}s · rech ${fmt(p.baseRecharge, 1)}s · ${fmt(metricVal(p, form), powerMetric === 'damage' ? 0 : 1)} ${METRIC_LABEL[powerMetric]}`
+                    + (form ? `\n⚡ Fires its ${form.label} form here — cast and damage are that form's` : '')
+                    + (special ? `\n⚡ ${special}` : '')
+                    + (castable
+                      ? ''
+                      : `\n⚠ Not castable in ${formNoun(nextForm)} form — add a form switch before it, or it will be flagged on the timeline.`);
                 return (
                   <button
                     key={p.id}
                     onClick={() => addPower(i)}
-                    className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded border border-gray-700 hover:border-gray-500 text-gray-200 text-xs"
+                    className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded border text-xs ${
+                      castable
+                        ? 'border-gray-700 hover:border-gray-500 text-gray-200'
+                        : 'border-gray-800 border-dashed text-gray-500 hover:border-gray-600'
+                    }`}
                     style={{
                       borderLeftWidth: 2,
-                      borderLeftColor: barFill(p.type, rel),
+                      borderLeftColor: isSwitch ? SWITCH_EDGE : barFill(p.type, rel),
                       background: chipBg(p.type, rel),
-                      ...(special && { boxShadow: 'inset 0 0 0 1px rgba(255,224,138,0.55)' }),
+                      // Dimmed, not hidden — see `castable` above.
+                      ...(castable ? {} : { opacity: 0.45 }),
+                      ...(isSwitch
+                        ? { boxShadow: `inset 0 0 0 1px ${SWITCH_EDGE}` }
+                        : special
+                          ? { boxShadow: 'inset 0 0 0 1px rgba(255,224,138,0.55)' }
+                          : {}),
                     }}
-                    title={`${p.name}${form ? ` · ${form.label}` : ''} · cast ${fmt(effCast, 2)}s · rech ${fmt(p.baseRecharge, 1)}s · ${fmt(metricVal(p, form), powerMetric === 'damage' ? 0 : 1)} ${METRIC_LABEL[powerMetric]}${form ? `\n⚡ Fires its ${form.label} form here — cast and damage are that form's` : ''}${special ? `\n⚡ ${special}` : ''}`}
+                    title={title}
                   >
-                    {special && <span style={{ color: '#FFE08A', fontSize: 10, lineHeight: 1 }}>⚡</span>}
-                    <span>{p.name}</span>
+                    {/* The switch chip's own "→ Form" label already announces what it
+                        is, so it takes the ring and the hue instead of a glyph. */}
+                    {!isSwitch && special && (
+                      <span style={{ color: '#FFE08A', fontSize: 10, lineHeight: 1 }}>⚡</span>
+                    )}
+                    <span>{label}</span>
                     <span className="text-[10px] text-gray-500">{fmt(effCast, 2)}s</span>
                   </button>
                 );
@@ -1104,6 +1399,24 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
                   </span>
                 </>
               )}
+              {chainHasSwitch && (
+                <span className="flex items-center gap-1.5">
+                  <span
+                    className="inline-block w-3 h-2 rounded-sm"
+                    style={{ background: barFill('switch', 0), boxShadow: `inset 0 0 0 1px ${SWITCH_EDGE}` }}
+                  />
+                  form switch
+                </span>
+              )}
+              {illegalBySeq.size > 0 && (
+                <span className="flex items-center gap-1.5 text-red-400">
+                  <span
+                    className="inline-block w-3 h-2 rounded-sm"
+                    style={{ boxShadow: `inset 0 0 0 1.5px ${ILLEGAL_EDGE}` }}
+                  />
+                  wrong form ({illegalBySeq.size})
+                </span>
+              )}
               {result && (
                 <span
                   className={
@@ -1137,14 +1450,16 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
                   const p = powers[pi];
                   const mine = activations.filter((a) => a.pi === pi);
                   const effRech = rechargeBounds ? effectiveRecharge(p, globalRech, rechargeBounds) : 0;
+                  const isSwitch = p.type === 'switch';
+                  const laneName = isSwitch ? `→ ${switchTarget(p)}` : p.name;
                   return (
                     <div key={pi} style={{ display: 'flex', alignItems: 'center', height: LANE_H, marginBottom: 3 }}>
                       <div
-                        style={{ width: LABEL_W, flexShrink: 0, paddingRight: 8 }}
+                        style={{ width: LABEL_W, flexShrink: 0, paddingRight: 8, ...(isSwitch && { color: SWITCH_EDGE }) }}
                         className="text-[11px] text-gray-400 whitespace-nowrap overflow-hidden text-ellipsis"
-                        title={p.name}
+                        title={isSwitch ? `Switch to ${switchTarget(p)}\n${SHIFT_PROVENANCE}` : p.name}
                       >
-                        {p.name}
+                        {laneName}
                         {mine.length > 1 && <span className="text-gray-600"> ×{mine.length}</span>}
                       </div>
                       <div style={{ position: 'relative', height: LANE_H, width: displayW, flexShrink: 0 }}>
@@ -1187,6 +1502,10 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
                           const winW = win
                             ? Math.min(act.start + win.duration, displaySec) * px - winLeft
                             : 0;
+                          // A cast the caster's live form does not allow. Marked, not
+                          // removed — the numbers above still count it, because a
+                          // half-shifted chain is one the user is mid-edit on.
+                          const bad = act.seq !== undefined ? illegalBySeq.get(act.seq) : undefined;
                           return (
                             <div key={act.seq}>
                               {/* recharge (cooldown) */}
@@ -1282,18 +1601,37 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
                                   alignItems: 'center',
                                   justifyContent: 'flex-end',
                                   overflow: 'visible',
+                                  // Rings, innermost first. A switch always carries its
+                                  // own so the 0.26s sliver reads as a step rather than
+                                  // as the gap between two attacks; an illegal cast
+                                  // carries a red one over the top of whatever else it
+                                  // has; the grab ring wins while dragging.
+                                  ...(isSwitch && { boxShadow: `inset 0 0 0 1.5px ${SWITCH_EDGE}` }),
+                                  ...(bad && {
+                                    boxShadow: `inset 0 0 0 1.5px ${ILLEGAL_EDGE}, 0 0 0 1.5px ${ILLEGAL_EDGE}`,
+                                    zIndex: 3,
+                                  }),
                                   ...(reorder?.from === act.seq && {
                                     boxShadow: `0 0 0 2px ${CURSOR_COLOR}, 0 3px 8px rgba(0,0,0,0.45)`,
                                     zIndex: 3,
                                   }),
                                 }}
-                                title={`${p.name}${form ? ` · ${form.label} (${fmt(effCast, 2)}s)` : ''} @ ${fmt(act.start, 2)}s — drag to reorder`}
+                                title={
+                                  (isSwitch
+                                    ? `Switch to ${switchTarget(p)} · ${fmt(effCast, 2)}s`
+                                      + `${form ? ` (${form.label})` : ''} @ ${fmt(act.start, 2)}s`
+                                      + `\n${SHIFT_PROVENANCE}`
+                                    : `${p.name}${form ? ` · ${form.label} (${fmt(effCast, 2)}s)` : ''} @ ${fmt(act.start, 2)}s`)
+                                  + (bad ? `\n⚠ ${prettyReason(bad)}` : '')
+                                  + '\n— drag to reorder'
+                                }
                               >
-                                {/* Active-form badge (e.g. ⚡ fast Energy Transfer).
-                                    Marks casts the engine upgraded to an alternate
-                                    form so the shortened bar isn't mistaken for a
-                                    different power. */}
-                                {form && (
+                                {/* Cast badge. ⇄ marks a form switch (its own kind of
+                                    step, not an attack); ⚡ marks a cast the engine
+                                    upgraded to an alternate form, so a shortened bar
+                                    isn't mistaken for a different power; ⚠ overrides
+                                    both on a cast the live form doesn't allow. */}
+                                {(bad || isSwitch || form) && (
                                   <span
                                     style={{
                                       position: 'absolute',
@@ -1301,12 +1639,12 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
                                       top: 1,
                                       fontSize: 9,
                                       lineHeight: 1,
-                                      color: '#FFE08A',
+                                      color: bad ? ILLEGAL_EDGE : isSwitch ? SWITCH_EDGE : '#FFE08A',
                                       pointerEvents: 'none',
                                       zIndex: 3,
                                     }}
                                   >
-                                    ⚡
+                                    {bad ? '⚠' : isSwitch ? '⇄' : '⚡'}
                                   </span>
                                 )}
                                 {/* Larger transparent hit target around a small
@@ -1437,14 +1775,39 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
               {sequence.map((pi, idx) => {
                 const p = powers[pi];
                 if (!p) return null;
+                // `idx` IS the Activation.seq replayChain stamps (it walks the
+                // sequence in order), so the illegal map keys line up directly.
+                const bad = illegalBySeq.get(idx);
+                const isSwitch = p.type === 'switch';
                 return (
                   <span key={idx} className="flex items-center gap-1">
                     {idx > 0 && <span className="text-gray-600">→</span>}
-                    <span style={{ color: `hsl(${TYPE_HUE[p.type]}, 55%, 72%)` }}>{p.name}</span>
+                    <span
+                      className={bad ? 'rounded px-1 border border-dashed cursor-help' : undefined}
+                      style={{
+                        color: bad ? ILLEGAL_EDGE : `hsl(${TYPE_HUE[p.type]}, 55%, 72%)`,
+                        ...(bad && { borderColor: ILLEGAL_EDGE }),
+                      }}
+                      title={bad ? `⚠ ${prettyReason(bad)}` : undefined}
+                    >
+                      {bad && '⚠ '}
+                      {isSwitch ? `⇄ ${switchTarget(p)}` : p.name}
+                    </span>
                   </span>
                 );
               })}
             </div>
+            {chainHasSwitch && (
+              // Persistent, not a toast: the assumption the numbers were computed
+              // under has to be readable at the same moment as the numbers.
+              <div className="mt-2 text-[10px] leading-snug text-gray-500" title={SHIFT_PROVENANCE}>
+                {fullShiftAnimations
+                  ? `Form switches charged at the FULL ${fmt(SHAPESHIFT_FULL_ANIM, 2)}s shift animation `
+                    + `(${fmt(SHIFT_FULL_ARCANA, 2)}s each).`
+                  : `Form switches charged at the ${fmt(SHIFT_BLOCKING_ARCANA, 2)}s blocking segment only — `
+                    + `assumes you animation-cancel every shift by attacking straight out of it.`}
+              </div>
+            )}
           </div>
         )}
 
@@ -1454,24 +1817,53 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
             label="Cycle"
             value={result ? fmt(cycleSec, 2) : '—'}
             unit="s"
-            help="How long one full loop of the rotation takes before it repeats. This is the last power's end time, OR — if a long-recharge power hasn't recovered by then — extended until every power is ready to fire again. Each power's animation lock (ArcanaTime) and its effective recharge are both built into this number."
+            marker={shiftMarker}
+            invalid={illegalMarker}
+            help={`${illegalHelpClause}${shiftHelpClause}How long one full loop of the rotation takes before it repeats. This is the last power's end time, OR — if a long-recharge power hasn't recovered by then — extended until every power is ready to fire again. Each power's animation lock (ArcanaTime) and its effective recharge are both built into this number.`}
           />
           <Stat
             label="Total dmg"
             value={result ? fmt(result.totalDamage, 0) : '—'}
-            help="Total damage dealt across one full cycle — every power's hit, in-cycle damage-over-time ticks, and expected proc damage. DoT ticks that would land after the loop repeats are not counted."
+            invalid={illegalMarker}
+            help={`${illegalHelpClause}Total damage dealt across one full cycle — every power's hit, in-cycle damage-over-time ticks, and expected proc damage. DoT ticks that would land after the loop repeats are not counted.`}
           />
           <Stat
             label="DPS"
             value={result ? fmt(result.dps, 1) : '—'}
-            help="Damage per second = Total damage ÷ Cycle time. The sustained throughput of the rotation, including any idle time inside the cycle."
+            marker={shiftMarker}
+            invalid={illegalMarker}
+            help={`${illegalHelpClause}${shiftHelpClause}Damage per second = Total damage ÷ Cycle time. The sustained throughput of the rotation, including any idle time inside the cycle.`}
           />
           <Stat
             label="Efficiency"
             value={result ? fmt(result.efficiency, 0) : '—'}
             unit="%"
-            tone={result ? (result.efficiency >= 95 ? 'good' : result.efficiency < 80 ? 'warn' : undefined) : undefined}
-            help="measures how often your character is activating powers (cycle − dead time) ÷ cycle. 100% = you are always activating something (the red gaps on the timeline are dead time)"
+            marker={shiftMarker}
+            // A form switch is a genuine activation, so the lane really is busy and
+            // the maths is right to count it. Which makes the READING the trap: a
+            // rotation that spends two seconds shapeshifting can score "Tight loop"
+            // while dealing no damage for those two seconds. Named here rather than
+            // special-cased in the maths — excluding switches would be a soft-wrong
+            // number in the other direction, reporting idle time the player does not
+            // have.
+            //
+            // The good/warn TONE is suppressed once a rotation shifts, because it
+            // ran backwards: admitting you do not animation-cancel LENGTHENS the
+            // busy lane, so on ⇄Dwarf → Strike → Smite → ⇄Human it moves 48% → 99%
+            // — amber "needs work" to emerald "tight loop" — for a rotation now
+            // spending 4.49s of a 7.72s cycle shapeshifting, with damage and DPS
+            // unchanged. Rewarding the honest answer with a greener tile is worse
+            // than declining to grade: the number still shows, the verdict does not.
+            tone={
+              result && !chainHasSwitch
+                ? result.efficiency >= 95
+                  ? 'good'
+                  : result.efficiency < 80
+                    ? 'warn'
+                    : undefined
+                : undefined
+            }
+            help="measures how often your character is activating powers (cycle − dead time) ÷ cycle. 100% = you are always activating something (the red gaps on the timeline are dead time). Form switches count as activating — the animation lane really is busy — but they deal no damage, so a shapeshifting rotation can read as a tight loop while spending part of it not attacking. Compare DPS, not Efficiency, across chains that shift."
           />
           <Stat
             label="Compact."
@@ -1601,6 +1993,8 @@ function Stat({
   unit,
   tone,
   help,
+  marker,
+  invalid,
 }: {
   label: string;
   value: string;
@@ -1608,6 +2002,16 @@ function Stat({
   tone?: 'good' | 'warn';
   /** Plain-language explanation shown on hover (native tooltip). */
   help?: string;
+  /** A non-default modelling assumption this number was computed under, printed
+   *  as a small pill beside the label. Persistent BY DESIGN: a toast at the
+   *  moment the assumption changed is gone by the time anyone reads the number,
+   *  which is exactly when they need to know it is not the default. */
+  marker?: string;
+  /** Set when the number counts casts the caster's live form does not allow, so
+   *  it reads HIGHER than the rotation can actually deliver. Rendered red rather
+   *  than amber: an assumption pill qualifies a number, this one says it is
+   *  currently wrong. */
+  invalid?: string;
 }) {
   const color = tone === 'good' ? 'text-emerald-400' : tone === 'warn' ? 'text-amber-400' : 'text-gray-200';
   return (
@@ -1618,6 +2022,17 @@ function Stat({
       <div className="flex items-center gap-1 mb-1">
         <span className="text-[10px] uppercase tracking-wide text-gray-500 font-semibold">{label}</span>
         {help && <span className="text-[9px] text-gray-600 leading-none">ⓘ</span>}
+        {invalid ? (
+          <span className="ml-auto rounded-sm border border-red-500/50 bg-red-500/10 px-1 text-[9px] leading-tight text-red-300">
+            ⚠ {invalid}
+          </span>
+        ) : (
+          marker && (
+            <span className="ml-auto rounded-sm border border-amber-500/40 bg-amber-500/10 px-1 text-[9px] leading-tight text-amber-300">
+              {marker}
+            </span>
+          )
+        )}
       </div>
       <span className={`text-base font-medium ${color}`}>{value}</span>
       {unit && <span className="text-[11px] text-gray-500 ml-0.5">{unit}</span>}

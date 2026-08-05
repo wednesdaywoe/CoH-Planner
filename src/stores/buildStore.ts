@@ -172,12 +172,26 @@ interface BuildActions {
   // Saved attack chains (named rotations stored on the build, so they travel
   // with the character through save / load / export / share).
   /** Create a new saved chain from a cast-order id list; returns its id.
-   *  `startForm` is the caster form it was built in (see AttackChain.startForm)
-   *  — a chain's ids only resolve against the roster of its own form. */
-  saveAttackChain: (name: string, powers: string[], startForm?: string | null) => string;
-  /** Replace the cast order (and caster form) of an existing saved chain — the
-   *  "Save" action. */
-  updateAttackChain: (id: string, powers: string[], startForm?: string | null) => void;
+   *  `startForm` is the caster form the chain opens in and `fullShiftAnimations`
+   *  whether it charges the full shapeshift animation — both are part of the
+   *  rotation's identity, not view settings (see AttackChain). */
+  saveAttackChain: (
+    name: string,
+    powers: string[],
+    startForm?: string | null,
+    fullShiftAnimations?: boolean,
+  ) => string;
+  /** Replace the cast order and both modelling assumptions of an existing saved
+   *  chain — the "Save" action. Every field travels together: a chain reloaded
+   *  under a different assumption is a different rotation, so writing the order
+   *  back without the assumption it was measured under is the data loss this
+   *  signature exists to prevent. */
+  updateAttackChain: (
+    id: string,
+    powers: string[],
+    startForm?: string | null,
+    fullShiftAnimations?: boolean,
+  ) => void;
   renameAttackChain: (id: string, name: string) => void;
   deleteAttackChain: (id: string) => void;
 
@@ -304,7 +318,37 @@ function syncBuildDefinitions(build: Build): void {
   // toggle-vs-click branching) to function. Without powerType/targetType/
   // effectArea sync, click-power toggles like Healing Flames lose their
   // toggle UI and ally-buff guards see undefined and pass everything.
-  type DefShape = Pick<SelectedPower, 'name' | 'internalName' | 'effects' | 'icon' | 'powerType' | 'targetType' | 'effectArea'>;
+  type DefShape = Pick<
+    SelectedPower,
+    | 'name' | 'internalName' | 'effects' | 'icon' | 'powerType' | 'targetType' | 'effectArea'
+    | 'setsModes' | 'modesRequired' | 'modesDisallowed' | 'modesSuspended' | 'modeVariants'
+  >;
+  /**
+   * The five mode-gating fields, lifted off a definition as one unit.
+   *
+   * They were absent from DefShape, and the omission was silent. The persisted
+   * build stores whole `SelectedPower` objects, so a build saved while the
+   * pool/epic facades were still dropping these fields (see `pickModeGates` in
+   * power-pools.ts) keeps pool and epic clicks with NO gate at all — and this
+   * sync, which exists precisely to repair stale saved metadata, walked past
+   * them. The user-visible result is the Attack Chain Builder offering Boxing,
+   * Kick, Cross Punch and Hasten inside Nova/Dwarf form on every pre-existing
+   * build, and the cross-form legality check having nothing to check, until the
+   * power is removed and re-added by hand.
+   *
+   * Written from the definition in BOTH directions — a gate the game data has
+   * dropped must clear rather than linger, so an absent field is copied over as
+   * absent rather than left alone. One literal serves the comparison and the
+   * write, so the two cannot drift apart.
+   */
+  type ModeGates = Pick<DefShape, 'setsModes' | 'modesRequired' | 'modesDisallowed' | 'modesSuspended' | 'modeVariants'>;
+  const modeGates = (p: DefShape): ModeGates => ({
+    setsModes: p.setsModes,
+    modesRequired: p.modesRequired,
+    modesDisallowed: p.modesDisallowed,
+    modesSuspended: p.modesSuspended,
+    modeVariants: p.modeVariants,
+  });
   const syncPowers = (powers: SelectedPower[], defPowers: readonly DefShape[]): SelectedPower[] => {
     let anyChanged = false;
     const synced = powers.map((power) => {
@@ -319,7 +363,12 @@ function syncBuildDefinitions(build: Build): void {
       const needsPowerType = currentDef.powerType && currentDef.powerType !== power.powerType;
       const needsTargetType = currentDef.targetType !== undefined && currentDef.targetType !== power.targetType;
       const needsEffectArea = currentDef.effectArea !== undefined && currentDef.effectArea !== power.effectArea;
-      if (needsInternalName || needsEffects || needsIcon || needsPowerType || needsTargetType || needsEffectArea) {
+      // Structural, not reference: these arrive as fresh arrays out of JSON on
+      // every rehydrate, so an identity check would report "changed" for every
+      // power in every build forever.
+      const needsModeGates =
+        JSON.stringify(modeGates(currentDef)) !== JSON.stringify(modeGates(power));
+      if (needsInternalName || needsEffects || needsIcon || needsPowerType || needsTargetType || needsEffectArea || needsModeGates) {
         anyChanged = true;
         if (needsInternalName) {
           internalNameMigrations.set(power.internalName, currentDef.internalName);
@@ -332,6 +381,7 @@ function syncBuildDefinitions(build: Build): void {
           ...(needsPowerType ? { powerType: currentDef.powerType } : {}),
           ...(needsTargetType ? { targetType: currentDef.targetType } : {}),
           ...(needsEffectArea ? { effectArea: currentDef.effectArea } : {}),
+          ...(needsModeGates ? modeGates(currentDef) : {}),
         };
       }
       return power;
@@ -2016,13 +2066,14 @@ export const useBuildStore = create<BuildStore>()(
       },
 
       // --- Saved attack chains ------------------------------------------------
-      saveAttackChain: (name, powers, startForm = null) => {
+      saveAttackChain: (name, powers, startForm = null, fullShiftAnimations = false) => {
         historyCheckpoint();
         const chain: AttackChain = {
           id: `chain-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
           name,
           powers,
           startForm,
+          fullShiftAnimations,
         };
         set((state) => ({
           build: {
@@ -2033,13 +2084,13 @@ export const useBuildStore = create<BuildStore>()(
         return chain.id;
       },
 
-      updateAttackChain: (id, powers, startForm = null) => {
+      updateAttackChain: (id, powers, startForm = null, fullShiftAnimations = false) => {
         historyCheckpoint();
         set((state) => ({
           build: {
             ...state.build,
             attackChains: (state.build.attackChains ?? []).map((c) =>
-              c.id === id ? { ...c, powers, startForm } : c,
+              c.id === id ? { ...c, powers, startForm, fullShiftAnimations } : c,
             ),
           },
         }));
