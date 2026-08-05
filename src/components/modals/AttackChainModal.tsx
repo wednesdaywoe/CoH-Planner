@@ -1,8 +1,14 @@
 /**
  * Attack Chain Builder modal.
  *
- * Click powers to greedily pack an attack rotation (one animation at a time,
- * recharge anchored to cast start — see attack-chain.ts). Drag a bar on the
+ * Click powers to greedily pack an attack rotation (one animation at a time).
+ * The scheduler anchors recharge to cast END — `findSlot` in attack-chain.ts is
+ * explicit that a prior cast at [start, end] makes the power ready at
+ * `end + effRech` — so this docstring's old claim of "anchored to cast start"
+ * was simply wrong about the module it pointed at. The TIMELINE below still
+ * draws both cooldown visuals from cast start (`cdW`, `overStart`), which is a
+ * real rendering discrepancy of one animation length, tracked separately; it is
+ * a drawing bug, not the scheduling rule. Drag a bar on the
  * timeline to reorder the cast sequence; grab empty space to pan. Surfaces
  * cycle time, DPS, dead time, and an endurance gain/spend model with a
  * sustainability sawtooth. All per-power numbers come from the live build via
@@ -45,7 +51,11 @@ import {
   effectiveRecharge,
   type RechargeBounds,
   powerMetricValue,
+  powerMetricCeiling,
+  nextPickForm,
+  activationForm,
   chainDotTickProbability,
+  type ChainForm,
   type ChainPower,
   type PowerMetric,
 } from '@/utils/calculations/attack-chain';
@@ -317,11 +327,6 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
     return { total, floored, all: total > 0 && floored === total };
   }, [sequence, powers, globalRech, extraRech, rechargeBounds]);
 
-  // A power's ranking value under the chosen metric (closes over the live
-  // global recharge so DPS tracks the what-if slider).
-  const metricVal = (p: ChainPower) =>
-    rechargeBounds ? powerMetricValue(p, powerMetric, globalRech, rechargeBounds) : 0;
-
   const activations = useMemo(
     () =>
       rechargeBounds
@@ -332,6 +337,26 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
         : [],
     [powers, sequence, globalRech, rechargeBounds, permanentToHit, combatMode],
   );
+
+  // The form a palette tap of `pi` would fire in — resolved through the same
+  // predicate the scheduler uses, against the charge ledger the sequence has
+  // banked, the power that would precede the pick, and the slot the pick would
+  // land in. So a chip advertises the cast a tap actually schedules instead of
+  // the power's flat fields, which for every form-bearing power are permanently
+  // the form the chain will NOT fire.
+  const paletteForm = (pi: number): ChainForm | undefined =>
+    rechargeBounds
+      ? nextPickForm(powers, sequence, activations, pi, globalRech, rechargeBounds, {
+          permanentToHit,
+          forceFastSnipe: combatMode,
+        })
+      : undefined;
+
+  // A power's value under the chosen metric, measured on the form given (omit
+  // for the base form). Closes over the live global recharge so DPS tracks the
+  // what-if slider.
+  const metricVal = (p: ChainPower, form?: ChainForm) =>
+    rechargeBounds ? powerMetricValue(p, powerMetric, globalRech, rechargeBounds, form) : 0;
 
   // Snipe surfacing: if the chain holds a snipe (a power with a ToHit-gated fast
   // form), expose its threshold so we can guide the user to the controls that
@@ -397,12 +422,29 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
   const currentIds = sequenceToIds(powers, sequence);
   const selectedChain = selectedChainId ? savedChains.find((c) => c.id === selectedChainId) ?? null : null;
   const sameIds = (a: string[], b: string[]) => a.length === b.length && a.every((x, i) => x === b[i]);
-  const modified = selectedChain ? !sameIds(currentIds, selectedChain.powers) : sequence.length > 0;
+  // Form counts as part of the chain: the same ids in a different caster form are
+  // a different rotation (and mostly aren't even castable), so re-forming a
+  // loaded chain marks it unsaved rather than silently reading as "no changes".
+  const modified = selectedChain
+    ? !sameIds(currentIds, selectedChain.powers) || formMode !== (selectedChain.startForm ?? null)
+    : sequence.length > 0;
 
   const loadChain = (c: AttackChain) => {
-    setSequence(idsToSequence(powers, c.powers));
+    const form = c.startForm ?? null;
     setSelectedChainId(c.id);
     setNaming(null);
+    // Re-enter the form the chain was built in. A form's attacks are castable
+    // only inside it, so loading a Nova chain in human form resolved none of its
+    // ids — and Save then wrote that emptied list back over the saved rotation.
+    if (form !== formMode) setFormMode(form);
+    // Map against the CURRENT roster. When the form actually changed this is the
+    // outgoing roster and so probably wrong, but `powers` is memoised on formMode
+    // and does not update until the next render; the powersKey block above re-maps
+    // the selected chain as soon as the new roster lands (same render pass, before
+    // paint). Doing it here as well covers the case where both forms happen to
+    // expose the same power ids, which leaves powersKey unchanged and that block
+    // dormant — without this the load would silently do nothing.
+    setSequence(idsToSequence(powers, c.powers));
   };
   const newChain = () => {
     setSequence([]);
@@ -412,7 +454,7 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
   const onSaveClick = () => {
     if (sequence.length === 0) return;
     if (selectedChain) {
-      updateAttackChain(selectedChain.id, currentIds);
+      updateAttackChain(selectedChain.id, currentIds, formMode);
       showToast({ message: `Saved "${selectedChain.name}"`, tone: 'success' });
     } else {
       setNaming({ mode: 'new', value: '' });
@@ -427,7 +469,7 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
     if (naming.mode === 'rename') {
       if (selectedChain) renameAttackChain(selectedChain.id, name);
     } else {
-      const id = saveAttackChain(name, currentIds);
+      const id = saveAttackChain(name, currentIds, formMode);
       setSelectedChainId(id);
       showToast({ message: `Saved "${name}"`, tone: 'success' });
     }
@@ -490,22 +532,46 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
   // Rank attacks ahead of non-attacks, then order by the chosen metric — a total
   // order (the old `attack ? -1 : 1` form was non-antisymmetric once a third
   // 'buff' type existed, giving buff-vs-utility an arbitrary order).
+  //
+  // The metric is measured on each power's RESOLVED form, so the order tracks
+  // the chips' own numbers. attack-chain.ts documents the metric as "STABLE
+  // per-power" and this narrows that: stable against how many times a power is
+  // cast this rotation (which is what the note is about), NOT against which form
+  // it fires in. Ranking a quick snipe by the slow charged cast's damage is
+  // ranking it by a number the chip no longer shows and the chain never deals —
+  // the exact mis-advice this whole change is about. So order, printed value and
+  // tint all move together; the form label in the tooltip says why.
   const palette = useMemo(() => {
     const rank = (p: ChainPower) => (p.type === 'attack' ? 0 : 1);
     return powers
-      .map((p, i) => ({ p, i }))
+      .map((p, i) => ({ p, i, form: paletteForm(i) }))
       .sort((a, b) => {
         if (rank(a.p) !== rank(b.p)) return rank(a.p) - rank(b.p);
-        return metricVal(b.p) - metricVal(a.p);
+        return metricVal(b.p, b.form) - metricVal(a.p, a.form);
       });
-  }, [powers, powerMetric, globalRech, rechargeBounds]);
+  }, [powers, powerMetric, globalRech, rechargeBounds, sequence, activations, permanentToHit, combatMode]);
 
   const usedPis = useMemo(() => [...new Set(activations.map((a) => a.pi))], [activations]);
   // Metric-intensity reference over the WHOLE build (not just the chain) so a
   // power's color is stable and identical across the palette and timeline — the
   // visual link between the two areas.
+  //
+  // Deliberately each power's CEILING across all its forms, not its currently-
+  // displayed value: that keeps the top of the colour ramp fixed when Combat
+  // Mode or a charge flips a power's form, so only the chips whose form actually
+  // changed re-tint instead of the whole palette re-shading around a moved
+  // denominator. It also guarantees every form's `rel` lands in [0,1] — a
+  // from-Hide Assassin's Strike is ~3.17× its own base and would otherwise drive
+  // barFill's lightness negative. Needs neither permanentToHit nor combatMode as
+  // a dep: spanning every form is exactly what makes it independent of them.
   const maxMetric = useMemo(
-    () => Math.max(0, ...powers.map((p) => metricVal(p))),
+    () =>
+      Math.max(
+        0,
+        ...powers.map((p) =>
+          rechargeBounds ? powerMetricCeiling(p, powerMetric, globalRech, rechargeBounds) : 0,
+        ),
+      ),
     [powers, powerMetric, globalRech, rechargeBounds],
   );
 
@@ -945,8 +1011,16 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
             </div>
           ) : (
             <div className="flex flex-wrap gap-1.5">
-              {palette.map(({ p, i }) => {
-                const rel = maxMetric > 0 ? metricVal(p) / maxMetric : 0;
+              {palette.map(({ p, i, form }) => {
+                // Everything the chip prints comes from the form a tap would
+                // actually schedule (`form`), not the power's flat fields. Those
+                // are permanently the SLOW charged snipe, the slow Energy
+                // Transfer and the mid-combat Assassin's Strike, so a quick snipe
+                // used to advertise the slow cast's 5.03 dmg against the 2.81 it
+                // delivers — the reported "hovering a quick snipe shows the slow
+                // snipe details".
+                const effCast = form?.cast ?? p.cast;
+                const rel = maxMetric > 0 ? metricVal(p, form) / maxMetric : 0;
                 // Powers that carry a special chain mechanic: an alternate cast
                 // form (snipes, Energy Transfer, Assassin's Strike from-Hide) or
                 // a charge that enables one (Total Focus, Placate). Flag them so
@@ -974,11 +1048,11 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
                       background: chipBg(p.type, rel),
                       ...(special && { boxShadow: 'inset 0 0 0 1px rgba(255,224,138,0.55)' }),
                     }}
-                    title={`${p.name} · cast ${fmt(p.cast, 2)}s · rech ${fmt(p.baseRecharge, 1)}s · ${fmt(metricVal(p), powerMetric === 'damage' ? 0 : 1)} ${METRIC_LABEL[powerMetric]}${special ? `\n⚡ ${special}` : ''}`}
+                    title={`${p.name}${form ? ` · ${form.label}` : ''} · cast ${fmt(effCast, 2)}s · rech ${fmt(p.baseRecharge, 1)}s · ${fmt(metricVal(p, form), powerMetric === 'damage' ? 0 : 1)} ${METRIC_LABEL[powerMetric]}${form ? `\n⚡ Fires its ${form.label} form here — cast and damage are that form's` : ''}${special ? `\n⚡ ${special}` : ''}`}
                   >
                     {special && <span style={{ color: '#FFE08A', fontSize: 10, lineHeight: 1 }}>⚡</span>}
                     <span>{p.name}</span>
-                    <span className="text-[10px] text-gray-500">{fmt(p.cast, 2)}s</span>
+                    <span className="text-[10px] text-gray-500">{fmt(effCast, 2)}s</span>
                   </button>
                 );
               })}
@@ -1061,10 +1135,8 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
               <div ref={lanesRef} style={{ position: 'relative', minWidth: LABEL_W + displayW }}>
                 {usedPis.map((pi) => {
                   const p = powers[pi];
-                  const rel = maxMetric > 0 ? metricVal(p) / maxMetric : 0;
                   const mine = activations.filter((a) => a.pi === pi);
                   const effRech = rechargeBounds ? effectiveRecharge(p, globalRech, rechargeBounds) : 0;
-                  const cdW = Math.max(0, effRech - p.cast) * px;
                   return (
                     <div key={pi} style={{ display: 'flex', alignItems: 'center', height: LANE_H, marginBottom: 3 }}>
                       <div
@@ -1081,9 +1153,20 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
                           // An alternate form (e.g. fast Energy Transfer) shortens
                           // the animation — the bar width must follow the form's
                           // cast, not the base, or a fast cast would render long.
-                          const form = act.formId ? p.forms?.find((f) => f.id === act.formId) : undefined;
+                          const form = activationForm(powers, act);
                           const effCast = form?.cast ?? p.cast;
                           const w = Math.max(effCast * px, 6);
+                          // Per-CAST, not per-lane: two casts of one power can run
+                          // different forms, and this bar is one of them. A
+                          // from-Hide Assassin's Strike hits ~3.17× the mid-combat
+                          // base beside it in the same lane, so tinting both from
+                          // the power's flat damage would print one colour over two
+                          // very different hits. maxMetric spans every form, so rel
+                          // stays in [0,1] whichever form this is.
+                          const rel = maxMetric > 0 ? metricVal(p, form) / maxMetric : 0;
+                          // Cooldown stem: drawn from the end of THIS cast's bar, so
+                          // it must net off the form's animation, not the base's.
+                          const cdW = Math.max(0, effRech - effCast) * px;
                           // Recharge overshoot ("waiting"): from when this
                           // cast's recharge completes (or its animation ends, if
                           // it recharges mid-cast) until the next cast of this

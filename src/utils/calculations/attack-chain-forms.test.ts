@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeAll } from 'vitest';
 import { loadDataset } from '@/data/dataset';
-import { getPowerset, GRANTED_POWER_GROUPS } from '@/data';
+import { getPowerset, getAllPowerPools, GRANTED_POWER_GROUPS } from '@/data';
 import { createEmptyBuild } from '@/types/build';
 import { calculateCharacterTotals } from './character-totals';
 import { createDefaultIncarnateActiveState } from '@/types/incarnate';
@@ -115,6 +115,64 @@ describe('Attack chain form selector', () => {
     expect(buildFormModes(b)).toEqual([]);
     // …and its chain is unchanged by the new candidate rules.
     expect(chainNames(b, null).sort()).toEqual(['Jab', 'Punch']);
+  });
+
+  /** A pool pick plus the rider its toggle auto-grants, shaped the way buildStore stores
+   *  them: the rider carries `isAutoGranted` and the pool's empty `boosts_allowed`. */
+  function poolPowers(poolId: string, picked: string, granted: string): SelectedPower[] {
+    const pool = getAllPowerPools()[poolId];
+    expect(pool, `${poolId} pool resolves`).toBeDefined();
+    const take = (name: string, auto: boolean): SelectedPower => {
+      const def = pool!.powers.find((p) => p.internalName === name);
+      expect(def, `${name} is in ${poolId}`).toBeDefined();
+      return {
+        ...def!, powerSet: poolId, level: 1, slots: [], isActive: true,
+        ...(auto ? { isAutoGranted: true, grantedByPower: picked } : {}),
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      } as any as SelectedPower;
+    };
+    return [take(picked, false), take(granted, true)];
+  }
+
+  /**
+   * A travel toggle's free rider is not a form.
+   *
+   * Three HC pools hold a complete setter/gate pair on their own — Speed of Sound → Jaunt,
+   * Mighty Leap → Stomp, Mystic Flight → Translocation — where the toggle `setsModes` its
+   * `*On` mode and the rider is a Click carrying it in `modesRequired`. Those satisfy
+   * `buildFormModes`' settable-AND-gating rule literally, so once the pool facade started
+   * carrying the mode fields at all, every Sorcery build was offered a bogus "Mystic Flight
+   * active" form whose roster is identical to Human's. The rider is auto-granted with an
+   * empty `boosts_allowed` and so can never sit in a chain — the same reason
+   * `collectCandidates` drops it — which is what disqualifies it as a gate.
+   */
+  it('a travel toggle and its auto-granted rider are not a caster form', () => {
+    const b = createEmptyBuild();
+    b.level = 50;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    b.archetype = { id: 'tanker', name: 'Tanker', stats: null, inherent: null } as any;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    b.pools = [{ id: 'sorcery', name: 'Sorcery',
+      powers: poolPowers('sorcery', 'Mystic_Flight', 'Translocation') } as any];
+    // The pair really is a settable+gating match — otherwise this test grades air.
+    const set = b.pools![0].powers!.find((p) => p.internalName === 'Mystic_Flight');
+    const rider = b.pools![0].powers!.find((p) => p.internalName === 'Translocation');
+    expect(set?.setsModes, 'Mystic Flight sets its mode').toContain('MysticFlightOn');
+    expect(rider?.modesRequired, 'Translocation requires it').toContain('MysticFlightOn');
+    expect(rider?.powerType, 'and is a Click').toBe('Click');
+    expect(rider?.allowedEnhancements ?? [], 'and is unslottable').toHaveLength(0);
+
+    expect(buildFormModes(b)).toEqual([]);
+  });
+
+  it('a real form survives a travel toggle sitting beside it', () => {
+    const build = peacebringerBuild();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    build.pools = [{ id: 'sorcery', name: 'Sorcery',
+      powers: poolPowers('sorcery', 'Mystic_Flight', 'Translocation') } as any];
+    const modes = buildFormModes(build);
+    expect(modes, 'still exactly Nova and Dwarf').toHaveLength(2);
+    expect(modes).not.toContain('MysticFlightOn');
   });
 
   it('human form shows the human attacks and none of the form attacks', () => {

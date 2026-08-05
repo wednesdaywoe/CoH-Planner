@@ -237,6 +237,12 @@ export function effectiveRecharge(
   return p.baseRecharge / denom;
 }
 
+/** The alternate form an already-scheduled cast uses, if any. */
+export function activationForm(powers: ChainPower[], act: Activation): ChainForm | undefined {
+  if (!act.formId) return undefined;
+  return powers[act.pi]?.forms?.find((f) => f.id === act.formId);
+}
+
 /** Per-cast effective stats: the activation's chosen form, else the base power.
  *  Both shapes carry cast/damage/endCost/dot, so callers read uniformly.
  *  Recharge is NOT form-specific — every form shares the power's one cooldown
@@ -246,38 +252,72 @@ export function effectiveStats(
   act: Activation,
 ): { cast: number; damage: number; endCost: number; dot?: ChainDoT | null } {
   const p = powers[act.pi];
-  if (act.formId) {
-    const f = p.forms?.find((x) => x.id === act.formId);
-    if (f) return { cast: f.cast, damage: f.damage, endCost: f.endCost, dot: f.dot };
-  }
+  const f = activationForm(powers, act);
+  if (f) return { cast: f.cast, damage: f.damage, endCost: f.endCost, dot: f.dot };
   return { cast: p.cast, damage: p.damage, endCost: p.endCost, dot: p.dot };
 }
 
 /** Per-cast nominal damage (direct hit + expected DoT damage, weighting each
  *  tick by its apply chance so cancel-on-miss / chance-gated DoTs match the
- *  in-game average). */
-function nominalDamage(p: ChainPower): number {
+ *  in-game average). Takes the damage/DoT pair rather than a whole ChainPower so
+ *  a {@link ChainForm} — which carries its own reduced damage and its own DoT —
+ *  can be measured on exactly the same footing as the base power. */
+function nominalDamage(p: { damage: number; dot?: ChainDoT | null }): number {
   if (!p.dot) return p.damage;
   let dotTotal = 0;
   for (let t = 1; t <= p.dot.ticks; t++) dotTotal += p.dot.perTick * chainDotTickProbability(p.dot, t);
   return p.damage + dotTotal;
 }
 
-/** The ranking value for a power under the chosen metric. dps needs the global
- *  recharge (so the sustained number tracks the what-if slider). */
+/**
+ * The ranking value for a power under the chosen metric. dps needs the global
+ * recharge (so the sustained number tracks the what-if slider).
+ *
+ * `form` is the cast form being measured — pass the form a cast will actually
+ * fire in and the number describes THAT cast, omit it for the base form. A
+ * snipe's palette chip used to be stuck on the base form forever: with the
+ * default 'damage' metric a quick Blazing Bolt read 5.03 where the cast delivers
+ * 2.81 (1.79× overstated), and Assassin's Strike read its 1.19s mid-combat base
+ * where the opener actually plays the 3.17s from-Hide form for ~3.17× the damage.
+ *
+ * Recharge stays keyed on the POWER, never the form — see {@link effectiveStats}:
+ * every form shares one cooldown lane, so only the cast time varies in the dps
+ * denominator.
+ */
 export function powerMetricValue(
   p: ChainPower,
   metric: PowerMetric,
   globalRechargePct: number,
   bounds: RechargeBounds,
+  form?: ChainForm | null,
 ): number {
-  const dmg = nominalDamage(p);
-  if (metric === 'dpa') return p.cast > 0 ? dmg / p.cast : 0;
+  const dmg = nominalDamage(form ?? p);
+  const cast = form?.cast ?? p.cast;
+  if (metric === 'dpa') return cast > 0 ? dmg / cast : 0;
   if (metric === 'dps') {
-    const t = p.cast + effectiveRecharge(p, globalRechargePct, bounds);
+    const t = cast + effectiveRecharge(p, globalRechargePct, bounds);
     return t > 0 ? dmg / t : 0;
   }
   return dmg; // 'damage'
+}
+
+/** The largest value any form of `p` can reach under the metric — base included.
+ *  This is the reference the palette/timeline normalise their colour ramp
+ *  against: it spans every form, so the ramp's top end does NOT move when a
+ *  toggle flips a power into a different form. Only the chips whose form
+ *  actually changed re-tint, and `value / metricCeiling` is always ≤ 1. */
+export function powerMetricCeiling(
+  p: ChainPower,
+  metric: PowerMetric,
+  globalRechargePct: number,
+  bounds: RechargeBounds,
+): number {
+  let best = powerMetricValue(p, metric, globalRechargePct, bounds);
+  for (const f of p.forms ?? []) {
+    const v = powerMetricValue(p, metric, globalRechargePct, bounds, f);
+    if (v > best) best = v;
+  }
+  return best;
 }
 
 function overlapsAny(activations: Activation[], start: number, end: number): boolean {
@@ -295,6 +335,13 @@ function overlapsAny(activations: Activation[], start: number, end: number): boo
  * Recharge starts when a cast *finishes*, not when it begins (CoH mechanic), so
  * a prior cast at [start, end] makes the power ready again at `end + effRech` —
  * its solo repeat period is cast + recharge.
+ *
+ * `cast` is the animation length to RESERVE; omit it for the power's base form.
+ * It must be the length the cast will actually play, not `p.cast`: Assassin's
+ * Strike's from-Hide form animates for 3.168s against a 1.188s mid-combat base,
+ * so reserving the base let the packer drop it into a shorter recharge gap that
+ * its real animation then overran — two casts animating at once, which the whole
+ * module is built on being impossible.
  */
 export function findSlot(
   powers: ChainPower[],
@@ -302,15 +349,17 @@ export function findSlot(
   pi: number,
   globalRechargePct: number,
   bounds: RechargeBounds,
+  cast?: number,
 ): number {
   const p = powers[pi];
+  const reserve = cast ?? p.cast;
   const effRech = effectiveRecharge(p, globalRechargePct, bounds);
   const mine = activations.filter((a) => a.pi === pi);
   const laneReadyAt = mine.length > 0 ? Math.max(...mine.map((a) => a.end + effRech)) : 0;
 
   let candidateStart = laneReadyAt;
   for (let iter = 0; iter < 500; iter++) {
-    const candidateEnd = candidateStart + p.cast;
+    const candidateEnd = candidateStart + reserve;
     if (!overlapsAny(activations, candidateStart, candidateEnd)) return candidateStart;
     const blocker = activations
       .filter((a) => a.start < candidateEnd && a.end > candidateStart)
@@ -361,6 +410,169 @@ export interface FormContext {
   forceFastSnipe?: boolean;
 }
 
+/** Everything {@link displayForm} needs beyond the build-global {@link FormContext}:
+ *  the rotation state around one cast. All optional — a caller that knows none of
+ *  it (a bare "what does this power do on its own") still gets a correct answer
+ *  for the position-independent rules. */
+export interface FormResolveContext extends FormContext {
+  /** Consumable charges banked by earlier picks (Total Focus → `energy_focus`).
+   *  Read only — {@link displayForm} is pure; the caller spends the charge. */
+  charges?: Record<string, number>;
+  /** The power cast immediately before this one in PICK order; null = this cast
+   *  opens the rotation. Drives the from-Hide rule. `undefined` is NOT null:
+   *  leave it out and the opener case simply doesn't apply. */
+  prevPi?: number | null;
+  /** Where this cast lands on the timeline. Only the fast-snipe ToHit-window
+   *  rule reads it; omit and that rule is skipped (the other two are positional-
+   *  independent and still resolve). */
+  at?: number;
+  /** Casts already scheduled — the ToHit-buff windows `at` is tested against. */
+  activations?: Activation[];
+}
+
+/**
+ * The alternate form a cast of `powers[pi]` fires in, or undefined for the base
+ * form. THE single form-selection predicate: the scheduler resolves each cast
+ * through it and the palette previews the next pick through it, so what a chip
+ * advertises and what the timeline schedules cannot drift apart.
+ *
+ * Pure: a `charge`-triggered form does NOT spend its charge here (the caller
+ * does, once), so the same call can be made twice for one cast without
+ * double-spending.
+ *
+ * All three trigger kinds resolve, not just the snipe — `charge` (Energy
+ * Transfer's 1.19s cast against a 2.90s base) and `hidden` (Assassin's Strike's
+ * 3.17s from-Hide form at ~3.17× the damage) are the two LARGEST divergences
+ * between a power's base numbers and what it actually does in a chain.
+ */
+export function displayForm(
+  powers: ChainPower[],
+  pi: number,
+  ctx: FormResolveContext = {},
+): ChainForm | undefined {
+  const p = powers[pi];
+  if (!p) return undefined;
+  // First satisfiable form wins, in declaration order.
+  for (const f of p.forms ?? []) {
+    if (f.trigger.type === 'charge' && (ctx.charges?.[f.trigger.resource] ?? 0) > 0) return f;
+    if (f.trigger.type === 'tohit') {
+      // Fast snipe: the user forced it on, OR permanent ToHit meets the
+      // threshold, OR this cast lands inside an earlier ToHit-buff window
+      // (Build Up / Aim) on the timeline.
+      const permanent =
+        !!ctx.forceFastSnipe || (ctx.permanentToHit ?? 0) >= f.trigger.threshold;
+      const inWindow =
+        !permanent &&
+        ctx.at != null &&
+        (ctx.activations ?? []).some((a) => {
+          const w = powers[a.pi]?.tohitWindow;
+          return w != null && ctx.at! >= a.start - EPS && ctx.at! <= a.start + w + EPS;
+        });
+      if (permanent || inWindow) return f;
+    }
+    if (f.trigger.type === 'hidden') {
+      // Assassin's Strike from-Hide: legal only as the rotation opener or
+      // immediately after a Placate (which re-Hides you). Anywhere else AS
+      // uses its fast mid-combat base form.
+      const isOpener = ctx.prevPi === null;
+      const afterPlacate = ctx.prevPi != null && powers[ctx.prevPi]?.grants === 'hidden';
+      if (isOpener || afterPlacate) return f;
+    }
+  }
+  return undefined;
+}
+
+/**
+ * The rotation state a NEXT pick would see — the charge ledger banked by the
+ * sequence so far and the power that would immediately precede it. A palette
+ * chip is always the next pick, so this is what it resolves its form against:
+ * tap Total Focus and Energy Transfer's chip becomes its 1.19s fast cast,
+ * because tapping it next is exactly what would spend the charge.
+ *
+ * Derived from the SEQUENCE (pick order), matching {@link replayChain} — not
+ * from the activations, whose time order can differ.
+ *
+ * Replaying the ledger has to resolve each earlier pick exactly as the scheduler
+ * did, or the two disagree about whether a charge was spent. `activations`
+ * supplies each pick's settled start (matched by `seq`) and the casts visible to
+ * it at the time, so the walk reproduces replayChain's per-pick answer rather
+ * than an approximation of it.
+ */
+export function nextPickContext(
+  powers: ChainPower[],
+  sequence: number[],
+  activations: Activation[] = [],
+  formCtx: FormContext = {},
+): FormResolveContext {
+  const charges: Record<string, number> = {};
+  let prevPi: number | null = null;
+  sequence.forEach((pi, seq) => {
+    if (pi < 0 || pi >= powers.length) return;
+    const f = displayForm(powers, pi, {
+      ...formCtx,
+      charges,
+      prevPi,
+      at: activations.find((a) => a.seq === seq)?.start,
+      // Only the picks BEFORE this one were on the timeline when the scheduler
+      // resolved it — pick order, not time order, so a later pick that gap-fills
+      // into an earlier slot must not lend this one its ToHit window.
+      activations: activations.filter((a) => a.seq !== undefined && a.seq < seq),
+    });
+    if (f?.trigger.type === 'charge') charges[f.trigger.resource] -= 1;
+    const grants = powers[pi].grants;
+    if (grants) charges[grants] = (charges[grants] ?? 0) + 1;
+    prevPi = pi;
+  });
+  return { ...formCtx, charges, prevPi, activations };
+}
+
+/**
+ * The animation length {@link findSlot} must reserve for a pick of `powers[pi]`.
+ *
+ * Form resolution and slot-finding are mutually dependent: the reservation has
+ * to cover the animation the cast will actually play, but the fast-snipe
+ * ToHit-window rule can only be evaluated once findSlot has produced a start.
+ * Break the cycle by reserving the longest cast still reachable — the form
+ * resolved without a position, widened by any `tohit` form the settled start
+ * might yet select. Never short (so the one-animation-at-a-time invariant
+ * holds), and exact whenever position cannot change the answer.
+ */
+function reservedCast(powers: ChainPower[], pi: number, ctx: FormResolveContext): number {
+  const p = powers[pi];
+  let cast = displayForm(powers, pi, ctx)?.cast ?? p.cast;
+  for (const f of p.forms ?? []) {
+    if (f.trigger.type === 'tohit' && f.cast > cast) cast = f.cast;
+  }
+  return cast;
+}
+
+/**
+ * The form a palette chip must advertise for `powers[pi]` — the form tapping it
+ * next would actually schedule. THE entry point for display code; prefer it to
+ * assembling a {@link FormResolveContext} by hand, because the fast-snipe
+ * ToHit-window rule needs `at` (where findSlot would drop the pick) and a
+ * caller that omits it silently falls back to the base form — the same silent
+ * degradation this whole change exists to remove.
+ */
+export function nextPickForm(
+  powers: ChainPower[],
+  sequence: number[],
+  activations: Activation[],
+  pi: number,
+  globalRechargePct: number,
+  bounds: RechargeBounds,
+  formCtx: FormContext = {},
+): ChainForm | undefined {
+  if (pi < 0 || pi >= powers.length) return undefined;
+  const ctx = nextPickContext(powers, sequence, activations, formCtx);
+  // Same slot the scheduler would choose, reserved the same way, so `at` is the
+  // real landing time rather than an approximation of it.
+  const at = findSlot(
+    powers, activations, pi, globalRechargePct, bounds, reservedCast(powers, pi, ctx),
+  );
+  return displayForm(powers, pi, { ...ctx, at });
+}
+
 export function replayChain(
   powers: ChainPower[],
   sequence: number[],
@@ -380,50 +592,18 @@ export function replayChain(
   sequence.forEach((pi, seq) => {
     if (pi < 0 || pi >= powers.length) return;
     const p = powers[pi];
-    const start = findSlot(powers, acts, pi, globalRechargePct, bounds);
-    // Auto-pick the first alternate form whose trigger is satisfiable now and
-    // consume what it requires.
-    let formId: string | undefined;
-    let cast = p.cast;
-    for (const f of p.forms ?? []) {
-      if (f.trigger.type === 'charge' && (charges[f.trigger.resource] ?? 0) > 0) {
-        charges[f.trigger.resource] -= 1;
-        formId = f.id;
-        cast = f.cast;
-        break;
-      }
-      if (f.trigger.type === 'tohit') {
-        // Fast snipe: the user forced it on, OR permanent ToHit meets the
-        // threshold, OR this cast lands inside an earlier ToHit-buff window
-        // (Build Up / Aim) on the timeline.
-        const permanent =
-          !!formCtx.forceFastSnipe || (formCtx.permanentToHit ?? 0) >= f.trigger.threshold;
-        const inWindow =
-          !permanent &&
-          acts.some((a) => {
-            const w = powers[a.pi].tohitWindow;
-            return w != null && start >= a.start - EPS && start <= a.start + w + EPS;
-          });
-        if (permanent || inWindow) {
-          formId = f.id;
-          cast = f.cast;
-          break;
-        }
-      }
-      if (f.trigger.type === 'hidden') {
-        // Assassin's Strike from-Hide: legal only as the rotation opener or
-        // immediately after a Placate (which re-Hides you). Anywhere else AS
-        // uses its fast mid-combat base form.
-        const isOpener = prevPi === null;
-        const afterPlacate = prevPi !== null && powers[prevPi].grants === 'hidden';
-        if (isOpener || afterPlacate) {
-          formId = f.id;
-          cast = f.cast;
-          break;
-        }
-      }
-    }
-    acts.push({ pi, start, end: start + cast, seq, formId });
+    // Resolve BEFORE scheduling: findSlot has to reserve this cast's real
+    // animation (see reservedCast), then the settled start feeds the one rule
+    // that needs a position.
+    const base: FormResolveContext = { ...formCtx, charges, prevPi, activations: acts };
+    const start = findSlot(
+      powers, acts, pi, globalRechargePct, bounds, reservedCast(powers, pi, base),
+    );
+    const form = displayForm(powers, pi, { ...base, at: start });
+    // displayForm is pure, so the charge a `charge` form rides on is spent here.
+    if (form?.trigger.type === 'charge') charges[form.trigger.resource] -= 1;
+
+    acts.push({ pi, start, end: start + (form?.cast ?? p.cast), seq, formId: form?.id });
     if (p.grants) charges[p.grants] = (charges[p.grants] ?? 0) + 1;
     acts.sort((a, b) => a.start - b.start);
     prevPi = pi;
@@ -584,31 +764,51 @@ export function computeChain(
   let totalDamage = 0;
   let maxDamage = 0;
   let endPerCycle = 0;
-  // Times each power is cast this loop — drives the compactness utilization.
-  const castCount = new Map<number, number>();
+  // Every cast of each power this loop — drives the compactness utilization.
+  // The casts themselves, not just a count, because two casts of one power can
+  // run different forms (a from-Hide Assassin's Strike occupies its lane for
+  // 3.17s and hits ~3.17× as hard as the mid-combat base beside it).
+  const castsByPi = new Map<number, Activation[]>();
   for (const a of activations) {
     const d = activationDamage(powers, a, cycleSec);
     totalDamage += d;
     if (d > maxDamage) maxDamage = d;
     endPerCycle += effectiveStats(powers, a).endCost;
-    castCount.set(a.pi, (castCount.get(a.pi) ?? 0) + 1);
+    const mine = castsByPi.get(a.pi);
+    if (mine) mine.push(a);
+    else castsByPi.set(a.pi, [a]);
   }
 
   // Compactness: metric-weighted recharge utilization. A power's fastest solo
-  // repeat period is cast + effRech (recharge starts at cast-END), so in a
-  // cycleSec loop it could fire at most cycleSec / (cast + effRech) times. For
-  // each power, u = min(1, timesCast × (cast + effRech) / cycleSec) — 1.0 means
-  // it fires exactly on cooldown every loop; < 1 means it sits ready-but-unused
-  // while other animations play. Weighting by the chosen power metric (damage /
-  // DPA / DPS) keeps weak fillers and zero-value utility from skewing it, and
-  // means slack on a high-value power (recoverable DPS) counts most.
+  // repeat period is cast + effRech (recharge starts at cast-END), so the lane
+  // time its casts claim in the loop is Σ (thatCast + effRech). For each power,
+  // u = min(1, laneTime / cycleSec) — 1.0 means it fires exactly on cooldown
+  // every loop; < 1 means it sits ready-but-unused while other animations play.
+  // Weighting by the chosen power metric (damage / DPA / DPS) keeps weak fillers
+  // and zero-value utility from skewing it, and means slack on a high-value
+  // power (recoverable DPS) counts most.
+  //
+  // Both halves read the cast's FORM, not the base power: summing per-cast
+  // collapses to the old `timesCast × (cast + effRech)` whenever every cast
+  // shares one form, and stops a from-Hide opener being scored against the
+  // 1.19s mid-combat animation it did not play (which understated its period,
+  // and so overstated how compact the loop was).
   let wSum = 0;
   let wuSum = 0;
-  for (const [pi, count] of castCount) {
-    const w = powerMetricValue(powers[pi], metric, globalRechargePct, bounds);
+  for (const [pi, casts] of castsByPi) {
+    const p = powers[pi];
+    const effRech = effectiveRecharge(p, globalRechargePct, bounds);
+    let w = 0;
+    let laneTime = 0;
+    for (const a of casts) {
+      const f = activationForm(powers, a);
+      // Mean over this power's casts: a power that fires big once and small
+      // twice is weighted as what it averaged, not as either extreme.
+      w += powerMetricValue(p, metric, globalRechargePct, bounds, f) / casts.length;
+      laneTime += (f?.cast ?? p.cast) + effRech;
+    }
     if (w <= 0) continue;
-    const period = powers[pi].cast + effectiveRecharge(powers[pi], globalRechargePct, bounds);
-    const u = cycleSec > 0 && period > 0 ? Math.min(1, (count * period) / cycleSec) : 1;
+    const u = cycleSec > 0 && laneTime > 0 ? Math.min(1, laneTime / cycleSec) : 1;
     wSum += w;
     wuSum += w * u;
   }

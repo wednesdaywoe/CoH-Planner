@@ -3,6 +3,12 @@ import {
   replayChain,
   computeChain,
   effectiveRecharge,
+  powerMetricValue,
+  powerMetricCeiling,
+  displayForm,
+  nextPickContext,
+  nextPickForm,
+  type ChainForm,
   type ChainPower,
   type RechargeBounds,
 } from './attack-chain';
@@ -442,5 +448,265 @@ describe('cast forms (hidden trigger — Assassin\'s Strike)', () => {
   it('does NOT fire from-Hide when an attack intervenes after Placate', () => {
     const acts = replayChain([as, placate, filler], [1, 2, 0], 0, BOUNDS); // Placate, filler, AS
     expect(acts.find((a) => a.pi === 0)!.formId).toBeUndefined();
+  });
+
+  it('reserves the from-Hide animation, so a gap-filled cast cannot overlap it', () => {
+    // The packer reserved the BASE cast for the power it was placing
+    // (`candidateStart + p.cast`) while replayChain wrote the FORM's end. For a
+    // fast form that is merely conservative, but from-Hide runs LONGER than the
+    // mid-combat base (3.0s vs 1.0s here, 3.168s vs 1.188s in game), so the
+    // reservation was too SHORT: findSlot happily dropped AS into a 1s recharge
+    // gap that its 3s animation then overran, breaking the one-animation-at-a-
+    // time invariant this whole module is built on.
+    //
+    // F recharges slowly enough to leave a hole at [2,4) with a cast sitting at
+    // [4,5) behind it. AS is picked right after Placate, so it fires from-Hide.
+    const f = mk({ id: 'F', cast: 1, baseRecharge: 3, damage: 10 });
+    const powers = [as, placate, f];
+    const acts = replayChain(powers, [2, 2, 1, 0], 0, BOUNDS); // F, F, Placate, AS
+
+    const asAct = acts.find((a) => a.pi === 0)!;
+    expect(asAct.formId, 'AS still fires from-Hide after Placate').toBe('hidden');
+    expect(asAct.end - asAct.start, 'and animates for the from-Hide 3.0s').toBeCloseTo(3.0, 5);
+
+    // The invariant: no two casts animate at once.
+    const sorted = [...acts].sort((a, b) => a.start - b.start);
+    for (let i = 1; i < sorted.length; i++) {
+      expect(
+        sorted[i].start,
+        `cast ${i} (pi ${sorted[i].pi}) starts before cast ${i - 1} (pi ${sorted[i - 1].pi}) finishes`,
+      ).toBeGreaterThanOrEqual(sorted[i - 1].end - 1e-9);
+    }
+  });
+});
+
+/**
+ * What a palette chip advertises must be what a tap actually schedules.
+ *
+ * Reported as "hovering a quick snipe shows the slow snipe details": the chip
+ * read the ChainPower's FLAT fields, which for every power carrying an alternate
+ * form are permanently the form the chain will NOT fire — the slow charged
+ * snipe, the slow Energy Transfer, the mid-combat Assassin's Strike. All three
+ * trigger kinds were affected, and the two biggest errors were not the snipe.
+ *
+ * The casts and multipliers below are the shipped Homecoming values, not
+ * invented ones: Blazing Bolt castTime 3.67 / quickSnipe 1.67 / recharge 12,
+ * Energy Transfer castTime 2.67 with its redirect's 1.0, Assassin's Strike
+ * (Energy Melee) midCombatCast 1 / castTime 3 / fromHideBonus 2.173913043478261.
+ * `cast` is ArcanaTime, (ceil(t / 0.132) + 1) × 0.132.
+ */
+describe('palette numbers follow the form the pick will fire in', () => {
+  const metrics = (p: ChainPower, form?: ChainForm) => ({
+    damage: powerMetricValue(p, 'damage', 0, BOUNDS, form),
+    dpa: powerMetricValue(p, 'dpa', 0, BOUNDS, form),
+    dps: powerMetricValue(p, 'dps', 0, BOUNDS, form),
+  });
+
+  describe("'tohit' — fast snipe (Blazing Bolt)", () => {
+    // 4-tick cancel-on-miss DoT at 80%/tick rides BOTH forms unchanged, so it is
+    // 0.225 × (0.8 + 0.64 + 0.512 + 0.4096) = 0.53136 either way.
+    const dot = { ticks: 4, period: 1, perTick: 0.225, chance: 0.8, cancelOnMiss: true };
+    const fast: ChainForm = {
+      id: 'fast', label: 'Fast Snipe', kind: 'fast',
+      cast: 1.848, damage: 2.28, endCost: 1, dot,
+      trigger: { type: 'tohit', threshold: 22 },
+    };
+    const bolt = mk({
+      id: 'BB', name: 'Blazing Bolt', cast: 3.828, baseRecharge: 12, damage: 4.5, dot,
+      forms: [fast],
+    });
+
+    it('shows the slow charged cast when nothing makes it quick', () => {
+      expect(displayForm([bolt], 0, {})).toBeUndefined();
+      const m = metrics(bolt);
+      expect(m.damage).toBeCloseTo(5.03136, 5);
+      expect(m.dpa).toBeCloseTo(1.314357, 5);
+      expect(m.dps).toBeCloseTo(0.317877, 5);
+    });
+
+    it('shows the quick cast once Combat Mode / ToHit makes it quick', () => {
+      // Both routes to the fast form must land on the same numbers.
+      for (const ctx of [{ forceFastSnipe: true }, { permanentToHit: 24 }]) {
+        expect(displayForm([bolt], 0, ctx)).toBe(fast);
+      }
+      const m = metrics(bolt, fast);
+      expect(m.damage).toBeCloseTo(2.81136, 5);
+      expect(m.dpa).toBeCloseTo(1.521299, 5);
+      expect(m.dps).toBeCloseTo(0.203016, 5);
+    });
+
+    it('the error is metric-DEPENDENT — the default metric overstates by 1.79x', () => {
+      // Worth pinning because it is counter-intuitive and drove a wrong first
+      // diagnosis: a quick snipe casts faster AND hits softer, so the chip
+      // overstated 'damage' and 'dps' while UNDERSTATING 'dpa'.
+      const base = metrics(bolt);
+      const quick = metrics(bolt, fast);
+      expect(base.damage / quick.damage).toBeCloseTo(1.7897, 3); // overstated
+      expect(base.dps / quick.dps).toBeCloseTo(1.5658, 3); // overstated
+      expect(quick.dpa / base.dpa).toBeCloseTo(1.1574, 3); // understated
+    });
+
+    it('recharge is NOT form-specific — only the cast moves the dps denominator', () => {
+      // Both forms share the one 12s cooldown lane, so dps differs by exactly the
+      // cast delta: 5.03136/(3.828+12) vs 2.81136/(1.848+12).
+      expect(metrics(bolt).dps).toBeCloseTo(5.03136 / (3.828 + 12), 9);
+      expect(metrics(bolt, fast).dps).toBeCloseTo(2.81136 / (1.848 + 12), 9);
+    });
+  });
+
+  describe("'charge' — Energy Transfer after Total Focus", () => {
+    const fast: ChainForm = {
+      id: 'fast', label: 'Energy Focus', kind: 'fast',
+      cast: 1.188, damage: 100, endCost: 1, dot: null,
+      trigger: { type: 'charge', resource: 'energy_focus' },
+    };
+    const et = mk({ id: 'ET', name: 'Energy Transfer', cast: 2.904, baseRecharge: 10, damage: 100, forms: [fast] });
+    const tf = mk({ id: 'TF', name: 'Total Focus', cast: 2, baseRecharge: 20, damage: 50, grants: 'energy_focus' });
+    const powers = [tf, et];
+
+    it('a banked Energy Focus in the sequence makes the ET chip its fast cast', () => {
+      // The chip is the NEXT pick, so the ledger comes from the sequence: with
+      // Total Focus already picked, tapping ET is what spends the charge.
+      expect(displayForm(powers, 1, nextPickContext(powers, []))).toBeUndefined();
+      expect(displayForm(powers, 1, nextPickContext(powers, [0]))).toBe(fast);
+      // …and exactly one charge is banked per Total Focus, so a second ET is slow.
+      expect(displayForm(powers, 1, nextPickContext(powers, [0, 1]))).toBeUndefined();
+    });
+
+    it('damage is identical between forms, so the whole error is cast time — 2.44x', () => {
+      expect(metrics(et).damage).toBe(metrics(et, fast).damage);
+      expect(et.cast / fast.cast).toBeCloseTo(2.4444, 4);
+      expect(metrics(et).dpa).toBeCloseTo(34.435262, 5);
+      expect(metrics(et, fast).dpa).toBeCloseTo(84.175084, 5);
+      expect(metrics(et).dps).toBeCloseTo(7.749535, 5);
+      expect(metrics(et, fast).dps).toBeCloseTo(8.938148, 5);
+    });
+  });
+
+  describe("'hidden' — Assassin's Strike from Hide", () => {
+    // The largest error, and the one running the other way: the chip UNDERSTATED.
+    const hidden: ChainForm = {
+      id: 'hidden', label: 'From Hide', kind: 'slow',
+      cast: 3.168, damage: 100 * (1 + 2.173913043478261), endCost: 1, dot: null,
+      trigger: { type: 'hidden' },
+    };
+    const as = mk({ id: 'AS', name: "Assassin's Strike", cast: 1.188, baseRecharge: 15, damage: 100, forms: [hidden] });
+    const placate = mk({ id: 'PLAC', cast: 1, baseRecharge: 20, damage: 0, type: 'utility', grants: 'hidden' });
+    const filler = mk({ id: 'FILL', cast: 1, baseRecharge: 1, damage: 10 });
+    const powers = [as, placate, filler];
+
+    it('the chip is from-Hide as the opener and right after Placate, base otherwise', () => {
+      expect(displayForm(powers, 0, nextPickContext(powers, []))).toBe(hidden); // opener
+      expect(displayForm(powers, 0, nextPickContext(powers, [2, 1]))).toBe(hidden); // post-Placate
+      expect(displayForm(powers, 0, nextPickContext(powers, [2]))).toBeUndefined(); // mid-combat
+      expect(displayForm(powers, 0, nextPickContext(powers, [1, 2]))).toBeUndefined(); // Placate spent
+    });
+
+    it('understated the from-Hide hit by 3.17x on the default metric', () => {
+      expect(metrics(as).damage).toBe(100);
+      expect(metrics(as, hidden).damage).toBeCloseTo(317.391304, 5);
+      expect(metrics(as, hidden).damage / metrics(as).damage).toBeCloseTo(3.173913, 5);
+      // The slower animation eats most of it in DPA but nothing like all of it.
+      expect(metrics(as).dpa).toBeCloseTo(84.175084, 5);
+      expect(metrics(as, hidden).dpa).toBeCloseTo(100.186649, 5);
+      expect(metrics(as).dps).toBeCloseTo(6.177415, 5);
+      expect(metrics(as, hidden).dps).toBeCloseTo(17.469799, 5);
+    });
+  });
+
+  describe('colour-ramp reference', () => {
+    it('spans every form, so a form flip re-tints chips without moving the scale', () => {
+      // maxMetric divides every chip's value. Were it the currently-displayed
+      // value, flipping Combat Mode would move the denominator and re-shade the
+      // WHOLE palette; and an Assassin's Strike showing its 3.17x from-Hide form
+      // against its own base would exceed 1 and drive barFill's lightness
+      // negative. The ceiling is form-invariant and bounds every form.
+      const fast: ChainForm = {
+        id: 'fast', label: 'Fast Snipe', kind: 'fast',
+        cast: 1.848, damage: 2.28, endCost: 1, dot: null,
+        trigger: { type: 'tohit', threshold: 22 },
+      };
+      const hidden: ChainForm = {
+        id: 'hidden', label: 'From Hide', kind: 'slow',
+        cast: 3.168, damage: 317.3913043478261, endCost: 1, dot: null,
+        trigger: { type: 'hidden' },
+      };
+      const bolt = mk({ id: 'BB', cast: 3.828, baseRecharge: 12, damage: 4.5, forms: [fast] });
+      const as = mk({ id: 'AS', cast: 1.188, baseRecharge: 15, damage: 100, forms: [hidden] });
+
+      // Base wins for the snipe (the fast form is the weaker hit); the from-Hide
+      // form wins for AS. Either way the ceiling ≥ every form's value.
+      expect(powerMetricCeiling(bolt, 'damage', 0, BOUNDS)).toBeCloseTo(4.5, 9);
+      expect(powerMetricCeiling(as, 'damage', 0, BOUNDS)).toBeCloseTo(317.391304, 5);
+
+      const ceiling = Math.max(
+        powerMetricCeiling(bolt, 'damage', 0, BOUNDS),
+        powerMetricCeiling(as, 'damage', 0, BOUNDS),
+      );
+      for (const [p, f] of [[bolt, undefined], [bolt, fast], [as, undefined], [as, hidden]] as const) {
+        const rel = powerMetricValue(p, 'damage', 0, BOUNDS, f) / ceiling;
+        expect(rel, 'every form tints inside the ramp').toBeGreaterThanOrEqual(0);
+        expect(rel).toBeLessThanOrEqual(1);
+      }
+      // And it does not move with the toggle that flips the forms.
+      expect(powerMetricCeiling(as, 'dpa', 0, BOUNDS)).toBeCloseTo(100.186649, 5);
+    });
+  });
+
+  it('the scheduler and the palette resolve through the same predicate', () => {
+    // The anti-drift check, and the reason displayForm is shared rather than
+    // duplicated: whatever it says the next pick will fire, appending that pick
+    // to the sequence must actually schedule. If the two ever diverge again, a
+    // chip advertises a cast the chain does not play — which is the whole bug.
+    // All four form-bearing shapes are in one roster so the sweep also covers
+    // the interactions (a charge banked behind a Placate, a snipe picked inside
+    // a Build Up window, a gap-filled from-Hide).
+    const fast: ChainForm = {
+      id: 'fast', label: 'Energy Focus', kind: 'fast',
+      cast: 1.188, damage: 100, endCost: 1, dot: null,
+      trigger: { type: 'charge', resource: 'energy_focus' },
+    };
+    const et = mk({ id: 'ET', cast: 2.904, baseRecharge: 10, damage: 100, forms: [fast] });
+    const tf = mk({ id: 'TF', cast: 2, baseRecharge: 20, damage: 50, grants: 'energy_focus' });
+    const hidden: ChainForm = {
+      id: 'hidden', label: 'From Hide', kind: 'slow',
+      cast: 3.168, damage: 317, endCost: 1, dot: null, trigger: { type: 'hidden' },
+    };
+    const as = mk({ id: 'AS', cast: 1.188, baseRecharge: 15, damage: 100, forms: [hidden] });
+    const placate = mk({ id: 'PLAC', cast: 1, baseRecharge: 20, damage: 0, grants: 'hidden' });
+    const snipeFast: ChainForm = {
+      id: 'fast', label: 'Fast Snipe', kind: 'fast',
+      cast: 1.848, damage: 2.28, endCost: 1, dot: null,
+      trigger: { type: 'tohit', threshold: 22 },
+    };
+    const snipe = mk({ id: 'BB', cast: 3.828, baseRecharge: 12, damage: 4.5, forms: [snipeFast] });
+    // Build Up opens a 10s ToHit window — the one rule that needs a timeline
+    // position, and so the one most able to drift between the two callers.
+    const buildUp = mk({ id: 'BU', cast: 1, baseRecharge: 90, damage: 0, type: 'buff', tohitWindow: 10 });
+    const powers = [tf, et, as, placate, snipe, buildUp];
+
+    const sequences = [
+      [], [0], [0, 1], [2], [3], [1, 3], [0, 1, 3, 2], [3, 2, 0, 1],
+      [5], [5, 4], [4, 5], [0, 5, 3], [5, 0, 1, 3, 2], [3, 2, 5, 4, 0, 1],
+    ];
+    // Both ToHit regimes: below the threshold the window rule is live, above it
+    // the snipe is permanently fast and the window is moot.
+    let checked = 0;
+    for (const formCtx of [{}, { permanentToHit: 24 }, { forceFastSnipe: true }]) {
+      for (const seq of sequences) {
+        const acts = replayChain(powers, seq, 0, BOUNDS, formCtx);
+        for (let pi = 0; pi < powers.length; pi++) {
+          const predicted = nextPickForm(powers, seq, acts, pi, 0, BOUNDS, formCtx);
+          const scheduled = replayChain(powers, [...seq, pi], 0, BOUNDS, formCtx)
+            .find((a) => a.seq === seq.length)!;
+          expect(
+            scheduled.formId,
+            `ctx ${JSON.stringify(formCtx)} seq [${seq}] then pi ${pi} (${powers[pi].id})`,
+          ).toBe(predicted?.id);
+          checked++;
+        }
+      }
+    }
+    expect(checked, 'the sweep must actually run').toBe(3 * sequences.length * powers.length);
   });
 });

@@ -662,6 +662,34 @@ function _tagGroupContext(template, effect) {
   if (template._groupRequires === undefined) template._groupRequires = effect.requires_expression;
 }
 
+/**
+ * Stamp the OWNING power's timing scalars onto templates pulled out of a redirect
+ * target's file, so a `magnitude_expression` reading `activatetime power.base>` /
+ * `rechargetime power.base>` resolves against the power the AttribMod actually lives
+ * on — not the shell that redirected to it.
+ *
+ * The distinction is real and load-bearing: a snipe shell's `activation_time` mirrors
+ * the Quick anim, while its Normal target carries the slow interruptible cast.
+ * `penetrating_ray_normal.json` (activation 3.4, recharge 12.0) evaluates
+ * `activatetime power.base> 0.70 * rechargetime power.base> 0.04 * + 0.40 +` to 3.26 —
+ * confirmed by the same file's non-Expression PvP sibling, a literal scale 3.26 —
+ * whereas the Quick file's 1.67 gives 2.049, and ITS sibling is a literal 2.049.
+ * Reading the shell's number instead would land on neither.
+ *
+ * Same mutate-the-template, first-stamp-wins convention as `_tagGroupContext`: a
+ * template object can be walked by more than one collector, but it only ever belongs
+ * to one power file.
+ */
+function _stampOwnerScalars(templates, ownerJson) {
+  if (!ownerJson) return templates;
+  for (const t of templates) {
+    if (!t) continue;
+    if (t._ownerActivationTime === undefined) t._ownerActivationTime = ownerJson.activation_time;
+    if (t._ownerRechargeTime === undefined) t._ownerRechargeTime = ownerJson.recharge_time;
+  }
+  return templates;
+}
+
 function collectTemplatesDeep(effects, visited = new Set(), depth = 0, parentCombatGated = false) {
   const templates = [];
   const MAX_DEPTH = 3;
@@ -743,9 +771,9 @@ function collectTemplatesDeep(effects, visited = new Set(), depth = 0, parentCom
             if (fs.existsSync(redirectPath)) {
               const redirectJson = JSON.parse(fs.readFileSync(redirectPath, 'utf-8'));
               if (redirectJson.effects && redirectJson.effects.length > 0) {
-                templates.push(...collectTemplatesDeep(
+                templates.push(..._stampOwnerScalars(collectTemplatesDeep(
                   redirectJson.effects, visited, depth + 1, combatGated
-                ));
+                ), redirectJson));
               }
             }
           }
@@ -799,8 +827,10 @@ function extractQuickSnipeData(powerJson) {
   const quickJson = JSON.parse(fs.readFileSync(redirectPath, 'utf-8'));
   if (!quickJson.effects || quickJson.effects.length === 0) return null;
 
-  const templates = collectTemplatesDeep(quickJson.effects, new Set([quickRedirect.name]));
-  const damage = extractDamage(templates);
+  const templates = _stampOwnerScalars(
+    collectTemplatesDeep(quickJson.effects, new Set([quickRedirect.name])), quickJson,
+  );
+  const damage = extractDamage(templates, quickJson);
   if (!damage) return null;
 
   // Only the fields that change between Normal and Quick. Recharge is
@@ -982,6 +1012,10 @@ function extractAssassinStrikeDamage(powerJson) {
   // Shape 2 is gated on the Assassin's Strike name so unrelated inline-kMeter
   // powers (Arachnos/critter attacks) are untouched.
   let sourceEffects = null;
+  // The power these templates belong to, for `power.base>` reads in a
+  // magnitude_expression — the *_Stealth redirect target in shape 1, the power
+  // itself in shape 2.
+  let sourceJson = powerJson;
   const hasKMeterRedirect = Array.isArray(powerJson.redirect) &&
     powerJson.redirect.some(r => (r.condition_expression || '').includes('kMeter'));
   if (hasKMeterRedirect) {
@@ -989,7 +1023,8 @@ function extractAssassinStrikeDamage(powerJson) {
     if (!stealth) return null;
     const stealthPath = resolveRedirectPath(stealth.name);
     if (!fs.existsSync(stealthPath)) return null;
-    sourceEffects = JSON.parse(fs.readFileSync(stealthPath, 'utf-8')).effects;
+    sourceJson = JSON.parse(fs.readFileSync(stealthPath, 'utf-8'));
+    sourceEffects = sourceJson.effects;
   } else if (/^assassins?_/i.test(powerJson.name || '')) {
     sourceEffects = powerJson.effects;
   } else {
@@ -1026,7 +1061,7 @@ function extractAssassinStrikeDamage(powerJson) {
   // (e.g. Sonic Melee) keep the base ungated and surface it via the normal
   // path instead — there the caller already has power.damage, and we only add
   // the from-Hide bonus below.
-  const damage = notHidden.length > 0 ? extractDamage(notHidden) : null;
+  const damage = notHidden.length > 0 ? extractDamage(notHidden, sourceJson) : null;
 
   // Derive the from-Hide bonus from the branches' PvE damage scales:
   //   notHiddenTotal = visible(always) + visible(notHidden)
@@ -1037,7 +1072,7 @@ function extractAssassinStrikeDamage(powerJson) {
   // InherentDamage (the guaranteed Assassination hit) is included. The ratio is
   // enhancement-invariant. PvE tables only.
   const pveDamage = (templates) => {
-    const d = extractDamage(templates) || [];
+    const d = extractDamage(templates, sourceJson) || [];
     return (Array.isArray(d) ? d : [d]).filter((e) => e && !/pvp/i.test(e.table || ''));
   };
   const sumVisible = (d) => d.filter((e) => !/inherentdamage/i.test(e.table || ''))
@@ -1149,7 +1184,9 @@ function collectRedirectTemplates(powerJson) {
   if (!redirectJson.effects || redirectJson.effects.length === 0) return [];
 
   // Collect templates, following Execute_Power references and filtering dead-state conditionals
-  return collectTemplatesDeep(redirectJson.effects, new Set([defaultRedirect.name]));
+  return _stampOwnerScalars(
+    collectTemplatesDeep(redirectJson.effects, new Set([defaultRedirect.name])), redirectJson,
+  );
 }
 
 /**
@@ -1190,7 +1227,7 @@ function collectBaseTemplates(powerJson) {
   // If the mechanical redirect carried no real damage (Remote Bomb's Self/Target
   // detonation is just a scale-0 placeholder + the bomb-pet summon), fall back to
   // the `*_Info` display power the game uses to surface the damage numbers.
-  if (!extractDamage(templates)) {
+  if (!extractDamage(templates, powerJson)) {
     const infoTemplates = collectInfoRedirectTemplates(powerJson);
     if (infoTemplates.length > 0) {
       templates = templates.concat(infoTemplates);
@@ -1248,7 +1285,9 @@ function collectInfoRedirectTemplates(powerJson) {
       if (c.child_effects?.length) c.child_effects = clean(c.child_effects);
       return c;
     });
-  return collectTemplatesDeep(clean(j.effects), new Set([infoRedirect.name]));
+  return _stampOwnerScalars(
+    collectTemplatesDeep(clean(j.effects), new Set([infoRedirect.name])), j,
+  );
 }
 
 // ============================================
@@ -1466,7 +1505,9 @@ function collectTemplatesWithChance(effects, visited = new Set(), depth = 0, cum
           visited.add(pName);
           try {
             const j = JSON.parse(fs.readFileSync(p, 'utf-8'));
-            out.push(...collectTemplatesWithChance(j.effects, visited, depth + 1, c, childGated));
+            const followed = collectTemplatesWithChance(j.effects, visited, depth + 1, c, childGated);
+            _stampOwnerScalars(followed.map((r) => r.template), j);
+            out.push(...followed);
           } catch { /* unreadable redirect — skip */ }
         }
       } else {
@@ -1516,7 +1557,7 @@ function resolveSummonRedirects(redirectNames) {
     // leaves (a chance:0 mode group like Burn's FieryEmbrace bonus) stay in the
     // array — the armor Burns deliberately surface the FE-active variant
     // (0.14 + 0.063); the gating only governs the conditionalDamage flag below.
-    const dmg = extractDamage(templates);
+    const dmg = extractDamage(templates, json);
     const dmgArr = dmg ? (Array.isArray(dmg) ? dmg : [dmg]) : [];
     // Dedup identical (type, scale, table) hits and drop PvP damage tables.
     // The duplicate is the storm "powered-up" copy: redirects carry the base
@@ -1579,7 +1620,7 @@ function resolveSummonRedirects(redirectNames) {
       let maxGuaranteedChance = 0, hasGuaranteed = false, hasGated = false;
       for (const { template, chance, gated } of collected) {
         const a = template.attribs && template.attribs[0] ? template.attribs[0].toLowerCase() : null;
-        if (!(a && isDamageTypeAttrib(a) && extractDamage([template]))) continue;
+        if (!(a && isDamageTypeAttrib(a) && extractDamage([template], json))) continue;
         if (gated) { hasGated = true; continue; }
         hasGuaranteed = true;
         if (chance > maxGuaranteedChance) maxGuaranteedChance = chance;
@@ -1621,7 +1662,7 @@ function resolveSummonRedirects(redirectNames) {
 
     // Damage escalation (the Strong lightning). Mirror the main damage dedup:
     // Current/Absolute aspects, drop PvP tables (inherent is runtime-skipped).
-    const vDmg = extractDamage(vCollected.map(c => c.template));
+    const vDmg = extractDamage(vCollected.map(c => c.template), vjson);
     const vDmgArr = vDmg ? (Array.isArray(vDmg) ? vDmg : [vDmg]) : [];
     const vSeenDmg = new Set();
     const vDamage = [];
@@ -3073,7 +3114,7 @@ function extractConditionalEffects(rawEffects, powerJson) {
 
   const out = [];
   for (const [id, group] of groups) {
-    const damage = extractDamage(group.templates);
+    const damage = extractDamage(group.templates, powerJson);
     const effects = extractEffects(group.templates, powerJson.name);
 
     // Per-foe (AoE) scaling for this gated group — the same Stack/Continuous →
@@ -3402,7 +3443,7 @@ function _buildGrantedDamageProc(pName) {
   };
   walk(json.effects);
 
-  const dmg = extractDamage(templates);
+  const dmg = extractDamage(templates, json);
   // Real attack damage only — extractDamage also returns `Heal` entries (a
   // granted heal-over-time, e.g. Bio's Defensive_Adaptation_Proc), which is not
   // a damage proc. Keep the elemental/Special types; heals belong elsewhere.
@@ -3788,7 +3829,297 @@ function _filterFieryEmbraceBonus(damage, powerJson) {
   return filtered.length === 1 ? filtered[0] : filtered;
 }
 
-function extractDamage(templates) {
+// ============================================
+// magnitude_expression — the CoH stack-machine evaluator
+// ============================================
+/*
+ * A template's `magnitude_expression` is an RPN program the game runs to compute
+ * that AttribMod's magnitude. `scale` alone is NOT the answer when one is present:
+ * the program is free to divide, split or ramp it, and HC uses that freely.
+ *
+ * The canonical case is a fast ("Quick") snipe. `proton_volley_quick.json` stores
+ * the whole SHOT in `scale` (2.28) and puts the per-tick divisor in the program:
+ *
+ *   cur.kToHit source> 0.75 - 0.22 / -1.0 1.0 minmax 0.210526316 * 1 + @StdResult * 4 /
+ *   └──────────────── the ToHit ramp ─────────────────────────────┘ └ StdResult ┘ └ ÷4 ┘
+ *
+ * The template is a 4-tick DoT (1.6s / 0.5s), and the display multiplies per-tick ×
+ * ticks — so reading `scale` verbatim reported exactly 4× the real damage.
+ *
+ * WHAT THIS EVALUATOR DELIBERATELY DOES NOT DO: evaluate the ToHit ramp. It is
+ * treated as an OPAQUE FACTOR OF 1 and dropped where it multiplies `@StdResult`.
+ * The three ramp families store their scale at DIFFERENT reference points —
+ * blaster/corruptor/defender (`0.210526316 * 1 +`) and epic (`0.314285714 * 1 +`)
+ * evaluate to 1.0 at neutral ToHit (kToHit 0.75), but dominator (`0.25 * .75 +`)
+ * evaluates to 0.75 there. Computing the ramp numerically would silently move all
+ * of the dominator and epic quick snipes, which are correct today. Whether snipe
+ * damage should respond to +ToHit at all is a separate product question; folding
+ * only the statically-constant factor leaves it open.
+ *
+ * ALL-OR-NOTHING, over the WHOLE program. Folding a "trailing" fragment is not a
+ * cheaper version of this — it is wrong three ways: the substring after
+ * `@StdResult` starts with an operator, not a number; `@StdResult * 10 /
+ * areafactor power.base> / .15 *` would fold the `10 /` and then hit a read it
+ * cannot resolve (a 10× UNDER-read); and `activatetime power.base> 0.70 *
+ * rechargetime power.base> 0.04 * + 0.40 + @StdResult * 3 /` carries its whole
+ * magnitude in the PREFIX (penetrating_ray: 0.7×3.4 + 0.04×12 + 0.40 = 3.26, which
+ * the same file's non-Expression PvP sibling confirms as a literal 3.26 scale).
+ *
+ * BAILING IS THE DEFAULT. Any token this does not fully understand — `distance`,
+ * `areafactor power.base>`, `Pool.Fighting.Kick source.ownPowerNum?`, `@ToHit`,
+ * `kFocusFire_* target.mode?` — aborts the whole evaluation and leaves `scale`
+ * exactly as the binary stored it.
+ */
+
+/**
+ * Operand algebra. Two kinds only:
+ *
+ *   PROD   — a constant `k` times an unordered multiset of opaque SYMBOLS
+ *            (`std` = @StdResult, `maxhp.source`/`maxhp.target`, `strength`).
+ *            No symbols ⇒ a plain number.
+ *   OPAQUE — a value we deliberately refuse to compute (the ToHit ramp). It
+ *            survives arithmetic with plain numbers and is ANNIHILATED (treated
+ *            as 1) when multiplied by a symbolic value.
+ *
+ * Callers assert on the symbol multiset, so an expression that resolves to the
+ * wrong shape (`Max.kHitPoints` where damage expected `@StdResult`) is rejected
+ * rather than silently mis-read.
+ */
+const _exprProd = (k, syms = []) => ({ kind: 'prod', k, syms });
+const _EXPR_OPAQUE = Object.freeze({ kind: 'opaque' });
+
+/** Numeric literal: `2.28`, `.75`, `-1.0`. Requires a digit, so bare `-` stays an operator. */
+const _EXPR_NUMBER_RE = /^-?(?:\d+(?:\.\d*)?|\.\d+)$/;
+
+/**
+ * Reads that resolve to a SYMBOL — a runtime quantity we carry through the algebra
+ * unevaluated and hand back to the caller to interpret. Keys are lowercased and may
+ * be one or two whitespace-separated tokens (`<name> <accessor>`); two-token keys
+ * are matched first.
+ */
+const _EXPR_SYMBOL_READS = new Map([
+  ['@stdresult', 'std'],                       // table[level] × effectiveness × scale × strength
+  ['@strength', 'strength'],                   // the caster's matching enhancement/buff strength
+  ['max.khitpoints source>', 'maxhp.source'],  // the CASTER's max HP
+  ['max.khitpoints target>', 'maxhp.target'],  // the TARGET's max HP — a different quantity
+]);
+
+/**
+ * Reads that resolve to OPAQUE. Only the caster's current ToHit: it is the ramp input
+ * on every fast-snipe redirect, and neutralizing it is this evaluator's whole point.
+ * Nothing else earns opacity — an unlisted read bails.
+ */
+const _EXPR_OPAQUE_READS = new Set(['cur.ktohit source>']);
+
+/**
+ * Reads that resolve to a SCALAR off the owning power. `power.base>` means the power
+ * the AttribMod lives on, at base (unenhanced) values — for a redirect that is the
+ * redirect TARGET's file, not the shell's, which is why the scalars are stamped per
+ * template as the collectors follow a redirect (see `_stampOwnerScalars`).
+ *
+ * `areafactor power.base>` and `activateperiod power.base>` are deliberately ABSENT.
+ * The converter has no verified area-factor derivation (`getPPMAreaFactor` in
+ * proc-data.ts is the PPM denominator, which has not been proven to be the same
+ * quantity the expression VM reads), and an unverified stand-in here would silently
+ * rescale real damage. Absent ⇒ bail ⇒ `scale` untouched.
+ *
+ * A NON-POSITIVE scalar is UNRESOLVED, not zero — see `_exprPowerScalar`.
+ */
+const _EXPR_POWER_SCALARS = new Map([
+  ['activatetime power.base>', 'activationTime'],
+  ['rechargetime power.base>', 'rechargeTime'],
+]);
+
+/**
+ * Resolve a `power.base>` scalar, or null to BAIL.
+ *
+ * A ZERO (or missing) activation/recharge time is ABSENCE, not the number zero.
+ * Every damage-proc and granted-power shell in the export declares
+ * `activation_time: 0.0, recharge_time: 0.0` — Molten Embrace, Envenomed Blades,
+ * Shinobi, the Bio adaptation procs, the Hybrid Assault double-hits — because their
+ * `power.base>` reads bind at runtime to the HOST power that triggered them, which
+ * the converter cannot identify while converting the shell. Reading those zeros as
+ * literals turns the standard proc-damage formula
+ * `activatetime power.base> 0.70 * rechargetime power.base> 0 20 minmax 0.04 * + 0.40 +`
+ * into a constant 0.40 and `activatetime power.base> @StdResult *` into a flat ZERO —
+ * 21 templates silently rescaled to 40% and one heal deleted outright. Caught only by
+ * censusing every fold before trusting the regen diff, which is why this gate exists:
+ * a plausible number manufactured from a missing field is worse than no fold at all
+ * (GAME-DATA-PRINCIPLES §3, "decode absence as absence").
+ *
+ * The 96 files that DO declare a positive cast are real powers and real redirect
+ * targets (the snipe Normal/Quick pair among them), where `power.base>` genuinely
+ * means that file.
+ */
+function _exprPowerScalar(v) {
+  return typeof v === 'number' && Number.isFinite(v) && v > 0 ? v : null;
+}
+
+/** `a op b` under the operand algebra. Returns null to BAIL. */
+function _exprBinary(op, a, b) {
+  const aNum = a.kind === 'prod' && a.syms.length === 0;
+  const bNum = b.kind === 'prod' && b.syms.length === 0;
+
+  if (op === '*') {
+    if (a.kind === 'prod' && b.kind === 'prod') {
+      return _exprProd(a.k * b.k, [...a.syms, ...b.syms]);
+    }
+    if (a.kind === 'opaque' && b.kind === 'opaque') return null;
+    // OPAQUE × SYMBOLIC — the ramp-drop rule: the opaque factor becomes 1 and the
+    // symbolic operand passes through with its own coefficient intact.
+    // OPAQUE × plain NUMBER is still opaque (this is how the ramp is BUILT).
+    const known = a.kind === 'prod' ? a : b;
+    return known.syms.length > 0 ? known : _EXPR_OPAQUE;
+  }
+
+  if (op === '/') {
+    if (b.kind === 'opaque') {
+      // A known number over an unknown is simply unknown; a SYMBOL over an unknown
+      // would silently drop the ramp in the wrong direction, so bail.
+      return aNum ? _EXPR_OPAQUE : null;
+    }
+    if (b.syms.length > 0 || b.k === 0) return null;
+    if (a.kind === 'opaque') return _EXPR_OPAQUE;
+    return _exprProd(a.k / b.k, a.syms);
+  }
+
+  // `+` / `-`: symbols do not add. Only plain numbers combine, and an OPAQUE
+  // absorbs a plain number (`… 0.210526316 * 1 +` — the ramp's offset).
+  if (a.kind === 'opaque' && bNum) return _EXPR_OPAQUE;
+  if (b.kind === 'opaque' && aNum) return _EXPR_OPAQUE;
+  if (aNum && bNum) return _exprProd(op === '+' ? a.k + b.k : a.k - b.k);
+  return null;
+}
+
+/**
+ * 3-operand clamp. Pushed as `value lo hi minmax`, so the pops come off hi-first —
+ * verified against the known-correct programs: `cur.kToHit source> 0.75 - 0.22 /
+ * -1.0 1.0 minmax` clamps the ToHit delta to [-1, 1], and `rechargetime power.base>
+ * 0 20 minmax` clamps a recharge to [0, 20]. Reading it the other way round would
+ * produce clamp(1, -1, X) — a constant — on every one of them.
+ */
+function _exprMinmax(value, lo, hi) {
+  if (lo.kind !== 'prod' || lo.syms.length > 0) return null;
+  if (hi.kind !== 'prod' || hi.syms.length > 0) return null;
+  if (value.kind === 'opaque') return _EXPR_OPAQUE;
+  if (value.syms.length > 0) return null;
+  return _exprProd(Math.min(hi.k, Math.max(lo.k, value.k)));
+}
+
+/**
+ * Run a `magnitude_expression` through the operand algebra.
+ *
+ * @param {string} expr  the raw RPN program
+ * @param {{activationTime?: number, rechargeTime?: number}} ctx  owning-power scalars
+ * @returns {{kind:'prod', k:number, syms:string[]}|null} the single resulting operand,
+ *   or null when anything at all could not be resolved (unknown read, unsupported
+ *   operator, stack underflow, symbol arithmetic, leftover operands).
+ */
+function evalMagnitudeExpression(expr, ctx = {}) {
+  const src = (expr || '').trim();
+  if (!src) return null;
+  const tokens = src.split(/\s+/);
+  const stack = [];
+
+  for (let i = 0; i < tokens.length; i++) {
+    const tok = tokens[i];
+
+    if (_EXPR_NUMBER_RE.test(tok)) {
+      stack.push(_exprProd(parseFloat(tok)));
+      continue;
+    }
+
+    if (tok === '+' || tok === '-' || tok === '*' || tok === '/') {
+      if (stack.length < 2) return null;
+      const b = stack.pop();
+      const a = stack.pop();
+      const r = _exprBinary(tok, a, b);
+      if (!r) return null;
+      stack.push(r);
+      continue;
+    }
+
+    if (tok === 'minmax') {
+      if (stack.length < 3) return null;
+      const hi = stack.pop();
+      const lo = stack.pop();
+      const value = stack.pop();
+      const r = _exprMinmax(value, lo, hi);
+      if (!r) return null;
+      stack.push(r);
+      continue;
+    }
+
+    // A value READ. Two-token reads (`<name> <accessor>`) are matched first so the
+    // accessor is never mistaken for a standalone token.
+    const two = `${tok} ${tokens[i + 1] || ''}`.toLowerCase();
+    if (_EXPR_SYMBOL_READS.has(two)) {
+      stack.push(_exprProd(1, [_EXPR_SYMBOL_READS.get(two)]));
+      i++;
+      continue;
+    }
+    if (_EXPR_OPAQUE_READS.has(two)) {
+      stack.push(_EXPR_OPAQUE);
+      i++;
+      continue;
+    }
+    if (_EXPR_POWER_SCALARS.has(two)) {
+      const v = _exprPowerScalar(ctx[_EXPR_POWER_SCALARS.get(two)]);
+      if (v === null) return null; // not threaded, or absent-as-zero ⇒ bail
+      stack.push(_exprProd(v));
+      i++;
+      continue;
+    }
+    const one = tok.toLowerCase();
+    if (_EXPR_SYMBOL_READS.has(one)) {
+      stack.push(_exprProd(1, [_EXPR_SYMBOL_READS.get(one)]));
+      continue;
+    }
+
+    return null; // unknown token — BAIL, leaving the caller's raw value alone
+  }
+
+  if (stack.length !== 1) return null;
+  return stack[0].kind === 'prod' ? stack[0] : null;
+}
+
+/**
+ * The constant factor a `magnitude_expression` applies on top of the template's own
+ * `scale`, or null when the program is not exactly `k × @StdResult`.
+ *
+ * `@StdResult` IS `table[level] × effectiveness × scale × strength` (attribmod.c
+ * `mod_Fill`), i.e. the value the converter already computes from scale+table — so a
+ * program that reduces to `k × @StdResult` is precisely "the usual value, times k",
+ * and multiplying `scale` by `k` reproduces it. `k === 1` is a no-op by construction,
+ * which is the right answer for every ramp-only snipe program.
+ */
+function stdResultCoefficient(expr, ctx) {
+  const r = evalMagnitudeExpression(expr, ctx);
+  if (!r) return null;
+  if (r.syms.length !== 1 || r.syms[0] !== 'std') return null;
+  return Number.isFinite(r.k) ? r.k : null;
+}
+
+/**
+ * Owning-power scalars for `power.base>` reads, preferring the per-template stamp a
+ * collector left when it followed a redirect into another power's file over the
+ * caller's own power JSON.
+ */
+function _exprCtxFor(template, powerJson) {
+  return {
+    activationTime: template._ownerActivationTime ?? powerJson?.activation_time,
+    rechargeTime: template._ownerRechargeTime ?? powerJson?.recharge_time,
+  };
+}
+
+/**
+ * @param {Array} templates - flat template list (already collector-filtered)
+ * @param {Object} [powerJson] - the power these templates belong to, for `power.base>`
+ *   reads in a `magnitude_expression`. Optional: absent scalars make the evaluator
+ *   bail, which leaves `scale` as-is — the same output this function produced before
+ *   expressions were read at all.
+ */
+function extractDamage(templates, powerJson) {
   const damages = [];
 
   for (const template of templates) {
@@ -3842,9 +4173,26 @@ function extractDamage(templates) {
         continue;
       }
 
+      // Fold the statically-constant factor of the template's magnitude program
+      // into `scale`. A fast snipe stores the whole SHOT in `scale` and puts the
+      // per-tick divisor (`… @StdResult * 4 /`) or the type split (`… * 0.3 *` /
+      // `… * 0.7 *`) in the program; reading `scale` verbatim over-reported those
+      // by exactly that factor. `stdResultCoefficient` returns null — leaving
+      // `scale` untouched — for anything it cannot evaluate whole, and 1 for the
+      // ramp-only programs, so this is a no-op everywhere but the split shapes.
+      // `toPrecision(12)` only on the folded path: exported scales are float32-derived
+      // (≤ 7 significant digits), so 12 preserves every real digit while clearing the
+      // ×k artifact (2.28 × 0.3 = 0.6839999999999999 → 0.684). Untouched scales are
+      // passed through bit-identically.
+      const magFactor = template.magnitude_expression
+        ? stdResultCoefficient(template.magnitude_expression, _exprCtxFor(template, powerJson))
+        : null;
+
       const dmg = {
         type: damageType,
-        scale: template.scale,
+        scale: magFactor === null
+          ? template.scale
+          : Number((template.scale * magFactor).toPrecision(12)),
         table: template.table,
         // IgnoreStrength heals (Inner Will, DNA Siphon, Restore Essence, etc.) must
         // not be boosted by Healing enh / global +heal. Tag only `Heal` entries so
@@ -4209,22 +4557,37 @@ function foldResourceSlot(entries) {
  * AllowStrength is off (attribmod.c), which the export spells as the `IgnoreStrength`
  * flag. That is why a Bio Armor adaptation bonus is unenhanceable, as its power text says.
  * Returns { fraction, appliesStrength } or null for a form this cannot evaluate — Master
- * Brawler's `(100 - HP% + End%) / 200 @StdResult *` reads live HP and endurance — and
- * callers leave those absorbs duration-only.
+ * Brawler's `100 kHitPoints% source> - kEndurance% source> + 200 / @StdResult *` reads live
+ * HP and endurance — and callers leave those absorbs duration-only.
+ *
+ * Runs on the SHARED `magnitude_expression` evaluator rather than its own regexes, so
+ * there is one RPN reader in this file. The shapes are asserted as symbol multisets:
+ * `maxhp.source` is a different symbol from `maxhp.target`, which is what keeps the 100+
+ * ALLY-shield absorbs (`Max.kHitPoints target> 0.075 * @Strength *` — Particle Shielding,
+ * Spirit Ward, Guardian's Gift) unrecovered, exactly as the old `source>`-anchored regex
+ * did. Those are a fraction of the RECIPIENT's max HP, which this caster-side field
+ * cannot express.
  */
 function parseAbsorbMaxHPFraction(expr, scale, table, ignoresStrength) {
-  const e = (expr || '').trim();
-  if (!e) return null;
+  const r = evalMagnitudeExpression(expr);
+  if (!r) return null;
+  const syms = [...r.syms].sort();
   const strengthReaches = !ignoresStrength;
-  const LITERAL = /^Max\.kHitPoints\s+source>\s+([\d.]+)\s+\*(?:\s+(@Strength)\s+\*)?\s*$/;
-  const literal = LITERAL.exec(e);
-  if (literal) {
-    return { fraction: parseFloat(literal[1]), appliesStrength: !!literal[2] && strengthReaches };
+
+  // `Max.kHitPoints source> C *` — the fraction is the literal C, unenhanced.
+  if (syms.length === 1 && syms[0] === 'maxhp.source') {
+    return { fraction: r.k, appliesStrength: false };
   }
-  const STD_RESULT = /^Max\.kHitPoints\s+source>\s+@StdResult\s+\*\s*$/;
-  const onesTable = /_ones$/i.test(table || '');
-  if (STD_RESULT.test(e) && onesTable && typeof scale === 'number' && scale > 0) {
-    return { fraction: scale, appliesStrength: strengthReaches };
+  // `Max.kHitPoints source> C * @Strength *` — same fraction, +Absorb strength applies.
+  if (syms.length === 2 && syms[0] === 'maxhp.source' && syms[1] === 'strength') {
+    return { fraction: r.k, appliesStrength: strengthReaches };
+  }
+  // `Max.kHitPoints source> @StdResult *` — the fraction is the template's own standard
+  // result, which is a bare fraction only on a `_ones` table (see above).
+  if (syms.length === 2 && syms[0] === 'maxhp.source' && syms[1] === 'std') {
+    if (/_ones$/i.test(table || '') && typeof scale === 'number' && scale > 0) {
+      return { fraction: r.k * scale, appliesStrength: strengthReaches };
+    }
   }
   return null;
 }
@@ -6677,7 +7040,7 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
   }
 
   if (allTemplates.length > 0) {
-    let damage = extractDamage(allTemplates);
+    let damage = extractDamage(allTemplates, powerJson);
     // The `*_Info` display power explicitly declares the power's damage types, so
     // trust it — don't run it through the Fiery-Embrace-bonus heuristic, which
     // would wrongly strip Remote Bomb's genuine base Fire damage as an FE bonus.
@@ -7319,6 +7682,10 @@ module.exports = {
   templatesToAtoms,
   projectAtomsToEffects,
   extractDamage,
+  evalMagnitudeExpression,
+  stdResultCoefficient,
+  parseAbsorbMaxHPFraction,
+  extractQuickSnipeData,
   inferAllowedSetCategories,
   inferEffectiveArea,
   normalizeIconPath,

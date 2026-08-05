@@ -62,6 +62,21 @@ interface LegacyPoolPower {
   allowedEnhancements: string[];
   allowedSetCategories: string[];
   effects: LegacyPoolPowerEffects;
+  // Game "mode" gating — the combat states a caster can be in (Kheldian
+  // Nova/Dwarf forms, Titan Momentum, Domination, Granite, Swap Ammo, travel
+  // toggles). Stamped by `assignModes` / `extractModeVariants` in
+  // scripts/convert-powerset.cjs, which the pool and epic converters share
+  // precisely because pool powers carry the Kheldian form gates too.
+  //
+  // These are TOP-LEVEL keys on the converted power — siblings of `powerType`,
+  // NOT members of `effects` — so the `...effectFields` spread in
+  // transformPoolPower cannot reach them. Declared here and re-emitted by
+  // `pickModeGates` below; see that helper for what omitting them cost.
+  modesDisallowed?: string[];
+  modesRequired?: string[];
+  setsModes?: string[];
+  modesSuspended?: string[];
+  modeVariants?: Record<string, Partial<Power>>;
 }
 
 interface LegacyPowerPool {
@@ -79,6 +94,56 @@ export type LegacyPowerPoolRegistry = Record<string, LegacyPowerPool>;
 // ============================================
 // DATA TRANSFORMATION
 // ============================================
+
+/**
+ * The mode-gating fields, in the order the converter documents them.
+ *
+ * Kept as a list (rather than five hand-written property assignments) so the
+ * facade's coverage of the converter's mode contract is one greppable place;
+ * `pool-epic-mode-gates.test.ts` pins this list against what the converter
+ * actually stamps on the generated data.
+ *
+ * The epic facade carries the identical list — the two transforms are
+ * near-duplicates of each other by design, and mode gating is not epic- or
+ * pool-specific.
+ */
+const MODE_GATE_FIELDS = [
+  'modesDisallowed',
+  'modesRequired',
+  'setsModes',
+  'modesSuspended',
+  'modeVariants',
+] as const;
+
+type ModeGates = Pick<Power, (typeof MODE_GATE_FIELDS)[number]>;
+
+/**
+ * Lift the mode gates off the raw power verbatim.
+ *
+ * `transformPoolPower` returns an explicit top-level whitelist, and until this
+ * helper existed the mode fields were simply not on it: every consumer that
+ * reached a pool power through `lookupPower` (which resolves pools via
+ * `getPowerPool`) saw `undefined` and read that as "this power is ungated".
+ * The visible symptom was `castableInMode` in the Attack Chain Builder offering
+ * Boxing, Kick, Cross Punch and Hasten inside Nova/Dwarf form — all four of
+ * which Homecoming's binary explicitly forbids there, and 46 of the 71 live HC
+ * pool powers with them. (Thunderspy is the one exception on Hasten: its copy
+ * carries `Disable_Pool` only. The facade's job is to be faithful, not to
+ * normalize that away.)
+ *
+ * **Absent stays absent.** The converter omits an empty mode array rather than
+ * emitting `[]` (see `assignModes`), and every consumer treats a missing key as
+ * "no gating", so copying only the keys that are present keeps the transformed
+ * power byte-shaped like the raw one instead of littering it with `undefined`s.
+ */
+function pickModeGates(legacy: LegacyPoolPower): ModeGates {
+  const gates: Record<string, unknown> = {};
+  for (const field of MODE_GATE_FIELDS) {
+    const value = legacy[field];
+    if (value !== undefined) gates[field] = value;
+  }
+  return gates as ModeGates;
+}
 
 /**
  * Transform legacy pool power to typed Power
@@ -123,6 +188,7 @@ function transformPoolPower(legacy: LegacyPoolPower): Power {
     powerType: legacy.powerType as PowerType,
     targetType: legacy.targetType as Power['targetType'],
     requires: legacy.requires,
+    ...pickModeGates(legacy),
     effects: {
       // Stats (renamed from legacy format)
       accuracy,

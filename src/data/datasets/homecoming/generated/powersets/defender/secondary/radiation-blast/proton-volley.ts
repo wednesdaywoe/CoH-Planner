@@ -74,7 +74,7 @@ export const ProtonVolley: Power = {
     "damage": [
       {
         "type": "Energy",
-        "scale": 2.28,
+        "scale": 0.57,
         "table": "Ranged_Damage",
         "duration": 1.6,
         "tickRate": 0.5

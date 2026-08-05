@@ -102,8 +102,8 @@ function allBuildPowers(build: Build): SelectedPower[] {
  *
  * It is also what confines the gate in {@link castableInMode} to forms. `modesRequired`
  * carries plenty that is NOT a form — Titan Weapons' Momentum (`FastMode`), Swap Ammo's
- * `LethalAmmo`, the `*On` travel toggles — and none of those has a setter/gate pair that
- * lands here, so those powers stay in the chain exactly as before.
+ * `LethalAmmo`, the `*On` travel toggles — and those stay out because the only click that
+ * requires one is its own toggle's free rider, which is not chain material (see below).
  */
 export function buildFormModes(build: Build): string[] {
   const powers = allBuildPowers(build);
@@ -114,6 +114,19 @@ export function buildFormModes(build: Build): string[] {
   const gating = new Set<string>();
   for (const p of powers) {
     if (p.powerType !== 'Click') continue;
+    // Only a click that could actually sit in a chain makes a mode a FORM — the same
+    // free-rider predicate `collectCandidates` applies below, and for the same reason.
+    // Three HC travel pools ship a setter/gate pair entirely inside the pool: Speed of
+    // Sound → Jaunt, Mighty Leap → Stomp, Mystic Flight → Translocation. Each rider is
+    // auto-granted, carries an empty `boosts_allowed`, and is `modesRequired` on its
+    // parent toggle's `*On` mode — so without this the selector offered a bogus "Mystic
+    // Flight active" form whose candidate roster is identical to Human's. (Invisible
+    // until the pool facade started carrying `setsModes` / `modesRequired` at all; it
+    // dropped both, which is why the docstring above could once claim the travel
+    // toggles had no setter/gate pair.) A Kheldian form's attacks are auto-granted too
+    // and are exactly the powers the form exists for — they are slottable, which is
+    // what separates the two.
+    if (p.isAutoGranted && !p.allowedEnhancements?.length) continue;
     for (const mode of p.modesRequired ?? []) if (settable.has(mode)) gating.add(mode);
     for (const mode of p.modesDisallowed ?? []) if (settable.has(mode)) gating.add(mode);
   }

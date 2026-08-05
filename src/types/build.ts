@@ -110,6 +110,18 @@ export interface AttackChain {
   name: string;
   /** Cast order as ChainPower ids. */
   powers: string[];
+  /**
+   * The caster form the chain was built in — a mode id from `buildFormModes`
+   * (a Kheldian's Bright Nova / White Dwarf), or null/absent for human form.
+   *
+   * Load-bearing, not decorative. A form's attacks are auto-granted by its
+   * toggle and castable ONLY inside it, so the candidate roster a chain's ids
+   * resolve against is per-form. Without this, reopening a Nova chain resolved
+   * it against the human roster, `idsToSequence` dropped every id it could not
+   * find, and one click of Save wrote that emptied list back over the saved
+   * chain — the rotation was gone with no way to get it back.
+   */
+  startForm?: string | null;
 }
 
 export interface Build {

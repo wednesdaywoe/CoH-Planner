@@ -92,12 +92,12 @@ export const SniperBlast: Power = {
     "damage": [
       {
         "type": "Smashing",
-        "scale": 2.28,
+        "scale": 0.684,
         "table": "Ranged_Damage"
       },
       {
         "type": "Energy",
-        "scale": 2.28,
+        "scale": 1.596,
         "table": "Ranged_Damage"
       }
     ]

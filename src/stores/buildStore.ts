@@ -171,10 +171,13 @@ interface BuildActions {
 
   // Saved attack chains (named rotations stored on the build, so they travel
   // with the character through save / load / export / share).
-  /** Create a new saved chain from a cast-order id list; returns its id. */
-  saveAttackChain: (name: string, powers: string[]) => string;
-  /** Replace the cast order of an existing saved chain (the "Save" action). */
-  updateAttackChain: (id: string, powers: string[]) => void;
+  /** Create a new saved chain from a cast-order id list; returns its id.
+   *  `startForm` is the caster form it was built in (see AttackChain.startForm)
+   *  — a chain's ids only resolve against the roster of its own form. */
+  saveAttackChain: (name: string, powers: string[], startForm?: string | null) => string;
+  /** Replace the cast order (and caster form) of an existing saved chain — the
+   *  "Save" action. */
+  updateAttackChain: (id: string, powers: string[], startForm?: string | null) => void;
   renameAttackChain: (id: string, name: string) => void;
   deleteAttackChain: (id: string) => void;
 
@@ -2013,12 +2016,13 @@ export const useBuildStore = create<BuildStore>()(
       },
 
       // --- Saved attack chains ------------------------------------------------
-      saveAttackChain: (name, powers) => {
+      saveAttackChain: (name, powers, startForm = null) => {
         historyCheckpoint();
         const chain: AttackChain = {
           id: `chain-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
           name,
           powers,
+          startForm,
         };
         set((state) => ({
           build: {
@@ -2029,13 +2033,13 @@ export const useBuildStore = create<BuildStore>()(
         return chain.id;
       },
 
-      updateAttackChain: (id, powers) => {
+      updateAttackChain: (id, powers, startForm = null) => {
         historyCheckpoint();
         set((state) => ({
           build: {
             ...state.build,
             attackChains: (state.build.attackChains ?? []).map((c) =>
-              c.id === id ? { ...c, powers } : c,
+              c.id === id ? { ...c, powers, startForm } : c,
             ),
           },
         }));

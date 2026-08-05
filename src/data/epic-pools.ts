@@ -68,6 +68,26 @@ interface LegacyEpicPower {
   allowedSetCategories: string[];
   effects: LegacyEpicPowerEffects;
   quickSnipe?: Power['quickSnipe'];
+  // Game "mode" gating — the combat states a caster can be in (Kheldian
+  // Nova/Dwarf forms, Titan Momentum, Domination, Granite, Swap Ammo, travel
+  // toggles). Stamped by `assignModes` in scripts/convert-powerset.cjs, which
+  // the epic converter shares with the powerset and pool converters.
+  //
+  // These are TOP-LEVEL keys on the converted power — siblings of `powerType`,
+  // NOT members of `effects` — so the `...effectFields` spread in
+  // transformEpicPower cannot reach them. Declared here and re-emitted by
+  // `pickModeGates` below; see that helper for what omitting them cost.
+  //
+  // `modesDisallowed` is the only one epic data carries today (401/405 HC
+  // powers), because convert-epic-pools.cjs does not call `extractModeVariants`
+  // and epic powers set/suspend/require no modes. The other four are carried
+  // anyway: the stamping code is shared, so an epic power that starts gating
+  // must not need a second round of this same bug to be noticed.
+  modesDisallowed?: string[];
+  modesRequired?: string[];
+  setsModes?: string[];
+  modesSuspended?: string[];
+  modeVariants?: Record<string, Partial<Power>>;
 }
 
 interface LegacyEpicPool {
@@ -87,6 +107,55 @@ export type LegacyEpicPoolRegistry = Record<string, LegacyEpicPool>;
 // ============================================
 // DATA TRANSFORMATION
 // ============================================
+
+/**
+ * The mode-gating fields, in the order the converter documents them.
+ * Mirrors `MODE_GATE_FIELDS` in src/data/power-pools.ts — the two facades are
+ * near-duplicate transforms by design, and mode gating is not pool- or
+ * epic-specific. `pool-epic-mode-gates.test.ts` pins both lists against what
+ * the converter actually stamps on the generated data.
+ */
+const MODE_GATE_FIELDS = [
+  'modesDisallowed',
+  'modesRequired',
+  'setsModes',
+  'modesSuspended',
+  'modeVariants',
+] as const;
+
+type ModeGates = Pick<Power, (typeof MODE_GATE_FIELDS)[number]>;
+
+/**
+ * Lift the mode gates off the raw power verbatim.
+ *
+ * `transformEpicPower` returns an explicit top-level whitelist, and until this
+ * helper existed the mode fields were simply not on it: every consumer that
+ * reached an epic power through `lookupPower` (which resolves epics via
+ * `getEpicPool`) saw `undefined` and read that as "this power is ungated" —
+ * the same defect as the pool facade's, and fixed the same way.
+ *
+ * What it actually costs is smaller here than on the pools, and worth stating
+ * so nobody re-derives it: no epic power on any of the three servers gates a
+ * Kheldian form, because epic pools are gated on `Disable_Epic` /
+ * `Disable_Pool` / `Disable_Toggle`, none of which any power SETS. The one live
+ * form gate in epic data is Thunderspy's, where Tarantula Conversion sets
+ * `Widow_Tarantula_Mode` and 11 VEAT patron clicks (Leviathan / Mu / Soul
+ * Mastery) refuse it — those were being offered in Tarantula form, and are not
+ * any more.
+ *
+ * **Absent stays absent.** The converter omits an empty mode array rather than
+ * emitting `[]` (see `assignModes`), and every consumer treats a missing key as
+ * "no gating", so copying only the keys that are present keeps the transformed
+ * power shaped like the raw one instead of littering it with `undefined`s.
+ */
+function pickModeGates(legacy: LegacyEpicPower): ModeGates {
+  const gates: Record<string, unknown> = {};
+  for (const field of MODE_GATE_FIELDS) {
+    const value = legacy[field];
+    if (value !== undefined) gates[field] = value;
+  }
+  return gates as ModeGates;
+}
 
 /**
  * Transform legacy epic power to typed Power
@@ -131,6 +200,7 @@ function transformEpicPower(legacy: LegacyEpicPower): Power {
     powerType: legacy.powerType as PowerType,
     requires: legacy.requires,
     ...(legacy.quickSnipe ? { quickSnipe: legacy.quickSnipe } : {}),
+    ...pickModeGates(legacy),
     effects: {
       // Stats (renamed from legacy format)
       accuracy,
