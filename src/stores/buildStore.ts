@@ -72,6 +72,9 @@ import { findNextAvailableGrantLevel, backfillSlotOrderLevels, ensureSlotOrderPo
 import { enhancementAllowedInPower } from '@/utils/enhancement-eligibility';
 import { dedupePools } from '@/utils/build-powers';
 import { selectableModes } from '@/utils/mode-suppression';
+// The one toggle classifier (`ba84984159` unified it); a second copy here is exactly
+// the drift that unification closed, so the store reads the same function the rows do.
+import { shouldShowToggle } from '@/components/powers/power-row-utils';
 import { useHistoryStore } from './historyStore';
 import { useUIStore } from './uiStore';
 
@@ -318,9 +321,18 @@ function syncBuildDefinitions(build: Build): void {
   // toggle-vs-click branching) to function. Without powerType/targetType/
   // effectArea sync, click-power toggles like Healing Flames lose their
   // toggle UI and ally-buff guards see undefined and pass everything.
+  //
+  // `damage` and `shortHelp` are here for the same reason and were missing for the
+  // same silent one: `shouldShowToggle` reads FOUR fields off the stored power
+  // (powerType, targetType, damage, shortHelp) and only two of them were being
+  // repaired. A build saved before a power gained its damage entry — or by any
+  // writer that dropped it — asks the classifier whether an attack is an attack and
+  // is told no, which flips the `damageBuff` skip and hands a per-cast Defiance proc
+  // a toggle it should never have had.
   type DefShape = Pick<
     SelectedPower,
     | 'name' | 'internalName' | 'effects' | 'icon' | 'powerType' | 'targetType' | 'effectArea'
+    | 'damage' | 'shortHelp'
     | 'setsModes' | 'modesRequired' | 'modesDisallowed' | 'modesSuspended' | 'modeVariants'
   >;
   /**
@@ -349,6 +361,39 @@ function syncBuildDefinitions(build: Build): void {
     modesSuspended: p.modesSuspended,
     modeVariants: p.modeVariants,
   });
+  /**
+   * A persisted `isActive` on a power the UI renders no toggle for is UNREACHABLE
+   * state: it makes the power contribute to every dashboard total with no control to
+   * turn it off and no indicator that it is on. Cleared here, in the one funnel every
+   * load and every import passes through.
+   *
+   * The reported case (2026-08-05) is a Blaster whose End of Time and Future Pain
+   * added +16.4% global damage. Both are `Click` attacks carrying a Defiance rider,
+   * so `shouldShowToggle` correctly gives them no toggle — but a Mids `.mbd` import
+   * maps Mids' `StatInclude` onto `isActive` for EVERY power it brings in
+   * (`mids-import/importer.ts`), and once planted the flag could not be seen or
+   * cleared. Fixing the Defiance leak stops that pair moving the damage column;
+   * clearing the flag stops the NEXT classifier change from re-opening the same trap
+   * on a different family (the snipe `rangeBuff` skip and the unroutable-mez-resist
+   * skip each retired a toggle the same way, leaving whatever was already stored).
+   *
+   * Deliberately narrow — three exemptions, each because the flag is legitimately
+   * driven by something other than the toggle:
+   *   - non-`click` powers: a Toggle always has its toggle, and an Auto contributes
+   *     via `is_auto` whatever the flag says;
+   *   - mode setters (`setsModes`): the flag mirrors the mode selector, written by
+   *     the pick path and by `setActiveModes`, not by a toggle;
+   *   - `activeSubPower` holders: the stance is stored on the parent and applies
+   *     regardless of the parent's own flag, so the parent's `isActive` is still
+   *     meaningful state a stance-carrying power owns.
+   */
+  const hasUnreachableActiveFlag = (power: SelectedPower): boolean => {
+    if (power.isActive === undefined) return false;
+    if (power.powerType?.toLowerCase() !== 'click') return false;
+    if (power.setsModes?.length || power.activeSubPower) return false;
+    return !shouldShowToggle(power);
+  };
+
   const syncPowers = (powers: SelectedPower[], defPowers: readonly DefShape[]): SelectedPower[] => {
     let anyChanged = false;
     const synced = powers.map((power) => {
@@ -363,28 +408,45 @@ function syncBuildDefinitions(build: Build): void {
       const needsPowerType = currentDef.powerType && currentDef.powerType !== power.powerType;
       const needsTargetType = currentDef.targetType !== undefined && currentDef.targetType !== power.targetType;
       const needsEffectArea = currentDef.effectArea !== undefined && currentDef.effectArea !== power.effectArea;
+      const needsShortHelp = currentDef.shortHelp !== undefined && currentDef.shortHelp !== power.shortHelp;
       // Structural, not reference: these arrive as fresh arrays out of JSON on
       // every rehydrate, so an identity check would report "changed" for every
       // power in every build forever.
+      const needsDamage = JSON.stringify(currentDef.damage) !== JSON.stringify(power.damage);
       const needsModeGates =
         JSON.stringify(modeGates(currentDef)) !== JSON.stringify(modeGates(power));
-      if (needsInternalName || needsEffects || needsIcon || needsPowerType || needsTargetType || needsEffectArea || needsModeGates) {
-        anyChanged = true;
-        if (needsInternalName) {
-          internalNameMigrations.set(power.internalName, currentDef.internalName);
-        }
-        return {
-          ...power,
-          ...(needsInternalName ? { internalName: currentDef.internalName } : {}),
-          ...(needsEffects ? { effects: currentDef.effects } : {}),
-          ...(needsIcon ? { icon: currentDef.icon } : {}),
-          ...(needsPowerType ? { powerType: currentDef.powerType } : {}),
-          ...(needsTargetType ? { targetType: currentDef.targetType } : {}),
-          ...(needsEffectArea ? { effectArea: currentDef.effectArea } : {}),
-          ...(needsModeGates ? modeGates(currentDef) : {}),
-        };
+      const metadataChanged = needsInternalName || needsEffects || needsIcon || needsPowerType
+        || needsTargetType || needsEffectArea || needsShortHelp || needsDamage || needsModeGates;
+      // Judge the toggle on the REPAIRED power, not the stored one — the whole point
+      // of the metadata sync above is that the stored copy may be missing the fields
+      // `shouldShowToggle` reads.
+      const repaired: SelectedPower = metadataChanged
+        ? {
+            ...power,
+            ...(needsInternalName ? { internalName: currentDef.internalName } : {}),
+            ...(needsEffects ? { effects: currentDef.effects } : {}),
+            ...(needsIcon ? { icon: currentDef.icon } : {}),
+            ...(needsPowerType ? { powerType: currentDef.powerType } : {}),
+            ...(needsTargetType ? { targetType: currentDef.targetType } : {}),
+            ...(needsEffectArea ? { effectArea: currentDef.effectArea } : {}),
+            ...(needsShortHelp ? { shortHelp: currentDef.shortHelp } : {}),
+            ...(needsDamage ? { damage: currentDef.damage } : {}),
+            ...(needsModeGates ? modeGates(currentDef) : {}),
+          }
+        : power;
+      const dropsActive = hasUnreachableActiveFlag(repaired);
+      if (!metadataChanged && !dropsActive) return power;
+      anyChanged = true;
+      if (needsInternalName) {
+        internalNameMigrations.set(power.internalName, currentDef.internalName);
       }
-      return power;
+      if (!dropsActive) return repaired;
+      // Deleted, not set to `false`: the calc's gate is `isAuto || isActive`, so the
+      // two behave alike, but an absent flag is what a freshly picked click power
+      // carries and what the slim serializer omits — leaving `false` behind would
+      // persist a distinction nothing reads.
+      const { isActive: _unreachable, ...withoutActive } = repaired;
+      return withoutActive as SelectedPower;
     });
     return anyChanged ? synced : powers;
   };

@@ -97,17 +97,32 @@ describe('ProcAllowed kNone', () => {
       expect(procPotentialTier(p)).toBe(0);
     });
 
-    it('MUTANT: the same power scores a badge with the flag removed', () => {
-      // The gate is worthless unless it can go red. Paralyzing Blast is a 240s
-      // recharge with Holds ∪ Ranged AoE Damage ∪ Universal Damage: unflagged
-      // it is a top-tier proc bomb, which is exactly the badge users were
-      // being shown.
+    it('MUTANT: an unflagged Fault scores a top-tier badge', () => {
+      // The gate is worthless unless it can go red. Fault is a 20s PBAoE
+      // knockdown/stun taking Stuns ∪ Melee AoE Damage ∪ Universal Damage:
+      // unflagged it caps 18 of 21 against a 6-slot ceiling and reads as an
+      // exceptional proc bomb, which is exactly the badge users were shown.
+      //
+      // Paralyzing Blast is deliberately NOT the subject here even though it is
+      // the loudest example. It is also a 60s pulsing pseudo-pet, so the patch
+      // roll schedule zeroes its cap count independently — belt and braces on
+      // the power, but a mutation target where the mutation proves nothing.
+      const unflagged = { ...HC(Fault), procsAllowed: undefined } as Power;
+      const p = getProcPotential(unflagged)!;
+      expect(p.procsDisallowed).toBe(false);
+      expect(p.rolls).toBe(1);
+      expect(p.atCap).toBeGreaterThanOrEqual(p.maxSlots);
+      expect(procPotentialTier(p)).toBe(2);
+    });
+
+    it('MUTANT: an unflagged Paralyzing Blast still enumerates a pool', () => {
+      // The narrower half of the same gate: the flag, not the patch schedule,
+      // is what empties `entries`. Removing it restores the pool even though
+      // the patch schedule keeps the badge off.
       const unflagged = { ...HC(ParalyzingBlast), procsAllowed: undefined } as Power;
       const p = getProcPotential(unflagged)!;
       expect(p.procsDisallowed).toBe(false);
       expect(p.total).toBeGreaterThan(0);
-      expect(p.atCap).toBe(p.total); // 240s caps every proc in the pool
-      expect(procPotentialTier(p)).toBeGreaterThanOrEqual(1);
     });
 
     it('keeps always-on globals — they are not rolled', () => {

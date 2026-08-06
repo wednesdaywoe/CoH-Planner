@@ -17,9 +17,10 @@ import type { Enhancement, IOSetEnhancement } from '@/types';
 import {
   findProcData,
   getProcEffects,
-  calculateProcChance,
   interpolateProcDamage,
   resolveProcRollGeometry,
+  resolveProcRollSchedule,
+  calculateScheduledProcChance,
   powerFiresProcs,
 } from '@/data';
 
@@ -46,11 +47,25 @@ export interface SlottedProcDamageInput {
   /** The power's `ProcAllowed` flag. `false` means no PPM proc rolls here at
    *  all, so the power adds no proc damage; see powerFiresProcs. */
   procsAllowed?: boolean;
+  /** Click / Toggle / Auto. Auto and Toggle roll on the proc's own 10s period
+   *  rather than a recharge window; see resolveProcRollSchedule. */
+  powerType?: string;
+  /** Lifetime (s) of the summoned patch that owns the rolls (a rain, Bonfire,
+   *  Tar Patch), from resolveProcPatchDuration. A patch rolls every 10s for as
+   *  long as it lives, so one cast of Sleet is worth two rolls — but each is
+   *  scored against that 10s period, not against the parent's 60s recharge. */
+  patchDuration?: number;
 }
 
 /**
- * Sum of `chance × damage` over every slotted foe-damage proc in the power —
- * the expected proc damage added to one cast. Returns 0 when nothing procs.
+ * Sum of `rolls × chance × damage` over every slotted foe-damage proc in the
+ * power — the expected proc damage added to one cast. Returns 0 when nothing
+ * procs.
+ *
+ * `rolls` is 1 for everything except a summoned patch, where the parent's cast
+ * buys several independent 10s-period rolls instead of one recharge-scored one.
+ * For a 15s rain that is 2 rolls at ~18% rather than 1 at 90% — a large drop,
+ * and a measured one (`resolveProcRollSchedule`).
  */
 export function calculateSlottedProcDamagePerCast(input: SlottedProcDamageInput): number {
   const { slots, baseRecharge, castTime, radius, arcDegrees, rechargeEnh, buildLevel } = input;
@@ -65,6 +80,12 @@ export function calculateSlottedProcDamagePerCast(input: SlottedProcDamageInput)
   // splash) that the proc never rolls against.
   const { radius: areaRadius, arcDegrees: areaArc } =
     resolveProcRollGeometry(input.procsOnlyOnMainTarget, radius, arcDegrees);
+  const schedule = resolveProcRollSchedule({
+    powerType: input.powerType,
+    baseRecharge,
+    castTime,
+    patchDuration: input.patchDuration,
+  });
   let total = 0;
   for (const slot of slots) {
     if (!slot || slot.type !== 'io-set') continue;
@@ -86,8 +107,10 @@ export function calculateSlottedProcDamagePerCast(input: SlottedProcDamageInput)
     // levelRange. (@Redlynne report, 2026-06-12 — was using io.level for
     // non-attuned, so Global-IO-Level builds under-counted 10×.)
     const procDmg = interpolateProcDamage(dmg.value, dmg.valueMax, procData.levelRange, buildLevel);
-    const procChance = calculateProcChance(procData.ppm, baseRecharge, castTime, areaRadius, areaArc, rechargeEnh, input.globalRechargeEnh ?? 0);
-    total += procDmg * procChance;
+    const procChance = calculateScheduledProcChance(
+      procData.ppm, schedule, areaRadius, areaArc, rechargeEnh, input.globalRechargeEnh ?? 0,
+    );
+    total += procDmg * procChance * schedule.rolls;
   }
   return total;
 }

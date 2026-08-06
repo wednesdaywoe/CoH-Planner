@@ -18,7 +18,7 @@
 import type { PowerDamageResult } from '@/utils/calculations';
 import { calculateArcanaTime, abbreviateDamageType } from '@/utils/calculations';
 import { arcToDegrees } from '@/data';
-import { resolveProcAreaGeometry } from '@/utils/calculations/pet-damage';
+import { resolveProcAreaGeometry, resolveProcPatchDuration } from '@/utils/calculations/pet-damage';
 import { calculateSlottedProcDamagePerCast } from '@/utils/calculations/power-proc-damage';
 import type { SelectedPower } from '@/types';
 import { useUIStore } from '@/stores';
@@ -493,6 +493,10 @@ function computeProcDamagePerActivation(props: DamageBlockProps): number {
       buildLevel,
       procsOnlyOnMainTarget: selectedPower.procsOnlyOnMainTarget,
       procsAllowed: selectedPower.procsAllowed,
+      powerType: selectedPower.powerType,
+      // A rain's procs roll on the patch's 10s clock, several times per cast —
+      // not once against the parent's recharge. resolveProcRollSchedule owns it.
+      patchDuration: resolveProcPatchDuration(effects.radius ?? 0, effects.summon),
     });
   }
   return total;

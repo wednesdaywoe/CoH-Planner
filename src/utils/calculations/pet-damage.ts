@@ -710,3 +710,65 @@ export function resolveProcAreaGeometry(
   }
   return getPseudoPetAoEGeometry(summon) ?? { radius: 0, arcDegrees: 360 };
 }
+
+/**
+ * Lifetime (s) of the summoned patch a power's PPM procs actually roll on, or
+ * `undefined` when they roll on the cast like an ordinary power's.
+ *
+ * This is the second half of `resolveProcAreaGeometry`'s job. That function
+ * borrows the patch's RADIUS; this one recognizes that the patch also owns the
+ * CLOCK. A rain's parent is a Location shell with no AoE of its own; the pulsing
+ * power on the summon is an `Auto` with recharge 0, so its procs fall back on
+ * the 10s period every PPM IO carries, and the patch lives long enough to see
+ * several of them. See `resolveProcRollSchedule`, which turns this into rolls.
+ *
+ * The gate is deliberately narrow, and the narrowing is load-bearing.
+ * `directRadius > 0` means the power has its own footprint and rolls on the cast
+ * (a summon riding along changes nothing). Beyond that, **every radius-bearing
+ * summoned ability must be `Auto`** — a pulsing patch is what borrows the clock.
+ *
+ * `getPseudoPetAoEGeometry` is not a strict enough filter on its own: it accepts
+ * any non-commandable entity, which sweeps in the summoned pets that attack on
+ * their own recharge (Acid Mortar, Lightning Storm, Dark Servant, Seeker Drones,
+ * Tornado). Borrowing their radius for the area factor is right; borrowing a
+ * patch's clock for them is not — a pet's Click attacks are not 10s pulses, and
+ * Dark Servant's 240s lifetime would otherwise have billed 24 rolls per cast.
+ * Hence the ability-type check, over both of that function's iteration paths.
+ */
+export function resolveProcPatchDuration(
+  directRadius: number,
+  summon: import('@/types/power').SummonEffect | undefined,
+): number | undefined {
+  if (directRadius > 0 || !summon) return undefined;
+  if (!getPseudoPetAoEGeometry(summon)) return undefined;
+
+  let sawPulse = false;
+  const pulses = (type: string | undefined, radius: number | undefined, area: string | undefined) => {
+    if (!radius || radius <= 0) return true; // self-buffs and the like: not the footprint
+    if (area === 'SingleTarget' || area === 'Self') return true;
+    if (type !== 'Auto') return false;
+    sawPulse = true;
+    return true;
+  };
+
+  const entityNames = summon.entities && summon.entities.length > 0
+    ? summon.entities.map((e) => e.entity)
+    : summon.entity ? [summon.entity] : [];
+  for (const entityName of entityNames) {
+    const entity = getPetEntity(entityName);
+    if (!entity || entity.commandable) continue;
+    for (const ability of entity.abilities) {
+      if (!pulses(ability.type, ability.radius, ability.effectArea)) return undefined;
+    }
+  }
+  for (const resolved of summon.resolvedEntities ?? []) {
+    for (const ability of resolved.abilities) {
+      if (!pulses(ability.type, ability.radius, ability.effectArea)) return undefined;
+    }
+  }
+  if (!sawPulse) return undefined;
+
+  const duration =
+    summon.duration ?? summon.resolvedEntities?.find((e) => e.duration != null)?.duration;
+  return duration != null && duration > 0 ? duration : undefined;
+}

@@ -24,9 +24,10 @@ import {
   findProcData,
   getProcEffects,
   interpolateProcDamage,
-  calculateProcChance,
   arcToDegrees,
   resolveProcRollGeometry,
+  resolveProcRollSchedule,
+  calculateScheduledProcChance,
   powerFiresProcs,
   getActiveDamageConversion,
 } from '@/data';
@@ -38,7 +39,7 @@ import type { IOSetEnhancement } from '@/types';
 import { isPermaEligible } from '@/utils/calculations/perma';
 import { getRechargeBounds } from '@/data/at-tables';
 import { buildDisplayEffects, getStackingInfo, withPseudoPetEffects, withTargetsHit } from './buildDisplayEffects';
-import { calculatePetDamage, calculateResolvedPseudoPetDamage, shouldApplyEnhancements, resolveProcAreaGeometry, type PetDamageResult, type PetAbilityDamage, type PetEffectComputed } from '@/utils/calculations/pet-damage';
+import { calculatePetDamage, calculateResolvedPseudoPetDamage, shouldApplyEnhancements, resolveProcAreaGeometry, resolveProcPatchDuration, type PetDamageResult, type PetAbilityDamage, type PetEffectComputed } from '@/utils/calculations/pet-damage';
 import { getPetEntity, type PetAbility } from '@/data/pet-entities';
 import { petUpgradeStatuses, resolveActiveUpgradeTiers, takenPowerNames, type PetUpgradeStatus } from '@/utils/calculations/pet-upgrades';
 import { calculateIncarnateDamage } from '@/data/at-tables';
@@ -542,6 +543,15 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     const { radius: procRadius, arcDegrees: procArc } =
       resolveProcRollGeometry(effectivePower?.procsOnlyOnMainTarget, radius, arcDegrees);
     if (!baseRecharge && !castTime) return null;
+    // A rain hands its rolls to the summoned patch: they are scored against the
+    // proc's own 10s period, once every 10s the patch lives, so one cast of
+    // Sleet is worth two ~18% rolls rather than one at the 90% ceiling.
+    const schedule = resolveProcRollSchedule({
+      powerType: effectivePower?.powerType,
+      baseRecharge,
+      castTime,
+      patchDuration: resolveProcPatchDuration(directRadius, effectivePower?.effects?.summon),
+    });
 
     // Cycle time uses the *enhanced* recharge (slotted + global) and
     // arcana-aware cast time, so proc DPS matches the headline Cycle Time and
@@ -580,17 +590,17 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
       // hit time by the game, not surfaced in the planner's averages.
       const avgDamage = interpolateProcDamage(effect.value, effect.valueMax, procData.levelRange, slotLevel);
       // A slotted Recharge IO lowers the firing window, which lowers PPM chance; the build's
-      // global recharge dilutes that loss instead of deepening it.
-      const chance = calculateProcChance(
+      // global recharge dilutes that loss instead of deepening it. Neither applies on a patch,
+      // whose window is the proc's own fixed period — calculateScheduledProcChance drops them.
+      const chance = calculateScheduledProcChance(
         procData.ppm,
-        baseRecharge,
-        castTime,
+        schedule,
         procRadius,
         procArc,
         enhancementBonuses.recharge || 0,
         globalBonusesForCalc.recharge || 0,
       );
-      const perActivation = chance * avgDamage;
+      const perActivation = chance * avgDamage * schedule.rolls;
       const dps = perActivation / cycleTime;
       entries.push({
         name: ioSlot.name,

@@ -3046,8 +3046,148 @@ export function calculateProcDPS(
 /**
  * Special case: Calculate proc rate for Auto powers
  * Auto powers use a 10-second pseudo-recharge for PPM calculation
+ *
+ * The 10 is not arbitrary and not really a property of Auto powers: every one
+ * of the 189 HC PPM proc IOs is itself authored as a power with
+ * `recharge_time: 0` and `activate_period: 10.0` (verified across
+ * `exported_powers/boosts/` 2026-08-05). A click power lends the proc its own
+ * recharge window; where there is no click recharge to borrow, the proc falls
+ * back on the period it carries. Mids states the same rule from the other end —
+ * `power.PowerType == Click ? ppm * (rech + cast) : ppm * 10`.
  */
 export const AUTO_POWER_PSEUDO_RECHARGE = 10;
+
+/**
+ * How many independent PPM rolls one activation gets, and what window each is
+ * scored against. The single place that rule lives, so every PPM surface — the
+ * potential badge, the Power Info proc row, proc DPS, the attack-chain damage —
+ * reads the same schedule.
+ *
+ * Three shapes:
+ *  - **Click** — one roll against `recharge + cast`, the familiar case.
+ *  - **Auto / Toggle** — one roll per 10s period, no recharge to borrow.
+ *  - **Patch (rain, Bonfire, Tar Patch, Lightning Rod…)** — the parent is a
+ *    Click but the rolls belong to the summoned patch, which is an Auto with
+ *    recharge 0. Each roll is scored against the 10s period, and the patch gets
+ *    one every 10s for as long as it lives.
+ */
+export interface ProcRollSchedule {
+  /** Seconds ONE roll is scored against, before any recharge slotting. */
+  window: number;
+  /** Cast time added to `window`; 0 when the window is the proc's own period. */
+  castTime: number;
+  /** Independent rolls per activation. > 1 only for a patch outliving one period. */
+  rolls: number;
+  /**
+   * True when `window` is the proc's own 10s period rather than the power's
+   * recharge — so no amount of recharge, slotted or global, can move it.
+   */
+  fixedPeriod: boolean;
+}
+
+/**
+ * MEASURED IN GAME 2026-08-05, Defender Cold Domination Sleet — 60s recharge,
+ * 2.03s cast, a 15s patch at 20ft — with five 3.5 PPM procs slotted at once and
+ * no accuracy, over 26 clean casts (260 independent trials, 37 firings):
+ *
+ *  - **Firings land at exactly two patch ages, 0s and 10s.** Never a third (the
+ *    patch dies at 15s), never an offset in between, never once per pulse
+ *    despite the patch's 0.2s `activate_period` and ~75 pulses per cast. The
+ *    second window is a genuine second roll, not a delayed first: Achilles' Heel
+ *    fired twice inside one rain, and on a cast whose opening tick MISSED a proc
+ *    still fired ten seconds later.
+ *  - **14.2% per roll** (Wilson 95% CI 10.5–19.0%), tight across all five procs.
+ *    The 10s period WITH the area factor predicts 17.9% (z = −1.56). Dropping
+ *    the area factor predicts 58.3% (z = −14.4) and the parent's 60s recharge —
+ *    what this app used to report — predicts the 90% ceiling (z = −40.7). Both
+ *    are dead.
+ *  - **Recharge does nothing here.** The window is the proc IO's own period, so
+ *    the build's +66% global never entered the number; it only buys more casts.
+ *    That is the opposite of how a click attack behaves and it is the most
+ *    build-relevant consequence.
+ *
+ * Sleet is the member that was measured; the schedule is applied to the whole
+ * class because it is one code path in the game — every patch is an Auto with
+ * recharge 0, and the 10 is the period every PPM IO carries (`activate_period:
+ * 10.0` on all 189 HC proc IOs). Mids does not model this at all: `Effect.cs`
+ * `ActualProbability` reads whichever power the proc is slotted in, so it
+ * reports the parent's recharge and lands on the 90% this measurement rules out.
+ *
+ * The extrapolation worth checking in game is **Lightning Rod / Shield Charge**,
+ * where it costs the most: a 90s parent whose 1s patch buys a single roll, so
+ * they fall from the 90% ceiling to ~18% and stop being the proc vehicles the
+ * community treats them as. Their pet power carries `recharge: 10` outright
+ * rather than 0, so the same number arrives by the plain PPM formula instead of
+ * by the period fallback — which is reassuring, not decisive.
+ *
+ * @param patchDuration lifetime (s) of the summoned patch that owns the rolls,
+ *   from `resolveProcPatchDuration`; omit for an ordinary power.
+ */
+export function resolveProcRollSchedule(input: {
+  powerType?: string;
+  baseRecharge: number;
+  castTime: number;
+  patchDuration?: number;
+}): ProcRollSchedule {
+  const { powerType, baseRecharge, castTime, patchDuration } = input;
+  const type = powerType?.toLowerCase();
+  if (type === 'auto' || type === 'toggle') {
+    return { window: AUTO_POWER_PSEUDO_RECHARGE, castTime: 0, rolls: 1, fixedPeriod: true };
+  }
+  if (patchDuration != null && patchDuration > 0) {
+    return {
+      window: AUTO_POWER_PSEUDO_RECHARGE,
+      castTime: 0,
+      rolls: procRollsInPatch(patchDuration, baseRecharge + castTime),
+      fixedPeriod: true,
+    };
+  }
+  return { window: baseRecharge, castTime, rolls: 1, fixedPeriod: false };
+}
+
+/**
+ * Rolls a patch of this lifetime gets: one at age 0, then every 10s while it
+ * is still alive. A tick due exactly at expiry does not fire, so a 15s rain
+ * gets 2 (ages 0 and 10) and a 10s Burn patch gets 1.
+ *
+ * `cycle` (recharge + cast) caps it, which matters only for the patches that
+ * outlive their own cooldown — Faraday Cage at 240s, Lifegiving Spores at the
+ * 99999s that means "until recast". Those are single-instance: recasting
+ * replaces the patch rather than stacking a second one, so a cast is only ever
+ * credited with the rolls that land before the next one. Without the cap
+ * Lifegiving Spores would claim ten thousand rolls per cast.
+ */
+export function procRollsInPatch(duration: number, cycle: number): number {
+  const live = cycle > 0 ? Math.min(duration, cycle) : duration;
+  return Math.max(1, Math.ceil(live / AUTO_POWER_PSEUDO_RECHARGE));
+}
+
+/**
+ * Chance of ONE roll of a proc in a power with this schedule.
+ *
+ * The recharge terms are dropped on a fixed-period schedule: a patch's rolls are
+ * scored against the proc's own 10s period, which slotted Recharge cannot shrink
+ * and global Recharge cannot widen. Passing them through anyway would reproduce
+ * exactly the bug this schedule exists to fix, one level down.
+ */
+export function calculateScheduledProcChance(
+  ppm: number,
+  schedule: ProcRollSchedule,
+  radius: number = 0,
+  arcDegrees: number = 360,
+  enhancedRechargeBonus: number = 0,
+  globalRechargeBonus: number = 0,
+): number {
+  return calculateProcChance(
+    ppm,
+    schedule.window,
+    schedule.castTime,
+    radius,
+    arcDegrees,
+    schedule.fixedPeriod ? 0 : enhancedRechargeBonus,
+    schedule.fixedPeriod ? 0 : globalRechargeBonus,
+  );
+}
 
 /**
  * Calculate proc chance for Auto/Toggle powers.

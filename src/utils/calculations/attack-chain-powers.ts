@@ -20,6 +20,7 @@ import {
 import { calcThreeTier, convertGlobalBonusesToAspects, applyActiveConditionals } from '@/components/info/powerDisplayUtils';
 import { selectActiveConditionals, type ATInherentState } from '@/utils/conditional-effects';
 import { calculateSlottedProcDamagePerCast } from './power-proc-damage';
+import { resolveProcAreaGeometry, resolveProcPatchDuration } from './pet-damage';
 import { atMechanicMultiplier, applyAtMechanicBonus, type AtMechanicContext } from './power-at-mechanics';
 import { applyQuickSnipe } from '@/utils/quick-snipe';
 import { applyModeRedirect } from '@/components/info/resolveEffectivePower';
@@ -650,18 +651,25 @@ export function buildChainPowers(
       // Slotted-proc damage keys off the recharge window (base, shrunk by this
       // power's own recharge and widened back by the build's global) and the cast
       // time, so a shorter (fast-snipe) cast yields a different PPM chance.
-      const radiusP = powerRadius(p);
+      // Summon-shell AoEs (rains, Bonfire, Lightning Rod) carry radius 0 on the
+      // parent, so the raw read scored their procs single-target — and the patch
+      // owns the roll CLOCK as well as the footprint. Both come off the summon.
+      const directRadiusP = powerRadius(p);
+      const { radius: radiusP, arcDegrees: arcP } = resolveProcAreaGeometry(
+        directRadiusP, arcToDegrees(powerArc(p)) || undefined, p.effects?.summon);
       const procDmg = calculateSlottedProcDamagePerCast({
         slots: p.slots,
         baseRecharge,
         castTime: rawCastP,
         radius: radiusP,
-        arcDegrees: radiusP > 0 ? (arcToDegrees(powerArc(p)) || 360) : 360,
+        arcDegrees: arcP,
         rechargeEnh: enh.recharge || 0,
         globalRechargeEnh: globalForCalc.recharge || 0,
         buildLevel: build.level,
         procsOnlyOnMainTarget: p.procsOnlyOnMainTarget,
         procsAllowed: p.procsAllowed,
+        powerType: p.powerType,
+        patchDuration: resolveProcPatchDuration(directRadiusP, p.effects?.summon),
       });
       const dot = dotData && !dotInCast
         ? {

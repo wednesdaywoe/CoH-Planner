@@ -21,18 +21,19 @@ import type { Power, TargetType, EffectArea, SelectedPower, IOSetEnhancement, Re
 import type { PowerDamageResult } from '@/utils/calculations';
 import type { PowerProjection } from '@/engine/engineTotalsMap';
 import { abbreviateDamageType } from '@/utils/calculations';
-import { resolveProcAreaGeometry } from '@/utils/calculations/pet-damage';
+import { resolveProcAreaGeometry, resolveProcPatchDuration } from '@/utils/calculations/pet-damage';
 import { describeChainTarget, describeTargetCap } from '@/utils/chain-expressions';
 import { Chip, type TagKind } from './TagsRow';
 import {
   findProcData,
   isProcAlwaysOn,
   resolveProcRollGeometry,
+  resolveProcRollSchedule,
+  calculateScheduledProcChance,
   powerFiresProcs,
-  calculateProcChance,
-  calculateAutoToggleProcChance,
   getPPMAreaDenominator,
   type ProcData,
+  type ProcRollSchedule,
 } from '@/data';
 
 // ----------------------------------------------------------------------
@@ -255,6 +256,10 @@ export function GeneralStatsBlock({
         // ProcAllowed kNone: nothing rolls against this power's recharge, so the
         // row prints why instead of a chance the game will never honour.
         procsAllowed={power.procsAllowed}
+        // A rain/patch hands its rolls to the summon, which is an Auto: they are
+        // scored against the proc's own 10s period, once every 10s the patch
+        // lives. The parent's recharge — 60s on Sleet — never enters.
+        patchDuration={resolveProcPatchDuration(effects.radius ?? 0, power.effects?.summon)}
       />
     </div>
   );
@@ -315,6 +320,10 @@ interface ProcChanceRowProps {
   /** The power's `ProcAllowed` flag. `false` means no PPM chance exists here —
    *  see powerFiresProcs. */
   procsAllowed?: boolean;
+  /** Lifetime (s) of the summoned patch that owns the rolls, when there is one.
+   *  Its procs roll on the patch's 10s clock, not the parent's recharge, and
+   *  they roll once per 10s of patch life — see resolveProcRollSchedule. */
+  patchDuration?: number;
 }
 
 interface ProcEntry {
@@ -337,6 +346,7 @@ function ProcChanceRow({
   globalRechargeBonus,
   procsOnlyOnMainTarget,
   procsAllowed,
+  patchDuration,
 }: ProcChanceRowProps) {
   // Per-view local expansion plus a persisted "pin" toggle. The pin
   // wins when on — Power Info shows the breakdown automatically for
@@ -358,10 +368,13 @@ function ProcChanceRow({
   // area-factor. resolveProcRollGeometry owns that rule for all PPM surfaces.
   const { radius: procRadius, arcDegrees: arcDeg } =
     resolveProcRollGeometry(procsOnlyOnMainTarget, radius, arcDegrees);
-  // The window the breakdown row prints, kept identical to what calculateProcChance computes
-  // below — a formula the user can reproduce by hand has to be the formula that ran.
-  const modifiedRecharge =
-    (baseRecharge * (1 + globalRechargeBonus)) / (1 + globalRechargeBonus + slottedRechargeBonus);
+  const schedule = resolveProcRollSchedule({ powerType, baseRecharge, castTime, patchDuration });
+  // The window the breakdown row prints, kept identical to what the chance below
+  // is computed from — a formula the user can reproduce by hand has to be the
+  // formula that ran. On a fixed-period schedule the recharge terms are inert.
+  const modifiedRecharge = schedule.fixedPeriod
+    ? schedule.window
+    : (baseRecharge * (1 + globalRechargeBonus)) / (1 + globalRechargeBonus + slottedRechargeBonus);
   const areaDenom = getPPMAreaDenominator(procRadius, arcDeg);
 
   const entries: ProcEntry[] = [];
@@ -387,9 +400,8 @@ function ProcChanceRow({
       continue;
     }
 
-    const chance = isToggleOrAuto
-      ? calculateAutoToggleProcChance(procData.ppm, procRadius, arcDeg)
-      : calculateProcChance(procData.ppm, baseRecharge, castTime, procRadius, arcDeg, slottedRechargeBonus, globalRechargeBonus);
+    const chance = calculateScheduledProcChance(
+      procData.ppm, schedule, procRadius, arcDeg, slottedRechargeBonus, globalRechargeBonus);
 
     entries.push({
       key,
@@ -429,6 +441,10 @@ function ProcChanceRow({
   const ppmEntries = entries.filter((e) => e.chance !== undefined);
   const headline = ppmEntries.length > 0
     ? ppmEntries.map((e) => `${Math.round((e.chance ?? 0) * 100)}%`).join(' / ')
+      // Each roll is what the percentage describes; a patch gets several per
+      // cast, so the count has to ride alongside or the number reads as the
+      // whole story and understates the power by exactly that factor.
+      + (schedule.rolls > 1 ? ` × ${schedule.rolls} rolls` : '')
     : 'always-on';
 
   return (
@@ -492,7 +508,7 @@ function ProcChanceRow({
             <ProcDetailLine
               key={entry.key}
               entry={entry}
-              isToggleOrAuto={isToggleOrAuto}
+              schedule={schedule}
               modifiedRecharge={modifiedRecharge}
               castTime={castTime}
               areaDenom={areaDenom}
@@ -501,8 +517,20 @@ function ProcChanceRow({
             />
           ))}
           <div className="text-[11px] text-slate-400 italic mt-1">
-            Recharge here = base ÷ (1 + slotted enh recharge); global recharge buffs (set bonuses, Hasten) do not affect proc chance.
-            {isToggleOrAuto && ' Toggle procs check every 10s (~6×/min) with suppression in between.'}
+            {schedule.rolls > 1 ? (
+              <>
+                Rolls happen on the summoned patch, not on your cast: one every 10s for as long as
+                the patch lives ({schedule.rolls} per cast). Each is scored against the proc's own
+                10s period, so recharge — slotted or global — does not change the chance, only how
+                often you re-cast. Measured in game 2026-08-05.
+              </>
+            ) : (
+              <>
+                Recharge here = base ÷ (1 + slotted enh recharge); global recharge buffs (set
+                bonuses, Hasten) do not affect proc chance.
+                {isToggleOrAuto && ' Toggle procs check every 10s (~6×/min) with suppression in between.'}
+              </>
+            )}
             {' '}Clamped to 5+PPM×1.5% min, 90% max.
           </div>
         </div>
@@ -513,7 +541,7 @@ function ProcChanceRow({
 
 function ProcDetailLine({
   entry,
-  isToggleOrAuto,
+  schedule,
   modifiedRecharge,
   castTime,
   areaDenom,
@@ -521,7 +549,7 @@ function ProcDetailLine({
   baseRecharge,
 }: {
   entry: ProcEntry;
-  isToggleOrAuto: boolean;
+  schedule: ProcRollSchedule;
   modifiedRecharge: number;
   castTime: number;
   areaDenom: number;
@@ -541,7 +569,7 @@ function ProcDetailLine({
   const chancePct = entry.chance * 100;
 
   let formula: string;
-  if (isToggleOrAuto) {
+  if (schedule.fixedPeriod) {
     formula = `${ppm.toFixed(1)} × 10 / (60 × ${areaDenom.toFixed(2)})`;
   } else {
     const rechargeLabel = hasRechargeMod
@@ -556,6 +584,16 @@ function ProcDetailLine({
         <span className="text-slate-300">{entry.name}</span>
         <span className="text-slate-400"> · {ppm.toFixed(1)} PPM</span>
         <span className="text-amber-300 ml-2">{chancePct.toFixed(1)}%</span>
+        {schedule.rolls > 1 && (
+          // The compound chance, so the reader doesn't have to work out what
+          // several modest rolls add up to. Expected procs is rolls × chance;
+          // this is the chance of AT LEAST ONE, which is what "did it fire?"
+          // means to a player.
+          <span className="text-slate-400 ml-1">
+            × {schedule.rolls} rolls →{' '}
+            {((1 - (1 - entry.chance) ** schedule.rolls) * 100).toFixed(1)}% per cast
+          </span>
+        )}
       </div>
       <div className="text-[11px] text-slate-400 font-mono pl-1">{formula}</div>
     </div>

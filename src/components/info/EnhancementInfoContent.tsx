@@ -5,7 +5,8 @@
 
 import { useBuildStore, useUIStore } from '@/stores';
 import { useBonusTracking } from '@/hooks';
-import { getIOSet, lookupPower, findProcData, resolveProcPieceName, procEffectSummary, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, resolveProcRollGeometry, powerFiresProcs, interpolateProcDamage, calculateProcChance, calculateProcsPerMinute, calculateProcDPS, calculateAutoToggleProcChance, calculateAutoToggleProcsPerMinute, arcToDegrees } from '@/data';
+import { getIOSet, lookupPower, findProcData, resolveProcPieceName, procEffectSummary, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, resolveProcRollGeometry, procRollsInPatch, powerFiresProcs, interpolateProcDamage, calculateProcChance, calculateProcsPerMinute, calculateProcDPS, calculateAutoToggleProcChance, calculateAutoToggleProcsPerMinute, arcToDegrees } from '@/data';
+import { resolveProcAreaGeometry, resolveProcPatchDuration } from '@/utils/calculations/pet-damage';
 import {
   normalizeAspectName,
   readAspectDisplayValue,
@@ -295,20 +296,48 @@ export function EnhancementInfoContent({ powerName, powerSet, slotIndex }: Enhan
                       // own effects) still renders.
                       if (!powerFiresProcs(selected) || !powerFiresProcs(base)) return null;
 
-                      // For Auto/Toggle powers, use special calculation
-                      if (isAutoOrToggle) {
+                      // Auto/Toggle powers, and the patch a rain summons, both
+                      // roll on the proc's own 10s period instead of a recharge
+                      // window. A patch differs in one way: it lives long enough
+                      // for several of those periods, so the cast is worth
+                      // `rolls` checks rather than one. See resolveProcRollSchedule.
+                      const patchDuration = resolveProcPatchDuration(
+                        base?.effects?.radius || selected.effects?.radius || 0,
+                        base?.effects?.summon ?? selected.effects?.summon,
+                      );
+                      if (isAutoOrToggle || patchDuration != null) {
                         const togArcRaw = base?.effects?.arc ?? selected.effects?.arc;
-                        const { radius: togRadius, arcDegrees: togArc } = resolveProcRollGeometry(
-                          procsOnlyOnMainTarget,
+                        const patchArea = resolveProcAreaGeometry(
                           base?.effects?.radius || selected.effects?.radius || 0,
                           arcToDegrees(togArcRaw) || undefined,
+                          base?.effects?.summon ?? selected.effects?.summon,
                         );
+                        const { radius: togRadius, arcDegrees: togArc } = resolveProcRollGeometry(
+                          procsOnlyOnMainTarget,
+                          patchArea.radius,
+                          patchArea.arcDegrees,
+                        );
+                        const rolls = patchDuration != null
+                          ? procRollsInPatch(
+                              patchDuration,
+                              (base?.effects?.recharge || selected.effects?.recharge || 0)
+                                + (base?.effects?.castTime || selected.effects?.castTime || 0),
+                            )
+                          : 1;
                         const procChance = calculateAutoToggleProcChance(procData.ppm, togRadius, togArc);
-                        const procsPerMin = calculateAutoToggleProcsPerMinute(procData.ppm, togRadius, togArc);
+                        // Per minute: a toggle checks 6×/min flat, whereas a patch
+                        // gets `rolls` checks per cast on the parent's cycle.
+                        const cycle = (base?.effects?.recharge || selected.effects?.recharge || 0)
+                          + (base?.effects?.castTime || selected.effects?.castTime || 0);
+                        const procsPerMin = patchDuration != null && cycle > 0
+                          ? procChance * rolls * (60 / cycle)
+                          : calculateAutoToggleProcsPerMinute(procData.ppm, togRadius, togArc);
 
                         return (
                           <div className="mt-1 pt-1 border-t border-amber-700/30">
-                            <div className="text-[10px] text-amber-400/70 uppercase mb-0.5">PPM Calculation ({powerType})</div>
+                            <div className="text-[10px] text-amber-400/70 uppercase mb-0.5">
+                              PPM Calculation ({patchDuration != null ? 'patch' : powerType})
+                            </div>
                             <div className="flex flex-wrap gap-x-3 gap-y-0.5 text-[11px]">
                               <div>
                                 <span className="text-slate-400">Chance/tick:</span>
@@ -364,7 +393,9 @@ export function EnhancementInfoContent({ powerName, powerSet, slotIndex }: Enhan
                               )}
                             </div>
                             <div className="text-[9px] text-slate-400 mt-0.5 italic">
-                              Auto/Toggle: 10s pseudo-recharge, 6 checks/min
+                              {patchDuration != null
+                                ? `Patch: rolls on the summon every 10s (${rolls}/cast) — recharge does not change the chance`
+                                : 'Auto/Toggle: 10s pseudo-recharge, 6 checks/min'}
                             </div>
                           </div>
                         );

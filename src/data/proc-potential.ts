@@ -37,15 +37,15 @@ import { getIOSetsForPower, IO_SET_TYPE_TO_CATEGORY } from './io-sets';
 import {
   PROC_DATABASE,
   getProcEffects,
-  calculateProcChance,
   arcToDegrees,
   resolveProcRollGeometry,
+  resolveProcRollSchedule,
+  calculateScheduledProcChance,
   powerFiresProcs,
   getPPMAreaDenominator,
-  AUTO_POWER_PSEUDO_RECHARGE,
   type ProcData,
 } from './proc-data';
-import { resolveProcAreaGeometry } from '@/utils/calculations/pet-damage';
+import { resolveProcAreaGeometry, resolveProcPatchDuration } from '@/utils/calculations/pet-damage';
 
 /** The PPM formula's hard ceiling. A proc at this value cannot be improved. */
 export const PROC_CHANCE_CAP = 0.9;
@@ -57,7 +57,11 @@ export interface ProcPotentialEntry {
   setName: string;
   ioName: string;
   ppm: number;
-  /** Chance per activation at BASE recharge with this power's roll geometry. */
+  /**
+   * Chance of ONE roll at base recharge with this power's roll geometry. Equal
+   * to the chance per activation except on a patch power, which gets `rolls` of
+   * them per cast — see `ProcPotential.rolls`.
+   */
   chance: number;
   /** True when `chance` is at the 90% ceiling — more recharge buys nothing. */
   atCap: boolean;
@@ -97,9 +101,19 @@ export interface ProcPotential {
   maxSlots: number;
 
   // --- the inputs, surfaced so the UI can explain the number ---
-  /** Recharge window used (AUTO_POWER_PSEUDO_RECHARGE for auto/toggle powers). */
+  /**
+   * Window ONE roll was scored against. The power's base recharge normally; the
+   * proc's own 10s period for an auto/toggle or a patch power, where recharge
+   * has no bearing at all.
+   */
   recharge: number;
   castTime: number;
+  /**
+   * Independent rolls per activation. 1 everywhere except a summoned patch,
+   * which rolls every 10s for as long as it lives — 2 for a 15s rain, 5 for a
+   * 45s Bonfire. Expected procs per cast is `rolls × chance`.
+   */
+  rolls: number;
   /** Radius procs actually roll against, post-pseudo-pet and ProcMainTargetOnly. */
   radius: number;
   arcDegrees: number;
@@ -145,30 +159,27 @@ function classifyProc(data: ProcData): { category: string; effectType?: string }
 }
 
 /**
- * The recharge window and roll geometry a power's procs actually see.
+ * The roll schedule and geometry a power's procs actually see.
  *
- * Auto/Toggle powers have no recharge, so the PPM formula uses a 10s
- * pseudo-recharge (`calculateAutoToggleProcChance` applies the same rule).
- * Pseudo-pet powers (rains, patches, Caltrops, Burn) carry radius 0 on the
- * parent with the real footprint on the summon — missing that scores 264 HC
- * powers as single-target and overstates them badly.
+ * Both halves of the pseudo-pet case are handled here, and they are separate
+ * facts about the same summon. Rains, patches, Caltrops and Burn carry radius 0
+ * on the parent with the real footprint on the summon — missing the RADIUS
+ * scores 264 HC powers as single-target and overstates them badly. Missing the
+ * CLOCK is the bigger error: the patch is an `Auto` with recharge 0, so its
+ * procs roll against the proc's own 10s period every 10 seconds it lives, and
+ * the parent's long recharge never enters the formula at all. That is measured,
+ * not inferred — see `resolveProcRollSchedule` for the Sleet experiment that
+ * killed the 90% this function used to report.
  *
- * KNOWN APPROXIMATION for the rains. We score them as ONE roll per cast against
- * the parent's recharge (Ice Storm: 60s + 2.03s cast at the patch's 25ft, so
- * every proc pins to the 90% cap). The bins say the roll site is really the
- * summoned patch's power — `Pets.Corruptor_IceStorm.IceStorm` is an Auto with
- * recharge 0, cast 0 and a 0.2s activate period, and the parent's EntCreate
- * carries `CopyBoosts` to get the proc there — but they do NOT say how often
- * that pulse rolls, and 0.2s plainly isn't it. Mids makes the same
- * approximation (Effect.cs `ActualProbability` reads the slotted power). The
- * measurement that would settle it: count Achilles' Heel applications under a
- * rain against its 10s duration.
+ * A consequence worth stating plainly, because it is where the badge changed:
+ * a patch power's per-roll chance is small (a 3.5 PPM proc in a 20ft rain sits
+ * at 17.9%) and no amount of recharge moves it, so no rain can reach the 90%
+ * ceiling and none of them score as proc bombs any more. What a rain offers is
+ * several modest rolls instead of one good one — real, and worth knowing, but
+ * not the "many procs at once" the badge is for.
  */
 function resolveProcContext(power: Power) {
   const stats = power.stats ?? {};
-  const isAutoOrToggle = power.powerType === 'Auto' || power.powerType === 'Toggle';
-  const recharge = isAutoOrToggle ? AUTO_POWER_PSEUDO_RECHARGE : stats.recharge ?? 0;
-  const castTime = isAutoOrToggle ? 0 : stats.castTime ?? 0;
 
   const directRadius = stats.radius ?? 0;
   const area = resolveProcAreaGeometry(
@@ -179,10 +190,18 @@ function resolveProcContext(power: Power) {
     power.effects?.summon,
   );
   const roll = resolveProcRollGeometry(power.procsOnlyOnMainTarget, area.radius, area.arcDegrees);
+  const schedule = resolveProcRollSchedule({
+    powerType: power.powerType,
+    baseRecharge: stats.recharge ?? 0,
+    castTime: stats.castTime ?? 0,
+    patchDuration: resolveProcPatchDuration(directRadius, power.effects?.summon),
+  });
 
   return {
-    recharge,
-    castTime,
+    schedule,
+    recharge: schedule.window,
+    castTime: schedule.castTime,
+    rolls: schedule.rolls,
     radius: roll.radius,
     arcDegrees: roll.arcDegrees,
     areaDenominator: getPPMAreaDenominator(roll.radius, roll.arcDegrees),
@@ -266,10 +285,9 @@ export function getProcPotential(power: Power): ProcPotential | null {
     // Proc120s and any PPM-less entry can't use the PPM formula.
     if (data.type !== 'Proc' || data.ppm == null) continue;
 
-    const chance = calculateProcChance(
+    const chance = calculateScheduledProcChance(
       data.ppm,
-      ctx.recharge,
-      ctx.castTime,
+      ctx.schedule,
       ctx.radius,
       ctx.arcDegrees,
     );
@@ -296,6 +314,9 @@ export function getProcPotential(power: Power): ProcPotential | null {
 
   entries.sort((a, b) => b.chance - a.chance || a.setName.localeCompare(b.setName));
 
+  // `schedule` is the resolver's internal handle; its three fields are already
+  // published flat as recharge/castTime/rolls, so it stays out of the result.
+  const { schedule: _schedule, ...published } = ctx;
   const result: ProcPotential = {
     entries,
     composition: buildComposition(entries),
@@ -304,7 +325,7 @@ export function getProcPotential(power: Power): ProcPotential | null {
     purpleSets: [...purpleSets].sort(),
     globalCount,
     maxSlots: power.maxSlots ?? 6,
-    ...ctx,
+    ...published,
   };
   _cache.set(power, result);
   return result;
@@ -334,6 +355,16 @@ function setMatchesCategory(setType: string, category: IOSetCategory): boolean {
  * Deliberately blind to what each proc DOES. -Res, knockdown, stun and -ToHit
  * are real build goals; a damage weighting here would have argued against
  * exactly the slotting choices that motivated this feature.
+ *
+ * **Patch powers score 0 and that is intended.** Once a rain's rolls are scored
+ * against the proc's own 10s period (`resolveProcRollSchedule`) rather than the
+ * parent's recharge, nothing slotted in one can approach the ceiling, so Sleet,
+ * Bonfire, Tar Patch and the rest lose the badge. A rain does re-roll — two
+ * modest chances instead of one good one, with Achilles' -Res genuinely
+ * re-applying mid-patch — and that is a real reason to slot procs there. It is
+ * not what "proc bomb" means: the metaphor is many procs landing at once, which
+ * is exactly the cap count this tier measures. The re-roll is reported as
+ * `rolls` for anyone who wants it.
  *
  * Calibrated against all 3,159 Homecoming powers with a proc pool: ~15% reach
  * tier 1+, ~9% tier 2. In a 24-power build that is a handful of badges, not a
