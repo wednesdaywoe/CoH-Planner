@@ -433,6 +433,8 @@ function MobileSettingsContent() {
   const toggleUseArcanaTime = useUIStore((s) => s.toggleUseArcanaTime);
   const showSlotLevels = useUIStore((s) => s.showSlotLevels);
   const toggleShowSlotLevels = useUIStore((s) => s.toggleShowSlotLevels);
+  const showProcPotential = useUIStore((s) => s.showProcPotential);
+  const toggleShowProcPotential = useUIStore((s) => s.toggleShowProcPotential);
   const targetLevelOffset = useUIStore((s) => s.targetLevelOffset);
   const setTargetLevelOffset = useUIStore((s) => s.setTargetLevelOffset);
   const contentMode = useUIStore((s) => s.contentMode);
@@ -529,6 +531,7 @@ function MobileSettingsContent() {
         <ToggleRow label="Include procs in DPS" checked={includeProcs} onChange={toggleIncludeProcs} />
         <ToggleRow label="Use ArcanaTime" checked={useArcanaTime} onChange={toggleUseArcanaTime} />
         <ToggleRow label="Show slot levels" checked={showSlotLevels} onChange={toggleShowSlotLevels} />
+        <ToggleRow label="Proc potential badges" checked={showProcPotential} onChange={toggleShowProcPotential} />
       </div>
 
       <div className="border-t border-slate-800 pt-4 space-y-3">

@@ -10,6 +10,7 @@
 import type { IOSetRarity, IOSet } from '@/types';
 import { getAllIOSets } from './io-sets';
 import { normalizeStatName, getPairedStat } from '@/utils/calculations/set-bonuses';
+import { TRACKED_STAT_TO_BONUS_STATS } from './set-bonus-groups';
 
 // ============================================
 // TYPES
@@ -273,6 +274,104 @@ export function searchBonusLookup(filters: {
 }
 
 /**
+ * Build the lookup a tracked-stat matcher needs: normalized set-bonus stat name
+ * → the tracked `breakdownKey` it satisfies.
+ *
+ * Tracked keys come from the dashboard's `breakdownKey` vocabulary (camelCase
+ * globals like `maxHP`, `mezResistHold`); set bonus stats are the normalized
+ * vocabulary (`maxhp`, `mezresist`). TRACKED_STAT_TO_BONUS_STATS bridges the
+ * two; `getPairedStat` is layered on top because one bonus on a paired stat
+ * (S/L, F/C, E/N) grants both halves, so tracking Fire Res must match a set
+ * whose bonus normalizes to `resCold`.
+ *
+ * An unknown key falls back to itself, which is how the pre-map behaviour worked
+ * for the 26 keys spelled the same in both vocabularies — harmless, and it keeps
+ * a hypothetical caller passing a raw normalized stat working.
+ */
+export function buildTrackedStatTargets(
+  trackedBreakdownKeys: readonly string[],
+): Map<string, string> {
+  const targetMap = new Map<string, string>();
+  for (const key of trackedBreakdownKeys) {
+    const bonusStats = TRACKED_STAT_TO_BONUS_STATS[key] ?? [key];
+    for (const stat of bonusStats) {
+      // First tracked key to claim a stat wins, so a set matching several
+      // tracked stats still reports each bonus once.
+      if (!targetMap.has(stat)) targetMap.set(stat, key);
+      const pair = getPairedStat(stat);
+      if (pair && !targetMap.has(pair)) targetMap.set(pair, key);
+    }
+  }
+  return targetMap;
+}
+
+/** One set bonus that grants a stat the player is tracking. */
+export interface TrackedBonusMatch {
+  /** The dashboard `breakdownKey` this bonus satisfies. */
+  trackedKey: string;
+  /** Pieces of the set required to activate it. */
+  pieces: number;
+  /** Bonus magnitude (percent by convention, matching SetBonusEffect.value). */
+  value: number;
+  /** Raw description, for `formatBonusDesc`. */
+  desc: string;
+  /** Raw stat string, for `formatBonusDesc`. */
+  stat: string;
+  /**
+   * Normalized stat name — the vocabulary `isBonusCapped` / `getTotalBonusCount`
+   * and the chip label/unit formatters speak. For a one-to-many tracked stat this
+   * is the umbrella bonus (`mezresist`), not the tracked key.
+   */
+  normalizedStat: string;
+}
+
+/**
+ * Every set bonus in `ioSet` that grants one of the tracked stats, sorted by
+ * piece threshold. PvP-only effects are excluded — they don't apply in PvE, so
+ * they must not advertise a stat the player is chasing.
+ *
+ * Deduplicated per (trackedKey, pieces): a bonus on a paired stat appears in the
+ * set's effect list twice (Fire and Cold halves of one "Fire/Cold Resistance"),
+ * and the player wants to see that once.
+ */
+export function getSetTrackedBonuses(
+  ioSet: IOSet,
+  trackedBreakdownKeys: readonly string[],
+): TrackedBonusMatch[] {
+  if (trackedBreakdownKeys.length === 0) return [];
+  const targetMap = buildTrackedStatTargets(trackedBreakdownKeys);
+  if (targetMap.size === 0) return [];
+
+  const out: TrackedBonusMatch[] = [];
+  const seen = new Set<string>();
+
+  for (const bonus of ioSet.bonuses) {
+    for (const fx of bonus.effects) {
+      if (fx.pvp) continue; // PvP-only effects don't count for PvE stat tracking
+      const normalized = normalizeStatName(fx.stat);
+      if (!normalized) continue;
+      const trackedKey = targetMap.get(normalized);
+      if (!trackedKey) continue;
+
+      const dedupKey = `${trackedKey}|${bonus.pieces}`;
+      if (seen.has(dedupKey)) continue;
+      seen.add(dedupKey);
+
+      out.push({
+        trackedKey,
+        pieces: bonus.pieces,
+        value: fx.value,
+        desc: fx.desc,
+        stat: fx.stat,
+        normalizedStat: normalized,
+      });
+    }
+  }
+
+  return out.sort((a, b) => a.pieces - b.pieces || a.trackedKey.localeCompare(b.trackedKey));
+}
+
+/**
  * Check which tracked stats an IO set provides bonuses for.
  * Returns the set of matched breakdownKeys (empty if no match).
  *
@@ -281,28 +380,7 @@ export function searchBonusLookup(filters: {
  */
 export function getSetTrackedMatches(
   ioSet: IOSet,
-  trackedBreakdownKeys: string[],
+  trackedBreakdownKeys: readonly string[],
 ): Set<string> {
-  if (trackedBreakdownKeys.length === 0) return new Set();
-
-  // Build a map: normalizedStat → tracked breakdownKey(s) that care about it
-  const targetMap = new Map<string, string>();
-  for (const key of trackedBreakdownKeys) {
-    targetMap.set(key, key);
-    const pair = getPairedStat(key);
-    if (pair) targetMap.set(pair, key);
-  }
-
-  const matched = new Set<string>();
-  for (const bonus of ioSet.bonuses) {
-    for (const fx of bonus.effects) {
-      if (fx.pvp) continue; // PvP-only effects don't count for PvE stat tracking
-      const normalized = normalizeStatName(fx.stat);
-      if (normalized && targetMap.has(normalized)) {
-        matched.add(targetMap.get(normalized)!);
-      }
-    }
-  }
-
-  return matched;
+  return new Set(getSetTrackedBonuses(ioSet, trackedBreakdownKeys).map((m) => m.trackedKey));
 }

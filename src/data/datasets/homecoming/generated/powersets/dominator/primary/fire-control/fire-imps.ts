@@ -18,6 +18,7 @@ export const FireImps: Power = {
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "procsAllowed": false,
   "stats": {
     "accuracy": 1.2,
     "range": 60,

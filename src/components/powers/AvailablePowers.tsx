@@ -9,6 +9,7 @@ import { useIsTouchDevice } from '@/hooks';
 
 import { getPowerset, getPowerIconPath, MAX_POWER_PICKS, GRANTED_POWER_GROUPS, getArchetypeInherentPowers, getPowerPicksAtLevel } from '@/data';
 import { resolvePath } from '@/utils/paths';
+import { ProcPotentialBadge } from './ProcPotentialBadge';
 import type { Power } from '@/types';
 
 /**
@@ -411,6 +412,7 @@ export function PowerItem({
       <span className="line-clamp-2 leading-snug flex-1 min-w-0 text-slate-200 pointer-events-none">
         {power.name}
       </span>
+      <ProcPotentialBadge power={power} />
       {/* Mobile info button - only visible on small screens */}
       <button
         onClick={onShowInfo}

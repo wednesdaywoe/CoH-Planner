@@ -9471,6 +9471,7 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Ice Elemental",
         "fullName": "Epic.Defender_Ice_Mastery.Ice_Elemental",
+        "procsAllowed": false,
         "rank": 5,
         "available": 43,
         "description": "You can create a very powerful entity of animated ice at a targeted location. Ice Elemental possesses several ice powers to attack any nearby foes and can be healed and buffed like any teammate. You must be level 44 and have two other Ice Mastery Powers before selecting this power.",
@@ -21740,6 +21741,7 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Ice Elemental",
         "fullName": "Epic.Scrapper_Ice_Mastery.Ice_Elemental",
+        "procsAllowed": false,
         "rank": 5,
         "available": 43,
         "description": "You can create a very powerful entity of animated ice at a targeted location. Ice Elemental possesses several ice powers to attack any nearby foes and can be healed and buffed like any teammate. You must be level 44 and have two other Ice Mastery Powers before selecting this power.",

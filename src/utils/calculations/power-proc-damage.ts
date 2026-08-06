@@ -20,6 +20,7 @@ import {
   calculateProcChance,
   interpolateProcDamage,
   resolveProcRollGeometry,
+  powerFiresProcs,
 } from '@/data';
 
 export interface SlottedProcDamageInput {
@@ -42,6 +43,9 @@ export interface SlottedProcDamageInput {
   /** The power's `ProcMainTargetOnly` flag — when set, its procs roll
    *  single-target despite an AoE radius; see resolveProcRollGeometry. */
   procsOnlyOnMainTarget?: boolean;
+  /** The power's `ProcAllowed` flag. `false` means no PPM proc rolls here at
+   *  all, so the power adds no proc damage; see powerFiresProcs. */
+  procsAllowed?: boolean;
 }
 
 /**
@@ -50,6 +54,12 @@ export interface SlottedProcDamageInput {
  */
 export function calculateSlottedProcDamagePerCast(input: SlottedProcDamageInput): number {
   const { slots, baseRecharge, castTime, radius, arcDegrees, rechargeEnh, buildLevel } = input;
+  // ProcAllowed kNone (Fault, Spring Attack, every pet summon): the power's
+  // recharge window is not a proc window, so a damage proc slotted here adds
+  // nothing to this cast. Pet summons are the subtle case — the proc does reach
+  // the pet via CopyBoosts, but what it deals there is pet damage fired on the
+  // pet's schedule, not damage on this activation.
+  if (!powerFiresProcs(input)) return 0;
   // In a main-target-only power every proc — damage or not — rolls
   // single-target: the AoE radius belongs to a secondary effect (the knockback
   // splash) that the proc never rolls against.

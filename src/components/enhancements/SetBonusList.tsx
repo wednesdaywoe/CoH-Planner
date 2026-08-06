@@ -26,7 +26,7 @@ import { useMemo } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
 import { normalizeStatName, getTotalBonusCount, isBonusCapped } from '@/utils/calculations';
 import { formatBonusDesc } from '@/utils/set-bonus-format';
-import { getPairedStat } from '@/utils/calculations/set-bonuses';
+import { buildTrackedStatTargets } from '@/data/set-bonus-index';
 import { useBonusTracking } from '@/hooks';
 import type { IOSet } from '@/types';
 
@@ -46,17 +46,15 @@ export function SetBonusList({ set, piecesInPower: piecesInPowerProp }: SetBonus
   const trackedStats = useUIStore((s) => s.trackedStats);
   const bonusTracking = useBonusTracking();
 
-  // Build a set of normalized stat keys that are being tracked (including paired stats)
-  const trackedNormalized = useMemo(() => {
-    if (trackedStats.length === 0) return new Set<string>();
-    const out = new Set<string>();
-    for (const key of trackedStats) {
-      out.add(key);
-      const pair = getPairedStat(key);
-      if (pair) out.add(pair);
-    }
-    return out;
-  }, [trackedStats]);
+  // Normalized set-bonus stat names the player is tracking. Must go through
+  // buildTrackedStatTargets rather than using the tracked keys directly: the
+  // dashboard's breakdownKey vocabulary and the normalized bonus vocabulary
+  // differ by case, by rename (maxHP/maxhp), and by granularity (mezResistHold
+  // is satisfied by an undifferentiated `mezresist` bonus).
+  const trackedNormalized = useMemo(
+    () => buildTrackedStatTargets(trackedStats),
+    [trackedStats],
+  );
 
   // Count how many pieces of this set are already slotted in the current power
   const setId = set.id || set.name;

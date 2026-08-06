@@ -492,6 +492,7 @@ function computeProcDamagePerActivation(props: DamageBlockProps): number {
       globalRechargeEnh: globalBonusesForCalc.recharge ?? 0,
       buildLevel,
       procsOnlyOnMainTarget: selectedPower.procsOnlyOnMainTarget,
+      procsAllowed: selectedPower.procsAllowed,
     });
   }
   return total;

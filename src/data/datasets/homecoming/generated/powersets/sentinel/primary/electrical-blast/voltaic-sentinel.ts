@@ -18,6 +18,7 @@ export const VoltaicSentinel: Power = {
   "powerType": "Toggle",
   "targetType": "Location",
   "effectArea": "Location",
+  "procsAllowed": false,
   "stats": {
     "accuracy": 2,
     "range": 40,

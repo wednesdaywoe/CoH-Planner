@@ -18,6 +18,7 @@ export const HypnotizingLights: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "procsAllowed": false,
   "stats": {
     "accuracy": 1,
     "range": 60,

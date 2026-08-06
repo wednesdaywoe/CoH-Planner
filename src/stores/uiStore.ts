@@ -424,6 +424,13 @@ interface UIState {
   /** Show slot level labels on enhancement slots */
   showSlotLevels: boolean;
 
+  /**
+   * Show the proc-potential lens: a badge on powers that are unusually good
+   * vehicles for procs at BASE recharge, independent of how they're slotted.
+   * Off by default — it's an analysis overlay, not build state.
+   */
+  showProcPotential: boolean;
+
   /** Power names being tracked for "perma" (recharge <= duration) */
   permaTrackedPowers: string[];
 
@@ -764,6 +771,9 @@ interface UIActions {
   // Slot level labels
   toggleShowSlotLevels: () => void;
 
+  // Proc-potential lens
+  toggleShowProcPotential: () => void;
+
   // Perma tracker
   togglePermaTracked: (powerName: string) => void;
 
@@ -976,6 +986,7 @@ export const useUIStore = create<UIStore>()(
       mechanicAdjusters: {}, // No per-power conditional toggles overridden by default
       globalAdjusters: {}, // No global conditional toggles overridden by default
       showSlotLevels: true, // Show slot level labels by default
+      showProcPotential: false, // Analysis overlay — opt in
       permaTrackedPowers: [], // No perma-tracked powers by default
       levelUpMode: false, // Off by default — classic "respec" flow
       mobileSheet: null,
@@ -1845,6 +1856,11 @@ export const useUIStore = create<UIStore>()(
           showSlotLevels: !state.showSlotLevels,
         })),
 
+      toggleShowProcPotential: () =>
+        set((state) => ({
+          showProcPotential: !state.showProcPotential,
+        })),
+
       togglePermaTracked: (powerName) =>
         set((state) => ({
           permaTrackedPowers: state.permaTrackedPowers.includes(powerName)
@@ -1971,6 +1987,7 @@ export const useUIStore = create<UIStore>()(
         powerViewMode: state.powerViewMode,
         trackedStats: state.trackedStats,
         showSlotLevels: state.showSlotLevels,
+        showProcPotential: state.showProcPotential,
         permaTrackedPowers: state.permaTrackedPowers,
         levelUpMode: state.levelUpMode,
         mechanicAdjusters: state.mechanicAdjusters,
@@ -2205,6 +2222,7 @@ export const useTargetsHit = (powerName: string) =>
 
 /** Select slot level labels visibility */
 export const useShowSlotLevels = () => useUIStore((state) => state.showSlotLevels);
+export const useShowProcPotential = () => useUIStore((state) => state.showProcPotential);
 
 /** Select proc damage in DPS toggle */
 export const useIncludeProcDamageInDPS = () => useUIStore((state) => state.includeProcDamageInDPS);

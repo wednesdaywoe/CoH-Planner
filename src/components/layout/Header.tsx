@@ -1102,6 +1102,8 @@ function SettingsPopover() {
   const setContentMode = useUIStore((s) => s.setContentMode);
   const showSlotLevels = useUIStore((s) => s.showSlotLevels);
   const toggleShowSlotLevels = useUIStore((s) => s.toggleShowSlotLevels);
+  const showProcPotential = useUIStore((s) => s.showProcPotential);
+  const toggleShowProcPotential = useUIStore((s) => s.toggleShowProcPotential);
   const exemplarMode = useUIStore((s) => s.exemplarMode);
   const toggleExemplarMode = useUIStore((s) => s.toggleExemplarMode);
   const exemplarLevel = useUIStore((s) => s.exemplarLevel);
@@ -1300,6 +1302,17 @@ function SettingsPopover() {
                   checked={showSlotLevels}
                   onChange={toggleShowSlotLevels}
                   label="Slot Levels"
+                />
+              </Tooltip>
+            </div>
+            <div className="flex items-center justify-between">
+              <Tooltip content="Badge powers that are unusually good proc vehicles — how many procs reach the 90% PPM ceiling at the power's BASE recharge, and what kinds.">
+                <Toggle
+                  id="proc-potential-toggle"
+                  name="showProcPotential"
+                  checked={showProcPotential}
+                  onChange={toggleShowProcPotential}
+                  label="Proc Potential"
                 />
               </Tooltip>
             </div>

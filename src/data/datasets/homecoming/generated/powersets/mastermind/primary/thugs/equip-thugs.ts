@@ -21,6 +21,7 @@ export const EquipThugs: Power = {
   "strengthsDisallowed": [
     "RechargeTime"
   ],
+  "procsAllowed": false,
   "stats": {
     "accuracy": 1,
     "range": 50,

@@ -24,7 +24,11 @@ import { Tooltip, Toggle, LevelSpinner } from '@/components/ui';
 import { IOSetIcon, GenericIOIcon, OriginEnhancementIcon, SpecialEnhancementIcon } from './EnhancementIcon';
 import { SetBonusList } from './SetBonusList';
 import type { IOSet, IOSetPiece, EnhancementStatType, SpecialEnhancementDef, IOSetCategory, SpecialEnhancement, Enhancement } from '@/types';
-import { getSetTrackedMatches } from '@/data/set-bonus-index';
+import { getSetTrackedBonuses, type TrackedBonusMatch } from '@/data/set-bonus-index';
+import { statKeyToChipLabel, formatTrackedBonusAmount } from '@/data/set-bonus-groups';
+import { formatBonusDesc } from '@/utils/set-bonus-format';
+import { isBonusCapped, getTotalBonusCount } from '@/utils/calculations/set-bonuses';
+import { useBonusTracking } from '@/hooks';
 import { getEnhancementOutline } from '@/utils/enhancement-outline';
 
 // Max finger travel (px) between touchstart and touchend still counted as a tap
@@ -1449,6 +1453,61 @@ interface IOSetRowProps {
   jumpTarget?: boolean;
 }
 
+/** How many chips fit before the row starts to dominate the picker. */
+const MAX_TRACKED_CHIPS = 5;
+
+/**
+ * Inline summary of the bonuses a set grants for the player's tracked stats.
+ *
+ * The row was already tinted when a set matched a tracked stat, but the match
+ * DETAIL was computed and thrown away — so the player still had to hover each
+ * piece to learn whether the highlight meant "+1.5% at 6 pieces" or "+5% at 2".
+ * That is the whole decision, and on touch there is no hover at all.
+ *
+ * Rule-of-5 state is folded in because a capped bonus is worth zero: advertising
+ * "+3% Res S/L" for the sixth time is worse than showing nothing.
+ */
+function TrackedBonusChips({ bonuses }: { bonuses: TrackedBonusMatch[] }) {
+  const bonusTracking = useBonusTracking();
+  if (bonuses.length === 0) return null;
+
+  const shown = bonuses.slice(0, MAX_TRACKED_CHIPS);
+  const overflow = bonuses.length - shown.length;
+
+  return (
+    <div className="flex flex-wrap items-center gap-1 mb-2">
+      {shown.map((b) => {
+        const capped = isBonusCapped(bonusTracking, b.normalizedStat, b.value);
+        const count = getTotalBonusCount(bonusTracking, b.normalizedStat, b.value);
+        return (
+          <span
+            key={`${b.trackedKey}-${b.pieces}`}
+            title={
+              formatBonusDesc(b.desc, b.stat, b.value) +
+              (capped ? ' — already at the Rule of 5 cap; a 6th copy grants nothing' : '')
+            }
+            className={`inline-flex items-center gap-1 rounded px-1.5 py-0.5 text-[10px] leading-none border ${
+              capped
+                ? 'border-warning-fg/40 bg-warning-fg/10 text-warning-fg'
+                : 'border-[var(--color-primary)]/40 bg-[var(--color-primary)]/10 text-[var(--color-primary)]'
+            }`}
+          >
+            <span className="opacity-70 font-medium">{b.pieces}pc</span>
+            <span className={`font-semibold ${capped ? 'line-through' : ''}`}>
+              {formatTrackedBonusAmount(b.normalizedStat, b.value)}
+            </span>
+            <span className="opacity-80">{statKeyToChipLabel(b.normalizedStat)}</span>
+            {count > 0 && <span className="opacity-60">({count}/5)</span>}
+          </span>
+        );
+      })}
+      {overflow > 0 && (
+        <span className="text-[10px] text-gray-500">+{overflow} more</span>
+      )}
+    </div>
+  );
+}
+
 function IOSetRow({
   set,
   onPieceMouseDown,
@@ -1493,12 +1552,14 @@ function IOSetRow({
   const isLevelGated = !attunementEnabled && !isInherentlyAttuned(set)
     && (set.minLevel > globalIOLevel || set.maxLevel < globalIOLevel);
 
-  // Check if this set provides any tracked stat bonuses
-  const hasTrackedMatch = useMemo(() => {
-    if (trackedStats.length === 0) return false;
-    const matches = getSetTrackedMatches(set, trackedStats);
-    return matches.size > 0;
-  }, [set, trackedStats]);
+  // Which bonuses this set grants for the stats the player is tracking, with the
+  // piece threshold and value — surfaced inline so the row answers "how much, at
+  // how many pieces?" without a hover tooltip (which never fires on touch).
+  const trackedBonuses = useMemo(
+    () => getSetTrackedBonuses(set, trackedStats),
+    [set, trackedStats],
+  );
+  const hasTrackedMatch = trackedBonuses.length > 0;
 
   // Compute proc/unique outlines for all pieces
   const pieceOutlines = useMemo(() =>
@@ -1564,6 +1625,8 @@ function IOSetRow({
           </span>
         )}
       </div>
+
+      <TrackedBonusChips bonuses={trackedBonuses} />
 
       {/* Pieces as icons — hidden on mobile, shown on sm+ */}
       <div className="hidden sm:flex flex-wrap gap-1.5 sm:gap-1 select-none">

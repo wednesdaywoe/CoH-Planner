@@ -6843,6 +6843,10 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
   // radius. Authored per AT copy, so it must come from the power, not a name.
   // See the field doc on `Power.procsOnlyOnMainTarget`.
   if (powerJson.procs_only_on_main_target) power.procsOnlyOnMainTarget = true;
+  // ProcAllowed kNone — no PPM proc ever rolls against this power's recharge.
+  // Sparse-false, mirroring how the exporter emits it. See the field doc on
+  // `Power.procsAllowed`.
+  if (powerJson.procs_allowed === false) power.procsAllowed = false;
 
   // Chain / target-cap RPN expressions (bin fields 43b / 38 — Electrical Affinity
   // circuits, Chain Lightning, Gauntlet, …). Raw token lists carried through for

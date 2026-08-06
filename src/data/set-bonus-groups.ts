@@ -13,6 +13,8 @@
  * has an entry here, so a new bonus stat can't silently fall into "Misc".
  */
 
+import { formatBonusValue } from '@/utils/set-bonus-format';
+
 export interface StatGroupInfo {
   group: string;
   label: string;
@@ -143,6 +145,157 @@ export const PROC_BREAKDOWN_KEY_TO_GROUP_KEY: Record<string, string> = {
 export function statKeyToLabel(breakdownKey: string): string {
   const normalized = breakdownKey.toLowerCase().replace(/[^a-z]/g, '');
   return STAT_GROUP_INFO[breakdownKey]?.label ?? STAT_GROUP_INFO[normalized]?.label ?? breakdownKey;
+}
+
+/**
+ * Dashboard `breakdownKey` → the normalized set-bonus stat name(s) that satisfy
+ * it, for the "tracked stats" highlight in the enhancement picker.
+ *
+ * These are two DIFFERENT vocabularies and they diverge three ways:
+ *
+ *  1. **Case / rename.** `maxHP` vs `maxhp`, `toHit` vs `tohit`, `runSpeed` vs
+ *     `runspeed`, `endurance` vs `endrdx`, `protKnockback` vs `kbprotection`.
+ *  2. **Granularity.** IO sets grant one undifferentiated "Mez Resistance (All)"
+ *     (`mezresist`); the dashboard tracks it per mez type. `useCalculatedStats`
+ *     folds `global.mezResist` into the six STATUS mezzes only — Knockback has
+ *     its own `kbresistance`, and Taunt/Placate never receive it — so the
+ *     one-to-many mapping stops at those six.
+ *  3. **Coverage.** 23 tracked stats have no set-bonus equivalent at all (mez
+ *     PROTECTION, absorb, stealth, threat, most debuff resistances). Those are
+ *     listed in TRACKED_STATS_WITHOUT_SET_BONUSES rather than merely omitted,
+ *     so `set-bonus-tracked-match.test.ts` can pin the full 68-key vocabulary
+ *     and a newly-defined stat can't silently join the unmatchable pile.
+ *
+ * Before this map, the matcher compared RAW tracked keys against NORMALIZED
+ * bonus stats, so only the 26 keys that happen to be spelled identically in both
+ * vocabularies could ever match: tracking Max HP highlighted 0 of 107 HC sets
+ * that grant it, and Mez Resistance 0 of 146.
+ *
+ * Typed resistances also accept `resAll` — `collectAllSetBonuses` expands an
+ * "all damage resistance" bonus into all eight types, so tracking Fire Res must
+ * light up a set granting Res(All). Paired stats (S/L, F/C, E/N) are NOT listed
+ * here; `buildTrackedStatTargets` applies `getPairedStat` on top, because the
+ * engine emits both halves of a pair from a single bonus.
+ */
+export const TRACKED_STAT_TO_BONUS_STATS: Record<string, readonly string[]> = {
+  // --- Identity: tracked key is already a normalized bonus stat ---
+  damage: ['damage'],
+  accuracy: ['accuracy'],
+  recharge: ['recharge'],
+  recovery: ['recovery'],
+  regeneration: ['regeneration'],
+  range: ['range'],
+  healOther: ['healOther'],
+  defMelee: ['defMelee'],
+  defRanged: ['defRanged'],
+  defAoE: ['defAoE'],
+  defSmashing: ['defSmashing'],
+  defLethal: ['defLethal'],
+  defFire: ['defFire'],
+  defCold: ['defCold'],
+  defEnergy: ['defEnergy'],
+  defNegative: ['defNegative'],
+  defPsionic: ['defPsionic'],
+  defToxic: ['defToxic'],
+  // --- Typed resistance: also satisfied by a Res(All) bonus ---
+  resSmashing: ['resSmashing', 'resAll'],
+  resLethal: ['resLethal', 'resAll'],
+  resFire: ['resFire', 'resAll'],
+  resCold: ['resCold', 'resAll'],
+  resEnergy: ['resEnergy', 'resAll'],
+  resNegative: ['resNegative', 'resAll'],
+  resPsionic: ['resPsionic', 'resAll'],
+  resToxic: ['resToxic', 'resAll'],
+  // --- Renamed beyond case ---
+  toHit: ['tohit'],
+  endurance: ['endrdx'],
+  maxHP: ['maxhp'],
+  maxEndurance: ['maxend'],
+  runSpeed: ['runspeed'],
+  flySpeed: ['flyspeed'],
+  jumpSpeed: ['jumpspeed'],
+  jumpHeight: ['jumpheight'],
+  perceptionRadius: ['perceptionradius'],
+  protKnockback: ['kbprotection'],
+  mezResistKnockback: ['kbresistance'],
+  debuffResistRecharge: ['debuffresistrecharge'],
+  debuffResistSlow: ['debuffresistslow'],
+  // --- One-to-many: "Mez Resistance (All)" covers the six status mezzes ---
+  mezResistHold: ['mezresist'],
+  mezResistStun: ['mezresist'],
+  mezResistImmobilize: ['mezresist'],
+  mezResistSleep: ['mezresist'],
+  mezResistConfuse: ['mezresist'],
+  mezResistFear: ['mezresist'],
+};
+
+/**
+ * Tracked stats no IO set bonus can grant. Tracking one of these is legitimate
+ * (the dashboard tile still works) — it simply highlights no sets. Listed
+ * explicitly so the vocabulary test distinguishes "correctly unmatchable" from
+ * "accidentally unmapped".
+ *
+ * Mez PROTECTION is the big one: sets grant `knockback_protection` and nothing
+ * else, so `protKnockback` is mapped above while its eight siblings are not.
+ */
+export const TRACKED_STATS_WITHOUT_SET_BONUSES: readonly string[] = [
+  'absorb',
+  'healReceived',
+  'levelShift',
+  'threatLevel',
+  'toggleEndCost',
+  'stealthRadiusPvE',
+  'stealthRadiusPvP',
+  // Mez protection — only knockback has a set-bonus form
+  'protHold',
+  'protStun',
+  'protImmobilize',
+  'protSleep',
+  'protConfuse',
+  'protFear',
+  'protRepel',
+  'protTeleport',
+  // Mez resistance types outside the "(All)" umbrella
+  'mezResistTaunt',
+  'mezResistPlacate',
+  // Debuff resistances with no set-bonus form (only Slow and Recharge have one)
+  'debuffResistDefense',
+  'debuffResistEndurance',
+  'debuffResistPerception',
+  'debuffResistRecovery',
+  'debuffResistRegeneration',
+  'debuffResistToHit',
+];
+
+/**
+ * Short label for a normalized set-bonus stat, for space-constrained inline
+ * display (the tracked-bonus chips in the enhancement picker).
+ *
+ * STAT_GROUP_INFO labels are written to be read UNDER a group heading, so
+ * several are ambiguous standalone: Defense "Melee" and Resistance "All" both
+ * lose their meaning without the column they sit in. Defense and Resistance
+ * labels therefore get their group folded back in as a prefix; every other
+ * group's labels are already self-describing.
+ */
+export function statKeyToChipLabel(normalizedStat: string): string {
+  const info = STAT_GROUP_INFO[normalizedStat];
+  if (!info) return statKeyToLabel(normalizedStat);
+  if (info.group === 'Defense') return `Def ${info.label}`;
+  if (info.group === 'Resistance') return `Res ${info.label}`;
+  return info.label;
+}
+
+/**
+ * Render a set-bonus value for inline display.
+ *
+ * Almost every bonus is a percentage, but knockback PROTECTION is a magnitude
+ * the source data stores ×100 ("+400.0% Knockback Protection" = mag 4) — the
+ * same ×0.01 the totals engine applies in STAT_TO_GLOBAL. Showing the raw 400%
+ * would read as an enormous bonus rather than the mag-4 it is.
+ */
+export function formatTrackedBonusAmount(normalizedStat: string, value: number): string {
+  if (normalizedStat === 'kbprotection') return `Mag ${formatBonusValue(value * 0.01)}`;
+  return `+${formatBonusValue(value)}%`;
 }
 
 /**

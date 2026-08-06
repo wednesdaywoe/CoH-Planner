@@ -21,6 +21,7 @@ export const TameBeasts: Power = {
   "strengthsDisallowed": [
     "RechargeTime"
   ],
+  "procsAllowed": false,
   "stats": {
     "accuracy": 1,
     "range": 30,

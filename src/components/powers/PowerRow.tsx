@@ -16,6 +16,7 @@ import { DraggableSlotGhost } from './DraggableSlotGhost';
 import { SlottedEnhancementList } from './SlottedEnhancementList';
 import { SlottedSetBonuses } from './SlottedSetBonuses';
 import { PermaRing } from './PermaRing';
+import { ProcPotentialBadge } from './ProcPotentialBadge';
 import type { SlotSize } from './TouchableSlot';
 import { useBuildStore, useUIStore, type PowerCategory } from '@/stores';
 import { isMovableSlot, type SlotLevelRef, type PowerRef } from '@/utils/slot-levels';
@@ -437,6 +438,7 @@ export function PowerRow({
       {showAutoLabel && (
         <span className="text-[9px] text-slate-500 ml-1 flex-shrink-0">(Auto)</span>
       )}
+      <ProcPotentialBadge power={selectedPower} />
       {/* Toggle lives in the name row (stacked layout) rather than beside the
           slots: a 6-slot row + ghost already fills a narrow column, and letting
           the toggle share that row pushed the ghost — and the bottom-aligned

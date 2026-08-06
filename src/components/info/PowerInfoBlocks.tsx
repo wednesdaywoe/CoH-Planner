@@ -28,6 +28,7 @@ import {
   findProcData,
   isProcAlwaysOn,
   resolveProcRollGeometry,
+  powerFiresProcs,
   calculateProcChance,
   calculateAutoToggleProcChance,
   getPPMAreaDenominator,
@@ -251,6 +252,9 @@ export function GeneralStatsBlock({
         // Propel & co.: every proc scores single-target — the AoE radius belongs
         // to a secondary knockback, not to what the procs roll against.
         procsOnlyOnMainTarget={power.procsOnlyOnMainTarget}
+        // ProcAllowed kNone: nothing rolls against this power's recharge, so the
+        // row prints why instead of a chance the game will never honour.
+        procsAllowed={power.procsAllowed}
       />
     </div>
   );
@@ -308,6 +312,9 @@ interface ProcChanceRowProps {
   /** The power's `ProcMainTargetOnly` flag — resolveProcRollGeometry scores its
    *  procs single-target despite the power's AoE radius. */
   procsOnlyOnMainTarget?: boolean;
+  /** The power's `ProcAllowed` flag. `false` means no PPM chance exists here —
+   *  see powerFiresProcs. */
+  procsAllowed?: boolean;
 }
 
 interface ProcEntry {
@@ -329,6 +336,7 @@ function ProcChanceRow({
   slottedRechargeBonus,
   globalRechargeBonus,
   procsOnlyOnMainTarget,
+  procsAllowed,
 }: ProcChanceRowProps) {
   // Per-view local expansion plus a persisted "pin" toggle. The pin
   // wins when on — Power Info shows the breakdown automatically for
@@ -393,6 +401,30 @@ function ProcChanceRow({
   }
 
   if (entries.length === 0) return null;
+
+  // ProcAllowed kNone: the procs are slotted, they just never roll against this
+  // power. Say so rather than print a percentage the game will never honour —
+  // this is the surface where a 90% on Paralyzing Blast looked authoritative.
+  // Always-on globals in the same power are untouched; they aren't rolled, so
+  // when only globals are slotted the normal row still applies.
+  const rollingEntries = entries.filter((e) => e.ppm != null);
+  if (!powerFiresProcs({ procsAllowed }) && rollingEntries.length > 0) {
+    // With CopyBoosts the proc still reaches the summon and fires off the PET's
+    // attacks (Soulbound's Build Up in henchmen) — a real effect on a schedule
+    // this power's recharge says nothing about. Without one, nothing fires.
+    const viaPet = !!selectedPower.effects?.summon?.copyBoosts;
+    return (
+      <div className="grid grid-cols-[7rem_1fr] gap-1 text-xs">
+        <div className="text-slate-400">Proc Chance</div>
+        <div className="text-amber-400">
+          {viaPet ? 'Rolls on the pet, not this cast' : 'Never fires'}
+          <span className="text-slate-500">
+            {' '}— this power is flagged ProcAllowed: none
+          </span>
+        </div>
+      </div>
+    );
+  }
 
   const ppmEntries = entries.filter((e) => e.chance !== undefined);
   const headline = ppmEntries.length > 0

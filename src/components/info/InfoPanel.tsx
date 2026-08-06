@@ -27,6 +27,7 @@ import {
   calculateProcChance,
   arcToDegrees,
   resolveProcRollGeometry,
+  powerFiresProcs,
   getActiveDamageConversion,
 } from '@/data';
 import { useGlobalBonuses, usePowerProjection } from '@/hooks/useCalculatedStats';
@@ -524,6 +525,9 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   const procDamageEntries = useMemo(() => {
     if (calculatedDamage) return null; // base damage already shown
     if (!selectedPower?.slots) return null;
+    // ProcAllowed kNone (Fold Space, Whitecap, the pet summons): no PPM proc
+    // rolls against this power, so there is no proc DPS to synthesize.
+    if (!powerFiresProcs(effectivePower ?? selectedPower)) return null;
     const baseRecharge = effectivePower?.stats?.recharge ?? effectivePower?.effects?.recharge ?? 0;
     const castTime = effectivePower?.stats?.castTime ?? effectivePower?.effects?.castTime ?? 0;
     // AoE powers whose footprint lives on a summoned pseudo-pet/patch (Burn,

@@ -18,6 +18,7 @@ export const GangWar: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "procsAllowed": false,
   "stats": {
     "accuracy": 1,
     "range": 60,

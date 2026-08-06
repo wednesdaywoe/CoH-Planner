@@ -18,6 +18,7 @@ export const Whitecap: Power = {
   "powerType": "Click",
   "targetType": "Teleport",
   "effectArea": "Location",
+  "procsAllowed": false,
   "stats": {
     "accuracy": 1,
     "range": 80,

@@ -2797,6 +2797,28 @@ export function resolveProcRollGeometry(
   };
 }
 
+/**
+ * Whether a PPM proc slotted in this power rolls against it at all — the single
+ * place HC's `ProcAllowed kNone` flag is applied, sharing `resolveProcRollGeometry`'s
+ * job of keeping every PPM surface on the same rule.
+ *
+ * `false` means no PPM chance exists here: the power's recharge window is not a
+ * proc window, so any chance computed from it is fiction. See the field doc on
+ * `Power.procsAllowed` for the two very different player-facing cases (pet
+ * summons, where the proc still rides `CopyBoosts` into the pet's own attacks,
+ * versus ordinary powers like Fault where nothing fires).
+ *
+ * Deliberately says nothing about GLOBAL IOs. LotG +Recharge, Call to Arms
+ * +Def and the rest are not rolled — they are always-on auras granted by the
+ * slot — so they keep working in a power that cannot fire procs, which is why
+ * `getProcPotential` still counts them.
+ */
+export function powerFiresProcs(
+  power: { procsAllowed?: boolean } | null | undefined,
+): boolean {
+  return power?.procsAllowed !== false;
+}
+
 // ============================================================================
 // VARIABLE-PROC CONTROLS (per-proc toggles & stack / HP sliders)
 // ============================================================================

@@ -17,6 +17,7 @@ export const Soldiers: Power = {
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "procsAllowed": false,
   "stats": {
     "accuracy": 1,
     "range": 60,

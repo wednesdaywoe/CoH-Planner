@@ -162,6 +162,9 @@ function convertPoolPower(rawJson, rank, availableLevel) {
   // ProcMainTargetOnly — procs roll single-target here regardless of the power's
   // radius. See the field doc on `Power.procsOnlyOnMainTarget`.
   if (rawJson.procs_only_on_main_target) power.procsOnlyOnMainTarget = true;
+  // ProcAllowed kNone — no PPM proc rolls here at all (Spring Attack). See the
+  // field doc on `Power.procsAllowed`.
+  if (rawJson.procs_allowed === false) power.procsAllowed = false;
   power.rank = rank;
   power.available = availableLevel;
 

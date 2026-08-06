@@ -18,6 +18,7 @@ export const ShockingGrasp: Power = {
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "procsAllowed": false,
   "stats": {
     "accuracy": 2,
     "range": 60,

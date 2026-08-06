@@ -18,6 +18,7 @@ export const Shockwaves: Power = {
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "AoE",
+  "procsAllowed": false,
   "stats": {
     "accuracy": 0.8,
     "radius": 15,

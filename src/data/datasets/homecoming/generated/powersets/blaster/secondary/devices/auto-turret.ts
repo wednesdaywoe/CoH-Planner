@@ -18,6 +18,7 @@ export const AutoTurret: Power = {
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "Location",
+  "procsAllowed": false,
   "stats": {
     "accuracy": 1,
     "recharge": 180,

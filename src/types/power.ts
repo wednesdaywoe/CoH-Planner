@@ -866,6 +866,36 @@ export interface Power {
    * Rebirth/Thunderspy power (no such field exists in the Parse6 tail).
    */
   procsOnlyOnMainTarget?: boolean;
+  /**
+   * `ProcAllowed kNone` (HC power-level bin field). **This power never rolls a
+   * PPM proc** — whatever is slotted, no PPM chance is computed against its
+   * recharge. Sparse and only ever `false`: absent means procs roll normally,
+   * and no Rebirth/Thunderspy power carries it (no such field in the Parse6
+   * tail). Read through `powerFiresProcs`, the one place the rule lives.
+   *
+   * HC authors it on 165 powers, in two groups that mean different things to a
+   * player:
+   *
+   *  - **Pet summons** (every Mastermind henchman, Fire Imps, Phantasm,
+   *    Singularity, Gang War, Voltaic Sentinel, Auto Turret, Fold Space…). The
+   *    summon cast itself rolls nothing, but the EntCreate template carries
+   *    `CopyBoosts`, so a slotted proc still reaches the pet and rolls off the
+   *    PET's attacks (this is how Soulbound Allegiance's Build Up proc works in
+   *    henchmen). The proc is not dead — its chance simply has nothing to do
+   *    with the summon's recharge, which is the number we were reporting.
+   *  - **Ordinary attacks and controls** — Fault, Spring Attack, Whitecap,
+   *    Paralyzing Blast, Shocking Grasp, Shockwaves. Here nothing fires at all.
+   *    These are exactly the long-recharge powers a PPM formula scores as
+   *    perfect proc vehicles (Paralyzing Blast is 240s), which reads as HC
+   *    closing that door deliberately.
+   *
+   * Note the contrast with the rains: HC sets this on Burn's patch power
+   * (`Pets.Burn.Burn`) and NOT on `Pets.Corruptor_IceStorm.IceStorm` and its
+   * kin, which is the clearest evidence in the data that a patch's pulsing
+   * power is normally a live proc-firing site. What the bins do NOT say is how
+   * often that pulse rolls — see `resolveProcContext`.
+   */
+  procsAllowed?: boolean;
   /** Prerequisite power(s) - logical expression */
   requires?: string;
   /**

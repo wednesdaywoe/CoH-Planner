@@ -18,6 +18,7 @@ export const ParalyzingBlast: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "procsAllowed": false,
   "stats": {
     "accuracy": 0.8,
     "range": 80,

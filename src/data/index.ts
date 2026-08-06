@@ -310,6 +310,7 @@ export {
   getProcEffectColor,
   isProcAlwaysOn,
   resolveProcRollGeometry,
+  powerFiresProcs,
   interpolateProcDamage,
   // PPM calculation functions
   getPPMAreaFactor,

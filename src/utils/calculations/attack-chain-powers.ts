@@ -661,6 +661,7 @@ export function buildChainPowers(
         globalRechargeEnh: globalForCalc.recharge || 0,
         buildLevel: build.level,
         procsOnlyOnMainTarget: p.procsOnlyOnMainTarget,
+        procsAllowed: p.procsAllowed,
       });
       const dot = dotData && !dotInCast
         ? {

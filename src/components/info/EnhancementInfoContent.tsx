@@ -5,7 +5,7 @@
 
 import { useBuildStore, useUIStore } from '@/stores';
 import { useBonusTracking } from '@/hooks';
-import { getIOSet, lookupPower, findProcData, resolveProcPieceName, procEffectSummary, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, resolveProcRollGeometry, interpolateProcDamage, calculateProcChance, calculateProcsPerMinute, calculateProcDPS, calculateAutoToggleProcChance, calculateAutoToggleProcsPerMinute, arcToDegrees } from '@/data';
+import { getIOSet, lookupPower, findProcData, resolveProcPieceName, procEffectSummary, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, resolveProcRollGeometry, powerFiresProcs, interpolateProcDamage, calculateProcChance, calculateProcsPerMinute, calculateProcDPS, calculateAutoToggleProcChance, calculateAutoToggleProcsPerMinute, arcToDegrees } from '@/data';
 import {
   normalizeAspectName,
   readAspectDisplayValue,
@@ -289,6 +289,11 @@ export function EnhancementInfoContent({ powerName, powerSet, slotIndex }: Enhan
                       // proc in the power rolls the single-target area-factor.
                       const procsOnlyOnMainTarget =
                         selected.procsOnlyOnMainTarget ?? base?.procsOnlyOnMainTarget;
+                      // ProcAllowed kNone: no PPM chance exists against this
+                      // power, so print nothing rather than a number the game
+                      // will never honour. The rest of the tooltip (the proc's
+                      // own effects) still renders.
+                      if (!powerFiresProcs(selected) || !powerFiresProcs(base)) return null;
 
                       // For Auto/Toggle powers, use special calculation
                       if (isAutoOrToggle) {
