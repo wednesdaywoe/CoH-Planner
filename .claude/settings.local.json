@@ -175,5 +175,6 @@
       "/tmp",
       "/home/jiiwii/Github/CoH-Sidekick/docs/superpowers"
     ]
-  }
+  },
+  "outputStyle": "plainspeek"
 }
