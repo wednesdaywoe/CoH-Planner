@@ -23,6 +23,10 @@ import type { LegacyPowerPoolRegistry } from './power-pools';
 // module; the homecoming copy is imported type-only as the contract's
 // reference declaration.
 import type { EnhancementCurvesData } from './datasets/homecoming/generated/enhancement-curves';
+// Same rationale as above: the archetype-inherent shape is authored in the
+// homecoming levels module and imported type-only as the contract's reference
+// declaration. Every dataset's generated `archetype-inherents.ts` satisfies it.
+import type { InherentPowerDef } from './datasets/homecoming/levels';
 
 export type { EnhancementCurvesData } from './datasets/homecoming/generated/enhancement-curves';
 
@@ -241,6 +245,22 @@ export interface InherentRules {
    * list it here. Absent/empty → nothing removed.
    */
   excludeInherents?: readonly string[];
+
+  /**
+   * Extra archetype-gated inherents this server grants that the shared
+   * hand-written list in `datasets/homecoming/levels.ts` doesn't carry, keyed
+   * by archetype id. Merged on top of that list (which wins on a name clash,
+   * so a server that simply also has Energy Flight doesn't get it twice).
+   *
+   * Populated by `scripts/convert-archetype-inherents.cjs` from the server's
+   * own `Inherent.Inherent` export — see that script's header for the rule.
+   * The case that forced this hook: Thunderspy moved the Stalker's **Hide**
+   * and **Placate** out of the powersets into `Inherent.Inherent` and reused
+   * the vacated powerset name slots for other powers, so both were reachable
+   * from no screen at all. Homecoming and Rebirth grant them from powersets
+   * and so contribute nothing here.
+   */
+  archetypeInherents?: Record<string, readonly InherentPowerDef[]>;
 }
 
 // ============================================
