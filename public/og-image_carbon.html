@@ -24,23 +24,10 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 48px;
+      gap: 56px;
       padding: 60px 80px;
       position: relative;
       overflow: hidden;
-    }
-
-    /* Subtle radial glow behind logo */
-    .card::before {
-      content: '';
-      position: absolute;
-      width: 500px;
-      height: 500px;
-      left: 200px;
-      top: 50%;
-      transform: translateY(-50%);
-      background: radial-gradient(circle, rgba(214, 43, 206, 0.12) 0%, transparent 70%);
-      pointer-events: none;
     }
 
     /* Top border accent */
@@ -71,9 +58,23 @@
       flex-shrink: 0;
     }
 
+    /* Radial glow, anchored to the logo so it follows the centred composition */
+    .logo-area::before {
+      content: '';
+      position: absolute;
+      width: 560px;
+      height: 560px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, rgba(214, 43, 206, 0.14) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
     .logo-area img {
-      width: 220px;
-      height: 220px;
+      position: relative;
+      width: 280px;
+      height: 280px;
       filter: drop-shadow(0 0 30px rgba(214, 43, 206, 0.3));
     }
 
@@ -82,11 +83,11 @@
       z-index: 1;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 20px;
     }
 
     .app-name {
-      font-size: 72px;
+      font-size: 88px;
       font-weight: 800;
       letter-spacing: -1px;
       line-height: 1;
@@ -105,44 +106,13 @@
       padding-right: 10px;
     }
 
+    /* nowrap keeps the slogan on one line — it is the only line of body copy */
     .tagline {
-      font-size: 26px;
+      font-size: 28px;
       font-weight: 400;
       color: #94a3b8;
-      line-height: 1.4;
-      max-width: 500px;
-    }
-
-    .pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 8px;
-      max-width: 560px;
-    }
-
-    .pill {
-      font-size: 19px;
-      font-weight: 600;
-      padding: 9px 20px;
-      border-radius: 24px;
-      border: 1px solid;
-      letter-spacing: 0.3px;
-    }
-
-    .pill-cyan    { color: #22d3ee; border-color: rgba(34, 211, 238, 0.3); background: rgba(34, 211, 238, 0.08); }
-    .pill-purple  { color: #a78bfa; border-color: rgba(167, 139, 250, 0.3); background: rgba(167, 139, 250, 0.08); }
-    .pill-green   { color: #34d399; border-color: rgba(52, 211, 153, 0.3); background: rgba(52, 211, 153, 0.08); }
-    .pill-magenta { color: #e879de; border-color: rgba(214, 43, 206, 0.3); background: rgba(214, 43, 206, 0.08); }
-    .pill-amber   { color: #fbbf24; border-color: rgba(251, 191, 36, 0.3); background: rgba(251, 191, 36, 0.08); }
-    .pill-blue    { color: #3b82f6; border-color: rgba(59, 130, 246, 0.3); background: rgba(59, 130, 246, 0.08); }  
-
-    .url {
-      font-size: 18px;
-      font-weight: 600;
-      color: #D62BCE;
-      letter-spacing: 0.5px;
-      margin-top: 8px;
+      line-height: 1.35;
+      white-space: nowrap;
     }
   </style>
 </head>
@@ -157,17 +127,6 @@
     <div class="text-area">
       <div class="app-name">CoH <span>SIDEKICK</span></div>
       <div class="tagline">A City of Heroes character planner for everyone</div>
-      <div class="pills">
-
-        <span class="pill pill-purple">Set Bonus Finder</span>
-        <span class="pill pill-cyan">Power &amp; Slot Comparison</span>
-        <span class="pill pill-green">Incarnate Calculator</span>
-        <span class="pill pill-magenta">Stat Tracking</span>
-        <span class="pill pill-blue">Public Build Library</span>
-        <span class="pill pill-amber">Import from Mids</span>
-
-      </div>
-      <div class="url">coh-sidekick.com</div>
     </div>
   </div>
 </body>
