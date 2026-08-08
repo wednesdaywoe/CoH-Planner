@@ -505,6 +505,61 @@
       "id": "unslottable-power-phantom-slot",
       "date": "2026-08-04",
       "preview": "Powers that take no enhancements (Swap Ammo, Adaptation, Staff Mastery, Reach fo"
+    },
+    {
+      "id": "proc-potential-badges",
+      "date": "2026-08-05",
+      "preview": "New \"proc potential\" badges indicate powers that are unusually good for slotting"
+    },
+    {
+      "id": "chain-form-switch",
+      "date": "2026-08-05",
+      "preview": "The attack chain builder can now support change form mid-rotation. Please note t"
+    },
+    {
+      "id": "procs-allowed-ppm",
+      "date": "2026-08-05",
+      "preview": "The game marks 165 Homecoming powers as never rolling a PPM proc, and that shoul"
+    },
+    {
+      "id": "rain-proc-patch-rolls",
+      "date": "2026-08-05",
+      "preview": "Rains and patches roll their procs on the patch itself, once every 10 seconds, a"
+    },
+    {
+      "id": "quick-snipe-damage",
+      "date": "2026-08-05",
+      "preview": "Quick snipe damage was overstated: Proton Volley read 4x its real damage and Ene"
+    },
+    {
+      "id": "chain-palette-form-values",
+      "date": "2026-08-05",
+      "preview": "The attack chain palette showed each power's numbers for the form it will not ac"
+    },
+    {
+      "id": "chain-pool-epic-form-gates",
+      "date": "2026-08-05",
+      "preview": "Pool and epic powers reached the chain builder with no form restrictions at all,"
+    },
+    {
+      "id": "chain-saved-in-form-empty",
+      "date": "2026-08-05",
+      "preview": "A chain saved while you were in a form reopened empty, then overwrote itself the"
+    },
+    {
+      "id": "set-bonus-tracked-highlight",
+      "date": "2026-08-05",
+      "preview": "Set bonus highlighting for your tracked stats only ever matched a fraction of th"
+    },
+    {
+      "id": "build-visibility-remount",
+      "date": "2026-08-05",
+      "preview": "Switching a build between public and private no longer remounts and refetches yo"
+    },
+    {
+      "id": "importer-enhancement-vocab",
+      "date": "2026-08-03",
+      "preview": "Importing a build silently dropped Defense Debuff, ToHit Debuff, Intangible and "
     }
   ]
 }

@@ -34,6 +34,22 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
   {
+    date: '2026-08-05',
+
+    items: [
+      { id: 'proc-potential-badges', message: 'New "proc potential" badges indicate powers that are unusually good for slotting procs. This feature is OFF by default, but you can turn it on through Settings > Proc potential badges, or from the menu on mobile', type: 'feat' },
+      { id: 'chain-form-switch', message: 'The attack chain builder can now support change form mid-rotation. Please note that Kheldian forms on HC have no activation time, which allows players to cancel the animation; if you want to simulate the intended animation time, "Play shift animations in full" used the full 2.244s', type: 'feat' },
+      { id: 'procs-allowed-ppm', message: 'The game marks 165 Homecoming powers as never rolling a PPM proc, and that should now be reflected in the planner. Pet summons (Mastermind henchmen, Fire Imps, Phantasm, Singularity, Gang War, Voltaic Sentinel, Auto Turret) were the biggest group. A proc slotted there still reaches the pet and fires off the pet\'s attacks, it just has nothing to do with the summon\'s recharge. The rest fire nothing at all: Fault, Spring Attack, Whitecap, Paralyzing Blast, Shocking Grasp and Shockwaves.', type: 'fix' },
+      { id: 'rain-proc-patch-rolls', message: 'Rains and patches roll their procs on the patch itself, once every 10 seconds, and are not helped by the parent power\'s recharge.', type: 'fix' },
+      { id: 'quick-snipe-damage', message: 'Quick snipe damage was overstated: Proton Volley read 4x its real damage and Energy Sniper Blast 2x.', type: 'fix' },
+      { id: 'chain-palette-form-values', message: 'The attack chain palette showed each power\'s numbers for the form it will not actually fire in, for example a fast snipe showed the slow charged cast, and Assassin\'s Strike undervalued its from-Hide damage by 3.17x.', type: 'fix' },
+      { id: 'chain-pool-epic-form-gates', message: 'Pool and epic powers reached the chain builder with no form restrictions at all, so Boxing and Hasten could be placed in a Nova form rotation.', type: 'fix' },
+      { id: 'chain-saved-in-form-empty', message: 'A chain saved while you were in a form reopened empty, then overwrote itself the next time you saved.', type: 'fix' },
+      { id: 'set-bonus-tracked-highlight', message: 'Set bonus highlighting for your tracked stats only ever matched a fraction of the stats you can track. Max HP matched none of the 107 sets that grant it. The full tracked-stat vocabulary is mapped now.', type: 'fix' },
+      { id: 'build-visibility-remount', message: 'Switching a build between public and private no longer remounts and refetches your whole My Builds grid mid-write, and a visibility change that fails now tells you why instead of silently reverting.', type: 'fix' },
+    ]
+  },
+  {
     date: '2026-08-04',
 
     items: [
@@ -48,7 +64,8 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
     items: [
       { id: 'rule-of-5-proc-pool-ring', message: 'Rule of 5: Fixed a capped LotG +Recharge global highlighting powers whose 7.5% Recharge came from a set bonus instead', type: 'fix' },
       
-      { id: 'dashboard-power-contrib', message: 'Fxed power contributors not appearing in Dashboard totals', type: 'fix' },    
+      { id: 'dashboard-power-contrib', message: 'Fxed power contributors not appearing in Dashboard totals', type: 'fix' },
+      { id: 'importer-enhancement-vocab', message: 'Importing a build silently dropped Defense Debuff, ToHit Debuff, Intangible and Snare/Slow enhancements, and read ToHit Debuff as a ToHit buff. All 26 enhancement types the game actually authors are recognised now, for both in-game and Mids imports.', type: 'fix' },
     ]
   },
   {
