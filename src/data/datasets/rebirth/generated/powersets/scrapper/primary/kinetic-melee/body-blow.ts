@@ -86,7 +86,7 @@ export const BodyBlow: Power = {
     ["Damage","Energy",0.387026,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Energy",1.548103,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Energy",1.16,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
-    ["Damage","Energy",1.16,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true],
+    ["Damage","Energy",1.16,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"kSiphonMode source.Mode?",true]
   ],
   "specialEffects": [
@@ -98,6 +98,11 @@ export const BodyBlow: Power = {
     {
       "kind": "effect-proc",
       "chance": 0.05000000074505806,
+      "label": "Energy_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.10000000149011612,
       "label": "Energy_Dmg"
     }
   ]

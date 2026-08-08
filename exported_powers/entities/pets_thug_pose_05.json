@@ -1,7 +1,7 @@
 {
   "name": "Pets_Thug_Pose_05",
   "group_name": "Pets",
-  "commandable_pet": 1,
+  "commandable_pet": 0,
   "power_tags": [
     "HumanSkeleton",
     "Human",
@@ -10,7 +10,7 @@
   "copy_creator_mods": false,
   "can_zone": true,
   "defaults": {
-    "rank": 0,
+    "rank": 10,
     "ai_config": "Pets_Base",
     "character_class_name": "henchman_minion_small",
     "description": "These young hotheads are not the brightest bunch, but they are extremely loyal to the right leader. The Posse are not the toughest bunch, but there are a lot of them.",
@@ -48,7 +48,7 @@
   },
   "levels": [
     {
-      "min_level": 1,
+      "level": 1,
       "max_level": 55,
       "experience": 0,
       "display_names": [

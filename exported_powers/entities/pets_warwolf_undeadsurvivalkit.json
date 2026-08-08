@@ -4,9 +4,9 @@
   "commandable_pet": 0,
   "power_tags": [],
   "copy_creator_mods": false,
-  "can_zone": false,
+  "can_zone": true,
   "defaults": {
-    "rank": 0,
+    "rank": 10,
     "ai_config": "Pets_Melee",
     "character_class_name": "boss_grunt",
     "description": "This warwolf has been summoned by Stephanie Peebles' magic spell. It will fight at your side, albeit unwillingly.",
@@ -65,7 +65,7 @@
   },
   "levels": [
     {
-      "min_level": 1,
+      "level": 1,
       "max_level": 55,
       "experience": 0,
       "display_names": [

@@ -80,7 +80,7 @@ export const Consume: Power = {
     ["Damage","Fire",0.4,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"@ToHitRoll @ToHit < @ForceHit ||",true],
     ["Endurance",null,20,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"@ToHitRoll @ToHit < @ForceHit ||",true,20],
     ["Recovery",null,0.05,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"@ToHitRoll @ToHit < @ForceHit ||",true,0.05],
-    ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? enttype target> player eq || @ToHitRoll @ToHit < @ForceHit || &&",true],
+    ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? enttype target> player eq || @ToHitRoll @ToHit < @ForceHit || &&",true],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true]
   ]
 };

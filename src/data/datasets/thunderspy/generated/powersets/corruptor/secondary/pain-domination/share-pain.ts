@@ -57,13 +57,9 @@ export const SharePain: Power = {
       "tohitBuff": 2
     },
     "tohitBuff": {
-      "scale": 0.5,
+      "scale": 1,
       "table": "Ranged_Buff_ToHit"
-    },
-    "maxStacks": 3,
-    "stacksLinear": [
-      "tohitBuff"
-    ]
+    }
   },
   "atoms": [
     ["Damage","Psionic",0.025,1,0,"Melee_Ones","Abs","Expression","Self","Any",false,"No",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,"@Scale Max.kHitPoints source> * negate"],
@@ -75,8 +71,7 @@ export const SharePain: Power = {
     ["DamageBuff","Negative",5,1,2,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Psionic",5,1,2,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Toxic",5,1,2,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["ToHit",null,1,1,2,"Ranged_Buff_ToHit","Cur","Magnitude","Self","Any",false,"No",null,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"RecoveryBuff"],
-    ["ToHit",null,0.5,1,2,"Ranged_Buff_ToHit","Cur","Magnitude","Self","Any",true,"Stack",3,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"HybridDefense"],
+    ["ToHit",null,1,1,2,"Ranged_Buff_ToHit","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
     ["DamageBuff","Smashing",-2.5,1,2,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"target.isFriend? !"],
     ["DamageBuff","Lethal",-2.5,1,2,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"target.isFriend? !"],
     ["DamageBuff","Fire",-2.5,1,2,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"target.isFriend? !"],
@@ -85,8 +80,8 @@ export const SharePain: Power = {
     ["DamageBuff","Negative",-2.5,1,2,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"target.isFriend? !"],
     ["DamageBuff","Psionic",-2.5,1,2,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"target.isFriend? !"],
     ["DamageBuff","Toxic",-2.5,1,2,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"target.isFriend? !"],
-    ["Damage","Psionic",0.05,1,0,"Melee_Ones","Abs","Expression","Target","PvP",false,"No",2,null,null,1,null,true,null,null,null,null,"arch target> Class_Boss_Monster eq arch target> Class_Boss_Reichsman eq || arch target> Class_Boss_Monster_Flying eq || arch target> Class_Boss_Archvillain_Flying eq || arch target> Class_Boss_Archvillain eq || arch target> Class_Boss_PraetorianArchvillain eq || arch target> Class_Boss_Mito eq || arch target> Class_Boss_Hamidon eq || arch target> Class_Boss_RularuuFM eq || arch target> Class_Boss_RularuuCoP eq || arch target> Class_Boss_Rularuu eq || arch target> Class_Boss_PraetorianAVLowPerception eq || enttype target> player eq || ! target.isFriend? ! &&",true,null,null,null,null,"@Scale Max.kHitPoints target> * negate"],
-    ["Damage","Psionic",0.025,1,0,"Melee_Ones","Abs","Expression","Target","Any",true,"No",196050,null,null,1,null,true,null,null,null,null,"target.isFriend?",true,null,null,null,"Key49960","@Scale Max.kHitPoints target> * negate"],
+    ["Damage","Psionic",0.05,1,0,"Melee_Ones","Abs","Expression","Target","PvE",false,"No",2,null,null,1,null,true,null,null,null,null,"arch target> Class_Boss_Monster eq arch target> Class_Boss_Reichsman eq || arch target> Class_Boss_Monster_Flying eq || arch target> Class_Boss_Archvillain_Flying eq || arch target> Class_Boss_Archvillain eq || arch target> Class_Boss_PraetorianArchvillain eq || arch target> Class_Boss_Mito eq || arch target> Class_Boss_Hamidon eq || arch target> Class_Boss_RularuuFM eq || arch target> Class_Boss_RularuuCoP eq || arch target> Class_Boss_Rularuu eq || arch target> Class_Boss_PraetorianAVLowPerception eq || enttype target> player eq || ! target.isFriend? ! &&",true,null,null,null,null,"@Scale Max.kHitPoints target> * negate"],
+    ["Damage","Psionic",0.025,1,0,"Melee_Ones","Abs","Expression","Target","Any",false,"No",2,null,null,1,null,true,null,null,null,null,"target.isFriend?",true,null,null,null,null,"@Scale Max.kHitPoints target> * negate"],
     ["DamageBuff","Smashing",10,1,2,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"target.isFriend?",true],
     ["DamageBuff","Lethal",10,1,2,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"target.isFriend?",true],
     ["DamageBuff","Fire",10,1,2,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"target.isFriend?",true],
@@ -95,6 +90,7 @@ export const SharePain: Power = {
     ["DamageBuff","Negative",10,1,2,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"target.isFriend?",true],
     ["DamageBuff","Psionic",10,1,2,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"target.isFriend?",true],
     ["DamageBuff","Toxic",10,1,2,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"target.isFriend?",true],
-    ["ToHit",null,1,1,2,"Ranged_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"target.isFriend?",true]
+    ["ToHit",null,1,1,2,"Ranged_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"target.isFriend?",true],
+    ["ToHit",null,0.5,1,2,"Ranged_Buff_ToHit","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true]
   ]
 };

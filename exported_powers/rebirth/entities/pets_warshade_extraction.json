@@ -3,10 +3,10 @@
   "group_name": "Pets",
   "commandable_pet": 0,
   "power_tags": [],
-  "copy_creator_mods": false,
-  "can_zone": false,
+  "copy_creator_mods": true,
+  "can_zone": true,
   "defaults": {
-    "rank": 0,
+    "rank": 10,
     "ai_config": "Pets_Base",
     "character_class_name": "minion_pets",
     "description": "This energy enmity was formed when the life force from a defeated foe was infused with Nictus Energy.",
@@ -44,14 +44,599 @@
   },
   "levels": [
     {
-      "min_level": 1,
-      "max_level": 50,
+      "level": 1,
+      "max_level": null,
       "experience": 0,
       "display_names": [
-        "Warshade Extraction"
+        "Extracted Essence"
       ],
-      "costumes": []
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 2,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 3,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 4,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 5,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 6,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 7,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 8,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 9,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 10,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 11,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 12,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 13,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 14,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 15,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 16,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 17,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 18,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 19,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 20,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 21,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 22,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 23,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 24,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 25,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 26,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 27,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 28,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 29,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 30,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 31,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 32,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 33,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 34,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 35,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 36,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 37,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 38,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 39,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 40,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 41,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 42,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 43,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 44,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 45,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 46,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 47,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 48,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 49,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 50,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 51,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 52,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 53,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
+    },
+    {
+      "level": 54,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "Extracted Essence"
+      ],
+      "costumes": [
+        "Warshade_Extraction"
+      ]
     }
   ],
-  "source_file": ""
+  "source_file": "DEFS/VILLAINS/PETS.VILLAIN"
 }

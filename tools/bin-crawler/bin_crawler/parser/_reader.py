@@ -76,6 +76,16 @@ class BinReader:
                 f"record boundary at {self._end} ({self._end - self._pos} remaining)"
             )
 
+    def read_raw(self, n: int) -> bytes:
+        """Consume `n` bytes verbatim. For a trailing block whose layout isn't
+        decoded yet: keeping the bytes leaves a future decode something to work
+        from, where skipping past them loses the evidence.
+        """
+        self._check(n)
+        out = self._data[self._pos:self._pos + n].tobytes()
+        self._pos += n
+        return out
+
     def read_u4(self) -> int:
         self._check(4)
         val = struct.unpack_from("<I", self._data, self._pos)[0]

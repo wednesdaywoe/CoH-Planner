@@ -56,6 +56,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -106,6 +108,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -156,6 +160,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -206,6 +212,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -256,6 +264,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -306,6 +316,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -356,6 +368,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -406,6 +420,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -456,6 +472,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -502,6 +520,7 @@
       ]
     }
   ],
+  "anim_main_target_only": true,
   "modes_disallowed": [
     "Disable_All"
   ],

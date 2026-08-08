@@ -9,7 +9,7 @@
   "copy_creator_mods": false,
   "can_zone": false,
   "defaults": {
-    "rank": 0,
+    "rank": 1,
     "ai_config": "UltraCoward",
     "character_class_name": "minion_unkillablenpc",
     "description": "A civilian.",
@@ -38,8 +38,8 @@
   },
   "levels": [
     {
-      "min_level": 1,
-      "max_level": 1,
+      "level": 1,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Citizen"

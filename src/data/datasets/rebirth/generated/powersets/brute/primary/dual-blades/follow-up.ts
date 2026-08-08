@@ -94,7 +94,7 @@ export const FollowUp: Power = {
     ["Meta",null,1,53,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["Meta",null,1,54,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["Damage","Fire",0.36,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
-    ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? enttype target> player eq || kRage Source> 70 < &&",true],
+    ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? enttype target> player eq || kRage Source> 70 < &&",true],
     ["Damage","Lethal",2.326336,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
     ["ToHit",null,0.33,1,10,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"kDD_StatusMode_2 source.Mode?",true],

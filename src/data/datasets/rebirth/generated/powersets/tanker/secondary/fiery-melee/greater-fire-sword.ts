@@ -21,6 +21,7 @@ export const GreaterFireSword: Power = {
   "strengthsDisallowed": [
     "Range"
   ],
+  "procsOnlyOnMainTarget": true,
   "stats": {
     "accuracy": 1.2,
     "range": 7,

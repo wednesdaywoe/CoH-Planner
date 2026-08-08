@@ -4,9 +4,9 @@
   "commandable_pet": 0,
   "power_tags": [],
   "copy_creator_mods": false,
-  "can_zone": false,
+  "can_zone": true,
   "defaults": {
-    "rank": 0,
+    "rank": 10,
     "ai_config": "Pets_Base",
     "character_class_name": "minion_pets",
     "description": "The Tarantula Exoskeleton Armor was developed by an Orb Weaver cell named Weaver One. It grants the user incredible strength and wires him directly to his weapons systems. Rumor is that the pilot must undergo a terrible treatment of some sort to properly graft with the suit.",
@@ -50,7 +50,7 @@
   },
   "levels": [
     {
-      "min_level": 1,
+      "level": 1,
       "max_level": 55,
       "experience": 0,
       "display_names": [

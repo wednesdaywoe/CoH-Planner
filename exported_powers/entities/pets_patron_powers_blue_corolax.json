@@ -7,9 +7,9 @@
     "HumanSkeleton"
   ],
   "copy_creator_mods": false,
-  "can_zone": false,
+  "can_zone": true,
   "defaults": {
-    "rank": 0,
+    "rank": 10,
     "ai_config": "Pets_Base",
     "character_class_name": "minion_pets",
     "description": "The Coralax are humans who have been infected with living coral. Stories persist that there is an entire society of coral-creatures in the seas around the Rogue Isles, but how these unfortunates became their servants is unknown.",
@@ -56,7 +56,7 @@
   },
   "levels": [
     {
-      "min_level": 1,
+      "level": 1,
       "max_level": 55,
       "experience": 0,
       "display_names": [

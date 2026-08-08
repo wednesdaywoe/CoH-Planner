@@ -64,6 +64,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -219,6 +221,8 @@
           ],
           "flags": [],
           "is_pvp": "EITHER",
+          "requires_pv": "EITHER",
+          "requires_default": "SATISFIED",
           "eval_flags": 0,
           "templates": [
             {
@@ -309,6 +313,8 @@
       ],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 1,
       "templates": [
         {
@@ -330,7 +336,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "",
+          "jit_requires": "Power_DisallowGroupFly target.TokenOwned? !",
           "caster_stack": "Individual",
           "stack": "Suppress",
           "stack_limit": 2,
@@ -361,7 +367,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "",
+          "jit_requires": "Power_DisallowGroupFly target.TokenOwned? !",
           "caster_stack": "Individual",
           "stack": "Suppress",
           "stack_limit": 2,
@@ -397,7 +403,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "",
+          "jit_requires": "Power_DisallowGroupFly target.TokenOwned? !",
           "caster_stack": "Individual",
           "stack": "Suppress",
           "stack_limit": 2,
@@ -433,7 +439,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "",
+          "jit_requires": "Power_DisallowGroupFly target.TokenOwned? !",
           "caster_stack": "Individual",
           "stack": "Suppress",
           "stack_limit": 2,
@@ -469,7 +475,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "",
+          "jit_requires": "Power_DisallowGroupFly target.TokenOwned? !",
           "caster_stack": "Individual",
           "stack": "Continuous",
           "stack_limit": 2,
@@ -500,6 +506,8 @@
           ],
           "flags": [],
           "is_pvp": "EITHER",
+          "requires_pv": "EITHER",
+          "requires_default": "SATISFIED",
           "eval_flags": 1,
           "templates": [
             {
@@ -521,7 +529,7 @@
               "tick_chance": 1.0,
               "tick_mag_multiplier": 1.0,
               "tick_mag_additive": 0.0,
-              "jit_requires": "",
+              "jit_requires": "Power_DisallowGroupFly target.TokenOwned? !",
               "caster_stack": "Individual",
               "stack": "Replace",
               "stack_limit": 2,
@@ -557,7 +565,7 @@
               "tick_chance": 1.0,
               "tick_mag_multiplier": 1.0,
               "tick_mag_additive": 0.0,
-              "jit_requires": "",
+              "jit_requires": "Power_DisallowGroupFly target.TokenOwned? !",
               "caster_stack": "Individual",
               "stack": "Replace",
               "stack_limit": 2,
@@ -588,6 +596,8 @@
           ],
           "flags": [],
           "is_pvp": "EITHER",
+          "requires_pv": "EITHER",
+          "requires_default": "SATISFIED",
           "eval_flags": 1,
           "templates": [
             {
@@ -609,7 +619,7 @@
               "tick_chance": 1.0,
               "tick_mag_multiplier": 1.0,
               "tick_mag_additive": 0.0,
-              "jit_requires": "",
+              "jit_requires": "Power_DisallowGroupFly target.TokenOwned? !",
               "caster_stack": "Individual",
               "stack": "Replace",
               "stack_limit": 2,
@@ -634,6 +644,8 @@
           ],
           "flags": [],
           "is_pvp": "EITHER",
+          "requires_pv": "EITHER",
+          "requires_default": "SATISFIED",
           "eval_flags": 1,
           "templates": [
             {
@@ -655,7 +667,7 @@
               "tick_chance": 1.0,
               "tick_mag_multiplier": 1.0,
               "tick_mag_additive": 0.0,
-              "jit_requires": "",
+              "jit_requires": "Power_DisallowGroupFly target.TokenOwned? !",
               "caster_stack": "Individual",
               "stack": "Replace",
               "stack_limit": 2,

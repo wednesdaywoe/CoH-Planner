@@ -10,7 +10,7 @@
   "copy_creator_mods": false,
   "can_zone": true,
   "defaults": {
-    "rank": 0,
+    "rank": 10,
     "ai_config": "Pets_Melee",
     "character_class_name": "henchman_minion_small",
     "description": "Living Hellfire are demons attracted to the material plane by terrible violence. They can only exist on the material plane for a short time before returning to the Abyss.",
@@ -42,7 +42,7 @@
   },
   "levels": [
     {
-      "min_level": 1,
+      "level": 1,
       "max_level": 55,
       "experience": 0,
       "display_names": [

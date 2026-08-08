@@ -10,7 +10,7 @@
   "copy_creator_mods": false,
   "can_zone": false,
   "defaults": {
-    "rank": 0,
+    "rank": 10,
     "ai_config": "Default_Melee",
     "character_class_name": "minion_pets",
     "description": "To keep up with the inhuman abilities of some villains, the PPD has engineered a powered armor unit. Trained PPD officers don servo-assisted combat armor which not only protects them, but increases their strength and reflexes. Heavy machineguns and energy weapons add impressive firepower to the mix. These awesome but costly suits are reserved for major conflicts against Paragon City's most fearsome foes.",
@@ -48,7 +48,7 @@
   },
   "levels": [
     {
-      "min_level": 10,
+      "level": 10,
       "max_level": 50,
       "experience": 0,
       "display_names": [

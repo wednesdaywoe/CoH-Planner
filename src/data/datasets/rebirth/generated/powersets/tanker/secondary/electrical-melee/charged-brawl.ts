@@ -21,6 +21,7 @@ export const ChargedBrawl: Power = {
   "strengthsDisallowed": [
     "Range"
   ],
+  "procsOnlyOnMainTarget": true,
   "stats": {
     "accuracy": 1,
     "range": 7,

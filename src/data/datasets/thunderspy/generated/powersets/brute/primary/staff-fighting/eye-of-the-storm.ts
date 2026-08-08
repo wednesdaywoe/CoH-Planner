@@ -107,7 +107,7 @@ export const EyeoftheStorm: Power = {
     ["Movement","Fly",0.15,1,20,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_3 source.ownPower?",true],
     ["Movement","Jump",0.15,1,20,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_3 source.ownPower?",true],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
-    ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? enttype target> player eq || kRage source> 70 < &&",true],
+    ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? enttype target> player eq || kRage source> 70 < &&",true],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_1 source.ownPower?",true],
     ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_1 source.ownPower?",true],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_2 source.ownPower?",true],

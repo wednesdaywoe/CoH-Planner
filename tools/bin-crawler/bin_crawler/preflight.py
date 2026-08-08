@@ -37,15 +37,21 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from bin_crawler import assets_sources
 from bin_crawler.parser._pigg import BinResolver
 
-# Repo-relative manifests that record what each dataset was last exported from.
+# The committed manifests that record what each dataset was last exported from.
 # Keyed the way exported_powers/ is laid out: HC at the tree root, the forks
 # nested under their own subdirectory.
 _MANIFEST_SUBTREES = {'powers': '', 'tables': 'tables', 'entities': 'entities'}
 
+# Anchored to this file rather than the working directory. `bin_crawler` is not
+# installed, so it imports only from `tools/bin-crawler` — and from there a
+# relative `exported_powers` resolves to nothing, which made question 3 announce
+# "no committed export" and exit OK on every run from the one directory the
+# module can be run from. Absence must mean absence, not a wrong cwd.
+_EXPORTED = Path(__file__).resolve().parents[3] / 'exported_powers'
+
 
 def _dataset_root(dataset: str) -> Path:
-    root = Path('exported_powers')
-    return root if dataset == 'homecoming' else root / dataset
+    return _EXPORTED if dataset == 'homecoming' else _EXPORTED / dataset
 
 
 def _committed_digests(dataset: str) -> dict[str, dict[str, str]]:

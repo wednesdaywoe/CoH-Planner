@@ -60,7 +60,7 @@ export const LightOpening: Power = {
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade1 source.ownPower? ! Temporary_Powers.Temporary_Powers.ComboBlade2 source.ownPower? ! && Temporary_Powers.Temporary_Powers.ComboBlade3 source.ownPower? ! &&"],
     ["Damage","Fire",0.189,1,0.5,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.33000001311302185,1],
-    ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? enttype target> player eq || kRage source> 70 < &&",true],
+    ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? enttype target> player eq || kRage source> 70 < &&",true],
     ["Damage","Lethal",0.839239,1,0.5,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade1 source.ownPower?",true],

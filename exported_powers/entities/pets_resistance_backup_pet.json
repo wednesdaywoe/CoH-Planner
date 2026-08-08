@@ -9,7 +9,7 @@
   "copy_creator_mods": false,
   "can_zone": false,
   "defaults": {
-    "rank": 0,
+    "rank": 10,
     "ai_config": "Default_Ranged",
     "character_class_name": "minion_pets",
     "description": "Resistance Veterans are surviving soldiers from the last wars before Cole's world order took over. They are well trained, disciplined, elite fighters armed with some of the best modified weapons the resistance can slap together.",
@@ -47,7 +47,7 @@
   },
   "levels": [
     {
-      "min_level": 10,
+      "level": 10,
       "max_level": 50,
       "experience": 0,
       "display_names": [

@@ -88,6 +88,28 @@ class EffectGroup:
     requires_expression: str = ""
     flags: list[str] = field(default_factory=list)
     is_pvp: str = "EITHER"   # "EITHER", "PVE_ONLY", "PVP_ONLY"
+    # The combat scope `requires_expression` alone confines the group to, read
+    # structurally by `_requires.entity_scope`. Distinct from `is_pvp`: on
+    # Parse7 that one is the Effect's declared flag, which is EITHER for nearly
+    # every group whose requires does carry a `player`/`critter` test. Consumers
+    # that used to substring-match the expression read this instead.
+    # "EITHER" | "PVE_ONLY" | "PVP_ONLY" | "NEVER" | "UNPARSED"
+    requires_pv: str = "EITHER"
+    # Whether `requires_expression` holds in the default situation — a character
+    # in ordinary PvE content with nothing switched on. A group whose gate is
+    # SATISFIED there is part of the power's base; anything else is a branch.
+    # Read structurally by `_gate_default.evaluate`, which evaluates the parsed
+    # tree instead of proxying its root operator with its last token
+    # (DATA-GAP-REGISTER COND-1).
+    # "SATISFIED" | "UNSATISFIED" | "INDETERMINATE" | "INDETERMINATE_ARCHETYPE"
+    #   | "UNPARSED" | "UNCLASSIFIED"
+    requires_default: str = "SATISFIED"
+    # The player archetypes the gate IS satisfied for, in the dataset's own
+    # `Class_*` spelling — populated only when `requires_default` is
+    # INDETERMINATE_ARCHETYPE, where it resolves the fork the verdict names: the
+    # group is base for a build of one of these and a branch for every other
+    # (DATA-GAP-REGISTER AT-FORK-1).
+    requires_archetypes: list[str] = field(default_factory=list)
     eval_flags: int = 0
     # Effect `Tag`(s) — the named bucket the engine's global chance-mod system
     # flips on/off (Dual Pistols ammo: an attack's ColdDamage/ToxicDamage/
@@ -206,19 +228,20 @@ class PowerRecord:
     max_toggle_time: float = 0.0
 
     # MaxBoosts (i24 tail field) — enhancement slot cap; parse-table default 6,
-    # authored 0 on unslottable powers. Currently decoded on the HC layout only
-    # (the Parse6 post-effects tail is still unparsed).
+    # authored 0 on unslottable powers. Decoded on both layouts.
     max_boosts: int = 6
 
     # ProcAllowed (HC-added tail field, raw enum) — 0 = procs allowed
     # (default); the only authored nonzero value is `ProcAllowed kNone` = 1
-    # (proc-ineligible powers). HC-layout only.
+    # (proc-ineligible powers). Read on HC and on Thunderspy, which carries the
+    # HC-added word (TSPY-5); stock Parse6 has no such field, so Rebirth's is
+    # always the 0 default. Only Homecoming authors any `kNone`.
     proc_allowed_raw: int = 0
 
     # StrengthsDisallowed (i24 tail field) — attrib offsets (ATTRIB_NAME
     # raw//4 lookup) whose outside buffs/enhancement strength this power
-    # ignores (e.g. Punch: Range). Present in the client bin. Currently
-    # decoded on the HC layout only.
+    # ignores (e.g. Punch: Range). Present in the client bin. Decoded on both
+    # layouts.
     strengths_disallowed: list[int] = field(default_factory=list)
 
     # GlobalStrengthsDisallowed (i24 tail field, same attrib-offset encoding) —
@@ -232,16 +255,18 @@ class PowerRecord:
     # later oracle can name them (see `_parse_power_tail`). HC layout only.
     tail_unknown_bools_raw: list[int] = field(default_factory=list)
 
-    # ProcMainTargetOnly (HC-added tail field) — procs slotted in this power
-    # roll against the main target only, so they use the single-target PPM area
+    # ProcMainTargetOnly (i24 tail field) — procs slotted in this power roll
+    # against the main target only, so they use the single-target PPM area
     # factor even though the power carries an AoE radius (Propel's 15ft is its
     # knockback splash). Measured in game 2026-07-28/29 on Propel and Lightning
-    # Clap; see docs/DATA-GAP-REGISTER.md HC-3. HC layout only — no separating
-    # field exists in the Parse6 forks' tails.
+    # Clap; see docs/DATA-GAP-REGISTER.md HC-3. Decoded on both layouts — it is
+    # in the stock parse table (`powers_load.c:2192`), where it follows
+    # StrengthsDisallowed directly rather than HC's three interposed fields
+    # (PPM-3, recovered on the forks 2026-08-03).
     proc_main_target_only: bool = False
 
-    # AnimMainTargetOnly (HC-added tail field) — the animation/FX counterpart,
-    # play the effect on the main target only. Cosmetic; parsed so the byte is
+    # AnimMainTargetOnly (i24 tail field) — the animation/FX counterpart, play
+    # the effect on the main target only. Cosmetic; parsed so the byte is
     # accounted for rather than skipped.
     anim_main_target_only: bool = False
 

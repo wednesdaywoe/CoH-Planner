@@ -66,6 +66,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -98,6 +100,10 @@
           ],
           "flags_raw": 1072
         }
+      ],
+      "requires_archetypes": [
+        "Class_Peacebringer",
+        "Class_Warshade"
       ]
     },
     {
@@ -110,6 +116,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -146,6 +154,10 @@
           ],
           "flags_raw": 1056
         }
+      ],
+      "requires_archetypes": [
+        "Class_Peacebringer",
+        "Class_Warshade"
       ]
     },
     {
@@ -158,6 +170,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -194,6 +208,10 @@
           ],
           "flags_raw": 1056
         }
+      ],
+      "requires_archetypes": [
+        "Class_Peacebringer",
+        "Class_Warshade"
       ]
     },
     {
@@ -206,6 +224,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -242,6 +262,10 @@
           ],
           "flags_raw": 1056
         }
+      ],
+      "requires_archetypes": [
+        "Class_Peacebringer",
+        "Class_Warshade"
       ]
     },
     {
@@ -254,6 +278,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -290,6 +316,10 @@
           ],
           "flags_raw": 1056
         }
+      ],
+      "requires_archetypes": [
+        "Class_Peacebringer",
+        "Class_Warshade"
       ]
     },
     {
@@ -302,6 +332,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -338,6 +370,10 @@
           ],
           "flags_raw": 1056
         }
+      ],
+      "requires_archetypes": [
+        "Class_Peacebringer",
+        "Class_Warshade"
       ]
     },
     {
@@ -350,6 +386,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -386,6 +424,10 @@
           ],
           "flags_raw": 1056
         }
+      ],
+      "requires_archetypes": [
+        "Class_Peacebringer",
+        "Class_Warshade"
       ]
     },
     {
@@ -398,6 +440,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -434,6 +478,10 @@
           ],
           "flags_raw": 1056
         }
+      ],
+      "requires_archetypes": [
+        "Class_Peacebringer",
+        "Class_Warshade"
       ]
     },
     {
@@ -446,6 +494,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -482,6 +532,10 @@
           ],
           "flags_raw": 1056
         }
+      ],
+      "requires_archetypes": [
+        "Class_Peacebringer",
+        "Class_Warshade"
       ]
     },
     {
@@ -494,6 +548,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -530,6 +586,10 @@
           ],
           "flags_raw": 1056
         }
+      ],
+      "requires_archetypes": [
+        "Class_Peacebringer",
+        "Class_Warshade"
       ]
     },
     {
@@ -542,6 +602,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -578,6 +640,10 @@
           ],
           "flags_raw": 1056
         }
+      ],
+      "requires_archetypes": [
+        "Class_Peacebringer",
+        "Class_Warshade"
       ]
     },
     {
@@ -590,6 +656,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -626,6 +694,10 @@
           ],
           "flags_raw": 1056
         }
+      ],
+      "requires_archetypes": [
+        "Class_Peacebringer",
+        "Class_Warshade"
       ]
     },
     {
@@ -638,6 +710,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -674,6 +748,10 @@
           ],
           "flags_raw": 1056
         }
+      ],
+      "requires_archetypes": [
+        "Class_Peacebringer",
+        "Class_Warshade"
       ]
     },
     {
@@ -686,6 +764,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -729,6 +809,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -772,6 +854,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -815,6 +899,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -858,6 +944,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -901,6 +989,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -944,6 +1034,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -987,6 +1079,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -1030,6 +1124,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -1073,6 +1169,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -1116,6 +1214,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -1153,6 +1253,10 @@
           ],
           "flags_raw": 1072
         }
+      ],
+      "requires_archetypes": [
+        "Class_Peacebringer",
+        "Class_Warshade"
       ]
     },
     {
@@ -1165,6 +1269,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -1202,6 +1308,10 @@
           ],
           "flags_raw": 1072
         }
+      ],
+      "requires_archetypes": [
+        "Class_Peacebringer",
+        "Class_Warshade"
       ]
     },
     {
@@ -1214,6 +1324,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -1250,6 +1362,10 @@
           ],
           "flags_raw": 1056
         }
+      ],
+      "requires_archetypes": [
+        "Class_Peacebringer",
+        "Class_Warshade"
       ]
     },
     {
@@ -1262,6 +1378,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -1298,6 +1416,10 @@
           ],
           "flags_raw": 1056
         }
+      ],
+      "requires_archetypes": [
+        "Class_Peacebringer",
+        "Class_Warshade"
       ]
     },
     {
@@ -1310,6 +1432,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -1341,6 +1465,10 @@
           ],
           "flags_raw": 1056
         }
+      ],
+      "requires_archetypes": [
+        "Class_Peacebringer",
+        "Class_Warshade"
       ]
     },
     {
@@ -1353,6 +1481,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -1384,6 +1514,10 @@
           ],
           "flags_raw": 1056
         }
+      ],
+      "requires_archetypes": [
+        "Class_Peacebringer",
+        "Class_Warshade"
       ]
     },
     {
@@ -1396,6 +1530,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -1439,6 +1575,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -1483,6 +1621,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -1527,6 +1667,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -1570,6 +1712,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -1613,6 +1757,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -1645,6 +1791,10 @@
           ],
           "flags_raw": 1072
         }
+      ],
+      "requires_archetypes": [
+        "Class_Peacebringer",
+        "Class_Warshade"
       ]
     },
     {
@@ -1657,6 +1807,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -1689,6 +1841,10 @@
           ],
           "flags_raw": 1072
         }
+      ],
+      "requires_archetypes": [
+        "Class_Peacebringer",
+        "Class_Warshade"
       ]
     },
     {
@@ -1701,6 +1857,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -1737,6 +1895,10 @@
           ],
           "flags_raw": 1056
         }
+      ],
+      "requires_archetypes": [
+        "Class_Peacebringer",
+        "Class_Warshade"
       ]
     },
     {
@@ -1749,6 +1911,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -1785,6 +1949,10 @@
           ],
           "flags_raw": 1056
         }
+      ],
+      "requires_archetypes": [
+        "Class_Peacebringer",
+        "Class_Warshade"
       ]
     },
     {
@@ -1797,6 +1965,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -1833,6 +2003,21 @@
           ],
           "flags_raw": 1056
         }
+      ],
+      "requires_archetypes": [
+        "Class_Blaster",
+        "Class_Controller",
+        "Class_Defender",
+        "Class_Scrapper",
+        "Class_Tanker",
+        "Class_Guardian",
+        "Class_Brute",
+        "Class_Stalker",
+        "Class_Mastermind",
+        "Class_Dominator",
+        "Class_Corruptor",
+        "Class_Arachnos_Widow",
+        "Class_Arachnos_Soldier"
       ]
     },
     {
@@ -1845,6 +2030,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -1881,6 +2068,21 @@
           ],
           "flags_raw": 1056
         }
+      ],
+      "requires_archetypes": [
+        "Class_Blaster",
+        "Class_Controller",
+        "Class_Defender",
+        "Class_Scrapper",
+        "Class_Tanker",
+        "Class_Guardian",
+        "Class_Brute",
+        "Class_Stalker",
+        "Class_Mastermind",
+        "Class_Dominator",
+        "Class_Corruptor",
+        "Class_Arachnos_Widow",
+        "Class_Arachnos_Soldier"
       ]
     },
     {
@@ -1893,6 +2095,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -1929,6 +2133,21 @@
           ],
           "flags_raw": 1056
         }
+      ],
+      "requires_archetypes": [
+        "Class_Blaster",
+        "Class_Controller",
+        "Class_Defender",
+        "Class_Scrapper",
+        "Class_Tanker",
+        "Class_Guardian",
+        "Class_Brute",
+        "Class_Stalker",
+        "Class_Mastermind",
+        "Class_Dominator",
+        "Class_Corruptor",
+        "Class_Arachnos_Widow",
+        "Class_Arachnos_Soldier"
       ]
     },
     {
@@ -1941,6 +2160,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -1977,6 +2198,21 @@
           ],
           "flags_raw": 1056
         }
+      ],
+      "requires_archetypes": [
+        "Class_Blaster",
+        "Class_Controller",
+        "Class_Defender",
+        "Class_Scrapper",
+        "Class_Tanker",
+        "Class_Guardian",
+        "Class_Brute",
+        "Class_Stalker",
+        "Class_Mastermind",
+        "Class_Dominator",
+        "Class_Corruptor",
+        "Class_Arachnos_Widow",
+        "Class_Arachnos_Soldier"
       ]
     },
     {
@@ -1989,6 +2225,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -2025,6 +2263,21 @@
           ],
           "flags_raw": 1056
         }
+      ],
+      "requires_archetypes": [
+        "Class_Blaster",
+        "Class_Controller",
+        "Class_Defender",
+        "Class_Scrapper",
+        "Class_Tanker",
+        "Class_Guardian",
+        "Class_Brute",
+        "Class_Stalker",
+        "Class_Mastermind",
+        "Class_Dominator",
+        "Class_Corruptor",
+        "Class_Arachnos_Widow",
+        "Class_Arachnos_Soldier"
       ]
     },
     {
@@ -2037,6 +2290,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -2073,6 +2328,21 @@
           ],
           "flags_raw": 1056
         }
+      ],
+      "requires_archetypes": [
+        "Class_Blaster",
+        "Class_Controller",
+        "Class_Defender",
+        "Class_Scrapper",
+        "Class_Tanker",
+        "Class_Guardian",
+        "Class_Brute",
+        "Class_Stalker",
+        "Class_Mastermind",
+        "Class_Dominator",
+        "Class_Corruptor",
+        "Class_Arachnos_Widow",
+        "Class_Arachnos_Soldier"
       ]
     },
     {
@@ -2085,6 +2355,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -2121,6 +2393,21 @@
           ],
           "flags_raw": 1056
         }
+      ],
+      "requires_archetypes": [
+        "Class_Blaster",
+        "Class_Controller",
+        "Class_Defender",
+        "Class_Scrapper",
+        "Class_Tanker",
+        "Class_Guardian",
+        "Class_Brute",
+        "Class_Stalker",
+        "Class_Mastermind",
+        "Class_Dominator",
+        "Class_Corruptor",
+        "Class_Arachnos_Widow",
+        "Class_Arachnos_Soldier"
       ]
     },
     {
@@ -2133,6 +2420,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -2169,6 +2458,21 @@
           ],
           "flags_raw": 1056
         }
+      ],
+      "requires_archetypes": [
+        "Class_Blaster",
+        "Class_Controller",
+        "Class_Defender",
+        "Class_Scrapper",
+        "Class_Tanker",
+        "Class_Guardian",
+        "Class_Brute",
+        "Class_Stalker",
+        "Class_Mastermind",
+        "Class_Dominator",
+        "Class_Corruptor",
+        "Class_Arachnos_Widow",
+        "Class_Arachnos_Soldier"
       ]
     },
     {
@@ -2181,6 +2485,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -2217,6 +2523,21 @@
           ],
           "flags_raw": 1056
         }
+      ],
+      "requires_archetypes": [
+        "Class_Blaster",
+        "Class_Controller",
+        "Class_Defender",
+        "Class_Scrapper",
+        "Class_Tanker",
+        "Class_Guardian",
+        "Class_Brute",
+        "Class_Stalker",
+        "Class_Mastermind",
+        "Class_Dominator",
+        "Class_Corruptor",
+        "Class_Arachnos_Widow",
+        "Class_Arachnos_Soldier"
       ]
     },
     {
@@ -2229,6 +2550,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -2265,6 +2588,21 @@
           ],
           "flags_raw": 1056
         }
+      ],
+      "requires_archetypes": [
+        "Class_Blaster",
+        "Class_Controller",
+        "Class_Defender",
+        "Class_Scrapper",
+        "Class_Tanker",
+        "Class_Guardian",
+        "Class_Brute",
+        "Class_Stalker",
+        "Class_Mastermind",
+        "Class_Dominator",
+        "Class_Corruptor",
+        "Class_Arachnos_Widow",
+        "Class_Arachnos_Soldier"
       ]
     },
     {
@@ -2277,6 +2615,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -2313,6 +2653,21 @@
           ],
           "flags_raw": 1056
         }
+      ],
+      "requires_archetypes": [
+        "Class_Blaster",
+        "Class_Controller",
+        "Class_Defender",
+        "Class_Scrapper",
+        "Class_Tanker",
+        "Class_Guardian",
+        "Class_Brute",
+        "Class_Stalker",
+        "Class_Mastermind",
+        "Class_Dominator",
+        "Class_Corruptor",
+        "Class_Arachnos_Widow",
+        "Class_Arachnos_Soldier"
       ]
     },
     {
@@ -2325,6 +2680,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -2361,6 +2718,21 @@
           ],
           "flags_raw": 1056
         }
+      ],
+      "requires_archetypes": [
+        "Class_Blaster",
+        "Class_Controller",
+        "Class_Defender",
+        "Class_Scrapper",
+        "Class_Tanker",
+        "Class_Guardian",
+        "Class_Brute",
+        "Class_Stalker",
+        "Class_Mastermind",
+        "Class_Dominator",
+        "Class_Corruptor",
+        "Class_Arachnos_Widow",
+        "Class_Arachnos_Soldier"
       ]
     },
     {
@@ -2373,6 +2745,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -2416,6 +2790,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -2459,6 +2835,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -2502,6 +2880,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -2545,6 +2925,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -2588,6 +2970,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -2631,6 +3015,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -2674,6 +3060,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -2717,6 +3105,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -2760,6 +3150,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -2803,6 +3195,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -2840,6 +3234,21 @@
           ],
           "flags_raw": 1072
         }
+      ],
+      "requires_archetypes": [
+        "Class_Blaster",
+        "Class_Controller",
+        "Class_Defender",
+        "Class_Scrapper",
+        "Class_Tanker",
+        "Class_Guardian",
+        "Class_Brute",
+        "Class_Stalker",
+        "Class_Mastermind",
+        "Class_Dominator",
+        "Class_Corruptor",
+        "Class_Arachnos_Widow",
+        "Class_Arachnos_Soldier"
       ]
     },
     {
@@ -2852,6 +3261,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -2889,6 +3300,21 @@
           ],
           "flags_raw": 1072
         }
+      ],
+      "requires_archetypes": [
+        "Class_Blaster",
+        "Class_Controller",
+        "Class_Defender",
+        "Class_Scrapper",
+        "Class_Tanker",
+        "Class_Guardian",
+        "Class_Brute",
+        "Class_Stalker",
+        "Class_Mastermind",
+        "Class_Dominator",
+        "Class_Corruptor",
+        "Class_Arachnos_Widow",
+        "Class_Arachnos_Soldier"
       ]
     },
     {
@@ -2901,6 +3327,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -2937,6 +3365,21 @@
           ],
           "flags_raw": 1056
         }
+      ],
+      "requires_archetypes": [
+        "Class_Blaster",
+        "Class_Controller",
+        "Class_Defender",
+        "Class_Scrapper",
+        "Class_Tanker",
+        "Class_Guardian",
+        "Class_Brute",
+        "Class_Stalker",
+        "Class_Mastermind",
+        "Class_Dominator",
+        "Class_Corruptor",
+        "Class_Arachnos_Widow",
+        "Class_Arachnos_Soldier"
       ]
     },
     {
@@ -2949,6 +3392,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -2985,6 +3430,21 @@
           ],
           "flags_raw": 1056
         }
+      ],
+      "requires_archetypes": [
+        "Class_Blaster",
+        "Class_Controller",
+        "Class_Defender",
+        "Class_Scrapper",
+        "Class_Tanker",
+        "Class_Guardian",
+        "Class_Brute",
+        "Class_Stalker",
+        "Class_Mastermind",
+        "Class_Dominator",
+        "Class_Corruptor",
+        "Class_Arachnos_Widow",
+        "Class_Arachnos_Soldier"
       ]
     },
     {
@@ -2997,6 +3457,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -3028,6 +3490,21 @@
           ],
           "flags_raw": 1056
         }
+      ],
+      "requires_archetypes": [
+        "Class_Blaster",
+        "Class_Controller",
+        "Class_Defender",
+        "Class_Scrapper",
+        "Class_Tanker",
+        "Class_Guardian",
+        "Class_Brute",
+        "Class_Stalker",
+        "Class_Mastermind",
+        "Class_Dominator",
+        "Class_Corruptor",
+        "Class_Arachnos_Widow",
+        "Class_Arachnos_Soldier"
       ]
     },
     {
@@ -3040,6 +3517,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -3071,6 +3550,21 @@
           ],
           "flags_raw": 1056
         }
+      ],
+      "requires_archetypes": [
+        "Class_Blaster",
+        "Class_Controller",
+        "Class_Defender",
+        "Class_Scrapper",
+        "Class_Tanker",
+        "Class_Guardian",
+        "Class_Brute",
+        "Class_Stalker",
+        "Class_Mastermind",
+        "Class_Dominator",
+        "Class_Corruptor",
+        "Class_Arachnos_Widow",
+        "Class_Arachnos_Soldier"
       ]
     },
     {
@@ -3083,6 +3577,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -3126,6 +3622,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -3170,6 +3668,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -3214,6 +3714,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -3257,6 +3759,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -3300,6 +3804,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -3332,6 +3838,21 @@
           ],
           "flags_raw": 1072
         }
+      ],
+      "requires_archetypes": [
+        "Class_Blaster",
+        "Class_Controller",
+        "Class_Defender",
+        "Class_Scrapper",
+        "Class_Tanker",
+        "Class_Guardian",
+        "Class_Brute",
+        "Class_Stalker",
+        "Class_Mastermind",
+        "Class_Dominator",
+        "Class_Corruptor",
+        "Class_Arachnos_Widow",
+        "Class_Arachnos_Soldier"
       ]
     },
     {
@@ -3344,6 +3865,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -3376,6 +3899,21 @@
           ],
           "flags_raw": 1072
         }
+      ],
+      "requires_archetypes": [
+        "Class_Blaster",
+        "Class_Controller",
+        "Class_Defender",
+        "Class_Scrapper",
+        "Class_Tanker",
+        "Class_Guardian",
+        "Class_Brute",
+        "Class_Stalker",
+        "Class_Mastermind",
+        "Class_Dominator",
+        "Class_Corruptor",
+        "Class_Arachnos_Widow",
+        "Class_Arachnos_Soldier"
       ]
     },
     {
@@ -3388,6 +3926,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -3424,6 +3964,21 @@
           ],
           "flags_raw": 1056
         }
+      ],
+      "requires_archetypes": [
+        "Class_Blaster",
+        "Class_Controller",
+        "Class_Defender",
+        "Class_Scrapper",
+        "Class_Tanker",
+        "Class_Guardian",
+        "Class_Brute",
+        "Class_Stalker",
+        "Class_Mastermind",
+        "Class_Dominator",
+        "Class_Corruptor",
+        "Class_Arachnos_Widow",
+        "Class_Arachnos_Soldier"
       ]
     },
     {
@@ -3436,6 +3991,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -3472,6 +4029,21 @@
           ],
           "flags_raw": 1056
         }
+      ],
+      "requires_archetypes": [
+        "Class_Blaster",
+        "Class_Controller",
+        "Class_Defender",
+        "Class_Scrapper",
+        "Class_Tanker",
+        "Class_Guardian",
+        "Class_Brute",
+        "Class_Stalker",
+        "Class_Mastermind",
+        "Class_Dominator",
+        "Class_Corruptor",
+        "Class_Arachnos_Widow",
+        "Class_Arachnos_Soldier"
       ]
     },
     {
@@ -3484,6 +4056,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -3534,6 +4108,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {

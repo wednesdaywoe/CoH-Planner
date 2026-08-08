@@ -6,7 +6,7 @@
   "copy_creator_mods": false,
   "can_zone": false,
   "defaults": {
-    "rank": 0,
+    "rank": 10,
     "ai_config": "Pets_Melee",
     "character_class_name": "boss_elite",
     "description": "Marcus Cole, who would eventually become Statesman, was a rogue and a mercenary throughout the early part of the 20th century. During WWI, he became ill after being exposed to mustard gas. While traveling with his childhood friend Stefan Richter, Marcus discovered the Well of the Furies. Both men drank from the well and were granted incredible powers. Marcus went on to become Statesman and Stefan, Lord Recluse.",
@@ -56,7 +56,7 @@
   },
   "levels": [
     {
-      "min_level": 1,
+      "level": 1,
       "max_level": 55,
       "experience": 0,
       "display_names": [

@@ -57,6 +57,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -79,7 +81,7 @@
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "",
-          "caster_stack": "",
+          "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
@@ -106,6 +108,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -128,7 +132,7 @@
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "",
-          "caster_stack": "",
+          "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
@@ -149,6 +153,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -171,7 +177,7 @@
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "",
-          "caster_stack": "",
+          "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
@@ -193,6 +199,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -215,7 +223,7 @@
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "",
-          "caster_stack": "",
+          "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,

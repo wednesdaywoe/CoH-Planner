@@ -59,6 +59,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE",
       "eval_flags": 34,
       "templates": [
         {
@@ -108,6 +110,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE",
       "eval_flags": 34,
       "templates": [
         {
@@ -151,6 +155,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE",
       "eval_flags": 34,
       "templates": [
         {
@@ -194,6 +200,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE",
       "eval_flags": 34,
       "templates": [
         {
@@ -237,6 +245,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE",
       "eval_flags": 34,
       "templates": [
         {
@@ -280,6 +290,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE",
       "eval_flags": 34,
       "templates": [
         {
@@ -323,6 +335,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE",
       "eval_flags": 34,
       "templates": [
         {
@@ -366,6 +380,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE",
       "eval_flags": 34,
       "templates": [
         {
@@ -409,6 +425,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE",
       "eval_flags": 34,
       "templates": [
         {
@@ -452,6 +470,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE",
       "eval_flags": 34,
       "templates": [
         {
@@ -495,6 +515,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE",
       "eval_flags": 34,
       "templates": [
         {
@@ -538,6 +560,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE",
       "eval_flags": 34,
       "templates": [
         {
@@ -581,6 +605,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE",
       "eval_flags": 34,
       "templates": [
         {
@@ -624,6 +650,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE",
       "eval_flags": 34,
       "templates": [
         {
@@ -667,6 +695,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE",
       "eval_flags": 34,
       "templates": [
         {
@@ -710,6 +740,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE",
       "eval_flags": 34,
       "templates": [
         {
@@ -753,6 +785,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE",
       "eval_flags": 34,
       "templates": [
         {
@@ -796,6 +830,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE",
       "eval_flags": 34,
       "templates": [
         {
@@ -839,6 +875,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE",
       "eval_flags": 34,
       "templates": [
         {
@@ -882,6 +920,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE",
       "eval_flags": 34,
       "templates": [
         {
@@ -925,6 +965,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE",
       "eval_flags": 34,
       "templates": [
         {
@@ -968,6 +1010,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE",
       "eval_flags": 34,
       "templates": [
         {
@@ -1011,6 +1055,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE",
       "eval_flags": 34,
       "templates": [
         {
@@ -1054,6 +1100,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE",
       "eval_flags": 34,
       "templates": [
         {

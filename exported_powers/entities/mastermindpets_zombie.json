@@ -12,7 +12,7 @@
   "copy_creator_mods": false,
   "can_zone": true,
   "defaults": {
-    "rank": 0,
+    "rank": 10,
     "ai_config": "Pets_Melee",
     "character_class_name": "henchman_minion",
     "description": "The walking dead may be slow and stupid, but wise heroes know better than to underestimate them. Even when a person survives an encounter with a zombie, he rarely escapes entirely unscathed. He will often find himself waking in the night, shuddering at the memory of a dry and lifeless touch.",
@@ -50,7 +50,7 @@
   },
   "levels": [
     {
-      "min_level": 1,
+      "level": 1,
       "max_level": 55,
       "experience": 0,
       "display_names": [

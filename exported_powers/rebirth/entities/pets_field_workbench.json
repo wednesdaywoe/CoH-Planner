@@ -6,7 +6,7 @@
   "copy_creator_mods": false,
   "can_zone": false,
   "defaults": {
-    "rank": 0,
+    "rank": 10,
     "ai_config": "Pets_Workbench",
     "character_class_name": "minion_unkillablenpc",
     "description": "",
@@ -41,14 +41,16 @@
   },
   "levels": [
     {
-      "min_level": 1,
-      "max_level": 50,
+      "level": 1,
+      "max_level": null,
       "experience": 0,
       "display_names": [
-        "Field Workbench"
+        "Portable Workbench"
       ],
-      "costumes": []
+      "costumes": [
+        "Univ_InvStation_Portable"
+      ]
     }
   ],
-  "source_file": ""
+  "source_file": "DEFS/VILLAINS/PETS.VILLAIN"
 }

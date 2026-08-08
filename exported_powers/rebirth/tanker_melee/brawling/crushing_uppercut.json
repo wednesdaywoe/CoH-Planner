@@ -73,6 +73,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
+      "requires_pv": "PVE_ONLY",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -113,6 +115,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
+      "requires_pv": "PVE_ONLY",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -153,6 +157,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
+      "requires_pv": "PVE_ONLY",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -193,6 +199,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
+      "requires_pv": "PVE_ONLY",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -233,6 +241,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
+      "requires_pv": "PVP_ONLY",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -273,6 +283,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
+      "requires_pv": "PVP_ONLY",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -313,6 +325,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
+      "requires_pv": "PVP_ONLY",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -353,6 +367,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
+      "requires_pv": "PVP_ONLY",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -393,6 +409,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
+      "requires_pv": "PVE_ONLY",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -439,6 +457,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
+      "requires_pv": "PVE_ONLY",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -485,6 +505,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
+      "requires_pv": "PVE_ONLY",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -531,6 +553,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
+      "requires_pv": "PVE_ONLY",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -577,6 +601,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
+      "requires_pv": "PVP_ONLY",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -655,6 +681,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
+      "requires_pv": "PVP_ONLY",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -733,6 +761,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
+      "requires_pv": "PVP_ONLY",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -811,6 +841,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
+      "requires_pv": "PVP_ONLY",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -889,6 +921,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
+      "requires_pv": "PVE_ONLY",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -929,6 +963,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
+      "requires_pv": "PVP_ONLY",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -977,6 +1013,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -1023,6 +1061,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 2,
       "templates": [
         {
@@ -1067,6 +1107,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
+      "requires_pv": "PVE_ONLY",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -1111,6 +1153,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
+      "requires_pv": "PVP_ONLY",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -1151,6 +1195,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -1201,6 +1247,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -1251,6 +1299,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -1295,6 +1345,7 @@
   "strengths_disallowed": [
     "Range"
   ],
+  "anim_main_target_only": true,
   "modes_disallowed": [
     "Disable_All"
   ],

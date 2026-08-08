@@ -6,7 +6,7 @@
   "copy_creator_mods": false,
   "can_zone": false,
   "defaults": {
-    "rank": 0,
+    "rank": 10,
     "ai_config": "Pets_Ranged",
     "character_class_name": "boss_elite",
     "description": "Dr. Raymond Keyes developed a high-tech battle suit that allowed him to channel bolts of anti-matter into fierce attacks. He used his powers to help defeat the Rikti, but at a terrible cost. Due to injuries he sustained at that time, he lost full control of his powers. Now, to protect others from himself, he remains imprisoned within his battle suit. He is constantly searching for a cure for his condition, but that does not stop him from contributing to the defense of Paragon City and contributing many other technological breakthroughs for the good of all.",
@@ -59,7 +59,7 @@
   },
   "levels": [
     {
-      "min_level": 1,
+      "level": 1,
       "max_level": 55,
       "experience": 0,
       "display_names": [

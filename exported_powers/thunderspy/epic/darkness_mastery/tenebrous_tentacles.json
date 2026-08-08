@@ -69,6 +69,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
+      "requires_pv": "PVE_ONLY",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -90,8 +92,8 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "enttype target> critter eq",
-          "caster_stack": "",
+          "jit_requires": "",
+          "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
@@ -115,6 +117,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
+      "requires_pv": "PVE_ONLY",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -136,8 +140,8 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "enttype target> critter eq",
-          "caster_stack": "",
+          "jit_requires": "",
+          "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
@@ -161,6 +165,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
+      "requires_pv": "PVP_ONLY",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -182,8 +188,8 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "enttype target> player eq",
-          "caster_stack": "",
+          "jit_requires": "",
+          "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
@@ -207,6 +213,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
+      "requires_pv": "PVP_ONLY",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -228,8 +236,8 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "enttype target> player eq",
-          "caster_stack": "",
+          "jit_requires": "",
+          "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
@@ -253,6 +261,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -275,7 +285,7 @@
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "",
-          "caster_stack": "",
+          "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
@@ -299,6 +309,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
+      "requires_pv": "PVE_ONLY",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -320,8 +332,8 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "enttype target> critter eq",
-          "caster_stack": "",
+          "jit_requires": "",
+          "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
@@ -348,6 +360,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
+      "requires_pv": "PVP_ONLY",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -369,8 +383,8 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "enttype target> player eq",
-          "caster_stack": "",
+          "jit_requires": "",
+          "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
@@ -426,6 +440,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
+      "requires_pv": "PVP_ONLY",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -447,8 +463,8 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "enttype target> player eq arch source> Class_Scrapper == &&",
-          "caster_stack": "",
+          "jit_requires": "",
+          "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
@@ -472,6 +488,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -493,8 +511,8 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || arch source> Class_Scrapper == &&",
-          "caster_stack": "",
+          "jit_requires": "",
+          "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
@@ -517,7 +535,9 @@
       "requires_expression": "arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || ! arch source> Class_Scrapper == &&",
       "tags": [],
       "flags": [],
-      "is_pvp": "PVP_ONLY",
+      "is_pvp": "PVE_ONLY",
+      "requires_pv": "PVE_ONLY",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -539,8 +559,8 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || ! arch source> Class_Scrapper == &&",
-          "caster_stack": "",
+          "jit_requires": "",
+          "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
@@ -564,6 +584,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
+      "requires_pv": "PVP_ONLY",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -585,8 +607,8 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "kMeter source> 0 > enttype target> player eq && arch source> Class_Stalker eq &&",
-          "caster_stack": "",
+          "jit_requires": "",
+          "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
@@ -610,6 +632,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
+      "requires_pv": "PVP_ONLY",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -631,8 +655,8 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && arch source> Class_Stalker eq &&",
-          "caster_stack": "",
+          "jit_requires": "",
+          "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
@@ -656,6 +680,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
+      "requires_pv": "PVE_ONLY",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -677,8 +703,8 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "enttype target> critter eq kMeter source> .9 < && arch source> Class_Stalker eq &&",
-          "caster_stack": "",
+          "jit_requires": "",
+          "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
@@ -693,6 +719,9 @@
           ],
           "flags_raw": 9472
         }
+      ],
+      "requires_archetypes": [
+        "Class_Stalker"
       ]
     },
     {
@@ -705,6 +734,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
+      "requires_pv": "PVE_ONLY",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -726,8 +757,8 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "kMeter source> 0 > enttype target> critter eq && arch source> Class_Stalker eq &&",
-          "caster_stack": "",
+          "jit_requires": "",
+          "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
@@ -750,7 +781,9 @@
       "requires_expression": "Raid target.HasTag? enttype target> player eq || kRage source> 0.7 < && arch source> Class_Brute == &&",
       "tags": [],
       "flags": [],
-      "is_pvp": "PVP_ONLY",
+      "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -772,8 +805,8 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "Raid target.HasTag? enttype target> player eq || kRage source> 0.7 < && arch source> Class_Brute == &&",
-          "caster_stack": "",
+          "jit_requires": "",
+          "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
@@ -794,6 +827,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -815,8 +850,8 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < && arch source> Class_Brute == &&",
-          "caster_stack": "",
+          "jit_requires": "",
+          "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
@@ -837,6 +872,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
+      "requires_pv": "PVE_ONLY",
+      "requires_default": "INDETERMINATE_ARCHETYPE",
       "eval_flags": 0,
       "templates": [
         {
@@ -858,8 +895,8 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "Raid target.HasTag? ! enttype target> critter eq && arch source> Class_Brute == &&",
-          "caster_stack": "",
+          "jit_requires": "",
+          "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
@@ -868,6 +905,9 @@
           ],
           "flags_raw": 2564
         }
+      ],
+      "requires_archetypes": [
+        "Class_Brute"
       ]
     }
   ],

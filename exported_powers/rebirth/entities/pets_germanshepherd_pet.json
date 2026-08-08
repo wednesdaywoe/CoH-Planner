@@ -6,7 +6,7 @@
   "copy_creator_mods": false,
   "can_zone": false,
   "defaults": {
-    "rank": 0,
+    "rank": 10,
     "ai_config": "Default_PassiveFollower",
     "character_class_name": "minion_unkillablenpc",
     "description": "This faithful German Shepherd has taken a liking to you and will keep you company.  However, it won't engage in combat and cannot be attacked.",
@@ -41,14 +41,599 @@
   },
   "levels": [
     {
-      "min_level": 1,
-      "max_level": 50,
+      "level": 1,
+      "max_level": null,
       "experience": 0,
       "display_names": [
-        "GermanShepherd Pet"
+        "German Shepherd"
       ],
-      "costumes": []
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 2,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 3,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 4,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 5,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 6,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 7,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 8,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 9,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 10,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 11,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 12,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 13,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 14,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 15,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 16,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 17,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 18,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 19,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 20,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 21,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 22,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 23,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 24,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 25,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 26,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 27,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 28,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 29,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 30,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 31,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 32,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 33,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 34,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 35,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 36,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 37,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 38,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 39,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 40,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 41,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 42,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 43,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 44,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 45,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 46,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 47,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 48,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 49,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 50,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 51,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 52,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 53,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
+    },
+    {
+      "level": 54,
+      "max_level": null,
+      "experience": 0,
+      "display_names": [
+        "German Shepherd"
+      ],
+      "costumes": [
+        "German_Shepherd"
+      ]
     }
   ],
-  "source_file": ""
+  "source_file": "DEFS/VILLAINS/PETS.VILLAIN"
 }

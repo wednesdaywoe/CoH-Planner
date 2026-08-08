@@ -65,6 +65,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
+      "requires_pv": "PVE_ONLY",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -86,8 +88,8 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "enttype target> critter eq",
-          "caster_stack": "",
+          "jit_requires": "",
+          "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
@@ -126,6 +128,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
+      "requires_pv": "PVE_ONLY",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -147,8 +151,8 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "enttype target> critter eq",
-          "caster_stack": "",
+          "jit_requires": "",
+          "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
@@ -191,6 +195,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
+      "requires_pv": "PVP_ONLY",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -212,8 +218,8 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "enttype target> player eq",
-          "caster_stack": "",
+          "jit_requires": "",
+          "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
@@ -252,6 +258,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
+      "requires_pv": "PVP_ONLY",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -273,8 +281,8 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "enttype target> player eq",
-          "caster_stack": "",
+          "jit_requires": "",
+          "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
@@ -317,6 +325,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
+      "requires_pv": "PVE_ONLY",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -338,8 +348,8 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "enttype target> critter eq",
-          "caster_stack": "",
+          "jit_requires": "",
+          "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
@@ -363,6 +373,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
+      "requires_pv": "PVP_ONLY",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -384,8 +396,8 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "enttype target> player eq",
-          "caster_stack": "",
+          "jit_requires": "",
+          "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
@@ -409,6 +421,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -430,8 +444,8 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "now GravityDistortion target.TokenTime> - 12 <",
-          "caster_stack": "",
+          "jit_requires": "",
+          "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
@@ -455,6 +469,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
+      "requires_pv": "PVE_ONLY",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -476,8 +492,8 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "enttype target> critter eq kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || IncarnateBoss target.HasTag? || &&",
-          "caster_stack": "",
+          "jit_requires": "",
+          "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
@@ -501,6 +517,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
+      "requires_pv": "PVP_ONLY",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -522,8 +540,8 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "enttype target> player eq kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || &&",
-          "caster_stack": "",
+          "jit_requires": "",
+          "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
@@ -538,6 +556,8 @@
       ]
     }
   ],
+  "procs_only_on_main_target": true,
+  "anim_main_target_only": true,
   "modes_disallowed": [
     "Disable_All"
   ],

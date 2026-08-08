@@ -6,7 +6,7 @@
   "copy_creator_mods": false,
   "can_zone": false,
   "defaults": {
-    "rank": 0,
+    "rank": 10,
     "ai_config": "DevouringEarth_Minion",
     "character_class_name": "minion_pets",
     "description": "These horrid perversions of normal flora have become one of the most identifiable monsters in the Devouring Earth's maniacal menagerie. In addition to their astonishing mobility, they can fire swarms of thorns at their enemies, tearing flesh to shreds in an instant.",
@@ -53,7 +53,7 @@
   },
   "levels": [
     {
-      "min_level": 1,
+      "level": 1,
       "max_level": 55,
       "experience": 0,
       "display_names": [

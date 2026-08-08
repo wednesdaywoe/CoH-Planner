@@ -65,6 +65,8 @@
       ],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 8,
       "templates": [
         {
@@ -234,6 +236,8 @@
       ],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 8,
       "templates": [
         {

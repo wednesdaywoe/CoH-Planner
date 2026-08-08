@@ -72,6 +72,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
+      "requires_pv": "PVE_ONLY",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -93,8 +95,8 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "enttype target> critter eq",
-          "caster_stack": "",
+          "jit_requires": "",
+          "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
@@ -118,6 +120,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
+      "requires_pv": "PVE_ONLY",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -139,8 +143,8 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "enttype target> critter eq",
-          "caster_stack": "",
+          "jit_requires": "",
+          "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
@@ -164,6 +168,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
+      "requires_pv": "PVP_ONLY",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -185,8 +191,8 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "enttype target> player eq",
-          "caster_stack": "",
+          "jit_requires": "",
+          "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
@@ -210,6 +216,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
+      "requires_pv": "PVP_ONLY",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -231,8 +239,8 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "enttype target> player eq",
-          "caster_stack": "",
+          "jit_requires": "",
+          "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
@@ -256,6 +264,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
+      "requires_pv": "PVE_ONLY",
+      "requires_default": "INDETERMINATE",
       "eval_flags": 0,
       "templates": [
         {
@@ -277,8 +287,8 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> critter eq &&",
-          "caster_stack": "",
+          "jit_requires": "",
+          "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
@@ -302,6 +312,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
+      "requires_pv": "PVP_ONLY",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -323,8 +335,8 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> player eq &&",
-          "caster_stack": "",
+          "jit_requires": "",
+          "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
@@ -348,6 +360,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -370,7 +384,7 @@
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "",
-          "caster_stack": "",
+          "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
@@ -394,6 +408,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -416,7 +432,7 @@
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "",
-          "caster_stack": "",
+          "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
@@ -437,6 +453,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -461,7 +479,7 @@
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "",
-          "caster_stack": "",
+          "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
@@ -479,6 +497,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -501,7 +521,7 @@
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "",
-          "caster_stack": "",
+          "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
@@ -525,6 +545,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -546,8 +568,8 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 2 <=",
-          "caster_stack": "",
+          "jit_requires": "",
+          "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
@@ -574,6 +596,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -595,8 +619,8 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 3 ==",
-          "caster_stack": "",
+          "jit_requires": "",
+          "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
@@ -623,6 +647,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -644,8 +670,8 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 2 <=",
-          "caster_stack": "",
+          "jit_requires": "",
+          "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
@@ -680,6 +706,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -701,8 +729,8 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 3 ==",
-          "caster_stack": "",
+          "jit_requires": "",
+          "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,

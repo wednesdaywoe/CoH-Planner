@@ -59,6 +59,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE",
       "eval_flags": 0,
       "templates": [
         {
@@ -80,18 +82,12 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "CategoryName power.base> Blaster_Ranged eq",
-          "caster_stack": "",
-          "stack": "Unknown(400)",
-          "stack_limit": 704591,
-          "stack_key": "Key427",
-          "flags": [
-            "NoFloaters",
-            "BoostIgnoreDiminishing",
-            "NearGround",
-            "IgnoreResistance"
-          ],
-          "flags_raw": 811
+          "jit_requires": "arch target> Class_Boss_Monster eq arch target> Class_Boss_Reichsman eq || arch target> Class_Boss_Monster_Flying eq || arch target> Class_Boss_Archvillain_Flying eq || arch target> Class_Boss_Archvillain eq || arch target> Class_Boss_PraetorianArchvillain eq || arch target> Class_Boss_Mito eq || arch target> Class_Boss_Hamidon eq || arch target> Class_Boss_RularuuFM eq || arch target> Class_Boss_RularuuCoP eq || arch target> Class_Boss_Rularuu eq || arch target> Class_Boss_PraetorianAVLowPerception eq || enttype target> player eq || ! target.isFriend? ! &&",
+          "caster_stack": "Collective",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 2560
         }
       ]
     },
@@ -105,6 +101,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE",
       "eval_flags": 0,
       "templates": [
         {
@@ -128,8 +126,8 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "CategoryName power.base> Blaster_Ranged eq",
-          "caster_stack": "",
+          "jit_requires": "",
+          "caster_stack": "Collective",
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": "BlasterHitstun",

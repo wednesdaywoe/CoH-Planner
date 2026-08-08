@@ -14,7 +14,10 @@
     "BIN_CRAWLER_ASSETS_HOST=<host label> picks one by name. Adding a machine means adding a root,",
     "not editing paths, so no workstation's entry has to be traded away for another's.",
     "Paths may be written home-relative (~/…). Rejected subpaths apply under EVERY root, so a trap",
-    "named once stays named on every machine."
+    "named once stays named on every machine — schema 1 named them absolutely, so a trap silently",
+    "stopped rejecting anything the moment the workstation changed.",
+    "Every archive here was verified byte-identical to what the committed manifests recorded",
+    "before the 2026-08-04 re-export, so the moves recorded here restated WHERE, never WHAT."
   ],
   "datasets": {
     "homecoming": {
@@ -47,7 +50,7 @@
       },
       "rejected_subpaths": {
         "closedbeta": "NOT the closed beta despite the name — the closed beta is the 'experimental' folder. Never export from here.",
-        "issue24": "An Issue-24 era snapshot (bin.pigg dated 2023-05-08) sitting beside the live rings. Byte-identical bin.pigg to the Sweet Tea 'piggs' decoy — the same unrelated corpus, and it resolves powers.bin just as convincingly. Never export from here."
+        "issue24": "An Issue-24 era snapshot (bin.pigg dated 2023-05-08) sitting beside the live rings. Not a Homecoming ring at all — it is the pre-fork retail corpus, so an export from here would be a different GAME, not a stale one. Byte-identical bin.pigg to the Sweet Tea 'piggs' decoy — the same unrelated corpus, and it resolves powers.bin just as convincingly. Never export from here."
       }
     },
     "rebirth": {

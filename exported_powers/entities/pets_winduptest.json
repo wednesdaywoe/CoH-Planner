@@ -9,7 +9,7 @@
   "copy_creator_mods": false,
   "can_zone": false,
   "defaults": {
-    "rank": 0,
+    "rank": 5,
     "ai_config": "Default_Ranged",
     "character_class_name": "boss_grunt",
     "description": "Ignore this entity.",
@@ -41,7 +41,7 @@
   },
   "levels": [
     {
-      "min_level": 1,
+      "level": 1,
       "max_level": 55,
       "experience": 0,
       "display_names": [

@@ -18,6 +18,7 @@ export const Propel: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "procsOnlyOnMainTarget": true,
   "stats": {
     "accuracy": 1,
     "range": 80,

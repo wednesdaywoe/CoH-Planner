@@ -21,6 +21,7 @@ export const SuckerPunch: Power = {
   "strengthsDisallowed": [
     "Range"
   ],
+  "procsOnlyOnMainTarget": true,
   "stats": {
     "accuracy": 1,
     "range": 7,

@@ -6,9 +6,9 @@
     "Electronic"
   ],
   "copy_creator_mods": false,
-  "can_zone": false,
+  "can_zone": true,
   "defaults": {
-    "rank": 0,
+    "rank": 10,
     "ai_config": "Pets_Base",
     "character_class_name": "minion_pets",
     "description": "These attack drones are used to soften up super-powered targets. Arachnos considers them very expendable, and as such uses them to record and monitor a threat's abilities before more expensive troops-such as Tarantulas or Fortunatas are deployed.",
@@ -46,7 +46,7 @@
   },
   "levels": [
     {
-      "min_level": 1,
+      "level": 1,
       "max_level": 55,
       "experience": 0,
       "display_names": [

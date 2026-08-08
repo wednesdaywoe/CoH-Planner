@@ -12,7 +12,7 @@
   "copy_creator_mods": false,
   "can_zone": true,
   "defaults": {
-    "rank": 0,
+    "rank": 10,
     "ai_config": "Pets_SpecOps",
     "character_class_name": "henchman_lt",
     "description": "These Special Forces are trained in covert ops and special tactics. They can deploy various munitions to gain every tactical advantage.",
@@ -62,7 +62,7 @@
   },
   "levels": [
     {
-      "min_level": 1,
+      "level": 1,
       "max_level": 55,
       "experience": 0,
       "display_names": [

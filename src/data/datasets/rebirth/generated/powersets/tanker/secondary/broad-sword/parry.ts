@@ -21,6 +21,7 @@ export const Parry: Power = {
   "strengthsDisallowed": [
     "Range"
   ],
+  "procsOnlyOnMainTarget": true,
   "stats": {
     "accuracy": 1.05,
     "range": 7,

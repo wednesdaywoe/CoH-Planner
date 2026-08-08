@@ -94,8 +94,8 @@ export const RadioactiveSmash: Power = {
     ["Damage","Energy",1.11,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Defense","All",1.5,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,0.23000000417232513,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated target.ownPower? !"],
-    ["Damage","Toxic",0.296,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",56750,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"Key427"],
-    ["Damage","Toxic",0.467972,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"No",18112,null,null,1,null,true,null,null,null,null,null,null,null,null,null,"Key427"],
+    ["Damage","Toxic",0.296,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Toxic",0.467972,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.33000001311302185,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
     ["Damage","Fire",0.666,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
@@ -104,7 +104,7 @@ export const RadioactiveSmash: Power = {
     ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated target.ownPower?",true],
     ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.33000001311302185,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
-    ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? enttype target> player eq || kRage source> 70 < &&",true]
+    ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? enttype target> player eq || kRage source> 70 < &&",true]
   ],
   "specialEffects": [
     {

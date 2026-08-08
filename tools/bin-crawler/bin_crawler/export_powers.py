@@ -27,7 +27,7 @@ from bin_crawler.parser._powers import (
     parse_powers, detect_dataset_flavor, resolve_attrib_thunderspy)
 from bin_crawler.parser._powersets import parse_powersets
 from bin_crawler.parser._powercats import parse_powercats
-from bin_crawler.parser._classes import parse_classes
+from bin_crawler.parser._classes import parse_classes, player_class_names
 from bin_crawler.parser._boostsets import parse_boostsets, build_power_category_index
 from bin_crawler.parser._dim_returns import parse_dim_returns, parse_boost_effect
 from bin_crawler.parser._schedules import parse_schedules, parse_exemplar_handicaps
@@ -182,6 +182,28 @@ def _source_has_primalist_class(resolver) -> bool:
     return False
 
 
+def _player_class_names(resolver) -> tuple[str, ...]:
+    """The `Class_*` tokens of this source's player archetypes.
+
+    An effect gate reading `arch source> Class_Scrapper eq` is base for a
+    Scrapper and a branch for everyone else, and one on `arch target>` asks
+    about an archetype or about a critter's rank depending on nothing but the
+    class it names. `_gate_default` answers both from this list — so an export
+    without it would ship a guess as data (DATA-GAP-REGISTER AT-FORK-1), which
+    is why an empty one stops the export rather than degrading it. Both class
+    tables are read; the villain archetypes live in the second.
+    """
+    names = []
+    for bin_name in ('classes.bin', 'villain_classes.bin'):
+        if resolver.has(bin_name):
+            names.extend(player_class_names(parse_classes(resolver.read(bin_name))))
+    if not names:
+        raise ValueError(
+            'no player archetypes found in classes.bin / villain_classes.bin — '
+            'every archetype-forked effect gate would export unresolved')
+    return tuple(names)
+
+
 def format_duration(seconds: float) -> str:
     """Format duration as '120 seconds' or '0 seconds'.
 
@@ -283,9 +305,17 @@ def power_to_dict(pw, msgs=None, set_cats_index=None, mode_table=None,
             'tags': getattr(eg, 'tags', []),
             'flags': eg.flags,
             'is_pvp': eg.is_pvp,
+            'requires_pv': eg.requires_pv,
+            'requires_default': eg.requires_default,
             'eval_flags': eg.eval_flags,
             'templates': [],
         }
+        # Only an archetype-forked gate has one, and only there does it mean
+        # anything: the archetypes the gate IS satisfied for, resolving the fork
+        # `requires_default` names (AT-FORK-1). Omitted elsewhere so the field
+        # appears on the groups it decides rather than on all 700k.
+        if getattr(eg, 'requires_archetypes', None):
+            out['requires_archetypes'] = list(eg.requires_archetypes)
         for t in eg.templates:
             tmpl_dict = {
                 'attribs': t.attribs,
@@ -401,7 +431,9 @@ def power_to_dict(pw, msgs=None, set_cats_index=None, mode_table=None,
     # the parse-table default. Parse6 datasets decode the i24-original slice
     # of this set (MaxBoosts, StrengthsDisallowed; CastableAfterDeath and
     # ChainDelay come from the record head) and never carry the HC-added
-    # fields (OverCap block, MaxToggleTime, ProcAllowed).
+    # OverCap block or MaxToggleTime. ProcAllowed is the exception among the
+    # HC additions: Thunderspy carries that word too (TSPY-5) and reads 0
+    # corpus-wide, while Rebirth's stock tail has no slot for it.
     if pw.castable_after_death:
         d['castable_after_death'] = CASTABLE_AFTER_DEATH.get(
             pw.castable_after_death, f'Unknown({pw.castable_after_death})')
@@ -416,8 +448,11 @@ def power_to_dict(pw, msgs=None, set_cats_index=None, mode_table=None,
     if pw.max_boosts != 6:
         d['max_boosts'] = pw.max_boosts
     # ProcAllowed: the only authored value is `ProcAllowed kNone` (raw 1) —
-    # emitted as an explicit false so consumers read "procs cannot slot/fire
-    # here". Any other nonzero raw would be a new HC variant — surface it.
+    # emitted as an explicit false so consumers read "no proc fires here". It
+    # is a FIRING rule, not a slotting one: the flagged powers still author
+    # their set categories, and the calc reads it in the two rolling proc
+    # passes (PPM-4). Any other nonzero raw would be a new HC variant —
+    # surface it.
     if pw.proc_allowed_raw:
         if pw.proc_allowed_raw != 1:
             print(f"  Warning: {pw.full_name}: unrecognized ProcAllowed raw "
@@ -433,7 +468,10 @@ def power_to_dict(pw, msgs=None, set_cats_index=None, mode_table=None,
             attrib_resolver(v) for v in pw.global_strengths_disallowed]
     # ProcMainTargetOnly / AnimMainTargetOnly: sparse-true, matching how the
     # `.powers` source authors them (`kTrue` or absent). The proc one drives the
-    # PPM area factor — see docs/DATA-GAP-REGISTER.md HC-3.
+    # PPM area factor: the game returns 1.0 outright for a flagged power, before it
+    # looks at radius. Parsed here since HC-3, read by the calc since PPM-3 (both
+    # in DATA-GAP-REGISTER-RESOLVED.md). Parse7 only — the Parse6 tail reader stops
+    # at StrengthsDisallowed, so the forks' zero is this reader's, not their bins'.
     if pw.proc_main_target_only:
         d['procs_only_on_main_target'] = True
     if pw.anim_main_target_only:
@@ -780,8 +818,10 @@ def main():
 
     # Parse powers
     print('Parsing powers.bin...', flush=True)
+    player_classes = _player_class_names(resolver)
+    print(f'  {len(player_classes)} player archetypes for gate resolution.', flush=True)
     powers_data = resolver.read('powers.bin')
-    all_powers = parse_powers(powers_data)
+    all_powers = parse_powers(powers_data, player_classes=player_classes)
     dataset_flavor = detect_dataset_flavor(powers_data)
     print(f'  {len(all_powers)} powers loaded.', flush=True)
 

@@ -21,6 +21,7 @@ export const SerpentsReach: Power = {
   "strengthsDisallowed": [
     "Range"
   ],
+  "procsOnlyOnMainTarget": true,
   "stats": {
     "accuracy": 1.05,
     "range": 40,
@@ -64,7 +65,7 @@ export const SerpentsReach: Power = {
     ["Damage","Smashing",2.294039,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Smashing",2.294039,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Smashing",1.8,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
-    ["Damage","Smashing",1.8,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true],
+    ["Damage","Smashing",1.8,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true],
     ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.800000011920929,null,null,null,null,null,null,"enttype target> player eq",true],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_1 source.ownPower?",true],
     ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_1 source.ownPower?",true],
@@ -83,6 +84,11 @@ export const SerpentsReach: Power = {
     {
       "kind": "effect-proc",
       "chance": 0.05000000074505806,
+      "label": "Smashing_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.10000000149011612,
       "label": "Smashing_Dmg"
     },
     {

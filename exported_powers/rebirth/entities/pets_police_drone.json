@@ -6,7 +6,7 @@
   "copy_creator_mods": false,
   "can_zone": false,
   "defaults": {
-    "rank": 0,
+    "rank": 9,
     "ai_config": "Guard",
     "character_class_name": "boss_guard",
     "description": "These non-lethal Police Drones have been dispatched by the Paragon City PD to help keep our streets safe. Unfortunately, the Portal Corporation is still developing the technology, so the Police Drones have limited their deployment to areas vital to the city. The Drones quickly dispatch any threats by teleporting them to one of Paragon City's jails, where the police take the situation over. Accidents have thus far been few and far between, but the authorities are still nervous about innocents being caught in the crossfire.",
@@ -38,14 +38,16 @@
   },
   "levels": [
     {
-      "min_level": 1,
-      "max_level": 50,
+      "level": 50,
+      "max_level": null,
       "experience": 0,
       "display_names": [
         "Police Drone"
       ],
-      "costumes": []
+      "costumes": [
+        "Police_Drone_Guard"
+      ]
     }
   ],
-  "source_file": ""
+  "source_file": "DEFS/VILLAINS/PETS.VILLAIN"
 }

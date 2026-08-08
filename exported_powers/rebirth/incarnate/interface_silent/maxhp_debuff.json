@@ -58,7 +58,9 @@
       "requires_expression": "arch target> Class_Boss_Monster eq arch target> Class_Boss_Reichsman eq || arch target> Class_Boss_Monster_Flying eq || arch target> Class_Boss_Archvillain_Flying eq || arch target> Class_Boss_Archvillain eq || arch target> Class_Boss_PraetorianArchvillain eq || arch target> Class_Boss_Mito eq || arch target> Class_Boss_Hamidon eq || arch target> Class_Boss_RularuuFM eq || arch target> Class_Boss_RularuuCoP eq || arch target> Class_Boss_Rularuu eq || arch target> Class_Boss_PraetorianAVLowPerception eq || ! enttype target> player eq || target.isFriend? ! && @ToHitRoll @ToHit / @ChanceMods < &&",
       "tags": [],
       "flags": [],
-      "is_pvp": "PVP_ONLY",
+      "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE",
       "eval_flags": 38,
       "templates": [
         {
@@ -107,7 +109,9 @@
       "requires_expression": "arch target> Class_Boss_Monster eq arch target> Class_Boss_Reichsman eq || arch target> Class_Boss_Monster_Flying eq || arch target> Class_Boss_Archvillain_Flying eq || arch target> Class_Boss_Archvillain eq || arch target> Class_Boss_PraetorianArchvillain eq || arch target> Class_Boss_Mito eq || arch target> Class_Boss_Hamidon eq || arch target> Class_Boss_RularuuFM eq || arch target> Class_Boss_RularuuCoP eq || arch target> Class_Boss_Rularuu eq || arch target> Class_Boss_PraetorianAVLowPerception eq || enttype target> player eq ! && target.isFriend? ! && @ToHitRoll @ToHit / @ChanceMods < &&",
       "tags": [],
       "flags": [],
-      "is_pvp": "PVP_ONLY",
+      "is_pvp": "PVE_ONLY",
+      "requires_pv": "PVE_ONLY",
+      "requires_default": "INDETERMINATE",
       "eval_flags": 38,
       "templates": [
         {

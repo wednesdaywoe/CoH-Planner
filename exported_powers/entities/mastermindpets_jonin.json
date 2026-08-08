@@ -12,7 +12,7 @@
   "copy_creator_mods": false,
   "can_zone": true,
   "defaults": {
-    "rank": 0,
+    "rank": 10,
     "ai_config": "Pets_Jounin",
     "character_class_name": "henchman_lt",
     "description": "The Jounin Ninja is a master assassins and expert swordsman. A master of stealth and shadow, few ever see them coming.",
@@ -59,7 +59,7 @@
   },
   "levels": [
     {
-      "min_level": 1,
+      "level": 1,
       "max_level": 55,
       "experience": 0,
       "display_names": [

@@ -86,7 +86,7 @@ export const PsiBladeSweep: Power = {
     ["Damage","Psionic",0.236,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0.800000011920929,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower?",true],
     ["Damage","Psionic",1.987191,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Psionic",1.44,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
-    ["Damage","Psionic",1.44,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true],
+    ["Damage","Psionic",1.44,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true],
     ["Mez","Stunned",2,2,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.33000001311302185,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower? ! enttype target> player eq &&",true],
     ["Mez","Stunned",5,3,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower? enttype target> critter eq &&",true],
     ["Mez","Stunned",2,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower? enttype target> player eq &&",true]
@@ -135,6 +135,11 @@ export const PsiBladeSweep: Power = {
     {
       "kind": "effect-proc",
       "chance": 0.05000000074505806,
+      "label": "Psionic_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.10000000149011612,
       "label": "Psionic_Dmg"
     },
     {

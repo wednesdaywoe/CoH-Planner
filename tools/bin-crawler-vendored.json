@@ -6,10 +6,10 @@
     "tools/bin-crawler",
     "exported_powers"
   ],
-  "synced_from_commit": "5bf2fa78fc2a88d6777bc748b28d38079a1fc590",
-  "synced_from_subject": "What-if team-buff layer, and the archetype ceilings it was blocked on",
-  "synced_from_date": "2026-08-01T17:44:38-04:00",
-  "tree_fingerprint": "620f22eba1135d5d07c5acc7f42157c80885a07fabfb6e01f23ece935ee51613",
-  "export_manifest_digest": "fdcfbab1973a4e1be90f27347f9bbbb12fdf9e7a5bb718c7279d9911218e6233",
+  "synced_from_commit": "887ea3f17936da351748dcb45979d71d29dfb2d8",
+  "synced_from_subject": "Assets registry schema 2: roots per workstation, rings as subpaths",
+  "synced_from_date": "2026-08-08T08:17:51-04:00",
+  "tree_fingerprint": "872dc3ed2ab47a83b292b56a1b4fc12397d088766b593a4873f139257673fa29",
+  "export_manifest_digest": "6625a666726bded36a33a1b718999a02189c54fd7b9127a6497a9411c67623f8",
   "export_manifest_count": 10
 }

@@ -1,7 +1,7 @@
 {
   "name": "Pets_Enslaved_Specter",
   "group_name": "Pets",
-  "commandable_pet": 1,
+  "commandable_pet": 0,
   "power_tags": [
     "HumanSkeleton",
     "Undead",
@@ -10,7 +10,7 @@
   "copy_creator_mods": false,
   "can_zone": true,
   "defaults": {
-    "rank": 0,
+    "rank": 10,
     "ai_config": "Pets_Melee",
     "character_class_name": "henchman_minion_small",
     "description": "Specters slowly fade away over 90 seconds. They cannot be healed, regenerate, upgraded, or commanded.",
@@ -48,7 +48,7 @@
   },
   "levels": [
     {
-      "min_level": 1,
+      "level": 1,
       "max_level": 55,
       "experience": 0,
       "display_names": [

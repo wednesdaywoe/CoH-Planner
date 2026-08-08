@@ -65,6 +65,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -117,6 +119,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE",
       "eval_flags": 0,
       "templates": [
         {
@@ -169,6 +173,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE",
       "eval_flags": 0,
       "templates": [
         {
@@ -223,6 +229,8 @@
         "PVPOnly"
       ],
       "is_pvp": "PVP_ONLY",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -277,6 +285,8 @@
         "PVEOnly"
       ],
       "is_pvp": "PVE_ONLY",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 1,
       "templates": [
         {
@@ -298,7 +308,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "",
+          "jit_requires": "arch target> Class_Henchman_Lt eq arch target> Class_Henchman_Boss eq || arch target> Class_Henchman_Minion eq || distance 60 > &&",
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
@@ -349,7 +359,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "",
+          "jit_requires": "arch target> Class_Henchman_Lt eq arch target> Class_Henchman_Boss eq || arch target> Class_Henchman_Minion eq || distance 60 > &&",
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
@@ -393,7 +403,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "",
+          "jit_requires": "arch target> Class_Henchman_Lt eq arch target> Class_Henchman_Boss eq || arch target> Class_Henchman_Minion eq || distance 60 > &&",
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,

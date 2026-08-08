@@ -58,6 +58,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE",
       "eval_flags": 0,
       "templates": [
         {
@@ -107,6 +109,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE",
       "eval_flags": 0,
       "templates": [
         {
@@ -156,6 +160,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE",
       "eval_flags": 0,
       "templates": [
         {
@@ -204,7 +210,9 @@
       "requires_expression": "enttype target> player eq rank target> Class_Boss_PraetorianGrunt eq || rank target> Class_Boss_Grunt eq || rank target> Class_Boss_HeavyPet eq || rank target> Class_Boss_Shield eq || rank target> Class_Boss_Grunt eq || rank target> Class_Boss_Mito eq || rank target> Class_Boss_Guard eq || rank target> Class_Boss_Henchman eq || rank target> Class_Boss_Signature_Pets eq || rank target> Class_Boss_HugeDevice eq || enttype target> player eq ||",
       "tags": [],
       "flags": [],
-      "is_pvp": "PVP_ONLY",
+      "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE",
       "eval_flags": 0,
       "templates": [
         {
@@ -254,6 +262,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE",
       "eval_flags": 0,
       "templates": [
         {
@@ -303,6 +313,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE",
       "eval_flags": 0,
       "templates": [
         {

@@ -70,6 +70,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -178,6 +180,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "PVP_ONLY",
+      "requires_default": "UNSATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -302,6 +306,8 @@
           ],
           "flags": [],
           "is_pvp": "EITHER",
+          "requires_pv": "EITHER",
+          "requires_default": "UNSATISFIED",
           "eval_flags": 0,
           "templates": [
             {
@@ -351,6 +357,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "PVE_ONLY",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -439,6 +447,8 @@
           ],
           "flags": [],
           "is_pvp": "EITHER",
+          "requires_pv": "EITHER",
+          "requires_default": "SATISFIED",
           "eval_flags": 0,
           "templates": [
             {
@@ -494,6 +504,8 @@
           ],
           "flags": [],
           "is_pvp": "EITHER",
+          "requires_pv": "EITHER",
+          "requires_default": "UNSATISFIED",
           "eval_flags": 0,
           "templates": [
             {
@@ -547,6 +559,8 @@
       ],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 1,
       "templates": [
         {
@@ -568,7 +582,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "",
+          "jit_requires": "Pets_Reverberant_Controller target.VillainName>",
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,

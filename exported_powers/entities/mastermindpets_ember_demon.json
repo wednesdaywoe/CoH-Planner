@@ -12,7 +12,7 @@
   "copy_creator_mods": false,
   "can_zone": true,
   "defaults": {
-    "rank": 0,
+    "rank": 10,
     "ai_config": "Pets_Ember_Demon",
     "character_class_name": "henchman_lt",
     "description": "Born in the depths of the abyss, wreathed in unholy flames, these demons allow themselves to be bound by their masters only to cause destruction on the material plane.",
@@ -59,7 +59,7 @@
   },
   "levels": [
     {
-      "min_level": 1,
+      "level": 1,
       "max_level": 55,
       "experience": 0,
       "display_names": [

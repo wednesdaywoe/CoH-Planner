@@ -21,6 +21,7 @@ export const Swoop: Power = {
   "strengthsDisallowed": [
     "Range"
   ],
+  "procsOnlyOnMainTarget": true,
   "stats": {
     "accuracy": 1.05,
     "range": 7,
@@ -61,7 +62,7 @@ export const Swoop: Power = {
     ["Mez","Knockup",3,1,0,"Melee_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.699999988079071,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Lethal",2.479949,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Damage","Lethal",2.28,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
-    ["Damage","Lethal",2.28,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true]
+    ["Damage","Lethal",2.28,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true]
   ],
   "specialEffects": [
     {
@@ -72,6 +73,11 @@ export const Swoop: Power = {
     {
       "kind": "effect-proc",
       "chance": 0.05000000074505806,
+      "label": "Lethal_Dmg"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.10000000149011612,
       "label": "Lethal_Dmg"
     }
   ],

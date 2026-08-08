@@ -68,6 +68,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE",
       "eval_flags": 0,
       "templates": [
         {
@@ -89,8 +91,8 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "rank target> Class_Minion_PraetorianGrunt eq rank target> Class_Minion_Grunt eq || rank target> Class_Lt_PraetorianGrunt eq || rank target> Class_Lt_Grunt eq || rank target> Class_Lt_Sniper eq || rank target> Class_Lt_Henchman eq || rank target> Class_Lt_LongRangeDrone eq || rank target> Class_Lt_Turret eq ||",
-          "caster_stack": "",
+          "jit_requires": "",
+          "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
@@ -120,7 +122,9 @@
       "requires_expression": "enttype target> player eq rank target> Class_Boss_PraetorianGrunt eq || rank target> Class_Boss_Grunt eq || rank target> Class_Boss_HeavyPet eq || rank target> Class_Boss_Shield eq || rank target> Class_Boss_Grunt eq || rank target> Class_Boss_Mito eq || rank target> Class_Boss_Guard eq || rank target> Class_Boss_Henchman eq || rank target> Class_Boss_Signature_Pets eq || rank target> Class_Boss_HugeDevice eq || rank target> Class_Boss_Archvillain eq ||",
       "tags": [],
       "flags": [],
-      "is_pvp": "PVP_ONLY",
+      "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "INDETERMINATE",
       "eval_flags": 0,
       "templates": [
         {
@@ -142,8 +146,8 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "enttype target> player eq rank target> Class_Boss_PraetorianGrunt eq || rank target> Class_Boss_Grunt eq || rank target> Class_Boss_HeavyPet eq || rank target> Class_Boss_Shield eq || rank target> Class_Boss_Grunt eq || rank target> Class_Boss_Mito eq || rank target> Class_Boss_Guard eq || rank target> Class_Boss_Henchman eq || rank target> Class_Boss_Signature_Pets eq || rank target> Class_Boss_HugeDevice eq || rank target> Class_Boss_Archvillain eq ||",
-          "caster_stack": "",
+          "jit_requires": "",
+          "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
@@ -174,6 +178,8 @@
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {
@@ -196,7 +202,7 @@
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "",
-          "caster_stack": "",
+          "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
