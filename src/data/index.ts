@@ -72,6 +72,7 @@ export {
 // IO Set data and accessors
 export {
   getAllIOSets,
+  getModalSetSize,
   getIOSet,
   getIOSetsByRarity,
   getIOSetsForCategory,

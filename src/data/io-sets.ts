@@ -257,6 +257,39 @@ export function getAllIOSets(): IOSetRegistry {
   return _activeRegistry();
 }
 
+const _modalSizeCache = new Map<string, number>();
+
+/**
+ * The piece count most of this dataset's sets have (Homecoming: 6, at 169 of 227).
+ *
+ * Derived rather than assumed, because the picker marks the sets that DIFFER
+ * from it — writing `!== 6` would bake a game constant into UI logic and would
+ * silently mark the wrong rows on a fork whose catalogue is shaped differently.
+ * Computed over the whole catalogue, not a per-power slice, so a given set
+ * carries the same mark in every power's picker.
+ */
+export function getModalSetSize(): number {
+  const ds = getActiveDataset();
+  const cached = _modalSizeCache.get(ds.id);
+  if (cached !== undefined) return cached;
+
+  const tally = new Map<number, number>();
+  for (const set of Object.values(_activeRegistry())) {
+    const n = set.pieces.length;
+    tally.set(n, (tally.get(n) ?? 0) + 1);
+  }
+  let modal = 0;
+  let best = -1;
+  for (const [size, count] of tally) {
+    if (count > best) {
+      best = count;
+      modal = size;
+    }
+  }
+  _modalSizeCache.set(ds.id, modal);
+  return modal;
+}
+
 // ============================================
 // ACCESSOR FUNCTIONS
 // ============================================
