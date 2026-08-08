@@ -16,6 +16,8 @@ import { Burn } from './datasets/homecoming/generated/powersets/tanker/primary/f
 import { LightningRod } from './datasets/homecoming/generated/powersets/scrapper/primary/electrical-melee/lightning-rod';
 import { LifegivingSpores } from './datasets/homecoming/generated/powersets/controller/secondary/nature-affinity/lifegiving-spores';
 import { GreaterFireSword } from './datasets/homecoming/generated/powersets/scrapper/primary/fiery-melee/greater-fire-sword';
+import { ShieldCharge } from './datasets/homecoming/generated/powersets/scrapper/secondary/shield-defense/shield-charge';
+import { RainofArrows } from './datasets/homecoming/generated/powersets/blaster/primary/archery/rain-of-arrows';
 import type { Power } from '@/types/power';
 import type { IOSetEnhancement } from '@/types';
 
@@ -159,6 +161,49 @@ describe('patch proc rolls', () => {
         lightningRod: rolls(LightningRod),     // 1s
         lifegivingSpores: rolls(LifegivingSpores), // 99999s, capped by a 6.3s cycle
       }).toEqual({ bonfire: 5, sleet: 2, burn: 1, lightningRod: 1, lifegivingSpores: 1 });
+    });
+
+    /**
+     * The in-game measurements, as a gate.
+     *
+     * Everything else in this file checks the code against itself. This checks
+     * it against the game: for each power, the chance the app computes for a
+     * 3.5 PPM proc must land inside the 95% confidence interval that power's
+     * logged firings actually produced. It is the only test here that can catch
+     * a plausible-looking change to the geometry or the schedule that happens
+     * to be wrong — a radius read from the parent instead of the patch, a
+     * missing area factor, the parent's recharge creeping back in.
+     *
+     * Intervals are wide because in-game trials are expensive; that is the
+     * point. A model inside all four is not proven, but a model outside one has
+     * been contradicted by something more authoritative than the bins.
+     */
+    it('lands inside the measured 95% interval on every power tested in game', () => {
+      const MEASURED: Array<[string, unknown, number, number, number]> = [
+        // power                  firings/trials     CI low  CI high
+        ['Lightning Rod',  LightningRod,  19 / 85,  0.148, 0.323],
+        ['Shield Charge',  ShieldCharge,  12 / 68,  0.104, 0.284],
+        ['Rain of Arrows', RainofArrows,  31 / 224, 0.099, 0.190],
+        ['Sleet',          Sleet,         37 / 260, 0.105, 0.190],
+      ];
+      const verdicts = MEASURED.map(([name, power, , lo, hi]) => {
+        // Every set below fields a 3.5 PPM damage proc, so one PPM makes all
+        // four comparable; the mixed-PPM arithmetic lives in the write-up.
+        const chance = calculateScheduledProcChance(
+          3.5,
+          resolveProcRollSchedule({
+            powerType: HC(power).powerType,
+            baseRecharge: HC(power).stats?.recharge ?? 0,
+            castTime: HC(power).stats?.castTime ?? 0,
+            patchDuration: resolveProcPatchDuration(
+              HC(power).stats?.radius ?? 0, HC(power).effects?.summon),
+          }),
+          getProcPotential(HC(power))!.radius,
+          360,
+        );
+        return { name, inside: chance >= lo && chance <= hi };
+      });
+      expect(verdicts).toEqual(MEASURED.map(([name]) => ({ name, inside: true })));
     });
 
     it('leaves a plain attack on one recharge-scored roll', () => {

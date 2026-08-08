@@ -3106,19 +3106,37 @@ export interface ProcRollSchedule {
  *    That is the opposite of how a click attack behaves and it is the most
  *    build-relevant consequence.
  *
- * Sleet is the member that was measured; the schedule is applied to the whole
- * class because it is one code path in the game — every patch is an Auto with
- * recharge 0, and the 10 is the period every PPM IO carries (`activate_period:
- * 10.0` on all 189 HC proc IOs). Mids does not model this at all: `Effect.cs`
+ * The 10 is the period every PPM IO carries (`activate_period: 10.0` on all 189
+ * HC proc IOs), and every patch is an Auto with recharge 0, so the same code
+ * path serves the whole class. Mids does not model this at all: `Effect.cs`
  * `ActualProbability` reads whichever power the proc is slotted in, so it
  * reports the parent's recharge and lands on the 90% this measurement rules out.
  *
- * The extrapolation worth checking in game is **Lightning Rod / Shield Charge**,
- * where it costs the most: a 90s parent whose 1s patch buys a single roll, so
- * they fall from the 90% ceiling to ~18% and stop being the proc vehicles the
- * community treats them as. Their pet power carries `recharge: 10` outright
- * rather than 0, so the same number arrives by the plain PPM formula instead of
- * by the period fallback — which is reassuring, not decisive.
+ * CONFIRMED ACROSS FOUR POWERS spanning 1s to 15s patches (2026-08-05/07),
+ * 637 trials, 99 firings — 15.5% observed against 17.7% predicted:
+ *
+ * | power                    | patch | observed        | predicted |   z   |
+ * |--------------------------|-------|-----------------|-----------|-------|
+ * | Lightning Rod  (20ft)    |   1s  |  19/85  = 22.4% |   19.0%   | +0.80 |
+ * | Shield Charge  (20ft)    |   1s  |  12/68  = 17.6% |   17.9%   | −0.06 |
+ * | Rain of Arrows (25ft)    |   3s  |  31/224 = 13.8% |   16.9%   | −1.24 |
+ * | Sleet, 2 rolls (20ft)    |  15s  |  37/260 = 14.2% |   17.9%   | −1.56 |
+ *
+ * Stouffer z = −1.04 (p = 0.30); chi-square 4.62 on 4 df (p = 0.33). The model
+ * runs a shade low overall and no single power deviates. Lightning Rod and
+ * Shield Charge were the extrapolation most worth doubting — a 90s parent whose
+ * 1s patch buys ONE roll, dropping them off the 90% ceiling — and they are the
+ * two that fit best.
+ *
+ * TWO DEAD MODELS, recorded so they are not re-proposed:
+ *  - **Parent recharge.** Rejected on every power, z = −20 to −41.
+ *  - **Window = the patch's actual uptime** (so a 3s patch would be worth 3/60
+ *    of a PPM rather than 10/60). It was a tempting post-hoc fit — "PPM means
+ *    procs per minute of uptime" — after a first Rain of Arrows run came in at
+ *    6.7%. Lightning Rod and Shield Charge killed it at z = +4.0: a ONE-second
+ *    patch fires at the full 10s-period rate. A second Rain of Arrows run with
+ *    identical slotting then returned 20.0% (z = +0.90), so the first run was a
+ *    cold streak, not a signal. Do not fit a model to a single power's rate.
  *
  * @param patchDuration lifetime (s) of the summoned patch that owns the rolls,
  *   from `resolveProcPatchDuration`; omit for an ordinary power.
