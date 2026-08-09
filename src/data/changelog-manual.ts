@@ -43,6 +43,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
       { id: 'incompatible-powerset-pairs', message: 'Some primary/secondary combinations are impossible in game. Illegal combinations are now greyed out in the Primary and Secondary dropdowns. Users who made illegal builds have been reported to the PPD 🚨', type: 'fix' },
       { id: 'renamed-set-exclusions', message: 'Related: exclusions naming a powerset the game renamed were being missed entirely, so Shield Defense did not know it clashes with Scrapper Spines or Stalker Ninja Blade. Those now register.', type: 'fix' },
       { id: 'veat-branch-switch-strips', message: 'An Arachnos Soldier or Widow: Changing branch now removes the powers that branch owned, tells you which went, and offers an Undo.', type: 'fix' },
+      { id: 'enh-compare-modal', message: 'Fix for the slotting comparisonal tool failing to allow multi-selection', type: 'fix'},
     ]
   },
   {
