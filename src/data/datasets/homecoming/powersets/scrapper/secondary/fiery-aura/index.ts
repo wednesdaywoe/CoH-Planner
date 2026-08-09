@@ -21,6 +21,7 @@ import { RiseofthePhoenix as RiseofthePhoenix } from './rise-of-the-phoenix';
 
 export const powerset: Powerset = {
   id: 'scrapper/fiery-aura',
+  internalName: 'fiery_aura',
   name: 'Fiery Aura',
   description: 'Through intense heat and fire, you can absorb many kinds of damage. Fiery Aura offers superior resistance to Fire damage, but weak resistance to Cold damage and no protection to Knockback. Fiery Aura is an offensive oriented Power Set, offering some damage output.',
   icon: 'fiery_aura_set.ico',

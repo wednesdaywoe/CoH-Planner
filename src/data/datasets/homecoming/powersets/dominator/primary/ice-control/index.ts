@@ -21,6 +21,7 @@ import { JackFrost as JackFrost } from './jack-frost';
 
 export const powerset: Powerset = {
   id: 'dominator/ice-control',
+  internalName: 'ice_control',
   name: 'Ice Control',
   description: 'You can draw moisture from the air to create Icy formations. With these abilities, you can control ice with remarkable precision to dominate your foes.',
   icon: 'ice_control_set.ico',

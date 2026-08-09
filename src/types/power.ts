@@ -1141,6 +1141,14 @@ export interface ConditionalEffect {
 export interface Powerset {
   /** Internal ID (e.g., "blaster/fire-blast") */
   id?: string;
+  /**
+   * The set's name in the game's own data (e.g. `quills` for the set that ships as
+   * "Spines", `ninja_sword` for "Ninja Blade"). `id` is built from the DISPLAY name and
+   * the two diverge for a dozen renamed sets per fork, so an expression that names a
+   * powerset — `requires`, which speaks internal names — can only be resolved through
+   * this field. Emitted by scripts/convert-powerset.cjs from the export's own directory.
+   */
+  internalName?: string;
   /** Display name (e.g., "Fire Blast") */
   name: string;
   /** Display name (alternative) */

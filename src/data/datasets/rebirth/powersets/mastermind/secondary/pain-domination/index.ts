@@ -21,6 +21,7 @@ import { Painbringer as Painbringer } from './painbringer';
 
 export const powerset: Powerset = {
   id: 'mastermind/pain-domination',
+  internalName: 'pain_domination',
   name: 'Pain Domination',
   description: 'Pain Domination gives a character the ability to manipulate, nullify and amplify pain.  Ultimately this grants the user powerful healing, buffing and debuffing powers.  It\'s healing output is unmatched!',
   icon: 'pain_domination_set.ico',

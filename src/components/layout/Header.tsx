@@ -10,6 +10,7 @@ import { useBuildStore, useUIStore, useAuthStore } from '@/stores';
 import { useHistoryStore } from '@/stores/historyStore';
 import { useOnboardingStore, useOnboardingCurrentStep } from '@/stores/onboardingStore';
 import { supabase } from '@/lib/supabase';
+import { isPairable } from '@/data/power-requires';
 import { getPowersetsForArchetype, getPowerset, MAX_LEVEL, ARCHETYPES, getPowerPicksAtLevel, getTotalSlotsAtLevel, getNextGrantLevel, getProgressionLevel, getPicksGrantedAtLevel, getSlotsGrantedAtLevel, STANCE_GROUPS, findStanceParent, activeStanceOptionId } from '@/data';
 import type { StanceGroup } from '@/data';
 import { countPlacedBudgetSlots } from '@/utils/slot-levels';
@@ -575,13 +576,30 @@ function BuildIdentityPopover() {
     secondaryPowersets = allPowersets.filter((ps) => !isPrimaryPowerset(ps));
   }
 
+  // Some pairings are unbuildable: each side's level-1 powers exclude the other by name, so
+  // taking both leaves you with no first power to buy (Titan Weapons + Shield Defense is the
+  // familiar one). Offering them and letting the power picker come up empty is a dead end with
+  // no explanation, so the conflicting option is disabled here and says what it conflicts with.
+  // Derived from the sets' own `requires` — see pairingStarvation in @/data/power-requires.
+  const selectedPrimary = build.primary.id ? getPowerset(build.primary.id) : undefined;
+  const selectedSecondary = build.secondary.id ? getPowerset(build.secondary.id) : undefined;
+
+  const pairedOption = (ps: Powerset, other: Powerset | undefined) => {
+    const blocked = other !== undefined && ps.id !== other.id && !isPairable(ps, other);
+    return {
+      value: ps.id as string,
+      label: blocked ? `${ps.name} — can't pair with ${other.name}` : ps.name,
+      disabled: blocked,
+    };
+  };
+
   const primaryOptions = [
     { value: '', label: 'Select Primary...' },
-    ...primaryPowersets.filter((ps) => ps.id).map((ps) => ({ value: ps.id as string, label: ps.name })),
+    ...primaryPowersets.filter((ps) => ps.id).map((ps) => pairedOption(ps, selectedSecondary)),
   ];
   const secondaryOptions = [
     { value: '', label: 'Select Secondary...' },
-    ...secondaryPowersets.filter((ps) => ps.id).map((ps) => ({ value: ps.id as string, label: ps.name })),
+    ...secondaryPowersets.filter((ps) => ps.id).map((ps) => pairedOption(ps, selectedPrimary)),
   ];
 
   const handleServerChange = (e: React.ChangeEvent<HTMLSelectElement>) => {

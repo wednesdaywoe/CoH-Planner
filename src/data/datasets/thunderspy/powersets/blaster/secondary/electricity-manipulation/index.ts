@@ -21,6 +21,7 @@ import { ShockingGrasp as ShockingGrasp } from './shocking-grasp';
 
 export const powerset: Powerset = {
   id: 'blaster/electricity-manipulation',
+  internalName: 'electricity_manipulation',
   name: 'Electricity Manipulation',
   description: 'Electricity Manipulation empowers you with various electrical melee attack and support powers. Electricity Manipulation powers can drain foes\' Endurance and temporarily halt their Endurance recovery.  Some powers return a portion of drained Endurance to you.',
   icon: 'electricity_manipulation_set.ico',

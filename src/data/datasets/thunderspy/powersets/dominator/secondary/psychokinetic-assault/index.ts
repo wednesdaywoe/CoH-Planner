@@ -21,6 +21,7 @@ import { PsiWhipCoil as PsiWhipCoil } from './psiwhip-coil';
 
 export const powerset: Powerset = {
   id: 'dominator/psychokinetic-assault',
+  internalName: 'telekinetic_assault',
   name: 'Psychokinetic Assault',
   description: 'Strike your foes with manifested whips and swords. Each strike manifests a psychokinetic sword that will fight alongside you for a short time',
   icon: 'psionic_assault_set.ico',

@@ -21,6 +21,7 @@ import { StrengthofWill as StrengthofWill } from './strength-of-will';
 
 export const powerset: Powerset = {
   id: 'stalker/willpower',
+  internalName: 'willpower',
   name: 'Willpower',
   description: 'You aren\'t Invulnerable. Bullets don\'t bounce off of you, and if you are cut, you bleed. You are, however, tough, grizzled and strong willed. It takes more than a little cut to keep you down! Willpower offers a strong balance of healing, damage resistance and defense. While you have no real vulnerabilities, you can\'t quite deal with \'alpha strikes\' as well as some other protective powers.',
   icon: 'willpower_set.ico',

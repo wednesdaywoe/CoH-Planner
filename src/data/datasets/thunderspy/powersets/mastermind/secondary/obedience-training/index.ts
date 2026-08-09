@@ -21,6 +21,7 @@ import { PressOn as PressOn } from './press-on';
 
 export const powerset: Powerset = {
   id: 'mastermind/obedience-training',
+  internalName: 'obedience_training',
   name: 'Obedience Training',
   description: 'Demand compliance from your foes and friends alike with Obedience Training. Most powers are short range, but provide key tactical advantages in battle.',
   icon: 'obediencetraining_praise.ico',

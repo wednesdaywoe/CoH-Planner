@@ -21,6 +21,7 @@ import { Blackstar as Blackstar } from './blackstar';
 
 export const powerset: Powerset = {
   id: 'corruptor/dark-blast',
+  internalName: 'dark_blast',
   name: 'Dark Blast',
   description: 'Dark Blast summons the powers of the Netherworld to defeat your foes. The draining effects of most of these powers can reduce your target\'s chance to hit.',
   icon: 'dark_blast_set.ico',

@@ -7616,6 +7616,7 @@ ${powers.map(({ power: p }, i) => `import { ${p.internalName.replace(/[^a-zA-Z0-
 
 export const powerset: Powerset = {
   id: '${categoryInfo.archetype}/${toKebabCase(indexJson.display_name)}',
+  internalName: '${powersetName}',
   name: '${indexJson.display_name}',
   description: '${indexJson.display_help?.replace(/<[^>]+>/g, '').replace(/'/g, "\\'")}',
   icon: '${indexJson.icon}',

@@ -21,6 +21,7 @@ import { TacticalUpgrade as TacticalUpgrade } from './tactical-upgrade';
 
 export const powerset: Powerset = {
   id: 'mastermind/mercenaries',
+  internalName: 'mercenaries',
   name: 'Mercenaries',
   description: 'Despite their reputations, Mercenaries are extremely loyal and dedicated soldiers.  They are the best at what they do, and they always follow orders, exactly what a Mastermind needs.  Mercenaries typically use conventional weapons and all Mercenaries have body armor that gives them resistance to smashing and lethal damage and their training makes them resistant to Confusion and Placate',
   icon: 'mercenaries_set.ico',

@@ -22,6 +22,7 @@ import { Vortex as Vortex } from './vortex';
 
 export const powerset: Powerset = {
   id: 'dominator/wind-control',
+  internalName: 'wind_control',
   name: 'Wind Control',
   description: 'Through manipulation of pressure, you are able to channel the force of wind to bind, weaken and crush your opponents.',
   icon: 'wind_control_set.ico',

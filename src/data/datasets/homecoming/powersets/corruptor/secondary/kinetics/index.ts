@@ -21,6 +21,7 @@ import { FulcrumShift as FulcrumShift } from './fulcrum-shift';
 
 export const powerset: Powerset = {
   id: 'corruptor/kinetics',
+  internalName: 'kinetics',
   name: 'Kinetics',
   description: 'You are a master at manipulating and transferring Kinetic energy. You can manipulate the potential energy found in objects to aid your allies or weaken your foes.',
   icon: 'kinetics_set.ico',

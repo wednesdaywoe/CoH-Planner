@@ -21,6 +21,7 @@ import { EMPPulse as EMPPulse } from './emp-pulse';
 
 export const powerset: Powerset = {
   id: 'defender/radiation-emission',
+  internalName: 'radiation_emission',
   name: 'Radiation Emission',
   description: 'Radiation Emission powers allow you to manipulate atomic particles and waves to protect your allies and weaken your enemies.',
   icon: 'radiation_emission_set.ico',

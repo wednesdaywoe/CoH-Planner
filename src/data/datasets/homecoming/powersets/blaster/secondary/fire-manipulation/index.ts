@@ -21,6 +21,7 @@ import { HotFeet as HotFeet } from './hot-feet';
 
 export const powerset: Powerset = {
   id: 'blaster/fire-manipulation',
+  internalName: 'fire_manipulation',
   name: 'Fire Manipulation',
   description: 'Fire Manipulation lets you surround yourself with various manifestations of fire and flames, assaulting and burning nearby foes. Fire Manipulation powers tend to set foes ablaze for added damage over time.',
   icon: 'fire_manipulation_set.ico',

@@ -21,6 +21,7 @@ import { BeyondTheVeilAlive as BeyondTheVeilAlive } from './beyond-the-veil-aliv
 
 export const powerset: Powerset = {
   id: 'stalker/spectral-aura',
+  internalName: 'spectral_aura',
   name: 'Spectral Aura',
   description: 'Spectral Aura allows you to step between the veil of life and death to protect yourself and hinder your Foes.  Many Spectral Aura powers cause additional effects when used on feared foes.',
   icon: 'dark_armor_set.ico',

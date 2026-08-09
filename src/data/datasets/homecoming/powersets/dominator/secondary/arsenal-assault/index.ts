@@ -21,6 +21,7 @@ import { Ignite as Ignite } from './ignite';
 
 export const powerset: Powerset = {
   id: 'dominator/arsenal-assault',
+  internalName: 'arsenal_assault',
   name: 'Arsenal Assault',
   description: 'You use your cutting edge rifle to not only devastate foes from range, but also wield it and other advanced munitions at short range to incapacitate anyone who gets too close',
   icon: 'assault_rifle_set.ico',

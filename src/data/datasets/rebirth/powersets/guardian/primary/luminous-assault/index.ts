@@ -21,6 +21,7 @@ import { SolarFlare as SolarFlare } from './solar-flare';
 
 export const powerset: Powerset = {
   id: 'guardian/luminous-assault',
+  internalName: 'luminous_assault',
   name: 'Luminous Assault',
   description: 'Masters of light, energy, and matter. Luminous Assault wielders can manipulate light energy to devastate their opponents. Luminous Assault bombards the foe with great force and power often knocking them down and reducing their defenses.',
   icon: 'luminous_blast_set.ico',

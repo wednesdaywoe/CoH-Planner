@@ -21,6 +21,7 @@ import { MeltArmor as MeltArmor } from './melt-armor';
 
 export const powerset: Powerset = {
   id: 'controller/thermal-radiation',
+  internalName: 'thermal_radiation',
   name: 'Thermal Radiation',
   description: 'You have the ability to control heat and Thermal Radiation. This allows you to protect allies from harm, heal them or increase their abilities. You can also weaken your enemies.',
   icon: 'thermal_radiation_set.ico',

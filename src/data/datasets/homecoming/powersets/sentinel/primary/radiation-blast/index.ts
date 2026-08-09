@@ -21,6 +21,7 @@ import { AtomicBlast as AtomicBlast } from './atomic-blast';
 
 export const powerset: Powerset = {
   id: 'sentinel/radiation-blast',
+  internalName: 'radiation_blast',
   name: 'Radiation Blast',
   description: 'Blast your foes with lethal radiation. Radiation Blast powers can bypass normal defenses, and lower your targets\' overall Defense.',
   icon: 'radiation_blast_set.ico',

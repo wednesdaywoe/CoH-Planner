@@ -22,6 +22,7 @@ import { Flash as Flash } from './flash';
 
 export const powerset: Powerset = {
   id: 'controller/illusion-control',
+  internalName: 'illusion_control',
   name: 'Illusion Control',
   description: 'You can manipulate light and sound to manifest all sorts of Illusions, aiding your allies as well as deceiving your foes.',
   icon: 'illusion_control_set.ico',

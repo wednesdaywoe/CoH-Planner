@@ -21,6 +21,7 @@ import { CategoryFive as CategoryFive } from './category-five';
 
 export const powerset: Powerset = {
   id: 'corruptor/storm-blast',
+  internalName: 'storm_blast',
   name: 'Storm Blast',
   description: 'Storm Blast conjures violent weather to attack your foes. The use of your storm attacks will empower your created storm cells.',
   icon: 'storm_summoning_set.ico',

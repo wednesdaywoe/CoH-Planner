@@ -21,6 +21,7 @@ import { FulcrumFlip as FulcrumFlip } from './fulcrum-flip';
 
 export const powerset: Powerset = {
   id: 'guardian/energy-composition',
+  internalName: 'energy_composition',
   name: 'Energy Composition',
   description: 'Energy Composition users can surround themselves with powerful defensive energy auras. Their mastery of energy allows them to manipulate and transfer energy from foes to protect themselves and their allies.',
   icon: 'energy_aura_set.ico',

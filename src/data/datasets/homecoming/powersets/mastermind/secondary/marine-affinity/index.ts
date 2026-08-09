@@ -21,6 +21,7 @@ import { CallDepths as CallDepths } from './call-depths';
 
 export const powerset: Powerset = {
   id: 'mastermind/marine-affinity',
+  internalName: 'marine_affinity',
   name: 'Marine Affinity',
   description: 'Command the various powers of the ocean to buff your allies, and wash away your enemies.',
   icon: 'nature_affinity_set.ico',

@@ -23,6 +23,7 @@ import { OneWithAll as OneWithAll } from './one-with-all';
 
 export const powerset: Powerset = {
   id: 'tanker/nature-armor',
+  internalName: 'sacred_armor',
   name: 'Nature Armor',
   description: 'Channel the ambient power hidden in the natural life around you to defend yourself and your allies.',
   icon: 'dark_armor_set.ico',

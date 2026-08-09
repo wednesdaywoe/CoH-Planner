@@ -21,6 +21,7 @@ import { KineticTransfer as KineticTransfer } from './kinetic-transfer';
 
 export const powerset: Powerset = {
   id: 'defender/kinetics',
+  internalName: 'kinetics',
   name: 'Kinetics',
   description: 'You are a master at manipulating and transferring Kinetic energy. You can manipulate the potential energy found in objects to aid your allies or weaken your foes.',
   icon: 'kinetics_set.ico',

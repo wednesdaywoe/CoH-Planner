@@ -21,6 +21,7 @@ import { ChilloftheNight as ChilloftheNight } from './chill-of-the-night';
 
 export const powerset: Powerset = {
   id: 'defender/dark-miasma',
+  internalName: 'dark_miasma',
   name: 'Dark Miasma',
   description: 'Focus the dark power of the Netherworld to weaken your foes.  Dark Miasma focuses on draining your opponent.',
   icon: 'dark_miasma_set.ico',

@@ -21,6 +21,7 @@ import { FrozenAura as FrozenAura } from './frozen-aura';
 
 export const powerset: Powerset = {
   id: 'scrapper/ice-melee',
+  internalName: 'ice_melee',
   name: 'Ice Melee',
   description: 'Ice Melee allows the player to use Cold-based attacks, and even conjure up frozen melee weapons. Ice Melee powers are known for their ability to slow an opponent.',
   icon: 'ice_melee_set.ico',

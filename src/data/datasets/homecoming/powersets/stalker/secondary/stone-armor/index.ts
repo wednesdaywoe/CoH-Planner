@@ -21,6 +21,7 @@ import { Geode as Geode } from './geode';
 
 export const powerset: Powerset = {
   id: 'stalker/stone-armor',
+  internalName: 'stone_armor',
   name: 'Stone Armor',
   description: 'You can transform your skin into various forms of rock and stone. Stone Armor is one of the few Stalker Defensive Power Sets that offers defense to Psionics.',
   icon: 'stone_armor_set.ico',

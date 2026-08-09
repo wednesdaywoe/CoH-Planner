@@ -21,6 +21,7 @@ import { DarkServant as DarkServant } from './dark-servant';
 
 export const powerset: Powerset = {
   id: 'corruptor/dark-miasma',
+  internalName: 'dark_miasma',
   name: 'Dark Miasma',
   description: 'Focus the dark power of the Netherworld to weaken your foes.  Dark Miasma focuses on draining your opponent.',
   icon: 'dark_miasma_set.ico',

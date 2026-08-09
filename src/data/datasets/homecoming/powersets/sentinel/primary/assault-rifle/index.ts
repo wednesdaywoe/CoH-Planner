@@ -21,6 +21,7 @@ import { FullAuto as FullAuto } from './full-auto';
 
 export const powerset: Powerset = {
   id: 'sentinel/assault-rifle',
+  internalName: 'assault_rifle',
   name: 'Assault Rifle',
   description: 'The Assault Rifle is a state-of-the-art piece of hardware. It is equipped to handle an impressive arsenal of munitions and firing modes. The Assault Rifle is also equipped with the latest in targeting technology, and is a very accurate weapon.',
   icon: 'assault_rifle_set.ico',

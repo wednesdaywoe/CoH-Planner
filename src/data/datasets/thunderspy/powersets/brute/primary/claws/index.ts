@@ -21,6 +21,7 @@ import { Shockwave as Shockwave } from './shockwave';
 
 export const powerset: Powerset = {
   id: 'brute/claws',
+  internalName: 'claws',
   name: 'Claws',
   description: 'Claws are bones or blades that extend from your hands and cause Lethal damage. The lightweight, natural feel of claws gives this power set a reduced Endurance cost and faster attack rate than other Brute melee sets.',
   icon: 'claws_set.ico',

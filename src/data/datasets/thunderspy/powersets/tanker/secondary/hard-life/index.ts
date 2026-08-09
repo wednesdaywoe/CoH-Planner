@@ -21,6 +21,7 @@ import { Grenade as Grenade } from './grenade';
 
 export const powerset: Powerset = {
   id: 'tanker/hard-life',
+  internalName: 'hobo_melee',
   name: 'Hard Life',
   description: 'Wield the trusty power of the shotgun. Combine your shots to cripple your foes! Most attacks are targetless cones.',
   icon: 'battle_axe_set.ico',

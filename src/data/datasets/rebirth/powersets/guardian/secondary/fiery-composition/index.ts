@@ -21,6 +21,7 @@ import { PhoenixAwakening as PhoenixAwakening } from './phoenix-awakening';
 
 export const powerset: Powerset = {
   id: 'guardian/fiery-composition',
+  internalName: 'fiery_composition',
   name: 'Fiery Composition',
   description: 'Focusing heat and flame lets those armed with Fiery Composition protect themselves and their allies from harm while also weakening their enemies.',
   icon: 'fiery_aura_set.ico',

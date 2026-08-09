@@ -21,6 +21,7 @@ import { ChronoShift as ChronoShift } from './chrono-shift';
 
 export const powerset: Powerset = {
   id: 'defender/time-manipulation',
+  internalName: 'time_manipulation',
   name: 'Time Manipulation',
   description: 'By gazing into the flow of time you are able to manipulate time itself.  Time Manipulation allows the wielder to inflict crippling debuffs, buff and heal allies and also be able to empower effects on single targets through careful use of Time Crawl and Temporal Selection.',
   icon: 'time_manipulation_set.ico',

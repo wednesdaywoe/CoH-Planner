@@ -20,6 +20,7 @@ import { Confront as Confront } from './confront';
 
 export const powerset: Powerset = {
   id: 'arachnos-widow/widow-training',
+  internalName: 'widow_training',
   name: 'Widow Training',
   description: 'Characters with Widow Training begin their careers as Blood Widows. Blood Widow characters begin with modest melee, ranged and buff skills. Beginning at level 24, they may chose to switch to the "Fortunata" path or remain on the "Widow" path and become "Night Widows." Night Widows gain considerably stronger melee capabilities, and only have modest ranged abilities, while those who go with the Fortunata path learn stronger ranged attack abilities and control abilities.',
   icon: 'widow_training_set.ico',

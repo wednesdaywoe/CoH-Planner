@@ -21,6 +21,7 @@ import { TimeLord as TimeLord } from './time-lord';
 
 export const powerset: Powerset = {
   id: 'blaster/temporal-manipulation',
+  internalName: 'time_manipulation',
   name: 'Temporal Manipulation',
   description: 'By gazing into the flow of time you are able to manipulate time itself. Time Manipulation allows the wielder to inflict crippling debuffs, accelerating yourself, and exhaust your foes by showing them their doomed future.',
   icon: 'time_manipulation_set.ico',

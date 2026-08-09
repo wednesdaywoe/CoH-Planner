@@ -21,6 +21,7 @@ import { Blaze as Blaze } from './blaze';
 
 export const powerset: Powerset = {
   id: 'guardian/fiery-assault',
+  internalName: 'fiery_assault',
   name: 'Fiery Assault',
   description: 'Fiery Assault allows you to conjure up flaming melee attacks and hurl devastating fiery projectiles. Fiery Assault powers tend to set foes ablaze for added Damage Over Time.',
   icon: 'fiery_assault_set.ico',

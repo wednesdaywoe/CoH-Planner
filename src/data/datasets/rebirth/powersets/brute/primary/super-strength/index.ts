@@ -21,6 +21,7 @@ import { FootStomp as FootStomp } from './foot-stomp';
 
 export const powerset: Powerset = {
   id: 'brute/super-strength',
+  internalName: 'super_strength',
   name: 'Super Strength',
   description: 'Super Strength gives you combat powers derived from your super-human physical strength. Super Strength powers tend to knock foes back.',
   icon: 'super_strength_set.ico',

@@ -22,6 +22,7 @@ import { DarkServant as DarkServant } from './dark-servant';
 
 export const powerset: Powerset = {
   id: 'controller/darkness-affinity',
+  internalName: 'darkness_affinity',
   name: 'Darkness Affinity',
   description: 'P2881268957',
   icon: 'darkness_affinity_set.ico',

@@ -21,6 +21,7 @@ import { Nova as Nova } from './nova';
 
 export const powerset: Powerset = {
   id: 'blaster/energy-blast',
+  internalName: 'energy_blast',
   name: 'Energy Blast',
   description: 'Energy Blast allows you to hurl bolts of energy at your foes, and can often send them flying with Knockback.',
   icon: 'energy_blast_set.ico',

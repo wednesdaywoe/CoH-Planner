@@ -21,6 +21,7 @@ import { HowlingTwilight as HowlingTwilight } from './howling-twilight';
 
 export const powerset: Powerset = {
   id: 'guardian/dark-composition',
+  internalName: 'dark_composition',
   name: 'Dark Composition',
   description: 'Dark Composition wielders focus the dark energies of the Netherworld to protect themselves and weaken their foes.',
   icon: 'dark_armor_set.ico',

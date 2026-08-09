@@ -18,6 +18,7 @@ import { Elude as Elude } from './elude';
 
 export const powerset: Powerset = {
   id: 'arachnos-widow/widow-teamwork',
+  internalName: 'widow_teamwork',
   name: 'Widow Teamwork',
   description: 'Night Widows receive advanced Teamwork Training, couple with advanced defensive techniques of their own.',
   icon: 'widow_teamwork_set.ico',

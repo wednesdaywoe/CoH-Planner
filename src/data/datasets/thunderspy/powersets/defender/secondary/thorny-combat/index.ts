@@ -21,6 +21,7 @@ import { Ripper as Ripper } from './ripper';
 
 export const powerset: Powerset = {
   id: 'defender/thorny-combat',
+  internalName: 'thorny_assault',
   name: 'Thorny Combat',
   description: 'Thorns protrude from your body and can deal damage in melee or at range. Thorns are hollow and inject toxin that deals additional Toxic damage and can weaken your enemy\'s Defense.  Very few foes have resistance to Thorn toxins.',
   icon: 'thorny_assault_set.ico',

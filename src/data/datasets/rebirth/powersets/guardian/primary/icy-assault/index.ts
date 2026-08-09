@@ -21,6 +21,7 @@ import { BitterFreezeRay as BitterFreezeRay } from './bitter-freeze-ray';
 
 export const powerset: Powerset = {
   id: 'guardian/icy-assault',
+  internalName: 'icy_assault',
   name: 'Icy Assault',
   description: 'Ice Assault allows the player to use Cold-based attacks. Conjure up frozen melee weapons or hurl deadly shards of Ice. Icy powers are known for their ability to slow an opponent.',
   icon: 'icy_assault_set.ico',

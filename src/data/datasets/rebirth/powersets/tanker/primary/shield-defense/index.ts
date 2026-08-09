@@ -21,6 +21,7 @@ import { OnewiththeShield as OnewiththeShield } from './one-with-the-shield';
 
 export const powerset: Powerset = {
   id: 'tanker/shield-defense',
+  internalName: 'shield_defense',
   name: 'Shield Defense',
   description: 'Your mastery over the shield protects you from all forms of attacks in the form of defense as well as some moderate damage resistance to most types of damage.  Your training with the shield enables you to protect your nearby allies boosting their defenses.',
   icon: 'shield_defense_set.ico',

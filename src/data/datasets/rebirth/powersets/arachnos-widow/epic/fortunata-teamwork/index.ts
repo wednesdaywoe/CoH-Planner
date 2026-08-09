@@ -17,6 +17,7 @@ import { AuraofConfusion as AuraofConfusion } from './aura-of-confusion';
 
 export const powerset: Powerset = {
   id: 'arachnos-widow/fortunata-teamwork',
+  internalName: 'fortunata_teamwork',
   name: 'Fortunata Teamwork',
   description: 'Fortunata\'s receive advanced Teamwork Training, couple with advanced defensive techniques of their own.',
   icon: 'fortunata_teamwork_set.ico',

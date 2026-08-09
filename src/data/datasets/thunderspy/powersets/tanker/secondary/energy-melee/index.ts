@@ -21,6 +21,7 @@ import { TotalFocus as TotalFocus } from './total-focus';
 
 export const powerset: Powerset = {
   id: 'tanker/energy-melee',
+  internalName: 'energy_melee',
   name: 'Energy Melee',
   description: 'You can use Energy Melee to power your blows with pure energy. These focused power attacks often Disorient opponents.',
   icon: 'energy_melee_set.ico',

@@ -21,6 +21,7 @@ import { ThunderousBlast as ThunderousBlast } from './thunderous-blast';
 
 export const powerset: Powerset = {
   id: 'sentinel/electrical-blast',
+  internalName: 'electrical_blast',
   name: 'Electrical Blast',
   description: 'Electrical Blast endows you with ranged electrical attack powers. Electrical powers can drain foes\' Endurance and can often temporarily halt their Endurance recovery. This can be quite effective against higher level foes and Bosses. As you drain endurance, Electrical Blast powers can even sometimes Shock targets do deal bonus damage, hinder recovery, and transfer this Endurance back to you.',
   icon: 'electrical_blast_set.ico',

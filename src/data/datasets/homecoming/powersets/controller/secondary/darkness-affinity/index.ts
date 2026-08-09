@@ -21,6 +21,7 @@ import { DarkServant as DarkServant } from './dark-servant';
 
 export const powerset: Powerset = {
   id: 'controller/darkness-affinity',
+  internalName: 'darkness_affinity',
   name: 'Darkness Affinity',
   description: 'Focus the dark power of the Netherworld to weaken your foes and aid your allies. Darkness Affinity focuses on draining your opponent.',
   icon: 'darkness_affinity_set.ico',

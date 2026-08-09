@@ -21,6 +21,7 @@ import { Earsplitter as Earsplitter } from './earsplitter';
 
 export const powerset: Powerset = {
   id: 'blaster/sonic-manipulation',
+  internalName: 'sonic_manipulation',
   name: 'Sonic Manipulation',
   description: 'You have the ability to control sound in several fashions. You can create semi-solid barriers, set up waves which weaken or strengthen a target, as well as inflicing devastating close range sonic attacks that can cause Migraines that hold foes for a short hold. This chance can be dramatically increased by using Sound Booster.',
   icon: 'sonic_manipulation_set.ico',

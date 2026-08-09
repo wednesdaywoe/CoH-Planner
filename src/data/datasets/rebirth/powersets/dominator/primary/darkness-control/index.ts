@@ -21,6 +21,7 @@ import { UmbraBeast as UmbraBeast } from './umbra-beast';
 
 export const powerset: Powerset = {
   id: 'dominator/darkness-control',
+  internalName: 'darkness_control',
   name: 'Darkness Control',
   description: 'You can control darkness and shadow to disable your foes with negative energy.  Enemies that are affected by many of your attacks will have their chance to hit reduced.',
   icon: 'darkness_control_set.ico',

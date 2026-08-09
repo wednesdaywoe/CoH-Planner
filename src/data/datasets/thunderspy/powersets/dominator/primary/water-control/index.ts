@@ -21,6 +21,7 @@ import { DrowningPool as DrowningPool } from './drowning-pool';
 
 export const powerset: Powerset = {
   id: 'dominator/water-control',
+  internalName: 'water_control',
   name: 'Water Control',
   description: 'You have total control over the power of water. Water Control grants you superior control over large groups and the ability to deal a good amount of damage to single targets. Your powers have a chance to inflict Drowning on a target, while under this effect, Deluge, Suffocate, Hypothermia, Turbulent Aura and Tidal Wave will deal more damage and these powers\' secondary effects are enhanced.',
   icon: 'water_control_set.ico',

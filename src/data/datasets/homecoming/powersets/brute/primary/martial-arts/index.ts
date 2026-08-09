@@ -21,6 +21,7 @@ import { EaglesClaw as EaglesClaw } from './eagles-claw';
 
 export const powerset: Powerset = {
   id: 'brute/martial-arts',
+  internalName: 'martial_arts',
   name: 'Martial Arts',
   description: 'A compilation of various fighting techniques from around the world, Martial Arts makes you a master in the art of hand to hand combat. Martial Artists tend to be very accurate with their strikes.',
   icon: 'martial_arts_set.ico',

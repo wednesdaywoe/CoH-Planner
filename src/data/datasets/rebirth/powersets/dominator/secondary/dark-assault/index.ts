@@ -21,6 +21,7 @@ import { MidnightGrasp as MidnightGrasp } from './midnight-grasp';
 
 export const powerset: Powerset = {
   id: 'dominator/dark-assault',
+  internalName: 'dark_assault',
   name: 'Dark Assault',
   description: 'Blind and drain your foes with dark energies. Dark Assault allows you to pummel your foes with heavy hitting melee attacks as well as several ranged attacks. Many of Dark Assaults powers reduce their victims\' chance to hit.',
   icon: 'dark_assault_set.ico',

@@ -25,6 +25,7 @@ import { Blizzard as Blizzard } from './blizzard';
 
 export const powerset: Powerset = {
   id: 'defender/icy-combat',
+  internalName: 'ice_blast',
   name: 'Icy Combat',
   description: 'Icy Combat allows you to use the power of ice against your foes, with a tendency to Slow their attacks and movement.',
   icon: 'ice_blast_set.ico',

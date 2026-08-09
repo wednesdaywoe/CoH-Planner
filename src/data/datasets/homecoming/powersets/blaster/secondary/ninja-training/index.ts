@@ -21,6 +21,7 @@ import { GoldenDragonfly as GoldenDragonfly } from './golden-dragonfly';
 
 export const powerset: Powerset = {
   id: 'blaster/ninja-training',
+  internalName: 'ninja_training',
   name: 'Ninja Training',
   description: 'You compliment your abilities with training in the secret art of the Ninja. You have mastered valuable ninja tools, poisons and weapons, including the deadly Ninja Blade. You also mastered the harmonic powers of Kuji-In Toh, allowing you to regenerate and recover endurance at an accelerated rate.',
   icon: 'ninja_training_set.ico',

@@ -21,6 +21,7 @@ import { Reverberant as Reverberant } from './reverberant';
 
 export const powerset: Powerset = {
   id: 'dominator/symphony-control',
+  internalName: 'symphony_control',
   name: 'Symphony Control',
   description: 'Use the power of music to captivate and control the spirits of your enemies. Most of your symphonic abilities influence the mind of your enemies, causing psionic damage.',
   icon: 'siren_set.ico',

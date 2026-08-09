@@ -21,6 +21,7 @@ import { TelekineticThrust as TelekineticThrust } from './telekinetic-thrust';
 
 export const powerset: Powerset = {
   id: 'blaster/mental-manipulation',
+  internalName: 'mental_manipulation',
   name: 'Mental Manipulation',
   description: 'Manipulate your enemies with an array of offensive Psionic powers. Few living beings can resist their effects. Creatures without minds, however, like machines and robots, are much more resistant.',
   icon: 'mental_manipulation_set.ico',

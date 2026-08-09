@@ -21,6 +21,7 @@ import { Singularity as Singularity } from './singularity';
 
 export const powerset: Powerset = {
   id: 'dominator/gravity-control',
+  internalName: 'gravity_control',
   name: 'Gravity Control',
   description: 'This power set allows you to manipulate the forces of gravity to control your foes. Enemies have little defense against Gravity powers.',
   icon: 'gravity_control_set.ico',

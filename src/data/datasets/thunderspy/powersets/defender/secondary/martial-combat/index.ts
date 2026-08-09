@@ -21,6 +21,7 @@ import { MasterfulThrow as MasterfulThrow } from './masterful-throw';
 
 export const powerset: Powerset = {
   id: 'defender/martial-combat',
+  internalName: 'martial_assault',
   name: 'Martial Combat',
   description: 'Your mastery of Martial Assault allows you to deliver crippling blows to your enemies and rain blades upon foes who don\'t dare approach you.  You deliver damage to your enemies via withering kicks and punches in melee range, while your skills with thrown blades cut down aggressors from afar.  Your attacks have a tendency to knock opponents down or deal additional damage over time as a secondary effect.',
   icon: 'martial_assault_set.ico',

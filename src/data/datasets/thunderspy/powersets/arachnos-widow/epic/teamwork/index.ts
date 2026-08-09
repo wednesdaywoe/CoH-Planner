@@ -17,6 +17,7 @@ import { Foresight as Foresight } from './foresight';
 
 export const powerset: Powerset = {
   id: 'arachnos-widow/teamwork',
+  internalName: 'teamwork',
   name: 'Teamwork',
   description: 'Those who enter the Widow training program are given crash courses in Teamwork, Tactical Analysis and Coordination of Assets.',
   icon: 'teamwork_set.ico',

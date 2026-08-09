@@ -34,6 +34,7 @@ import { Eclipse as Eclipse } from './eclipse';
 
 export const powerset: Powerset = {
   id: 'warshade/umbral-aura',
+  internalName: 'umbral_aura',
   name: 'Umbral Aura',
   description: 'Warshades can generate Dark Fields to give themselves incredible defensive capabilities.',
   icon: 'umbral_aura_set.ico',

@@ -21,6 +21,7 @@ import { Subdue as Subdue } from './subdue';
 
 export const powerset: Powerset = {
   id: 'dominator/psionic-assault',
+  internalName: 'psionic_assault',
   name: 'Psionic Assault',
   description: 'Blast your enemies with an array of offensive Psionic powers. Few living beings can resist  their  effects. Creatures without minds, however, like machines and robots, are much more resistant.',
   icon: 'psionic_assault_set.ico',

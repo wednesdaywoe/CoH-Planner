@@ -21,6 +21,7 @@ import { Gremlins as Gremlins } from './gremlins';
 
 export const powerset: Powerset = {
   id: 'controller/electric-control',
+  internalName: 'electric_control',
   name: 'Electric Control',
   description: 'Electricity leaps and sparks at your command. You can use raw electrical power to paralyze, knockdown and drain the endurance of foes.',
   icon: 'electric_control_set.ico',

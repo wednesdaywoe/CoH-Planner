@@ -20,6 +20,7 @@ import { CallReinforcements as CallReinforcements } from './call-reinforcements'
 
 export const powerset: Powerset = {
   id: 'arachnos-soldier/training-and-gadgets',
+  internalName: 'training_and_gadgets',
   name: 'Training and Gadgets',
   description: 'Those who enter the Soldier training program are given crash courses in Teamwork, Tactical Analysis and Coordination of Assets.',
   icon: 'training_and_gadgets_set.ico',

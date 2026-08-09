@@ -21,6 +21,7 @@ import { MidnightGrasp as MidnightGrasp } from './midnight-grasp';
 
 export const powerset: Powerset = {
   id: 'blaster/darkness-manipulation',
+  internalName: 'darkness_manipulation',
   name: 'Darkness Manipulation',
   description: 'Assail your foes with powers drawn from the abyss.  Darkness Manipulation offers powers that can both control and heavily damage their targets while reducing their chance to hit.',
   icon: 'darkness_manipulation_set.ico',

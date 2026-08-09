@@ -21,6 +21,7 @@ import { Inferno as Inferno } from './inferno';
 
 export const powerset: Powerset = {
   id: 'corruptor/fire-blast',
+  internalName: 'fire_blast',
   name: 'Fire Blast',
   description: 'Fire Blast allows you to blast fire at foes, with a tendency to set them ablaze for added damage over time.',
   icon: 'fire_blast_set.ico',

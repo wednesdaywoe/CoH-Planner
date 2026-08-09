@@ -21,6 +21,7 @@ import { TotalFocus as TotalFocus } from './total-focus';
 
 export const powerset: Powerset = {
   id: 'guardian/energy-assault',
+  internalName: 'energy_assault',
   name: 'Energy Assault',
   description: 'Focus pure energy into deadly melee attacks and powerful projectiles. The impact of the melee powers can often Disorient opponents, while the velocity of the ranged projectiles can send your enemies flying.',
   icon: 'energy_assault_set.ico',

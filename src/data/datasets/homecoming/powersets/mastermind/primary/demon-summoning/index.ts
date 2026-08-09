@@ -21,6 +21,7 @@ import { AbyssalEmpowerment as AbyssalEmpowerment } from './abyssal-empowerment'
 
 export const powerset: Powerset = {
   id: 'mastermind/demon-summoning',
+  internalName: 'demon_summoning',
   name: 'Demon Summoning',
   description: 'Conjure demons from the depths of the netherworld and beyond. These demonic servitors wield hellfire and serve you through some dark compact. You are capable of summoning a variety of different infernal minions each with its own strengths and weaknesses.',
   icon: 'demon_summoning_set.ico',

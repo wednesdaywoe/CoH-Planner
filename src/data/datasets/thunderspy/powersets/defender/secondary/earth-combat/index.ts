@@ -21,6 +21,7 @@ import { SeismicSmash as SeismicSmash } from './seismic-smash';
 
 export const powerset: Powerset = {
   id: 'defender/earth-combat',
+  internalName: 'earth_assault',
   name: 'Earth Combat',
   description: 'With Earth Assault, you can damage foes with the very ground they walk upon.  You can conjure stone weapons, hurl boulders, and even cause magma to erupt from the ground.',
   icon: 'earth_assault_set.ico',

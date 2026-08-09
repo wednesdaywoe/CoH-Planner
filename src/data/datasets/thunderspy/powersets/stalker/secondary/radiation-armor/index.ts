@@ -21,6 +21,7 @@ import { Meltdown as Meltdown } from './meltdown';
 
 export const powerset: Powerset = {
   id: 'stalker/radiation-armor',
+  internalName: 'radiation_armor',
   name: 'Radiation Armor',
   description: 'Radiation emanates from your body which harms foes, but empowers and shields yourself. You can use this energy to absorb damage, heal from your wounds and debilitate nearby foes.',
   icon: 'radiation_armor_set.ico',

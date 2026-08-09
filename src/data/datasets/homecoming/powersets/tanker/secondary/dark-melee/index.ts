@@ -21,6 +21,7 @@ import { MidnightGrasp as MidnightGrasp } from './midnight-grasp';
 
 export const powerset: Powerset = {
   id: 'tanker/dark-melee',
+  internalName: 'dark_melee',
   name: 'Dark Melee',
   description: 'Dark Melee allows you to focus the powers of the Netherworld to defeat your foes. The draining effects of most of these powers can reduce the target\'s Accuracy. Like all scrapper powers, all Dark Melee attacks can sometimes land a critical hit for double damage.',
   icon: 'dark_melee_set.ico',

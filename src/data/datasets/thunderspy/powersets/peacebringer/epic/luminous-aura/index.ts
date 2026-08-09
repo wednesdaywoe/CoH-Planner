@@ -24,6 +24,7 @@ import { LightForm as LightForm } from './light-form';
 
 export const powerset: Powerset = {
   id: 'peacebringer/luminous-aura',
+  internalName: 'luminous_aura',
   name: 'Luminous Aura',
   description: 'Peacebringers can generate Luminous Aura to grant themselves incredible defensive capabilities.',
   icon: 'luminous_aura_set.ico',

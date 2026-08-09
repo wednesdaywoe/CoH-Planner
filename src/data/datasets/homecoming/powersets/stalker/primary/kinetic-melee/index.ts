@@ -21,6 +21,7 @@ import { TotalFocus as TotalFocus } from './total-focus';
 
 export const powerset: Powerset = {
   id: 'stalker/kinetic-melee',
+  internalName: 'kinetic_attack',
   name: 'Kinetic Melee',
   description: 'Kinetic Melee features a mix of fast light attacks and slow heavy attacks, including some with range. All attacks in this set except Assassin\'s Strike reduce the damage strength of enemies who are hit.',
   icon: 'kinetic_attack_set.ico',

@@ -21,6 +21,7 @@ import { UpgradeRobot as UpgradeRobot } from './upgrade-robot';
 
 export const powerset: Powerset = {
   id: 'mastermind/robotics',
+  internalName: 'robotics',
   name: 'Robotics',
   description: 'Robotics allows you to construct an army of mechanical henchmen and repair and upgrade them in order to keep your army in tip-top shape. Robot Henchmen generally have good resistances to Lethal, Cold and Psionic damage, as well as Sleep, Fear and Disorient.  They are  vulnerable to EMP attacks. Robot Henchmen cannot be resurrected.',
   icon: 'robotics_set.ico',

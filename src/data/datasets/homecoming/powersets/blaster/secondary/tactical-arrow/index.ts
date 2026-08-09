@@ -21,6 +21,7 @@ import { Gymnastics as Gymnastics } from './gymnastics';
 
 export const powerset: Powerset = {
   id: 'blaster/tactical-arrow',
+  internalName: 'tactical_arrow',
   name: 'Tactical Arrow',
   description: 'Gain an advantage in combat with a combination of training techniques that boost your accuracy and movement skills in addition to Tactical Arrows tipped with a variety of payloads, which if used strategically, can dramatically alter a battle site.',
   icon: 'tactical_arrow_set.ico',

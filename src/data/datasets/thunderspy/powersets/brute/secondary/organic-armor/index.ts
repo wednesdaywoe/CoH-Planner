@@ -24,6 +24,7 @@ import { ParasiticAura as ParasiticAura } from './parasitic-aura';
 
 export const powerset: Powerset = {
   id: 'brute/organic-armor',
+  internalName: 'organic_armor',
   name: 'Organic Armor',
   description: 'An advanced variant of Bio Armor, Organic Armor provides very similar capabilities as Bio Armor, but its adaptations are more varied.',
   icon: 'bio_organic_armor_set.ico',

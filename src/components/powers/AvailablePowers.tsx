@@ -8,6 +8,7 @@ import { useBuildStore, useUIStore } from '@/stores';
 import { useIsTouchDevice } from '@/hooks';
 
 import { getPowerset, getPowerIconPath, MAX_POWER_PICKS, GRANTED_POWER_GROUPS, getArchetypeInherentPowers, getPowerPicksAtLevel } from '@/data';
+import { evaluateRequires, setKeyFromId, type RequiresContext } from '@/data/power-requires';
 import { resolvePath } from '@/utils/paths';
 import { ProcPotentialBadge } from './ProcPotentialBadge';
 import type { Power } from '@/types';
@@ -41,225 +42,6 @@ function buildFormSubPowerNames(powers: Power[]): Set<string> {
     }
   }
   return names;
-}
-
-// ============================================
-// REQUIRES EXPRESSION EVALUATOR
-// ============================================
-
-interface RequiresContext {
-  /** Display names of all selected powers (primary + secondary) */
-  selectedPowerDisplayNames: Set<string>;
-  /** Internal names of all selected powers (e.g., "Dark_Regeneration") */
-  selectedPowerInternalNames: Set<string>;
-  /** Powerset slugs of all selected powersets (e.g., "shield-defense", "dark-armor") */
-  selectedPowersetSlugs: Set<string>;
-}
-
-/**
- * Evaluate a single atom (non-compound) requires expression.
- * Returns true if the condition is met.
- */
-function evaluateAtom(atom: string, ctx: RequiresContext): boolean {
-  const trimmed = atom.trim();
-
-  // Access level checks → always true for planner. Two surface forms in data:
-  //   infix : "char>accesslevel >= 0"
-  //   RPN   : "accesslevel char> 0 >="
-  // The planner doesn't model accesslevel, so any expression that mentions
-  // the `accesslevel` token is treated as satisfied. (Was previously
-  // matching only the infix substring `char>accesslevel`, which caused
-  // Tanker Radiation Melee's Devastating Blow and several Wind Control
-  // powers to be silently filtered out of the picker — their bin-extracted
-  // requires is the RPN form.)
-  if (/\baccesslevel\b/.test(trimmed)) return true;
-
-  // No dots → simple display name prerequisite (e.g., "Dark Nova")
-  if (!trimmed.includes('.')) {
-    return ctx.selectedPowerDisplayNames.has(trimmed);
-  }
-
-  const parts = trimmed.split('.');
-
-  // 3 segments: AT_Category.Powerset_Name.Power_Internal_Name
-  // e.g., "Tanker_Defense.Dark_Armor.Obscure_Sustenance"
-  if (parts.length === 3) {
-    return ctx.selectedPowerInternalNames.has(parts[2]);
-  }
-
-  // 2 segments: AT_Category.Powerset_Name
-  // e.g., "Tanker_Defense.Shield_Defense" or "Brute_Melee.Claws"
-  if (parts.length === 2) {
-    const slug = parts[1].toLowerCase().replace(/_/g, '-');
-    return ctx.selectedPowersetSlugs.has(slug);
-  }
-
-  return false;
-}
-
-/** Comparison operators that appear in raw .def RPN — always treated as
- *  always-true gates by the planner since they're typed against runtime
- *  attribs (accesslevel, level, etc.) the planner doesn't model. */
-const RPN_COMPARISON_OPS = new Set(['>=', '<=', '>', '<', '==', '!=']);
-
-/**
- * Evaluate a Reverse Polish Notation requires expression. Raw .def files use
- * RPN (operators come after operands), and the converter doesn't translate
- * to infix, so we evaluate RPN directly.
- *
- * Examples:
- *   "X !"                       → !X
- *   "A B && C !"                → A && B && !C
- *   "A B || C || D || !"        → !(A || B || C || D)
- *   "accesslevel char> 0 >="    → true (accesslevel comparison)
- *
- * Operand tokens that aren't power references (numeric literals, attribute
- * modifiers like `char>` that prefix an attrib access) push `true` so the
- * surrounding comparison/logic doesn't underflow the stack.
- */
-function evaluateRpnRequires(expr: string, ctx: RequiresContext): boolean | null {
-  // Tokenize on whitespace; trailing comma is a terminator some powers carry.
-  const tokens = expr.replace(/,$/, '').trim().split(/\s+/);
-  const stack: boolean[] = [];
-  for (const tok of tokens) {
-    if (tok === '!') {
-      if (stack.length < 1) return null;
-      stack.push(!stack.pop()!);
-    } else if (tok === '&&') {
-      if (stack.length < 2) return null;
-      const b = stack.pop()!;
-      const a = stack.pop()!;
-      stack.push(a && b);
-    } else if (tok === '||') {
-      if (stack.length < 2) return null;
-      const b = stack.pop()!;
-      const a = stack.pop()!;
-      stack.push(a || b);
-    } else if (RPN_COMPARISON_OPS.has(tok)) {
-      // Comparisons are runtime-attribute gates (accesslevel, level, etc.)
-      // that the planner treats as always satisfied. Consume two operands
-      // and push true.
-      if (stack.length < 2) return null;
-      stack.pop();
-      stack.pop();
-      stack.push(true);
-    } else if (isRpnAttribQualifier(tok)) {
-      // Qualifier tokens like `char>` and `target>` are postfix modifiers
-      // on the previous attrib token (`accesslevel char>` together means
-      // "the char's accesslevel"), not a separate stack push. No-op.
-    } else if (isRpnNumericLiteral(tok)) {
-      // Numeric literals push true — they're operands for a following
-      // comparison op, which the planner short-circuits.
-      stack.push(true);
-    } else {
-      stack.push(evaluateAtom(tok, ctx));
-    }
-  }
-  if (stack.length !== 1) return null; // not a clean RPN expression
-  return stack[0];
-}
-
-/** Numeric literal token (e.g. `0`, `1.5`, `-3`). */
-function isRpnNumericLiteral(tok: string): boolean {
-  return /^-?\d+(\.\d+)?$/.test(tok);
-}
-
-/** Postfix qualifier tokens like `char>` / `target>` that modify the
- *  previous attrib token rather than pushing their own stack value. */
-function isRpnAttribQualifier(tok: string): boolean {
-  return tok.endsWith('>') && !tok.includes('.');
-}
-
-/**
- * Detect RPN form. The last whitespace-separated token is one of the operator
- * symbols `!`, `&&`, `||` (the operator follows its operands in RPN).
- * Comparison ops (`>=`, `<=`, etc.) also count — they appear at the end of
- * accesslevel-gated expressions like `accesslevel char> 0 >=`.
- */
-function looksLikeRpn(expr: string): boolean {
-  const trimmed = expr.replace(/,$/, '').trim();
-  const lastSpace = trimmed.lastIndexOf(' ');
-  if (lastSpace < 0) return false;
-  const lastTok = trimmed.slice(lastSpace + 1);
-  return (
-    lastTok === '!' || lastTok === '&&' || lastTok === '||' ||
-    RPN_COMPARISON_OPS.has(lastTok)
-  );
-}
-
-/**
- * Evaluate a power requires expression against the current build.
- *
- * Two forms appear in data:
- * - **RPN** (from raw .def files):
- *     "X !"                  → !X
- *     "A B && C !"           → A && B && !C
- *     "A B || C || D || !"   → !(A || B || C || D)
- * - **Infix** (translated by an earlier converter pass):
- *     "Power Name"           → requires power by display name
- *     "AT.Set.Power"         → requires power by internal name
- *     "AT.Set"               → requires powerset to be selected
- *     "!expr"                → prefix negation
- *     "!(a || b || c)"       → none of the listed items can be present
- *     "a && b"               → both conditions must be true
- *     "char>accesslevel >= 0" → always true
- *
- * Detection: if the trailing token is an operator (`!`, `&&`, `||`), parse as
- * RPN; otherwise fall through to the infix logic.
- */
-function evaluateRequires(requires: string, ctx: RequiresContext): boolean {
-  const expr = requires.trim();
-
-  // RPN form (raw .def expressions). Includes detection for comparison ops
-  // (`>=`, `<=`, `>`, `<`, `==`, `!=`) so accesslevel-gated expressions like
-  // `accesslevel char> 0 >=` and the compound `accesslevel char> 0 >= AT.Set.Power &&`
-  // (Tanker Radiation Melee Devastating Blow, Wind Control Clear Skies) are
-  // recognized as RPN and handed to the evaluator that knows how to short-
-  // circuit accesslevel.
-  if (looksLikeRpn(expr)) {
-    const result = evaluateRpnRequires(expr, ctx);
-    if (result !== null) return result;
-    // Fall through to infix on RPN parse failure (defensive)
-  }
-
-  // Handle AND: "expr1 && expr2 && ..."
-  if (expr.includes('&&')) {
-    return expr.split('&&').every(part => evaluateRequires(part.trim(), ctx));
-  }
-
-  // Handle negated group: !(a || b || c)
-  if (expr.startsWith('!(') && expr.endsWith(')')) {
-    const inner = expr.slice(2, -1);
-    return inner.split('||').every(part => !evaluateAtom(part.trim(), ctx));
-  }
-
-  // Handle parenthesized group: (a || b || c) or (expr)
-  if (expr.startsWith('(') && expr.endsWith(')')) {
-    const inner = expr.slice(1, -1);
-    if (inner.includes('||')) {
-      return inner.split('||').some(part => evaluateAtom(part.trim(), ctx));
-    }
-    return evaluateRequires(inner, ctx);
-  }
-
-  // Handle simple negation: !atom
-  if (expr.startsWith('!')) {
-    return !evaluateAtom(expr.slice(1), ctx);
-  }
-
-  // Handle count expression: "A + B + C > N" (need more than N of the listed powers)
-  if (expr.includes('>') && expr.includes('+')) {
-    const [sumPart, thresholdPart] = expr.split('>').map(s => s.trim());
-    const threshold = parseInt(thresholdPart, 10);
-    if (!isNaN(threshold)) {
-      const atoms = sumPart.split('+').map(s => s.trim());
-      const count = atoms.filter(a => evaluateAtom(a, ctx)).length;
-      return count > threshold;
-    }
-  }
-
-  // Simple atom
-  return evaluateAtom(expr, ctx);
 }
 
 interface AvailablePowersProps {
@@ -488,7 +270,7 @@ export function AvailablePowers({
 
   const requiresContext: RequiresContext = (() => {
     const selectedPowerInternalNames = new Set<string>();
-    const selectedPowersetSlugs = new Set<string>();
+    const selectedPowersetKeys = new Set<string>();
 
     // Collect internal names from selected powers. Include pool + epic
     // picks so intra-pool prerequisites (e.g. Tough requiring Kick or
@@ -510,30 +292,24 @@ export function AvailablePowers({
       }
     }
 
-    // Collect powerset slugs (e.g., "shield-defense" from "tanker/shield-defense")
-    if (build.primary.id) {
-      const slug = build.primary.id.split('/')[1];
-      if (slug) selectedPowersetSlugs.add(slug);
-    }
-    if (build.secondary.id) {
-      const slug = build.secondary.id.split('/')[1];
-      if (slug) selectedPowersetSlugs.add(slug);
+    // Collect the build's powersets under the name a `requires` expression would use for
+    // them — the set's INTERNAL name, which for a renamed set is not its id slug (the set
+    // that ships as "Spines" is `quills` in every expression that names it).
+    for (const id of [build.primary.id, build.secondary.id]) {
+      const key = setKeyFromId(id ?? undefined, id ? getPowerset(id)?.internalName : undefined);
+      if (key) selectedPowersetKeys.add(key);
     }
     for (const pool of build.pools) {
-      if (pool.id) {
-        const slug = pool.id.split('/')[1];
-        if (slug) selectedPowersetSlugs.add(slug);
-      }
+      const key = setKeyFromId(pool.id);
+      if (key) selectedPowersetKeys.add(key);
     }
-    if (build.epicPool?.id) {
-      const slug = build.epicPool.id.split('/')[1];
-      if (slug) selectedPowersetSlugs.add(slug);
-    }
+    const epicKey = setKeyFromId(build.epicPool?.id);
+    if (epicKey) selectedPowersetKeys.add(epicKey);
 
     return {
       selectedPowerDisplayNames: allSelectedPowerNames,
       selectedPowerInternalNames,
-      selectedPowersetSlugs,
+      selectedPowersetKeys,
     };
   })();
 

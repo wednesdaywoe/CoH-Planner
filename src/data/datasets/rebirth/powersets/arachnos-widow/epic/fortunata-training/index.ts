@@ -22,6 +22,7 @@ import { FRTPsychicWail as FRTPsychicWail } from './frt-psychic-wail';
 
 export const powerset: Powerset = {
   id: 'arachnos-widow/fortunata-training',
+  internalName: 'fortunata_training',
   name: 'Fortunata Training',
   description: 'Fortunata\'s have a wide array of extremely potent psychic attacks and controls.',
   icon: 'fortunata_training_set.ico',

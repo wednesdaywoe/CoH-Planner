@@ -21,6 +21,7 @@ import { HeatLoss as HeatLoss } from './heat-loss';
 
 export const powerset: Powerset = {
   id: 'mastermind/cold-domination',
+  internalName: 'cold_domination',
   name: 'Cold Domination',
   description: 'Cold Domination powers allow you to manipulate cold and ice to protect your allies and weaken your enemies.',
   icon: 'cold_domination_set.ico',

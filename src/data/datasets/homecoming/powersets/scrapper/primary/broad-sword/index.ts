@@ -22,6 +22,7 @@ import { HeadSplitter as HeadSplitter } from './head-splitter';
 
 export const powerset: Powerset = {
   id: 'scrapper/broad-sword',
+  internalName: 'broad_sword',
   name: 'Broad Sword',
   description: 'Wield a Broad Sword and master a variety of powerful Lethal attacks. Slower than a Katana, the Broad Sword\'s weight strikes with more force and damage. The Broadsword can reduce an enemy\'s Defense, allowing other attacks to hit more reliably. The Broad Sword is a powerful melee weapon that has a bonus to Accuracy. Like all scrapper powers, all Broad Sword attacks can sometimes land a critical hit for double damage.',
   icon: 'broad_sword_set.ico',

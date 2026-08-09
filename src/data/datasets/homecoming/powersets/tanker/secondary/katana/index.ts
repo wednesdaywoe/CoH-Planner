@@ -21,6 +21,7 @@ import { HeadSplitter as HeadSplitter } from './head-splitter';
 
 export const powerset: Powerset = {
   id: 'tanker/katana',
+  internalName: 'katana',
   name: 'Katana',
   description: 'Wield a Katana and master a variety of powerful Lethal attacks. A quick and elegant weapon, the Katana is faster than a Broad Sword, and can reduce an enemy\'s Defense. The Katana is a fine blade that always has a bonus to Accuracy.',
   icon: 'katana_set.ico',

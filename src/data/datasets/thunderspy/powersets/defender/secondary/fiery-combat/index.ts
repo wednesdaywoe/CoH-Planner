@@ -25,6 +25,7 @@ import { Inferno as Inferno } from './inferno';
 
 export const powerset: Powerset = {
   id: 'defender/fiery-combat',
+  internalName: 'fire_blast',
   name: 'Fiery Combat',
   description: 'Fiery Combat allows you to attack with fire, and even conjure up flaming melee weapons. with a tendency to set them ablaze for added damage over time.',
   icon: 'fire_blast_set.ico',

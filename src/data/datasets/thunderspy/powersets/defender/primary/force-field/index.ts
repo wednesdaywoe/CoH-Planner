@@ -22,6 +22,7 @@ import { SuspensionBubble as SuspensionBubble } from './suspension-bubble';
 
 export const powerset: Powerset = {
   id: 'defender/force-field',
+  internalName: 'force_field',
   name: 'Force Field',
   description: 'The Force Field powers give you the ability to create shells of energy that protect yourself and your allies from various forms of damage and harm.  Force Fields do not reduce damage, but reduced your allies chance of getting hit in the first place.',
   icon: 'force_field_set.ico',

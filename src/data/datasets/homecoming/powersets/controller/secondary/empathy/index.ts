@@ -21,6 +21,7 @@ import { AdrenalinBoost as AdrenalinBoost } from './adrenalin-boost';
 
 export const powerset: Powerset = {
   id: 'controller/empathy',
+  internalName: 'empathy',
   name: 'Empathy',
   description: 'Empathy gives you the ability to heal and aid allies as well as yourself. Empathy has no offensive powers, but its heals and buffs are unmatched.',
   icon: 'empathy_set.ico',

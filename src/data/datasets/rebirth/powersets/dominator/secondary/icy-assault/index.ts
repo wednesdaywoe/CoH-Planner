@@ -21,6 +21,7 @@ import { BitterIceBlast as BitterIceBlast } from './bitter-ice-blast';
 
 export const powerset: Powerset = {
   id: 'dominator/icy-assault',
+  internalName: 'icy_assault',
   name: 'Icy Assault',
   description: 'Ice Assault allows the player to use Cold-based attacks. Conjure up frozen melee weapons or hurl deadly shards of Ice. Icy powers are known for their ability to slow an opponent.',
   icon: 'icy_assault_set.ico',

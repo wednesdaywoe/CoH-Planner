@@ -21,6 +21,7 @@ import { TotalFocus as TotalFocus } from './total-focus';
 
 export const powerset: Powerset = {
   id: 'blaster/energy-manipulation',
+  internalName: 'energy_manipulation',
   name: 'Energy Manipulation',
   description: 'Energy Manipulation allows you to channel energy to deliver deadly blows. These powers also help you focus your power to increase your own abilities.',
   icon: 'energy_manipulation_set.ico',

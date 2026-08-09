@@ -26,6 +26,7 @@ import { DawnStrike as DawnStrike } from './dawn-strike';
 
 export const powerset: Powerset = {
   id: 'peacebringer/luminous-blast',
+  internalName: 'luminous_blast',
   name: 'Luminous Blast',
   description: 'Masters of light, energy and matter, Peacebringers can manipulate Kheldian Light Energy to devastate their opponents. Their Luminous Blasts bombard their foes with awesome power that often knock down foes and can easily reduce a target\'s defenses.',
   icon: 'luminous_blast_set.ico',

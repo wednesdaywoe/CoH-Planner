@@ -21,6 +21,7 @@ import { NoxiousGas as NoxiousGas } from './noxious-gas';
 
 export const powerset: Powerset = {
   id: 'mastermind/poison',
+  internalName: 'poison',
   name: 'Poison',
   description: 'You are a master of Poison and can concoct a variety of venoms and toxins allowing you to weaken your enemies.  When used correctly, some Poisons can even be used to aid your allies.',
   icon: 'poison_set.ico',

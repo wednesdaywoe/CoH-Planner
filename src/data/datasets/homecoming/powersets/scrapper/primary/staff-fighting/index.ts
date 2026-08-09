@@ -24,6 +24,7 @@ import { SkySplitter as SkySplitter } from './sky-splitter';
 
 export const powerset: Powerset = {
   id: 'scrapper/staff-fighting',
+  internalName: 'staff_fighting',
   name: 'Staff Fighting',
   description: 'You have mastered the art of staff fighting, allowing you to strike at your foes in great sweeping arcs. Staff Fighting provides a good amount of control effects as well as some self buffs. By selecting the Staff Mastery power, you will gain access to techniques that further empower your Staff Fighting techniques and grant you useful augmentations that build up as you fight.',
   icon: 'staff_fighting_set.ico',
