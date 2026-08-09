@@ -709,6 +709,11 @@ interface UIActions {
   setSentinelCritActive: (active: boolean) => void;
 
   // Arachnos Branch Selection (Epic ATs)
+  /**
+   * Point the picker at a branch WITHOUT touching the build — for the paths that follow the
+   * build rather than change it (import, rehydrate, undo). Changing branch is a build edit
+   * that drops the old branch's picks: use `buildStore.switchBranch`.
+   */
   setSelectedBranch: (branch: ArchetypeBranchId | null) => void;
   clearSelectedBranch: () => void;
 

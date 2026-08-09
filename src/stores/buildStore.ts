@@ -71,6 +71,7 @@ import {
 import { findNextAvailableGrantLevel, backfillSlotOrderLevels, ensureSlotOrderPopulated, canMoveSlotLevel, applySlotLevelMove, canRelocateSlot, type SlotLevelRef, type PowerRef } from '@/utils/slot-levels';
 import { enhancementAllowedInPower } from '@/utils/enhancement-eligibility';
 import { dedupePools } from '@/utils/build-powers';
+import { branchPowersInBuild, branchSetIds } from '@/utils/branch-powers';
 import { selectableModes } from '@/utils/mode-suppression';
 // The one toggle classifier (`ba84984159` unified it); a second copy here is exactly
 // the drift that unification closed, so the store reads the same function the rows do.
@@ -115,6 +116,14 @@ interface BuildActions {
   // Powersets
   setPrimary: (powersetId: string) => void;
   setSecondary: (powersetId: string) => void;
+  /**
+   * Move a VEAT to a different branch (or off one entirely), dropping the picks the
+   * outgoing branch owned. Returns their display names so the caller can report the loss.
+   *
+   * The raw `uiStore.setSelectedBranch` still exists for the paths that are FOLLOWING the
+   * build rather than changing it — import, rehydrate, undo — which must not strip anything.
+   */
+  switchBranch: (branchId: ArchetypeBranchId | null) => string[];
 
   // Powers
   addPower: (category: PowerCategory, power: SelectedPower) => void;
@@ -1487,6 +1496,34 @@ export const useBuildStore = create<BuildStore>()(
 
           return { build: newBuild };
         });
+      },
+
+      switchBranch: (branchId) => {
+        const archetype = get().build.archetype.id ? getArchetype(get().build.archetype.id!) : null;
+        const outgoing = useUIStore.getState().selectedBranch;
+        if (outgoing === branchId) return [];
+
+        const orphaned = branchPowersInBuild(get().build, archetype, outgoing);
+        if (orphaned.length > 0) {
+          historyCheckpoint();
+          set((state) => {
+            // Match on powerSet, not name: the branch owns the SET, and a branch power can
+            // share its name with the base set's.
+            const dropped = new Set(branchSetIds(archetype, outgoing));
+            const keep = (powers: SelectedPower[]) => powers.filter((p) => !dropped.has(p.powerSet));
+            let newBuild = applyPowerUpdate(state.build, 'primary', keep);
+            newBuild = applyPowerUpdate(newBuild, 'secondary', keep);
+
+            const removedNames = new Set(orphaned.map((p) => p.internalName));
+            newBuild.sets = updateSetTracking(newBuild);
+            newBuild.slotOrder = newBuild.slotOrder.filter((e) => !removedNames.has(e.powerName));
+            newBuild.procOverrides = pruneProcOverridesForRemovedPowers(newBuild.procOverrides, removedNames);
+            return { build: newBuild };
+          });
+        }
+
+        useUIStore.getState().setSelectedBranch(branchId);
+        return orphaned.map((p) => p.name);
       },
 
       // Powers

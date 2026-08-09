@@ -20,6 +20,7 @@ import type { BadgeVariant } from '@/components/ui';
 import { getActiveDataset } from '@/data/dataset';
 import { showDatasetSwitchOverlay } from '@/utils/dataset-switch-overlay';
 import { buildShareUrl } from '@/utils/url-build-sync';
+import { undoBuild, redoBuild } from '@/utils/undo-redo';
 import { quickShareBuild, RateLimitError, formatRateLimitMessage } from '@/services/sharedBuilds';
 import type { BuildExport } from '@/types/build';
 import type { DatasetId } from '@/data/dataset';
@@ -152,23 +153,8 @@ export function Header() {
   const canUndo = useHistoryStore((s) => s.past.length > 0);
   const canRedo = useHistoryStore((s) => s.future.length > 0);
 
-  const handleUndo = () => {
-    const history = useHistoryStore.getState();
-    const currentBuild = useBuildStore.getState().build;
-    history.setRestoring(true);
-    const restored = history.undo(currentBuild);
-    if (restored) useBuildStore.getState()._restoreBuild(restored);
-    history.setRestoring(false);
-  };
-
-  const handleRedo = () => {
-    const history = useHistoryStore.getState();
-    const currentBuild = useBuildStore.getState().build;
-    history.setRestoring(true);
-    const restored = history.redo(currentBuild);
-    if (restored) useBuildStore.getState()._restoreBuild(restored);
-    history.setRestoring(false);
-  };
+  const handleUndo = undoBuild;
+  const handleRedo = redoBuild;
 
   return (
     <header className="bg-slate-800 border-b border-slate-700 px-4 py-2 space-y-2">
@@ -547,7 +533,8 @@ function BuildIdentityPopover() {
   const setPrimary = useBuildStore((s) => s.setPrimary);
   const setSecondary = useBuildStore((s) => s.setSecondary);
   const selectedBranch = useUIStore((s) => s.selectedBranch);
-  const setSelectedBranch = useUIStore((s) => s.setSelectedBranch);
+  const switchBranch = useBuildStore((s) => s.switchBranch);
+  const showToast = useUIStore((s) => s.showToast);
   const currentOnboardingStep = useOnboardingCurrentStep();
   const onboardingStepId = currentOnboardingStep?.id;
 
@@ -601,6 +588,22 @@ function BuildIdentityPopover() {
     { value: '', label: 'Select Secondary...' },
     ...secondaryPowersets.filter((ps) => ps.id).map((ps) => pairedOption(ps, selectedPrimary)),
   ];
+
+  // A VEAT gets one branch, so leaving one takes its powers with you — the alternative is a
+  // Bane's powers sitting in a Crab's build, counted by every total and offered by no picker.
+  // Say what went and offer the step back rather than asking first: the dropdown is also how
+  // people explore what a branch contains, and a confirm on every peek is worse than an undo.
+  const handleBranchChange = (branchId: ArchetypeBranchId | null) => {
+    const leaving = selectedBranch ? archetype?.branches?.[selectedBranch]?.name : null;
+    const removed = switchBranch(branchId);
+    if (removed.length > 0) {
+      showToast({
+        message: `Removed ${removed.length} ${leaving} power${removed.length === 1 ? '' : 's'}: ${removed.join(', ')}`,
+        tone: 'warning',
+        action: { label: 'Undo', onClick: undoBuild },
+      });
+    }
+  };
 
   const handleServerChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const newId = e.target.value as DatasetId;
@@ -771,7 +774,7 @@ function BuildIdentityPopover() {
                     })),
                   ]}
                   value={selectedBranch || ''}
-                  onChange={(e) => setSelectedBranch(e.target.value as ArchetypeBranchId || null)}
+                  onChange={(e) => handleBranchChange(e.target.value as ArchetypeBranchId || null)}
                   className="w-full"
                 />
               </Tooltip>
