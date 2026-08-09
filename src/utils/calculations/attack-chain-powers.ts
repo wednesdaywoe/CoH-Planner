@@ -668,6 +668,7 @@ export function buildChainPowers(
         buildLevel: build.level,
         procsOnlyOnMainTarget: p.procsOnlyOnMainTarget,
         procsAllowed: p.procsAllowed,
+        procRollSites: p.procRollSites,
         powerType: p.powerType,
         patchDuration: resolveProcPatchDuration(directRadiusP, p.effects?.summon),
       });

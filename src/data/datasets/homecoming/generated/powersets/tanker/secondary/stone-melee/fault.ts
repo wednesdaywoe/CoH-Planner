@@ -19,6 +19,34 @@ export const Fault: Power = {
   "targetType": "Foe",
   "effectArea": "SingleTarget",
   "procsAllowed": false,
+  "procRollSites": [
+    {
+      "power": "Redirects.Stone_Melee.Fault_Tanker",
+      "setCategories": [
+        "Knockback",
+        "Stuns",
+        "Threat Duration"
+      ],
+      "powerType": "Click",
+      "baseRecharge": 20,
+      "castTime": 2.1,
+      "radius": 15,
+      "arc": 0
+    },
+    {
+      "power": "Redirects.Stone_Melee.Fault_Cone_Tanker",
+      "setCategories": [
+        "Ranged AoE Damage",
+        "Tanker Archetype Sets",
+        "Universal Damage Sets"
+      ],
+      "powerType": "Click",
+      "baseRecharge": 6,
+      "castTime": 2.1,
+      "radius": 20,
+      "arc": 0.9599311351776123
+    }
+  ],
   "stats": {
     "accuracy": 0.8,
     "range": 20,

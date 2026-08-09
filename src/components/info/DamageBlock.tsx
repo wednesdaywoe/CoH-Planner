@@ -493,6 +493,8 @@ function computeProcDamagePerActivation(props: DamageBlockProps): number {
       buildLevel,
       procsOnlyOnMainTarget: selectedPower.procsOnlyOnMainTarget,
       procsAllowed: selectedPower.procsAllowed,
+      // The ten kNone powers whose ProcSeparately children roll in their place.
+      procRollSites: selectedPower.procRollSites,
       powerType: selectedPower.powerType,
       // A rain's procs roll on the patch's 10s clock, several times per cast —
       // not once against the parent's recharge. resolveProcRollSchedule owns it.

@@ -34,6 +34,7 @@ const {
   EFFECT_AREA_MAP,
   BIN_BOOST_MAP,
   inferAllowedSetCategories,
+  collectProcRollSites,
   normalizeIconPath,
   TARGET_TYPE_MAP,
   getStrengthsDisallowedIndex,
@@ -141,6 +142,10 @@ function convertEpicPower(rawJson, rank, availableLevel) {
   // ProcAllowed kNone — no PPM proc rolls here at all (Ice Elemental). See the
   // field doc on `Power.procsAllowed`.
   if (rawJson.procs_allowed === false) power.procsAllowed = false;
+  // …unless a ProcSeparately child rolls in its place. No epic power has one
+  // today; the call is here so an epic that grows one is not a silent gap.
+  const procRollSites = collectProcRollSites(rawJson);
+  if (procRollSites) power.procRollSites = procRollSites;
   power.rank = rank;
   power.available = availableLevel;
 

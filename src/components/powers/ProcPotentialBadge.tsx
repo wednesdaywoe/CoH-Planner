@@ -72,12 +72,22 @@ function ProcPotentialTooltip({ potential }: { potential: ProcPotential }) {
       </div>
 
       <div className="border-t border-slate-700 pt-1 text-[10px] text-slate-400 space-y-0.5">
-        <div>
-          Base recharge {potential.recharge}s + {potential.castTime}s cast
-          {potential.areaDenominator > 1 && (
-            <> · AoE penalty ÷{potential.areaDenominator.toFixed(2)}</>
-          )}
-        </div>
+        {potential.rollsInExecutedChildren ? (
+          // This power has no window of its own — each proc was scored against
+          // the executed child that accepts its set, and those children differ
+          // (Fault's cone recharges in 6s, its sphere in 20s). Printing one
+          // recharge here would name a window nothing rolled in.
+          <div>
+            Rolls in this power&apos;s executed sub-powers, each on its own recharge and radius.
+          </div>
+        ) : (
+          <div>
+            Base recharge {potential.recharge}s + {potential.castTime}s cast
+            {potential.areaDenominator > 1 && (
+              <> · AoE penalty ÷{potential.areaDenominator.toFixed(2)}</>
+            )}
+          </div>
+        )}
         {potential.mainTargetOnly && (
           <div className="text-amber-400">
             Procs roll single-target despite the AoE (ProcMainTargetOnly).

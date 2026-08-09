@@ -19,6 +19,23 @@ export const Whitecap: Power = {
   "targetType": "Teleport",
   "effectArea": "Location",
   "procsAllowed": false,
+  "procRollSites": [
+    {
+      "power": "Redirects.Marine_Affinity.Whitecap_Arrive",
+      "setCategories": [
+        "Corruptor Archetype Sets",
+        "Defender Archetype Sets",
+        "Knockback",
+        "Melee AoE Damage",
+        "Universal Damage Sets"
+      ],
+      "powerType": "Click",
+      "baseRecharge": 15,
+      "castTime": 0,
+      "radius": 20,
+      "arc": 0
+    }
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

@@ -615,6 +615,103 @@ function inferEffectiveArea(powerJson) {
   return null;
 }
 
+/**
+ * Every AttribMod template anywhere in a power JSON, whichever bag it hangs
+ * off — `effects`, `activation_effects`, or a nested `child_effects`.
+ * Hypnotizing Lights keeps its entire body in `activation_effects`, so a
+ * walker that reads `effects` alone reports it as having no templates at all.
+ */
+function collectTemplatesAnyBag(node, out = []) {
+  if (Array.isArray(node)) {
+    for (const v of node) collectTemplatesAnyBag(v, out);
+  } else if (node && typeof node === 'object') {
+    for (const [key, v] of Object.entries(node)) {
+      if (key === 'templates' && Array.isArray(v)) out.push(...v);
+      else collectTemplatesAnyBag(v, out);
+    }
+  }
+  return out;
+}
+
+/**
+ * Where a power's PPM procs actually roll when the power itself cannot.
+ *
+ * `ProcAllowed kNone` says this power's own activation is not a proc window.
+ * On the powers that hand their work to an executed child, HC pairs it with
+ * `ProcSeparately` on the `kExecutePower` template — the game's statement that
+ * the executed power rolls on its own. The two always travel together: every
+ * `ProcSeparately` template in all three forks (10 powers, 14 templates, all
+ * Homecoming) sits under a `ProcAllowed kNone` parent, so the pair never means
+ * "parent AND child roll" and a site list never adds a roll to a power that
+ * already had one.
+ *
+ * A proc rolls in the ONE site whose set categories accept its set. The
+ * children partition the parent's categories exactly — Fault's sphere child
+ * takes Knockback/Stuns/Threat Duration while its cone child takes the damage
+ * categories, with no overlap on any of the four archetype copies — which is
+ * `CopyBoosts` handing the child only the boosts the child's own allowed list
+ * accepts. A category the parent lists and no child accepts (Hypnotizing
+ * Lights' Sleep) reaches no site and fires nothing.
+ *
+ * Returns null for every power that is not one of the ten.
+ */
+function collectProcRollSites(powerJson) {
+  if (powerJson.procs_allowed !== false) return null;
+  const sites = [];
+  for (const t of collectTemplatesAnyBag(powerJson)) {
+    if ((t.attribs || []).join(',') !== 'Execute_Power') continue;
+    if (!(t.flags || []).includes('ProcSeparately')) continue;
+    for (const name of (t.params || {}).power_names || []) {
+      const childPath = fs.existsSync(resolveRedirectPath(name))
+        ? resolveRedirectPath(name)
+        : resolveAuxRedirectPath(name);
+      // Loud: the whole population is 14 templates and every one resolves
+      // today. An unresolvable child means the export moved under us, and a
+      // skipped site is a power that silently stops firing procs.
+      if (!childPath || !fs.existsSync(childPath)) {
+        throw new Error(
+          `ProcSeparately child "${name}" of ${powerJson.full_name} has no exported power file`);
+      }
+      const child = JSON.parse(fs.readFileSync(childPath, 'utf-8'));
+      // A child with its own kNone rolls nothing either, so it is not a site.
+      // None of the ten has one today; the rule is stated so that a future
+      // HC patch flagging a child reads as "no procs" rather than as a site
+      // whose flag nobody consulted.
+      if (child.procs_allowed === false) continue;
+      sites.push({
+        power: child.full_name,
+        setCategories: child.allowed_set_categories || [],
+        // The child's own Click/Toggle/Auto — the schedule branch is the
+        // child's to pick, not the shell's. All ten children are Click today.
+        powerType: child.type || 'Click',
+        baseRecharge: child.recharge_time,
+        castTime: child.activation_time,
+        radius: child.radius,
+        // Raw radians, exactly as `stats.arc` carries it; every consumer runs
+        // it through the same arcToDegrees.
+        arc: child.arc,
+        ...(child.procs_only_on_main_target ? { procsOnlyOnMainTarget: true } : {}),
+      });
+    }
+  }
+  if (sites.length === 0) return null;
+  // One proc, one site. Two sites sharing a category would make the routing
+  // pick arbitrarily between two different windows, so the shape the model
+  // cannot express fails the build instead of resolving quietly.
+  const claimed = new Map();
+  for (const site of sites) {
+    for (const cat of site.setCategories) {
+      if (claimed.has(cat)) {
+        throw new Error(
+          `${powerJson.full_name}: proc roll sites ${claimed.get(cat)} and ${site.power} `
+          + `both accept "${cat}" — a proc slotted here has no single window`);
+      }
+      claimed.set(cat, site.power);
+    }
+  }
+  return sites;
+}
+
 // Combat-suppressing events from EVENT_NAME (parser/_enums.py). When an
 // AttribMod's Suppress array lists any of these, the buff is suppressed
 // during combat (the In-Combat toggle in the planner removes it from totals).
@@ -6847,6 +6944,10 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
   // Sparse-false, mirroring how the exporter emits it. See the field doc on
   // `Power.procsAllowed`.
   if (powerJson.procs_allowed === false) power.procsAllowed = false;
+  // …but a kNone power that executes a `ProcSeparately` child still fires
+  // procs — in the child's window, not its own. See collectProcRollSites.
+  const procRollSites = collectProcRollSites(powerJson);
+  if (procRollSites) power.procRollSites = procRollSites;
 
   // Chain / target-cap RPN expressions (bin fields 43b / 38 — Electrical Affinity
   // circuits, Chain Lightning, Gauntlet, …). Raw token lists carried through for
@@ -7693,6 +7794,7 @@ module.exports = {
   extractQuickSnipeData,
   inferAllowedSetCategories,
   inferEffectiveArea,
+  collectProcRollSites,
   normalizeIconPath,
   toKebabCase,
   CATEGORY_MAP,

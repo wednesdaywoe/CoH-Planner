@@ -9,6 +9,7 @@ import { PROC_PPM } from './generated/proc-ppm.generated';
 import { PROC_RESIDUAL_EFFECTS } from './proc-residual-effects';
 import { PROC_VARIABLE_CONTROLS } from './proc-variable-controls';
 import type { ProcOverride } from '../types/build';
+import type { ProcRollSite } from '../types/power';
 
 export type ProcType = 'Proc' | 'Proc120s' | 'Global';
 
@@ -2798,15 +2799,20 @@ export function resolveProcRollGeometry(
 }
 
 /**
- * Whether a PPM proc slotted in this power rolls against it at all — the single
- * place HC's `ProcAllowed kNone` flag is applied, sharing `resolveProcRollGeometry`'s
+ * Whether a PPM proc slotted in this power rolls anywhere — the single place
+ * HC's `ProcAllowed kNone` flag is applied, sharing `resolveProcRollGeometry`'s
  * job of keeping every PPM surface on the same rule.
  *
- * `false` means no PPM chance exists here: the power's recharge window is not a
- * proc window, so any chance computed from it is fiction. See the field doc on
- * `Power.procsAllowed` for the two very different player-facing cases (pet
- * summons, where the proc still rides `CopyBoosts` into the pet's own attacks,
- * versus ordinary powers like Fault where nothing fires).
+ * `kNone` means the power's OWN recharge window is not a proc window, so any
+ * chance computed from it is fiction. On most of the flagged powers that ends
+ * the matter: see the field doc on `Power.procsAllowed` for the pet summons
+ * (where the proc still rides `CopyBoosts` into the pet's own attacks) and the
+ * ordinary attacks where nothing fires.
+ *
+ * On the ten powers that also carry `procRollSites` it does not: HC pairs the
+ * flag with a `ProcSeparately` executed child that rolls in the shell's place,
+ * so the power fires procs — in the child's window. `resolveProcRollSite` picks
+ * which child a given proc reaches.
  *
  * Deliberately says nothing about GLOBAL IOs. LotG +Recharge, Call to Arms
  * +Def and the rest are not rolled — they are always-on auras granted by the
@@ -2814,9 +2820,26 @@ export function resolveProcRollGeometry(
  * `getProcPotential` still counts them.
  */
 export function powerFiresProcs(
-  power: { procsAllowed?: boolean } | null | undefined,
+  power: { procsAllowed?: boolean; procRollSites?: ProcRollSite[] } | null | undefined,
 ): boolean {
-  return power?.procsAllowed !== false;
+  if (power?.procsAllowed !== false) return true;
+  return (power.procRollSites?.length ?? 0) > 0;
+}
+
+/**
+ * The roll site a proc from `setCategory` reaches, or null when it reaches
+ * none — either because the power rolls in its own window (no sites) or
+ * because no child accepts that category.
+ *
+ * At most one site can match: the converter fails the build when two sites of
+ * one power claim the same category, so this never has to choose.
+ */
+export function resolveProcRollSite(
+  sites: ProcRollSite[] | undefined,
+  setCategory: string | undefined,
+): ProcRollSite | null {
+  if (!sites?.length || !setCategory) return null;
+  return sites.find(s => (s.setCategories as string[]).includes(setCategory)) ?? null;
 }
 
 // ============================================================================

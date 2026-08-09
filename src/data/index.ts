@@ -312,6 +312,7 @@ export {
   isProcAlwaysOn,
   resolveProcRollGeometry,
   powerFiresProcs,
+  resolveProcRollSite,
   interpolateProcDamage,
   // PPM calculation functions
   getPPMAreaFactor,

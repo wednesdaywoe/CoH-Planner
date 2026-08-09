@@ -761,6 +761,31 @@ export interface ScaledDamageEntry {
   excludeFromAtMechanic?: boolean;
 }
 
+/**
+ * One executed child that rolls a parent's procs in the parent's place — the
+ * PPM inputs `CalculateModChance` would read off that child, plus the set
+ * categories that decide which slotted procs reach it. See
+ * `Power.procRollSites`.
+ */
+export interface ProcRollSite {
+  /** Full name of the child power, for provenance in the Info panel. */
+  power: string;
+  /** IO set categories this child accepts — the routing key. */
+  setCategories: IOSetCategory[];
+  /** The child's own Click/Toggle/Auto, which picks the schedule branch. */
+  powerType: string;
+  /** The child's own base recharge (s). */
+  baseRecharge: number;
+  /** The child's own cast time (s) — 0 on an instantly-executed child. */
+  castTime: number;
+  /** The child's own AoE radius (ft). */
+  radius: number;
+  /** The child's own arc in RAW radians, as `stats.arc` carries it. */
+  arc: number;
+  /** The child's own `ProcMainTargetOnly`, when it sets one. */
+  procsOnlyOnMainTarget?: boolean;
+}
+
 // ============================================
 // POWER DEFINITION
 // ============================================
@@ -883,11 +908,16 @@ export interface Power {
    *    PET's attacks (this is how Soulbound Allegiance's Build Up proc works in
    *    henchmen). The proc is not dead — its chance simply has nothing to do
    *    with the summon's recharge, which is the number we were reporting.
-   *  - **Ordinary attacks and controls** — Fault, Spring Attack, Whitecap,
-   *    Paralyzing Blast, Shocking Grasp, Shockwaves. Here nothing fires at all.
-   *    These are exactly the long-recharge powers a PPM formula scores as
-   *    perfect proc vehicles (Paralyzing Blast is 240s), which reads as HC
-   *    closing that door deliberately.
+   *  - **Ordinary attacks and controls** — Spring Attack, Paralyzing Blast,
+   *    Shocking Grasp, Shockwaves. Here nothing fires at all. These are exactly
+   *    the long-recharge powers a PPM formula scores as perfect proc vehicles
+   *    (Paralyzing Blast is 240s), which reads as HC closing that door
+   *    deliberately.
+   *
+   * A third group looks like the second and is not: ten powers pair this flag
+   * with a `ProcSeparately` child that rolls in the parent's place. They carry
+   * `procRollSites`, and `powerFiresProcs` reports them as firing — read that
+   * field's doc before treating this one as the last word.
    *
    * Note the contrast with the rains: HC sets this on Burn's patch power
    * (`Pets.Burn.Burn`) and NOT on `Pets.Corruptor_IceStorm.IceStorm` and its
@@ -896,6 +926,27 @@ export interface Power {
    * often that pulse rolls — see `resolveProcContext`.
    */
   procsAllowed?: boolean;
+  /**
+   * Where this power's PPM procs roll when the power itself cannot — present
+   * only on the ten Homecoming powers that pair `ProcAllowed kNone` with a
+   * `ProcSeparately` executed child (Fault ×4 archetypes, Whitecap ×4,
+   * Hypnotizing Lights ×2). Stamped by `collectProcRollSites`.
+   *
+   * `ProcSeparately` is the game's statement that the executed power rolls on
+   * its own, and corpus-wide it appears ONLY under a `kNone` parent, so a site
+   * list never adds a roll to a power that already had one — it moves the one
+   * roll off the shell and onto the child that does the work.
+   *
+   * A proc rolls in the ONE site whose `setCategories` accept its set. The
+   * children partition the parent's categories exactly (Fault's sphere child
+   * takes Knockback/Stuns/Threat Duration, its cone child the damage
+   * categories, no overlap on any archetype copy), which is `CopyBoosts`
+   * giving the child only the boosts the child's own allowed list accepts. A
+   * category the parent lists and no child accepts — Hypnotizing Lights' Sleep,
+   * whose wide child accepts no IO sets at all — reaches no site and fires
+   * nothing.
+   */
+  procRollSites?: ProcRollSite[];
   /** Prerequisite power(s) - logical expression */
   requires?: string;
   /**

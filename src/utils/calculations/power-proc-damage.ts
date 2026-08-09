@@ -14,12 +14,16 @@
  */
 
 import type { Enhancement, IOSetEnhancement } from '@/types';
+import type { ProcRollSite } from '@/types/power';
 import {
   findProcData,
   getProcEffects,
   interpolateProcDamage,
+  arcToDegrees,
+  getIOSet,
   resolveProcRollGeometry,
   resolveProcRollSchedule,
+  resolveProcRollSite,
   calculateScheduledProcChance,
   powerFiresProcs,
 } from '@/data';
@@ -44,9 +48,12 @@ export interface SlottedProcDamageInput {
   /** The power's `ProcMainTargetOnly` flag — when set, its procs roll
    *  single-target despite an AoE radius; see resolveProcRollGeometry. */
   procsOnlyOnMainTarget?: boolean;
-  /** The power's `ProcAllowed` flag. `false` means no PPM proc rolls here at
-   *  all, so the power adds no proc damage; see powerFiresProcs. */
+  /** The power's `ProcAllowed` flag. `false` means the power's own recharge is
+   *  not a proc window; see powerFiresProcs. */
   procsAllowed?: boolean;
+  /** The executed children that roll in a `ProcAllowed kNone` power's place,
+   *  each with its own window and geometry; see `Power.procRollSites`. */
+  procRollSites?: ProcRollSite[];
   /** Click / Toggle / Auto. Auto and Toggle roll on the proc's own 10s period
    *  rather than a recharge window; see resolveProcRollSchedule. */
   powerType?: string;
@@ -69,18 +76,23 @@ export interface SlottedProcDamageInput {
  */
 export function calculateSlottedProcDamagePerCast(input: SlottedProcDamageInput): number {
   const { slots, baseRecharge, castTime, radius, arcDegrees, rechargeEnh, buildLevel } = input;
-  // ProcAllowed kNone (Fault, Spring Attack, every pet summon): the power's
-  // recharge window is not a proc window, so a damage proc slotted here adds
-  // nothing to this cast. Pet summons are the subtle case — the proc does reach
-  // the pet via CopyBoosts, but what it deals there is pet damage fired on the
-  // pet's schedule, not damage on this activation.
+  // ProcAllowed kNone (Spring Attack, every pet summon): the power's recharge
+  // window is not a proc window, so a damage proc slotted here adds nothing to
+  // this cast. Pet summons are the subtle case — the proc does reach the pet
+  // via CopyBoosts, but what it deals there is pet damage fired on the pet's
+  // schedule, not damage on this activation. Fault and its kin are the other
+  // subtle case, and they survive this check: their `procRollSites` children
+  // roll in the shell's place.
   if (!powerFiresProcs(input)) return 0;
+  // The shell's own window, for every proc that is not routed to a child. On a
+  // kNone power it is not a window at all — such a proc must find a site.
+  const shellRollsNothing = input.procsAllowed === false;
   // In a main-target-only power every proc — damage or not — rolls
   // single-target: the AoE radius belongs to a secondary effect (the knockback
   // splash) that the proc never rolls against.
-  const { radius: areaRadius, arcDegrees: areaArc } =
+  const shellGeometry =
     resolveProcRollGeometry(input.procsOnlyOnMainTarget, radius, arcDegrees);
-  const schedule = resolveProcRollSchedule({
+  const shellSchedule = resolveProcRollSchedule({
     powerType: input.powerType,
     baseRecharge,
     castTime,
@@ -107,6 +119,32 @@ export function calculateSlottedProcDamagePerCast(input: SlottedProcDamageInput)
     // levelRange. (@Redlynne report, 2026-06-12 — was using io.level for
     // non-attuned, so Global-IO-Level builds under-counted 10×.)
     const procDmg = interpolateProcDamage(dmg.value, dmg.valueMax, procData.levelRange, buildLevel);
+    // Which window this piece rolls against. `getIOSet(...).type` is the piece's
+    // real game set category — the same key the picker slots by — rather than
+    // `procData.setCategory`, whose spellings drift from the game's ("Defense",
+    // "Brute ATO") and would mis-route on the difference.
+    // Guarded on the site list, not just handed to the resolver: `getIOSet`
+    // reaches into the active dataset, and the ten powers that have sites are
+    // the only reason to pay for that lookup at all.
+    const site = input.procRollSites?.length
+      ? resolveProcRollSite(input.procRollSites, io.setId ? getIOSet(io.setId)?.type : undefined)
+      : null;
+    // A kNone shell with no site for this piece rolls it nowhere: Hypnotizing
+    // Lights lists Sleep, and neither of its children accepts an IO set that
+    // carries a Sleep proc.
+    if (!site && shellRollsNothing) continue;
+    // No site summons a patch, so none of them takes the patchDuration branch.
+    const schedule = site
+      ? resolveProcRollSchedule({
+        powerType: site.powerType,
+        baseRecharge: site.baseRecharge,
+        castTime: site.castTime,
+      })
+      : shellSchedule;
+    const { radius: areaRadius, arcDegrees: areaArc } = site
+      ? resolveProcRollGeometry(
+        site.procsOnlyOnMainTarget, site.radius, arcToDegrees(site.arc) || undefined)
+      : shellGeometry;
     const procChance = calculateScheduledProcChance(
       procData.ppm, schedule, areaRadius, areaArc, rechargeEnh, input.globalRechargeEnh ?? 0,
     );
