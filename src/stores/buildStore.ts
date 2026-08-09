@@ -3130,11 +3130,14 @@ export const useBuildStore = create<BuildStore>()(
           // the correct sequential pick levels (1, 1, 2, 4, 6, ...).
           // This reassigns levels based on category order and selection sequence.
           {
-            const allPowers: { power: SelectedPower; category: string; index: number }[] = [];
+            // `poolIndex` is the only record of which pool a power came from
+            // that survives the global sort below — the sort interleaves pools,
+            // so position in this list stops implying pool membership.
+            const allPowers: { power: SelectedPower; category: string; index: number; poolIndex?: number }[] = [];
             // Exclude auto-granted form sub-powers from level migration
             state.build.primary.powers.filter(p => !p.isAutoGranted).forEach((p, i) => allPowers.push({ power: p, category: 'primary', index: i }));
             state.build.secondary.powers.filter(p => !p.isAutoGranted).forEach((p, i) => allPowers.push({ power: p, category: 'secondary', index: i }));
-            state.build.pools.forEach((pool) => pool.powers.filter(p => !p.isAutoGranted).forEach((p, i) => allPowers.push({ power: p, category: 'pool', index: i })));
+            state.build.pools.forEach((pool, poolIndex) => pool.powers.filter(p => !p.isAutoGranted).forEach((p, i) => allPowers.push({ power: p, category: 'pool', index: i, poolIndex })));
             if (state.build.epicPool) {
               state.build.epicPool.powers.filter(p => !p.isAutoGranted).forEach((p, i) => allPowers.push({ power: p, category: 'epic', index: i }));
             }
@@ -3254,20 +3257,22 @@ export const useBuildStore = create<BuildStore>()(
                   };
                 }
 
-                // Fix pool powers — need to maintain pool grouping. Slice by the
-                // count of powers that were actually COLLECTED from this pool
-                // (auto-granted ones were filtered out), or the window drifts
-                // and powers migrate between pools.
-                const fixedPoolPowers = allPowers.filter((e) => e.category === 'pool').map((e) => e.power);
+                // Fix pool powers — regroup by the pool each power was
+                // collected from. Pools are the one category that is a list OF
+                // lists, so the write-back has to re-partition a list the sort
+                // has reordered; partitioning it positionally would hand each
+                // pool the right COUNT of powers and the wrong ones, which
+                // reads as an intact build that computes low (the engine keys
+                // pool powers `<poolId>/<internalName>` and drops the misses).
+                const fixedPoolPowers = allPowers.filter((e) => e.category === 'pool');
                 if (fixedPoolPowers.length > 0) {
-                  let poolPowerIdx = 0;
-                  state.build.pools = state.build.pools.map((pool) => {
-                    const granted = carryGranted(pool.powers, 'pool');
-                    const count = pool.powers.length - granted.length;
-                    const fixedPowers = fixedPoolPowers.slice(poolPowerIdx, poolPowerIdx + count);
-                    poolPowerIdx += count;
-                    return { ...pool, powers: [...fixedPowers, ...granted] };
-                  });
+                  state.build.pools = state.build.pools.map((pool, poolIndex) => ({
+                    ...pool,
+                    powers: [
+                      ...fixedPoolPowers.filter((e) => e.poolIndex === poolIndex).map((e) => e.power),
+                      ...carryGranted(pool.powers, 'pool'),
+                    ],
+                  }));
                 }
 
                 // Fix epic powers
