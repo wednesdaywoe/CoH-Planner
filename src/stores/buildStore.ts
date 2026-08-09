@@ -341,7 +341,7 @@ function syncBuildDefinitions(build: Build): void {
   type DefShape = Pick<
     SelectedPower,
     | 'name' | 'internalName' | 'effects' | 'icon' | 'powerType' | 'targetType' | 'effectArea'
-    | 'damage' | 'shortHelp'
+    | 'damage' | 'shortHelp' | 'available'
     | 'setsModes' | 'modesRequired' | 'modesDisallowed' | 'modesSuspended' | 'modeVariants'
   >;
   /**
@@ -418,6 +418,11 @@ function syncBuildDefinitions(build: Build): void {
       const needsTargetType = currentDef.targetType !== undefined && currentDef.targetType !== power.targetType;
       const needsEffectArea = currentDef.effectArea !== undefined && currentDef.effectArea !== power.effectArea;
       const needsShortHelp = currentDef.shortHelp !== undefined && currentDef.shortHelp !== power.shortHelp;
+      // `available` is static def metadata like the rest, but its reader is the
+      // pick-level relevel migration (and addPower's minimum-level floor): a
+      // rehydrated power without it has no unlock level, and a relevel that can't
+      // see the unlock can place the power below the level the game offers it at.
+      const needsAvailable = currentDef.available !== undefined && currentDef.available !== power.available;
       // Structural, not reference: these arrive as fresh arrays out of JSON on
       // every rehydrate, so an identity check would report "changed" for every
       // power in every build forever.
@@ -425,7 +430,7 @@ function syncBuildDefinitions(build: Build): void {
       const needsModeGates =
         JSON.stringify(modeGates(currentDef)) !== JSON.stringify(modeGates(power));
       const metadataChanged = needsInternalName || needsEffects || needsIcon || needsPowerType
-        || needsTargetType || needsEffectArea || needsShortHelp || needsDamage || needsModeGates;
+        || needsTargetType || needsEffectArea || needsShortHelp || needsAvailable || needsDamage || needsModeGates;
       // Judge the toggle on the REPAIRED power, not the stored one — the whole point
       // of the metadata sync above is that the stored copy may be missing the fields
       // `shouldShowToggle` reads.
@@ -439,6 +444,7 @@ function syncBuildDefinitions(build: Build): void {
             ...(needsTargetType ? { targetType: currentDef.targetType } : {}),
             ...(needsEffectArea ? { effectArea: currentDef.effectArea } : {}),
             ...(needsShortHelp ? { shortHelp: currentDef.shortHelp } : {}),
+            ...(needsAvailable ? { available: currentDef.available } : {}),
             ...(needsDamage ? { damage: currentDef.damage } : {}),
             ...(needsModeGates ? modeGates(currentDef) : {}),
           }
@@ -1351,6 +1357,27 @@ export function calculateCorrectLevel(build: Build): number {
   return 50;
 }
 
+/**
+ * The power character creation picks for the player: the secondary set's first
+ * power, bought by the game itself with no input — "no choice, buy first power"
+ * (Game/src/UI/Hybrid/uiPower.c) — and re-bought identically on respec
+ * ("the user really doesn't have a choice", uiReSpec.c). Every buildable
+ * character owns it at level 1, so no OTHER secondary power may hold a level-1
+ * pick. Availability data cannot express this: the first two powers of a blast
+ * secondary both read `available 0`, which is how a Defender build shipped
+ * Ice Blast on the level-1 pick with no Ice Bolt anywhere.
+ *
+ * Branch-carrying archetypes (the VEATs) are the game's own exemption: their
+ * respec never forces the base secondary (uiReSpec.c skips the auto-buy).
+ * Returns `null` whenever the rule doesn't bind.
+ */
+export function forcedSecondaryName(build: Build): string | null {
+  if (!build.secondary.id) return null;
+  const archetype = build.archetype.id ? getArchetype(build.archetype.id) : null;
+  if (archetype?.branches && Object.keys(archetype.branches).length > 0) return null;
+  return getPowerset(build.secondary.id)?.powers[0]?.internalName ?? null;
+}
+
 // ============================================
 // STORE CREATION
 // ============================================
@@ -1478,11 +1505,22 @@ export const useBuildStore = create<BuildStore>()(
             secondary: {
               id: powersetId,
               name: powerset.name,
-              powers: [],
+              powers: [] as SelectedPower[],
             },
             slotOrder: state.build.slotOrder.filter((e) => !removedNames.has(e.powerName)),
             procOverrides: pruneProcOverridesForRemovedPowers(state.build.procOverrides, removedNames),
           };
+
+          // The game buys the set's first power itself at creation — "no choice,
+          // buy first power" (Hybrid/uiPower.c) — so choosing the set brings that
+          // power at level 1. VEATs are exempt (forcedSecondaryName).
+          const forced = forcedSecondaryName(newBuild);
+          const forcedDef = forced ? powerset.powers.find((p) => p.internalName === forced) : null;
+          if (forcedDef) {
+            newBuild.secondary.powers = [
+              { ...forcedDef, powerSet: powersetId, level: 1, slots: [null] },
+            ];
+          }
 
           // Auto-grant inherent powers if both powersets are now selected
           if (newBuild.primary.id && newBuild.inherents.length === 0) {
@@ -1569,8 +1607,12 @@ export const useBuildStore = create<BuildStore>()(
           // This allows picking powers in any order — each gets placed at the
           // earliest legal level, and the chronological view shows them correctly.
           if (category !== 'inherent') {
+            // The level-1 secondary pick belongs to the creation-forced first
+            // power (forcedSecondaryName) — every other secondary floors at 2.
+            const forcedFirst = category === 'secondary' ? forcedSecondaryName(state.build) : null;
             const categoryMin = category === 'pool' ? POOL_UNLOCK_LEVEL
               : category === 'epic' ? EPIC_POOL_LEVEL
+              : forcedFirst && power.internalName !== forcedFirst ? 2
               : 1;
             const minLevel = Math.max((power.available ?? 0) + 1, categoryMin);
             const nextSequential = calculateCorrectLevel(state.build);
@@ -1697,6 +1739,9 @@ export const useBuildStore = create<BuildStore>()(
       },
 
       removePower: (category, powerName) => {
+        // The game refuses to drop the creation-forced secondary — even a
+        // respec re-buys it (uiReSpec.c) — so the planner refuses too.
+        if (category === 'secondary' && powerName === forcedSecondaryName(get().build)) return;
         historyCheckpoint();
         set((state) => {
           // Inherent: only allow removal of unlocked powers
@@ -1731,6 +1776,12 @@ export const useBuildStore = create<BuildStore>()(
       },
 
       movePowerLevel: (category, powerName, newLevel) => {
+        // The creation-forced secondary lives at level 1, always.
+        if (
+          newLevel !== 1
+          && category === 'secondary'
+          && powerName === forcedSecondaryName(get().build)
+        ) return;
         historyCheckpoint();
         set((state) => ({
           build: applyPowerUpdate(state.build, category, (powers) =>
@@ -1740,6 +1791,16 @@ export const useBuildStore = create<BuildStore>()(
       },
 
       swapPowerLevels: (powerNameA, categoryA, powerNameB, categoryB) => {
+        // A swap that would carry the creation-forced secondary off level 1 is
+        // a pick the game cannot produce.
+        {
+          const forced = forcedSecondaryName(get().build);
+          if (
+            forced
+            && ((categoryA === 'secondary' && powerNameA === forced)
+              || (categoryB === 'secondary' && powerNameB === forced))
+          ) return;
+        }
         historyCheckpoint();
         set((state) => {
           // Resolve STRICTLY within the given category — `findPower`'s bare-name
@@ -3179,10 +3240,35 @@ export const useBuildStore = create<BuildStore>()(
               state.build.epicPool.powers.filter(p => !p.isAutoGranted).forEach((p, i) => allPowers.push({ power: p, category: 'epic', index: i }));
             }
 
+            // The floor addPower applies at pick time, re-applied here: a power may
+            // not sit below max(available + 1, its category's unlock floor). The
+            // def sync above has already re-attached `available`, so the floor is
+            // readable even though the slim serializer drops it. Secondaries other
+            // than the creation-forced first power floor at 2 (forcedSecondaryName)
+            // — which also makes the level-1 extraction below select only the
+            // forced power for the level-1 secondary slot, since nothing else in
+            // the category can reach minPickLevel <= 1.
+            const forcedSecondary = forcedSecondaryName(state.build);
+            const minPickLevel = (entry: { power: SelectedPower; category: string }): number => {
+              const categoryMin = entry.category === 'pool' ? POOL_UNLOCK_LEVEL
+                : entry.category === 'epic' ? EPIC_POOL_LEVEL
+                : entry.category === 'secondary'
+                    && forcedSecondary
+                    && entry.power.internalName !== forcedSecondary ? 2
+                : 1;
+              return Math.max((entry.power.available ?? 0) + 1, categoryMin);
+            };
+
             // Check if any non-inherent power has a level that isn't a valid pick level,
             // OR if there are duplicate levels (e.g., 6 primaries all at level 1)
             const pickLevelSet = new Set(POWER_PICK_LEVELS);
             const hasInvalidLevels = allPowers.some((entry) => !pickLevelSet.has(entry.power.level));
+
+            // A level that IS a valid pick level can still sit below the level the
+            // game first offers the power — the earlier positional relevel produced
+            // exactly that (a Defender's Distortion Field on the level-6 pick when
+            // the game offers it at 8). Such builds re-enter the relevel here.
+            const hasBelowUnlockLevels = allPowers.some((entry) => entry.power.level < minPickLevel(entry));
 
             // Detect duplicate levels: count how many powers occupy each level
             // Level 1 allows 2 powers (primary + secondary), all others allow 1
@@ -3198,11 +3284,14 @@ export const useBuildStore = create<BuildStore>()(
               }
             }
 
-            if ((hasInvalidLevels || hasDuplicateLevels) && allPowers.length > 0) {
+            if ((hasInvalidLevels || hasDuplicateLevels || hasBelowUnlockLevels) && allPowers.length > 0) {
               // Level 1 is special: one primary + one secondary. Pull those out first
-              // to guarantee they get level 1, regardless of how many of each exist.
-              const firstPrimaryIdx = allPowers.findIndex((e) => e.category === 'primary');
-              const firstSecondaryIdx = allPowers.findIndex((e) => e.category === 'secondary');
+              // to guarantee they get level 1, regardless of how many of each exist —
+              // but only powers the game offers at level 1: a partial build whose
+              // earliest surviving power is a high-tier pick keeps it at its unlock
+              // level rather than dragging it to 1.
+              const firstPrimaryIdx = allPowers.findIndex((e) => e.category === 'primary' && minPickLevel(e) <= 1);
+              const firstSecondaryIdx = allPowers.findIndex((e) => e.category === 'secondary' && minPickLevel(e) <= 1);
 
               const level1Powers: typeof allPowers = [];
               const restPowers: typeof allPowers = [];
@@ -3233,15 +3322,32 @@ export const useBuildStore = create<BuildStore>()(
               // Recombine: level 1 powers first, then the rest
               const sorted = [...level1Powers, ...restPowers];
 
-              // Assign correct pick levels sequentially
-              // Level 1 gets 2 picks (primary + secondary), remaining levels get 1 each
-              const pickSlots = [1, 1, ...POWER_PICK_LEVELS.slice(1)]; // [1, 1, 2, 4, 6, 8, ...]
+              // Assign pick levels sequentially: the level-1 pair first, then each
+              // remaining power takes the EARLIEST free pick level at or above its
+              // own floor — the same placement addPower's out-of-order path makes,
+              // so a relevelled build is one the picker could have produced click
+              // by click. Positional stamping (slot index → level) ignored the
+              // floor and produced picks the game refuses to grant.
               let anyChanged = false;
-              sorted.forEach((entry, idx) => {
-                const correctLevel = idx < pickSlots.length ? pickSlots[idx] : POWER_PICK_LEVELS[POWER_PICK_LEVELS.length - 1];
-                if (entry.power.level !== correctLevel) {
-                  entry.power = { ...entry.power, level: correctLevel };
+              const assign = (entry: (typeof allPowers)[number], level: number) => {
+                if (entry.power.level !== level) {
+                  entry.power = { ...entry.power, level };
                   anyChanged = true;
+                }
+              };
+              level1Powers.forEach((entry) => assign(entry, 1));
+              const laterSlots = POWER_PICK_LEVELS.slice(1);
+              const slotFilled = laterSlots.map(() => false);
+              restPowers.forEach((entry) => {
+                const floor = minPickLevel(entry);
+                const slot = laterSlots.findIndex((level, i) => !slotFilled[i] && level >= floor);
+                if (slot === -1) {
+                  // More powers than legal picks — overflow pins to the last pick
+                  // level, exactly as the positional stamping overflowed before.
+                  assign(entry, POWER_PICK_LEVELS[POWER_PICK_LEVELS.length - 1]);
+                } else {
+                  slotFilled[slot] = true;
+                  assign(entry, laterSlots[slot]);
                 }
               });
 

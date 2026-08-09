@@ -50,6 +50,25 @@ export function reconcileLength(
   return [...slots, ...new Array<Enhancement | null>(slotCount - slots.length).fill(null)];
 }
 
+/**
+ * Apply one slot edit to a saved row, against whatever the store holds *now*.
+ * Kept pure and separate from the component because it must run off the store's
+ * latest value rather than a render snapshot: slotting a multi-piece selection
+ * calls this once per piece within a single tick, and a snapshot-based write
+ * would land only the last piece.
+ */
+export function applySlotEditToStoredCopies(
+  stored: ComparisonCopy[],
+  copyId: number,
+  slotCount: number,
+  mapSlots: (slots: (Enhancement | null)[]) => (Enhancement | null)[]
+): ComparisonCopy[] {
+  return stored.map((c) => {
+    const slots = reconcileLength(c.slots, slotCount);
+    return c.id === copyId ? { ...c, slots: mapSlots(slots) } : { ...c, slots };
+  });
+}
+
 export function CompareSlottingModal() {
   const isOpen = useUIStore((s) => s.compareSlottingOpen);
   const compareTarget = useUIStore((s) => s.compareSlottingPower);
@@ -162,9 +181,12 @@ export function CompareSlottingModal() {
     ];
   }, [selectedPower, currentSlots, storedCopies]);
 
-  // Write the saved rows back. Always fed from `copies`, which is already
-  // length-reconciled, so a stale-length copy is repaired the first time it
-  // is touched rather than being written back short.
+  // Replace the whole saved-row list — adding, duplicating and removing rows,
+  // each of which is one write per gesture. Always fed from `copies`, which is
+  // already length-reconciled, so a stale-length copy is repaired the first time
+  // it is touched rather than being written back short. Slot edits do NOT come
+  // through here: they can arrive several to a tick, so they go through the
+  // store's updater form instead.
   const commitCopies = useCallback((next: ComparisonCopy[]) => {
     if (targetKey) setStoredCopies(targetKey, next);
   }, [targetKey, setStoredCopies]);
@@ -177,10 +199,12 @@ export function CompareSlottingModal() {
       setCurrentSlots((prev) => mapSlots(prev));
       return;
     }
-    commitCopies(
-      copies.slice(1).map((c) => (c.id === copyId ? { ...c, slots: mapSlots(c.slots) } : c))
+    if (!targetKey || !selectedPower) return;
+    const slotCount = selectedPower.slots.length;
+    setStoredCopies(targetKey, (prev) =>
+      applySlotEditToStoredCopies(prev, copyId, slotCount, mapSlots)
     );
-  }, [copies, commitCopies]);
+  }, [targetKey, selectedPower, setStoredCopies]);
 
   // Computed values shared across copies. Strength folded in for the same reason
   // the InfoPanel and the picker tooltip do it — the +Strength self-buffs are part

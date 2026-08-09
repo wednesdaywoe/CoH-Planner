@@ -721,8 +721,14 @@ interface UIActions {
   openCompareSlotting: (powerName?: string, powerSet?: string) => void;
   closeCompareSlotting: () => void;
   /** Replace a power's saved comparison copies. An empty list drops the entry
-   *  entirely, so powers the user has stopped comparing don't accumulate. */
-  setCompareSlottingCopies: (key: string, copies: ComparisonCopy[]) => void;
+   *  entirely, so powers the user has stopped comparing don't accumulate.
+   *  Takes an updater as well as a list: a multi-slot pick writes once per
+   *  piece in one tick, and a caller passing a list computed from its own
+   *  render snapshot would have every write but the last overwritten. */
+  setCompareSlottingCopies: (
+    key: string,
+    copies: ComparisonCopy[] | ((prev: ComparisonCopy[]) => ComparisonCopy[])
+  ) => void;
   clearCompareSlottingCopies: () => void;
 
   // Power View Mode
@@ -1755,9 +1761,13 @@ export const useUIStore = create<UIStore>()(
 
       setCompareSlottingCopies: (key, copies) =>
         set((state) => {
+          const resolved =
+            typeof copies === 'function'
+              ? copies(state.compareSlottingCopies[key] ?? [])
+              : copies;
           const next = { ...state.compareSlottingCopies };
-          if (copies.length === 0) delete next[key];
-          else next[key] = copies;
+          if (resolved.length === 0) delete next[key];
+          else next[key] = resolved;
           return { compareSlottingCopies: next };
         }),
 
