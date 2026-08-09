@@ -144,8 +144,31 @@ describe('pick-level relevelling honors unlock levels', () => {
     const loaded = await boot(b);
     const levels = pickedLevels(loaded);
     expect(levels.get('Chrono_Shift')).toBeGreaterThanOrEqual(UNLOCKS.Chrono_Shift);
-    // Ice Blast is the set's SECOND power; level 1 belongs to the creation-forced
-    // first power (Ice Bolt), so the relevel floors it at 2 (forcedSecondaryName).
-    expect(levels.get('Ice_Blast')).toBe(2);
+    // Ice Blast is the set's tier-2 power, and a legal level-1 pick: Homecoming
+    // opened the choice at creation in i27 page 5, so nothing forces Ice Bolt
+    // ahead of it. The lone secondary takes the level-1 secondary pick.
+    expect(levels.get('Ice_Blast')).toBe(1);
+  });
+
+  it('re-enters when one category holds both level-1 picks', async () => {
+    const b = createEmptyBuild('homecoming');
+    b.archetype = { id: 'defender', name: 'Defender', stats: null, inherent: null } as never;
+    b.level = 50;
+    b.primary = { id: 'defender/time-manipulation', name: 'Time Manipulation', powers: [
+      stub('Time_Crawl', 'defender/time-manipulation', 2),
+    ] } as never;
+    // Both level-1 picks spent on one category — every level a valid pick level
+    // and no level crowded globally, so only the per-category count sees it.
+    b.secondary = { id: 'defender/ice-blast', name: 'Ice Blast', powers: [
+      stub('Ice_Bolt', 'defender/ice-blast', 1),
+      stub('Ice_Blast', 'defender/ice-blast', 1),
+    ] } as never;
+    const loaded = await boot(b);
+    const secondariesAtOne = loaded.secondary.powers.filter((p) => p.level === 1);
+    expect(secondariesAtOne, 'level 1 holds one secondary pick, never two').toHaveLength(1);
+    const levels = pickedLevels(loaded);
+    expectLegal(levels);
+    const beyondOne = [...levels.values()].filter((l) => l !== 1);
+    expect(new Set(beyondOne).size).toBe(beyondOne.length);
   });
 });

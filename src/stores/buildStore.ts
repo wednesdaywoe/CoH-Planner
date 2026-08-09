@@ -1358,24 +1358,15 @@ export function calculateCorrectLevel(build: Build): number {
 }
 
 /**
- * The power character creation picks for the player: the secondary set's first
- * power, bought by the game itself with no input — "no choice, buy first power"
- * (Game/src/UI/Hybrid/uiPower.c) — and re-bought identically on respec
- * ("the user really doesn't have a choice", uiReSpec.c). Every buildable
- * character owns it at level 1, so no OTHER secondary power may hold a level-1
- * pick. Availability data cannot express this: the first two powers of a blast
- * secondary both read `available 0`, which is how a Defender build shipped
- * Ice Blast on the level-1 pick with no Ice Bolt anywhere.
- *
- * Branch-carrying archetypes (the VEATs) are the game's own exemption: their
- * respec never forces the base secondary (uiReSpec.c skips the auto-buy).
- * Returns `null` whenever the rule doesn't bind.
+ * Whether a category already owns its level-1 pick. Level 1 is character
+ * creation: exactly one primary and one secondary pick. WHICH power fills each
+ * is the player's choice among whatever the set offers at level 1 — Homecoming
+ * opened the secondary's tier-2 power at creation in Issue 27 Page 5, retiring
+ * the old forced first pick — but the count still holds, so once a category
+ * holds a level-1 power the rest of that category floors at 2.
  */
-export function forcedSecondaryName(build: Build): string | null {
-  if (!build.secondary.id) return null;
-  const archetype = build.archetype.id ? getArchetype(build.archetype.id) : null;
-  if (archetype?.branches && Object.keys(archetype.branches).length > 0) return null;
-  return getPowerset(build.secondary.id)?.powers[0]?.internalName ?? null;
+export function categoryOwnsLevelOne(build: Build, category: 'primary' | 'secondary'): boolean {
+  return build[category].powers.some((p) => !p.isAutoGranted && p.level === 1);
 }
 
 // ============================================
@@ -1505,22 +1496,11 @@ export const useBuildStore = create<BuildStore>()(
             secondary: {
               id: powersetId,
               name: powerset.name,
-              powers: [] as SelectedPower[],
+              powers: [],
             },
             slotOrder: state.build.slotOrder.filter((e) => !removedNames.has(e.powerName)),
             procOverrides: pruneProcOverridesForRemovedPowers(state.build.procOverrides, removedNames),
           };
-
-          // The game buys the set's first power itself at creation — "no choice,
-          // buy first power" (Hybrid/uiPower.c) — so choosing the set brings that
-          // power at level 1. VEATs are exempt (forcedSecondaryName).
-          const forced = forcedSecondaryName(newBuild);
-          const forcedDef = forced ? powerset.powers.find((p) => p.internalName === forced) : null;
-          if (forcedDef) {
-            newBuild.secondary.powers = [
-              { ...forcedDef, powerSet: powersetId, level: 1, slots: [null] },
-            ];
-          }
 
           // Auto-grant inherent powers if both powersets are now selected
           if (newBuild.primary.id && newBuild.inherents.length === 0) {
@@ -1607,12 +1587,12 @@ export const useBuildStore = create<BuildStore>()(
           // This allows picking powers in any order — each gets placed at the
           // earliest legal level, and the chronological view shows them correctly.
           if (category !== 'inherent') {
-            // The level-1 secondary pick belongs to the creation-forced first
-            // power (forcedSecondaryName) — every other secondary floors at 2.
-            const forcedFirst = category === 'secondary' ? forcedSecondaryName(state.build) : null;
+            // Level 1 is creation: one primary pick and one secondary pick,
+            // exactly. Once this category owns its level-1 power, the rest of
+            // the category floors at 2 (categoryOwnsLevelOne).
             const categoryMin = category === 'pool' ? POOL_UNLOCK_LEVEL
               : category === 'epic' ? EPIC_POOL_LEVEL
-              : forcedFirst && power.internalName !== forcedFirst ? 2
+              : categoryOwnsLevelOne(state.build, category) ? 2
               : 1;
             const minLevel = Math.max((power.available ?? 0) + 1, categoryMin);
             const nextSequential = calculateCorrectLevel(state.build);
@@ -1739,9 +1719,6 @@ export const useBuildStore = create<BuildStore>()(
       },
 
       removePower: (category, powerName) => {
-        // The game refuses to drop the creation-forced secondary — even a
-        // respec re-buys it (uiReSpec.c) — so the planner refuses too.
-        if (category === 'secondary' && powerName === forcedSecondaryName(get().build)) return;
         historyCheckpoint();
         set((state) => {
           // Inherent: only allow removal of unlocked powers
@@ -1776,12 +1753,6 @@ export const useBuildStore = create<BuildStore>()(
       },
 
       movePowerLevel: (category, powerName, newLevel) => {
-        // The creation-forced secondary lives at level 1, always.
-        if (
-          newLevel !== 1
-          && category === 'secondary'
-          && powerName === forcedSecondaryName(get().build)
-        ) return;
         historyCheckpoint();
         set((state) => ({
           build: applyPowerUpdate(state.build, category, (powers) =>
@@ -1791,14 +1762,25 @@ export const useBuildStore = create<BuildStore>()(
       },
 
       swapPowerLevels: (powerNameA, categoryA, powerNameB, categoryB) => {
-        // A swap that would carry the creation-forced secondary off level 1 is
-        // a pick the game cannot produce.
-        {
-          const forced = forcedSecondaryName(get().build);
+        // Level 1 holds one primary and one secondary pick. A cross-category
+        // swap moving a power onto level 1 would hand its category a SECOND
+        // level-1 pick whenever that category's own is not part of the swap —
+        // a state the game cannot produce — so that swap is refused. Same-
+        // category swaps only exchange levels the category already holds.
+        if (categoryA !== categoryB) {
+          const build = get().build;
+          const foundA = findPowerInCategory(build, powerNameA, categoryA);
+          const foundB = findPowerInCategory(build, powerNameB, categoryB);
+          const wouldCrowdLevelOne = (
+            incomingCategory: string,
+            landingLevel: number | undefined,
+          ) =>
+            landingLevel === 1
+            && (incomingCategory === 'primary' || incomingCategory === 'secondary')
+            && categoryOwnsLevelOne(build, incomingCategory);
           if (
-            forced
-            && ((categoryA === 'secondary' && powerNameA === forced)
-              || (categoryB === 'secondary' && powerNameB === forced))
+            wouldCrowdLevelOne(categoryA, foundB?.power.level)
+            || wouldCrowdLevelOne(categoryB, foundA?.power.level)
           ) return;
         }
         historyCheckpoint();
@@ -3243,18 +3225,10 @@ export const useBuildStore = create<BuildStore>()(
             // The floor addPower applies at pick time, re-applied here: a power may
             // not sit below max(available + 1, its category's unlock floor). The
             // def sync above has already re-attached `available`, so the floor is
-            // readable even though the slim serializer drops it. Secondaries other
-            // than the creation-forced first power floor at 2 (forcedSecondaryName)
-            // — which also makes the level-1 extraction below select only the
-            // forced power for the level-1 secondary slot, since nothing else in
-            // the category can reach minPickLevel <= 1.
-            const forcedSecondary = forcedSecondaryName(state.build);
+            // readable even though the slim serializer drops it.
             const minPickLevel = (entry: { power: SelectedPower; category: string }): number => {
               const categoryMin = entry.category === 'pool' ? POOL_UNLOCK_LEVEL
                 : entry.category === 'epic' ? EPIC_POOL_LEVEL
-                : entry.category === 'secondary'
-                    && forcedSecondary
-                    && entry.power.internalName !== forcedSecondary ? 2
                 : 1;
               return Math.max((entry.power.available ?? 0) + 1, categoryMin);
             };
@@ -3270,18 +3244,18 @@ export const useBuildStore = create<BuildStore>()(
             // the game offers it at 8). Such builds re-enter the relevel here.
             const hasBelowUnlockLevels = allPowers.some((entry) => entry.power.level < minPickLevel(entry));
 
-            // Detect duplicate levels: count how many powers occupy each level
-            // Level 1 allows 2 powers (primary + secondary), all others allow 1
+            // Detect duplicate levels: count how many powers occupy each pick.
+            // Level 1 holds two picks, but one PRIMARY and one SECONDARY — two
+            // level-1 powers from a single category are as impossible as two
+            // powers anywhere else — so its occupancy counts per category.
             let hasDuplicateLevels = false;
             if (!hasInvalidLevels && allPowers.length > 0) {
-              const levelCounts = new Map<number, number>();
+              const slotCounts = new Map<string, number>();
               for (const entry of allPowers) {
-                levelCounts.set(entry.power.level, (levelCounts.get(entry.power.level) || 0) + 1);
+                const slot = entry.power.level === 1 ? `1:${entry.category}` : `${entry.power.level}`;
+                slotCounts.set(slot, (slotCounts.get(slot) || 0) + 1);
               }
-              for (const [level, count] of levelCounts) {
-                if (level === 1 && count > 2) { hasDuplicateLevels = true; break; }
-                if (level !== 1 && count > 1) { hasDuplicateLevels = true; break; }
-              }
+              hasDuplicateLevels = [...slotCounts.values()].some((count) => count > 1);
             }
 
             if ((hasInvalidLevels || hasDuplicateLevels || hasBelowUnlockLevels) && allPowers.length > 0) {
