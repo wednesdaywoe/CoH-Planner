@@ -595,6 +595,11 @@
       "id": "enh-compare-modal",
       "date": "2026-08-09",
       "preview": "Fix for the slotting comparisonal tool failing to allow multi-selection"
+    },
+    {
+      "id": "scrapper-crit-own-rows",
+      "date": "2026-08-09",
+      "preview": "The \"w/ Crit\" column now shows what a critical hit actually deals: the power's o"
     }
   ]
 }
