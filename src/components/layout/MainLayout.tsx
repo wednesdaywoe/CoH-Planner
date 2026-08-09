@@ -9,6 +9,7 @@ import { StatsDashboard } from './StatsDashboard';
 import { UpdateBanner } from './UpdateBanner';
 import { StatusBanner } from './StatusBanner';
 import { EngineErrorBanner } from './EngineErrorBanner';
+import { CalcErrorBanner } from './CalcErrorBanner';
 import { RuleOf5Banner } from './RuleOf5Banner';
 import { ExemplarModeBanner } from './ExemplarModeBanner';
 import { MobileBottomNav } from './MobileBottomNav';
@@ -80,6 +81,7 @@ export function MainLayout({ children }: MainLayoutProps) {
       style={applyZoom ? { zoom: uiScale, overflowX: 'clip' as const } : undefined}
     >
       <EngineErrorBanner />
+      <CalcErrorBanner />
       <StatusBanner active={activeStatus} />
       <UpdateBanner />
       <Header />

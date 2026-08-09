@@ -25,6 +25,7 @@ import { ACCOLADES } from '@/data/accolades';
 import type { CharacterCalculationResult } from '@/utils/calculations';
 import { toCharacterStateJson, type AdapterCalcContext } from './characterStateAdapter';
 import { recalcJson } from './engine';
+import { useEngineStore, EMPTY_CALC_ERRORS, type CalcErrorReport } from './engineStore';
 import {
   mapStats,
   mapGlobal,
@@ -66,9 +67,20 @@ function powerNameResolver(build: Build): PowerNameResolver {
   add(build.epicPool?.powers);
   add(build.inherents);
   const accoladeName = new Map(ACCOLADES.map((a) => [a.id, a.name]));
+  // Second-chance lookup on the internal name alone, kept only where it is unambiguous
+  // within this build. It answers the case the primary key cannot: the adapter addresses a
+  // pool power by its POOL id while `powerSet` is stamped from the set the power was picked
+  // from, so a build whose pool grouping is wrong misses `byKey` for every pool power — and
+  // that build is precisely the one whose name needs printing in the calc-error banner.
+  const byInternal = new Map<string, string | null>();
+  for (const [key, name] of byKey) {
+    const internal = key.slice(key.indexOf('\0') + 1);
+    byInternal.set(internal, byInternal.has(internal) ? null : name); // null = ambiguous
+  }
   return (ref) =>
     byKey.get(`${ref.power_set}\0${ref.power_internal_name}`) ??
     accoladeName.get(ref.power_internal_name.toLowerCase()) ??
+    byInternal.get(ref.power_internal_name) ??
     ref.power_internal_name;
 }
 
@@ -86,9 +98,57 @@ function incarnateNameResolver(build: Build): IncarnateNameResolver {
 }
 
 /**
+ * `selected power <powerset>/<internalName> is not in this dataset — …`, the one calc error
+ * a user can act on: a power they picked that this dataset cannot resolve, so it contributes
+ * nothing to any total while still rendering as a normal card. Matched on the message
+ * because `CalcError` carries no structured fields; a message that stops matching costs the
+ * banner its power NAMES, never its warning — `classifyCalcErrors` falls back to counting.
+ */
+const MISSING_SELECTED_POWER = /^selected power (\S+?)\/(\S+?) is not in this dataset/;
+
+/**
+ * Split the engine's calc errors into the part worth naming and the part worth counting.
+ * Exported for its own test — the regex above is the fragile joint.
+ */
+export function classifyCalcErrors(
+  errors: { context: string; detail: string }[] | undefined,
+  resolveName: PowerNameResolver
+): CalcErrorReport {
+  if (!errors?.length) return EMPTY_CALC_ERRORS;
+  const missingPowers: string[] = [];
+  let allMissingPowers = true;
+  for (const e of errors) {
+    const m = e.context === 'gather' ? MISSING_SELECTED_POWER.exec(e.detail) : null;
+    if (m) {
+      missingPowers.push(resolveName({ power_set: m[1], power_internal_name: m[2] }));
+    } else {
+      allMissingPowers = false;
+    }
+  }
+  return {
+    lines: errors.map((e) => `${e.context} — ${e.detail}`),
+    missingPowers,
+    allMissingPowers,
+  };
+}
+
+/** Log every calc error (fail-loud) and hand the UI its banner copy. */
+function reportCalcErrors(
+  errors: { context: string; detail: string }[] | undefined,
+  resolveName: PowerNameResolver
+): void {
+  for (const e of errors ?? []) console.error(`[engine] ${e.context}: ${e.detail}`);
+  const report = classifyCalcErrors(errors, resolveName);
+  // Deferred for the same reason as `setError` in `calculateCharacterTotals`: this runs
+  // inside a useMemo, and a zustand write during render warns.
+  queueMicrotask(() => useEngineStore.getState().setCalcErrors(report));
+}
+
+/**
  * Run the build through the engine and reshape to the beta result. Returns `null` when the
  * dataset isn't loaded yet (boot) — the caller substitutes an empty result until then.
- * Any engine `errors` are logged (fail-loud) but do not blank the totals.
+ * Any engine `errors` are logged AND surfaced in the calc-error banner (fail-loud) but do
+ * not blank the totals.
  */
 export function engineCalculate(build: Build, ctx: AdapterCalcContext): CharacterCalculationResult | null {
   const stateJson = toCharacterStateJson(build, ctx);
@@ -96,12 +156,8 @@ export function engineCalculate(build: Build, ctx: AdapterCalcContext): Characte
   if (out === null) return null;
 
   const totals = JSON.parse(out) as EngineTotals;
-  if (totals.bonuses.errors?.length) {
-    for (const e of totals.bonuses.errors) {
-      console.error(`[engine] ${e.context}: ${e.detail}`);
-    }
-  }
   const resolveName = powerNameResolver(build);
+  reportCalcErrors(totals.bonuses.errors, resolveName);
   const breakdown = mapSetBonusBreakdown(totals.set_bonus_tracking, resolveName);
   addProcBreakdown(breakdown, totals.proc_breakdown, resolveName);
   addBuffPetBreakdown(breakdown, totals.buff_pet_breakdown, resolveName);
