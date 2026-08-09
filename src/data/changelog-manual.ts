@@ -37,8 +37,9 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
     date: '2026-08-09',
 
     items: [
-      { id: 'pool-powers-wrong-pool-on-reload', message: 'Fixed a build losing set bonuses after a reload while still looking completely intact. Pool powers could be filed into the wrong pool container, which left every power, slot and enhancement on screen exactly as you left them and quietly dropped their contribution from the totals. One level-50 Defender read +205% Recharge instead of +227.5%, and 32% melee defense instead of 45%. If a build has looked weaker than you remember, reload it now and check.', type: 'fix' },
-      { id: 'calc-error-banner', message: 'When part of a build cannot be calculated, the planner now says so at the top of the page instead of only writing it to the browser console. If a power in your build is not in the current server\'s data, the warning names it. Previously the totals just came out short with nothing to explain why.', type: 'feat' },
+      { id: 'pool-powers-wrong-pool-on-reload', message: 'Fix for a nasty issue causing builds losing set bonuses after a reload while still looking completely intact. Pool powers could be filed into the wrong pool container, which left every power, slot and enhancement on screen exactly as you left them but quietly dropped their contribution from totals. If a build looks weaker than you remember, try reloading it now and check.', type: 'fix' },
+      { id: 'calc-error-banner', message: 'As a response to the error above: When part of a build cannot be calculated, the planner now shows a warning instead of only writing it to the browser console.', type: 'feat' },
+      { id: 'specialized-pool-exclusion-five', message: 'The game allows only one Specialized power pool per build, and the planner was only enforcing that across three of the five: Gadgetry and Utility Belt were missing, so a Rebirth or Thunderspy build could take two or three of them at once. All five are mutually exclusive now. Homecoming was never affected, since it does not release those two pools.', type: 'fix' },
     ]
   },
   {
