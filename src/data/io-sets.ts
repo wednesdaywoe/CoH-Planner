@@ -257,7 +257,7 @@ export function getAllIOSets(): IOSetRegistry {
   return _activeRegistry();
 }
 
-const _modalSizeCache = new Map<string, number>();
+const _commonSizeCache = new Map<string, number>();
 
 /**
  * The piece count most of this dataset's sets have (Homecoming: 6, at 169 of 227).
@@ -268,9 +268,9 @@ const _modalSizeCache = new Map<string, number>();
  * Computed over the whole catalogue, not a per-power slice, so a given set
  * carries the same mark in every power's picker.
  */
-export function getModalSetSize(): number {
+export function getMostCommonSetSize(): number {
   const ds = getActiveDataset();
-  const cached = _modalSizeCache.get(ds.id);
+  const cached = _commonSizeCache.get(ds.id);
   if (cached !== undefined) return cached;
 
   const tally = new Map<number, number>();
@@ -278,16 +278,16 @@ export function getModalSetSize(): number {
     const n = set.pieces.length;
     tally.set(n, (tally.get(n) ?? 0) + 1);
   }
-  let modal = 0;
+  let commonest = 0;
   let best = -1;
   for (const [size, count] of tally) {
     if (count > best) {
       best = count;
-      modal = size;
+      commonest = size;
     }
   }
-  _modalSizeCache.set(ds.id, modal);
-  return modal;
+  _commonSizeCache.set(ds.id, commonest);
+  return commonest;
 }
 
 // ============================================

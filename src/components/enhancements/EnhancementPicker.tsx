@@ -10,7 +10,7 @@
 import { useState, useMemo, useEffect, useRef } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
 import {
-  getIOSetsForPower, getIOSet, getModalSetSize, lookupPower,
+  getIOSetsForPower, getIOSet, getMostCommonSetSize, lookupPower,
   ORIGIN_TIERS,
   sortCategoriesByPriority,
   createIOSetEnhancement, createGenericIOEnhancement, createSpecialEnhancement, createOriginEnhancement, isInherentlyAttuned,
@@ -1651,7 +1651,7 @@ function IOSetRow({
 
   // Sets that are not the catalogue's usual size get a badge; the usual size is
   // left unmarked so the list stays quiet and the odd ones out are the ink.
-  const isOffSize = set.pieces.length !== getModalSetSize();
+  const isOffSize = set.pieces.length !== getMostCommonSetSize();
 
   // Compute proc/unique outlines for all pieces
   const pieceOutlines = useMemo(() =>
