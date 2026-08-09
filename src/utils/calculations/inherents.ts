@@ -662,18 +662,15 @@ export function isSentinelPower(powersetId: string): boolean {
 // ============================================
 
 /**
- * Critical Hits grant Scrappers a chance to deal double damage.
+ * Critical Hits — the flat chance-averaged model of the Scrapper crit.
  *
- * Mechanics:
- * - 5% chance vs players, pets, and critters of Minion rank and below
- * - 10% chance vs critters above Minion rank (Lieutenants, Bosses, etc.)
- * - Critical hits deal double damage (100% extra damage)
- *
- * Statistical averages:
- * - vs Minions: 5% × 100% = 5% average damage bonus
- * - vs Higher: 10% × 100% = 10% average damage bonus
- *
- * The damage bonus is applied as a multiplier AFTER damage buffs (like Scourge):
+ * The typical shape (5% vs minions/players, 10% vs higher ranks, double damage) is what
+ * these constants state, and it is an APPROXIMATION: the export gives each power its own
+ * crit rows with their own scale and chance, and several powers differ (Sweeping Strike
+ * rolls 15%; One Thousand Cuts' crit component is smaller than its base). The info
+ * surfaces therefore read the power's own rows via the engine
+ * (power-at-mechanics.ts `critComponents`); the ONLY remaining consumer of this average
+ * is the Attack Chain's DPS model, applied AFTER damage buffs:
  * - With buffs: BaseDamage * (1 + EnhBonus + DamageBuffs) * (1 + CritBonus)
  */
 

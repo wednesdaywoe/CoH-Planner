@@ -1,14 +1,21 @@
 /**
  * Archetype hit-time damage mechanic resolution — the single source for the
  * InfoPanel's "w/ Crit / Scourge / Containment" column and the Attack Chain
- * builder's DPS. These are MULTIPLICATIVE bonuses applied at hit time, OUTSIDE
- * the damage cap: Scrapper/Stalker/Sentinel crits, Corruptor Scourge,
- * Controller Containment.
+ * builder's DPS. These apply at hit time, OUTSIDE the damage cap:
+ * Scrapper/Stalker/Sentinel crits, Corruptor Scourge, Controller Containment.
+ *
+ * The Scrapper crit is the one mechanic whose per-power truth the display
+ * surfaces now read instead of a multiplier: the export gives each power its
+ * own crit rows (scale, table, chance, rank fork), the engine resolves them
+ * against a named target rank (`usePowerDamageVsRank`), and the helpers below
+ * (`critComponents` / `critBranchSummary`) reduce that ledger for display.
+ * `resolveAtMechanic`'s flat ×1.10 crit remains ONLY as the Attack Chain's
+ * chance-averaged DPS model.
  *
  * NOT here: Brute Fury / Defender Vigilance — those are additive
  * damage-strength buffs already folded into globalBonuses.damage (the capped
  * Final), so they're in the base damage and must not be re-applied. And the
- * multiplier does NOT apply to procs (the game crits procs at hit time, but the
+ * mechanics do NOT apply to procs (the game crits procs at hit time, but the
  * planner keeps proc averages flat — see power-proc-damage.ts).
  */
 
@@ -24,6 +31,7 @@ import {
   calculateContainmentDamage,
   calculateOpportunityCritDamage,
 } from './inherents';
+import type { PowerDamage, PowerDamageComponent } from '@/engine/engineTotalsMap';
 
 export type AtMechanicKind = 'scourge' | 'crit' | 'assassination' | 'containment' | 'opportunity';
 
@@ -49,7 +57,9 @@ export interface ResolvedAtMechanic {
  * The active hit-time AT mechanic for a power in `powersetId` (e.g.
  * "scrapper/dark-melee"), or null when none applies. The mechanic gates on the
  * archetype, the power belonging to a primary/secondary set (not pool/epic),
- * and the relevant toggle being on — mirroring the InfoPanel exactly.
+ * and the relevant toggle being on — the same gating the InfoPanel applies
+ * (for `kind: 'crit'` the panel keeps the gate but swaps the multiplier for
+ * the power's own crit rows — see module doc).
  */
 export function resolveAtMechanic(
   powersetId: string,
@@ -60,6 +70,8 @@ export function resolveAtMechanic(
   if (at === 'corruptor' && isCorruptorAttackPower(powersetId) && ctx.scourgeActive)
     return { kind: 'scourge', multiplier: calculateScourgeDamage(1) };
   if (at === 'scrapper' && isScrapperAttackPower(powersetId) && ctx.criticalHitsActive)
+    // Chance-averaged model, read ONLY by the Attack Chain's DPS. The info surfaces
+    // override this kind with the power's own crit rows (see module doc).
     return { kind: 'crit', multiplier: calculateCriticalHitDamage(1, 'higher') };
   if (at === 'stalker' && isStalkerAttackPower(powersetId) && ctx.stalkerCritActive)
     // fromHideBonus is per-power (Assassin's Strike): when hidden it replaces the
@@ -75,6 +87,42 @@ export function resolveAtMechanic(
 /** Convenience: the multiplier (1 when no mechanic is active). */
 export function atMechanicMultiplier(powersetId: string, ctx: AtMechanicContext, fromHideBonus?: number): number {
   return resolveAtMechanic(powersetId, ctx, fromHideBonus)?.multiplier ?? 1;
+}
+
+/**
+ * The export's own rank segments the crit surfaces project against. Presentation-level
+ * choices, not data: the "w/ Crit" column has always claimed the crit's vs-higher branch
+ * (the lieutenant rank is its lowest member), and the info card's second line shows the
+ * vs-minion branch. The tokens themselves stay the export's — the segment only picks a rank
+ * out of the engine's derived vocabulary (`targetRanksJson`), mirroring the rebuild combat
+ * panel's `LIEUTENANT_SEGMENT` precedent.
+ */
+export const VS_HIGHER_RANK_SEGMENT = 'Lt';
+export const VS_MINION_RANK_SEGMENT = 'Minion';
+
+/**
+ * The chance components of a target-resolved damage ledger — the further-hit rows the
+ * export states with their own scale, table and probability. Against a critter target of a
+ * single rank these are the archetype's crit for that rank (the Scrapper crit rows gate on
+ * rank; certain components are `'always'`, inert riders `'dormant'`).
+ */
+export function critComponents(damage: PowerDamage | null): PowerDamageComponent[] {
+  return (damage?.components ?? []).filter((c) => typeof c.application === 'number');
+}
+
+/**
+ * One branch of the crit fork, summarized for a display row: what a critical actually adds
+ * (`finalTotal`, at the build's enhancement) and the export's own odds. `null` when the
+ * power ships no crit row against this target — the surface shows nothing rather than a
+ * flat archetype constant (the ×1.10 this replaced understated One Thousand Cuts' crit
+ * component 8×, and misstated Sweeping Strike's 15% roll as 10%).
+ */
+export function critBranchSummary(damage: PowerDamage | null): { finalTotal: number; chanceLabel: string } | null {
+  const rows = critComponents(damage);
+  if (rows.length === 0) return null;
+  const finalTotal = rows.reduce((sum, c) => sum + c.total.final, 0);
+  const chances = [...new Set(rows.map((c) => `${Math.round((c.application as number) * 100)}%`))];
+  return { finalTotal, chanceLabel: chances.join('/') };
 }
 
 /**

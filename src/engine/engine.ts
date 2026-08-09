@@ -117,3 +117,15 @@ export function projectPowerJson(
   const handle = handles.get(server);
   return handle ? handle.project_power(buildJson, powerSet, internalName, targetsHit) : null;
 }
+
+/**
+ * The target ranks this dataset's gates distinguish — JSON `[{segment, classes}]`, the
+ * vocabulary a caller picks a `combat.target_class` token from before asking
+ * `projectPowerJson` for target-resolved damage (the Scrapper crit rows gate on target
+ * rank). Derived by the engine from the gates themselves, so no rank or class name is
+ * authored on this side of the boundary. `null` if the dataset isn't loaded yet.
+ */
+export function targetRanksJson(server: ServerId): string | null {
+  const handle = handles.get(server);
+  return handle ? handle.target_ranks() : null;
+}

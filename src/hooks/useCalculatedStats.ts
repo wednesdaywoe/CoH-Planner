@@ -11,9 +11,9 @@
 
 import { useEffect, useMemo } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
-import { loadDataset, projectPowerJson, type ServerId } from '@/engine/engine';
+import { loadDataset, projectPowerJson, targetRanksJson, type ServerId } from '@/engine/engine';
 import { useEngineStore } from '@/engine/engineStore';
-import { mapOnePowerProjection, projectionKey, type EnginePowerProjection, type PowerProjection } from '@/engine/engineTotalsMap';
+import { mapOnePowerProjection, projectionKey, type EnginePowerProjection, type PowerDamage, type PowerProjection } from '@/engine/engineTotalsMap';
 import { getIOSet } from '@/data';
 import { computeOffendingPowerReasons, type CappedBonusReason } from '@/utils/over-cap-mute';
 import type { Build, SetBonus } from '@/types';
@@ -508,6 +508,68 @@ export function usePowerProjection(
     const projected = JSON.parse(json) as EnginePowerProjection | null;
     return projected ? mapOnePowerProjection(projected) : null;
   }, [powerSet, internalName, powerProjection, engineStateJson, serverId, targetsHit]);
+}
+
+/** One rank from the engine's target vocabulary — the export's own segment + class tokens. */
+interface TargetRankEntry {
+  segment: string;
+  classes: string[];
+}
+
+/** Per-server cache: the vocabulary is a corpus walk on the wasm side, and it only changes
+ *  with the dataset, so one derivation per server is the right cost. */
+const targetRanksCache = new Map<ServerId, TargetRankEntry[]>();
+
+/**
+ * The class token to evaluate a rank's gates against — the first class in the rank's sorted
+ * list, the same "stable choice, not a preferred flavour" the rebuild's
+ * `TargetRank::representative` makes. The vocabulary is the engine's own (`target_ranks`,
+ * derived from the gates), so no rank or class name is authored on this side. `null` until
+ * the dataset loads, or when this dataset's gates never name the segment — the caller shows
+ * nothing rather than guessing a target.
+ */
+function targetClassForSegment(server: ServerId, segment: string): string | null {
+  let ranks = targetRanksCache.get(server);
+  if (!ranks) {
+    const json = targetRanksJson(server);
+    if (json === null) return null;
+    ranks = JSON.parse(json) as TargetRankEntry[];
+    targetRanksCache.set(server, ranks);
+  }
+  return ranks.find((r) => r.segment === segment)?.classes[0] ?? null;
+}
+
+/**
+ * This power's damage ledger resolved against a critter target of `rankSegment` — what the
+ * Damage block's "w/ Crit" column reads (the Scrapper crit is rank-forked rows in the
+ * power's own data, so it only resolves once a target rank is named).
+ *
+ * Runs the projection on the SAME `CharacterState` the totals ran on, with only the target
+ * identity overridden — so the certain components match the panel's own damage, and the
+ * rank-forked rows resolve instead of sitting in `unresolved`. Pass `undefined` power refs
+ * to skip the engine run entirely (a projection is a full totals pass).
+ */
+export function usePowerDamageVsRank(
+  powerSet: string | undefined,
+  internalName: string | undefined,
+  rankSegment: string,
+): PowerDamage | null {
+  const result = useCharacterCalculation();
+  const serverId = useBuildStore((state) => state.build.serverId) as ServerId;
+  const targetsHit = useUIStore((state) => (internalName ? state.targetsHitValues[internalName] : undefined));
+  const { engineStateJson } = result;
+
+  return useMemo(() => {
+    if (!powerSet || !internalName || engineStateJson === null) return null;
+    const targetClass = targetClassForSegment(serverId, rankSegment);
+    if (targetClass === null) return null;
+    const state = JSON.parse(engineStateJson) as { combat?: Record<string, unknown> };
+    state.combat = { ...(state.combat ?? {}), target_class: targetClass, target_is_player: false };
+    const json = projectPowerJson(serverId, JSON.stringify(state), powerSet, internalName, targetsHit);
+    if (json === null) return null;
+    const projected = JSON.parse(json) as EnginePowerProjection | null;
+    return projected ? mapOnePowerProjection(projected).damage : null;
+  }, [powerSet, internalName, engineStateJson, serverId, targetsHit, rankSegment]);
 }
 
 // ============================================

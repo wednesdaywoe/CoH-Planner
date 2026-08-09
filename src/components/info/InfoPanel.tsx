@@ -31,10 +31,10 @@ import {
   powerFiresProcs,
   getActiveDamageConversion,
 } from '@/data';
-import { useGlobalBonuses, usePowerProjection } from '@/hooks/useCalculatedStats';
+import { useGlobalBonuses, usePowerProjection, usePowerDamageVsRank } from '@/hooks/useCalculatedStats';
 import { useBuildMaxAttackDamage } from '@/hooks/useBuildMaxAttackDamage';
-import { calculatePowerEnhancementBonuses, combineWithAlphaED, calculatePowerDamage, getAlphaEnhancementBonuses, getAlphaEdBypassBonuses, abbreviateDamageType, calculateArcanaTime, dotTickCount, calculateDamageWithATTable, type EnhancementBonuses, type PowerDamageResult, isControllerPower, isCorruptorAttackPower, isBruteAttackPower, isScrapperAttackPower, isStalkerAttackPower, calculateFuryDamageBonus, calculateAssassinationDamageBonus, getContainmentInfo, getScourgeInfo, getCriticalHitInfo, getFuryInfo, getEffectiveLevel, areIncarnatesSuppressed } from '@/utils/calculations';
-import { resolveAtMechanic, applyAtMechanicBonus } from '@/utils/calculations/power-at-mechanics';
+import { calculatePowerEnhancementBonuses, combineWithAlphaED, calculatePowerDamage, getAlphaEnhancementBonuses, getAlphaEdBypassBonuses, abbreviateDamageType, calculateArcanaTime, dotTickCount, calculateDamageWithATTable, type EnhancementBonuses, type PowerDamageResult, isControllerPower, isCorruptorAttackPower, isBruteAttackPower, isScrapperAttackPower, isStalkerAttackPower, calculateFuryDamageBonus, calculateAssassinationDamageBonus, getContainmentInfo, getScourgeInfo, getFuryInfo, getEffectiveLevel, areIncarnatesSuppressed } from '@/utils/calculations';
+import { resolveAtMechanic, applyAtMechanicBonus, critBranchSummary, critComponents, VS_HIGHER_RANK_SEGMENT, VS_MINION_RANK_SEGMENT } from '@/utils/calculations/power-at-mechanics';
 import type { IOSetEnhancement } from '@/types';
 import { isPermaEligible } from '@/utils/calculations/perma';
 import { getRechargeBounds } from '@/data/at-tables';
@@ -480,12 +480,22 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   // Resolved damage shown in the Damage block — direct first, pseudo-pet fallback.
   const resolvedDamage = calculatedDamage ?? pseudoPetDamage;
 
-  // Archetype hit-time damage multiplier (Containment, Scourge, crits, …).
-  // ONLY hit-time multipliers that sit OUTSIDE the damage cap belong here.
+  // The Scrapper crit is rank-forked rows in the power's OWN data (its own scale, table
+  // and probability — One Thousand Cuts crits for 2.21 against a 2.361 base; Sweeping
+  // Strike rolls 15%, not 10%), so the column reads those rows resolved by the engine
+  // against a target of the rank the column has always claimed ("vs Lt+"). The engine run
+  // is a full totals pass, so it is gated to the one case that reads it.
+  const wantEngineCrit = archetypeId === 'scrapper' && isScrapperAttackPower(powerSet) && criticalHitsActive;
+  const damageVsHigher = usePowerDamageVsRank(wantEngineCrit ? powerSet : undefined, powerName, VS_HIGHER_RANK_SEGMENT);
+  const damageVsMinion = usePowerDamageVsRank(wantEngineCrit ? powerSet : undefined, powerName, VS_MINION_RANK_SEGMENT);
+
+  // Archetype hit-time damage mechanic (Containment, Scourge, crits, …).
+  // ONLY hit-time mechanics that sit OUTSIDE the damage cap belong here.
   // Additive damage-strength buffs (Brute Fury, Defender Vigilance) are already
   // folded into globalBonuses.damage by calculateCharacterTotals (step 9.1), so
   // they're in the capped Final column — re-applying them would double-count.
-  // Single-sourced with the Attack Chain builder via resolveAtMechanic.
+  // Gating is shared with the Attack Chain builder via resolveAtMechanic; the
+  // scrapper crit VALUE diverges from it deliberately (rows vs chance-average).
   const inherentInfo = useMemo(() => {
     if (!calculatedDamage) return null;
 
@@ -501,8 +511,22 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     }, effectivePower?.fromHideBonus);
     if (!mech) return null;
 
+    // Scrapper crit: ADD the power's own crit rows (what a critical actually deals — the
+    // same reading CoD lists), not the flat ×1.10 chance-average resolveAtMechanic still
+    // carries for the Attack Chain's DPS model. No rows against this target — or the
+    // engine not loaded yet — means no column, never a flat archetype constant.
+    if (mech.kind === 'crit') {
+      const critFinal = critComponents(damageVsHigher).reduce((sum, c) => sum + c.total.final, 0);
+      if (critFinal <= 0) return null;
+      return {
+        header: 'w/ Crit',
+        color: 'text-sk-magenta',
+        applyBonus: (damage: number) => damage + critFinal,
+        showContainment: false,
+      };
+    }
+
     const header = mech.kind === 'scourge' ? 'w/ Scourge'
-      : mech.kind === 'crit' ? 'w/ Crit'
       : mech.kind === 'assassination'
         ? (effectiveHidden ? (effectivePower?.fromHideBonus != null ? 'w/ Assassinate' : 'w/ Crit') : 'w/ Assassin')
       : mech.kind === 'containment' ? 'w/ Contain'
@@ -516,7 +540,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     };
   }, [calculatedDamage, archetypeId, powerSet, containmentActive, scourgeActive,
       criticalHitsActive, effectiveHidden, stalkerTeamSize, stalkerCritActive, sentinelCritActive,
-      effectivePower?.fromHideBonus]);
+      effectivePower?.fromHideBonus, damageVsHigher]);
 
   // Proc-only damage contributions for non-damaging powers. Powers like
   // Infrigidate, Siphon Speed, etc. carry no base damage but commonly host
@@ -1062,9 +1086,13 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
             );
           })()}
 
-          {/* Critical Hits (Scrapper) */}
+          {/* Critical Hits (Scrapper) — the power's OWN crit rows per rank branch: the
+              export states the chance and the crit's own damage, and they vary by power
+              (Sweeping Strike rolls 15%; One Thousand Cuts' crit is smaller than its
+              base), so no archetype-constant table can stand in for them. */}
           {archetypeId === 'scrapper' && isScrapperAttackPower(powerSet) && (() => {
-            const criticalHitInfo = getCriticalHitInfo();
+            const minion = critBranchSummary(damageVsMinion);
+            const higher = critBranchSummary(damageVsHigher);
             return (
               <div className={`text-xs rounded px-2 py-1.5 border ${
                 criticalHitsActive
@@ -1078,7 +1106,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
                   <span className={`text-[10px] px-1.5 py-0.5 rounded ${
                     criticalHitsActive ? 'bg-sk-magenta/20 text-sk-magenta' : 'bg-slate-700 text-slate-300'
                   }`}>
-                    {criticalHitsActive ? 'SHOWING AVG' : 'Hidden'}
+                    {criticalHitsActive ? 'IN FINAL (vs Lt+)' : 'Hidden'}
                   </span>
                 </div>
                 {criticalHitsActive && (
@@ -1086,20 +1114,20 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
                     <div className="flex justify-between">
                       <span className="text-slate-300">vs Minions:</span>
                       <span className="text-sk-magenta/70">
-                        {(criticalHitInfo.chanceVsMinions * 100).toFixed(0)}% → +{(criticalHitInfo.averageBonusVsMinions * 100).toFixed(0)}% avg
+                        {minion ? `${minion.chanceLabel} chance → +${minion.finalTotal.toFixed(2)}` : 'no crit'}
                       </span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-slate-300">vs Lt/Boss+:</span>
                       <span className="text-sk-magenta/70">
-                        {(criticalHitInfo.chanceVsHigher * 100).toFixed(0)}% → +{(criticalHitInfo.averageBonusVsHigher * 100).toFixed(0)}% avg
+                        {higher ? `${higher.chanceLabel} chance → +${higher.finalTotal.toFixed(2)}` : 'no crit'}
                       </span>
                     </div>
                   </div>
                 )}
                 {!criticalHitsActive && (
                   <div className="text-[10px] text-slate-400 mt-0.5">
-                    5% crit vs minions, 10% vs higher ranks
+                    Crit chance and damage are per power — toggle on to see this power&apos;s rows
                   </div>
                 )}
               </div>

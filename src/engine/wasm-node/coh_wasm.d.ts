@@ -24,6 +24,13 @@ export class DatasetHandle {
      * `Error` on a parse failure rather than returning garbage.
      */
     recalculate(build_json: string): string;
+    /**
+     * The target ranks this dataset's gates distinguish, as JSON `[{segment, classes}]`
+     * — the vocabulary a caller picks a `combat.target_class` token from before asking
+     * [`Self::project_power`] for target-resolved damage. Throws when the archetype
+     * catalogue will not parse rather than offering a guessed list (Rule 1).
+     */
+    target_ranks(): string;
 }
 
 /**

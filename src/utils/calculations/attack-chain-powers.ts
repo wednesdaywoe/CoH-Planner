@@ -598,8 +598,10 @@ export function buildChainPowers(
     const endCost = calcThreeTier('endurance', baseEnd, enh, globalForCalc).final;
 
     // AT hit-time multiplier (crit / scourge / containment / assassination /
-    // opportunity) — applies to base damage + DoT, NOT procs. Single-sourced
-    // with the InfoPanel via resolveAtMechanic. 1.0 when no mechanic is active.
+    // opportunity) — applies to base damage + DoT, NOT procs. 1.0 when no
+    // mechanic is active. For DPS a chance-AVERAGED crit is the right model,
+    // so the Scrapper flat ×1.10 stays here; the InfoPanel's "w/ Crit" column
+    // instead shows the power's own crit rows (see power-at-mechanics.ts).
     const mechMult = atMechanicMultiplier(powersetId, mechCtx, power.fromHideBonus);
 
     // Assassin's Strike models from-Hide POSITIONALLY (opener / post-Placate)

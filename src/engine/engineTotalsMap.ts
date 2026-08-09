@@ -139,6 +139,56 @@ export interface EngineGrantedMagnitude {
   by_type_label: string | null;
 }
 
+/** How a resolved damage component applies (engine `DamageApplication`) — serde's external
+ *  tagging: the unit variants are bare strings, the chance variant an object. */
+export type EngineDamageApplication = 'Always' | 'Dormant' | { Chance: number };
+
+/** A component that ticks rather than landing at once (engine `DamageOverTime`). */
+export interface EngineDamageOverTime {
+  duration: number;
+  period: number;
+  nominal_ticks: number;
+  tick_chance: number | null;
+  cancel_on_miss: boolean;
+  expected_ticks: number;
+}
+
+/** One damage atom resolved against the projected target (engine `DamageComponent`, RB5). */
+export interface EngineDamageComponent {
+  damage_type: string;
+  table: string;
+  /** Per-tick for an over-time component. */
+  base: number;
+  /** Whole-duration totals at the three enhancement tiers. */
+  total: EngineThreeTier;
+  application: EngineDamageApplication;
+  over_time: EngineDamageOverTime | null;
+  gate: string | null;
+  /** The effect group's authored `Tag`s, verbatim (`CritLarge`, `ScrapperCrit_AoE`, …). */
+  tags: string[];
+}
+
+/** A damage atom whose gate the projection context could not answer (engine
+ *  `UnresolvedDamage`) — reported, never dropped (Rule 1). */
+export interface EngineUnresolvedDamage {
+  damage_type: string;
+  gate: string;
+  reason: string;
+  tags: string[];
+}
+
+/** Every damage component of one power against one target (engine `PowerDamage`). The
+ *  base/enhanced/final sums cover only the `Always` components — a chance component is a
+ *  further hit, not part of the one these totals describe. */
+export interface EngineDamage {
+  components: EngineDamageComponent[];
+  unresolved: EngineUnresolvedDamage[];
+  base: number;
+  enhanced: number;
+  final: number;
+  capped: boolean;
+}
+
 export interface EnginePowerProjection {
   power_internal_name: string;
   power_set: string;
@@ -151,6 +201,7 @@ export interface EnginePowerProjection {
   perma: EnginePerma | null;
   granted_magnitudes: EngineGrantedMagnitude[];
   enhancement_bonuses: Record<string, number>;
+  damage: EngineDamage;
 }
 
 /** One buff-pet aura contribution — the engine's per-(pet, stat) row. The label is the
@@ -266,6 +317,98 @@ export interface PowerProjection {
    *  not itself resolve reads these instead of running `calculatePowerEnhancementBonuses`
    *  beside the engine. */
   enhancementBonuses: EnhancementBonuses;
+  /** This power's own damage atoms resolved against the projection's target (RB5). The
+   *  rank-forked rows — the Scrapper crit — only resolve when the `CharacterState` the
+   *  projection ran on names a `combat.target_class`; without one they sit in
+   *  `unresolved` rather than being guessed at. */
+  damage: PowerDamage;
+}
+
+/** The beta-facing form of one resolved damage component. */
+export interface PowerDamageComponent {
+  damageType: string;
+  table: string;
+  /** Per-tick for an over-time component. */
+  base: number;
+  /** Whole-duration totals at the three enhancement tiers. */
+  total: ThreeTierValues;
+  /** `'always'` — part of every landed hit. `'dormant'` — inert until something outside the
+   *  attack wakes it (Fiery Embrace). A number in (0,1) — the chance of a FURTHER hit, which
+   *  is how the export states the Scrapper crit: its own row, own scale, own probability. */
+  application: 'always' | 'dormant' | number;
+  overTime: {
+    duration: number;
+    period: number;
+    nominalTicks: number;
+    tickChance: number | null;
+    cancelOnMiss: boolean;
+    expectedTicks: number;
+  } | null;
+  gate: string | null;
+  /** The effect group's authored `Tag`s, verbatim — where the game NAMES the mechanic
+   *  (`CritLarge`, `ScrapperCrit_AoE`). Never classified here (Rule 0). */
+  tags: string[];
+}
+
+/** The beta-facing form of the engine's per-power damage ledger. */
+export interface PowerDamage {
+  components: PowerDamageComponent[];
+  /** Components whose gate the projection could not answer — shown, never dropped. */
+  unresolved: { damageType: string; gate: string; reason: string; tags: string[] }[];
+  /** Sums of the `'always'` components only — a chance component is a further hit, not part
+   *  of the hit these totals describe. */
+  base: number;
+  enhanced: number;
+  final: number;
+  capped: boolean;
+}
+
+/** External serde tagging → the beta union. Throws on an unknown variant: that is schema
+ *  drift between the vendored wasm and this decoder, and a guessed application would ship a
+ *  wrong number as authoritative (Rule 1). */
+function mapDamageApplication(a: EngineDamageApplication): PowerDamageComponent['application'] {
+  if (a === 'Always') return 'always';
+  if (a === 'Dormant') return 'dormant';
+  if (typeof a === 'object' && a !== null && typeof a.Chance === 'number') return a.Chance;
+  throw new Error(`unrecognized engine DamageApplication: ${JSON.stringify(a)}`);
+}
+
+function mapDamageComponent(c: EngineDamageComponent): PowerDamageComponent {
+  return {
+    damageType: c.damage_type,
+    table: c.table,
+    base: c.base,
+    total: { base: c.total.base, enhanced: c.total.enhanced, final: c.total.final },
+    application: mapDamageApplication(c.application),
+    overTime: c.over_time
+      ? {
+          duration: c.over_time.duration,
+          period: c.over_time.period,
+          nominalTicks: c.over_time.nominal_ticks,
+          tickChance: c.over_time.tick_chance,
+          cancelOnMiss: c.over_time.cancel_on_miss,
+          expectedTicks: c.over_time.expected_ticks,
+        }
+      : null,
+    gate: c.gate,
+    tags: c.tags,
+  };
+}
+
+function mapDamage(d: EngineDamage): PowerDamage {
+  return {
+    components: d.components.map(mapDamageComponent),
+    unresolved: d.unresolved.map((u) => ({
+      damageType: u.damage_type,
+      gate: u.gate,
+      reason: u.reason,
+      tags: u.tags,
+    })),
+    base: d.base,
+    enhanced: d.enhanced,
+    final: d.final,
+    capped: d.capped,
+  };
 }
 
 /** The minimal power identity every engine source ref carries — resolved to a display name. */
@@ -660,6 +803,7 @@ export function mapOnePowerProjection(p: EnginePowerProjection): PowerProjection
     perma: mapPerma(p.perma),
     grantedMagnitudes: p.granted_magnitudes.map(mapGrantedMagnitude),
     enhancementBonuses: p.enhancement_bonuses,
+    damage: mapDamage(p.damage),
   };
 }
 
